@@ -19,7 +19,11 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@memoguard/shared": ["../../packages/shared/index.ts"],
+      "@memoguard/shared/*": ["../../packages/shared/*"],
+      "@memoguard/supabase": ["../../packages/supabase/index.ts"],
+      "@memoguard/supabase/*": ["../../packages/supabase/*"]
     }
   },
   "include": [
@@ -28,7 +32,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    "**/*.mts",
+    "../../packages/shared/**/*.ts",
+    "../../packages/supabase/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }

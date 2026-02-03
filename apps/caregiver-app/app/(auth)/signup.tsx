@@ -1,0 +1,323 @@
+import { useState } from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  ActivityIndicator,
+} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Link, router } from 'expo-router';
+import { useTranslation } from 'react-i18next';
+import { supabase } from '@memoguard/supabase';
+import { useAuthStore } from '../../src/stores/auth-store';
+
+const COLORS = {
+  background: '#FAFAF8',
+  card: '#FFFFFF',
+  border: '#E7E5E4',
+  textPrimary: '#1C1917',
+  textSecondary: '#57534E',
+  textMuted: '#A8A29E',
+  brand600: '#0D9488',
+  brand700: '#0F766E',
+  danger: '#DC2626',
+};
+
+export default function SignupScreen() {
+  const { t } = useTranslation();
+  const { setSession } = useAuthStore();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSignup = async () => {
+    if (!email || !password || !confirmPassword) {
+      setError('Please fill in all fields');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      return;
+    }
+
+    if (password.length < 8) {
+      setError('Password must be at least 8 characters');
+      return;
+    }
+
+    setError(null);
+    setLoading(true);
+
+    try {
+      const { data, error: authError } = await supabase.auth.signUp({
+        email,
+        password,
+      });
+
+      if (authError) {
+        setError(authError.message);
+        return;
+      }
+
+      if (data.session) {
+        await setSession(data.session);
+        router.replace('/onboarding');
+      } else {
+        // Email confirmation required
+        setError('Please check your email to confirm your account');
+      }
+    } catch (err) {
+      setError(t('common.error'));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={styles.keyboardView}
+      >
+        <ScrollView
+          contentContainerStyle={styles.scrollContent}
+          keyboardShouldPersistTaps="handled"
+          showsVerticalScrollIndicator={false}
+        >
+          {/* Logo and title */}
+          <View style={styles.header}>
+            <Text style={styles.logo}>MemoGuard</Text>
+            <Text style={styles.subtitle}>{t('caregiverApp.auth.getStarted')}</Text>
+          </View>
+
+          {/* Signup form */}
+          <View style={styles.form}>
+            {error && (
+              <View style={styles.errorContainer}>
+                <Text style={styles.errorText}>{error}</Text>
+              </View>
+            )}
+
+            <View style={styles.inputGroup}>
+              <Text style={styles.label}>{t('caregiverApp.auth.email')}</Text>
+              <TextInput
+                style={styles.input}
+                value={email}
+                onChangeText={setEmail}
+                placeholder="you@example.com"
+                placeholderTextColor={COLORS.textMuted}
+                keyboardType="email-address"
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
+            </View>
+
+            <View style={styles.inputGroup}>
+              <Text style={styles.label}>{t('caregiverApp.auth.password')}</Text>
+              <TextInput
+                style={styles.input}
+                value={password}
+                onChangeText={setPassword}
+                placeholder="••••••••"
+                placeholderTextColor={COLORS.textMuted}
+                secureTextEntry
+                autoCapitalize="none"
+              />
+            </View>
+
+            <View style={styles.inputGroup}>
+              <Text style={styles.label}>Confirm password</Text>
+              <TextInput
+                style={styles.input}
+                value={confirmPassword}
+                onChangeText={setConfirmPassword}
+                placeholder="••••••••"
+                placeholderTextColor={COLORS.textMuted}
+                secureTextEntry
+                autoCapitalize="none"
+              />
+            </View>
+
+            <TouchableOpacity
+              style={[styles.button, loading && styles.buttonDisabled]}
+              onPress={handleSignup}
+              disabled={loading}
+              activeOpacity={0.8}
+            >
+              {loading ? (
+                <ActivityIndicator color="#FFFFFF" />
+              ) : (
+                <Text style={styles.buttonText}>{t('caregiverApp.auth.createAccount')}</Text>
+              )}
+            </TouchableOpacity>
+
+            {/* Divider */}
+            <View style={styles.divider}>
+              <View style={styles.dividerLine} />
+              <Text style={styles.dividerText}>{t('caregiverApp.auth.or')}</Text>
+              <View style={styles.dividerLine} />
+            </View>
+
+            {/* OAuth buttons */}
+            <TouchableOpacity style={styles.oauthButton} activeOpacity={0.8}>
+              <Text style={styles.oauthButtonText}>
+                {t('caregiverApp.auth.continueWithGoogle')}
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.oauthButton} activeOpacity={0.8}>
+              <Text style={styles.oauthButtonText}>
+                {t('caregiverApp.auth.continueWithApple')}
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Login link */}
+          <View style={styles.footer}>
+            <Text style={styles.footerText}>{t('caregiverApp.auth.hasAccount')} </Text>
+            <Link href="/(auth)/login" asChild>
+              <TouchableOpacity>
+                <Text style={styles.footerLink}>{t('caregiverApp.auth.login')}</Text>
+              </TouchableOpacity>
+            </Link>
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.background,
+  },
+  keyboardView: {
+    flex: 1,
+  },
+  scrollContent: {
+    flexGrow: 1,
+    paddingHorizontal: 24,
+    paddingTop: 40,
+    paddingBottom: 24,
+  },
+  header: {
+    alignItems: 'center',
+    marginBottom: 40,
+  },
+  logo: {
+    fontSize: 32,
+    fontWeight: '700',
+    color: COLORS.brand700,
+    marginBottom: 8,
+  },
+  subtitle: {
+    fontSize: 20,
+    color: COLORS.textPrimary,
+  },
+  form: {
+    backgroundColor: COLORS.card,
+    borderRadius: 16,
+    padding: 24,
+    borderWidth: 1,
+    borderColor: COLORS.border,
+  },
+  errorContainer: {
+    backgroundColor: '#FEF2F2',
+    borderWidth: 1,
+    borderColor: '#FECACA',
+    borderRadius: 8,
+    padding: 12,
+    marginBottom: 16,
+  },
+  errorText: {
+    color: COLORS.danger,
+    fontSize: 14,
+  },
+  inputGroup: {
+    marginBottom: 16,
+  },
+  label: {
+    fontSize: 14,
+    fontWeight: '500',
+    color: COLORS.textPrimary,
+    marginBottom: 6,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    borderRadius: 12,
+    paddingHorizontal: 16,
+    paddingVertical: 14,
+    fontSize: 16,
+    color: COLORS.textPrimary,
+    backgroundColor: COLORS.card,
+  },
+  button: {
+    backgroundColor: COLORS.brand600,
+    borderRadius: 12,
+    paddingVertical: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 8,
+  },
+  buttonDisabled: {
+    opacity: 0.6,
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#FFFFFF',
+  },
+  divider: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 24,
+  },
+  dividerLine: {
+    flex: 1,
+    height: 1,
+    backgroundColor: COLORS.border,
+  },
+  dividerText: {
+    marginHorizontal: 16,
+    color: COLORS.textMuted,
+    fontSize: 14,
+  },
+  oauthButton: {
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    borderRadius: 12,
+    paddingVertical: 14,
+    alignItems: 'center',
+    marginBottom: 12,
+    backgroundColor: COLORS.card,
+  },
+  oauthButtonText: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: COLORS.textPrimary,
+  },
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 24,
+  },
+  footerText: {
+    fontSize: 14,
+    color: COLORS.textSecondary,
+  },
+  footerLink: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: COLORS.brand600,
+  },
+});

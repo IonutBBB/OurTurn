@@ -117,46 +117,47 @@ The full product specification is at `docs/MVP_PLAN.md`. Reference specific sect
 - [x] Task completion (with animation)
 - [x] Time-of-day adaptive backgrounds
 - [x] Offline mode (cached plan + queued writes)
-- [ ] Help tab — emergency contacts
-- [ ] Help tab — "Take Me Home" button
-- [ ] Silent alert on "Take Me Home" tap
-- [ ] Daily check-in (mood + sleep + voice)
-- [ ] Brain wellness activity
-- [ ] Push notification reminders
+- [x] Help tab — emergency contacts
+- [x] Help tab — "Take Me Home" button
+- [x] Silent alert on "Take Me Home" tap
+- [x] Daily check-in (mood + sleep + voice)
+- [x] Brain wellness activity
+- [x] Push notification reminders
 
 ### Caregiver Web App
-- [ ] Auth (login, signup, OAuth)
-- [ ] Onboarding wizard (6 steps)
-- [ ] Care Code generation + display
-- [ ] App layout shell (sidebar nav)
-- [ ] Dashboard (real-time status cards)
-- [ ] Care Plan builder (table/grid, inline editing)
-- [ ] AI Suggest tasks
-- [ ] Location page (map, safe zones, alerts config)
-- [ ] AI Care Coach (chat with streaming)
-- [ ] Family Circle (invite, roles)
-- [ ] Care Journal (shared notes)
-- [ ] Caregiver Wellbeing (mood, self-care)
-- [ ] Doctor Visit Report generator
-- [ ] Settings (account, subscription, Care Code)
-- [ ] Email notifications (alerts + daily summary)
+- [x] Auth (login, signup, OAuth)
+- [x] Onboarding wizard (6 steps)
+- [x] Care Code generation + display
+- [x] App layout shell (sidebar nav)
+- [x] Dashboard (real-time status cards)
+- [x] Care Plan builder (table/grid, inline editing)
+- [x] AI Suggest tasks
+- [x] Location page (map, safe zones, alerts config)
+- [x] AI Care Coach (chat with streaming)
+- [x] Family Circle (invite, roles)
+- [x] Care Journal (shared notes)
+- [x] Caregiver Wellbeing (mood, self-care)
+- [x] Doctor Visit Report generator
+- [x] Settings (account, subscription, Care Code)
+- [x] Email notifications (alerts + daily summary)
 
 ### Caregiver Mobile App
-- [ ] Auth (mirrors web)
-- [ ] Onboarding (mirrors web, adapted for mobile)
-- [ ] Dashboard tab
-- [ ] Care Plan tab
-- [ ] Location tab
-- [ ] AI Coach tab
-- [ ] More tab (Family, Wellbeing, Settings)
-- [ ] Push notifications
+- [x] Auth (mirrors web)
+- [x] Onboarding (simplified for mobile)
+- [x] Dashboard tab
+- [x] Care Plan tab
+- [x] Location tab
+- [x] AI Coach tab
+- [x] More tab (Family, Wellbeing, Settings)
+- [x] Push notifications
 
 ### Integration
-- [ ] Real-time sync (Supabase Realtime across all 3 apps)
-- [ ] Push notification system (Edge Functions + Expo)
-- [ ] Email notification system (Edge Functions + Resend)
-- [ ] Subscription system (RevenueCat + Stripe + sync)
-- [ ] Voice note pipeline (record → upload → transcribe)
-- [ ] AI activity generation (daily cron)
-- [ ] AI weekly insights (weekly cron)
-- [ ] Daily summary email (evening cron)
+- [x] Real-time sync (Supabase Realtime across all 3 apps)
+- [x] Push notification system (Edge Functions + Expo)
+- [x] Email notification system (Edge Functions + Resend)
+- [x] Subscription system (Stripe for web + RevenueCat for mobile)
+- [x] Voice note pipeline (record → upload → transcribe via Whisper)
+- [x] AI activity generation (daily cron via Edge Function)
+- [x] AI weekly insights (weekly cron via Edge Function)
+- [x] Daily summary email (evening cron)
+- [x] Care Code validation Edge Function

@@ -6,8 +6,10 @@ import {
   ScrollView,
   RefreshControl,
   ActivityIndicator,
+  TouchableOpacity,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useAuthStore } from '../../src/stores/auth-store';
@@ -34,6 +36,7 @@ import {
   getTodaysTasks,
   getTodaysCompletions,
   completeTask,
+  supabase,
 } from '@memoguard/supabase';
 import type { CarePlanTask, TaskCompletion } from '@memoguard/shared';
 
@@ -45,6 +48,7 @@ const COLORS = {
   textSecondary: '#57534E',
   textMuted: '#A8A29E',
   brand600: '#0D9488',
+  brand700: '#0F766E',
   brand200: '#99F6E4',
 };
 
@@ -58,6 +62,7 @@ export default function TodayScreen() {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [isOffline, setIsOffline] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [hasCheckedIn, setHasCheckedIn] = useState(true); // Assume true initially
 
   const timeOfDay = getTimeOfDay();
   const greeting = getGreetingKey(timeOfDay);
@@ -120,6 +125,16 @@ export default function TodayScreen() {
       // Cache for offline use
       await cacheTasks(today, fetchedTasks);
       await cacheCompletions(today, fetchedCompletions);
+
+      // Check if user has done their daily check-in
+      const { data: checkin } = await supabase
+        .from('daily_checkins')
+        .select('id')
+        .eq('household_id', householdId)
+        .eq('date', today)
+        .single();
+
+      setHasCheckedIn(!!checkin);
     } catch (err) {
       console.error('Failed to fetch tasks:', err);
 
@@ -281,6 +296,23 @@ export default function TodayScreen() {
             </View>
           )}
 
+          {/* Daily Check-in Card */}
+          {!hasCheckedIn && (
+            <TouchableOpacity
+              style={styles.checkinCard}
+              onPress={() => router.push('/checkin')}
+              activeOpacity={0.8}
+            >
+              <View style={styles.checkinContent}>
+                <Text style={styles.checkinEmoji}>👋</Text>
+                <View style={styles.checkinTextContainer}>
+                  <Text style={styles.checkinTitle}>{t('patientApp.checkin.moodQuestion')}</Text>
+                  <Text style={styles.checkinSubtitle}>Tap to check in</Text>
+                </View>
+              </View>
+            </TouchableOpacity>
+          )}
+
           {/* Error state */}
           {error && (
             <View style={styles.errorContainer}>
@@ -414,5 +446,34 @@ const styles = StyleSheet.create({
   },
   bottomPadding: {
     height: 100,
+  },
+  checkinCard: {
+    backgroundColor: '#E0F2F1',
+    borderRadius: 16,
+    padding: 20,
+    marginBottom: 16,
+    borderWidth: 2,
+    borderColor: COLORS.brand600,
+  },
+  checkinContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  checkinEmoji: {
+    fontSize: 40,
+    marginRight: 16,
+  },
+  checkinTextContainer: {
+    flex: 1,
+  },
+  checkinTitle: {
+    fontSize: 20,
+    fontWeight: '600',
+    color: COLORS.textPrimary,
+  },
+  checkinSubtitle: {
+    fontSize: 16,
+    color: COLORS.brand700,
+    marginTop: 4,
   },
 });

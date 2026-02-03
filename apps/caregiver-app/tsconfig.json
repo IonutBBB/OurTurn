@@ -1,6 +1,14 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
-  }
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@memoguard/shared": ["../../packages/shared/index.ts"],
+      "@memoguard/shared/*": ["../../packages/shared/*"],
+      "@memoguard/supabase": ["../../packages/supabase/index.ts"],
+      "@memoguard/supabase/*": ["../../packages/supabase/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx", "../../packages/shared/**/*.ts", "../../packages/supabase/**/*.ts"]
 }

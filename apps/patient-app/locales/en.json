@@ -7,6 +7,7 @@
     "edit": "Edit",
     "done": "Done",
     "skip": "Skip for today",
+    "or": "or",
     "loading": "Loading...",
     "error": "Something went wrong. Please try again.",
     "offline": "You're offline — your data will sync when connected",
@@ -59,20 +60,27 @@
       "voicePrompt": "Anything you want to tell your family?",
       "voiceTap": "Tap to speak",
       "voiceRecording": "Recording...",
+      "voiceStop": "Stop",
+      "voicePlay": "Play",
+      "voicePause": "Pause",
+      "voiceDiscard": "Record again",
       "send": "Send to family",
+      "skipVoice": "Skip voice message",
       "thankYou": "Thank you! Your family will see this.",
       "alreadyDone": "You already checked in today!"
     },
     "activity": {
-      "todaysActivity": "Today's Activity",
+      "title": "Today's Activity",
+      "noActivity": "No activity for today",
+      "comeBackLater": "Check back tomorrow for a new activity!",
+      "tapToSpeak": "Tap to speak",
+      "tapToStop": "Tap to stop recording",
+      "typeInstead": "Type your answer instead",
+      "typeHere": "Type your answer here...",
+      "speakInstead": "Speak instead",
+      "recordAgain": "Record again",
       "skipForToday": "Skip for today",
-      "tapToShare": "Tap to share your memory",
-      "positiveFeedback": [
-        "What a wonderful memory! Thank you for sharing.",
-        "That's beautiful! Thank you for telling us.",
-        "How lovely! Your family will enjoy hearing this.",
-        "What a great story! Thank you."
-      ]
+      "defaultFollowUp": "What a wonderful memory! Thank you for sharing."
     },
     "careCode": {
       "welcome": "Welcome to MemoGuard",

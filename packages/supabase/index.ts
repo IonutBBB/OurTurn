@@ -1,5 +1,6 @@
 // @memoguard/supabase
-// Re-export client and all queries
+// Re-export client, queries, and hooks
 
 export * from './client';
 export * from './queries';
+export * from './hooks';

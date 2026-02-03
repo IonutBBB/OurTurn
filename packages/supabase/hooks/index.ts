@@ -1,5 +1,8 @@
-// Realtime hooks will be added in Phase 5
-// This file will contain React hooks that wrap queries with Supabase Realtime subscriptions
+// Supabase Realtime Hooks
+// These hooks subscribe to real-time updates from Supabase
+// They work with both React Native (Expo) and Next.js
 
-// Placeholder exports to prevent import errors
-export {};
+export * from './use-realtime-tasks';
+export * from './use-realtime-checkins';
+export * from './use-realtime-location';
+export * from './use-realtime-alerts';

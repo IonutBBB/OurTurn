@@ -104,3 +104,28 @@ export interface DoctorVisitReportInsert {
   content_json?: DoctorVisitReportContent;
   pdf_url?: string;
 }
+
+// Weekly Insights types
+export type InsightCategory = 'positive' | 'attention' | 'suggestion';
+
+export interface Insight {
+  insight: string;
+  suggestion: string;
+  category: InsightCategory;
+}
+
+export interface WeeklyInsights {
+  id: string;
+  household_id: string;
+  week_start: string;
+  week_end: string;
+  insights: Insight[];
+  generated_at: string;
+}
+
+export interface WeeklyInsightsInsert {
+  household_id: string;
+  week_start: string;
+  week_end: string;
+  insights: Insight[];
+}

@@ -15,7 +15,12 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.memoguard.patient"
+      "bundleIdentifier": "com.memoguard.patient",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "MemoGuard needs your location to help you navigate home safely.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "MemoGuard needs your location to help you navigate home safely.",
+        "UIBackgroundModes": ["remote-notification"]
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -24,7 +29,15 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.memoguard.patient"
+      "package": "com.memoguard.patient",
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "RECEIVE_BOOT_COMPLETED",
+        "VIBRATE",
+        "WAKE_LOCK",
+        "POST_NOTIFICATIONS"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png",
@@ -34,7 +47,27 @@
       "expo-secure-store",
       "expo-localization",
       "expo-router",
-      "expo-font"
+      "expo-font",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "MemoGuard needs your location to help you navigate home safely."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#0D9488",
+          "sounds": ["./assets/sounds/notification.wav"]
+        }
+      ],
+      [
+        "expo-av",
+        {
+          "microphonePermission": "MemoGuard needs your microphone to record voice notes for your daily check-in."
+        }
+      ]
     ]
   }
 }
