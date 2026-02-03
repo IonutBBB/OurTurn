@@ -1,1 +1,10 @@
-// Types will be added in Phase 1
+// Re-export all types
+export * from './household';
+export * from './patient';
+export * from './caregiver';
+export * from './care-plan';
+export * from './checkin';
+export * from './location';
+export * from './journal';
+export * from './ai';
+export * from './wellbeing';

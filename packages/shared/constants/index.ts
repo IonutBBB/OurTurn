@@ -1,1 +1,3 @@
-// Constants will be added in Phase 1
+// Re-export all constants
+export * from './categories';
+export * from './emergency-numbers';

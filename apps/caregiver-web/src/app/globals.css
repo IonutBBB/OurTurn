@@ -1,26 +1,124 @@
 @import "tailwindcss";
 
+/* MemoGuard Design System */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand Colors */
+  --brand-50: #F0FDFA;
+  --brand-100: #CCFBF1;
+  --brand-200: #99F6E4;
+  --brand-500: #14B8A6;
+  --brand-600: #0D9488;
+  --brand-700: #0F766E;
+  --brand-800: #115E59;
+
+  /* Surface Colors */
+  --surface-background: #FAFAF8;
+  --surface-card: #FFFFFF;
+  --surface-border: #E7E5E4;
+
+  /* Text Colors */
+  --text-primary: #1C1917;
+  --text-secondary: #57534E;
+  --text-muted: #A8A29E;
+
+  /* Status Colors */
+  --status-success: #16A34A;
+  --status-amber: #D97706;
+  --status-danger: #DC2626;
+  --status-info: #2563EB;
+
+  /* Category Colors */
+  --category-medication: #7C3AED;
+  --category-medication-bg: #F5F3FF;
+  --category-nutrition: #16A34A;
+  --category-nutrition-bg: #F0FDF4;
+  --category-physical: #EA580C;
+  --category-physical-bg: #FFF7ED;
+  --category-cognitive: #2563EB;
+  --category-cognitive-bg: #EFF6FF;
+  --category-social: #DB2777;
+  --category-social-bg: #FDF2F8;
+  --category-health: #DC2626;
+  --category-health-bg: #FEF2F2;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Brand */
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-800: var(--brand-800);
+
+  /* Surface */
+  --color-surface-background: var(--surface-background);
+  --color-surface-card: var(--surface-card);
+  --color-surface-border: var(--surface-border);
+
+  /* Text */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  /* Status */
+  --color-status-success: var(--status-success);
+  --color-status-amber: var(--status-amber);
+  --color-status-danger: var(--status-danger);
+  --color-status-info: var(--status-info);
+
+  /* Category */
+  --color-category-medication: var(--category-medication);
+  --color-category-medication-bg: var(--category-medication-bg);
+  --color-category-nutrition: var(--category-nutrition);
+  --color-category-nutrition-bg: var(--category-nutrition-bg);
+  --color-category-physical: var(--category-physical);
+  --color-category-physical-bg: var(--category-physical-bg);
+  --color-category-cognitive: var(--category-cognitive);
+  --color-category-cognitive-bg: var(--category-cognitive-bg);
+  --color-category-social: var(--category-social);
+  --color-category-social-bg: var(--category-social-bg);
+  --color-category-health: var(--category-health);
+  --color-category-health-bg: var(--category-health-bg);
+
+  /* Font */
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+
+  /* Border Radius */
+  --radius-card: 12px;
+  --radius-button: 12px;
+  --radius-input: 8px;
+  --radius-pill: 9999px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Base styles */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--surface-background);
+  color: var(--text-primary);
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--brand-600);
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
 }

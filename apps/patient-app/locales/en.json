@@ -1,0 +1,94 @@
+{
+  "common": {
+    "appName": "MemoGuard",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "done": "Done",
+    "skip": "Skip for today",
+    "loading": "Loading...",
+    "error": "Something went wrong. Please try again.",
+    "offline": "You're offline — your data will sync when connected",
+    "synced": "Synced"
+  },
+  "categories": {
+    "medication": "Medication",
+    "nutrition": "Meals & Nutrition",
+    "physical": "Physical Activity",
+    "cognitive": "Brain Wellness",
+    "social": "Social & Connection",
+    "health": "Health Check"
+  },
+  "patientApp": {
+    "todaysPlan": {
+      "title": "Today's Plan",
+      "progress": "{{completed}} of {{total}} activities done today",
+      "noPlan": "No activities planned for today. Your family is setting things up!",
+      "overdue": "Overdue",
+      "upcoming": "Upcoming",
+      "nowBadge": "NOW",
+      "doneAt": "Done at {{time}}",
+      "greatMorning": "Great morning!",
+      "keepGoing": "You're doing wonderfully!",
+      "allDone": "All done for today!"
+    },
+    "help": {
+      "title": "I Need Help",
+      "callSomeone": "Call Someone",
+      "getHomeSafely": "Get Home Safely",
+      "takeMeHome": "Take Me Home",
+      "takeMeHomeDesc": "Tap to get walking directions to your home",
+      "emergency": "Emergency",
+      "confirmEmergency": "Are you sure you want to call emergency services?"
+    },
+    "checkin": {
+      "greeting": {
+        "morning": "Good morning, {{name}}!",
+        "afternoon": "Good afternoon, {{name}}!",
+        "evening": "Good evening, {{name}}!"
+      },
+      "moodQuestion": "How are you feeling today?",
+      "moodGood": "Good",
+      "moodOkay": "Okay",
+      "moodBad": "Not great",
+      "sleepQuestion": "Did you sleep well?",
+      "sleepGood": "Yes",
+      "sleepOkay": "So-so",
+      "sleepBad": "Not really",
+      "voicePrompt": "Anything you want to tell your family?",
+      "voiceTap": "Tap to speak",
+      "voiceRecording": "Recording...",
+      "send": "Send to family",
+      "thankYou": "Thank you! Your family will see this.",
+      "alreadyDone": "You already checked in today!"
+    },
+    "activity": {
+      "todaysActivity": "Today's Activity",
+      "skipForToday": "Skip for today",
+      "tapToShare": "Tap to share your memory",
+      "positiveFeedback": [
+        "What a wonderful memory! Thank you for sharing.",
+        "That's beautiful! Thank you for telling us.",
+        "How lovely! Your family will enjoy hearing this.",
+        "What a great story! Thank you."
+      ]
+    },
+    "careCode": {
+      "welcome": "Welcome to MemoGuard",
+      "enterCode": "Enter your Care Code",
+      "helperText": "Your family member will give you this code.",
+      "connect": "Connect",
+      "invalidCode": "Please check your code and try again.",
+      "connecting": "Connecting..."
+    },
+    "tabs": {
+      "today": "Today",
+      "help": "Help"
+    }
+  },
+  "notifications": {
+    "taskReminder": "{{patientName}}, it's time for: {{taskTitle}}",
+    "checkinPrompt": "Time for your daily check-in!"
+  }
+}

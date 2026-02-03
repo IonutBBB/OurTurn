@@ -103,11 +103,11 @@ The full product specification is at `docs/MVP_PLAN.md`. Reference specific sect
 
 ### Foundation
 - [x] Supabase project created and configured
-- [ ] Database schema migration applied
-- [ ] Shared TypeScript types
-- [ ] Supabase client + typed queries
-- [ ] Constants (categories, emergency numbers)
-- [ ] i18n setup with English strings
+- [x] Database schema migration applied
+- [x] Shared TypeScript types
+- [x] Supabase client + typed queries
+- [x] Constants (categories, emergency numbers)
+- [x] i18n setup with English strings
 
 ### Patient App
 - [ ] Care Code entry screen
