@@ -57,6 +57,8 @@ export default function SettingsClient({
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [deleteConfirmText, setDeleteConfirmText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
+  const [deleteError, setDeleteError] = useState('');
 
   const handleSaveProfile = async () => {
     setIsSavingProfile(true);
@@ -167,8 +169,37 @@ export default function SettingsClient({
   };
 
   const handleExportData = async () => {
-    // In a real app, this would trigger an Edge Function to compile and email data
-    alert('Data export request submitted. You will receive an email with your data within 24 hours.');
+    setIsExporting(true);
+    try {
+      const response = await fetch('/api/gdpr/export', {
+        method: 'GET',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to export data');
+      }
+
+      // Get the filename from Content-Disposition header or use default
+      const contentDisposition = response.headers.get('Content-Disposition');
+      const filenameMatch = contentDisposition?.match(/filename="(.+)"/);
+      const filename = filenameMatch ? filenameMatch[1] : `memoguard-export-${new Date().toISOString().split('T')[0]}.json`;
+
+      // Download the file
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } catch (err) {
+      console.error('Failed to export data:', err);
+      alert('Failed to export data. Please try again.');
+    } finally {
+      setIsExporting(false);
+    }
   };
 
   const handleDeleteAccount = async () => {
@@ -177,21 +208,26 @@ export default function SettingsClient({
     }
 
     setIsDeleting(true);
+    setDeleteError('');
     try {
-      // Delete household (cascades to all related data)
-      const { error: householdError } = await supabase
-        .from('households')
-        .delete()
-        .eq('id', household.id);
+      const response = await fetch('/api/gdpr/delete', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ confirmDelete: 'DELETE' }),
+      });
 
-      if (householdError) throw householdError;
+      const data = await response.json();
 
-      // Sign out
+      if (!response.ok) {
+        throw new Error(data.message || data.error || 'Failed to delete account');
+      }
+
+      // Sign out and redirect
       await supabase.auth.signOut();
-      router.push('/login');
-    } catch (err) {
+      router.push('/login?deleted=true');
+    } catch (err: any) {
       console.error('Failed to delete account:', err);
-      alert('Failed to delete account. Please contact support.');
+      setDeleteError(err.message || 'Failed to delete account. Please contact support.');
     } finally {
       setIsDeleting(false);
     }
@@ -550,22 +586,38 @@ export default function SettingsClient({
         </button>
       </div>
 
+      {/* Privacy & Data */}
+      <div className="bg-surface-card rounded-xl border border-surface-border p-6">
+        <h2 className="text-lg font-semibold text-text-primary mb-4">Privacy & Data</h2>
+        <div className="space-y-4">
+          <div>
+            <button
+              onClick={handleExportData}
+              disabled={isExporting}
+              className="px-4 py-2 border border-surface-border rounded-lg text-text-primary hover:bg-surface-raised transition-colors disabled:opacity-50"
+            >
+              {isExporting ? 'Exporting...' : 'Export My Data'}
+            </button>
+            <p className="text-sm text-text-muted mt-1">
+              Download a copy of all your data in JSON format (GDPR right to portability)
+            </p>
+          </div>
+          <div className="flex gap-4 text-sm">
+            <a href="/privacy" target="_blank" className="text-brand-600 hover:underline">
+              Privacy Policy
+            </a>
+            <a href="/terms" target="_blank" className="text-brand-600 hover:underline">
+              Terms of Service
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* Danger Zone */}
       <div className="bg-red-50 rounded-xl border border-red-200 p-6">
         <h2 className="text-lg font-semibold text-red-800 mb-4">Danger Zone</h2>
         <div className="space-y-4">
           <div>
-            <button
-              onClick={handleExportData}
-              className="px-4 py-2 border border-red-300 rounded-lg text-red-700 hover:bg-red-100 transition-colors"
-            >
-              Export All Data
-            </button>
-            <p className="text-sm text-red-600 mt-1">
-              Request a copy of all your data (GDPR compliant)
-            </p>
-          </div>
-          <div className="border-t border-red-200 pt-4">
             <button
               onClick={() => setShowDeleteConfirm(!showDeleteConfirm)}
               className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
@@ -587,6 +639,9 @@ export default function SettingsClient({
                   className="w-full px-4 py-2 border border-red-300 rounded-lg bg-white text-text-primary focus:outline-none focus:ring-2 focus:ring-red-500 mb-3"
                   placeholder="Type DELETE"
                 />
+                {deleteError && (
+                  <p className="text-sm text-red-600 mb-3">{deleteError}</p>
+                )}
                 <button
                   onClick={handleDeleteAccount}
                   disabled={deleteConfirmText !== 'DELETE' || isDeleting}
