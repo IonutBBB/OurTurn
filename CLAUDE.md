@@ -41,7 +41,7 @@ docs/                    → MVP plan, skills, prompts
 | Styling (web) | Tailwind CSS |
 | Styling (mobile) | React Native StyleSheet |
 | Backend | Supabase (Postgres + Auth + Realtime + Storage + Edge Functions) |
-| AI / LLM | Anthropic Claude API |
+| AI / LLM | Google Gemini 2.5 Flash API |
 | Speech-to-text | OpenAI Whisper API |
 | Maps display | Google Maps API (@vis.gl/react-google-maps for web, react-native-maps for mobile) |
 | Navigation home | Google Maps deep links (not in-app navigation) |
@@ -102,7 +102,7 @@ The full product specification is at `docs/MVP_PLAN.md`. Reference specific sect
 <!-- UPDATE THIS AFTER EVERY SESSION -->
 
 ### Foundation
-- [ ] Supabase project created and configured
+- [x] Supabase project created and configured
 - [ ] Database schema migration applied
 - [ ] Shared TypeScript types
 - [ ] Supabase client + typed queries
