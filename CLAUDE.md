@@ -113,16 +113,16 @@ The full product specification is at `docs/MVP_PLAN.md`. Reference specific sect
 - [x] Care Code entry screen
 - [x] Session persistence (auto-login)
 - [x] Bottom tab navigation (Today + Help)
-- [ ] Today's Plan screen (timeline)
-- [ ] Task completion (with animation)
-- [ ] Time-of-day adaptive backgrounds
+- [x] Today's Plan screen (timeline)
+- [x] Task completion (with animation)
+- [x] Time-of-day adaptive backgrounds
+- [x] Offline mode (cached plan + queued writes)
 - [ ] Help tab — emergency contacts
 - [ ] Help tab — "Take Me Home" button
 - [ ] Silent alert on "Take Me Home" tap
 - [ ] Daily check-in (mood + sleep + voice)
 - [ ] Brain wellness activity
 - [ ] Push notification reminders
-- [ ] Offline mode (cached plan + queued writes)
 
 ### Caregiver Web App
 - [ ] Auth (login, signup, OAuth)
