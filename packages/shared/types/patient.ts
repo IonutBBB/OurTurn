@@ -1,4 +1,5 @@
 // Patient types
+import type { DeviceToken } from './common';
 
 export type DementiaStage = 'early' | 'moderate' | 'advanced';
 
@@ -27,12 +28,6 @@ export interface PatientBiography {
   favorite_foods?: string[];
   important_people?: ImportantPerson[];
   key_events?: KeyEvent[];
-}
-
-export interface DeviceToken {
-  token: string;
-  platform: 'ios' | 'android' | 'web';
-  last_seen?: string;
 }
 
 export interface Patient {

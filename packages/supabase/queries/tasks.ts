@@ -240,12 +240,12 @@ export async function copyDayTasks(
     household_id: householdId,
     category: task.category,
     title: task.title,
-    hint_text: task.hint_text,
+    hint_text: task.hint_text ?? undefined,
     time: task.time,
     recurrence: 'specific_days' as const,
     recurrence_days: targetDays,
     active: true,
-    created_by: task.created_by,
+    created_by: task.created_by ?? undefined,
   }));
 
   const { data, error } = await supabase

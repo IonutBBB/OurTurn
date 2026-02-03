@@ -1,4 +1,5 @@
 // Re-export all types
+export * from './common';
 export * from './household';
 export * from './patient';
 export * from './caregiver';

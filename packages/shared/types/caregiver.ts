@@ -1,4 +1,5 @@
 // Caregiver types
+import type { DeviceToken } from './common';
 
 export type CaregiverRole = 'primary' | 'family_member';
 
@@ -12,11 +13,6 @@ export interface NotificationPreferences {
   daily_summary: boolean;
   email_notifications: boolean;
   summary_time?: string;
-}
-
-export interface DeviceToken {
-  token: string;
-  platform: 'ios' | 'android' | 'web';
 }
 
 export interface Caregiver {

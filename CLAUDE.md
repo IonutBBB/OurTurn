@@ -110,8 +110,9 @@ The full product specification is at `docs/MVP_PLAN.md`. Reference specific sect
 - [x] i18n setup with English strings
 
 ### Patient App
-- [ ] Care Code entry screen
-- [ ] Session persistence (auto-login)
+- [x] Care Code entry screen
+- [x] Session persistence (auto-login)
+- [x] Bottom tab navigation (Today + Help)
 - [ ] Today's Plan screen (timeline)
 - [ ] Task completion (with animation)
 - [ ] Time-of-day adaptive backgrounds
@@ -122,7 +123,6 @@ The full product specification is at `docs/MVP_PLAN.md`. Reference specific sect
 - [ ] Brain wellness activity
 - [ ] Push notification reminders
 - [ ] Offline mode (cached plan + queued writes)
-- [ ] Bottom tab navigation (Today + Help)
 
 ### Caregiver Web App
 - [ ] Auth (login, signup, OAuth)
