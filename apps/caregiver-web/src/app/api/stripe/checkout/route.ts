@@ -2,9 +2,21 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient as createServerClient } from '@/lib/supabase/server';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2026-01-28.clover',
-});
+// Lazy initialization to avoid build-time errors when env vars are not set
+let stripeInstance: Stripe | null = null;
+
+function getStripe(): Stripe {
+  if (!stripeInstance) {
+    const key = process.env.STRIPE_SECRET_KEY;
+    if (!key) {
+      throw new Error('STRIPE_SECRET_KEY is not configured');
+    }
+    stripeInstance = new Stripe(key, {
+      apiVersion: '2026-01-28.clover',
+    });
+  }
+  return stripeInstance;
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -39,6 +51,8 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    const stripe = getStripe();
 
     // Get or create Stripe customer
     let customerId = household.stripe_customer_id;
@@ -93,10 +107,11 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ sessionUrl: session.url });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : 'Failed to create checkout session';
     console.error('Stripe checkout error:', error);
     return NextResponse.json(
-      { error: error.message || 'Failed to create checkout session' },
+      { error: message },
       { status: 500 }
     );
   }

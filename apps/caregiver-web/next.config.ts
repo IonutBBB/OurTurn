@@ -10,7 +10,15 @@ const nextConfig: NextConfig = {
     externalDir: true,
   },
 
-  // Webpack config for monorepo package resolution
+  // Turbopack config for Next.js 16+
+  turbopack: {
+    resolveAlias: {
+      '@memoguard/shared': '../../packages/shared',
+      '@memoguard/supabase': '../../packages/supabase',
+    },
+  },
+
+  // Webpack config for monorepo package resolution (fallback)
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
