@@ -38,7 +38,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} font-sans antialiased bg-surface-background`}>
+      <body className={`${inter.variable} font-sans antialiased bg-gray-50 dark:bg-[#121212]`}>
         <ThemeProvider>
           <I18nProvider>{children}</I18nProvider>
         </ThemeProvider>

@@ -89,9 +89,9 @@ export default async function LocationPage() {
     <LocationClient
       householdId={household.id}
       patientName={patient.name}
-      homeAddress={household.home_address}
-      homeLatitude={household.home_latitude}
-      homeLongitude={household.home_longitude}
+      homeAddress={patient.home_address_formatted}
+      homeLatitude={patient.home_latitude}
+      homeLongitude={patient.home_longitude}
       latestLocation={latestLocation}
       locationHistory={locationHistory || []}
       safeZones={safeZones || []}
