@@ -24,10 +24,25 @@ export default async function CoachPage() {
 
   if (!household || !patient) {
     return (
-      <div>
-        <h1 className="text-2xl font-bold text-text-primary mb-6">AI Care Coach</h1>
-        <div className="bg-surface-card rounded-xl border border-surface-border p-8 text-center">
-          <p className="text-text-muted">Please complete onboarding first.</p>
+      <div className="space-y-8">
+        <div>
+          <h1 className="text-3xl font-bold text-text-primary tracking-tight">AI Care Coach</h1>
+          <p className="text-text-secondary mt-2">Get personalized guidance and support</p>
+        </div>
+        <div className="card-elevated rounded-2xl p-12 text-center max-w-lg mx-auto">
+          <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-brand-100 to-brand-200 flex items-center justify-center mx-auto mb-6">
+            <span className="text-4xl">🤖</span>
+          </div>
+          <h2 className="text-xl font-semibold text-text-primary mb-3">Complete Setup First</h2>
+          <p className="text-text-secondary mb-6">
+            Set up your care profile to get personalized AI coaching tailored to your situation.
+          </p>
+          <a
+            href="/onboarding"
+            className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-brand-600 to-brand-500 text-white font-semibold rounded-xl shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/30 transition-all duration-200 hover:-translate-y-0.5"
+          >
+            Start Onboarding
+          </a>
         </div>
       </div>
     );
@@ -44,8 +59,11 @@ export default async function CoachPage() {
     .single();
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold text-text-primary mb-6">AI Care Coach</h1>
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-3xl font-bold text-text-primary tracking-tight">AI Care Coach</h1>
+        <p className="text-text-secondary mt-2">Get personalized guidance and support for {patient.name}</p>
+      </div>
       <CoachClient
         householdId={household.id}
         patientName={patient.name}

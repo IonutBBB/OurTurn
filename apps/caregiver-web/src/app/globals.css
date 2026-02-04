@@ -1,45 +1,97 @@
 @import "tailwindcss";
 
-/* MemoGuard Design System */
+/* MemoGuard Design System - 2026 Edition */
 :root {
-  /* Brand Colors */
-  --brand-50: #F0FDFA;
-  --brand-100: #CCFBF1;
-  --brand-200: #99F6E4;
+  /* Brand Colors - Deeper, more sophisticated 2026 palette */
+  --brand-50: #ECFDF8;
+  --brand-100: #D1FAE9;
+  --brand-200: #7BEEE0;
+  --brand-300: #5DE0D0;
+  --brand-400: #2DD4BF;
   --brand-500: #14B8A6;
-  --brand-600: #0D9488;
-  --brand-700: #0F766E;
-  --brand-800: #115E59;
+  --brand-600: #0A9488;
+  --brand-700: #0D7D73;
+  --brand-800: #0F5E56;
+  --brand-900: #134E48;
 
-  /* Surface Colors */
-  --surface-background: #FAFAF8;
-  --surface-card: #FFFFFF;
-  --surface-border: #E7E5E4;
+  /* Surface Colors - Cleaner, modern surfaces */
+  --surface-background: #FAFBFC;
+  --surface-card: rgba(255, 255, 255, 0.85);
+  --surface-card-solid: #FFFFFF;
+  --surface-border: #E2E8F0;
+  --surface-elevated: rgba(255, 255, 255, 0.95);
 
-  /* Text Colors */
-  --text-primary: #1C1917;
-  --text-secondary: #57534E;
-  --text-muted: #A8A29E;
+  /* Text Colors - Higher contrast */
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --text-inverse: #FFFFFF;
 
-  /* Status Colors */
-  --status-success: #16A34A;
-  --status-amber: #D97706;
-  --status-danger: #DC2626;
-  --status-info: #2563EB;
+  /* Status Colors - Vibrant but balanced */
+  --status-success: #10B981;
+  --status-success-bg: #ECFDF5;
+  --status-amber: #F59E0B;
+  --status-amber-bg: #FFFBEB;
+  --status-danger: #EF4444;
+  --status-danger-bg: #FEF2F2;
+  --status-info: #3B82F6;
+  --status-info-bg: #EFF6FF;
 
-  /* Category Colors */
-  --category-medication: #7C3AED;
+  /* Category Colors - Modern gradient-ready */
+  --category-medication: #8B5CF6;
   --category-medication-bg: #F5F3FF;
-  --category-nutrition: #16A34A;
-  --category-nutrition-bg: #F0FDF4;
-  --category-physical: #EA580C;
+  --category-medication-gradient: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%);
+  --category-nutrition: #10B981;
+  --category-nutrition-bg: #ECFDF5;
+  --category-nutrition-gradient: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+  --category-physical: #F97316;
   --category-physical-bg: #FFF7ED;
-  --category-cognitive: #2563EB;
+  --category-physical-gradient: linear-gradient(135deg, #F97316 0%, #FB923C 100%);
+  --category-cognitive: #3B82F6;
   --category-cognitive-bg: #EFF6FF;
-  --category-social: #DB2777;
+  --category-cognitive-gradient: linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%);
+  --category-social: #EC4899;
   --category-social-bg: #FDF2F8;
-  --category-health: #DC2626;
+  --category-social-gradient: linear-gradient(135deg, #EC4899 0%, #F472B6 100%);
+  --category-health: #EF4444;
   --category-health-bg: #FEF2F2;
+  --category-health-gradient: linear-gradient(135deg, #EF4444 0%, #F87171 100%);
+
+  /* Shadows - Layered for depth (2026 trend) */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.04), 0 4px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.04), 0 10px 20px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.06), 0 20px 40px rgba(0, 0, 0, 0.12);
+  --shadow-glow: 0 0 20px rgba(10, 148, 136, 0.15);
+
+  /* Glassmorphism (2026 Liquid Glass trend) */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-blur: 12px;
+
+  /* Spacing scale - More breathing room */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* Border Radius - Refined geometric (2026 trend) */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-full: 9999px;
+
+  /* Transitions - Snappy animations */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @theme inline {
@@ -47,26 +99,35 @@
   --color-brand-50: var(--brand-50);
   --color-brand-100: var(--brand-100);
   --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
   --color-brand-500: var(--brand-500);
   --color-brand-600: var(--brand-600);
   --color-brand-700: var(--brand-700);
   --color-brand-800: var(--brand-800);
+  --color-brand-900: var(--brand-900);
 
   /* Surface */
   --color-surface-background: var(--surface-background);
-  --color-surface-card: var(--surface-card);
+  --color-surface-card: var(--surface-card-solid);
   --color-surface-border: var(--surface-border);
+  --color-surface-elevated: var(--surface-elevated);
 
   /* Text */
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
+  --color-text-inverse: var(--text-inverse);
 
   /* Status */
   --color-status-success: var(--status-success);
+  --color-status-success-bg: var(--status-success-bg);
   --color-status-amber: var(--status-amber);
+  --color-status-amber-bg: var(--status-amber-bg);
   --color-status-danger: var(--status-danger);
+  --color-status-danger-bg: var(--status-danger-bg);
   --color-status-info: var(--status-info);
+  --color-status-info-bg: var(--status-info-bg);
 
   /* Category */
   --color-category-medication: var(--category-medication);
@@ -85,23 +146,27 @@
   /* Font */
   --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
 
-  /* Border Radius */
-  --radius-card: 12px;
-  --radius-button: 12px;
-  --radius-input: 8px;
-  --radius-pill: 9999px;
+  /* Shadows */
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
 }
 
 /* Base styles */
 body {
   background: var(--surface-background);
   color: var(--text-primary);
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Focus styles for accessibility */
 *:focus-visible {
   outline: 2px solid var(--brand-600);
   outline-offset: 2px;
+  border-radius: var(--radius-sm);
 }
 
 /* Custom scrollbar */
@@ -111,7 +176,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--surface-background);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -121,4 +186,125 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-secondary);
+}
+
+/* 2026 Card Styles */
+.card-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md);
+}
+
+.card-elevated {
+  background: var(--surface-card-solid);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--surface-border);
+}
+
+.card-interactive {
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Modern button styles */
+.btn-primary {
+  background: linear-gradient(135deg, var(--brand-600) 0%, var(--brand-700) 100%);
+  color: var(--text-inverse);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-5);
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--brand-500) 0%, var(--brand-600) 100%);
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, var(--brand-600) 0%, var(--brand-400) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Progress bar animation */
+.progress-bar {
+  background: linear-gradient(90deg, var(--brand-500) 0%, var(--brand-400) 50%, var(--brand-500) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(90deg, var(--surface-border) 25%, var(--surface-background) 50%, var(--surface-border) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Bento grid layout */
+.bento-grid {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Badge styles */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+
+.badge-success {
+  background: var(--status-success-bg);
+  color: var(--status-success);
+}
+
+.badge-warning {
+  background: var(--status-amber-bg);
+  color: var(--status-amber);
+}
+
+.badge-danger {
+  background: var(--status-danger-bg);
+  color: var(--status-danger);
+}
+
+.badge-info {
+  background: var(--status-info-bg);
+  color: var(--status-info);
 }

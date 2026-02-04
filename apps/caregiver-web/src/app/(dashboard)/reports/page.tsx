@@ -24,10 +24,25 @@ export default async function ReportsPage() {
 
   if (!caregiver || !household || !patient) {
     return (
-      <div>
-        <h1 className="text-2xl font-bold text-text-primary mb-6">Doctor Visit Reports</h1>
-        <div className="bg-surface-card rounded-xl border border-surface-border p-8 text-center">
-          <p className="text-text-muted">Please complete onboarding first.</p>
+      <div className="space-y-8">
+        <div>
+          <h1 className="text-3xl font-bold text-text-primary tracking-tight">Doctor Visit Reports</h1>
+          <p className="text-text-secondary mt-2">Generate comprehensive reports for healthcare providers</p>
+        </div>
+        <div className="card-elevated rounded-2xl p-12 text-center max-w-lg mx-auto">
+          <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center mx-auto mb-6">
+            <span className="text-4xl">📋</span>
+          </div>
+          <h2 className="text-xl font-semibold text-text-primary mb-3">Complete Setup First</h2>
+          <p className="text-text-secondary mb-6">
+            Set up your care profile to generate detailed reports for doctor visits.
+          </p>
+          <a
+            href="/onboarding"
+            className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-brand-600 to-brand-500 text-white font-semibold rounded-xl shadow-lg shadow-brand-600/25 hover:shadow-xl hover:shadow-brand-600/30 transition-all duration-200 hover:-translate-y-0.5"
+          >
+            Start Onboarding
+          </a>
         </div>
       </div>
     );
@@ -42,8 +57,11 @@ export default async function ReportsPage() {
     .limit(20);
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold text-text-primary mb-6">Doctor Visit Reports</h1>
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-3xl font-bold text-text-primary tracking-tight">Doctor Visit Reports</h1>
+        <p className="text-text-secondary mt-2">Generate comprehensive reports for {patient.name}&apos;s healthcare providers</p>
+      </div>
       <ReportsClient
         householdId={household.id}
         caregiverId={caregiver.id}

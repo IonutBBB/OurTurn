@@ -61,39 +61,54 @@ export default async function DashboardPage() {
     3: '😴',
   };
 
+  const progressPercent = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+
   return (
-    <div>
-      {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-text-primary">
+    <div className="space-y-8">
+      {/* Header - Modern 2026 style */}
+      <div className="space-y-2">
+        <h1 className="text-3xl font-bold text-text-primary tracking-tight">
           Good {timeOfDay}, {caregiver?.name || 'there'}
         </h1>
         {patient && (
-          <p className="text-text-secondary mt-1">
-            {patient.name}&apos;s day is going well 💚
+          <p className="text-lg text-text-secondary flex items-center gap-2">
+            <span className="inline-flex items-center justify-center w-2 h-2 bg-status-success rounded-full animate-pulse" />
+            {patient.name}&apos;s day is going well
           </p>
         )}
       </div>
 
-      {/* Status Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* Today's Status Card */}
-        <div className="bg-surface-card rounded-xl border border-surface-border p-6">
-          <h2 className="text-sm font-semibold text-text-muted uppercase tracking-wide mb-4">
-            Today&apos;s Status
-          </h2>
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="text-text-secondary">Tasks completed</span>
-              <span className="font-semibold text-text-primary">
-                {completedTasks} of {totalTasks}
-              </span>
+      {/* Bento Grid - 2026 Layout */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Today's Status Card - Featured */}
+        <div className="card-elevated rounded-2xl p-6 lg:col-span-2 card-interactive">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-xs font-semibold text-text-muted uppercase tracking-wider">
+              Today&apos;s Progress
+            </h2>
+            <span className="badge badge-success">
+              {progressPercent}% Complete
+            </span>
+          </div>
+          <div className="space-y-4">
+            <div className="flex items-end justify-between">
+              <div>
+                <p className="text-4xl font-bold text-text-primary tracking-tight">
+                  {completedTasks}
+                  <span className="text-xl text-text-muted font-normal"> / {totalTasks}</span>
+                </p>
+                <p className="text-sm text-text-secondary mt-1">Tasks completed today</p>
+              </div>
+              <div className="text-5xl opacity-20">📋</div>
             </div>
             {totalTasks > 0 && (
-              <div className="w-full bg-gray-200 rounded-full h-2">
+              <div className="w-full bg-surface-border rounded-full h-3 overflow-hidden">
                 <div
-                  className="bg-brand-600 h-2 rounded-full transition-all"
-                  style={{ width: `${(completedTasks / totalTasks) * 100}%` }}
+                  className="h-full rounded-full transition-all duration-500 ease-out"
+                  style={{
+                    width: `${progressPercent}%`,
+                    background: 'linear-gradient(90deg, var(--brand-600) 0%, var(--brand-400) 100%)'
+                  }}
                 />
               </div>
             )}
@@ -101,73 +116,93 @@ export default async function DashboardPage() {
         </div>
 
         {/* Daily Check-in Card */}
-        <div className="bg-surface-card rounded-xl border border-surface-border p-6">
-          <h2 className="text-sm font-semibold text-text-muted uppercase tracking-wide mb-4">
+        <div className="card-elevated rounded-2xl p-6 card-interactive">
+          <h2 className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-4">
             Daily Check-In
           </h2>
           {checkin ? (
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-text-secondary">Mood</span>
-                <span className="text-2xl">{moodEmojis[checkin.mood] || '—'}</span>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-3 bg-surface-background rounded-xl">
+                <span className="text-sm font-medium text-text-secondary">Mood</span>
+                <span className="text-3xl">{moodEmojis[checkin.mood] || '—'}</span>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-text-secondary">Sleep</span>
-                <span className="text-2xl">{sleepEmojis[checkin.sleep_quality] || '—'}</span>
+              <div className="flex items-center justify-between p-3 bg-surface-background rounded-xl">
+                <span className="text-sm font-medium text-text-secondary">Sleep</span>
+                <span className="text-3xl">{sleepEmojis[checkin.sleep_quality] || '—'}</span>
               </div>
               {checkin.voice_note_transcript && (
-                <p className="text-sm text-text-secondary italic">
-                  &quot;{checkin.voice_note_transcript.slice(0, 100)}...&quot;
+                <p className="text-sm text-text-secondary italic bg-surface-background p-3 rounded-xl">
+                  &quot;{checkin.voice_note_transcript.slice(0, 80)}...&quot;
                 </p>
               )}
             </div>
           ) : (
-            <p className="text-text-muted">No check-in submitted yet today</p>
+            <div className="flex flex-col items-center justify-center py-6 text-center">
+              <span className="text-4xl mb-3 opacity-50">💭</span>
+              <p className="text-text-muted text-sm">No check-in yet today</p>
+            </div>
           )}
         </div>
 
         {/* Location Card */}
-        <div className="bg-surface-card rounded-xl border border-surface-border p-6">
-          <h2 className="text-sm font-semibold text-text-muted uppercase tracking-wide mb-4">
+        <div className="card-elevated rounded-2xl p-6 card-interactive">
+          <h2 className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-4">
             Location
           </h2>
-          <div className="flex items-center gap-3">
-            <span className="text-2xl">📍</span>
-            <div>
-              <p className="font-medium text-text-primary">
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 rounded-2xl bg-status-success-bg flex items-center justify-center">
+              <span className="text-2xl">📍</span>
+            </div>
+            <div className="flex-1">
+              <p className="font-semibold text-text-primary">
                 {patient?.name || 'Patient'} is at home
               </p>
-              <p className="text-sm text-text-muted">Last updated: just now</p>
+              <p className="text-sm text-text-muted flex items-center gap-1.5 mt-1">
+                <span className="w-1.5 h-1.5 bg-status-success rounded-full" />
+                Updated just now
+              </p>
             </div>
           </div>
         </div>
 
-        {/* AI Insights Card */}
-        <div className="bg-surface-card rounded-xl border border-surface-border p-6 lg:col-span-2">
-          <h2 className="text-sm font-semibold text-text-muted uppercase tracking-wide mb-4">
-            AI Insights
+        {/* AI Insights Card - Gradient accent */}
+        <div className="relative overflow-hidden rounded-2xl p-6 lg:col-span-2 card-interactive" style={{ background: 'linear-gradient(135deg, var(--brand-50) 0%, #fff 100%)' }}>
+          <div className="absolute top-0 right-0 w-32 h-32 opacity-10" style={{ background: 'radial-gradient(circle, var(--brand-400) 0%, transparent 70%)' }} />
+          <h2 className="text-xs font-semibold text-brand-700 uppercase tracking-wider mb-4 flex items-center gap-2">
+            <span className="text-sm">✨</span> AI Insights
           </h2>
           <div className="space-y-3">
-            <div className="flex items-start gap-3 p-3 bg-brand-50 rounded-lg">
-              <span className="text-lg">💡</span>
-              <p className="text-sm text-text-primary">
-                {patient?.name || 'Your loved one'} completes more tasks on days with a morning walk scheduled.
-                Consider adding physical activity to the daily routine.
-              </p>
+            <div className="flex items-start gap-4 p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-brand-100">
+              <div className="w-10 h-10 rounded-xl bg-brand-100 flex items-center justify-center flex-shrink-0">
+                <span className="text-lg">💡</span>
+              </div>
+              <div>
+                <p className="font-medium text-text-primary">Morning Activity Pattern</p>
+                <p className="text-sm text-text-secondary mt-1">
+                  {patient?.name || 'Your loved one'} completes more tasks on days with a morning walk scheduled.
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Care Code Card */}
-        <div className="bg-surface-card rounded-xl border border-surface-border p-6">
-          <h2 className="text-sm font-semibold text-text-muted uppercase tracking-wide mb-4">
+        <div className="card-elevated rounded-2xl p-6 card-interactive">
+          <h2 className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-4">
             Care Code
           </h2>
-          <div className="text-center">
-            <p className="text-3xl font-mono font-bold text-brand-700 tracking-widest">
-              {household?.care_code || '------'}
-            </p>
-            <p className="text-sm text-text-muted mt-2">
+          <div className="text-center py-4">
+            <div className="inline-flex items-center gap-1 px-4 py-3 bg-brand-50 rounded-xl">
+              {(household?.care_code || '------').split('').map((char, i) => (
+                <span
+                  key={i}
+                  className={`text-2xl font-mono font-bold text-brand-700 ${i === 2 ? 'ml-2' : ''}`}
+                >
+                  {char}
+                </span>
+              ))}
+            </div>
+            <p className="text-sm text-text-muted mt-4">
               Share this code to connect the patient app
             </p>
           </div>

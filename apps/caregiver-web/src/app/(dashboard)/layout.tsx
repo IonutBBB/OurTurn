@@ -17,7 +17,7 @@ export default async function DashboardLayout({
   // Check if user has completed onboarding
   const { data: caregiver } = await supabase
     .from('caregivers')
-    .select('household_id')
+    .select('household_id, name, email')
     .eq('id', user.id)
     .single();
 
@@ -34,15 +34,15 @@ export default async function DashboardLayout({
       >
         Skip to main content
       </a>
-      <Sidebar />
+      <Sidebar userName={caregiver?.name || user.email || 'Caregiver'} userEmail={user.email || ''} />
       <main
         id="main-content"
-        className="pl-64"
+        className="pl-64 min-h-screen"
         role="main"
         aria-label="Main content"
         tabIndex={-1}
       >
-        <div className="p-8">
+        <div className="p-10 max-w-7xl mx-auto">
           {children}
         </div>
       </main>
