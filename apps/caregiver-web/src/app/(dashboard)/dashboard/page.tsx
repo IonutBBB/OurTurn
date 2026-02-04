@@ -190,7 +190,7 @@ export default async function DashboardPage() {
           </h2>
           <div className="text-center py-4">
             <div className="inline-flex items-center gap-1 px-4 py-3 bg-teal-50 dark:bg-teal-900/30 rounded-xl">
-              {(household?.care_code || '------').split('').map((char, i) => (
+              {(household?.care_code || '------').split('').map((char: string, i: number) => (
                 <span
                   key={i}
                   className={`text-2xl font-mono font-bold text-teal-700 dark:text-teal-400 ${i === 2 ? 'ml-2' : ''}`}

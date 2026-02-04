@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 // Step components
 import { Step1AboutYou } from './steps/step1-about-you';
@@ -245,12 +246,17 @@ export default function OnboardingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-surface-background py-12 px-4">
+    <div className="relative min-h-screen bg-gray-50 dark:bg-[#121212] py-12 px-4">
+      {/* Theme Toggle */}
+      <div className="absolute top-4 right-4">
+        <ThemeToggle />
+      </div>
+
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-brand-700 mb-2">MemoGuard</h1>
-          <p className="text-text-muted">
+          <h1 className="text-2xl font-bold text-teal-600 dark:text-teal-400 mb-2">MemoGuard</h1>
+          <p className="text-gray-500 dark:text-gray-400">
             Step {currentStep} of {TOTAL_STEPS}
           </p>
         </div>
@@ -262,29 +268,29 @@ export default function OnboardingPage() {
               <div
                 key={index}
                 className={`text-xs font-medium ${
-                  index + 1 <= currentStep ? 'text-brand-600' : 'text-text-muted'
+                  index + 1 <= currentStep ? 'text-teal-600 dark:text-teal-400' : 'text-gray-500 dark:text-gray-400'
                 }`}
               >
                 {index + 1 === currentStep && title}
               </div>
             ))}
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
+          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
             <div
-              className="bg-brand-600 h-2 rounded-full transition-all duration-300"
+              className="bg-teal-600 dark:bg-teal-500 h-2 rounded-full transition-all duration-300"
               style={{ width: `${(currentStep / TOTAL_STEPS) * 100}%` }}
             />
           </div>
         </div>
 
         {/* Step content */}
-        <div className="bg-surface-card rounded-xl border border-surface-border p-8 mb-6">
-          <h2 className="text-xl font-semibold text-text-primary mb-6">
+        <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-800 p-8 mb-6">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
             {stepTitles[currentStep - 1]}
           </h2>
 
           {error && (
-            <div className="mb-6 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+            <div className="mb-6 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-red-700 dark:text-red-400 text-sm">
               {error}
             </div>
           )}
@@ -298,7 +304,7 @@ export default function OnboardingPage() {
             <button
               type="button"
               onClick={handleBack}
-              className="px-6 py-3 border border-surface-border rounded-lg text-text-primary hover:bg-gray-50 transition-colors"
+              className="px-6 py-3 border border-gray-200 dark:border-gray-800 rounded-lg text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
             >
               {t('caregiverApp.onboarding.back')}
             </button>
@@ -311,7 +317,7 @@ export default function OnboardingPage() {
               type="button"
               onClick={handleNext}
               disabled={loading}
-              className="px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg transition-colors disabled:opacity-50"
+              className="px-6 py-3 bg-teal-600 dark:bg-teal-500 hover:bg-teal-700 dark:hover:bg-teal-600 text-white font-semibold rounded-lg transition-colors disabled:opacity-50"
             >
               {loading ? t('common.loading') : t('caregiverApp.onboarding.next')}
             </button>
@@ -319,7 +325,7 @@ export default function OnboardingPage() {
             <button
               type="button"
               onClick={handleFinish}
-              className="px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg transition-colors"
+              className="px-6 py-3 bg-teal-600 dark:bg-teal-500 hover:bg-teal-700 dark:hover:bg-teal-600 text-white font-semibold rounded-lg transition-colors"
             >
               {t('caregiverApp.onboarding.finish')}
             </button>

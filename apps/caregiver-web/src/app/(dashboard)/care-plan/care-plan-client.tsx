@@ -32,12 +32,12 @@ interface Props {
 }
 
 const CATEGORIES = [
-  { key: 'medication', icon: '💊', color: 'bg-purple-100 text-purple-700' },
-  { key: 'nutrition', icon: '🥗', color: 'bg-green-100 text-green-700' },
-  { key: 'physical', icon: '🚶', color: 'bg-orange-100 text-orange-700' },
-  { key: 'cognitive', icon: '🧩', color: 'bg-blue-100 text-blue-700' },
-  { key: 'social', icon: '💬', color: 'bg-pink-100 text-pink-700' },
-  { key: 'health', icon: '❤️', color: 'bg-red-100 text-red-700' },
+  { key: 'medication', icon: '💊', color: 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300' },
+  { key: 'nutrition', icon: '🥗', color: 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300' },
+  { key: 'physical', icon: '🚶', color: 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300' },
+  { key: 'cognitive', icon: '🧩', color: 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300' },
+  { key: 'social', icon: '💬', color: 'bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300' },
+  { key: 'health', icon: '❤️', color: 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300' },
 ];
 
 const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -316,7 +316,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
 
       {/* AI Suggest Panel */}
       {showSuggestPanel && (
-        <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl border border-purple-200 p-6 mb-6">
+        <div className="bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20 rounded-xl border border-purple-200 dark:border-purple-800 p-6 mb-6">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center">
@@ -365,7 +365,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
             <select
               value={suggestCategory}
               onChange={(e) => setSuggestCategory(e.target.value)}
-              className="px-3 py-1.5 text-sm border border-purple-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white"
+              className="px-3 py-1.5 text-sm border border-purple-200 dark:border-purple-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-800 text-text-primary"
             >
               <option value="">All categories</option>
               {CATEGORIES.map((cat) => (
@@ -377,7 +377,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
             <button
               onClick={handleGetSuggestions}
               disabled={suggestLoading}
-              className="px-3 py-1.5 text-sm bg-white border border-purple-200 rounded-lg hover:bg-purple-50 transition-colors disabled:opacity-50"
+              className="px-3 py-1.5 text-sm bg-white dark:bg-gray-800 border border-purple-200 dark:border-purple-700 rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors disabled:opacity-50 text-text-primary"
             >
               {suggestLoading ? 'Generating...' : 'Refresh'}
             </button>
@@ -423,7 +423,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
                 return (
                   <div
                     key={index}
-                    className="bg-white rounded-lg border border-purple-100 p-4 flex items-start justify-between gap-4"
+                    className="bg-white dark:bg-gray-800 rounded-lg border border-purple-100 dark:border-purple-800 p-4 flex items-start justify-between gap-4"
                   >
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
@@ -496,7 +496,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
               <select
                 value={newTask.category}
                 onChange={(e) => setNewTask({ ...newTask, category: e.target.value })}
-                className="w-full px-4 py-2 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white"
+                className="w-full px-4 py-2 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white dark:bg-gray-800 text-text-primary"
               >
                 {CATEGORIES.map((cat) => (
                   <option key={cat.key} value={cat.key}>
@@ -604,7 +604,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
                       className={`px-3 py-1.5 text-sm rounded-lg border transition-colors ${
                         newTask.recurrence_days.includes(day)
                           ? 'bg-brand-600 text-white border-brand-600'
-                          : 'bg-white text-text-secondary border-surface-border hover:border-brand-300'
+                          : 'bg-white dark:bg-gray-800 text-text-secondary border-surface-border hover:border-brand-300'
                       }`}
                     >
                       {day}
@@ -620,7 +620,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
             <button
               type="button"
               onClick={resetForm}
-              className="px-4 py-2 border border-surface-border rounded-lg text-text-primary hover:bg-gray-50 transition-colors"
+              className="px-4 py-2 border border-surface-border rounded-lg text-text-primary hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
             >
               {t('common.cancel')}
             </button>
@@ -644,7 +644,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
       ) : (
         <div className="bg-surface-card rounded-xl border border-surface-border overflow-hidden">
           <table className="w-full">
-            <thead className="bg-gray-50 border-b border-surface-border">
+            <thead className="bg-gray-50 dark:bg-gray-800 border-b border-surface-border">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-semibold text-text-muted uppercase tracking-wide">
                   {t('caregiverApp.carePlan.time')}
@@ -670,7 +670,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
               {tasks.map((task) => {
                 const category = getCategoryInfo(task.category);
                 return (
-                  <tr key={task.id} className="hover:bg-gray-50">
+                  <tr key={task.id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="font-medium text-text-primary">{formatTime(task.time)}</span>
                     </td>

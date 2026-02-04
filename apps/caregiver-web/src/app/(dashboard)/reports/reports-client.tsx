@@ -235,7 +235,7 @@ export default function ReportsClient({
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              className="px-3 py-2 border border-surface-border rounded-lg bg-white text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
+              className="px-3 py-2 border border-surface-border rounded-lg bg-white dark:bg-gray-800 text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
             />
           </div>
           <div>
@@ -244,7 +244,7 @@ export default function ReportsClient({
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
-              className="px-3 py-2 border border-surface-border rounded-lg bg-white text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
+              className="px-3 py-2 border border-surface-border rounded-lg bg-white dark:bg-gray-800 text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
             />
           </div>
           <button
@@ -275,7 +275,7 @@ export default function ReportsClient({
                     key={report.id}
                     onClick={() => setSelectedReport(report)}
                     className={`w-full text-left p-4 hover:bg-surface-raised transition-colors ${
-                      selectedReport?.id === report.id ? 'bg-brand-50' : ''
+                      selectedReport?.id === report.id ? 'bg-brand-50 dark:bg-brand-900/30' : ''
                     }`}
                   >
                     <p className="font-medium text-text-primary text-sm">

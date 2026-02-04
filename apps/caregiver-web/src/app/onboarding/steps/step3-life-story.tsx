@@ -26,7 +26,7 @@ export function Step3LifeStory({ data, updateData }: Props) {
           type="text"
           value={data.childhoodLocation}
           onChange={(e) => updateData({ childhoodLocation: e.target.value })}
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
           placeholder="City, country"
         />
       </div>
@@ -40,7 +40,7 @@ export function Step3LifeStory({ data, updateData }: Props) {
           type="text"
           value={data.career}
           onChange={(e) => updateData({ career: e.target.value })}
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
           placeholder="Teacher, nurse, engineer..."
         />
       </div>
@@ -54,7 +54,7 @@ export function Step3LifeStory({ data, updateData }: Props) {
           type="text"
           value={data.hobbies}
           onChange={(e) => updateData({ hobbies: e.target.value })}
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
           placeholder="Gardening, reading, cooking..."
         />
       </div>
@@ -68,7 +68,7 @@ export function Step3LifeStory({ data, updateData }: Props) {
           type="text"
           value={data.favoriteMusic}
           onChange={(e) => updateData({ favoriteMusic: e.target.value })}
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
           placeholder="Frank Sinatra, classical, folk..."
         />
       </div>
@@ -82,7 +82,7 @@ export function Step3LifeStory({ data, updateData }: Props) {
           type="text"
           value={data.favoriteFoods}
           onChange={(e) => updateData({ favoriteFoods: e.target.value })}
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
           placeholder="Chocolate cake, pasta, soup..."
         />
       </div>
@@ -96,7 +96,7 @@ export function Step3LifeStory({ data, updateData }: Props) {
           value={data.importantPeople}
           onChange={(e) => updateData({ importantPeople: e.target.value })}
           rows={2}
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
           placeholder="Spouse John, daughter Maria, best friend Anna..."
         />
       </div>
@@ -110,7 +110,7 @@ export function Step3LifeStory({ data, updateData }: Props) {
           value={data.keyEvents}
           onChange={(e) => updateData({ keyEvents: e.target.value })}
           rows={2}
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
           placeholder="Wedding in 1970, moved to London in 1985..."
         />
       </div>

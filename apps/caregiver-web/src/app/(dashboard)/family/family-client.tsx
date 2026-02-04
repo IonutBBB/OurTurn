@@ -153,13 +153,13 @@ export default function FamilyClient({
   return (
     <div className="space-y-6">
       {/* Tabs */}
-      <div className="flex gap-2 border-b border-surface-border">
+      <div className="flex gap-2 border-b border-gray-200 dark:border-gray-700">
         <button
           onClick={() => setActiveTab('family')}
           className={`px-4 py-3 font-medium text-sm border-b-2 transition-colors ${
             activeTab === 'family'
-              ? 'border-brand-600 text-brand-700'
-              : 'border-transparent text-text-secondary hover:text-text-primary'
+              ? 'border-teal-500 text-teal-600 dark:text-teal-400'
+              : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
           }`}
         >
           Family Members
@@ -168,8 +168,8 @@ export default function FamilyClient({
           onClick={() => setActiveTab('journal')}
           className={`px-4 py-3 font-medium text-sm border-b-2 transition-colors ${
             activeTab === 'journal'
-              ? 'border-brand-600 text-brand-700'
-              : 'border-transparent text-text-secondary hover:text-text-primary'
+              ? 'border-teal-500 text-teal-600 dark:text-teal-400'
+              : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
           }`}
         >
           Care Journal
@@ -180,28 +180,28 @@ export default function FamilyClient({
       {activeTab === 'family' && (
         <div className="space-y-6">
           {/* Care Code Banner */}
-          <div className="bg-brand-50 rounded-xl border border-brand-200 p-6">
+          <div className="bg-teal-50 dark:bg-teal-900/20 rounded-xl border border-teal-200 dark:border-teal-800 p-6">
             <div className="flex items-start justify-between">
               <div>
-                <h3 className="font-semibold text-brand-800 mb-1">Invite Family Members</h3>
-                <p className="text-sm text-brand-700 mb-4">
+                <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Invite Family Members</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
                   Share your Care Code to let other family members join your care circle.
                 </p>
                 <button
                   onClick={() => setShowCareCode(!showCareCode)}
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-brand-600 text-white rounded-lg hover:bg-brand-700 transition-colors"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-teal-600 dark:bg-teal-500 text-white rounded-lg hover:bg-teal-700 dark:hover:bg-teal-600 transition-colors font-medium"
                 >
                   <span>{showCareCode ? 'Hide' : 'Show'} Care Code</span>
                 </button>
               </div>
               {showCareCode && (
-                <div className="bg-white rounded-lg border border-brand-300 px-6 py-4 flex items-center gap-4">
-                  <span className="text-3xl font-mono font-bold text-brand-700 tracking-widest">
+                <div className="bg-white dark:bg-gray-800 rounded-lg border border-teal-300 dark:border-teal-700 px-6 py-4 flex items-center gap-4">
+                  <span className="text-3xl font-mono font-bold text-teal-700 dark:text-teal-300 tracking-widest">
                     {careCode}
                   </span>
                   <button
                     onClick={copyToClipboard}
-                    className="p-2 text-brand-600 hover:text-brand-700"
+                    className="p-2 text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300"
                     title="Copy to clipboard"
                   >
                     <svg
@@ -224,40 +224,40 @@ export default function FamilyClient({
           </div>
 
           {/* Members List */}
-          <div className="bg-surface-card rounded-xl border border-surface-border">
-            <div className="p-4 border-b border-surface-border">
-              <h3 className="font-semibold text-text-primary">
+          <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+            <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+              <h3 className="font-semibold text-gray-900 dark:text-gray-100">
                 Family Members ({caregivers.length})
               </h3>
             </div>
-            <div className="divide-y divide-surface-border">
+            <div className="divide-y divide-gray-200 dark:divide-gray-700">
               {caregivers.map((caregiver) => (
                 <div key={caregiver.id} className="p-4 flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center">
-                    <span className="text-xl font-semibold text-brand-700">
+                  <div className="w-12 h-12 rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center">
+                    <span className="text-xl font-semibold text-teal-700 dark:text-teal-300">
                       {caregiver.name.charAt(0).toUpperCase()}
                     </span>
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
-                      <span className="font-medium text-text-primary">{caregiver.name}</span>
+                      <span className="font-medium text-gray-900 dark:text-gray-100">{caregiver.name}</span>
                       {caregiver.id === currentCaregiverId && (
-                        <span className="text-xs bg-brand-100 text-brand-700 px-2 py-0.5 rounded-full">
+                        <span className="text-xs bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 px-2 py-0.5 rounded-full">
                           You
                         </span>
                       )}
                       {caregiver.role === 'primary' && (
-                        <span className="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full">
+                        <span className="text-xs bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 px-2 py-0.5 rounded-full">
                           Primary
                         </span>
                       )}
                     </div>
-                    <p className="text-sm text-text-secondary">
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
                       {caregiver.relationship || 'Family member'} &middot; {caregiver.email}
                     </p>
                   </div>
                   <div className="text-right">
-                    <div className="flex items-center gap-2 text-xs text-text-muted">
+                    <div className="flex items-center gap-2 text-xs text-gray-400">
                       {caregiver.permissions?.can_edit_plan && (
                         <span title="Can edit care plan">📝</span>
                       )}
@@ -277,12 +277,12 @@ export default function FamilyClient({
       {activeTab === 'journal' && (
         <div className="space-y-6">
           {/* New Entry Form */}
-          <form onSubmit={handleSubmitEntry} className="bg-surface-card rounded-xl border border-surface-border p-4">
+          <form onSubmit={handleSubmitEntry} className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-4 shadow-sm">
             <textarea
               value={newEntryContent}
               onChange={(e) => setNewEntryContent(e.target.value)}
               placeholder="Add a note, observation, or milestone..."
-              className="w-full px-4 py-3 border border-surface-border rounded-lg bg-white text-text-primary placeholder-text-muted resize-none focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+              className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 resize-none focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               rows={3}
             />
             <div className="flex items-center justify-between mt-3">
@@ -296,8 +296,8 @@ export default function FamilyClient({
                       onClick={() => setNewEntryType(type)}
                       className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm transition-colors ${
                         newEntryType === type
-                          ? 'bg-brand-100 text-brand-700 border border-brand-300'
-                          : 'bg-surface-raised text-text-secondary hover:bg-surface-border'
+                          ? 'bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 border border-teal-300 dark:border-teal-700'
+                          : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                       }`}
                     >
                       <span>{emoji}</span>
@@ -309,7 +309,7 @@ export default function FamilyClient({
               <button
                 type="submit"
                 disabled={!newEntryContent.trim() || isSubmitting}
-                className="px-4 py-2 bg-brand-600 text-white rounded-lg hover:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="px-4 py-2 bg-teal-600 dark:bg-teal-500 text-white rounded-lg hover:bg-teal-700 dark:hover:bg-teal-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium"
               >
                 {isSubmitting ? 'Posting...' : 'Post'}
               </button>
@@ -319,8 +319,8 @@ export default function FamilyClient({
           {/* Entries List */}
           <div className="space-y-4">
             {journalEntries.length === 0 ? (
-              <div className="bg-surface-card rounded-xl border border-surface-border p-8 text-center">
-                <p className="text-text-muted">
+              <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-8 text-center">
+                <p className="text-gray-500 dark:text-gray-400">
                   No journal entries yet. Start documenting your care journey!
                 </p>
               </div>
@@ -333,24 +333,24 @@ export default function FamilyClient({
                 return (
                   <div
                     key={entry.id}
-                    className="bg-surface-card rounded-xl border border-surface-border p-4"
+                    className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-4 shadow-sm"
                   >
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">{typeInfo.emoji}</span>
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-2">
-                          <span className="font-medium text-text-primary">
+                          <span className="font-medium text-gray-900 dark:text-gray-100">
                             {entry.author_name || 'Unknown'}
                           </span>
-                          <span className="text-text-muted">&middot;</span>
-                          <span className="text-sm text-text-muted">
+                          <span className="text-gray-400">&middot;</span>
+                          <span className="text-sm text-gray-500 dark:text-gray-400">
                             {formatDate(entry.created_at)}
                           </span>
-                          <span className="text-xs bg-surface-raised text-text-secondary px-2 py-0.5 rounded-full">
+                          <span className="text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded-full">
                             {typeInfo.label}
                           </span>
                         </div>
-                        <p className="text-text-primary whitespace-pre-wrap">{entry.content}</p>
+                        <p className="text-gray-900 dark:text-gray-100 whitespace-pre-wrap">{entry.content}</p>
                       </div>
                     </div>
                   </div>

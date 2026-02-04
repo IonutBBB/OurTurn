@@ -306,7 +306,7 @@ export default function SettingsClient({
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-2 border border-surface-border rounded-lg bg-white text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
+              className="w-full px-4 py-2 border border-surface-border rounded-lg bg-white dark:bg-gray-800 text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
             />
           </div>
           <div>
@@ -328,7 +328,7 @@ export default function SettingsClient({
             <select
               value={relationship}
               onChange={(e) => setRelationship(e.target.value)}
-              className="w-full px-4 py-2 border border-surface-border rounded-lg bg-white text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
+              className="w-full px-4 py-2 border border-surface-border rounded-lg bg-white dark:bg-gray-800 text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
             >
               <option value="">Select relationship</option>
               <option value="spouse">Spouse/Partner</option>
@@ -366,7 +366,7 @@ export default function SettingsClient({
         <div className="flex items-center gap-4">
           {showCareCode ? (
             <div className="flex items-center gap-4">
-              <span className="text-3xl font-mono font-bold text-brand-700 tracking-widest bg-brand-50 px-6 py-3 rounded-lg">
+              <span className="text-3xl font-mono font-bold text-brand-700 dark:text-brand-300 tracking-widest bg-brand-50 dark:bg-brand-900/30 px-6 py-3 rounded-lg">
                 {careCode}
               </span>
               <button
@@ -502,7 +502,7 @@ export default function SettingsClient({
           )}
         </div>
         {subscriptionError && (
-          <p className="text-sm text-red-600 mb-4">{subscriptionError}</p>
+          <p className="text-sm text-red-600 dark:text-red-400 mb-4">{subscriptionError}</p>
         )}
         {household.subscription_status === 'plus' && (
           <button
@@ -519,9 +519,9 @@ export default function SettingsClient({
           </p>
         )}
         {household.subscription_status !== 'plus' && (
-          <div className="bg-brand-50 rounded-lg p-4 mt-4">
-            <p className="font-medium text-brand-800 mb-2">MemoGuard Plus Benefits:</p>
-            <ul className="text-sm text-brand-700 space-y-1">
+          <div className="bg-brand-50 dark:bg-brand-900/20 rounded-lg p-4 mt-4">
+            <p className="font-medium text-brand-800 dark:text-brand-200 mb-2">MemoGuard Plus Benefits:</p>
+            <ul className="text-sm text-brand-700 dark:text-brand-300 space-y-1">
               <li>• Unlimited care plan tasks</li>
               <li>• AI Care Coach for personalized guidance</li>
               <li>• Multiple safe zones with alerts</li>
@@ -545,7 +545,7 @@ export default function SettingsClient({
               type="password"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              className="w-full px-4 py-2 border border-surface-border rounded-lg bg-white text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
+              className="w-full px-4 py-2 border border-surface-border rounded-lg bg-white dark:bg-gray-800 text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
               placeholder="At least 8 characters"
             />
           </div>
@@ -557,11 +557,11 @@ export default function SettingsClient({
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full px-4 py-2 border border-surface-border rounded-lg bg-white text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
+              className="w-full px-4 py-2 border border-surface-border rounded-lg bg-white dark:bg-gray-800 text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
             />
           </div>
           {passwordError && (
-            <p className="text-sm text-red-600">{passwordError}</p>
+            <p className="text-sm text-red-600 dark:text-red-400">{passwordError}</p>
           )}
           {passwordSuccess && (
             <p className="text-sm text-success-600">Password changed successfully!</p>
@@ -614,8 +614,8 @@ export default function SettingsClient({
       </div>
 
       {/* Danger Zone */}
-      <div className="bg-red-50 rounded-xl border border-red-200 p-6">
-        <h2 className="text-lg font-semibold text-red-800 mb-4">Danger Zone</h2>
+      <div className="bg-red-50 dark:bg-red-900/20 rounded-xl border border-red-200 dark:border-red-800 p-6">
+        <h2 className="text-lg font-semibold text-red-800 dark:text-red-200 mb-4">Danger Zone</h2>
         <div className="space-y-4">
           <div>
             <button
@@ -624,23 +624,23 @@ export default function SettingsClient({
             >
               Delete Account
             </button>
-            <p className="text-sm text-red-600 mt-1">
+            <p className="text-sm text-red-600 dark:text-red-400 mt-1">
               Permanently delete your account and all data. This cannot be undone.
             </p>
             {showDeleteConfirm && (
-              <div className="mt-4 p-4 bg-white rounded-lg border border-red-300">
-                <p className="text-sm text-red-800 mb-3">
+              <div className="mt-4 p-4 bg-white dark:bg-gray-800 rounded-lg border border-red-300 dark:border-red-700">
+                <p className="text-sm text-red-800 dark:text-red-200 mb-3">
                   Type &quot;DELETE&quot; to confirm account deletion:
                 </p>
                 <input
                   type="text"
                   value={deleteConfirmText}
                   onChange={(e) => setDeleteConfirmText(e.target.value)}
-                  className="w-full px-4 py-2 border border-red-300 rounded-lg bg-white text-text-primary focus:outline-none focus:ring-2 focus:ring-red-500 mb-3"
+                  className="w-full px-4 py-2 border border-red-300 dark:border-red-700 rounded-lg bg-white dark:bg-gray-800 text-text-primary focus:outline-none focus:ring-2 focus:ring-red-500 mb-3"
                   placeholder="Type DELETE"
                 />
                 {deleteError && (
-                  <p className="text-sm text-red-600 mb-3">{deleteError}</p>
+                  <p className="text-sm text-red-600 dark:text-red-400 mb-3">{deleteError}</p>
                 )}
                 <button
                   onClick={handleDeleteAccount}

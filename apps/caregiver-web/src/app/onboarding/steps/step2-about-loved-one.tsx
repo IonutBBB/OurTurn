@@ -33,7 +33,7 @@ export function Step2AboutLovedOne({ data, updateData }: Props) {
           value={data.patientName}
           onChange={(e) => updateData({ patientName: e.target.value })}
           required
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
           placeholder="First name"
         />
       </div>
@@ -48,7 +48,7 @@ export function Step2AboutLovedOne({ data, updateData }: Props) {
           type="date"
           value={data.dateOfBirth}
           onChange={(e) => updateData({ dateOfBirth: e.target.value })}
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
         />
       </div>
 
@@ -60,7 +60,7 @@ export function Step2AboutLovedOne({ data, updateData }: Props) {
           id="dementiaType"
           value={data.dementiaType}
           onChange={(e) => updateData({ dementiaType: e.target.value })}
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white"
+          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
         >
           <option value="">Select type (optional)</option>
           {dementiaTypes.map((type) => (
@@ -81,7 +81,7 @@ export function Step2AboutLovedOne({ data, updateData }: Props) {
           value={data.homeAddress}
           onChange={(e) => updateData({ homeAddress: e.target.value })}
           required
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
           placeholder="Full home address"
         />
         <p className="mt-1 text-sm text-text-muted">

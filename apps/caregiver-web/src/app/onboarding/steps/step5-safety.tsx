@@ -44,7 +44,7 @@ export function Step5Safety({ data, updateData }: Props) {
           {data.emergencyContacts.map((contact, index) => (
             <div
               key={index}
-              className="flex items-center justify-between p-4 bg-gray-50 rounded-lg"
+              className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded-lg"
             >
               <div>
                 <p className="font-medium text-text-primary">{contact.name}</p>
@@ -79,7 +79,7 @@ export function Step5Safety({ data, updateData }: Props) {
             type="text"
             value={newContact.name}
             onChange={(e) => setNewContact({ ...newContact, name: e.target.value })}
-            className="w-full px-4 py-2 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+            className="w-full px-4 py-2 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
             placeholder="Name"
           />
         </div>
@@ -93,7 +93,7 @@ export function Step5Safety({ data, updateData }: Props) {
             type="tel"
             value={newContact.phone}
             onChange={(e) => setNewContact({ ...newContact, phone: e.target.value })}
-            className="w-full px-4 py-2 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+            className="w-full px-4 py-2 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
             placeholder="+1 555 123 4567"
           />
         </div>
@@ -107,7 +107,7 @@ export function Step5Safety({ data, updateData }: Props) {
             type="text"
             value={newContact.relationship}
             onChange={(e) => setNewContact({ ...newContact, relationship: e.target.value })}
-            className="w-full px-4 py-2 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+            className="w-full px-4 py-2 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
             placeholder="Daughter, neighbor, doctor..."
           />
         </div>
@@ -116,14 +116,14 @@ export function Step5Safety({ data, updateData }: Props) {
           type="button"
           onClick={addContact}
           disabled={!newContact.name || !newContact.phone}
-          className="w-full py-2 px-4 border border-brand-600 text-brand-600 rounded-lg hover:bg-brand-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full py-2 px-4 border border-brand-600 dark:border-brand-400 text-brand-600 dark:text-brand-400 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/30 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           + {t('caregiverApp.onboarding.addContact')}
         </button>
       </div>
 
       {data.emergencyContacts.length === 0 && (
-        <p className="text-sm text-amber-600 bg-amber-50 p-3 rounded-lg">
+        <p className="text-sm text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/30 p-3 rounded-lg">
           We recommend adding at least one emergency contact.
         </p>
       )}

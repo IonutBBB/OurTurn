@@ -27,7 +27,7 @@ export function Step4DailyRoutine({ data, updateData }: Props) {
             type="time"
             value={data.wakeTime}
             onChange={(e) => updateData({ wakeTime: e.target.value })}
-            className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+            className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
           />
         </div>
 
@@ -40,7 +40,7 @@ export function Step4DailyRoutine({ data, updateData }: Props) {
             type="time"
             value={data.sleepTime}
             onChange={(e) => updateData({ sleepTime: e.target.value })}
-            className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+            className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
           />
         </div>
       </div>
@@ -60,7 +60,7 @@ export function Step4DailyRoutine({ data, updateData }: Props) {
               type="time"
               value={data.breakfastTime}
               onChange={(e) => updateData({ breakfastTime: e.target.value })}
-              className="w-full px-3 py-2 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm"
+              className="w-full px-3 py-2 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm bg-white dark:bg-gray-800 text-text-primary"
             />
           </div>
 
@@ -73,7 +73,7 @@ export function Step4DailyRoutine({ data, updateData }: Props) {
               type="time"
               value={data.lunchTime}
               onChange={(e) => updateData({ lunchTime: e.target.value })}
-              className="w-full px-3 py-2 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm"
+              className="w-full px-3 py-2 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm bg-white dark:bg-gray-800 text-text-primary"
             />
           </div>
 
@@ -86,7 +86,7 @@ export function Step4DailyRoutine({ data, updateData }: Props) {
               type="time"
               value={data.dinnerTime}
               onChange={(e) => updateData({ dinnerTime: e.target.value })}
-              className="w-full px-3 py-2 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm"
+              className="w-full px-3 py-2 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm bg-white dark:bg-gray-800 text-text-primary"
             />
           </div>
         </div>

@@ -126,7 +126,7 @@ function SafeZoneModal({
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g., Home, Doctor's Office"
-              className="w-full px-4 py-2 border border-surface-border rounded-lg bg-white text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
+              className="w-full px-4 py-2 border border-surface-border rounded-lg bg-white dark:bg-gray-800 text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
               required
             />
           </div>
@@ -141,7 +141,7 @@ function SafeZoneModal({
                 value={latitude}
                 onChange={(e) => setLatitude(e.target.value)}
                 placeholder="51.5074"
-                className="w-full px-4 py-2 border border-surface-border rounded-lg bg-white text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
+                className="w-full px-4 py-2 border border-surface-border rounded-lg bg-white dark:bg-gray-800 text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
                 required
               />
             </div>
@@ -155,7 +155,7 @@ function SafeZoneModal({
                 value={longitude}
                 onChange={(e) => setLongitude(e.target.value)}
                 placeholder="-0.1278"
-                className="w-full px-4 py-2 border border-surface-border rounded-lg bg-white text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
+                className="w-full px-4 py-2 border border-surface-border rounded-lg bg-white dark:bg-gray-800 text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
                 required
               />
             </div>
@@ -171,7 +171,7 @@ function SafeZoneModal({
               placeholder="200"
               min="50"
               max="5000"
-              className="w-full px-4 py-2 border border-surface-border rounded-lg bg-white text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
+              className="w-full px-4 py-2 border border-surface-border rounded-lg bg-white dark:bg-gray-800 text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
               required
             />
             <p className="text-xs text-text-muted mt-1">
@@ -182,7 +182,7 @@ function SafeZoneModal({
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-4 py-2 border border-surface-border rounded-lg text-text-secondary hover:bg-gray-50"
+              className="flex-1 px-4 py-2 border border-surface-border rounded-lg text-text-secondary hover:bg-gray-50 dark:hover:bg-gray-800"
             >
               Cancel
             </button>
@@ -333,7 +333,7 @@ export default function LocationClient({
             Google Maps API key not configured.
           </p>
           <p className="text-sm text-text-muted">
-            Add <code className="bg-gray-100 px-1 rounded">NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> to your environment variables.
+            Add <code className="bg-gray-100 dark:bg-gray-800 px-1 rounded">NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> to your environment variables.
           </p>
         </div>
       </div>
@@ -349,10 +349,10 @@ export default function LocationClient({
 
         {/* Alert Banner */}
         {unacknowledgedAlerts.length > 0 && (
-          <div className="bg-red-50 border border-red-200 rounded-xl p-4 mb-6">
+          <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-4 mb-6">
             <div className="flex items-center gap-2 mb-2">
               <span className="text-xl">🚨</span>
-              <h2 className="font-semibold text-red-800">
+              <h2 className="font-semibold text-red-800 dark:text-red-200">
                 {unacknowledgedAlerts.length} Unacknowledged Alert
                 {unacknowledgedAlerts.length > 1 ? 's' : ''}
               </h2>
@@ -361,7 +361,7 @@ export default function LocationClient({
               {unacknowledgedAlerts.slice(0, 3).map((alert) => (
                 <div
                   key={alert.id}
-                  className="flex items-center justify-between bg-white rounded-lg p-3"
+                  className="flex items-center justify-between bg-white dark:bg-gray-800 rounded-lg p-3"
                 >
                   <div className="flex items-center gap-3">
                     <span className="text-lg">
@@ -489,7 +489,7 @@ export default function LocationClient({
                     setEditingZone(null);
                     setIsModalOpen(true);
                   }}
-                  className="text-sm px-3 py-1 bg-brand-50 text-brand-700 rounded-lg hover:bg-brand-100"
+                  className="text-sm px-3 py-1 bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 rounded-lg hover:bg-brand-100 dark:hover:bg-brand-900/50"
                 >
                   + Add Zone
                 </button>
@@ -505,7 +505,7 @@ export default function LocationClient({
                   {safeZones.map((zone) => (
                     <div
                       key={zone.id}
-                      className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
+                      className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg"
                     >
                       <div>
                         <p className="font-medium text-text-primary">{zone.name}</p>
@@ -553,7 +553,7 @@ export default function LocationClient({
                     <div
                       key={alert.id}
                       className={`p-3 rounded-lg ${
-                        alert.acknowledged ? 'bg-gray-50' : 'bg-amber-50'
+                        alert.acknowledged ? 'bg-gray-50 dark:bg-gray-800' : 'bg-amber-50 dark:bg-amber-900/30'
                       }`}
                     >
                       <div className="flex items-start gap-2">
@@ -603,8 +603,8 @@ export default function LocationClient({
                         key={loc.id}
                         className={`flex items-center gap-3 p-2 rounded-lg cursor-pointer ${
                           selectedHistoryPoint?.id === loc.id
-                            ? 'bg-brand-50'
-                            : 'hover:bg-gray-50'
+                            ? 'bg-brand-50 dark:bg-brand-900/30'
+                            : 'hover:bg-gray-50 dark:hover:bg-gray-800'
                         }`}
                         onClick={() => setSelectedHistoryPoint(loc)}
                       >

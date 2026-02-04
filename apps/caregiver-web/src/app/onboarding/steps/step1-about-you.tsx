@@ -52,7 +52,7 @@ export function Step1AboutYou({ data, updateData }: Props) {
           value={data.caregiverName}
           onChange={(e) => updateData({ caregiverName: e.target.value })}
           required
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
           placeholder="Your name"
         />
       </div>
@@ -66,7 +66,7 @@ export function Step1AboutYou({ data, updateData }: Props) {
           value={data.relationship}
           onChange={(e) => updateData({ relationship: e.target.value })}
           required
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white"
+          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
         >
           <option value="">{t('caregiverApp.onboarding.selectRelationship')}</option>
           {relationships.map((rel) => (
@@ -86,7 +86,7 @@ export function Step1AboutYou({ data, updateData }: Props) {
           value={data.country}
           onChange={(e) => updateData({ country: e.target.value })}
           required
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white"
+          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
         >
           <option value="">Select country</option>
           {countries.map((country) => (

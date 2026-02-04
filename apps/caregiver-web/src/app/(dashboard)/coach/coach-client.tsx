@@ -312,7 +312,7 @@ export default function CoachClient({
                   {message.role === 'assistant' && (
                     <div className="flex items-center gap-2 mb-2">
                       <span className="text-lg">💙</span>
-                      <span className="text-sm font-medium text-brand-700">
+                      <span className="text-sm font-medium text-brand-700 dark:text-brand-300">
                         Care Coach
                       </span>
                     </div>
@@ -340,18 +340,18 @@ export default function CoachClient({
                         <button
                           key={i}
                           onClick={() => handleAddToPlan(suggestion)}
-                          className="flex items-center gap-2 w-full px-3 py-2 bg-brand-50 border border-brand-200 rounded-lg hover:bg-brand-100 transition-colors text-left"
+                          className="flex items-center gap-2 w-full px-3 py-2 bg-brand-50 dark:bg-brand-900/30 border border-brand-200 dark:border-brand-700 rounded-lg hover:bg-brand-100 dark:hover:bg-brand-900/50 transition-colors text-left"
                         >
                           <span>📋</span>
                           <div className="flex-1">
-                            <p className="text-sm font-medium text-brand-700">
+                            <p className="text-sm font-medium text-brand-700 dark:text-brand-200">
                               Add to Care Plan
                             </p>
-                            <p className="text-xs text-brand-600">
+                            <p className="text-xs text-brand-600 dark:text-brand-300">
                               {suggestion.title}
                             </p>
                           </div>
-                          <span className="text-brand-600">+</span>
+                          <span className="text-brand-600 dark:text-brand-300">+</span>
                         </button>
                       ))}
                     </div>
@@ -364,16 +364,16 @@ export default function CoachClient({
                         <button
                           key={i}
                           onClick={() => handleAddDoctorNote(note)}
-                          className="flex items-center gap-2 w-full px-3 py-2 bg-amber-50 border border-amber-200 rounded-lg hover:bg-amber-100 transition-colors text-left"
+                          className="flex items-center gap-2 w-full px-3 py-2 bg-amber-50 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-700 rounded-lg hover:bg-amber-100 dark:hover:bg-amber-900/50 transition-colors text-left"
                         >
                           <span>📝</span>
                           <div className="flex-1">
-                            <p className="text-sm font-medium text-amber-700">
+                            <p className="text-sm font-medium text-amber-700 dark:text-amber-200">
                               Save for Doctor Visit
                             </p>
-                            <p className="text-xs text-amber-600">{note.note}</p>
+                            <p className="text-xs text-amber-600 dark:text-amber-300">{note.note}</p>
                           </div>
-                          <span className="text-amber-600">+</span>
+                          <span className="text-amber-600 dark:text-amber-300">+</span>
                         </button>
                       ))}
                     </div>
@@ -388,8 +388,8 @@ export default function CoachClient({
 
       {/* Error Message */}
       {error && (
-        <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
-          <p className="text-sm text-red-700">{error}</p>
+        <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+          <p className="text-sm text-red-700 dark:text-red-300">{error}</p>
         </div>
       )}
 

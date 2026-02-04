@@ -29,7 +29,7 @@ export function Step6CareCode({ data }: Props) {
 
   return (
     <div className="text-center space-y-6">
-      <div className="w-20 h-20 mx-auto bg-brand-100 rounded-full flex items-center justify-center">
+      <div className="w-20 h-20 mx-auto bg-brand-100 dark:bg-brand-900/30 rounded-full flex items-center justify-center">
         <span className="text-4xl">🎉</span>
       </div>
 
@@ -43,11 +43,11 @@ export function Step6CareCode({ data }: Props) {
       </div>
 
       {/* Care Code display */}
-      <div className="bg-brand-50 border-2 border-brand-200 rounded-xl p-8">
-        <p className="text-sm font-medium text-brand-700 mb-2 uppercase tracking-wide">
+      <div className="bg-brand-50 dark:bg-brand-900/30 border-2 border-brand-200 dark:border-brand-700 rounded-xl p-8">
+        <p className="text-sm font-medium text-brand-700 dark:text-brand-300 mb-2 uppercase tracking-wide">
           Care Code
         </p>
-        <p className="text-5xl font-mono font-bold text-brand-700 tracking-[0.2em]">
+        <p className="text-5xl font-mono font-bold text-brand-700 dark:text-brand-300 tracking-[0.2em]">
           {formattedCode}
         </p>
       </div>
@@ -56,7 +56,7 @@ export function Step6CareCode({ data }: Props) {
       <button
         type="button"
         onClick={copyCode}
-        className="inline-flex items-center gap-2 px-6 py-3 border border-surface-border rounded-lg hover:bg-gray-50 transition-colors"
+        className="inline-flex items-center gap-2 px-6 py-3 border border-surface-border rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors text-text-primary"
       >
         {copied ? (
           <>
@@ -72,7 +72,7 @@ export function Step6CareCode({ data }: Props) {
       </button>
 
       {/* Instructions */}
-      <div className="text-left bg-gray-50 rounded-lg p-4 space-y-3">
+      <div className="text-left bg-gray-50 dark:bg-gray-800 rounded-lg p-4 space-y-3">
         <h4 className="font-medium text-text-primary">Next steps:</h4>
         <ol className="space-y-2 text-sm text-text-secondary">
           <li className="flex gap-2">
