@@ -26,15 +26,15 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
 
   return (
     <aside
-      className="fixed inset-y-0 left-0 z-50 w-64 bg-surface-card-solid/80 dark:bg-surface-card-solid/90 backdrop-blur-xl border-r border-surface-border/50 flex flex-col"
+      className="fixed inset-y-0 left-0 z-50 w-64 bg-white/95 dark:bg-[#1E1E1E] backdrop-blur-xl border-r border-surface-border flex flex-col transition-colors duration-200"
       role="navigation"
       aria-label="Main navigation"
     >
       {/* Logo */}
-      <div className="h-16 flex items-center px-6 border-b border-surface-border/50">
+      <div className="h-16 flex items-center px-6 border-b border-surface-border">
         <Link
           href="/dashboard"
-          className="text-xl font-bold bg-gradient-to-r from-brand-700 to-brand-500 bg-clip-text text-transparent focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2 rounded"
+          className="text-xl font-bold text-brand-600 dark:text-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2 rounded"
           aria-label="MemoGuard - Go to dashboard"
         >
           MemoGuard
@@ -56,8 +56,8 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
                     transition-all duration-200 ease-out
                     focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2
                     ${isActive
-                      ? 'bg-gradient-to-r from-brand-600 to-brand-500 text-white shadow-md shadow-brand-600/20'
-                      : 'text-text-secondary hover:bg-surface-background hover:text-text-primary hover:translate-x-1'
+                      ? 'bg-gradient-to-r from-brand-600 to-brand-500 dark:from-brand-500 dark:to-brand-400 text-white shadow-md shadow-brand-600/20'
+                      : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white hover:translate-x-1'
                     }
                   `}
                   aria-current={isActive ? 'page' : undefined}
@@ -81,10 +81,10 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
       </div>
 
       {/* User section */}
-      <div className="p-4 border-t border-surface-border/50">
+      <div className="p-4 border-t border-surface-border">
         <Link
           href="/settings"
-          className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-background transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2"
+          className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2"
           aria-label={`${userName} - View profile and settings`}
         >
           <div
@@ -94,11 +94,11 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
             <span className="text-white text-sm font-semibold">{userName.charAt(0).toUpperCase()}</span>
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-text-primary truncate">{userName}</p>
-            <p className="text-xs text-text-muted truncate group-hover:text-brand-600 transition-colors">View profile</p>
+            <p className="text-sm font-semibold text-gray-900 dark:text-gray-100 truncate">{userName}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 truncate group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">View profile</p>
           </div>
           <svg
-            className="w-4 h-4 text-text-muted group-hover:text-brand-600 group-hover:translate-x-0.5 transition-all"
+            className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-brand-600 dark:group-hover:text-brand-400 group-hover:translate-x-0.5 transition-all"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

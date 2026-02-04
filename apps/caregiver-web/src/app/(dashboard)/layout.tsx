@@ -26,7 +26,7 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div className="min-h-screen bg-surface-background">
+    <div className="min-h-screen bg-gray-50 dark:bg-[#121212] transition-colors duration-200">
       {/* Skip link for keyboard navigation */}
       <a
         href="#main-content"

@@ -46,7 +46,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={cycleTheme}
-      className="flex items-center gap-2 w-full px-3 py-2 rounded-lg text-sm text-text-secondary hover:bg-surface-background hover:text-text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2"
+      className="flex items-center gap-2 w-full px-3 py-2 rounded-lg text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2"
       aria-label={`Current theme: ${getLabel()}. Click to change.`}
     >
       {getIcon()}

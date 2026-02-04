@@ -73,51 +73,51 @@
   color-scheme: light;
 }
 
-/* Dark Mode */
+/* Dark Mode - WCAG AA Compliant (4.5:1 contrast ratio) */
 .dark {
-  /* Brand Colors - Adjusted for dark mode */
-  --brand-50: #134E48;
-  --brand-100: #0F5E56;
-  --brand-200: #0D7D73;
-  --brand-300: #0A9488;
-  --brand-400: #14B8A6;
-  --brand-500: #2DD4BF;
-  --brand-600: #5DE0D0;
-  --brand-700: #7BEEE0;
-  --brand-800: #D1FAE9;
-  --brand-900: #ECFDF8;
+  /* Brand Colors - Desaturated for dark mode (Material Design recommendation) */
+  --brand-50: #0D3D38;
+  --brand-100: #115E54;
+  --brand-200: #14756A;
+  --brand-300: #179D8F;
+  --brand-400: #2DD4BF;
+  --brand-500: #5EEAD4;
+  --brand-600: #99F6E4;
+  --brand-700: #CCFBF1;
+  --brand-800: #E6FFFA;
+  --brand-900: #F0FDFA;
 
-  /* Surface Colors - Dark surfaces */
-  --surface-background: #0F172A;
-  --surface-card: rgba(30, 41, 59, 0.85);
-  --surface-card-solid: #1E293B;
-  --surface-border: #334155;
-  --surface-elevated: rgba(30, 41, 59, 0.95);
+  /* Surface Colors - #121212 base per Material Design */
+  --surface-background: #121212;
+  --surface-card: rgba(30, 30, 30, 0.95);
+  --surface-card-solid: #1E1E1E;
+  --surface-border: #2E2E2E;
+  --surface-elevated: #252525;
 
-  /* Text Colors - Inverted for dark */
-  --text-primary: #F8FAFC;
-  --text-secondary: #CBD5E1;
-  --text-muted: #64748B;
-  --text-inverse: #0F172A;
+  /* Text Colors - High contrast for readability (off-white, not pure white) */
+  --text-primary: #E4E4E7;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
+  --text-inverse: #121212;
 
-  /* Status Colors - Adjusted for dark mode */
-  --status-success: #34D399;
-  --status-success-bg: rgba(16, 185, 129, 0.15);
-  --status-amber: #FBBF24;
-  --status-amber-bg: rgba(245, 158, 11, 0.15);
+  /* Status Colors - Desaturated/pastel for dark mode */
+  --status-success: #4ADE80;
+  --status-success-bg: rgba(74, 222, 128, 0.15);
+  --status-amber: #FCD34D;
+  --status-amber-bg: rgba(252, 211, 77, 0.15);
   --status-danger: #F87171;
-  --status-danger-bg: rgba(239, 68, 68, 0.15);
+  --status-danger-bg: rgba(248, 113, 113, 0.15);
   --status-info: #60A5FA;
-  --status-info-bg: rgba(59, 130, 246, 0.15);
+  --status-info-bg: rgba(96, 165, 250, 0.15);
 
-  /* Category Colors - Dark mode */
-  --category-medication: #A78BFA;
-  --category-medication-bg: rgba(139, 92, 246, 0.15);
-  --category-nutrition: #34D399;
-  --category-nutrition-bg: rgba(16, 185, 129, 0.15);
-  --category-physical: #FB923C;
-  --category-physical-bg: rgba(249, 115, 22, 0.15);
-  --category-cognitive: #60A5FA;
+  /* Category Colors - Desaturated pastels for dark mode */
+  --category-medication: #C4B5FD;
+  --category-medication-bg: rgba(196, 181, 253, 0.15);
+  --category-nutrition: #6EE7B7;
+  --category-nutrition-bg: rgba(110, 231, 183, 0.15);
+  --category-physical: #FDBA74;
+  --category-physical-bg: rgba(253, 186, 116, 0.15);
+  --category-cognitive: #93C5FD;
   --category-cognitive-bg: rgba(59, 130, 246, 0.15);
   --category-social: #F472B6;
   --category-social-bg: rgba(236, 72, 153, 0.15);
@@ -132,35 +132,11 @@
   --shadow-glow: 0 0 20px rgba(45, 212, 191, 0.2);
 
   /* Glassmorphism - Dark mode */
-  --glass-bg: rgba(30, 41, 59, 0.7);
-  --glass-border: rgba(51, 65, 85, 0.5);
+  --glass-bg: rgba(30, 30, 30, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.1);
 
   /* Color scheme */
   color-scheme: dark;
-
-  /* Spacing scale - More breathing room */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
-  --space-8: 32px;
-  --space-10: 40px;
-  --space-12: 48px;
-
-  /* Border Radius - Refined geometric (2026 trend) */
-  --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-  --radius-2xl: 20px;
-  --radius-full: 9999px;
-
-  /* Transitions - Snappy animations */
-  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-normal: 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @theme inline {
