@@ -161,3 +161,27 @@ The full product specification is at `docs/MVP_PLAN.md`. Reference specific sect
 - [x] AI weekly insights (weekly cron via Edge Function)
 - [x] Daily summary email (evening cron)
 - [x] Care Code validation Edge Function
+
+### Realtime Hooks (packages/supabase/hooks/)
+- [x] useRealtimeTasks — tasks + completions combined
+- [x] useRealtimeCompletions — standalone task completions
+- [x] useRealtimeCheckins — daily check-ins
+- [x] useRealtimeLocation — location logs
+- [x] useRealtimeAlerts — location alerts
+- [x] useRealtimeJournal — care journal entries
+
+### GDPR Compliance (Beta Readiness)
+- [x] Privacy Policy page (/privacy)
+- [x] Terms of Service page (/terms)
+- [x] Data Export API (GET /api/gdpr/export)
+- [x] Account Deletion API (DELETE /api/gdpr/delete)
+- [x] Settings page integration with GDPR features
+
+## Build Complete — All 20 Prompts Done ✅
+
+The MVP is feature-complete. Next steps:
+1. Private beta with 50 families
+2. Iterate based on feedback
+3. Add localization (German first)
+4. App Store / Play Store submission
+5. Launch 🚀
