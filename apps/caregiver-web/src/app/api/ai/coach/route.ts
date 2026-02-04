@@ -26,7 +26,7 @@ function buildSystemPrompt(
 ): string {
   const patientName = patient?.name || 'your loved one';
   const caregiverName = caregiver?.name || 'there';
-  const caregiverRelationship = caregiver?.relationship_to_patient || 'caregiver';
+  const caregiverRelationship = caregiver?.relationship || 'caregiver';
 
   // Format recent check-ins
   const formattedCheckins = checkins.length > 0

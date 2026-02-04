@@ -133,7 +133,7 @@ export default function OnboardingPage() {
             name: data.patientName,
             date_of_birth: data.dateOfBirth || null,
             dementia_type: data.dementiaType || null,
-            home_address: data.homeAddress,
+            home_address_formatted: data.homeAddress,
             home_latitude: data.homeLatitude,
             home_longitude: data.homeLongitude,
             wake_time: data.wakeTime,
@@ -160,7 +160,7 @@ export default function OnboardingPage() {
             household_id: household.id,
             name: data.caregiverName,
             email: user.email,
-            relationship_to_patient: data.relationship,
+            relationship: data.relationship,
             role: 'primary',
           });
 
@@ -193,9 +193,11 @@ export default function OnboardingPage() {
         });
 
         setCurrentStep(6);
-      } catch (err) {
+      } catch (err: any) {
         console.error('Onboarding error:', err);
-        setError(err instanceof Error ? err.message : 'Failed to create account');
+        // Show detailed error for debugging
+        const errorMessage = err?.message || err?.error_description || JSON.stringify(err);
+        setError(`Failed to create account: ${errorMessage}`);
       } finally {
         setLoading(false);
       }
