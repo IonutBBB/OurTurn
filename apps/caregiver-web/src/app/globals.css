@@ -69,6 +69,75 @@
   --glass-border: rgba(255, 255, 255, 0.3);
   --glass-blur: 12px;
 
+  /* Color scheme */
+  color-scheme: light;
+}
+
+/* Dark Mode */
+.dark {
+  /* Brand Colors - Adjusted for dark mode */
+  --brand-50: #134E48;
+  --brand-100: #0F5E56;
+  --brand-200: #0D7D73;
+  --brand-300: #0A9488;
+  --brand-400: #14B8A6;
+  --brand-500: #2DD4BF;
+  --brand-600: #5DE0D0;
+  --brand-700: #7BEEE0;
+  --brand-800: #D1FAE9;
+  --brand-900: #ECFDF8;
+
+  /* Surface Colors - Dark surfaces */
+  --surface-background: #0F172A;
+  --surface-card: rgba(30, 41, 59, 0.85);
+  --surface-card-solid: #1E293B;
+  --surface-border: #334155;
+  --surface-elevated: rgba(30, 41, 59, 0.95);
+
+  /* Text Colors - Inverted for dark */
+  --text-primary: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-muted: #64748B;
+  --text-inverse: #0F172A;
+
+  /* Status Colors - Adjusted for dark mode */
+  --status-success: #34D399;
+  --status-success-bg: rgba(16, 185, 129, 0.15);
+  --status-amber: #FBBF24;
+  --status-amber-bg: rgba(245, 158, 11, 0.15);
+  --status-danger: #F87171;
+  --status-danger-bg: rgba(239, 68, 68, 0.15);
+  --status-info: #60A5FA;
+  --status-info-bg: rgba(59, 130, 246, 0.15);
+
+  /* Category Colors - Dark mode */
+  --category-medication: #A78BFA;
+  --category-medication-bg: rgba(139, 92, 246, 0.15);
+  --category-nutrition: #34D399;
+  --category-nutrition-bg: rgba(16, 185, 129, 0.15);
+  --category-physical: #FB923C;
+  --category-physical-bg: rgba(249, 115, 22, 0.15);
+  --category-cognitive: #60A5FA;
+  --category-cognitive-bg: rgba(59, 130, 246, 0.15);
+  --category-social: #F472B6;
+  --category-social-bg: rgba(236, 72, 153, 0.15);
+  --category-health: #F87171;
+  --category-health-bg: rgba(239, 68, 68, 0.15);
+
+  /* Shadows - Darker, more subtle */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.35);
+  --shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.25), 0 20px 40px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 20px rgba(45, 212, 191, 0.2);
+
+  /* Glassmorphism - Dark mode */
+  --glass-bg: rgba(30, 41, 59, 0.7);
+  --glass-border: rgba(51, 65, 85, 0.5);
+
+  /* Color scheme */
+  color-scheme: dark;
+
   /* Spacing scale - More breathing room */
   --space-1: 4px;
   --space-2: 8px;

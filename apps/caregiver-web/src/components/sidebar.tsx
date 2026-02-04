@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
+import { ThemeToggle } from './theme-toggle';
 
 const navItems = [
   { href: '/dashboard', icon: '📊', key: 'dashboard' },
@@ -25,7 +26,7 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
 
   return (
     <aside
-      className="fixed inset-y-0 left-0 z-50 w-64 bg-white/80 backdrop-blur-xl border-r border-surface-border/50 flex flex-col"
+      className="fixed inset-y-0 left-0 z-50 w-64 bg-surface-card-solid/80 dark:bg-surface-card-solid/90 backdrop-blur-xl border-r border-surface-border/50 flex flex-col"
       role="navigation"
       aria-label="Main navigation"
     >
@@ -73,6 +74,11 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
           })}
         </ul>
       </nav>
+
+      {/* Theme toggle */}
+      <div className="px-4 py-2">
+        <ThemeToggle />
+      </div>
 
       {/* User section */}
       <div className="p-4 border-t border-surface-border/50">
