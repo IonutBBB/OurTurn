@@ -10,13 +10,49 @@ import {
   TextInput,
   Alert,
   RefreshControl,
+  Platform,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import MapView, { Marker, Circle, PROVIDER_GOOGLE } from 'react-native-maps';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../../src/stores/auth-store';
 import { supabase } from '@memoguard/supabase';
 import type { LocationLog, SafeZone, LocationAlert, LocationAlertType } from '@memoguard/shared';
+
+// Conditionally import react-native-maps (not available in Expo Go)
+let MapView: any = null;
+let Marker: any = null;
+let Circle: any = null;
+let PROVIDER_GOOGLE: any = null;
+let mapsAvailable = false;
+
+try {
+  const maps = require('react-native-maps');
+  MapView = maps.default;
+  Marker = maps.Marker;
+  Circle = maps.Circle;
+  PROVIDER_GOOGLE = maps.PROVIDER_GOOGLE;
+  mapsAvailable = true;
+} catch (e) {
+  // Maps not available (e.g., in Expo Go)
+  mapsAvailable = false;
+}
+
+// Fallback map component for when react-native-maps is not available
+const MapPlaceholder = ({ region, children }: { region: any; children?: React.ReactNode }) => (
+  <View style={[styles.map, styles.mapPlaceholder]}>
+    <Text style={styles.mapPlaceholderIcon}>🗺️</Text>
+    <Text style={styles.mapPlaceholderTitle}>Map View</Text>
+    {region && (
+      <Text style={styles.mapPlaceholderCoords}>
+        {region.latitude.toFixed(4)}, {region.longitude.toFixed(4)}
+      </Text>
+    )}
+    <Text style={styles.mapPlaceholderHint}>
+      Maps require a development build.{'\n'}
+      Use EAS Build to enable maps.
+    </Text>
+  </View>
+);
 
 const COLORS = {
   background: '#FAFAF8',
@@ -383,56 +419,60 @@ export default function LocationScreen() {
             )}
           </View>
           <View style={styles.mapContainer}>
-            <MapView
-              style={styles.map}
-              provider={PROVIDER_GOOGLE}
-              region={mapRegion}
-              showsUserLocation={false}
-              showsCompass={true}
-            >
-              {/* Current location marker */}
-              {latestLocation && (
-                <Marker
-                  coordinate={{
-                    latitude: latestLocation.latitude,
-                    longitude: latestLocation.longitude,
-                  }}
-                  title={`${patient?.name || 'Patient'}'s location`}
-                  description={latestLocation.location_label}
-                  pinColor={COLORS.brand600}
-                />
-              )}
+            {mapsAvailable && MapView ? (
+              <MapView
+                style={styles.map}
+                provider={PROVIDER_GOOGLE}
+                region={mapRegion}
+                showsUserLocation={false}
+                showsCompass={true}
+              >
+                {/* Current location marker */}
+                {latestLocation && Marker && (
+                  <Marker
+                    coordinate={{
+                      latitude: latestLocation.latitude,
+                      longitude: latestLocation.longitude,
+                    }}
+                    title={`${patient?.name || 'Patient'}'s location`}
+                    description={latestLocation.location_label}
+                    pinColor={COLORS.brand600}
+                  />
+                )}
 
-              {/* Home marker */}
-              {patient?.home_latitude && patient?.home_longitude && (
-                <Marker
-                  coordinate={{
-                    latitude: patient.home_latitude,
-                    longitude: patient.home_longitude,
-                  }}
-                  title="Home"
-                >
-                  <View style={styles.homeMarker}>
-                    <Text style={styles.homeMarkerEmoji}>🏠</Text>
-                  </View>
-                </Marker>
-              )}
+                {/* Home marker */}
+                {patient?.home_latitude && patient?.home_longitude && Marker && (
+                  <Marker
+                    coordinate={{
+                      latitude: patient.home_latitude,
+                      longitude: patient.home_longitude,
+                    }}
+                    title="Home"
+                  >
+                    <View style={styles.homeMarker}>
+                      <Text style={styles.homeMarkerEmoji}>🏠</Text>
+                    </View>
+                  </Marker>
+                )}
 
-              {/* Safe zone circles */}
-              {safeZones.map((zone) => (
-                <Circle
-                  key={zone.id}
-                  center={{
-                    latitude: zone.latitude,
-                    longitude: zone.longitude,
-                  }}
-                  radius={zone.radius_meters}
-                  strokeColor={COLORS.brand600}
-                  strokeWidth={2}
-                  fillColor="rgba(13, 148, 136, 0.15)"
-                />
-              ))}
-            </MapView>
+                {/* Safe zone circles */}
+                {safeZones.map((zone) => Circle && (
+                  <Circle
+                    key={zone.id}
+                    center={{
+                      latitude: zone.latitude,
+                      longitude: zone.longitude,
+                    }}
+                    radius={zone.radius_meters}
+                    strokeColor={COLORS.brand600}
+                    strokeWidth={2}
+                    fillColor="rgba(13, 148, 136, 0.15)"
+                  />
+                ))}
+              </MapView>
+            ) : (
+              <MapPlaceholder region={mapRegion} />
+            )}
           </View>
         </View>
 
@@ -760,6 +800,31 @@ const styles = StyleSheet.create({
   },
   map: {
     flex: 1,
+  },
+  mapPlaceholder: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#E5E7EB',
+  },
+  mapPlaceholderIcon: {
+    fontSize: 48,
+    marginBottom: 12,
+  },
+  mapPlaceholderTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#374151',
+    marginBottom: 4,
+  },
+  mapPlaceholderCoords: {
+    fontSize: 14,
+    color: '#6B7280',
+    marginBottom: 8,
+  },
+  mapPlaceholderHint: {
+    fontSize: 12,
+    color: '#9CA3AF',
+    textAlign: 'center',
   },
   homeMarker: {
     backgroundColor: COLORS.card,

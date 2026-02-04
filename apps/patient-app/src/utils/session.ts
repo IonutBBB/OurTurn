@@ -1,3 +1,4 @@
+import { Platform } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 import type { Household, Patient } from '@memoguard/shared';
 
@@ -11,11 +12,36 @@ export interface PatientSession {
   connectedAt: string;
 }
 
+// Platform-aware storage functions
+async function setItem(key: string, value: string): Promise<void> {
+  if (Platform.OS === 'web') {
+    localStorage.setItem(key, value);
+  } else {
+    await SecureStore.setItemAsync(key, value);
+  }
+}
+
+async function getItem(key: string): Promise<string | null> {
+  if (Platform.OS === 'web') {
+    return localStorage.getItem(key);
+  } else {
+    return await SecureStore.getItemAsync(key);
+  }
+}
+
+async function deleteItem(key: string): Promise<void> {
+  if (Platform.OS === 'web') {
+    localStorage.removeItem(key);
+  } else {
+    await SecureStore.deleteItemAsync(key);
+  }
+}
+
 /**
  * Save patient session to secure storage
  */
 export async function saveSession(session: PatientSession): Promise<void> {
-  await SecureStore.setItemAsync(SESSION_KEY, JSON.stringify(session));
+  await setItem(SESSION_KEY, JSON.stringify(session));
 }
 
 /**
@@ -23,7 +49,7 @@ export async function saveSession(session: PatientSession): Promise<void> {
  */
 export async function getSession(): Promise<PatientSession | null> {
   try {
-    const sessionStr = await SecureStore.getItemAsync(SESSION_KEY);
+    const sessionStr = await getItem(SESSION_KEY);
     if (!sessionStr) return null;
     return JSON.parse(sessionStr);
   } catch {
@@ -35,16 +61,16 @@ export async function getSession(): Promise<PatientSession | null> {
  * Clear the stored session (logout)
  */
 export async function clearSession(): Promise<void> {
-  await SecureStore.deleteItemAsync(SESSION_KEY);
-  await SecureStore.deleteItemAsync(HOUSEHOLD_KEY);
-  await SecureStore.deleteItemAsync(PATIENT_KEY);
+  await deleteItem(SESSION_KEY);
+  await deleteItem(HOUSEHOLD_KEY);
+  await deleteItem(PATIENT_KEY);
 }
 
 /**
  * Save household data to secure storage (for offline access)
  */
 export async function saveHouseholdData(household: Household): Promise<void> {
-  await SecureStore.setItemAsync(HOUSEHOLD_KEY, JSON.stringify(household));
+  await setItem(HOUSEHOLD_KEY, JSON.stringify(household));
 }
 
 /**
@@ -52,7 +78,7 @@ export async function saveHouseholdData(household: Household): Promise<void> {
  */
 export async function getHouseholdData(): Promise<Household | null> {
   try {
-    const dataStr = await SecureStore.getItemAsync(HOUSEHOLD_KEY);
+    const dataStr = await getItem(HOUSEHOLD_KEY);
     if (!dataStr) return null;
     return JSON.parse(dataStr);
   } catch {
@@ -64,7 +90,7 @@ export async function getHouseholdData(): Promise<Household | null> {
  * Save patient data to secure storage (for offline access)
  */
 export async function savePatientData(patient: Patient): Promise<void> {
-  await SecureStore.setItemAsync(PATIENT_KEY, JSON.stringify(patient));
+  await setItem(PATIENT_KEY, JSON.stringify(patient));
 }
 
 /**
@@ -72,7 +98,7 @@ export async function savePatientData(patient: Patient): Promise<void> {
  */
 export async function getPatientData(): Promise<Patient | null> {
   try {
-    const dataStr = await SecureStore.getItemAsync(PATIENT_KEY);
+    const dataStr = await getItem(PATIENT_KEY);
     if (!dataStr) return null;
     return JSON.parse(dataStr);
   } catch {

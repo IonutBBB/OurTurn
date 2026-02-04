@@ -32,6 +32,33 @@ function getSupabaseAnonKey(): string {
   return key;
 }
 
+// Simple in-memory storage fallback for environments where localStorage isn't available
+const memoryStorage: Record<string, string> = {};
+
+// Custom storage adapter that works in all environments
+const customStorage = {
+  getItem: (key: string): string | null => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      return localStorage.getItem(key);
+    }
+    return memoryStorage[key] || null;
+  },
+  setItem: (key: string, value: string): void => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.setItem(key, value);
+    } else {
+      memoryStorage[key] = value;
+    }
+  },
+  removeItem: (key: string): void => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.removeItem(key);
+    } else {
+      delete memoryStorage[key];
+    }
+  },
+};
+
 // Create the Supabase client
 // Note: For patient devices using Care Code JWT, a custom client will be created
 // with the JWT token in the authorization header
@@ -43,6 +70,7 @@ export function getSupabaseClient(): SupabaseClient {
       auth: {
         autoRefreshToken: true,
         persistSession: true,
+        storage: customStorage,
       },
     });
   }
@@ -54,6 +82,7 @@ export const supabase = createClient(getSupabaseUrl(), getSupabaseAnonKey(), {
   auth: {
     autoRefreshToken: true,
     persistSession: true,
+    storage: customStorage,
   },
 });
 

@@ -15,30 +15,20 @@ config.resolver.nodeModulesPaths = [
   path.resolve(monorepoRoot, 'node_modules'),
 ];
 
-// Custom resolver to handle monorepo package resolution
+// Map monorepo packages and ensure @supabase resolves from app's node_modules
+config.resolver.extraNodeModules = {
+  '@memoguard/shared': path.resolve(monorepoRoot, 'packages/shared'),
+  '@memoguard/supabase': path.resolve(monorepoRoot, 'packages/supabase'),
+  '@supabase/supabase-js': path.resolve(projectRoot, 'node_modules/@supabase/supabase-js'),
+  '@supabase/postgrest-js': path.resolve(projectRoot, 'node_modules/@supabase/postgrest-js'),
+  '@supabase/auth-js': path.resolve(projectRoot, 'node_modules/@supabase/auth-js'),
+  '@supabase/realtime-js': path.resolve(projectRoot, 'node_modules/@supabase/realtime-js'),
+  '@supabase/storage-js': path.resolve(projectRoot, 'node_modules/@supabase/storage-js'),
+  '@supabase/functions-js': path.resolve(projectRoot, 'node_modules/@supabase/functions-js'),
+};
+
+// Custom resolver for web-only mocks
 config.resolver.resolveRequest = (context, moduleName, platform) => {
-  // Handle @memoguard packages
-  if (moduleName === '@memoguard/shared') {
-    return {
-      filePath: path.resolve(monorepoRoot, 'packages/shared/index.ts'),
-      type: 'sourceFile',
-    };
-  }
-  if (moduleName === '@memoguard/supabase') {
-    return {
-      filePath: path.resolve(monorepoRoot, 'packages/supabase/index.ts'),
-      type: 'sourceFile',
-    };
-  }
-
-  // Force @supabase/supabase-js to resolve from app's node_modules
-  if (moduleName === '@supabase/supabase-js') {
-    return {
-      filePath: path.resolve(projectRoot, 'node_modules/@supabase/supabase-js/dist/index.mjs'),
-      type: 'sourceFile',
-    };
-  }
-
   // Mock react-native-maps on web - it only works on native
   if (platform === 'web' && moduleName === 'react-native-maps') {
     return {
@@ -47,14 +37,14 @@ config.resolver.resolveRequest = (context, moduleName, platform) => {
     };
   }
 
-  // Default resolution using Metro's built-in resolver
+  // Default resolution
   return context.resolveRequest(context, moduleName, platform);
 };
 
-// Make sure .ts and .tsx files are resolved
-config.resolver.sourceExts = ['js', 'jsx', 'ts', 'tsx', 'json', 'mjs'];
+// Support .cjs and .mjs files (used by @supabase packages)
+config.resolver.sourceExts = ['js', 'jsx', 'ts', 'tsx', 'json', 'cjs', 'mjs'];
 
-// Disable package exports resolution which can cause issues with some packages
-config.resolver.unstable_enablePackageExports = false;
+// Enable package exports to properly resolve @supabase packages
+config.resolver.unstable_enablePackageExports = true;
 
 module.exports = config;
