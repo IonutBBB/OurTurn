@@ -2,7 +2,7 @@
 // Allows users to download all their household data (right to portability)
 
 import { NextRequest, NextResponse } from 'next/server';
-import { createServerClient } from '@/lib/supabase';
+import { createClient as createServerClient } from '@/lib/supabase/server';
 
 export async function GET(request: NextRequest) {
   try {

@@ -2,7 +2,7 @@
 // Allows users to delete their account and all associated data (right to erasure)
 
 import { NextRequest, NextResponse } from 'next/server';
-import { createServerClient } from '@/lib/supabase';
+import { createClient as createServerClient } from '@/lib/supabase/server';
 import { createClient } from '@supabase/supabase-js';
 
 export async function DELETE(request: NextRequest) {

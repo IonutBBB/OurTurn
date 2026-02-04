@@ -2,7 +2,7 @@
 // Generates personalized care plan task suggestions using Google Gemini
 
 import { NextRequest, NextResponse } from 'next/server';
-import { createServerClient } from '@/lib/supabase';
+import { createClient as createServerClient } from '@/lib/supabase/server';
 
 const GOOGLE_AI_API_KEY = process.env.GOOGLE_AI_API_KEY;
 const GEMINI_API_URL =

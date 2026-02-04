@@ -1,4 +1,4 @@
-import { createServerClient } from '@/lib/supabase';
+import { createClient as createServerClient } from '@/lib/supabase/server';
 import FamilyClient from './family-client';
 
 export default async function FamilyPage() {
