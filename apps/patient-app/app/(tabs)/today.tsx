@@ -7,11 +7,14 @@ import {
   RefreshControl,
   ActivityIndicator,
   TouchableOpacity,
+  AccessibilityInfo,
+  Platform,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
+import { getProgressLabel } from '@memoguard/shared';
 import { useAuthStore } from '../../src/stores/auth-store';
 import TaskCard, { type TaskStatus } from '../../src/components/task-card';
 import {
@@ -240,7 +243,13 @@ export default function TodayScreen() {
   // Loading state
   if (isLoading) {
     return (
-      <View style={[styles.container, styles.centered]}>
+      <View
+        style={[styles.container, styles.centered]}
+        accessible={true}
+        accessibilityRole="progressbar"
+        accessibilityLabel={t('common.loading') || 'Loading'}
+        accessibilityState={{ busy: true }}
+      >
         <ActivityIndicator size="large" color={COLORS.brand600} />
       </View>
     );
@@ -270,14 +279,29 @@ export default function TodayScreen() {
 
           {/* Greeting */}
           <View style={styles.greetingContainer}>
-            <Text style={styles.greeting}>
+            <Text
+              style={styles.greeting}
+              accessibilityRole="header"
+              accessibilityLabel={t(greeting, { name: patient?.name || '' })}
+            >
               {t(greeting, { name: patient?.name || '' })} {emoji}
             </Text>
           </View>
 
           {/* Progress bar */}
           {totalCount > 0 && (
-            <View style={styles.progressContainer}>
+            <View
+              style={styles.progressContainer}
+              accessible={true}
+              accessibilityRole="progressbar"
+              accessibilityLabel={getProgressLabel(completedCount, totalCount, 'tasks')}
+              accessibilityValue={{
+                min: 0,
+                max: totalCount,
+                now: completedCount,
+                text: `${Math.round(progressPercent)}%`,
+              }}
+            >
               <Text style={styles.progressText}>
                 {t('patientApp.todaysPlan.progress', {
                   completed: completedCount,
@@ -285,13 +309,18 @@ export default function TodayScreen() {
                 })}{' '}
                 {progressPercent >= 50 && '🌟'}
               </Text>
-              <View style={styles.progressBarBackground}>
+              <View
+                style={styles.progressBarBackground}
+                importantForAccessibility="no-hide-descendants"
+              >
                 <View
                   style={[styles.progressBarFill, { width: `${progressPercent}%` }]}
                 />
               </View>
               {getEncouragingMessage() && (
-                <Text style={styles.encouragingText}>{getEncouragingMessage()}</Text>
+                <Text style={styles.encouragingText} accessibilityLiveRegion="polite">
+                  {getEncouragingMessage()}
+                </Text>
               )}
             </View>
           )}
@@ -302,8 +331,11 @@ export default function TodayScreen() {
               style={styles.checkinCard}
               onPress={() => router.push('/checkin')}
               activeOpacity={0.8}
+              accessibilityRole="button"
+              accessibilityLabel={`${t('patientApp.checkin.moodQuestion')}. Tap to check in`}
+              accessibilityHint="Opens the daily check-in screen"
             >
-              <View style={styles.checkinContent}>
+              <View style={styles.checkinContent} importantForAccessibility="no-hide-descendants">
                 <Text style={styles.checkinEmoji}>👋</Text>
                 <View style={styles.checkinTextContainer}>
                   <Text style={styles.checkinTitle}>{t('patientApp.checkin.moodQuestion')}</Text>

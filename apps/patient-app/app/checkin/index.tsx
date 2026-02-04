@@ -5,6 +5,8 @@ import {
   StyleSheet,
   TouchableOpacity,
   ActivityIndicator,
+  AccessibilityInfo,
+  Platform,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
@@ -21,6 +23,7 @@ import Animated, {
 import { useAuthStore } from '../../src/stores/auth-store';
 import { useVoiceRecording } from '../../src/hooks/use-voice-recording';
 import { supabase } from '@memoguard/supabase';
+import { getRecordingButtonLabel, getMoodSelectionLabel } from '@memoguard/shared';
 
 const COLORS = {
   background: '#FAFAF8',
@@ -250,68 +253,105 @@ export default function CheckinScreen() {
 
         {/* Mood Step */}
         {step === 'mood' && (
-          <View style={styles.questionCard}>
-            <Text style={styles.question}>{t('patientApp.checkin.moodQuestion')}</Text>
-            <View style={styles.optionsRow}>
-              {MOOD_OPTIONS.map((option) => (
-                <TouchableOpacity
-                  key={option.value}
-                  style={[
-                    styles.optionButton,
-                    mood === option.value && styles.optionButtonSelected,
-                  ]}
-                  onPress={() => handleMoodSelect(option.value)}
-                  activeOpacity={0.7}
-                >
-                  <Text style={styles.optionEmoji}>{option.emoji}</Text>
-                  <Text
+          <View style={styles.questionCard} accessible={false}>
+            <Text
+              style={styles.question}
+              accessibilityRole="header"
+            >
+              {t('patientApp.checkin.moodQuestion')}
+            </Text>
+            <View
+              style={styles.optionsRow}
+              accessibilityRole="radiogroup"
+              accessibilityLabel={t('patientApp.checkin.moodQuestion')}
+            >
+              {MOOD_OPTIONS.map((option) => {
+                const isSelected = mood === option.value;
+                const label = t(`patientApp.checkin.${option.labelKey}`);
+                return (
+                  <TouchableOpacity
+                    key={option.value}
                     style={[
-                      styles.optionLabel,
-                      mood === option.value && styles.optionLabelSelected,
+                      styles.optionButton,
+                      isSelected && styles.optionButtonSelected,
                     ]}
+                    onPress={() => handleMoodSelect(option.value)}
+                    activeOpacity={0.7}
+                    accessibilityRole="radio"
+                    accessibilityLabel={getMoodSelectionLabel(option.emoji, label, isSelected)}
+                    accessibilityState={{ checked: isSelected }}
                   >
-                    {t(`patientApp.checkin.${option.labelKey}`)}
-                  </Text>
-                </TouchableOpacity>
-              ))}
+                    <Text style={styles.optionEmoji} importantForAccessibility="no">{option.emoji}</Text>
+                    <Text
+                      style={[
+                        styles.optionLabel,
+                        isSelected && styles.optionLabelSelected,
+                      ]}
+                    >
+                      {label}
+                    </Text>
+                  </TouchableOpacity>
+                );
+              })}
             </View>
           </View>
         )}
 
         {/* Sleep Step */}
         {step === 'sleep' && (
-          <View style={styles.questionCard}>
-            <Text style={styles.question}>{t('patientApp.checkin.sleepQuestion')}</Text>
-            <View style={styles.optionsRow}>
-              {SLEEP_OPTIONS.map((option) => (
-                <TouchableOpacity
-                  key={option.value}
-                  style={[
-                    styles.optionButton,
-                    sleep === option.value && styles.optionButtonSelected,
-                  ]}
-                  onPress={() => handleSleepSelect(option.value)}
-                  activeOpacity={0.7}
-                >
-                  <Text style={styles.optionEmoji}>{option.emoji}</Text>
-                  <Text
+          <View style={styles.questionCard} accessible={false}>
+            <Text
+              style={styles.question}
+              accessibilityRole="header"
+            >
+              {t('patientApp.checkin.sleepQuestion')}
+            </Text>
+            <View
+              style={styles.optionsRow}
+              accessibilityRole="radiogroup"
+              accessibilityLabel={t('patientApp.checkin.sleepQuestion')}
+            >
+              {SLEEP_OPTIONS.map((option) => {
+                const isSelected = sleep === option.value;
+                const label = t(`patientApp.checkin.${option.labelKey}`);
+                return (
+                  <TouchableOpacity
+                    key={option.value}
                     style={[
-                      styles.optionLabel,
-                      sleep === option.value && styles.optionLabelSelected,
+                      styles.optionButton,
+                      isSelected && styles.optionButtonSelected,
                     ]}
+                    onPress={() => handleSleepSelect(option.value)}
+                    activeOpacity={0.7}
+                    accessibilityRole="radio"
+                    accessibilityLabel={getMoodSelectionLabel(option.emoji, label, isSelected)}
+                    accessibilityState={{ checked: isSelected }}
                   >
-                    {t(`patientApp.checkin.${option.labelKey}`)}
-                  </Text>
-                </TouchableOpacity>
-              ))}
+                    <Text style={styles.optionEmoji} importantForAccessibility="no">{option.emoji}</Text>
+                    <Text
+                      style={[
+                        styles.optionLabel,
+                        isSelected && styles.optionLabelSelected,
+                      ]}
+                    >
+                      {label}
+                    </Text>
+                  </TouchableOpacity>
+                );
+              })}
             </View>
           </View>
         )}
 
         {/* Voice Step */}
         {step === 'voice' && (
-          <View style={styles.questionCard}>
-            <Text style={styles.question}>{t('patientApp.checkin.voicePrompt')}</Text>
+          <View style={styles.questionCard} accessible={false}>
+            <Text
+              style={styles.question}
+              accessibilityRole="header"
+            >
+              {t('patientApp.checkin.voicePrompt')}
+            </Text>
 
             {/* Voice recording button */}
             <Animated.View style={pulseStyle}>
@@ -324,16 +364,28 @@ export default function CheckinScreen() {
                 onPress={handleVoiceButtonPress}
                 activeOpacity={0.8}
                 disabled={isUploading || loading}
+                accessibilityRole="button"
+                accessibilityLabel={getRecordingButtonLabel(
+                  isRecording,
+                  !!recordingUri,
+                  isPlaying,
+                  formattedDuration
+                )}
+                accessibilityState={{
+                  disabled: isUploading || loading,
+                  busy: isRecording,
+                }}
+                accessibilityLiveRegion="polite"
               >
                 {isRecording ? (
                   <>
-                    <Text style={styles.voiceIcon}>⏹</Text>
+                    <Text style={styles.voiceIcon} importantForAccessibility="no">⏹</Text>
                     <Text style={styles.voiceText}>{t('patientApp.checkin.voiceStop')}</Text>
                     <Text style={styles.durationText}>{formattedDuration}</Text>
                   </>
                 ) : recordingUri ? (
                   <>
-                    <Text style={styles.voiceIcon}>{isPlaying ? '⏸' : '▶️'}</Text>
+                    <Text style={styles.voiceIcon} importantForAccessibility="no">{isPlaying ? '⏸' : '▶️'}</Text>
                     <Text style={styles.voiceTextDone}>
                       {isPlaying ? t('patientApp.checkin.voicePause') : t('patientApp.checkin.voicePlay')}
                     </Text>
@@ -341,7 +393,7 @@ export default function CheckinScreen() {
                   </>
                 ) : (
                   <>
-                    <Text style={styles.voiceIcon}>🎤</Text>
+                    <Text style={styles.voiceIcon} importantForAccessibility="no">🎤</Text>
                     <Text style={styles.voiceText}>{t('patientApp.checkin.voiceTap')}</Text>
                   </>
                 )}
@@ -359,6 +411,9 @@ export default function CheckinScreen() {
                 style={styles.discardButton}
                 onPress={handleDiscardRecording}
                 activeOpacity={0.7}
+                accessibilityRole="button"
+                accessibilityLabel={t('patientApp.checkin.voiceDiscard')}
+                accessibilityHint="Removes your voice recording"
               >
                 <Text style={styles.discardText}>{t('patientApp.checkin.voiceDiscard')}</Text>
               </TouchableOpacity>
@@ -373,9 +428,22 @@ export default function CheckinScreen() {
               onPress={handleSubmit}
               disabled={loading || isRecording || isUploading}
               activeOpacity={0.8}
+              accessibilityRole="button"
+              accessibilityLabel={
+                recordingUri
+                  ? t('patientApp.checkin.send')
+                  : t('patientApp.checkin.skipVoice')
+              }
+              accessibilityState={{
+                disabled: loading || isRecording || isUploading,
+                busy: loading || isUploading,
+              }}
             >
               {loading || isUploading ? (
-                <ActivityIndicator color="#FFFFFF" />
+                <ActivityIndicator
+                  color="#FFFFFF"
+                  accessibilityLabel="Submitting your check-in"
+                />
               ) : (
                 <Text style={styles.submitButtonText}>
                   {recordingUri ? t('patientApp.checkin.send') : t('patientApp.checkin.skipVoice')}

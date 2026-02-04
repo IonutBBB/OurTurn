@@ -5,10 +5,18 @@ import {
   TouchableOpacity,
   StyleSheet,
   Animated,
+  AccessibilityInfo,
+  Platform,
 } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import { useTranslation } from 'react-i18next';
-import { getCategoryIcon } from '@memoguard/shared';
+import {
+  getCategoryIcon,
+  getTaskCardLabel,
+  formatTimeForScreenReader,
+  getTaskCompletionAnnouncement,
+  TOUCH_TARGETS,
+} from '@memoguard/shared';
 import type { CarePlanTask, TaskCompletion } from '@memoguard/shared';
 
 // Design system colors
@@ -59,6 +67,15 @@ export default function TaskCard({ task, completion, status, onComplete }: TaskC
   const isNow = status === 'now';
   const isOverdue = status === 'overdue';
 
+  // Generate accessible labels
+  const formattedTimeForA11y = formatTimeForScreenReader(task.time);
+  const taskAccessibilityLabel = getTaskCardLabel(
+    task.title,
+    formattedTimeForA11y,
+    status,
+    task.hint_text || undefined
+  );
+
   const handleComplete = async () => {
     if (isCompleted || isLoading) return;
 
@@ -92,6 +109,12 @@ export default function TaskCard({ task, completion, status, onComplete }: TaskC
       await onComplete(task.id);
       // Success haptic
       await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      // Announce completion to screen readers
+      if (Platform.OS !== 'web') {
+        AccessibilityInfo.announceForAccessibility(
+          getTaskCompletionAnnouncement(task.title)
+        );
+      }
     } catch (error) {
       console.error('Failed to complete task:', error);
       // Reset animation on error
@@ -112,6 +135,12 @@ export default function TaskCard({ task, completion, status, onComplete }: TaskC
         isOverdue && styles.cardOverdue,
         isNow && styles.cardNow,
       ]}
+      accessible={true}
+      accessibilityLabel={taskAccessibilityLabel}
+      accessibilityRole="none"
+      accessibilityState={{
+        disabled: isCompleted,
+      }}
     >
       {/* NOW badge */}
       {isNow && (
@@ -161,7 +190,12 @@ export default function TaskCard({ task, completion, status, onComplete }: TaskC
             disabled={isLoading}
             activeOpacity={0.8}
             accessibilityRole="button"
-            accessibilityLabel={t('common.done')}
+            accessibilityLabel={`${t('common.done')} ${task.title}`}
+            accessibilityHint={t('a11y.doubleTapToComplete') || 'Double tap to mark as done'}
+            accessibilityState={{
+              disabled: isLoading,
+              busy: isLoading,
+            }}
           >
             <Animated.Text style={[styles.doneButtonText, { opacity: checkmarkOpacity }]}>
               ✓{' '}

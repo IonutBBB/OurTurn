@@ -235,15 +235,193 @@ Use Tailwind's responsive prefixes: `sm:`, `md:`, `lg:`, `xl:`
 
 NOT for MVP. The patient app should always be light mode (familiar, high contrast). Caregiver apps may add dark mode post-launch.
 
-## Accessibility (Beyond Patient App)
+## Accessibility (WCAG 2.1 AA Compliance)
 
-Even caregiver apps should follow:
-- All interactive elements focusable and keyboard navigable (web)
-- ARIA labels on icon-only buttons
-- Focus indicators visible (2px Teal outline)
-- Form validation messages connected to inputs via `aria-describedby`
-- Color never as sole indicator (always pair with text/icon)
-- Loading states announced to screen readers (`aria-live="polite"`)
+MemoGuard follows WCAG 2.1 Level AA guidelines across all apps. This section details requirements that go beyond the patient app-specific rules in `patient-app-ux.md`.
+
+### Core Principles (POUR)
+
+1. **Perceivable** — Information must be presentable in ways users can perceive
+2. **Operable** — UI components must be operable by all users
+3. **Understandable** — Information and UI operation must be understandable
+4. **Robust** — Content must work with assistive technologies
+
+### Touch Targets (Mobile)
+
+| Element | Minimum Size | Notes |
+|---|---|---|
+| Standard buttons | 44×44px | WCAG 2.1 minimum |
+| Patient app buttons | 56×56px | Accommodates motor difficulties |
+| Primary actions (patient) | 64px height | Full-width preferred |
+| Emoji selection | 72×72px | Larger for easy selection |
+| Spacing between targets | 16px | Prevents mis-taps |
+
+### Color Contrast
+
+| Text Type | Minimum Ratio | Recommended |
+|---|---|---|
+| Normal text (<18pt) | 4.5:1 | 7:1 |
+| Large text (≥18pt or 14pt bold) | 3:1 | 4.5:1 |
+| UI components & graphics | 3:1 | 4.5:1 |
+| Focus indicators | 3:1 | — |
+
+Use `packages/shared/utils/accessibility.ts` functions to verify:
+- `meetsContrastAA()` — Check normal text
+- `meetsContrastAALarge()` — Check large text
+- `getContrastRatio()` — Get exact ratio
+
+### Keyboard Navigation (Web)
+
+- All interactive elements focusable via Tab
+- Logical tab order (matches visual order)
+- Skip link to main content on every page
+- Focus visible indicator: 2px Teal (`#0D9488`) outline
+- No keyboard traps
+- Modal dialogs trap focus until closed
+- Escape key closes modals/dropdowns
+
+### Screen Reader Support
+
+**React Native (Mobile):**
+```tsx
+// Button with accessibility
+<TouchableOpacity
+  accessibilityRole="button"
+  accessibilityLabel="Mark task as done"
+  accessibilityHint="Double tap to complete this task"
+  accessibilityState={{ disabled: isLoading }}
+>
+  <Text>Done</Text>
+</TouchableOpacity>
+
+// Progress bar
+<View
+  accessibilityRole="progressbar"
+  accessibilityValue={{ min: 0, max: 100, now: 75 }}
+  accessibilityLabel="Task progress: 75% complete"
+/>
+
+// Announce dynamic changes
+AccessibilityInfo.announceForAccessibility("Task completed!");
+```
+
+**React (Web):**
+```tsx
+// Button with ARIA
+<button
+  aria-label="Mark task as done"
+  aria-busy={isLoading}
+  aria-disabled={isDisabled}
+>
+  Done
+</button>
+
+// Live regions for dynamic content
+<div role="alert" aria-live="assertive">
+  {error}
+</div>
+
+<div aria-live="polite">
+  {statusMessage}
+</div>
+
+// Form inputs
+<label htmlFor="email">Email</label>
+<input
+  id="email"
+  type="email"
+  aria-required="true"
+  aria-describedby="email-error"
+  aria-invalid={hasError}
+/>
+<span id="email-error" role="alert">{errorMessage}</span>
+```
+
+### Focus Management
+
+- Move focus to new content when navigating (SPA)
+- Return focus to trigger when closing modals
+- Focus first error field on form validation
+- Use `tabIndex={-1}` for programmatic focus targets
+- Never remove focus outline (use `focus-visible` instead)
+
+### Forms
+
+- Every input has a visible label
+- Labels are programmatically associated (`htmlFor` / `aria-labelledby`)
+- Required fields marked with `aria-required="true"`
+- Error messages use `role="alert"` or `aria-live="assertive"`
+- Error messages linked via `aria-describedby`
+- Autocomplete attributes for common fields (`email`, `password`, etc.)
+
+### Images & Icons
+
+- Decorative images: `aria-hidden="true"` or empty `alt=""`
+- Informative images: Descriptive `alt` text
+- Icon buttons: Always include `aria-label`
+- Emoji: Use `importantForAccessibility="no"` in React Native
+
+### Animations
+
+- Respect `prefers-reduced-motion` media query
+- Maximum animation duration: 5 seconds for non-essential
+- No flashing content (≤3 flashes per second)
+- Provide pause/stop for auto-playing content
+- Use `getSafeAnimationDuration()` utility
+
+### Timing
+
+- No time limits on patient app interactions
+- Minimum 20 seconds before auto-refresh
+- Session timeout warning 60 seconds before expiry
+- Allow users to extend time limits
+
+### Testing Checklist
+
+**Automated Testing:**
+- [ ] Run axe-core or Lighthouse accessibility audit
+- [ ] Check color contrast with browser devtools
+- [ ] Verify heading hierarchy (h1 → h2 → h3)
+
+**Manual Testing:**
+- [ ] Navigate entire app with keyboard only
+- [ ] Test with VoiceOver (iOS) / TalkBack (Android) / NVDA (Windows)
+- [ ] Verify all interactive elements are announced correctly
+- [ ] Check focus order matches visual order
+- [ ] Test at 200% zoom (web)
+- [ ] Test with reduced motion enabled
+
+### Accessibility Constants
+
+Import from `@memoguard/shared`:
+```typescript
+import {
+  TOUCH_TARGETS,
+  FONT_SIZES,
+  CONTRAST_RATIOS,
+  ACCESSIBLE_COLOR_PAIRS,
+  A11Y_ROLES,
+  LIVE_REGIONS,
+} from '@memoguard/shared';
+```
+
+See `packages/shared/constants/accessibility.ts` for all values.
+
+### Accessibility Utilities
+
+Import from `@memoguard/shared`:
+```typescript
+import {
+  getContrastRatio,
+  meetsContrastAA,
+  getTaskCardLabel,
+  getProgressLabel,
+  getRecordingButtonLabel,
+  formatTimeForScreenReader,
+} from '@memoguard/shared';
+```
+
+See `packages/shared/utils/accessibility.ts` for all helpers
 
 ## Tailwind Config (Web)
 

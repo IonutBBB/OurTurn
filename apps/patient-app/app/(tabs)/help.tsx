@@ -210,7 +210,13 @@ export default function HelpScreen() {
         showsVerticalScrollIndicator={false}
       >
         {/* Title */}
-        <Text style={styles.title}>{t('patientApp.help.title')} 💙</Text>
+        <Text
+          style={styles.title}
+          accessibilityRole="header"
+          accessibilityLabel={t('patientApp.help.title')}
+        >
+          {t('patientApp.help.title')} 💙
+        </Text>
 
         {/* Call Someone Section */}
         <View style={styles.section}>
@@ -240,9 +246,10 @@ export default function HelpScreen() {
             activeOpacity={0.7}
             onPress={() => handleCallContact(emergencyInfo.primary, true)}
             accessibilityRole="button"
-            accessibilityLabel={`Call Emergency Services ${emergencyInfo.primary}`}
+            accessibilityLabel={`${t('patientApp.help.emergency')} ${emergencyInfo.primary}`}
+            accessibilityHint="A confirmation will appear before calling"
           >
-            <Text style={styles.emergencyIcon}>🚨</Text>
+            <Text style={styles.emergencyIcon} importantForAccessibility="no">🚨</Text>
             <Text style={styles.emergencyText}>
               {t('patientApp.help.emergency')} ({emergencyInfo.primary})
             </Text>
@@ -260,13 +267,22 @@ export default function HelpScreen() {
               onPress={handleTakeMeHome}
               disabled={isLoadingLocation}
               accessibilityRole="button"
-              accessibilityLabel={t('patientApp.help.takeMeHome')}
+              accessibilityLabel={`${t('patientApp.help.takeMeHome')}. ${t('patientApp.help.takeMeHomeDesc')}`}
+              accessibilityHint="Opens navigation to your home address"
+              accessibilityState={{
+                disabled: isLoadingLocation,
+                busy: isLoadingLocation,
+              }}
             >
               {isLoadingLocation ? (
-                <ActivityIndicator color="#FFFFFF" size="large" />
+                <ActivityIndicator
+                  color="#FFFFFF"
+                  size="large"
+                  accessibilityLabel="Getting your location"
+                />
               ) : (
                 <>
-                  <Text style={styles.takeMeHomeIcon}>🏠</Text>
+                  <Text style={styles.takeMeHomeIcon} importantForAccessibility="no">🏠</Text>
                   <Text style={styles.takeMeHomeText}>
                     {t('patientApp.help.takeMeHome').toUpperCase()}
                   </Text>

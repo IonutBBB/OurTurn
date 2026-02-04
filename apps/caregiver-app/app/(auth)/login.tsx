@@ -87,13 +87,23 @@ export default function LoginScreen() {
           {/* Login form */}
           <View style={styles.form}>
             {error && (
-              <View style={styles.errorContainer}>
+              <View
+                style={styles.errorContainer}
+                accessible={true}
+                accessibilityRole="alert"
+                accessibilityLiveRegion="assertive"
+              >
                 <Text style={styles.errorText}>{error}</Text>
               </View>
             )}
 
             <View style={styles.inputGroup}>
-              <Text style={styles.label}>{t('caregiverApp.auth.email')}</Text>
+              <Text
+                style={styles.label}
+                nativeID="email-label"
+              >
+                {t('caregiverApp.auth.email')}
+              </Text>
               <TextInput
                 style={styles.input}
                 value={email}
@@ -103,11 +113,20 @@ export default function LoginScreen() {
                 keyboardType="email-address"
                 autoCapitalize="none"
                 autoCorrect={false}
+                accessibilityLabel={t('caregiverApp.auth.email')}
+                accessibilityLabelledBy="email-label"
+                textContentType="emailAddress"
+                autoComplete="email"
               />
             </View>
 
             <View style={styles.inputGroup}>
-              <Text style={styles.label}>{t('caregiverApp.auth.password')}</Text>
+              <Text
+                style={styles.label}
+                nativeID="password-label"
+              >
+                {t('caregiverApp.auth.password')}
+              </Text>
               <TextInput
                 style={styles.input}
                 value={password}
@@ -116,10 +135,18 @@ export default function LoginScreen() {
                 placeholderTextColor={COLORS.textMuted}
                 secureTextEntry
                 autoCapitalize="none"
+                accessibilityLabel={t('caregiverApp.auth.password')}
+                accessibilityLabelledBy="password-label"
+                textContentType="password"
+                autoComplete="password"
               />
             </View>
 
-            <TouchableOpacity style={styles.forgotPassword}>
+            <TouchableOpacity
+              style={styles.forgotPassword}
+              accessibilityRole="link"
+              accessibilityLabel={t('caregiverApp.auth.forgotPassword')}
+            >
               <Text style={styles.forgotPasswordText}>
                 {t('caregiverApp.auth.forgotPassword')}
               </Text>
@@ -130,29 +157,50 @@ export default function LoginScreen() {
               onPress={handleLogin}
               disabled={loading}
               activeOpacity={0.8}
+              accessibilityRole="button"
+              accessibilityLabel={t('caregiverApp.auth.login')}
+              accessibilityState={{
+                disabled: loading,
+                busy: loading,
+              }}
             >
               {loading ? (
-                <ActivityIndicator color="#FFFFFF" />
+                <ActivityIndicator color="#FFFFFF" accessibilityLabel="Signing in" />
               ) : (
                 <Text style={styles.buttonText}>{t('caregiverApp.auth.login')}</Text>
               )}
             </TouchableOpacity>
 
             {/* Divider */}
-            <View style={styles.divider}>
+            <View
+              style={styles.divider}
+              accessible={true}
+              accessibilityRole="none"
+              accessibilityLabel="Or continue with"
+            >
               <View style={styles.dividerLine} />
               <Text style={styles.dividerText}>{t('caregiverApp.auth.or')}</Text>
               <View style={styles.dividerLine} />
             </View>
 
             {/* OAuth buttons */}
-            <TouchableOpacity style={styles.oauthButton} activeOpacity={0.8}>
+            <TouchableOpacity
+              style={styles.oauthButton}
+              activeOpacity={0.8}
+              accessibilityRole="button"
+              accessibilityLabel={t('caregiverApp.auth.continueWithGoogle')}
+            >
               <Text style={styles.oauthButtonText}>
                 {t('caregiverApp.auth.continueWithGoogle')}
               </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.oauthButton} activeOpacity={0.8}>
+            <TouchableOpacity
+              style={styles.oauthButton}
+              activeOpacity={0.8}
+              accessibilityRole="button"
+              accessibilityLabel={t('caregiverApp.auth.continueWithApple')}
+            >
               <Text style={styles.oauthButtonText}>
                 {t('caregiverApp.auth.continueWithApple')}
               </Text>

@@ -6,11 +6,13 @@ import {
   ScrollView,
   RefreshControl,
   Platform,
+  AccessibilityInfo,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../../src/stores/auth-store';
 import { supabase } from '@memoguard/supabase';
+import { getProgressLabel, getLocationStatusLabel } from '@memoguard/shared';
 
 const COLORS = {
   background: '#FAFAF8',
@@ -89,10 +91,24 @@ export default function DashboardScreen() {
     5: '😊',
   };
 
+  const moodLabels: Record<number, string> = {
+    1: 'Not good',
+    2: 'Not good',
+    3: 'Okay',
+    4: 'Good',
+    5: 'Good',
+  };
+
   const sleepEmojis: Record<number, string> = {
     1: '😩',
     2: '🙂',
     3: '😴',
+  };
+
+  const sleepLabels: Record<number, string> = {
+    1: 'Poor sleep',
+    2: 'Fair sleep',
+    3: 'Good sleep',
   };
 
   return (
@@ -110,15 +126,21 @@ export default function DashboardScreen() {
         }
       >
         {/* Header */}
-        <View style={styles.header}>
-          <Text style={styles.greeting}>
+        <View style={styles.header} accessible={true} accessibilityRole="header">
+          <Text
+            style={styles.greeting}
+            accessibilityRole="header"
+          >
             {t('caregiverApp.dashboard.greeting', {
               timeOfDay: getTimeOfDay(),
               name: caregiver?.name || 'there',
             })}
           </Text>
           {patient && (
-            <Text style={styles.status}>
+            <Text
+              style={styles.status}
+              accessibilityLabel={`${patient.name} is doing well`}
+            >
               {t('caregiverApp.dashboard.statusGood', { patientName: patient.name })} 💚
             </Text>
           )}
@@ -127,7 +149,12 @@ export default function DashboardScreen() {
         {/* Status Cards */}
         <View style={styles.cardsContainer}>
           {/* Today's Status Card */}
-          <View style={styles.card}>
+          <View
+            style={styles.card}
+            accessible={true}
+            accessibilityRole="summary"
+            accessibilityLabel={`${t('caregiverApp.dashboard.todaysStatus')}: ${getProgressLabel(taskStats.completed, taskStats.total, 'tasks')}`}
+          >
             <Text style={styles.cardTitle}>{t('caregiverApp.dashboard.todaysStatus')}</Text>
             <View style={styles.cardContent}>
               <Text style={styles.statsText}>
@@ -137,7 +164,15 @@ export default function DashboardScreen() {
                 })}
               </Text>
               {taskStats.total > 0 && (
-                <View style={styles.progressBar}>
+                <View
+                  style={styles.progressBar}
+                  accessibilityRole="progressbar"
+                  accessibilityValue={{
+                    min: 0,
+                    max: taskStats.total,
+                    now: taskStats.completed,
+                  }}
+                >
                   <View
                     style={[
                       styles.progressFill,
@@ -150,20 +185,35 @@ export default function DashboardScreen() {
           </View>
 
           {/* Daily Check-in Card */}
-          <View style={styles.card}>
+          <View
+            style={styles.card}
+            accessible={true}
+            accessibilityRole="summary"
+            accessibilityLabel={
+              checkin
+                ? `${t('caregiverApp.dashboard.dailyCheckin')}: Mood is ${moodLabels[checkin.mood] || 'not recorded'}, Sleep was ${sleepLabels[checkin.sleep_quality] || 'not recorded'}`
+                : `${t('caregiverApp.dashboard.dailyCheckin')}: ${t('caregiverApp.dashboard.noCheckinYet')}`
+            }
+          >
             <Text style={styles.cardTitle}>{t('caregiverApp.dashboard.dailyCheckin')}</Text>
             <View style={styles.cardContent}>
               {checkin ? (
                 <View style={styles.checkinContent}>
                   <View style={styles.checkinRow}>
                     <Text style={styles.checkinLabel}>Mood</Text>
-                    <Text style={styles.checkinEmoji}>
+                    <Text
+                      style={styles.checkinEmoji}
+                      accessibilityLabel={moodLabels[checkin.mood] || 'Not recorded'}
+                    >
                       {moodEmojis[checkin.mood] || '—'}
                     </Text>
                   </View>
                   <View style={styles.checkinRow}>
                     <Text style={styles.checkinLabel}>Sleep</Text>
-                    <Text style={styles.checkinEmoji}>
+                    <Text
+                      style={styles.checkinEmoji}
+                      accessibilityLabel={sleepLabels[checkin.sleep_quality] || 'Not recorded'}
+                    >
                       {sleepEmojis[checkin.sleep_quality] || '—'}
                     </Text>
                   </View>
@@ -177,11 +227,20 @@ export default function DashboardScreen() {
           </View>
 
           {/* Location Card */}
-          <View style={styles.card}>
+          <View
+            style={styles.card}
+            accessible={true}
+            accessibilityRole="summary"
+            accessibilityLabel={getLocationStatusLabel(
+              patient?.name || 'Patient',
+              'Home',
+              'just now'
+            )}
+          >
             <Text style={styles.cardTitle}>{t('caregiverApp.dashboard.location')}</Text>
             <View style={styles.cardContent}>
               <View style={styles.locationRow}>
-                <Text style={styles.locationIcon}>📍</Text>
+                <Text style={styles.locationIcon} importantForAccessibility="no">📍</Text>
                 <View>
                   <Text style={styles.locationText}>
                     {t('caregiverApp.dashboard.atHome', { name: patient?.name || 'Patient' })}
@@ -195,10 +254,17 @@ export default function DashboardScreen() {
           </View>
 
           {/* Care Code Card */}
-          <View style={styles.card}>
+          <View
+            style={styles.card}
+            accessible={true}
+            accessibilityLabel={`Care Code: ${household?.care_code ? household.care_code.split('').join(' ') : 'Not available'}. Share this code to connect the patient app.`}
+          >
             <Text style={styles.cardTitle}>Care Code</Text>
             <View style={styles.cardContent}>
-              <Text style={styles.careCode}>
+              <Text
+                style={styles.careCode}
+                accessibilityLabel={household?.care_code ? `Code: ${household.care_code.split('').join(' ')}` : 'Code not available'}
+              >
                 {household?.care_code
                   ? `${household.care_code.slice(0, 3)} ${household.care_code.slice(3)}`
                   : '--- ---'}
@@ -210,11 +276,16 @@ export default function DashboardScreen() {
           </View>
 
           {/* AI Insights Card */}
-          <View style={[styles.card, styles.insightsCard]}>
+          <View
+            style={[styles.card, styles.insightsCard]}
+            accessible={true}
+            accessibilityRole="summary"
+            accessibilityLabel={`AI Insight: ${patient?.name || 'Your loved one'} completes more tasks on days with morning walks scheduled.`}
+          >
             <Text style={styles.cardTitle}>{t('caregiverApp.dashboard.aiInsights')}</Text>
             <View style={styles.cardContent}>
               <View style={styles.insightItem}>
-                <Text style={styles.insightIcon}>💡</Text>
+                <Text style={styles.insightIcon} importantForAccessibility="no">💡</Text>
                 <Text style={styles.insightText}>
                   {patient?.name || 'Your loved one'} completes more tasks on days with morning walks scheduled.
                 </Text>
