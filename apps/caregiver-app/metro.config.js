@@ -39,6 +39,14 @@ config.resolver.resolveRequest = (context, moduleName, platform) => {
     };
   }
 
+  // Mock react-native-maps on web - it only works on native
+  if (platform === 'web' && moduleName === 'react-native-maps') {
+    return {
+      filePath: path.resolve(projectRoot, 'src/mocks/react-native-maps.web.tsx'),
+      type: 'sourceFile',
+    };
+  }
+
   // Default resolution using Metro's built-in resolver
   return context.resolveRequest(context, moduleName, platform);
 };

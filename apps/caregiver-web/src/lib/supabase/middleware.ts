@@ -41,6 +41,8 @@ export async function updateSession(request: NextRequest) {
     '/forgot-password',
     '/reset-password',
     '/auth/callback',
+    '/privacy',
+    '/terms',
   ];
 
   const isPublicRoute = publicRoutes.some(
