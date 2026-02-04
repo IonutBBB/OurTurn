@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { createBrowserClient } from '@/lib/supabase';
 import type {
   CaregiverWellbeingLog,
@@ -35,15 +35,21 @@ export default function WellbeingClient({
   const [isSaving, setIsSaving] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
+  // Use ref to track todayLog without causing re-renders in useCallback
+  const todayLogRef = useRef<CaregiverWellbeingLog | null>(todayLog);
+  useEffect(() => {
+    todayLogRef.current = todayLog;
+  }, [todayLog]);
+
   const today = new Date().toISOString().split('T')[0];
 
-  // Save changes
+  // Save changes - use ref for todayLog to avoid infinite loop
   const saveLog = useCallback(async () => {
     if (mood === null) return;
 
     setIsSaving(true);
     try {
-      if (todayLog) {
+      if (todayLogRef.current) {
         // Update existing
         const { data, error } = await supabase
           .from('caregiver_wellbeing_logs')
@@ -52,7 +58,7 @@ export default function WellbeingClient({
             self_care_checklist: selfCare,
             notes: notes || null,
           })
-          .eq('id', todayLog.id)
+          .eq('id', todayLogRef.current.id)
           .select()
           .single();
 
@@ -83,7 +89,7 @@ export default function WellbeingClient({
     } finally {
       setIsSaving(false);
     }
-  }, [mood, selfCare, notes, todayLog, caregiverId, today, supabase]);
+  }, [mood, selfCare, notes, caregiverId, today, supabase]);
 
   // Auto-save when data changes
   useEffect(() => {

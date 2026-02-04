@@ -13,12 +13,12 @@ export function Step3LifeStory({ data, updateData }: Props) {
 
   return (
     <div className="space-y-6">
-      <p className="text-text-secondary text-sm mb-4">
+      <p className="text-gray-700 dark:text-gray-300 text-sm mb-4">
         This helps us personalize brain wellness activities and reminiscence prompts. All fields are optional.
       </p>
 
       <div>
-        <label htmlFor="childhoodLocation" className="block text-sm font-medium text-text-primary mb-1">
+        <label htmlFor="childhoodLocation" className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
           {t('caregiverApp.onboarding.childhoodLocation')}
         </label>
         <input
@@ -26,13 +26,13 @@ export function Step3LifeStory({ data, updateData }: Props) {
           type="text"
           value={data.childhoodLocation}
           onChange={(e) => updateData({ childhoodLocation: e.target.value })}
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
+          className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
           placeholder="City, country"
         />
       </div>
 
       <div>
-        <label htmlFor="career" className="block text-sm font-medium text-text-primary mb-1">
+        <label htmlFor="career" className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
           {t('caregiverApp.onboarding.career')}
         </label>
         <input
@@ -40,13 +40,13 @@ export function Step3LifeStory({ data, updateData }: Props) {
           type="text"
           value={data.career}
           onChange={(e) => updateData({ career: e.target.value })}
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
+          className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
           placeholder="Teacher, nurse, engineer..."
         />
       </div>
 
       <div>
-        <label htmlFor="hobbies" className="block text-sm font-medium text-text-primary mb-1">
+        <label htmlFor="hobbies" className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
           {t('caregiverApp.onboarding.hobbies')}
         </label>
         <input
@@ -54,13 +54,13 @@ export function Step3LifeStory({ data, updateData }: Props) {
           type="text"
           value={data.hobbies}
           onChange={(e) => updateData({ hobbies: e.target.value })}
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
+          className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
           placeholder="Gardening, reading, cooking..."
         />
       </div>
 
       <div>
-        <label htmlFor="favoriteMusic" className="block text-sm font-medium text-text-primary mb-1">
+        <label htmlFor="favoriteMusic" className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
           {t('caregiverApp.onboarding.favoriteMusic')}
         </label>
         <input
@@ -68,13 +68,13 @@ export function Step3LifeStory({ data, updateData }: Props) {
           type="text"
           value={data.favoriteMusic}
           onChange={(e) => updateData({ favoriteMusic: e.target.value })}
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
+          className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
           placeholder="Frank Sinatra, classical, folk..."
         />
       </div>
 
       <div>
-        <label htmlFor="favoriteFoods" className="block text-sm font-medium text-text-primary mb-1">
+        <label htmlFor="favoriteFoods" className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
           {t('caregiverApp.onboarding.favoriteFoods')}
         </label>
         <input
@@ -82,13 +82,13 @@ export function Step3LifeStory({ data, updateData }: Props) {
           type="text"
           value={data.favoriteFoods}
           onChange={(e) => updateData({ favoriteFoods: e.target.value })}
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
+          className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
           placeholder="Chocolate cake, pasta, soup..."
         />
       </div>
 
       <div>
-        <label htmlFor="importantPeople" className="block text-sm font-medium text-text-primary mb-1">
+        <label htmlFor="importantPeople" className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
           {t('caregiverApp.onboarding.importantPeople')}
         </label>
         <textarea
@@ -96,13 +96,13 @@ export function Step3LifeStory({ data, updateData }: Props) {
           value={data.importantPeople}
           onChange={(e) => updateData({ importantPeople: e.target.value })}
           rows={2}
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
+          className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
           placeholder="Spouse John, daughter Maria, best friend Anna..."
         />
       </div>
 
       <div>
-        <label htmlFor="keyEvents" className="block text-sm font-medium text-text-primary mb-1">
+        <label htmlFor="keyEvents" className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
           {t('caregiverApp.onboarding.keyEvents')}
         </label>
         <textarea
@@ -110,7 +110,7 @@ export function Step3LifeStory({ data, updateData }: Props) {
           value={data.keyEvents}
           onChange={(e) => updateData({ keyEvents: e.target.value })}
           rows={2}
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
+          className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
           placeholder="Wedding in 1970, moved to London in 1985..."
         />
       </div>

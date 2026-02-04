@@ -226,25 +226,25 @@ export default function ReportsClient({
   return (
     <div className="space-y-6">
       {/* Generate New Report */}
-      <div className="bg-surface-card rounded-xl border border-surface-border p-6">
-        <h2 className="text-lg font-semibold text-text-primary mb-4">Generate New Report</h2>
+      <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-6">
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Generate New Report</h2>
         <div className="flex flex-wrap gap-4 items-end">
           <div>
-            <label className="block text-sm text-text-secondary mb-1">Start Date</label>
+            <label className="block text-sm text-gray-700 dark:text-gray-300 mb-1">Start Date</label>
             <input
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              className="px-3 py-2 border border-surface-border rounded-lg bg-white dark:bg-gray-800 text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
+              className="px-3 py-2 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
             />
           </div>
           <div>
-            <label className="block text-sm text-text-secondary mb-1">End Date</label>
+            <label className="block text-sm text-gray-700 dark:text-gray-300 mb-1">End Date</label>
             <input
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
-              className="px-3 py-2 border border-surface-border rounded-lg bg-white dark:bg-gray-800 text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
+              className="px-3 py-2 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
             />
           </div>
           <button
@@ -260,28 +260,28 @@ export default function ReportsClient({
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Report List */}
         <div className="lg:col-span-1">
-          <div className="bg-surface-card rounded-xl border border-surface-border">
-            <div className="p-4 border-b border-surface-border">
-              <h3 className="font-semibold text-text-primary">Previous Reports</h3>
+          <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700">
+            <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+              <h3 className="font-semibold text-gray-900 dark:text-gray-100">Previous Reports</h3>
             </div>
             {reports.length === 0 ? (
-              <div className="p-4 text-text-muted text-sm">
+              <div className="p-4 text-gray-500 dark:text-gray-400 text-sm">
                 No reports generated yet. Create your first report above!
               </div>
             ) : (
-              <div className="divide-y divide-surface-border">
+              <div className="divide-y divide-gray-200 dark:divide-gray-700">
                 {reports.map((report) => (
                   <button
                     key={report.id}
                     onClick={() => setSelectedReport(report)}
-                    className={`w-full text-left p-4 hover:bg-surface-raised transition-colors ${
+                    className={`w-full text-left p-4 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors ${
                       selectedReport?.id === report.id ? 'bg-brand-50 dark:bg-brand-900/30' : ''
                     }`}
                   >
-                    <p className="font-medium text-text-primary text-sm">
+                    <p className="font-medium text-gray-900 dark:text-gray-100 text-sm">
                       {formatDate(report.period_start)} - {formatDate(report.period_end)}
                     </p>
-                    <p className="text-xs text-text-muted mt-1">
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                       Generated {formatDate(report.generated_at)}
                     </p>
                   </button>
@@ -294,12 +294,12 @@ export default function ReportsClient({
         {/* Report Preview */}
         <div className="lg:col-span-2">
           {selectedReport && content ? (
-            <div className="bg-surface-card rounded-xl border border-surface-border">
-              <div className="p-4 border-b border-surface-border flex items-center justify-between">
-                <h3 className="font-semibold text-text-primary">Report Preview</h3>
+            <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700">
+              <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+                <h3 className="font-semibold text-gray-900 dark:text-gray-100">Report Preview</h3>
                 <button
                   onClick={handlePrint}
-                  className="flex items-center gap-2 px-4 py-2 bg-surface-raised text-text-primary rounded-lg hover:bg-surface-border transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                 >
                   <span>🖨️</span>
                   <span>Print</span>
@@ -308,17 +308,17 @@ export default function ReportsClient({
 
               <div ref={printRef} className="p-6 space-y-6 print:p-8">
                 {/* Report Header */}
-                <div className="text-center border-b border-surface-border pb-6">
-                  <h1 className="text-2xl font-bold text-text-primary mb-2">
+                <div className="text-center border-b border-gray-200 dark:border-gray-700 pb-6">
+                  <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                     MemoGuard Care Summary
                   </h1>
-                  <p className="text-lg text-text-secondary">{patientName}</p>
+                  <p className="text-lg text-gray-700 dark:text-gray-300">{patientName}</p>
                   {patientDateOfBirth && (
-                    <p className="text-sm text-text-muted">
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
                       Date of Birth: {formatDate(patientDateOfBirth)}
                     </p>
                   )}
-                  <p className="text-sm text-text-muted mt-2">
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
                     Period: {formatDate(selectedReport.period_start)} to{' '}
                     {formatDate(selectedReport.period_end)}
                   </p>
@@ -326,36 +326,36 @@ export default function ReportsClient({
 
                 {/* Overview */}
                 <div>
-                  <h2 className="text-lg font-semibold text-text-primary mb-3">Overview</h2>
-                  <p className="text-text-secondary">{content.period_summary}</p>
+                  <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">Overview</h2>
+                  <p className="text-gray-700 dark:text-gray-300">{content.period_summary}</p>
                 </div>
 
                 {/* Mood & Sleep */}
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-surface-raised rounded-lg p-4">
-                    <h3 className="font-medium text-text-primary mb-2">Mood (Self-Reported)</h3>
+                  <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                    <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-2">Mood (Self-Reported)</h3>
                     <p className="text-2xl font-bold text-brand-600">
                       {content.mood_trends.average}/5
                     </p>
-                    <p className="text-sm text-text-muted">average daily rating</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">average daily rating</p>
                     {content.mood_trends.notable_days.length > 0 && (
                       <div className="mt-3">
-                        <p className="text-xs text-text-muted">Notable days:</p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">Notable days:</p>
                         {content.mood_trends.notable_days.slice(0, 3).map((day, i) => (
-                          <p key={i} className="text-xs text-text-secondary">
+                          <p key={i} className="text-xs text-gray-700 dark:text-gray-300">
                             {day.date}: {day.mood}/5 {day.note && `(${day.note})`}
                           </p>
                         ))}
                       </div>
                     )}
                   </div>
-                  <div className="bg-surface-raised rounded-lg p-4">
-                    <h3 className="font-medium text-text-primary mb-2">Sleep (Self-Reported)</h3>
+                  <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                    <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-2">Sleep (Self-Reported)</h3>
                     <p className="text-2xl font-bold text-brand-600">
                       {content.sleep_patterns.average_quality}/3
                     </p>
-                    <p className="text-sm text-text-muted">average quality rating</p>
-                    <p className="text-xs text-text-secondary mt-2">
+                    <p className="text-sm text-gray-500 dark:text-gray-400">average quality rating</p>
+                    <p className="text-xs text-gray-700 dark:text-gray-300 mt-2">
                       Good nights: {content.sleep_patterns.good_nights} &middot;
                       Poor nights: {content.sleep_patterns.poor_nights}
                     </p>
@@ -364,7 +364,7 @@ export default function ReportsClient({
 
                 {/* Activity Completion */}
                 <div>
-                  <h2 className="text-lg font-semibold text-text-primary mb-3">
+                  <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
                     Activity & Routine Completion
                   </h2>
                   <p className="text-3xl font-bold text-brand-600 mb-3">
@@ -372,9 +372,9 @@ export default function ReportsClient({
                   </p>
                   <div className="grid grid-cols-3 gap-3">
                     {Object.entries(content.activity_completion.by_category).map(([cat, rate]) => (
-                      <div key={cat} className="bg-surface-raised rounded-lg p-3">
-                        <p className="text-xs text-text-muted">{getCategoryLabel(cat)}</p>
-                        <p className="text-lg font-semibold text-text-primary">{rate}%</p>
+                      <div key={cat} className="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+                        <p className="text-xs text-gray-500 dark:text-gray-400">{getCategoryLabel(cat)}</p>
+                        <p className="text-lg font-semibold text-gray-900 dark:text-gray-100">{rate}%</p>
                       </div>
                     ))}
                   </div>
@@ -382,14 +382,14 @@ export default function ReportsClient({
 
                 {/* Medication Adherence */}
                 <div>
-                  <h2 className="text-lg font-semibold text-text-primary mb-3">
+                  <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
                     Medication Reminder Adherence
                   </h2>
                   <p className="text-3xl font-bold text-brand-600">
                     {content.medication_adherence.rate}%
                   </p>
                   {content.medication_adherence.missed_count > 0 && (
-                    <p className="text-sm text-text-secondary">
+                    <p className="text-sm text-gray-700 dark:text-gray-300">
                       {content.medication_adherence.missed_count} reminder(s) not marked as complete
                     </p>
                   )}
@@ -398,12 +398,12 @@ export default function ReportsClient({
                 {/* Family Observations */}
                 {content.notable_observations.length > 0 && (
                   <div>
-                    <h2 className="text-lg font-semibold text-text-primary mb-3">
+                    <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
                       Family Observations
                     </h2>
                     <ul className="space-y-2">
                       {content.notable_observations.map((obs, i) => (
-                        <li key={i} className="text-text-secondary text-sm flex gap-2">
+                        <li key={i} className="text-gray-700 dark:text-gray-300 text-sm flex gap-2">
                           <span>•</span>
                           <span>{obs}</span>
                         </li>
@@ -415,12 +415,12 @@ export default function ReportsClient({
                 {/* Caregiver Concerns */}
                 {content.caregiver_concerns.length > 0 && (
                   <div>
-                    <h2 className="text-lg font-semibold text-text-primary mb-3">
+                    <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
                       Caregiver Concerns to Discuss
                     </h2>
                     <ul className="space-y-2">
                       {content.caregiver_concerns.map((concern, i) => (
-                        <li key={i} className="text-text-secondary text-sm flex gap-2">
+                        <li key={i} className="text-gray-700 dark:text-gray-300 text-sm flex gap-2">
                           <span>•</span>
                           <span>{concern}</span>
                         </li>
@@ -430,14 +430,14 @@ export default function ReportsClient({
                 )}
 
                 {/* Disclaimer */}
-                <div className="border-t border-surface-border pt-6 mt-6">
-                  <p className="text-xs text-text-muted italic">
+                <div className="border-t border-gray-200 dark:border-gray-700 pt-6 mt-6">
+                  <p className="text-xs text-gray-500 dark:text-gray-400 italic">
                     This summary is based on self-reported wellness data collected via the
                     MemoGuard app. It is not a clinical assessment. All data should be discussed
                     with healthcare providers in the context of the patient&apos;s overall medical
                     history and current condition.
                   </p>
-                  <p className="text-xs text-text-muted mt-2">
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
                     Generated on {new Date().toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'long',
@@ -450,8 +450,8 @@ export default function ReportsClient({
               </div>
             </div>
           ) : (
-            <div className="bg-surface-card rounded-xl border border-surface-border p-8 text-center">
-              <p className="text-text-muted">
+            <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-8 text-center">
+              <p className="text-gray-500 dark:text-gray-400">
                 Select a report from the list or generate a new one to preview it here.
               </p>
             </div>

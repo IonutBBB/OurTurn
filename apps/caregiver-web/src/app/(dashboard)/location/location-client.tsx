@@ -112,13 +112,13 @@ function SafeZoneModal({
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="bg-surface-card rounded-xl border border-surface-border p-6 w-full max-w-md">
-        <h2 className="text-xl font-semibold text-text-primary mb-4">
+      <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-6 w-full max-w-md">
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
           {zone ? 'Edit Safe Zone' : 'Add Safe Zone'}
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-text-primary mb-1">
+            <label className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
               Name
             </label>
             <input
@@ -126,13 +126,13 @@ function SafeZoneModal({
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g., Home, Doctor's Office"
-              className="w-full px-4 py-2 border border-surface-border rounded-lg bg-white dark:bg-gray-800 text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
+              className="w-full px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
               required
             />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-text-primary mb-1">
+              <label className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
                 Latitude
               </label>
               <input
@@ -141,12 +141,12 @@ function SafeZoneModal({
                 value={latitude}
                 onChange={(e) => setLatitude(e.target.value)}
                 placeholder="51.5074"
-                className="w-full px-4 py-2 border border-surface-border rounded-lg bg-white dark:bg-gray-800 text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
+                className="w-full px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
                 required
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-text-primary mb-1">
+              <label className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
                 Longitude
               </label>
               <input
@@ -155,13 +155,13 @@ function SafeZoneModal({
                 value={longitude}
                 onChange={(e) => setLongitude(e.target.value)}
                 placeholder="-0.1278"
-                className="w-full px-4 py-2 border border-surface-border rounded-lg bg-white dark:bg-gray-800 text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
+                className="w-full px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
                 required
               />
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium text-text-primary mb-1">
+            <label className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
               Radius (meters)
             </label>
             <input
@@ -171,10 +171,10 @@ function SafeZoneModal({
               placeholder="200"
               min="50"
               max="5000"
-              className="w-full px-4 py-2 border border-surface-border rounded-lg bg-white dark:bg-gray-800 text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-500"
+              className="w-full px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-brand-500"
               required
             />
-            <p className="text-xs text-text-muted mt-1">
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
               Recommended: 100-500 meters for typical locations
             </p>
           </div>
@@ -182,7 +182,7 @@ function SafeZoneModal({
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-4 py-2 border border-surface-border rounded-lg text-text-secondary hover:bg-gray-50 dark:hover:bg-gray-800"
+              className="flex-1 px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
             >
               Cancel
             </button>
@@ -326,13 +326,13 @@ export default function LocationClient({
   if (!apiKey) {
     return (
       <div>
-        <h1 className="text-2xl font-bold text-text-primary mb-6">Location & Safety</h1>
-        <div className="bg-surface-card rounded-xl border border-surface-border p-8 text-center">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">Location & Safety</h1>
+        <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-8 text-center">
           <span className="text-4xl mb-4 block">🗺️</span>
-          <p className="text-text-muted mb-2">
+          <p className="text-gray-500 dark:text-gray-400 mb-2">
             Google Maps API key not configured.
           </p>
-          <p className="text-sm text-text-muted">
+          <p className="text-sm text-gray-500 dark:text-gray-400">
             Add <code className="bg-gray-100 dark:bg-gray-800 px-1 rounded">NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> to your environment variables.
           </p>
         </div>
@@ -345,7 +345,7 @@ export default function LocationClient({
   return (
     <APIProvider apiKey={apiKey}>
       <div>
-        <h1 className="text-2xl font-bold text-text-primary mb-6">Location & Safety</h1>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">Location & Safety</h1>
 
         {/* Alert Banner */}
         {unacknowledgedAlerts.length > 0 && (
@@ -368,10 +368,10 @@ export default function LocationClient({
                       {ALERT_TYPE_ICONS[alert.type]}
                     </span>
                     <div>
-                      <p className="font-medium text-text-primary">
+                      <p className="font-medium text-gray-900 dark:text-gray-100">
                         {ALERT_TYPE_LABELS[alert.type]}
                       </p>
-                      <p className="text-sm text-text-muted">
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
                         {formatDateTime(alert.triggered_at)}
                         {alert.location_label && ` - ${alert.location_label}`}
                       </p>
@@ -391,15 +391,15 @@ export default function LocationClient({
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Map Section */}
-          <div className="lg:col-span-2 bg-surface-card rounded-xl border border-surface-border overflow-hidden">
-            <div className="p-4 border-b border-surface-border">
+          <div className="lg:col-span-2 bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <div className="p-4 border-b border-gray-200 dark:border-gray-700">
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="font-semibold text-text-primary">
+                  <h2 className="font-semibold text-gray-900 dark:text-gray-100">
                     {patientName}&apos;s Location
                   </h2>
                   {latestLocation && (
-                    <p className="text-sm text-text-muted">
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
                       Last updated: {formatDateTime(latestLocation.timestamp)}
                       {latestLocation.location_label && latestLocation.location_label !== 'unknown' && (
                         <> - {latestLocation.location_label}</>
@@ -407,13 +407,13 @@ export default function LocationClient({
                     </p>
                   )}
                   {!latestLocation && (
-                    <p className="text-sm text-text-muted">No location data yet</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">No location data yet</p>
                   )}
                 </div>
                 {latestLocation && (
                   <div className="flex items-center gap-2 text-sm">
                     <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                    <span className="text-text-secondary">Live</span>
+                    <span className="text-gray-700 dark:text-gray-300">Live</span>
                   </div>
                 )}
               </div>
@@ -481,9 +481,9 @@ export default function LocationClient({
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Safe Zones Card */}
-            <div className="bg-surface-card rounded-xl border border-surface-border p-4">
+            <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-4">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="font-semibold text-text-primary">Safe Zones</h2>
+                <h2 className="font-semibold text-gray-900 dark:text-gray-100">Safe Zones</h2>
                 <button
                   onClick={() => {
                     setEditingZone(null);
@@ -495,7 +495,7 @@ export default function LocationClient({
                 </button>
               </div>
               {safeZones.length === 0 ? (
-                <p className="text-sm text-text-muted text-center py-4">
+                <p className="text-sm text-gray-500 dark:text-gray-400 text-center py-4">
                   No safe zones configured yet.
                   <br />
                   Add zones to get alerts when {patientName} leaves.
@@ -508,8 +508,8 @@ export default function LocationClient({
                       className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg"
                     >
                       <div>
-                        <p className="font-medium text-text-primary">{zone.name}</p>
-                        <p className="text-xs text-text-muted">
+                        <p className="font-medium text-gray-900 dark:text-gray-100">{zone.name}</p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">
                           {zone.radius_meters}m radius
                         </p>
                       </div>
@@ -519,14 +519,14 @@ export default function LocationClient({
                             setEditingZone(zone);
                             setIsModalOpen(true);
                           }}
-                          className="text-text-muted hover:text-text-primary"
+                          className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
                           title="Edit"
                         >
                           ✏️
                         </button>
                         <button
                           onClick={() => handleDeleteSafeZone(zone.id)}
-                          className="text-text-muted hover:text-red-600"
+                          className="text-gray-500 dark:text-gray-400 hover:text-red-600"
                           title="Delete"
                         >
                           🗑️
@@ -539,12 +539,12 @@ export default function LocationClient({
             </div>
 
             {/* Recent Alerts Card */}
-            <div className="bg-surface-card rounded-xl border border-surface-border p-4">
-              <h2 className="font-semibold text-text-primary mb-4">
+            <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-4">
+              <h2 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">
                 Recent Alerts (24h)
               </h2>
               {alerts.length === 0 ? (
-                <p className="text-sm text-text-muted text-center py-4">
+                <p className="text-sm text-gray-500 dark:text-gray-400 text-center py-4">
                   No alerts in the last 24 hours. All is well!
                 </p>
               ) : (
@@ -561,14 +561,14 @@ export default function LocationClient({
                           {ALERT_TYPE_ICONS[alert.type]}
                         </span>
                         <div className="flex-1 min-w-0">
-                          <p className="font-medium text-text-primary text-sm">
+                          <p className="font-medium text-gray-900 dark:text-gray-100 text-sm">
                             {ALERT_TYPE_LABELS[alert.type]}
                           </p>
-                          <p className="text-xs text-text-muted">
+                          <p className="text-xs text-gray-500 dark:text-gray-400">
                             {formatDateTime(alert.triggered_at)}
                           </p>
                           {alert.location_label && (
-                            <p className="text-xs text-text-secondary truncate">
+                            <p className="text-xs text-gray-700 dark:text-gray-300 truncate">
                               {alert.location_label}
                             </p>
                           )}
@@ -584,12 +584,12 @@ export default function LocationClient({
             </div>
 
             {/* Location History Timeline */}
-            <div className="bg-surface-card rounded-xl border border-surface-border p-4">
-              <h2 className="font-semibold text-text-primary mb-4">
+            <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-4">
+              <h2 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">
                 Today&apos;s Timeline
               </h2>
               {locationHistory.length === 0 ? (
-                <p className="text-sm text-text-muted text-center py-4">
+                <p className="text-sm text-gray-500 dark:text-gray-400 text-center py-4">
                   No location updates recorded today.
                 </p>
               ) : (
@@ -608,11 +608,11 @@ export default function LocationClient({
                         }`}
                         onClick={() => setSelectedHistoryPoint(loc)}
                       >
-                        <span className="text-xs text-text-muted w-16">
+                        <span className="text-xs text-gray-500 dark:text-gray-400 w-16">
                           {formatTime(loc.timestamp)}
                         </span>
                         <div className="flex-1">
-                          <p className="text-sm text-text-primary">
+                          <p className="text-sm text-gray-900 dark:text-gray-100">
                             {loc.location_label !== 'unknown'
                               ? loc.location_label
                               : 'Location update'}
@@ -628,12 +628,12 @@ export default function LocationClient({
 
         {/* Home Address Info */}
         {homeAddress && (
-          <div className="mt-6 bg-surface-card rounded-xl border border-surface-border p-4">
+          <div className="mt-6 bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-4">
             <div className="flex items-center gap-3">
               <span className="text-2xl">🏠</span>
               <div>
-                <p className="font-medium text-text-primary">Home Address</p>
-                <p className="text-sm text-text-secondary">{homeAddress}</p>
+                <p className="font-medium text-gray-900 dark:text-gray-100">Home Address</p>
+                <p className="text-sm text-gray-700 dark:text-gray-300">{homeAddress}</p>
               </div>
             </div>
           </div>

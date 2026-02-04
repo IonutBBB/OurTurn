@@ -34,10 +34,10 @@ export function Step6CareCode({ data }: Props) {
       </div>
 
       <div>
-        <h3 className="text-xl font-semibold text-text-primary mb-2">
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
           You&apos;re all set!
         </h3>
-        <p className="text-text-secondary">
+        <p className="text-gray-700 dark:text-gray-300">
           {t('caregiverApp.onboarding.careCodeInstructions')}
         </p>
       </div>
@@ -56,7 +56,7 @@ export function Step6CareCode({ data }: Props) {
       <button
         type="button"
         onClick={copyCode}
-        className="inline-flex items-center gap-2 px-6 py-3 border border-surface-border rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors text-text-primary"
+        className="inline-flex items-center gap-2 px-6 py-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors text-gray-900 dark:text-gray-100"
       >
         {copied ? (
           <>
@@ -73,8 +73,8 @@ export function Step6CareCode({ data }: Props) {
 
       {/* Instructions */}
       <div className="text-left bg-gray-50 dark:bg-gray-800 rounded-lg p-4 space-y-3">
-        <h4 className="font-medium text-text-primary">Next steps:</h4>
-        <ol className="space-y-2 text-sm text-text-secondary">
+        <h4 className="font-medium text-gray-900 dark:text-gray-100">Next steps:</h4>
+        <ol className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
           <li className="flex gap-2">
             <span className="font-semibold text-brand-600">1.</span>
             Install MemoGuard on {data.patientName}&apos;s phone (iOS or Android)

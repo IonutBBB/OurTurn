@@ -43,7 +43,7 @@ export function Step1AboutYou({ data, updateData }: Props) {
   return (
     <div className="space-y-6">
       <div>
-        <label htmlFor="caregiverName" className="block text-sm font-medium text-text-primary mb-1">
+        <label htmlFor="caregiverName" className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
           {t('caregiverApp.onboarding.yourName')} *
         </label>
         <input
@@ -52,13 +52,13 @@ export function Step1AboutYou({ data, updateData }: Props) {
           value={data.caregiverName}
           onChange={(e) => updateData({ caregiverName: e.target.value })}
           required
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
+          className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
           placeholder="Your name"
         />
       </div>
 
       <div>
-        <label htmlFor="relationship" className="block text-sm font-medium text-text-primary mb-1">
+        <label htmlFor="relationship" className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
           {t('caregiverApp.onboarding.relationship')} *
         </label>
         <select
@@ -66,7 +66,7 @@ export function Step1AboutYou({ data, updateData }: Props) {
           value={data.relationship}
           onChange={(e) => updateData({ relationship: e.target.value })}
           required
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
+          className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
         >
           <option value="">{t('caregiverApp.onboarding.selectRelationship')}</option>
           {relationships.map((rel) => (
@@ -78,7 +78,7 @@ export function Step1AboutYou({ data, updateData }: Props) {
       </div>
 
       <div>
-        <label htmlFor="country" className="block text-sm font-medium text-text-primary mb-1">
+        <label htmlFor="country" className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
           {t('caregiverApp.onboarding.country')} *
         </label>
         <select
@@ -86,7 +86,7 @@ export function Step1AboutYou({ data, updateData }: Props) {
           value={data.country}
           onChange={(e) => updateData({ country: e.target.value })}
           required
-          className="w-full px-4 py-3 border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-text-primary"
+          className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
         >
           <option value="">Select country</option>
           {countries.map((country) => (

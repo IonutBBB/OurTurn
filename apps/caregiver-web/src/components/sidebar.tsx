@@ -26,12 +26,12 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
 
   return (
     <aside
-      className="fixed inset-y-0 left-0 z-50 w-64 bg-white/95 dark:bg-[#1E1E1E] backdrop-blur-xl border-r border-surface-border flex flex-col transition-colors duration-200"
+      className="fixed inset-y-0 left-0 z-50 w-64 bg-white/95 dark:bg-[#1E1E1E] backdrop-blur-xl border-r border-gray-200 dark:border-gray-700 flex flex-col transition-colors duration-200"
       role="navigation"
       aria-label="Main navigation"
     >
       {/* Logo */}
-      <div className="h-16 flex items-center px-6 border-b border-surface-border">
+      <div className="h-16 flex items-center px-6 border-b border-gray-200 dark:border-gray-700">
         <Link
           href="/dashboard"
           className="text-xl font-bold text-brand-600 dark:text-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2 rounded"
@@ -81,7 +81,7 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
       </div>
 
       {/* User section */}
-      <div className="p-4 border-t border-surface-border">
+      <div className="p-4 border-t border-gray-200 dark:border-gray-700">
         <Link
           href="/settings"
           className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2"

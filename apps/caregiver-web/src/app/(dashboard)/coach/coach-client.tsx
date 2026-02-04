@@ -268,22 +268,22 @@ export default function CoachClient({
         {messages.length === 0 ? (
           <div className="text-center py-12">
             <div className="text-4xl mb-4">💙</div>
-            <h2 className="text-xl font-semibold text-text-primary mb-2">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
               Hi {caregiverName}!
             </h2>
-            <p className="text-text-secondary mb-6 max-w-md mx-auto">
+            <p className="text-gray-700 dark:text-gray-300 mb-6 max-w-md mx-auto">
               I&apos;m here to help you care for {patientName}. Ask me anything
               about daily care, activities, or managing challenging situations.
             </p>
             <div className="space-y-2">
-              <p className="text-sm text-text-muted mb-3">Try asking:</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">Try asking:</p>
               {suggestedPrompts.map((prompt, index) => (
                 <button
                   key={index}
                   onClick={() => setInput(prompt)}
-                  className="block w-full max-w-md mx-auto text-left px-4 py-3 bg-surface-card border border-surface-border rounded-lg hover:bg-brand-50 hover:border-brand-200 transition-colors"
+                  className="block w-full max-w-md mx-auto text-left px-4 py-3 bg-white dark:bg-[#1E1E1E] border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/30 hover:border-brand-200 dark:hover:border-brand-700 transition-colors"
                 >
-                  <span className="text-text-secondary">{prompt}</span>
+                  <span className="text-gray-700 dark:text-gray-300">{prompt}</span>
                 </button>
               ))}
             </div>
@@ -306,7 +306,7 @@ export default function CoachClient({
                   className={`max-w-[80%] rounded-2xl px-4 py-3 ${
                     message.role === 'user'
                       ? 'bg-brand-600 text-white'
-                      : 'bg-surface-card border border-surface-border'
+                      : 'bg-white dark:bg-[#1E1E1E] border border-gray-200 dark:border-gray-700'
                   }`}
                 >
                   {message.role === 'assistant' && (
@@ -320,7 +320,7 @@ export default function CoachClient({
                   <div
                     className={`whitespace-pre-wrap ${
                       message.role === 'assistant'
-                        ? 'text-text-primary'
+                        ? 'text-gray-900 dark:text-gray-100'
                         : 'text-white'
                     }`}
                   >
@@ -403,7 +403,7 @@ export default function CoachClient({
             onKeyDown={handleKeyDown}
             placeholder={`Ask about caring for ${patientName}...`}
             rows={1}
-            className="w-full px-4 py-3 pr-12 border border-surface-border rounded-xl bg-surface-card text-text-primary placeholder-text-muted resize-none focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+            className="w-full px-4 py-3 pr-12 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-[#1E1E1E] text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 resize-none focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
             style={{ minHeight: '48px', maxHeight: '120px' }}
             disabled={isLoading}
           />
@@ -426,7 +426,7 @@ export default function CoachClient({
       </form>
 
       {/* Disclaimer */}
-      <p className="mt-3 text-xs text-text-muted text-center">
+      <p className="mt-3 text-xs text-gray-500 dark:text-gray-400 text-center">
         Care Coach provides general guidance only. Always consult healthcare
         professionals for medical advice.
       </p>
