@@ -55,7 +55,7 @@ export default async function Home() {
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-100/60 dark:bg-brand-100/20 border border-brand-200/60">
                   <span className="w-2 h-2 rounded-full bg-status-success animate-warm-pulse" />
                   <span className="text-xs font-semibold text-brand-700 dark:text-brand-600 tracking-wide uppercase">
-                    Helping 2,400+ families
+                    Supporting families daily
                   </span>
                 </div>
 
@@ -105,7 +105,7 @@ export default async function Home() {
                     ))}
                   </div>
                   <div className="text-sm text-text-muted">
-                    <span className="font-semibold text-text-secondary">4.8 / 5</span> from family caregivers
+                    <span className="font-semibold text-text-secondary">Trusted</span> by family caregivers
                   </div>
                 </div>
               </div>
@@ -278,7 +278,7 @@ export default async function Home() {
                 <span className="heading-accent">alone</span>
               </h2>
               <p className="text-text-secondary text-lg max-w-lg mx-auto leading-relaxed">
-                Join thousands of families who use MemoGuard to bring structure,
+                Join families who use MemoGuard to bring structure,
                 safety, and calm to their daily lives with dementia.
               </p>
               <div className="flex flex-wrap items-center justify-center gap-4 pt-4">

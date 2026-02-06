@@ -70,7 +70,7 @@ export default function WellbeingScreen() {
 
         setRecentLogs(recent || []);
       } catch (err) {
-        console.error('Failed to load wellbeing data:', err);
+        if (__DEV__) console.error('Failed to load wellbeing data:', err);
       } finally {
         setLoading(false);
       }
@@ -118,7 +118,7 @@ export default function WellbeingScreen() {
       setShowSaved(true);
       setTimeout(() => setShowSaved(false), 2000);
     } catch (err) {
-      console.error('Failed to save:', err);
+      if (__DEV__) console.error('Failed to save:', err);
     }
   }, [mood, selfCare, notes, todayLog, caregiver?.id, today]);
 

@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
     const { data: caregiver } = await supabase
       .from('caregivers')
       .select('id, household_id')
-      .eq('user_id', user.id)
+      .eq('id', user.id)
       .eq('household_id', householdId)
       .single();
 

@@ -32,21 +32,23 @@ export async function initializeRevenueCat(userId?: string): Promise<void> {
   const apiKey = Platform.OS === 'ios' ? REVENUECAT_APPLE_API_KEY : REVENUECAT_GOOGLE_API_KEY;
 
   if (!apiKey) {
-    console.warn('RevenueCat API key not configured for', Platform.OS);
+    if (__DEV__) console.warn('RevenueCat API key not configured for', Platform.OS);
     return;
   }
 
   try {
-    Purchases.setLogLevel(LOG_LEVEL.DEBUG);
+    if (__DEV__) {
+      Purchases.setLogLevel(LOG_LEVEL.DEBUG);
+    }
 
     await Purchases.configure({
       apiKey,
       appUserID: userId || null, // null = anonymous, will be updated on login
     });
 
-    console.log('RevenueCat initialized successfully');
+    if (__DEV__) console.log('RevenueCat initialized successfully');
   } catch (error) {
-    console.error('Failed to initialize RevenueCat:', error);
+    if (__DEV__) console.error('Failed to initialize RevenueCat:', error);
   }
 }
 
@@ -58,7 +60,7 @@ export async function loginRevenueCat(userId: string): Promise<CustomerInfo | nu
     const { customerInfo } = await Purchases.logIn(userId);
     return customerInfo;
   } catch (error) {
-    console.error('Failed to log in to RevenueCat:', error);
+    if (__DEV__) console.error('Failed to log in to RevenueCat:', error);
     return null;
   }
 }
@@ -70,7 +72,7 @@ export async function logoutRevenueCat(): Promise<void> {
   try {
     await Purchases.logOut();
   } catch (error) {
-    console.error('Failed to log out from RevenueCat:', error);
+    if (__DEV__) console.error('Failed to log out from RevenueCat:', error);
   }
 }
 
@@ -81,7 +83,7 @@ export async function getCustomerInfo(): Promise<CustomerInfo | null> {
   try {
     return await Purchases.getCustomerInfo();
   } catch (error) {
-    console.error('Failed to get customer info:', error);
+    if (__DEV__) console.error('Failed to get customer info:', error);
     return null;
   }
 }
@@ -94,7 +96,7 @@ export async function checkIsPlus(): Promise<boolean> {
     const customerInfo = await Purchases.getCustomerInfo();
     return customerInfo.entitlements.active[PLUS_ENTITLEMENT_ID]?.isActive === true;
   } catch (error) {
-    console.error('Failed to check subscription status:', error);
+    if (__DEV__) console.error('Failed to check subscription status:', error);
     return false;
   }
 }
@@ -107,7 +109,7 @@ export async function getOfferings(): Promise<PurchasesOffering | null> {
     const offerings = await Purchases.getOfferings();
     return offerings.current;
   } catch (error) {
-    console.error('Failed to get offerings:', error);
+    if (__DEV__) console.error('Failed to get offerings:', error);
     return null;
   }
 }
@@ -137,7 +139,7 @@ export async function purchasePackage(
       return { success: false, error: 'Purchase cancelled' };
     }
 
-    console.error('Purchase failed:', error);
+    if (__DEV__) console.error('Purchase failed:', error);
     return { success: false, error: error.message || 'Purchase failed' };
   }
 }
@@ -159,7 +161,7 @@ export async function restorePurchases(
 
     return { success: true, isPlus };
   } catch (error: any) {
-    console.error('Restore purchases failed:', error);
+    if (__DEV__) console.error('Restore purchases failed:', error);
     return { success: false, isPlus: false, error: error.message || 'Restore failed' };
   }
 }
@@ -182,12 +184,12 @@ export async function syncSubscriptionToSupabase(
       .eq('id', householdId);
 
     if (error) {
-      console.error('Failed to sync subscription to Supabase:', error);
+      if (__DEV__) console.error('Failed to sync subscription to Supabase:', error);
     } else {
-      console.log('Subscription synced to Supabase:', status, platform);
+      if (__DEV__) console.log('Subscription synced to Supabase:', status, platform);
     }
   } catch (error) {
-    console.error('Error syncing subscription:', error);
+    if (__DEV__) console.error('Error syncing subscription:', error);
   }
 }
 

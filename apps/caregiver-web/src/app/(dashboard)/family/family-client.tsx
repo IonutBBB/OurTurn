@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
 import type {
   Caregiver,
@@ -16,10 +17,16 @@ interface FamilyClientProps {
   initialJournalEntries: (CareJournalEntry & { author_name?: string })[];
 }
 
-const ENTRY_TYPE_LABELS: Record<JournalEntryType, { emoji: string; label: string }> = {
-  observation: { emoji: '👀', label: 'Observation' },
-  note: { emoji: '📝', label: 'Note' },
-  milestone: { emoji: '⭐', label: 'Milestone' },
+const ENTRY_TYPE_EMOJIS: Record<JournalEntryType, string> = {
+  observation: '👀',
+  note: '📝',
+  milestone: '⭐',
+};
+
+const ENTRY_TYPE_KEYS: Record<JournalEntryType, string> = {
+  observation: 'caregiverApp.family.observation',
+  note: 'caregiverApp.family.note',
+  milestone: 'caregiverApp.family.milestone',
 };
 
 export default function FamilyClient({
@@ -29,6 +36,7 @@ export default function FamilyClient({
   initialCaregivers,
   initialJournalEntries,
 }: FamilyClientProps) {
+  const { t } = useTranslation();
   const supabase = createBrowserClient();
   const [caregivers, setCaregivers] = useState<Caregiver[]>(initialCaregivers);
   const [journalEntries, setJournalEntries] = useState<(CareJournalEntry & { author_name?: string })[]>(
@@ -122,7 +130,7 @@ export default function FamilyClient({
       setNewEntryContent('');
       setNewEntryType('observation');
     } catch (err) {
-      console.error('Failed to add journal entry:', err);
+      // Failed to add journal entry
     } finally {
       setIsSubmitting(false);
     }
@@ -142,7 +150,7 @@ export default function FamilyClient({
     if (diffDays === 0) {
       return date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
     } else if (diffDays === 1) {
-      return 'Yesterday';
+      return t('common.yesterday');
     } else if (diffDays < 7) {
       return date.toLocaleDateString('en-US', { weekday: 'long' });
     } else {
@@ -162,7 +170,7 @@ export default function FamilyClient({
               : 'border-transparent text-text-muted hover:text-text-secondary'
           }`}
         >
-          Family Members
+          {t('caregiverApp.family.familyMembers')}
         </button>
         <button
           onClick={() => setActiveTab('journal')}
@@ -172,7 +180,7 @@ export default function FamilyClient({
               : 'border-transparent text-text-muted hover:text-text-secondary'
           }`}
         >
-          Care Journal
+          {t('caregiverApp.family.journal')}
         </button>
       </div>
 
@@ -183,15 +191,15 @@ export default function FamilyClient({
           <div className="bg-brand-50 dark:bg-brand-900/20 rounded-[20px] border border-brand-200 dark:border-brand-800 p-6">
             <div className="flex items-start justify-between">
               <div>
-                <h3 className="font-semibold text-text-primary mb-1">Invite Family Members</h3>
+                <h3 className="font-semibold text-text-primary mb-1">{t('caregiverApp.family.inviteMember')}</h3>
                 <p className="text-sm text-text-secondary mb-4">
-                  Share your Care Code to let other family members join your care circle.
+                  {t('caregiverApp.family.inviteDesc')}
                 </p>
                 <button
                   onClick={() => setShowCareCode(!showCareCode)}
                   className="btn-primary inline-flex items-center gap-2"
                 >
-                  <span>{showCareCode ? 'Hide' : 'Show'} Care Code</span>
+                  <span>{showCareCode ? t('caregiverApp.family.hideCareCode') : t('caregiverApp.family.showCareCode')}</span>
                 </button>
               </div>
               {showCareCode && (
@@ -227,7 +235,7 @@ export default function FamilyClient({
           <div className="card-paper">
             <div className="p-4 border-b border-surface-border">
               <h3 className="font-semibold text-text-primary">
-                Family Members ({caregivers.length})
+                {t('caregiverApp.family.familyMembersCount', { count: caregivers.length })}
               </h3>
             </div>
             <div className="divide-y divide-surface-border">
@@ -243,17 +251,17 @@ export default function FamilyClient({
                       <span className="font-medium text-text-primary">{caregiver.name}</span>
                       {caregiver.id === currentCaregiverId && (
                         <span className="text-xs bg-brand-100 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 px-2 py-0.5 rounded-full">
-                          You
+                          {t('common.you')}
                         </span>
                       )}
                       {caregiver.role === 'primary' && (
                         <span className="text-xs bg-status-amber-bg text-status-amber px-2 py-0.5 rounded-full">
-                          Primary
+                          {t('common.primary')}
                         </span>
                       )}
                     </div>
                     <p className="text-sm text-text-muted">
-                      {caregiver.relationship || 'Family member'} &middot; {caregiver.email}
+                      {caregiver.relationship || t('caregiverApp.family.familyMember')} &middot; {caregiver.email}
                     </p>
                   </div>
                   <div className="text-right">
@@ -281,14 +289,13 @@ export default function FamilyClient({
             <textarea
               value={newEntryContent}
               onChange={(e) => setNewEntryContent(e.target.value)}
-              placeholder="Add a note, observation, or milestone..."
+              placeholder={t('caregiverApp.family.journalPlaceholder')}
               className="input-warm w-full resize-none"
               rows={3}
             />
             <div className="flex items-center justify-between mt-3">
               <div className="flex gap-2">
-                {(Object.keys(ENTRY_TYPE_LABELS) as JournalEntryType[]).map((type) => {
-                  const { emoji, label } = ENTRY_TYPE_LABELS[type];
+                {(Object.keys(ENTRY_TYPE_EMOJIS) as JournalEntryType[]).map((type) => {
                   return (
                     <button
                       key={type}
@@ -300,8 +307,8 @@ export default function FamilyClient({
                           : 'card-inset text-text-secondary hover:bg-brand-50 dark:hover:bg-surface-elevated'
                       }`}
                     >
-                      <span>{emoji}</span>
-                      <span>{label}</span>
+                      <span>{ENTRY_TYPE_EMOJIS[type]}</span>
+                      <span>{t(ENTRY_TYPE_KEYS[type])}</span>
                     </button>
                   );
                 })}
@@ -311,7 +318,7 @@ export default function FamilyClient({
                 disabled={!newEntryContent.trim() || isSubmitting}
                 className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? 'Posting...' : 'Post'}
+                {isSubmitting ? t('common.posting') : t('common.post')}
               </button>
             </div>
           </form>
@@ -321,33 +328,32 @@ export default function FamilyClient({
             {journalEntries.length === 0 ? (
               <div className="card-paper p-8 text-center">
                 <p className="text-text-muted">
-                  No journal entries yet. Start documenting your care journey!
+                  {t('caregiverApp.family.noJournalEntries')}
                 </p>
               </div>
             ) : (
               journalEntries.map((entry) => {
-                const typeInfo = ENTRY_TYPE_LABELS[entry.entry_type as JournalEntryType] || {
-                  emoji: '📝',
-                  label: 'Note',
-                };
+                const entryType = entry.entry_type as JournalEntryType;
+                const emoji = ENTRY_TYPE_EMOJIS[entryType] || '📝';
+                const labelKey = ENTRY_TYPE_KEYS[entryType] || 'caregiverApp.family.note';
                 return (
                   <div
                     key={entry.id}
                     className="card-paper p-4"
                   >
                     <div className="flex items-start gap-3">
-                      <span className="text-2xl">{typeInfo.emoji}</span>
+                      <span className="text-2xl">{emoji}</span>
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-2">
                           <span className="font-medium text-text-primary">
-                            {entry.author_name || 'Unknown'}
+                            {entry.author_name || t('common.unknown')}
                           </span>
                           <span className="text-text-muted">&middot;</span>
                           <span className="text-sm text-text-muted">
                             {formatDate(entry.created_at)}
                           </span>
                           <span className="text-xs card-inset text-text-secondary px-2 py-0.5 rounded-full">
-                            {typeInfo.label}
+                            {t(labelKey)}
                           </span>
                         </div>
                         <p className="text-text-primary whitespace-pre-wrap">{entry.content}</p>

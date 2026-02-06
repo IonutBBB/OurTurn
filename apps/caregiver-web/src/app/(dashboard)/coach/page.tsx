@@ -1,5 +1,6 @@
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import CoachClient from './coach-client';
+import en from '../../../../locales/en.json';
 
 export default async function CoachPage() {
   const supabase = await createServerClient();
@@ -20,7 +21,9 @@ export default async function CoachPage() {
     .single();
 
   const household = caregiver?.households;
-  const patient = household?.patients?.[0];
+  const patient = Array.isArray(household?.patients) ? household?.patients?.[0] : household?.patients;
+
+  const t = en.caregiverApp;
 
   if (!household || !patient) {
     return (
@@ -29,18 +32,18 @@ export default async function CoachPage() {
           <h1 className="heading-display text-2xl">
             Care <span className="heading-accent">Coach</span>
           </h1>
-          <p className="text-text-secondary text-sm mt-1">Get personalized guidance and support</p>
+          <p className="text-text-secondary text-sm mt-1">{t.coach.pageSubtitleGeneric}</p>
         </div>
         <div className="card-paper p-12 text-center max-w-lg mx-auto">
           <div className="w-16 h-16 rounded-2xl bg-brand-100/60 dark:bg-brand-100/20 flex items-center justify-center mx-auto mb-5">
             <span className="text-3xl">🤗</span>
           </div>
-          <h2 className="text-lg font-display font-bold text-text-primary mb-2">Complete Setup First</h2>
+          <h2 className="text-lg font-display font-bold text-text-primary mb-2">{t.coach.completeSetupFirst}</h2>
           <p className="text-sm text-text-secondary mb-6 leading-relaxed">
-            Set up your care profile to get personalized AI coaching tailored to your situation.
+            {t.coach.setupDesc}
           </p>
           <a href="/onboarding" className="btn-primary inline-flex items-center">
-            Start Onboarding
+            {t.coach.startOnboarding}
           </a>
         </div>
       </div>
@@ -63,7 +66,7 @@ export default async function CoachPage() {
         <h1 className="heading-display text-2xl">
           Care <span className="heading-accent">Coach</span>
         </h1>
-        <p className="text-text-secondary text-sm mt-1">Personalized guidance for caring for {patient.name}</p>
+        <p className="text-text-secondary text-sm mt-1">{t.coach.pageSubtitle.replace('{{name}}', patient.name)}</p>
       </div>
       <CoachClient
         householdId={household.id}

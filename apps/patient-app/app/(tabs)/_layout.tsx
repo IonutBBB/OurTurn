@@ -3,6 +3,7 @@ import { Tabs, useRouter } from 'expo-router';
 import { View, Text, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../../src/stores/auth-store';
+import { ErrorBoundary } from '../../src/components/error-boundary';
 import { COLORS, FONTS, SHADOWS } from '../../src/theme';
 
 interface TabIconProps {
@@ -33,6 +34,7 @@ export default function TabsLayout() {
   }, [isAuthenticated, isInitialized, router]);
 
   return (
+    <ErrorBoundary>
     <Tabs
       screenOptions={{
         headerShown: false,
@@ -69,6 +71,7 @@ export default function TabsLayout() {
         }}
       />
     </Tabs>
+    </ErrorBoundary>
   );
 }
 

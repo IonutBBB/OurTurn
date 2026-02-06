@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import { DashboardRealtime, JournalCard } from './dashboard-client';
+import en from '../../../../locales/en.json';
 
 function DashboardSkeleton() {
   return (
@@ -53,11 +54,13 @@ async function DashboardContent() {
     .single();
 
   const household = caregiver?.households;
-  const patient = household?.patients?.[0];
+  const patient = Array.isArray(household?.patients) ? household?.patients?.[0] : household?.patients;
+
+  const t = en.caregiverApp;
 
   const today = new Date();
   const timeOfDay = today.getHours() < 12 ? 'morning' : today.getHours() < 18 ? 'afternoon' : 'evening';
-  const greeting = timeOfDay === 'morning' ? 'Good morning' : timeOfDay === 'afternoon' ? 'Good afternoon' : 'Good evening';
+  const greeting = timeOfDay === 'morning' ? t.dashboard.greetingMorning : timeOfDay === 'afternoon' ? t.dashboard.greetingAfternoon : t.dashboard.greetingEvening;
 
   const todayStr = new Date().toISOString().split('T')[0];
 
@@ -78,18 +81,29 @@ async function DashboardContent() {
     .single();
 
   const moodMap: Record<number, { emoji: string; label: string }> = {
-    1: { emoji: '😟', label: 'Struggling' },
-    2: { emoji: '😕', label: 'Low' },
-    3: { emoji: '😐', label: 'Okay' },
-    4: { emoji: '😊', label: 'Good' },
-    5: { emoji: '😄', label: 'Great' },
+    1: { emoji: '😟', label: t.dashboard.moodStruggling },
+    2: { emoji: '😕', label: t.dashboard.moodLow },
+    3: { emoji: '😐', label: t.dashboard.moodOkay },
+    4: { emoji: '😊', label: t.dashboard.moodGood },
+    5: { emoji: '😄', label: t.dashboard.moodGreat },
   };
 
   const sleepMap: Record<number, { emoji: string; label: string }> = {
-    1: { emoji: '😩', label: 'Poor' },
-    2: { emoji: '🙂', label: 'Fair' },
-    3: { emoji: '😴', label: 'Well' },
+    1: { emoji: '😩', label: t.dashboard.sleepPoor },
+    2: { emoji: '🙂', label: t.dashboard.sleepFair },
+    3: { emoji: '😴', label: t.dashboard.sleepWell },
   };
+
+  // Fetch latest weekly insights
+  const { data: weeklyInsight } = await supabase
+    .from('weekly_insights')
+    .select('insights')
+    .eq('household_id', household?.id)
+    .order('week_start', { ascending: false })
+    .limit(1)
+    .single();
+
+  const insights = (weeklyInsight?.insights as { insight: string; suggestion: string; category: string }[] | null) || [];
 
   const progressPercent = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
 
@@ -100,12 +114,12 @@ async function DashboardContent() {
         <div className="space-y-1">
           <h1 className="heading-display text-3xl">
             {greeting},{' '}
-            <span className="heading-accent">{caregiver?.name || 'there'}</span>
+            <span className="heading-accent">{caregiver?.name || t.dashboard.there}</span>
           </h1>
           {patient && (
             <p className="text-text-secondary flex items-center gap-2">
               <span className="inline-flex items-center justify-center w-2 h-2 bg-status-success rounded-full animate-warm-pulse" />
-              {patient.name}&apos;s day is going well
+              {t.dashboard.statusGood.replace('{{patientName}}', patient.name)}
             </p>
           )}
         </div>
@@ -129,7 +143,7 @@ async function DashboardContent() {
         {/* Progress card */}
         <div className="lg:col-span-7 card-paper card-accent p-6 space-y-5 animate-fade-in-up stagger-1">
           <div className="flex items-center justify-between">
-            <p className="section-label">Today&apos;s Progress</p>
+            <p className="section-label">{t.dashboard.todaysProgress}</p>
             <span className={`badge ${progressPercent >= 80 ? 'badge-success' : progressPercent >= 40 ? 'badge-warning' : 'badge-brand'}`}>
               {progressPercent}%
             </span>
@@ -141,7 +155,7 @@ async function DashboardContent() {
                 {completedTasks}
                 <span className="text-2xl text-text-muted font-normal">/{totalTasks}</span>
               </p>
-              <p className="text-sm text-text-secondary mt-1">tasks completed</p>
+              <p className="text-sm text-text-secondary mt-1">{t.dashboard.tasksCompletedLabel}</p>
             </div>
 
             <div className="relative w-20 h-20 flex-shrink-0 ml-auto">
@@ -175,20 +189,20 @@ async function DashboardContent() {
 
         {/* Check-in card */}
         <div className="lg:col-span-5 card-paper p-6 space-y-4 animate-fade-in-up stagger-2">
-          <p className="section-label">Daily Check-in</p>
+          <p className="section-label">{t.dashboard.dailyCheckin}</p>
           {checkin ? (
             <div className="space-y-3">
               <div className="grid grid-cols-2 gap-3">
                 <div className="card-inset p-4 text-center">
                   <p className="text-3xl mb-1">{moodMap[checkin.mood]?.emoji || '—'}</p>
                   <p className="text-xs font-medium text-text-muted uppercase tracking-wider">
-                    {moodMap[checkin.mood]?.label || 'Mood'}
+                    {moodMap[checkin.mood]?.label || t.dashboard.mood}
                   </p>
                 </div>
                 <div className="card-inset p-4 text-center">
                   <p className="text-3xl mb-1">{sleepMap[checkin.sleep_quality]?.emoji || '—'}</p>
                   <p className="text-xs font-medium text-text-muted uppercase tracking-wider">
-                    {sleepMap[checkin.sleep_quality]?.label || 'Sleep'}
+                    {sleepMap[checkin.sleep_quality]?.label || t.dashboard.sleep}
                   </p>
                 </div>
               </div>
@@ -203,25 +217,25 @@ async function DashboardContent() {
           ) : (
             <div className="card-inset flex flex-col items-center justify-center py-8 text-center">
               <span className="text-3xl mb-2 opacity-40">💭</span>
-              <p className="text-sm text-text-muted">No check-in yet today</p>
+              <p className="text-sm text-text-muted">{t.dashboard.noCheckinYet}</p>
             </div>
           )}
         </div>
 
         {/* Location card */}
         <div className="lg:col-span-4 card-paper p-6 animate-fade-in-up stagger-3">
-          <p className="section-label mb-4">Location</p>
+          <p className="section-label mb-4">{t.dashboard.location}</p>
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-2xl bg-status-success-bg flex items-center justify-center">
               <span className="text-2xl">📍</span>
             </div>
             <div className="flex-1 min-w-0">
               <p className="font-semibold text-text-primary text-sm">
-                {patient?.name || 'Patient'} is at home
+                {t.dashboard.atHome.replace('{{name}}', patient?.name || t.dashboard.patient)}
               </p>
               <p className="text-xs text-text-muted flex items-center gap-1.5 mt-1">
                 <span className="w-1.5 h-1.5 bg-status-success rounded-full animate-warm-pulse" />
-                Updated just now
+                {t.dashboard.updatedJustNow}
               </p>
             </div>
           </div>
@@ -229,7 +243,7 @@ async function DashboardContent() {
 
         {/* Care Code card */}
         <div className="lg:col-span-3 card-paper p-6 animate-fade-in-up stagger-4">
-          <p className="section-label mb-4">Care Code</p>
+          <p className="section-label mb-4">{t.dashboard.careCode}</p>
           <div className="card-inset p-4 text-center">
             <div className="flex items-center justify-center gap-1">
               {(household?.care_code || '------').split('').map((char: string, i: number) => (
@@ -241,7 +255,7 @@ async function DashboardContent() {
                 </span>
               ))}
             </div>
-            <p className="text-xs text-text-muted mt-2">Share to connect patient app</p>
+            <p className="text-xs text-text-muted mt-2">{t.dashboard.shareToConnect}</p>
           </div>
         </div>
 
@@ -252,17 +266,35 @@ async function DashboardContent() {
         <div className="lg:col-span-7 relative overflow-hidden rounded-[20px] p-6 border border-brand-200 dark:border-brand-200/30 bg-gradient-to-br from-brand-50 to-surface-card dark:from-brand-50/10 dark:to-surface-card animate-fade-in-up stagger-5">
           <div className="absolute top-0 right-0 w-28 h-28 bg-brand-200/20 dark:bg-brand-200/5 rounded-full -translate-y-1/2 translate-x-1/2" />
           <p className="section-label text-brand-700 dark:text-brand-400 mb-4 flex items-center gap-1.5">
-            <span className="text-sm">✨</span> AI Insights
+            <span className="text-sm">✨</span> {t.dashboard.aiInsights}
           </p>
-          <div className="card-inset p-4 flex items-start gap-3">
-            <span className="text-xl flex-shrink-0">💡</span>
-            <div>
-              <p className="font-semibold text-text-primary text-sm">Morning Activity Pattern</p>
-              <p className="text-xs text-text-secondary mt-1 leading-relaxed">
-                {patient?.name || 'Your loved one'} completes more tasks on days with a morning walk scheduled.
-              </p>
+          {insights.length > 0 ? (
+            <div className="space-y-3">
+              {insights.slice(0, 3).map((item, idx) => (
+                <div key={idx} className="card-inset p-4 flex items-start gap-3">
+                  <span className="text-xl flex-shrink-0">
+                    {item.category === 'positive' ? '💡' : item.category === 'attention' ? '⚠️' : '💬'}
+                  </span>
+                  <div>
+                    <p className="font-semibold text-text-primary text-sm">{item.insight}</p>
+                    {item.suggestion && (
+                      <p className="text-xs text-text-secondary mt-1 leading-relaxed">{item.suggestion}</p>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
+          ) : (
+            <div className="card-inset p-4 flex items-start gap-3">
+              <span className="text-xl flex-shrink-0">💡</span>
+              <div>
+                <p className="font-semibold text-text-primary text-sm">{t.dashboard.insightsComingSoon}</p>
+                <p className="text-xs text-text-secondary mt-1 leading-relaxed">
+                  {t.dashboard.insightsComingSoonDesc}
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

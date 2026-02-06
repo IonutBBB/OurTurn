@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
 
 interface JournalEntry {
@@ -77,15 +78,18 @@ export function DashboardRealtime({
 
   const progressPercent = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
 
+  const { t } = useTranslation();
+
   return (
     <div className="text-xs text-text-muted flex items-center gap-1.5">
       <span className="w-1.5 h-1.5 bg-status-success rounded-full animate-warm-pulse" />
-      Live &middot; {completedTasks}/{totalTasks} tasks
+      {t('caregiverApp.dashboard.liveTasks', { completed: completedTasks, total: totalTasks })}
     </div>
   );
 }
 
 export function JournalCard({ householdId }: { householdId: string }) {
+  const { t } = useTranslation();
   const supabase = createBrowserClient();
   const [entries, setEntries] = useState<JournalEntry[]>([]);
   const [loading, setLoading] = useState(true);
@@ -130,7 +134,7 @@ export function JournalCard({ householdId }: { householdId: string }) {
       setEntries((prev) => [data, ...prev].slice(0, 5));
       setNoteContent('');
     } catch (err) {
-      console.error('Failed to add note:', err);
+      // Failed to add note
     } finally {
       setSaving(false);
     }
@@ -146,22 +150,22 @@ export function JournalCard({ householdId }: { householdId: string }) {
   const formatRelativeTime = (dateStr: string) => {
     const diff = Date.now() - new Date(dateStr).getTime();
     const minutes = Math.floor(diff / 60000);
-    if (minutes < 60) return `${minutes}m ago`;
+    if (minutes < 60) return t('common.minutesAgo', { count: minutes });
     const hours = Math.floor(minutes / 60);
-    if (hours < 24) return `${hours}h ago`;
+    if (hours < 24) return t('common.hoursAgo', { count: hours });
     const days = Math.floor(hours / 24);
-    return `${days}d ago`;
+    return t('common.daysAgo', { count: days });
   };
 
   return (
     <div className="lg:col-span-5 card-paper p-6 animate-fade-in-up stagger-4">
       <div className="flex items-center justify-between mb-4">
-        <p className="section-label">Care Journal</p>
+        <p className="section-label">{t('caregiverApp.dashboard.careJournal')}</p>
         <Link
           href="/family"
           className="text-xs text-brand-600 hover:text-brand-700 font-medium"
         >
-          View all &rarr;
+          {t('caregiverApp.dashboard.viewAllArrow')}
         </Link>
       </div>
 
@@ -172,7 +176,7 @@ export function JournalCard({ householdId }: { householdId: string }) {
           value={noteContent}
           onChange={(e) => setNoteContent(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleAddNote()}
-          placeholder="Add a quick note..."
+          placeholder={t('caregiverApp.dashboard.addQuickNote')}
           className="input-warm flex-1 text-sm py-2"
         />
         <button
@@ -180,7 +184,7 @@ export function JournalCard({ householdId }: { householdId: string }) {
           disabled={!noteContent.trim() || saving}
           className="btn-primary text-sm px-3 py-2 disabled:opacity-50"
         >
-          {saving ? '...' : 'Add'}
+          {saving ? '...' : t('caregiverApp.dashboard.addButton')}
         </button>
       </div>
 
@@ -199,7 +203,7 @@ export function JournalCard({ householdId }: { householdId: string }) {
       ) : entries.length === 0 ? (
         <div className="card-inset flex flex-col items-center justify-center py-6 text-center">
           <span className="text-2xl mb-2 opacity-40">📔</span>
-          <p className="text-sm text-text-muted">No journal entries yet</p>
+          <p className="text-sm text-text-muted">{t('caregiverApp.dashboard.noJournalEntries')}</p>
         </div>
       ) : (
         <div className="space-y-3">
@@ -213,7 +217,7 @@ export function JournalCard({ householdId }: { householdId: string }) {
                 <div className="flex-1 min-w-0">
                   <p className="text-sm text-text-primary line-clamp-2">{entry.content}</p>
                   <p className="text-xs text-text-muted mt-0.5">
-                    {authorData?.name || 'Unknown'} &middot; {formatRelativeTime(entry.created_at)}
+                    {authorData?.name || t('common.unknown')} &middot; {formatRelativeTime(entry.created_at)}
                   </p>
                 </div>
               </div>

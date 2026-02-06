@@ -38,26 +38,34 @@ export async function POST(request: NextRequest) {
       .eq('id', user.id)
       .single();
 
-    if (!caregiver?.households) {
+    const household = Array.isArray(caregiver?.households)
+      ? caregiver.households[0]
+      : caregiver?.households;
+
+    if (!household) {
       return NextResponse.json({ error: 'No household found' }, { status: 400 });
     }
 
     const stripe = getStripe();
 
-    // Find Stripe customer by email
-    const customers = await stripe.customers.list({
-      email: caregiver.email,
-      limit: 1,
-    });
+    // Use stored stripe_customer_id, fall back to email search
+    let customerId = household.stripe_customer_id;
 
-    if (customers.data.length === 0) {
-      return NextResponse.json(
-        { error: 'No subscription found. Please contact support.' },
-        { status: 400 }
-      );
+    if (!customerId) {
+      const customers = await stripe.customers.list({
+        email: caregiver.email,
+        limit: 1,
+      });
+
+      if (customers.data.length === 0) {
+        return NextResponse.json(
+          { error: 'No subscription found. Please contact support.' },
+          { status: 400 }
+        );
+      }
+
+      customerId = customers.data[0].id;
     }
-
-    const customerId = customers.data[0].id;
 
     // Get the app URL for redirect
     const appUrl = process.env.NEXT_PUBLIC_APP_URL || request.headers.get('origin') || '';

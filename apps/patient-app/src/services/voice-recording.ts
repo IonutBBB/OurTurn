@@ -51,7 +51,7 @@ export async function uploadVoiceNote(
 
     return { success: true, url: publicUrl };
   } catch (error) {
-    console.error('Failed to upload voice note:', error);
+    if (__DEV__) console.error('Failed to upload voice note:', error);
     return {
       success: false,
       error: error instanceof Error ? error : new Error('Failed to upload voice note'),

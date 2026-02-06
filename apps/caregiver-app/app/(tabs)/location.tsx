@@ -152,7 +152,7 @@ export default function LocationScreen() {
 
       setRecentAlerts(alerts || []);
     } catch (err) {
-      console.error('Failed to fetch location data:', err);
+      if (__DEV__) console.error('Failed to fetch location data:', err);
     } finally {
       setIsLoading(false);
       setIsRefreshing(false);
@@ -230,7 +230,7 @@ export default function LocationScreen() {
 
       setIsModalOpen(false);
     } catch (err) {
-      console.error('Failed to save safe zone:', err);
+      if (__DEV__) console.error('Failed to save safe zone:', err);
       Alert.alert('Error', 'Failed to save safe zone');
     } finally {
       setIsSaving(false);
@@ -256,7 +256,7 @@ export default function LocationScreen() {
               if (error) throw error;
               setSafeZones((prev) => prev.filter((z) => z.id !== zone.id));
             } catch (err) {
-              console.error('Failed to delete safe zone:', err);
+              if (__DEV__) console.error('Failed to delete safe zone:', err);
               Alert.alert('Error', 'Failed to delete safe zone');
             }
           },
@@ -286,7 +286,7 @@ export default function LocationScreen() {
         )
       );
     } catch (err) {
-      console.error('Failed to acknowledge alert:', err);
+      if (__DEV__) console.error('Failed to acknowledge alert:', err);
     }
   };
 

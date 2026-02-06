@@ -70,7 +70,7 @@ export default function FamilyScreen() {
 
       setJournalEntries(transformed);
     } catch (err) {
-      console.error('Failed to load family data:', err);
+      if (__DEV__) console.error('Failed to load family data:', err);
     } finally {
       setIsLoading(false);
       setIsRefreshing(false);
@@ -94,7 +94,7 @@ export default function FamilyScreen() {
         message: `Join my MemoGuard care circle! Use this Care Code: ${household.care_code}`,
       });
     } catch (err) {
-      console.error('Failed to share:', err);
+      if (__DEV__) console.error('Failed to share:', err);
     }
   };
 
@@ -137,7 +137,7 @@ export default function FamilyScreen() {
       setNewEntryType('observation');
       await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     } catch (err) {
-      console.error('Failed to add entry:', err);
+      if (__DEV__) console.error('Failed to add entry:', err);
       Alert.alert('Error', 'Failed to add entry. Please try again.');
     } finally {
       setIsSubmitting(false);

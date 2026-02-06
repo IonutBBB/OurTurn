@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
 import type { DoctorVisitReport, Patient, DoctorVisitReportContent } from '@memoguard/shared';
 
@@ -19,6 +20,7 @@ export default function ReportsClient({
   patientDateOfBirth,
   initialReports,
 }: ReportsClientProps) {
+  const { t } = useTranslation();
   const supabase = createBrowserClient();
   const [reports, setReports] = useState<DoctorVisitReport[]>(initialReports);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -145,12 +147,12 @@ export default function ReportsClient({
         .map(c => ({
           date: c.date,
           mood: c.mood,
-          note: c.voice_note_url ? 'Has voice note' : undefined,
+          note: c.voice_note_url ? t('caregiverApp.reports.hasVoiceNote') : undefined,
         }));
 
       // Build report content
       const reportContent: DoctorVisitReportContent = {
-        period_summary: `Care summary for ${patientName} from ${startDate} to ${endDate}. Based on ${(checkins || []).length} daily check-ins.`,
+        period_summary: t('caregiverApp.reports.periodSummary', { name: patientName, start: startDate, end: endDate, count: (checkins || []).length }),
         mood_trends: {
           average: Math.round(avgMood * 10) / 10,
           trend: avgMood >= 3.5 ? 'stable' : avgMood >= 2.5 ? 'stable' : 'stable', // Never say "declining"
@@ -191,7 +193,7 @@ export default function ReportsClient({
       setReports(prev => [newReport, ...prev]);
       setSelectedReport(newReport);
     } catch (err) {
-      console.error('Failed to generate report:', err);
+      // Failed to generate report
     } finally {
       setIsGenerating(false);
     }
@@ -210,15 +212,7 @@ export default function ReportsClient({
   };
 
   const getCategoryLabel = (category: string) => {
-    const labels: Record<string, string> = {
-      medication: 'Medication',
-      nutrition: 'Meals & Nutrition',
-      physical: 'Physical Activity',
-      cognitive: 'Brain Wellness',
-      social: 'Social & Connection',
-      health: 'Health Check',
-    };
-    return labels[category] || category;
+    return t(`categories.${category}`, { defaultValue: category });
   };
 
   const content = selectedReport?.content_json as DoctorVisitReportContent | null;
@@ -227,10 +221,10 @@ export default function ReportsClient({
     <div className="space-y-6">
       {/* Generate New Report */}
       <div className="card-paper p-6">
-        <h2 className="text-lg font-display font-bold text-text-primary mb-4">Generate New Report</h2>
+        <h2 className="text-lg font-display font-bold text-text-primary mb-4">{t('caregiverApp.reports.generateNewReport')}</h2>
         <div className="flex flex-wrap gap-4 items-end">
           <div>
-            <label className="block text-sm text-text-secondary mb-1">Start Date</label>
+            <label className="block text-sm text-text-secondary mb-1">{t('caregiverApp.reports.startDate')}</label>
             <input
               type="date"
               value={startDate}
@@ -239,7 +233,7 @@ export default function ReportsClient({
             />
           </div>
           <div>
-            <label className="block text-sm text-text-secondary mb-1">End Date</label>
+            <label className="block text-sm text-text-secondary mb-1">{t('caregiverApp.reports.endDate')}</label>
             <input
               type="date"
               value={endDate}
@@ -252,7 +246,7 @@ export default function ReportsClient({
             disabled={isGenerating}
             className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isGenerating ? 'Generating...' : 'Generate Report'}
+            {isGenerating ? t('caregiverApp.reports.generating') : t('caregiverApp.reports.generate')}
           </button>
         </div>
       </div>
@@ -262,11 +256,11 @@ export default function ReportsClient({
         <div className="lg:col-span-1">
           <div className="card-paper">
             <div className="p-4 border-b border-surface-border">
-              <h3 className="font-semibold font-display text-text-primary">Previous Reports</h3>
+              <h3 className="font-semibold font-display text-text-primary">{t('caregiverApp.reports.previousReports')}</h3>
             </div>
             {reports.length === 0 ? (
               <div className="p-4 text-text-muted text-sm">
-                No reports generated yet. Create your first report above!
+                {t('caregiverApp.reports.noReportsYet')}
               </div>
             ) : (
               <div className="divide-y divide-surface-border">
@@ -282,7 +276,7 @@ export default function ReportsClient({
                       {formatDate(report.period_start)} - {formatDate(report.period_end)}
                     </p>
                     <p className="text-xs text-text-muted mt-1">
-                      Generated {formatDate(report.generated_at)}
+                      {t('caregiverApp.reports.generatedOn', { date: formatDate(report.generated_at) })}
                     </p>
                   </button>
                 ))}
@@ -296,13 +290,13 @@ export default function ReportsClient({
           {selectedReport && content ? (
             <div className="card-paper">
               <div className="p-4 border-b border-surface-border flex items-center justify-between">
-                <h3 className="font-semibold font-display text-text-primary">Report Preview</h3>
+                <h3 className="font-semibold font-display text-text-primary">{t('caregiverApp.reports.preview')}</h3>
                 <button
                   onClick={handlePrint}
                   className="btn-secondary flex items-center gap-2"
                 >
                   <span>🖨️</span>
-                  <span>Print</span>
+                  <span>{t('caregiverApp.reports.print')}</span>
                 </button>
               </div>
 
@@ -310,37 +304,36 @@ export default function ReportsClient({
                 {/* Report Header */}
                 <div className="text-center border-b border-surface-border pb-6">
                   <h1 className="text-2xl font-bold font-display text-text-primary mb-2">
-                    MemoGuard Care Summary
+                    {t('caregiverApp.reports.reportTitle')}
                   </h1>
                   <p className="text-lg text-text-secondary">{patientName}</p>
                   {patientDateOfBirth && (
                     <p className="text-sm text-text-muted">
-                      Date of Birth: {formatDate(patientDateOfBirth)}
+                      {t('caregiverApp.reports.dateOfBirth', { date: formatDate(patientDateOfBirth) })}
                     </p>
                   )}
                   <p className="text-sm text-text-muted mt-2">
-                    Period: {formatDate(selectedReport.period_start)} to{' '}
-                    {formatDate(selectedReport.period_end)}
+                    {t('caregiverApp.reports.periodTo', { start: formatDate(selectedReport.period_start), end: formatDate(selectedReport.period_end) })}
                   </p>
                 </div>
 
                 {/* Overview */}
                 <div>
-                  <h2 className="text-lg font-display font-bold text-text-primary mb-3">Overview</h2>
+                  <h2 className="text-lg font-display font-bold text-text-primary mb-3">{t('caregiverApp.reports.overview')}</h2>
                   <p className="text-text-secondary">{content.period_summary}</p>
                 </div>
 
                 {/* Mood & Sleep */}
                 <div className="grid grid-cols-2 gap-4">
                   <div className="card-inset rounded-2xl p-4">
-                    <h3 className="font-medium text-text-primary mb-2">Mood (Self-Reported)</h3>
+                    <h3 className="font-medium text-text-primary mb-2">{t('caregiverApp.reports.moodSelfReported')}</h3>
                     <p className="text-2xl font-bold text-brand-600">
                       {content.mood_trends.average}/5
                     </p>
-                    <p className="text-sm text-text-muted">average daily rating</p>
+                    <p className="text-sm text-text-muted">{t('caregiverApp.reports.averageDailyRating')}</p>
                     {content.mood_trends.notable_days.length > 0 && (
                       <div className="mt-3">
-                        <p className="text-xs text-text-muted">Notable days:</p>
+                        <p className="text-xs text-text-muted">{t('caregiverApp.reports.notableDays')}</p>
                         {content.mood_trends.notable_days.slice(0, 3).map((day, i) => (
                           <p key={i} className="text-xs text-text-secondary">
                             {day.date}: {day.mood}/5 {day.note && `(${day.note})`}
@@ -350,14 +343,14 @@ export default function ReportsClient({
                     )}
                   </div>
                   <div className="card-inset rounded-2xl p-4">
-                    <h3 className="font-medium text-text-primary mb-2">Sleep (Self-Reported)</h3>
+                    <h3 className="font-medium text-text-primary mb-2">{t('caregiverApp.reports.sleepSelfReported')}</h3>
                     <p className="text-2xl font-bold text-brand-600">
                       {content.sleep_patterns.average_quality}/3
                     </p>
-                    <p className="text-sm text-text-muted">average quality rating</p>
+                    <p className="text-sm text-text-muted">{t('caregiverApp.reports.averageQualityRating')}</p>
                     <p className="text-xs text-text-secondary mt-2">
-                      Good nights: {content.sleep_patterns.good_nights} &middot;
-                      Poor nights: {content.sleep_patterns.poor_nights}
+                      {t('caregiverApp.reports.goodNights')} {content.sleep_patterns.good_nights} &middot;
+                      {t('caregiverApp.reports.poorNights')} {content.sleep_patterns.poor_nights}
                     </p>
                   </div>
                 </div>
@@ -365,7 +358,7 @@ export default function ReportsClient({
                 {/* Activity Completion */}
                 <div>
                   <h2 className="text-lg font-display font-bold text-text-primary mb-3">
-                    Activity & Routine Completion
+                    {t('caregiverApp.reports.activityRoutineCompletion')}
                   </h2>
                   <p className="text-3xl font-bold text-brand-600 mb-3">
                     {content.activity_completion.overall_rate}%
@@ -383,14 +376,14 @@ export default function ReportsClient({
                 {/* Medication Adherence */}
                 <div>
                   <h2 className="text-lg font-display font-bold text-text-primary mb-3">
-                    Medication Reminder Adherence
+                    {t('caregiverApp.reports.medicationReminderAdherence')}
                   </h2>
                   <p className="text-3xl font-bold text-brand-600">
                     {content.medication_adherence.rate}%
                   </p>
                   {content.medication_adherence.missed_count > 0 && (
                     <p className="text-sm text-text-secondary">
-                      {content.medication_adherence.missed_count} reminder(s) not marked as complete
+                      {t('caregiverApp.reports.remindersNotComplete', { count: content.medication_adherence.missed_count })}
                     </p>
                   )}
                 </div>
@@ -399,7 +392,7 @@ export default function ReportsClient({
                 {content.notable_observations.length > 0 && (
                   <div>
                     <h2 className="text-lg font-display font-bold text-text-primary mb-3">
-                      Family Observations
+                      {t('caregiverApp.reports.familyObservations')}
                     </h2>
                     <ul className="space-y-2">
                       {content.notable_observations.map((obs, i) => (
@@ -416,7 +409,7 @@ export default function ReportsClient({
                 {content.caregiver_concerns.length > 0 && (
                   <div>
                     <h2 className="text-lg font-display font-bold text-text-primary mb-3">
-                      Caregiver Concerns to Discuss
+                      {t('caregiverApp.reports.caregiverConcernsToDiscuss')}
                     </h2>
                     <ul className="space-y-2">
                       {content.caregiver_concerns.map((concern, i) => (
@@ -432,18 +425,17 @@ export default function ReportsClient({
                 {/* Disclaimer */}
                 <div className="border-t border-surface-border pt-6 mt-6">
                   <p className="text-xs text-text-muted italic">
-                    This summary is based on self-reported wellness data collected via the
-                    MemoGuard app. It is not a clinical assessment. All data should be discussed
-                    with healthcare providers in the context of the patient&apos;s overall medical
-                    history and current condition.
+                    {t('caregiverApp.reports.reportDisclaimer')}
                   </p>
                   <p className="text-xs text-text-muted mt-2">
-                    Generated on {new Date().toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                      hour: 'numeric',
-                      minute: '2-digit',
+                    {t('caregiverApp.reports.generatedOnFull', {
+                      date: new Date().toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                        hour: 'numeric',
+                        minute: '2-digit',
+                      }),
                     })}
                   </p>
                 </div>
@@ -452,7 +444,7 @@ export default function ReportsClient({
           ) : (
             <div className="card-paper p-8 text-center">
               <p className="text-text-muted">
-                Select a report from the list or generate a new one to preview it here.
+                {t('caregiverApp.reports.selectReportPrompt')}
               </p>
             </div>
           )}

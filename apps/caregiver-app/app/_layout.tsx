@@ -20,6 +20,9 @@ import { COLORS } from '../src/theme';
 
 // Initialize i18n
 import '../src/i18n';
+import { validateEnv } from '../src/utils/validate-env';
+
+validateEnv();
 
 export default function RootLayout() {
   const { isInitialized, initialize } = useAuthStore();

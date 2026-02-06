@@ -75,8 +75,6 @@ export async function POST(request: NextRequest) {
 
         if (error) {
           console.error('Failed to update subscription status:', error);
-        } else {
-          console.log(`Subscription activated for household ${householdId}`);
         }
       }
       break;
@@ -119,8 +117,6 @@ export async function POST(request: NextRequest) {
 
         if (error) {
           console.error('Failed to update subscription status:', error);
-        } else {
-          console.log(`Subscription cancelled for household ${householdId}`);
         }
       }
       break;
@@ -128,19 +124,31 @@ export async function POST(request: NextRequest) {
 
     case 'invoice.payment_failed': {
       const invoice = event.data.object as Stripe.Invoice;
-      // Log failed payment - customer ID can help identify the household
       const customerId = typeof invoice.customer === 'string'
         ? invoice.customer
         : invoice.customer?.id;
 
-      console.log(`Payment failed for customer: ${customerId}`);
-      // In a production app, you would look up the household by customer ID
-      // and send a notification to the caregiver about the failed payment
+      if (customerId) {
+        // Look up household by stripe_customer_id
+        const { data: household } = await supabase
+          .from('households')
+          .select('id')
+          .eq('stripe_customer_id', customerId)
+          .single();
+
+        if (household) {
+          // Mark subscription as past_due so the app can show a warning
+          await supabase
+            .from('households')
+            .update({ subscription_status: 'past_due' })
+            .eq('id', household.id);
+        }
+      }
       break;
     }
 
     default:
-      console.log(`Unhandled event type: ${event.type}`);
+      // Unhandled event type - no action needed
   }
 
   return NextResponse.json({ received: true });

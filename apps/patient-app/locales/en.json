@@ -10,6 +10,9 @@
     "or": "or",
     "loading": "Loading...",
     "error": "Something went wrong. Please try again.",
+    "errorTitle": "Something went wrong",
+    "errorDefault": "An unexpected error occurred.",
+    "tryAgain": "Try again",
     "offline": "You're offline — your data will sync when connected",
     "synced": "Synced"
   },
@@ -67,7 +70,9 @@
       "send": "Send to family",
       "skipVoice": "Skip voice message",
       "thankYou": "Thank you! Your family will see this.",
-      "alreadyDone": "You already checked in today!"
+      "alreadyDone": "You already checked in today!",
+      "tapToCheckin": "Tap to check in",
+      "opensCheckin": "Opens the daily check-in screen"
     },
     "activity": {
       "title": "Today's Activity",
@@ -88,12 +93,22 @@
       "helperText": "Your family member will give you this code.",
       "connect": "Connect",
       "invalidCode": "Please check your code and try again.",
-      "connecting": "Connecting..."
+      "connecting": "Connecting...",
+      "digitLabel": "Digit {{current}} of {{total}}"
     },
     "tabs": {
       "today": "Today",
       "help": "Help"
     }
+  },
+  "a11y": {
+    "doubleTapToComplete": "Double tap to mark as done",
+    "callContact": "Call {{name}}",
+    "emergencyCallConfirmHint": "A confirmation will appear before calling",
+    "takeMeHomeHint": "Opens navigation to your home address",
+    "gettingLocation": "Getting your location",
+    "removesVoiceRecording": "Removes your voice recording",
+    "submittingCheckin": "Submitting your check-in"
   },
   "notifications": {
     "taskReminder": "{{patientName}}, it's time for: {{taskTitle}}",

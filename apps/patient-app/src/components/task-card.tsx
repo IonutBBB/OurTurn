@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import {
   View,
   Text,
@@ -42,7 +42,7 @@ function formatCompletedTime(isoString: string): string {
   return formatTime(`${date.getHours()}:${date.getMinutes()}`);
 }
 
-export default function TaskCard({ task, completion, status, onComplete }: TaskCardProps) {
+function TaskCard({ task, completion, status, onComplete }: TaskCardProps) {
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
   const [scaleAnim] = useState(new Animated.Value(1));
@@ -101,7 +101,7 @@ export default function TaskCard({ task, completion, status, onComplete }: TaskC
         );
       }
     } catch (error) {
-      console.error('Failed to complete task:', error);
+      if (__DEV__) console.error('Failed to complete task:', error);
       // Reset animation on error
       checkmarkOpacity.setValue(0);
       await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
@@ -176,7 +176,7 @@ export default function TaskCard({ task, completion, status, onComplete }: TaskC
             activeOpacity={0.8}
             accessibilityRole="button"
             accessibilityLabel={`${t('common.done')} ${task.title}`}
-            accessibilityHint={t('a11y.doubleTapToComplete') || 'Double tap to mark as done'}
+            accessibilityHint={t('a11y.doubleTapToComplete')}
             accessibilityState={{
               disabled: isLoading,
               busy: isLoading,
@@ -192,6 +192,8 @@ export default function TaskCard({ task, completion, status, onComplete }: TaskC
     </View>
   );
 }
+
+export default memo(TaskCard);
 
 const styles = StyleSheet.create({
   card: {

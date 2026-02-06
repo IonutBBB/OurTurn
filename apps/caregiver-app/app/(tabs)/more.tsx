@@ -61,7 +61,7 @@ export default function MoreScreen() {
           onPress={handleLogout}
           activeOpacity={0.7}
         >
-          <Text style={styles.logoutText}>Log out</Text>
+          <Text style={styles.logoutText}>{t('common.logOut')}</Text>
         </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>

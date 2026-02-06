@@ -106,7 +106,7 @@ export function useAICoach(): UseAICoachReturn {
           }
         );
       } catch (err) {
-        console.error('Chat error:', err);
+        if (__DEV__) console.error('Chat error:', err);
         setError('Failed to get a response. Please try again.');
         // Remove the placeholder message on error
         setMessages((prev) => prev.slice(0, -1));
@@ -125,7 +125,7 @@ export function useAICoach(): UseAICoachReturn {
         await addCarePlanSuggestion(household.id, suggestion);
         return true;
       } catch (err) {
-        console.error('Failed to add task:', err);
+        if (__DEV__) console.error('Failed to add task:', err);
         return false;
       }
     },
@@ -140,7 +140,7 @@ export function useAICoach(): UseAICoachReturn {
         await addDoctorNote(household.id, note);
         return true;
       } catch (err) {
-        console.error('Failed to save note:', err);
+        if (__DEV__) console.error('Failed to save note:', err);
         return false;
       }
     },

@@ -79,6 +79,17 @@ export default function PlanScreen() {
   const [formRecurrence, setFormRecurrence] = useState<'daily' | 'specific_days' | 'one_time'>('daily');
   const [formDays, setFormDays] = useState<DayOfWeek[]>([]);
 
+  // AI Suggest state
+  const [showSuggestModal, setShowSuggestModal] = useState(false);
+  const [suggestedTasks, setSuggestedTasks] = useState<{ category: TaskCategory; title: string; hint_text: string; time: string }[]>([]);
+  const [suggestLoading, setSuggestLoading] = useState(false);
+  const [addingSuggestion, setAddingSuggestion] = useState<string | null>(null);
+
+  // Copy Day state
+  const [showCopyModal, setShowCopyModal] = useState(false);
+  const [copyTargetDays, setCopyTargetDays] = useState<DayOfWeek[]>([]);
+  const [copying, setCopying] = useState(false);
+
   // Swipe-to-delete animation refs
   const swipeAnimations = useRef<Record<string, Animated.Value>>({});
 
@@ -96,7 +107,7 @@ export default function PlanScreen() {
       if (error) throw error;
       setTasks(data || []);
     } catch (err) {
-      console.error('Failed to fetch tasks:', err);
+      if (__DEV__) console.error('Failed to fetch tasks:', err);
     } finally {
       setLoading(false);
       setRefreshing(false);
@@ -218,7 +229,7 @@ export default function PlanScreen() {
       setShowModal(false);
       resetForm();
     } catch (err) {
-      console.error('Failed to save task:', err);
+      if (__DEV__) console.error('Failed to save task:', err);
       Alert.alert(t('common.error'));
     } finally {
       setSaving(false);
@@ -244,7 +255,7 @@ export default function PlanScreen() {
               if (error) throw error;
               setTasks((prev) => prev.filter((t) => t.id !== task.id));
             } catch (err) {
-              console.error('Failed to delete task:', err);
+              if (__DEV__) console.error('Failed to delete task:', err);
               Alert.alert(t('common.error'));
             }
           },
@@ -256,6 +267,139 @@ export default function PlanScreen() {
   const toggleDay = (day: DayOfWeek) => {
     setFormDays((prev) =>
       prev.includes(day) ? prev.filter((d) => d !== day) : [...prev, day]
+    );
+  };
+
+  const handleGetSuggestions = useCallback(async () => {
+    if (!household?.id) return;
+    setSuggestLoading(true);
+    setSuggestedTasks([]);
+
+    try {
+      const apiBaseUrl = process.env.EXPO_PUBLIC_API_BASE_URL;
+      if (!apiBaseUrl) throw new Error('API not configured');
+
+      const response = await fetch(`${apiBaseUrl}/api/ai/suggest-tasks`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ householdId: household.id, count: 3 }),
+      });
+
+      if (!response.ok) throw new Error('Failed to fetch suggestions');
+
+      const { suggestions } = await response.json();
+      setSuggestedTasks(suggestions || []);
+    } catch {
+      // Fallback to local suggestions if API fails
+      const existingCategories = new Set(tasks.map(t => t.category));
+      const fallback: { category: TaskCategory; title: string; hint_text: string; time: string }[] = [];
+
+      if (!existingCategories.has('physical')) {
+        fallback.push({ category: 'physical', title: 'Morning walk', hint_text: 'A gentle 15-minute walk around the neighbourhood', time: '09:00' });
+      }
+      if (!existingCategories.has('cognitive')) {
+        fallback.push({ category: 'cognitive', title: 'Word puzzle', hint_text: 'Complete a crossword or word search puzzle', time: '10:30' });
+      }
+      if (!existingCategories.has('social')) {
+        fallback.push({ category: 'social', title: 'Call a friend or family member', hint_text: 'Have a chat with someone you enjoy talking to', time: '14:00' });
+      }
+      if (fallback.length === 0) {
+        fallback.push(
+          { category: 'physical', title: 'Afternoon stretching', hint_text: 'Gentle chair exercises for 10 minutes', time: '15:00' },
+          { category: 'cognitive', title: 'Look through photo album', hint_text: 'Enjoy looking at familiar photos and memories', time: '16:00' },
+        );
+      }
+      setSuggestedTasks(fallback.slice(0, 3));
+    } finally {
+      setSuggestLoading(false);
+    }
+  }, [household?.id, tasks]);
+
+  const handleAddSuggestion = useCallback(async (suggestion: { category: TaskCategory; title: string; hint_text: string; time: string }) => {
+    if (!household?.id) return;
+    setAddingSuggestion(suggestion.title);
+
+    try {
+      const { data, error } = await supabase
+        .from('care_plan_tasks')
+        .insert({
+          household_id: household.id,
+          category: suggestion.category,
+          title: suggestion.title,
+          hint_text: suggestion.hint_text,
+          time: suggestion.time,
+          recurrence: 'daily',
+          recurrence_days: [],
+          active: true,
+          created_by: user?.id,
+        })
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      setTasks(prev => [...prev, data].sort((a, b) => a.time.localeCompare(b.time)));
+      setSuggestedTasks(prev => prev.filter(s => s.title !== suggestion.title));
+    } catch (err) {
+      Alert.alert(t('common.error'));
+    } finally {
+      setAddingSuggestion(null);
+    }
+  }, [household?.id, user?.id]);
+
+  const handleCopyDay = useCallback(async () => {
+    if (!household?.id || copyTargetDays.length === 0) return;
+    setCopying(true);
+
+    try {
+      // Get tasks for the selected source day
+      const sourceTasks = tasks.filter(task => {
+        if (task.recurrence === 'daily') return true;
+        if (task.recurrence === 'specific_days') {
+          return task.recurrence_days?.includes(selectedDay);
+        }
+        return false;
+      });
+
+      if (sourceTasks.length === 0) {
+        Alert.alert(t('caregiverApp.carePlan.noTasks'));
+        return;
+      }
+
+      const newTasks = copyTargetDays.flatMap(targetDay =>
+        sourceTasks.map(task => ({
+          household_id: household.id,
+          category: task.category,
+          title: task.title,
+          hint_text: task.hint_text,
+          time: task.time,
+          recurrence: 'specific_days' as const,
+          recurrence_days: [targetDay],
+          active: true,
+          created_by: user?.id,
+        }))
+      );
+
+      const { data, error } = await supabase
+        .from('care_plan_tasks')
+        .insert(newTasks)
+        .select();
+
+      if (error) throw error;
+
+      setTasks(prev => [...prev, ...(data || [])].sort((a, b) => a.time.localeCompare(b.time)));
+      setShowCopyModal(false);
+      setCopyTargetDays([]);
+    } catch (err) {
+      Alert.alert(t('common.error'));
+    } finally {
+      setCopying(false);
+    }
+  }, [household?.id, user?.id, selectedDay, tasks, copyTargetDays]);
+
+  const toggleCopyTargetDay = (day: DayOfWeek) => {
+    setCopyTargetDays(prev =>
+      prev.includes(day) ? prev.filter(d => d !== day) : [...prev, day]
     );
   };
 
@@ -276,13 +420,36 @@ export default function PlanScreen() {
           {t('caregiverApp.carePlan.title', { name: patient?.name || '' })}
         </Text>
 
+        {/* Action Buttons */}
+        <View style={styles.actionRow}>
+          <TouchableOpacity
+            style={styles.actionButton}
+            onPress={() => {
+              setShowSuggestModal(true);
+              handleGetSuggestions();
+            }}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.actionButtonIcon}>✨</Text>
+            <Text style={styles.actionButtonText}>{t('caregiverApp.carePlan.aiSuggest')}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.actionButton}
+            onPress={() => setShowCopyModal(true)}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.actionButtonIcon}>📋</Text>
+            <Text style={styles.actionButtonText}>{t('caregiverApp.carePlan.copyDay')}</Text>
+          </TouchableOpacity>
+        </View>
+
         {/* Day Selector Pills */}
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.daySelector}
         >
-          {DAYS.map(({ key, label }) => {
+          {DAYS.map(({ key }) => {
             const isSelected = selectedDay === key;
             const isToday = key === getTodayDayOfWeek();
             return (
@@ -302,7 +469,7 @@ export default function PlanScreen() {
                     isSelected && styles.dayPillTextSelected,
                   ]}
                 >
-                  {label}
+                  {t(`caregiverApp.carePlan.days.${key}`)}
                 </Text>
                 {isToday && (
                   <View
@@ -512,7 +679,7 @@ export default function PlanScreen() {
               {/* Day selector for specific days */}
               {formRecurrence === 'specific_days' && (
                 <View style={styles.dayPickerRow}>
-                  {DAYS.map(({ key, label }) => (
+                  {DAYS.map(({ key }) => (
                     <TouchableOpacity
                       key={key}
                       style={[
@@ -528,7 +695,7 @@ export default function PlanScreen() {
                           formDays.includes(key) && styles.dayPickerTextSelected,
                         ]}
                       >
-                        {label}
+                        {t(`caregiverApp.carePlan.days.${key}`)}
                       </Text>
                     </TouchableOpacity>
                   ))}
@@ -563,6 +730,147 @@ export default function PlanScreen() {
                 </TouchableOpacity>
               </View>
             </ScrollView>
+          </View>
+        </View>
+      </Modal>
+
+      {/* AI Suggest Modal */}
+      <Modal
+        visible={showSuggestModal}
+        animationType="slide"
+        transparent
+        onRequestClose={() => setShowSuggestModal(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <TouchableOpacity
+            style={styles.modalBackdrop}
+            activeOpacity={1}
+            onPress={() => setShowSuggestModal(false)}
+          />
+          <View style={styles.modalSheet}>
+            <View style={styles.modalHandle} />
+            <Text style={styles.modalTitle}>{t('caregiverApp.carePlan.aiSuggest')}</Text>
+
+            {suggestLoading ? (
+              <View style={styles.suggestLoading}>
+                <ActivityIndicator size="large" color={COLORS.brand600} />
+                <Text style={styles.suggestLoadingText}>{t('common.loading')}</Text>
+              </View>
+            ) : suggestedTasks.length === 0 ? (
+              <View style={styles.suggestEmpty}>
+                <Text style={styles.suggestEmptyText}>{t('caregiverApp.carePlan.noMoreSuggestions')}</Text>
+              </View>
+            ) : (
+              <ScrollView showsVerticalScrollIndicator={false}>
+                {suggestedTasks.map((suggestion, index) => {
+                  const catInfo = getCategoryInfo(suggestion.category);
+                  return (
+                    <View key={index} style={styles.suggestionCard}>
+                      <View style={[styles.taskCategoryStripe, { backgroundColor: catInfo.color }]} />
+                      <View style={styles.suggestionContent}>
+                        <View style={[styles.categoryBadge, { backgroundColor: catInfo.bg }]}>
+                          <Text style={styles.categoryIcon}>{catInfo.icon}</Text>
+                          <Text style={[styles.categoryText, { color: catInfo.color }]}>
+                            {t(`categories.${suggestion.category}`)}
+                          </Text>
+                        </View>
+                        <Text style={styles.taskTitle}>{suggestion.title}</Text>
+                        <Text style={styles.taskHint}>{suggestion.hint_text}</Text>
+                        <View style={styles.suggestionFooter}>
+                          <Text style={styles.taskTime}>{formatTime(suggestion.time)}</Text>
+                          <TouchableOpacity
+                            style={styles.addSuggestionButton}
+                            onPress={() => handleAddSuggestion(suggestion)}
+                            disabled={addingSuggestion === suggestion.title}
+                            activeOpacity={0.7}
+                          >
+                            {addingSuggestion === suggestion.title ? (
+                              <ActivityIndicator color={COLORS.textInverse} size="small" />
+                            ) : (
+                              <Text style={styles.addSuggestionText}>{t('caregiverApp.carePlan.addTask')}</Text>
+                            )}
+                          </TouchableOpacity>
+                        </View>
+                      </View>
+                    </View>
+                  );
+                })}
+              </ScrollView>
+            )}
+          </View>
+        </View>
+      </Modal>
+
+      {/* Copy Day Modal */}
+      <Modal
+        visible={showCopyModal}
+        animationType="slide"
+        transparent
+        onRequestClose={() => setShowCopyModal(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <TouchableOpacity
+            style={styles.modalBackdrop}
+            activeOpacity={1}
+            onPress={() => setShowCopyModal(false)}
+          />
+          <View style={styles.modalSheet}>
+            <View style={styles.modalHandle} />
+            <Text style={styles.modalTitle}>{t('caregiverApp.carePlan.copyDay')}</Text>
+
+            <Text style={styles.copyLabel}>
+              {t('caregiverApp.carePlan.copyFromTo', { day: t(`caregiverApp.carePlan.days.${selectedDay}`) })}
+            </Text>
+
+            <View style={styles.copyDayGrid}>
+              {DAYS.filter(d => d.key !== selectedDay).map(({ key }) => (
+                <TouchableOpacity
+                  key={key}
+                  style={[
+                    styles.copyDayItem,
+                    copyTargetDays.includes(key) && styles.copyDayItemSelected,
+                  ]}
+                  onPress={() => toggleCopyTargetDay(key)}
+                  activeOpacity={0.7}
+                >
+                  <Text style={[
+                    styles.copyDayText,
+                    copyTargetDays.includes(key) && styles.copyDayTextSelected,
+                  ]}>
+                    {t(`caregiverApp.carePlan.days.${key}`)}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+
+            <Text style={styles.copyCount}>
+              {t('caregiverApp.carePlan.copyCount', { taskCount: filteredTasks.length, dayCount: copyTargetDays.length })}
+            </Text>
+
+            <View style={styles.modalActions}>
+              <TouchableOpacity
+                style={styles.cancelButton}
+                onPress={() => {
+                  setShowCopyModal(false);
+                  setCopyTargetDays([]);
+                }}
+                activeOpacity={0.7}
+              >
+                <Text style={styles.cancelButtonText}>{t('common.cancel')}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.saveButton, (copyTargetDays.length === 0 || copying) && styles.saveButtonDisabled]}
+                onPress={handleCopyDay}
+                disabled={copyTargetDays.length === 0 || copying}
+                activeOpacity={0.7}
+              >
+                {copying ? (
+                  <ActivityIndicator color={COLORS.textInverse} size="small" />
+                ) : (
+                  <Text style={styles.saveButtonText}>{t('caregiverApp.carePlan.copyDay')}</Text>
+                )}
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </Modal>
@@ -941,5 +1249,133 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
     color: COLORS.textInverse,
+  },
+
+  // Action row (AI Suggest + Copy Day)
+  actionRow: {
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+    gap: 8,
+    marginBottom: 12,
+  },
+  actionButton: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    paddingVertical: 10,
+    borderRadius: RADIUS.lg,
+    borderWidth: 1,
+    borderColor: COLORS.brand200,
+    backgroundColor: COLORS.brand50,
+  },
+  actionButtonIcon: {
+    fontSize: 14,
+  },
+  actionButtonText: {
+    fontSize: 13,
+    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.brand700,
+  },
+
+  // AI Suggest modal
+  suggestLoading: {
+    alignItems: 'center',
+    paddingVertical: 40,
+    gap: 12,
+  },
+  suggestLoadingText: {
+    fontSize: 14,
+    fontFamily: FONTS.body,
+    color: COLORS.textMuted,
+  },
+  suggestEmpty: {
+    alignItems: 'center',
+    paddingVertical: 40,
+  },
+  suggestEmptyText: {
+    fontSize: 14,
+    fontFamily: FONTS.body,
+    color: COLORS.textMuted,
+  },
+  suggestionCard: {
+    flexDirection: 'row',
+    backgroundColor: COLORS.background,
+    borderRadius: RADIUS.xl,
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    marginBottom: 12,
+    overflow: 'hidden',
+  },
+  suggestionContent: {
+    flex: 1,
+    padding: 16,
+  },
+  suggestionFooter: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 8,
+  },
+  addSuggestionButton: {
+    backgroundColor: COLORS.brand600,
+    borderRadius: RADIUS.md,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  addSuggestionText: {
+    fontSize: 13,
+    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textInverse,
+  },
+
+  // Copy Day modal
+  copyLabel: {
+    fontSize: 15,
+    fontFamily: FONTS.body,
+    color: COLORS.textSecondary,
+    marginBottom: 16,
+  },
+  copyBold: {
+    fontWeight: '700',
+    color: COLORS.textPrimary,
+  },
+  copyDayGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+    marginBottom: 16,
+  },
+  copyDayItem: {
+    paddingHorizontal: 18,
+    paddingVertical: 10,
+    borderRadius: RADIUS.full,
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    backgroundColor: COLORS.background,
+  },
+  copyDayItemSelected: {
+    borderColor: COLORS.brand600,
+    backgroundColor: COLORS.brand600,
+  },
+  copyDayText: {
+    fontSize: 14,
+    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textSecondary,
+  },
+  copyDayTextSelected: {
+    color: COLORS.textInverse,
+  },
+  copyCount: {
+    fontSize: 13,
+    fontFamily: FONTS.body,
+    color: COLORS.textMuted,
+    marginBottom: 16,
   },
 });

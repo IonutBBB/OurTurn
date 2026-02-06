@@ -66,24 +66,22 @@ export default function HelpScreen() {
     }
   };
 
-  const makePhoneCall = (phone: string) => {
+  const makePhoneCall = async (phone: string) => {
     const phoneUrl = `tel:${phone}`;
-    Linking.canOpenURL(phoneUrl)
-      .then((supported) => {
-        if (supported) {
-          Linking.openURL(phoneUrl);
-        } else {
-          console.error('Phone calls not supported on this device');
-        }
-      })
-      .catch((err) => console.error('Error opening phone:', err));
+    try {
+      const supported = await Linking.canOpenURL(phoneUrl);
+      if (supported) {
+        await Linking.openURL(phoneUrl);
+      }
+    } catch (err) {
+      if (__DEV__) console.error('Error opening phone:', err);
+    }
   };
 
   // Handle "Take Me Home" button
   const handleTakeMeHome = async () => {
     if (!patient?.home_latitude || !patient?.home_longitude) {
       // Home address not set - don't show error, just don't do anything
-      console.log('Home address not configured');
       return;
     }
 
@@ -113,7 +111,7 @@ export default function HelpScreen() {
       // Open maps navigation
       openMapsNavigation();
     } catch (error) {
-      console.error('Error getting location:', error);
+      if (__DEV__) console.error('Error getting location:', error);
       // Still try to open maps even if location fails
       openMapsNavigation();
     } finally {
@@ -121,7 +119,7 @@ export default function HelpScreen() {
     }
   };
 
-  const openMapsNavigation = () => {
+  const openMapsNavigation = async () => {
     if (!patient?.home_latitude || !patient?.home_longitude) return;
 
     const homeLat = patient.home_latitude;
@@ -140,19 +138,18 @@ export default function HelpScreen() {
     });
 
     if (googleMapsUrl) {
-      Linking.canOpenURL(googleMapsUrl)
-        .then((supported) => {
-          if (supported) {
-            Linking.openURL(googleMapsUrl);
-          } else if (fallbackUrl) {
-            Linking.openURL(fallbackUrl);
-          }
-        })
-        .catch(() => {
-          if (fallbackUrl) {
-            Linking.openURL(fallbackUrl);
-          }
-        });
+      try {
+        const supported = await Linking.canOpenURL(googleMapsUrl);
+        if (supported) {
+          await Linking.openURL(googleMapsUrl);
+        } else if (fallbackUrl) {
+          await Linking.openURL(fallbackUrl);
+        }
+      } catch {
+        if (fallbackUrl) {
+          await Linking.openURL(fallbackUrl);
+        }
+      }
     }
   };
 
@@ -167,7 +164,7 @@ export default function HelpScreen() {
         longitude,
       });
     } catch (error) {
-      console.error('Failed to send Take Me Home alert:', error);
+      if (__DEV__) console.error('Failed to send Take Me Home alert:', error);
       // Queue for later sync if offline
       await queueAlert({
         householdId,
@@ -209,7 +206,7 @@ export default function HelpScreen() {
               activeOpacity={0.7}
               onPress={() => handleCallContact(contact.phone)}
               accessibilityRole="button"
-              accessibilityLabel={`Call ${contact.name}`}
+              accessibilityLabel={t('a11y.callContact', { name: contact.name })}
             >
               <Text style={styles.contactIcon}>📞</Text>
               <View style={styles.contactInfo}>
@@ -226,7 +223,7 @@ export default function HelpScreen() {
             onPress={() => handleCallContact(emergencyInfo.primary, true)}
             accessibilityRole="button"
             accessibilityLabel={`${t('patientApp.help.emergency')} ${emergencyInfo.primary}`}
-            accessibilityHint="A confirmation will appear before calling"
+            accessibilityHint={t('a11y.emergencyCallConfirmHint')}
           >
             <Text style={styles.emergencyIcon} importantForAccessibility="no">🚨</Text>
             <Text style={styles.emergencyText}>
@@ -247,7 +244,7 @@ export default function HelpScreen() {
               disabled={isLoadingLocation}
               accessibilityRole="button"
               accessibilityLabel={`${t('patientApp.help.takeMeHome')}. ${t('patientApp.help.takeMeHomeDesc')}`}
-              accessibilityHint="Opens navigation to your home address"
+              accessibilityHint={t('a11y.takeMeHomeHint')}
               accessibilityState={{
                 disabled: isLoadingLocation,
                 busy: isLoadingLocation,
@@ -257,7 +254,7 @@ export default function HelpScreen() {
                 <ActivityIndicator
                   color={COLORS.textInverse}
                   size="large"
-                  accessibilityLabel="Getting your location"
+                  accessibilityLabel={t('a11y.gettingLocation')}
                 />
               ) : (
                 <>

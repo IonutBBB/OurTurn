@@ -91,7 +91,7 @@ export function useVoiceRecording(): UseVoiceRecordingReturn {
       recorder.record();
       return true;
     } catch (err) {
-      console.error('Failed to start recording:', err);
+      if (__DEV__) console.error('Failed to start recording:', err);
       setError(err instanceof Error ? err.message : 'Failed to start recording');
       return false;
     }
@@ -113,7 +113,7 @@ export function useVoiceRecording(): UseVoiceRecordingReturn {
       }
       return uri;
     } catch (err) {
-      console.error('Failed to stop recording:', err);
+      if (__DEV__) console.error('Failed to stop recording:', err);
       setError(err instanceof Error ? err.message : 'Failed to stop recording');
       return null;
     }
@@ -158,7 +158,7 @@ export function useVoiceRecording(): UseVoiceRecordingReturn {
       player.play();
       setIsPlaying(true);
     } catch (err) {
-      console.error('Failed to play recording:', err);
+      if (__DEV__) console.error('Failed to play recording:', err);
       setError(err instanceof Error ? err.message : 'Failed to play recording');
     }
   }, [recordingUri]);

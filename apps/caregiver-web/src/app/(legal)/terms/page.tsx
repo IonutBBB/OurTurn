@@ -220,8 +220,8 @@ export default function TermsOfServicePage() {
           <section className="mb-8">
             <h2 className="text-xl font-semibold font-display text-text-primary mb-4">15. Governing Law</h2>
             <p className="text-text-secondary mb-4">
-              These Terms are governed by the laws of [Jurisdiction]. Any disputes shall be
-              resolved in the courts of [Jurisdiction], except where consumer protection
+              These Terms are governed by the laws of Romania, European Union. Any disputes shall be
+              resolved in the courts of Romania, European Union, except where consumer protection
               laws require otherwise.
             </p>
           </section>
@@ -233,7 +233,7 @@ export default function TermsOfServicePage() {
             </p>
             <ul className="list-none text-text-secondary space-y-1">
               <li>Email: legal@memoguard.com</li>
-              <li>Address: [Company Address]</li>
+              <li>Address: Bucharest, Romania</li>
             </ul>
           </section>
         </div>

@@ -77,7 +77,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         });
       }
     } catch (error) {
-      console.error('Failed to initialize auth:', error);
+      if (__DEV__) console.error('Failed to initialize auth:', error);
       set({
         isInitialized: true,
         isAuthenticated: false,
@@ -127,7 +127,8 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
       if (caregiver) {
         const household = caregiver.households;
-        const patient = household?.patients?.[0] || null;
+        const patients = household?.patients;
+        const patient = Array.isArray(patients) ? patients[0] : patients || null;
 
         set({
           caregiver,
@@ -136,7 +137,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         });
       }
     } catch (error) {
-      console.error('Failed to load caregiver data:', error);
+      if (__DEV__) console.error('Failed to load caregiver data:', error);
     }
   },
 

@@ -17,6 +17,7 @@ import * as Haptics from 'expo-haptics';
 import { useAuthStore } from '../../src/stores/auth-store';
 import { supabase } from '@memoguard/supabase';
 import { useVoiceRecording } from '../../src/hooks/use-voice-recording';
+import { cacheActivity, getCachedActivity } from '../../src/utils/offline-cache';
 import type { BrainActivity } from '@memoguard/shared';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
 
@@ -71,10 +72,26 @@ export default function ActivityScreen() {
           .single();
 
         if (error && error.code !== 'PGRST116') {
-          console.error('Error fetching activity:', error);
+          if (__DEV__) console.error('Error fetching activity:', error);
+          // Try loading from cache if fetch failed
+          const cached = await getCachedActivity(today);
+          if (cached) {
+            setActivity(cached);
+            if (cached.completed) {
+              setResponseMode('done');
+              setShowFollowUp(true);
+            }
+            setLoading(false);
+            return;
+          }
         }
 
         setActivity(data || null);
+
+        // Cache the fetched activity for offline use
+        if (data) {
+          await cacheActivity(today, data);
+        }
 
         // If already completed, show follow-up
         if (data?.completed) {
@@ -82,7 +99,17 @@ export default function ActivityScreen() {
           setShowFollowUp(true);
         }
       } catch (err) {
-        console.error('Failed to fetch activity:', err);
+        if (__DEV__) console.error('Failed to fetch activity:', err);
+        // Fallback to cached activity when offline
+        const today = new Date().toISOString().split('T')[0];
+        const cached = await getCachedActivity(today);
+        if (cached) {
+          setActivity(cached);
+          if (cached.completed) {
+            setResponseMode('done');
+            setShowFollowUp(true);
+          }
+        }
       } finally {
         setLoading(false);
       }
@@ -140,7 +167,8 @@ export default function ActivityScreen() {
       setShowFollowUp(true);
       setResponseMode('done');
     } catch (err) {
-      console.error('Failed to submit voice response:', err);
+      if (__DEV__) console.error('Failed to submit voice response:', err);
+      await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
     } finally {
       setSaving(false);
     }
@@ -175,7 +203,8 @@ export default function ActivityScreen() {
       setShowFollowUp(true);
       setResponseMode('done');
     } catch (err) {
-      console.error('Failed to submit text response:', err);
+      if (__DEV__) console.error('Failed to submit text response:', err);
+      await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
     } finally {
       setSaving(false);
     }

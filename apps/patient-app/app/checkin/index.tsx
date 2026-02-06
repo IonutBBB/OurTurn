@@ -23,6 +23,7 @@ import Animated, {
 import { useAuthStore } from '../../src/stores/auth-store';
 import { useVoiceRecording } from '../../src/hooks/use-voice-recording';
 import { supabase } from '@memoguard/supabase';
+import { queueCheckin } from '../../src/utils/offline-cache';
 import { getRecordingButtonLabel, getMoodSelectionLabel } from '@memoguard/shared';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
 
@@ -153,9 +154,9 @@ export default function CheckinScreen() {
     if (!household?.id || !mood || !sleep) return;
 
     setLoading(true);
+    const today = new Date().toISOString().split('T')[0];
 
     try {
-      const today = new Date().toISOString().split('T')[0];
 
       const { error } = await supabase.from('daily_checkins').insert({
         household_id: household.id,
@@ -175,8 +176,22 @@ export default function CheckinScreen() {
       setTimeout(() => {
         router.back();
       }, 2500);
-    } catch (error) {
-      console.error('Failed to submit check-in:', error);
+    } catch (err) {
+      if (__DEV__) console.error('Failed to submit check-in:', err);
+      // Queue for offline sync so patient's check-in isn't lost
+      await queueCheckin({
+        householdId: household.id,
+        date: today,
+        mood,
+        sleepQuality: sleep,
+        voiceNoteUrl: voiceNoteUrl || undefined,
+        submittedAt: new Date().toISOString(),
+      });
+      // Still show success to the patient — data is safely queued
+      await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      setStep('done');
+      setTimeout(() => router.back(), 2500);
+      return;
     } finally {
       setLoading(false);
     }
@@ -400,7 +415,7 @@ export default function CheckinScreen() {
                 activeOpacity={0.7}
                 accessibilityRole="button"
                 accessibilityLabel={t('patientApp.checkin.voiceDiscard')}
-                accessibilityHint="Removes your voice recording"
+                accessibilityHint={t('a11y.removesVoiceRecording')}
               >
                 <Text style={styles.discardText}>{t('patientApp.checkin.voiceDiscard')}</Text>
               </TouchableOpacity>
@@ -429,7 +444,7 @@ export default function CheckinScreen() {
               {loading || isUploading ? (
                 <ActivityIndicator
                   color={COLORS.textInverse}
-                  accessibilityLabel="Submitting your check-in"
+                  accessibilityLabel={t('a11y.submittingCheckin')}
                 />
               ) : (
                 <Text style={styles.submitButtonText}>

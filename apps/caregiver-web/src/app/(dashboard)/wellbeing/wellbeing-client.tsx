@@ -87,7 +87,7 @@ export default function WellbeingClient({
       setShowSuccess(true);
       setTimeout(() => setShowSuccess(false), 2000);
     } catch (err) {
-      console.error('Failed to save wellbeing log:', err);
+      // Failed to save wellbeing log
     } finally {
       setIsSaving(false);
     }
@@ -143,17 +143,17 @@ export default function WellbeingClient({
           <span className="text-2xl flex-shrink-0">💛</span>
           <div className="flex-1">
             <h3 className="font-semibold text-status-amber mb-1">
-              We notice you&apos;ve been having a tough time
+              {t('caregiverApp.wellbeing.burnoutNotice')}
             </h3>
             <p className="text-sm text-text-secondary">
               {t('caregiverApp.wellbeing.burnoutWarning')}
             </p>
             <div className="flex gap-3 mt-3">
               <a href="/coach" className="btn-primary text-sm px-4 py-2">
-                Talk to AI Coach
+                {t('caregiverApp.wellbeing.talkToCoach')}
               </a>
               <a href="#support-resources" className="btn-secondary text-sm px-4 py-2">
-                Support Resources
+                {t('caregiverApp.wellbeing.supportResources')}
               </a>
             </div>
           </div>
@@ -164,13 +164,12 @@ export default function WellbeingClient({
       <div className="flex items-center justify-between">
         <div>
           <p className="text-text-secondary">
-            Hi {caregiverName}! Taking care of yourself is just as important as caring for your
-            loved one.
+            {t('caregiverApp.wellbeing.introMessage', { name: caregiverName })}
           </p>
         </div>
         {showSuccess && (
           <span className="text-sm text-status-success bg-status-success-bg px-3 py-1 rounded-full">
-            Saved!
+            {t('common.saved')}
           </span>
         )}
       </div>
@@ -181,7 +180,7 @@ export default function WellbeingClient({
           {/* Mood Selection */}
           <div className="card-paper p-6">
             <h2 className="text-lg font-display font-bold text-text-primary mb-4">
-              How are you feeling today?
+              {t('caregiverApp.wellbeing.howAreYouFeeling')}
             </h2>
             <div className="flex flex-wrap gap-3">
               {([5, 4, 3, 2, 1] as WellbeingMood[]).map((value) => {
@@ -215,10 +214,10 @@ export default function WellbeingClient({
           <div className="card-paper p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-display font-bold text-text-primary">
-                Self-Care Checklist
+                {t('caregiverApp.wellbeing.selfCareChecklist')}
               </h2>
               <span className="text-sm text-text-muted">
-                {checkedCount} of {SELF_CARE_ITEMS.length} done
+                {t('caregiverApp.wellbeing.selfCareProgress', { done: checkedCount, total: SELF_CARE_ITEMS.length })}
               </span>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -273,12 +272,12 @@ export default function WellbeingClient({
           {/* Notes */}
           <div className="card-paper p-6">
             <h2 className="text-lg font-display font-bold text-text-primary mb-4">
-              How are you coping? (Optional)
+              {t('caregiverApp.wellbeing.copingNotes')}
             </h2>
             <textarea
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              placeholder="Write anything on your mind... This is just for you."
+              placeholder={t('caregiverApp.wellbeing.copingPlaceholder')}
               className="input-warm w-full resize-none"
               rows={3}
             />
@@ -290,23 +289,23 @@ export default function WellbeingClient({
           {/* This Week Stats */}
           <div className="card-paper p-6">
             <h3 className="text-lg font-display font-bold text-text-primary mb-4">
-              This Week
+              {t('caregiverApp.wellbeing.thisWeek')}
             </h3>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-text-secondary">Average Mood</span>
+                <span className="text-text-secondary">{t('caregiverApp.wellbeing.averageMood')}</span>
                 <span className="font-semibold text-text-primary">
                   {weeklyStats.averageMood}/5
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-text-secondary">Good Self-Care Days</span>
+                <span className="text-text-secondary">{t('caregiverApp.wellbeing.goodSelfCareDays')}</span>
                 <span className="font-semibold text-text-primary">
-                  {weeklyStats.selfCareDays} of {weeklyStats.loggedDays}
+                  {t('caregiverApp.wellbeing.selfCareDaysOf', { done: weeklyStats.selfCareDays, total: weeklyStats.loggedDays })}
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-text-secondary">Days Logged</span>
+                <span className="text-text-secondary">{t('caregiverApp.wellbeing.daysLogged')}</span>
                 <span className="font-semibold text-text-primary">{weeklyStats.loggedDays}</span>
               </div>
             </div>
@@ -315,11 +314,11 @@ export default function WellbeingClient({
           {/* Mood History */}
           <div className="card-paper p-6">
             <h3 className="text-lg font-display font-bold text-text-primary mb-4">
-              Mood History
+              {t('caregiverApp.wellbeing.moodHistory')}
             </h3>
             {recentLogs.length === 0 ? (
               <p className="text-text-muted text-sm">
-                Start tracking your mood to see your history here.
+                {t('caregiverApp.wellbeing.moodHistoryEmpty')}
               </p>
             ) : (
               <div className="space-y-3">
@@ -355,10 +354,10 @@ export default function WellbeingClient({
           {/* Support Resources */}
           <div id="support-resources" className="bg-brand-50 dark:bg-brand-900/30 rounded-[20px] border border-brand-200 dark:border-brand-800 p-6">
             <h3 className="text-lg font-semibold text-brand-800 dark:text-brand-200 mb-3">
-              Need Support?
+              {t('caregiverApp.wellbeing.needSupport')}
             </h3>
             <p className="text-brand-700 dark:text-brand-300 text-sm mb-4">
-              Caregiving is challenging. It&apos;s okay to ask for help.
+              {t('caregiverApp.wellbeing.needSupportDesc')}
             </p>
             <div className="space-y-2 text-sm">
               <a
@@ -367,7 +366,7 @@ export default function WellbeingClient({
                 rel="noopener noreferrer"
                 className="block text-brand-700 dark:text-brand-300 hover:text-brand-800 dark:hover:text-brand-200 underline"
               >
-                Alzheimer&apos;s Association Resources
+                {t('caregiverApp.wellbeing.alzheimersResources')}
               </a>
               <a
                 href="https://www.caregiver.org/"
@@ -375,7 +374,7 @@ export default function WellbeingClient({
                 rel="noopener noreferrer"
                 className="block text-brand-700 dark:text-brand-300 hover:text-brand-800 dark:hover:text-brand-200 underline"
               >
-                Family Caregiver Alliance
+                {t('caregiverApp.wellbeing.familyCaregiverAlliance')}
               </a>
             </div>
           </div>

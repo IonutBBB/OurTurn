@@ -9,9 +9,12 @@ import {
   Platform,
   ScrollView,
   ActivityIndicator,
+  Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Link, router } from 'expo-router';
+import * as WebBrowser from 'expo-web-browser';
+import { makeRedirectUri } from 'expo-auth-session';
 import { useTranslation } from 'react-i18next';
 import { supabase } from '@memoguard/supabase';
 import { useAuthStore } from '../../src/stores/auth-store';
@@ -27,7 +30,7 @@ export default function LoginScreen() {
 
   const handleLogin = async () => {
     if (!email || !password) {
-      setError('Please enter email and password');
+      setError(t('caregiverApp.auth.enterEmailAndPassword'));
       return;
     }
 
@@ -137,6 +140,30 @@ export default function LoginScreen() {
               style={styles.forgotPassword}
               accessibilityRole="link"
               accessibilityLabel={t('caregiverApp.auth.forgotPassword')}
+              onPress={async () => {
+                if (!email) {
+                  setError(t('caregiverApp.auth.enterEmailFirst'));
+                  return;
+                }
+                setLoading(true);
+                setError(null);
+                try {
+                  const { error: resetError } = await supabase.auth.resetPasswordForEmail(email);
+                  if (resetError) {
+                    setError(resetError.message);
+                  } else {
+                    setError(null);
+                    Alert.alert(
+                      t('caregiverApp.auth.resetEmailSent'),
+                      t('caregiverApp.auth.resetEmailSentDesc')
+                    );
+                  }
+                } catch {
+                  setError(t('common.error'));
+                } finally {
+                  setLoading(false);
+                }
+              }}
             >
               <Text style={styles.forgotPasswordText}>
                 {t('caregiverApp.auth.forgotPassword')}
@@ -156,7 +183,7 @@ export default function LoginScreen() {
               }}
             >
               {loading ? (
-                <ActivityIndicator color={COLORS.textInverse} accessibilityLabel="Signing in" />
+                <ActivityIndicator color={COLORS.textInverse} accessibilityLabel={t('caregiverApp.auth.signingIn')} />
               ) : (
                 <Text style={styles.buttonText}>{t('caregiverApp.auth.login')}</Text>
               )}
@@ -167,7 +194,7 @@ export default function LoginScreen() {
               style={styles.divider}
               accessible={true}
               accessibilityRole="none"
-              accessibilityLabel="Or continue with"
+              accessibilityLabel={t('caregiverApp.auth.orContinueWith')}
             >
               <View style={styles.dividerLine} />
               <Text style={styles.dividerText}>{t('caregiverApp.auth.or')}</Text>
@@ -184,13 +211,30 @@ export default function LoginScreen() {
                 try {
                   setLoading(true);
                   setError(null);
-                  const { error: oauthError } = await supabase.auth.signInWithOAuth({
+                  const redirectUrl = makeRedirectUri({ scheme: 'memoguard-caregiver' });
+                  const { data, error: oauthError } = await supabase.auth.signInWithOAuth({
                     provider: 'google',
                     options: {
+                      redirectTo: redirectUrl,
                       skipBrowserRedirect: true,
                     },
                   });
-                  if (oauthError) setError(oauthError.message);
+                  if (oauthError) { setError(oauthError.message); return; }
+                  if (data?.url) {
+                    const result = await WebBrowser.openAuthSessionAsync(data.url, redirectUrl);
+                    if (result.type === 'success' && result.url) {
+                      const params = new URL(result.url);
+                      const accessToken = params.searchParams.get('access_token') || params.hash?.match(/access_token=([^&]*)/)?.[1];
+                      const refreshToken = params.searchParams.get('refresh_token') || params.hash?.match(/refresh_token=([^&]*)/)?.[1];
+                      if (accessToken && refreshToken) {
+                        const { data: sessionData } = await supabase.auth.setSession({ access_token: accessToken, refresh_token: refreshToken });
+                        if (sessionData.session) {
+                          await setSession(sessionData.session);
+                          router.replace('/');
+                        }
+                      }
+                    }
+                  }
                 } catch (err) {
                   setError(t('common.error'));
                 } finally {
@@ -212,13 +256,30 @@ export default function LoginScreen() {
                 try {
                   setLoading(true);
                   setError(null);
-                  const { error: oauthError } = await supabase.auth.signInWithOAuth({
+                  const redirectUrl = makeRedirectUri({ scheme: 'memoguard-caregiver' });
+                  const { data, error: oauthError } = await supabase.auth.signInWithOAuth({
                     provider: 'apple',
                     options: {
+                      redirectTo: redirectUrl,
                       skipBrowserRedirect: true,
                     },
                   });
-                  if (oauthError) setError(oauthError.message);
+                  if (oauthError) { setError(oauthError.message); return; }
+                  if (data?.url) {
+                    const result = await WebBrowser.openAuthSessionAsync(data.url, redirectUrl);
+                    if (result.type === 'success' && result.url) {
+                      const params = new URL(result.url);
+                      const accessToken = params.searchParams.get('access_token') || params.hash?.match(/access_token=([^&]*)/)?.[1];
+                      const refreshToken = params.searchParams.get('refresh_token') || params.hash?.match(/refresh_token=([^&]*)/)?.[1];
+                      if (accessToken && refreshToken) {
+                        const { data: sessionData } = await supabase.auth.setSession({ access_token: accessToken, refresh_token: refreshToken });
+                        if (sessionData.session) {
+                          await setSession(sessionData.session);
+                          router.replace('/');
+                        }
+                      }
+                    }
+                  }
                 } catch (err) {
                   setError(t('common.error'));
                 } finally {

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { createBrowserClient } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 import type { Caregiver, Household, NotificationPreferences } from '@memoguard/shared';
 
 interface SettingsClientProps {
@@ -16,6 +17,7 @@ export default function SettingsClient({
   household,
   careCode,
 }: SettingsClientProps) {
+  const { t } = useTranslation();
   const supabase = createBrowserClient();
   const router = useRouter();
 
@@ -76,7 +78,7 @@ export default function SettingsClient({
       setProfileSaved(true);
       setTimeout(() => setProfileSaved(false), 3000);
     } catch (err) {
-      console.error('Failed to save profile:', err);
+      // Failed to save profile
     } finally {
       setIsSavingProfile(false);
     }
@@ -97,7 +99,7 @@ export default function SettingsClient({
       setNotificationsSaved(true);
       setTimeout(() => setNotificationsSaved(false), 3000);
     } catch (err) {
-      console.error('Failed to save notifications:', err);
+      // Failed to save notifications
     } finally {
       setIsSavingNotifications(false);
     }
@@ -105,11 +107,11 @@ export default function SettingsClient({
 
   const handleCopyCode = async () => {
     await navigator.clipboard.writeText(careCode);
-    alert('Care Code copied to clipboard!');
+    alert(t('caregiverApp.settings.careCodeCopied'));
   };
 
   const handleRegenerateCode = async () => {
-    if (!confirm('Are you sure you want to regenerate the Care Code? The old code will no longer work.')) {
+    if (!confirm(t('caregiverApp.settings.regenerateConfirm'))) {
       return;
     }
 
@@ -127,8 +129,7 @@ export default function SettingsClient({
 
       router.refresh();
     } catch (err) {
-      console.error('Failed to regenerate code:', err);
-      alert('Failed to regenerate code. Please try again.');
+      alert(t('caregiverApp.settings.regenerateFailed'));
     } finally {
       setIsRegenerating(false);
     }
@@ -138,18 +139,36 @@ export default function SettingsClient({
     setPasswordError('');
     setPasswordSuccess(false);
 
+    if (!currentPassword) {
+      setPasswordError(t('caregiverApp.settings.currentPasswordRequired'));
+      return;
+    }
+
     if (newPassword !== confirmPassword) {
-      setPasswordError('New passwords do not match');
+      setPasswordError(t('caregiverApp.settings.passwordsMismatch'));
       return;
     }
 
     if (newPassword.length < 8) {
-      setPasswordError('Password must be at least 8 characters');
+      setPasswordError(t('caregiverApp.settings.passwordMinLength'));
       return;
     }
 
     setIsChangingPassword(true);
     try {
+      // Verify current password first
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user?.email) throw new Error('No user email found');
+
+      const { error: signInError } = await supabase.auth.signInWithPassword({
+        email: user.email,
+        password: currentPassword,
+      });
+      if (signInError) {
+        setPasswordError(t('caregiverApp.settings.currentPasswordIncorrect'));
+        return;
+      }
+
       const { error } = await supabase.auth.updateUser({
         password: newPassword,
       });
@@ -195,8 +214,7 @@ export default function SettingsClient({
       window.URL.revokeObjectURL(url);
       document.body.removeChild(a);
     } catch (err) {
-      console.error('Failed to export data:', err);
-      alert('Failed to export data. Please try again.');
+      alert(t('caregiverApp.settings.exportFailed'));
     } finally {
       setIsExporting(false);
     }
@@ -226,8 +244,7 @@ export default function SettingsClient({
       await supabase.auth.signOut();
       router.push('/login?deleted=true');
     } catch (err: any) {
-      console.error('Failed to delete account:', err);
-      setDeleteError(err.message || 'Failed to delete account. Please contact support.');
+      setDeleteError(err.message || t('caregiverApp.settings.deleteFailed'));
     } finally {
       setIsDeleting(false);
     }
@@ -296,11 +313,11 @@ export default function SettingsClient({
     <div className="max-w-3xl space-y-6">
       {/* Profile Settings */}
       <div className="card-paper p-6">
-        <h2 className="text-lg font-display font-bold text-text-primary mb-4">Profile</h2>
+        <h2 className="text-lg font-display font-bold text-text-primary mb-4">{t('caregiverApp.settings.profile')}</h2>
         <div className="space-y-4">
           <div>
             <label className="block text-sm font-semibold text-text-secondary mb-1.5">
-              Name
+              {t('caregiverApp.settings.name')}
             </label>
             <input
               type="text"
@@ -311,7 +328,7 @@ export default function SettingsClient({
           </div>
           <div>
             <label className="block text-sm font-semibold text-text-secondary mb-1.5">
-              Email
+              {t('caregiverApp.settings.email')}
             </label>
             <input
               type="email"
@@ -319,26 +336,26 @@ export default function SettingsClient({
               disabled
               className="w-full px-4 py-2 border border-surface-border rounded-2xl bg-surface-background dark:bg-surface-elevated text-text-muted cursor-not-allowed"
             />
-            <p className="text-xs text-text-muted mt-1">Email cannot be changed</p>
+            <p className="text-xs text-text-muted mt-1">{t('caregiverApp.settings.emailCannotBeChanged')}</p>
           </div>
           <div>
             <label className="block text-sm font-semibold text-text-secondary mb-1.5">
-              Relationship to Patient
+              {t('caregiverApp.settings.relationshipToPatient')}
             </label>
             <select
               value={relationship}
               onChange={(e) => setRelationship(e.target.value)}
               className="input-warm w-full"
             >
-              <option value="">Select relationship</option>
-              <option value="spouse">Spouse/Partner</option>
-              <option value="child">Son/Daughter</option>
-              <option value="sibling">Sibling</option>
-              <option value="parent">Parent</option>
-              <option value="grandchild">Grandchild</option>
-              <option value="friend">Friend</option>
-              <option value="caregiver">Professional Caregiver</option>
-              <option value="other">Other</option>
+              <option value="">{t('caregiverApp.settings.selectRelationship')}</option>
+              <option value="spouse">{t('caregiverApp.settings.relationshipSpouse')}</option>
+              <option value="child">{t('caregiverApp.settings.relationshipChild')}</option>
+              <option value="sibling">{t('caregiverApp.settings.relationshipSibling')}</option>
+              <option value="parent">{t('caregiverApp.settings.relationshipParent')}</option>
+              <option value="grandchild">{t('caregiverApp.settings.relationshipGrandchild')}</option>
+              <option value="friend">{t('caregiverApp.settings.relationshipFriend')}</option>
+              <option value="caregiver">{t('caregiverApp.settings.relationshipCaregiver')}</option>
+              <option value="other">{t('caregiverApp.settings.relationshipOther')}</option>
             </select>
           </div>
           <div className="flex items-center gap-3">
@@ -347,10 +364,10 @@ export default function SettingsClient({
               disabled={isSavingProfile}
               className="btn-primary disabled:opacity-50"
             >
-              {isSavingProfile ? 'Saving...' : 'Save Profile'}
+              {isSavingProfile ? t('caregiverApp.settings.savingProfile') : t('caregiverApp.settings.saveProfile')}
             </button>
             {profileSaved && (
-              <span className="text-sm text-status-success">Saved!</span>
+              <span className="text-sm text-status-success">{t('common.saved')}</span>
             )}
           </div>
         </div>
@@ -358,10 +375,9 @@ export default function SettingsClient({
 
       {/* Care Code */}
       <div className="card-paper p-6">
-        <h2 className="text-lg font-display font-bold text-text-primary mb-4">Care Code</h2>
+        <h2 className="text-lg font-display font-bold text-text-primary mb-4">{t('caregiverApp.settings.careCode')}</h2>
         <p className="text-sm text-text-secondary mb-4">
-          Share this code with family members to invite them to your care circle, or use it to
-          connect the patient app.
+          {t('caregiverApp.settings.careCodeDesc')}
         </p>
         <div className="flex items-center gap-4">
           {showCareCode ? (
@@ -373,7 +389,7 @@ export default function SettingsClient({
                 onClick={handleCopyCode}
                 className="px-4 py-2 border border-surface-border rounded-2xl text-text-secondary hover:bg-brand-50 dark:hover:bg-surface-elevated transition-colors"
               >
-                Copy
+                {t('caregiverApp.settings.copy')}
               </button>
             </div>
           ) : (
@@ -381,7 +397,7 @@ export default function SettingsClient({
               onClick={() => setShowCareCode(true)}
               className="btn-primary"
             >
-              Show Care Code
+              {t('caregiverApp.settings.showCareCode')}
             </button>
           )}
         </div>
@@ -392,7 +408,7 @@ export default function SettingsClient({
               disabled={isRegenerating}
               className="text-sm text-text-muted hover:text-text-secondary underline"
             >
-              {isRegenerating ? 'Regenerating...' : 'Regenerate Code (invalidates old code)'}
+              {isRegenerating ? t('caregiverApp.settings.regenerating') : t('caregiverApp.settings.regenerateCode')}
             </button>
           </div>
         )}
@@ -400,7 +416,7 @@ export default function SettingsClient({
 
       {/* Notification Preferences */}
       <div className="card-paper p-6">
-        <h2 className="text-lg font-display font-bold text-text-primary mb-4">Notifications</h2>
+        <h2 className="text-lg font-display font-bold text-text-primary mb-4">{t('caregiverApp.settings.notifications')}</h2>
         <div className="space-y-4">
           <label className="flex items-center gap-3">
             <input
@@ -415,9 +431,9 @@ export default function SettingsClient({
               className="w-5 h-5 rounded border-surface-border text-brand-600 focus:ring-brand-500"
             />
             <div>
-              <span className="font-medium text-text-primary">Safety Alerts</span>
+              <span className="font-medium text-text-primary">{t('caregiverApp.settings.safetyAlertsLabel')}</span>
               <p className="text-sm text-text-muted">
-                Receive immediate alerts when your loved one leaves a safe zone or taps &quot;Take Me Home&quot;
+                {t('caregiverApp.settings.safetyAlertsDesc')}
               </p>
             </div>
           </label>
@@ -434,9 +450,9 @@ export default function SettingsClient({
               className="w-5 h-5 rounded border-surface-border text-brand-600 focus:ring-brand-500"
             />
             <div>
-              <span className="font-medium text-text-primary">Daily Summary</span>
+              <span className="font-medium text-text-primary">{t('caregiverApp.settings.dailySummary')}</span>
               <p className="text-sm text-text-muted">
-                Receive a daily summary of completed tasks and check-in status
+                {t('caregiverApp.settings.dailySummaryDesc')}
               </p>
             </div>
           </label>
@@ -453,9 +469,9 @@ export default function SettingsClient({
               className="w-5 h-5 rounded border-surface-border text-brand-600 focus:ring-brand-500"
             />
             <div>
-              <span className="font-medium text-text-primary">Email Notifications</span>
+              <span className="font-medium text-text-primary">{t('caregiverApp.settings.emailNotificationsLabel')}</span>
               <p className="text-sm text-text-muted">
-                Receive alerts and summaries via email in addition to push notifications
+                {t('caregiverApp.settings.emailNotificationsDesc')}
               </p>
             </div>
           </label>
@@ -465,10 +481,10 @@ export default function SettingsClient({
               disabled={isSavingNotifications}
               className="btn-primary disabled:opacity-50"
             >
-              {isSavingNotifications ? 'Saving...' : 'Save Preferences'}
+              {isSavingNotifications ? t('caregiverApp.settings.savingPreferences') : t('caregiverApp.settings.savePreferences')}
             </button>
             {notificationsSaved && (
-              <span className="text-sm text-status-success">Saved!</span>
+              <span className="text-sm text-status-success">{t('common.saved')}</span>
             )}
           </div>
         </div>
@@ -476,18 +492,18 @@ export default function SettingsClient({
 
       {/* Subscription */}
       <div className="card-paper p-6">
-        <h2 className="text-lg font-display font-bold text-text-primary mb-4">Subscription</h2>
+        <h2 className="text-lg font-display font-bold text-text-primary mb-4">{t('caregiverApp.settings.subscription')}</h2>
         <div className="flex items-center justify-between mb-4">
           <div>
             <p className="font-medium text-text-primary">
-              Current Plan:{' '}
+              {t('caregiverApp.settings.currentPlanLabel')}{' '}
               <span className={household.subscription_status === 'plus' ? 'text-brand-600 dark:text-brand-400' : ''}>
-                {household.subscription_status === 'plus' ? 'MemoGuard Plus' : 'Free'}
+                {household.subscription_status === 'plus' ? t('caregiverApp.settings.memoguardPlus') : t('caregiverApp.settings.free')}
               </span>
             </p>
             {household.subscription_platform && (
               <p className="text-sm text-text-muted">
-                Subscribed via {household.subscription_platform}
+                {t('caregiverApp.settings.subscribedVia', { platform: household.subscription_platform })}
               </p>
             )}
           </div>
@@ -497,7 +513,7 @@ export default function SettingsClient({
               disabled={isCreatingCheckout}
               className="btn-primary disabled:opacity-50"
             >
-              {isCreatingCheckout ? 'Loading...' : 'Upgrade to Plus'}
+              {isCreatingCheckout ? t('common.loading') : t('caregiverApp.settings.upgradeToPlus')}
             </button>
           )}
         </div>
@@ -510,24 +526,24 @@ export default function SettingsClient({
             disabled={isOpeningPortal}
             className="text-sm text-text-muted hover:text-text-secondary underline disabled:opacity-50"
           >
-            {isOpeningPortal ? 'Opening...' : 'Manage subscription'}
+            {isOpeningPortal ? t('common.loading') : t('caregiverApp.settings.manageSubscription')}
           </button>
         )}
         {household.subscription_status === 'plus' && household.subscription_platform !== 'web' && (
           <p className="text-sm text-text-muted mt-2">
-            To manage your subscription, please use the {household.subscription_platform === 'ios' ? 'App Store' : 'Google Play Store'}.
+            {household.subscription_platform === 'ios' ? t('caregiverApp.settings.manageViaAppStore') : t('caregiverApp.settings.manageViaPlayStore')}
           </p>
         )}
         {household.subscription_status !== 'plus' && (
           <div className="card-inset rounded-2xl p-4 mt-4">
-            <p className="font-medium text-brand-800 dark:text-brand-200 mb-2">MemoGuard Plus Benefits:</p>
+            <p className="font-medium text-brand-800 dark:text-brand-200 mb-2">{t('caregiverApp.settings.plusBenefitsTitle')}</p>
             <ul className="text-sm text-brand-700 dark:text-brand-300 space-y-1">
-              <li>• Unlimited care plan tasks</li>
-              <li>• AI Care Coach for personalized guidance</li>
-              <li>• Multiple safe zones with alerts</li>
-              <li>• Up to 5 family caregivers</li>
-              <li>• Doctor visit report generator</li>
-              <li>• Priority support</li>
+              <li>&bull; {t('caregiverApp.settings.plusBenefitTasks')}</li>
+              <li>&bull; {t('caregiverApp.settings.plusBenefitCoach')}</li>
+              <li>&bull; {t('caregiverApp.settings.plusBenefitZones')}</li>
+              <li>&bull; {t('caregiverApp.settings.plusBenefitFamily')}</li>
+              <li>&bull; {t('caregiverApp.settings.plusBenefitReports')}</li>
+              <li>&bull; {t('caregiverApp.settings.plusBenefitSupport')}</li>
             </ul>
           </div>
         )}
@@ -535,23 +551,23 @@ export default function SettingsClient({
 
       {/* Change Password */}
       <div className="card-paper p-6">
-        <h2 className="text-lg font-display font-bold text-text-primary mb-4">Change Password</h2>
+        <h2 className="text-lg font-display font-bold text-text-primary mb-4">{t('caregiverApp.settings.changePassword')}</h2>
         <div className="space-y-4">
           <div>
             <label className="block text-sm font-semibold text-text-secondary mb-1.5">
-              New Password
+              {t('caregiverApp.settings.newPassword')}
             </label>
             <input
               type="password"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
               className="input-warm w-full"
-              placeholder="At least 8 characters"
+              placeholder={t('caregiverApp.settings.newPasswordPlaceholder')}
             />
           </div>
           <div>
             <label className="block text-sm font-semibold text-text-secondary mb-1.5">
-              Confirm New Password
+              {t('caregiverApp.settings.confirmNewPassword')}
             </label>
             <input
               type="password"
@@ -564,14 +580,14 @@ export default function SettingsClient({
             <p className="text-sm text-status-danger">{passwordError}</p>
           )}
           {passwordSuccess && (
-            <p className="text-sm text-status-success">Password changed successfully!</p>
+            <p className="text-sm text-status-success">{t('caregiverApp.settings.passwordChangedSuccess')}</p>
           )}
           <button
             onClick={handleChangePassword}
             disabled={isChangingPassword || !newPassword || !confirmPassword}
             className="btn-primary disabled:opacity-50"
           >
-            {isChangingPassword ? 'Changing...' : 'Change Password'}
+            {isChangingPassword ? t('caregiverApp.settings.changingPassword') : t('caregiverApp.settings.changePasswordButton')}
           </button>
         </div>
       </div>
@@ -582,13 +598,13 @@ export default function SettingsClient({
           onClick={handleSignOut}
           className="px-4 py-2 border border-surface-border rounded-2xl text-text-secondary hover:bg-brand-50 dark:hover:bg-surface-elevated transition-colors"
         >
-          Sign Out
+          {t('caregiverApp.settings.signOut')}
         </button>
       </div>
 
       {/* Privacy & Data */}
       <div className="card-paper p-6">
-        <h2 className="text-lg font-display font-bold text-text-primary mb-4">Privacy & Data</h2>
+        <h2 className="text-lg font-display font-bold text-text-primary mb-4">{t('caregiverApp.settings.privacy')}</h2>
         <div className="space-y-4">
           <div>
             <button
@@ -596,18 +612,18 @@ export default function SettingsClient({
               disabled={isExporting}
               className="px-4 py-2 border border-surface-border rounded-2xl text-text-secondary hover:bg-brand-50 dark:hover:bg-surface-elevated transition-colors disabled:opacity-50"
             >
-              {isExporting ? 'Exporting...' : 'Export My Data'}
+              {isExporting ? t('caregiverApp.settings.exporting') : t('caregiverApp.settings.exportData')}
             </button>
             <p className="text-sm text-text-muted mt-1">
-              Download a copy of all your data in JSON format (GDPR right to portability)
+              {t('caregiverApp.settings.exportDataDesc')}
             </p>
           </div>
           <div className="flex gap-4 text-sm">
             <a href="/privacy" target="_blank" className="text-brand-600 dark:text-brand-400 hover:underline">
-              Privacy Policy
+              {t('caregiverApp.settings.privacyPolicy')}
             </a>
             <a href="/terms" target="_blank" className="text-brand-600 dark:text-brand-400 hover:underline">
-              Terms of Service
+              {t('caregiverApp.settings.termsOfService')}
             </a>
           </div>
         </div>
@@ -615,29 +631,29 @@ export default function SettingsClient({
 
       {/* Danger Zone */}
       <div className="bg-status-danger-bg rounded-[20px] border border-status-danger/20 p-6">
-        <h2 className="text-lg font-display font-bold text-status-danger mb-4">Danger Zone</h2>
+        <h2 className="text-lg font-display font-bold text-status-danger mb-4">{t('caregiverApp.settings.dangerZone')}</h2>
         <div className="space-y-4">
           <div>
             <button
               onClick={() => setShowDeleteConfirm(!showDeleteConfirm)}
               className="px-4 py-2 bg-status-danger text-white rounded-2xl hover:bg-status-danger/90 transition-colors"
             >
-              Delete Account
+              {t('caregiverApp.settings.deleteAccount')}
             </button>
             <p className="text-sm text-status-danger mt-1">
-              Permanently delete your account and all data. This cannot be undone.
+              {t('caregiverApp.settings.deleteAccountDesc')}
             </p>
             {showDeleteConfirm && (
               <div className="mt-4 p-4 bg-surface-card dark:bg-surface-elevated rounded-2xl border border-status-danger/30">
                 <p className="text-sm text-status-danger mb-3">
-                  Type &quot;DELETE&quot; to confirm account deletion:
+                  {t('caregiverApp.settings.typeDeleteToConfirm')}
                 </p>
                 <input
                   type="text"
                   value={deleteConfirmText}
                   onChange={(e) => setDeleteConfirmText(e.target.value)}
                   className="w-full px-4 py-2 border border-status-danger/30 rounded-2xl bg-surface-card dark:bg-surface-elevated text-text-primary focus:outline-none focus:ring-2 focus:ring-status-danger mb-3"
-                  placeholder="Type DELETE"
+                  placeholder={t('caregiverApp.settings.typeDeletePlaceholder')}
                 />
                 {deleteError && (
                   <p className="text-sm text-status-danger mb-3">{deleteError}</p>
@@ -647,7 +663,7 @@ export default function SettingsClient({
                   disabled={deleteConfirmText !== 'DELETE' || isDeleting}
                   className="px-4 py-2 bg-status-danger text-white rounded-2xl hover:bg-status-danger/90 disabled:opacity-50 transition-colors"
                 >
-                  {isDeleting ? 'Deleting...' : 'Confirm Delete'}
+                  {isDeleting ? t('caregiverApp.settings.deleting') : t('caregiverApp.settings.confirmDelete')}
                 </button>
               </div>
             )}

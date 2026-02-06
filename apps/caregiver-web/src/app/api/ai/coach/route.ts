@@ -138,12 +138,17 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    // Get caregiver data
+    // Get caregiver data — verify they belong to this household
     const { data: caregiver } = await supabase
       .from('caregivers')
       .select('*')
       .eq('id', user.id)
+      .eq('household_id', householdId)
       .single();
+
+    if (!caregiver) {
+      return NextResponse.json({ error: 'Access denied' }, { status: 403 });
+    }
 
     // Get patient data
     const { data: patient } = await supabase

@@ -63,7 +63,7 @@ export async function DELETE(request: NextRequest) {
 
     if (isPrimary && !hasOtherCaregivers) {
       // Primary caregiver with no other members - delete entire household
-      console.log(`Deleting entire household ${householdId} for user ${user.id}`);
+      // Deleting entire household for this user
 
       // Delete in order to respect foreign key constraints
       // Most tables have ON DELETE CASCADE, but let's be explicit
@@ -189,7 +189,7 @@ export async function DELETE(request: NextRequest) {
       );
     } else {
       // Non-primary caregiver - just remove themselves
-      console.log(`Removing non-primary caregiver ${user.id} from household ${householdId}`);
+      // Removing non-primary caregiver from household
 
       // Delete only this caregiver's personal data
       await serviceClient

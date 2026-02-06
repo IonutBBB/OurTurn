@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import {
   View,
   Text,
@@ -6,6 +6,9 @@ import {
   ScrollView,
   RefreshControl,
   Platform,
+  TextInput,
+  TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
@@ -20,6 +23,9 @@ export default function DashboardScreen() {
   const [refreshing, setRefreshing] = useState(false);
   const [taskStats, setTaskStats] = useState({ completed: 0, total: 0 });
   const [checkin, setCheckin] = useState<any>(null);
+  const [journalEntries, setJournalEntries] = useState<any[]>([]);
+  const [journalNote, setJournalNote] = useState('');
+  const [savingNote, setSavingNote] = useState(false);
 
   const getTimeOfDay = () => {
     const hour = new Date().getHours();
@@ -50,8 +56,18 @@ export default function DashboardScreen() {
         .single();
 
       setCheckin(checkinData);
+
+      // Load journal entries
+      const { data: journalData } = await supabase
+        .from('care_journal_entries')
+        .select('id, content, entry_type, created_at, author:caregivers!author_id(name)')
+        .eq('household_id', household.id)
+        .order('created_at', { ascending: false })
+        .limit(5);
+
+      if (journalData) setJournalEntries(journalData);
     } catch (error) {
-      console.error('Failed to load dashboard data:', error);
+      if (__DEV__) console.error('Failed to load dashboard data:', error);
     }
   };
 
@@ -67,17 +83,59 @@ export default function DashboardScreen() {
   };
 
   const moodMap: Record<number, { emoji: string; label: string }> = {
-    1: { emoji: '😟', label: 'Struggling' },
-    2: { emoji: '😕', label: 'Low' },
-    3: { emoji: '😐', label: 'Okay' },
-    4: { emoji: '😊', label: 'Good' },
-    5: { emoji: '😄', label: 'Great' },
+    1: { emoji: '😟', label: t('caregiverApp.dashboard.moodStruggling') },
+    2: { emoji: '😕', label: t('caregiverApp.dashboard.moodLow') },
+    3: { emoji: '😐', label: t('caregiverApp.dashboard.moodOkay') },
+    4: { emoji: '😊', label: t('caregiverApp.dashboard.moodGood') },
+    5: { emoji: '😄', label: t('caregiverApp.dashboard.moodGreat') },
   };
 
   const sleepMap: Record<number, { emoji: string; label: string }> = {
-    1: { emoji: '😩', label: 'Poor' },
-    2: { emoji: '🙂', label: 'Fair' },
-    3: { emoji: '😴', label: 'Well' },
+    1: { emoji: '😩', label: t('caregiverApp.dashboard.sleepPoor') },
+    2: { emoji: '🙂', label: t('caregiverApp.dashboard.sleepFair') },
+    3: { emoji: '😴', label: t('caregiverApp.dashboard.sleepWell') },
+  };
+
+  const handleAddJournalNote = useCallback(async () => {
+    if (!journalNote.trim() || !household?.id) return;
+    setSavingNote(true);
+    try {
+      const { data, error } = await supabase
+        .from('care_journal_entries')
+        .insert({
+          household_id: household.id,
+          author_id: caregiver?.id,
+          content: journalNote.trim(),
+          entry_type: 'note',
+        })
+        .select('id, content, entry_type, created_at, author:caregivers!author_id(name)')
+        .single();
+
+      if (error) throw error;
+      setJournalEntries(prev => [data, ...prev].slice(0, 5));
+      setJournalNote('');
+    } catch (err) {
+      if (__DEV__) console.error('Failed to add note:', err);
+    } finally {
+      setSavingNote(false);
+    }
+  }, [journalNote, household?.id, caregiver?.id]);
+
+  const entryTypeIcon: Record<string, string> = {
+    note: '📝',
+    observation: '👁️',
+    milestone: '🌟',
+    concern: '⚠️',
+  };
+
+  const formatRelativeTime = (dateStr: string) => {
+    const diff = Date.now() - new Date(dateStr).getTime();
+    const minutes = Math.floor(diff / 60000);
+    if (minutes < 60) return t('caregiverApp.dashboard.minutesAgo', { count: minutes });
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return t('caregiverApp.dashboard.hoursAgo', { count: hours });
+    const days = Math.floor(hours / 24);
+    return t('caregiverApp.dashboard.daysAgo', { count: days });
   };
 
   const progressPercent = taskStats.total > 0
@@ -109,7 +167,7 @@ export default function DashboardScreen() {
                 })}
               </Text>
               {patient && (
-                <Text style={styles.status} accessibilityLabel={`${patient.name} is doing well`}>
+                <Text style={styles.status} accessibilityLabel={t('caregiverApp.dashboard.statusGood', { patientName: patient.name })}>
                   {t('caregiverApp.dashboard.statusGood', { patientName: patient.name })} 💚
                 </Text>
               )}
@@ -138,7 +196,7 @@ export default function DashboardScreen() {
                   {taskStats.completed}
                   <Text style={styles.progressSmall}>/{taskStats.total}</Text>
                 </Text>
-                <Text style={styles.progressCaption}>tasks completed</Text>
+                <Text style={styles.progressCaption}>{t('caregiverApp.dashboard.tasksCompletedLabel')}</Text>
               </View>
               {/* Mini progress ring */}
               <View style={styles.ringWrap}>
@@ -163,7 +221,7 @@ export default function DashboardScreen() {
             accessibilityRole="summary"
             accessibilityLabel={
               checkin
-                ? `${t('caregiverApp.dashboard.dailyCheckin')}: Mood is ${moodMap[checkin.mood]?.label || 'not recorded'}`
+                ? `${t('caregiverApp.dashboard.dailyCheckin')}: ${t('caregiverApp.dashboard.mood')} ${moodMap[checkin.mood]?.label || '—'}`
                 : `${t('caregiverApp.dashboard.dailyCheckin')}: ${t('caregiverApp.dashboard.noCheckinYet')}`
             }
           >
@@ -172,11 +230,11 @@ export default function DashboardScreen() {
               <View style={styles.checkinGrid}>
                 <View style={styles.checkinBox}>
                   <Text style={styles.checkinEmoji}>{moodMap[checkin.mood]?.emoji || '—'}</Text>
-                  <Text style={styles.checkinBoxLabel}>{moodMap[checkin.mood]?.label || 'Mood'}</Text>
+                  <Text style={styles.checkinBoxLabel}>{moodMap[checkin.mood]?.label || t('caregiverApp.dashboard.mood')}</Text>
                 </View>
                 <View style={styles.checkinBox}>
                   <Text style={styles.checkinEmoji}>{sleepMap[checkin.sleep_quality]?.emoji || '—'}</Text>
-                  <Text style={styles.checkinBoxLabel}>{sleepMap[checkin.sleep_quality]?.label || 'Sleep'}</Text>
+                  <Text style={styles.checkinBoxLabel}>{sleepMap[checkin.sleep_quality]?.label || t('caregiverApp.dashboard.sleep')}</Text>
                 </View>
               </View>
             ) : (
@@ -217,20 +275,20 @@ export default function DashboardScreen() {
           <View
             style={styles.card}
             accessible={true}
-            accessibilityLabel={`Care Code: ${household?.care_code ? household.care_code.split('').join(' ') : 'Not available'}`}
+            accessibilityLabel={`${t('caregiverApp.dashboard.careCode')}: ${household?.care_code ? household.care_code.split('').join(' ') : t('caregiverApp.dashboard.careCodeNotAvailable')}`}
           >
-            <Text style={styles.sectionLabel}>Care Code</Text>
+            <Text style={styles.sectionLabel}>{t('caregiverApp.dashboard.careCode')}</Text>
             <View style={styles.codeBox}>
               <Text
                 style={styles.careCode}
-                accessibilityLabel={household?.care_code ? `Code: ${household.care_code.split('').join(' ')}` : 'Code not available'}
+                accessibilityLabel={household?.care_code ? `${t('caregiverApp.dashboard.careCode')}: ${household.care_code.split('').join(' ')}` : t('caregiverApp.dashboard.careCodeNotAvailable')}
               >
                 {household?.care_code
                   ? `${household.care_code.slice(0, 3)} ${household.care_code.slice(3)}`
                   : '--- ---'}
               </Text>
             </View>
-            <Text style={styles.codeHint}>Share to connect patient app</Text>
+            <Text style={styles.codeHint}>{t('caregiverApp.dashboard.careCodeHint')}</Text>
           </View>
 
           {/* AI Insights Card */}
@@ -238,7 +296,7 @@ export default function DashboardScreen() {
             style={[styles.card, styles.insightsCard]}
             accessible={true}
             accessibilityRole="summary"
-            accessibilityLabel={`AI Insight: ${patient?.name || 'Your loved one'} completes more tasks on days with morning walks scheduled.`}
+            accessibilityLabel={`${t('caregiverApp.dashboard.aiInsights')}: ${t('caregiverApp.dashboard.insightText', { name: patient?.name || 'Your loved one' })}`}
           >
             <View style={styles.insightHeader}>
               <Text style={styles.insightHeaderIcon}>✨</Text>
@@ -247,12 +305,71 @@ export default function DashboardScreen() {
             <View style={styles.insightBox}>
               <Text style={styles.insightIcon} importantForAccessibility="no">💡</Text>
               <View style={styles.insightContent}>
-                <Text style={styles.insightTitle}>Morning Activity Pattern</Text>
+                <Text style={styles.insightTitle}>{t('caregiverApp.dashboard.morningActivityPattern')}</Text>
                 <Text style={styles.insightText}>
-                  {patient?.name || 'Your loved one'} completes more tasks on days with morning walks scheduled.
+                  {t('caregiverApp.dashboard.insightText', { name: patient?.name || 'Your loved one' })}
                 </Text>
               </View>
             </View>
+          </View>
+
+          {/* Care Journal Card */}
+          <View style={styles.card}>
+            <View style={styles.journalHeader}>
+              <Text style={styles.sectionLabel}>{t('caregiverApp.family.journal')}</Text>
+            </View>
+
+            {/* Quick note input */}
+            <View style={styles.journalInputRow}>
+              <TextInput
+                style={styles.journalInput}
+                value={journalNote}
+                onChangeText={setJournalNote}
+                placeholder={t('caregiverApp.family.addNote')}
+                placeholderTextColor={COLORS.textMuted}
+                returnKeyType="send"
+                onSubmitEditing={handleAddJournalNote}
+              />
+              <TouchableOpacity
+                style={[styles.journalAddButton, (!journalNote.trim() || savingNote) && styles.journalAddButtonDisabled]}
+                onPress={handleAddJournalNote}
+                disabled={!journalNote.trim() || savingNote}
+                activeOpacity={0.7}
+              >
+                {savingNote ? (
+                  <ActivityIndicator color={COLORS.textInverse} size="small" />
+                ) : (
+                  <Text style={styles.journalAddButtonText}>+</Text>
+                )}
+              </TouchableOpacity>
+            </View>
+
+            {/* Journal entries */}
+            {journalEntries.length === 0 ? (
+              <View style={styles.journalEmpty}>
+                <Text style={styles.journalEmptyIcon}>📔</Text>
+                <Text style={styles.journalEmptyText}>{t('caregiverApp.dashboard.noJournalEntries')}</Text>
+              </View>
+            ) : (
+              journalEntries.map((entry) => {
+                const authorData = Array.isArray(entry.author) ? entry.author[0] : entry.author;
+                return (
+                  <View key={entry.id} style={styles.journalEntry}>
+                    <Text style={styles.journalEntryIcon}>
+                      {entryTypeIcon[entry.entry_type] || '📝'}
+                    </Text>
+                    <View style={styles.journalEntryContent}>
+                      <Text style={styles.journalEntryText} numberOfLines={2}>
+                        {entry.content}
+                      </Text>
+                      <Text style={styles.journalEntryMeta}>
+                        {authorData?.name || t('caregiverApp.dashboard.unknown')} · {formatRelativeTime(entry.created_at)}
+                      </Text>
+                    </View>
+                  </View>
+                );
+              })
+            )}
           </View>
         </View>
       </ScrollView>
@@ -553,5 +670,86 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.body,
     color: COLORS.textSecondary,
     lineHeight: 19,
+  },
+
+  // Care Journal
+  journalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  journalInputRow: {
+    flexDirection: 'row',
+    gap: 8,
+    marginBottom: SPACING[4],
+  },
+  journalInput: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: COLORS.brand200,
+    borderRadius: RADIUS.lg,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+    fontSize: 14,
+    fontFamily: FONTS.body,
+    color: COLORS.textPrimary,
+    backgroundColor: COLORS.background,
+  },
+  journalAddButton: {
+    width: 40,
+    height: 40,
+    borderRadius: RADIUS.lg,
+    backgroundColor: COLORS.brand600,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  journalAddButtonDisabled: {
+    opacity: 0.4,
+  },
+  journalAddButtonText: {
+    fontSize: 20,
+    fontWeight: '500',
+    color: COLORS.textInverse,
+    marginTop: -1,
+  },
+  journalEmpty: {
+    alignItems: 'center',
+    paddingVertical: SPACING[5],
+  },
+  journalEmptyIcon: {
+    fontSize: 24,
+    opacity: 0.4,
+    marginBottom: SPACING[2],
+  },
+  journalEmptyText: {
+    fontSize: 13,
+    fontFamily: FONTS.body,
+    color: COLORS.textMuted,
+  },
+  journalEntry: {
+    flexDirection: 'row',
+    gap: SPACING[3],
+    paddingVertical: SPACING[2],
+    borderTopWidth: 1,
+    borderTopColor: COLORS.border,
+  },
+  journalEntryIcon: {
+    fontSize: 16,
+    marginTop: 2,
+  },
+  journalEntryContent: {
+    flex: 1,
+  },
+  journalEntryText: {
+    fontSize: 14,
+    fontFamily: FONTS.body,
+    color: COLORS.textPrimary,
+    lineHeight: 19,
+  },
+  journalEntryMeta: {
+    fontSize: 11,
+    fontFamily: FONTS.body,
+    color: COLORS.textMuted,
+    marginTop: 2,
   },
 });

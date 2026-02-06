@@ -23,12 +23,12 @@ export default function SignupPage() {
     setError(null);
 
     if (password !== confirmPassword) {
-      setError('Passwords do not match');
+      setError(t('caregiverApp.auth.passwordsMismatchSignup'));
       return;
     }
 
     if (password.length < 8) {
-      setError('Password must be at least 8 characters');
+      setError(t('caregiverApp.auth.passwordMinLengthSignup'));
       return;
     }
 
@@ -93,7 +93,7 @@ export default function SignupPage() {
             </div>
           </Link>
           <h1 className="heading-display text-2xl mb-1">{t('caregiverApp.auth.getStarted')}</h1>
-          <p className="text-text-secondary text-sm">Create your MemoGuard account</p>
+          <p className="text-text-secondary text-sm">{t('caregiverApp.auth.createAccountHeading')}</p>
         </header>
 
         {/* Signup card */}
@@ -179,7 +179,7 @@ export default function SignupPage() {
 
             <div>
               <label htmlFor="confirmPassword" className="block text-sm font-semibold text-text-primary mb-1.5">
-                Confirm password
+                {t('caregiverApp.auth.confirmPassword')}
               </label>
               <input
                 id="confirmPassword"

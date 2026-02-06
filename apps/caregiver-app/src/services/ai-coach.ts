@@ -37,7 +37,7 @@ export function parseAIResponse(content: string): ParsedResponse {
     try {
       carePlanSuggestions.push(JSON.parse(match[1].trim()));
     } catch (e) {
-      console.error('Failed to parse care plan suggestion:', e);
+      if (__DEV__) console.error('Failed to parse care plan suggestion:', e);
     }
   }
 
@@ -47,7 +47,7 @@ export function parseAIResponse(content: string): ParsedResponse {
     try {
       doctorNotes.push(JSON.parse(match[1].trim()));
     } catch (e) {
-      console.error('Failed to parse doctor note:', e);
+      if (__DEV__) console.error('Failed to parse doctor note:', e);
     }
   }
 
@@ -247,7 +247,10 @@ export async function sendMessageToCoach(
   onChunk: (text: string) => void,
   onConversationId: (id: string) => void
 ): Promise<void> {
-  const apiBaseUrl = process.env.EXPO_PUBLIC_API_BASE_URL || 'http://localhost:3000';
+  const apiBaseUrl = process.env.EXPO_PUBLIC_API_BASE_URL;
+  if (!apiBaseUrl) {
+    throw new Error('EXPO_PUBLIC_API_BASE_URL is not configured');
+  }
 
   const response = await fetch(`${apiBaseUrl}/api/ai/coach`, {
     method: 'POST',

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback, FormEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
 
 interface Message {
@@ -42,7 +43,7 @@ function parseAIResponse(content: string): {
     try {
       carePlanSuggestions.push(JSON.parse(match[1].trim()));
     } catch (e) {
-      console.error('Failed to parse care plan suggestion:', e);
+      // Failed to parse care plan suggestion
     }
   }
 
@@ -51,7 +52,7 @@ function parseAIResponse(content: string): {
     try {
       doctorNotes.push(JSON.parse(match[1].trim()));
     } catch (e) {
-      console.error('Failed to parse doctor note:', e);
+      // Failed to parse doctor note
     }
   }
 
@@ -69,6 +70,7 @@ export default function CoachClient({
   caregiverName,
   initialConversationId,
 }: CoachClientProps) {
+  const { t } = useTranslation();
   const supabase = createBrowserClient();
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
@@ -165,8 +167,7 @@ export default function CoachClient({
           }
         }
       } catch (err) {
-        console.error('Chat error:', err);
-        setError('Failed to get a response. Please try again.');
+        setError(t('caregiverApp.coach.failedResponse'));
         setMessages((prev) => prev.slice(0, -1));
       } finally {
         setIsLoading(false);
@@ -189,10 +190,9 @@ export default function CoachClient({
         active: true,
       });
       if (error) throw error;
-      alert('Task added to care plan!');
+      alert(t('caregiverApp.coach.taskAddedToPlan'));
     } catch (err) {
-      console.error('Failed to add task:', err);
-      alert('Failed to add task. Please try again.');
+      alert(t('caregiverApp.coach.taskAddFailed'));
     }
   };
 
@@ -204,10 +204,9 @@ export default function CoachClient({
         entry_type: 'observation',
       });
       if (error) throw error;
-      alert('Note saved for doctor visit!');
+      alert(t('caregiverApp.coach.noteSavedForDoctor'));
     } catch (err) {
-      console.error('Failed to save note:', err);
-      alert('Failed to save note. Please try again.');
+      alert(t('caregiverApp.coach.noteSaveFailed'));
     }
   };
 
@@ -219,10 +218,10 @@ export default function CoachClient({
   };
 
   const suggestedPrompts = [
-    `How can I help ${patientName} stay engaged during the day?`,
-    'What activities work well for sundowning?',
-    `${patientName} seems agitated in the evenings. What can I do?`,
-    'How do I handle repetitive questions without getting frustrated?',
+    t('caregiverApp.coach.suggestions.stayEngaged', { name: patientName }),
+    t('caregiverApp.coach.suggestions.sundowning'),
+    t('caregiverApp.coach.suggestions.agitated', { name: patientName }),
+    t('caregiverApp.coach.suggestions.repetitive'),
   ];
 
   return (
@@ -236,14 +235,13 @@ export default function CoachClient({
               <span className="text-3xl">🤗</span>
             </div>
             <h2 className="text-xl font-display font-bold text-text-primary mb-2">
-              Hi {caregiverName}!
+              {t('caregiverApp.coach.hiName', { name: caregiverName })}
             </h2>
             <p className="text-text-secondary mb-8 max-w-md leading-relaxed">
-              I&apos;m your Care Coach. Ask me anything about caring for {patientName} &mdash;
-              daily routines, challenging moments, or activity ideas.
+              {t('caregiverApp.coach.introDesc', { name: patientName })}
             </p>
             <div className="w-full max-w-md space-y-2">
-              <p className="section-label mb-3 text-center">Try asking</p>
+              <p className="section-label mb-3 text-center">{t('caregiverApp.coach.tryAsking')}</p>
               {suggestedPrompts.map((prompt, index) => (
                 <button
                   key={index}
@@ -274,7 +272,7 @@ export default function CoachClient({
                         <span className="text-xs">🤗</span>
                       </span>
                       <span className="text-xs font-semibold text-brand-700 dark:text-brand-300 font-display">
-                        Care Coach
+                        {t('caregiverApp.coach.careCoach')}
                       </span>
                     </div>
                   )}
@@ -304,7 +302,7 @@ export default function CoachClient({
                           <span>📋</span>
                           <div className="flex-1">
                             <p className="text-xs font-semibold text-brand-700 dark:text-brand-200">
-                              Add to Care Plan
+                              {t('caregiverApp.coach.addToCarePlan')}
                             </p>
                             <p className="text-xs text-brand-600 dark:text-brand-300">
                               {suggestion.title}
@@ -328,7 +326,7 @@ export default function CoachClient({
                           <span>📝</span>
                           <div className="flex-1">
                             <p className="text-xs font-semibold text-status-amber">
-                              Save for Doctor Visit
+                              {t('caregiverApp.coach.saveForDoctorVisit')}
                             </p>
                             <p className="text-xs text-status-amber/80">{note.note}</p>
                           </div>
@@ -360,7 +358,7 @@ export default function CoachClient({
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder={`Ask about caring for ${patientName}...`}
+            placeholder={t('caregiverApp.coach.askAboutPlaceholder', { name: patientName })}
             rows={1}
             className="input-warm w-full pr-12 resize-none"
             style={{ minHeight: '48px', maxHeight: '120px' }}
@@ -379,14 +377,14 @@ export default function CoachClient({
               <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce [animation-delay:0.3s]" />
             </span>
           ) : (
-            'Send'
+            t('common.send')
           )}
         </button>
       </form>
 
       {/* ─── Disclaimer ─── */}
       <p className="mt-2 text-[11px] text-text-muted text-center">
-        Care Coach provides general guidance only. Always consult healthcare professionals for medical advice.
+        {t('caregiverApp.coach.disclaimer')}
       </p>
     </div>
   );

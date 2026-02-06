@@ -3,6 +3,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import { APIProvider, Map, AdvancedMarker, Pin, useMap } from '@vis.gl/react-google-maps';
 import { createBrowserClient } from '@/lib/supabase';
+import { useTranslation } from 'react-i18next';
 import type { LocationLog, SafeZone, LocationAlert, LocationAlertType } from '@memoguard/shared';
 
 interface LocationClientProps {
@@ -18,11 +19,11 @@ interface LocationClientProps {
   caregiverId: string;
 }
 
-const ALERT_TYPE_LABELS: Record<LocationAlertType, string> = {
-  left_safe_zone: 'Left Safe Zone',
-  inactive: 'Inactive',
-  night_movement: 'Night Movement',
-  take_me_home_tapped: 'Take Me Home Tapped',
+const ALERT_TYPE_LABEL_KEYS: Record<LocationAlertType, string> = {
+  left_safe_zone: 'caregiverApp.location.alertTypes.left_safe_zone',
+  inactive: 'caregiverApp.location.alertTypes.inactive',
+  night_movement: 'caregiverApp.location.alertTypes.night_movement',
+  take_me_home_tapped: 'caregiverApp.location.alertTypes.take_me_home_tapped',
 };
 
 const ALERT_TYPE_ICONS: Record<LocationAlertType, string> = {
@@ -57,8 +58,9 @@ function formatDateTime(timestamp: string): string {
 function SafeZoneCircle({ zone }: { zone: SafeZone }) {
   const map = useMap();
 
-  // Draw circle using Google Maps Circle
-  if (map && typeof google !== 'undefined') {
+  useEffect(() => {
+    if (!map || typeof google === 'undefined') return;
+
     const circle = new google.maps.Circle({
       strokeColor: '#4A7C59',
       strokeOpacity: 0.8,
@@ -70,11 +72,10 @@ function SafeZoneCircle({ zone }: { zone: SafeZone }) {
       radius: zone.radius_meters,
     });
 
-    // Cleanup on unmount
     return () => {
       circle.setMap(null);
     };
-  }
+  }, [map, zone.latitude, zone.longitude, zone.radius_meters]);
 
   return null;
 }
@@ -93,6 +94,7 @@ function SafeZoneModal({
   zone?: SafeZone | null;
   isLoading: boolean;
 }) {
+  const { t } = useTranslation();
   const [name, setName] = useState(zone?.name || '');
   const [latitude, setLatitude] = useState(zone?.latitude?.toString() || '');
   const [longitude, setLongitude] = useState(zone?.longitude?.toString() || '');
@@ -114,18 +116,18 @@ function SafeZoneModal({
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
       <div className="card-paper p-6 w-full max-w-md">
         <h2 className="text-xl font-display font-bold text-text-primary mb-4">
-          {zone ? 'Edit Safe Zone' : 'Add Safe Zone'}
+          {zone ? t('caregiverApp.location.editSafeZone') : t('caregiverApp.location.addSafeZone')}
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-text-primary mb-1">
-              Name
+              {t('caregiverApp.location.name')}
             </label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="e.g., Home, Doctor's Office"
+              placeholder={t('caregiverApp.location.zoneNamePlaceholder')}
               className="input-warm w-full"
               required
             />
@@ -133,7 +135,7 @@ function SafeZoneModal({
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-text-primary mb-1">
-                Latitude
+                {t('caregiverApp.location.latitude')}
               </label>
               <input
                 type="number"
@@ -147,7 +149,7 @@ function SafeZoneModal({
             </div>
             <div>
               <label className="block text-sm font-medium text-text-primary mb-1">
-                Longitude
+                {t('caregiverApp.location.longitude')}
               </label>
               <input
                 type="number"
@@ -162,7 +164,7 @@ function SafeZoneModal({
           </div>
           <div>
             <label className="block text-sm font-medium text-text-primary mb-1">
-              Radius (meters)
+              {t('caregiverApp.location.zoneRadius')}
             </label>
             <input
               type="number"
@@ -175,7 +177,7 @@ function SafeZoneModal({
               required
             />
             <p className="text-xs text-text-muted mt-1">
-              Recommended: 100-500 meters for typical locations
+              {t('caregiverApp.location.radiusRecommendation')}
             </p>
           </div>
           <div className="flex gap-3 pt-4">
@@ -184,14 +186,14 @@ function SafeZoneModal({
               onClick={onClose}
               className="btn-secondary flex-1"
             >
-              Cancel
+              {t('common.cancel')}
             </button>
             <button
               type="submit"
               disabled={isLoading}
               className="btn-primary flex-1 disabled:opacity-50"
             >
-              {isLoading ? 'Saving...' : 'Save'}
+              {isLoading ? t('common.saving') : t('common.save')}
             </button>
           </div>
         </form>
@@ -212,6 +214,7 @@ export default function LocationClient({
   recentAlerts: initialAlerts,
   caregiverId,
 }: LocationClientProps) {
+  const { t } = useTranslation();
   const supabase = createBrowserClient();
   const [safeZones, setSafeZones] = useState<SafeZone[]>(initialSafeZones);
   const [alerts, setAlerts] = useState<LocationAlert[]>(initialAlerts);
@@ -284,8 +287,7 @@ export default function LocationClient({
         setIsModalOpen(false);
         setEditingZone(null);
       } catch (err) {
-        console.error('Failed to save safe zone:', err);
-        alert('Failed to save safe zone. Please try again.');
+        alert(t('caregiverApp.location.saveFailed'));
       } finally {
         setIsLoading(false);
       }
@@ -296,7 +298,7 @@ export default function LocationClient({
   // Handle deleting safe zone
   const handleDeleteSafeZone = useCallback(
     async (zoneId: string) => {
-      if (!confirm('Are you sure you want to delete this safe zone?')) return;
+      if (!confirm(t('caregiverApp.location.deleteSafeZoneConfirm'))) return;
 
       try {
         const { error } = await supabase
@@ -307,8 +309,7 @@ export default function LocationClient({
         if (error) throw error;
         setSafeZones((prev) => prev.filter((z) => z.id !== zoneId));
       } catch (err) {
-        console.error('Failed to delete safe zone:', err);
-        alert('Failed to delete safe zone. Please try again.');
+        alert(t('caregiverApp.location.deleteFailed'));
       }
     },
     [supabase]
@@ -335,7 +336,7 @@ export default function LocationClient({
           )
         );
       } catch (err) {
-        console.error('Failed to acknowledge alert:', err);
+        // Alert acknowledgment failed silently
       }
     },
     [caregiverId, supabase]
@@ -347,11 +348,11 @@ export default function LocationClient({
   if (!apiKey) {
     return (
       <div>
-        <h1 className="text-2xl font-bold font-display text-text-primary mb-6">Location & Safety</h1>
+        <h1 className="text-2xl font-bold font-display text-text-primary mb-6">{t('caregiverApp.location.title')}</h1>
         <div className="card-paper p-8 text-center">
           <span className="text-4xl mb-4 block">🗺️</span>
           <p className="text-text-muted mb-2">
-            Google Maps API key not configured.
+            {t('caregiverApp.location.mapsApiMissing')}
           </p>
           <p className="text-sm text-text-muted">
             Add <code className="card-inset px-1 rounded">NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> to your environment variables.
@@ -366,7 +367,7 @@ export default function LocationClient({
   return (
     <APIProvider apiKey={apiKey}>
       <div>
-        <h1 className="text-2xl font-bold font-display text-text-primary mb-6">Location & Safety</h1>
+        <h1 className="text-2xl font-bold font-display text-text-primary mb-6">{t('caregiverApp.location.title')}</h1>
 
         {/* Alert Banner */}
         {unacknowledgedAlerts.length > 0 && (
@@ -374,8 +375,7 @@ export default function LocationClient({
             <div className="flex items-center gap-2 mb-2">
               <span className="text-xl">🚨</span>
               <h2 className="font-semibold text-status-danger">
-                {unacknowledgedAlerts.length} Unacknowledged Alert
-                {unacknowledgedAlerts.length > 1 ? 's' : ''}
+                {t('caregiverApp.location.unacknowledgedAlerts', { count: unacknowledgedAlerts.length })}
               </h2>
             </div>
             <div className="space-y-2">
@@ -390,7 +390,7 @@ export default function LocationClient({
                     </span>
                     <div>
                       <p className="font-medium text-text-primary">
-                        {ALERT_TYPE_LABELS[alert.type]}
+                        {t(ALERT_TYPE_LABEL_KEYS[alert.type])}
                       </p>
                       <p className="text-sm text-text-muted">
                         {formatDateTime(alert.triggered_at)}
@@ -402,7 +402,7 @@ export default function LocationClient({
                     onClick={() => handleAcknowledgeAlert(alert.id)}
                     className="btn-primary text-sm px-3 py-1"
                   >
-                    Acknowledge
+                    {t('caregiverApp.location.acknowledge')}
                   </button>
                 </div>
               ))}
@@ -417,24 +417,24 @@ export default function LocationClient({
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="font-semibold text-text-primary">
-                    {patientName}&apos;s Location
+                    {t('caregiverApp.location.patientLocation', { name: patientName })}
                   </h2>
                   {currentLocation && (
                     <p className="text-sm text-text-muted">
-                      Last updated: {formatDateTime(currentLocation.timestamp)}
+                      {t('caregiverApp.dashboard.lastUpdate', { time: formatDateTime(currentLocation.timestamp) })}
                       {currentLocation.location_label && currentLocation.location_label !== 'unknown' && (
                         <> - {currentLocation.location_label}</>
                       )}
                     </p>
                   )}
                   {!currentLocation && (
-                    <p className="text-sm text-text-muted">No location data yet</p>
+                    <p className="text-sm text-text-muted">{t('caregiverApp.location.noLocationYet')}</p>
                   )}
                 </div>
                 {currentLocation && (
                   <div className="flex items-center gap-2 text-sm">
                     <span className="w-2 h-2 bg-status-success rounded-full animate-pulse" />
-                    <span className="text-text-secondary">Live</span>
+                    <span className="text-text-secondary">{t('common.live')}</span>
                   </div>
                 )}
               </div>
@@ -454,7 +454,7 @@ export default function LocationClient({
                       lat: currentLocation.latitude,
                       lng: currentLocation.longitude,
                     }}
-                    title={`${patientName}'s current location`}
+                    title={t('caregiverApp.location.patientLocation', { name: patientName })}
                   >
                     <Pin
                       background="#4A7C59"
@@ -468,7 +468,7 @@ export default function LocationClient({
                 {homeLatitude && homeLongitude && (
                   <AdvancedMarker
                     position={{ lat: homeLatitude, lng: homeLongitude }}
-                    title="Home"
+                    title={t('caregiverApp.location.home')}
                   >
                     <div className="bg-white rounded-full p-2 shadow-lg border-2 border-brand-600">
                       <span className="text-lg">🏠</span>
@@ -504,7 +504,7 @@ export default function LocationClient({
             {/* Safe Zones Card */}
             <div className="card-paper p-4">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="font-semibold text-text-primary">Safe Zones</h2>
+                <h2 className="font-semibold text-text-primary">{t('caregiverApp.location.safeZones')}</h2>
                 <button
                   onClick={() => {
                     setEditingZone(null);
@@ -512,14 +512,14 @@ export default function LocationClient({
                   }}
                   className="btn-secondary text-sm px-3 py-1"
                 >
-                  + Add Zone
+                  {t('caregiverApp.location.addZone')}
                 </button>
               </div>
               {safeZones.length === 0 ? (
                 <p className="text-sm text-text-muted text-center py-4">
-                  No safe zones configured yet.
+                  {t('caregiverApp.location.noSafeZones')}
                   <br />
-                  Add zones to get alerts when {patientName} leaves.
+                  {t('caregiverApp.location.addZonesHint', { name: patientName })}
                 </p>
               ) : (
                 <div className="space-y-3">
@@ -531,7 +531,7 @@ export default function LocationClient({
                       <div>
                         <p className="font-medium text-text-primary">{zone.name}</p>
                         <p className="text-xs text-text-muted">
-                          {zone.radius_meters}m radius
+                          {t('caregiverApp.location.radiusUnit', { radius: zone.radius_meters })}
                         </p>
                       </div>
                       <div className="flex gap-2">
@@ -541,14 +541,14 @@ export default function LocationClient({
                             setIsModalOpen(true);
                           }}
                           className="text-text-muted hover:text-text-primary"
-                          title="Edit"
+                          title={t('common.edit')}
                         >
                           ✏️
                         </button>
                         <button
                           onClick={() => handleDeleteSafeZone(zone.id)}
                           className="text-text-muted hover:text-status-danger"
-                          title="Delete"
+                          title={t('common.delete')}
                         >
                           🗑️
                         </button>
@@ -562,11 +562,11 @@ export default function LocationClient({
             {/* Recent Alerts Card */}
             <div className="card-paper p-4">
               <h2 className="font-semibold text-text-primary mb-4">
-                Recent Alerts (24h)
+                {t('caregiverApp.location.recentAlerts24h')}
               </h2>
               {alerts.length === 0 ? (
                 <p className="text-sm text-text-muted text-center py-4">
-                  No alerts in the last 24 hours. All is well!
+                  {t('caregiverApp.location.noRecentAlerts')}
                 </p>
               ) : (
                 <div className="space-y-2 max-h-[300px] overflow-y-auto">
@@ -583,7 +583,7 @@ export default function LocationClient({
                         </span>
                         <div className="flex-1 min-w-0">
                           <p className="font-medium text-text-primary text-sm">
-                            {ALERT_TYPE_LABELS[alert.type]}
+                            {t(ALERT_TYPE_LABEL_KEYS[alert.type])}
                           </p>
                           <p className="text-xs text-text-muted">
                             {formatDateTime(alert.triggered_at)}
@@ -607,11 +607,11 @@ export default function LocationClient({
             {/* Location History Timeline */}
             <div className="card-paper p-4">
               <h2 className="font-semibold text-text-primary mb-4">
-                Today&apos;s Timeline
+                {t('caregiverApp.location.todaysTimeline')}
               </h2>
               {locationHistory.length === 0 ? (
                 <p className="text-sm text-text-muted text-center py-4">
-                  No location updates recorded today.
+                  {t('caregiverApp.location.noLocationUpdates')}
                 </p>
               ) : (
                 <div className="space-y-2 max-h-[200px] overflow-y-auto">
@@ -636,7 +636,7 @@ export default function LocationClient({
                           <p className="text-sm text-text-primary">
                             {loc.location_label !== 'unknown'
                               ? loc.location_label
-                              : 'Location update'}
+                              : t('caregiverApp.location.locationUpdate')}
                           </p>
                         </div>
                       </div>
@@ -653,7 +653,7 @@ export default function LocationClient({
             <div className="flex items-center gap-3">
               <span className="text-2xl">🏠</span>
               <div>
-                <p className="font-medium text-text-primary">Home Address</p>
+                <p className="font-medium text-text-primary">{t('caregiverApp.location.homeAddress')}</p>
                 <p className="text-sm text-text-secondary">{homeAddress}</p>
               </div>
             </div>

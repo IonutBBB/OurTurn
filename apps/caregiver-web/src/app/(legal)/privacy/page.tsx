@@ -173,7 +173,7 @@ export default function PrivacyPolicyPage() {
             </p>
             <ul className="list-none text-text-secondary space-y-1">
               <li>Email: privacy@memoguard.com</li>
-              <li>Address: [Company Address]</li>
+              <li>Address: Bucharest, Romania</li>
             </ul>
           </section>
         </div>

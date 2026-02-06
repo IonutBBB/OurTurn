@@ -1,5 +1,6 @@
 import { Component, type ReactNode } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import i18n from 'i18next';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../theme';
 
 interface Props {
@@ -36,16 +37,16 @@ export class ErrorBoundary extends Component<Props, State> {
         <View style={styles.container}>
           <View style={styles.card}>
             <Text style={styles.icon}>⚠️</Text>
-            <Text style={styles.title}>Something went wrong</Text>
+            <Text style={styles.title}>{i18n.t('common.errorTitle')}</Text>
             <Text style={styles.message}>
-              {this.state.error?.message || 'An unexpected error occurred.'}
+              {this.state.error?.message || i18n.t('common.errorDefault')}
             </Text>
             <TouchableOpacity
               style={styles.button}
               onPress={() => this.setState({ hasError: false, error: null })}
               activeOpacity={0.7}
             >
-              <Text style={styles.buttonText}>Try again</Text>
+              <Text style={styles.buttonText}>{i18n.t('common.tryAgain')}</Text>
             </TouchableOpacity>
           </View>
         </View>

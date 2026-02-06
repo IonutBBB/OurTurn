@@ -25,7 +25,7 @@ export interface NotificationState {
  */
 export async function requestNotificationPermission(): Promise<boolean> {
   if (!Device.isDevice) {
-    console.log('Push notifications only work on physical devices');
+    if (__DEV__) console.log('Push notifications only work on physical devices');
     return false;
   }
 
@@ -55,7 +55,7 @@ export async function getExpoPushToken(): Promise<string | null> {
 
     return tokenData.data;
   } catch (error) {
-    console.error('Failed to get Expo push token:', error);
+    if (__DEV__) console.error('Failed to get Expo push token:', error);
     return null;
   }
 }
@@ -78,7 +78,7 @@ export async function registerPushToken(
 
     if (fetchError) throw fetchError;
     if (!patient) {
-      console.error('No patient found for household');
+      if (__DEV__) console.error('No patient found for household');
       return;
     }
 
@@ -97,9 +97,9 @@ export async function registerPushToken(
       if (updateError) throw updateError;
     }
 
-    console.log('Push token registered successfully');
+    if (__DEV__) console.log('Push token registered successfully');
   } catch (error) {
-    console.error('Failed to register push token:', error);
+    if (__DEV__) console.error('Failed to register push token:', error);
   }
 }
 
@@ -130,9 +130,9 @@ export async function unregisterPushToken(
 
     if (updateError) throw updateError;
 
-    console.log('Push token unregistered successfully');
+    if (__DEV__) console.log('Push token unregistered successfully');
   } catch (error) {
-    console.error('Failed to unregister push token:', error);
+    if (__DEV__) console.error('Failed to unregister push token:', error);
   }
 }
 
@@ -175,7 +175,7 @@ export async function scheduleTaskReminder(
 
     return notificationId;
   } catch (error) {
-    console.error('Failed to schedule task reminder:', error);
+    if (__DEV__) console.error('Failed to schedule task reminder:', error);
     return null;
   }
 }
@@ -195,7 +195,7 @@ export async function scheduleAllTaskReminders(
     await scheduleTaskReminder(task, patientName);
   }
 
-  console.log(`Scheduled ${tasks.length} task reminders`);
+  if (__DEV__) console.log(`Scheduled ${tasks.length} task reminders`);
 }
 
 /**
@@ -222,7 +222,7 @@ export function setupNotificationListeners(
   // Listener for notifications received while app is in foreground
   const receivedSubscription = Notifications.addNotificationReceivedListener(
     (notification) => {
-      console.log('Notification received:', notification);
+      if (__DEV__) console.log('Notification received:', notification);
       onNotificationReceived?.(notification);
     }
   );
@@ -230,7 +230,7 @@ export function setupNotificationListeners(
   // Listener for user interacting with notification
   const responseSubscription =
     Notifications.addNotificationResponseReceivedListener((response) => {
-      console.log('Notification response:', response);
+      if (__DEV__) console.log('Notification response:', response);
       onNotificationResponse?.(response);
     });
 

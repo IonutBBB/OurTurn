@@ -132,11 +132,40 @@ export async function validateCareCode(code: string): Promise<Household | null> 
 }
 
 /**
+ * Generate a unique 6-digit care code with collision checking.
+ * Retries up to 10 times if the generated code already exists.
+ */
+export async function generateUniqueCareCode(): Promise<string> {
+  for (let attempt = 0; attempt < 10; attempt++) {
+    // Use crypto for better randomness when available
+    let randomVal: number;
+    if (typeof globalThis.crypto !== 'undefined' && globalThis.crypto.getRandomValues) {
+      const array = new Uint32Array(1);
+      globalThis.crypto.getRandomValues(array);
+      randomVal = array[0];
+    } else {
+      randomVal = Math.floor(Math.random() * 4294967296);
+    }
+    const code = (100000 + (randomVal % 900000)).toString();
+
+    // Check for collision
+    const { data } = await supabase
+      .from('households')
+      .select('id')
+      .eq('care_code', code)
+      .maybeSingle();
+
+    if (!data) return code;
+  }
+
+  throw new Error('Failed to generate unique care code after 10 attempts');
+}
+
+/**
  * Regenerate care code for a household
  */
 export async function regenerateCareCode(householdId: string): Promise<string> {
-  // Generate a new 6-digit code
-  const newCode = Math.floor(100000 + Math.random() * 900000).toString();
+  const newCode = await generateUniqueCareCode();
 
   const { data, error } = await supabase
     .from('households')

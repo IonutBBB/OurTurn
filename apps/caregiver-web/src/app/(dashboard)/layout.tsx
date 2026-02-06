@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation';
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import { Sidebar } from '@/components/sidebar';
 import { TopBar } from './top-bar';
+import { DashboardErrorWrapper } from './dashboard-error-wrapper';
 
 export default async function DashboardLayout({
   children,
@@ -45,7 +46,9 @@ export default async function DashboardLayout({
       >
         <TopBar />
         <div className="p-6 lg:p-10 max-w-7xl mx-auto pt-16 lg:pt-10">
-          {children}
+          <DashboardErrorWrapper>
+            {children}
+          </DashboardErrorWrapper>
         </div>
       </main>
     </div>

@@ -33,7 +33,7 @@ export async function cacheTasks(date: string, tasks: CarePlanTask[]): Promise<v
   try {
     await AsyncStorage.setItem(CACHE_KEYS.TASKS(date), JSON.stringify(tasks));
   } catch (error) {
-    console.error('Failed to cache tasks:', error);
+    if (__DEV__) console.error('Failed to cache tasks:', error);
   }
 }
 
@@ -43,7 +43,7 @@ export async function getCachedTasks(date: string): Promise<CarePlanTask[] | nul
     const cached = await AsyncStorage.getItem(CACHE_KEYS.TASKS(date));
     return cached ? JSON.parse(cached) : null;
   } catch (error) {
-    console.error('Failed to get cached tasks:', error);
+    if (__DEV__) console.error('Failed to get cached tasks:', error);
     return null;
   }
 }
@@ -53,7 +53,7 @@ export async function cacheCompletions(date: string, completions: TaskCompletion
   try {
     await AsyncStorage.setItem(CACHE_KEYS.COMPLETIONS(date), JSON.stringify(completions));
   } catch (error) {
-    console.error('Failed to cache completions:', error);
+    if (__DEV__) console.error('Failed to cache completions:', error);
   }
 }
 
@@ -63,7 +63,7 @@ export async function getCachedCompletions(date: string): Promise<TaskCompletion
     const cached = await AsyncStorage.getItem(CACHE_KEYS.COMPLETIONS(date));
     return cached ? JSON.parse(cached) : null;
   } catch (error) {
-    console.error('Failed to get cached completions:', error);
+    if (__DEV__) console.error('Failed to get cached completions:', error);
     return null;
   }
 }
@@ -73,7 +73,7 @@ export async function cachePatientProfile(patient: Patient): Promise<void> {
   try {
     await AsyncStorage.setItem(CACHE_KEYS.PATIENT_PROFILE, JSON.stringify(patient));
   } catch (error) {
-    console.error('Failed to cache patient profile:', error);
+    if (__DEV__) console.error('Failed to cache patient profile:', error);
   }
 }
 
@@ -83,7 +83,7 @@ export async function getCachedPatientProfile(): Promise<Patient | null> {
     const cached = await AsyncStorage.getItem(CACHE_KEYS.PATIENT_PROFILE);
     return cached ? JSON.parse(cached) : null;
   } catch (error) {
-    console.error('Failed to get cached patient profile:', error);
+    if (__DEV__) console.error('Failed to get cached patient profile:', error);
     return null;
   }
 }
@@ -93,7 +93,7 @@ export async function cacheActivity(date: string, activity: BrainActivity): Prom
   try {
     await AsyncStorage.setItem(CACHE_KEYS.ACTIVITY(date), JSON.stringify(activity));
   } catch (error) {
-    console.error('Failed to cache activity:', error);
+    if (__DEV__) console.error('Failed to cache activity:', error);
   }
 }
 
@@ -103,7 +103,7 @@ export async function getCachedActivity(date: string): Promise<BrainActivity | n
     const cached = await AsyncStorage.getItem(CACHE_KEYS.ACTIVITY(date));
     return cached ? JSON.parse(cached) : null;
   } catch (error) {
-    console.error('Failed to get cached activity:', error);
+    if (__DEV__) console.error('Failed to get cached activity:', error);
     return null;
   }
 }
@@ -123,7 +123,7 @@ export async function queueCompletion(completion: PendingCompletion): Promise<vo
       await AsyncStorage.setItem(CACHE_KEYS.PENDING_COMPLETIONS, JSON.stringify(pending));
     }
   } catch (error) {
-    console.error('Failed to queue completion:', error);
+    if (__DEV__) console.error('Failed to queue completion:', error);
   }
 }
 
@@ -133,7 +133,7 @@ export async function getPendingCompletions(): Promise<PendingCompletion[]> {
     const pendingStr = await AsyncStorage.getItem(CACHE_KEYS.PENDING_COMPLETIONS);
     return pendingStr ? JSON.parse(pendingStr) : [];
   } catch (error) {
-    console.error('Failed to get pending completions:', error);
+    if (__DEV__) console.error('Failed to get pending completions:', error);
     return [];
   }
 }
@@ -143,7 +143,7 @@ export async function clearPendingCompletions(): Promise<void> {
   try {
     await AsyncStorage.removeItem(CACHE_KEYS.PENDING_COMPLETIONS);
   } catch (error) {
-    console.error('Failed to clear pending completions:', error);
+    if (__DEV__) console.error('Failed to clear pending completions:', error);
   }
 }
 
@@ -155,7 +155,7 @@ export async function queueAlert(alert: PendingAlert): Promise<void> {
     pending.push(alert);
     await AsyncStorage.setItem(CACHE_KEYS.PENDING_ALERTS, JSON.stringify(pending));
   } catch (error) {
-    console.error('Failed to queue alert:', error);
+    if (__DEV__) console.error('Failed to queue alert:', error);
   }
 }
 
@@ -165,7 +165,7 @@ export async function getPendingAlerts(): Promise<PendingAlert[]> {
     const pendingStr = await AsyncStorage.getItem(CACHE_KEYS.PENDING_ALERTS);
     return pendingStr ? JSON.parse(pendingStr) : [];
   } catch (error) {
-    console.error('Failed to get pending alerts:', error);
+    if (__DEV__) console.error('Failed to get pending alerts:', error);
     return [];
   }
 }
@@ -175,7 +175,43 @@ export async function clearPendingAlerts(): Promise<void> {
   try {
     await AsyncStorage.removeItem(CACHE_KEYS.PENDING_ALERTS);
   } catch (error) {
-    console.error('Failed to clear pending alerts:', error);
+    if (__DEV__) console.error('Failed to clear pending alerts:', error);
+  }
+}
+
+// Queue a check-in for later sync
+export interface PendingCheckin {
+  householdId: string;
+  date: string;
+  mood: number;
+  sleepQuality: number;
+  voiceNoteUrl?: string;
+  submittedAt: string;
+}
+
+export async function queueCheckin(checkin: PendingCheckin): Promise<void> {
+  try {
+    await AsyncStorage.setItem(CACHE_KEYS.PENDING_CHECKIN, JSON.stringify(checkin));
+  } catch (error) {
+    if (__DEV__) console.error('Failed to queue check-in:', error);
+  }
+}
+
+export async function getPendingCheckin(): Promise<PendingCheckin | null> {
+  try {
+    const pendingStr = await AsyncStorage.getItem(CACHE_KEYS.PENDING_CHECKIN);
+    return pendingStr ? JSON.parse(pendingStr) : null;
+  } catch (error) {
+    if (__DEV__) console.error('Failed to get pending check-in:', error);
+    return null;
+  }
+}
+
+export async function clearPendingCheckin(): Promise<void> {
+  try {
+    await AsyncStorage.removeItem(CACHE_KEYS.PENDING_CHECKIN);
+  } catch (error) {
+    if (__DEV__) console.error('Failed to clear pending check-in:', error);
   }
 }
 
@@ -204,6 +240,6 @@ export async function cleanupOldCache(): Promise<void> {
       await AsyncStorage.multiRemove(keysToRemove);
     }
   } catch (error) {
-    console.error('Failed to cleanup old cache:', error);
+    if (__DEV__) console.error('Failed to cleanup old cache:', error);
   }
 }

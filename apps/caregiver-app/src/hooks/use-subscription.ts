@@ -63,7 +63,7 @@ export function useSubscription(): UseSubscriptionReturn {
         setExpirationDate(getExpirationDate(customerInfo));
       }
     } catch (err: any) {
-      console.error('Failed to initialize subscription:', err);
+      if (__DEV__) console.error('Failed to initialize subscription:', err);
       setError(err.message || 'Failed to initialize');
     } finally {
       setIsLoading(false);
@@ -96,7 +96,7 @@ export function useSubscription(): UseSubscriptionReturn {
       setIsPlus(false);
       setExpirationDate(null);
     } catch (err: any) {
-      console.error('Logout failed:', err);
+      if (__DEV__) console.error('Logout failed:', err);
     } finally {
       setIsLoading(false);
     }
@@ -170,7 +170,7 @@ export function useSubscription(): UseSubscriptionReturn {
       const currentOfferings = await getOfferings();
       setOfferings(currentOfferings);
     } catch (err: any) {
-      console.error('Refresh failed:', err);
+      if (__DEV__) console.error('Refresh failed:', err);
     } finally {
       setIsLoading(false);
     }

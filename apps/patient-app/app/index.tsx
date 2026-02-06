@@ -108,7 +108,7 @@ export default function CareCodeScreen() {
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
       router.replace('/(tabs)/today');
     } catch (err) {
-      console.error('Failed to validate care code:', err);
+      if (__DEV__) console.error('Failed to validate care code:', err);
       setError(t('common.error'));
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
     } finally {
@@ -130,7 +130,7 @@ export default function CareCodeScreen() {
         >
           {/* Logo */}
           <View style={styles.logoContainer}>
-            <Text style={styles.logo}>MemoGuard</Text>
+            <Text style={styles.logo}>{t('common.appName')}</Text>
             <Text style={styles.logoHeart}>💙</Text>
           </View>
 
@@ -158,7 +158,7 @@ export default function CareCodeScreen() {
                 maxLength={6}
                 selectTextOnFocus
                 autoFocus={index === 0}
-                accessibilityLabel={`Digit ${index + 1} of 6`}
+                accessibilityLabel={t('patientApp.careCode.digitLabel', { current: index + 1, total: 6 })}
               />
             ))}
           </View>

@@ -33,7 +33,7 @@ export async function saveSession(session: Session): Promise<void> {
   try {
     await setItem(SESSION_KEY, JSON.stringify(session));
   } catch (error) {
-    console.error('Failed to save session:', error);
+    if (__DEV__) console.error('Failed to save session:', error);
   }
 }
 
@@ -45,7 +45,7 @@ export async function getSession(): Promise<Session | null> {
     }
     return null;
   } catch (error) {
-    console.error('Failed to get session:', error);
+    if (__DEV__) console.error('Failed to get session:', error);
     return null;
   }
 }
@@ -54,6 +54,6 @@ export async function clearSession(): Promise<void> {
   try {
     await deleteItem(SESSION_KEY);
   } catch (error) {
-    console.error('Failed to clear session:', error);
+    if (__DEV__) console.error('Failed to clear session:', error);
   }
 }

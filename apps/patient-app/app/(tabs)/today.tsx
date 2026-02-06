@@ -128,7 +128,7 @@ export default function TodayScreen() {
 
       setHasCheckedIn(!!checkin);
     } catch (err) {
-      console.error('Failed to fetch tasks:', err);
+      if (__DEV__) console.error('Failed to fetch tasks:', err);
 
       // Try to load from cache
       const cachedTasks = await getCachedTasks(today);
@@ -199,7 +199,7 @@ export default function TodayScreen() {
       });
       await cacheCompletions(today, updatedCompletions);
     } catch (err) {
-      console.error('Failed to complete task:', err);
+      if (__DEV__) console.error('Failed to complete task:', err);
 
       // Queue for later sync if offline
       await queueCompletion({
@@ -236,7 +236,7 @@ export default function TodayScreen() {
         style={[styles.container, styles.centered]}
         accessible={true}
         accessibilityRole="progressbar"
-        accessibilityLabel={t('common.loading') || 'Loading'}
+        accessibilityLabel={t('common.loading')}
         accessibilityState={{ busy: true }}
       >
         <ActivityIndicator size="large" color={COLORS.brand600} />
@@ -321,14 +321,14 @@ export default function TodayScreen() {
               onPress={() => router.push('/checkin')}
               activeOpacity={0.8}
               accessibilityRole="button"
-              accessibilityLabel={`${t('patientApp.checkin.moodQuestion')}. Tap to check in`}
-              accessibilityHint="Opens the daily check-in screen"
+              accessibilityLabel={`${t('patientApp.checkin.moodQuestion')}. ${t('patientApp.checkin.tapToCheckin')}`}
+              accessibilityHint={t('patientApp.checkin.opensCheckin')}
             >
               <View style={styles.checkinContent} importantForAccessibility="no-hide-descendants">
                 <Text style={styles.checkinEmoji}>👋</Text>
                 <View style={styles.checkinTextContainer}>
                   <Text style={styles.checkinTitle}>{t('patientApp.checkin.moodQuestion')}</Text>
-                  <Text style={styles.checkinSubtitle}>Tap to check in</Text>
+                  <Text style={styles.checkinSubtitle}>{t('patientApp.checkin.tapToCheckin')}</Text>
                 </View>
               </View>
             </TouchableOpacity>

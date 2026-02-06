@@ -115,7 +115,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
       setTasks((prev) => [...prev, data].sort((a, b) => a.time.localeCompare(b.time)));
       resetForm();
     } catch (err) {
-      console.error('Failed to add task:', err);
+      // Failed to add task
     } finally {
       setSaving(false);
     }
@@ -160,7 +160,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
       );
       resetForm();
     } catch (err) {
-      console.error('Failed to update task:', err);
+      // Failed to update task
     } finally {
       setSaving(false);
     }
@@ -179,7 +179,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
 
       setTasks((prev) => prev.filter((t) => t.id !== taskId));
     } catch (err) {
-      console.error('Failed to delete task:', err);
+      // Failed to delete task
     }
   };
 
@@ -206,7 +206,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
       const data = await response.json();
       setSuggestedTasks(data.suggestions || []);
     } catch (err) {
-      console.error('Failed to get AI suggestions:', err);
+      // Failed to get AI suggestions
     } finally {
       setSuggestLoading(false);
     }
@@ -240,7 +240,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
       // Remove from suggestions
       setSuggestedTasks((prev) => prev.filter((s) => s.title !== suggestion.title));
     } catch (err) {
-      console.error('Failed to add suggested task:', err);
+      // Failed to add suggested task
     } finally {
       setAddingSuggestion(null);
     }
@@ -260,7 +260,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
       });
 
       if (sourceTasks.length === 0) {
-        alert('No tasks found for the selected source day.');
+        alert(t('caregiverApp.carePlan.noTasksForDay'));
         return;
       }
 
@@ -291,8 +291,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
       setShowCopyModal(false);
       setCopyTargetDays([]);
     } catch (err) {
-      console.error('Failed to copy tasks:', err);
-      alert('Failed to copy tasks. Please try again.');
+      alert(t('caregiverApp.carePlan.copyFailed'));
     } finally {
       setCopying(false);
     }
@@ -329,7 +328,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold font-display text-text-primary">
-            {patientName}&apos;s Daily Plan
+            {t('caregiverApp.carePlan.title', { name: patientName })}
           </h1>
           <p className="text-sm text-text-muted mt-1">
             {t('caregiverApp.carePlan.syncNote', { name: patientName })}
@@ -368,7 +367,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
               />
               <path d="M5.26 17.242a.75.75 0 10-.897-1.203 5.243 5.243 0 00-2.05 5.022.75.75 0 00.625.627 5.243 5.243 0 005.022-2.051.75.75 0 10-1.202-.897 3.744 3.744 0 01-3.008 1.51c0-1.23.592-2.323 1.51-3.008z" />
             </svg>
-            AI Suggest
+            {t('caregiverApp.carePlan.aiSuggest')}
           </button>
           <button
             onClick={() => {
@@ -402,9 +401,9 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
                 </svg>
               </div>
               <div>
-                <h3 className="font-semibold text-text-primary">AI Task Suggestions</h3>
+                <h3 className="font-semibold text-text-primary">{t('caregiverApp.carePlan.aiSuggestTitle')}</h3>
                 <p className="text-sm text-text-muted">
-                  Personalized suggestions based on {patientName}&apos;s profile
+                  {t('caregiverApp.carePlan.aiSuggestDesc', { name: patientName })}
                 </p>
               </div>
             </div>
@@ -429,13 +428,13 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
 
           {/* Category filter */}
           <div className="flex items-center gap-2 mb-4">
-            <label className="text-sm font-medium text-text-secondary">Focus on:</label>
+            <label className="text-sm font-medium text-text-secondary">{t('caregiverApp.carePlan.aiSuggestFocusOn')}</label>
             <select
               value={suggestCategory}
               onChange={(e) => setSuggestCategory(e.target.value)}
               className="px-3 py-1.5 text-sm border border-brand-200 dark:border-brand-700 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-500 bg-surface-card text-text-primary"
             >
-              <option value="">All categories</option>
+              <option value="">{t('caregiverApp.carePlan.aiSuggestAllCategories')}</option>
               {CATEGORIES.map((cat) => (
                 <option key={cat.key} value={cat.key}>
                   {cat.icon} {t(`categories.${cat.key}`)}
@@ -447,7 +446,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
               disabled={suggestLoading}
               className="px-3 py-1.5 text-sm bg-surface-card border border-brand-200 dark:border-brand-700 rounded-2xl hover:bg-brand-50 dark:hover:bg-brand-900/30 transition-colors disabled:opacity-50 text-text-primary"
             >
-              {suggestLoading ? 'Generating...' : 'Refresh'}
+              {suggestLoading ? t('caregiverApp.carePlan.aiSuggestGenerating') : t('caregiverApp.carePlan.aiSuggestRefresh')}
             </button>
           </div>
 
@@ -476,13 +475,13 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
                   ></path>
                 </svg>
                 <span className="text-brand-600 font-medium">
-                  AI is thinking about {patientName}&apos;s routine...
+                  {t('caregiverApp.carePlan.aiSuggestThinking', { name: patientName })}
                 </span>
               </div>
             </div>
           ) : suggestedTasks.length === 0 ? (
             <div className="text-center py-8 text-text-muted">
-              <p>No suggestions available. Try refreshing or selecting a different category.</p>
+              <p>{t('caregiverApp.carePlan.aiSuggestEmpty')}</p>
             </div>
           ) : (
             <div className="space-y-3">
@@ -534,10 +533,10 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
                               d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                             ></path>
                           </svg>
-                          Adding...
+                          {t('caregiverApp.carePlan.aiSuggestAdding')}
                         </>
                       ) : (
-                        <>+ Add</>
+                        <>+ {t('caregiverApp.carePlan.aiSuggestAdd')}</>
                       )}
                     </button>
                   </div>
@@ -552,7 +551,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
       {showAddForm && (
         <div className="card-paper p-6 mb-6">
           <h2 className="text-lg font-display font-bold text-text-primary mb-4">
-            {editingTask ? 'Edit Task' : t('caregiverApp.carePlan.addTask')}
+            {editingTask ? t('caregiverApp.carePlan.editTask') : t('caregiverApp.carePlan.addTask')}
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -596,7 +595,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
                 type="text"
                 value={newTask.title}
                 onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
-                placeholder="e.g., Morning medication"
+                placeholder={t('caregiverApp.carePlan.taskPlaceholder')}
                 className="input-warm w-full"
               />
             </div>
@@ -714,7 +713,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-semibold text-text-primary mb-2">
-                  Copy from:
+                  {t('caregiverApp.carePlan.copyFrom')}
                 </label>
                 <div className="flex gap-2">
                   {DAYS.map((day) => (
@@ -735,7 +734,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
               </div>
               <div>
                 <label className="block text-sm font-semibold text-text-primary mb-2">
-                  Copy to:
+                  {t('caregiverApp.carePlan.copyTo')}
                 </label>
                 <div className="flex gap-2 flex-wrap">
                   {DAYS.filter((d) => d !== copySourceDay).map((day) => (
@@ -778,7 +777,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
                 disabled={copying || copyTargetDays.length === 0}
                 className="btn-primary flex-1 disabled:opacity-50"
               >
-                {copying ? t('common.loading') : `Copy to ${copyTargetDays.length} day${copyTargetDays.length !== 1 ? 's' : ''}`}
+                {copying ? t('common.loading') : t('caregiverApp.carePlan.copyToDays', { count: copyTargetDays.length })}
               </button>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import { Tabs } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Text, StyleSheet, View } from 'react-native';
+import { ErrorBoundary } from '../../src/components/error-boundary';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
 
 interface TabIconProps {
@@ -24,6 +25,7 @@ export default function TabsLayout() {
   const { t } = useTranslation();
 
   return (
+    <ErrorBoundary>
     <Tabs
       screenOptions={{
         headerShown: false,
@@ -92,6 +94,7 @@ export default function TabsLayout() {
         }}
       />
     </Tabs>
+    </ErrorBoundary>
   );
 }
 

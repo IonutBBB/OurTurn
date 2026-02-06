@@ -240,8 +240,6 @@ export default function OnboardingPage() {
 
         setCurrentStep(6);
       } catch (err: any) {
-        console.error('Onboarding error:', err);
-        // Show detailed error for debugging
         const errorMessage = err?.message || err?.error_description || JSON.stringify(err);
         setError(`Failed to create account: ${errorMessage}`);
       } finally {

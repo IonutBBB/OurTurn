@@ -163,13 +163,16 @@ export async function POST() {
 }
 
 export async function GET() {
+  if (process.env.NODE_ENV === 'production') {
+    return NextResponse.json({ error: 'Not available in production' }, { status: 403 });
+  }
+
   return NextResponse.json({
     message: 'Use POST to seed the database',
     instructions: [
       '1. Get your service role key from Supabase Dashboard > Settings > API',
       '2. Add SUPABASE_SERVICE_ROLE_KEY=your-key to your .env file',
       '3. POST to this endpoint to seed mock data',
-      '4. Care code for patient app will be: 123456'
     ]
   });
 }
