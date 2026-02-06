@@ -6,6 +6,7 @@ import { createBrowserClient } from '@/lib/supabase';
 import { hasReachedTaskLimit } from '@ourturn/shared/utils/subscription';
 import { UpgradeBanner } from '@/components/upgrade-gate';
 import { FREE_LIMITS } from '@ourturn/shared/utils/subscription';
+import { useToast } from '@/components/toast';
 
 interface Task {
   id: string;
@@ -48,6 +49,7 @@ const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 export function CarePlanClient({ householdId, patientName, initialTasks, subscriptionStatus }: Props) {
   const { t } = useTranslation();
+  const { showToast } = useToast();
   const supabase = createBrowserClient();
 
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
@@ -122,7 +124,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
       setTasks((prev) => [...prev, data].sort((a, b) => a.time.localeCompare(b.time)));
       resetForm();
     } catch (err) {
-      // Failed to add task
+      showToast(t('common.error'), 'error');
     } finally {
       setSaving(false);
     }

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
 import { OrganicBlobs } from '@/components/organic-blobs';
+import { Logo } from '@/components/logo';
 
 export default function LoginPage() {
   const { t } = useTranslation();
@@ -58,12 +59,10 @@ export default function LoginPage() {
         {/* Logo */}
         <header className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-2.5 mb-5">
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center shadow-sm">
-              <span className="text-white text-lg font-bold font-display">M</span>
-            </div>
+            <Logo className="w-11 h-11" />
           </Link>
-          <h1 className="heading-display text-2xl mb-1">Welcome back</h1>
-          <p className="text-text-secondary text-sm">{t('caregiverApp.auth.welcomeBack')}</p>
+          <h1 className="heading-display text-2xl mb-1">{t('caregiverApp.auth.welcomeBack')}</h1>
+          <p className="text-text-secondary text-sm">{t('caregiverApp.auth.welcomeBackSubheading')}</p>
         </header>
 
         {/* Login card */}

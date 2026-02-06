@@ -3,6 +3,7 @@ import { Fraunces, Nunito } from 'next/font/google';
 import './globals.css';
 import I18nProvider from '../providers/I18nProvider';
 import { ThemeProvider } from '@/components/theme-provider';
+import { ToastProvider } from '@/components/toast';
 
 const fraunces = Fraunces({
   variable: '--font-fraunces',
@@ -47,7 +48,9 @@ export default function RootLayout({
       </head>
       <body className={`${fraunces.variable} ${nunito.variable} font-sans antialiased bg-surface-background`}>
         <ThemeProvider>
-          <I18nProvider>{children}</I18nProvider>
+          <I18nProvider>
+            <ToastProvider>{children}</ToastProvider>
+          </I18nProvider>
         </ThemeProvider>
       </body>
     </html>

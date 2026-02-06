@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
+import { useToast } from '@/components/toast';
 
 interface JournalEntry {
   id: string;
@@ -90,6 +91,7 @@ export function DashboardRealtime({
 
 export function JournalCard({ householdId }: { householdId: string }) {
   const { t } = useTranslation();
+  const { showToast } = useToast();
   const supabase = createBrowserClient();
   const [entries, setEntries] = useState<JournalEntry[]>([]);
   const [loading, setLoading] = useState(true);
@@ -134,7 +136,7 @@ export function JournalCard({ householdId }: { householdId: string }) {
       setEntries((prev) => [data, ...prev].slice(0, 5));
       setNoteContent('');
     } catch (err) {
-      // Failed to add note
+      showToast(t('common.error'), 'error');
     } finally {
       setSaving(false);
     }
