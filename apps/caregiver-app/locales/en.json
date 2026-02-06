@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "MemoGuard",
+    "appName": "OurTurn",
     "save": "Save",
     "cancel": "Cancel",
     "delete": "Delete",
@@ -218,7 +218,7 @@
       "startDocumenting": "Start documenting your care journey!",
       "yesterday": "Yesterday",
       "failedToAddEntry": "Failed to add entry. Please try again.",
-      "shareCareCodeMessage": "Join my MemoGuard care circle! Use this Care Code: {{code}}"
+      "shareCareCodeMessage": "Join my OurTurn care circle! Use this Care Code: {{code}}"
     },
     "wellbeing": {
       "title": "How are YOU doing, {{name}}?",
@@ -272,7 +272,7 @@
       "downloadPdf": "Download PDF",
       "emailDoctor": "Email to doctor",
       "disclaimer": "This summary is based on self-reported wellness data and family observations. It is not a clinical assessment.",
-      "webNote": "For the full report builder with print and PDF export, visit the MemoGuard web app.",
+      "webNote": "For the full report builder with print and PDF export, visit the OurTurn web app.",
       "openInWebApp": "Open in Web App",
       "previousReports": "Previous Reports",
       "generated": "Generated {{date}}",
@@ -282,7 +282,7 @@
       "moodOkay": "Okay",
       "moodGood": "Good",
       "moodGreat": "Great",
-      "careSummary": "MemoGuard Care Summary",
+      "careSummary": "OurTurn Care Summary",
       "patient": "Patient",
       "periodLabel": "Period",
       "checkinsRecorded": "Check-ins recorded",
@@ -308,7 +308,7 @@
       "next": "Next",
       "back": "Back",
       "finish": "Get Started",
-      "careCodeInstructions": "Install MemoGuard on your loved one's phone and enter this code to connect.",
+      "careCodeInstructions": "Install OurTurn on your loved one's phone and enter this code to connect.",
       "quickSetup": "Quick Setup",
       "yourName": "Your name",
       "yourNameRequired": "Your name *",
@@ -357,7 +357,7 @@
       "copied": "Copied!",
       "copyCode": "Copy Code",
       "nextSteps": "Next steps:",
-      "nextStep1": "1. Install MemoGuard on {{name}}'s phone",
+      "nextStep1": "1. Install OurTurn on {{name}}'s phone",
       "nextStep2": "2. Open the app and enter the Care Code above",
       "nextStep3": "3. That's it! {{name}}'s daily plan will appear on their phone",
       "homeAddressPlaceholder": "123 Main St, City"
@@ -377,9 +377,9 @@
       "deleteConfirmType": "Type DELETE to confirm account deletion",
       "confirmDelete": "Confirm Delete",
       "language": "Language",
-      "about": "About MemoGuard",
+      "about": "About OurTurn",
       "version": "Version",
-      "notMedicalDevice": "MemoGuard is not a medical device",
+      "notMedicalDevice": "OurTurn is not a medical device",
       "dailySummary": "Daily Summary",
       "dailySummaryTime": "Daily summary time",
       "emailNotifications": "Email notifications",
@@ -466,9 +466,9 @@
   },
   "subscription": {
     "free": "Free",
-    "plus": "MemoGuard Plus",
-    "upgradeTitle": "Unlock MemoGuard Plus",
-    "upgradeFeature": "This feature requires MemoGuard Plus",
+    "plus": "OurTurn Plus",
+    "upgradeTitle": "Unlock OurTurn Plus",
+    "upgradeFeature": "This feature requires OurTurn Plus",
     "monthly": "{{price}}/month",
     "annual": "{{price}}/year",
     "annualSavings": "Save {{percent}}%",

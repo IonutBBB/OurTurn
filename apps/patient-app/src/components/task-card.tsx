@@ -16,8 +16,8 @@ import {
   formatTimeForScreenReader,
   getTaskCompletionAnnouncement,
   TOUCH_TARGETS,
-} from '@memoguard/shared';
-import type { CarePlanTask, TaskCompletion } from '@memoguard/shared';
+} from '@ourturn/shared';
+import type { CarePlanTask, TaskCompletion } from '@ourturn/shared';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../theme';
 
 export type TaskStatus = 'upcoming' | 'now' | 'overdue' | 'completed' | 'skipped';

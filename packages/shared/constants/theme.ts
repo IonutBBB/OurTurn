@@ -1,4 +1,4 @@
-// MemoGuard "Hearthstone" Design System — Warm & Organic Theme
+// OurTurn "Hearthstone" Design System — Warm & Organic Theme
 // All color tokens, spacing, typography, radius, shadows
 
 export const BRAND_COLORS = {

@@ -10,7 +10,7 @@ import {
   addDoctorNote,
   getSuggestedPrompts,
 } from '../services/ai-coach';
-import { supabase } from '@memoguard/supabase';
+import { supabase } from '@ourturn/supabase';
 
 export interface UseAICoachReturn {
   messages: Message[];

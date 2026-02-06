@@ -6,9 +6,9 @@ test.describe('Navigation', () => {
     expect(response?.status()).toBeLessThan(500);
   });
 
-  test('displays MemoGuard branding on load', async ({ page }) => {
+  test('displays OurTurn branding on load', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
-    await expect(page.getByText('Welcome to MemoGuard')).toBeVisible({ timeout: 15000 });
+    await expect(page.getByText('Welcome to OurTurn')).toBeVisible({ timeout: 15000 });
   });
 });

@@ -1,7 +1,7 @@
 import * as Notifications from 'expo-notifications';
 import * as Device from 'expo-device';
 import { Platform } from 'react-native';
-import { supabase } from '@memoguard/supabase';
+import { supabase } from '@ourturn/supabase';
 
 // Configure how notifications appear when app is in foreground
 Notifications.setNotificationHandler({

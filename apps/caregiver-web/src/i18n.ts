@@ -28,7 +28,7 @@ i18n
       // Look for 'lang' query parameter
       lookupQuerystring: 'lang',
       // LocalStorage key
-      lookupLocalStorage: 'memoguard-language',
+      lookupLocalStorage: 'ourturn-language',
     },
   });
 

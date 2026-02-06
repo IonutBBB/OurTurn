@@ -22,7 +22,7 @@ export default async function Home() {
                 <span className="text-white text-sm font-bold font-display">M</span>
               </div>
               <span className="text-xl font-display font-bold text-brand-700 dark:text-brand-600">
-                MemoGuard
+                OurTurn
               </span>
             </Link>
             <nav className="flex items-center gap-6">
@@ -69,7 +69,7 @@ export default async function Home() {
                 </h1>
 
                 <p className="text-lg sm:text-xl text-text-secondary max-w-xl leading-relaxed">
-                  MemoGuard gives your family a simple daily structure for living with dementia.
+                  OurTurn gives your family a simple daily structure for living with dementia.
                   A calm, clear app for your loved one. A powerful hub for you.
                 </p>
 
@@ -278,7 +278,7 @@ export default async function Home() {
                 <span className="heading-accent">alone</span>
               </h2>
               <p className="text-text-secondary text-lg max-w-lg mx-auto leading-relaxed">
-                Join families who use MemoGuard to bring structure,
+                Join families who use OurTurn to bring structure,
                 safety, and calm to their daily lives with dementia.
               </p>
               <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
@@ -302,7 +302,7 @@ export default async function Home() {
       <footer className="border-t border-surface-border py-8">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-text-muted">
-            MemoGuard is a wellness app, not a medical device.
+            OurTurn is a wellness app, not a medical device.
           </p>
           <div className="flex items-center gap-6 text-sm">
             <Link href="/privacy" className="text-text-muted hover:text-brand-600 transition-colors">

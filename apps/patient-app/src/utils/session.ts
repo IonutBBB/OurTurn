@@ -1,10 +1,10 @@
 import { Platform } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
-import type { Household, Patient } from '@memoguard/shared';
+import type { Household, Patient } from '@ourturn/shared';
 
-const SESSION_KEY = 'memoguard_patient_session';
-const HOUSEHOLD_KEY = 'memoguard_household_data';
-const PATIENT_KEY = 'memoguard_patient_data';
+const SESSION_KEY = 'ourturn_patient_session';
+const HOUSEHOLD_KEY = 'ourturn_household_data';
+const PATIENT_KEY = 'ourturn_patient_data';
 
 export interface PatientSession {
   householdId: string;

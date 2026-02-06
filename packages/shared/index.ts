@@ -1,4 +1,4 @@
-// @memoguard/shared
+// @ourturn/shared
 // Re-export all types and constants
 
 export * from './types';

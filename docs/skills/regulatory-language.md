@@ -2,7 +2,7 @@
 
 ## Why This Matters
 
-MemoGuard is positioned as a **general wellness and daily living support app**. If any feature or text crosses into medical device territory, the app would require:
+OurTurn is positioned as a **general wellness and daily living support app**. If any feature or text crosses into medical device territory, the app would require:
 - CE marking (EU) — €100K-250K and 12-18 months
 - MHRA registration (UK)
 - FDA 510(k) or De Novo (USA)
@@ -18,7 +18,7 @@ A software app becomes a **medical device** when its **intended purpose** is to:
 - Monitor a physiological or pathological process
 - Provide clinical decision support
 
-MemoGuard's intended purpose is:
+OurTurn's intended purpose is:
 - **Help families organize daily routines** for a loved one
 - **Provide information** about healthy lifestyles
 - **Coordinate care** among family members
@@ -100,7 +100,7 @@ MemoGuard's intended purpose is:
 - Inactivity alerts: "No movement detected" — not "Possible fall" or "Possible emergency"
 
 ### Doctor Visit Reports
-- Header: "MemoGuard Care Summary" — not "Clinical Assessment Report"
+- Header: "OurTurn Care Summary" — not "Clinical Assessment Report"
 - Content is labeled as "self-reported data" and "family observations"
 - Include disclaimer: "This summary is based on self-reported wellness data and family observations. It is not a clinical assessment."
 - NEVER include language like "decline detected" or "deterioration in..."
@@ -130,14 +130,14 @@ For medical concerns, always consult your healthcare provider."
 ### On Doctor Visit Reports
 ```
 "This summary is based on self-reported wellness data and family
-observations collected through the MemoGuard app. It is not a
+observations collected through the OurTurn app. It is not a
 clinical assessment or medical record. Please discuss any concerns
 with your healthcare provider."
 ```
 
 ### In App Settings / About
 ```
-"MemoGuard is a family care coordination tool. It is not a medical
+"OurTurn is a family care coordination tool. It is not a medical
 device and is not intended to diagnose, treat, cure, or prevent
 any disease. Always consult qualified healthcare professionals
 for medical advice."

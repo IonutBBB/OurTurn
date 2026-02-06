@@ -17,10 +17,10 @@ import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import * as Haptics from 'expo-haptics';
 import { useAuthStore } from '../../src/stores/auth-store';
-import { supabase } from '@memoguard/supabase';
+import { supabase } from '@ourturn/supabase';
 import { useVoiceRecording } from '../../src/hooks/use-voice-recording';
 import { cacheActivity, getCachedActivity } from '../../src/utils/offline-cache';
-import type { BrainActivity } from '@memoguard/shared';
+import type { BrainActivity } from '@ourturn/shared';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
 
 const ACTIVITY_ICONS: Record<string, string> = {

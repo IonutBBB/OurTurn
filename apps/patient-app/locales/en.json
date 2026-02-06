@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "MemoGuard",
+    "appName": "OurTurn",
     "save": "Save",
     "cancel": "Cancel",
     "delete": "Delete",
@@ -90,7 +90,7 @@
       "photoMemory": "A memory from your life"
     },
     "careCode": {
-      "welcome": "Welcome to MemoGuard",
+      "welcome": "Welcome to OurTurn",
       "enterCode": "Enter your Care Code",
       "helperText": "Your family member will give you this code.",
       "connect": "Connect",

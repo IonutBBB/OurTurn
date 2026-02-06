@@ -15,7 +15,7 @@ import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import * as Haptics from 'expo-haptics';
 import * as Clipboard from 'expo-clipboard';
-import { supabase } from '@memoguard/supabase';
+import { supabase } from '@ourturn/supabase';
 import { useAuthStore } from '../src/stores/auth-store';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../src/theme';
 

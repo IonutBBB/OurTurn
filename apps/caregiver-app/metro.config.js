@@ -17,8 +17,8 @@ config.resolver.nodeModulesPaths = [
 
 // Map monorepo packages and ensure @supabase resolves from app's node_modules
 config.resolver.extraNodeModules = {
-  '@memoguard/shared': path.resolve(monorepoRoot, 'packages/shared'),
-  '@memoguard/supabase': path.resolve(monorepoRoot, 'packages/supabase'),
+  '@ourturn/shared': path.resolve(monorepoRoot, 'packages/shared'),
+  '@ourturn/supabase': path.resolve(monorepoRoot, 'packages/supabase'),
   '@supabase/supabase-js': path.resolve(projectRoot, 'node_modules/@supabase/supabase-js'),
   '@supabase/postgrest-js': path.resolve(projectRoot, 'node_modules/@supabase/postgrest-js'),
   '@supabase/auth-js': path.resolve(projectRoot, 'node_modules/@supabase/auth-js'),

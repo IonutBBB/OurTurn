@@ -4,7 +4,7 @@ import { useState, useCallback, useEffect } from 'react';
 import { APIProvider, Map, AdvancedMarker, Pin, useMap } from '@vis.gl/react-google-maps';
 import { createBrowserClient } from '@/lib/supabase';
 import { useTranslation } from 'react-i18next';
-import type { LocationLog, SafeZone, LocationAlert, LocationAlertType } from '@memoguard/shared';
+import type { LocationLog, SafeZone, LocationAlert, LocationAlertType } from '@ourturn/shared';
 
 interface LocationClientProps {
   householdId: string;
@@ -443,7 +443,7 @@ export default function LocationClient({
               <Map
                 defaultCenter={mapCenter}
                 defaultZoom={15}
-                mapId="memoguard-location-map"
+                mapId="ourturn-location-map"
                 gestureHandling="greedy"
                 disableDefaultUI={false}
               >

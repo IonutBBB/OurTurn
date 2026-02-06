@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
       payment_method_types: ['card'],
       line_items: [
         {
-          price: process.env.STRIPE_PRICE_ID, // MemoGuard Plus price ID
+          price: process.env.STRIPE_PRICE_ID, // OurTurn Plus price ID
           quantity: 1,
         },
       ],

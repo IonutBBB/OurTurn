@@ -2,7 +2,7 @@
 
 ## Principle
 
-MemoGuard launches globally. **Every user-facing string must be translatable from day one.** Never hardcode text in components. This applies to all 3 apps.
+OurTurn launches globally. **Every user-facing string must be translatable from day one.** Never hardcode text in components. This applies to all 3 apps.
 
 ## Setup
 
@@ -38,7 +38,7 @@ Organize by feature/screen, not by component:
 ```json
 {
   "common": {
-    "appName": "MemoGuard",
+    "appName": "OurTurn",
     "save": "Save",
     "cancel": "Cancel",
     "delete": "Delete",
@@ -110,7 +110,7 @@ Organize by feature/screen, not by component:
       ]
     },
     "careCode": {
-      "welcome": "Welcome to MemoGuard",
+      "welcome": "Welcome to OurTurn",
       "enterCode": "Enter your Care Code",
       "helperText": "Your family member will give you this code.",
       "connect": "Connect",
@@ -234,7 +234,7 @@ Organize by feature/screen, not by component:
       "next": "Next",
       "back": "Back",
       "finish": "Get Started",
-      "careCodeInstructions": "Install MemoGuard on your loved one's phone and enter this code to connect."
+      "careCodeInstructions": "Install OurTurn on your loved one's phone and enter this code to connect."
     },
     "settings": {
       "title": "Settings",
@@ -246,7 +246,7 @@ Organize by feature/screen, not by component:
       "deleteAccount": "Delete Account",
       "deleteWarning": "This will permanently delete all data for this household. This cannot be undone.",
       "language": "Language",
-      "about": "About MemoGuard"
+      "about": "About OurTurn"
     }
   },
   "notifications": {
@@ -261,9 +261,9 @@ Organize by feature/screen, not by component:
   },
   "subscription": {
     "free": "Free",
-    "plus": "MemoGuard Plus",
-    "upgradeTitle": "Unlock MemoGuard Plus",
-    "upgradeFeature": "This feature requires MemoGuard Plus",
+    "plus": "OurTurn Plus",
+    "upgradeTitle": "Unlock OurTurn Plus",
+    "upgradeFeature": "This feature requires OurTurn Plus",
     "monthly": "{{price}}/month",
     "annual": "{{price}}/year",
     "annualSavings": "Save {{percent}}%",

@@ -5,7 +5,7 @@ import { createBrowserClient } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
-import type { Caregiver, Household, NotificationPreferences } from '@memoguard/shared';
+import type { Caregiver, Household, NotificationPreferences } from '@ourturn/shared';
 
 interface SettingsClientProps {
   caregiver: Caregiver;
@@ -307,7 +307,7 @@ export default function SettingsClient({
       // Get the filename from Content-Disposition header or use default
       const contentDisposition = response.headers.get('Content-Disposition');
       const filenameMatch = contentDisposition?.match(/filename="(.+)"/);
-      const filename = filenameMatch ? filenameMatch[1] : `memoguard-export-${new Date().toISOString().split('T')[0]}.json`;
+      const filename = filenameMatch ? filenameMatch[1] : `ourturn-export-${new Date().toISOString().split('T')[0]}.json`;
 
       // Download the file
       const blob = await response.blob();
@@ -666,7 +666,7 @@ export default function SettingsClient({
             <p className="font-medium text-text-primary">
               {t('caregiverApp.settings.currentPlanLabel')}{' '}
               <span className={household.subscription_status === 'plus' ? 'text-brand-600 dark:text-brand-400' : ''}>
-                {household.subscription_status === 'plus' ? t('caregiverApp.settings.memoguardPlus') : t('caregiverApp.settings.free')}
+                {household.subscription_status === 'plus' ? t('caregiverApp.settings.ourturnPlus') : t('caregiverApp.settings.free')}
               </span>
             </p>
             {household.subscription_platform && (

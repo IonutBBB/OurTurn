@@ -210,14 +210,14 @@ export async function GET(request: NextRequest) {
       weeklyInsights: insightsResult.data || [],
       metadata: {
         version: '1.0',
-        format: 'MemoGuard GDPR Export',
+        format: 'OurTurn GDPR Export',
         dataRetentionNote:
           'Location data older than 30 days is automatically deleted per our privacy policy.',
       },
     };
 
     // Return as downloadable JSON file
-    const filename = `memoguard-export-${new Date().toISOString().split('T')[0]}.json`;
+    const filename = `ourturn-export-${new Date().toISOString().split('T')[0]}.json`;
 
     return new NextResponse(JSON.stringify(exportData, null, 2), {
       status: 200,

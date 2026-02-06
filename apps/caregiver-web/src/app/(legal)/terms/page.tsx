@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Terms of Service | MemoGuard',
-  description: 'MemoGuard terms of service - rules and guidelines for using our service.',
+  title: 'Terms of Service | OurTurn',
+  description: 'OurTurn terms of service - rules and guidelines for using our service.',
 };
 
 export default function TermsOfServicePage() {
@@ -12,7 +12,7 @@ export default function TermsOfServicePage() {
       <header className="bg-surface-card border-b border-surface-border">
         <div className="max-w-4xl mx-auto px-4 py-6">
           <Link href="/" className="text-2xl font-bold font-display text-brand-600">
-            MemoGuard
+            OurTurn
           </Link>
         </div>
       </header>
@@ -26,7 +26,7 @@ export default function TermsOfServicePage() {
           <section className="mb-8">
             <h2 className="text-xl font-semibold font-display text-text-primary mb-4">1. Acceptance of Terms</h2>
             <p className="text-text-secondary mb-4">
-              By accessing or using MemoGuard (&quot;the Service&quot;), you agree to be bound by these
+              By accessing or using OurTurn (&quot;the Service&quot;), you agree to be bound by these
               Terms of Service. If you do not agree, please do not use the Service.
             </p>
           </section>
@@ -34,7 +34,7 @@ export default function TermsOfServicePage() {
           <section className="mb-8">
             <h2 className="text-xl font-semibold font-display text-text-primary mb-4">2. Description of Service</h2>
             <p className="text-text-secondary mb-4">
-              MemoGuard is a wellness and daily living support platform that helps families
+              OurTurn is a wellness and daily living support platform that helps families
               coordinate care for loved ones. The Service includes:
             </p>
             <ul className="list-disc pl-6 text-text-secondary mb-4 space-y-2">
@@ -117,8 +117,8 @@ export default function TermsOfServicePage() {
             <h2 className="text-xl font-semibold font-display text-text-primary mb-4">7. Subscriptions and Payments</h2>
             <h3 className="text-lg font-medium font-display text-text-primary mb-3">7.1 Free and Paid Tiers</h3>
             <p className="text-text-secondary mb-4">
-              MemoGuard offers both free and paid subscription tiers. Free tier includes
-              basic features with limitations. MemoGuard Plus includes additional features
+              OurTurn offers both free and paid subscription tiers. Free tier includes
+              basic features with limitations. OurTurn Plus includes additional features
               as described on our pricing page.
             </p>
 
@@ -158,7 +158,7 @@ export default function TermsOfServicePage() {
           <section className="mb-8">
             <h2 className="text-xl font-semibold font-display text-text-primary mb-4">9. AI Features</h2>
             <p className="text-text-secondary mb-4">
-              MemoGuard uses artificial intelligence for features like the Care Coach and
+              OurTurn uses artificial intelligence for features like the Care Coach and
               activity suggestions. You acknowledge that:
             </p>
             <ul className="list-disc pl-6 text-text-secondary mb-4 space-y-2">
@@ -173,7 +173,7 @@ export default function TermsOfServicePage() {
             <h2 className="text-xl font-semibold font-display text-text-primary mb-4">10. Intellectual Property</h2>
             <p className="text-text-secondary mb-4">
               The Service, including its design, features, and content (excluding user content),
-              is owned by MemoGuard and protected by intellectual property laws. You may not
+              is owned by OurTurn and protected by intellectual property laws. You may not
               copy, modify, distribute, or create derivative works without permission.
             </p>
           </section>
@@ -194,7 +194,7 @@ export default function TermsOfServicePage() {
           <section className="mb-8">
             <h2 className="text-xl font-semibold font-display text-text-primary mb-4">12. Indemnification</h2>
             <p className="text-text-secondary mb-4">
-              You agree to indemnify and hold harmless MemoGuard from any claims, damages,
+              You agree to indemnify and hold harmless OurTurn from any claims, damages,
               or expenses arising from your use of the Service or violation of these Terms.
             </p>
           </section>
@@ -232,7 +232,7 @@ export default function TermsOfServicePage() {
               For questions about these Terms:
             </p>
             <ul className="list-none text-text-secondary space-y-1">
-              <li>Email: legal@memoguard.com</li>
+              <li>Email: legal@ourturn.com</li>
               <li>Address: Bucharest, Romania</li>
             </ul>
           </section>

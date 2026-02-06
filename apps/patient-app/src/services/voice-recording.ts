@@ -1,5 +1,5 @@
 import * as FileSystem from 'expo-file-system';
-import { supabase } from '@memoguard/supabase';
+import { supabase } from '@ourturn/supabase';
 
 /**
  * Upload voice note to Supabase Storage

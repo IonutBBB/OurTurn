@@ -20,10 +20,10 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@memoguard/shared": ["../../packages/shared/index.ts"],
-      "@memoguard/shared/*": ["../../packages/shared/*"],
-      "@memoguard/supabase": ["../../packages/supabase/index.ts"],
-      "@memoguard/supabase/*": ["../../packages/supabase/*"]
+      "@ourturn/shared": ["../../packages/shared/index.ts"],
+      "@ourturn/shared/*": ["../../packages/shared/*"],
+      "@ourturn/supabase": ["../../packages/supabase/index.ts"],
+      "@ourturn/supabase/*": ["../../packages/supabase/*"]
     }
   },
   "include": [

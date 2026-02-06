@@ -64,7 +64,7 @@ export default function OnboardingPage() {
   const router = useRouter();
   const supabase = createBrowserClient();
 
-  const STORAGE_KEY = 'memoguard_onboarding';
+  const STORAGE_KEY = 'ourturn_onboarding';
 
   // Restore from localStorage on mount
   const getInitialData = (): OnboardingData => {

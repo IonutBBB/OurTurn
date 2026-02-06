@@ -7,7 +7,7 @@ import {
   scheduleAllTaskReminders,
   type NotificationState,
 } from '../services/notifications';
-import type { CarePlanTask } from '@memoguard/shared';
+import type { CarePlanTask } from '@ourturn/shared';
 
 interface UseNotificationsOptions {
   householdId?: string | null;

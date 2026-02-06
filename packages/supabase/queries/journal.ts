@@ -4,7 +4,7 @@ import type {
   CareJournalEntryInsert,
   CareJournalEntryWithAuthor,
   JournalEntryType,
-} from '@memoguard/shared';
+} from '@ourturn/shared';
 
 /**
  * Create a new journal entry

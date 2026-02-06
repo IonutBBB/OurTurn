@@ -14,7 +14,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
-import { getProgressLabel } from '@memoguard/shared';
+import { getProgressLabel } from '@ourturn/shared';
 import { useAuthStore } from '../../src/stores/auth-store';
 import TaskCard, { type TaskStatus } from '../../src/components/task-card';
 import {
@@ -40,8 +40,8 @@ import {
   getTodaysCompletions,
   completeTask,
   supabase,
-} from '@memoguard/supabase';
-import type { CarePlanTask, TaskCompletion } from '@memoguard/shared';
+} from '@ourturn/supabase';
+import type { CarePlanTask, TaskCompletion } from '@ourturn/shared';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
 
 export default function TodayScreen() {

@@ -1,8 +1,8 @@
-# Skill: MemoGuard Design System
+# Skill: OurTurn Design System
 
 ## Brand Identity — "Hearthstone" Warm & Organic
 
-MemoGuard has a warm, organic, handcrafted feel — like a well-loved family kitchen, not a clinical dashboard. Earthy terracotta tones, soft serifs, and generous rounded corners evoke comfort and trust. The design should communicate: "We're here to help your family. You're not alone."
+OurTurn has a warm, organic, handcrafted feel — like a well-loved family kitchen, not a clinical dashboard. Earthy terracotta tones, soft serifs, and generous rounded corners evoke comfort and trust. The design should communicate: "We're here to help your family. You're not alone."
 
 ## Color Palette
 
@@ -238,7 +238,7 @@ NOT for MVP. The patient app should always be light mode (familiar, high contras
 
 ## Accessibility (WCAG 2.1 AA Compliance)
 
-MemoGuard follows WCAG 2.1 Level AA guidelines across all apps. This section details requirements that go beyond the patient app-specific rules in `patient-app-ux.md`.
+OurTurn follows WCAG 2.1 Level AA guidelines across all apps. This section details requirements that go beyond the patient app-specific rules in `patient-app-ux.md`.
 
 ### Core Principles (POUR)
 
@@ -394,7 +394,7 @@ AccessibilityInfo.announceForAccessibility("Task completed!");
 
 ### Accessibility Constants
 
-Import from `@memoguard/shared`:
+Import from `@ourturn/shared`:
 ```typescript
 import {
   TOUCH_TARGETS,
@@ -403,14 +403,14 @@ import {
   ACCESSIBLE_COLOR_PAIRS,
   A11Y_ROLES,
   LIVE_REGIONS,
-} from '@memoguard/shared';
+} from '@ourturn/shared';
 ```
 
 See `packages/shared/constants/accessibility.ts` for all values.
 
 ### Accessibility Utilities
 
-Import from `@memoguard/shared`:
+Import from `@ourturn/shared`:
 ```typescript
 import {
   getContrastRatio,
@@ -419,7 +419,7 @@ import {
   getProgressLabel,
   getRecordingButtonLabel,
   formatTimeForScreenReader,
-} from '@memoguard/shared';
+} from '@ourturn/shared';
 ```
 
 See `packages/shared/utils/accessibility.ts` for all helpers

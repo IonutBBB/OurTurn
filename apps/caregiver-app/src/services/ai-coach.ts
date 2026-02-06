@@ -1,5 +1,5 @@
-import { supabase } from '@memoguard/supabase';
-import type { Caregiver, Household, Patient } from '@memoguard/shared';
+import { supabase } from '@ourturn/supabase';
+import type { Caregiver, Household, Patient } from '@ourturn/shared';
 
 export interface Message {
   role: 'user' | 'assistant';
@@ -87,7 +87,7 @@ function buildSystemPrompt(
     ? journalEntries.slice(0, 5).map(e => `- ${e.content}`).join('\n')
     : 'No journal entries yet.';
 
-  return `You are MemoGuard Care Coach, a warm and knowledgeable AI assistant helping family caregivers of people living with dementia manage daily care.
+  return `You are OurTurn Care Coach, a warm and knowledgeable AI assistant helping family caregivers of people living with dementia manage daily care.
 
 ABOUT THE PERSON YOU'RE HELPING CARE FOR:
 Name: ${patientName}

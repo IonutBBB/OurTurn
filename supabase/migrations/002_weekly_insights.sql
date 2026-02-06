@@ -1,4 +1,4 @@
--- MemoGuard Weekly Insights Table
+-- OurTurn Weekly Insights Table
 -- Migration: 002_weekly_insights.sql
 -- Created: 2026-02-03
 

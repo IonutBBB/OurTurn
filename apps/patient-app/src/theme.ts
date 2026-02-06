@@ -1,4 +1,4 @@
-// MemoGuard Patient App — "Hearthstone" Warm & Organic Theme
+// OurTurn Patient App — "Hearthstone" Warm & Organic Theme
 
 export const COLORS = {
   // Brand - Terracotta

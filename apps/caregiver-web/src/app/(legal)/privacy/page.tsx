@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Privacy Policy | MemoGuard',
-  description: 'MemoGuard privacy policy - how we collect, use, and protect your data.',
+  title: 'Privacy Policy | OurTurn',
+  description: 'OurTurn privacy policy - how we collect, use, and protect your data.',
 };
 
 export default function PrivacyPolicyPage() {
@@ -12,7 +12,7 @@ export default function PrivacyPolicyPage() {
       <header className="bg-surface-card border-b border-surface-border">
         <div className="max-w-4xl mx-auto px-4 py-6">
           <Link href="/" className="text-2xl font-bold font-display text-brand-600">
-            MemoGuard
+            OurTurn
           </Link>
         </div>
       </header>
@@ -26,13 +26,13 @@ export default function PrivacyPolicyPage() {
           <section className="mb-8">
             <h2 className="text-xl font-semibold font-display text-text-primary mb-4">1. Introduction</h2>
             <p className="text-text-secondary mb-4">
-              MemoGuard (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy.
+              OurTurn (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy.
               This Privacy Policy explains how we collect, use, disclose, and safeguard your
               information when you use our mobile applications and web services (collectively,
               the &quot;Service&quot;).
             </p>
             <p className="text-text-secondary mb-4">
-              MemoGuard is a wellness and daily living support tool for families. It is NOT a
+              OurTurn is a wellness and daily living support tool for families. It is NOT a
               medical device and does not provide medical advice, diagnosis, or treatment.
             </p>
           </section>
@@ -109,7 +109,7 @@ export default function PrivacyPolicyPage() {
               <li><strong>Withdraw Consent:</strong> Withdraw consent at any time</li>
             </ul>
             <p className="text-text-secondary mb-4">
-              To exercise these rights, go to Settings &gt; Privacy &amp; Data in the app, or contact us at privacy@memoguard.com.
+              To exercise these rights, go to Settings &gt; Privacy &amp; Data in the app, or contact us at privacy@ourturn.com.
             </p>
           </section>
 
@@ -131,7 +131,7 @@ export default function PrivacyPolicyPage() {
           <section className="mb-8">
             <h2 className="text-xl font-semibold font-display text-text-primary mb-4">8. Children&apos;s Privacy</h2>
             <p className="text-text-secondary mb-4">
-              MemoGuard is not intended for children under 18. We do not knowingly collect
+              OurTurn is not intended for children under 18. We do not knowingly collect
               information from children. If you believe a child has provided us with personal
               information, please contact us.
             </p>
@@ -172,7 +172,7 @@ export default function PrivacyPolicyPage() {
               For privacy-related questions or to exercise your rights:
             </p>
             <ul className="list-none text-text-secondary space-y-1">
-              <li>Email: privacy@memoguard.com</li>
+              <li>Email: privacy@ourturn.com</li>
               <li>Address: Bucharest, Romania</li>
             </ul>
           </section>

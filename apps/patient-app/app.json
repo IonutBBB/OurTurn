@@ -17,8 +17,8 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.ourturn.patient",
       "infoPlist": {
-        "NSLocationWhenInUseUsageDescription": "MemoGuard needs your location to help you navigate home safely.",
-        "NSLocationAlwaysAndWhenInUseUsageDescription": "MemoGuard needs your location to help you navigate home safely.",
+        "NSLocationWhenInUseUsageDescription": "OurTurn needs your location to help you navigate home safely.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "OurTurn needs your location to help you navigate home safely.",
         "UIBackgroundModes": [
           "remote-notification"
         ]
@@ -52,7 +52,7 @@
       [
         "expo-location",
         {
-          "locationWhenInUsePermission": "MemoGuard needs your location to help you navigate home safely."
+          "locationWhenInUsePermission": "OurTurn needs your location to help you navigate home safely."
         }
       ],
       [
@@ -68,7 +68,7 @@
       [
         "expo-audio",
         {
-          "microphonePermission": "MemoGuard needs your microphone to record voice notes for your daily check-in."
+          "microphonePermission": "OurTurn needs your microphone to record voice notes for your daily check-in."
         }
       ]
     ]

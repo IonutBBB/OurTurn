@@ -8,7 +8,7 @@ import type {
   Caregiver,
   CaregiverInsert,
   SubscriptionStatus,
-} from '@memoguard/shared';
+} from '@ourturn/shared';
 
 /**
  * Create a new household with patient and caregiver records

@@ -1,8 +1,8 @@
-# Skill: Supabase Patterns for MemoGuard
+# Skill: Supabase Patterns for OurTurn
 
 ## Overview
 
-MemoGuard uses Supabase as its complete backend: Postgres database, authentication, real-time subscriptions, file storage, and Edge Functions. This skill covers the patterns to follow.
+OurTurn uses Supabase as its complete backend: Postgres database, authentication, real-time subscriptions, file storage, and Edge Functions. This skill covers the patterns to follow.
 
 ## Authentication Architecture
 
@@ -343,7 +343,7 @@ packages/supabase/
 ```typescript
 // packages/supabase/queries/tasks.ts
 import { supabase } from '../client';
-import type { CarePlanTask, TaskCompletion } from '@memoguard/shared';
+import type { CarePlanTask, TaskCompletion } from '@ourturn/shared';
 
 export async function getTodaysTasks(householdId: string, dayOfWeek: string): Promise<CarePlanTask[]> {
   const { data, error } = await supabase

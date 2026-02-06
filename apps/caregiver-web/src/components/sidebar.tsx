@@ -40,14 +40,14 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
         <Link
           href="/dashboard"
           className="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2 rounded-lg"
-          aria-label="MemoGuard - Go to dashboard"
+          aria-label="OurTurn - Go to dashboard"
           onClick={() => setMobileOpen(false)}
         >
           <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
             <span className="text-white text-sm font-bold font-display">M</span>
           </div>
           <span className="text-lg font-display font-bold text-brand-700 dark:text-brand-600">
-            MemoGuard
+            OurTurn
           </span>
         </Link>
       </div>

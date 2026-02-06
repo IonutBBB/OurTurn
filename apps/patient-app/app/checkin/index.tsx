@@ -22,9 +22,9 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useAuthStore } from '../../src/stores/auth-store';
 import { useVoiceRecording } from '../../src/hooks/use-voice-recording';
-import { supabase } from '@memoguard/supabase';
+import { supabase } from '@ourturn/supabase';
 import { queueCheckin } from '../../src/utils/offline-cache';
-import { getRecordingButtonLabel, getMoodSelectionLabel } from '@memoguard/shared';
+import { getRecordingButtonLabel, getMoodSelectionLabel } from '@ourturn/shared';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
 
 type MoodValue = 1 | 2 | 3 | 4 | 5;

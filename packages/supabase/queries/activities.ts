@@ -4,7 +4,7 @@ import type {
   BrainActivityInsert,
   BrainActivityUpdate,
   BrainActivityType,
-} from '@memoguard/shared';
+} from '@ourturn/shared';
 
 /**
  * Get today's brain activity for a household

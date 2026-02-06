@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import type { CarePlanTask, TaskCompletion, Patient, BrainActivity } from '@memoguard/shared';
+import type { CarePlanTask, TaskCompletion, Patient, BrainActivity } from '@ourturn/shared';
 
 // Cache keys
 const CACHE_KEYS = {

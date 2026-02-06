@@ -9,7 +9,7 @@ import type {
   LocationAlertInsert,
   LocationAlertUpdate,
   LocationAlertType,
-} from '@memoguard/shared';
+} from '@ourturn/shared';
 
 // ============================================================================
 // LOCATION LOGS

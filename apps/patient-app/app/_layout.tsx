@@ -27,7 +27,7 @@ import {
   clearPendingCheckin,
   cleanupOldCache,
 } from '../src/utils/offline-cache';
-import { completeTask, createLocationAlert, supabase } from '@memoguard/supabase';
+import { completeTask, createLocationAlert, supabase } from '@ourturn/supabase';
 import { COLORS } from '../src/theme';
 
 // Initialize i18n

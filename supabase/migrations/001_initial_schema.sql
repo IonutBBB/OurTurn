@@ -1,4 +1,4 @@
--- MemoGuard Initial Database Schema
+-- OurTurn Initial Database Schema
 -- Migration: 001_initial_schema.sql
 -- Created: 2026-02-03
 

@@ -1,6 +1,6 @@
 import { create } from 'zustand';
-import { supabase } from '@memoguard/supabase';
-import type { Household, Patient, Caregiver } from '@memoguard/shared';
+import { supabase } from '@ourturn/supabase';
+import type { Household, Patient, Caregiver } from '@ourturn/shared';
 import type { User, Session } from '@supabase/supabase-js';
 import {
   saveSession,

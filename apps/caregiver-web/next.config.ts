@@ -4,7 +4,7 @@ import path from "path";
 const nextConfig: NextConfig = {
   devIndicators: false,
   // Transpile monorepo packages
-  transpilePackages: ['@memoguard/shared', '@memoguard/supabase'],
+  transpilePackages: ['@ourturn/shared', '@ourturn/supabase'],
 
   // Allow Supabase Storage images in next/image
   images: {
@@ -55,8 +55,8 @@ const nextConfig: NextConfig = {
   // Turbopack config for Next.js 16+
   turbopack: {
     resolveAlias: {
-      '@memoguard/shared': '../../packages/shared',
-      '@memoguard/supabase': '../../packages/supabase',
+      '@ourturn/shared': '../../packages/shared',
+      '@ourturn/supabase': '../../packages/supabase',
     },
   },
 
@@ -64,8 +64,8 @@ const nextConfig: NextConfig = {
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@memoguard/shared': path.join(__dirname, '../../packages/shared'),
-      '@memoguard/supabase': path.join(__dirname, '../../packages/supabase'),
+      '@ourturn/shared': path.join(__dirname, '../../packages/shared'),
+      '@ourturn/supabase': path.join(__dirname, '../../packages/supabase'),
     };
     return config;
   },

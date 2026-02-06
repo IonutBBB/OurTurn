@@ -16,8 +16,8 @@ import { useTranslation } from 'react-i18next';
 import * as Clipboard from 'expo-clipboard';
 import * as Haptics from 'expo-haptics';
 import { useAuthStore } from '../../src/stores/auth-store';
-import { supabase } from '@memoguard/supabase';
-import type { Caregiver, CareJournalEntry, JournalEntryType } from '@memoguard/shared';
+import { supabase } from '@ourturn/supabase';
+import type { Caregiver, CareJournalEntry, JournalEntryType } from '@ourturn/shared';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
 
 const ENTRY_TYPE_CONFIG: Record<JournalEntryType, { emoji: string; label: string }> = {
@@ -91,7 +91,7 @@ export default function FamilyScreen() {
 
     try {
       await Share.share({
-        message: `Join my MemoGuard care circle! Use this Care Code: ${household.care_code}`,
+        message: `Join my OurTurn care circle! Use this Care Code: ${household.care_code}`,
       });
     } catch (err) {
       if (__DEV__) console.error('Failed to share:', err);

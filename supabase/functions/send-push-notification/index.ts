@@ -186,7 +186,7 @@ function buildNotificationContent(
 
     default:
       return {
-        title: 'MemoGuard Alert',
+        title: 'OurTurn Alert',
         body: `An alert was triggered for ${patientName}.`,
       };
   }

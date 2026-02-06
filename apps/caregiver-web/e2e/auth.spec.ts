@@ -5,7 +5,7 @@ test.describe('Authentication', () => {
     test('displays landing page with login and signup links', async ({ page }) => {
       await page.goto('/');
 
-      await expect(page.locator('text=MemoGuard').first()).toBeVisible();
+      await expect(page.locator('text=OurTurn').first()).toBeVisible();
       await expect(page.getByRole('link', { name: /log in/i }).first()).toBeVisible();
       await expect(page.getByRole('link', { name: /get started/i }).first()).toBeVisible();
     });
@@ -15,7 +15,7 @@ test.describe('Authentication', () => {
       await page.getByRole('link', { name: /log in/i }).first().click();
 
       await expect(page).toHaveURL('/login');
-      await expect(page.locator('text=MemoGuard').first()).toBeVisible();
+      await expect(page.locator('text=OurTurn').first()).toBeVisible();
     });
 
     test('navigates to signup page', async ({ page }) => {

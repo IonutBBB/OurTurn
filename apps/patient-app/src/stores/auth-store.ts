@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { Household, Patient } from '@memoguard/shared';
+import type { Household, Patient } from '@ourturn/shared';
 import {
   saveSession,
   getSession,

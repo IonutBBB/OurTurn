@@ -1,4 +1,4 @@
-# MemoGuard — MVP Startup Plan
+# OurTurn — MVP Startup Plan
 ## AI-Powered Daily Care Platform for Families Living with Dementia
 
 **Version:** 2.0 — February 2026
@@ -10,7 +10,7 @@
 ## 1. WHAT MEMOGUARD IS (AND ISN'T)
 
 ### The One-Liner
-MemoGuard is two apps that help families manage daily life with dementia — a radically simple app for the patient, and an AI-powered care dashboard for the family caregiver (mobile + web).
+OurTurn is two apps that help families manage daily life with dementia — a radically simple app for the patient, and an AI-powered care dashboard for the family caregiver (mobile + web).
 
 ### What It Is
 - A **wellness and daily living support** tool for families
@@ -39,7 +39,7 @@ MemoGuard is two apps that help families manage daily life with dementia — a r
 | "Prevents decline" | "Supports an active lifestyle" |
 | "Therapy session" | "Activity" |
 
-This positioning keeps MemoGuard classified as a **general wellness app** under UK MHRA, EU MDR, and FDA guidance, avoiding the need for CE marking, clinical trials, or regulatory approval. The app provides information and supports daily routines — it does not make clinical decisions.
+This positioning keeps OurTurn classified as a **general wellness app** under UK MHRA, EU MDR, and FDA guidance, avoiding the need for CE marking, clinical trials, or regulatory approval. The app provides information and supports daily routines — it does not make clinical decisions.
 
 ---
 
@@ -65,7 +65,7 @@ This positioning keeps MemoGuard classified as a **general wellness app** under 
 ### The Insight
 **Nobody owns the "daily life coordination" layer** between doctor visits. Doctors see patients every 3-6 months. The other 360 days, families are on their own — navigating medications, meals, activities, safety, and emotional support without structure, guidance, or reassurance.
 
-MemoGuard fills that gap.
+OurTurn fills that gap.
 
 ---
 
@@ -90,7 +90,7 @@ MemoGuard fills that gap.
 ### The Buying Decision Flow
 1. Family notices memory problems → doctor diagnoses early-stage dementia
 2. Caregiver Googles "how to help parent with dementia"
-3. Caregiver discovers MemoGuard (through search, Alzheimer's society referral, word of mouth)
+3. Caregiver discovers OurTurn (through search, Alzheimer's society referral, word of mouth)
 4. Caregiver signs up (web or mobile) and creates a care profile for their loved one
 5. Caregiver receives a **6-digit Care Code**
 6. Caregiver installs the Patient App on loved one's phone and enters the code — that's it
@@ -161,7 +161,7 @@ The patient **never creates an account**. No email, no password, no sign-up form
 ```
 ┌─────────────────────────────────────┐
 │                                     │
-│       Welcome to MemoGuard 💙       │
+│       Welcome to OurTurn 💙       │
 │                                     │
 │    Enter your Care Code             │
 │                                     │
@@ -543,23 +543,23 @@ The web app is not a "nice to have" — it's where the **serious care management
 ### Web App URL Structure
 
 ```
-memoguard.com                   → Marketing / Landing page
-app.memoguard.com               → Caregiver web dashboard
-app.memoguard.com/dashboard     → Today's overview
-app.memoguard.com/care-plan     → Care plan builder
-app.memoguard.com/location      → Location & safety
-app.memoguard.com/coach         → AI Care Coach
-app.memoguard.com/family        → Family circle & journal
-app.memoguard.com/wellbeing     → Caregiver self-care
-app.memoguard.com/reports       → Doctor visit reports
-app.memoguard.com/settings      → Account, subscription, care code
+ourturn.com                   → Marketing / Landing page
+app.ourturn.com               → Caregiver web dashboard
+app.ourturn.com/dashboard     → Today's overview
+app.ourturn.com/care-plan     → Care plan builder
+app.ourturn.com/location      → Location & safety
+app.ourturn.com/coach         → AI Care Coach
+app.ourturn.com/family        → Family circle & journal
+app.ourturn.com/wellbeing     → Caregiver self-care
+app.ourturn.com/reports       → Doctor visit reports
+app.ourturn.com/settings      → Account, subscription, care code
 ```
 
 ### Web Dashboard Layout
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
-│  🧠 MemoGuard        Dashboard  Plan  Location  Coach  More │
+│  🧠 OurTurn        Dashboard  Plan  Location  Coach  More │
 ├──────────────────────────────────────────────────────────────┤
 │                                                              │
 │  ┌─────────────────────┐  ┌──────────────────────────────┐  │
@@ -954,7 +954,7 @@ DOCTOR_VISIT_REPORT
 │ Patient App  │  │ Caregiver   │  │  Caregiver Web   │
 │ (React      │  │ Mobile App  │  │  (Next.js)       │
 │  Native)    │  │ (React      │  │                  │
-│             │  │  Native)    │  │  app.memoguard   │
+│             │  │  Native)    │  │  app.ourturn   │
 │ Code entry  │  │             │  │  .com             │
 │ → session   │  │ Auth →      │  │                  │
 │             │  │ session     │  │  Auth → session  │
@@ -1081,7 +1081,7 @@ Patient App Launch:
 - Limited AI Coach (5 messages per month)
 - 1 caregiver only
 
-**MemoGuard Plus — $9.99 / month** (or $89.99 / year = 25% discount):
+**OurTurn Plus — $9.99 / month** (or $89.99 / year = 25% discount):
 *Price adjusts by region using purchasing power parity:*
 
 | Region | Monthly | Annual |
@@ -1090,7 +1090,7 @@ Patient App Launch:
 | Eastern Europe, Latin America | $4.99 | $44.99 |
 | India, Southeast Asia, Africa | $2.99 | $26.99 |
 
-**MemoGuard Plus includes:**
+**OurTurn Plus includes:**
 - Unlimited tasks per day
 - Full AI Care Coach (unlimited conversations)
 - AI-generated brain wellness activities
@@ -1139,7 +1139,7 @@ Patient App Launch:
 
 ### Philosophy: Global from Day One, Localize Progressively
 
-MemoGuard launches globally — available in every country's App Store and on web from day one. No geographic restrictions. The app auto-detects language and location to provide the right experience.
+OurTurn launches globally — available in every country's App Store and on web from day one. No geographic restrictions. The app auto-detects language and location to provide the right experience.
 
 ### Launch Sequence
 
@@ -1152,7 +1152,7 @@ MemoGuard launches globally — available in every country's App Store and on we
 
 **Month 5: Global Launch**
 - App Store + Google Play worldwide
-- Web app live at app.memoguard.com
+- Web app live at app.ourturn.com
 - English + auto-detected locale settings
 - Marketing: English-language content, global social media, Alzheimer's association outreach worldwide
 
@@ -1182,7 +1182,7 @@ MemoGuard launches globally — available in every country's App Store and on we
 | **Google Search** | "dementia care app" / "alzheimer's daily routine" / "help for dementia carers" — run in English globally, add language-specific campaigns as localized |
 | **Facebook / Instagram** | Target dementia caregiver groups (massive, active communities in every country) |
 | **Alzheimer's Associations** | Partner with Alzheimer's Disease International (ADI) + national associations. There are 100+ member organizations |
-| **Content marketing** | Blog at memoguard.com/blog — SEO-optimized caregiving guides in English, then localized |
+| **Content marketing** | Blog at ourturn.com/blog — SEO-optimized caregiving guides in English, then localized |
 | **Reddit / forums** | r/dementia, r/caregivers, r/Alzheimers — provide genuine help, mention app naturally |
 | **YouTube** | "How to care for someone with dementia" educational content with product integration |
 | **App Store Optimization** | Optimize for "dementia," "alzheimer," "caregiver," "memory care" in every supported language |
@@ -1230,9 +1230,9 @@ MemoGuard launches globally — available in every country's App Store and on we
 
 ## 14. COMPETITIVE POSITIONING
 
-### MemoGuard vs. Competition
+### OurTurn vs. Competition
 
-| Feature | MemoGuard | Elli Cares | MapHabit | MindMate |
+| Feature | OurTurn | Elli Cares | MapHabit | MindMate |
 |---|---|---|---|---|
 | **Separate patient & caregiver apps** | ✅ Fully separate | ❌ Single app | ❌ Single app | ❌ Patient only |
 | **Caregiver web app** | ✅ Full dashboard | ❌ Mobile only | ❌ Mobile only | ❌ No caregiver |
@@ -1507,7 +1507,7 @@ Before every feature ships, verify:
 ## APPENDIX B: AI CARE COACH SYSTEM PROMPT (Draft)
 
 ```
-You are MemoGuard Care Coach, a warm and knowledgeable AI assistant
+You are OurTurn Care Coach, a warm and knowledgeable AI assistant
 helping family caregivers of people with dementia manage daily care.
 
 LANGUAGE: Respond in {user_language}. Match the caregiver's language.
@@ -1588,7 +1588,7 @@ Patient taps "Take Me Home"
 ---
 
 *This plan is a living document. Update it as you learn from users.*
-*The best feature ideas will come from the families who use MemoGuard.*
+*The best feature ideas will come from the families who use OurTurn.*
 
 *"Technology alone cannot solve dementia. But thoughtfully designed
 tools can extend caregiver capabilities, reduce isolation, and

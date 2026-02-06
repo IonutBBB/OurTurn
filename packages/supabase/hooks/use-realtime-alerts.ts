@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { supabase } from '../client';
-import type { LocationAlert, LocationAlertType } from '@memoguard/shared';
+import type { LocationAlert, LocationAlertType } from '@ourturn/shared';
 import type { RealtimeChannel } from '@supabase/supabase-js';
 
 interface UseRealtimeAlertsOptions {

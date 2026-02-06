@@ -13,8 +13,8 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../../src/stores/auth-store';
-import { supabase } from '@memoguard/supabase';
-import { getProgressLabel, getLocationStatusLabel } from '@memoguard/shared';
+import { supabase } from '@ourturn/supabase';
+import { getProgressLabel, getLocationStatusLabel } from '@ourturn/shared';
 import { COLORS, FONTS, RADIUS, SHADOWS, SPACING } from '../../src/theme';
 
 export default function DashboardScreen() {

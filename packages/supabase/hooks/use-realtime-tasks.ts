@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { supabase } from '../client';
-import type { TaskCompletion, CarePlanTask, DayOfWeek } from '@memoguard/shared';
+import type { TaskCompletion, CarePlanTask, DayOfWeek } from '@ourturn/shared';
 import type { RealtimeChannel } from '@supabase/supabase-js';
 
 export interface TaskWithCompletion extends CarePlanTask {

@@ -15,7 +15,7 @@ import { useRouter } from 'expo-router';
 import * as Haptics from 'expo-haptics';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../src/stores/auth-store';
-import { getHouseholdByCareCode } from '@memoguard/supabase';
+import { getHouseholdByCareCode } from '@ourturn/supabase';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../src/theme';
 
 export default function CareCodeScreen() {

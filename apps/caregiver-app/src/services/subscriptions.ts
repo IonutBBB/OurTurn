@@ -8,7 +8,7 @@ import Purchases, {
   LOG_LEVEL,
 } from 'react-native-purchases';
 import { Platform } from 'react-native';
-import { supabase } from '@memoguard/supabase';
+import { supabase } from '@ourturn/supabase';
 
 // RevenueCat API keys from environment
 const REVENUECAT_APPLE_API_KEY = process.env.EXPO_PUBLIC_REVENUECAT_APPLE_API_KEY || '';

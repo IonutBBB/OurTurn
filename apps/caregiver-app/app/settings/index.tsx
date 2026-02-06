@@ -20,7 +20,7 @@ import * as Clipboard from 'expo-clipboard';
 import * as Haptics from 'expo-haptics';
 import * as ImagePicker from 'expo-image-picker';
 import { useAuthStore } from '../../src/stores/auth-store';
-import { supabase } from '@memoguard/supabase';
+import { supabase } from '@ourturn/supabase';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
 
 export default function SettingsScreen() {

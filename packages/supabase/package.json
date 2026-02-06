@@ -1,5 +1,5 @@
 {
-  "name": "@memoguard/supabase",
+  "name": "@ourturn/supabase",
   "version": "1.0.0",
   "main": "index.ts",
   "types": "index.ts",
@@ -7,7 +7,7 @@
     "@supabase/supabase-js": "^2.94.1"
   },
   "peerDependencies": {
-    "@memoguard/shared": "*",
+    "@ourturn/shared": "*",
     "react": "*"
   },
   "devDependencies": {

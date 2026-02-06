@@ -3,7 +3,7 @@ import type {
   CaregiverWellbeingLog,
   CaregiverWellbeingLogInsert,
   CaregiverWellbeingLogUpdate,
-} from '@memoguard/shared';
+} from '@ourturn/shared';
 
 /**
  * Log caregiver wellbeing (insert or update for today)

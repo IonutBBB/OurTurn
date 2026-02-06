@@ -6,7 +6,7 @@ import type {
   TaskCompletion,
   TaskCompletionInsert,
   DayOfWeek,
-} from '@memoguard/shared';
+} from '@ourturn/shared';
 
 /**
  * Get today's tasks for a household

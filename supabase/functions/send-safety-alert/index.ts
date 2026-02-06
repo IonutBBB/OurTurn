@@ -10,7 +10,7 @@ const corsHeaders = {
 };
 
 const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
-const FROM_EMAIL = 'MemoGuard <alerts@memoguard.app>';
+const FROM_EMAIL = 'OurTurn <alerts@ourturn.app>';
 
 interface LocationAlert {
   id: string;
@@ -144,7 +144,7 @@ function buildEmailContent(alert: LocationAlert, patientName: string): { subject
             </p>
             <hr style="border: none; border-top: 1px solid #E7E5E4; margin: 24px 0;">
             <p style="font-size: 12px; color: #A8A29E;">
-              This is an automated alert from MemoGuard. You can manage your notification preferences in the app settings.
+              This is an automated alert from OurTurn. You can manage your notification preferences in the app settings.
             </p>
           </div>
         `,
@@ -164,7 +164,7 @@ function buildEmailContent(alert: LocationAlert, patientName: string): { subject
             </p>
             <hr style="border: none; border-top: 1px solid #E7E5E4; margin: 24px 0;">
             <p style="font-size: 12px; color: #A8A29E;">
-              This is an automated alert from MemoGuard. You can manage safe zones and notifications in the app settings.
+              This is an automated alert from OurTurn. You can manage safe zones and notifications in the app settings.
             </p>
           </div>
         `,
@@ -181,7 +181,7 @@ function buildEmailContent(alert: LocationAlert, patientName: string): { subject
             <p>This may indicate nighttime wandering. You may want to check in.</p>
             <hr style="border: none; border-top: 1px solid #E7E5E4; margin: 24px 0;">
             <p style="font-size: 12px; color: #A8A29E;">
-              This is an automated alert from MemoGuard. You can adjust night monitoring settings in the app.
+              This is an automated alert from OurTurn. You can adjust night monitoring settings in the app.
             </p>
           </div>
         `,
@@ -199,7 +199,7 @@ function buildEmailContent(alert: LocationAlert, patientName: string): { subject
             <p>This could mean the device is not with them, or they may need assistance. Consider checking in.</p>
             <hr style="border: none; border-top: 1px solid #E7E5E4; margin: 24px 0;">
             <p style="font-size: 12px; color: #A8A29E;">
-              This is an automated alert from MemoGuard.
+              This is an automated alert from OurTurn.
             </p>
           </div>
         `,
@@ -207,15 +207,15 @@ function buildEmailContent(alert: LocationAlert, patientName: string): { subject
 
     default:
       return {
-        subject: `MemoGuard Alert for ${patientName}`,
+        subject: `OurTurn Alert for ${patientName}`,
         body: `
           <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2 style="color: #0D9488;">MemoGuard Alert</h2>
+            <h2 style="color: #0D9488;">OurTurn Alert</h2>
             <p>An alert was triggered for <strong>${patientName}</strong> at <strong>${time}</strong>.</p>
             <p>${locationInfo}</p>
             <hr style="border: none; border-top: 1px solid #E7E5E4; margin: 24px 0;">
             <p style="font-size: 12px; color: #A8A29E;">
-              This is an automated alert from MemoGuard.
+              This is an automated alert from OurTurn.
             </p>
           </div>
         `,

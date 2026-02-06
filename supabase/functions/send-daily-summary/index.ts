@@ -10,7 +10,7 @@ const corsHeaders = {
 };
 
 const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
-const FROM_EMAIL = 'MemoGuard <summary@memoguard.app>';
+const FROM_EMAIL = 'OurTurn <summary@ourturn.app>';
 
 interface Caregiver {
   id: string;
@@ -254,7 +254,7 @@ function buildSummaryEmail(
 
         <hr style="border: none; border-top: 1px solid #E7E5E4; margin: 24px 0;">
         <p style="font-size: 12px; color: #A8A29E; text-align: center;">
-          This is your daily summary from MemoGuard.<br>
+          This is your daily summary from OurTurn.<br>
           You can manage notification preferences in the app settings.
         </p>
       </div>

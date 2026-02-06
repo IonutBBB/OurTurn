@@ -12,16 +12,16 @@ import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import * as Haptics from 'expo-haptics';
 import { useAuthStore } from '../../src/stores/auth-store';
-import { supabase } from '@memoguard/supabase';
+import { supabase } from '@ourturn/supabase';
 import type {
   CaregiverWellbeingLog,
   WellbeingMood,
   SelfCareChecklist,
-} from '@memoguard/shared';
+} from '@ourturn/shared';
 import {
   CAREGIVER_MOOD_LABELS,
   SELF_CARE_ITEMS,
-} from '@memoguard/shared';
+} from '@ourturn/shared';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
 
 export default function WellbeingScreen() {

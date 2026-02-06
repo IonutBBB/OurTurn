@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { supabase } from '../client';
-import type { DailyCheckin } from '@memoguard/shared';
+import type { DailyCheckin } from '@ourturn/shared';
 import type { RealtimeChannel } from '@supabase/supabase-js';
 
 interface UseRealtimeCheckinsOptions {

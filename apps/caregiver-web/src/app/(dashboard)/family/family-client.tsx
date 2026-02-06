@@ -7,8 +7,8 @@ import type {
   Caregiver,
   CareJournalEntry,
   JournalEntryType,
-} from '@memoguard/shared';
-import { hasReachedCaregiverLimit } from '@memoguard/shared/utils/subscription';
+} from '@ourturn/shared';
+import { hasReachedCaregiverLimit } from '@ourturn/shared/utils/subscription';
 import { UpgradeBanner } from '@/components/upgrade-gate';
 
 interface FamilyClientProps {

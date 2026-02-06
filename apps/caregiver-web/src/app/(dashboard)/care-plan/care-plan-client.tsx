@@ -3,9 +3,9 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
-import { hasReachedTaskLimit } from '@memoguard/shared/utils/subscription';
+import { hasReachedTaskLimit } from '@ourturn/shared/utils/subscription';
 import { UpgradeBanner } from '@/components/upgrade-gate';
-import { FREE_LIMITS } from '@memoguard/shared/utils/subscription';
+import { FREE_LIMITS } from '@ourturn/shared/utils/subscription';
 
 interface Task {
   id: string;

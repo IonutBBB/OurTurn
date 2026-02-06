@@ -9,6 +9,6 @@ test.describe('Navigation', () => {
   test('login page is accessible', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
-    await expect(page.locator('text=MemoGuard').first()).toBeVisible({ timeout: 15000 });
+    await expect(page.locator('text=OurTurn').first()).toBeVisible({ timeout: 15000 });
   });
 });

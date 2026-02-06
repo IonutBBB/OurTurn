@@ -15,10 +15,10 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { supabase } from '@memoguard/supabase';
+import { supabase } from '@ourturn/supabase';
 import { useAuthStore } from '../../src/stores/auth-store';
 import { COLORS, FONTS, RADIUS, SHADOWS, SPACING } from '../../src/theme';
-import type { CarePlanTask, TaskCategory, DayOfWeek } from '@memoguard/shared';
+import type { CarePlanTask, TaskCategory, DayOfWeek } from '@ourturn/shared';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 

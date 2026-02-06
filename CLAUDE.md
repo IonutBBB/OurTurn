@@ -1,8 +1,8 @@
-# MemoGuard — Project Guide
+# OurTurn — Project Guide
 
 ## What This Is
 
-MemoGuard is a dementia daily care platform with 3 apps that help families manage daily life with dementia. This is a **wellness app, NOT a medical device**. Read `docs/skills/regulatory-language.md` before writing ANY user-facing text.
+OurTurn is a dementia daily care platform with 3 apps that help families manage daily life with dementia. This is a **wellness app, NOT a medical device**. Read `docs/skills/regulatory-language.md` before writing ANY user-facing text.
 
 ### The Three Apps
 

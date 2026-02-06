@@ -3,7 +3,7 @@ import type {
   DailyCheckin,
   DailyCheckinInsert,
   DailyCheckinUpdate,
-} from '@memoguard/shared';
+} from '@ourturn/shared';
 
 /**
  * Submit a daily check-in

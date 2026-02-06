@@ -77,7 +77,7 @@ export function Step6CareCode({ data }: Props) {
         <ol className="space-y-2 text-sm text-text-secondary">
           <li className="flex gap-2">
             <span className="font-semibold text-brand-600">1.</span>
-            Install MemoGuard on {data.patientName}&apos;s phone (iOS or Android)
+            Install OurTurn on {data.patientName}&apos;s phone (iOS or Android)
           </li>
           <li className="flex gap-2">
             <span className="font-semibold text-brand-600">2.</span>

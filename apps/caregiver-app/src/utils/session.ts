@@ -2,7 +2,7 @@ import { Platform } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 import type { Session } from '@supabase/supabase-js';
 
-const SESSION_KEY = 'memoguard_caregiver_session';
+const SESSION_KEY = 'ourturn_caregiver_session';
 
 // Platform-aware storage functions
 async function setItem(key: string, value: string): Promise<void> {

@@ -5,7 +5,7 @@ import type {
   CaregiverUpdate,
   CaregiverRole,
   Household,
-} from '@memoguard/shared';
+} from '@ourturn/shared';
 
 /**
  * Get caregiver profile by user ID

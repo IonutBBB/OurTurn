@@ -17,7 +17,7 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  title: 'MemoGuard - Dementia Care Platform',
+  title: 'OurTurn - Dementia Care Platform',
   description:
     'AI-powered daily care platform helping families manage life with dementia',
 };

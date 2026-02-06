@@ -16,7 +16,7 @@ import { Link, router } from 'expo-router';
 import * as WebBrowser from 'expo-web-browser';
 import { makeRedirectUri } from 'expo-auth-session';
 import { useTranslation } from 'react-i18next';
-import { supabase } from '@memoguard/supabase';
+import { supabase } from '@ourturn/supabase';
 import { useAuthStore } from '../../src/stores/auth-store';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
 
@@ -211,7 +211,7 @@ export default function LoginScreen() {
                 try {
                   setLoading(true);
                   setError(null);
-                  const redirectUrl = makeRedirectUri({ scheme: 'memoguard-caregiver' });
+                  const redirectUrl = makeRedirectUri({ scheme: 'ourturn-caregiver' });
                   const { data, error: oauthError } = await supabase.auth.signInWithOAuth({
                     provider: 'google',
                     options: {
@@ -256,7 +256,7 @@ export default function LoginScreen() {
                 try {
                   setLoading(true);
                   setError(null);
-                  const redirectUrl = makeRedirectUri({ scheme: 'memoguard-caregiver' });
+                  const redirectUrl = makeRedirectUri({ scheme: 'ourturn-caregiver' });
                   const { data, error: oauthError } = await supabase.auth.signInWithOAuth({
                     provider: 'apple',
                     options: {

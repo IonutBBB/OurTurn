@@ -1,4 +1,4 @@
-# MemoGuard — Build Prompts
+# OurTurn — Build Prompts
 ## Copy-paste these into Claude Code in order. One prompt at a time.
 
 **Rules:**
@@ -15,7 +15,7 @@ Before your first Claude Code prompt, manually set up the project:
 
 ```bash
 # 1. Create project folder
-mkdir memoguard && cd memoguard && git init
+mkdir ourturn && cd ourturn && git init
 
 # 2. Create the apps
 npx create-expo-app@latest apps/patient-app --template blank-typescript
@@ -25,8 +25,8 @@ npx create-next-app@latest apps/caregiver-web --typescript --tailwind --app --sr
 # 3. Create shared packages
 mkdir -p packages/shared/types packages/shared/constants packages/shared/utils
 mkdir -p packages/supabase/queries packages/supabase/hooks
-echo '{"name": "@memoguard/shared", "version": "1.0.0", "main": "index.ts"}' > packages/shared/package.json
-echo '{"name": "@memoguard/supabase", "version": "1.0.0", "main": "index.ts"}' > packages/supabase/package.json
+echo '{"name": "@ourturn/shared", "version": "1.0.0", "main": "index.ts"}' > packages/shared/package.json
+echo '{"name": "@ourturn/supabase", "version": "1.0.0", "main": "index.ts"}' > packages/supabase/package.json
 
 # 4. Create Supabase structure
 mkdir -p supabase/migrations supabase/functions
@@ -56,7 +56,7 @@ cd packages/supabase && npm install @supabase/supabase-js && cd ../..
 git add . && git commit -m "init: project skeleton with 3 apps and shared packages"
 ```
 
-Now open Claude Code in the `memoguard/` folder and start with Prompt 1.
+Now open Claude Code in the `ourturn/` folder and start with Prompt 1.
 
 ---
 
@@ -205,7 +205,7 @@ Create the Supabase client package:
 
 11. packages/supabase/index.ts — re-export client and all queries
 
-Every function should be typed with imports from @memoguard/shared. Handle errors by throwing — let the caller decide how to handle.
+Every function should be typed with imports from @ourturn/shared. Handle errors by throwing — let the caller decide how to handle.
 ```
 
 ### PROMPT 4 — i18n Setup + English Strings
@@ -259,8 +259,8 @@ Set up the patient app (apps/patient-app) with Expo Router and build the Care Co
    - app/(tabs)/help.tsx — Help tab (placeholder for now)
 
 3. Care Code Entry Screen (app/index.tsx):
-   - MemoGuard logo/name at top (just text "MemoGuard" with a 💙 heart, 36px bold)
-   - "Welcome to MemoGuard" heading (28px)
+   - OurTurn logo/name at top (just text "OurTurn" with a 💙 heart, 36px bold)
+   - "Welcome to OurTurn" heading (28px)
    - "Enter your Care Code" instruction (20px)
    - 6 large digit input boxes in a row (each 56px × 64px, 28px font, centered, auto-focus-next)
    - Helper text: "Your family member will give you this code." (18px, muted)
@@ -585,7 +585,7 @@ Set up the caregiver web app (apps/caregiver-web) with auth and app shell.
    - src/app/login/page.tsx — email + password form, Google OAuth button, Apple OAuth button, link to signup
    - src/app/signup/page.tsx — name + email + password form, same OAuth buttons, link to login
    - Clean, centered card layout on warm background (#FAFAF8)
-   - MemoGuard logo at top (text "MemoGuard 💙" in Teal, 28px)
+   - OurTurn logo at top (text "OurTurn 💙" in Teal, 28px)
    - After auth: check if caregiver has a household → if not, redirect to /onboarding. If yes, redirect to /dashboard.
 
 6. Dashboard layout shell:
@@ -594,7 +594,7 @@ Set up the caregiver web app (apps/caregiver-web) with auth and app shell.
      📊 Dashboard, 📋 Care Plan, 📍 Location, 🤖 AI Coach, 👨‍👩‍👧 Family, 💙 Wellbeing, 📄 Reports, ⚙️ Settings
    - Use Lucide React icons (LayoutDashboard, ClipboardList, MapPin, Bot, Users, Heart, FileText, Settings)
    - Active link: Teal text + light teal background
-   - Sidebar header: "MemoGuard" logo + household/patient name below
+   - Sidebar header: "OurTurn" logo + household/patient name below
    - Top bar: breadcrumb, notification bell icon (placeholder), user avatar + dropdown
    - Main content area with max-width 1200px, horizontal padding 24px
    - Responsive: sidebar collapses to hamburger menu on screens < 1024px
@@ -670,7 +670,7 @@ Multi-step form with progress bar. 6 steps. Data saves to Supabase on completion
 7. Step 6: Your Care Code
    - Display the auto-generated 6-digit Care Code in LARGE text (48px, bold, Teal, monospace, letter-spaced)
    - "Copy code" button
-   - Instructions: "Install MemoGuard on your loved one's phone and enter this code to connect."
+   - Instructions: "Install OurTurn on your loved one's phone and enter this code to connect."
    - "Send code via SMS" (optional — text input for phone number + send button, or skip for MVP)
    - "Get Started" button → redirect to /dashboard
 
@@ -921,7 +921,7 @@ Build the remaining 4 web app pages:
    - For MVP: aggregate data client-side and format into a clean HTML report
      (Later: Edge Function with Claude for narrative summary)
    - Report preview: rendered in a clean, printable card
-     Header: "MemoGuard Care Summary — {Patient Name}"
+     Header: "OurTurn Care Summary — {Patient Name}"
      Period, sections with simple data summaries
      Disclaimer at bottom (from regulatory-language.md)
    - Action buttons: Print (window.print with print CSS), Download PDF (html2pdf.js), Email (future)
@@ -932,7 +932,7 @@ Build the remaining 4 web app pages:
    - Notifications: toggle email alerts, daily summary time picker
    - Language: dropdown (only English for MVP, structure ready for more)
    - Privacy: link to privacy policy, "Export My Data" button (calls data export Edge Function), "Delete Account" button (with strong confirmation dialog — types "DELETE" to confirm)
-   - About: app version, links to terms, privacy policy, "MemoGuard is not a medical device" disclaimer
+   - About: app version, links to terms, privacy policy, "OurTurn is not a medical device" disclaimer
 ```
 
 ---
@@ -1060,8 +1060,8 @@ Build the subscription system and do a final polish pass.
    Mobile (RevenueCat):
    - npm install react-native-purchases in both mobile apps
    - Configure RevenueCat with App Store + Play Store products:
-     memoguard_plus_monthly ($9.99)
-     memoguard_plus_annual ($89.99)
+     ourturn_plus_monthly ($9.99)
+     ourturn_plus_annual ($89.99)
    - Create a Paywall component shown when free user hits a premium feature
    - On purchase: webhook from RevenueCat → Supabase Edge Function → update households.subscription_status to 'plus'
 

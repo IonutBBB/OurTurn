@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { supabase } from '../client';
-import type { CareJournalEntry } from '@memoguard/shared';
+import type { CareJournalEntry } from '@ourturn/shared';
 import type { RealtimeChannel } from '@supabase/supabase-js';
 
 interface UseRealtimeJournalOptions {

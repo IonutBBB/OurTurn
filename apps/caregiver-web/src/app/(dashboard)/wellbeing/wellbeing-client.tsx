@@ -7,11 +7,11 @@ import type {
   CaregiverWellbeingLog,
   WellbeingMood,
   SelfCareChecklist,
-} from '@memoguard/shared';
+} from '@ourturn/shared';
 import {
   CAREGIVER_MOOD_LABELS,
   SELF_CARE_ITEMS,
-} from '@memoguard/shared';
+} from '@ourturn/shared';
 
 interface WellbeingClientProps {
   caregiverId: string;

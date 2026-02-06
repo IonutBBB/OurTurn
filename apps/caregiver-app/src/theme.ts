@@ -1,4 +1,4 @@
-// MemoGuard Caregiver App — "Hearthstone" Warm & Organic Theme
+// OurTurn Caregiver App — "Hearthstone" Warm & Organic Theme
 
 export const COLORS = {
   // Brand - Terracotta

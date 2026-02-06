@@ -1,4 +1,4 @@
-# MemoGuard Edge Functions
+# OurTurn Edge Functions
 
 Supabase Edge Functions for server-side operations.
 

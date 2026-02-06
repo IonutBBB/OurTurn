@@ -1,4 +1,4 @@
-import type { DayOfWeek } from '@memoguard/shared';
+import type { DayOfWeek } from '@ourturn/shared';
 import { TIME_GRADIENTS } from '../theme';
 
 export type TimeOfDay = 'morning' | 'afternoon' | 'evening' | 'night';

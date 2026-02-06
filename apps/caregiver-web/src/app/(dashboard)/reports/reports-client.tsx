@@ -3,7 +3,7 @@
 import { useState, useRef, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
-import type { DoctorVisitReport, Patient, DoctorVisitReportContent } from '@memoguard/shared';
+import type { DoctorVisitReport, Patient, DoctorVisitReportContent } from '@ourturn/shared';
 
 interface ReportsClientProps {
   householdId: string;
@@ -215,7 +215,7 @@ export default function ReportsClient({
       <!DOCTYPE html>
       <html>
       <head>
-        <title>MemoGuard - ${t('caregiverApp.reports.reportTitle')}</title>
+        <title>OurTurn - ${t('caregiverApp.reports.reportTitle')}</title>
         <style>
           * { margin: 0; padding: 0; box-sizing: border-box; }
           body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1a1a1a; padding: 40px; line-height: 1.6; }

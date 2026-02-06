@@ -2,7 +2,7 @@
 
 ## Overview
 
-MemoGuard uses AI (Anthropic Claude API) for four features:
+OurTurn uses AI (Anthropic Claude API) for four features:
 1. **AI Care Coach** — conversational chatbot for caregivers
 2. **Brain Activity Generator** — personalized daily activities for patients
 3. **Pattern Insights** — weekly trend analysis from check-in data
@@ -40,7 +40,7 @@ Claude API (claude-sonnet-4-20250514)
 ### System Prompt
 
 ```
-You are MemoGuard Care Coach, a warm and knowledgeable AI assistant
+You are OurTurn Care Coach, a warm and knowledgeable AI assistant
 helping family caregivers of people living with dementia manage daily care.
 
 RESPOND IN: {user_language}
@@ -385,7 +385,7 @@ ${caregiverNotes}
 Generate a clear, concise care summary formatted for a healthcare provider.
 
 RULES:
-- Label all data as "self-reported via MemoGuard app"
+- Label all data as "self-reported via OurTurn app"
 - Use factual, neutral language
 - Present trends without interpretation (e.g., "Sleep rated as 'good' 3 of 7 days" not "Sleep is deteriorating")
 - Include a section for family observations

@@ -1,4 +1,4 @@
--- MemoGuard Seed Data for Testing
+-- OurTurn Seed Data for Testing
 -- Run this after creating a test user via Supabase Auth
 
 -- =============================================================================

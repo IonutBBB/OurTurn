@@ -6,7 +6,7 @@ test.describe('Landing Page', () => {
   });
 
   test('has correct page title', async ({ page }) => {
-    await expect(page).toHaveTitle(/MemoGuard/i);
+    await expect(page).toHaveTitle(/OurTurn/i);
   });
 
   test('displays hero section', async ({ page }) => {

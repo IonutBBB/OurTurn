@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { supabase } from '../client';
-import type { LocationLog, SafeZone } from '@memoguard/shared';
+import type { LocationLog, SafeZone } from '@ourturn/shared';
 import type { RealtimeChannel } from '@supabase/supabase-js';
 
 interface UseRealtimeLocationOptions {

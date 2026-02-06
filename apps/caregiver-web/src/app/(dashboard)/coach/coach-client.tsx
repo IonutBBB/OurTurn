@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect, useCallback, FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
-import { hasReachedAIMessageLimit, FREE_LIMITS } from '@memoguard/shared/utils/subscription';
+import { hasReachedAIMessageLimit, FREE_LIMITS } from '@ourturn/shared/utils/subscription';
 import { UpgradeBanner } from '@/components/upgrade-gate';
 
 interface Message {

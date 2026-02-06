@@ -4,7 +4,7 @@ import type {
   AIConversationInsert,
   AIMessage,
   AIMessageRole,
-} from '@memoguard/shared';
+} from '@ourturn/shared';
 
 /**
  * Create a new AI conversation
