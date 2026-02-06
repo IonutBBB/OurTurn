@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
@@ -23,27 +24,32 @@ interface SidebarProps {
 export function Sidebar({ userName, userEmail }: SidebarProps) {
   const pathname = usePathname();
   const { t } = useTranslation();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  return (
-    <aside
-      className="fixed inset-y-0 left-0 z-50 w-64 bg-white/95 dark:bg-[#1E1E1E] backdrop-blur-xl border-r border-gray-200 dark:border-gray-700 flex flex-col transition-colors duration-200"
-      role="navigation"
-      aria-label="Main navigation"
-    >
-      {/* Logo */}
-      <div className="h-16 flex items-center px-6 border-b border-gray-200 dark:border-gray-700">
+  const sidebarContent = (
+    <>
+      {/* Logo area */}
+      <div className="px-5 pt-6 pb-4">
         <Link
           href="/dashboard"
-          className="text-xl font-bold text-brand-600 dark:text-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2 rounded"
+          className="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2 rounded-lg"
           aria-label="MemoGuard - Go to dashboard"
+          onClick={() => setMobileOpen(false)}
         >
-          MemoGuard
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
+            <span className="text-white text-sm font-bold font-display">M</span>
+          </div>
+          <span className="text-lg font-display font-bold text-brand-700 dark:text-brand-600">
+            MemoGuard
+          </span>
         </Link>
       </div>
 
+      <div className="divider-wavy mx-5 mb-2" />
+
       {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto py-5" aria-label="Primary">
-        <ul className="space-y-1.5 px-3" role="list">
+      <nav className="flex-1 overflow-y-auto px-3 py-2" aria-label="Primary">
+        <ul className="space-y-1" role="list">
           {navItems.map((item) => {
             const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
             const label = t(`caregiverApp.nav.${item.key}`);
@@ -51,22 +57,17 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={`
-                    group flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium
-                    transition-all duration-200 ease-out
-                    focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2
-                    ${isActive
-                      ? 'bg-gradient-to-r from-brand-600 to-brand-500 dark:from-brand-500 dark:to-brand-400 text-white shadow-md shadow-brand-600/20'
-                      : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white hover:translate-x-1'
-                    }
-                  `}
+                  className={`sidebar-nav-item focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2 ${isActive ? 'active' : ''}`}
                   aria-current={isActive ? 'page' : undefined}
                   aria-label={label}
+                  onClick={() => setMobileOpen(false)}
                 >
-                  <span className={`text-lg transition-transform duration-200 ${!isActive ? 'group-hover:scale-110' : ''}`} aria-hidden="true">{item.icon}</span>
-                  <span>{label}</span>
+                  <span className={`text-lg transition-transform duration-200 ${!isActive ? 'group-hover:scale-110' : ''}`} aria-hidden="true">
+                    {item.icon}
+                  </span>
+                  <span className="flex-1">{label}</span>
                   {isActive && (
-                    <span className="ml-auto w-1.5 h-1.5 rounded-full bg-white/60" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-white/70" />
                   )}
                 </Link>
               </li>
@@ -81,24 +82,29 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
       </div>
 
       {/* User section */}
-      <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+      <div className="p-4 border-t border-surface-border">
         <Link
           href="/settings"
-          className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2"
+          className="flex items-center gap-3 px-3 py-2.5 rounded-2xl hover:bg-brand-50 dark:hover:bg-brand-50/10 transition-all group focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2"
           aria-label={`${userName} - View profile and settings`}
+          onClick={() => setMobileOpen(false)}
         >
           <div
             className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow"
             aria-hidden="true"
           >
-            <span className="text-white text-sm font-semibold">{userName.charAt(0).toUpperCase()}</span>
+            <span className="text-white text-sm font-semibold font-display">
+              {userName.charAt(0).toUpperCase()}
+            </span>
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-gray-900 dark:text-gray-100 truncate">{userName}</p>
-            <p className="text-xs text-gray-500 dark:text-gray-400 truncate group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">View profile</p>
+            <p className="text-sm font-semibold text-text-primary truncate">{userName}</p>
+            <p className="text-xs text-text-muted truncate group-hover:text-brand-600 transition-colors">
+              Settings
+            </p>
           </div>
           <svg
-            className="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover:text-brand-600 dark:group-hover:text-brand-400 group-hover:translate-x-0.5 transition-all"
+            className="w-4 h-4 text-text-muted group-hover:text-brand-600 group-hover:translate-x-0.5 transition-all"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -108,6 +114,55 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
           </svg>
         </Link>
       </div>
-    </aside>
+    </>
+  );
+
+  return (
+    <>
+      {/* Mobile hamburger button */}
+      <button
+        className="lg:hidden fixed top-4 left-4 z-[60] p-2 rounded-xl bg-surface-card border border-surface-border shadow-sm"
+        onClick={() => setMobileOpen(!mobileOpen)}
+        aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+      >
+        {mobileOpen ? (
+          <svg className="w-6 h-6 text-text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        ) : (
+          <svg className="w-6 h-6 text-text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        )}
+      </button>
+
+      {/* Mobile overlay */}
+      {mobileOpen && (
+        <div
+          className="lg:hidden fixed inset-0 bg-black/40 z-40"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
+
+      {/* Desktop sidebar (always visible on lg+) */}
+      <aside
+        className="hidden lg:flex fixed inset-y-0 left-0 z-50 w-64 flex-col border-r border-surface-border bg-surface-card/95 dark:bg-surface-card/95 backdrop-blur-xl transition-colors duration-200"
+        role="navigation"
+        aria-label="Main navigation"
+      >
+        {sidebarContent}
+      </aside>
+
+      {/* Mobile sidebar (slide-in) */}
+      <aside
+        className={`lg:hidden fixed inset-y-0 left-0 z-50 w-64 flex flex-col border-r border-surface-border bg-surface-card/95 dark:bg-surface-card/95 backdrop-blur-xl transition-transform duration-300 ${
+          mobileOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+        role="navigation"
+        aria-label="Main navigation"
+      >
+        {sidebarContent}
+      </aside>
+    </>
   );
 }

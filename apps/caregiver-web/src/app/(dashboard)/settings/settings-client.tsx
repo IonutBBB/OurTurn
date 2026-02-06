@@ -295,40 +295,40 @@ export default function SettingsClient({
   return (
     <div className="max-w-3xl space-y-6">
       {/* Profile Settings */}
-      <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-6">
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Profile</h2>
+      <div className="card-paper p-6">
+        <h2 className="text-lg font-display font-bold text-text-primary mb-4">Profile</h2>
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-semibold text-text-secondary mb-1.5">
               Name
             </label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="input-warm w-full"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-semibold text-text-secondary mb-1.5">
               Email
             </label>
             <input
               type="email"
               value={caregiver.email}
               disabled
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 cursor-not-allowed"
+              className="w-full px-4 py-2 border border-surface-border rounded-2xl bg-surface-background dark:bg-surface-elevated text-text-muted cursor-not-allowed"
             />
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Email cannot be changed</p>
+            <p className="text-xs text-text-muted mt-1">Email cannot be changed</p>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-semibold text-text-secondary mb-1.5">
               Relationship to Patient
             </label>
             <select
               value={relationship}
               onChange={(e) => setRelationship(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="input-warm w-full"
             >
               <option value="">Select relationship</option>
               <option value="spouse">Spouse/Partner</option>
@@ -345,33 +345,33 @@ export default function SettingsClient({
             <button
               onClick={handleSaveProfile}
               disabled={isSavingProfile}
-              className="px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 disabled:opacity-50 transition-colors"
+              className="btn-primary disabled:opacity-50"
             >
               {isSavingProfile ? 'Saving...' : 'Save Profile'}
             </button>
             {profileSaved && (
-              <span className="text-sm text-green-600 dark:text-green-400">Saved!</span>
+              <span className="text-sm text-status-success">Saved!</span>
             )}
           </div>
         </div>
       </div>
 
       {/* Care Code */}
-      <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-6">
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Care Code</h2>
-        <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+      <div className="card-paper p-6">
+        <h2 className="text-lg font-display font-bold text-text-primary mb-4">Care Code</h2>
+        <p className="text-sm text-text-secondary mb-4">
           Share this code with family members to invite them to your care circle, or use it to
           connect the patient app.
         </p>
         <div className="flex items-center gap-4">
           {showCareCode ? (
             <div className="flex items-center gap-4">
-              <span className="text-3xl font-mono font-bold text-teal-700 dark:text-teal-300 tracking-widest bg-teal-50 dark:bg-teal-900/30 px-6 py-3 rounded-lg">
+              <span className="text-3xl font-mono font-bold text-brand-700 dark:text-brand-300 tracking-widest card-inset px-6 py-3 rounded-2xl">
                 {careCode}
               </span>
               <button
                 onClick={handleCopyCode}
-                className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                className="px-4 py-2 border border-surface-border rounded-2xl text-text-secondary hover:bg-brand-50 dark:hover:bg-surface-elevated transition-colors"
               >
                 Copy
               </button>
@@ -379,7 +379,7 @@ export default function SettingsClient({
           ) : (
             <button
               onClick={() => setShowCareCode(true)}
-              className="px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors"
+              className="btn-primary"
             >
               Show Care Code
             </button>
@@ -390,7 +390,7 @@ export default function SettingsClient({
             <button
               onClick={handleRegenerateCode}
               disabled={isRegenerating}
-              className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 underline"
+              className="text-sm text-text-muted hover:text-text-secondary underline"
             >
               {isRegenerating ? 'Regenerating...' : 'Regenerate Code (invalidates old code)'}
             </button>
@@ -399,8 +399,8 @@ export default function SettingsClient({
       </div>
 
       {/* Notification Preferences */}
-      <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-6">
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Notifications</h2>
+      <div className="card-paper p-6">
+        <h2 className="text-lg font-display font-bold text-text-primary mb-4">Notifications</h2>
         <div className="space-y-4">
           <label className="flex items-center gap-3">
             <input
@@ -412,11 +412,11 @@ export default function SettingsClient({
                   safety_alerts: e.target.checked,
                 }))
               }
-              className="w-5 h-5 rounded border-gray-300 dark:border-gray-600 text-teal-600 focus:ring-teal-500"
+              className="w-5 h-5 rounded border-surface-border text-brand-600 focus:ring-brand-500"
             />
             <div>
-              <span className="font-medium text-gray-900 dark:text-gray-100">Safety Alerts</span>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <span className="font-medium text-text-primary">Safety Alerts</span>
+              <p className="text-sm text-text-muted">
                 Receive immediate alerts when your loved one leaves a safe zone or taps &quot;Take Me Home&quot;
               </p>
             </div>
@@ -431,11 +431,11 @@ export default function SettingsClient({
                   daily_summary: e.target.checked,
                 }))
               }
-              className="w-5 h-5 rounded border-gray-300 dark:border-gray-600 text-teal-600 focus:ring-teal-500"
+              className="w-5 h-5 rounded border-surface-border text-brand-600 focus:ring-brand-500"
             />
             <div>
-              <span className="font-medium text-gray-900 dark:text-gray-100">Daily Summary</span>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <span className="font-medium text-text-primary">Daily Summary</span>
+              <p className="text-sm text-text-muted">
                 Receive a daily summary of completed tasks and check-in status
               </p>
             </div>
@@ -450,11 +450,11 @@ export default function SettingsClient({
                   email_notifications: e.target.checked,
                 }))
               }
-              className="w-5 h-5 rounded border-gray-300 dark:border-gray-600 text-teal-600 focus:ring-teal-500"
+              className="w-5 h-5 rounded border-surface-border text-brand-600 focus:ring-brand-500"
             />
             <div>
-              <span className="font-medium text-gray-900 dark:text-gray-100">Email Notifications</span>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <span className="font-medium text-text-primary">Email Notifications</span>
+              <p className="text-sm text-text-muted">
                 Receive alerts and summaries via email in addition to push notifications
               </p>
             </div>
@@ -463,30 +463,30 @@ export default function SettingsClient({
             <button
               onClick={handleSaveNotifications}
               disabled={isSavingNotifications}
-              className="px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 disabled:opacity-50 transition-colors"
+              className="btn-primary disabled:opacity-50"
             >
               {isSavingNotifications ? 'Saving...' : 'Save Preferences'}
             </button>
             {notificationsSaved && (
-              <span className="text-sm text-green-600 dark:text-green-400">Saved!</span>
+              <span className="text-sm text-status-success">Saved!</span>
             )}
           </div>
         </div>
       </div>
 
       {/* Subscription */}
-      <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-6">
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Subscription</h2>
+      <div className="card-paper p-6">
+        <h2 className="text-lg font-display font-bold text-text-primary mb-4">Subscription</h2>
         <div className="flex items-center justify-between mb-4">
           <div>
-            <p className="font-medium text-gray-900 dark:text-gray-100">
+            <p className="font-medium text-text-primary">
               Current Plan:{' '}
-              <span className={household.subscription_status === 'plus' ? 'text-teal-600 dark:text-teal-400' : ''}>
+              <span className={household.subscription_status === 'plus' ? 'text-brand-600 dark:text-brand-400' : ''}>
                 {household.subscription_status === 'plus' ? 'MemoGuard Plus' : 'Free'}
               </span>
             </p>
             {household.subscription_platform && (
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="text-sm text-text-muted">
                 Subscribed via {household.subscription_platform}
               </p>
             )}
@@ -495,33 +495,33 @@ export default function SettingsClient({
             <button
               onClick={handleUpgradeSubscription}
               disabled={isCreatingCheckout}
-              className="px-6 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 disabled:opacity-50 transition-colors"
+              className="btn-primary disabled:opacity-50"
             >
               {isCreatingCheckout ? 'Loading...' : 'Upgrade to Plus'}
             </button>
           )}
         </div>
         {subscriptionError && (
-          <p className="text-sm text-red-600 dark:text-red-400 mb-4">{subscriptionError}</p>
+          <p className="text-sm text-status-danger mb-4">{subscriptionError}</p>
         )}
         {household.subscription_status === 'plus' && (
           <button
             onClick={handleManageSubscription}
             disabled={isOpeningPortal}
-            className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 underline disabled:opacity-50"
+            className="text-sm text-text-muted hover:text-text-secondary underline disabled:opacity-50"
           >
             {isOpeningPortal ? 'Opening...' : 'Manage subscription'}
           </button>
         )}
         {household.subscription_status === 'plus' && household.subscription_platform !== 'web' && (
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
+          <p className="text-sm text-text-muted mt-2">
             To manage your subscription, please use the {household.subscription_platform === 'ios' ? 'App Store' : 'Google Play Store'}.
           </p>
         )}
         {household.subscription_status !== 'plus' && (
-          <div className="bg-teal-50 dark:bg-teal-900/20 rounded-lg p-4 mt-4">
-            <p className="font-medium text-teal-800 dark:text-teal-200 mb-2">MemoGuard Plus Benefits:</p>
-            <ul className="text-sm text-teal-700 dark:text-teal-300 space-y-1">
+          <div className="card-inset rounded-2xl p-4 mt-4">
+            <p className="font-medium text-brand-800 dark:text-brand-200 mb-2">MemoGuard Plus Benefits:</p>
+            <ul className="text-sm text-brand-700 dark:text-brand-300 space-y-1">
               <li>• Unlimited care plan tasks</li>
               <li>• AI Care Coach for personalized guidance</li>
               <li>• Multiple safe zones with alerts</li>
@@ -534,42 +534,42 @@ export default function SettingsClient({
       </div>
 
       {/* Change Password */}
-      <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-6">
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Change Password</h2>
+      <div className="card-paper p-6">
+        <h2 className="text-lg font-display font-bold text-text-primary mb-4">Change Password</h2>
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-semibold text-text-secondary mb-1.5">
               New Password
             </label>
             <input
               type="password"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="input-warm w-full"
               placeholder="At least 8 characters"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-semibold text-text-secondary mb-1.5">
               Confirm New Password
             </label>
             <input
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="input-warm w-full"
             />
           </div>
           {passwordError && (
-            <p className="text-sm text-red-600 dark:text-red-400">{passwordError}</p>
+            <p className="text-sm text-status-danger">{passwordError}</p>
           )}
           {passwordSuccess && (
-            <p className="text-sm text-green-600 dark:text-green-400">Password changed successfully!</p>
+            <p className="text-sm text-status-success">Password changed successfully!</p>
           )}
           <button
             onClick={handleChangePassword}
             disabled={isChangingPassword || !newPassword || !confirmPassword}
-            className="px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 disabled:opacity-50 transition-colors"
+            className="btn-primary disabled:opacity-50"
           >
             {isChangingPassword ? 'Changing...' : 'Change Password'}
           </button>
@@ -577,36 +577,36 @@ export default function SettingsClient({
       </div>
 
       {/* Sign Out */}
-      <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-6">
+      <div className="card-paper p-6">
         <button
           onClick={handleSignOut}
-          className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+          className="px-4 py-2 border border-surface-border rounded-2xl text-text-secondary hover:bg-brand-50 dark:hover:bg-surface-elevated transition-colors"
         >
           Sign Out
         </button>
       </div>
 
       {/* Privacy & Data */}
-      <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-6">
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Privacy & Data</h2>
+      <div className="card-paper p-6">
+        <h2 className="text-lg font-display font-bold text-text-primary mb-4">Privacy & Data</h2>
         <div className="space-y-4">
           <div>
             <button
               onClick={handleExportData}
               disabled={isExporting}
-              className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors disabled:opacity-50"
+              className="px-4 py-2 border border-surface-border rounded-2xl text-text-secondary hover:bg-brand-50 dark:hover:bg-surface-elevated transition-colors disabled:opacity-50"
             >
               {isExporting ? 'Exporting...' : 'Export My Data'}
             </button>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            <p className="text-sm text-text-muted mt-1">
               Download a copy of all your data in JSON format (GDPR right to portability)
             </p>
           </div>
           <div className="flex gap-4 text-sm">
-            <a href="/privacy" target="_blank" className="text-teal-600 dark:text-teal-400 hover:underline">
+            <a href="/privacy" target="_blank" className="text-brand-600 dark:text-brand-400 hover:underline">
               Privacy Policy
             </a>
-            <a href="/terms" target="_blank" className="text-teal-600 dark:text-teal-400 hover:underline">
+            <a href="/terms" target="_blank" className="text-brand-600 dark:text-brand-400 hover:underline">
               Terms of Service
             </a>
           </div>
@@ -614,38 +614,38 @@ export default function SettingsClient({
       </div>
 
       {/* Danger Zone */}
-      <div className="bg-red-50 dark:bg-red-900/20 rounded-xl border border-red-200 dark:border-red-800 p-6">
-        <h2 className="text-lg font-semibold text-red-800 dark:text-red-200 mb-4">Danger Zone</h2>
+      <div className="bg-status-danger-bg rounded-[20px] border border-status-danger/20 p-6">
+        <h2 className="text-lg font-display font-bold text-status-danger mb-4">Danger Zone</h2>
         <div className="space-y-4">
           <div>
             <button
               onClick={() => setShowDeleteConfirm(!showDeleteConfirm)}
-              className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+              className="px-4 py-2 bg-status-danger text-white rounded-2xl hover:bg-status-danger/90 transition-colors"
             >
               Delete Account
             </button>
-            <p className="text-sm text-red-600 dark:text-red-400 mt-1">
+            <p className="text-sm text-status-danger mt-1">
               Permanently delete your account and all data. This cannot be undone.
             </p>
             {showDeleteConfirm && (
-              <div className="mt-4 p-4 bg-white dark:bg-gray-800 rounded-lg border border-red-300 dark:border-red-700">
-                <p className="text-sm text-red-800 dark:text-red-200 mb-3">
+              <div className="mt-4 p-4 bg-surface-card dark:bg-surface-elevated rounded-2xl border border-status-danger/30">
+                <p className="text-sm text-status-danger mb-3">
                   Type &quot;DELETE&quot; to confirm account deletion:
                 </p>
                 <input
                   type="text"
                   value={deleteConfirmText}
                   onChange={(e) => setDeleteConfirmText(e.target.value)}
-                  className="w-full px-4 py-2 border border-red-300 dark:border-red-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-red-500 mb-3"
+                  className="w-full px-4 py-2 border border-status-danger/30 rounded-2xl bg-surface-card dark:bg-surface-elevated text-text-primary focus:outline-none focus:ring-2 focus:ring-status-danger mb-3"
                   placeholder="Type DELETE"
                 />
                 {deleteError && (
-                  <p className="text-sm text-red-600 dark:text-red-400 mb-3">{deleteError}</p>
+                  <p className="text-sm text-status-danger mb-3">{deleteError}</p>
                 )}
                 <button
                   onClick={handleDeleteAccount}
                   disabled={deleteConfirmText !== 'DELETE' || isDeleting}
-                  className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 transition-colors"
+                  className="px-4 py-2 bg-status-danger text-white rounded-2xl hover:bg-status-danger/90 disabled:opacity-50 transition-colors"
                 >
                   {isDeleting ? 'Deleting...' : 'Confirm Delete'}
                 </button>

@@ -20,18 +20,33 @@ export default async function SettingsPage() {
 
   if (!caregiver || !household) {
     return (
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">Settings</h1>
-        <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-800 p-8 text-center">
-          <p className="text-gray-500 dark:text-gray-400">Please complete onboarding first.</p>
+      <div className="page-enter space-y-6">
+        <div>
+          <h1 className="heading-display text-2xl">
+            <span className="heading-accent">Settings</span>
+          </h1>
+          <p className="text-text-secondary text-sm mt-1">Manage your account and preferences</p>
+        </div>
+        <div className="card-paper p-12 text-center max-w-lg mx-auto">
+          <div className="w-16 h-16 rounded-2xl bg-brand-100/60 dark:bg-brand-100/20 flex items-center justify-center mx-auto mb-5">
+            <span className="text-3xl">⚙️</span>
+          </div>
+          <h2 className="text-lg font-display font-bold text-text-primary mb-2">Complete Setup First</h2>
+          <p className="text-sm text-text-secondary mb-6 leading-relaxed">Please complete onboarding first.</p>
+          <a href="/onboarding" className="btn-primary inline-flex items-center">Start Onboarding</a>
         </div>
       </div>
     );
   }
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">Settings</h1>
+    <div className="page-enter space-y-6">
+      <div>
+        <h1 className="heading-display text-2xl">
+          <span className="heading-accent">Settings</span>
+        </h1>
+        <p className="text-text-secondary text-sm mt-1">Manage your account and preferences</p>
+      </div>
       <SettingsClient
         caregiver={caregiver}
         household={household}

@@ -11,7 +11,7 @@
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#0D9488"
+      "backgroundColor": "#B85A2F"
     },
     "ios": {
       "supportsTablet": true,
@@ -23,7 +23,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#0D9488"
+        "backgroundColor": "#B85A2F"
       },
       "package": "com.memoguard.caregiver",
       "edgeToEdgeEnabled": true,
@@ -48,7 +48,7 @@
         "expo-notifications",
         {
           "icon": "./assets/notification-icon.png",
-          "color": "#0D9488"
+          "color": "#B85A2F"
         }
       ]
     ]

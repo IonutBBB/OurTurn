@@ -2,3 +2,4 @@
 export * from './categories';
 export * from './emergency-numbers';
 export * from './accessibility';
+export * from './theme';

@@ -15,18 +15,7 @@ import { Link, router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { supabase } from '@memoguard/supabase';
 import { useAuthStore } from '../../src/stores/auth-store';
-
-const COLORS = {
-  background: '#FAFAF8',
-  card: '#FFFFFF',
-  border: '#E7E5E4',
-  textPrimary: '#1C1917',
-  textSecondary: '#57534E',
-  textMuted: '#A8A29E',
-  brand600: '#0D9488',
-  brand700: '#0F766E',
-  danger: '#DC2626',
-};
+import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
 
 export default function LoginScreen() {
   const { t } = useTranslation();
@@ -80,7 +69,9 @@ export default function LoginScreen() {
         >
           {/* Logo and title */}
           <View style={styles.header}>
-            <Text style={styles.logo}>MemoGuard</Text>
+            <View style={styles.logoMark}>
+              <Text style={styles.logoLetter}>M</Text>
+            </View>
             <Text style={styles.subtitle}>{t('caregiverApp.auth.welcomeBack')}</Text>
           </View>
 
@@ -165,7 +156,7 @@ export default function LoginScreen() {
               }}
             >
               {loading ? (
-                <ActivityIndicator color="#FFFFFF" accessibilityLabel="Signing in" />
+                <ActivityIndicator color={COLORS.textInverse} accessibilityLabel="Signing in" />
               ) : (
                 <Text style={styles.buttonText}>{t('caregiverApp.auth.login')}</Text>
               )}
@@ -189,6 +180,23 @@ export default function LoginScreen() {
               activeOpacity={0.8}
               accessibilityRole="button"
               accessibilityLabel={t('caregiverApp.auth.continueWithGoogle')}
+              onPress={async () => {
+                try {
+                  setLoading(true);
+                  setError(null);
+                  const { error: oauthError } = await supabase.auth.signInWithOAuth({
+                    provider: 'google',
+                    options: {
+                      skipBrowserRedirect: true,
+                    },
+                  });
+                  if (oauthError) setError(oauthError.message);
+                } catch (err) {
+                  setError(t('common.error'));
+                } finally {
+                  setLoading(false);
+                }
+              }}
             >
               <Text style={styles.oauthButtonText}>
                 {t('caregiverApp.auth.continueWithGoogle')}
@@ -200,6 +208,23 @@ export default function LoginScreen() {
               activeOpacity={0.8}
               accessibilityRole="button"
               accessibilityLabel={t('caregiverApp.auth.continueWithApple')}
+              onPress={async () => {
+                try {
+                  setLoading(true);
+                  setError(null);
+                  const { error: oauthError } = await supabase.auth.signInWithOAuth({
+                    provider: 'apple',
+                    options: {
+                      skipBrowserRedirect: true,
+                    },
+                  });
+                  if (oauthError) setError(oauthError.message);
+                } catch (err) {
+                  setError(t('common.error'));
+                } finally {
+                  setLoading(false);
+                }
+              }}
             >
               <Text style={styles.oauthButtonText}>
                 {t('caregiverApp.auth.continueWithApple')}
@@ -240,28 +265,41 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 40,
   },
-  logo: {
-    fontSize: 32,
+  logoMark: {
+    width: 56,
+    height: 56,
+    borderRadius: RADIUS.lg,
+    backgroundColor: COLORS.brand600,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 12,
+    ...SHADOWS.md,
+  },
+  logoLetter: {
+    fontSize: 28,
     fontWeight: '700',
-    color: COLORS.brand700,
-    marginBottom: 8,
+    fontFamily: FONTS.display,
+    color: COLORS.textInverse,
   },
   subtitle: {
-    fontSize: 20,
+    fontSize: 22,
+    fontFamily: FONTS.display,
+    fontWeight: '600',
     color: COLORS.textPrimary,
   },
   form: {
     backgroundColor: COLORS.card,
-    borderRadius: 16,
+    borderRadius: RADIUS.xl,
     padding: 24,
     borderWidth: 1,
     borderColor: COLORS.border,
+    ...SHADOWS.md,
   },
   errorContainer: {
-    backgroundColor: '#FEF2F2',
+    backgroundColor: COLORS.dangerBg,
     borderWidth: 1,
-    borderColor: '#FECACA',
-    borderRadius: 8,
+    borderColor: COLORS.danger,
+    borderRadius: RADIUS.md,
     padding: 12,
     marginBottom: 16,
   },
@@ -274,17 +312,19 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 14,
-    fontWeight: '500',
+    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
     color: COLORS.textPrimary,
     marginBottom: 6,
   },
   input: {
     borderWidth: 1,
-    borderColor: COLORS.border,
-    borderRadius: 12,
+    borderColor: COLORS.brand200,
+    borderRadius: RADIUS.lg,
     paddingHorizontal: 16,
     paddingVertical: 14,
     fontSize: 16,
+    fontFamily: FONTS.body,
     color: COLORS.textPrimary,
     backgroundColor: COLORS.card,
   },
@@ -298,10 +338,11 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: COLORS.brand600,
-    borderRadius: 12,
+    borderRadius: RADIUS.lg,
     paddingVertical: 16,
     alignItems: 'center',
     justifyContent: 'center',
+    ...SHADOWS.sm,
   },
   buttonDisabled: {
     opacity: 0.6,
@@ -309,7 +350,8 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#FFFFFF',
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textInverse,
   },
   divider: {
     flexDirection: 'row',
@@ -329,7 +371,7 @@ const styles = StyleSheet.create({
   oauthButton: {
     borderWidth: 1,
     borderColor: COLORS.border,
-    borderRadius: 12,
+    borderRadius: RADIUS.lg,
     paddingVertical: 14,
     alignItems: 'center',
     marginBottom: 12,
@@ -338,6 +380,7 @@ const styles = StyleSheet.create({
   oauthButtonText: {
     fontSize: 16,
     fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
     color: COLORS.textPrimary,
   },
   footer: {
@@ -347,11 +390,13 @@ const styles = StyleSheet.create({
   },
   footerText: {
     fontSize: 14,
+    fontFamily: FONTS.body,
     color: COLORS.textSecondary,
   },
   footerLink: {
     fontSize: 14,
     fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
     color: COLORS.brand600,
   },
 });

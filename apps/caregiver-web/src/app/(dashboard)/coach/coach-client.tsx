@@ -28,7 +28,6 @@ interface CoachClientProps {
   initialConversationId?: string;
 }
 
-// Parse AI response for special blocks
 function parseAIResponse(content: string): {
   cleanContent: string;
   carePlanSuggestions: CarePlanSuggestion[];
@@ -37,7 +36,6 @@ function parseAIResponse(content: string): {
   const carePlanSuggestions: CarePlanSuggestion[] = [];
   const doctorNotes: DoctorNote[] = [];
 
-  // Extract care plan suggestions
   const planRegex = /\[CARE_PLAN_SUGGESTION\]([\s\S]*?)\[\/CARE_PLAN_SUGGESTION\]/g;
   let match;
   while ((match = planRegex.exec(content)) !== null) {
@@ -48,7 +46,6 @@ function parseAIResponse(content: string): {
     }
   }
 
-  // Extract doctor notes
   const noteRegex = /\[DOCTOR_NOTE\]([\s\S]*?)\[\/DOCTOR_NOTE\]/g;
   while ((match = noteRegex.exec(content)) !== null) {
     try {
@@ -58,7 +55,6 @@ function parseAIResponse(content: string): {
     }
   }
 
-  // Clean content (remove blocks for display)
   const cleanContent = content
     .replace(/\[CARE_PLAN_SUGGESTION\][\s\S]*?\[\/CARE_PLAN_SUGGESTION\]/g, '')
     .replace(/\[DOCTOR_NOTE\][\s\S]*?\[\/DOCTOR_NOTE\]/g, '')
@@ -84,12 +80,10 @@ export default function CoachClient({
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
-  // Scroll to bottom when messages change
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Load conversation history
   useEffect(() => {
     if (initialConversationId) {
       const loadConversation = async () => {
@@ -107,7 +101,6 @@ export default function CoachClient({
     }
   }, [initialConversationId, supabase]);
 
-  // Send message
   const sendMessage = useCallback(
     async (e?: FormEvent) => {
       e?.preventDefault();
@@ -119,15 +112,12 @@ export default function CoachClient({
       setIsLoading(true);
       setInput('');
 
-      // Add user message
       const userMessage: Message = {
         role: 'user',
         content: trimmedInput,
         timestamp: new Date().toISOString(),
       };
       setMessages((prev) => [...prev, userMessage]);
-
-      // Add placeholder for assistant
       setMessages((prev) => [
         ...prev,
         { role: 'assistant', content: '', timestamp: new Date().toISOString() },
@@ -136,9 +126,7 @@ export default function CoachClient({
       try {
         const response = await fetch('/api/ai/coach', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             message: trimmedInput,
             conversationId,
@@ -146,16 +134,11 @@ export default function CoachClient({
           }),
         });
 
-        if (!response.ok) {
-          throw new Error('Failed to send message');
-        }
+        if (!response.ok) throw new Error('Failed to send message');
 
         const reader = response.body?.getReader();
         const decoder = new TextDecoder();
-
-        if (!reader) {
-          throw new Error('No response body');
-        }
+        if (!reader) throw new Error('No response body');
 
         while (true) {
           const { done, value } = await reader.read();
@@ -168,35 +151,22 @@ export default function CoachClient({
             const data = line.slice(6);
             try {
               const parsed = JSON.parse(data);
-
-              if (parsed.error) {
-                setError(parsed.error);
-                break;
-              }
-
-              if (parsed.conversationId) {
-                setConversationId(parsed.conversationId);
-              }
-
+              if (parsed.error) { setError(parsed.error); break; }
+              if (parsed.conversationId) setConversationId(parsed.conversationId);
               if (parsed.text) {
                 setMessages((prev) => {
                   const updated = [...prev];
                   const lastMessage = updated[updated.length - 1];
-                  if (lastMessage.role === 'assistant') {
-                    lastMessage.content += parsed.text;
-                  }
+                  if (lastMessage.role === 'assistant') lastMessage.content += parsed.text;
                   return updated;
                 });
               }
-            } catch (e) {
-              // Ignore parse errors for incomplete chunks
-            }
+            } catch (e) { /* ignore partial chunks */ }
           }
         }
       } catch (err) {
         console.error('Chat error:', err);
         setError('Failed to get a response. Please try again.');
-        // Remove the placeholder message on error
         setMessages((prev) => prev.slice(0, -1));
       } finally {
         setIsLoading(false);
@@ -206,7 +176,6 @@ export default function CoachClient({
     [input, isLoading, conversationId, householdId]
   );
 
-  // Handle adding care plan suggestion
   const handleAddToPlan = async (suggestion: CarePlanSuggestion) => {
     try {
       const { error } = await supabase.from('care_plan_tasks').insert({
@@ -219,7 +188,6 @@ export default function CoachClient({
         recurrence_days: [],
         active: true,
       });
-
       if (error) throw error;
       alert('Task added to care plan!');
     } catch (err) {
@@ -228,7 +196,6 @@ export default function CoachClient({
     }
   };
 
-  // Handle adding doctor note
   const handleAddDoctorNote = async (note: DoctorNote) => {
     try {
       const { error } = await supabase.from('care_journal_entries').insert({
@@ -236,7 +203,6 @@ export default function CoachClient({
         content: `[For Doctor] ${note.note}`,
         entry_type: 'observation',
       });
-
       if (error) throw error;
       alert('Note saved for doctor visit!');
     } catch (err) {
@@ -245,7 +211,6 @@ export default function CoachClient({
     }
   };
 
-  // Handle key press (submit on Enter, newline on Shift+Enter)
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
@@ -253,7 +218,6 @@ export default function CoachClient({
     }
   };
 
-  // Suggested prompts for empty state
   const suggestedPrompts = [
     `How can I help ${patientName} stay engaged during the day?`,
     'What activities work well for sundowning?',
@@ -263,27 +227,30 @@ export default function CoachClient({
 
   return (
     <div className="flex flex-col h-[calc(100vh-12rem)]">
-      {/* Chat Messages */}
-      <div className="flex-1 overflow-y-auto space-y-4 pb-4">
+      {/* ─── Messages ─── */}
+      <div className="flex-1 overflow-y-auto space-y-5 pb-4 pr-1">
         {messages.length === 0 ? (
-          <div className="text-center py-12">
-            <div className="text-4xl mb-4">💙</div>
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+          /* ─── Empty state with warmth ─── */
+          <div className="flex flex-col items-center justify-center h-full text-center px-4">
+            <div className="w-16 h-16 rounded-2xl bg-brand-100/60 dark:bg-brand-100/20 flex items-center justify-center mb-5">
+              <span className="text-3xl">🤗</span>
+            </div>
+            <h2 className="text-xl font-display font-bold text-text-primary mb-2">
               Hi {caregiverName}!
             </h2>
-            <p className="text-gray-700 dark:text-gray-300 mb-6 max-w-md mx-auto">
-              I&apos;m here to help you care for {patientName}. Ask me anything
-              about daily care, activities, or managing challenging situations.
+            <p className="text-text-secondary mb-8 max-w-md leading-relaxed">
+              I&apos;m your Care Coach. Ask me anything about caring for {patientName} &mdash;
+              daily routines, challenging moments, or activity ideas.
             </p>
-            <div className="space-y-2">
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">Try asking:</p>
+            <div className="w-full max-w-md space-y-2">
+              <p className="section-label mb-3 text-center">Try asking</p>
               {suggestedPrompts.map((prompt, index) => (
                 <button
                   key={index}
                   onClick={() => setInput(prompt)}
-                  className="block w-full max-w-md mx-auto text-left px-4 py-3 bg-white dark:bg-[#1E1E1E] border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/30 hover:border-brand-200 dark:hover:border-brand-700 transition-colors"
+                  className="block w-full text-left px-4 py-3 card-paper card-interactive text-sm text-text-secondary hover:text-text-primary"
                 >
-                  <span className="text-gray-700 dark:text-gray-300">{prompt}</span>
+                  {prompt}
                 </button>
               ))}
             </div>
@@ -298,60 +265,52 @@ export default function CoachClient({
             return (
               <div
                 key={index}
-                className={`flex ${
-                  message.role === 'user' ? 'justify-end' : 'justify-start'
-                }`}
+                className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'} animate-fade-in-up`}
               >
-                <div
-                  className={`max-w-[80%] rounded-2xl px-4 py-3 ${
-                    message.role === 'user'
-                      ? 'bg-brand-600 text-white'
-                      : 'bg-white dark:bg-[#1E1E1E] border border-gray-200 dark:border-gray-700'
-                  }`}
-                >
+                <div className={`max-w-[75%] ${message.role === 'user' ? 'chat-bubble-user' : 'chat-bubble-assistant'}`}>
                   {message.role === 'assistant' && (
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-lg">💙</span>
-                      <span className="text-sm font-medium text-brand-700 dark:text-brand-300">
+                    <div className="relative z-10 flex items-center gap-2 mb-2">
+                      <span className="w-6 h-6 rounded-lg bg-brand-100 dark:bg-brand-100/30 flex items-center justify-center">
+                        <span className="text-xs">🤗</span>
+                      </span>
+                      <span className="text-xs font-semibold text-brand-700 dark:text-brand-300 font-display">
                         Care Coach
                       </span>
                     </div>
                   )}
                   <div
-                    className={`whitespace-pre-wrap ${
-                      message.role === 'assistant'
-                        ? 'text-gray-900 dark:text-gray-100'
-                        : 'text-white'
+                    className={`relative z-10 whitespace-pre-wrap text-sm leading-relaxed ${
+                      message.role === 'assistant' ? 'text-text-primary' : 'text-white'
                     }`}
                   >
                     {cleanContent || (isLoading && index === messages.length - 1 ? (
-                      <span className="inline-flex items-center gap-1">
+                      <span className="inline-flex items-center gap-1.5">
                         <span className="w-2 h-2 bg-brand-400 rounded-full animate-bounce" />
-                        <span className="w-2 h-2 bg-brand-400 rounded-full animate-bounce delay-100" />
-                        <span className="w-2 h-2 bg-brand-400 rounded-full animate-bounce delay-200" />
+                        <span className="w-2 h-2 bg-brand-400 rounded-full animate-bounce [animation-delay:0.15s]" />
+                        <span className="w-2 h-2 bg-brand-400 rounded-full animate-bounce [animation-delay:0.3s]" />
                       </span>
                     ) : null)}
                   </div>
 
                   {/* Care Plan Suggestions */}
                   {carePlanSuggestions.length > 0 && (
-                    <div className="mt-3 space-y-2">
+                    <div className="relative z-10 mt-3 space-y-2">
                       {carePlanSuggestions.map((suggestion, i) => (
                         <button
                           key={i}
                           onClick={() => handleAddToPlan(suggestion)}
-                          className="flex items-center gap-2 w-full px-3 py-2 bg-brand-50 dark:bg-brand-900/30 border border-brand-200 dark:border-brand-700 rounded-lg hover:bg-brand-100 dark:hover:bg-brand-900/50 transition-colors text-left"
+                          className="flex items-center gap-2 w-full px-3 py-2.5 bg-brand-50 dark:bg-brand-50/20 border border-brand-200 dark:border-brand-200/30 rounded-xl hover:bg-brand-100 dark:hover:bg-brand-100/20 transition-colors text-left"
                         >
                           <span>📋</span>
                           <div className="flex-1">
-                            <p className="text-sm font-medium text-brand-700 dark:text-brand-200">
+                            <p className="text-xs font-semibold text-brand-700 dark:text-brand-200">
                               Add to Care Plan
                             </p>
                             <p className="text-xs text-brand-600 dark:text-brand-300">
                               {suggestion.title}
                             </p>
                           </div>
-                          <span className="text-brand-600 dark:text-brand-300">+</span>
+                          <span className="text-brand-600 dark:text-brand-300 font-bold">+</span>
                         </button>
                       ))}
                     </div>
@@ -359,21 +318,21 @@ export default function CoachClient({
 
                   {/* Doctor Notes */}
                   {doctorNotes.length > 0 && (
-                    <div className="mt-3 space-y-2">
+                    <div className="relative z-10 mt-3 space-y-2">
                       {doctorNotes.map((note, i) => (
                         <button
                           key={i}
                           onClick={() => handleAddDoctorNote(note)}
-                          className="flex items-center gap-2 w-full px-3 py-2 bg-amber-50 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-700 rounded-lg hover:bg-amber-100 dark:hover:bg-amber-900/50 transition-colors text-left"
+                          className="flex items-center gap-2 w-full px-3 py-2.5 bg-status-amber-bg border border-status-amber/20 rounded-xl hover:opacity-80 transition-opacity text-left"
                         >
                           <span>📝</span>
                           <div className="flex-1">
-                            <p className="text-sm font-medium text-amber-700 dark:text-amber-200">
+                            <p className="text-xs font-semibold text-status-amber">
                               Save for Doctor Visit
                             </p>
-                            <p className="text-xs text-amber-600 dark:text-amber-300">{note.note}</p>
+                            <p className="text-xs text-status-amber/80">{note.note}</p>
                           </div>
-                          <span className="text-amber-600 dark:text-amber-300">+</span>
+                          <span className="text-status-amber font-bold">+</span>
                         </button>
                       ))}
                     </div>
@@ -386,15 +345,15 @@ export default function CoachClient({
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Error Message */}
+      {/* ─── Error ─── */}
       {error && (
-        <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-          <p className="text-sm text-red-700 dark:text-red-300">{error}</p>
+        <div className="mb-3 p-3 bg-status-danger-bg border border-status-danger/20 rounded-2xl">
+          <p className="text-sm text-status-danger">{error}</p>
         </div>
       )}
 
-      {/* Input Form */}
-      <form onSubmit={sendMessage} className="flex gap-3 items-end">
+      {/* ─── Input Form ─── */}
+      <form onSubmit={sendMessage} className="flex gap-3 items-end pt-3 border-t border-surface-border">
         <div className="flex-1 relative">
           <textarea
             ref={inputRef}
@@ -403,7 +362,7 @@ export default function CoachClient({
             onKeyDown={handleKeyDown}
             placeholder={`Ask about caring for ${patientName}...`}
             rows={1}
-            className="w-full px-4 py-3 pr-12 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-[#1E1E1E] text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 resize-none focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+            className="input-warm w-full pr-12 resize-none"
             style={{ minHeight: '48px', maxHeight: '120px' }}
             disabled={isLoading}
           />
@@ -411,13 +370,13 @@ export default function CoachClient({
         <button
           type="submit"
           disabled={isLoading || !input.trim()}
-          className="px-6 py-3 bg-brand-600 text-white rounded-xl hover:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="btn-primary px-5 py-3 text-sm disabled:opacity-40 disabled:cursor-not-allowed"
         >
           {isLoading ? (
             <span className="inline-flex items-center gap-1">
               <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce" />
-              <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce delay-100" />
-              <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce delay-200" />
+              <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce [animation-delay:0.15s]" />
+              <span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce [animation-delay:0.3s]" />
             </span>
           ) : (
             'Send'
@@ -425,10 +384,9 @@ export default function CoachClient({
         </button>
       </form>
 
-      {/* Disclaimer */}
-      <p className="mt-3 text-xs text-gray-500 dark:text-gray-400 text-center">
-        Care Coach provides general guidance only. Always consult healthcare
-        professionals for medical advice.
+      {/* ─── Disclaimer ─── */}
+      <p className="mt-2 text-[11px] text-text-muted text-center">
+        Care Coach provides general guidance only. Always consult healthcare professionals for medical advice.
       </p>
     </div>
   );

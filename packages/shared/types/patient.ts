@@ -20,6 +20,12 @@ export interface KeyEvent {
   year?: number;
 }
 
+export interface EmergencyContact {
+  name: string;
+  phone: string;
+  relationship: string;
+}
+
 export interface PatientBiography {
   childhood_location?: string;
   career?: string;
@@ -46,6 +52,7 @@ export interface Patient {
   wake_time: string;
   sleep_time: string;
   emergency_number: string | null;
+  emergency_contacts: EmergencyContact[];
   device_tokens: DeviceToken[];
   created_at: string;
   updated_at: string;
@@ -66,6 +73,7 @@ export interface PatientInsert {
   wake_time?: string;
   sleep_time?: string;
   emergency_number?: string;
+  emergency_contacts?: EmergencyContact[];
 }
 
 export interface PatientUpdate {
@@ -82,5 +90,6 @@ export interface PatientUpdate {
   wake_time?: string;
   sleep_time?: string;
   emergency_number?: string;
+  emergency_contacts?: EmergencyContact[];
   device_tokens?: DeviceToken[];
 }

@@ -34,16 +34,16 @@ export function Step6CareCode({ data }: Props) {
       </div>
 
       <div>
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+        <h3 className="text-xl font-semibold font-display text-text-primary mb-2">
           You&apos;re all set!
         </h3>
-        <p className="text-gray-700 dark:text-gray-300">
+        <p className="text-text-secondary">
           {t('caregiverApp.onboarding.careCodeInstructions')}
         </p>
       </div>
 
       {/* Care Code display */}
-      <div className="bg-brand-50 dark:bg-brand-900/30 border-2 border-brand-200 dark:border-brand-700 rounded-xl p-8">
+      <div className="bg-brand-50 dark:bg-brand-900/30 border-2 border-brand-200 dark:border-brand-700 rounded-[20px] p-8">
         <p className="text-sm font-medium text-brand-700 dark:text-brand-300 mb-2 uppercase tracking-wide">
           Care Code
         </p>
@@ -56,12 +56,12 @@ export function Step6CareCode({ data }: Props) {
       <button
         type="button"
         onClick={copyCode}
-        className="inline-flex items-center gap-2 px-6 py-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors text-gray-900 dark:text-gray-100"
+        className="btn-secondary inline-flex items-center gap-2"
       >
         {copied ? (
           <>
-            <span className="text-green-600">✓</span>
-            <span className="text-green-600">Copied!</span>
+            <span className="text-status-success">✓</span>
+            <span className="text-status-success">Copied!</span>
           </>
         ) : (
           <>
@@ -72,9 +72,9 @@ export function Step6CareCode({ data }: Props) {
       </button>
 
       {/* Instructions */}
-      <div className="text-left bg-gray-50 dark:bg-gray-800 rounded-lg p-4 space-y-3">
-        <h4 className="font-medium text-gray-900 dark:text-gray-100">Next steps:</h4>
-        <ol className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+      <div className="text-left bg-surface-background rounded-2xl p-4 space-y-3">
+        <h4 className="font-medium font-display text-text-primary">Next steps:</h4>
+        <ol className="space-y-2 text-sm text-text-secondary">
           <li className="flex gap-2">
             <span className="font-semibold text-brand-600">1.</span>
             Install MemoGuard on {data.patientName}&apos;s phone (iOS or Android)

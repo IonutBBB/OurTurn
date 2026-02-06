@@ -17,29 +17,7 @@ import { useAuthStore } from '../../src/stores/auth-store';
 import { useAICoach } from '../../src/hooks/use-ai-coach';
 import type { CarePlanSuggestion, DoctorNote } from '../../src/services/ai-coach';
 
-const COLORS = {
-  background: '#FAFAF8',
-  card: '#FFFFFF',
-  border: '#E7E5E4',
-  textPrimary: '#1C1917',
-  textSecondary: '#57534E',
-  textMuted: '#A8A29E',
-  brand50: '#F0FDFA',
-  brand100: '#CCFBF1',
-  brand200: '#99F6E4',
-  brand400: '#2DD4BF',
-  brand600: '#0D9488',
-  brand700: '#0F766E',
-  white: '#FFFFFF',
-  red50: '#FEF2F2',
-  red200: '#FECACA',
-  red700: '#B91C1C',
-  amber50: '#FFFBEB',
-  amber100: '#FEF3C7',
-  amber200: '#FDE68A',
-  amber600: '#D97706',
-  amber700: '#B45309',
-};
+import { COLORS, FONTS, SPACING, RADIUS, SHADOWS } from '../../src/theme';
 
 export default function CoachScreen() {
   const { t } = useTranslation();
@@ -144,7 +122,7 @@ export default function CoachScreen() {
         >
           {messages.length === 0 ? (
             <View style={styles.emptyState}>
-              <Text style={styles.emoji}>💙</Text>
+              <Text style={styles.emoji}>🤗</Text>
               <Text style={styles.greeting}>Hi {caregiverName}!</Text>
               <Text style={styles.subGreeting}>
                 I'm here to help you care for {patientName}. Ask me anything
@@ -193,7 +171,7 @@ export default function CoachScreen() {
                   >
                     {message.role === 'assistant' && (
                       <View style={styles.assistantHeader}>
-                        <Text style={styles.assistantEmoji}>💙</Text>
+                        <Text style={styles.assistantEmoji}>🤗</Text>
                         <Text style={styles.assistantName}>Care Coach</Text>
                       </View>
                     )}
@@ -300,7 +278,7 @@ export default function CoachScreen() {
             disabled={!input.trim() || isLoading}
           >
             {isLoading ? (
-              <ActivityIndicator color={COLORS.white} size="small" />
+              <ActivityIndicator color={COLORS.textInverse} size="small" />
             ) : (
               <Text style={styles.sendButtonText}>Send</Text>
             )}
@@ -341,24 +319,28 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: '700',
+    fontFamily: FONTS.displayMedium,
     color: COLORS.textPrimary,
+    letterSpacing: -0.3,
   },
   newChatButton: {
     paddingHorizontal: 12,
     paddingVertical: 6,
     backgroundColor: COLORS.brand50,
-    borderRadius: 16,
+    borderRadius: RADIUS.lg,
     borderWidth: 1,
     borderColor: COLORS.brand200,
+    ...SHADOWS.sm,
   },
   newChatText: {
     fontSize: 14,
     color: COLORS.brand700,
     fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
   },
   placeholder: {
     backgroundColor: COLORS.card,
-    borderRadius: 16,
+    borderRadius: RADIUS.xl,
     padding: 40,
     borderWidth: 1,
     borderColor: COLORS.border,
@@ -366,6 +348,7 @@ const styles = StyleSheet.create({
   },
   placeholderText: {
     fontSize: 16,
+    fontFamily: FONTS.body,
     color: COLORS.textMuted,
   },
   messagesContainer: {
@@ -387,33 +370,41 @@ const styles = StyleSheet.create({
   greeting: {
     fontSize: 20,
     fontWeight: '600',
+    fontFamily: FONTS.display,
     color: COLORS.textPrimary,
     marginBottom: 8,
   },
   subGreeting: {
     fontSize: 16,
+    fontFamily: FONTS.body,
     color: COLORS.textSecondary,
     textAlign: 'center',
     marginBottom: 24,
     lineHeight: 24,
   },
   suggestedLabel: {
-    fontSize: 14,
+    fontFamily: FONTS.displayMedium,
+    fontSize: 12,
+    textTransform: 'uppercase',
+    letterSpacing: 1.5,
     color: COLORS.textMuted,
-    marginBottom: 12,
+    marginBottom: 16,
   },
   suggestedButton: {
     width: '100%',
     backgroundColor: COLORS.card,
     borderWidth: 1,
     borderColor: COLORS.border,
-    borderRadius: 12,
+    borderLeftWidth: 3,
+    borderLeftColor: COLORS.brand200,
+    borderRadius: RADIUS.md,
     paddingHorizontal: 16,
     paddingVertical: 14,
     marginBottom: 8,
   },
   suggestedText: {
     fontSize: 15,
+    fontFamily: FONTS.body,
     color: COLORS.textSecondary,
   },
   messageWrapper: {
@@ -427,17 +418,25 @@ const styles = StyleSheet.create({
   },
   messageBubble: {
     maxWidth: '85%',
-    borderRadius: 20,
     paddingHorizontal: 16,
     paddingVertical: 12,
   },
   userBubble: {
     backgroundColor: COLORS.brand600,
+    borderTopLeftRadius: RADIUS.xl,
+    borderTopRightRadius: RADIUS.xl,
+    borderBottomLeftRadius: RADIUS.xl,
+    borderBottomRightRadius: RADIUS.sm,
+    ...SHADOWS.sm,
   },
   assistantBubble: {
     backgroundColor: COLORS.card,
     borderWidth: 1,
     borderColor: COLORS.border,
+    borderTopLeftRadius: RADIUS.xl,
+    borderTopRightRadius: RADIUS.xl,
+    borderBottomLeftRadius: RADIUS.sm,
+    borderBottomRightRadius: RADIUS.xl,
   },
   assistantHeader: {
     flexDirection: 'row',
@@ -451,15 +450,17 @@ const styles = StyleSheet.create({
   assistantName: {
     fontSize: 14,
     fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
     color: COLORS.brand700,
   },
   messageText: {
     fontSize: 16,
+    fontFamily: FONTS.body,
     color: COLORS.textPrimary,
     lineHeight: 24,
   },
   userMessageText: {
-    color: COLORS.white,
+    color: COLORS.textInverse,
   },
   loadingDots: {
     flexDirection: 'row',
@@ -488,7 +489,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.brand50,
     borderWidth: 1,
     borderColor: COLORS.brand200,
-    borderRadius: 12,
+    borderRadius: RADIUS.md,
     paddingHorizontal: 12,
     paddingVertical: 10,
     marginBottom: 8,
@@ -503,6 +504,7 @@ const styles = StyleSheet.create({
   suggestionTitle: {
     fontSize: 14,
     fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
     color: COLORS.brand700,
   },
   suggestionSubtitle: {
@@ -520,10 +522,10 @@ const styles = StyleSheet.create({
   noteButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: COLORS.amber50,
+    backgroundColor: COLORS.amberBg,
     borderWidth: 1,
-    borderColor: COLORS.amber200,
-    borderRadius: 12,
+    borderColor: COLORS.amber,
+    borderRadius: RADIUS.md,
     paddingHorizontal: 12,
     paddingVertical: 10,
     marginBottom: 8,
@@ -538,29 +540,32 @@ const styles = StyleSheet.create({
   noteTitle: {
     fontSize: 14,
     fontWeight: '500',
-    color: COLORS.amber700,
+    fontFamily: FONTS.bodyMedium,
+    color: COLORS.amber,
   },
   noteSubtitle: {
     fontSize: 13,
-    color: COLORS.amber600,
+    fontFamily: FONTS.body,
+    color: COLORS.amber,
   },
   notePlus: {
     fontSize: 20,
-    color: COLORS.amber600,
+    color: COLORS.amber,
     fontWeight: '500',
   },
   errorContainer: {
     marginHorizontal: 20,
     marginBottom: 8,
     padding: 12,
-    backgroundColor: COLORS.red50,
+    backgroundColor: COLORS.dangerBg,
     borderWidth: 1,
-    borderColor: COLORS.red200,
-    borderRadius: 12,
+    borderColor: COLORS.danger,
+    borderRadius: RADIUS.md,
   },
   errorText: {
     fontSize: 14,
-    color: COLORS.red700,
+    fontFamily: FONTS.body,
+    color: COLORS.danger,
   },
   inputContainer: {
     flexDirection: 'row',
@@ -573,18 +578,19 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.card,
     borderWidth: 1,
-    borderColor: COLORS.border,
-    borderRadius: 20,
+    borderColor: COLORS.brand200,
+    borderRadius: RADIUS.lg,
     paddingHorizontal: 16,
     paddingVertical: 12,
     fontSize: 16,
+    fontFamily: FONTS.body,
     color: COLORS.textPrimary,
     maxHeight: 100,
     minHeight: 48,
   },
   sendButton: {
     backgroundColor: COLORS.brand600,
-    borderRadius: 20,
+    borderRadius: RADIUS.xl,
     paddingHorizontal: 20,
     paddingVertical: 12,
     minWidth: 70,
@@ -597,10 +603,12 @@ const styles = StyleSheet.create({
   sendButtonText: {
     fontSize: 16,
     fontWeight: '600',
-    color: COLORS.white,
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textInverse,
   },
   disclaimer: {
     fontSize: 12,
+    fontFamily: FONTS.body,
     color: COLORS.textMuted,
     textAlign: 'center',
     paddingHorizontal: 20,

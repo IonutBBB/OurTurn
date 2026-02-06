@@ -18,25 +18,7 @@ import * as Haptics from 'expo-haptics';
 import { useAuthStore } from '../../src/stores/auth-store';
 import { supabase } from '@memoguard/supabase';
 import type { Caregiver, CareJournalEntry, JournalEntryType } from '@memoguard/shared';
-
-const COLORS = {
-  background: '#FAFAF8',
-  card: '#FFFFFF',
-  border: '#E7E5E4',
-  textPrimary: '#1C1917',
-  textSecondary: '#57534E',
-  textMuted: '#A8A29E',
-  brand50: '#F0FDFA',
-  brand100: '#CCFBF1',
-  brand200: '#99F6E4',
-  brand300: '#5EEAD4',
-  brand600: '#0D9488',
-  brand700: '#0F766E',
-  brand800: '#115E59',
-  amber100: '#FEF3C7',
-  amber700: '#B45309',
-  white: '#FFFFFF',
-};
+import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
 
 const ENTRY_TYPE_CONFIG: Record<JournalEntryType, { emoji: string; label: string }> = {
   observation: { emoji: '👀', label: 'Observation' },
@@ -382,17 +364,21 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: COLORS.brand600,
     fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
   },
   title: {
     fontSize: 24,
     fontWeight: '700',
+    fontFamily: FONTS.display,
     color: COLORS.textPrimary,
+    letterSpacing: -0.3,
   },
   tabs: {
     flexDirection: 'row',
     paddingHorizontal: 20,
     borderBottomWidth: 1,
     borderBottomColor: COLORS.border,
+    backgroundColor: COLORS.card,
   },
   tab: {
     paddingVertical: 12,
@@ -402,15 +388,19 @@ const styles = StyleSheet.create({
     borderBottomColor: 'transparent',
   },
   tabActive: {
-    borderBottomColor: COLORS.brand600,
+    borderBottomColor: COLORS.brand700,
+    backgroundColor: COLORS.brand50,
   },
   tabText: {
     fontSize: 15,
     fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
     color: COLORS.textSecondary,
   },
   tabTextActive: {
     color: COLORS.brand700,
+    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
   },
   scrollView: {
     flex: 1,
@@ -423,26 +413,29 @@ const styles = StyleSheet.create({
   },
   careCodeBanner: {
     backgroundColor: COLORS.brand50,
-    borderRadius: 16,
+    borderRadius: RADIUS.xl,
     padding: 20,
     borderWidth: 1,
     borderColor: COLORS.brand200,
     marginBottom: 20,
+    ...SHADOWS.sm,
   },
   careCodeTitle: {
     fontSize: 18,
     fontWeight: '600',
+    fontFamily: FONTS.display,
     color: COLORS.brand800,
     marginBottom: 8,
   },
   careCodeDesc: {
     fontSize: 14,
+    fontFamily: FONTS.body,
     color: COLORS.brand700,
     marginBottom: 16,
   },
   careCodeDisplay: {
-    backgroundColor: COLORS.white,
-    borderRadius: 12,
+    backgroundColor: COLORS.card,
+    borderRadius: RADIUS.md,
     padding: 16,
     alignItems: 'center',
     borderWidth: 1,
@@ -464,35 +457,41 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 16,
     backgroundColor: COLORS.brand100,
-    borderRadius: 8,
+    borderRadius: RADIUS.sm,
   },
   codeActionText: {
     fontSize: 14,
     fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
     color: COLORS.brand700,
   },
   showCodeButton: {
     backgroundColor: COLORS.brand600,
-    borderRadius: 12,
+    borderRadius: RADIUS.lg,
     padding: 14,
     alignItems: 'center',
+    ...SHADOWS.sm,
   },
   showCodeButtonText: {
     fontSize: 16,
     fontWeight: '600',
-    color: COLORS.white,
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textInverse,
   },
   membersCard: {
     backgroundColor: COLORS.card,
-    borderRadius: 16,
+    borderRadius: RADIUS.xl,
     borderWidth: 1,
     borderColor: COLORS.border,
     overflow: 'hidden',
+    ...SHADOWS.sm,
   },
   membersTitle: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: COLORS.textPrimary,
+    fontFamily: FONTS.displayMedium,
+    fontSize: 13,
+    textTransform: 'uppercase',
+    letterSpacing: 1.2,
+    color: COLORS.textMuted,
     padding: 16,
     borderBottomWidth: 1,
     borderBottomColor: COLORS.border,
@@ -503,6 +502,8 @@ const styles = StyleSheet.create({
     padding: 16,
     borderBottomWidth: 1,
     borderBottomColor: COLORS.border,
+    borderLeftWidth: 3,
+    borderLeftColor: COLORS.brand100,
   },
   memberAvatar: {
     width: 48,
@@ -516,6 +517,7 @@ const styles = StyleSheet.create({
   memberAvatarText: {
     fontSize: 20,
     fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
     color: COLORS.brand700,
   },
   memberInfo: {
@@ -530,6 +532,7 @@ const styles = StyleSheet.create({
   memberName: {
     fontSize: 16,
     fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
     color: COLORS.textPrimary,
   },
   youBadge: {
@@ -541,10 +544,11 @@ const styles = StyleSheet.create({
   youBadgeText: {
     fontSize: 11,
     fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
     color: COLORS.brand700,
   },
   primaryBadge: {
-    backgroundColor: COLORS.amber100,
+    backgroundColor: COLORS.amberBg,
     paddingHorizontal: 8,
     paddingVertical: 2,
     borderRadius: 10,
@@ -552,22 +556,26 @@ const styles = StyleSheet.create({
   primaryBadgeText: {
     fontSize: 11,
     fontWeight: '500',
-    color: COLORS.amber700,
+    fontFamily: FONTS.bodyMedium,
+    color: COLORS.amber,
   },
   memberDetails: {
     fontSize: 14,
+    fontFamily: FONTS.body,
     color: COLORS.textSecondary,
   },
   newEntryCard: {
     backgroundColor: COLORS.card,
-    borderRadius: 16,
+    borderRadius: RADIUS.xl,
     padding: 16,
     borderWidth: 1,
     borderColor: COLORS.border,
     marginBottom: 16,
+    ...SHADOWS.sm,
   },
   newEntryInput: {
     fontSize: 16,
+    fontFamily: FONTS.body,
     color: COLORS.textPrimary,
     minHeight: 80,
     textAlignVertical: 'top',
@@ -583,7 +591,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 6,
     paddingHorizontal: 12,
-    borderRadius: 16,
+    borderRadius: RADIUS.lg,
     backgroundColor: COLORS.background,
   },
   entryTypeButtonActive: {
@@ -597,17 +605,20 @@ const styles = StyleSheet.create({
   },
   entryTypeLabel: {
     fontSize: 13,
+    fontFamily: FONTS.body,
     color: COLORS.textSecondary,
   },
   entryTypeLabelActive: {
     color: COLORS.brand700,
     fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
   },
   postButton: {
     backgroundColor: COLORS.brand600,
-    borderRadius: 12,
+    borderRadius: RADIUS.lg,
     padding: 14,
     alignItems: 'center',
+    ...SHADOWS.sm,
   },
   postButtonDisabled: {
     opacity: 0.5,
@@ -615,11 +626,12 @@ const styles = StyleSheet.create({
   postButtonText: {
     fontSize: 16,
     fontWeight: '600',
-    color: COLORS.white,
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textInverse,
   },
   emptyState: {
     backgroundColor: COLORS.card,
-    borderRadius: 16,
+    borderRadius: RADIUS.xl,
     padding: 40,
     alignItems: 'center',
     borderWidth: 1,
@@ -636,11 +648,14 @@ const styles = StyleSheet.create({
   },
   entryCard: {
     backgroundColor: COLORS.card,
-    borderRadius: 16,
+    borderRadius: RADIUS.xl,
     padding: 16,
     borderWidth: 1,
     borderColor: COLORS.border,
     marginBottom: 12,
+    borderLeftWidth: 3,
+    borderLeftColor: COLORS.brand200,
+    ...SHADOWS.sm,
   },
   entryHeader: {
     flexDirection: 'row',
@@ -657,6 +672,7 @@ const styles = StyleSheet.create({
   entryAuthor: {
     fontSize: 15,
     fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
     color: COLORS.textPrimary,
   },
   entryTime: {
@@ -665,6 +681,7 @@ const styles = StyleSheet.create({
   },
   entryContent: {
     fontSize: 15,
+    fontFamily: FONTS.body,
     color: COLORS.textPrimary,
     lineHeight: 22,
   },

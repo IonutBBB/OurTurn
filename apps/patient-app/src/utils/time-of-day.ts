@@ -1,4 +1,5 @@
 import type { DayOfWeek } from '@memoguard/shared';
+import { TIME_GRADIENTS } from '../theme';
 
 export type TimeOfDay = 'morning' | 'afternoon' | 'evening' | 'night';
 
@@ -44,16 +45,8 @@ export interface GradientColors {
 }
 
 export function getBackgroundGradient(timeOfDay: TimeOfDay): GradientColors {
-  switch (timeOfDay) {
-    case 'morning':
-      return { start: '#FEF3C7', end: '#FAFAF8' }; // Warm peach to cream
-    case 'afternoon':
-      return { start: '#E0F2FE', end: '#FAFAF8' }; // Soft sky to white
-    case 'evening':
-      return { start: '#EDE9FE', end: '#FDF2F8' }; // Lavender to dusty rose
-    case 'night':
-      return { start: '#1E1B4B', end: '#312E81' }; // Deep navy to dark purple
-  }
+  const gradient = TIME_GRADIENTS[timeOfDay];
+  return { start: gradient[0], end: gradient[1] };
 }
 
 // Get background color for the current time (simplified - no gradient for React Native)

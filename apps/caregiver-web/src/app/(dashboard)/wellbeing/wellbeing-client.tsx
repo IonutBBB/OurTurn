@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
 import type {
   CaregiverWellbeingLog,
@@ -25,6 +26,7 @@ export default function WellbeingClient({
   initialLog,
   recentLogs,
 }: WellbeingClientProps) {
+  const { t } = useTranslation();
   const supabase = createBrowserClient();
   const [todayLog, setTodayLog] = useState<CaregiverWellbeingLog | null>(initialLog || null);
   const [mood, setMood] = useState<WellbeingMood | null>(initialLog?.mood || null);
@@ -123,18 +125,51 @@ export default function WellbeingClient({
 
   const checkedCount = Object.values(selfCare).filter(Boolean).length;
 
+  // Burnout detection: mood <= 2 for 3+ consecutive days
+  const showBurnoutWarning = (() => {
+    if (recentLogs.length < 3) return false;
+    const sortedLogs = [...recentLogs].sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+    const recentThree = sortedLogs.slice(0, 3);
+    return recentThree.every((log) => log.mood !== null && log.mood <= 2);
+  })();
+
   return (
     <div className="space-y-6">
+      {/* Burnout Warning Banner */}
+      {showBurnoutWarning && (
+        <div className="bg-status-amber-bg border border-status-amber/30 rounded-[20px] p-5 flex items-start gap-4">
+          <span className="text-2xl flex-shrink-0">💛</span>
+          <div className="flex-1">
+            <h3 className="font-semibold text-status-amber mb-1">
+              We notice you&apos;ve been having a tough time
+            </h3>
+            <p className="text-sm text-text-secondary">
+              {t('caregiverApp.wellbeing.burnoutWarning')}
+            </p>
+            <div className="flex gap-3 mt-3">
+              <a href="/coach" className="btn-primary text-sm px-4 py-2">
+                Talk to AI Coach
+              </a>
+              <a href="#support-resources" className="btn-secondary text-sm px-4 py-2">
+                Support Resources
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-gray-600 dark:text-gray-300">
+          <p className="text-text-secondary">
             Hi {caregiverName}! Taking care of yourself is just as important as caring for your
             loved one.
           </p>
         </div>
         {showSuccess && (
-          <span className="text-sm text-green-700 dark:text-green-300 bg-green-50 dark:bg-green-900/30 px-3 py-1 rounded-full">
+          <span className="text-sm text-status-success bg-status-success-bg px-3 py-1 rounded-full">
             Saved!
           </span>
         )}
@@ -144,8 +179,8 @@ export default function WellbeingClient({
         {/* Today's Check-in */}
         <div className="lg:col-span-2 space-y-6">
           {/* Mood Selection */}
-          <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-6">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+          <div className="card-paper p-6">
+            <h2 className="text-lg font-display font-bold text-text-primary mb-4">
               How are you feeling today?
             </h2>
             <div className="flex flex-wrap gap-3">
@@ -156,16 +191,16 @@ export default function WellbeingClient({
                   <button
                     key={value}
                     onClick={() => setMood(value)}
-                    className={`flex flex-col items-center p-4 rounded-xl border-2 transition-all ${
+                    className={`flex flex-col items-center p-4 rounded-[20px] border-2 transition-all ${
                       isSelected
-                        ? 'border-teal-600 dark:border-teal-500 bg-teal-50 dark:bg-teal-900/30'
-                        : 'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 hover:border-teal-300 dark:hover:border-teal-700'
+                        ? 'border-brand-600 dark:border-brand-500 bg-brand-50 dark:bg-brand-900/30'
+                        : 'border-surface-border bg-surface-card dark:bg-surface-elevated hover:border-brand-300 dark:hover:border-brand-700'
                     }`}
                   >
                     <span className="text-3xl mb-1">{emoji}</span>
                     <span
                       className={`text-sm font-medium ${
-                        isSelected ? 'text-teal-700 dark:text-teal-300' : 'text-gray-600 dark:text-gray-300'
+                        isSelected ? 'text-brand-700 dark:text-brand-300' : 'text-text-secondary'
                       }`}
                     >
                       {label}
@@ -177,12 +212,12 @@ export default function WellbeingClient({
           </div>
 
           {/* Self-Care Checklist */}
-          <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-6">
+          <div className="card-paper p-6">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+              <h2 className="text-lg font-display font-bold text-text-primary">
                 Self-Care Checklist
               </h2>
-              <span className="text-sm text-gray-500 dark:text-gray-400">
+              <span className="text-sm text-text-muted">
                 {checkedCount} of {SELF_CARE_ITEMS.length} done
               </span>
             </div>
@@ -193,17 +228,17 @@ export default function WellbeingClient({
                   <button
                     key={key}
                     onClick={() => toggleSelfCareItem(key)}
-                    className={`flex items-center gap-3 p-4 rounded-lg border transition-all text-left ${
+                    className={`flex items-center gap-3 p-4 rounded-2xl border transition-all text-left ${
                       isChecked
-                        ? 'border-green-400 dark:border-green-600 bg-green-50 dark:bg-green-900/30'
-                        : 'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 hover:border-teal-300 dark:hover:border-teal-700'
+                        ? 'border-status-success bg-status-success-bg'
+                        : 'border-surface-border bg-surface-card dark:bg-surface-elevated hover:border-brand-300 dark:hover:border-brand-700'
                     }`}
                   >
                     <span
                       className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
                         isChecked
-                          ? 'border-green-500 bg-green-500 text-white'
-                          : 'border-gray-400 dark:border-gray-500'
+                          ? 'border-status-success bg-status-success text-white'
+                          : 'border-text-muted'
                       }`}
                     >
                       {isChecked && (
@@ -224,7 +259,7 @@ export default function WellbeingClient({
                     </span>
                     <span
                       className={`font-medium ${
-                        isChecked ? 'text-green-700 dark:text-green-300' : 'text-gray-900 dark:text-gray-100'
+                        isChecked ? 'text-status-success' : 'text-text-primary'
                       }`}
                     >
                       {label}
@@ -236,15 +271,15 @@ export default function WellbeingClient({
           </div>
 
           {/* Notes */}
-          <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-6">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+          <div className="card-paper p-6">
+            <h2 className="text-lg font-display font-bold text-text-primary mb-4">
               How are you coping? (Optional)
             </h2>
             <textarea
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               placeholder="Write anything on your mind... This is just for you."
-              className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 resize-none focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+              className="input-warm w-full resize-none"
               rows={3}
             />
           </div>
@@ -253,37 +288,37 @@ export default function WellbeingClient({
         {/* Sidebar Stats */}
         <div className="space-y-6">
           {/* This Week Stats */}
-          <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-6">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+          <div className="card-paper p-6">
+            <h3 className="text-lg font-display font-bold text-text-primary mb-4">
               This Week
             </h3>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-gray-600 dark:text-gray-300">Average Mood</span>
-                <span className="font-semibold text-gray-900 dark:text-gray-100">
+                <span className="text-text-secondary">Average Mood</span>
+                <span className="font-semibold text-text-primary">
                   {weeklyStats.averageMood}/5
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-gray-600 dark:text-gray-300">Good Self-Care Days</span>
-                <span className="font-semibold text-gray-900 dark:text-gray-100">
+                <span className="text-text-secondary">Good Self-Care Days</span>
+                <span className="font-semibold text-text-primary">
                   {weeklyStats.selfCareDays} of {weeklyStats.loggedDays}
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-gray-600 dark:text-gray-300">Days Logged</span>
-                <span className="font-semibold text-gray-900 dark:text-gray-100">{weeklyStats.loggedDays}</span>
+                <span className="text-text-secondary">Days Logged</span>
+                <span className="font-semibold text-text-primary">{weeklyStats.loggedDays}</span>
               </div>
             </div>
           </div>
 
           {/* Mood History */}
-          <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-6">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+          <div className="card-paper p-6">
+            <h3 className="text-lg font-display font-bold text-text-primary mb-4">
               Mood History
             </h3>
             {recentLogs.length === 0 ? (
-              <p className="text-gray-500 dark:text-gray-400 text-sm">
+              <p className="text-text-muted text-sm">
                 Start tracking your mood to see your history here.
               </p>
             ) : (
@@ -299,11 +334,11 @@ export default function WellbeingClient({
                   return (
                     <div
                       key={log.id}
-                      className="flex items-center justify-between py-2 border-b border-gray-200 dark:border-gray-700 last:border-0"
+                      className="flex items-center justify-between py-2 border-b border-surface-border last:border-0"
                     >
                       <div>
-                        <span className="font-medium text-gray-900 dark:text-gray-100">{dayName}</span>
-                        <span className="text-gray-500 dark:text-gray-400 text-sm ml-2">{dateStr}</span>
+                        <span className="font-medium text-text-primary">{dayName}</span>
+                        <span className="text-text-muted text-sm ml-2">{dateStr}</span>
                       </div>
                       {moodInfo && (
                         <span className="text-lg" title={moodInfo.label}>
@@ -318,11 +353,11 @@ export default function WellbeingClient({
           </div>
 
           {/* Support Resources */}
-          <div className="bg-teal-50 dark:bg-teal-900/30 rounded-xl border border-teal-200 dark:border-teal-800 p-6">
-            <h3 className="text-lg font-semibold text-teal-800 dark:text-teal-200 mb-3">
+          <div id="support-resources" className="bg-brand-50 dark:bg-brand-900/30 rounded-[20px] border border-brand-200 dark:border-brand-800 p-6">
+            <h3 className="text-lg font-semibold text-brand-800 dark:text-brand-200 mb-3">
               Need Support?
             </h3>
-            <p className="text-teal-700 dark:text-teal-300 text-sm mb-4">
+            <p className="text-brand-700 dark:text-brand-300 text-sm mb-4">
               Caregiving is challenging. It&apos;s okay to ask for help.
             </p>
             <div className="space-y-2 text-sm">
@@ -330,7 +365,7 @@ export default function WellbeingClient({
                 href="https://www.alz.org/help-support/caregiving"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-teal-700 dark:text-teal-300 hover:text-teal-800 dark:hover:text-teal-200 underline"
+                className="block text-brand-700 dark:text-brand-300 hover:text-brand-800 dark:hover:text-brand-200 underline"
               >
                 Alzheimer&apos;s Association Resources
               </a>
@@ -338,13 +373,20 @@ export default function WellbeingClient({
                 href="https://www.caregiver.org/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-teal-700 dark:text-teal-300 hover:text-teal-800 dark:hover:text-teal-200 underline"
+                className="block text-brand-700 dark:text-brand-300 hover:text-brand-800 dark:hover:text-brand-200 underline"
               >
                 Family Caregiver Alliance
               </a>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Inspirational Quote */}
+      <div className="card-inset p-6 text-center">
+        <p className="text-text-secondary italic text-sm leading-relaxed">
+          {t('caregiverApp.wellbeing.selfCareReminder')}
+        </p>
       </div>
     </div>
   );

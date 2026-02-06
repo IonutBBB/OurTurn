@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
-import { ThemeToggle } from '@/components/theme-toggle';
+import { OrganicBlobs } from '@/components/organic-blobs';
 
 // Step components
 import { Step1AboutYou } from './steps/step1-about-you';
@@ -64,11 +64,40 @@ export default function OnboardingPage() {
   const router = useRouter();
   const supabase = createBrowserClient();
 
-  const [currentStep, setCurrentStep] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const STORAGE_KEY = 'memoguard_onboarding';
 
-  const [data, setData] = useState<OnboardingData>({
+  // Restore from localStorage on mount
+  const getInitialData = (): OnboardingData => {
+    if (typeof window !== 'undefined') {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          return { ...defaultData, ...parsed.data };
+        }
+      } catch {
+        // Ignore parse errors
+      }
+    }
+    return defaultData;
+  };
+
+  const getInitialStep = (): number => {
+    if (typeof window !== 'undefined') {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          return parsed.step || 1;
+        }
+      } catch {
+        // Ignore parse errors
+      }
+    }
+    return 1;
+  };
+
+  const defaultData: OnboardingData = {
     caregiverName: '',
     relationship: '',
     country: '',
@@ -94,10 +123,25 @@ export default function OnboardingPage() {
     emergencyContacts: [],
     careCode: '',
     householdId: '',
-  });
+  };
 
+  const [currentStep, setCurrentStep] = useState(getInitialStep);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const [data, setData] = useState<OnboardingData>(getInitialData);
+
+  // Save to localStorage whenever data or step changes
   const updateData = (updates: Partial<OnboardingData>) => {
-    setData((prev) => ({ ...prev, ...updates }));
+    setData((prev) => {
+      const next = { ...prev, ...updates };
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ data: next, step: currentStep }));
+      } catch {
+        // Ignore storage errors
+      }
+      return next;
+    });
   };
 
   const handleNext = async () => {
@@ -149,6 +193,7 @@ export default function OnboardingPage() {
               key_events: data.keyEvents,
             },
             emergency_number: data.emergencyContacts[0]?.phone || null,
+            emergency_contacts: data.emergencyContacts,
           });
 
         if (patientError) throw patientError;
@@ -205,14 +250,30 @@ export default function OnboardingPage() {
       return;
     }
 
-    setCurrentStep((prev) => Math.min(prev + 1, TOTAL_STEPS));
+    setCurrentStep((prev) => {
+      const next = Math.min(prev + 1, TOTAL_STEPS);
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ data, step: next }));
+      } catch { /* ignore */ }
+      return next;
+    });
   };
 
   const handleBack = () => {
-    setCurrentStep((prev) => Math.max(prev - 1, 1));
+    setCurrentStep((prev) => {
+      const next = Math.max(prev - 1, 1);
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ data, step: next }));
+      } catch { /* ignore */ }
+      return next;
+    });
   };
 
   const handleFinish = () => {
+    // Clear saved onboarding data
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch { /* ignore */ }
     router.push('/dashboard');
     router.refresh();
   };
@@ -246,17 +307,16 @@ export default function OnboardingPage() {
   };
 
   return (
-    <div className="relative min-h-screen bg-gray-50 dark:bg-[#121212] py-12 px-4">
-      {/* Theme Toggle */}
-      <div className="absolute top-4 right-4">
-        <ThemeToggle />
-      </div>
+    <div className="relative min-h-screen bg-surface-background py-12 px-4 overflow-hidden">
+      <OrganicBlobs variant="subtle" />
 
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-2xl mx-auto relative z-10 animate-fade-in-up">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-teal-600 dark:text-teal-400 mb-2">MemoGuard</h1>
-          <p className="text-gray-500 dark:text-gray-400">
+          <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center shadow-sm mx-auto mb-4">
+            <span className="text-white text-lg font-bold font-display">M</span>
+          </div>
+          <p className="text-text-muted">
             Step {currentStep} of {TOTAL_STEPS}
           </p>
         </div>
@@ -268,29 +328,29 @@ export default function OnboardingPage() {
               <div
                 key={index}
                 className={`text-xs font-medium ${
-                  index + 1 <= currentStep ? 'text-teal-600 dark:text-teal-400' : 'text-gray-500 dark:text-gray-400'
+                  index + 1 <= currentStep ? 'text-brand-600' : 'text-text-muted'
                 }`}
               >
                 {index + 1 === currentStep && title}
               </div>
             ))}
           </div>
-          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+          <div className="w-full bg-surface-border rounded-full h-2">
             <div
-              className="bg-teal-600 dark:bg-teal-500 h-2 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-brand-500 to-brand-600 h-2 rounded-full transition-all duration-500"
               style={{ width: `${(currentStep / TOTAL_STEPS) * 100}%` }}
             />
           </div>
         </div>
 
         {/* Step content */}
-        <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-800 p-8 mb-6">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
+        <div className="card-paper p-8 mb-6">
+          <h2 className="heading-display text-xl mb-6">
             {stepTitles[currentStep - 1]}
           </h2>
 
           {error && (
-            <div className="mb-6 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-red-700 dark:text-red-400 text-sm">
+            <div className="mb-6 p-3 bg-status-danger-bg border border-status-danger/20 rounded-xl text-status-danger text-sm" role="alert">
               {error}
             </div>
           )}
@@ -304,7 +364,7 @@ export default function OnboardingPage() {
             <button
               type="button"
               onClick={handleBack}
-              className="px-6 py-3 border border-gray-200 dark:border-gray-800 rounded-lg text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+              className="btn-secondary px-6 py-3"
             >
               {t('caregiverApp.onboarding.back')}
             </button>
@@ -317,7 +377,7 @@ export default function OnboardingPage() {
               type="button"
               onClick={handleNext}
               disabled={loading}
-              className="px-6 py-3 bg-teal-600 dark:bg-teal-500 hover:bg-teal-700 dark:hover:bg-teal-600 text-white font-semibold rounded-lg transition-colors disabled:opacity-50"
+              className="btn-primary px-6 py-3 disabled:opacity-50"
             >
               {loading ? t('common.loading') : t('caregiverApp.onboarding.next')}
             </button>
@@ -325,7 +385,7 @@ export default function OnboardingPage() {
             <button
               type="button"
               onClick={handleFinish}
-              className="px-6 py-3 bg-teal-600 dark:bg-teal-500 hover:bg-teal-700 dark:hover:bg-teal-600 text-white font-semibold rounded-lg transition-colors"
+              className="btn-primary px-6 py-3"
             >
               {t('caregiverApp.onboarding.finish')}
             </button>

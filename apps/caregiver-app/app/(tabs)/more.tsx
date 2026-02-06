@@ -3,16 +3,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { router } from 'expo-router';
 import { useAuthStore } from '../../src/stores/auth-store';
-
-const COLORS = {
-  background: '#FAFAF8',
-  card: '#FFFFFF',
-  border: '#E7E5E4',
-  textPrimary: '#1C1917',
-  textSecondary: '#57534E',
-  textMuted: '#A8A29E',
-  danger: '#DC2626',
-};
+import { COLORS, FONTS, RADIUS, SHADOWS, SPACING } from '../../src/theme';
 
 export default function MoreScreen() {
   const { t } = useTranslation();
@@ -26,8 +17,8 @@ export default function MoreScreen() {
   const menuItems = [
     { icon: '👨‍👩‍👧', label: t('caregiverApp.nav.family'), onPress: () => router.push('/family') },
     { icon: '💙', label: t('caregiverApp.nav.wellbeing'), onPress: () => router.push('/wellbeing') },
-    { icon: '📄', label: t('caregiverApp.nav.reports'), onPress: () => {} },
-    { icon: '⚙️', label: t('caregiverApp.nav.settings'), onPress: () => {} },
+    { icon: '📄', label: t('caregiverApp.nav.reports'), onPress: () => router.push('/reports') },
+    { icon: '⚙️', label: t('caregiverApp.nav.settings'), onPress: () => router.push('/settings') },
   ];
 
   return (
@@ -93,12 +84,14 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: '700',
+    fontFamily: FONTS.display,
     color: COLORS.textPrimary,
+    letterSpacing: -0.3,
     marginBottom: 24,
   },
   userCard: {
     backgroundColor: COLORS.card,
-    borderRadius: 16,
+    borderRadius: RADIUS.xl,
     padding: 20,
     borderWidth: 1,
     borderColor: COLORS.border,
@@ -106,42 +99,49 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 16,
     marginBottom: 24,
+    borderLeftWidth: 4,
+    borderLeftColor: COLORS.brand400,
+    ...SHADOWS.md,
   },
   avatar: {
     width: 56,
     height: 56,
     borderRadius: 28,
-    backgroundColor: '#E0F2F1',
+    backgroundColor: COLORS.brand600,
     alignItems: 'center',
     justifyContent: 'center',
   },
   avatarText: {
     fontSize: 24,
     fontWeight: '600',
-    color: '#0D9488',
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textInverse,
   },
   userName: {
     fontSize: 18,
     fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
     color: COLORS.textPrimary,
   },
   userEmail: {
     fontSize: 14,
+    fontFamily: FONTS.body,
     color: COLORS.textSecondary,
     marginTop: 2,
   },
   menuContainer: {
     backgroundColor: COLORS.card,
-    borderRadius: 16,
+    borderRadius: RADIUS.xl,
     borderWidth: 1,
     borderColor: COLORS.border,
     overflow: 'hidden',
     marginBottom: 24,
+    ...SHADOWS.sm,
   },
   menuItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 16,
+    paddingVertical: 18,
     paddingHorizontal: 20,
     borderBottomWidth: 1,
     borderBottomColor: COLORS.border,
@@ -153,6 +153,8 @@ const styles = StyleSheet.create({
   menuLabel: {
     flex: 1,
     fontSize: 16,
+    fontFamily: FONTS.bodyMedium,
+    fontWeight: '500',
     color: COLORS.textPrimary,
   },
   menuArrow: {
@@ -160,16 +162,18 @@ const styles = StyleSheet.create({
     color: COLORS.textMuted,
   },
   logoutButton: {
-    backgroundColor: COLORS.card,
-    borderRadius: 16,
+    backgroundColor: COLORS.dangerBg,
+    borderRadius: RADIUS.xl,
     padding: 16,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: COLORS.danger,
     alignItems: 'center',
+    ...SHADOWS.sm,
   },
   logoutText: {
     fontSize: 16,
     fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
     color: COLORS.danger,
   },
 });

@@ -54,21 +54,7 @@ const MapPlaceholder = ({ region, children }: { region: any; children?: React.Re
   </View>
 );
 
-const COLORS = {
-  background: '#FAFAF8',
-  card: '#FFFFFF',
-  border: '#E7E5E4',
-  textPrimary: '#1C1917',
-  textSecondary: '#57534E',
-  textMuted: '#A8A29E',
-  brand50: '#F0FDFA',
-  brand600: '#0D9488',
-  brand700: '#0F766E',
-  danger: '#DC2626',
-  dangerBg: '#FEF2F2',
-  amber: '#D97706',
-  amberBg: '#FEF3C7',
-};
+import { COLORS, FONTS, RADIUS, SHADOWS, SPACING } from '../../src/theme';
 
 const ALERT_TYPE_LABELS: Record<LocationAlertType, string> = {
   left_safe_zone: 'Left Safe Zone',
@@ -466,7 +452,7 @@ export default function LocationScreen() {
                     radius={zone.radius_meters}
                     strokeColor={COLORS.brand600}
                     strokeWidth={2}
-                    fillColor="rgba(13, 148, 136, 0.15)"
+                    fillColor="rgba(184, 90, 47, 0.15)"
                   />
                 ))}
               </MapView>
@@ -637,7 +623,7 @@ export default function LocationScreen() {
                 disabled={isSaving}
               >
                 {isSaving ? (
-                  <ActivityIndicator color="#FFFFFF" size="small" />
+                  <ActivityIndicator color={COLORS.textInverse} size="small" />
                 ) : (
                   <Text style={styles.saveButtonText}>Save</Text>
                 )}
@@ -676,12 +662,14 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: '700',
+    fontFamily: FONTS.display,
     color: COLORS.textPrimary,
+    letterSpacing: -0.3,
     marginBottom: 20,
   },
   emptyCard: {
     backgroundColor: COLORS.card,
-    borderRadius: 16,
+    borderRadius: RADIUS.xl,
     padding: 40,
     borderWidth: 1,
     borderColor: COLORS.border,
@@ -689,15 +677,17 @@ const styles = StyleSheet.create({
   },
   emptyText: {
     fontSize: 16,
+    fontFamily: FONTS.body,
     color: COLORS.textMuted,
   },
   alertBanner: {
     backgroundColor: COLORS.dangerBg,
-    borderRadius: 16,
+    borderRadius: RADIUS.xl,
     padding: 16,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: '#FCA5A5',
+    borderColor: COLORS.danger,
+    ...SHADOWS.sm,
   },
   alertHeader: {
     flexDirection: 'row',
@@ -711,6 +701,7 @@ const styles = StyleSheet.create({
   alertTitle: {
     fontSize: 16,
     fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
     color: COLORS.danger,
   },
   alertItem: {
@@ -718,7 +709,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: COLORS.card,
-    borderRadius: 12,
+    borderRadius: RADIUS.md,
     padding: 12,
     marginBottom: 8,
   },
@@ -737,6 +728,7 @@ const styles = StyleSheet.create({
   alertTypeName: {
     fontSize: 14,
     fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
     color: COLORS.textPrimary,
   },
   alertTime: {
@@ -745,22 +737,24 @@ const styles = StyleSheet.create({
   },
   ackButton: {
     backgroundColor: COLORS.brand600,
-    borderRadius: 8,
+    borderRadius: RADIUS.sm,
     paddingHorizontal: 12,
     paddingVertical: 6,
   },
   ackButtonText: {
     fontSize: 12,
     fontWeight: '500',
-    color: '#FFFFFF',
+    fontFamily: FONTS.bodyMedium,
+    color: COLORS.textInverse,
   },
   mapCard: {
     backgroundColor: COLORS.card,
-    borderRadius: 16,
+    borderRadius: RADIUS.xl,
     borderWidth: 1,
     borderColor: COLORS.border,
     overflow: 'hidden',
     marginBottom: 16,
+    ...SHADOWS.sm,
   },
   mapHeader: {
     flexDirection: 'row',
@@ -773,6 +767,7 @@ const styles = StyleSheet.create({
   mapTitle: {
     fontSize: 16,
     fontWeight: '600',
+    fontFamily: FONTS.display,
     color: COLORS.textPrimary,
   },
   mapSubtitle: {
@@ -788,7 +783,7 @@ const styles = StyleSheet.create({
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: '#22C55E',
+    backgroundColor: COLORS.success,
     marginRight: 6,
   },
   liveText: {
@@ -804,7 +799,7 @@ const styles = StyleSheet.create({
   mapPlaceholder: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#E5E7EB',
+    backgroundColor: COLORS.border,
   },
   mapPlaceholderIcon: {
     fontSize: 48,
@@ -813,22 +808,22 @@ const styles = StyleSheet.create({
   mapPlaceholderTitle: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#374151',
+    color: COLORS.textPrimary,
     marginBottom: 4,
   },
   mapPlaceholderCoords: {
     fontSize: 14,
-    color: '#6B7280',
+    color: COLORS.textSecondary,
     marginBottom: 8,
   },
   mapPlaceholderHint: {
     fontSize: 12,
-    color: '#9CA3AF',
+    color: COLORS.textMuted,
     textAlign: 'center',
   },
   homeMarker: {
     backgroundColor: COLORS.card,
-    borderRadius: 20,
+    borderRadius: RADIUS.xl,
     padding: 8,
     borderWidth: 2,
     borderColor: COLORS.brand600,
@@ -838,11 +833,12 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: COLORS.card,
-    borderRadius: 16,
+    borderRadius: RADIUS.xl,
     padding: 16,
     borderWidth: 1,
     borderColor: COLORS.border,
     marginBottom: 16,
+    ...SHADOWS.sm,
   },
   cardHeader: {
     flexDirection: 'row',
@@ -851,19 +847,23 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   cardTitle: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: COLORS.textPrimary,
+    fontFamily: FONTS.displayMedium,
+    fontSize: 13,
+    textTransform: 'uppercase',
+    letterSpacing: 1.2,
+    color: COLORS.textMuted,
   },
   addButton: {
     backgroundColor: COLORS.brand50,
-    borderRadius: 8,
+    borderRadius: RADIUS.sm,
     paddingHorizontal: 12,
     paddingVertical: 6,
+    ...SHADOWS.sm,
   },
   addButtonText: {
     fontSize: 14,
     fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
     color: COLORS.brand700,
   },
   emptyZoneText: {
@@ -879,13 +879,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#F5F5F4',
-    borderRadius: 12,
+    backgroundColor: COLORS.background,
+    borderRadius: RADIUS.md,
     padding: 12,
+    borderLeftWidth: 3,
+    borderLeftColor: COLORS.brand200,
   },
   zoneName: {
     fontSize: 14,
     fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
     color: COLORS.textPrimary,
   },
   zoneRadius: {
@@ -911,12 +914,14 @@ const styles = StyleSheet.create({
   recentAlertItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F5F5F4',
-    borderRadius: 12,
+    backgroundColor: COLORS.background,
+    borderRadius: RADIUS.md,
     padding: 12,
   },
   recentAlertUnack: {
     backgroundColor: COLORS.amberBg,
+    borderLeftWidth: 3,
+    borderLeftColor: COLORS.amber,
   },
   recentAlertIcon: {
     fontSize: 18,
@@ -928,6 +933,7 @@ const styles = StyleSheet.create({
   recentAlertType: {
     fontSize: 14,
     fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
     color: COLORS.textPrimary,
   },
   recentAlertTime: {
@@ -936,8 +942,9 @@ const styles = StyleSheet.create({
   },
   ackCheck: {
     fontSize: 14,
-    color: '#22C55E',
+    color: COLORS.success,
     fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
   },
   modalOverlay: {
     flex: 1,
@@ -948,7 +955,7 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     backgroundColor: COLORS.card,
-    borderRadius: 20,
+    borderRadius: RADIUS.xl,
     padding: 24,
     width: '100%',
     maxWidth: 400,
@@ -956,6 +963,7 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 20,
     fontWeight: '600',
+    fontFamily: FONTS.display,
     color: COLORS.textPrimary,
     marginBottom: 20,
   },
@@ -972,17 +980,19 @@ const styles = StyleSheet.create({
   },
   inputLabel: {
     fontSize: 14,
-    fontWeight: '500',
+    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
     color: COLORS.textPrimary,
     marginBottom: 6,
   },
   input: {
     borderWidth: 1,
-    borderColor: COLORS.border,
-    borderRadius: 12,
+    borderColor: COLORS.brand200,
+    borderRadius: RADIUS.lg,
     paddingHorizontal: 16,
     paddingVertical: 12,
     fontSize: 16,
+    fontFamily: FONTS.body,
     color: COLORS.textPrimary,
     backgroundColor: COLORS.card,
   },
@@ -1000,25 +1010,28 @@ const styles = StyleSheet.create({
     flex: 1,
     borderWidth: 1,
     borderColor: COLORS.border,
-    borderRadius: 12,
+    borderRadius: RADIUS.lg,
     paddingVertical: 14,
     alignItems: 'center',
   },
   cancelButtonText: {
     fontSize: 16,
     fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
     color: COLORS.textSecondary,
   },
   saveButton: {
     flex: 1,
     backgroundColor: COLORS.brand600,
-    borderRadius: 12,
+    borderRadius: RADIUS.lg,
     paddingVertical: 14,
     alignItems: 'center',
+    ...SHADOWS.sm,
   },
   saveButtonText: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#FFFFFF',
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textInverse,
   },
 });

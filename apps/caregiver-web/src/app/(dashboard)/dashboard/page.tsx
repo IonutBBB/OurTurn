@@ -1,210 +1,278 @@
+import { Suspense } from 'react';
 import { createClient as createServerClient } from '@/lib/supabase/server';
+import { DashboardRealtime, JournalCard } from './dashboard-client';
 
-export default async function DashboardPage() {
+function DashboardSkeleton() {
+  return (
+    <div className="space-y-8 animate-pulse">
+      <div className="space-y-2">
+        <div className="h-8 bg-surface-border rounded-lg w-64" />
+        <div className="h-4 bg-surface-border rounded w-48" />
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        <div className="lg:col-span-7 card-paper p-6 space-y-5">
+          <div className="h-4 bg-surface-border rounded w-32" />
+          <div className="h-16 bg-surface-border rounded" />
+          <div className="h-2.5 bg-surface-border rounded-full" />
+        </div>
+        <div className="lg:col-span-5 card-paper p-6 space-y-4">
+          <div className="h-4 bg-surface-border rounded w-24" />
+          <div className="grid grid-cols-2 gap-3">
+            <div className="h-20 bg-surface-border rounded-2xl" />
+            <div className="h-20 bg-surface-border rounded-2xl" />
+          </div>
+        </div>
+        <div className="lg:col-span-4 card-paper p-6">
+          <div className="h-4 bg-surface-border rounded w-20 mb-4" />
+          <div className="h-12 bg-surface-border rounded-2xl" />
+        </div>
+        <div className="lg:col-span-3 card-paper p-6">
+          <div className="h-4 bg-surface-border rounded w-20 mb-4" />
+          <div className="h-12 bg-surface-border rounded-2xl" />
+        </div>
+        <div className="lg:col-span-5 card-paper p-6">
+          <div className="h-4 bg-surface-border rounded w-24 mb-4" />
+          <div className="space-y-3">
+            <div className="h-10 bg-surface-border rounded" />
+            <div className="h-10 bg-surface-border rounded" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+async function DashboardContent() {
   const supabase = await createServerClient();
-
-  // Get user and household data
   const { data: { user } } = await supabase.auth.getUser();
 
   const { data: caregiver } = await supabase
     .from('caregivers')
-    .select(`
-      *,
-      households (
-        *,
-        patients (*)
-      )
-    `)
+    .select(`*, households (*, patients (*))`)
     .eq('id', user?.id)
     .single();
 
   const household = caregiver?.households;
   const patient = household?.patients?.[0];
 
-  // Get today's date
   const today = new Date();
   const timeOfDay = today.getHours() < 12 ? 'morning' : today.getHours() < 18 ? 'afternoon' : 'evening';
+  const greeting = timeOfDay === 'morning' ? 'Good morning' : timeOfDay === 'afternoon' ? 'Good afternoon' : 'Good evening';
 
-  // Get today's tasks
-  const startOfDay = new Date(today.setHours(0, 0, 0, 0)).toISOString();
-  const endOfDay = new Date(today.setHours(23, 59, 59, 999)).toISOString();
+  const todayStr = new Date().toISOString().split('T')[0];
 
   const { data: taskCompletions } = await supabase
     .from('task_completions')
-    .select('*, care_plan_tasks(*)')
-    .eq('care_plan_tasks.household_id', household?.id)
-    .gte('date', startOfDay.split('T')[0])
-    .lte('date', endOfDay.split('T')[0]);
+    .select('*')
+    .eq('household_id', household?.id)
+    .eq('date', todayStr);
 
   const completedTasks = taskCompletions?.filter(t => t.completed).length || 0;
   const totalTasks = taskCompletions?.length || 0;
 
-  // Get today's check-in
   const { data: checkin } = await supabase
     .from('daily_checkins')
     .select('*')
     .eq('household_id', household?.id)
-    .eq('date', startOfDay.split('T')[0])
+    .eq('date', todayStr)
     .single();
 
-  const moodEmojis: Record<number, string> = {
-    1: '😟',
-    2: '😟',
-    3: '😐',
-    4: '😊',
-    5: '😊',
+  const moodMap: Record<number, { emoji: string; label: string }> = {
+    1: { emoji: '😟', label: 'Struggling' },
+    2: { emoji: '😕', label: 'Low' },
+    3: { emoji: '😐', label: 'Okay' },
+    4: { emoji: '😊', label: 'Good' },
+    5: { emoji: '😄', label: 'Great' },
   };
 
-  const sleepEmojis: Record<number, string> = {
-    1: '😩',
-    2: '🙂',
-    3: '😴',
+  const sleepMap: Record<number, { emoji: string; label: string }> = {
+    1: { emoji: '😩', label: 'Poor' },
+    2: { emoji: '🙂', label: 'Fair' },
+    3: { emoji: '😴', label: 'Well' },
   };
 
   const progressPercent = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
 
   return (
-    <div className="space-y-8">
-      {/* Header - Modern 2026 style */}
-      <div className="space-y-2">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">
-          Good {timeOfDay}, {caregiver?.name || 'there'}
-        </h1>
-        {patient && (
-          <p className="text-lg text-gray-600 dark:text-gray-400 flex items-center gap-2">
-            <span className="inline-flex items-center justify-center w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-            {patient.name}&apos;s day is going well
+    <div className="page-enter space-y-8">
+      {/* Greeting */}
+      <div className="flex items-end justify-between gap-4">
+        <div className="space-y-1">
+          <h1 className="heading-display text-3xl">
+            {greeting},{' '}
+            <span className="heading-accent">{caregiver?.name || 'there'}</span>
+          </h1>
+          {patient && (
+            <p className="text-text-secondary flex items-center gap-2">
+              <span className="inline-flex items-center justify-center w-2 h-2 bg-status-success rounded-full animate-warm-pulse" />
+              {patient.name}&apos;s day is going well
+            </p>
+          )}
+        </div>
+        <div className="hidden sm:flex flex-col items-end gap-1">
+          <p className="text-sm text-text-muted">
+            {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
           </p>
-        )}
+          {household?.id && (
+            <DashboardRealtime
+              householdId={household.id}
+              patientName={patient?.name || ''}
+              initialCompletedTasks={completedTasks}
+              initialTotalTasks={totalTasks}
+            />
+          )}
+        </div>
       </div>
 
-      {/* Bento Grid - 2026 Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {/* Today's Status Card - Featured */}
-        <div className="bg-white dark:bg-[#1E1E1E] rounded-2xl p-6 lg:col-span-2 shadow-lg dark:shadow-black/20 border border-gray-200 dark:border-gray-800 hover:shadow-xl transition-shadow">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-              Today&apos;s Progress
-            </h2>
-            <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400">
-              {progressPercent}% Complete
+      {/* Main grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        {/* Progress card */}
+        <div className="lg:col-span-7 card-paper card-accent p-6 space-y-5 animate-fade-in-up stagger-1">
+          <div className="flex items-center justify-between">
+            <p className="section-label">Today&apos;s Progress</p>
+            <span className={`badge ${progressPercent >= 80 ? 'badge-success' : progressPercent >= 40 ? 'badge-warning' : 'badge-brand'}`}>
+              {progressPercent}%
             </span>
           </div>
-          <div className="space-y-4">
-            <div className="flex items-end justify-between">
-              <div>
-                <p className="text-4xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">
-                  {completedTasks}
-                  <span className="text-xl text-gray-400 dark:text-gray-500 font-normal"> / {totalTasks}</span>
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Tasks completed today</p>
-              </div>
-              <div className="text-5xl opacity-20">📋</div>
-            </div>
-            {totalTasks > 0 && (
-              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
-                <div
-                  className="h-full rounded-full transition-all duration-500 ease-out bg-gradient-to-r from-teal-500 to-teal-400"
-                  style={{ width: `${progressPercent}%` }}
-                />
-              </div>
-            )}
-          </div>
-        </div>
 
-        {/* Daily Check-in Card */}
-        <div className="bg-white dark:bg-[#1E1E1E] rounded-2xl p-6 shadow-lg dark:shadow-black/20 border border-gray-200 dark:border-gray-800 hover:shadow-xl transition-shadow">
-          <h2 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">
-            Daily Check-In
-          </h2>
-          {checkin ? (
-            <div className="space-y-4">
-              <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-xl">
-                <span className="text-sm font-medium text-gray-600 dark:text-gray-300">Mood</span>
-                <span className="text-3xl">{moodEmojis[checkin.mood] || '—'}</span>
-              </div>
-              <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-xl">
-                <span className="text-sm font-medium text-gray-600 dark:text-gray-300">Sleep</span>
-                <span className="text-3xl">{sleepEmojis[checkin.sleep_quality] || '—'}</span>
-              </div>
-              {checkin.voice_note_transcript && (
-                <p className="text-sm text-gray-600 dark:text-gray-400 italic bg-gray-50 dark:bg-gray-800 p-3 rounded-xl">
-                  &quot;{checkin.voice_note_transcript.slice(0, 80)}...&quot;
-                </p>
-              )}
+          <div className="flex items-end gap-6">
+            <div>
+              <p className="text-5xl font-display font-bold text-text-primary tracking-tight">
+                {completedTasks}
+                <span className="text-2xl text-text-muted font-normal">/{totalTasks}</span>
+              </p>
+              <p className="text-sm text-text-secondary mt-1">tasks completed</p>
             </div>
-          ) : (
-            <div className="flex flex-col items-center justify-center py-6 text-center">
-              <span className="text-4xl mb-3 opacity-50">💭</span>
-              <p className="text-gray-500 dark:text-gray-400 text-sm">No check-in yet today</p>
+
+            <div className="relative w-20 h-20 flex-shrink-0 ml-auto">
+              <svg className="w-full h-full -rotate-90" viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="34" fill="none" stroke="var(--surface-border)" strokeWidth="6" />
+                <circle
+                  cx="40" cy="40" r="34" fill="none"
+                  stroke="var(--brand-500)"
+                  strokeWidth="6"
+                  strokeLinecap="round"
+                  strokeDasharray={`${2 * Math.PI * 34}`}
+                  strokeDashoffset={`${2 * Math.PI * 34 * (1 - progressPercent / 100)}`}
+                  className="transition-all duration-700 ease-out"
+                />
+              </svg>
+              <span className="absolute inset-0 flex items-center justify-center text-lg font-bold font-display text-brand-600">
+                {progressPercent}%
+              </span>
+            </div>
+          </div>
+
+          {totalTasks > 0 && (
+            <div className="w-full bg-surface-background rounded-full h-2.5 overflow-hidden">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-brand-600 to-brand-400 transition-all duration-700 ease-out"
+                style={{ width: `${progressPercent}%` }}
+              />
             </div>
           )}
         </div>
 
-        {/* Location Card */}
-        <div className="bg-white dark:bg-[#1E1E1E] rounded-2xl p-6 shadow-lg dark:shadow-black/20 border border-gray-200 dark:border-gray-800 hover:shadow-xl transition-shadow">
-          <h2 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">
-            Location
-          </h2>
+        {/* Check-in card */}
+        <div className="lg:col-span-5 card-paper p-6 space-y-4 animate-fade-in-up stagger-2">
+          <p className="section-label">Daily Check-in</p>
+          {checkin ? (
+            <div className="space-y-3">
+              <div className="grid grid-cols-2 gap-3">
+                <div className="card-inset p-4 text-center">
+                  <p className="text-3xl mb-1">{moodMap[checkin.mood]?.emoji || '—'}</p>
+                  <p className="text-xs font-medium text-text-muted uppercase tracking-wider">
+                    {moodMap[checkin.mood]?.label || 'Mood'}
+                  </p>
+                </div>
+                <div className="card-inset p-4 text-center">
+                  <p className="text-3xl mb-1">{sleepMap[checkin.sleep_quality]?.emoji || '—'}</p>
+                  <p className="text-xs font-medium text-text-muted uppercase tracking-wider">
+                    {sleepMap[checkin.sleep_quality]?.label || 'Sleep'}
+                  </p>
+                </div>
+              </div>
+              {checkin.voice_note_transcript && (
+                <div className="card-inset p-3">
+                  <p className="text-sm text-text-secondary italic leading-relaxed">
+                    &quot;{checkin.voice_note_transcript.slice(0, 100)}...&quot;
+                  </p>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="card-inset flex flex-col items-center justify-center py-8 text-center">
+              <span className="text-3xl mb-2 opacity-40">💭</span>
+              <p className="text-sm text-text-muted">No check-in yet today</p>
+            </div>
+          )}
+        </div>
+
+        {/* Location card */}
+        <div className="lg:col-span-4 card-paper p-6 animate-fade-in-up stagger-3">
+          <p className="section-label mb-4">Location</p>
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+            <div className="w-12 h-12 rounded-2xl bg-status-success-bg flex items-center justify-center">
               <span className="text-2xl">📍</span>
             </div>
-            <div className="flex-1">
-              <p className="font-semibold text-gray-900 dark:text-gray-100">
+            <div className="flex-1 min-w-0">
+              <p className="font-semibold text-text-primary text-sm">
                 {patient?.name || 'Patient'} is at home
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1.5 mt-1">
-                <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
+              <p className="text-xs text-text-muted flex items-center gap-1.5 mt-1">
+                <span className="w-1.5 h-1.5 bg-status-success rounded-full animate-warm-pulse" />
                 Updated just now
               </p>
             </div>
           </div>
         </div>
 
-        {/* AI Insights Card - Gradient accent */}
-        <div className="relative overflow-hidden rounded-2xl p-6 lg:col-span-2 shadow-lg border border-teal-200 dark:border-teal-800 hover:shadow-xl transition-shadow bg-gradient-to-br from-teal-50 to-white dark:from-teal-900/20 dark:to-[#1E1E1E]">
-          <div className="absolute top-0 right-0 w-32 h-32 opacity-10 bg-gradient-radial from-teal-400 to-transparent" />
-          <h2 className="text-xs font-semibold text-teal-700 dark:text-teal-400 uppercase tracking-wider mb-4 flex items-center gap-2">
-            <span className="text-sm">✨</span> AI Insights
-          </h2>
-          <div className="space-y-3">
-            <div className="flex items-start gap-4 p-4 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-xl border border-teal-100 dark:border-teal-800">
-              <div className="w-10 h-10 rounded-xl bg-teal-100 dark:bg-teal-900/50 flex items-center justify-center flex-shrink-0">
-                <span className="text-lg">💡</span>
-              </div>
-              <div>
-                <p className="font-medium text-gray-900 dark:text-gray-100">Morning Activity Pattern</p>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                  {patient?.name || 'Your loved one'} completes more tasks on days with a morning walk scheduled.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Care Code Card */}
-        <div className="bg-white dark:bg-[#1E1E1E] rounded-2xl p-6 shadow-lg dark:shadow-black/20 border border-gray-200 dark:border-gray-800 hover:shadow-xl transition-shadow">
-          <h2 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">
-            Care Code
-          </h2>
-          <div className="text-center py-4">
-            <div className="inline-flex items-center gap-1 px-4 py-3 bg-teal-50 dark:bg-teal-900/30 rounded-xl">
+        {/* Care Code card */}
+        <div className="lg:col-span-3 card-paper p-6 animate-fade-in-up stagger-4">
+          <p className="section-label mb-4">Care Code</p>
+          <div className="card-inset p-4 text-center">
+            <div className="flex items-center justify-center gap-1">
               {(household?.care_code || '------').split('').map((char: string, i: number) => (
                 <span
                   key={i}
-                  className={`text-2xl font-mono font-bold text-teal-700 dark:text-teal-400 ${i === 2 ? 'ml-2' : ''}`}
+                  className={`text-xl font-mono font-bold text-brand-700 dark:text-brand-400 ${i === 2 ? 'ml-2' : ''}`}
                 >
                   {char}
                 </span>
               ))}
             </div>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
-              Share this code to connect the patient app
-            </p>
+            <p className="text-xs text-text-muted mt-2">Share to connect patient app</p>
+          </div>
+        </div>
+
+        {/* Care Journal card */}
+        {household?.id && <JournalCard householdId={household.id} />}
+
+        {/* AI Insights card */}
+        <div className="lg:col-span-7 relative overflow-hidden rounded-[20px] p-6 border border-brand-200 dark:border-brand-200/30 bg-gradient-to-br from-brand-50 to-surface-card dark:from-brand-50/10 dark:to-surface-card animate-fade-in-up stagger-5">
+          <div className="absolute top-0 right-0 w-28 h-28 bg-brand-200/20 dark:bg-brand-200/5 rounded-full -translate-y-1/2 translate-x-1/2" />
+          <p className="section-label text-brand-700 dark:text-brand-400 mb-4 flex items-center gap-1.5">
+            <span className="text-sm">✨</span> AI Insights
+          </p>
+          <div className="card-inset p-4 flex items-start gap-3">
+            <span className="text-xl flex-shrink-0">💡</span>
+            <div>
+              <p className="font-semibold text-text-primary text-sm">Morning Activity Pattern</p>
+              <p className="text-xs text-text-secondary mt-1 leading-relaxed">
+                {patient?.name || 'Your loved one'} completes more tasks on days with a morning walk scheduled.
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <Suspense fallback={<DashboardSkeleton />}>
+      <DashboardContent />
+    </Suspense>
   );
 }

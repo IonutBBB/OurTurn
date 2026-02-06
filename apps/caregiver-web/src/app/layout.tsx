@@ -1,12 +1,19 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Fraunces, Nunito } from 'next/font/google';
 import './globals.css';
 import I18nProvider from '../providers/I18nProvider';
 import { ThemeProvider } from '@/components/theme-provider';
 
-const inter = Inter({
-  variable: '--font-inter',
+const fraunces = Fraunces({
+  variable: '--font-fraunces',
   subsets: ['latin'],
+  display: 'swap',
+});
+
+const nunito = Nunito({
+  variable: '--font-nunito',
+  subsets: ['latin'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -38,7 +45,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} font-sans antialiased bg-gray-50 dark:bg-[#121212]`}>
+      <body className={`${fraunces.variable} ${nunito.variable} font-sans antialiased bg-surface-background`}>
         <ThemeProvider>
           <I18nProvider>{children}</I18nProvider>
         </ThemeProvider>

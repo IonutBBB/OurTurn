@@ -32,12 +32,12 @@ interface Props {
 }
 
 const CATEGORIES = [
-  { key: 'medication', icon: '💊', color: 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300' },
-  { key: 'nutrition', icon: '🥗', color: 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300' },
-  { key: 'physical', icon: '🚶', color: 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300' },
-  { key: 'cognitive', icon: '🧩', color: 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300' },
-  { key: 'social', icon: '💬', color: 'bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300' },
-  { key: 'health', icon: '❤️', color: 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300' },
+  { key: 'medication', icon: '💊', color: 'bg-category-medication-bg text-category-medication' },
+  { key: 'nutrition', icon: '🥗', color: 'bg-category-nutrition-bg text-category-nutrition' },
+  { key: 'physical', icon: '🚶', color: 'bg-category-physical-bg text-category-physical' },
+  { key: 'cognitive', icon: '🧩', color: 'bg-category-cognitive-bg text-category-cognitive' },
+  { key: 'social', icon: '💬', color: 'bg-category-social-bg text-category-social' },
+  { key: 'health', icon: '❤️', color: 'bg-category-health-bg text-category-health' },
 ];
 
 const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -50,6 +50,12 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
   const [showAddForm, setShowAddForm] = useState(false);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [saving, setSaving] = useState(false);
+
+  // Copy Day state
+  const [showCopyModal, setShowCopyModal] = useState(false);
+  const [copySourceDay, setCopySourceDay] = useState('Mon');
+  const [copyTargetDays, setCopyTargetDays] = useState<string[]>([]);
+  const [copying, setCopying] = useState(false);
 
   // AI Suggest state
   const [showSuggestPanel, setShowSuggestPanel] = useState(false);
@@ -240,6 +246,58 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
     }
   };
 
+  const handleCopyDay = async () => {
+    if (copyTargetDays.length === 0) return;
+
+    setCopying(true);
+    try {
+      const sourceTasks = tasks.filter((task) => {
+        if (task.recurrence === 'daily') return true;
+        if (task.recurrence === 'specific_days') {
+          return task.recurrence_days?.includes(copySourceDay);
+        }
+        return false;
+      });
+
+      if (sourceTasks.length === 0) {
+        alert('No tasks found for the selected source day.');
+        return;
+      }
+
+      const { data: { user } } = await supabase.auth.getUser();
+
+      const newTasks = copyTargetDays.flatMap((targetDay) =>
+        sourceTasks.map((task) => ({
+          household_id: householdId,
+          category: task.category,
+          title: task.title,
+          hint_text: task.hint_text,
+          time: task.time,
+          recurrence: 'specific_days' as const,
+          recurrence_days: [targetDay],
+          active: true,
+          created_by: user?.id,
+        }))
+      );
+
+      const { data, error } = await supabase
+        .from('care_plan_tasks')
+        .insert(newTasks)
+        .select();
+
+      if (error) throw error;
+
+      setTasks((prev) => [...prev, ...(data || [])].sort((a, b) => a.time.localeCompare(b.time)));
+      setShowCopyModal(false);
+      setCopyTargetDays([]);
+    } catch (err) {
+      console.error('Failed to copy tasks:', err);
+      alert('Failed to copy tasks. Please try again.');
+    } finally {
+      setCopying(false);
+    }
+  };
+
   const startEditing = (task: Task) => {
     setEditingTask(task);
     setNewTask({
@@ -270,14 +328,24 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+          <h1 className="text-2xl font-bold font-display text-text-primary">
             {patientName}&apos;s Daily Plan
           </h1>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+          <p className="text-sm text-text-muted mt-1">
             {t('caregiverApp.carePlan.syncNote', { name: patientName })}
           </p>
         </div>
         <div className="flex gap-3">
+          <button
+            onClick={() => setShowCopyModal(true)}
+            className="px-4 py-2 border border-surface-border rounded-2xl text-text-primary hover:bg-brand-50 dark:hover:bg-surface-elevated transition-colors flex items-center gap-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+              <path d="M7 3.5A1.5 1.5 0 018.5 2h3.879a1.5 1.5 0 011.06.44l3.122 3.12A1.5 1.5 0 0117 6.622V12.5a1.5 1.5 0 01-1.5 1.5h-1v-3.379a3 3 0 00-.879-2.121L10.5 5.379A3 3 0 008.379 4.5H7v-1z" />
+              <path d="M4.5 6A1.5 1.5 0 003 7.5v9A1.5 1.5 0 004.5 18h7a1.5 1.5 0 001.5-1.5v-5.879a1.5 1.5 0 00-.44-1.06L9.44 6.439A1.5 1.5 0 008.378 6H4.5z" />
+            </svg>
+            {t('caregiverApp.carePlan.copyDay')}
+          </button>
           <button
             onClick={() => {
               setShowSuggestPanel(!showSuggestPanel);
@@ -285,7 +353,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
                 handleGetSuggestions();
               }
             }}
-            className="px-4 py-2 bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-semibold rounded-lg transition-all flex items-center gap-2"
+            className="px-4 py-2 bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white font-semibold rounded-2xl transition-all flex items-center gap-2"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -307,7 +375,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
               resetForm();
               setShowAddForm(true);
             }}
-            className="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg transition-colors"
+            className="btn-primary"
           >
             + {t('caregiverApp.carePlan.addTask')}
           </button>
@@ -316,10 +384,10 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
 
       {/* AI Suggest Panel */}
       {showSuggestPanel && (
-        <div className="bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20 rounded-xl border border-purple-200 dark:border-purple-800 p-6 mb-6">
+        <div className="card-accent p-6 mb-6">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-r from-brand-500 to-brand-600 rounded-2xl flex items-center justify-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -334,15 +402,15 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
                 </svg>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 dark:text-gray-100">AI Task Suggestions</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <h3 className="font-semibold text-text-primary">AI Task Suggestions</h3>
+                <p className="text-sm text-text-muted">
                   Personalized suggestions based on {patientName}&apos;s profile
                 </p>
               </div>
             </div>
             <button
               onClick={() => setShowSuggestPanel(false)}
-              className="text-gray-400 hover:text-gray-600"
+              className="text-text-muted hover:text-text-secondary"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -361,11 +429,11 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
 
           {/* Category filter */}
           <div className="flex items-center gap-2 mb-4">
-            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Focus on:</label>
+            <label className="text-sm font-medium text-text-secondary">Focus on:</label>
             <select
               value={suggestCategory}
               onChange={(e) => setSuggestCategory(e.target.value)}
-              className="px-3 py-1.5 text-sm border border-purple-200 dark:border-purple-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+              className="px-3 py-1.5 text-sm border border-brand-200 dark:border-brand-700 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-500 bg-surface-card text-text-primary"
             >
               <option value="">All categories</option>
               {CATEGORIES.map((cat) => (
@@ -377,7 +445,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
             <button
               onClick={handleGetSuggestions}
               disabled={suggestLoading}
-              className="px-3 py-1.5 text-sm bg-white dark:bg-gray-800 border border-purple-200 dark:border-purple-700 rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors disabled:opacity-50 text-gray-900 dark:text-gray-100"
+              className="px-3 py-1.5 text-sm bg-surface-card border border-brand-200 dark:border-brand-700 rounded-2xl hover:bg-brand-50 dark:hover:bg-brand-900/30 transition-colors disabled:opacity-50 text-text-primary"
             >
               {suggestLoading ? 'Generating...' : 'Refresh'}
             </button>
@@ -388,7 +456,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
             <div className="flex items-center justify-center py-8">
               <div className="flex items-center gap-3">
                 <svg
-                  className="animate-spin h-5 w-5 text-purple-600"
+                  className="animate-spin h-5 w-5 text-brand-600"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -407,13 +475,13 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                   ></path>
                 </svg>
-                <span className="text-purple-600 font-medium">
+                <span className="text-brand-600 font-medium">
                   AI is thinking about {patientName}&apos;s routine...
                 </span>
               </div>
             </div>
           ) : suggestedTasks.length === 0 ? (
-            <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+            <div className="text-center py-8 text-text-muted">
               <p>No suggestions available. Try refreshing or selecting a different category.</p>
             </div>
           ) : (
@@ -423,7 +491,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
                 return (
                   <div
                     key={index}
-                    className="bg-white dark:bg-gray-800 rounded-lg border border-purple-100 dark:border-purple-800 p-4 flex items-start justify-between gap-4"
+                    className="card-paper p-4 flex items-start justify-between gap-4"
                   >
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
@@ -432,17 +500,17 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
                         >
                           {category.icon} {t(`categories.${suggestion.category}`)}
                         </span>
-                        <span className="text-sm text-gray-500 dark:text-gray-400">
+                        <span className="text-sm text-text-muted">
                           {formatTime(suggestion.time)}
                         </span>
                       </div>
-                      <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-1">{suggestion.title}</h4>
-                      <p className="text-sm text-gray-700 dark:text-gray-300">{suggestion.hint_text}</p>
+                      <h4 className="font-medium text-text-primary mb-1">{suggestion.title}</h4>
+                      <p className="text-sm text-text-secondary">{suggestion.hint_text}</p>
                     </div>
                     <button
                       onClick={() => handleAddSuggestion(suggestion)}
                       disabled={addingSuggestion === suggestion.title}
-                      className="px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors disabled:opacity-50 flex items-center gap-1 whitespace-nowrap"
+                      className="px-3 py-1.5 bg-brand-600 hover:bg-brand-700 text-white text-sm font-medium rounded-2xl transition-colors disabled:opacity-50 flex items-center gap-1 whitespace-nowrap"
                     >
                       {addingSuggestion === suggestion.title ? (
                         <>
@@ -482,21 +550,21 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
 
       {/* Add/Edit Task Form */}
       {showAddForm && (
-        <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-6 mb-6">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+        <div className="card-paper p-6 mb-6">
+          <h2 className="text-lg font-display font-bold text-text-primary mb-4">
             {editingTask ? 'Edit Task' : t('caregiverApp.carePlan.addTask')}
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Category */}
             <div>
-              <label className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
+              <label className="block text-sm font-semibold text-text-primary mb-1.5">
                 {t('caregiverApp.carePlan.category')}
               </label>
               <select
                 value={newTask.category}
                 onChange={(e) => setNewTask({ ...newTask, category: e.target.value })}
-                className="w-full px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                className="input-warm w-full"
               >
                 {CATEGORIES.map((cat) => (
                   <option key={cat.key} value={cat.key}>
@@ -508,20 +576,20 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
 
             {/* Time */}
             <div>
-              <label className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
+              <label className="block text-sm font-semibold text-text-primary mb-1.5">
                 {t('caregiverApp.carePlan.time')}
               </label>
               <input
                 type="time"
                 value={newTask.time}
                 onChange={(e) => setNewTask({ ...newTask, time: e.target.value })}
-                className="w-full px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                className="input-warm w-full"
               />
             </div>
 
             {/* Title */}
             <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
+              <label className="block text-sm font-semibold text-text-primary mb-1.5">
                 {t('caregiverApp.carePlan.taskTitle')} *
               </label>
               <input
@@ -529,13 +597,13 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
                 value={newTask.title}
                 onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
                 placeholder="e.g., Morning medication"
-                className="w-full px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                className="input-warm w-full"
               />
             </div>
 
             {/* Instructions/Hint */}
             <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
+              <label className="block text-sm font-semibold text-text-primary mb-1.5">
                 {t('caregiverApp.carePlan.hintLabel', { name: patientName })}
               </label>
               <textarea
@@ -543,13 +611,13 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
                 onChange={(e) => setNewTask({ ...newTask, hint_text: e.target.value })}
                 placeholder={t('caregiverApp.carePlan.hintPlaceholder')}
                 rows={2}
-                className="w-full px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                className="input-warm w-full"
               />
             </div>
 
             {/* Recurrence */}
             <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
+              <label className="block text-sm font-semibold text-text-primary mb-1.5">
                 {t('caregiverApp.carePlan.recurrence')}
               </label>
               <div className="flex gap-4">
@@ -604,7 +672,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
                       className={`px-3 py-1.5 text-sm rounded-lg border transition-colors ${
                         newTask.recurrence_days.includes(day)
                           ? 'bg-brand-600 text-white border-brand-600'
-                          : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-brand-300'
+                          : 'bg-surface-card dark:bg-surface-elevated text-text-secondary border-surface-border hover:border-brand-300'
                       }`}
                     >
                       {day}
@@ -620,7 +688,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
             <button
               type="button"
               onClick={resetForm}
-              className="px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+              className="px-4 py-2 border border-surface-border rounded-2xl text-text-primary hover:bg-brand-50 dark:hover:bg-surface-elevated transition-colors"
             >
               {t('common.cancel')}
             </button>
@@ -628,7 +696,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
               type="button"
               onClick={editingTask ? handleUpdateTask : handleAddTask}
               disabled={saving || !newTask.title.trim()}
-              className="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg transition-colors disabled:opacity-50"
+              className="btn-primary disabled:opacity-50"
             >
               {saving ? t('common.loading') : editingTask ? t('common.save') : t('caregiverApp.carePlan.addTask')}
             </button>
@@ -636,43 +704,124 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
         </div>
       )}
 
+      {/* Copy Day Modal */}
+      {showCopyModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="card-paper p-6 w-full max-w-md">
+            <h2 className="text-xl font-display font-bold text-text-primary mb-4">
+              {t('caregiverApp.carePlan.copyDay')}
+            </h2>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-semibold text-text-primary mb-2">
+                  Copy from:
+                </label>
+                <div className="flex gap-2">
+                  {DAYS.map((day) => (
+                    <button
+                      key={day}
+                      type="button"
+                      onClick={() => setCopySourceDay(day)}
+                      className={`px-3 py-1.5 text-sm rounded-lg border transition-colors ${
+                        copySourceDay === day
+                          ? 'bg-brand-600 text-white border-brand-600'
+                          : 'bg-surface-card dark:bg-surface-elevated text-text-secondary border-surface-border hover:border-brand-300'
+                      }`}
+                    >
+                      {day}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-text-primary mb-2">
+                  Copy to:
+                </label>
+                <div className="flex gap-2 flex-wrap">
+                  {DAYS.filter((d) => d !== copySourceDay).map((day) => (
+                    <button
+                      key={day}
+                      type="button"
+                      onClick={() => {
+                        setCopyTargetDays((prev) =>
+                          prev.includes(day)
+                            ? prev.filter((d) => d !== day)
+                            : [...prev, day]
+                        );
+                      }}
+                      className={`px-3 py-1.5 text-sm rounded-lg border transition-colors ${
+                        copyTargetDays.includes(day)
+                          ? 'bg-brand-600 text-white border-brand-600'
+                          : 'bg-surface-card dark:bg-surface-elevated text-text-secondary border-surface-border hover:border-brand-300'
+                      }`}
+                    >
+                      {day}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-3 pt-6">
+              <button
+                type="button"
+                onClick={() => {
+                  setShowCopyModal(false);
+                  setCopyTargetDays([]);
+                }}
+                className="btn-secondary flex-1"
+              >
+                {t('common.cancel')}
+              </button>
+              <button
+                type="button"
+                onClick={handleCopyDay}
+                disabled={copying || copyTargetDays.length === 0}
+                className="btn-primary flex-1 disabled:opacity-50"
+              >
+                {copying ? t('common.loading') : `Copy to ${copyTargetDays.length} day${copyTargetDays.length !== 1 ? 's' : ''}`}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Tasks Table */}
       {tasks.length === 0 ? (
-        <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 p-12 text-center">
-          <p className="text-gray-500 dark:text-gray-400">{t('caregiverApp.carePlan.noTasks')}</p>
+        <div className="card-paper p-12 text-center">
+          <p className="text-text-muted">{t('caregiverApp.carePlan.noTasks')}</p>
         </div>
       ) : (
-        <div className="bg-white dark:bg-[#1E1E1E] rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+        <div className="card-paper overflow-hidden">
           <table className="w-full">
-            <thead className="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+            <thead className="card-inset rounded-2xl border-b border-surface-border">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-text-muted uppercase tracking-wide">
                   {t('caregiverApp.carePlan.time')}
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-text-muted uppercase tracking-wide">
                   {t('caregiverApp.carePlan.category')}
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-text-muted uppercase tracking-wide">
                   {t('caregiverApp.carePlan.taskTitle')}
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-text-muted uppercase tracking-wide">
                   {t('caregiverApp.carePlan.instructions')}
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-text-muted uppercase tracking-wide">
                   {t('caregiverApp.carePlan.recurrence')}
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                <th className="px-6 py-3 text-right text-xs font-semibold text-text-muted uppercase tracking-wide">
                   {t('caregiverApp.carePlan.actions')}
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+            <tbody className="divide-y divide-surface-border">
               {tasks.map((task) => {
                 const category = getCategoryInfo(task.category);
                 return (
-                  <tr key={task.id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
+                  <tr key={task.id} className="hover:bg-brand-50 dark:hover:bg-surface-elevated">
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="font-medium text-gray-900 dark:text-gray-100">{formatTime(task.time)}</span>
+                      <span className="font-medium text-text-primary">{formatTime(task.time)}</span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-sm ${category.color}`}>
@@ -680,15 +829,15 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
                       </span>
                     </td>
                     <td className="px-6 py-4">
-                      <span className="text-gray-900 dark:text-gray-100">{task.title}</span>
+                      <span className="text-text-primary">{task.title}</span>
                     </td>
                     <td className="px-6 py-4">
-                      <span className="text-gray-700 dark:text-gray-300 text-sm">
+                      <span className="text-text-secondary text-sm">
                         {task.hint_text || '—'}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="text-gray-700 dark:text-gray-300 text-sm">
+                      <span className="text-text-secondary text-sm">
                         {task.recurrence === 'daily' && t('caregiverApp.carePlan.daily')}
                         {task.recurrence === 'specific_days' && task.recurrence_days?.join(', ')}
                         {task.recurrence === 'one_time' && t('caregiverApp.carePlan.oneTime')}
@@ -703,7 +852,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
                       </button>
                       <button
                         onClick={() => handleDeleteTask(task.id)}
-                        className="text-red-600 hover:text-red-700 text-sm font-medium"
+                        className="text-status-danger hover:text-status-danger text-sm font-medium"
                       >
                         {t('common.delete')}
                       </button>

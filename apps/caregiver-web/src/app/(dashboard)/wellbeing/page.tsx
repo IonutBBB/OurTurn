@@ -15,23 +15,22 @@ export default async function WellbeingPage() {
 
   if (!caregiver) {
     return (
-      <div className="space-y-8">
+      <div className="page-enter space-y-6">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">Caregiver Wellbeing</h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">Track your mood and practice self-care</p>
+          <h1 className="heading-display text-2xl">
+            Your <span className="heading-accent">Wellbeing</span>
+          </h1>
+          <p className="text-text-secondary text-sm mt-1">Take care of yourself while caring for others</p>
         </div>
-        <div className="bg-white dark:bg-[#1E1E1E] shadow-lg dark:shadow-black/20 border border-gray-200 dark:border-gray-800 rounded-2xl p-12 text-center max-w-lg mx-auto">
-          <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-pink-100 to-pink-200 dark:from-pink-900/30 dark:to-pink-800/30 flex items-center justify-center mx-auto mb-6">
-            <span className="text-4xl">💙</span>
+        <div className="card-paper p-12 text-center max-w-lg mx-auto">
+          <div className="w-16 h-16 rounded-2xl bg-brand-100/60 dark:bg-brand-100/20 flex items-center justify-center mx-auto mb-5">
+            <span className="text-3xl">💙</span>
           </div>
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Complete Setup First</h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-6">
+          <h2 className="text-lg font-display font-bold text-text-primary mb-2">Complete Setup First</h2>
+          <p className="text-sm text-text-secondary mb-6 leading-relaxed">
             Set up your profile to start tracking your wellbeing and get personalized self-care reminders.
           </p>
-          <a
-            href="/onboarding"
-            className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-teal-600 to-teal-500 dark:from-teal-500 dark:to-teal-400 text-white font-semibold rounded-xl shadow-lg shadow-teal-600/25 dark:shadow-teal-500/25 hover:shadow-xl hover:shadow-teal-600/30 dark:hover:shadow-teal-500/30 transition-all duration-200 hover:-translate-y-0.5"
-          >
+          <a href="/onboarding" className="btn-primary inline-flex items-center">
             Start Onboarding
           </a>
         </div>
@@ -59,10 +58,12 @@ export default async function WellbeingPage() {
     .order('date', { ascending: false });
 
   return (
-    <div className="space-y-8">
+    <div className="page-enter space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">Caregiver Wellbeing</h1>
-        <p className="text-gray-600 dark:text-gray-400 mt-2">Track your mood and practice self-care</p>
+        <h1 className="heading-display text-2xl">
+          Your <span className="heading-accent">Wellbeing</span>
+        </h1>
+        <p className="text-text-secondary text-sm mt-1">Take care of yourself while caring for others</p>
       </div>
       <WellbeingClient
         caregiverId={caregiver.id}

@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation';
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import { Sidebar } from '@/components/sidebar';
+import { TopBar } from './top-bar';
 
 export default async function DashboardLayout({
   children,
@@ -26,7 +27,7 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-[#121212] transition-colors duration-200">
+    <div className="min-h-screen bg-surface-background transition-colors duration-200">
       {/* Skip link for keyboard navigation */}
       <a
         href="#main-content"
@@ -37,12 +38,13 @@ export default async function DashboardLayout({
       <Sidebar userName={caregiver?.name || user.email || 'Caregiver'} userEmail={user.email || ''} />
       <main
         id="main-content"
-        className="pl-64 min-h-screen"
+        className="lg:pl-64 min-h-screen"
         role="main"
         aria-label="Main content"
         tabIndex={-1}
       >
-        <div className="p-10 max-w-7xl mx-auto">
+        <TopBar userName={caregiver?.name || user.email || 'Caregiver'} />
+        <div className="p-6 lg:p-10 max-w-7xl mx-auto pt-16 lg:pt-10">
           {children}
         </div>
       </main>

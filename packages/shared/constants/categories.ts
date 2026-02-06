@@ -14,43 +14,43 @@ export const TASK_CATEGORIES: CategoryInfo[] = [
     id: 'medication',
     label: 'categories.medication',
     icon: '💊',
-    color: '#7C3AED', // Purple
-    lightBg: '#F5F3FF',
+    color: '#7B6198', // Dusty Plum
+    lightBg: '#F3EFF7',
   },
   {
     id: 'nutrition',
     label: 'categories.nutrition',
     icon: '🥗',
-    color: '#16A34A', // Green
-    lightBg: '#F0FDF4',
+    color: '#4A7C59', // Sage Green
+    lightBg: '#EFF5F0',
   },
   {
     id: 'physical',
     label: 'categories.physical',
     icon: '🚶',
-    color: '#EA580C', // Orange
-    lightBg: '#FFF7ED',
+    color: '#C4882C', // Warm Honey
+    lightBg: '#FDF6EA',
   },
   {
     id: 'cognitive',
     label: 'categories.cognitive',
     icon: '🧩',
-    color: '#2563EB', // Blue
-    lightBg: '#EFF6FF',
+    color: '#4A6FA5', // Slate Blue
+    lightBg: '#EDF2F8',
   },
   {
     id: 'social',
     label: 'categories.social',
     icon: '💬',
-    color: '#DB2777', // Pink
-    lightBg: '#FDF2F8',
+    color: '#B85A6F', // Dusty Rose
+    lightBg: '#F8EFF2',
   },
   {
     id: 'health',
     label: 'categories.health',
     icon: '❤️',
-    color: '#DC2626', // Red
-    lightBg: '#FEF2F2',
+    color: '#B8463A', // Brick Red
+    lightBg: '#FAF0EE',
   },
 ];
 

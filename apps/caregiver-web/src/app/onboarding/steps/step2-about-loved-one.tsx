@@ -24,7 +24,7 @@ export function Step2AboutLovedOne({ data, updateData }: Props) {
   return (
     <div className="space-y-6">
       <div>
-        <label htmlFor="patientName" className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
+        <label htmlFor="patientName" className="block text-sm font-semibold text-text-primary mb-1.5">
           {t('caregiverApp.onboarding.theirName')} *
         </label>
         <input
@@ -33,34 +33,34 @@ export function Step2AboutLovedOne({ data, updateData }: Props) {
           value={data.patientName}
           onChange={(e) => updateData({ patientName: e.target.value })}
           required
-          className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+          className="input-warm w-full"
           placeholder="First name"
         />
       </div>
 
       <div>
-        <label htmlFor="dateOfBirth" className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
+        <label htmlFor="dateOfBirth" className="block text-sm font-semibold text-text-primary mb-1.5">
           {t('caregiverApp.onboarding.dateOfBirth')}{' '}
-          <span className="text-gray-500 dark:text-gray-400">({t('caregiverApp.onboarding.optional')})</span>
+          <span className="text-text-muted">({t('caregiverApp.onboarding.optional')})</span>
         </label>
         <input
           id="dateOfBirth"
           type="date"
           value={data.dateOfBirth}
           onChange={(e) => updateData({ dateOfBirth: e.target.value })}
-          className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+          className="input-warm w-full"
         />
       </div>
 
       <div>
-        <label htmlFor="dementiaType" className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
+        <label htmlFor="dementiaType" className="block text-sm font-semibold text-text-primary mb-1.5">
           {t('caregiverApp.onboarding.dementiaType')}
         </label>
         <select
           id="dementiaType"
           value={data.dementiaType}
           onChange={(e) => updateData({ dementiaType: e.target.value })}
-          className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+          className="input-warm w-full"
         >
           <option value="">Select type (optional)</option>
           {dementiaTypes.map((type) => (
@@ -72,7 +72,7 @@ export function Step2AboutLovedOne({ data, updateData }: Props) {
       </div>
 
       <div>
-        <label htmlFor="homeAddress" className="block text-sm font-medium text-gray-900 dark:text-gray-100 mb-1">
+        <label htmlFor="homeAddress" className="block text-sm font-semibold text-text-primary mb-1.5">
           {t('caregiverApp.onboarding.homeAddress')} *
         </label>
         <input
@@ -81,10 +81,10 @@ export function Step2AboutLovedOne({ data, updateData }: Props) {
           value={data.homeAddress}
           onChange={(e) => updateData({ homeAddress: e.target.value })}
           required
-          className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+          className="input-warm w-full"
           placeholder="Full home address"
         />
-        <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+        <p className="mt-1 text-sm text-text-muted">
           Used for the &quot;Take Me Home&quot; feature in the patient app
         </p>
       </div>

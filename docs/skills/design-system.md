@@ -1,8 +1,8 @@
 # Skill: MemoGuard Design System
 
-## Brand Identity
+## Brand Identity — "Hearthstone" Warm & Organic
 
-MemoGuard is warm, reassuring, and professional. It feels like a trusted friend, not a hospital. The design should communicate: "We're here to help your family. You're not alone."
+MemoGuard has a warm, organic, handcrafted feel — like a well-loved family kitchen, not a clinical dashboard. Earthy terracotta tones, soft serifs, and generous rounded corners evoke comfort and trust. The design should communicate: "We're here to help your family. You're not alone."
 
 ## Color Palette
 
@@ -10,50 +10,50 @@ MemoGuard is warm, reassuring, and professional. It feels like a trusted friend,
 
 | Name | Hex | Usage |
 |---|---|---|
-| **Teal** (Primary) | `#0D9488` | Primary buttons, links, active states |
-| **Teal Light** | `#99F6E4` | Highlights, badges |
-| **Teal Dark** | `#0F766E` | Pressed states, headings |
+| **Terracotta** (Primary) | `#B85A2F` | Primary buttons, links, active states |
+| **Terracotta Light** | `#F0B589` | Highlights, badges |
+| **Terracotta Dark** | `#964A27` | Pressed states, headings |
 
 ### Semantic Colors
 
 | Name | Hex | Usage |
 |---|---|---|
-| **Success Green** | `#16A34A` | Task completed, positive indicators |
-| **Warm Amber** | `#D97706` | Overdue tasks, gentle attention needed |
-| **Soft Red** | `#DC2626` | Emergency only (emergency call button) |
-| **Info Blue** | `#2563EB` | Informational badges, links |
+| **Success Green** | `#4A7C59` | Task completed, positive indicators |
+| **Warm Honey** | `#C4882C` | Overdue tasks, gentle attention needed |
+| **Brick Red** | `#B8463A` | Emergency only (emergency call button) |
+| **Slate Blue** | `#4A6FA5` | Informational badges, links |
 
 ### Neutral Colors
 
 | Name | Hex | Usage |
 |---|---|---|
-| **Text Primary** | `#1C1917` | Headings, important text |
-| **Text Secondary** | `#57534E` | Body text, descriptions |
-| **Text Muted** | `#A8A29E` | Timestamps, helper text |
-| **Background** | `#FAFAF8` | Page background (warm, not pure white) |
-| **Card Background** | `#FFFFFF` | Card surfaces |
-| **Border** | `#E7E5E4` | Card borders, dividers |
+| **Text Primary** | `#2D1F14` | Headings, important text |
+| **Text Secondary** | `#5C4A3A` | Body text, descriptions |
+| **Text Muted** | `#9C8B7A` | Timestamps, helper text |
+| **Background** | `#FAF7F2` | Page background (Warm Linen) |
+| **Card Background** | `#FFFDF8` | Card surfaces |
+| **Border** | `#E8E0D4` | Card borders, dividers |
 | **Disabled** | `#D6D3D1` | Disabled buttons, inactive elements |
 
 ### Category Colors (for task categories)
 
 | Category | Icon | Color | Light BG |
 |---|---|---|---|
-| Medication | 💊 | `#7C3AED` (Purple) | `#F5F3FF` |
-| Nutrition | 🥗 | `#16A34A` (Green) | `#F0FDF4` |
-| Physical | 🚶 | `#EA580C` (Orange) | `#FFF7ED` |
-| Cognitive | 🧩 | `#2563EB` (Blue) | `#EFF6FF` |
-| Social | 💬 | `#DB2777` (Pink) | `#FDF2F8` |
-| Health | ❤️ | `#DC2626` (Red) | `#FEF2F2` |
+| Medication | 💊 | `#7B6198` (Dusty Plum) | `#F3EFF7` |
+| Nutrition | 🥗 | `#4A7C59` (Sage Green) | `#EFF5F0` |
+| Physical | 🚶 | `#C4882C` (Warm Honey) | `#FDF6EA` |
+| Cognitive | 🧩 | `#4A6FA5` (Slate Blue) | `#EDF2F8` |
+| Social | 💬 | `#B85A6F` (Dusty Rose) | `#F8EFF2` |
+| Health | ❤️ | `#B8463A` (Brick Red) | `#FAF0EE` |
 
 ### Time-of-Day Gradients (Patient App)
 
 | Period | Gradient Start | Gradient End |
 |---|---|---|
-| Morning (6-12) | `#FEF3C7` (warm peach) | `#FAFAF8` (cream) |
-| Afternoon (12-18) | `#E0F2FE` (soft sky) | `#FAFAF8` (white) |
-| Evening (18-22) | `#EDE9FE` (lavender) | `#FDF2F8` (dusty rose) |
-| Night (22-6) | `#1E1B4B` (deep navy) | `#312E81` (dark purple) |
+| Morning (6-12) | `#FDECD2` (warm peach) | `#FAF7F2` (warm linen) |
+| Afternoon (12-18) | `#E8ECDF` (soft sage) | `#FAF7F2` (warm linen) |
+| Evening (18-22) | `#E5D8CE` (warm taupe) | `#F0E6DC` (dusty clay) |
+| Night (22-6) | `#2D1F14` (dark umber) | `#3A2920` (deep walnut) |
 
 ## Typography
 
@@ -66,8 +66,8 @@ MemoGuard is warm, reassuring, and professional. It feels like a trusted friend,
 | Hint text | 20px | Regular (400) | Text Secondary |
 | "Done" button text | 20px | Bold (700) | White |
 | Progress bar text | 18px | Medium (500) | Text Secondary |
-| "NOW" badge | 14px | Bold (700) | White on Teal |
-| Tab labels | 14px | Medium (500) | Text Secondary / Teal (active) |
+| "NOW" badge | 14px | Bold (700) | White on Terracotta |
+| Tab labels | 14px | Medium (500) | Text Secondary / Terracotta (active) |
 | Check-in emoji labels | 16px | Medium (500) | Text Secondary |
 | Check-in questions | 24px | Medium (500) | Text Primary |
 | Welcome greeting | 28px | Bold (700) | Text Primary |
@@ -87,9 +87,10 @@ MemoGuard is warm, reassuring, and professional. It feels like a trusted friend,
 | Badge text | 12px | Bold (700) |
 
 ### Font Stack
-- Mobile: System default (San Francisco iOS, Roboto Android)
-- Web: `Inter, system-ui, -apple-system, sans-serif`
-- Install Inter via Google Fonts or next/font
+- **Display / Headings:** Fraunces (Google Fonts, soft serif)
+- **Body:** Nunito (Google Fonts, rounded sans-serif)
+- **Web:** Fraunces + Nunito via `next/font/google`
+- **Mobile:** Fraunces + Nunito via `@expo-google-fonts`
 
 ## Spacing Scale
 
@@ -123,10 +124,10 @@ Use a consistent 4px base grid:
 
 | Element | Radius |
 |---|---|
-| Task cards (patient) | 16px |
-| Cards (caregiver) | 12px |
-| Buttons | 12px |
-| Inputs | 8px |
+| Task cards (patient) | 24px |
+| Cards (caregiver) | 20px |
+| Buttons | 16px |
+| Inputs | 14px |
 | Badges | 9999px (pill) |
 | Avatar | 9999px (circle) |
 | Bottom sheet (mobile) | 20px top-left, 20px top-right |
@@ -135,9 +136,9 @@ Use a consistent 4px base grid:
 
 | Level | Usage | CSS |
 |---|---|---|
-| **Card** | All content cards | `0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06)` |
-| **Elevated** | Modals, dropdowns | `0 4px 12px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.08)` |
-| **Header** | Sticky headers | `0 1px 2px rgba(0,0,0,0.05)` |
+| **Card** | All content cards | `0 1px 3px rgba(45,31,20,0.08), 0 1px 2px rgba(45,31,20,0.06)` |
+| **Elevated** | Modals, dropdowns | `0 4px 12px rgba(45,31,20,0.12), 0 2px 4px rgba(45,31,20,0.08)` |
+| **Header** | Sticky headers | `0 1px 2px rgba(45,31,20,0.05)` |
 
 Patient app uses softer shadows (reduce visual noise).
 
@@ -147,14 +148,14 @@ Patient app uses softer shadows (reduce visual noise).
 
 ```
 UPCOMING (default):
-- White card background
+- Warm card background (#FFFDF8)
 - Full opacity
-- "Done" button visible (Primary Teal)
+- "Done" button visible (Primary Terracotta)
 
 NOW (next upcoming task):
-- White card background
-- "NOW" badge (Teal background, white text, top-right)
-- Subtle teal left border (3px)
+- Warm card background (#FFFDF8)
+- "NOW" badge (Terracotta background, white text, top-right)
+- Subtle terracotta left border (3px)
 - "Done" button prominent
 
 OVERDUE:
@@ -183,9 +184,9 @@ COMPLETED:
 │  Status or summary text        │  ← 14px, Text Secondary
 │                                │
 └────────────────────────────────┘
-   Background: Card Background (#FFFFFF)
-   Border: 1px solid Border (#E7E5E4)
-   Radius: 12px
+   Background: Card Background (#FFFDF8)
+   Border: 1px solid Border (#E8E0D4)
+   Radius: 20px
    Shadow: Card level
    Padding: 16px (web), 16px (mobile)
 ```
@@ -194,12 +195,12 @@ COMPLETED:
 
 | Type | Background | Text | Border | Usage |
 |---|---|---|---|---|
-| Primary | Teal `#0D9488` | White | None | Main actions, "Done", "Save", "Send" |
-| Secondary | Transparent | Teal | 1px Teal | Secondary actions, "Edit", "Cancel" |
-| Danger | Transparent | Soft Red | 1px Soft Red | Delete actions (with confirmation) |
+| Primary | Terracotta `#B85A2F` | White | None | Main actions, "Done", "Save", "Send" |
+| Secondary | Transparent | Terracotta | 1px Terracotta | Secondary actions, "Edit", "Cancel" |
+| Danger | Transparent | Brick Red | 1px Brick Red | Delete actions (with confirmation) |
 | Ghost | Transparent | Text Secondary | None | Tertiary actions, "Skip" |
-| Patient Primary | Teal `#0D9488` | White | None | "Done" button — 64px height |
-| Emergency | Soft Red `#DC2626` | White | None | Emergency call button only |
+| Patient Primary | Terracotta `#B85A2F` | White | None | "Done" button — 64px height |
+| Emergency | Brick Red `#B8463A` | White | None | Emergency call button only |
 
 ### Input Fields
 
@@ -209,9 +210,9 @@ COMPLETED:
 │  ┌──────────────────────────────┐│
 │  │ Placeholder text             ││  ← 14px (web) / 16px (mobile)
 │  └──────────────────────────────┘│     Border: 1px Border color
-│  Helper text                     │     Focus: 2px Teal border
-│                                  │     Error: 2px Soft Red border
-└──────────────────────────────────┘     Radius: 8px, Padding: 12px
+│  Helper text                     │     Focus: 2px Terracotta border
+│                                  │     Error: 2px Brick Red border
+└──────────────────────────────────┘     Radius: 14px, Padding: 12px
 ```
 
 ## Icons
@@ -275,7 +276,7 @@ Use `packages/shared/utils/accessibility.ts` functions to verify:
 - All interactive elements focusable via Tab
 - Logical tab order (matches visual order)
 - Skip link to main content on every page
-- Focus visible indicator: 2px Teal (`#0D9488`) outline
+- Focus visible indicator: 2px Terracotta (`#B85A2F`) outline
 - No keyboard traps
 - Modal dialogs trap focus until closed
 - Escape key closes modals/dropdowns
@@ -432,47 +433,48 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          50: '#F0FDFA',
-          100: '#CCFBF1',
-          200: '#99F6E4',
-          500: '#14B8A6',
-          600: '#0D9488',
-          700: '#0F766E',
-          800: '#115E59',
+          50: '#FDF6F0',
+          100: '#F0B589',
+          200: '#E8A070',
+          500: '#C06A3A',
+          600: '#B85A2F',
+          700: '#964A27',
+          800: '#7A3D20',
         },
         surface: {
-          background: '#FAFAF8',
-          card: '#FFFFFF',
-          border: '#E7E5E4',
+          background: '#FAF7F2',
+          card: '#FFFDF8',
+          border: '#E8E0D4',
         },
         text: {
-          primary: '#1C1917',
-          secondary: '#57534E',
-          muted: '#A8A29E',
+          primary: '#2D1F14',
+          secondary: '#5C4A3A',
+          muted: '#9C8B7A',
         },
         status: {
-          success: '#16A34A',
-          amber: '#D97706',
-          danger: '#DC2626',
-          info: '#2563EB',
+          success: '#4A7C59',
+          honey: '#C4882C',
+          danger: '#B8463A',
+          info: '#4A6FA5',
         },
         category: {
-          medication: '#7C3AED',
-          nutrition: '#16A34A',
-          physical: '#EA580C',
-          cognitive: '#2563EB',
-          social: '#DB2777',
-          health: '#DC2626',
+          medication: '#7B6198',
+          nutrition: '#4A7C59',
+          physical: '#C4882C',
+          cognitive: '#4A6FA5',
+          social: '#B85A6F',
+          health: '#B8463A',
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['Fraunces', 'Georgia', 'serif'],
+        sans: ['Nunito', 'system-ui', '-apple-system', 'sans-serif'],
       },
       borderRadius: {
-        card: '12px',
-        'card-patient': '16px',
-        button: '12px',
-        input: '8px',
+        card: '20px',
+        'card-patient': '24px',
+        button: '16px',
+        input: '14px',
         pill: '9999px',
       },
     },

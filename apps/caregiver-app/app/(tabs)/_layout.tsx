@@ -1,14 +1,7 @@
 import { Tabs } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Text, StyleSheet, View } from 'react-native';
-
-const COLORS = {
-  background: '#FAFAF8',
-  card: '#FFFFFF',
-  border: '#E7E5E4',
-  textMuted: '#A8A29E',
-  brand600: '#0D9488',
-};
+import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
 
 interface TabIconProps {
   icon: string;
@@ -19,7 +12,9 @@ interface TabIconProps {
 function TabIcon({ icon, label, focused }: TabIconProps) {
   return (
     <View style={styles.tabIconContainer}>
-      <Text style={[styles.tabIcon, focused && styles.tabIconFocused]}>{icon}</Text>
+      <View style={[styles.iconWrap, focused && styles.iconWrapFocused]}>
+        <Text style={[styles.tabIcon, focused && styles.tabIconFocused]}>{icon}</Text>
+      </View>
       <Text style={[styles.tabLabel, focused && styles.tabLabelFocused]}>{label}</Text>
     </View>
   );
@@ -77,7 +72,7 @@ export default function TabsLayout() {
         options={{
           tabBarIcon: ({ focused }) => (
             <TabIcon
-              icon="🤖"
+              icon="🤗"
               label={t('caregiverApp.tabs.coach')}
               focused={focused}
             />
@@ -105,29 +100,47 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.card,
     borderTopWidth: 1,
     borderTopColor: COLORS.border,
-    paddingTop: 8,
-    paddingBottom: 8,
-    height: 70,
+    paddingTop: 6,
+    paddingBottom: 6,
+    height: 72,
+    ...SHADOWS.sm,
   },
   tabIconContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 4,
+    paddingVertical: 2,
+    minWidth: 56,
+  },
+  iconWrap: {
+    width: 40,
+    height: 32,
+    borderRadius: RADIUS.sm,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 3,
+  },
+  iconWrapFocused: {
+    backgroundColor: COLORS.brand100,
+    borderRadius: RADIUS.lg,
+    width: 48,
+    height: 32,
   },
   tabIcon: {
-    fontSize: 24,
-    marginBottom: 4,
+    fontSize: 22,
   },
   tabIconFocused: {
-    transform: [{ scale: 1.1 }],
+    transform: [{ scale: 1.05 }],
   },
   tabLabel: {
-    fontSize: 11,
+    fontSize: 10,
     color: COLORS.textMuted,
     fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
+    letterSpacing: 0.2,
   },
   tabLabelFocused: {
-    color: COLORS.brand600,
-    fontWeight: '600',
+    color: COLORS.brand700,
+    fontWeight: '700',
+    fontFamily: FONTS.bodyBold,
   },
 });
