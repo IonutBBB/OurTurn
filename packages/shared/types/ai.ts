@@ -39,6 +39,7 @@ export interface BrainActivity {
   activity_type: BrainActivityType;
   prompt_text: string;
   follow_up_text: string | null;
+  media_url: string | null;
   patient_response_text: string | null;
   patient_response_audio_url: string | null;
   completed: boolean;
@@ -51,6 +52,7 @@ export interface BrainActivityInsert {
   activity_type: BrainActivityType;
   prompt_text: string;
   follow_up_text?: string;
+  media_url?: string;
 }
 
 export interface BrainActivityUpdate {

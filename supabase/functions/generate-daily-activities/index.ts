@@ -24,6 +24,7 @@ interface Patient {
     important_people?: string;
     key_events?: string;
     childhood_location?: string;
+    photos?: string[];
   } | null;
   stage: string;
 }
@@ -109,14 +110,18 @@ serve(async (req) => {
         const activity = await generateActivity(patient as Patient, targetDate);
 
         // Insert into database
-        const { error: insertError } = await supabase.from('brain_activities').insert({
+        const insertData: Record<string, unknown> = {
           household_id: household.id,
           date: targetDate,
           activity_type: activity.type,
           prompt_text: activity.prompt,
           follow_up_text: activity.followUp,
           completed: false,
-        });
+        };
+        if (activity.mediaUrl) {
+          insertData.media_url = activity.mediaUrl;
+        }
+        const { error: insertError } = await supabase.from('brain_activities').insert(insertData);
 
         if (insertError) {
           console.error(`Failed to insert activity for household ${household.id}:`, insertError);
@@ -155,11 +160,15 @@ serve(async (req) => {
   }
 });
 
-function selectActivityType(): string {
-  const totalWeight = ACTIVITY_TYPES.reduce((sum, t) => sum + t.weight, 0);
+function selectActivityType(hasPhotos: boolean): string {
+  const types = [...ACTIVITY_TYPES];
+  if (hasPhotos) {
+    types.push({ type: 'photo', weight: 15 });
+  }
+  const totalWeight = types.reduce((sum, t) => sum + t.weight, 0);
   let random = Math.random() * totalWeight;
 
-  for (const activityType of ACTIVITY_TYPES) {
+  for (const activityType of types) {
     random -= activityType.weight;
     if (random <= 0) {
       return activityType.type;
@@ -172,9 +181,10 @@ function selectActivityType(): string {
 async function generateActivity(
   patient: Patient,
   date: string
-): Promise<{ type: string; prompt: string; followUp: string }> {
-  const activityType = selectActivityType();
+): Promise<{ type: string; prompt: string; followUp: string; mediaUrl: string | null }> {
   const bio = patient.biography || {};
+  const hasPhotos = Array.isArray(bio.photos) && bio.photos.length > 0;
+  const activityType = selectActivityType(hasPhotos);
 
   // Build context from patient biography
   const bioContext = [
@@ -198,10 +208,11 @@ ${bioContext || 'No biography provided - create a general, universally appealing
 ACTIVITY TYPE: ${activityType}
 Activity type descriptions:
 - reminiscence: Ask about a specific memory from their life, use their biography
+- photo: A warm reminiscence question about a family photo the patient is looking at
 - word_game: Simple word association or naming categories (e.g., "Name 5 fruits")
 - creative: Imaginative prompt (e.g., "Describe your perfect vacation")
 - orientation: Gentle awareness prompt (e.g., "What season is it now?")
-- music: Ask about a song, era, or musical memory
+- music: Suggest listening to a specific song they love and ask about a musical memory${activityType === 'music' && bio.favorite_music ? `. Include a specific song suggestion from their favorites: ${bio.favorite_music}` : ''}
 
 RULES:
 1. Keep the prompt to 1-2 sentences maximum
@@ -215,7 +226,7 @@ RULES:
 Return JSON in this exact format:
 {
   "prompt": "The activity prompt text",
-  "followUp": "A warm, encouraging response to use after they answer"
+  "followUp": "A warm, encouraging response to use after they answer"${activityType === 'music' ? ',\n  "songName": "The specific song name and artist to search for (if applicable)"' : ''}
 }`;
 
   const response = await fetch(`${GEMINI_API_URL}?key=${GOOGLE_AI_API_KEY}`, {
@@ -245,27 +256,46 @@ Return JSON in this exact format:
     const jsonMatch = text.match(/\{[\s\S]*\}/);
     if (jsonMatch) {
       const parsed = JSON.parse(jsonMatch[0]);
+
+      // Determine media_url based on activity type
+      let mediaUrl: string | null = null;
+      if (activityType === 'photo' && hasPhotos) {
+        // Pick a random photo from the patient's gallery
+        const photoIndex = Math.floor(Math.random() * bio.photos!.length);
+        mediaUrl = bio.photos![photoIndex];
+      } else if (activityType === 'music' && parsed.songName) {
+        // Create YouTube search link for the song
+        const query = encodeURIComponent(parsed.songName);
+        mediaUrl = `https://www.youtube.com/results?search_query=${query}`;
+      }
+
       return {
         type: activityType,
         prompt: parsed.prompt,
         followUp: parsed.followUp,
+        mediaUrl,
       };
     }
   } catch {
     console.error('Failed to parse Gemini response:', text);
   }
 
-  return getDefaultActivity(activityType, patient.name);
+  return getDefaultActivity(activityType, patient.name, hasPhotos ? bio.photos! : []);
 }
 
 function getDefaultActivity(
   type: string,
-  patientName: string
-): { type: string; prompt: string; followUp: string } {
+  patientName: string,
+  photos: string[] = []
+): { type: string; prompt: string; followUp: string; mediaUrl: string | null } {
   const defaults: Record<string, { prompt: string; followUp: string }> = {
     reminiscence: {
       prompt: `${patientName}, what's a favorite memory from when you were younger?`,
       followUp: "What a wonderful memory! Thank you for sharing that with us.",
+    },
+    photo: {
+      prompt: `${patientName}, take a look at this photo. Can you tell us about it?`,
+      followUp: "What a lovely memory! Thank you for sharing that with us.",
     },
     word_game: {
       prompt: `${patientName}, can you name some of your favorite foods?`,
@@ -285,8 +315,14 @@ function getDefaultActivity(
     },
   };
 
+  let mediaUrl: string | null = null;
+  if (type === 'photo' && photos.length > 0) {
+    mediaUrl = photos[Math.floor(Math.random() * photos.length)];
+  }
+
   return {
     type,
-    ...defaults[type] || defaults.reminiscence,
+    mediaUrl,
+    ...(defaults[type] || defaults.reminiscence),
   };
 }

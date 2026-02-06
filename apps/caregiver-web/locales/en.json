@@ -606,7 +606,18 @@
       "typeDeletePlaceholder": "Type DELETE",
       "deleting": "Deleting...",
       "confirmDelete": "Confirm Delete",
-      "deleteFailed": "Failed to delete account. Please contact support."
+      "deleteFailed": "Failed to delete account. Please contact support.",
+      "photoGallery": "Photo Gallery",
+      "photoGalleryDesc": "Upload family photos for personalized reminiscence activities",
+      "uploadPhotos": "Upload Photos",
+      "uploading": "Uploading...",
+      "deletePhoto": "Delete photo",
+      "deletePhotoConfirm": "Are you sure you want to delete this photo?",
+      "maxPhotosReached": "Maximum of 20 photos reached",
+      "photoUploadHint": "Upload up to 20 photos (max 5MB each). These will appear in your loved one's daily brain wellness activities.",
+      "photoUploadFailed": "Failed to upload photo. Please try again.",
+      "photoDeleteFailed": "Failed to delete photo. Please try again.",
+      "noPhotosYet": "No photos uploaded yet"
     },
     "auth": {
       "login": "Log in",

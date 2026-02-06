@@ -9,6 +9,8 @@ import {
   TextInput,
   KeyboardAvoidingView,
   Platform,
+  Image,
+  Linking,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
@@ -294,7 +296,33 @@ export default function ActivityScreen() {
 
           {/* Activity Card */}
           <View style={styles.activityCard}>
+            {/* Photo display for photo activities */}
+            {activity.media_url && activity.activity_type === 'photo' && (
+              <View style={styles.photoContainer}>
+                <Image
+                  source={{ uri: activity.media_url }}
+                  style={styles.activityPhoto}
+                  resizeMode="cover"
+                  accessibilityLabel={t('patientApp.activity.photoMemory')}
+                />
+              </View>
+            )}
+
             <Text style={styles.promptText}>{activity.prompt_text}</Text>
+
+            {/* Music button for music activities */}
+            {activity.media_url && activity.activity_type === 'music' && (
+              <TouchableOpacity
+                style={styles.musicButton}
+                onPress={() => Linking.openURL(activity.media_url!)}
+                activeOpacity={0.8}
+              >
+                <Text style={styles.musicButtonEmoji}>🎵</Text>
+                <Text style={styles.musicButtonText}>
+                  {t('patientApp.activity.listenToSong')}
+                </Text>
+              </TouchableOpacity>
+            )}
 
             {/* Response Mode: Choose */}
             {responseMode === 'choose' && (
@@ -513,6 +541,37 @@ const styles = StyleSheet.create({
     padding: 24,
     borderWidth: 1,
     borderColor: COLORS.border,
+  },
+  photoContainer: {
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  activityPhoto: {
+    width: 300,
+    height: 300,
+    borderRadius: 20,
+    borderWidth: 2,
+    borderColor: COLORS.border,
+  },
+  musicButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: COLORS.brand600,
+    paddingVertical: 16,
+    paddingHorizontal: 32,
+    borderRadius: 16,
+    marginBottom: 24,
+    alignSelf: 'center',
+    gap: 10,
+  },
+  musicButtonEmoji: {
+    fontSize: 28,
+  },
+  musicButtonText: {
+    fontSize: 22,
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textInverse,
   },
   promptText: {
     fontSize: 24,

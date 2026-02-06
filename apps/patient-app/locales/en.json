@@ -85,7 +85,9 @@
       "speakInstead": "Speak instead",
       "recordAgain": "Record again",
       "skipForToday": "Skip for today",
-      "defaultFollowUp": "What a wonderful memory! Thank you for sharing."
+      "defaultFollowUp": "What a wonderful memory! Thank you for sharing.",
+      "listenToSong": "Listen to Song",
+      "photoMemory": "A memory from your life"
     },
     "careCode": {
       "welcome": "Welcome to MemoGuard",

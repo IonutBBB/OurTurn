@@ -19,6 +19,23 @@ export default async function SettingsPage() {
 
   const household = caregiver?.households;
 
+  // Get patient for photo gallery
+  let patientId: string | null = null;
+  let existingPhotos: string[] = [];
+  if (household) {
+    const { data: patient } = await supabase
+      .from('patients')
+      .select('id, biography')
+      .eq('household_id', household.id)
+      .single();
+
+    if (patient) {
+      patientId = patient.id;
+      const bio = patient.biography as Record<string, unknown> | null;
+      existingPhotos = (bio?.photos as string[]) || [];
+    }
+  }
+
   const t = en.caregiverApp;
 
   if (!caregiver || !household) {
@@ -54,6 +71,8 @@ export default async function SettingsPage() {
         caregiver={caregiver}
         household={household}
         careCode={household.care_code}
+        patientId={patientId}
+        existingPhotos={existingPhotos}
       />
     </div>
   );
