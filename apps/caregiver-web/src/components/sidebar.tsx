@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { ThemeToggle } from './theme-toggle';
+import { Logo } from './logo';
 import { createBrowserClient } from '@/lib/supabase';
 
 const navItems = [
@@ -43,8 +44,8 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
           aria-label="OurTurn - Go to dashboard"
           onClick={() => setMobileOpen(false)}
         >
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-            <span className="text-white text-sm font-bold font-display">M</span>
+          <div className="group-hover:scale-105 transition-transform">
+            <Logo className="w-9 h-9 shadow-sm group-hover:shadow-md transition-shadow rounded-xl" />
           </div>
           <span className="text-lg font-display font-bold text-brand-700 dark:text-brand-600">
             OurTurn
