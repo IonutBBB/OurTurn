@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { createClient as createServerClient } from '@/lib/supabase/server';
+import { rateLimit } from '@/lib/rate-limit';
 
 // Initialize Google Generative AI
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY || '');
@@ -119,6 +120,15 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: 'Message and householdId are required' },
         { status: 400 }
+      );
+    }
+
+    // Rate limit: 20 messages per hour per household
+    const rl = rateLimit(`ai-coach:${householdId}`, { limit: 20, windowSeconds: 3600 });
+    if (!rl.allowed) {
+      return NextResponse.json(
+        { error: 'Rate limit exceeded. Please try again later.' },
+        { status: 429, headers: { 'Retry-After': String(rl.retryAfterSeconds) } }
       );
     }
 

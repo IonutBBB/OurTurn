@@ -1,9 +1,11 @@
 // GDPR Account Deletion API Route
 // Allows users to delete their account and all associated data (right to erasure)
+// Uses transactional Postgres functions to ensure all-or-nothing deletion
 
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import { createClient } from '@supabase/supabase-js';
+import { rateLimit } from '@/lib/rate-limit';
 
 export async function DELETE(request: NextRequest) {
   try {
@@ -16,6 +18,15 @@ export async function DELETE(request: NextRequest) {
 
     if (!user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    // Rate limit: 3 delete attempts per hour per user
+    const rl = rateLimit(`gdpr-delete:${user.id}`, { limit: 3, windowSeconds: 3600 });
+    if (!rl.allowed) {
+      return NextResponse.json(
+        { error: 'Too many deletion attempts. Please try again later.' },
+        { status: 429, headers: { 'Retry-After': String(rl.retryAfterSeconds) } }
+      );
     }
 
     // Get request body for confirmation
@@ -62,108 +73,25 @@ export async function DELETE(request: NextRequest) {
     );
 
     if (isPrimary && !hasOtherCaregivers) {
-      // Primary caregiver with no other members - delete entire household
-      // Deleting entire household for this user
+      // Primary caregiver with no other members — delete entire household
+      // Uses transactional Postgres function (all-or-nothing)
+      const { error: rpcError } = await serviceClient.rpc('delete_household_data', {
+        p_household_id: householdId,
+        p_user_id: user.id,
+      });
 
-      // Delete in order to respect foreign key constraints
-      // Most tables have ON DELETE CASCADE, but let's be explicit
+      if (rpcError) {
+        return NextResponse.json(
+          { error: 'Failed to delete household data. No data was removed.' },
+          { status: 500 }
+        );
+      }
 
-      // 1. Delete AI conversations
-      await serviceClient
-        .from('ai_conversations')
-        .delete()
-        .eq('household_id', householdId);
-
-      // 2. Delete caregiver wellbeing logs
-      await serviceClient
-        .from('caregiver_wellbeing_logs')
-        .delete()
-        .eq('caregiver_id', user.id);
-
-      // 3. Delete weekly insights
-      await serviceClient
-        .from('weekly_insights')
-        .delete()
-        .eq('household_id', householdId);
-
-      // 4. Delete doctor visit reports
-      await serviceClient
-        .from('doctor_visit_reports')
-        .delete()
-        .eq('household_id', householdId);
-
-      // 5. Delete brain activities
-      await serviceClient
-        .from('brain_activities')
-        .delete()
-        .eq('household_id', householdId);
-
-      // 6. Delete location alerts
-      await serviceClient
-        .from('location_alerts')
-        .delete()
-        .eq('household_id', householdId);
-
-      // 7. Delete safe zones
-      await serviceClient
-        .from('safe_zones')
-        .delete()
-        .eq('household_id', householdId);
-
-      // 8. Delete location logs
-      await serviceClient
-        .from('location_logs')
-        .delete()
-        .eq('household_id', householdId);
-
-      // 9. Delete care journal entries
-      await serviceClient
-        .from('care_journal_entries')
-        .delete()
-        .eq('household_id', householdId);
-
-      // 10. Delete daily check-ins
-      await serviceClient
-        .from('daily_checkins')
-        .delete()
-        .eq('household_id', householdId);
-
-      // 11. Delete task completions
-      await serviceClient
-        .from('task_completions')
-        .delete()
-        .eq('household_id', householdId);
-
-      // 12. Delete care plan tasks
-      await serviceClient
-        .from('care_plan_tasks')
-        .delete()
-        .eq('household_id', householdId);
-
-      // 13. Delete caregiver
-      await serviceClient
-        .from('caregivers')
-        .delete()
-        .eq('id', user.id);
-
-      // 14. Delete patient
-      await serviceClient
-        .from('patients')
-        .delete()
-        .eq('household_id', householdId);
-
-      // 15. Delete household
-      await serviceClient
-        .from('households')
-        .delete()
-        .eq('id', householdId);
-
-      // 16. Delete auth user
+      // Delete auth user (outside transaction — data is already gone)
       const { error: authError } = await serviceClient.auth.admin.deleteUser(user.id);
-
       if (authError) {
-        console.error('Failed to delete auth user:', authError);
-        // Continue anyway - data is already deleted
+        // Data is deleted but auth record remains — log for manual cleanup
+        console.error('Failed to delete auth user after data deletion:', authError);
       }
 
       return NextResponse.json({
@@ -177,7 +105,7 @@ export async function DELETE(request: NextRequest) {
         },
       });
     } else if (isPrimary && hasOtherCaregivers) {
-      // Primary caregiver but others exist - need to transfer ownership first
+      // Primary caregiver but others exist — need to transfer ownership first
       return NextResponse.json(
         {
           error: 'Cannot delete primary caregiver account',
@@ -188,31 +116,23 @@ export async function DELETE(request: NextRequest) {
         { status: 400 }
       );
     } else {
-      // Non-primary caregiver - just remove themselves
-      // Removing non-primary caregiver from household
+      // Non-primary caregiver — remove themselves only
+      // Uses transactional Postgres function (all-or-nothing)
+      const { error: rpcError } = await serviceClient.rpc('delete_caregiver_data', {
+        p_user_id: user.id,
+      });
 
-      // Delete only this caregiver's personal data
-      await serviceClient
-        .from('ai_conversations')
-        .delete()
-        .eq('caregiver_id', user.id);
-
-      await serviceClient
-        .from('caregiver_wellbeing_logs')
-        .delete()
-        .eq('caregiver_id', user.id);
-
-      // Remove caregiver from household
-      await serviceClient
-        .from('caregivers')
-        .delete()
-        .eq('id', user.id);
+      if (rpcError) {
+        return NextResponse.json(
+          { error: 'Failed to delete account data. No data was removed.' },
+          { status: 500 }
+        );
+      }
 
       // Delete auth user
       const { error: authError } = await serviceClient.auth.admin.deleteUser(user.id);
-
       if (authError) {
-        console.error('Failed to delete auth user:', authError);
+        console.error('Failed to delete auth user after data deletion:', authError);
       }
 
       return NextResponse.json({

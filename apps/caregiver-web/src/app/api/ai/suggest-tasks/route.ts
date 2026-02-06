@@ -3,6 +3,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient as createServerClient } from '@/lib/supabase/server';
+import { rateLimit } from '@/lib/rate-limit';
 
 const GOOGLE_AI_API_KEY = process.env.GOOGLE_AI_API_KEY;
 const GEMINI_API_URL =
@@ -34,6 +35,15 @@ export async function POST(request: NextRequest) {
 
     if (!householdId) {
       return NextResponse.json({ error: 'Household ID is required' }, { status: 400 });
+    }
+
+    // Rate limit: 10 suggestion requests per hour per household
+    const rl = rateLimit(`ai-suggest:${householdId}`, { limit: 10, windowSeconds: 3600 });
+    if (!rl.allowed) {
+      return NextResponse.json(
+        { error: 'Rate limit exceeded. Please try again later.' },
+        { status: 429, headers: { 'Retry-After': String(rl.retryAfterSeconds) } }
+      );
     }
 
     if (!GOOGLE_AI_API_KEY) {

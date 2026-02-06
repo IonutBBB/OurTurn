@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
+import { rateLimit } from '@/lib/rate-limit';
 
 // Lazy initialization to avoid build-time errors when env vars are not set
 let stripeInstance: Stripe | null = null;
@@ -28,6 +29,13 @@ function getSupabase() {
 }
 
 export async function POST(request: NextRequest) {
+  // Rate limit webhooks by IP: 100 per minute (generous for Stripe)
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0] || 'unknown';
+  const rl = rateLimit(`stripe-webhook:${ip}`, { limit: 100, windowSeconds: 60 });
+  if (!rl.allowed) {
+    return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 });
+  }
+
   const body = await request.text();
   const signature = request.headers.get('stripe-signature');
 
