@@ -33,11 +33,17 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   patient: null,
 
   initialize: async () => {
+    const timeout = new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error('Auth init timeout')), 5000)
+    );
+
     try {
-      const session = await getSession();
+      const session = await Promise.race([getSession(), timeout]);
       if (session) {
-        const household = await getHouseholdData();
-        const patient = await getPatientData();
+        const [household, patient] = await Promise.all([
+          Promise.race([getHouseholdData(), timeout]),
+          Promise.race([getPatientData(), timeout]),
+        ]);
         set({
           isInitialized: true,
           isAuthenticated: true,

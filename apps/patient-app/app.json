@@ -3,10 +3,10 @@
     "name": "MemoGuard",
     "slug": "memoguard-patient",
     "version": "1.0.0",
+    "sdkVersion": "54.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled": true,
     "scheme": "memoguard-patient",
     "splash": {
       "image": "./assets/splash-icon.png",
@@ -19,7 +19,9 @@
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "MemoGuard needs your location to help you navigate home safely.",
         "NSLocationAlwaysAndWhenInUseUsageDescription": "MemoGuard needs your location to help you navigate home safely.",
-        "UIBackgroundModes": ["remote-notification"]
+        "UIBackgroundModes": [
+          "remote-notification"
+        ]
       }
     },
     "android": {
@@ -27,8 +29,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FAF7F2"
       },
-      "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false,
+      "edgeToEdgeEnabled": false,
       "package": "com.memoguard.patient",
       "permissions": [
         "ACCESS_COARSE_LOCATION",
@@ -59,11 +60,13 @@
         {
           "icon": "./assets/notification-icon.png",
           "color": "#B85A2F",
-          "sounds": ["./assets/sounds/notification.wav"]
+          "sounds": [
+            "./assets/sounds/notification.wav"
+          ]
         }
       ],
       [
-        "expo-av",
+        "expo-audio",
         {
           "microphonePermission": "MemoGuard needs your microphone to record voice notes for your daily check-in."
         }

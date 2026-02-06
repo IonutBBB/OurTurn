@@ -70,7 +70,7 @@ export default function OnboardingScreen() {
           household_id: household.id,
           name: caregiverName,
           email: user?.email,
-          relationship_to_patient: relationship || 'other',
+          relationship: relationship || 'other',
           role: 'primary',
         });
 

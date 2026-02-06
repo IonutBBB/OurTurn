@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { View, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, ActivityIndicator, StyleSheet, Text } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font';
 import {
@@ -23,8 +23,9 @@ import '../src/i18n';
 
 export default function RootLayout() {
   const { isInitialized, initialize } = useAuthStore();
+  const [fontTimeout, setFontTimeout] = useState(false);
 
-  const [fontsLoaded] = useFonts({
+  const [fontsLoaded, fontError] = useFonts({
     Fraunces_500Medium,
     Fraunces_700Bold,
     Nunito_400Regular,
@@ -37,8 +38,19 @@ export default function RootLayout() {
     initialize();
   }, [initialize]);
 
-  // Show loading screen while initializing auth state or loading fonts
-  if (!isInitialized || !fontsLoaded) {
+  // Font loading timeout - don't block forever
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!fontsLoaded) {
+        setFontTimeout(true);
+      }
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [fontsLoaded]);
+
+  // Show loading screen while initializing - but don't block forever
+  const fontsReady = fontsLoaded || fontTimeout || !!fontError;
+  if (!isInitialized || !fontsReady) {
     return (
       <View style={styles.loadingContainer}>
         <ActivityIndicator size="large" color={COLORS.brand600} />

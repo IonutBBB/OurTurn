@@ -1,13 +1,14 @@
-import { useState, useCallback, useRef } from 'react';
-import { Audio } from 'expo-av';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import {
-  startRecording,
-  stopRecording,
-  cancelRecording,
-  uploadVoiceNote,
-  playVoiceNote,
-  formatDuration,
-} from '../services/voice-recording';
+  useAudioRecorder,
+  useAudioRecorderState,
+  RecordingPresets,
+  requestRecordingPermissionsAsync,
+  setAudioModeAsync,
+  createAudioPlayer,
+} from 'expo-audio';
+import type { AudioPlayer } from 'expo-audio';
+import { uploadVoiceNote, formatDuration } from '../services/voice-recording';
 
 export interface UseVoiceRecordingReturn {
   isRecording: boolean;
@@ -30,108 +31,145 @@ export interface UseVoiceRecordingReturn {
   reset: () => void;
 }
 
+const VOICE_RECORDING_OPTIONS = {
+  ...RecordingPresets.HIGH_QUALITY,
+  numberOfChannels: 1,
+};
+
 /**
- * Hook for voice recording in the patient app
+ * Hook for voice recording in the patient app using expo-audio
  */
 export function useVoiceRecording(): UseVoiceRecordingReturn {
-  const [isRecording, setIsRecording] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
-  const [duration, setDuration] = useState(0);
   const [recordingUri, setRecordingUri] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const soundRef = useRef<Audio.Sound | null>(null);
+  const playerRef = useRef<AudioPlayer | null>(null);
 
+  const recorder = useAudioRecorder(VOICE_RECORDING_OPTIONS, (status) => {
+    if (status.isFinished && status.url) {
+      setRecordingUri(status.url);
+    }
+    if (status.hasError && status.error) {
+      setError(status.error);
+    }
+  });
+
+  const recorderState = useAudioRecorderState(recorder, 1000);
+
+  const duration = Math.floor(recorderState.durationMillis / 1000);
   const formattedDuration = formatDuration(duration);
 
-  // Start recording
+  // Cleanup player on unmount
+  useEffect(() => {
+    return () => {
+      if (playerRef.current) {
+        playerRef.current.remove();
+        playerRef.current = null;
+      }
+    };
+  }, []);
+
   const startRecordingAsync = useCallback(async (): Promise<boolean> => {
     setError(null);
-    setDuration(0);
     setRecordingUri(null);
 
-    const result = await startRecording((newDuration) => {
-      setDuration(newDuration);
-    });
+    try {
+      const { granted } = await requestRecordingPermissionsAsync();
+      if (!granted) {
+        setError('Audio recording permission not granted');
+        return false;
+      }
 
-    if (result.success) {
-      setIsRecording(true);
+      await setAudioModeAsync({
+        allowsRecording: true,
+        playsInSilentMode: true,
+      });
+
+      await recorder.prepareToRecordAsync();
+      recorder.record();
       return true;
-    } else {
-      setError(result.error?.message || 'Failed to start recording');
+    } catch (err) {
+      console.error('Failed to start recording:', err);
+      setError(err instanceof Error ? err.message : 'Failed to start recording');
       return false;
     }
-  }, []);
+  }, [recorder]);
 
-  // Stop recording
   const stopRecordingAsync = useCallback(async (): Promise<string | null> => {
-    const result = await stopRecording();
+    try {
+      recorder.stop();
 
-    setIsRecording(false);
+      await setAudioModeAsync({
+        allowsRecording: false,
+        playsInSilentMode: true,
+      });
 
-    if (result.success && result.uri) {
-      setRecordingUri(result.uri);
-      if (result.duration) {
-        setDuration(result.duration);
+      // The URI is set via the status callback, but also available on recorder
+      const uri = recorder.uri;
+      if (uri) {
+        setRecordingUri(uri);
       }
-      return result.uri;
-    } else {
-      setError(result.error?.message || 'Failed to stop recording');
+      return uri;
+    } catch (err) {
+      console.error('Failed to stop recording:', err);
+      setError(err instanceof Error ? err.message : 'Failed to stop recording');
       return null;
     }
-  }, []);
+  }, [recorder]);
 
-  // Cancel recording
   const cancelRecordingAsync = useCallback(async (): Promise<void> => {
-    await cancelRecording();
-    setIsRecording(false);
-    setDuration(0);
+    try {
+      recorder.stop();
+      await setAudioModeAsync({
+        allowsRecording: false,
+        playsInSilentMode: true,
+      });
+    } catch {
+      // Ignore errors during cancel
+    }
     setRecordingUri(null);
     setError(null);
-  }, []);
+  }, [recorder]);
 
-  // Play recording
   const playRecordingAsync = useCallback(async (): Promise<void> => {
     if (!recordingUri) {
       setError('No recording to play');
       return;
     }
 
-    // Stop any existing playback
-    if (soundRef.current) {
-      await soundRef.current.stopAsync();
-      await soundRef.current.unloadAsync();
-    }
+    try {
+      // Clean up previous player
+      if (playerRef.current) {
+        playerRef.current.remove();
+      }
 
-    const result = await playVoiceNote(recordingUri, (status) => {
-      if (status.isLoaded) {
+      const player = createAudioPlayer({ uri: recordingUri });
+      playerRef.current = player;
+
+      // Listen for playback end
+      player.addListener('playbackStatusUpdate', (status) => {
         if (status.didJustFinish) {
           setIsPlaying(false);
         }
-      }
-    });
+      });
 
-    if (result.success) {
-      soundRef.current = result.sound;
+      player.play();
       setIsPlaying(true);
-    } else {
-      setError(result.error?.message || 'Failed to play recording');
+    } catch (err) {
+      console.error('Failed to play recording:', err);
+      setError(err instanceof Error ? err.message : 'Failed to play recording');
     }
   }, [recordingUri]);
 
-  // Stop playback
   const stopPlaybackAsync = useCallback(async (): Promise<void> => {
-    if (soundRef.current) {
-      await soundRef.current.stopAsync();
-      await soundRef.current.unloadAsync();
-      soundRef.current = null;
+    if (playerRef.current) {
+      playerRef.current.pause();
     }
     setIsPlaying(false);
   }, []);
 
-  // Upload recording
   const uploadRecordingAsync = useCallback(
     async (householdId: string, date: string): Promise<string | null> => {
       if (!recordingUri) {
@@ -157,25 +195,25 @@ export function useVoiceRecording(): UseVoiceRecordingReturn {
     [recordingUri]
   );
 
-  // Reset state
-  const reset = useCallback(async () => {
-    await cancelRecording();
-    if (soundRef.current) {
-      await soundRef.current.unloadAsync();
-      soundRef.current = null;
+  const reset = useCallback(() => {
+    try {
+      recorder.stop();
+    } catch {
+      // Ignore if not recording
     }
-    setIsRecording(false);
-    setIsPaused(false);
+    if (playerRef.current) {
+      playerRef.current.remove();
+      playerRef.current = null;
+    }
     setIsPlaying(false);
     setIsUploading(false);
-    setDuration(0);
     setRecordingUri(null);
     setError(null);
-  }, []);
+  }, [recorder]);
 
   return {
-    isRecording,
-    isPaused,
+    isRecording: recorderState.isRecording,
+    isPaused: false,
     isPlaying,
     isUploading,
     duration,
