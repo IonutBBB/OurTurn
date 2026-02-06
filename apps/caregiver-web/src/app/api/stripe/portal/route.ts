@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import { rateLimit } from '@/lib/rate-limit';
+import { createLogger } from '@/lib/logger';
+
+const log = createLogger('stripe/portal');
 
 // Lazy initialization to avoid build-time errors when env vars are not set
 let stripeInstance: Stripe | null = null;
@@ -89,7 +92,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ portalUrl: session.url });
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : 'Failed to create portal session';
-    console.error('Stripe portal error:', error);
+    log.error('Portal session failed', { error: error instanceof Error ? error.message : 'Unknown' });
     return NextResponse.json(
       { error: message },
       { status: 500 }

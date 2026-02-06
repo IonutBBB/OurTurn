@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { createLogger } from '@/lib/logger';
+
+const log = createLogger('dev/seed');
 
 // This endpoint is for development only
 // It seeds the database with mock data for testing
@@ -154,7 +157,7 @@ export async function POST() {
     });
 
   } catch (error: unknown) {
-    console.error('Seed error:', error);
+    log.error('Seed failed', { error: error instanceof Error ? error.message : 'Unknown' });
     return NextResponse.json({
       error: 'Failed to seed data',
       details: error instanceof Error ? error.message : 'Unknown error'

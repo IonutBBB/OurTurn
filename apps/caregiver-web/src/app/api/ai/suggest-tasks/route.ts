@@ -4,6 +4,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import { rateLimit } from '@/lib/rate-limit';
+import { createLogger } from '@/lib/logger';
+
+const log = createLogger('ai/suggest-tasks');
 
 const GOOGLE_AI_API_KEY = process.env.GOOGLE_AI_API_KEY;
 const GEMINI_API_URL =
@@ -174,7 +177,7 @@ Example format:
 
     if (!response.ok) {
       const error = await response.text();
-      console.error('Gemini API error:', error);
+      log.error('Gemini API error');
       return NextResponse.json(
         { error: 'Failed to generate suggestions' },
         { status: 500 }
@@ -210,14 +213,14 @@ Example format:
 
       return NextResponse.json({ suggestions: validSuggestions });
     } catch (parseError) {
-      console.error('Failed to parse AI response:', text);
+      log.warn('Failed to parse AI response');
       // Return fallback suggestions
       return NextResponse.json({
         suggestions: getFallbackSuggestions(patient.name, category, count),
       });
     }
   } catch (error: unknown) {
-    console.error('AI suggest tasks error:', error);
+    log.error('Request failed', { error: error instanceof Error ? error.message : 'Unknown' });
     return NextResponse.json(
       { error: error instanceof Error ? error.message : 'Internal server error' },
       { status: 500 }

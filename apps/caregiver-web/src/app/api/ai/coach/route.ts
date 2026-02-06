@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import { rateLimit } from '@/lib/rate-limit';
+import { createLogger } from '@/lib/logger';
+
+const log = createLogger('ai/coach');
 
 // Initialize Google Generative AI
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY || '');
@@ -290,7 +293,7 @@ export async function POST(request: NextRequest) {
           );
           controller.close();
         } catch (error) {
-          console.error('Streaming error:', error);
+          log.error('Streaming error');
           controller.enqueue(
             new TextEncoder().encode(
               `data: ${JSON.stringify({ error: 'Failed to generate response' })}\n\n`
@@ -309,7 +312,7 @@ export async function POST(request: NextRequest) {
       },
     });
   } catch (error) {
-    console.error('AI Coach error:', error);
+    log.error('Request failed', { error: error instanceof Error ? error.message : 'Unknown' });
     return NextResponse.json(
       { error: 'Failed to process request' },
       { status: 500 }

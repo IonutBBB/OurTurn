@@ -4,6 +4,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import { rateLimit } from '@/lib/rate-limit';
+import { createLogger } from '@/lib/logger';
+
+const log = createLogger('gdpr/export');
 
 export async function GET(request: NextRequest) {
   try {
@@ -224,7 +227,7 @@ export async function GET(request: NextRequest) {
       },
     });
   } catch (error: unknown) {
-    console.error('GDPR export error:', error);
+    log.error('Export failed', { error: error instanceof Error ? error.message : 'Unknown' });
     return NextResponse.json(
       { error: error instanceof Error ? error.message : 'Export failed' },
       { status: 500 }

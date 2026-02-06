@@ -6,6 +6,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import { createClient } from '@supabase/supabase-js';
 import { rateLimit } from '@/lib/rate-limit';
+import { createLogger } from '@/lib/logger';
+
+const log = createLogger('gdpr/delete');
 
 export async function DELETE(request: NextRequest) {
   try {
@@ -91,7 +94,7 @@ export async function DELETE(request: NextRequest) {
       const { error: authError } = await serviceClient.auth.admin.deleteUser(user.id);
       if (authError) {
         // Data is deleted but auth record remains — log for manual cleanup
-        console.error('Failed to delete auth user after data deletion:', authError);
+        log.error('Failed to delete auth user after data deletion');
       }
 
       return NextResponse.json({
@@ -132,7 +135,7 @@ export async function DELETE(request: NextRequest) {
       // Delete auth user
       const { error: authError } = await serviceClient.auth.admin.deleteUser(user.id);
       if (authError) {
-        console.error('Failed to delete auth user after data deletion:', authError);
+        log.error('Failed to delete auth user after data deletion');
       }
 
       return NextResponse.json({
@@ -147,7 +150,7 @@ export async function DELETE(request: NextRequest) {
       });
     }
   } catch (error: unknown) {
-    console.error('Account deletion error:', error);
+    log.error('Account deletion failed', { error: error instanceof Error ? error.message : 'Unknown' });
     return NextResponse.json(
       { error: error instanceof Error ? error.message : 'Deletion failed' },
       { status: 500 }

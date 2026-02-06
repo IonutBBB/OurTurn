@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
 import { rateLimit } from '@/lib/rate-limit';
+import { createLogger } from '@/lib/logger';
+
+const log = createLogger('stripe/webhook');
 
 // Lazy initialization to avoid build-time errors when env vars are not set
 let stripeInstance: Stripe | null = null;
@@ -56,7 +59,7 @@ export async function POST(request: NextRequest) {
     event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : 'Unknown error';
-    console.error('Webhook signature verification failed:', message);
+    log.error('Webhook signature verification failed');
     return NextResponse.json(
       { error: `Webhook Error: ${message}` },
       { status: 400 }
@@ -82,7 +85,7 @@ export async function POST(request: NextRequest) {
           .eq('id', householdId);
 
         if (error) {
-          console.error('Failed to update subscription status:', error);
+          log.error('Failed to update subscription status');
         }
       }
       break;
@@ -104,7 +107,7 @@ export async function POST(request: NextRequest) {
           .eq('id', householdId);
 
         if (error) {
-          console.error('Failed to update subscription status:', error);
+          log.error('Failed to update subscription status');
         }
       }
       break;
@@ -124,7 +127,7 @@ export async function POST(request: NextRequest) {
           .eq('id', householdId);
 
         if (error) {
-          console.error('Failed to update subscription status:', error);
+          log.error('Failed to update subscription status');
         }
       }
       break;
