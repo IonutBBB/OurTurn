@@ -401,7 +401,18 @@
       "regenerateWarning": "The old code will stop working. All paired patient devices will need the new code.",
       "dangerZone": "Danger Zone",
       "relationship": "Relationship",
-      "deleteConfirm": "Type DELETE to confirm account deletion"
+      "deleteConfirm": "Type DELETE to confirm account deletion",
+      "photoGallery": "Photo Gallery",
+      "photoGalleryDesc": "Upload family photos for personalized reminiscence activities",
+      "uploadPhotos": "Upload Photos",
+      "uploading": "Uploading...",
+      "deletePhoto": "Delete this photo?",
+      "maxPhotosReached": "Maximum of 20 photos reached",
+      "photoUploadHint": "Up to 20 photos, max 5MB each",
+      "photoUploadFailed": "Failed to upload photo. Please try again.",
+      "photoDeleteFailed": "Failed to delete photo. Please try again.",
+      "noPhotosYet": "No photos uploaded yet",
+      "photosCount": "{{count}} of 20 photos"
     },
     "auth": {
       "login": "Log in",

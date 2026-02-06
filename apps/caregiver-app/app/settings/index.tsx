@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import {
   View,
   Text,
@@ -10,6 +10,7 @@ import {
   TextInput,
   ActivityIndicator,
   Modal,
+  Image,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Constants from 'expo-constants';
@@ -17,6 +18,7 @@ import { useTranslation } from 'react-i18next';
 import { router } from 'expo-router';
 import * as Clipboard from 'expo-clipboard';
 import * as Haptics from 'expo-haptics';
+import * as ImagePicker from 'expo-image-picker';
 import { useAuthStore } from '../../src/stores/auth-store';
 import { supabase } from '@memoguard/supabase';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
@@ -58,9 +60,122 @@ export default function SettingsScreen() {
   const [isExporting, setIsExporting] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
+  // Photo gallery
+  const [photos, setPhotos] = useState<string[]>([]);
+  const [isUploadingPhotos, setIsUploadingPhotos] = useState(false);
+
   // Delete confirmation modal (cross-platform replacement for Alert.prompt)
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteConfirmText, setDeleteConfirmText] = useState('');
+
+  // Load existing photos from patient biography
+  useEffect(() => {
+    if (!patient?.id) return;
+    (async () => {
+      const { data } = await supabase
+        .from('patients')
+        .select('biography')
+        .eq('id', patient.id)
+        .single();
+      const bio = data?.biography as Record<string, unknown> | null;
+      setPhotos((bio?.photos as string[]) || []);
+    })();
+  }, [patient?.id]);
+
+  const updatePatientPhotos = useCallback(async (newPhotos: string[]) => {
+    if (!patient?.id) return;
+    const { data } = await supabase
+      .from('patients')
+      .select('biography')
+      .eq('id', patient.id)
+      .single();
+    const currentBio = (data?.biography as Record<string, unknown>) || {};
+    const { error } = await supabase
+      .from('patients')
+      .update({ biography: { ...currentBio, photos: newPhotos } })
+      .eq('id', patient.id);
+    if (error) throw error;
+  }, [patient?.id]);
+
+  const handleUploadPhotos = useCallback(async () => {
+    if (photos.length >= 20) {
+      Alert.alert(t('caregiverApp.settings.maxPhotosReached'));
+      return;
+    }
+
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ['images'],
+      allowsMultipleSelection: true,
+      selectionLimit: 20 - photos.length,
+      quality: 0.8,
+    });
+
+    if (result.canceled || result.assets.length === 0) return;
+
+    setIsUploadingPhotos(true);
+    try {
+      const newUrls: string[] = [];
+
+      for (const asset of result.assets) {
+        if (asset.fileSize && asset.fileSize > 5 * 1024 * 1024) continue;
+
+        const ext = asset.uri.split('.').pop() || 'jpg';
+        const path = `${household!.id}/${crypto.randomUUID()}.${ext}`;
+
+        const response = await fetch(asset.uri);
+        const blob = await response.blob();
+
+        const { error: uploadError } = await supabase.storage
+          .from('patient-photos')
+          .upload(path, blob, { contentType: asset.mimeType || 'image/jpeg' });
+
+        if (uploadError) throw uploadError;
+
+        const { data: urlData } = supabase.storage
+          .from('patient-photos')
+          .getPublicUrl(path);
+
+        newUrls.push(urlData.publicUrl);
+      }
+
+      const updatedPhotos = [...photos, ...newUrls];
+      await updatePatientPhotos(updatedPhotos);
+      setPhotos(updatedPhotos);
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    } catch (err) {
+      Alert.alert(t('caregiverApp.settings.photoUploadFailed'));
+    } finally {
+      setIsUploadingPhotos(false);
+    }
+  }, [photos, household?.id, patient?.id]);
+
+  const handleDeletePhoto = useCallback(async (photoUrl: string) => {
+    Alert.alert(
+      t('caregiverApp.settings.deletePhoto'),
+      '',
+      [
+        { text: t('common.cancel'), style: 'cancel' },
+        {
+          text: t('common.delete'),
+          style: 'destructive',
+          onPress: async () => {
+            try {
+              const urlParts = photoUrl.split('/patient-photos/');
+              if (urlParts[1]) {
+                await supabase.storage.from('patient-photos').remove([urlParts[1]]);
+              }
+              const updatedPhotos = photos.filter((p) => p !== photoUrl);
+              await updatePatientPhotos(updatedPhotos);
+              setPhotos(updatedPhotos);
+              Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+            } catch (err) {
+              Alert.alert(t('caregiverApp.settings.photoDeleteFailed'));
+            }
+          },
+        },
+      ]
+    );
+  }, [photos, patient?.id]);
 
   const handleSaveProfile = useCallback(async () => {
     if (!caregiver?.id) return;
@@ -432,6 +547,56 @@ export default function SettingsScreen() {
             </View>
           </View>
         </View>
+
+        {/* Photo Gallery Section */}
+        {patient?.id && (
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>{t('caregiverApp.settings.photoGallery')}</Text>
+            <View style={styles.card}>
+              <Text style={styles.photoDesc}>{t('caregiverApp.settings.photoGalleryDesc')}</Text>
+
+              {photos.length > 0 ? (
+                <>
+                  <Text style={styles.photoCount}>
+                    {t('caregiverApp.settings.photosCount', { count: photos.length })}
+                  </Text>
+                  <View style={styles.photoGrid}>
+                    {photos.map((url) => (
+                      <TouchableOpacity
+                        key={url}
+                        style={styles.photoThumb}
+                        onLongPress={() => handleDeletePhoto(url)}
+                        activeOpacity={0.8}
+                      >
+                        <Image source={{ uri: url }} style={styles.photoImage} />
+                      </TouchableOpacity>
+                    ))}
+                  </View>
+                  <Text style={styles.photoHintText}>{t('caregiverApp.settings.photoUploadHint')}</Text>
+                </>
+              ) : (
+                <Text style={styles.noPhotosText}>{t('caregiverApp.settings.noPhotosYet')}</Text>
+              )}
+
+              <TouchableOpacity
+                style={[styles.saveButton, (isUploadingPhotos || photos.length >= 20) && styles.saveButtonDisabled]}
+                onPress={handleUploadPhotos}
+                disabled={isUploadingPhotos || photos.length >= 20}
+                activeOpacity={0.7}
+              >
+                {isUploadingPhotos ? (
+                  <ActivityIndicator color={COLORS.textInverse} size="small" />
+                ) : (
+                  <Text style={styles.saveButtonText}>
+                    {photos.length >= 20
+                      ? t('caregiverApp.settings.maxPhotosReached')
+                      : t('caregiverApp.settings.uploadPhotos')}
+                  </Text>
+                )}
+              </TouchableOpacity>
+            </View>
+          </View>
+        )}
 
         {/* Change Password Section */}
         <View style={styles.section}>
@@ -827,6 +992,50 @@ const styles = StyleSheet.create({
   },
   codeButtonTextDanger: {
     color: COLORS.danger,
+  },
+
+  // Photo gallery
+  photoDesc: {
+    fontSize: 14,
+    fontFamily: FONTS.body,
+    color: COLORS.textSecondary,
+    marginBottom: 12,
+  },
+  photoCount: {
+    fontSize: 13,
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textMuted,
+    marginBottom: 8,
+  },
+  photoGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+    marginBottom: 12,
+  },
+  photoThumb: {
+    width: 80,
+    height: 80,
+    borderRadius: RADIUS.md,
+    overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: COLORS.border,
+  },
+  photoImage: {
+    width: '100%',
+    height: '100%',
+  },
+  photoHintText: {
+    fontSize: 12,
+    fontFamily: FONTS.body,
+    color: COLORS.textMuted,
+    marginBottom: 12,
+  },
+  noPhotosText: {
+    fontSize: 14,
+    fontFamily: FONTS.body,
+    color: COLORS.textMuted,
+    marginBottom: 12,
   },
 
   // Password

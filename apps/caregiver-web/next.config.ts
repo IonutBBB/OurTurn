@@ -6,6 +6,17 @@ const nextConfig: NextConfig = {
   // Transpile monorepo packages
   transpilePackages: ['@memoguard/shared', '@memoguard/supabase'],
 
+  // Allow Supabase Storage images in next/image
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.supabase.co',
+        pathname: '/storage/v1/object/public/**',
+      },
+    ],
+  },
+
   // Security headers
   async headers() {
     return [
