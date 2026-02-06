@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "MemoGuard Caregiver",
-    "slug": "memoguard-caregiver",
+    "name": "OurTurn Caregiver",
+    "slug": "ourturn-caregiver",
     "version": "1.0.0-beta.1",
     "sdkVersion": "54.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "scheme": "memoguard-caregiver",
+    "scheme": "ourturn-caregiver",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
@@ -16,7 +16,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.memoguard.caregiver",
+      "bundleIdentifier": "com.ourturn.caregiver",
       "infoPlist": {
         "UIBackgroundModes": ["remote-notification"]
       }
@@ -26,7 +26,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#B85A2F"
       },
-      "package": "com.memoguard.caregiver",
+      "package": "com.ourturn.caregiver",
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
       "permissions": [

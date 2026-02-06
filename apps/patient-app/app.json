@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "MemoGuard",
-    "slug": "memoguard-patient",
+    "name": "OurTurn",
+    "slug": "ourturn-patient",
     "version": "1.0.0-beta.1",
     "sdkVersion": "54.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "scheme": "memoguard-patient",
+    "scheme": "ourturn-patient",
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
@@ -15,7 +15,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.memoguard.patient",
+      "bundleIdentifier": "com.ourturn.patient",
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "MemoGuard needs your location to help you navigate home safely.",
         "NSLocationAlwaysAndWhenInUseUsageDescription": "MemoGuard needs your location to help you navigate home safely.",
@@ -30,7 +30,7 @@
         "backgroundColor": "#FAF7F2"
       },
       "edgeToEdgeEnabled": false,
-      "package": "com.memoguard.patient",
+      "package": "com.ourturn.patient",
       "permissions": [
         "ACCESS_COARSE_LOCATION",
         "ACCESS_FINE_LOCATION",
