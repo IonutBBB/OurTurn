@@ -11,6 +11,7 @@ export interface Household {
   country: string | null;
   subscription_status: SubscriptionStatus;
   subscription_platform: SubscriptionPlatform | null;
+  stripe_customer_id: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -27,4 +28,5 @@ export interface HouseholdUpdate {
   country?: string;
   subscription_status?: SubscriptionStatus;
   subscription_platform?: SubscriptionPlatform;
+  stripe_customer_id?: string;
 }

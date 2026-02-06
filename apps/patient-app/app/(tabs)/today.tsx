@@ -42,24 +42,7 @@ import {
   supabase,
 } from '@memoguard/supabase';
 import type { CarePlanTask, TaskCompletion } from '@memoguard/shared';
-
-// Design system colors - 2026 Edition
-const COLORS = {
-  background: '#FAFBFC',
-  card: '#FFFFFF',
-  cardElevated: 'rgba(255, 255, 255, 0.95)',
-  textPrimary: '#0F172A',
-  textSecondary: '#475569',
-  textMuted: '#94A3B8',
-  brand50: '#ECFDF8',
-  brand100: '#D1FAE9',
-  brand400: '#2DD4BF',
-  brand500: '#14B8A6',
-  brand600: '#0A9488',
-  brand700: '#0D7D73',
-  successBg: '#ECFDF5',
-  success: '#10B981',
-};
+import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
 
 export default function TodayScreen() {
   const { t } = useTranslation();
@@ -419,17 +402,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   offlineText: {
-    fontSize: 16,
-    color: '#FFFFFF',
+    fontSize: 20,
+    color: COLORS.textInverse,
     textAlign: 'center',
-    fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
   },
   greetingContainer: {
     marginBottom: 28,
   },
   greeting: {
     fontSize: 32,
-    fontWeight: '800',
+    fontFamily: FONTS.display,
     color: COLORS.textPrimary,
     lineHeight: 40,
     letterSpacing: -0.5,
@@ -437,19 +420,15 @@ const styles = StyleSheet.create({
   progressContainer: {
     marginBottom: 28,
     backgroundColor: COLORS.card,
-    borderRadius: 20,
+    borderRadius: RADIUS['2xl'],
     padding: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.08,
-    shadowRadius: 12,
-    elevation: 4,
+    ...SHADOWS.md,
   },
   progressText: {
-    fontSize: 18,
+    fontSize: 20,
     color: COLORS.textSecondary,
     marginBottom: 12,
-    fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
   },
   progressBarBackground: {
     height: 12,
@@ -463,24 +442,24 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   encouragingText: {
-    fontSize: 18,
+    fontSize: 20,
     color: COLORS.brand600,
     marginTop: 12,
-    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
   },
   errorContainer: {
-    backgroundColor: '#FEF2F2',
+    backgroundColor: COLORS.dangerBg,
     borderRadius: 16,
     padding: 24,
     marginBottom: 20,
     borderWidth: 1,
-    borderColor: '#FECACA',
+    borderColor: COLORS.danger + '40',
   },
   errorText: {
-    fontSize: 18,
-    color: '#DC2626',
+    fontSize: 20,
+    color: COLORS.danger,
     textAlign: 'center',
-    fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
   },
   emptyContainer: {
     flex: 1,
@@ -498,14 +477,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingHorizontal: 32,
     lineHeight: 32,
-    fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
   },
   bottomPadding: {
     height: 120,
   },
   checkinCard: {
     backgroundColor: COLORS.brand50,
-    borderRadius: 20,
+    borderRadius: RADIUS['2xl'],
     padding: 24,
     marginBottom: 20,
     borderWidth: 2,
@@ -529,14 +508,14 @@ const styles = StyleSheet.create({
   },
   checkinTitle: {
     fontSize: 22,
-    fontWeight: '700',
+    fontFamily: FONTS.bodyBold,
     color: COLORS.textPrimary,
     letterSpacing: -0.3,
   },
   checkinSubtitle: {
-    fontSize: 17,
+    fontSize: 20,
     color: COLORS.brand700,
     marginTop: 6,
-    fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
   },
 });

@@ -13,18 +13,7 @@ import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { supabase } from '@memoguard/supabase';
 import { useAuthStore } from '../src/stores/auth-store';
-
-const COLORS = {
-  background: '#FAFAF8',
-  card: '#FFFFFF',
-  border: '#E7E5E4',
-  textPrimary: '#1C1917',
-  textSecondary: '#57534E',
-  textMuted: '#A8A29E',
-  brand600: '#0D9488',
-  brand700: '#0F766E',
-  danger: '#DC2626',
-};
+import { COLORS, FONTS, RADIUS, SHADOWS } from '../src/theme';
 
 export default function OnboardingScreen() {
   const { t } = useTranslation();
@@ -40,7 +29,7 @@ export default function OnboardingScreen() {
 
   const handleComplete = async () => {
     if (!caregiverName || !patientName) {
-      setError('Please fill in all required fields');
+      setError(t('caregiverApp.onboarding.fillRequired'));
       return;
     }
 
@@ -94,7 +83,7 @@ export default function OnboardingScreen() {
       router.replace('/(tabs)/dashboard');
     } catch (err) {
       console.error('Onboarding error:', err);
-      setError(err instanceof Error ? err.message : 'Failed to complete setup');
+      setError(err instanceof Error ? err.message : t('caregiverApp.onboarding.setupFailed'));
     } finally {
       setLoading(false);
     }
@@ -109,8 +98,10 @@ export default function OnboardingScreen() {
       >
         {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.logo}>MemoGuard</Text>
-          <Text style={styles.stepText}>Quick Setup</Text>
+          <View style={styles.logoMark}>
+            <Text style={styles.logoLetter}>M</Text>
+          </View>
+          <Text style={styles.stepText}>{t('caregiverApp.onboarding.quickSetup')}</Text>
         </View>
 
         {/* Form */}
@@ -122,34 +113,34 @@ export default function OnboardingScreen() {
           )}
 
           <View style={styles.inputGroup}>
-            <Text style={styles.label}>Your name *</Text>
+            <Text style={styles.label}>{t('caregiverApp.onboarding.yourNameRequired')}</Text>
             <TextInput
               style={styles.input}
               value={caregiverName}
               onChangeText={setCaregiverName}
-              placeholder="Your name"
+              placeholder={t('caregiverApp.onboarding.yourName')}
               placeholderTextColor={COLORS.textMuted}
             />
           </View>
 
           <View style={styles.inputGroup}>
-            <Text style={styles.label}>Your loved one&apos;s name *</Text>
+            <Text style={styles.label}>{t('caregiverApp.onboarding.lovedOneNameRequired')}</Text>
             <TextInput
               style={styles.input}
               value={patientName}
               onChangeText={setPatientName}
-              placeholder="Their first name"
+              placeholder={t('caregiverApp.onboarding.theirName')}
               placeholderTextColor={COLORS.textMuted}
             />
           </View>
 
           <View style={styles.inputGroup}>
-            <Text style={styles.label}>Your relationship</Text>
+            <Text style={styles.label}>{t('caregiverApp.onboarding.relationship')}</Text>
             <TextInput
               style={styles.input}
               value={relationship}
               onChangeText={setRelationship}
-              placeholder="e.g., daughter, son, spouse"
+              placeholder={t('caregiverApp.onboarding.relationshipPlaceholder')}
               placeholderTextColor={COLORS.textMuted}
             />
           </View>
@@ -161,15 +152,15 @@ export default function OnboardingScreen() {
             activeOpacity={0.8}
           >
             {loading ? (
-              <ActivityIndicator color="#FFFFFF" />
+              <ActivityIndicator color={COLORS.textInverse} />
             ) : (
-              <Text style={styles.buttonText}>Get Started</Text>
+              <Text style={styles.buttonText}>{t('caregiverApp.onboarding.finish')}</Text>
             )}
           </TouchableOpacity>
         </View>
 
         <Text style={styles.hint}>
-          You can add more details later in Settings
+          {t('caregiverApp.onboarding.settingsHint')}
         </Text>
       </ScrollView>
     </SafeAreaView>
@@ -193,28 +184,41 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 40,
   },
-  logo: {
-    fontSize: 32,
+  logoMark: {
+    width: 56,
+    height: 56,
+    borderRadius: RADIUS.lg,
+    backgroundColor: COLORS.brand600,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 12,
+    ...SHADOWS.md,
+  },
+  logoLetter: {
+    fontSize: 28,
     fontWeight: '700',
-    color: COLORS.brand700,
-    marginBottom: 8,
+    fontFamily: FONTS.display,
+    color: COLORS.textInverse,
   },
   stepText: {
-    fontSize: 20,
+    fontSize: 22,
+    fontFamily: FONTS.display,
+    fontWeight: '600',
     color: COLORS.textPrimary,
   },
   form: {
     backgroundColor: COLORS.card,
-    borderRadius: 16,
+    borderRadius: RADIUS.xl,
     padding: 24,
     borderWidth: 1,
     borderColor: COLORS.border,
+    ...SHADOWS.md,
   },
   errorContainer: {
-    backgroundColor: '#FEF2F2',
+    backgroundColor: COLORS.dangerBg,
     borderWidth: 1,
-    borderColor: '#FECACA',
-    borderRadius: 8,
+    borderColor: COLORS.danger,
+    borderRadius: RADIUS.md,
     padding: 12,
     marginBottom: 16,
   },
@@ -227,27 +231,30 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 14,
-    fontWeight: '500',
+    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
     color: COLORS.textPrimary,
     marginBottom: 6,
   },
   input: {
     borderWidth: 1,
-    borderColor: COLORS.border,
-    borderRadius: 12,
+    borderColor: COLORS.brand200,
+    borderRadius: RADIUS.lg,
     paddingHorizontal: 16,
     paddingVertical: 14,
     fontSize: 16,
+    fontFamily: FONTS.body,
     color: COLORS.textPrimary,
     backgroundColor: COLORS.card,
   },
   button: {
     backgroundColor: COLORS.brand600,
-    borderRadius: 12,
+    borderRadius: RADIUS.lg,
     paddingVertical: 16,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 8,
+    ...SHADOWS.sm,
   },
   buttonDisabled: {
     opacity: 0.6,
@@ -255,10 +262,12 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#FFFFFF',
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textInverse,
   },
   hint: {
     fontSize: 14,
+    fontFamily: FONTS.body,
     color: COLORS.textMuted,
     textAlign: 'center',
     marginTop: 24,

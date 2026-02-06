@@ -18,27 +18,7 @@ import {
   TOUCH_TARGETS,
 } from '@memoguard/shared';
 import type { CarePlanTask, TaskCompletion } from '@memoguard/shared';
-
-// Design system colors - 2026 Edition
-const COLORS = {
-  background: '#FAFBFC',
-  card: '#FFFFFF',
-  border: '#E2E8F0',
-  textPrimary: '#0F172A',
-  textSecondary: '#475569',
-  textMuted: '#94A3B8',
-  brand50: '#ECFDF8',
-  brand100: '#D1FAE9',
-  brand400: '#2DD4BF',
-  brand500: '#14B8A6',
-  brand600: '#0A9488',
-  brand700: '#0D7D73',
-  success: '#10B981',
-  successBg: '#ECFDF5',
-  amber: '#F59E0B',
-  amberBg: '#FFFBEB',
-  completedBg: '#F8FAFC',
-};
+import { COLORS, FONTS, RADIUS, SHADOWS } from '../theme';
 
 export type TaskStatus = 'upcoming' | 'now' | 'overdue' | 'completed' | 'skipped';
 
@@ -216,14 +196,10 @@ export default function TaskCard({ task, completion, status, onComplete }: TaskC
 const styles = StyleSheet.create({
   card: {
     backgroundColor: COLORS.card,
-    borderRadius: 20,
+    borderRadius: RADIUS['2xl'],
     padding: 24,
     marginBottom: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.08,
-    shadowRadius: 16,
-    elevation: 4,
+    ...SHADOWS.md,
     position: 'relative',
     borderWidth: 1,
     borderColor: COLORS.border,
@@ -260,9 +236,9 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   nowBadgeText: {
-    color: '#FFFFFF',
-    fontSize: 13,
-    fontWeight: '700',
+    color: COLORS.textInverse,
+    fontSize: 20,
+    fontFamily: FONTS.bodyBold,
     letterSpacing: 0.5,
     textTransform: 'uppercase',
   },
@@ -283,9 +259,9 @@ const styles = StyleSheet.create({
     marginBottom: 14,
   },
   time: {
-    fontSize: 17,
+    fontSize: 20,
     color: COLORS.textMuted,
-    fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
   },
   titleRow: {
     flexDirection: 'row',
@@ -298,7 +274,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: '700',
+    fontFamily: FONTS.bodyBold,
     color: COLORS.textPrimary,
     flex: 1,
     letterSpacing: -0.3,
@@ -306,6 +282,7 @@ const styles = StyleSheet.create({
   hint: {
     fontSize: 20,
     color: COLORS.textSecondary,
+    fontFamily: FONTS.body,
     lineHeight: 30,
     marginBottom: 24,
     fontStyle: 'italic',
@@ -314,10 +291,10 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   completedTime: {
-    fontSize: 17,
+    fontSize: 20,
     color: COLORS.success,
     marginTop: 10,
-    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
   },
   doneButton: {
     backgroundColor: COLORS.brand600,
@@ -337,8 +314,8 @@ const styles = StyleSheet.create({
   },
   doneButtonText: {
     fontSize: 20,
-    fontWeight: '700',
-    color: '#FFFFFF',
+    fontFamily: FONTS.bodyBold,
+    color: COLORS.textInverse,
     letterSpacing: 0.3,
   },
   textMuted: {

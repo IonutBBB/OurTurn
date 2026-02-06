@@ -149,7 +149,9 @@
       "print": "Print",
       "downloadPdf": "Download PDF",
       "emailDoctor": "Email to doctor",
-      "disclaimer": "This summary is based on self-reported wellness data and family observations. It is not a clinical assessment."
+      "disclaimer": "This summary is based on self-reported wellness data and family observations. It is not a clinical assessment.",
+      "webNote": "For the full report builder with print and PDF export, visit the MemoGuard web app.",
+      "openInWebApp": "Open in Web App"
     },
     "onboarding": {
       "step1Title": "About You",
@@ -162,8 +164,15 @@
       "back": "Back",
       "finish": "Get Started",
       "careCodeInstructions": "Install MemoGuard on your loved one's phone and enter this code to connect.",
+      "quickSetup": "Quick Setup",
       "yourName": "Your name",
+      "yourNameRequired": "Your name *",
+      "lovedOneNameRequired": "Your loved one's name *",
       "relationship": "Your relationship to them",
+      "relationshipPlaceholder": "e.g., daughter, son, spouse",
+      "settingsHint": "You can add more details later in Settings",
+      "fillRequired": "Please fill in all required fields",
+      "setupFailed": "Failed to complete setup",
       "country": "Country",
       "theirName": "Their first name",
       "dateOfBirth": "Date of birth",
@@ -214,7 +223,14 @@
       "hasAccount": "Already have an account?",
       "continueWithGoogle": "Continue with Google",
       "continueWithApple": "Continue with Apple",
-      "or": "or"
+      "or": "or",
+      "confirmPassword": "Confirm password",
+      "createAccount": "Create Account",
+      "getStarted": "Get Started",
+      "fillAllFields": "Please fill in all fields",
+      "passwordsNoMatch": "Passwords do not match",
+      "passwordTooShort": "Password must be at least 8 characters",
+      "checkEmail": "Please check your email to confirm your account"
     },
     "tabs": {
       "dashboard": "Dashboard",

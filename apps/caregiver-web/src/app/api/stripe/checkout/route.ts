@@ -69,13 +69,10 @@ export async function POST(request: NextRequest) {
       });
       customerId = customer.id;
 
-      // Store the customer ID in the household (via metadata for now)
+      // Store the customer ID in the household
       await supabase
         .from('households')
-        .update({
-          // Store stripe_customer_id in a way that works with current schema
-          // We'll add it to metadata or create a separate table
-        })
+        .update({ stripe_customer_id: customerId })
         .eq('id', household.id);
     }
 

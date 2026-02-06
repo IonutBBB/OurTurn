@@ -3,15 +3,7 @@ import { Tabs, useRouter } from 'expo-router';
 import { View, Text, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../../src/stores/auth-store';
-
-// Design system colors
-const COLORS = {
-  background: '#FAFAF8',
-  card: '#FFFFFF',
-  border: '#E7E5E4',
-  textMuted: '#A8A29E',
-  brand600: '#0D9488',
-};
+import { COLORS, FONTS, SHADOWS } from '../../src/theme';
 
 interface TabIconProps {
   emoji: string;
@@ -102,8 +94,8 @@ const styles = StyleSheet.create({
     transform: [{ scale: 1.1 }],
   },
   tabLabel: {
-    fontSize: 14,
-    fontWeight: '600',
+    fontSize: 20,
+    fontFamily: FONTS.bodySemiBold,
     color: COLORS.textMuted,
   },
   tabLabelActive: {

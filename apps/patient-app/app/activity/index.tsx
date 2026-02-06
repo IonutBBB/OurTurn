@@ -18,25 +18,7 @@ import { useAuthStore } from '../../src/stores/auth-store';
 import { supabase } from '@memoguard/supabase';
 import { useVoiceRecording } from '../../src/hooks/use-voice-recording';
 import type { BrainActivity } from '@memoguard/shared';
-
-const COLORS = {
-  background: '#FAFAF8',
-  card: '#FFFFFF',
-  border: '#E7E5E4',
-  textPrimary: '#1C1917',
-  textSecondary: '#57534E',
-  textMuted: '#A8A29E',
-  brand50: '#F0FDFA',
-  brand100: '#CCFBF1',
-  brand200: '#99F6E4',
-  brand400: '#2DD4BF',
-  brand600: '#0D9488',
-  brand700: '#0F766E',
-  success: '#16A34A',
-  recordingRed: '#EF4444',
-  recordingRedBg: '#FEF2F2',
-  white: '#FFFFFF',
-};
+import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
 
 const ACTIVITY_ICONS: Record<string, string> = {
   reminiscence: '💭',
@@ -367,7 +349,7 @@ export default function ActivityScreen() {
                         activeOpacity={0.8}
                       >
                         {saving || isUploading ? (
-                          <ActivityIndicator color={COLORS.white} />
+                          <ActivityIndicator color={COLORS.textInverse} />
                         ) : (
                           <Text style={styles.submitButtonText}>{t('common.done')}</Text>
                         )}
@@ -432,7 +414,7 @@ export default function ActivityScreen() {
                     activeOpacity={0.8}
                   >
                     {saving ? (
-                      <ActivityIndicator color={COLORS.white} />
+                      <ActivityIndicator color={COLORS.textInverse} />
                     ) : (
                       <Text style={styles.submitButtonText}>{t('common.done')}</Text>
                     )}
@@ -493,19 +475,19 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 24,
-    fontWeight: '700',
+    fontFamily: FONTS.display,
     color: COLORS.textPrimary,
   },
   activityCard: {
     backgroundColor: COLORS.card,
-    borderRadius: 20,
+    borderRadius: RADIUS['2xl'],
     padding: 24,
     borderWidth: 1,
     borderColor: COLORS.border,
   },
   promptText: {
     fontSize: 24,
-    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
     color: COLORS.textPrimary,
     textAlign: 'center',
     lineHeight: 34,
@@ -530,12 +512,13 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   responseOptionText: {
-    fontSize: 18,
-    fontWeight: '500',
+    fontSize: 20,
+    fontFamily: FONTS.bodyMedium,
     color: COLORS.brand700,
   },
   orText: {
-    fontSize: 16,
+    fontSize: 20,
+    fontFamily: FONTS.body,
     color: COLORS.textMuted,
     marginVertical: 16,
   },
@@ -547,7 +530,8 @@ const styles = StyleSheet.create({
     borderColor: COLORS.border,
   },
   textOptionText: {
-    fontSize: 16,
+    fontSize: 20,
+    fontFamily: FONTS.body,
     color: COLORS.textSecondary,
   },
   voiceContainer: {
@@ -562,19 +546,19 @@ const styles = StyleSheet.create({
     width: 12,
     height: 12,
     borderRadius: 6,
-    backgroundColor: COLORS.recordingRed,
+    backgroundColor: COLORS.danger,
     marginRight: 8,
   },
   recordingTime: {
     fontSize: 32,
-    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
     color: COLORS.textPrimary,
   },
   stopButton: {
     width: 80,
     height: 80,
     borderRadius: 40,
-    backgroundColor: COLORS.recordingRed,
+    backgroundColor: COLORS.danger,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 16,
@@ -582,11 +566,12 @@ const styles = StyleSheet.create({
   stopIcon: {
     width: 24,
     height: 24,
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.textInverse,
     borderRadius: 4,
   },
   recordingHint: {
-    fontSize: 16,
+    fontSize: 20,
+    fontFamily: FONTS.body,
     color: COLORS.textMuted,
   },
   playbackContainer: {
@@ -608,7 +593,7 @@ const styles = StyleSheet.create({
   },
   durationText: {
     fontSize: 24,
-    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
     color: COLORS.textPrimary,
   },
   voiceActions: {
@@ -623,15 +608,15 @@ const styles = StyleSheet.create({
     borderColor: COLORS.border,
   },
   redoButtonText: {
-    fontSize: 16,
+    fontSize: 20,
+    fontFamily: FONTS.bodyMedium,
     color: COLORS.textSecondary,
-    fontWeight: '500',
   },
   submitButton: {
     backgroundColor: COLORS.brand600,
     paddingVertical: 14,
     paddingHorizontal: 32,
-    borderRadius: 12,
+    borderRadius: 16,
     alignItems: 'center',
     justifyContent: 'center',
     minWidth: 100,
@@ -640,9 +625,9 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   submitButtonText: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: COLORS.white,
+    fontSize: 20,
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textInverse,
   },
   voiceButton: {
     width: 180,
@@ -659,14 +644,15 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   voiceButtonText: {
-    fontSize: 18,
-    fontWeight: '500',
+    fontSize: 20,
+    fontFamily: FONTS.bodyMedium,
     color: COLORS.brand700,
   },
   errorText: {
     marginTop: 12,
-    fontSize: 14,
-    color: COLORS.recordingRed,
+    fontSize: 20,
+    fontFamily: FONTS.body,
+    color: COLORS.danger,
     textAlign: 'center',
   },
   textContainer: {
@@ -676,7 +662,8 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.background,
     borderRadius: 16,
     padding: 16,
-    fontSize: 18,
+    fontSize: 20,
+    fontFamily: FONTS.body,
     color: COLORS.textPrimary,
     minHeight: 120,
     textAlignVertical: 'top',
@@ -700,7 +687,8 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   switchButtonText: {
-    fontSize: 14,
+    fontSize: 20,
+    fontFamily: FONTS.body,
     color: COLORS.textSecondary,
   },
   skipButton: {
@@ -709,12 +697,13 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   skipText: {
-    fontSize: 16,
+    fontSize: 20,
+    fontFamily: FONTS.body,
     color: COLORS.textMuted,
   },
   emptyCard: {
     backgroundColor: COLORS.card,
-    borderRadius: 20,
+    borderRadius: RADIUS['2xl'],
     padding: 40,
     borderWidth: 1,
     borderColor: COLORS.border,
@@ -726,20 +715,21 @@ const styles = StyleSheet.create({
   },
   emptyTitle: {
     fontSize: 24,
-    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
     color: COLORS.textPrimary,
     textAlign: 'center',
     marginBottom: 8,
   },
   emptyText: {
-    fontSize: 16,
+    fontSize: 20,
+    fontFamily: FONTS.body,
     color: COLORS.textSecondary,
     textAlign: 'center',
     marginBottom: 24,
   },
   followUpCard: {
     backgroundColor: COLORS.card,
-    borderRadius: 20,
+    borderRadius: RADIUS['2xl'],
     padding: 40,
     borderWidth: 1,
     borderColor: COLORS.border,
@@ -751,7 +741,7 @@ const styles = StyleSheet.create({
   },
   followUpText: {
     fontSize: 22,
-    fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
     color: COLORS.textPrimary,
     textAlign: 'center',
     lineHeight: 32,
@@ -765,7 +755,7 @@ const styles = StyleSheet.create({
   },
   doneButtonText: {
     fontSize: 20,
-    fontWeight: '600',
-    color: COLORS.white,
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textInverse,
   },
 });

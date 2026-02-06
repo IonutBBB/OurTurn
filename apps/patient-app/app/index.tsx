@@ -16,19 +16,7 @@ import * as Haptics from 'expo-haptics';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../src/stores/auth-store';
 import { getHouseholdByCareCode } from '@memoguard/supabase';
-
-// Design system colors
-const COLORS = {
-  background: '#FAFAF8',
-  card: '#FFFFFF',
-  border: '#E7E5E4',
-  textPrimary: '#1C1917',
-  textSecondary: '#57534E',
-  textMuted: '#A8A29E',
-  brand600: '#0D9488',
-  brand700: '#0F766E',
-  amber: '#D97706',
-};
+import { COLORS, FONTS, RADIUS, SHADOWS } from '../src/theme';
 
 export default function CareCodeScreen() {
   const { t } = useTranslation();
@@ -192,7 +180,7 @@ export default function CareCodeScreen() {
           >
             {isLoading ? (
               <View style={styles.buttonContent}>
-                <ActivityIndicator color="#FFFFFF" size="small" />
+                <ActivityIndicator color={COLORS.textInverse} size="small" />
                 <Text style={styles.buttonText}>{t('patientApp.careCode.connecting')}</Text>
               </View>
             ) : (
@@ -227,7 +215,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     fontSize: 36,
-    fontWeight: '700',
+    fontFamily: FONTS.display,
     color: COLORS.brand600,
   },
   logoHeart: {
@@ -236,13 +224,14 @@ const styles = StyleSheet.create({
   },
   welcome: {
     fontSize: 28,
-    fontWeight: '700',
+    fontFamily: FONTS.display,
     color: COLORS.textPrimary,
     textAlign: 'center',
     marginBottom: 12,
   },
   instruction: {
     fontSize: 20,
+    fontFamily: FONTS.body,
     color: COLORS.textSecondary,
     textAlign: 'center',
     marginBottom: 32,
@@ -258,10 +247,10 @@ const styles = StyleSheet.create({
     height: 64,
     borderWidth: 2,
     borderColor: COLORS.border,
-    borderRadius: 12,
+    borderRadius: RADIUS.md,
     backgroundColor: COLORS.card,
     fontSize: 28,
-    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
     textAlign: 'center',
     color: COLORS.textPrimary,
   },
@@ -272,14 +261,16 @@ const styles = StyleSheet.create({
     borderColor: COLORS.amber,
   },
   helperText: {
-    fontSize: 18,
+    fontSize: 20,
+    fontFamily: FONTS.body,
     color: COLORS.textMuted,
     textAlign: 'center',
     marginBottom: 24,
     paddingHorizontal: 20,
   },
   errorText: {
-    fontSize: 18,
+    fontSize: 20,
+    fontFamily: FONTS.body,
     color: COLORS.amber,
     textAlign: 'center',
     marginBottom: 16,
@@ -289,7 +280,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 64,
     backgroundColor: COLORS.brand600,
-    borderRadius: 12,
+    borderRadius: 16,
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 'auto',
@@ -304,7 +295,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 20,
-    fontWeight: '700',
-    color: '#FFFFFF',
+    fontFamily: FONTS.bodyBold,
+    color: COLORS.textInverse,
   },
 });

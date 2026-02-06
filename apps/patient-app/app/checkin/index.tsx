@@ -24,20 +24,7 @@ import { useAuthStore } from '../../src/stores/auth-store';
 import { useVoiceRecording } from '../../src/hooks/use-voice-recording';
 import { supabase } from '@memoguard/supabase';
 import { getRecordingButtonLabel, getMoodSelectionLabel } from '@memoguard/shared';
-
-const COLORS = {
-  background: '#FAFAF8',
-  card: '#FFFFFF',
-  border: '#E7E5E4',
-  textPrimary: '#1C1917',
-  textSecondary: '#57534E',
-  textMuted: '#A8A29E',
-  brand50: '#F0FDFA',
-  brand600: '#0D9488',
-  brand700: '#0F766E',
-  success: '#16A34A',
-  recordingRed: '#DC2626',
-};
+import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
 
 type MoodValue = 1 | 2 | 3 | 4 | 5;
 type SleepValue = 1 | 2 | 3;
@@ -441,7 +428,7 @@ export default function CheckinScreen() {
             >
               {loading || isUploading ? (
                 <ActivityIndicator
-                  color="#FFFFFF"
+                  color={COLORS.textInverse}
                   accessibilityLabel="Submitting your check-in"
                 />
               ) : (
@@ -470,14 +457,14 @@ const styles = StyleSheet.create({
   },
   greeting: {
     fontSize: 28,
-    fontWeight: '700',
+    fontFamily: FONTS.display,
     color: COLORS.textPrimary,
     textAlign: 'center',
     marginBottom: 40,
   },
   questionCard: {
     backgroundColor: COLORS.card,
-    borderRadius: 20,
+    borderRadius: RADIUS['2xl'],
     padding: 32,
     borderWidth: 1,
     borderColor: COLORS.border,
@@ -485,7 +472,7 @@ const styles = StyleSheet.create({
   },
   question: {
     fontSize: 24,
-    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
     color: COLORS.textPrimary,
     textAlign: 'center',
     marginBottom: 32,
@@ -513,13 +500,13 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   optionLabel: {
-    fontSize: 16,
-    fontWeight: '500',
+    fontSize: 20,
+    fontFamily: FONTS.bodyMedium,
     color: COLORS.textSecondary,
   },
   optionLabelSelected: {
     color: COLORS.brand700,
-    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
   },
   voiceButton: {
     width: 160,
@@ -533,11 +520,11 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   voiceButtonRecording: {
-    backgroundColor: '#FEE2E2',
-    borderColor: COLORS.recordingRed,
+    backgroundColor: COLORS.dangerBg,
+    borderColor: COLORS.danger,
   },
   voiceButtonDone: {
-    backgroundColor: '#D1FAE5',
+    backgroundColor: COLORS.successBg,
     borderColor: COLORS.success,
   },
   voiceIcon: {
@@ -545,18 +532,18 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   voiceText: {
-    fontSize: 16,
-    fontWeight: '500',
+    fontSize: 20,
+    fontFamily: FONTS.bodyMedium,
     color: COLORS.brand700,
   },
   voiceTextDone: {
-    fontSize: 16,
-    fontWeight: '500',
+    fontSize: 20,
+    fontFamily: FONTS.bodyMedium,
     color: COLORS.success,
   },
   durationText: {
-    fontSize: 14,
-    fontWeight: '600',
+    fontSize: 20,
+    fontFamily: FONTS.bodySemiBold,
     color: COLORS.textMuted,
     marginTop: 4,
   },
@@ -565,13 +552,15 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   discardText: {
-    fontSize: 14,
-    color: COLORS.recordingRed,
+    fontSize: 20,
+    fontFamily: FONTS.body,
+    color: COLORS.danger,
     textDecorationLine: 'underline',
   },
   errorText: {
-    fontSize: 14,
-    color: COLORS.recordingRed,
+    fontSize: 20,
+    fontFamily: FONTS.body,
+    color: COLORS.danger,
     textAlign: 'center',
     marginBottom: 16,
   },
@@ -588,12 +577,12 @@ const styles = StyleSheet.create({
   },
   submitButtonText: {
     fontSize: 20,
-    fontWeight: '600',
-    color: '#FFFFFF',
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textInverse,
   },
   doneCard: {
     backgroundColor: COLORS.card,
-    borderRadius: 20,
+    borderRadius: RADIUS['2xl'],
     padding: 48,
     borderWidth: 1,
     borderColor: COLORS.border,
@@ -605,12 +594,13 @@ const styles = StyleSheet.create({
   },
   doneText: {
     fontSize: 20,
+    fontFamily: FONTS.body,
     color: COLORS.textSecondary,
     textAlign: 'center',
   },
   thankYouText: {
     fontSize: 24,
-    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
     color: COLORS.textPrimary,
     textAlign: 'center',
   },
@@ -622,8 +612,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
   },
   backButtonText: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#FFFFFF',
+    fontSize: 20,
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textInverse,
   },
 });

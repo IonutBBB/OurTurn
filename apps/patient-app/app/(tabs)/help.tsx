@@ -18,24 +18,7 @@ import { useAuthStore } from '../../src/stores/auth-store';
 import { queueAlert } from '../../src/utils/offline-cache';
 import { createLocationAlert } from '@memoguard/supabase';
 import { getEmergencyNumber } from '@memoguard/shared';
-
-// Design system colors - 2026 Edition
-const COLORS = {
-  background: '#FAFBFC',
-  card: '#FFFFFF',
-  border: '#E2E8F0',
-  textPrimary: '#0F172A',
-  textSecondary: '#475569',
-  textMuted: '#94A3B8',
-  brand50: '#ECFDF8',
-  brand100: '#D1FAE9',
-  brand400: '#2DD4BF',
-  brand500: '#14B8A6',
-  brand600: '#0A9488',
-  brand700: '#0D7D73',
-  danger: '#EF4444',
-  dangerBg: '#FEF2F2',
-};
+import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
 
 interface EmergencyContact {
   name: string;
@@ -49,16 +32,7 @@ export default function HelpScreen() {
   const [isLoadingLocation, setIsLoadingLocation] = useState(false);
 
   // Get emergency contacts from patient data
-  // For now, we'll create placeholder contacts until the full patient profile is implemented
-  const emergencyContacts: EmergencyContact[] = patient?.emergency_number
-    ? [
-        {
-          name: t('patientApp.help.emergency'),
-          relationship: 'Primary Contact',
-          phone: patient.emergency_number,
-        },
-      ]
-    : [];
+  const emergencyContacts: EmergencyContact[] = (patient?.emergency_contacts as EmergencyContact[]) || [];
 
   // Get country-specific emergency number
   const countryCode = household?.country || 'default';
@@ -281,7 +255,7 @@ export default function HelpScreen() {
             >
               {isLoadingLocation ? (
                 <ActivityIndicator
-                  color="#FFFFFF"
+                  color={COLORS.textInverse}
                   size="large"
                   accessibilityLabel="Getting your location"
                 />
@@ -321,7 +295,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    fontWeight: '800',
+    fontFamily: FONTS.display,
     color: COLORS.textPrimary,
     marginBottom: 36,
     letterSpacing: -0.5,
@@ -330,8 +304,8 @@ const styles = StyleSheet.create({
     marginBottom: 36,
   },
   sectionTitle: {
-    fontSize: 18,
-    fontWeight: '700',
+    fontSize: 20,
+    fontFamily: FONTS.bodyBold,
     color: COLORS.textSecondary,
     marginBottom: 18,
     textTransform: 'uppercase',
@@ -343,22 +317,18 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.card,
     borderWidth: 1,
     borderColor: COLORS.border,
-    borderRadius: 20,
+    borderRadius: RADIUS['2xl'],
     padding: 20,
     marginBottom: 14,
     minHeight: 72,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.06,
-    shadowRadius: 12,
-    elevation: 3,
+    ...SHADOWS.sm,
   },
   contactIcon: {
     fontSize: 28,
     marginRight: 18,
     backgroundColor: COLORS.brand50,
     padding: 12,
-    borderRadius: 14,
+    borderRadius: RADIUS.md,
     overflow: 'hidden',
   },
   contactInfo: {
@@ -366,13 +336,14 @@ const styles = StyleSheet.create({
   },
   contactName: {
     fontSize: 21,
-    fontWeight: '700',
+    fontFamily: FONTS.bodyBold,
     color: COLORS.textPrimary,
     letterSpacing: -0.3,
   },
   contactRelation: {
-    fontSize: 16,
+    fontSize: 20,
     color: COLORS.textSecondary,
+    fontFamily: FONTS.body,
     marginTop: 4,
   },
   emergencyButton: {
@@ -380,7 +351,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: COLORS.danger,
-    borderRadius: 20,
+    borderRadius: RADIUS['2xl'],
     padding: 20,
     minHeight: 72,
     shadowColor: COLORS.danger,
@@ -395,15 +366,15 @@ const styles = StyleSheet.create({
   },
   emergencyText: {
     fontSize: 21,
-    fontWeight: '700',
-    color: '#FFFFFF',
+    fontFamily: FONTS.bodyBold,
+    color: COLORS.textInverse,
     letterSpacing: 0.3,
   },
   takeMeHomeButton: {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: COLORS.brand600,
-    borderRadius: 24,
+    borderRadius: RADIUS['2xl'],
     padding: 28,
     minHeight: 140,
     shadowColor: COLORS.brand600,
@@ -418,16 +389,17 @@ const styles = StyleSheet.create({
   },
   takeMeHomeText: {
     fontSize: 26,
-    fontWeight: '800',
-    color: '#FFFFFF',
+    fontFamily: FONTS.display,
+    color: COLORS.textInverse,
     letterSpacing: 1.5,
   },
   takeMeHomeSubtext: {
-    fontSize: 17,
-    color: 'rgba(255, 255, 255, 0.9)',
+    fontSize: 20,
+    color: COLORS.textInverse,
+    opacity: 0.9,
     marginTop: 10,
     textAlign: 'center',
-    fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
   },
   bottomPadding: {
     height: 120,
