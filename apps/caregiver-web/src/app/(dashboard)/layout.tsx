@@ -43,7 +43,7 @@ export default async function DashboardLayout({
         aria-label="Main content"
         tabIndex={-1}
       >
-        <TopBar userName={caregiver?.name || user.email || 'Caregiver'} />
+        <TopBar />
         <div className="p-6 lg:p-10 max-w-7xl mx-auto pt-16 lg:pt-10">
           {children}
         </div>

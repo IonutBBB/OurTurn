@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { ThemeToggle } from './theme-toggle';
+import { createBrowserClient } from '@/lib/supabase';
 
 const navItems = [
   { href: '/dashboard', icon: '📊', key: 'dashboard' },
@@ -25,6 +26,12 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
   const pathname = usePathname();
   const { t } = useTranslation();
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleSignOut = async () => {
+    const supabase = createBrowserClient();
+    await supabase.auth.signOut();
+    window.location.href = '/login';
+  };
 
   const sidebarContent = (
     <>
@@ -113,6 +120,12 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </Link>
+        <button
+          onClick={handleSignOut}
+          className="w-full mt-1 px-3 py-1.5 text-xs text-status-danger hover:bg-status-danger-bg rounded-xl transition-colors text-left focus:outline-none focus:ring-2 focus:ring-status-danger focus:ring-offset-2"
+        >
+          Sign out
+        </button>
       </div>
     </>
   );
