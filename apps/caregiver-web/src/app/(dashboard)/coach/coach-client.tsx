@@ -3,6 +3,8 @@
 import { useState, useRef, useEffect, useCallback, FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
+import { hasReachedAIMessageLimit, FREE_LIMITS } from '@memoguard/shared/utils/subscription';
+import { UpgradeBanner } from '@/components/upgrade-gate';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -27,6 +29,7 @@ interface CoachClientProps {
   patientName: string;
   caregiverName: string;
   initialConversationId?: string;
+  subscriptionStatus: string;
 }
 
 function parseAIResponse(content: string): {
@@ -69,10 +72,15 @@ export default function CoachClient({
   patientName,
   caregiverName,
   initialConversationId,
+  subscriptionStatus,
 }: CoachClientProps) {
   const { t } = useTranslation();
   const supabase = createBrowserClient();
   const [messages, setMessages] = useState<Message[]>([]);
+
+  const household = { subscription_status: subscriptionStatus as 'free' | 'plus' | 'cancelled' };
+  const userMessageCount = messages.filter((m) => m.role === 'user').length;
+  const messageLimitReached = hasReachedAIMessageLimit(household, userMessageCount);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [conversationId, setConversationId] = useState<string | undefined>(
@@ -350,6 +358,13 @@ export default function CoachClient({
         </div>
       )}
 
+      {/* ─── Upgrade Banner ─── */}
+      {messageLimitReached && (
+        <div className="pt-3">
+          <UpgradeBanner message={t('subscription.limits.aiMessageLimitReached', { max: FREE_LIMITS.aiMessages })} />
+        </div>
+      )}
+
       {/* ─── Input Form ─── */}
       <form onSubmit={sendMessage} className="flex gap-3 items-end pt-3 border-t border-surface-border">
         <div className="flex-1 relative">
@@ -358,16 +373,16 @@ export default function CoachClient({
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder={t('caregiverApp.coach.askAboutPlaceholder', { name: patientName })}
+            placeholder={messageLimitReached ? t('subscription.upgradeFeature') : t('caregiverApp.coach.askAboutPlaceholder', { name: patientName })}
             rows={1}
             className="input-warm w-full pr-12 resize-none"
             style={{ minHeight: '48px', maxHeight: '120px' }}
-            disabled={isLoading}
+            disabled={isLoading || messageLimitReached}
           />
         </div>
         <button
           type="submit"
-          disabled={isLoading || !input.trim()}
+          disabled={isLoading || !input.trim() || messageLimitReached}
           className="btn-primary px-5 py-3 text-sm disabled:opacity-40 disabled:cursor-not-allowed"
         >
           {isLoading ? (

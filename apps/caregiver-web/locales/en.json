@@ -432,6 +432,7 @@
       "customNotes": "Additional notes for the doctor",
       "print": "Print",
       "downloadPdf": "Download PDF",
+      "downloadPdf": "Download PDF",
       "emailDoctor": "Email to doctor",
       "disclaimer": "This summary is based on self-reported wellness data and family observations. It is not a clinical assessment.",
       "reportTitle": "MemoGuard Care Summary",
@@ -682,6 +683,11 @@
       "reports": "Doctor visit reports",
       "wellbeing": "Caregiver wellbeing tracker",
       "priority": "Priority support"
+    },
+    "limits": {
+      "taskLimitReached": "You've reached the free plan limit of {{max}} tasks. Upgrade to add unlimited tasks.",
+      "aiMessageLimitReached": "You've used all {{max}} free AI Coach messages this month. Upgrade for unlimited conversations.",
+      "caregiverLimitReached": "Free plan includes 1 caregiver. Upgrade to invite up to 5 family members."
     }
   }
 }

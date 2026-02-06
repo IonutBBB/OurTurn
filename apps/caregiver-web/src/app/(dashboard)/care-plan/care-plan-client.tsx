@@ -3,6 +3,9 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
+import { hasReachedTaskLimit } from '@memoguard/shared/utils/subscription';
+import { UpgradeBanner } from '@/components/upgrade-gate';
+import { FREE_LIMITS } from '@memoguard/shared/utils/subscription';
 
 interface Task {
   id: string;
@@ -29,6 +32,7 @@ interface Props {
   householdId: string;
   patientName: string;
   initialTasks: Task[];
+  subscriptionStatus: string;
 }
 
 const CATEGORIES = [
@@ -42,12 +46,15 @@ const CATEGORIES = [
 
 const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
-export function CarePlanClient({ householdId, patientName, initialTasks }: Props) {
+export function CarePlanClient({ householdId, patientName, initialTasks, subscriptionStatus }: Props) {
   const { t } = useTranslation();
   const supabase = createBrowserClient();
 
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const [showAddForm, setShowAddForm] = useState(false);
+
+  const household = { subscription_status: subscriptionStatus as 'free' | 'plus' | 'cancelled' };
+  const taskLimitReached = hasReachedTaskLimit(household, tasks.length);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [saving, setSaving] = useState(false);
 
@@ -371,15 +378,21 @@ export function CarePlanClient({ householdId, patientName, initialTasks }: Props
           </button>
           <button
             onClick={() => {
+              if (taskLimitReached) return;
               resetForm();
               setShowAddForm(true);
             }}
-            className="btn-primary"
+            disabled={taskLimitReached}
+            className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
           >
             + {t('caregiverApp.carePlan.addTask')}
           </button>
         </div>
       </div>
+
+      {taskLimitReached && (
+        <UpgradeBanner message={t('subscription.limits.taskLimitReached', { max: FREE_LIMITS.maxTasks })} />
+      )}
 
       {/* AI Suggest Panel */}
       {showSuggestPanel && (

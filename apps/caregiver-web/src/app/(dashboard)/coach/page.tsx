@@ -73,6 +73,7 @@ export default async function CoachPage() {
         patientName={patient.name}
         caregiverName={caregiver.name}
         initialConversationId={latestConversation?.id}
+        subscriptionStatus={household.subscription_status || 'free'}
       />
     </div>
   );

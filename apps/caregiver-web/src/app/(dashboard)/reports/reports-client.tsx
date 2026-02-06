@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
 import type { DoctorVisitReport, Patient, DoctorVisitReportContent } from '@memoguard/shared';
@@ -203,6 +203,61 @@ export default function ReportsClient({
     window.print();
   };
 
+  const handleDownloadPDF = useCallback(() => {
+    if (!printRef.current) return;
+
+    // Clone the report content into a new window for clean PDF output
+    const printWindow = window.open('', '_blank');
+    if (!printWindow) return;
+
+    const content = printRef.current.innerHTML;
+    printWindow.document.write(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>MemoGuard - ${t('caregiverApp.reports.reportTitle')}</title>
+        <style>
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1a1a1a; padding: 40px; line-height: 1.6; }
+          h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+          h2 { font-size: 18px; font-weight: 700; margin-bottom: 12px; margin-top: 24px; }
+          h3 { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+          p { font-size: 14px; margin-bottom: 4px; }
+          ul { padding-left: 20px; }
+          li { font-size: 14px; margin-bottom: 4px; }
+          .text-center { text-align: center; }
+          .text-2xl { font-size: 24px; font-weight: 700; }
+          .text-3xl { font-size: 30px; font-weight: 700; }
+          .text-lg { font-size: 18px; }
+          .text-sm { font-size: 13px; }
+          .text-xs { font-size: 11px; color: #666; }
+          .font-bold { font-weight: 700; }
+          .grid { display: grid; gap: 16px; }
+          .grid-cols-2 { grid-template-columns: 1fr 1fr; }
+          .grid-cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+          .card { background: #f8f8f8; border-radius: 12px; padding: 16px; }
+          .border-b { border-bottom: 1px solid #e5e5e5; padding-bottom: 16px; margin-bottom: 16px; }
+          .mt-3 { margin-top: 12px; }
+          .mb-2 { margin-bottom: 8px; }
+          .mb-3 { margin-bottom: 12px; }
+          .space-y-6 > * + * { margin-top: 24px; }
+          .space-y-2 > * + * { margin-top: 8px; }
+          .italic { font-style: italic; }
+          @media print { body { padding: 20px; } }
+        </style>
+      </head>
+      <body>${content}</body>
+      </html>
+    `);
+    printWindow.document.close();
+
+    // Wait for styles to apply, then trigger print (user can "Save as PDF")
+    setTimeout(() => {
+      printWindow.print();
+      printWindow.close();
+    }, 250);
+  }, [t]);
+
   const formatDate = (dateStr: string) => {
     return new Date(dateStr).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -291,13 +346,20 @@ export default function ReportsClient({
             <div className="card-paper">
               <div className="p-4 border-b border-surface-border flex items-center justify-between">
                 <h3 className="font-semibold font-display text-text-primary">{t('caregiverApp.reports.preview')}</h3>
-                <button
-                  onClick={handlePrint}
-                  className="btn-secondary flex items-center gap-2"
-                >
-                  <span>🖨️</span>
-                  <span>{t('caregiverApp.reports.print')}</span>
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={handleDownloadPDF}
+                    className="btn-primary flex items-center gap-2"
+                  >
+                    <span>{t('caregiverApp.reports.downloadPdf')}</span>
+                  </button>
+                  <button
+                    onClick={handlePrint}
+                    className="btn-secondary flex items-center gap-2"
+                  >
+                    <span>{t('caregiverApp.reports.print')}</span>
+                  </button>
+                </div>
               </div>
 
               <div ref={printRef} className="p-6 space-y-6 print:p-8">

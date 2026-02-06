@@ -49,6 +49,13 @@ export default async function FamilyPage() {
     );
   }
 
+  // Get full household data for subscription status
+  const { data: fullHousehold } = await supabase
+    .from('households')
+    .select('subscription_status')
+    .eq('id', household.id)
+    .single();
+
   // Get all caregivers for this household
   const { data: caregivers } = await supabase
     .from('caregivers')
@@ -86,6 +93,7 @@ export default async function FamilyPage() {
         currentCaregiverId={caregiver.id}
         initialCaregivers={caregivers || []}
         initialJournalEntries={transformedEntries}
+        subscriptionStatus={fullHousehold?.subscription_status || 'free'}
       />
     </div>
   );

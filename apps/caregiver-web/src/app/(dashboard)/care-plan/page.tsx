@@ -70,6 +70,7 @@ export default async function CarePlanPage() {
         householdId={household.id}
         patientName={patient.name}
         initialTasks={tasks || []}
+        subscriptionStatus={household.subscription_status || 'free'}
       />
     </div>
   );

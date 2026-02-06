@@ -8,6 +8,8 @@ import type {
   CareJournalEntry,
   JournalEntryType,
 } from '@memoguard/shared';
+import { hasReachedCaregiverLimit } from '@memoguard/shared/utils/subscription';
+import { UpgradeBanner } from '@/components/upgrade-gate';
 
 interface FamilyClientProps {
   householdId: string;
@@ -15,6 +17,7 @@ interface FamilyClientProps {
   currentCaregiverId: string;
   initialCaregivers: Caregiver[];
   initialJournalEntries: (CareJournalEntry & { author_name?: string })[];
+  subscriptionStatus: string;
 }
 
 const ENTRY_TYPE_EMOJIS: Record<JournalEntryType, string> = {
@@ -35,10 +38,14 @@ export default function FamilyClient({
   currentCaregiverId,
   initialCaregivers,
   initialJournalEntries,
+  subscriptionStatus,
 }: FamilyClientProps) {
   const { t } = useTranslation();
   const supabase = createBrowserClient();
   const [caregivers, setCaregivers] = useState<Caregiver[]>(initialCaregivers);
+
+  const household = { subscription_status: subscriptionStatus as 'free' | 'plus' | 'cancelled' };
+  const caregiverLimitReached = hasReachedCaregiverLimit(household, caregivers.length);
   const [journalEntries, setJournalEntries] = useState<(CareJournalEntry & { author_name?: string })[]>(
     initialJournalEntries
   );
@@ -187,13 +194,20 @@ export default function FamilyClient({
       {/* Family Tab */}
       {activeTab === 'family' && (
         <div className="space-y-6">
+          {/* Caregiver Limit Banner */}
+          {caregiverLimitReached && (
+            <UpgradeBanner message={t('subscription.limits.caregiverLimitReached')} />
+          )}
+
           {/* Care Code Banner */}
           <div className="bg-brand-50 dark:bg-brand-900/20 rounded-[20px] border border-brand-200 dark:border-brand-800 p-6">
             <div className="flex items-start justify-between">
               <div>
                 <h3 className="font-semibold text-text-primary mb-1">{t('caregiverApp.family.inviteMember')}</h3>
                 <p className="text-sm text-text-secondary mb-4">
-                  {t('caregiverApp.family.inviteDesc')}
+                  {caregiverLimitReached
+                    ? t('subscription.limits.caregiverLimitReached')
+                    : t('caregiverApp.family.inviteDesc')}
                 </p>
                 <button
                   onClick={() => setShowCareCode(!showCareCode)}
