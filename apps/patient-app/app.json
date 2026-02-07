@@ -18,9 +18,10 @@
       "bundleIdentifier": "com.ourturn.patient",
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "OurTurn needs your location to help you navigate home safely.",
-        "NSLocationAlwaysAndWhenInUseUsageDescription": "OurTurn needs your location to help you navigate home safely.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "OurTurn uses your location in the background so your family knows you are safe.",
         "UIBackgroundModes": [
-          "remote-notification"
+          "remote-notification",
+          "location"
         ]
       }
     },
@@ -34,6 +35,9 @@
       "permissions": [
         "ACCESS_COARSE_LOCATION",
         "ACCESS_FINE_LOCATION",
+        "ACCESS_BACKGROUND_LOCATION",
+        "FOREGROUND_SERVICE",
+        "FOREGROUND_SERVICE_LOCATION",
         "RECEIVE_BOOT_COMPLETED",
         "VIBRATE",
         "WAKE_LOCK",
@@ -52,7 +56,10 @@
       [
         "expo-location",
         {
-          "locationWhenInUsePermission": "OurTurn needs your location to help you navigate home safely."
+          "locationWhenInUsePermission": "OurTurn needs your location to help you navigate home safely.",
+          "locationAlwaysAndWhenInUsePermission": "OurTurn uses your location in the background so your family knows you are safe.",
+          "isAndroidBackgroundLocationEnabled": true,
+          "isAndroidForegroundServiceEnabled": true
         }
       ],
       [

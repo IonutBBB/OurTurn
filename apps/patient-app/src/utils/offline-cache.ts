@@ -10,6 +10,7 @@ const CACHE_KEYS = {
   PENDING_COMPLETIONS: 'pending_completions',
   PENDING_CHECKIN: 'pending_checkin',
   PENDING_ALERTS: 'pending_location_alerts',
+  PENDING_LOCATION_LOGS: 'pending_location_logs',
 };
 
 // Types for pending operations
@@ -212,6 +213,50 @@ export async function clearPendingCheckin(): Promise<void> {
     await AsyncStorage.removeItem(CACHE_KEYS.PENDING_CHECKIN);
   } catch (error) {
     if (__DEV__) console.error('Failed to clear pending check-in:', error);
+  }
+}
+
+// Types for pending location logs
+export interface PendingLocationLog {
+  patientId: string;
+  householdId: string;
+  latitude: number;
+  longitude: number;
+  accuracy?: number;
+  timestamp: string;
+}
+
+// Queue a location log for later sync
+export async function queueLocationLog(log: PendingLocationLog): Promise<void> {
+  try {
+    const pendingStr = await AsyncStorage.getItem(CACHE_KEYS.PENDING_LOCATION_LOGS);
+    const pending: PendingLocationLog[] = pendingStr ? JSON.parse(pendingStr) : [];
+    pending.push(log);
+    // Keep max 100 pending logs to avoid unbounded growth
+    const trimmed = pending.slice(-100);
+    await AsyncStorage.setItem(CACHE_KEYS.PENDING_LOCATION_LOGS, JSON.stringify(trimmed));
+  } catch (error) {
+    if (__DEV__) console.error('Failed to queue location log:', error);
+  }
+}
+
+// Get all pending location logs
+export async function getPendingLocationLogs(): Promise<PendingLocationLog[]> {
+  try {
+    const pendingStr = await AsyncStorage.getItem(CACHE_KEYS.PENDING_LOCATION_LOGS);
+    return pendingStr ? JSON.parse(pendingStr) : [];
+  } catch (error) {
+    if (__DEV__) console.error('Failed to get pending location logs:', error);
+    return [];
+  }
+}
+
+// Clear pending location logs
+export async function clearPendingLocationLogs(): Promise<void> {
+  try {
+    await AsyncStorage.removeItem(CACHE_KEYS.PENDING_LOCATION_LOGS);
+  } catch (error) {
+    if (__DEV__) console.error('Failed to clear pending location logs:', error);
   }
 }
 

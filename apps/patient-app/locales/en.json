@@ -46,6 +46,43 @@
       "emergency": "Emergency",
       "confirmEmergency": "Are you sure you want to call emergency services?"
     },
+    "sos": {
+      "button": "SOS",
+      "label": "SOS",
+      "holdHint": "Hold for 2 seconds to send an alert to your family",
+      "helpOnTheWay": "Help is on the way",
+      "familyNotified": "Your family has been notified",
+      "callCaregiver": "Call {{name}}",
+      "imOkay": "I'm okay, go back"
+    },
+    "consent": {
+      "yes": "Yes",
+      "no": "No",
+      "locationTracking": {
+        "title": "Share your location?",
+        "description": "So your family can help you get home safely"
+      },
+      "dataCollection": {
+        "title": "Save your daily info?",
+        "description": "So your family can see how you are doing"
+      },
+      "pushNotifications": {
+        "title": "Get reminders?",
+        "description": "Helpful nudges for meals and activities"
+      },
+      "dataSharing": {
+        "title": "Share with your family?",
+        "description": "So your caregivers can support you"
+      },
+      "voiceRecording": {
+        "title": "Record voice messages?",
+        "description": "So you can leave messages for your family"
+      }
+    },
+    "essential": {
+      "music": "Music",
+      "callHelp": "Call for Help"
+    },
     "checkin": {
       "greeting": {
         "morning": "Good morning, {{name}}!",
@@ -111,6 +148,10 @@
     "gettingLocation": "Getting your location",
     "removesVoiceRecording": "Removes your voice recording",
     "submittingCheckin": "Submitting your check-in"
+  },
+  "locationTracking": {
+    "backgroundNotificationTitle": "OurTurn is keeping you safe",
+    "backgroundNotificationBody": "Your family can see you are okay"
   },
   "notifications": {
     "taskReminder": "{{patientName}}, it's time for: {{taskTitle}}",

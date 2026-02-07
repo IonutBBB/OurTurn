@@ -25,9 +25,13 @@ import {
   clearPendingAlerts,
   getPendingCheckin,
   clearPendingCheckin,
+  getPendingLocationLogs,
+  clearPendingLocationLogs,
   cleanupOldCache,
 } from '../src/utils/offline-cache';
-import { completeTask, createLocationAlert, supabase } from '@ourturn/supabase';
+import { completeTask, createLocationAlert, logLocation, supabase } from '@ourturn/supabase';
+import { startHeartbeat, stopHeartbeat } from '../src/services/heartbeat';
+import { startLocationTracking, stopLocationTracking } from '../src/services/location-tracker';
 import { COLORS } from '../src/theme';
 
 // Initialize i18n
@@ -63,7 +67,7 @@ async function syncOfflineData(householdId?: string | null) {
     for (const alert of pendingAlerts) {
       try {
         await createLocationAlert(alert.householdId, {
-          type: alert.type as 'left_safe_zone' | 'inactive' | 'night_movement' | 'take_me_home_tapped',
+          type: alert.type as 'left_safe_zone' | 'inactive' | 'night_movement' | 'take_me_home_tapped' | 'sos_triggered',
           latitude: alert.latitude,
           longitude: alert.longitude,
         });
@@ -73,6 +77,28 @@ async function syncOfflineData(householdId?: string | null) {
     }
     if (failed.length === 0) {
       await clearPendingAlerts();
+    }
+  }
+
+  // Sync pending location logs
+  const pendingLogs = await getPendingLocationLogs();
+  if (pendingLogs.length > 0) {
+    const failed = [];
+    for (const log of pendingLogs) {
+      try {
+        await logLocation(
+          log.patientId,
+          log.householdId,
+          log.latitude,
+          log.longitude,
+          log.accuracy
+        );
+      } catch {
+        failed.push(log);
+      }
+    }
+    if (failed.length === 0) {
+      await clearPendingLocationLogs();
     }
   }
 
@@ -145,6 +171,24 @@ export default function RootLayout() {
     return () => unsubscribe();
   }, [session?.householdId]);
 
+  // Heartbeat: update last_seen_at every 10 minutes
+  useEffect(() => {
+    if (patient?.id) {
+      startHeartbeat(patient.id);
+    }
+    return () => stopHeartbeat();
+  }, [patient?.id]);
+
+  // Background location tracking for safe zone violation detection
+  useEffect(() => {
+    if (patient?.id && session?.householdId) {
+      startLocationTracking();
+    }
+    return () => {
+      stopLocationTracking();
+    };
+  }, [patient?.id, session?.householdId]);
+
   // Font loading timeout - don't block forever
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -183,6 +227,26 @@ export default function RootLayout() {
           options={{
             presentation: 'modal',
             animation: 'slide_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="sos-confirmation"
+          options={{
+            presentation: 'modal',
+            animation: 'slide_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="consent"
+          options={{
+            presentation: 'modal',
+            animation: 'slide_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="essential-mode"
+          options={{
+            animation: 'fade',
           }}
         />
       </Stack>
