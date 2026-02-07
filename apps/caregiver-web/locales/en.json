@@ -204,6 +204,8 @@
       "aiSuggestGenerating": "Generating...",
       "aiSuggestAdd": "Add",
       "aiSuggestAdding": "Adding...",
+      "aiSuggestEvidenceBased": "Evidence-based",
+      "aiSuggestEvidenceLabel": "Based on clinical research",
       "hintLabel": "Instructions ({{name}} will see this)",
       "hintPlaceholder": "E.g., Your pills are in the kitchen counter pill box",
       "taskPlaceholder": "e.g., Morning medication",
@@ -1013,25 +1015,17 @@
     },
     "crisis": {
       "title": "Crisis Hub",
-      "subtitle": "Real-time crisis management and de-escalation support",
+      "subtitle": "Situation-first guidance when things go wrong",
       "pageTitle": "Crisis Hub",
-      "pageSubtitle": "Real-time crisis management and de-escalation support",
+      "pageSubtitle": "Situation-first guidance when things go wrong",
       "setupDesc": "Set up your care profile to access crisis management tools.",
       "completeSetupFirst": "Complete Setup First",
       "startOnboarding": "Start Onboarding",
-      "callHelpline": "Call Dementia Helpline",
-      "callHelplineDesc": "Speak to a trained advisor now",
-      "logEvent": "Log Crisis Event",
-      "logEventDesc": "Record what happened for your care journal",
-      "logPlaceholder": "Describe what happened...",
-      "eventLogged": "Crisis event logged",
-      "logCrisisEvent": "Log Crisis Event",
-      "logCrisisPlaceholder": "Describe what happened...",
-      "logCrisisSaving": "Saving...",
-      "logCrisisSaved": "Crisis event logged",
-      "logCrisisFailed": "Failed to save. Please try again.",
-      "deEscalationGuide": "De-Escalation Guide",
-      "deEscalation": "De-escalation Guide",
+      "callEmergency": "Call Emergency",
+      "alertFamilySent": "Family members notified",
+      "alertFamilyFailed": "Failed to notify family. Please try again.",
+      "back": "Back",
+      "backToSituations": "Back to situations",
       "status": {
         "allClear": "All Clear",
         "allClearDesc": "No active alerts",
@@ -1041,75 +1035,64 @@
         "viewOnMap": "View on map",
         "noLocationData": "No location data available"
       },
-      "actions": {
-        "modeLabel": "Your situation",
-        "withThem": "I'm with them",
-        "remote": "I'm remote",
-        "startDeEscalation": "Start De-Escalation",
-        "startDeEscalationDesc": "Step-by-step guided calming flow",
-        "callEmergency": "Call Emergency",
-        "callEmergencyDesc": "Call local emergency services",
-        "alertFamily": "Alert Family",
-        "alertFamilyDesc": "Send push notification to all caregivers",
-        "alertFamilySent": "Family members notified",
-        "alertFamilyFailed": "Failed to notify family. Please try again.",
-        "viewLocation": "View Location",
-        "viewLocationDesc": "See {{name}}'s current location on map",
-        "contactPrimary": "Contact Primary Caregiver",
-        "contactPrimaryDesc": "Reach the primary caregiver via email",
-        "logEvent": "Log Event",
-        "logEventDesc": "Record this moment in the crisis journal"
+      "entry": {
+        "title": "Something's wrong?",
+        "subtitle": "First \u2014 where are you right now?",
+        "withThem": "I'm with {{name}}",
+        "withThemDesc": "Step-by-step help for what's happening",
+        "notThere": "I'm not there",
+        "notThereDesc": "Reach them, check location, alert family"
       },
-      "wizard": {
-        "breathingTitle": "Let's start with a calming breath",
-        "breathingInstruction": "Breathe in slowly... hold... breathe out...",
-        "stepOf": "Step {{current}} of {{total}}",
-        "timerLabel": "{{seconds}}s",
-        "thisHelped": "This helped",
-        "tryNext": "Try next step",
-        "skip": "Skip",
-        "completionTitle": "Well done. You handled that with care.",
-        "completionDesc": "Would you like to record any notes about what happened?",
-        "crisisNotesPlaceholder": "What happened? What helped? Any triggers noticed...",
-        "saveAndClose": "Save & Close",
-        "closeWithoutSaving": "Close without saving"
+      "scenarioGrid": {
+        "title": "What's happening?",
+        "urgent": "URGENT"
       },
-      "history": {
-        "title": "Recent Crisis Events",
-        "noEvents": "No crisis events in the last 30 days.",
-        "viewAllInJournal": "View all in Journal"
-      },
-      "steps": {
-        "stayCalm": {
-          "title": "Stay Calm",
-          "detail": "Take a slow, deep breath. Your calm energy will help them feel safe.",
-          "script": "I'm right here with you. Everything is okay."
-        },
-        "validateFeelings": {
-          "title": "Validate Feelings",
-          "detail": "Say 'I can see you're upset. That must be really hard.' Don't argue or correct.",
-          "script": "I can see you're upset. That must be really difficult."
-        },
-        "simplifyEnvironment": {
-          "title": "Simplify the Environment",
-          "detail": "Use short, simple sentences. One idea at a time. Avoid asking 'why' questions.",
-          "script": "Let's make things simpler. One thing at a time."
-        },
-        "redirectAttention": {
-          "title": "Redirect Attention",
-          "detail": "Gently change the subject. Suggest a familiar activity, song, or walk.",
-          "script": "How about we try something different? Let's take a little walk together."
-        },
-        "useGentleTouch": {
-          "title": "Use Gentle Touch",
-          "detail": "If welcome, a gentle hand on the arm can be reassuring. Watch their response.",
-          "script": "Is it okay if I hold your hand? I'm right here."
-        },
-        "giveSpace": {
-          "title": "Give Space",
-          "detail": "If nothing works, ensure safety and give them space. It's okay to step back.",
-          "script": "I'll be right nearby if you need me. Take your time."
+      "remote": {
+        "noLocation": "Location not available",
+        "switchPrompt": "Need to guide someone who IS with {{name}}?",
+        "switchButton": "View situation guides",
+        "actions": {
+          "location": {
+            "label": "See their location",
+            "desc": "Check where they are right now"
+          },
+          "alertFamily": {
+            "label": "Alert nearest family",
+            "desc": "Notify the family member closest to them"
+          },
+          "emergency": {
+            "label": "Call emergency for them",
+            "desc": "Send emergency services to their location"
+          }
         }
+      },
+      "breathing": {
+        "tapToStart": "Tap to start",
+        "breatheIn": "Breathe in...",
+        "hold": "Hold...",
+        "breatheOut": "Breathe out...",
+        "done": "Better. Let's go.",
+        "cycle": "Cycle {{current}} of {{total}}",
+        "continue": "Continue"
+      },
+      "personalization": {
+        "label": "WHAT WORKS FOR {{name}}",
+        "empty": "No calming strategies recorded yet. Add them in Care Plan \u2192 Preferences to see personalized tips here."
+      },
+      "patterns": {
+        "title": "Pattern Insight",
+        "noEvents": "Crisis events you log will help spot patterns over time.",
+        "fewEvents": "{{count}} episodes logged in the last 30 days. Keep logging to reveal patterns.",
+        "timePattern": "Episodes tend to happen in the {{time}}.",
+        "weekCount": "{{count}} events this week."
+      },
+      "logger": {
+        "title": "Log this episode",
+        "subtitle": "Quick notes help spot patterns.",
+        "placeholder": "What happened? What helped?",
+        "saveButton": "Save to Crisis Journal",
+        "saved": "Episode logged",
+        "savedConfirmation": "Logged. You can view this in the Behaviour timeline."
       },
       "resources": "Support Resources",
       "supportResources": "Support Resources",

@@ -1,76 +1,58 @@
 'use client';
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { createBrowserClient } from '@/lib/supabase';
 import { useToast } from '@/components/toast';
-import type { LocationAlert } from '@ourturn/shared';
+import type { LocationAlert, BehaviourIncident } from '@ourturn/shared';
 
+import type { CrisisView, CrisisScenarioId } from './types';
+import { CRISIS_SCENARIOS } from './data/scenarios';
 import { CrisisStatusPanel } from './components/crisis-status-panel';
-import { ContextQuickActions } from './components/context-quick-actions';
-import { DeEscalationWizard } from './components/de-escalation-wizard';
-import { CrisisHistory } from './components/crisis-history';
 import { SupportResources } from './components/support-resources';
-
-type Mode = 'in_person' | 'remote';
-
-interface CrisisEntry {
-  id: string;
-  content: string;
-  created_at: string;
-  author_name: string;
-}
+import { CrisisEntryPoint } from './components/crisis-entry-point';
+import { ScenarioGrid } from './components/scenario-grid';
+import { RemoteActions } from './components/remote-actions';
+import { ScenarioGuide } from './components/scenario-guide';
 
 interface CrisisClientProps {
   caregiverId: string;
   householdId: string;
+  patientId: string;
   country: string;
   patientName: string;
+  calmingStrategies: string[] | null;
   latestLocation: { latitude: number; longitude: number; timestamp: string; location_label: string } | null;
   initialAlerts: LocationAlert[];
-  crisisEntries: CrisisEntry[];
+  behaviourIncidents: BehaviourIncident[];
   familyCaregivers: { id: string; name: string; email: string; role: string }[];
-  primaryCaregiver: { name: string; email: string } | null;
 }
 
 export default function CrisisClient({
   caregiverId,
   householdId,
+  patientId,
   country,
   patientName,
+  calmingStrategies,
   latestLocation,
   initialAlerts,
-  crisisEntries: initialCrisisEntries,
+  behaviourIncidents,
   familyCaregivers,
-  primaryCaregiver,
 }: CrisisClientProps) {
   const { t } = useTranslation();
   const { showToast } = useToast();
-  const supabase = createBrowserClient();
 
-  const [mode, setMode] = useState<Mode>(() => {
-    if (typeof window !== 'undefined') {
-      return (localStorage.getItem('crisis-mode') as Mode) || 'in_person';
-    }
-    return 'in_person';
-  });
-  const [showWizard, setShowWizard] = useState(false);
-  const [showLogForm, setShowLogForm] = useState(false);
-  const [isAlertingFamily, setIsAlertingFamily] = useState(false);
+  const [view, setView] = useState<CrisisView>('entry');
+  const [selectedScenario, setSelectedScenario] = useState<CrisisScenarioId | null>(null);
   const [alerts, setAlerts] = useState<LocationAlert[]>(initialAlerts);
-  const [crisisEntries, setCrisisEntries] = useState<CrisisEntry[]>(initialCrisisEntries);
-  const [logNotes, setLogNotes] = useState('');
-  const [isLogging, setIsLogging] = useState(false);
-
-  // Persist mode to localStorage
-  useEffect(() => {
-    localStorage.setItem('crisis-mode', mode);
-  }, [mode]);
 
   // Handle acknowledging an alert
   const handleAcknowledge = useCallback(
     async (alertId: string) => {
       try {
+        const { createBrowserClient } = await import('@/lib/supabase');
+        const supabase = createBrowserClient();
+
         const { error } = await supabase
           .from('location_alerts')
           .update({
@@ -82,7 +64,6 @@ export default function CrisisClient({
 
         if (error) throw error;
 
-        // Also resolve any active escalation
         await supabase
           .from('alert_escalations')
           .update({
@@ -104,12 +85,11 @@ export default function CrisisClient({
         showToast(t('common.error'), 'error');
       }
     },
-    [caregiverId, supabase, showToast, t]
+    [caregiverId, showToast, t]
   );
 
   // Handle alert family
   const handleAlertFamily = useCallback(async () => {
-    setIsAlertingFamily(true);
     try {
       const res = await fetch('/api/crisis/alert-family', {
         method: 'POST',
@@ -118,97 +98,87 @@ export default function CrisisClient({
       });
 
       if (!res.ok) throw new Error('Failed');
-
-      showToast(t('caregiverApp.crisis.actions.alertFamilySent'), 'success');
+      showToast(t('caregiverApp.crisis.alertFamilySent'), 'success');
     } catch {
-      showToast(t('caregiverApp.crisis.actions.alertFamilyFailed'), 'error');
-    } finally {
-      setIsAlertingFamily(false);
+      showToast(t('caregiverApp.crisis.alertFamilyFailed'), 'error');
     }
   }, [householdId, showToast, t]);
 
-  // Handle wizard completion
-  const handleWizardComplete = useCallback(
-    async (notes: string) => {
-      setShowWizard(false);
+  // Navigation handlers
+  const handleSelectWith = useCallback(() => setView('scenarios'), []);
+  const handleSelectRemote = useCallback(() => setView('remote'), []);
+  const handleBackToEntry = useCallback(() => {
+    setView('entry');
+    setSelectedScenario(null);
+  }, []);
+  const handleSelectScenario = useCallback((id: CrisisScenarioId) => {
+    setSelectedScenario(id);
+    setView('guide');
+  }, []);
+  const handleBackToScenarios = useCallback(() => {
+    setSelectedScenario(null);
+    setView('scenarios');
+  }, []);
 
-      if (notes.trim()) {
-        try {
-          const { data, error } = await supabase
-            .from('care_journal_entries')
-            .insert({
-              household_id: householdId,
-              author_id: caregiverId,
-              content: notes.trim(),
-              entry_type: 'crisis',
-            })
-            .select('id, content, created_at')
-            .single();
+  // Find the selected scenario object
+  const scenario = selectedScenario
+    ? CRISIS_SCENARIOS.find((s) => s.id === selectedScenario)
+    : null;
 
-          if (error) throw error;
+  // Render the correct layer
+  const renderContent = () => {
+    switch (view) {
+      case 'entry':
+        return (
+          <CrisisEntryPoint
+            patientName={patientName}
+            country={country}
+            incidents={behaviourIncidents}
+            onSelectWith={handleSelectWith}
+            onSelectRemote={handleSelectRemote}
+          />
+        );
 
-          // Add to local entries
-          if (data) {
-            setCrisisEntries((prev) => [
-              {
-                id: data.id,
-                content: data.content,
-                created_at: data.created_at,
-                author_name: t('common.you'),
-              },
-              ...prev,
-            ]);
-          }
+      case 'scenarios':
+        return (
+          <ScenarioGrid
+            scenarios={CRISIS_SCENARIOS}
+            country={country}
+            onSelectScenario={handleSelectScenario}
+            onBack={handleBackToEntry}
+          />
+        );
 
-          showToast(t('caregiverApp.crisis.eventLogged'), 'success');
-        } catch {
-          showToast(t('common.error'), 'error');
-        }
-      }
-    },
-    [supabase, householdId, caregiverId, showToast, t]
-  );
+      case 'remote':
+        return (
+          <RemoteActions
+            patientName={patientName}
+            latestLocation={latestLocation}
+            country={country}
+            householdId={householdId}
+            onAlertFamily={handleAlertFamily}
+            onSwitchToWith={handleSelectWith}
+            onBack={handleBackToEntry}
+          />
+        );
 
-  // Handle log event form
-  const handleLogCrisis = useCallback(async () => {
-    if (!logNotes.trim()) return;
-    setIsLogging(true);
-
-    try {
-      const { data, error } = await supabase
-        .from('care_journal_entries')
-        .insert({
-          household_id: householdId,
-          author_id: caregiverId,
-          content: logNotes.trim(),
-          entry_type: 'crisis',
-        })
-        .select('id, content, created_at')
-        .single();
-
-      if (error) throw error;
-
-      if (data) {
-        setCrisisEntries((prev) => [
-          {
-            id: data.id,
-            content: data.content,
-            created_at: data.created_at,
-            author_name: t('common.you'),
-          },
-          ...prev,
-        ]);
-      }
-
-      setLogNotes('');
-      setShowLogForm(false);
-      showToast(t('caregiverApp.crisis.eventLogged'), 'success');
-    } catch {
-      showToast(t('common.error'), 'error');
-    } finally {
-      setIsLogging(false);
+      case 'guide':
+        if (!scenario) return null;
+        return (
+          <ScenarioGuide
+            scenario={scenario}
+            patientName={patientName}
+            calmingStrategies={calmingStrategies}
+            householdId={householdId}
+            caregiverId={caregiverId}
+            patientId={patientId}
+            country={country}
+            onBack={handleBackToScenarios}
+            onAlertFamily={handleAlertFamily}
+          />
+        );
     }
-  }, [logNotes, supabase, householdId, caregiverId, showToast, t]);
+  };
 
   return (
     <div className="page-enter space-y-6">
@@ -233,52 +203,8 @@ export default function CrisisClient({
       {/* Main Content — 2-column layout */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left column (2/3) */}
-        <div className="lg:col-span-2 space-y-6">
-          {/* Quick Actions */}
-          <ContextQuickActions
-            mode={mode}
-            onModeChange={setMode}
-            country={country}
-            patientName={patientName}
-            primaryCaregiver={primaryCaregiver}
-            onStartDeEscalation={() => setShowWizard(true)}
-            onAlertFamily={handleAlertFamily}
-            onLogEvent={() => setShowLogForm(true)}
-            isAlertingFamily={isAlertingFamily}
-          />
-
-          {/* Log Event Form */}
-          {showLogForm && (
-            <div className="card-paper p-6">
-              <h2 className="font-display font-bold text-text-primary mb-3">
-                {t('caregiverApp.crisis.logEvent')}
-              </h2>
-              <textarea
-                value={logNotes}
-                onChange={(e) => setLogNotes(e.target.value)}
-                placeholder={t('caregiverApp.crisis.logPlaceholder')}
-                className="input-warm w-full h-32 resize-none"
-              />
-              <div className="flex gap-3 mt-3">
-                <button
-                  onClick={handleLogCrisis}
-                  disabled={isLogging || !logNotes.trim()}
-                  className="btn-primary disabled:opacity-50"
-                >
-                  {isLogging ? t('common.saving') : t('common.save')}
-                </button>
-                <button
-                  onClick={() => setShowLogForm(false)}
-                  className="btn-secondary"
-                >
-                  {t('common.cancel')}
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* Crisis History */}
-          <CrisisHistory entries={crisisEntries} />
+        <div className="lg:col-span-2">
+          {renderContent()}
         </div>
 
         {/* Right column (1/3) */}
@@ -289,14 +215,6 @@ export default function CrisisClient({
           />
         </div>
       </div>
-
-      {/* De-Escalation Wizard Modal */}
-      {showWizard && (
-        <DeEscalationWizard
-          onClose={() => setShowWizard(false)}
-          onComplete={handleWizardComplete}
-        />
-      )}
     </div>
   );
 }

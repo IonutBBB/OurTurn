@@ -4,6 +4,14 @@ import { createClient as createServerClient } from '@/lib/supabase/server';
 import { rateLimit } from '@/lib/rate-limit';
 import { createLogger } from '@/lib/logger';
 import type { ConversationType } from '@ourturn/shared/types/ai';
+import {
+  preProcess,
+  postProcess,
+  logSafetyEvent,
+  SafetyLevel,
+  AI_SAFETY_SYSTEM_PROMPT,
+  BLOCKED_RESPONSE_FALLBACK,
+} from '@/lib/ai-safety';
 
 const log = createLogger('ai/coach');
 
@@ -336,6 +344,66 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const startTime = Date.now();
+
+    // --- SAFETY PRE-PROCESSING ---
+    const safetyResult = preProcess(message, 'caregiver');
+
+    // RED trigger → return static crisis response via SSE, no AI call
+    if (!safetyResult.proceed && safetyResult.staticResponse) {
+      const crisisResponse = safetyResult.staticResponse;
+      const crisisPayload = JSON.stringify({
+        crisis: true,
+        title: crisisResponse.title,
+        message: crisisResponse.message,
+        resources: crisisResponse.resources,
+      });
+      const crisisStream = new ReadableStream({
+        start(controller) {
+          controller.enqueue(
+            new TextEncoder().encode(`data: ${JSON.stringify({ text: `**${crisisResponse.title}**\n\n${crisisResponse.message}\n\n${crisisResponse.resources.map(r => `- **${r.name}**: ${r.action}`).join('\n')}` })}\n\n`),
+          );
+          controller.enqueue(
+            new TextEncoder().encode(`data: ${crisisPayload}\n\n`),
+          );
+          controller.enqueue(
+            new TextEncoder().encode(`data: ${JSON.stringify({ done: true })}\n\n`),
+          );
+          controller.close();
+        },
+      });
+
+      // Log the RED event (best-effort, don't block response)
+      try {
+        const supabaseForLog = await createServerClient();
+        const { data: { user: logUser } } = await supabaseForLog.auth.getUser();
+        if (logUser) {
+          logSafetyEvent(supabaseForLog, {
+            session_id: conversationId || 'new',
+            user_id: logUser.id,
+            user_role: 'caregiver',
+            safety_level: safetyResult.safetyLevel,
+            trigger_category: safetyResult.classification.triggerCategory || null,
+            ai_model_called: false,
+            response_approved: true,
+            post_process_violations: [],
+            disclaimer_included: false,
+            professional_referral_included: true,
+            escalated_to_crisis: true,
+            response_time_ms: Date.now() - startTime,
+          });
+        }
+      } catch { /* audit log failure should not block crisis response */ }
+
+      return new Response(crisisStream, {
+        headers: {
+          'Content-Type': 'text/event-stream',
+          'Cache-Control': 'no-cache',
+          Connection: 'keep-alive',
+        },
+      });
+    }
+
     const supabase = await createServerClient();
 
     // Get user
@@ -453,7 +521,12 @@ export async function POST(request: NextRequest) {
 
     // Append mode-specific instructions
     const modeAppendix = getModePromptAppendix(conversationType, conversationContext, patientName);
-    const systemPrompt = basePrompt + modeAppendix;
+
+    // Inject safety system prompt + any ORANGE/YELLOW context injection
+    let systemPrompt = AI_SAFETY_SYSTEM_PROMPT + '\n\n' + basePrompt + modeAppendix;
+    if (safetyResult.contextInjection) {
+      systemPrompt += '\n\n' + safetyResult.contextInjection;
+    }
 
     // Initialize Gemini model
     const model = genAI.getGenerativeModel({
@@ -493,11 +566,38 @@ export async function POST(request: NextRequest) {
             );
           }
 
+          // --- SAFETY POST-PROCESSING ---
+          const postResult = postProcess(
+            fullResponse,
+            safetyResult.safetyLevel,
+            'caregiver',
+            safetyResult.disclaimer,
+          );
+
+          let finalResponse = fullResponse;
+          if (!postResult.approved) {
+            // Hard violation: replace with safe fallback
+            finalResponse = BLOCKED_RESPONSE_FALLBACK;
+            controller.enqueue(
+              new TextEncoder().encode(
+                `data: ${JSON.stringify({ replace: true, text: finalResponse })}\n\n`,
+              ),
+            );
+          } else if (postResult.disclaimerAppended && safetyResult.disclaimer) {
+            // Append disclaimer as final SSE chunk
+            controller.enqueue(
+              new TextEncoder().encode(
+                `data: ${JSON.stringify({ text: '\n\n---\n\n' + safetyResult.disclaimer })}\n\n`,
+              ),
+            );
+            finalResponse = postResult.response;
+          }
+
           // Save messages to conversation
           const newMessages = [
             ...previousMessages,
             { role: 'user' as const, content: message },
-            { role: 'assistant' as const, content: fullResponse },
+            { role: 'assistant' as const, content: finalResponse },
           ];
 
           await supabase
@@ -507,6 +607,22 @@ export async function POST(request: NextRequest) {
               updated_at: new Date().toISOString(),
             })
             .eq('id', conversation.id);
+
+          // Log audit entry
+          logSafetyEvent(supabase, {
+            session_id: conversation.id,
+            user_id: user.id,
+            user_role: 'caregiver',
+            safety_level: safetyResult.safetyLevel,
+            trigger_category: safetyResult.classification.triggerCategory || null,
+            ai_model_called: true,
+            response_approved: postResult.approved,
+            post_process_violations: postResult.violations,
+            disclaimer_included: postResult.disclaimerAppended,
+            professional_referral_included: safetyResult.safetyLevel !== SafetyLevel.GREEN,
+            escalated_to_crisis: false,
+            response_time_ms: Date.now() - startTime,
+          });
 
           // Send conversation ID if new
           controller.enqueue(

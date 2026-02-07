@@ -5,7 +5,7 @@ import type { ConversationType } from '@ourturn/shared/types/ai';
 import ProactiveInsightCard from './components/proactive-insight-card';
 import SituationCards from './components/situation-cards';
 import WorkflowCards from './components/workflow-cards';
-import TopicCards from './components/topic-cards';
+
 import OpenChatInput from './components/open-chat-input';
 
 interface InsightData {
@@ -34,16 +34,6 @@ const WORKFLOW_PROMPTS: Record<string, string> = {
   adjust_plan: "I'd like to review {{name}}'s care plan and see what we should change based on how things are going.",
 };
 
-// Human-readable labels for topic contexts
-const TOPIC_PROMPTS: Record<string, string> = {
-  daily_routines: "I'd like to learn about managing daily routines and transitions for {{name}}.",
-  communication: "Help me understand better ways to communicate with {{name}}.",
-  behaviors: "I want to learn about understanding and managing difficult behaviors for {{name}}.",
-  activities: "What activities and engagement ideas would work well for {{name}}?",
-  nutrition: "I'd like guidance on nutrition and mealtimes for {{name}}.",
-  safety: "Help me think about safety at home for {{name}}.",
-  sleep: "I need help with sleep and night-time routines for {{name}}.",
-};
 
 interface CoachHubProps {
   householdId: string;
@@ -82,11 +72,6 @@ export default function CoachHub({
     onStartConversation('workflow', key, prompt);
   };
 
-  const handleTopic = (key: string) => {
-    const prompt = replacePatientName(TOPIC_PROMPTS[key] || key);
-    onStartConversation('topic', key, prompt);
-  };
-
   const handleInsightDiscuss = (insightText: string) => {
     const prompt = `I saw this insight: "${insightText}". Can you tell me more about what this means and what I should do?`;
     onStartConversation('open', 'insight_discussion', prompt);
@@ -105,7 +90,6 @@ export default function CoachHub({
       />
       <SituationCards onSelect={handleSituation} />
       <WorkflowCards onSelect={handleWorkflow} />
-      <TopicCards patientName={patientName} onSelect={handleTopic} />
       <OpenChatInput
         patientName={patientName}
         onSubmit={handleOpenChat}

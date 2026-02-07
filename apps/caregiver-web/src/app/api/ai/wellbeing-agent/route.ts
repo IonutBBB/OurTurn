@@ -3,6 +3,14 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import { rateLimit } from '@/lib/rate-limit';
 import { createLogger } from '@/lib/logger';
+import {
+  preProcess,
+  postProcess,
+  logSafetyEvent,
+  SafetyLevel,
+  AI_SAFETY_SYSTEM_PROMPT,
+  BLOCKED_RESPONSE_FALLBACK,
+} from '@/lib/ai-safety';
 
 const log = createLogger('ai/wellbeing-agent');
 
@@ -91,6 +99,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'AI service not configured' }, { status: 500 });
     }
 
+    const startTime = Date.now();
+
     const supabase = await createServerClient();
 
     const { data: { user } } = await supabase.auth.getUser();
@@ -105,6 +115,52 @@ export async function POST(request: NextRequest) {
         { error: 'Rate limit exceeded' },
         { status: 429, headers: { 'Retry-After': String(rl.retryAfterSeconds) } }
       );
+    }
+
+    // --- SAFETY PRE-PROCESSING ---
+    // Only classify non-auto messages (auto-generated greetings are safe)
+    const isAutoMessage = message === '[AUTO_GREETING]' || message === '[CHECKIN_UPDATED]';
+    const safetyResult = isAutoMessage
+      ? { proceed: true, safetyLevel: SafetyLevel.GREEN as SafetyLevel, classification: { level: SafetyLevel.GREEN as SafetyLevel, triggers: [] as string[] }, contextInjection: undefined, disclaimer: undefined }
+      : preProcess(message, 'caregiver');
+
+    // RED trigger → return static crisis response via SSE, no AI call
+    if (!safetyResult.proceed && 'staticResponse' in safetyResult && safetyResult.staticResponse) {
+      const crisisResponse = safetyResult.staticResponse;
+      const crisisStream = new ReadableStream({
+        start(controller) {
+          controller.enqueue(
+            new TextEncoder().encode(`data: ${JSON.stringify({ text: `**${crisisResponse.title}**\n\n${crisisResponse.message}\n\n${crisisResponse.resources.map((r: { name: string; action: string }) => `- **${r.name}**: ${r.action}`).join('\n')}` })}\n\n`),
+          );
+          controller.enqueue(
+            new TextEncoder().encode(`data: ${JSON.stringify({ done: true })}\n\n`),
+          );
+          controller.close();
+        },
+      });
+
+      logSafetyEvent(supabase, {
+        session_id: `wellbeing-${user.id}`,
+        user_id: user.id,
+        user_role: 'caregiver',
+        safety_level: safetyResult.safetyLevel,
+        trigger_category: safetyResult.classification.triggerCategory || null,
+        ai_model_called: false,
+        response_approved: true,
+        post_process_violations: [],
+        disclaimer_included: false,
+        professional_referral_included: true,
+        escalated_to_crisis: true,
+        response_time_ms: Date.now() - startTime,
+      });
+
+      return new Response(crisisStream, {
+        headers: {
+          'Content-Type': 'text/event-stream',
+          'Cache-Control': 'no-cache',
+          Connection: 'keep-alive',
+        },
+      });
     }
 
     // Get caregiver
@@ -136,8 +192,11 @@ export async function POST(request: NextRequest) {
           .join('\n')
       : 'No recent check-in data available.';
 
-    // Build system prompt
-    const systemPrompt = buildSystemPrompt(caregiver.name, checkin, trendSummary);
+    // Build system prompt with safety layer
+    let systemPrompt = AI_SAFETY_SYSTEM_PROMPT + '\n\n' + buildSystemPrompt(caregiver.name, checkin, trendSummary);
+    if (safetyResult.contextInjection) {
+      systemPrompt += '\n\n' + safetyResult.contextInjection;
+    }
 
     // Initialize Gemini
     const model = genAI.getGenerativeModel({
@@ -209,13 +268,54 @@ export async function POST(request: NextRequest) {
     // Stream response
     const stream = new ReadableStream({
       async start(controller) {
+        let fullResponse = '';
         try {
           for await (const chunk of result.stream) {
             const text = chunk.text();
+            fullResponse += text;
             controller.enqueue(
               new TextEncoder().encode(`data: ${JSON.stringify({ text })}\n\n`)
             );
           }
+
+          // --- SAFETY POST-PROCESSING ---
+          const postResult = postProcess(
+            fullResponse,
+            safetyResult.safetyLevel,
+            'caregiver',
+            safetyResult.disclaimer,
+          );
+
+          if (!postResult.approved) {
+            controller.enqueue(
+              new TextEncoder().encode(
+                `data: ${JSON.stringify({ replace: true, text: BLOCKED_RESPONSE_FALLBACK })}\n\n`,
+              ),
+            );
+          } else if (postResult.disclaimerAppended && safetyResult.disclaimer) {
+            controller.enqueue(
+              new TextEncoder().encode(
+                `data: ${JSON.stringify({ text: '\n\n---\n\n' + safetyResult.disclaimer })}\n\n`,
+              ),
+            );
+          }
+
+          // Log audit entry
+          logSafetyEvent(supabase, {
+            session_id: `wellbeing-${user.id}`,
+            user_id: user.id,
+            user_role: 'caregiver',
+            safety_level: safetyResult.safetyLevel,
+            trigger_category: safetyResult.classification.triggerCategory || null,
+            ai_model_called: true,
+            response_approved: postResult.approved,
+            post_process_violations: postResult.violations,
+            disclaimer_included: postResult.disclaimerAppended,
+            professional_referral_included: safetyResult.safetyLevel !== SafetyLevel.GREEN,
+            escalated_to_crisis: false,
+            response_time_ms: Date.now() - startTime,
+          });
+
           controller.enqueue(
             new TextEncoder().encode(`data: ${JSON.stringify({ done: true })}\n\n`)
           );

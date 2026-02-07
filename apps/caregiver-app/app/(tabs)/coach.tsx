@@ -13,7 +13,7 @@ import { useAuthStore } from '../../src/stores/auth-store';
 import ProactiveInsightCard from '../../src/components/coach/proactive-insight-card';
 import SituationCards from '../../src/components/coach/situation-cards';
 import WorkflowCards from '../../src/components/coach/workflow-cards';
-import TopicCards from '../../src/components/coach/topic-cards';
+
 import OpenChatInput from '../../src/components/coach/open-chat-input';
 import { COLORS, FONTS, RADIUS, SPACING } from '../../src/theme';
 
@@ -36,15 +36,6 @@ const WORKFLOW_PROMPTS: Record<string, string> = {
   adjust_plan: "I'd like to review {{name}}'s care plan and see what we should change based on how things are going.",
 };
 
-const TOPIC_PROMPTS: Record<string, string> = {
-  daily_routines: "I'd like to learn about managing daily routines and transitions for {{name}}.",
-  communication: "Help me understand better ways to communicate with {{name}}.",
-  behaviors: "I want to learn about understanding and managing difficult behaviors for {{name}}.",
-  activities: "What activities and engagement ideas would work well for {{name}}?",
-  nutrition: "I'd like guidance on nutrition and mealtimes for {{name}}.",
-  safety: "Help me think about safety at home for {{name}}.",
-  sleep: "I need help with sleep and night-time routines for {{name}}.",
-};
 
 interface InsightData {
   text: string;
@@ -96,11 +87,6 @@ export default function CoachScreen() {
   const handleWorkflow = (key: string) => {
     const prompt = replacePatientName(WORKFLOW_PROMPTS[key] || key);
     navigateToConversation('workflow', key, prompt);
-  };
-
-  const handleTopic = (key: string) => {
-    const prompt = replacePatientName(TOPIC_PROMPTS[key] || key);
-    navigateToConversation('topic', key, prompt);
   };
 
   const handleInsightDiscuss = (insightText: string) => {
@@ -167,10 +153,6 @@ export default function CoachScreen() {
 
         <View style={styles.section}>
           <WorkflowCards onSelect={handleWorkflow} />
-        </View>
-
-        <View style={styles.section}>
-          <TopicCards patientName={patientName} onSelect={handleTopic} />
         </View>
 
         <View style={styles.section}>

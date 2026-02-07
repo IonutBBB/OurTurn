@@ -66,7 +66,9 @@ export type BehaviourType =
   | 'refusing_care'
   | 'sleep_disruption'
   | 'aggression'
-  | 'shadowing';
+  | 'shadowing'
+  | 'hallucinations'
+  | 'fall';
 
 export type TimeOfDay = 'morning' | 'afternoon' | 'evening' | 'night';
 
@@ -123,6 +125,8 @@ export const BEHAVIOUR_TYPES: { type: BehaviourType; label: string; emoji: strin
   { type: 'sleep_disruption', label: 'Sleep Disruption', emoji: '😴' },
   { type: 'aggression', label: 'Aggression', emoji: '⚠️' },
   { type: 'shadowing', label: 'Shadowing', emoji: '👤' },
+  { type: 'hallucinations', label: 'Hallucinations', emoji: '👁️' },
+  { type: 'fall', label: 'Fall or Injury', emoji: '🤕' },
 ];
 
 export const BEHAVIOUR_TRIGGERS = [

@@ -78,8 +78,8 @@ export function SupportResources({ country, familyCaregivers }: SupportResources
                     <p className="font-medium text-text-primary text-sm">{member.name}</p>
                     <span className={`text-xs px-2 py-0.5 rounded-full ${
                       member.role === 'primary'
-                        ? 'bg-brand-100 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300'
-                        : 'bg-surface-border text-text-muted'
+                        ? 'bg-brand-100 text-brand-700 dark:bg-brand-800/50 dark:text-brand-200'
+                        : 'bg-surface-border text-text-secondary'
                     }`}>
                       {member.role === 'primary'
                         ? t('common.primary')

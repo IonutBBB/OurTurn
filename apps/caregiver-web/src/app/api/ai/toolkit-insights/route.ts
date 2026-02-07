@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import { rateLimit } from '@/lib/rate-limit';
 import { createLogger } from '@/lib/logger';
+import { postProcess, logSafetyEvent, SafetyLevel } from '@/lib/ai-safety';
 
 const log = createLogger('ai/toolkit-insights');
 
@@ -20,6 +21,7 @@ interface InsightCard {
 
 export async function POST(request: NextRequest) {
   try {
+    const startTime = Date.now();
     const supabase = await createServerClient();
 
     const {
@@ -129,6 +131,35 @@ No markdown, no explanation.`;
       const valid = insights
         .filter((i) => i.text && i.suggestion && ['pattern', 'correlation', 'suggestion'].includes(i.category))
         .slice(0, 3);
+
+      // --- SAFETY POST-PROCESSING: scan each insight ---
+      const allViolations: string[] = [];
+      for (const insight of valid) {
+        const check = postProcess(
+          `${insight.text} ${insight.suggestion}`,
+          SafetyLevel.GREEN,
+          'caregiver',
+        );
+        if (!check.approved) {
+          allViolations.push(...check.violations);
+        }
+      }
+
+      // Log audit entry
+      logSafetyEvent(supabase, {
+        session_id: `toolkit-insights-${user.id}`,
+        user_id: user.id,
+        user_role: 'caregiver',
+        safety_level: SafetyLevel.GREEN,
+        trigger_category: null,
+        ai_model_called: true,
+        response_approved: allViolations.length === 0,
+        post_process_violations: allViolations,
+        disclaimer_included: false,
+        professional_referral_included: false,
+        escalated_to_crisis: false,
+        response_time_ms: Date.now() - startTime,
+      });
 
       return NextResponse.json({ insights: valid.length > 0 ? valid : generateFallbackInsights(logs) });
     } catch {

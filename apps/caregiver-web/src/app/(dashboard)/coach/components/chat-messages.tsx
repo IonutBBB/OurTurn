@@ -2,6 +2,7 @@
 
 import { useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import Markdown from 'react-markdown';
 
 interface CarePlanSuggestion {
   action: 'add' | 'update';
@@ -101,11 +102,50 @@ export default function ChatMessages({
                 </div>
               )}
               <div
-                className={`relative z-10 whitespace-pre-wrap text-sm leading-relaxed ${
-                  message.role === 'assistant' ? 'text-text-primary' : 'text-white'
+                className={`relative z-10 text-sm leading-relaxed ${
+                  message.role === 'assistant' ? 'text-text-primary' : 'text-white whitespace-pre-wrap'
                 }`}
               >
-                {cleanContent || (isLoading && index === messages.length - 1 ? (
+                {cleanContent ? (
+                  message.role === 'assistant' ? (
+                    <Markdown
+                      components={{
+                        h2: ({ children }) => (
+                          <h2 className="text-base font-semibold font-display text-text-primary mt-4 mb-2 first:mt-0">
+                            {children}
+                          </h2>
+                        ),
+                        h3: ({ children }) => (
+                          <h3 className="text-sm font-semibold text-text-primary mt-3 mb-1.5">
+                            {children}
+                          </h3>
+                        ),
+                        p: ({ children }) => (
+                          <p className="mb-2 last:mb-0">{children}</p>
+                        ),
+                        ul: ({ children }) => (
+                          <ul className="list-disc list-outside pl-5 mb-2 space-y-1">{children}</ul>
+                        ),
+                        ol: ({ children }) => (
+                          <ol className="list-decimal list-outside pl-5 mb-2 space-y-1">{children}</ol>
+                        ),
+                        li: ({ children }) => (
+                          <li className="pl-0.5">{children}</li>
+                        ),
+                        strong: ({ children }) => (
+                          <strong className="font-semibold text-text-primary">{children}</strong>
+                        ),
+                        hr: () => (
+                          <hr className="my-3 border-surface-border" />
+                        ),
+                      }}
+                    >
+                      {cleanContent}
+                    </Markdown>
+                  ) : (
+                    cleanContent
+                  )
+                ) : (isLoading && index === messages.length - 1 ? (
                   <span className="inline-flex items-center gap-1.5">
                     <span className="w-2 h-2 bg-brand-400 rounded-full animate-bounce" />
                     <span className="w-2 h-2 bg-brand-400 rounded-full animate-bounce [animation-delay:0.15s]" />

@@ -3,12 +3,14 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import { rateLimit } from '@/lib/rate-limit';
 import { createLogger } from '@/lib/logger';
+import { postProcess, logSafetyEvent, SafetyLevel } from '@/lib/ai-safety';
 
 const log = createLogger('ai/behaviour-insights');
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY || '');
 
 export async function POST(request: NextRequest) {
   try {
+    const startTime = Date.now();
     const supabase = await createServerClient();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) {
@@ -87,6 +89,36 @@ No markdown, no explanation.`;
       const valid = patterns
         .filter((p: { title?: string; insight?: string; suggestion?: string }) => p.title && p.insight && p.suggestion)
         .slice(0, 3);
+
+      // --- SAFETY POST-PROCESSING: scan each insight text ---
+      const allViolations: string[] = [];
+      for (const pattern of valid) {
+        const insightCheck = postProcess(
+          `${pattern.insight} ${pattern.suggestion}`,
+          SafetyLevel.GREEN,
+          'caregiver',
+        );
+        if (!insightCheck.approved) {
+          allViolations.push(...insightCheck.violations);
+        }
+      }
+
+      // Log audit entry
+      logSafetyEvent(supabase, {
+        session_id: `behaviour-insights-${householdId}`,
+        user_id: user.id,
+        user_role: 'caregiver',
+        safety_level: SafetyLevel.GREEN,
+        trigger_category: null,
+        ai_model_called: true,
+        response_approved: allViolations.length === 0,
+        post_process_violations: allViolations,
+        disclaimer_included: false,
+        professional_referral_included: false,
+        escalated_to_crisis: false,
+        response_time_ms: Date.now() - startTime,
+      });
+
       return NextResponse.json({ patterns: valid.length > 0 ? valid : generateFallbackPatterns(incidents) });
     } catch {
       log.warn('Failed to parse AI behaviour insights');

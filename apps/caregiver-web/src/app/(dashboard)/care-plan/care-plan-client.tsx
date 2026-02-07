@@ -22,6 +22,8 @@ interface Task {
   created_at: string;
   photo_url: string | null;
   medication_items: MedicationItem[] | null;
+  intervention_id: string | null;
+  evidence_source: string | null;
 }
 
 interface SuggestedTask {
@@ -30,6 +32,8 @@ interface SuggestedTask {
   hint_text: string;
   time: string;
   recurrence: 'daily' | 'specific_days' | 'one_time';
+  intervention_id: string | null;
+  evidence_source: string | null;
 }
 
 interface Props {
@@ -318,6 +322,8 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
           recurrence_days: null,
           active: true,
           created_by: user?.id,
+          intervention_id: suggestion.intervention_id || null,
+          evidence_source: suggestion.evidence_source || null,
         })
         .select()
         .single();
@@ -603,6 +609,17 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
                       </div>
                       <h4 className="font-medium text-text-primary mb-1">{suggestion.title}</h4>
                       <p className="text-sm text-text-secondary">{suggestion.hint_text}</p>
+                      {suggestion.evidence_source && (
+                        <details className="mt-2 text-xs text-text-muted">
+                          <summary className="cursor-pointer flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3 h-3">
+                              <path d="M10.75 16.82A7.462 7.462 0 0115 15.5c.71 0 1.396.098 2.046.282A.75.75 0 0018 15.06V3.44a.75.75 0 00-.556-.724A9.006 9.006 0 0015 2.5a9.006 9.006 0 00-4.25 1.065v13.255zm-1.5 0a7.462 7.462 0 00-4.25-1.32c-.71 0-1.396.098-2.046.282A.75.75 0 012 15.06V3.44a.75.75 0 01.556-.724A9.006 9.006 0 015 2.5a9.006 9.006 0 014.25 1.065v13.255z" />
+                            </svg>
+                            {t('caregiverApp.carePlan.aiSuggestEvidenceBased')}
+                          </summary>
+                          <p className="mt-1 pl-4">{suggestion.evidence_source}</p>
+                        </details>
+                      )}
                     </div>
                     <button
                       onClick={() => handleAddSuggestion(suggestion)}
@@ -1116,6 +1133,14 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
                       <span className="text-text-secondary text-sm">
                         {task.hint_text || '\u2014'}
                       </span>
+                      {task.evidence_source && (
+                        <div className="mt-1 text-xs text-text-muted flex items-center gap-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-2.5 h-2.5 flex-shrink-0">
+                            <path d="M10.75 16.82A7.462 7.462 0 0115 15.5c.71 0 1.396.098 2.046.282A.75.75 0 0018 15.06V3.44a.75.75 0 00-.556-.724A9.006 9.006 0 0015 2.5a9.006 9.006 0 00-4.25 1.065v13.255zm-1.5 0a7.462 7.462 0 00-4.25-1.32c-.71 0-1.396.098-2.046.282A.75.75 0 012 15.06V3.44a.75.75 0 01.556-.724A9.006 9.006 0 015 2.5a9.006 9.006 0 014.25 1.065v13.255z" />
+                          </svg>
+                          {task.evidence_source}
+                        </div>
+                      )}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="text-text-secondary text-sm">

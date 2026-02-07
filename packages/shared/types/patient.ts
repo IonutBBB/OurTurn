@@ -56,6 +56,7 @@ export interface Patient {
   emergency_contacts: EmergencyContact[];
   app_complexity: AppComplexity;
   last_seen_at: string | null;
+  calming_strategies: string[] | null;
   device_tokens: DeviceToken[];
   created_at: string;
   updated_at: string;
@@ -77,6 +78,7 @@ export interface PatientInsert {
   sleep_time?: string;
   emergency_number?: string;
   emergency_contacts?: EmergencyContact[];
+  calming_strategies?: string[];
 }
 
 export interface PatientUpdate {
@@ -94,6 +96,7 @@ export interface PatientUpdate {
   sleep_time?: string;
   emergency_number?: string;
   emergency_contacts?: EmergencyContact[];
+  calming_strategies?: string[];
   device_tokens?: DeviceToken[];
   app_complexity?: AppComplexity;
   last_seen_at?: string;

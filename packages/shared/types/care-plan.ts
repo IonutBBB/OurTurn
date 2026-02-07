@@ -31,6 +31,8 @@ export interface CarePlanTask {
   one_time_date: string | null;
   photo_url: string | null;
   medication_items: MedicationItem[] | null;
+  intervention_id: string | null;
+  evidence_source: string | null;
   created_by: string | null;
   created_at: string;
   updated_at: string;
@@ -48,6 +50,8 @@ export interface CarePlanTaskInsert {
   one_time_date?: string;
   photo_url?: string | null;
   medication_items?: MedicationItem[] | null;
+  intervention_id?: string | null;
+  evidence_source?: string | null;
   created_by?: string;
 }
 
@@ -62,6 +66,8 @@ export interface CarePlanTaskUpdate {
   one_time_date?: string;
   photo_url?: string | null;
   medication_items?: MedicationItem[] | null;
+  intervention_id?: string | null;
+  evidence_source?: string | null;
 }
 
 export interface TaskCompletion {

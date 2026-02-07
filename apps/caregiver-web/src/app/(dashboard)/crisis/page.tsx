@@ -60,7 +60,7 @@ export default async function CrisisPage() {
   const [
     latestLocationResult,
     recentAlertsResult,
-    crisisEntriesResult,
+    behaviourIncidentsResult,
     familyCaregiversResult,
   ] = await Promise.all([
     // Latest location
@@ -80,15 +80,13 @@ export default async function CrisisPage() {
       .gte('triggered_at', yesterday.toISOString())
       .order('triggered_at', { ascending: false }),
 
-    // Crisis journal entries (last 30 days)
+    // Behaviour incidents (last 30 days) for pattern insight + crisis logging
     supabase
-      .from('care_journal_entries')
-      .select('id, content, created_at, author_id, caregivers!care_journal_entries_author_id_fkey(name)')
+      .from('behaviour_incidents')
+      .select('*')
       .eq('household_id', household.id)
-      .eq('entry_type', 'crisis')
-      .gte('created_at', thirtyDaysAgo.toISOString())
-      .order('created_at', { ascending: false })
-      .limit(10),
+      .gte('logged_at', thirtyDaysAgo.toISOString())
+      .order('logged_at', { ascending: false }),
 
     // Family caregivers
     supabase
@@ -97,37 +95,20 @@ export default async function CrisisPage() {
       .eq('household_id', household.id),
   ]);
 
-  // Transform crisis entries to include author name
-  const crisisEntries = (crisisEntriesResult.data || []).map((entry: any) => {
-    const authorData = entry.caregivers;
-    const authorName = Array.isArray(authorData)
-      ? authorData[0]?.name || 'Unknown'
-      : authorData?.name || 'Unknown';
-    return {
-      id: entry.id,
-      content: entry.content,
-      created_at: entry.created_at,
-      author_name: authorName,
-    };
-  });
-
-  // Find primary caregiver (not current user) for remote mode
   const familyCaregivers = (familyCaregiversResult.data || []) as { id: string; name: string; email: string; role: string }[];
-  const primaryCaregiver = familyCaregivers.find(
-    (c) => c.role === 'primary' && c.id !== caregiver.id
-  ) || familyCaregivers.find((c) => c.id !== caregiver.id) || null;
 
   return (
     <CrisisClient
       caregiverId={caregiver.id}
       householdId={household.id}
+      patientId={patient.id}
       country={householdCountry}
       patientName={patient.name}
+      calmingStrategies={patient.calming_strategies || null}
       latestLocation={latestLocationResult.data}
       initialAlerts={recentAlertsResult.data || []}
-      crisisEntries={crisisEntries}
+      behaviourIncidents={behaviourIncidentsResult.data || []}
       familyCaregivers={familyCaregivers}
-      primaryCaregiver={primaryCaregiver}
     />
   );
 }

@@ -97,7 +97,15 @@ export default function CoachConversation({
               const parsed = JSON.parse(data);
               if (parsed.error) { setError(parsed.error); break; }
               if (parsed.conversationId) setConversationId(parsed.conversationId);
-              if (parsed.text) {
+              if (parsed.replace && parsed.text) {
+                // Safety post-processing replaced the entire response
+                setMessages((prev) => {
+                  const updated = [...prev];
+                  const lastMessage = updated[updated.length - 1];
+                  if (lastMessage.role === 'assistant') lastMessage.content = parsed.text;
+                  return updated;
+                });
+              } else if (parsed.text) {
                 setMessages((prev) => {
                   const updated = [...prev];
                   const lastMessage = updated[updated.length - 1];
