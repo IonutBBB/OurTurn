@@ -33,14 +33,27 @@ export function HelpRequest({ caregiverId, householdId, initialRequests }: HelpR
   const sendRequest = async (message: string, templateKey?: string) => {
     setIsSending(true);
     try {
+      // Verify session exists before writing
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        console.error('[HelpRequest] No auth session — user may need to re-login');
+        showToast(t('common.error'), 'error');
+        return;
+      }
+
       // Client-side rate limit check
       const todayStart = new Date();
       todayStart.setHours(0, 0, 0, 0);
-      const { count } = await supabase
+      const { count, error: countError } = await supabase
         .from('caregiver_help_requests')
         .select('*', { count: 'exact', head: true })
         .eq('requester_id', caregiverId)
         .gte('created_at', todayStart.toISOString());
+
+      if (countError) {
+        console.error('[HelpRequest] Rate limit check failed:', countError.message, '| code:', countError.code);
+        throw countError;
+      }
 
       if ((count || 0) >= 5) {
         showToast(t('caregiverApp.toolkit.help.limitReached'), 'error');
@@ -58,7 +71,10 @@ export function HelpRequest({ caregiverId, householdId, initialRequests }: HelpR
         .select()
         .single();
 
-      if (error) throw error;
+      if (error) {
+        console.error('[HelpRequest] Insert failed:', error.message, '| code:', error.code, '| details:', error.details);
+        throw error;
+      }
 
       setRequests((prev) => [data, ...prev]);
       setCustomMessage('');
@@ -133,7 +149,7 @@ export function HelpRequest({ caregiverId, householdId, initialRequests }: HelpR
             key={tpl.key}
             onClick={() => handleTemplateClick(tpl.key, tpl.message)}
             disabled={isSending}
-            className="px-3 py-2 text-sm rounded-full border border-brand-200 dark:border-brand-800 bg-brand-50/50 dark:bg-brand-900/20 text-brand-700 dark:text-brand-400 hover:bg-brand-100 dark:hover:bg-brand-900/40 transition-colors disabled:opacity-50"
+            className="px-3 py-2 text-sm rounded-full border border-brand-200 dark:border-brand-800 bg-surface-elevated/50 text-text-secondary hover:bg-brand-100 dark:hover:bg-brand-900/40 transition-colors disabled:opacity-50"
           >
             {tpl.label}
           </button>

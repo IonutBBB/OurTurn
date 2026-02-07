@@ -41,6 +41,14 @@ export function SliderCheckin({ caregiverId, initialLog, onLogUpdated }: SliderC
     if (!hasInteracted) return;
     setIsSaving(true);
     try {
+      // Verify session exists before writing
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        console.error('[SliderCheckin] No auth session — user may need to re-login');
+        showToast(t('common.error'), 'error');
+        return;
+      }
+
       const payload = {
         caregiver_id: caregiverId,
         date: today,
@@ -49,14 +57,20 @@ export function SliderCheckin({ caregiverId, initialLog, onLogUpdated }: SliderC
         sleep_quality_rating: sleep,
       };
 
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('caregiver_wellbeing_logs')
-        .upsert(payload, { onConflict: 'caregiver_id,date' })
-        .select()
-        .single();
+        .upsert(payload, { onConflict: 'caregiver_id,date' });
 
-      if (error) throw error;
-      onLogUpdated(data);
+      if (error) {
+        console.error('[SliderCheckin] Upsert failed:', error.message, '| code:', error.code, '| details:', error.details);
+        throw error;
+      }
+
+      // Construct the updated log from local state (avoids extra SELECT round-trip)
+      onLogUpdated({
+        ...payload,
+        id: '', // placeholder — not used downstream
+      } as CaregiverWellbeingLog);
       setShowSaved(true);
       setTimeout(() => setShowSaved(false), 2000);
     } catch {

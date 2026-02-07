@@ -122,11 +122,11 @@ export default function ToolkitClient({
           <WeeklyInsights trend={trend} />
 
           {/* Support Resources */}
-          <div className="bg-brand-50 dark:bg-brand-900/30 rounded-[20px] border border-brand-200 dark:border-brand-800 p-6">
-            <h3 className="text-lg font-semibold text-brand-800 dark:text-brand-700 mb-3">
+          <div className="card-paper p-6">
+            <h3 className="text-lg font-semibold text-text-primary mb-3">
               {t('caregiverApp.toolkit.support.title')}
             </h3>
-            <p className="text-brand-700 dark:text-brand-600 text-sm mb-4">
+            <p className="text-text-secondary text-sm mb-4">
               {t('caregiverApp.toolkit.support.description')}
             </p>
             <div className="space-y-2 text-sm">
@@ -134,7 +134,7 @@ export default function ToolkitClient({
                 href="https://www.alz.org/help-support/caregiving"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-brand-700 dark:text-brand-600 hover:text-brand-800 dark:hover:text-brand-700 underline"
+                className="block text-brand-600 hover:text-brand-700 underline"
               >
                 {t('caregiverApp.toolkit.support.alzheimers')}
               </a>
@@ -142,7 +142,7 @@ export default function ToolkitClient({
                 href="https://www.caregiver.org/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-brand-700 dark:text-brand-600 hover:text-brand-800 dark:hover:text-brand-700 underline"
+                className="block text-brand-600 hover:text-brand-700 underline"
               >
                 {t('caregiverApp.toolkit.support.familyCaregiver')}
               </a>

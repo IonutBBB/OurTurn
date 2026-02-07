@@ -124,9 +124,9 @@ function MiniChart({
   data: (number | null)[];
   color: string;
 }) {
-  // Filter out nulls for the line, keeping original indices
+  // Filter out nulls/undefined for the line, keeping original indices
   const points = data
-    .map((v, i) => (v !== null ? { x: i, y: v } : null))
+    .map((v, i) => (v != null && Number.isFinite(v) ? { x: i, y: v } : null))
     .filter((p): p is { x: number; y: number } => p !== null);
 
   if (points.length < 2) return null;

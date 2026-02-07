@@ -50,8 +50,8 @@ export function DailyTip({ initialTip }: DailyTipProps) {
 
   if (!tip || tip.dismissed) {
     return (
-      <div className="bg-brand-50 dark:bg-brand-900/30 rounded-[20px] border border-brand-200 dark:border-brand-800 p-5">
-        <h3 className="text-sm font-display font-bold text-brand-800 dark:text-brand-300 mb-2">
+      <div className="card-paper p-5">
+        <h3 className="text-sm font-display font-bold text-text-primary mb-2">
           {t('caregiverApp.toolkit.tip.title')}
         </h3>
         <button
@@ -68,14 +68,14 @@ export function DailyTip({ initialTip }: DailyTipProps) {
   const icon = CATEGORY_ICONS[tip.tip_category as TipCategory] || '💡';
 
   return (
-    <div className="bg-brand-50 dark:bg-brand-900/30 rounded-[20px] border border-brand-200 dark:border-brand-800 p-5">
+    <div className="card-paper p-5">
       <div className="flex items-start gap-3">
         <span className="text-2xl flex-shrink-0">{icon}</span>
         <div className="flex-1">
-          <h3 className="text-sm font-display font-bold text-brand-800 dark:text-brand-300 mb-1">
+          <h3 className="text-sm font-display font-bold text-text-primary mb-1">
             {t('caregiverApp.toolkit.tip.title')}
           </h3>
-          <p className="text-sm text-brand-700 dark:text-brand-400 leading-relaxed">
+          <p className="text-sm text-text-secondary leading-relaxed">
             {tip.tip_text}
           </p>
           <div className="flex gap-3 mt-3">
