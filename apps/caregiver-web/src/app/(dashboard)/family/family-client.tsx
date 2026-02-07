@@ -65,15 +65,6 @@ export default function FamilyClient({
   const [editingEntryId, setEditingEntryId] = useState<string | null>(null);
   const [editContent, setEditContent] = useState('');
   const [editEntryType, setEditEntryType] = useState<JournalEntryType>('observation');
-  const [openMenuId, setOpenMenuId] = useState<string | null>(null);
-
-  // Close menu on click outside
-  useEffect(() => {
-    if (!openMenuId) return;
-    const handleClick = () => setOpenMenuId(null);
-    document.addEventListener('click', handleClick);
-    return () => document.removeEventListener('click', handleClick);
-  }, [openMenuId]);
 
   // Subscribe to real-time updates
   useEffect(() => {
@@ -193,7 +184,6 @@ export default function FamilyClient({
     setEditingEntryId(entry.id);
     setEditContent(entry.content);
     setEditEntryType(entry.entry_type as JournalEntryType);
-    setOpenMenuId(null);
   };
 
   const cancelEditing = () => {
@@ -227,7 +217,6 @@ export default function FamilyClient({
   };
 
   const handleDeleteEntry = async (entryId: string) => {
-    setOpenMenuId(null);
     const confirmed = window.confirm(t('caregiverApp.family.deleteConfirmMessage'));
     if (!confirmed) return;
 
@@ -525,34 +514,29 @@ export default function FamilyClient({
                           <p className="text-text-primary whitespace-pre-wrap">{entry.content}</p>
                         )}
                       </div>
-                      {/* Kebab menu */}
+                      {/* Edit / Delete buttons */}
                       {!isEditing && (
-                        <div className="relative">
+                        <div className="flex items-center gap-1">
                           <button
-                            onClick={(e) => { e.stopPropagation(); setOpenMenuId(openMenuId === entry.id ? null : entry.id); }}
-                            className="p-1.5 rounded-lg text-text-muted hover:text-text-secondary hover:bg-surface-card transition-colors"
-                            aria-label="Entry actions"
+                            onClick={() => startEditing(entry)}
+                            className="p-1.5 rounded-lg text-text-muted hover:text-brand-600 hover:bg-brand-50 dark:hover:bg-brand-900/20 transition-colors"
+                            aria-label={t('common.edit')}
+                            title={t('common.edit')}
                           >
-                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                              <path d="M10 6a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4z" />
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                             </svg>
                           </button>
-                          {openMenuId === entry.id && (
-                            <div className="absolute right-0 top-8 z-10 w-36 bg-surface-card dark:bg-surface-elevated rounded-lg shadow-lg border border-surface-border py-1">
-                              <button
-                                onClick={() => startEditing(entry)}
-                                className="w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-brand-50 dark:hover:bg-brand-900/20 transition-colors"
-                              >
-                                {t('common.edit')}
-                              </button>
-                              <button
-                                onClick={() => handleDeleteEntry(entry.id)}
-                                className="w-full text-left px-4 py-2 text-sm text-status-red hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
-                              >
-                                {t('common.delete')}
-                              </button>
-                            </div>
-                          )}
+                          <button
+                            onClick={() => handleDeleteEntry(entry.id)}
+                            className="p-1.5 rounded-lg text-text-muted hover:text-status-red hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+                            aria-label={t('common.delete')}
+                            title={t('common.delete')}
+                          >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                          </button>
                         </div>
                       )}
                     </div>
