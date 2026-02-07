@@ -175,6 +175,10 @@
     },
     "coach": {
       "title": "AI Care Coach",
+      "tabs": {
+        "chat": "Chat",
+        "behaviours": "Behaviours"
+      },
       "intro": "Ask me anything about caring for {{name}}. I know their routine, preferences, and general best practices.",
       "placeholder": "Type your question...",
       "disclaimer": "I'm here to support you, not replace medical advice. For health concerns, always consult your doctor.",
@@ -372,7 +376,61 @@
         "title": "Need Support?",
         "description": "Caregiving is challenging. It is okay to ask for help."
       },
-      "footer": "Remember: You can't pour from an empty cup. Your wellbeing matters too."
+      "footer": "Remember: You can't pour from an empty cup. Your wellbeing matters too.",
+      "behaviours": {
+        "playbooks": {
+          "title": "Behaviour Playbooks",
+          "subtitle": "Tap a behaviour for step-by-step guidance",
+          "rightNow": "Right Now",
+          "understandWhy": "Understand Why",
+          "prevent": "Prevention",
+          "whenToCallDoctor": "When to Call the Doctor"
+        },
+        "logger": {
+          "title": "Log Incident",
+          "logIncident": "Log an Incident",
+          "typeLabel": "Behaviour type",
+          "selectType": "Select a type...",
+          "severity": "Severity",
+          "mild": "Mild",
+          "severe": "Severe",
+          "timeOfDay": "Time of day",
+          "morning": "Morning",
+          "afternoon": "Afternoon",
+          "evening": "Evening",
+          "night": "Night",
+          "duration": "Duration (minutes)",
+          "durationPlaceholder": "How long did it last?",
+          "triggers": "Possible triggers",
+          "trigger_pain": "Pain",
+          "trigger_hunger": "Hunger",
+          "trigger_thirst": "Thirst",
+          "trigger_fatigue": "Fatigue",
+          "trigger_overstimulation": "Overstimulation",
+          "trigger_unfamiliar_environment": "Unfamiliar place",
+          "trigger_unfamiliar_person": "Unfamiliar person",
+          "trigger_routine_change": "Routine change",
+          "trigger_medication": "Medication",
+          "trigger_noise": "Noise",
+          "trigger_loneliness": "Loneliness",
+          "trigger_boredom": "Boredom",
+          "trigger_bathroom_need": "Bathroom need",
+          "trigger_frustration": "Frustration",
+          "trigger_fear": "Fear",
+          "trigger_unknown": "Unknown",
+          "whatHappened": "What happened?",
+          "whatHappenedPlaceholder": "Describe the incident...",
+          "whatHelped": "What helped? (optional)",
+          "whatHelpedPlaceholder": "Describe what helped calm things down...",
+          "save": "Save Incident",
+          "saved": "Incident logged"
+        },
+        "timeline": {
+          "title": "Incident Timeline",
+          "all": "All",
+          "noIncidents": "No incidents match the current filter."
+        }
+      }
     },
     "reports": {
       "title": "Doctor Visit Report",

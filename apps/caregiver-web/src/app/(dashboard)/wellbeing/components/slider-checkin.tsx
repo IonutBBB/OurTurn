@@ -10,6 +10,7 @@ import { useToast } from '@/components/toast';
 interface SliderCheckinProps {
   caregiverId: string;
   initialLog: CaregiverWellbeingLog | null;
+  recentLogs?: CaregiverWellbeingLog[];
   onLogUpdated: (log: CaregiverWellbeingLog) => void;
 }
 
@@ -19,7 +20,7 @@ const SLIDER_COLORS = {
   sleep: { track: 'from-red-300 to-blue-400', thumb: 'accent-brand-600' },
 };
 
-export function SliderCheckin({ caregiverId, initialLog, onLogUpdated }: SliderCheckinProps) {
+export function SliderCheckin({ caregiverId, initialLog, recentLogs = [], onLogUpdated }: SliderCheckinProps) {
   const { t } = useTranslation();
   const { showToast } = useToast();
   const supabase = createBrowserClient();
@@ -31,8 +32,22 @@ export function SliderCheckin({ caregiverId, initialLog, onLogUpdated }: SliderC
   const [hasInteracted, setHasInteracted] = useState(
     initialLog?.energy_level !== null || initialLog?.stress_level !== null || initialLog?.sleep_quality_rating !== null
   );
+  const [moodNotes, setMoodNotes] = useState(initialLog?.mood_notes || '');
+  const [showNotes, setShowNotes] = useState(!!initialLog?.mood_notes);
   const [isSaving, setIsSaving] = useState(false);
   const [showSaved, setShowSaved] = useState(false);
+
+  // Build sparkline data from the last 7 recent logs
+  const sparklineData = (() => {
+    const last7 = recentLogs.slice(0, 7).reverse();
+    const toNumbers = (arr: (SliderValue | null)[]): number[] =>
+      arr.filter((v) => v != null) as number[];
+    return {
+      energy: toNumbers(last7.map(l => l.energy_level)),
+      stress: toNumbers(last7.map(l => l.stress_level)),
+      sleep: toNumbers(last7.map(l => l.sleep_quality_rating)),
+    };
+  })();
 
   const logRef = useRef(initialLog);
   useEffect(() => { logRef.current = initialLog; }, [initialLog]);
@@ -55,6 +70,7 @@ export function SliderCheckin({ caregiverId, initialLog, onLogUpdated }: SliderC
         energy_level: energy,
         stress_level: stress,
         sleep_quality_rating: sleep,
+        mood_notes: moodNotes || null,
       };
 
       const { error } = await supabase
@@ -78,14 +94,14 @@ export function SliderCheckin({ caregiverId, initialLog, onLogUpdated }: SliderC
     } finally {
       setIsSaving(false);
     }
-  }, [energy, stress, sleep, caregiverId, today, hasInteracted, supabase, showToast, t, onLogUpdated]);
+  }, [energy, stress, sleep, moodNotes, caregiverId, today, hasInteracted, supabase, showToast, t, onLogUpdated]);
 
   // Auto-save 1s after change
   useEffect(() => {
     if (!hasInteracted) return;
     const timeout = setTimeout(save, 1000);
     return () => clearTimeout(timeout);
-  }, [energy, stress, sleep, save, hasInteracted]);
+  }, [energy, stress, sleep, moodNotes, save, hasInteracted]);
 
   const handleSliderChange = (setter: (v: SliderValue) => void) => (e: React.ChangeEvent<HTMLInputElement>) => {
     setHasInteracted(true);
@@ -118,6 +134,8 @@ export function SliderCheckin({ caregiverId, initialLog, onLogUpdated }: SliderC
           onChange={handleSliderChange(setEnergy)}
           labels={ENERGY_LABELS}
           gradientClass={SLIDER_COLORS.energy.track}
+          sparkline={sparklineData.energy}
+          sparkColor="#22c55e"
         />
 
         {/* Stress Slider */}
@@ -129,6 +147,8 @@ export function SliderCheckin({ caregiverId, initialLog, onLogUpdated }: SliderC
           onChange={handleSliderChange(setStress)}
           labels={STRESS_LABELS}
           gradientClass={SLIDER_COLORS.stress.track}
+          sparkline={sparklineData.stress}
+          sparkColor="#f59e0b"
         />
 
         {/* Sleep Slider */}
@@ -140,7 +160,33 @@ export function SliderCheckin({ caregiverId, initialLog, onLogUpdated }: SliderC
           onChange={handleSliderChange(setSleep)}
           labels={CAREGIVER_SLEEP_LABELS}
           gradientClass={SLIDER_COLORS.sleep.track}
+          sparkline={sparklineData.sleep}
+          sparkColor="#3b82f6"
         />
+      </div>
+
+      {/* Mood notes */}
+      <div className="mt-4 pt-4 border-t border-surface-border">
+        <button
+          onClick={() => setShowNotes(!showNotes)}
+          className="text-sm text-brand-600 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300 font-medium"
+        >
+          {showNotes
+            ? t('caregiverApp.toolkit.checkin.hideNotes')
+            : t('caregiverApp.toolkit.checkin.addNote')}
+        </button>
+        {showNotes && (
+          <textarea
+            value={moodNotes}
+            onChange={(e) => {
+              setHasInteracted(true);
+              setMoodNotes(e.target.value);
+            }}
+            placeholder={t('caregiverApp.toolkit.checkin.notesPlaceholder')}
+            className="input-warm w-full mt-2 text-sm resize-none"
+            rows={2}
+          />
+        )}
       </div>
     </div>
   );
@@ -154,6 +200,8 @@ function SliderRow({
   onChange,
   labels,
   gradientClass,
+  sparkline = [],
+  sparkColor = '#888',
 }: {
   label: string;
   lowLabel: string;
@@ -162,11 +210,16 @@ function SliderRow({
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   labels: Record<SliderValue, string>;
   gradientClass: string;
+  sparkline?: number[];
+  sparkColor?: string;
 }) {
   return (
     <div>
       <div className="flex items-center justify-between mb-2">
-        <span className="text-sm font-semibold text-text-primary">{label}</span>
+        <div className="flex items-center gap-2">
+          <span className="text-sm font-semibold text-text-primary">{label}</span>
+          {sparkline.length >= 2 && <MiniSparkline data={sparkline} color={sparkColor} />}
+        </div>
         <span className="text-sm font-medium text-brand-600">{labels[value]}</span>
       </div>
       <div className="relative">
@@ -187,5 +240,26 @@ function SliderRow({
         <span className="text-xs text-text-muted">{highLabel}</span>
       </div>
     </div>
+  );
+}
+
+function MiniSparkline({ data, color }: { data: number[]; color: string }) {
+  if (data.length < 2) return null;
+  const w = 48;
+  const h = 12;
+  const pad = 1;
+  const maxX = data.length - 1;
+  const pathD = data
+    .map((v, i) => {
+      const x = pad + (i / maxX) * (w - pad * 2);
+      const y = h - pad - ((v - 1) / 4) * (h - pad * 2);
+      return `${i === 0 ? 'M' : 'L'} ${x.toFixed(1)} ${y.toFixed(1)}`;
+    })
+    .join(' ');
+
+  return (
+    <svg width={w} height={h} className="opacity-60" aria-hidden="true">
+      <path d={pathD} fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }

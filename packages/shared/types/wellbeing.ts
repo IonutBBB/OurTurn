@@ -57,6 +57,128 @@ export interface ReliefExercise {
   };
 }
 
+// ── Behaviour management types ────────────────────────────────
+export type BehaviourType =
+  | 'agitation'
+  | 'wandering'
+  | 'sundowning'
+  | 'repetitive_questions'
+  | 'refusing_care'
+  | 'sleep_disruption'
+  | 'aggression'
+  | 'shadowing';
+
+export type TimeOfDay = 'morning' | 'afternoon' | 'evening' | 'night';
+
+export interface BehaviourIncident {
+  id: string;
+  caregiver_id: string;
+  household_id: string;
+  patient_id: string;
+  behaviour_type: BehaviourType;
+  severity: 1 | 2 | 3 | 4 | 5;
+  time_of_day: TimeOfDay | null;
+  duration_minutes: number | null;
+  possible_triggers: string[];
+  what_happened: string;
+  what_helped: string | null;
+  location: string | null;
+  logged_at: string;
+  created_at: string;
+}
+
+export interface BehaviourIncidentInsert {
+  caregiver_id: string;
+  household_id: string;
+  patient_id: string;
+  behaviour_type: BehaviourType;
+  severity: number;
+  time_of_day?: TimeOfDay;
+  duration_minutes?: number;
+  possible_triggers?: string[];
+  what_happened: string;
+  what_helped?: string;
+  location?: string;
+}
+
+export interface BehaviourPlaybook {
+  id: string;
+  behaviour_type: BehaviourType;
+  emoji: string;
+  title: string;
+  description: string;
+  right_now: { step: string }[];
+  understand_why: string[];
+  prevent: string[];
+  when_to_call_doctor: string[];
+  language: string;
+}
+
+export const BEHAVIOUR_TYPES: { type: BehaviourType; label: string; emoji: string }[] = [
+  { type: 'agitation', label: 'Agitation', emoji: '😤' },
+  { type: 'wandering', label: 'Wandering', emoji: '🚶' },
+  { type: 'sundowning', label: 'Sundowning', emoji: '🌅' },
+  { type: 'repetitive_questions', label: 'Repetitive Questions', emoji: '🔄' },
+  { type: 'refusing_care', label: 'Refusing Care', emoji: '🚫' },
+  { type: 'sleep_disruption', label: 'Sleep Disruption', emoji: '😴' },
+  { type: 'aggression', label: 'Aggression', emoji: '⚠️' },
+  { type: 'shadowing', label: 'Shadowing', emoji: '👤' },
+];
+
+export const BEHAVIOUR_TRIGGERS = [
+  'pain', 'hunger', 'thirst', 'fatigue', 'overstimulation',
+  'unfamiliar_environment', 'unfamiliar_person', 'routine_change',
+  'medication', 'noise', 'loneliness', 'boredom', 'bathroom_need',
+  'frustration', 'fear', 'unknown',
+] as const;
+
+export type BehaviourTrigger = typeof BEHAVIOUR_TRIGGERS[number];
+
+// ── Relief activity log types ─────────────────────────────────
+export interface ReliefActivityLog {
+  id: string;
+  caregiver_id: string;
+  activity_type: string;
+  duration_seconds: number | null;
+  mood_before: SliderValue | null;
+  mood_after: SliderValue | null;
+  completed_at: string;
+}
+
+// ── Care team types ───────────────────────────────────────────
+export interface CareTeamMember {
+  id: string;
+  household_id: string;
+  added_by: string;
+  name: string;
+  relationship: string | null;
+  phone: string | null;
+  email: string | null;
+  avatar_url: string | null;
+  can_help_with: string[];
+  availability_notes: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CareTeamMemberInsert {
+  household_id: string;
+  added_by: string;
+  name: string;
+  relationship?: string;
+  phone?: string;
+  email?: string;
+  can_help_with?: string[];
+  availability_notes?: string;
+}
+
+export const CARE_HELP_CATEGORIES = [
+  'respite', 'meals', 'transport', 'medication',
+  'appointments', 'errands', 'companionship', 'overnight',
+] as const;
+
+export type CareHelpCategory = typeof CARE_HELP_CATEGORIES[number];
+
 // ── Help request types ──────────────────────────────────────
 export type HelpRequestStatus = 'pending' | 'accepted' | 'completed' | 'expired';
 
@@ -112,6 +234,7 @@ export interface CaregiverWellbeingLog {
   daily_goal: string | null;
   goal_completed: boolean;
   relief_exercises_used: string[];
+  mood_notes: string | null;
   // Deprecated fields (kept for backward compat)
   mood: WellbeingMood | null;
   self_care_checklist: SelfCareChecklist;

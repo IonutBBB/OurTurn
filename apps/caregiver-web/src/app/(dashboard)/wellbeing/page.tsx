@@ -1,12 +1,9 @@
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import ToolkitClient from './toolkit-client';
-import en from '../../../../locales/en.json';
 
-export default async function ToolkitPage() {
+export default async function WellbeingTabPage() {
   const supabase = await createServerClient();
-  const t = en.caregiverApp;
 
-  // Get user
   const { data: { user } } = await supabase.auth.getUser();
 
   const { data: caregiver } = await supabase
@@ -15,48 +12,22 @@ export default async function ToolkitPage() {
     .eq('id', user?.id)
     .single();
 
-  if (!caregiver) {
-    return (
-      <div className="page-enter space-y-6">
-        <div>
-          <h1 className="heading-display text-2xl">
-            Caregiver <span className="heading-accent">Toolkit</span>
-          </h1>
-          <p className="text-text-secondary text-sm mt-1">{t.toolkit.pageSubtitle}</p>
-        </div>
-        <div className="card-paper p-12 text-center max-w-lg mx-auto">
-          <div className="w-16 h-16 rounded-2xl bg-brand-100/60 dark:bg-brand-100/20 flex items-center justify-center mx-auto mb-5">
-            <span className="text-3xl">🧰</span>
-          </div>
-          <h2 className="text-lg font-display font-bold text-text-primary mb-2">{t.toolkit.completeSetupFirst}</h2>
-          <p className="text-sm text-text-secondary mb-6 leading-relaxed">
-            {t.toolkit.setupDesc}
-          </p>
-          <a href="/onboarding" className="btn-primary inline-flex items-center">
-            {t.toolkit.startOnboarding}
-          </a>
-        </div>
-      </div>
-    );
-  }
+  if (!caregiver) return null;
 
   const today = new Date().toISOString().split('T')[0];
 
-  // Fetch all data in parallel
   const [
     todayLogResult,
     recentLogsResult,
     helpRequestsResult,
     burnoutLogsResult,
   ] = await Promise.all([
-    // Today's log
     supabase
       .from('caregiver_wellbeing_logs')
       .select('*')
       .eq('caregiver_id', caregiver.id)
       .eq('date', today)
       .single(),
-    // 28-day history (for trends)
     (() => {
       const d = new Date();
       d.setDate(d.getDate() - 28);
@@ -67,14 +38,12 @@ export default async function ToolkitPage() {
         .gte('date', d.toISOString().split('T')[0])
         .order('date', { ascending: false });
     })(),
-    // Recent help requests
     supabase
       .from('caregiver_help_requests')
       .select('*')
       .eq('household_id', caregiver.household_id)
       .order('created_at', { ascending: false })
       .limit(10),
-    // Recent logs for burnout check (7 days)
     (() => {
       const d = new Date();
       d.setDate(d.getDate() - 7);
@@ -91,7 +60,6 @@ export default async function ToolkitPage() {
   const recentLogs = recentLogsResult.data || [];
   const helpRequests = helpRequestsResult.data || [];
 
-  // Check burnout: stress >= 4 for 3+ days OR energy <= 2 for 3+ days
   const burnoutLogs = burnoutLogsResult.data || [];
   let consecutiveHighStress = 0;
   let consecutiveLowEnergy = 0;
@@ -114,7 +82,6 @@ export default async function ToolkitPage() {
     }
   }
 
-  // Build trend data (chronological order)
   const trend = recentLogs
     .map((l) => ({
       date: l.date,
@@ -125,23 +92,15 @@ export default async function ToolkitPage() {
     .reverse();
 
   return (
-    <div className="page-enter space-y-6">
-      <div>
-        <h1 className="heading-display text-2xl">
-          Caregiver <span className="heading-accent">Toolkit</span>
-        </h1>
-        <p className="text-text-secondary text-sm mt-1">{t.toolkit.pageSubtitle}</p>
-      </div>
-      <ToolkitClient
-        caregiverId={caregiver.id}
-        caregiverName={caregiver.name}
-        householdId={caregiver.household_id}
-        initialLog={todayLog}
-        recentLogs={recentLogs}
-        helpRequests={helpRequests}
-        showBurnoutWarning={showBurnoutWarning}
-        trend={trend}
-      />
-    </div>
+    <ToolkitClient
+      caregiverId={caregiver.id}
+      caregiverName={caregiver.name}
+      householdId={caregiver.household_id}
+      initialLog={todayLog}
+      recentLogs={recentLogs}
+      helpRequests={helpRequests}
+      showBurnoutWarning={showBurnoutWarning}
+      trend={trend}
+    />
   );
 }

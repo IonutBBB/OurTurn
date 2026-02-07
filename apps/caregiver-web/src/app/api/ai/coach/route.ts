@@ -3,6 +3,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import { rateLimit } from '@/lib/rate-limit';
 import { createLogger } from '@/lib/logger';
+import type { ConversationType } from '@ourturn/shared/types/ai';
 
 const log = createLogger('ai/coach');
 
@@ -18,6 +19,8 @@ interface RequestBody {
   message: string;
   conversationId?: string;
   householdId: string;
+  conversationType?: ConversationType;
+  conversationContext?: string;
 }
 
 // Build system prompt with patient and caregiver context
@@ -26,7 +29,9 @@ function buildSystemPrompt(
   caregiver: any,
   checkins: any[],
   carePlan: any[],
-  journalEntries: any[]
+  journalEntries: any[],
+  completionRates: Record<string, number>,
+  weeklyInsight: any | null
 ): string {
   const patientName = patient?.name || 'your loved one';
   const caregiverName = caregiver?.name || 'there';
@@ -46,6 +51,16 @@ function buildSystemPrompt(
   const formattedJournal = journalEntries.length > 0
     ? journalEntries.slice(0, 5).map(e => `- ${e.content}`).join('\n')
     : 'No journal entries yet.';
+
+  // Format completion rates by category
+  const formattedCompletions = Object.keys(completionRates).length > 0
+    ? Object.entries(completionRates).map(([cat, rate]) => `- ${cat}: ${Math.round(rate * 100)}%`).join('\n')
+    : 'No completion data yet.';
+
+  // Format weekly insight
+  const formattedInsight = weeklyInsight?.insights?.length > 0
+    ? weeklyInsight.insights.map((i: any) => `- [${i.category}] ${i.insight}`).join('\n')
+    : 'No weekly insights yet.';
 
   return `You are OurTurn Care Coach, a warm and knowledgeable AI assistant helping family caregivers of people living with dementia manage daily care.
 
@@ -67,8 +82,14 @@ ${formattedCheckins}
 CURRENT CARE PLAN:
 ${formattedCarePlan}
 
+TASK COMPLETION RATES (last 7 days, by category):
+${formattedCompletions}
+
 RECENT CARE JOURNAL ENTRIES:
 ${formattedJournal}
+
+LATEST WEEKLY INSIGHTS:
+${formattedInsight}
 
 YOUR ROLE:
 - You are a supportive, empathetic companion for the caregiver
@@ -114,10 +135,182 @@ When noting something for the doctor, include:
 [/DOCTOR_NOTE]`;
 }
 
+// Mode-specific system prompt appendices
+function getModePromptAppendix(
+  conversationType: ConversationType,
+  conversationContext: string | undefined,
+  patientName: string
+): string {
+  if (conversationType === 'situation') {
+    return `
+
+RESPONSE FORMAT FOR THIS CONVERSATION:
+The caregiver is dealing with a specific situation right now: "${conversationContext}".
+Structure your FIRST response with these exact headings (use markdown ##):
+
+## What's likely happening
+1-2 empathetic sentences explaining what ${patientName} might be experiencing. Do NOT use clinical language.
+
+## Try this right now
+3-4 numbered, specific steps the caregiver can take immediately.
+
+## What to avoid
+2-3 things that could make the situation harder.
+
+## If this continues...
+When to reach out for more support (without being alarmist).
+
+For follow-up messages, respond naturally but stay focused on this situation.`;
+  }
+
+  if (conversationType === 'workflow') {
+    if (conversationContext === 'plan_tomorrow') {
+      return `
+
+RESPONSE FORMAT FOR THIS CONVERSATION:
+You are helping the caregiver plan tomorrow for ${patientName}. Walk through the day in sections:
+
+## Morning
+Suggest 2-3 activities based on what's been working (check completion rates). Include times.
+
+## Afternoon
+Suggest 2-3 activities. Consider ${patientName}'s energy patterns from check-in data.
+
+## Evening
+Suggest 2-3 wind-down activities. Be mindful of sundowning patterns if present in the data.
+
+For each suggestion, include a [CARE_PLAN_SUGGESTION] block so the caregiver can add it with one tap.
+Ask the caregiver if they'd like to adjust anything after presenting the plan.`;
+    }
+
+    if (conversationContext === 'doctor_visit') {
+      return `
+
+RESPONSE FORMAT FOR THIS CONVERSATION:
+You are helping prepare a summary for ${patientName}'s doctor visit. Generate a structured report based on the data you have.
+
+Structure your response with these sections:
+## Summary for Doctor
+A brief 2-3 sentence overview of the past week/period.
+
+## Mood & Sleep Patterns
+Summarize check-in data trends. Use specific numbers when available.
+
+## Daily Routine & Activities
+What's working well, what ${patientName} engages with, completion rates by category.
+
+## Observations & Concerns
+Pull from journal entries. Flag anything noteworthy.
+
+## Questions for the Doctor
+Suggest 2-3 questions the caregiver might want to ask.
+
+For each key observation, include a [DOCTOR_NOTE] block so it can be saved.`;
+    }
+
+    if (conversationContext === 'review_week') {
+      return `
+
+RESPONSE FORMAT FOR THIS CONVERSATION:
+You are helping the caregiver review this week for ${patientName}. Analyze the data and present:
+
+## What went well
+Highlight positive patterns from check-ins, high-completion activities, and good mood days. Be specific with data.
+
+## Needs attention
+Areas where completion is low or mood patterns suggest room for improvement. Be gentle and constructive.
+
+## Suggestions for next week
+2-3 specific, actionable changes based on the patterns you see. Include [CARE_PLAN_SUGGESTION] blocks where relevant.
+
+Keep the tone encouraging. The caregiver is doing their best.`;
+    }
+
+    if (conversationContext === 'adjust_plan') {
+      return `
+
+RESPONSE FORMAT FOR THIS CONVERSATION:
+You are helping the caregiver optimize ${patientName}'s care plan based on what's actually working.
+
+Review the completion rates by category and present:
+
+## Working well (keep these)
+Tasks/categories with high completion rates. Explain why they might be succeeding.
+
+## Consider adjusting
+Tasks with low completion. Suggest why they might not be working and offer alternatives. Include [CARE_PLAN_SUGGESTION] blocks for replacements.
+
+## New ideas to try
+1-2 fresh suggestions based on ${patientName}'s interests and what's been successful. Include [CARE_PLAN_SUGGESTION] blocks.
+
+Ask the caregiver for their input before making final recommendations.`;
+    }
+  }
+
+  if (conversationType === 'topic') {
+    return `
+
+RESPONSE FORMAT FOR THIS CONVERSATION:
+The caregiver wants to learn about: "${conversationContext}".
+Structure your FIRST response with these exact headings (use markdown ##):
+
+## Key points
+3-5 practical, evidence-based points about this topic. Keep each point to 1-2 sentences.
+
+## For ${patientName} specifically
+Personalize the advice based on ${patientName}'s biography, preferences, and recent data. Reference specific details you know.
+
+## Try this today
+One concrete, specific action the caregiver can try today. Make it achievable and connected to ${patientName}'s interests.
+
+For follow-up questions, respond naturally but stay on-topic. Always ground advice in ${patientName}'s specific situation.`;
+  }
+
+  return '';
+}
+
+// Calculate task completion rates by category for the last 7 days
+async function getCompletionRates(
+  supabase: any,
+  householdId: string,
+  carePlan: any[]
+): Promise<Record<string, number>> {
+  if (carePlan.length === 0) return {};
+
+  const sevenDaysAgo = new Date();
+  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+
+  const { data: completions } = await supabase
+    .from('task_completions')
+    .select('task_id, date')
+    .eq('household_id', householdId)
+    .gte('date', sevenDaysAgo.toISOString().split('T')[0]);
+
+  if (!completions || completions.length === 0) return {};
+
+  // Group tasks by category
+  const tasksByCategory: Record<string, string[]> = {};
+  for (const task of carePlan) {
+    if (!tasksByCategory[task.category]) tasksByCategory[task.category] = [];
+    tasksByCategory[task.category].push(task.id);
+  }
+
+  // Calculate rates
+  const rates: Record<string, number> = {};
+  const completedTaskIds = new Set(completions.map((c: any) => c.task_id));
+
+  for (const [category, taskIds] of Object.entries(tasksByCategory)) {
+    const completed = taskIds.filter(id => completedTaskIds.has(id)).length;
+    rates[category] = taskIds.length > 0 ? completed / taskIds.length : 0;
+  }
+
+  return rates;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body: RequestBody = await request.json();
-    const { message, conversationId, householdId } = body;
+    const { message, conversationId, householdId, conversationType = 'open', conversationContext } = body;
 
     if (!message || !householdId) {
       return NextResponse.json(
@@ -196,6 +389,18 @@ export async function POST(request: NextRequest) {
       .order('created_at', { ascending: false })
       .limit(5);
 
+    // Get completion rates for enriched context
+    const completionRates = await getCompletionRates(supabase, householdId, carePlan || []);
+
+    // Get latest weekly insight
+    const { data: weeklyInsight } = await supabase
+      .from('weekly_insights')
+      .select('*')
+      .eq('household_id', householdId)
+      .order('week_end', { ascending: false })
+      .limit(1)
+      .single();
+
     // Get or create conversation
     let conversation: any;
     if (conversationId) {
@@ -208,29 +413,47 @@ export async function POST(request: NextRequest) {
     }
 
     if (!conversation) {
-      const { data } = await supabase
+      const { data, error: insertError } = await supabase
         .from('ai_conversations')
         .insert({
           caregiver_id: user.id,
           household_id: householdId,
           messages: [],
+          conversation_type: conversationType,
+          conversation_context: conversationContext || null,
         })
         .select()
         .single();
+
+      if (insertError || !data) {
+        log.error('Failed to create conversation', { error: insertError?.message });
+        return NextResponse.json(
+          { error: 'Failed to create conversation' },
+          { status: 500 }
+        );
+      }
       conversation = data;
     }
 
     // Get conversation history (last 10 messages for context)
     const previousMessages = (conversation.messages || []).slice(-10) as ChatMessage[];
 
-    // Build system prompt
-    const systemPrompt = buildSystemPrompt(
+    const patientName = patient?.name || 'your loved one';
+
+    // Build system prompt with enriched context
+    const basePrompt = buildSystemPrompt(
       patient,
       caregiver,
       checkins || [],
       carePlan || [],
-      journalEntries || []
+      journalEntries || [],
+      completionRates,
+      weeklyInsight
     );
+
+    // Append mode-specific instructions
+    const modeAppendix = getModePromptAppendix(conversationType, conversationContext, patientName);
+    const systemPrompt = basePrompt + modeAppendix;
 
     // Initialize Gemini model
     const model = genAI.getGenerativeModel({

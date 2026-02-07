@@ -2,6 +2,8 @@
 
 export type AIMessageRole = 'user' | 'assistant' | 'system';
 
+export type ConversationType = 'situation' | 'workflow' | 'topic' | 'open';
+
 export interface AIMessage {
   role: AIMessageRole;
   content: string;
@@ -13,6 +15,8 @@ export interface AIConversation {
   caregiver_id: string;
   household_id: string;
   messages: AIMessage[];
+  conversation_type: ConversationType;
+  conversation_context: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -21,6 +25,8 @@ export interface AIConversationInsert {
   caregiver_id: string;
   household_id: string;
   messages?: AIMessage[];
+  conversation_type?: ConversationType;
+  conversation_context?: string;
 }
 
 // Brain Activity types

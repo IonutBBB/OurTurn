@@ -30,7 +30,6 @@ export function WellbeingAgent({ caregiverId, caregiverName, energy, stress, sle
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [expanded, setExpanded] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Refs for guards and latest values
@@ -50,8 +49,12 @@ export function WellbeingAgent({ caregiverId, caregiverName, energy, stress, sle
     return () => { abortRef.current?.abort(); };
   }, []);
 
+  // Scroll within the chat container only — not the whole page
+  const chatContainerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
   }, [messages]);
 
   const suggestedPrompts = useCallback(() => {
@@ -241,6 +244,7 @@ export function WellbeingAgent({ caregiverId, caregiverName, energy, stress, sle
 
       {/* Messages */}
       <div
+        ref={chatContainerRef}
         className={`overflow-y-auto space-y-3 transition-all duration-300 ${
           expanded ? 'max-h-[500px]' : 'max-h-[300px]'
         }`}
@@ -277,7 +281,6 @@ export function WellbeingAgent({ caregiverId, caregiverName, energy, stress, sle
             </div>
           ))
         )}
-        <div ref={messagesEndRef} />
       </div>
 
       {/* Suggested Prompts */}

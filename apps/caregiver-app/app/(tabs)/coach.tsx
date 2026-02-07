@@ -1,91 +1,125 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  TextInput,
-  TouchableOpacity,
   ScrollView,
-  KeyboardAvoidingView,
-  Platform,
-  ActivityIndicator,
-  Alert,
+  TouchableOpacity,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../../src/stores/auth-store';
-import { useAICoach } from '../../src/hooks/use-ai-coach';
-import type { CarePlanSuggestion, DoctorNote } from '../../src/services/ai-coach';
+import ProactiveInsightCard from '../../src/components/coach/proactive-insight-card';
+import SituationCards from '../../src/components/coach/situation-cards';
+import WorkflowCards from '../../src/components/coach/workflow-cards';
+import TopicCards from '../../src/components/coach/topic-cards';
+import OpenChatInput from '../../src/components/coach/open-chat-input';
+import { COLORS, FONTS, RADIUS, SPACING } from '../../src/theme';
 
-import { COLORS, FONTS, SPACING, RADIUS, SHADOWS } from '../../src/theme';
+// Human-readable prompts for each situation
+const SITUATION_PROMPTS: Record<string, string> = {
+  refusing_food: '{{name}} is refusing to eat right now. What should I do?',
+  refusing_medication: "{{name}} won't take their medication. I need help right now.",
+  agitated: '{{name}} is very agitated right now. How do I help calm things down?',
+  not_recognizing: "{{name}} doesn't recognize me right now. It's really hard. What do I do?",
+  repetitive_questions: '{{name}} keeps asking the same question over and over. How do I handle this patiently?',
+  sundowning: "It's evening and {{name}} is getting really restless and confused. Help me with sundowning.",
+  wants_to_leave: '{{name}} wants to leave the house and is insisting on going somewhere. What do I do?',
+  caregiver_overwhelmed: "I'm feeling overwhelmed and losing patience right now. I need support.",
+};
+
+const WORKFLOW_PROMPTS: Record<string, string> = {
+  plan_tomorrow: "Let's plan a good day for {{name}} tomorrow. What do you suggest based on what's been working?",
+  doctor_visit: "I have a doctor visit coming up for {{name}}. Can you help me prepare a summary of how things have been going?",
+  review_week: "Let's review how this week went for {{name}}. What patterns do you see?",
+  adjust_plan: "I'd like to review {{name}}'s care plan and see what we should change based on how things are going.",
+};
+
+const TOPIC_PROMPTS: Record<string, string> = {
+  daily_routines: "I'd like to learn about managing daily routines and transitions for {{name}}.",
+  communication: "Help me understand better ways to communicate with {{name}}.",
+  behaviors: "I want to learn about understanding and managing difficult behaviors for {{name}}.",
+  activities: "What activities and engagement ideas would work well for {{name}}?",
+  nutrition: "I'd like guidance on nutrition and mealtimes for {{name}}.",
+  safety: "Help me think about safety at home for {{name}}.",
+  sleep: "I need help with sleep and night-time routines for {{name}}.",
+};
+
+interface InsightData {
+  text: string;
+  suggestion: string;
+  category: 'positive' | 'attention' | 'suggestion';
+}
 
 export default function CoachScreen() {
   const { t } = useTranslation();
-  const { patient, caregiver, household } = useAuthStore();
-  const {
-    messages,
-    isLoading,
-    error,
-    suggestedPrompts,
-    sendMessage,
-    handleAddToPlan,
-    handleAddDoctorNote,
-    startNewConversation,
-    parseResponse,
-  } = useAICoach();
-
-  const [input, setInput] = useState('');
-  const scrollViewRef = useRef<ScrollView>(null);
-  const inputRef = useRef<TextInput>(null);
+  const router = useRouter();
+  const { patient, household } = useAuthStore();
+  const [insight, setInsight] = useState<InsightData | null>(null);
 
   const patientName = patient?.name || 'your loved one';
-  const caregiverName = caregiver?.name || 'there';
 
-  // Scroll to bottom when messages change
+  // Fetch insight on mount
   useEffect(() => {
-    setTimeout(() => {
-      scrollViewRef.current?.scrollToEnd({ animated: true });
-    }, 100);
-  }, [messages]);
+    if (!household?.id) return;
+    const apiBaseUrl = process.env.EXPO_PUBLIC_API_BASE_URL;
+    if (!apiBaseUrl) return;
 
-  const handleSend = async () => {
-    if (!input.trim() || isLoading) return;
-    const message = input;
-    setInput('');
-    await sendMessage(message);
+    fetch(`${apiBaseUrl}/api/ai/coach/insight?householdId=${household.id}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.insight) setInsight(data.insight);
+      })
+      .catch(() => {/* ignore */});
+  }, [household?.id]);
+
+  const replacePatientName = (template: string) =>
+    template.replace(/\{\{name\}\}/g, patientName);
+
+  const navigateToConversation = (type: string, context: string, firstMessage: string) => {
+    router.push({
+      pathname: '/coach-conversation',
+      params: {
+        conversationType: type,
+        conversationContext: context,
+        initialMessage: firstMessage,
+      },
+    });
   };
 
-  const handleSuggestedPrompt = (prompt: string) => {
-    setInput(prompt);
-    inputRef.current?.focus();
+  const handleSituation = (key: string) => {
+    const prompt = replacePatientName(SITUATION_PROMPTS[key] || key);
+    navigateToConversation('situation', key, prompt);
   };
 
-  const onAddToPlan = async (suggestion: CarePlanSuggestion) => {
-    const success = await handleAddToPlan(suggestion);
-    if (success) {
-      Alert.alert('Success', 'Task added to care plan!');
-    } else {
-      Alert.alert('Error', 'Failed to add task. Please try again.');
-    }
+  const handleWorkflow = (key: string) => {
+    const prompt = replacePatientName(WORKFLOW_PROMPTS[key] || key);
+    navigateToConversation('workflow', key, prompt);
   };
 
-  const onAddDoctorNote = async (note: DoctorNote) => {
-    const success = await handleAddDoctorNote(note);
-    if (success) {
-      Alert.alert('Success', 'Note saved for doctor visit!');
-    } else {
-      Alert.alert('Error', 'Failed to save note. Please try again.');
-    }
+  const handleTopic = (key: string) => {
+    const prompt = replacePatientName(TOPIC_PROMPTS[key] || key);
+    navigateToConversation('topic', key, prompt);
+  };
+
+  const handleInsightDiscuss = (insightText: string) => {
+    const prompt = `I saw this insight: "${insightText}". Can you tell me more about what this means and what I should do?`;
+    navigateToConversation('open', 'insight_discussion', prompt);
+  };
+
+  const handleOpenChat = (message: string) => {
+    navigateToConversation('open', 'free_chat', message);
   };
 
   if (!household) {
     return (
       <SafeAreaView style={styles.container} edges={['top']}>
         <View style={styles.content}>
-          <Text style={styles.title}>AI Care Coach</Text>
+          <Text style={styles.title}>{t('caregiverApp.coach.title')}</Text>
           <View style={styles.placeholder}>
             <Text style={styles.placeholderText}>
-              Please complete onboarding first.
+              {t('caregiverApp.coach.completeOnboarding')}
             </Text>
           </View>
         </View>
@@ -95,202 +129,54 @@ export default function CoachScreen() {
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
-      <KeyboardAvoidingView
-        style={styles.keyboardView}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 20}
+      <View style={styles.header}>
+        <Text style={styles.title}>{t('caregiverApp.coach.title')}</Text>
+      </View>
+
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}
       >
-        {/* Header */}
-        <View style={styles.header}>
-          <Text style={styles.title}>AI Care Coach</Text>
-          {messages.length > 0 && (
-            <TouchableOpacity
-              onPress={startNewConversation}
-              style={styles.newChatButton}
-            >
-              <Text style={styles.newChatText}>New Chat</Text>
-            </TouchableOpacity>
-          )}
+        <ProactiveInsightCard
+          insight={insight}
+          patientName={patientName}
+          onDiscuss={handleInsightDiscuss}
+        />
+
+        <View style={styles.section}>
+          <SituationCards onSelect={handleSituation} />
         </View>
 
-        {/* Messages */}
-        <ScrollView
-          ref={scrollViewRef}
-          style={styles.messagesContainer}
-          contentContainerStyle={styles.messagesContent}
-          keyboardShouldPersistTaps="handled"
-        >
-          {messages.length === 0 ? (
-            <View style={styles.emptyState}>
-              <Text style={styles.emoji}>🤗</Text>
-              <Text style={styles.greeting}>Hi {caregiverName}!</Text>
-              <Text style={styles.subGreeting}>
-                I'm here to help you care for {patientName}. Ask me anything
-                about daily care, activities, or managing challenging situations.
-              </Text>
-
-              <Text style={styles.suggestedLabel}>Try asking:</Text>
-              {suggestedPrompts.map((prompt, index) => (
-                <TouchableOpacity
-                  key={index}
-                  style={styles.suggestedButton}
-                  onPress={() => handleSuggestedPrompt(prompt)}
-                >
-                  <Text style={styles.suggestedText}>{prompt}</Text>
-                </TouchableOpacity>
-              ))}
-            </View>
-          ) : (
-            messages.map((message, index) => {
-              const { cleanContent, carePlanSuggestions, doctorNotes } =
-                message.role === 'assistant'
-                  ? parseResponse(message.content)
-                  : { cleanContent: message.content, carePlanSuggestions: [], doctorNotes: [] };
-
-              const isLastMessage = index === messages.length - 1;
-              const showLoading =
-                isLoading && isLastMessage && message.role === 'assistant' && !cleanContent;
-
-              return (
-                <View
-                  key={index}
-                  style={[
-                    styles.messageWrapper,
-                    message.role === 'user'
-                      ? styles.userMessageWrapper
-                      : styles.assistantMessageWrapper,
-                  ]}
-                >
-                  <View
-                    style={[
-                      styles.messageBubble,
-                      message.role === 'user'
-                        ? styles.userBubble
-                        : styles.assistantBubble,
-                    ]}
-                  >
-                    {message.role === 'assistant' && (
-                      <View style={styles.assistantHeader}>
-                        <Text style={styles.assistantEmoji}>🤗</Text>
-                        <Text style={styles.assistantName}>Care Coach</Text>
-                      </View>
-                    )}
-
-                    {showLoading ? (
-                      <View style={styles.loadingDots}>
-                        <View style={styles.dot} />
-                        <View style={[styles.dot, styles.dotDelayed1]} />
-                        <View style={[styles.dot, styles.dotDelayed2]} />
-                      </View>
-                    ) : (
-                      <Text
-                        style={[
-                          styles.messageText,
-                          message.role === 'user' && styles.userMessageText,
-                        ]}
-                      >
-                        {cleanContent}
-                      </Text>
-                    )}
-
-                    {/* Care Plan Suggestions */}
-                    {carePlanSuggestions.length > 0 && (
-                      <View style={styles.suggestionsContainer}>
-                        {carePlanSuggestions.map((suggestion, i) => (
-                          <TouchableOpacity
-                            key={i}
-                            style={styles.suggestionButton}
-                            onPress={() => onAddToPlan(suggestion)}
-                          >
-                            <Text style={styles.suggestionIcon}>📋</Text>
-                            <View style={styles.suggestionContent}>
-                              <Text style={styles.suggestionTitle}>
-                                Add to Care Plan
-                              </Text>
-                              <Text style={styles.suggestionSubtitle}>
-                                {suggestion.title}
-                              </Text>
-                            </View>
-                            <Text style={styles.suggestionPlus}>+</Text>
-                          </TouchableOpacity>
-                        ))}
-                      </View>
-                    )}
-
-                    {/* Doctor Notes */}
-                    {doctorNotes.length > 0 && (
-                      <View style={styles.notesContainer}>
-                        {doctorNotes.map((note, i) => (
-                          <TouchableOpacity
-                            key={i}
-                            style={styles.noteButton}
-                            onPress={() => onAddDoctorNote(note)}
-                          >
-                            <Text style={styles.noteIcon}>📝</Text>
-                            <View style={styles.noteContent}>
-                              <Text style={styles.noteTitle}>
-                                Save for Doctor Visit
-                              </Text>
-                              <Text style={styles.noteSubtitle}>
-                                {note.note}
-                              </Text>
-                            </View>
-                            <Text style={styles.notePlus}>+</Text>
-                          </TouchableOpacity>
-                        ))}
-                      </View>
-                    )}
-                  </View>
-                </View>
-              );
-            })
-          )}
-        </ScrollView>
-
-        {/* Error Message */}
-        {error && (
-          <View style={styles.errorContainer}>
-            <Text style={styles.errorText}>{error}</Text>
-          </View>
-        )}
-
-        {/* Input */}
-        <View style={styles.inputContainer}>
-          <TextInput
-            ref={inputRef}
-            style={styles.input}
-            value={input}
-            onChangeText={setInput}
-            placeholder={`Ask about caring for ${patientName}...`}
-            placeholderTextColor={COLORS.textMuted}
-            multiline
-            maxLength={1000}
-            editable={!isLoading}
-            onSubmitEditing={handleSend}
-            blurOnSubmit={false}
-          />
+        {/* Behaviour Playbooks Link */}
+        <View style={styles.section}>
+          <Text style={styles.sectionLabel}>{t('caregiverApp.coach.tabs.behaviours')}</Text>
+          <Text style={styles.sectionSubLabel}>{t('caregiverApp.toolkit.behaviours.playbooks.subtitle')}</Text>
           <TouchableOpacity
-            style={[
-              styles.sendButton,
-              (!input.trim() || isLoading) && styles.sendButtonDisabled,
-            ]}
-            onPress={handleSend}
-            disabled={!input.trim() || isLoading}
+            style={styles.behaviourLink}
+            onPress={() => router.push('/behaviours')}
+            activeOpacity={0.7}
           >
-            {isLoading ? (
-              <ActivityIndicator color={COLORS.textInverse} size="small" />
-            ) : (
-              <Text style={styles.sendButtonText}>Send</Text>
-            )}
+            <Text style={styles.behaviourLinkIcon}>📋</Text>
+            <Text style={styles.behaviourLinkText}>
+              {t('caregiverApp.toolkit.behaviours.playbooks.title')}
+            </Text>
+            <Text style={styles.behaviourLinkArrow}>›</Text>
           </TouchableOpacity>
         </View>
 
-        {/* Disclaimer */}
-        <Text style={styles.disclaimer}>
-          Care Coach provides general guidance only. Always consult healthcare
-          professionals for medical advice.
-        </Text>
-      </KeyboardAvoidingView>
+        <View style={styles.section}>
+          <WorkflowCards onSelect={handleWorkflow} />
+        </View>
+
+        <View style={styles.section}>
+          <TopicCards patientName={patientName} onSelect={handleTopic} />
+        </View>
+
+        <View style={styles.section}>
+          <OpenChatInput patientName={patientName} onSubmit={handleOpenChat} />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -300,18 +186,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.background,
   },
-  keyboardView: {
-    flex: 1,
-  },
   content: {
     flex: 1,
     paddingHorizontal: 20,
     paddingTop: 16,
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
     paddingHorizontal: 20,
     paddingTop: 16,
     paddingBottom: 12,
@@ -323,24 +203,61 @@ const styles = StyleSheet.create({
     color: COLORS.textPrimary,
     letterSpacing: -0.3,
   },
-  newChatButton: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    backgroundColor: COLORS.brand50,
-    borderRadius: RADIUS.lg,
-    borderWidth: 1,
-    borderColor: COLORS.brand200,
-    ...SHADOWS.sm,
+  scrollView: {
+    flex: 1,
   },
-  newChatText: {
-    fontSize: 14,
-    color: COLORS.brand700,
-    fontWeight: '500',
+  scrollContent: {
+    paddingHorizontal: 20,
+    paddingBottom: 24,
+    gap: SPACING[6],
+  },
+  section: {
+    // gap between sections is handled by scrollContent gap
+  },
+  sectionLabel: {
+    fontSize: 11,
+    fontFamily: FONTS.displayMedium,
+    textTransform: 'uppercase',
+    letterSpacing: 1.5,
+    color: COLORS.textMuted,
+    marginBottom: 2,
+  },
+  sectionSubLabel: {
+    fontSize: 13,
+    fontFamily: FONTS.body,
+    color: COLORS.textMuted,
+    marginBottom: SPACING[3],
+  },
+  behaviourLink: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: COLORS.card,
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    borderLeftWidth: 3,
+    borderLeftColor: COLORS.brand500,
+    borderRadius: RADIUS.md,
+    paddingHorizontal: SPACING[4],
+    paddingVertical: SPACING[4],
+    gap: SPACING[3],
+  },
+  behaviourLinkIcon: {
+    fontSize: 24,
+  },
+  behaviourLinkText: {
+    flex: 1,
+    fontSize: 16,
     fontFamily: FONTS.bodyMedium,
+    fontWeight: '500',
+    color: COLORS.textPrimary,
+  },
+  behaviourLinkArrow: {
+    fontSize: 22,
+    color: COLORS.textMuted,
   },
   placeholder: {
     backgroundColor: COLORS.card,
-    borderRadius: RADIUS.xl,
+    borderRadius: 20,
     padding: 40,
     borderWidth: 1,
     borderColor: COLORS.border,
@@ -350,268 +267,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: FONTS.body,
     color: COLORS.textMuted,
-  },
-  messagesContainer: {
-    flex: 1,
-  },
-  messagesContent: {
-    paddingHorizontal: 20,
-    paddingBottom: 16,
-  },
-  emptyState: {
-    alignItems: 'center',
-    paddingTop: 40,
-    paddingHorizontal: 20,
-  },
-  emoji: {
-    fontSize: 48,
-    marginBottom: 16,
-  },
-  greeting: {
-    fontSize: 20,
-    fontWeight: '600',
-    fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
-    marginBottom: 8,
-  },
-  subGreeting: {
-    fontSize: 16,
-    fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
-    textAlign: 'center',
-    marginBottom: 24,
-    lineHeight: 24,
-  },
-  suggestedLabel: {
-    fontFamily: FONTS.displayMedium,
-    fontSize: 12,
-    textTransform: 'uppercase',
-    letterSpacing: 1.5,
-    color: COLORS.textMuted,
-    marginBottom: 16,
-  },
-  suggestedButton: {
-    width: '100%',
-    backgroundColor: COLORS.card,
-    borderWidth: 1,
-    borderColor: COLORS.border,
-    borderLeftWidth: 3,
-    borderLeftColor: COLORS.brand200,
-    borderRadius: RADIUS.md,
-    paddingHorizontal: 16,
-    paddingVertical: 14,
-    marginBottom: 8,
-  },
-  suggestedText: {
-    fontSize: 15,
-    fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
-  },
-  messageWrapper: {
-    marginBottom: 16,
-  },
-  userMessageWrapper: {
-    alignItems: 'flex-end',
-  },
-  assistantMessageWrapper: {
-    alignItems: 'flex-start',
-  },
-  messageBubble: {
-    maxWidth: '85%',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-  },
-  userBubble: {
-    backgroundColor: COLORS.brand600,
-    borderTopLeftRadius: RADIUS.xl,
-    borderTopRightRadius: RADIUS.xl,
-    borderBottomLeftRadius: RADIUS.xl,
-    borderBottomRightRadius: RADIUS.sm,
-    ...SHADOWS.sm,
-  },
-  assistantBubble: {
-    backgroundColor: COLORS.card,
-    borderWidth: 1,
-    borderColor: COLORS.border,
-    borderTopLeftRadius: RADIUS.xl,
-    borderTopRightRadius: RADIUS.xl,
-    borderBottomLeftRadius: RADIUS.sm,
-    borderBottomRightRadius: RADIUS.xl,
-  },
-  assistantHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 8,
-  },
-  assistantEmoji: {
-    fontSize: 18,
-    marginRight: 6,
-  },
-  assistantName: {
-    fontSize: 14,
-    fontWeight: '500',
-    fontFamily: FONTS.bodyMedium,
-    color: COLORS.brand700,
-  },
-  messageText: {
-    fontSize: 16,
-    fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
-    lineHeight: 24,
-  },
-  userMessageText: {
-    color: COLORS.textInverse,
-  },
-  loadingDots: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-    paddingVertical: 8,
-  },
-  dot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: COLORS.brand400,
-  },
-  dotDelayed1: {
-    opacity: 0.7,
-  },
-  dotDelayed2: {
-    opacity: 0.5,
-  },
-  suggestionsContainer: {
-    marginTop: 12,
-  },
-  suggestionButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: COLORS.brand50,
-    borderWidth: 1,
-    borderColor: COLORS.brand200,
-    borderRadius: RADIUS.md,
-    paddingHorizontal: 12,
-    paddingVertical: 10,
-    marginBottom: 8,
-  },
-  suggestionIcon: {
-    fontSize: 18,
-    marginRight: 8,
-  },
-  suggestionContent: {
-    flex: 1,
-  },
-  suggestionTitle: {
-    fontSize: 14,
-    fontWeight: '500',
-    fontFamily: FONTS.bodyMedium,
-    color: COLORS.brand700,
-  },
-  suggestionSubtitle: {
-    fontSize: 13,
-    color: COLORS.brand600,
-  },
-  suggestionPlus: {
-    fontSize: 20,
-    color: COLORS.brand600,
-    fontWeight: '500',
-  },
-  notesContainer: {
-    marginTop: 12,
-  },
-  noteButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: COLORS.amberBg,
-    borderWidth: 1,
-    borderColor: COLORS.amber,
-    borderRadius: RADIUS.md,
-    paddingHorizontal: 12,
-    paddingVertical: 10,
-    marginBottom: 8,
-  },
-  noteIcon: {
-    fontSize: 18,
-    marginRight: 8,
-  },
-  noteContent: {
-    flex: 1,
-  },
-  noteTitle: {
-    fontSize: 14,
-    fontWeight: '500',
-    fontFamily: FONTS.bodyMedium,
-    color: COLORS.amber,
-  },
-  noteSubtitle: {
-    fontSize: 13,
-    fontFamily: FONTS.body,
-    color: COLORS.amber,
-  },
-  notePlus: {
-    fontSize: 20,
-    color: COLORS.amber,
-    fontWeight: '500',
-  },
-  errorContainer: {
-    marginHorizontal: 20,
-    marginBottom: 8,
-    padding: 12,
-    backgroundColor: COLORS.dangerBg,
-    borderWidth: 1,
-    borderColor: COLORS.danger,
-    borderRadius: RADIUS.md,
-  },
-  errorText: {
-    fontSize: 14,
-    fontFamily: FONTS.body,
-    color: COLORS.danger,
-  },
-  inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    paddingHorizontal: 20,
-    paddingVertical: 12,
-    gap: 12,
-  },
-  input: {
-    flex: 1,
-    backgroundColor: COLORS.card,
-    borderWidth: 1,
-    borderColor: COLORS.brand200,
-    borderRadius: RADIUS.lg,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    fontSize: 16,
-    fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
-    maxHeight: 100,
-    minHeight: 48,
-  },
-  sendButton: {
-    backgroundColor: COLORS.brand600,
-    borderRadius: RADIUS.xl,
-    paddingHorizontal: 20,
-    paddingVertical: 12,
-    minWidth: 70,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  sendButtonDisabled: {
-    opacity: 0.5,
-  },
-  sendButtonText: {
-    fontSize: 16,
-    fontWeight: '600',
-    fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textInverse,
-  },
-  disclaimer: {
-    fontSize: 12,
-    fontFamily: FONTS.body,
-    color: COLORS.textMuted,
-    textAlign: 'center',
-    paddingHorizontal: 20,
-    paddingBottom: 8,
   },
 });

@@ -12,6 +12,12 @@ import {
 } from '../services/ai-coach';
 import { supabase } from '@ourturn/supabase';
 
+export interface UseAICoachOptions {
+  conversationType?: string;
+  conversationContext?: string;
+  skipLoadLatest?: boolean;
+}
+
 export interface UseAICoachReturn {
   messages: Message[];
   isLoading: boolean;
@@ -25,7 +31,7 @@ export interface UseAICoachReturn {
   parseResponse: typeof parseAIResponse;
 }
 
-export function useAICoach(): UseAICoachReturn {
+export function useAICoach(options?: UseAICoachOptions): UseAICoachReturn {
   const { household, patient, caregiver } = useAuthStore();
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -35,9 +41,9 @@ export function useAICoach(): UseAICoachReturn {
   const patientName = patient?.name || 'your loved one';
   const suggestedPrompts = getSuggestedPrompts(patientName);
 
-  // Load most recent conversation on mount
+  // Load most recent conversation on mount (only for hub/open chat, not focused conversations)
   useEffect(() => {
-    if (household?.id && caregiver?.id) {
+    if (household?.id && caregiver?.id && !options?.skipLoadLatest) {
       loadLatestConversation();
     }
   }, [household?.id, caregiver?.id]);
@@ -103,7 +109,9 @@ export function useAICoach(): UseAICoachReturn {
           },
           (newConversationId) => {
             setConversationId(newConversationId);
-          }
+          },
+          options?.conversationType,
+          options?.conversationContext
         );
       } catch (err) {
         if (__DEV__) console.error('Chat error:', err);

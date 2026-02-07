@@ -245,7 +245,9 @@ export async function sendMessageToCoach(
   conversationId: string | undefined,
   householdId: string,
   onChunk: (text: string) => void,
-  onConversationId: (id: string) => void
+  onConversationId: (id: string) => void,
+  conversationType?: string,
+  conversationContext?: string
 ): Promise<void> {
   const apiBaseUrl = process.env.EXPO_PUBLIC_API_BASE_URL;
   if (!apiBaseUrl) {
@@ -261,6 +263,8 @@ export async function sendMessageToCoach(
       message,
       conversationId,
       householdId,
+      conversationType: conversationType || 'open',
+      conversationContext: conversationContext || undefined,
     }),
   });
 

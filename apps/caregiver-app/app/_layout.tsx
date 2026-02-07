@@ -66,6 +66,8 @@ export default function RootLayout() {
         <Stack.Screen name="onboarding" />
         <Stack.Screen name="settings" />
         <Stack.Screen name="reports" />
+        <Stack.Screen name="behaviours" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="coach-conversation" options={{ animation: 'slide_from_right' }} />
       </Stack>
       <StatusBar style="dark" />
     </SafeAreaProvider>

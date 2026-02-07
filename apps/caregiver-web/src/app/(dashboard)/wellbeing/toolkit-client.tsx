@@ -12,6 +12,7 @@ import { WellbeingAgent } from './components/wellbeing-agent';
 import { DailyGoal } from './components/daily-goal';
 import { WeeklyInsights } from './components/weekly-insights';
 import { BurnoutBanner } from './components/burnout-banner';
+import { NeedSupport } from './components/need-support';
 
 interface ToolkitClientProps {
   caregiverId: string;
@@ -85,23 +86,28 @@ export default function ToolkitClient({
           <SliderCheckin
             caregiverId={caregiverId}
             initialLog={currentLog}
+            recentLogs={recentLogs}
             onLogUpdated={handleLogUpdated}
           />
 
           {/* Quick Relief Station */}
+          <div id="quick-relief">
           <QuickRelief
             stress={currentLog?.stress_level as SliderValue | null}
             energy={currentLog?.energy_level as SliderValue | null}
             sleep={currentLog?.sleep_quality_rating as SliderValue | null}
             onExerciseComplete={handleExerciseComplete}
           />
+          </div>
 
           {/* Ask for Help */}
+          <div id="help-request">
           <HelpRequest
             caregiverId={caregiverId}
             householdId={householdId}
             initialRequests={helpRequests}
           />
+          </div>
         </div>
 
         {/* Right column (1/3) */}
@@ -125,33 +131,8 @@ export default function ToolkitClient({
             sleep={currentLog?.sleep_quality_rating as SliderValue | null}
           />
 
-          {/* Support Resources */}
-          <div className="card-paper p-6">
-            <h3 className="text-lg font-semibold text-text-primary mb-3">
-              {t('caregiverApp.toolkit.support.title')}
-            </h3>
-            <p className="text-text-secondary text-sm mb-4">
-              {t('caregiverApp.toolkit.support.description')}
-            </p>
-            <div className="space-y-2 text-sm">
-              <a
-                href="https://www.alz.org/help-support/caregiving"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-brand-600 hover:text-brand-700 underline"
-              >
-                {t('caregiverApp.toolkit.support.alzheimers')}
-              </a>
-              <a
-                href="https://www.caregiver.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-brand-600 hover:text-brand-700 underline"
-              >
-                {t('caregiverApp.toolkit.support.familyCaregiver')}
-              </a>
-            </div>
-          </div>
+          {/* Need Support Card */}
+          <NeedSupport />
         </div>
       </div>
 
