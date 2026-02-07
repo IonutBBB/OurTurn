@@ -151,6 +151,23 @@ export default function CoachScreen() {
           </TouchableOpacity>
         </View>
 
+        {/* Resources & Guides Link */}
+        <View style={styles.section}>
+          <Text style={styles.sectionLabel}>{t('caregiverApp.coach.tabs.resources')}</Text>
+          <Text style={styles.sectionSubLabel}>{t('caregiverApp.coach.resources.subtitle')}</Text>
+          <TouchableOpacity
+            style={styles.behaviourLink}
+            onPress={() => router.push('/resources')}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.behaviourLinkIcon}>📚</Text>
+            <Text style={styles.behaviourLinkText}>
+              {t('caregiverApp.coach.resources.linkLabel')}
+            </Text>
+            <Text style={styles.behaviourLinkArrow}>›</Text>
+          </TouchableOpacity>
+        </View>
+
         <View style={styles.section}>
           <WorkflowCards onSelect={handleWorkflow} />
         </View>

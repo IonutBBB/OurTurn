@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 const TABS = [
   { href: '/coach', key: 'chat', icon: '🤖' },
   { href: '/coach/behaviours', key: 'behaviours', icon: '📋' },
+  { href: '/coach/resources', key: 'resources', icon: '📚' },
 ] as const;
 
 export function CoachTabs() {

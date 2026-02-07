@@ -4,6 +4,7 @@ import { getLocales } from 'expo-localization';
 
 // Import locale files
 import en from '../locales/en.json';
+import resourcesEn from '../locales/resources-en.json';
 
 // Get device locale (e.g., 'en-US' -> 'en')
 const locales = getLocales();
@@ -22,7 +23,7 @@ i18n
   .init({
     compatibilityJSON: 'v4',
     resources: {
-      en: { translation: en },
+      en: { translation: en, resources: resourcesEn },
     },
     lng: initialLanguage,
     fallbackLng: 'en',

@@ -11,6 +11,7 @@ import {
   ActivityIndicator,
   Alert,
 } from 'react-native';
+import Markdown from 'react-native-markdown-display';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
@@ -152,6 +153,8 @@ export default function CoachConversationScreen() {
                       <View style={[styles.dot, styles.dotDelayed1]} />
                       <View style={[styles.dot, styles.dotDelayed2]} />
                     </View>
+                  ) : message.role === 'assistant' && cleanContent ? (
+                    <Markdown style={markdownStyles}>{cleanContent}</Markdown>
                   ) : (
                     <Text
                       style={[
@@ -262,6 +265,52 @@ export default function CoachConversationScreen() {
     </SafeAreaView>
   );
 }
+
+const markdownStyles = StyleSheet.create({
+  body: {
+    fontSize: 16,
+    fontFamily: FONTS.body,
+    color: COLORS.textPrimary,
+    lineHeight: 24,
+  },
+  heading2: {
+    fontSize: 17,
+    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textPrimary,
+    marginTop: 12,
+    marginBottom: 6,
+  },
+  heading3: {
+    fontSize: 16,
+    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textPrimary,
+    marginTop: 8,
+    marginBottom: 4,
+  },
+  paragraph: {
+    marginBottom: 8,
+  },
+  bullet_list: {
+    marginBottom: 8,
+  },
+  ordered_list: {
+    marginBottom: 8,
+  },
+  list_item: {
+    marginBottom: 4,
+  },
+  strong: {
+    fontWeight: '700',
+    fontFamily: FONTS.bodyBold,
+  },
+  hr: {
+    backgroundColor: COLORS.border,
+    height: 1,
+    marginVertical: 12,
+  },
+});
 
 const styles = StyleSheet.create({
   container: {

@@ -4,6 +4,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 // Import locale files
 import en from '../locales/en.json';
+import resourcesEn from '../../caregiver-app/locales/resources-en.json';
 
 // Supported languages
 const supportedLanguages = ['en'];
@@ -13,7 +14,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources: {
-      en: { translation: en },
+      en: { translation: en, resources: resourcesEn },
     },
     fallbackLng: 'en',
     supportedLngs: supportedLanguages,

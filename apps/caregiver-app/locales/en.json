@@ -121,7 +121,8 @@
       "medItemLabel": "Medication {{number}}",
       "removeMedication": "Remove",
       "maxMedications": "Maximum 3 medications per group",
-      "uploadingPhoto": "Uploading..."
+      "uploadingPhoto": "Uploading...",
+      "evidenceBased": "Evidence-based"
     },
     "location": {
       "title": "Location & Safety",
@@ -177,7 +178,13 @@
       "title": "AI Care Coach",
       "tabs": {
         "chat": "Chat",
-        "behaviours": "Behaviours"
+        "behaviours": "Behaviours",
+        "resources": "Resources"
+      },
+      "resources": {
+        "title": "Resources",
+        "subtitle": "Guides, articles, and local support to help you on your caregiving journey",
+        "linkLabel": "Resources & Guides"
       },
       "intro": "Ask me anything about caring for {{name}}. I know their routine, preferences, and general best practices.",
       "placeholder": "Type your question...",

@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Keyboard,
 } from 'react-native';
+import Markdown from 'react-native-markdown-display';
 import { useTranslation } from 'react-i18next';
 import type { SliderValue } from '@ourturn/shared';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../../theme';
@@ -135,31 +136,42 @@ export function WellbeingAgent({ caregiverId, caregiverName, energy, stress, sle
       const decoder = new TextDecoder();
       if (!reader) throw new Error('No response body');
 
+      let sseBuffer = '';
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
         if (controller.signal.aborted) break;
 
-        const chunk = decoder.decode(value);
-        const lines = chunk.split('\n').filter(l => l.startsWith('data: '));
+        sseBuffer += decoder.decode(value, { stream: true });
+        const events = sseBuffer.split('\n\n');
+        sseBuffer = events.pop() || '';
 
-        for (const line of lines) {
-          const data = line.slice(6);
-          try {
-            const parsed = JSON.parse(data);
-            if (parsed.error) {
-              setError(parsed.error);
-              break;
+        for (const event of events) {
+          const lines = event.split('\n').filter(l => l.startsWith('data: '));
+          for (const line of lines) {
+            const data = line.slice(6);
+            try {
+              const parsed = JSON.parse(data);
+              if (parsed.error) {
+                setError(parsed.error);
+                break;
+              }
+              if (parsed.replace && parsed.text) {
+                setMessages(prev => prev.map(m =>
+                  m.id === assistantMsgId
+                    ? { ...m, content: parsed.text }
+                    : m
+                ));
+              } else if (parsed.text) {
+                setMessages(prev => prev.map(m =>
+                  m.id === assistantMsgId
+                    ? { ...m, content: m.content + parsed.text }
+                    : m
+                ));
+              }
+            } catch {
+              /* ignore partial chunks */
             }
-            if (parsed.text) {
-              setMessages(prev => prev.map(m =>
-                m.id === assistantMsgId
-                  ? { ...m, content: m.content + parsed.text }
-                  : m
-              ));
-            }
-          } catch {
-            /* ignore partial chunks */
           }
         }
       }
@@ -253,9 +265,13 @@ export function WellbeingAgent({ caregiverId, caregiverName, energy, stress, sle
               ]}
             >
               {msg.content ? (
-                <Text style={[styles.bubbleText, msg.role === 'user' && styles.userBubbleText]}>
-                  {msg.content}
-                </Text>
+                msg.role === 'assistant' ? (
+                  <Markdown style={markdownStyles}>{msg.content}</Markdown>
+                ) : (
+                  <Text style={[styles.bubbleText, styles.userBubbleText]}>
+                    {msg.content}
+                  </Text>
+                )
               ) : isLoading ? (
                 <Text style={styles.bubbleText}>...</Text>
               ) : null}
@@ -308,6 +324,52 @@ export function WellbeingAgent({ caregiverId, caregiverName, energy, stress, sle
     </View>
   );
 }
+
+const markdownStyles = StyleSheet.create({
+  body: {
+    fontSize: 14,
+    lineHeight: 20,
+    fontFamily: FONTS.body,
+    color: COLORS.textPrimary,
+  },
+  heading2: {
+    fontSize: 15,
+    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textPrimary,
+    marginTop: 8,
+    marginBottom: 4,
+  },
+  heading3: {
+    fontSize: 14,
+    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textPrimary,
+    marginTop: 6,
+    marginBottom: 3,
+  },
+  paragraph: {
+    marginBottom: 6,
+  },
+  bullet_list: {
+    marginBottom: 6,
+  },
+  ordered_list: {
+    marginBottom: 6,
+  },
+  list_item: {
+    marginBottom: 3,
+  },
+  strong: {
+    fontWeight: '700',
+    fontFamily: FONTS.bodyBold,
+  },
+  hr: {
+    backgroundColor: COLORS.border,
+    height: 1,
+    marginVertical: 8,
+  },
+});
 
 const styles = StyleSheet.create({
   card: {

@@ -87,7 +87,7 @@ export default function PlanScreen() {
 
   // AI Suggest state
   const [showSuggestModal, setShowSuggestModal] = useState(false);
-  const [suggestedTasks, setSuggestedTasks] = useState<{ category: TaskCategory; title: string; hint_text: string; time: string }[]>([]);
+  const [suggestedTasks, setSuggestedTasks] = useState<{ category: TaskCategory; title: string; hint_text: string; time: string; intervention_id?: string | null; evidence_source?: string | null }[]>([]);
   const [suggestLoading, setSuggestLoading] = useState(false);
   const [addingSuggestion, setAddingSuggestion] = useState<string | null>(null);
 
@@ -391,7 +391,7 @@ export default function PlanScreen() {
     }
   }, [household?.id, tasks]);
 
-  const handleAddSuggestion = useCallback(async (suggestion: { category: TaskCategory; title: string; hint_text: string; time: string }) => {
+  const handleAddSuggestion = useCallback(async (suggestion: { category: TaskCategory; title: string; hint_text: string; time: string; intervention_id?: string | null; evidence_source?: string | null }) => {
     if (!household?.id) return;
     setAddingSuggestion(suggestion.title);
 
@@ -408,6 +408,8 @@ export default function PlanScreen() {
           recurrence_days: [],
           active: true,
           created_by: user?.id,
+          intervention_id: suggestion.intervention_id || null,
+          evidence_source: suggestion.evidence_source || null,
         })
         .select()
         .single();
@@ -602,6 +604,11 @@ export default function PlanScreen() {
                     {task.hint_text && (
                       <Text style={styles.taskHint} numberOfLines={2}>
                         {task.hint_text}
+                      </Text>
+                    )}
+                    {task.evidence_source && (
+                      <Text style={styles.evidenceSourceText} numberOfLines={1}>
+                        📖 {task.evidence_source}
                       </Text>
                     )}
                     <View style={styles.taskFooter}>
@@ -974,6 +981,12 @@ export default function PlanScreen() {
                         </View>
                         <Text style={styles.taskTitle}>{suggestion.title}</Text>
                         <Text style={styles.taskHint}>{suggestion.hint_text}</Text>
+                        {suggestion.evidence_source && (
+                          <View style={styles.evidenceBadge}>
+                            <Text style={styles.evidenceIcon}>📖</Text>
+                            <Text style={styles.evidenceText}>{t('caregiverApp.carePlan.evidenceBased')}</Text>
+                          </View>
+                        )}
                         <View style={styles.suggestionFooter}>
                           <Text style={styles.taskTime}>{formatTime(suggestion.time)}</Text>
                           <TouchableOpacity
@@ -1530,6 +1543,26 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
     color: COLORS.textInverse,
+  },
+  evidenceBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    marginBottom: 4,
+  },
+  evidenceIcon: {
+    fontSize: 11,
+  },
+  evidenceText: {
+    fontSize: 11,
+    fontFamily: FONTS.bodyMedium,
+    color: COLORS.brand600,
+  },
+  evidenceSourceText: {
+    fontSize: 11,
+    fontFamily: FONTS.body,
+    color: COLORS.textMuted,
+    marginBottom: 4,
   },
 
   // Copy Day modal

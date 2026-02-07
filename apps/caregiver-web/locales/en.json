@@ -309,7 +309,8 @@
       "pageSubtitle": "Personalized guidance for caring for {{name}}",
       "tabs": {
         "chat": "Chat",
-        "behaviours": "Behaviours"
+        "behaviours": "Behaviours",
+        "resources": "Resources"
       },
       "setupDesc": "Set up your care profile to get personalized AI coaching tailored to your situation.",
       "intro": "Ask me anything about caring for {{name}}. I know their routine, preferences, and general best practices.",

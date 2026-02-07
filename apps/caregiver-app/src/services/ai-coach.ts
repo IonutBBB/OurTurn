@@ -124,7 +124,7 @@ ABSOLUTE RULES - NEVER VIOLATE:
 4. NEVER score or grade the patient's cognitive abilities
 5. NEVER claim to be a medical professional or replace medical advice
 6. NEVER make the caregiver feel guilty or inadequate
-7. ALWAYS use ${patientName}'s name (never say "the patient")
+7. Refer to the person by name — never say "the patient" — but do NOT overuse their name. Use it once or twice per response, then use "your loved one" or "they/them" for the rest.
 8. ALWAYS end with a concrete, actionable suggestion when possible
 9. ALWAYS defer medical questions: "That's worth discussing with ${patientName}'s doctor"
 
@@ -137,7 +137,7 @@ WHEN THE CAREGIVER DESCRIBES A PROBLEM:
 
 COMMUNICATION STYLE:
 - Warm, like an experienced friend - not clinical or formal
-- Use ${patientName}'s name naturally in responses
+- Mention ${patientName}'s name once at the start, then use "your loved one" or "they" to avoid sounding repetitive
 - Short paragraphs (3-4 sentences max per paragraph)
 - Use simple language - avoid medical jargon
 - Be culturally sensitive
@@ -247,7 +247,8 @@ export async function sendMessageToCoach(
   onChunk: (text: string) => void,
   onConversationId: (id: string) => void,
   conversationType?: string,
-  conversationContext?: string
+  conversationContext?: string,
+  onReplace?: (text: string) => void
 ): Promise<void> {
   const apiBaseUrl = process.env.EXPO_PUBLIC_API_BASE_URL;
   if (!apiBaseUrl) {
@@ -279,31 +280,38 @@ export async function sendMessageToCoach(
     throw new Error('No response body');
   }
 
+  let sseBuffer = '';
   while (true) {
     const { done, value } = await reader.read();
     if (done) break;
 
-    const chunk = decoder.decode(value);
-    const lines = chunk.split('\n').filter((l) => l.startsWith('data: '));
+    sseBuffer += decoder.decode(value, { stream: true });
+    const events = sseBuffer.split('\n\n');
+    sseBuffer = events.pop() || '';
 
-    for (const line of lines) {
-      const data = line.slice(6);
-      try {
-        const parsed = JSON.parse(data);
+    for (const event of events) {
+      const lines = event.split('\n').filter((l) => l.startsWith('data: '));
+      for (const line of lines) {
+        const data = line.slice(6);
+        try {
+          const parsed = JSON.parse(data);
 
-        if (parsed.error) {
-          throw new Error(parsed.error);
+          if (parsed.error) {
+            throw new Error(parsed.error);
+          }
+
+          if (parsed.conversationId) {
+            onConversationId(parsed.conversationId);
+          }
+
+          if (parsed.replace && parsed.text && onReplace) {
+            onReplace(parsed.text);
+          } else if (parsed.text) {
+            onChunk(parsed.text);
+          }
+        } catch (e) {
+          // Ignore parse errors for incomplete chunks
         }
-
-        if (parsed.conversationId) {
-          onConversationId(parsed.conversationId);
-        }
-
-        if (parsed.text) {
-          onChunk(parsed.text);
-        }
-      } catch (e) {
-        // Ignore parse errors for incomplete chunks
       }
     }
   }

@@ -111,7 +111,18 @@ export function useAICoach(options?: UseAICoachOptions): UseAICoachReturn {
             setConversationId(newConversationId);
           },
           options?.conversationType,
-          options?.conversationContext
+          options?.conversationContext,
+          (text) => {
+            // Replace assistant message content (safety post-processing)
+            setMessages((prev) => {
+              const updated = [...prev];
+              const lastMessage = updated[updated.length - 1];
+              if (lastMessage.role === 'assistant') {
+                lastMessage.content = text;
+              }
+              return [...updated];
+            });
+          }
         );
       } catch (err) {
         if (__DEV__) console.error('Chat error:', err);
