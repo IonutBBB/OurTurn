@@ -68,6 +68,8 @@ export async function createTask(
       recurrence_days: task.recurrence_days || [],
       active: task.active ?? true,
       one_time_date: task.one_time_date,
+      photo_url: task.photo_url ?? null,
+      medication_items: task.medication_items ?? null,
       created_by: task.created_by,
     })
     .select()
@@ -245,6 +247,8 @@ export async function copyDayTasks(
     recurrence: 'specific_days' as const,
     recurrence_days: targetDays,
     active: true,
+    photo_url: task.photo_url ?? undefined,
+    medication_items: task.medication_items ?? undefined,
     created_by: task.created_by ?? undefined,
   }));
 

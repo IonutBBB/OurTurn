@@ -226,7 +226,22 @@
       "deleteConfirm": "Delete this task?",
       "instructions": "Instructions",
       "actions": "Actions",
-      "syncNote": "Changes sync instantly to {{name}}'s app"
+      "syncNote": "Changes sync instantly to {{name}}'s app",
+      "taskPhoto": "Task Photo (optional)",
+      "uploadPhoto": "Upload Photo",
+      "removePhoto": "Remove Photo",
+      "medicationItems": "Medications in this group",
+      "medicationItemsHint": "Group up to 3 medications taken at the same time",
+      "addMedication": "Add Medication",
+      "medName": "Medication name",
+      "medNamePlaceholder": "e.g. Donepezil",
+      "medDosage": "Dosage or instruction",
+      "medDosagePlaceholder": "e.g. 10mg tablet",
+      "medPhotoLabel": "Photo",
+      "medItemLabel": "Medication {{number}}",
+      "removeMedication": "Remove",
+      "maxMedications": "Maximum 3 medications per group",
+      "uploadingPhoto": "Uploading..."
     },
     "location": {
       "title": "Location & Safety",
@@ -290,6 +305,10 @@
       "pageTitle": "Care Coach",
       "pageSubtitleGeneric": "Get personalized guidance and support",
       "pageSubtitle": "Personalized guidance for caring for {{name}}",
+      "tabs": {
+        "chat": "Chat",
+        "behaviours": "Behaviours"
+      },
       "setupDesc": "Set up your care profile to get personalized AI coaching tailored to your situation.",
       "intro": "Ask me anything about caring for {{name}}. I know their routine, preferences, and general best practices.",
       "hiName": "Hi {{name}}!",
@@ -319,7 +338,54 @@
       "typing": "Typing...",
       "conversationHistory": "Conversation History",
       "completeSetupFirst": "Complete Setup First",
-      "startOnboarding": "Start Onboarding"
+      "startOnboarding": "Start Onboarding",
+      "hub": {
+        "backToHub": "Back to Coach",
+        "insight": {
+          "title": "For You",
+          "discuss": "Discuss",
+          "fallback": "Check in on {{name}}'s day to get personalized insights"
+        },
+        "rightNow": {
+          "title": "Right Now",
+          "subtitle": "In-the-moment help",
+          "refusing_food": "Refusing food",
+          "refusing_medication": "Won't take medication",
+          "agitated": "Agitated",
+          "not_recognizing": "Doesn't recognize me",
+          "repetitive_questions": "Same question again",
+          "sundowning": "Sundowning",
+          "wants_to_leave": "Wants to leave",
+          "caregiver_overwhelmed": "I'm losing patience"
+        },
+        "planPrepare": {
+          "title": "Plan & Prepare",
+          "subtitle": "Guided workflows",
+          "plan_tomorrow": "Plan tomorrow",
+          "plan_tomorrow_desc": "Build a great day together",
+          "doctor_visit": "Prepare for doctor visit",
+          "doctor_visit_desc": "Generate a structured summary",
+          "review_week": "Review this week",
+          "review_week_desc": "What went well, what needs attention",
+          "adjust_plan": "Adjust the care plan",
+          "adjust_plan_desc": "Optimize based on what's working"
+        },
+        "learn": {
+          "title": "Learn",
+          "subtitle": "Topic guides for {{name}}",
+          "daily_routines": "Daily Routines",
+          "communication": "Communication",
+          "behaviors": "Behaviors",
+          "activities": "Activities",
+          "nutrition": "Nutrition",
+          "safety": "Safety",
+          "sleep": "Sleep & Night"
+        },
+        "askAnything": {
+          "title": "Ask Anything",
+          "placeholder": "What's on your mind about caring for {{name}}?"
+        }
+      }
     },
     "family": {
       "title": "{{patientName}}'s Care Team",
@@ -364,6 +430,24 @@
       "completeSetupFirst": "Complete Setup First",
       "startOnboarding": "Start Onboarding",
       "introMessage": "Hi {{name}}! This is your space for quick relief, support, and self-care.",
+      "tabs": {
+        "wellbeing": "Wellbeing",
+        "behaviours": "Behaviours",
+        "network": "Network",
+        "insights": "Insights"
+      },
+      "sos": {
+        "title": "What do you need right now?",
+        "subtitle": "Choose the option that fits your situation best.",
+        "calmDown": "Help me calm down",
+        "calmDownDesc": "Quick breathing exercise to centre yourself",
+        "behaviourNow": "Behaviour happening now",
+        "behaviourNowDesc": "Log what is happening and get guidance",
+        "callHelp": "Call for help",
+        "callHelpDesc": "Crisis number and care team contacts",
+        "needBreak": "I need a break NOW",
+        "needBreakDesc": "Fast-track a help request to your care team"
+      },
       "checkin": {
         "title": "How are you today?",
         "energy": "Energy",
@@ -374,7 +458,10 @@
         "stressHigh": "Overwhelmed",
         "sleep": "Sleep Quality",
         "sleepLow": "Terrible",
-        "sleepHigh": "Great"
+        "sleepHigh": "Great",
+        "addNote": "Add a note...",
+        "hideNotes": "Hide note",
+        "notesPlaceholder": "How are you really feeling today? Write anything..."
       },
       "relief": {
         "title": "Quick Relief Station",
@@ -438,7 +525,27 @@
         "noData": "Check in daily to see your trends here.",
         "aiInsights": "AI Insights",
         "generateInsights": "Generate Insights",
-        "generating": "Analyzing your data..."
+        "generating": "Analyzing your data...",
+        "wellness": {
+          "title": "Wellness Trends",
+          "subtitle": "Your energy, stress, and sleep over the last 4 weeks",
+          "noData": "Check in daily to build your wellness trends.",
+          "energy": "Avg. Energy",
+          "stress": "Avg. Stress",
+          "sleep": "Avg. Sleep"
+        },
+        "behaviour": {
+          "title": "Behaviour Trends",
+          "subtitle": "Patterns in logged behaviour incidents",
+          "byType": "Incidents by type",
+          "heatmap": "When incidents happen"
+        },
+        "digest": {
+          "title": "Weekly Digest",
+          "subtitle": "Your week at a glance with AI-powered insights",
+          "generate": "Generate Digest",
+          "behaviourSummary": "{{count}} behaviour incidents logged in the last 4 weeks"
+        }
       },
       "burnout": {
         "title": "We notice you may need extra support",
@@ -451,6 +558,105 @@
         "description": "Caregiving is challenging. It is okay to ask for help.",
         "alzheimers": "Alzheimer's Association Resources",
         "familyCaregiver": "Family Caregiver Alliance"
+      },
+      "needSupport": {
+        "title": "Crisis & Support",
+        "description": "You are never alone. These resources are available 24/7.",
+        "alzHelpline": "Alzheimer's Helpline",
+        "callNow": "Call",
+        "onlineResources": "Online caregiver resources",
+        "disclaimer": "OurTurn is not a crisis service. If someone is in immediate danger, call emergency services."
+      },
+      "behaviours": {
+        "playbooks": {
+          "title": "Behaviour Playbooks",
+          "subtitle": "Tap a behaviour for step-by-step guidance on what to do right now.",
+          "rightNow": "Right Now",
+          "understandWhy": "Understand Why",
+          "prevent": "How to Prevent",
+          "whenToCallDoctor": "When to Call the Doctor"
+        },
+        "logger": {
+          "title": "Log an Incident",
+          "logIncident": "Log Incident",
+          "typeLabel": "What behaviour occurred?",
+          "selectType": "Select behaviour type...",
+          "severity": "Severity",
+          "mild": "Mild",
+          "severe": "Severe",
+          "timeOfDay": "Time of day",
+          "morning": "Morning",
+          "afternoon": "Afternoon",
+          "evening": "Evening",
+          "night": "Night",
+          "duration": "Duration (minutes)",
+          "durationPlaceholder": "e.g., 15",
+          "triggers": "Possible triggers",
+          "trigger_pain": "Pain",
+          "trigger_hunger": "Hunger",
+          "trigger_thirst": "Thirst",
+          "trigger_fatigue": "Fatigue",
+          "trigger_overstimulation": "Overstimulation",
+          "trigger_unfamiliar_environment": "Unfamiliar place",
+          "trigger_unfamiliar_person": "Unfamiliar person",
+          "trigger_routine_change": "Routine change",
+          "trigger_medication": "Medication",
+          "trigger_noise": "Noise",
+          "trigger_loneliness": "Loneliness",
+          "trigger_boredom": "Boredom",
+          "trigger_bathroom_need": "Bathroom need",
+          "trigger_frustration": "Frustration",
+          "trigger_fear": "Fear",
+          "trigger_unknown": "Unknown",
+          "whatHappened": "What happened?",
+          "whatHappenedPlaceholder": "Describe the incident...",
+          "whatHelped": "What helped? (optional)",
+          "whatHelpedPlaceholder": "Describe what helped calm things down...",
+          "save": "Save Incident",
+          "saved": "Incident logged"
+        },
+        "timeline": {
+          "title": "Incident Timeline",
+          "all": "All",
+          "noIncidents": "No incidents match the current filter."
+        },
+        "patterns": {
+          "title": "Pattern Insights",
+          "subtitle": "Based on {{count}} logged incidents",
+          "analyse": "Analyse Patterns",
+          "analysing": "Analysing...",
+          "notEnoughData": "Log a few more incidents to unlock pattern analysis. After 5+ incidents, trends in timing, triggers, and strategies will emerge."
+        }
+      },
+      "network": {
+        "team": {
+          "title": "Care Team",
+          "subtitle": "People who help care for your loved one",
+          "addMember": "Add Member",
+          "editMember": "Edit Member",
+          "noMembers": "No care team members added yet. Add people who help with caregiving.",
+          "namePlaceholder": "Name",
+          "relationshipPlaceholder": "Relationship (e.g., Sister, Neighbor)",
+          "phonePlaceholder": "Phone number",
+          "emailPlaceholder": "Email address",
+          "canHelpWith": "Can help with",
+          "availabilityPlaceholder": "Availability notes (e.g., weekends only)...",
+          "call": "Call",
+          "email": "Email",
+          "help_respite": "Respite",
+          "help_meals": "Meals",
+          "help_transport": "Transport",
+          "help_medication": "Medication",
+          "help_appointments": "Appointments",
+          "help_errands": "Errands",
+          "help_companionship": "Companionship",
+          "help_overnight": "Overnight"
+        },
+        "help": {
+          "title": "Help Requests",
+          "subtitle": "Ask your care team for help when you need it.",
+          "teamCanHelp": "Your care team will be notified:"
+        }
       },
       "footer": "Remember: You can't pour from an empty cup. Your wellbeing matters too."
     },

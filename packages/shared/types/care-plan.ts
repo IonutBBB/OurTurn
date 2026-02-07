@@ -1,5 +1,11 @@
 // Care Plan types
 
+export interface MedicationItem {
+  name: string;
+  dosage: string;
+  photo_url: string | null;
+}
+
 export type TaskCategory =
   | 'medication'
   | 'nutrition'
@@ -23,6 +29,8 @@ export interface CarePlanTask {
   recurrence_days: DayOfWeek[];
   active: boolean;
   one_time_date: string | null;
+  photo_url: string | null;
+  medication_items: MedicationItem[] | null;
   created_by: string | null;
   created_at: string;
   updated_at: string;
@@ -38,6 +46,8 @@ export interface CarePlanTaskInsert {
   recurrence_days?: DayOfWeek[];
   active?: boolean;
   one_time_date?: string;
+  photo_url?: string | null;
+  medication_items?: MedicationItem[] | null;
   created_by?: string;
 }
 
@@ -50,6 +60,8 @@ export interface CarePlanTaskUpdate {
   recurrence_days?: DayOfWeek[];
   active?: boolean;
   one_time_date?: string;
+  photo_url?: string | null;
+  medication_items?: MedicationItem[] | null;
 }
 
 export interface TaskCompletion {

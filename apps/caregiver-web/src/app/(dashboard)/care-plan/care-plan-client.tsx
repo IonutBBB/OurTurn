@@ -1,12 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
 import { hasReachedTaskLimit } from '@ourturn/shared/utils/subscription';
 import { UpgradeBanner } from '@/components/upgrade-gate';
 import { FREE_LIMITS } from '@ourturn/shared/utils/subscription';
 import { useToast } from '@/components/toast';
+import type { MedicationItem } from '@ourturn/shared';
 
 interface Task {
   id: string;
@@ -19,6 +20,8 @@ interface Task {
   recurrence_days: string[] | null;
   active: boolean;
   created_at: string;
+  photo_url: string | null;
+  medication_items: MedicationItem[] | null;
 }
 
 interface SuggestedTask {
@@ -47,10 +50,14 @@ const CATEGORIES = [
 
 const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
+const EMPTY_MED_ITEM: MedicationItem = { name: '', dosage: '', photo_url: null };
+
 export function CarePlanClient({ householdId, patientName, initialTasks, subscriptionStatus }: Props) {
   const { t } = useTranslation();
   const { showToast } = useToast();
   const supabase = createBrowserClient();
+  const photoInputRef = useRef<HTMLInputElement>(null);
+  const medPhotoInputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const [showAddForm, setShowAddForm] = useState(false);
@@ -81,7 +88,11 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
     time: '09:00',
     recurrence: 'daily',
     recurrence_days: [] as string[],
+    photo_url: null as string | null,
+    medication_items: [] as MedicationItem[],
   });
+  const [isUploadingPhoto, setIsUploadingPhoto] = useState(false);
+  const [uploadingMedPhotoIndex, setUploadingMedPhotoIndex] = useState<number | null>(null);
 
   const resetForm = () => {
     setNewTask({
@@ -91,9 +102,63 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
       time: '09:00',
       recurrence: 'daily',
       recurrence_days: [],
+      photo_url: null,
+      medication_items: [],
     });
     setShowAddForm(false);
     setEditingTask(null);
+  };
+
+  // Photo upload helper
+  const uploadPhoto = async (file: File): Promise<string | null> => {
+    const ext = file.name.split('.').pop();
+    const fileName = `${householdId}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+
+    const { error } = await supabase.storage
+      .from('task-photos')
+      .upload(fileName, file, { cacheControl: '3600', upsert: false });
+
+    if (error) throw error;
+
+    const { data: urlData } = supabase.storage.from('task-photos').getPublicUrl(fileName);
+    return urlData.publicUrl;
+  };
+
+  const handleTaskPhotoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsUploadingPhoto(true);
+    try {
+      const url = await uploadPhoto(file);
+      setNewTask((prev) => ({ ...prev, photo_url: url }));
+    } catch {
+      showToast(t('common.error'), 'error');
+    } finally {
+      setIsUploadingPhoto(false);
+      if (photoInputRef.current) photoInputRef.current.value = '';
+    }
+  };
+
+  const handleMedPhotoUpload = async (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingMedPhotoIndex(index);
+    try {
+      const url = await uploadPhoto(file);
+      setNewTask((prev) => {
+        const items = [...prev.medication_items];
+        items[index] = { ...items[index], photo_url: url };
+        return { ...prev, medication_items: items };
+      });
+    } catch {
+      showToast(t('common.error'), 'error');
+    } finally {
+      setUploadingMedPhotoIndex(null);
+      const ref = medPhotoInputRefs.current[index];
+      if (ref) ref.value = '';
+    }
   };
 
   const handleAddTask = async () => {
@@ -102,6 +167,10 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
     setSaving(true);
     try {
       const { data: { user } } = await supabase.auth.getUser();
+
+      const medItems = newTask.category === 'medication' && newTask.medication_items.length > 0
+        ? newTask.medication_items.filter((m) => m.name.trim())
+        : null;
 
       const { data, error } = await supabase
         .from('care_plan_tasks')
@@ -115,6 +184,8 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
           recurrence_days: newTask.recurrence === 'specific_days' ? newTask.recurrence_days : null,
           active: true,
           created_by: user?.id,
+          photo_url: newTask.photo_url,
+          medication_items: medItems,
         })
         .select()
         .single();
@@ -135,6 +206,10 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
 
     setSaving(true);
     try {
+      const medItems = newTask.category === 'medication' && newTask.medication_items.length > 0
+        ? newTask.medication_items.filter((m) => m.name.trim())
+        : null;
+
       const { error } = await supabase
         .from('care_plan_tasks')
         .update({
@@ -144,6 +219,8 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
           time: newTask.time,
           recurrence: newTask.recurrence,
           recurrence_days: newTask.recurrence === 'specific_days' ? newTask.recurrence_days : null,
+          photo_url: newTask.photo_url,
+          medication_items: medItems,
         })
         .eq('id', editingTask.id);
 
@@ -162,6 +239,8 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
                   recurrence: newTask.recurrence,
                   recurrence_days:
                     newTask.recurrence === 'specific_days' ? newTask.recurrence_days : null,
+                  photo_url: newTask.photo_url,
+                  medication_items: medItems,
                 }
               : t
           )
@@ -286,6 +365,8 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
           recurrence_days: [targetDay],
           active: true,
           created_by: user?.id,
+          photo_url: task.photo_url,
+          medication_items: task.medication_items,
         }))
       );
 
@@ -315,6 +396,8 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
       time: task.time,
       recurrence: task.recurrence,
       recurrence_days: task.recurrence_days || [],
+      photo_url: task.photo_url,
+      medication_items: task.medication_items || [],
     });
     setShowAddForm(true);
   };
@@ -577,7 +660,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
               </label>
               <select
                 value={newTask.category}
-                onChange={(e) => setNewTask({ ...newTask, category: e.target.value })}
+                onChange={(e) => setNewTask({ ...newTask, category: e.target.value, medication_items: e.target.value !== 'medication' ? [] : newTask.medication_items })}
                 className="input-warm w-full"
               >
                 {CATEGORIES.map((cat) => (
@@ -628,6 +711,177 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
                 className="input-warm w-full"
               />
             </div>
+
+            {/* Task Photo Upload */}
+            <div className="md:col-span-2">
+              <label className="block text-sm font-semibold text-text-primary mb-1.5">
+                {t('caregiverApp.carePlan.taskPhoto')}
+              </label>
+              {newTask.photo_url ? (
+                <div className="flex items-center gap-3">
+                  <img
+                    src={newTask.photo_url}
+                    alt=""
+                    className="w-20 h-20 object-cover rounded-lg border border-surface-border"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setNewTask({ ...newTask, photo_url: null })}
+                    className="text-sm text-status-danger hover:underline"
+                  >
+                    {t('caregiverApp.carePlan.removePhoto')}
+                  </button>
+                </div>
+              ) : (
+                <div>
+                  <input
+                    ref={photoInputRef}
+                    type="file"
+                    accept="image/*"
+                    onChange={handleTaskPhotoUpload}
+                    className="hidden"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => photoInputRef.current?.click()}
+                    disabled={isUploadingPhoto}
+                    className="px-3 py-1.5 text-sm border border-surface-border rounded-lg hover:bg-brand-50 dark:hover:bg-surface-elevated transition-colors disabled:opacity-50 text-text-secondary"
+                  >
+                    {isUploadingPhoto ? t('caregiverApp.carePlan.uploadingPhoto') : t('caregiverApp.carePlan.uploadPhoto')}
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* Medication Items Builder (only for medication category) */}
+            {newTask.category === 'medication' && (
+              <div className="md:col-span-2">
+                <label className="block text-sm font-semibold text-text-primary mb-1">
+                  {t('caregiverApp.carePlan.medicationItems')}
+                </label>
+                <p className="text-xs text-text-muted mb-3">
+                  {t('caregiverApp.carePlan.medicationItemsHint')}
+                </p>
+
+                <div className="space-y-3">
+                  {newTask.medication_items.map((med, index) => (
+                    <div key={index} className="p-3 bg-surface-inset rounded-lg border border-surface-border">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs font-semibold text-text-secondary uppercase tracking-wide">
+                          {t('caregiverApp.carePlan.medItemLabel', { number: index + 1 })}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const items = newTask.medication_items.filter((_, i) => i !== index);
+                            setNewTask({ ...newTask, medication_items: items });
+                          }}
+                          className="text-xs text-status-danger hover:underline"
+                        >
+                          {t('caregiverApp.carePlan.removeMedication')}
+                        </button>
+                      </div>
+
+                      <div className="flex items-start gap-3">
+                        {/* Med photo */}
+                        <div className="flex-shrink-0">
+                          <label className="block text-xs text-text-muted mb-1">{t('caregiverApp.carePlan.medPhotoLabel')}</label>
+                          {med.photo_url ? (
+                            <div className="relative">
+                              <img
+                                src={med.photo_url}
+                                alt=""
+                                className="w-14 h-14 object-cover rounded-lg border border-surface-border"
+                              />
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  const items = [...newTask.medication_items];
+                                  items[index] = { ...items[index], photo_url: null };
+                                  setNewTask({ ...newTask, medication_items: items });
+                                }}
+                                className="absolute -top-1 -right-1 w-5 h-5 bg-status-danger text-white rounded-full text-xs flex items-center justify-center"
+                              >
+                                x
+                              </button>
+                            </div>
+                          ) : (
+                            <div>
+                              <input
+                                ref={(el) => { medPhotoInputRefs.current[index] = el; }}
+                                type="file"
+                                accept="image/*"
+                                onChange={(e) => handleMedPhotoUpload(e, index)}
+                                className="hidden"
+                              />
+                              <button
+                                type="button"
+                                onClick={() => medPhotoInputRefs.current[index]?.click()}
+                                disabled={uploadingMedPhotoIndex === index}
+                                className="w-14 h-14 border-2 border-dashed border-surface-border rounded-lg flex items-center justify-center text-text-muted hover:border-brand-300 transition-colors disabled:opacity-50"
+                              >
+                                {uploadingMedPhotoIndex === index ? (
+                                  <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                  </svg>
+                                ) : (
+                                  <span className="text-lg">+</span>
+                                )}
+                              </button>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Med name + dosage */}
+                        <div className="flex-1 space-y-2">
+                          <div>
+                            <label className="block text-xs text-text-muted mb-0.5">{t('caregiverApp.carePlan.medName')}</label>
+                            <input
+                              type="text"
+                              value={med.name}
+                              onChange={(e) => {
+                                const items = [...newTask.medication_items];
+                                items[index] = { ...items[index], name: e.target.value };
+                                setNewTask({ ...newTask, medication_items: items });
+                              }}
+                              placeholder={t('caregiverApp.carePlan.medNamePlaceholder')}
+                              className="input-warm w-full text-sm"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-xs text-text-muted mb-0.5">{t('caregiverApp.carePlan.medDosage')}</label>
+                            <input
+                              type="text"
+                              value={med.dosage}
+                              onChange={(e) => {
+                                const items = [...newTask.medication_items];
+                                items[index] = { ...items[index], dosage: e.target.value };
+                                setNewTask({ ...newTask, medication_items: items });
+                              }}
+                              placeholder={t('caregiverApp.carePlan.medDosagePlaceholder')}
+                              className="input-warm w-full text-sm"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+
+                  {newTask.medication_items.length < 3 ? (
+                    <button
+                      type="button"
+                      onClick={() => setNewTask({ ...newTask, medication_items: [...newTask.medication_items, { ...EMPTY_MED_ITEM }] })}
+                      className="mt-2 px-3 py-1.5 text-sm text-brand-600 border border-brand-200 dark:border-brand-700 rounded-lg hover:bg-brand-50 dark:hover:bg-brand-900/30 transition-colors"
+                    >
+                      + {t('caregiverApp.carePlan.addMedication')}
+                    </button>
+                  ) : (
+                    <p className="mt-2 text-xs text-text-muted">{t('caregiverApp.carePlan.maxMedications')}</p>
+                  )}
+                </div>
+              </div>
+            )}
 
             {/* Recurrence */}
             <div className="md:col-span-2">
@@ -832,6 +1086,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
             <tbody className="divide-y divide-surface-border">
               {tasks.map((task) => {
                 const category = getCategoryInfo(task.category);
+                const hasPhoto = task.photo_url || (task.medication_items && task.medication_items.some((m) => m.photo_url));
                 return (
                   <tr key={task.id} className="hover:bg-brand-50 dark:hover:bg-surface-elevated">
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -843,11 +1098,23 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
                       </span>
                     </td>
                     <td className="px-6 py-4">
-                      <span className="text-text-primary">{task.title}</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-text-primary">{task.title}</span>
+                        {hasPhoto && (
+                          <span className="text-text-muted text-xs" title="Has photo">
+                            📷
+                          </span>
+                        )}
+                      </div>
+                      {task.medication_items && task.medication_items.length > 0 && (
+                        <div className="mt-1 text-xs text-text-muted">
+                          {task.medication_items.map((m) => m.name).filter(Boolean).join(', ')}
+                        </div>
+                      )}
                     </td>
                     <td className="px-6 py-4">
                       <span className="text-text-secondary text-sm">
-                        {task.hint_text || '—'}
+                        {task.hint_text || '\u2014'}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">

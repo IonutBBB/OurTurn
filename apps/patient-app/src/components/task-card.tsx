@@ -2,6 +2,7 @@ import { useState, memo } from 'react';
 import {
   View,
   Text,
+  Image,
   TouchableOpacity,
   StyleSheet,
   Animated,
@@ -17,7 +18,7 @@ import {
   getTaskCompletionAnnouncement,
   TOUCH_TARGETS,
 } from '@ourturn/shared';
-import type { CarePlanTask, TaskCompletion } from '@ourturn/shared';
+import type { CarePlanTask, TaskCompletion, MedicationItem } from '@ourturn/shared';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../theme';
 
 export type TaskStatus = 'upcoming' | 'now' | 'overdue' | 'completed' | 'skipped';
@@ -154,6 +155,45 @@ function TaskCard({ task, completion, status, onComplete, simplified = false }: 
         <Text style={[styles.categoryIcon, simplified && styles.categoryIconSimplified]}>{categoryIcon}</Text>
         <Text style={[styles.title, isCompleted && styles.textMuted, simplified && styles.titleSimplified]}>{task.title}</Text>
       </View>
+
+      {/* Medication items list (hidden when completed) */}
+      {!isCompleted && task.category === 'medication' && task.medication_items && task.medication_items.length > 0 && (
+        <View style={[styles.medList, simplified && styles.medListSimplified]}>
+          {task.medication_items.map((med: MedicationItem, index: number) => (
+            <View
+              key={index}
+              style={[
+                styles.medItem,
+                index < (task.medication_items?.length ?? 0) - 1 && styles.medItemBorder,
+              ]}
+            >
+              {med.photo_url && (
+                <Image
+                  source={{ uri: med.photo_url }}
+                  style={[styles.medPhoto, simplified && styles.medPhotoSimplified]}
+                  accessibilityLabel={med.name}
+                />
+              )}
+              <View style={styles.medInfo}>
+                <Text style={[styles.medName, simplified && styles.medNameSimplified]}>{med.name}</Text>
+                <Text style={[styles.medDosage, simplified && styles.medDosageSimplified]}>{med.dosage}</Text>
+              </View>
+            </View>
+          ))}
+        </View>
+      )}
+
+      {/* Task photo for non-medication tasks (hidden when completed) */}
+      {!isCompleted && task.category !== 'medication' && task.photo_url && (
+        <View style={styles.taskPhotoContainer}>
+          <Image
+            source={{ uri: task.photo_url }}
+            style={[styles.taskPhoto, simplified && styles.taskPhotoSimplified]}
+            accessibilityLabel={task.title}
+            resizeMode="cover"
+          />
+        </View>
+      )}
 
       {/* Hint text (hidden in simplified mode and when completed) */}
       {!isCompleted && !simplified && task.hint_text && (
@@ -339,5 +379,69 @@ const styles = StyleSheet.create({
   },
   doneButtonTextSimplified: {
     fontSize: 24,
+  },
+  // Task photo (non-medication)
+  taskPhotoContainer: {
+    marginBottom: 16,
+    borderRadius: 12,
+    overflow: 'hidden',
+  },
+  taskPhoto: {
+    width: '100%',
+    height: 160,
+    borderRadius: 12,
+  },
+  taskPhotoSimplified: {
+    height: 200,
+  },
+  // Medication items list
+  medList: {
+    backgroundColor: COLORS.background,
+    borderRadius: 12,
+    marginBottom: 16,
+    overflow: 'hidden',
+  },
+  medListSimplified: {
+    borderRadius: 16,
+  },
+  medItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 12,
+  },
+  medItemBorder: {
+    borderBottomWidth: 1,
+    borderBottomColor: COLORS.border,
+  },
+  medPhoto: {
+    width: 56,
+    height: 56,
+    borderRadius: 8,
+    marginRight: 12,
+  },
+  medPhotoSimplified: {
+    width: 64,
+    height: 64,
+    borderRadius: 10,
+  },
+  medInfo: {
+    flex: 1,
+  },
+  medName: {
+    fontSize: 22,
+    fontFamily: FONTS.bodyBold,
+    color: COLORS.textPrimary,
+    marginBottom: 2,
+  },
+  medNameSimplified: {
+    fontSize: 24,
+  },
+  medDosage: {
+    fontSize: 20,
+    fontFamily: FONTS.body,
+    color: COLORS.textSecondary,
+  },
+  medDosageSimplified: {
+    fontSize: 22,
   },
 });

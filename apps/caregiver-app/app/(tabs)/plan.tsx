@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import {
   View,
   Text,
+  Image,
   StyleSheet,
   ScrollView,
   TouchableOpacity,
@@ -13,12 +14,13 @@ import {
   Animated,
   Dimensions,
 } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { supabase } from '@ourturn/supabase';
 import { useAuthStore } from '../../src/stores/auth-store';
 import { COLORS, FONTS, RADIUS, SHADOWS, SPACING } from '../../src/theme';
-import type { CarePlanTask, TaskCategory, DayOfWeek } from '@ourturn/shared';
+import type { CarePlanTask, TaskCategory, DayOfWeek, MedicationItem } from '@ourturn/shared';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -78,6 +80,10 @@ export default function PlanScreen() {
   const [formTime, setFormTime] = useState('09:00');
   const [formRecurrence, setFormRecurrence] = useState<'daily' | 'specific_days' | 'one_time'>('daily');
   const [formDays, setFormDays] = useState<DayOfWeek[]>([]);
+  const [formPhotoUrl, setFormPhotoUrl] = useState<string | null>(null);
+  const [formMedItems, setFormMedItems] = useState<MedicationItem[]>([]);
+  const [isUploadingPhoto, setIsUploadingPhoto] = useState(false);
+  const [uploadingMedIndex, setUploadingMedIndex] = useState<number | null>(null);
 
   // AI Suggest state
   const [showSuggestModal, setShowSuggestModal] = useState(false);
@@ -141,6 +147,62 @@ export default function PlanScreen() {
     return false;
   });
 
+  // Photo upload helper
+  const pickAndUploadPhoto = async (): Promise<string | null> => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ['images'],
+      quality: 0.8,
+    });
+
+    if (result.canceled || result.assets.length === 0) return null;
+
+    const asset = result.assets[0];
+    const ext = asset.uri.split('.').pop() || 'jpg';
+    const path = `${household!.id}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+
+    const response = await fetch(asset.uri);
+    const blob = await response.blob();
+
+    const { error } = await supabase.storage
+      .from('task-photos')
+      .upload(path, blob, { contentType: asset.mimeType || 'image/jpeg' });
+
+    if (error) throw error;
+
+    const { data: urlData } = supabase.storage.from('task-photos').getPublicUrl(path);
+    return urlData.publicUrl;
+  };
+
+  const handleFormPhotoUpload = async () => {
+    setIsUploadingPhoto(true);
+    try {
+      const url = await pickAndUploadPhoto();
+      if (url) setFormPhotoUrl(url);
+    } catch {
+      Alert.alert(t('common.error'));
+    } finally {
+      setIsUploadingPhoto(false);
+    }
+  };
+
+  const handleMedPhotoUpload = async (index: number) => {
+    setUploadingMedIndex(index);
+    try {
+      const url = await pickAndUploadPhoto();
+      if (url) {
+        setFormMedItems((prev) => {
+          const items = [...prev];
+          items[index] = { ...items[index], photo_url: url };
+          return items;
+        });
+      }
+    } catch {
+      Alert.alert(t('common.error'));
+    } finally {
+      setUploadingMedIndex(null);
+    }
+  };
+
   const resetForm = () => {
     setFormCategory('medication');
     setFormTitle('');
@@ -148,6 +210,8 @@ export default function PlanScreen() {
     setFormTime('09:00');
     setFormRecurrence('daily');
     setFormDays([]);
+    setFormPhotoUrl(null);
+    setFormMedItems([]);
     setEditingTask(null);
   };
 
@@ -164,6 +228,8 @@ export default function PlanScreen() {
     setFormTime(task.time);
     setFormRecurrence(task.recurrence);
     setFormDays(task.recurrence_days || []);
+    setFormPhotoUrl(task.photo_url || null);
+    setFormMedItems(task.medication_items || []);
     setShowModal(true);
   };
 
@@ -172,6 +238,10 @@ export default function PlanScreen() {
 
     setSaving(true);
     try {
+      const medItems = formCategory === 'medication' && formMedItems.length > 0
+        ? formMedItems.filter((m) => m.name.trim())
+        : null;
+
       if (editingTask) {
         const { error } = await supabase
           .from('care_plan_tasks')
@@ -182,6 +252,8 @@ export default function PlanScreen() {
             time: formTime,
             recurrence: formRecurrence,
             recurrence_days: formRecurrence === 'specific_days' ? formDays : [],
+            photo_url: formPhotoUrl,
+            medication_items: medItems,
           })
           .eq('id', editingTask.id);
 
@@ -199,6 +271,8 @@ export default function PlanScreen() {
                     time: formTime,
                     recurrence: formRecurrence,
                     recurrence_days: formRecurrence === 'specific_days' ? formDays : [],
+                    photo_url: formPhotoUrl,
+                    medication_items: medItems,
                   }
                 : t
             )
@@ -217,6 +291,8 @@ export default function PlanScreen() {
             recurrence_days: formRecurrence === 'specific_days' ? formDays : [],
             active: true,
             created_by: user?.id,
+            photo_url: formPhotoUrl,
+            medication_items: medItems,
           })
           .select()
           .single();
@@ -377,6 +453,8 @@ export default function PlanScreen() {
           recurrence_days: [targetDay],
           active: true,
           created_by: user?.id,
+          photo_url: task.photo_url,
+          medication_items: task.medication_items,
         }))
       );
 
@@ -648,6 +726,126 @@ export default function PlanScreen() {
                 placeholderTextColor={COLORS.textMuted}
                 keyboardType="numbers-and-punctuation"
               />
+
+              {/* Task Photo */}
+              <Text style={styles.fieldLabel}>{t('caregiverApp.carePlan.taskPhoto')}</Text>
+              {formPhotoUrl ? (
+                <View style={styles.photoPreviewRow}>
+                  <Image source={{ uri: formPhotoUrl }} style={styles.photoPreview} />
+                  <TouchableOpacity onPress={() => setFormPhotoUrl(null)} activeOpacity={0.7}>
+                    <Text style={styles.removePhotoText}>{t('caregiverApp.carePlan.removePhoto')}</Text>
+                  </TouchableOpacity>
+                </View>
+              ) : (
+                <TouchableOpacity
+                  style={styles.uploadButton}
+                  onPress={handleFormPhotoUpload}
+                  disabled={isUploadingPhoto}
+                  activeOpacity={0.7}
+                >
+                  {isUploadingPhoto ? (
+                    <ActivityIndicator size="small" color={COLORS.brand600} />
+                  ) : (
+                    <Text style={styles.uploadButtonText}>{t('caregiverApp.carePlan.uploadPhoto')}</Text>
+                  )}
+                </TouchableOpacity>
+              )}
+
+              {/* Medication Items (only for medication category) */}
+              {formCategory === 'medication' && (
+                <View>
+                  <Text style={styles.fieldLabel}>{t('caregiverApp.carePlan.medicationItems')}</Text>
+                  <Text style={styles.medHintText}>{t('caregiverApp.carePlan.medicationItemsHint')}</Text>
+
+                  {formMedItems.map((med, index) => (
+                    <View key={index} style={styles.medItemForm}>
+                      <View style={styles.medItemHeader}>
+                        <Text style={styles.medItemLabel}>
+                          {t('caregiverApp.carePlan.medItemLabel', { number: index + 1 })}
+                        </Text>
+                        <TouchableOpacity
+                          onPress={() => setFormMedItems((prev) => prev.filter((_, i) => i !== index))}
+                          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                        >
+                          <Text style={styles.medItemRemoveText}>{t('caregiverApp.carePlan.removeMedication')}</Text>
+                        </TouchableOpacity>
+                      </View>
+
+                      <View style={styles.medItemRow}>
+                        <View style={styles.medItemPhotoCol}>
+                          <Text style={styles.medFieldLabel}>{t('caregiverApp.carePlan.medPhotoLabel')}</Text>
+                          {med.photo_url ? (
+                            <View>
+                              <Image source={{ uri: med.photo_url }} style={styles.medItemPhoto} />
+                              <TouchableOpacity
+                                style={styles.medItemPhotoRemove}
+                                onPress={() => {
+                                  const items = [...formMedItems];
+                                  items[index] = { ...items[index], photo_url: null };
+                                  setFormMedItems(items);
+                                }}
+                              >
+                                <Text style={styles.medItemPhotoRemoveText}>x</Text>
+                              </TouchableOpacity>
+                            </View>
+                          ) : (
+                            <TouchableOpacity
+                              style={styles.medItemPhotoPlaceholder}
+                              onPress={() => handleMedPhotoUpload(index)}
+                              disabled={uploadingMedIndex === index}
+                              activeOpacity={0.7}
+                            >
+                              {uploadingMedIndex === index ? (
+                                <ActivityIndicator size="small" color={COLORS.textMuted} />
+                              ) : (
+                                <Text style={styles.medItemPhotoPlaceholderText}>+</Text>
+                              )}
+                            </TouchableOpacity>
+                          )}
+                        </View>
+                        <View style={styles.medItemInputs}>
+                          <Text style={styles.medFieldLabel}>{t('caregiverApp.carePlan.medName')}</Text>
+                          <TextInput
+                            style={styles.medItemInput}
+                            value={med.name}
+                            onChangeText={(text) => {
+                              const items = [...formMedItems];
+                              items[index] = { ...items[index], name: text };
+                              setFormMedItems(items);
+                            }}
+                            placeholder={t('caregiverApp.carePlan.medNamePlaceholder')}
+                            placeholderTextColor={COLORS.textMuted}
+                          />
+                          <Text style={[styles.medFieldLabel, { marginTop: 8 }]}>{t('caregiverApp.carePlan.medDosage')}</Text>
+                          <TextInput
+                            style={styles.medItemInput}
+                            value={med.dosage}
+                            onChangeText={(text) => {
+                              const items = [...formMedItems];
+                              items[index] = { ...items[index], dosage: text };
+                              setFormMedItems(items);
+                            }}
+                            placeholder={t('caregiverApp.carePlan.medDosagePlaceholder')}
+                            placeholderTextColor={COLORS.textMuted}
+                          />
+                        </View>
+                      </View>
+                    </View>
+                  ))}
+
+                  {formMedItems.length < 3 ? (
+                    <TouchableOpacity
+                      style={styles.addMedButton}
+                      onPress={() => setFormMedItems((prev) => [...prev, { name: '', dosage: '', photo_url: null }])}
+                      activeOpacity={0.7}
+                    >
+                      <Text style={styles.addMedButtonText}>+ {t('caregiverApp.carePlan.addMedication')}</Text>
+                    </TouchableOpacity>
+                  ) : (
+                    <Text style={styles.maxMedText}>{t('caregiverApp.carePlan.maxMedications')}</Text>
+                  )}
+                </View>
+              )}
 
               {/* Recurrence */}
               <Text style={styles.fieldLabel}>{t('caregiverApp.carePlan.recurrence')}</Text>
@@ -1377,5 +1575,164 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.body,
     color: COLORS.textMuted,
     marginBottom: 16,
+  },
+
+  // Photo upload
+  photoPreviewRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  photoPreview: {
+    width: 64,
+    height: 64,
+    borderRadius: RADIUS.md,
+    borderWidth: 1,
+    borderColor: COLORS.border,
+  },
+  removePhotoText: {
+    fontSize: 13,
+    fontFamily: FONTS.body,
+    color: '#dc2626',
+  },
+  uploadButton: {
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    borderRadius: RADIUS.md,
+    alignSelf: 'flex-start',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: 40,
+  },
+  uploadButtonText: {
+    fontSize: 14,
+    fontFamily: FONTS.bodyMedium,
+    color: COLORS.textSecondary,
+  },
+
+  // Medication items form
+  medHintText: {
+    fontSize: 12,
+    fontFamily: FONTS.body,
+    color: COLORS.textMuted,
+    marginBottom: 12,
+  },
+  medItemForm: {
+    backgroundColor: COLORS.background,
+    borderRadius: RADIUS.md,
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    padding: 10,
+    marginBottom: 8,
+    gap: 10,
+  },
+  medItemPhotoCol: {
+    flexShrink: 0,
+  },
+  medItemPhoto: {
+    width: 48,
+    height: 48,
+    borderRadius: RADIUS.sm,
+    borderWidth: 1,
+    borderColor: COLORS.border,
+  },
+  medItemPhotoRemove: {
+    position: 'absolute',
+    top: -4,
+    right: -4,
+    width: 18,
+    height: 18,
+    borderRadius: 9,
+    backgroundColor: '#dc2626',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  medItemPhotoRemoveText: {
+    color: '#fff',
+    fontSize: 10,
+    fontWeight: '700',
+  },
+  medItemPhotoPlaceholder: {
+    width: 48,
+    height: 48,
+    borderRadius: RADIUS.sm,
+    borderWidth: 2,
+    borderStyle: 'dashed',
+    borderColor: COLORS.border,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  medItemPhotoPlaceholderText: {
+    fontSize: 18,
+    color: COLORS.textMuted,
+  },
+  medItemInputs: {
+    flex: 1,
+    gap: 6,
+  },
+  medItemInput: {
+    borderWidth: 1,
+    borderColor: COLORS.brand200,
+    borderRadius: RADIUS.sm,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    fontSize: 14,
+    fontFamily: FONTS.body,
+    color: COLORS.textPrimary,
+    backgroundColor: COLORS.card,
+  },
+  medItemHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 12,
+    paddingTop: 10,
+    paddingBottom: 4,
+  },
+  medItemLabel: {
+    fontSize: 12,
+    fontFamily: FONTS.bodyBold,
+    color: COLORS.textSecondary,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  medFieldLabel: {
+    fontSize: 11,
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textMuted,
+    marginBottom: 4,
+  },
+  medItemRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    paddingHorizontal: 12,
+    paddingBottom: 12,
+  },
+  medItemRemoveText: {
+    fontSize: 11,
+    fontFamily: FONTS.body,
+    color: '#dc2626',
+  },
+  addMedButton: {
+    paddingVertical: 8,
+    paddingHorizontal: 14,
+    borderWidth: 1,
+    borderColor: COLORS.brand200,
+    borderRadius: RADIUS.md,
+    alignSelf: 'flex-start',
+    marginTop: 4,
+  },
+  addMedButtonText: {
+    fontSize: 13,
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.brand600,
+  },
+  maxMedText: {
+    fontSize: 12,
+    fontFamily: FONTS.body,
+    color: COLORS.textMuted,
+    marginTop: 4,
   },
 });

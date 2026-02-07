@@ -106,7 +106,22 @@
         "fri": "Fri",
         "sat": "Sat",
         "sun": "Sun"
-      }
+      },
+      "taskPhoto": "Task Photo (optional)",
+      "uploadPhoto": "Upload Photo",
+      "removePhoto": "Remove Photo",
+      "medicationItems": "Medications in this group",
+      "medicationItemsHint": "Group up to 3 medications taken at the same time",
+      "addMedication": "Add Medication",
+      "medName": "Medication name",
+      "medNamePlaceholder": "e.g. Donepezil",
+      "medDosage": "Dosage or instruction",
+      "medDosagePlaceholder": "e.g. 10mg tablet",
+      "medPhotoLabel": "Photo",
+      "medItemLabel": "Medication {{number}}",
+      "removeMedication": "Remove",
+      "maxMedications": "Maximum 3 medications per group",
+      "uploadingPhoto": "Uploading..."
     },
     "location": {
       "title": "Location & Safety",
@@ -190,6 +205,53 @@
         "siblings": "Help me talk to my siblings about sharing care",
         "refusesFood": "{{name}} refuses to eat. Help.",
         "repetitive": "How do I handle repetitive questions?"
+      },
+      "hub": {
+        "backToHub": "Back to Coach",
+        "insight": {
+          "title": "For You",
+          "discuss": "Discuss",
+          "fallback": "Check in on {{name}}'s day to get personalized insights"
+        },
+        "rightNow": {
+          "title": "Right Now",
+          "subtitle": "In-the-moment help",
+          "refusing_food": "Refusing food",
+          "refusing_medication": "Won't take medication",
+          "agitated": "Agitated",
+          "not_recognizing": "Doesn't recognize me",
+          "repetitive_questions": "Same question again",
+          "sundowning": "Sundowning",
+          "wants_to_leave": "Wants to leave",
+          "caregiver_overwhelmed": "I'm losing patience"
+        },
+        "planPrepare": {
+          "title": "Plan & Prepare",
+          "subtitle": "Guided workflows",
+          "plan_tomorrow": "Plan tomorrow",
+          "plan_tomorrow_desc": "Build a great day together",
+          "doctor_visit": "Prepare for doctor visit",
+          "doctor_visit_desc": "Generate a structured summary",
+          "review_week": "Review this week",
+          "review_week_desc": "What went well, what needs attention",
+          "adjust_plan": "Adjust the care plan",
+          "adjust_plan_desc": "Optimize based on what's working"
+        },
+        "learn": {
+          "title": "Learn",
+          "subtitle": "Topic guides for {{name}}",
+          "daily_routines": "Daily Routines",
+          "communication": "Communication",
+          "behaviors": "Behaviors",
+          "activities": "Activities",
+          "nutrition": "Nutrition",
+          "safety": "Safety",
+          "sleep": "Sleep & Night"
+        },
+        "askAnything": {
+          "title": "Ask Anything",
+          "placeholder": "What's on your mind about caring for {{name}}?"
+        }
       }
     },
     "family": {

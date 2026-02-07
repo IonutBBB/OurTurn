@@ -138,6 +138,19 @@
     "tabs": {
       "today": "Today",
       "help": "Help"
+    },
+    "taskPhoto": {
+      "taskPhoto": "Task Photo (optional)",
+      "uploadPhoto": "Upload Photo",
+      "removePhoto": "Remove Photo",
+      "medicationItems": "Medications in this group",
+      "medicationItemsHint": "Group up to 3 medications taken at the same time",
+      "addMedication": "Add Medication",
+      "medName": "Medication name",
+      "medDosage": "Dosage",
+      "removeMedication": "Remove",
+      "maxMedications": "Maximum 3 medications per group",
+      "uploadingPhoto": "Uploading..."
     }
   },
   "a11y": {
