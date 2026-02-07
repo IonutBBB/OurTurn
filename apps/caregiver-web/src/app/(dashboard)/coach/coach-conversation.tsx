@@ -84,36 +84,42 @@ export default function CoachConversation({
         const decoder = new TextDecoder();
         if (!reader) throw new Error('No response body');
 
+        let sseBuffer = '';
         while (true) {
           const { done, value } = await reader.read();
           if (done) break;
 
-          const chunk = decoder.decode(value);
-          const lines = chunk.split('\n').filter((l) => l.startsWith('data: '));
+          sseBuffer += decoder.decode(value, { stream: true });
+          // Split on double-newline (SSE event boundary)
+          const events = sseBuffer.split('\n\n');
+          // Keep the last part which may be an incomplete event
+          sseBuffer = events.pop() || '';
 
-          for (const line of lines) {
-            const data = line.slice(6);
-            try {
-              const parsed = JSON.parse(data);
-              if (parsed.error) { setError(parsed.error); break; }
-              if (parsed.conversationId) setConversationId(parsed.conversationId);
-              if (parsed.replace && parsed.text) {
-                // Safety post-processing replaced the entire response
-                setMessages((prev) => {
-                  const updated = [...prev];
-                  const lastMessage = updated[updated.length - 1];
-                  if (lastMessage.role === 'assistant') lastMessage.content = parsed.text;
-                  return updated;
-                });
-              } else if (parsed.text) {
-                setMessages((prev) => {
-                  const updated = [...prev];
-                  const lastMessage = updated[updated.length - 1];
-                  if (lastMessage.role === 'assistant') lastMessage.content += parsed.text;
-                  return updated;
-                });
-              }
-            } catch (e) { /* ignore partial chunks */ }
+          for (const event of events) {
+            const lines = event.split('\n').filter((l) => l.startsWith('data: '));
+            for (const line of lines) {
+              const data = line.slice(6);
+              try {
+                const parsed = JSON.parse(data);
+                if (parsed.error) { setError(parsed.error); break; }
+                if (parsed.conversationId) setConversationId(parsed.conversationId);
+                if (parsed.replace && parsed.text) {
+                  setMessages((prev) => {
+                    const updated = [...prev];
+                    const lastMessage = updated[updated.length - 1];
+                    if (lastMessage.role === 'assistant') lastMessage.content = parsed.text;
+                    return updated;
+                  });
+                } else if (parsed.text) {
+                  setMessages((prev) => {
+                    const updated = [...prev];
+                    const lastMessage = updated[updated.length - 1];
+                    if (lastMessage.role === 'assistant') lastMessage.content += parsed.text;
+                    return updated;
+                  });
+                }
+              } catch (e) { /* ignore partial chunks */ }
+            }
           }
         }
       } catch (err) {

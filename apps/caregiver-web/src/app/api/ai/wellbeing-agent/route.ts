@@ -271,11 +271,23 @@ export async function POST(request: NextRequest) {
         let fullResponse = '';
         try {
           for await (const chunk of result.stream) {
-            const text = chunk.text();
-            fullResponse += text;
-            controller.enqueue(
-              new TextEncoder().encode(`data: ${JSON.stringify({ text })}\n\n`)
-            );
+            const chunkText = chunk.text();
+
+            // Guard against cumulative chunks from Gemini SDK
+            let delta: string;
+            if (fullResponse.length > 0 && chunkText.startsWith(fullResponse)) {
+              delta = chunkText.slice(fullResponse.length);
+              fullResponse = chunkText;
+            } else {
+              delta = chunkText;
+              fullResponse += delta;
+            }
+
+            if (delta) {
+              controller.enqueue(
+                new TextEncoder().encode(`data: ${JSON.stringify({ text: delta })}\n\n`)
+              );
+            }
           }
 
           // --- SAFETY POST-PROCESSING ---
