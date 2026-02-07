@@ -16,14 +16,13 @@ import type {
   CaregiverWellbeingLog,
   SliderValue,
   HelpRequest,
-  AiDailyTip,
 } from '@ourturn/shared';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
 
 import { SliderCheckin } from '../../src/components/toolkit/slider-checkin';
 import { QuickRelief } from '../../src/components/toolkit/quick-relief';
 import { HelpRequestForm } from '../../src/components/toolkit/help-request-form';
-import { DailyTipCard } from '../../src/components/toolkit/daily-tip-card';
+import { WellbeingAgent } from '../../src/components/toolkit/wellbeing-agent';
 import { DailyGoal } from '../../src/components/toolkit/daily-goal';
 
 const API_BASE_URL = process.env.EXPO_PUBLIC_WEB_URL || '';
@@ -35,7 +34,6 @@ export default function ToolkitScreen() {
   const [todayLog, setTodayLog] = useState<CaregiverWellbeingLog | null>(null);
   const [recentLogs, setRecentLogs] = useState<CaregiverWellbeingLog[]>([]);
   const [helpRequests, setHelpRequests] = useState<HelpRequest[]>([]);
-  const [dailyTip, setDailyTip] = useState<AiDailyTip | null>(null);
   const [showBurnout, setShowBurnout] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -51,7 +49,7 @@ export default function ToolkitScreen() {
         const twentyEightDaysAgo = new Date();
         twentyEightDaysAgo.setDate(twentyEightDaysAgo.getDate() - 28);
 
-        const [todayResult, recentResult, tipResult, helpResult] = await Promise.all([
+        const [todayResult, recentResult, helpResult] = await Promise.all([
           supabase
             .from('caregiver_wellbeing_logs')
             .select('*')
@@ -65,12 +63,6 @@ export default function ToolkitScreen() {
             .gte('date', twentyEightDaysAgo.toISOString().split('T')[0])
             .order('date', { ascending: false }),
           supabase
-            .from('ai_daily_tips')
-            .select('*')
-            .eq('caregiver_id', caregiver.id)
-            .eq('date', today)
-            .single(),
-          supabase
             .from('caregiver_help_requests')
             .select('*')
             .eq('household_id', caregiver.household_id)
@@ -80,7 +72,6 @@ export default function ToolkitScreen() {
 
         if (todayResult.data) setTodayLog(todayResult.data);
         setRecentLogs(recentResult.data || []);
-        if (tipResult.data) setDailyTip(tipResult.data);
         setHelpRequests(helpResult.data || []);
 
         // Check burnout
@@ -189,8 +180,15 @@ export default function ToolkitScreen() {
 
         <View style={styles.spacer} />
 
-        {/* Daily Tip */}
-        <DailyTipCard initialTip={dailyTip} apiBaseUrl={API_BASE_URL} />
+        {/* Wellbeing Companion */}
+        <WellbeingAgent
+          caregiverId={caregiver?.id || ''}
+          caregiverName={caregiver?.name || ''}
+          energy={todayLog?.energy_level as SliderValue | null}
+          stress={todayLog?.stress_level as SliderValue | null}
+          sleep={todayLog?.sleep_quality_rating as SliderValue | null}
+          apiBaseUrl={API_BASE_URL}
+        />
 
         <View style={styles.spacer} />
 

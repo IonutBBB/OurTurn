@@ -46,7 +46,6 @@ export default async function ToolkitPage() {
   const [
     todayLogResult,
     recentLogsResult,
-    todayTipResult,
     helpRequestsResult,
     burnoutLogsResult,
   ] = await Promise.all([
@@ -68,13 +67,6 @@ export default async function ToolkitPage() {
         .gte('date', d.toISOString().split('T')[0])
         .order('date', { ascending: false });
     })(),
-    // Today's AI tip
-    supabase
-      .from('ai_daily_tips')
-      .select('*')
-      .eq('caregiver_id', caregiver.id)
-      .eq('date', today)
-      .single(),
     // Recent help requests
     supabase
       .from('caregiver_help_requests')
@@ -97,7 +89,6 @@ export default async function ToolkitPage() {
 
   const todayLog = todayLogResult.data;
   const recentLogs = recentLogsResult.data || [];
-  const todayTip = todayTipResult.data;
   const helpRequests = helpRequestsResult.data || [];
 
   // Check burnout: stress >= 4 for 3+ days OR energy <= 2 for 3+ days
@@ -147,7 +138,6 @@ export default async function ToolkitPage() {
         householdId={caregiver.household_id}
         initialLog={todayLog}
         recentLogs={recentLogs}
-        initialTip={todayTip}
         helpRequests={helpRequests}
         showBurnoutWarning={showBurnoutWarning}
         trend={trend}

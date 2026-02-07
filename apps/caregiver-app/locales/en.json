@@ -273,11 +273,23 @@
         "accept": "I can help",
         "complete": "Mark done"
       },
-      "tip": {
-        "title": "Daily Tip",
-        "refresh": "New tip",
-        "dismiss": "Dismiss",
-        "limitReached": "You've reached the daily refresh limit."
+      "agent": {
+        "title": "Wellbeing Companion",
+        "disclaimer": "For emotional support only. Not medical advice.",
+        "placeholder": "How are you feeling?",
+        "greeting": "Thinking of you...",
+        "rateLimited": "Take a breather — you can chat again shortly.",
+        "errorMessage": "Could not connect. Please try again.",
+        "expand": "Expand",
+        "collapse": "Collapse",
+        "prompts": {
+          "overwhelmed": "I'm feeling overwhelmed right now",
+          "calmDown": "Help me calm down in 2 minutes",
+          "needEnergy": "I need energy but can't take a break",
+          "poorSleep": "I couldn't sleep well last night",
+          "needMoment": "I need a moment just for myself",
+          "uplifting": "Tell me something uplifting"
+        }
       },
       "goal": {
         "title": "Today's Goal",

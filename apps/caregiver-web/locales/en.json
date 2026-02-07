@@ -398,14 +398,29 @@
         "sent": "Help request sent!",
         "limitReached": "You can send up to 5 help requests per day.",
         "noRequests": "No recent help requests.",
+        "viewAll": "View all",
+        "showLess": "Show less",
         "accept": "I can help",
         "complete": "Mark done"
       },
-      "tip": {
-        "title": "Daily Tip",
-        "refresh": "New tip",
-        "dismiss": "Dismiss",
-        "limitReached": "You've reached the daily refresh limit."
+      "agent": {
+        "title": "Wellbeing Companion",
+        "disclaimer": "For emotional support only. Not medical advice.",
+        "placeholder": "How are you feeling?",
+        "greeting": "Thinking of you...",
+        "rateLimited": "Take a breather — you can chat again shortly.",
+        "errorMessage": "Could not connect. Please try again.",
+        "expand": "Expand",
+        "collapse": "Collapse",
+        "checkinUpdated": "Your check-in updated. Want to talk about how you're feeling?",
+        "prompts": {
+          "overwhelmed": "I'm feeling overwhelmed right now",
+          "calmDown": "Help me calm down in 2 minutes",
+          "needEnergy": "I need energy but can't take a break",
+          "poorSleep": "I couldn't sleep well last night",
+          "needMoment": "I need a moment just for myself",
+          "uplifting": "Tell me something uplifting"
+        }
       },
       "goal": {
         "title": "Today's Goal",
@@ -787,13 +802,13 @@
       "toolkit": "Toolkit",
       "reports": "Reports",
       "settings": "Settings",
-      "crisis": "Crisis Toolkit"
+      "crisis": "Crisis Hub"
     },
     "crisis": {
-      "title": "Crisis Toolkit",
-      "subtitle": "Resources and guidance for difficult moments",
-      "pageTitle": "Crisis Toolkit",
-      "pageSubtitle": "Resources and guidance for difficult moments",
+      "title": "Crisis Hub",
+      "subtitle": "Real-time crisis management and de-escalation support",
+      "pageTitle": "Crisis Hub",
+      "pageSubtitle": "Real-time crisis management and de-escalation support",
       "setupDesc": "Set up your care profile to access crisis management tools.",
       "completeSetupFirst": "Complete Setup First",
       "startOnboarding": "Start Onboarding",
@@ -810,36 +825,92 @@
       "logCrisisFailed": "Failed to save. Please try again.",
       "deEscalationGuide": "De-Escalation Guide",
       "deEscalation": "De-escalation Guide",
+      "status": {
+        "allClear": "All Clear",
+        "allClearDesc": "No active alerts",
+        "activeAlerts": "Active Alerts",
+        "lastKnownLocation": "Last known location",
+        "lastUpdated": "Updated {{time}}",
+        "viewOnMap": "View on map",
+        "noLocationData": "No location data available"
+      },
+      "actions": {
+        "modeLabel": "Your situation",
+        "withThem": "I'm with them",
+        "remote": "I'm remote",
+        "startDeEscalation": "Start De-Escalation",
+        "startDeEscalationDesc": "Step-by-step guided calming flow",
+        "callEmergency": "Call Emergency",
+        "callEmergencyDesc": "Call local emergency services",
+        "alertFamily": "Alert Family",
+        "alertFamilyDesc": "Send push notification to all caregivers",
+        "alertFamilySent": "Family members notified",
+        "alertFamilyFailed": "Failed to notify family. Please try again.",
+        "viewLocation": "View Location",
+        "viewLocationDesc": "See {{name}}'s current location on map",
+        "contactPrimary": "Contact Primary Caregiver",
+        "contactPrimaryDesc": "Reach the primary caregiver via email",
+        "logEvent": "Log Event",
+        "logEventDesc": "Record this moment in the crisis journal"
+      },
+      "wizard": {
+        "breathingTitle": "Let's start with a calming breath",
+        "breathingInstruction": "Breathe in slowly... hold... breathe out...",
+        "stepOf": "Step {{current}} of {{total}}",
+        "timerLabel": "{{seconds}}s",
+        "thisHelped": "This helped",
+        "tryNext": "Try next step",
+        "skip": "Skip",
+        "completionTitle": "Well done. You handled that with care.",
+        "completionDesc": "Would you like to record any notes about what happened?",
+        "crisisNotesPlaceholder": "What happened? What helped? Any triggers noticed...",
+        "saveAndClose": "Save & Close",
+        "closeWithoutSaving": "Close without saving"
+      },
+      "history": {
+        "title": "Recent Crisis Events",
+        "noEvents": "No crisis events in the last 30 days.",
+        "viewAllInJournal": "View all in Journal"
+      },
       "steps": {
         "stayCalm": {
           "title": "Stay Calm",
-          "detail": "Take a slow, deep breath. Your calm energy will help them feel safe."
+          "detail": "Take a slow, deep breath. Your calm energy will help them feel safe.",
+          "script": "I'm right here with you. Everything is okay."
         },
         "validateFeelings": {
           "title": "Validate Feelings",
-          "detail": "Say 'I can see you're upset. That must be really hard.' Don't argue or correct."
+          "detail": "Say 'I can see you're upset. That must be really hard.' Don't argue or correct.",
+          "script": "I can see you're upset. That must be really difficult."
         },
         "simplifyEnvironment": {
           "title": "Simplify the Environment",
-          "detail": "Use short, simple sentences. One idea at a time. Avoid asking 'why' questions."
+          "detail": "Use short, simple sentences. One idea at a time. Avoid asking 'why' questions.",
+          "script": "Let's make things simpler. One thing at a time."
         },
         "redirectAttention": {
           "title": "Redirect Attention",
-          "detail": "Gently change the subject. Suggest a familiar activity, song, or walk."
+          "detail": "Gently change the subject. Suggest a familiar activity, song, or walk.",
+          "script": "How about we try something different? Let's take a little walk together."
         },
         "useGentleTouch": {
           "title": "Use Gentle Touch",
-          "detail": "If welcome, a gentle hand on the arm can be reassuring. Watch their response."
+          "detail": "If welcome, a gentle hand on the arm can be reassuring. Watch their response.",
+          "script": "Is it okay if I hold your hand? I'm right here."
         },
         "giveSpace": {
           "title": "Give Space",
-          "detail": "If nothing works, ensure safety and give them space. It's okay to step back."
+          "detail": "If nothing works, ensure safety and give them space. It's okay to step back.",
+          "script": "I'll be right nearby if you need me. Take your time."
         }
       },
       "resources": "Support Resources",
       "supportResources": "Support Resources",
+      "familyContacts": "Family Contacts",
       "noHelplineAvailable": "No helpline found for your country",
+      "helplines": "Helplines",
       "call": "Call",
+      "email": "Email",
       "website": "Website",
       "visitWebsite": "Visit website",
       "callNow": "Call now"

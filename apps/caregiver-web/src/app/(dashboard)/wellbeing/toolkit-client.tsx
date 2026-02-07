@@ -3,12 +3,12 @@
 import { useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
-import type { CaregiverWellbeingLog, SliderValue, HelpRequest as HelpRequestType, AiDailyTip } from '@ourturn/shared';
+import type { CaregiverWellbeingLog, SliderValue, HelpRequest as HelpRequestType } from '@ourturn/shared';
 
 import { SliderCheckin } from './components/slider-checkin';
 import { QuickRelief } from './components/quick-relief';
 import { HelpRequest } from './components/help-request';
-import { DailyTip } from './components/daily-tip';
+import { WellbeingAgent } from './components/wellbeing-agent';
 import { DailyGoal } from './components/daily-goal';
 import { WeeklyInsights } from './components/weekly-insights';
 import { BurnoutBanner } from './components/burnout-banner';
@@ -19,7 +19,6 @@ interface ToolkitClientProps {
   householdId: string;
   initialLog: CaregiverWellbeingLog | null;
   recentLogs: CaregiverWellbeingLog[];
-  initialTip: AiDailyTip | null;
   helpRequests: HelpRequestType[];
   showBurnoutWarning: boolean;
   trend: { date: string; energy: number | null; stress: number | null; sleep: number | null }[];
@@ -31,7 +30,6 @@ export default function ToolkitClient({
   householdId,
   initialLog,
   recentLogs,
-  initialTip,
   helpRequests,
   showBurnoutWarning,
   trend,
@@ -108,9 +106,6 @@ export default function ToolkitClient({
 
         {/* Right column (1/3) */}
         <div className="space-y-6">
-          {/* AI Daily Tip */}
-          <DailyTip initialTip={initialTip} />
-
           {/* Daily Goal */}
           <DailyGoal
             caregiverId={caregiverId}
@@ -120,6 +115,15 @@ export default function ToolkitClient({
 
           {/* Weekly Insights */}
           <WeeklyInsights trend={trend} />
+
+          {/* Wellbeing Companion */}
+          <WellbeingAgent
+            caregiverId={caregiverId}
+            caregiverName={caregiverName}
+            energy={currentLog?.energy_level as SliderValue | null}
+            stress={currentLog?.stress_level as SliderValue | null}
+            sleep={currentLog?.sleep_quality_rating as SliderValue | null}
+          />
 
           {/* Support Resources */}
           <div className="card-paper p-6">
