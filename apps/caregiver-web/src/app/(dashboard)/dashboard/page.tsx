@@ -105,6 +105,28 @@ async function DashboardContent() {
 
   const insights = (weeklyInsight?.insights as { insight: string; suggestion: string; category: string }[] | null) || [];
 
+  // Fetch patient device status
+  const lastSeenAt = patient?.last_seen_at ? new Date(patient.last_seen_at) : null;
+  const offlineThresholdMs = (household?.offline_alert_minutes || 30) * 60 * 1000;
+  const isDeviceOnline = lastSeenAt ? (Date.now() - lastSeenAt.getTime()) < offlineThresholdMs : false;
+
+  // Fetch today's location alerts count
+  const { count: alertsToday } = await supabase
+    .from('location_alerts')
+    .select('*', { count: 'exact', head: true })
+    .eq('household_id', household?.id)
+    .gte('triggered_at', `${todayStr}T00:00:00`);
+
+  // Check for brain activity completion today
+  const { data: brainActivity } = await supabase
+    .from('brain_activity_completions')
+    .select('id')
+    .eq('household_id', household?.id)
+    .eq('date', todayStr)
+    .limit(1);
+
+  const hasBrainActivity = (brainActivity?.length || 0) > 0;
+
   const progressPercent = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
 
   return (
@@ -241,21 +263,46 @@ async function DashboardContent() {
           </div>
         </div>
 
-        {/* Care Code card */}
-        <div className="lg:col-span-3 card-paper p-6 animate-fade-in-up stagger-4">
-          <p className="section-label mb-4">{t.dashboard.careCode}</p>
-          <div className="card-inset p-4 text-center">
-            <div className="flex items-center justify-center gap-1">
-              {(household?.care_code || '------').split('').map((char: string, i: number) => (
-                <span
-                  key={i}
-                  className={`text-xl font-mono font-bold text-brand-700 dark:text-brand-400 ${i === 2 ? 'ml-2' : ''}`}
-                >
-                  {char}
-                </span>
-              ))}
+        {/* Device Status card */}
+        <div className="lg:col-span-8 card-paper p-6 animate-fade-in-up stagger-4">
+          <p className="section-label mb-4">{t.dashboard.deviceStatus}</p>
+          <div className="flex items-center gap-4 mb-4">
+            <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${isDeviceOnline ? 'bg-status-success-bg' : 'bg-status-danger-bg'}`}>
+              <span className="text-2xl">{isDeviceOnline ? '📱' : '📵'}</span>
             </div>
-            <p className="text-xs text-text-muted mt-2">{t.dashboard.shareToConnect}</p>
+            <div className="flex-1 min-w-0">
+              <p className="font-semibold text-text-primary text-sm flex items-center gap-2">
+                <span className={`w-2 h-2 rounded-full ${isDeviceOnline ? 'bg-status-success animate-warm-pulse' : 'bg-status-danger'}`} />
+                {isDeviceOnline ? t.dashboard.deviceOnline : t.dashboard.deviceOffline}
+              </p>
+              <p className="text-xs text-text-muted mt-1">
+                {lastSeenAt
+                  ? t.dashboard.lastSeenAt.replace('{{time}}', lastSeenAt.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }))
+                  : t.dashboard.lastSeenNever}
+              </p>
+            </div>
+          </div>
+          {/* Engagement summary */}
+          <div className="border-t border-surface-border pt-4">
+            <p className="section-label mb-3">{t.dashboard.engagementSummary}</p>
+            <div className="grid grid-cols-2 gap-2">
+              <div className="card-inset p-3 text-center">
+                <p className="text-lg font-bold font-display text-brand-600">{progressPercent}%</p>
+                <p className="text-xs text-text-muted">{t.dashboard.tasksCompletedLabel}</p>
+              </div>
+              <div className="card-inset p-3 text-center">
+                <p className="text-lg font-bold font-display text-brand-600">{checkin ? '✅' : '—'}</p>
+                <p className="text-xs text-text-muted">{checkin ? t.dashboard.checkedIn : t.dashboard.notCheckedIn}</p>
+              </div>
+              <div className="card-inset p-3 text-center">
+                <p className="text-lg font-bold font-display text-brand-600">{hasBrainActivity ? '🧠' : '—'}</p>
+                <p className="text-xs text-text-muted">{t.dashboard.brainActivity}</p>
+              </div>
+              <div className="card-inset p-3 text-center">
+                <p className="text-lg font-bold font-display text-brand-600">{alertsToday || 0}</p>
+                <p className="text-xs text-text-muted">{t.dashboard.alertsToday}</p>
+              </div>
+            </div>
           </div>
         </div>
 

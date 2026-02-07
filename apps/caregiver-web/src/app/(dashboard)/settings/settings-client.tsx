@@ -5,30 +5,59 @@ import { createBrowserClient } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
-import type { Caregiver, Household, NotificationPreferences } from '@ourturn/shared';
+import type { Caregiver, Household, NotificationPreferences, Patient } from '@ourturn/shared';
+import { useToast } from '@/components/toast';
+import PatientInformationSection from './sections/patient-information-section';
+import LifeStorySection from './sections/life-story-section';
+import DailyScheduleSection from './sections/daily-schedule-section';
+import EmergencyContactsSection from './sections/emergency-contacts-section';
+
+const countries = [
+  { code: 'US', name: 'United States' },
+  { code: 'GB', name: 'United Kingdom' },
+  { code: 'CA', name: 'Canada' },
+  { code: 'AU', name: 'Australia' },
+  { code: 'DE', name: 'Germany' },
+  { code: 'FR', name: 'France' },
+  { code: 'ES', name: 'Spain' },
+  { code: 'IT', name: 'Italy' },
+  { code: 'NL', name: 'Netherlands' },
+  { code: 'RO', name: 'Romania' },
+  { code: 'PL', name: 'Poland' },
+  { code: 'IN', name: 'India' },
+  { code: 'JP', name: 'Japan' },
+  { code: 'BR', name: 'Brazil' },
+  { code: 'MX', name: 'Mexico' },
+];
 
 interface SettingsClientProps {
   caregiver: Caregiver;
   household: Household;
   careCode: string;
-  patientId: string | null;
+  patient: Patient | null;
   existingPhotos: string[];
+  patientComplexity?: string;
 }
 
 export default function SettingsClient({
   caregiver,
   household,
   careCode,
-  patientId,
+  patient,
   existingPhotos,
+  patientComplexity: initialComplexity,
 }: SettingsClientProps) {
   const { t } = useTranslation();
+  const { showToast } = useToast();
   const supabase = createBrowserClient();
   const router = useRouter();
+
+  const patientId = patient?.id ?? null;
 
   // Profile settings
   const [name, setName] = useState(caregiver.name);
   const [relationship, setRelationship] = useState(caregiver.relationship || '');
+  const [country, setCountry] = useState(household.country || '');
   const [isSavingProfile, setIsSavingProfile] = useState(false);
   const [profileSaved, setProfileSaved] = useState(false);
 
@@ -65,6 +94,16 @@ export default function SettingsClient({
   const [isUploadingPhotos, setIsUploadingPhotos] = useState(false);
   const [photoError, setPhotoError] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Patient complexity
+  const [complexity, setComplexity] = useState(initialComplexity || 'full');
+  const [isSavingComplexity, setIsSavingComplexity] = useState(false);
+
+  // Escalation & connectivity
+  const [escalationMinutes, setEscalationMinutes] = useState(household.escalation_minutes || 5);
+  const [offlineAlertMinutes, setOfflineAlertMinutes] = useState(household.offline_alert_minutes || 30);
+  const [isSavingSafety, setIsSavingSafety] = useState(false);
+  const [safetySaved, setSafetySaved] = useState(false);
 
   // Danger zone
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
@@ -181,10 +220,18 @@ export default function SettingsClient({
 
       if (error) throw error;
 
+      // Also update country on household
+      const { error: householdError } = await supabase
+        .from('households')
+        .update({ country: country || null })
+        .eq('id', household.id);
+
+      if (householdError) throw householdError;
+
       setProfileSaved(true);
       setTimeout(() => setProfileSaved(false), 3000);
     } catch (err) {
-      // Failed to save profile
+      showToast(t('common.error'), 'error');
     } finally {
       setIsSavingProfile(false);
     }
@@ -205,7 +252,7 @@ export default function SettingsClient({
       setNotificationsSaved(true);
       setTimeout(() => setNotificationsSaved(false), 3000);
     } catch (err) {
-      // Failed to save notifications
+      showToast(t('common.error'), 'error');
     } finally {
       setIsSavingNotifications(false);
     }
@@ -410,434 +457,631 @@ export default function SettingsClient({
     }
   };
 
+  const handleSaveComplexity = async (newComplexity: string) => {
+    if (!patientId) return;
+    setIsSavingComplexity(true);
+    try {
+      const { error } = await supabase
+        .from('patients')
+        .update({ app_complexity: newComplexity })
+        .eq('id', patientId);
+      if (error) throw error;
+      setComplexity(newComplexity);
+    } catch {
+      showToast(t('common.error'), 'error');
+    } finally {
+      setIsSavingComplexity(false);
+    }
+  };
+
+  const handleSaveSafetySettings = async () => {
+    setIsSavingSafety(true);
+    try {
+      const { error } = await supabase
+        .from('households')
+        .update({
+          escalation_minutes: escalationMinutes,
+          offline_alert_minutes: offlineAlertMinutes,
+        })
+        .eq('id', household.id);
+      if (error) throw error;
+      setSafetySaved(true);
+      setTimeout(() => setSafetySaved(false), 3000);
+    } catch {
+      showToast(t('common.error'), 'error');
+    } finally {
+      setIsSavingSafety(false);
+    }
+  };
+
   const handleSignOut = async () => {
     await supabase.auth.signOut();
     router.push('/login');
   };
 
   return (
-    <div className="max-w-3xl space-y-6">
-      {/* Profile Settings */}
-      <div className="card-paper p-6">
-        <h2 className="text-lg font-display font-bold text-text-primary mb-4">{t('caregiverApp.settings.profile')}</h2>
-        <div className="space-y-4">
-          <div>
-            <label className="block text-sm font-semibold text-text-secondary mb-1.5">
-              {t('caregiverApp.settings.name')}
-            </label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="input-warm w-full"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-semibold text-text-secondary mb-1.5">
-              {t('caregiverApp.settings.email')}
-            </label>
-            <input
-              type="email"
-              value={caregiver.email}
-              disabled
-              className="w-full px-4 py-2 border border-surface-border rounded-2xl bg-surface-background dark:bg-surface-elevated text-text-muted cursor-not-allowed"
-            />
-            <p className="text-xs text-text-muted mt-1">{t('caregiverApp.settings.emailCannotBeChanged')}</p>
-          </div>
-          <div>
-            <label className="block text-sm font-semibold text-text-secondary mb-1.5">
-              {t('caregiverApp.settings.relationshipToPatient')}
-            </label>
-            <select
-              value={relationship}
-              onChange={(e) => setRelationship(e.target.value)}
-              className="input-warm w-full"
-            >
-              <option value="">{t('caregiverApp.settings.selectRelationship')}</option>
-              <option value="spouse">{t('caregiverApp.settings.relationshipSpouse')}</option>
-              <option value="child">{t('caregiverApp.settings.relationshipChild')}</option>
-              <option value="sibling">{t('caregiverApp.settings.relationshipSibling')}</option>
-              <option value="parent">{t('caregiverApp.settings.relationshipParent')}</option>
-              <option value="grandchild">{t('caregiverApp.settings.relationshipGrandchild')}</option>
-              <option value="friend">{t('caregiverApp.settings.relationshipFriend')}</option>
-              <option value="caregiver">{t('caregiverApp.settings.relationshipCaregiver')}</option>
-              <option value="other">{t('caregiverApp.settings.relationshipOther')}</option>
-            </select>
-          </div>
-          <div className="flex items-center gap-3">
-            <button
-              onClick={handleSaveProfile}
-              disabled={isSavingProfile}
-              className="btn-primary disabled:opacity-50"
-            >
-              {isSavingProfile ? t('caregiverApp.settings.savingProfile') : t('caregiverApp.settings.saveProfile')}
-            </button>
-            {profileSaved && (
-              <span className="text-sm text-status-success">{t('common.saved')}</span>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Care Code */}
-      <div className="card-paper p-6">
-        <h2 className="text-lg font-display font-bold text-text-primary mb-4">{t('caregiverApp.settings.careCode')}</h2>
-        <p className="text-sm text-text-secondary mb-4">
-          {t('caregiverApp.settings.careCodeDesc')}
-        </p>
-        <div className="flex items-center gap-4">
-          {showCareCode ? (
-            <div className="flex items-center gap-4">
-              <span className="text-3xl font-mono font-bold text-brand-700 dark:text-brand-300 tracking-widest card-inset px-6 py-3 rounded-2xl">
-                {careCode}
-              </span>
-              <button
-                onClick={handleCopyCode}
-                className="px-4 py-2 border border-surface-border rounded-2xl text-text-secondary hover:bg-brand-50 dark:hover:bg-surface-elevated transition-colors"
-              >
-                {t('caregiverApp.settings.copy')}
-              </button>
-            </div>
-          ) : (
-            <button
-              onClick={() => setShowCareCode(true)}
-              className="btn-primary"
-            >
-              {t('caregiverApp.settings.showCareCode')}
-            </button>
-          )}
-        </div>
-        {showCareCode && (
-          <div className="mt-4">
-            <button
-              onClick={handleRegenerateCode}
-              disabled={isRegenerating}
-              className="text-sm text-text-muted hover:text-text-secondary underline"
-            >
-              {isRegenerating ? t('caregiverApp.settings.regenerating') : t('caregiverApp.settings.regenerateCode')}
-            </button>
-          </div>
-        )}
-      </div>
-
-      {/* Photo Gallery */}
-      {patientId && (
-        <div className="card-paper p-6">
-          <h2 className="text-lg font-display font-bold text-text-primary mb-2">{t('caregiverApp.settings.photoGallery')}</h2>
-          <p className="text-sm text-text-secondary mb-4">{t('caregiverApp.settings.photoGalleryDesc')}</p>
-
-          {/* Photo Grid */}
-          {photos.length > 0 ? (
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 mb-4">
-              {photos.map((url) => (
-                <div key={url} className="relative group aspect-square rounded-xl overflow-hidden border border-surface-border">
-                  <Image
-                    src={url}
-                    alt=""
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 33vw, (max-width: 768px) 25vw, 20vw"
-                  />
-                  <button
-                    onClick={() => handleDeletePhoto(url)}
-                    className="absolute top-1 right-1 w-7 h-7 rounded-full bg-status-danger text-white text-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                    title={t('caregiverApp.settings.deletePhoto')}
-                  >
-                    &times;
-                  </button>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p className="text-sm text-text-muted mb-4">{t('caregiverApp.settings.noPhotosYet')}</p>
-          )}
-
-          {/* Upload Button */}
-          <div>
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/*"
-              multiple
-              onChange={handleUploadPhotos}
-              className="hidden"
-            />
-            <button
-              onClick={() => fileInputRef.current?.click()}
-              disabled={isUploadingPhotos || photos.length >= 20}
-              className="btn-primary disabled:opacity-50"
-            >
-              {isUploadingPhotos
-                ? t('caregiverApp.settings.uploading')
-                : photos.length >= 20
-                  ? t('caregiverApp.settings.maxPhotosReached')
-                  : t('caregiverApp.settings.uploadPhotos')}
-            </button>
-            <p className="text-xs text-text-muted mt-2">{t('caregiverApp.settings.photoUploadHint')}</p>
-          </div>
-
-          {photoError && (
-            <p className="text-sm text-status-danger mt-2">{photoError}</p>
-          )}
-        </div>
-      )}
-
-      {/* Notification Preferences */}
-      <div className="card-paper p-6">
-        <h2 className="text-lg font-display font-bold text-text-primary mb-4">{t('caregiverApp.settings.notifications')}</h2>
-        <div className="space-y-4">
-          <label className="flex items-center gap-3">
-            <input
-              type="checkbox"
-              checked={notificationPrefs.safety_alerts}
-              onChange={(e) =>
-                setNotificationPrefs((prev) => ({
-                  ...prev,
-                  safety_alerts: e.target.checked,
-                }))
-              }
-              className="w-5 h-5 rounded border-surface-border text-brand-600 focus:ring-brand-500"
-            />
-            <div>
-              <span className="font-medium text-text-primary">{t('caregiverApp.settings.safetyAlertsLabel')}</span>
-              <p className="text-sm text-text-muted">
-                {t('caregiverApp.settings.safetyAlertsDesc')}
-              </p>
-            </div>
-          </label>
-          <label className="flex items-center gap-3">
-            <input
-              type="checkbox"
-              checked={notificationPrefs.daily_summary}
-              onChange={(e) =>
-                setNotificationPrefs((prev) => ({
-                  ...prev,
-                  daily_summary: e.target.checked,
-                }))
-              }
-              className="w-5 h-5 rounded border-surface-border text-brand-600 focus:ring-brand-500"
-            />
-            <div>
-              <span className="font-medium text-text-primary">{t('caregiverApp.settings.dailySummary')}</span>
-              <p className="text-sm text-text-muted">
-                {t('caregiverApp.settings.dailySummaryDesc')}
-              </p>
-            </div>
-          </label>
-          <label className="flex items-center gap-3">
-            <input
-              type="checkbox"
-              checked={notificationPrefs.email_notifications}
-              onChange={(e) =>
-                setNotificationPrefs((prev) => ({
-                  ...prev,
-                  email_notifications: e.target.checked,
-                }))
-              }
-              className="w-5 h-5 rounded border-surface-border text-brand-600 focus:ring-brand-500"
-            />
-            <div>
-              <span className="font-medium text-text-primary">{t('caregiverApp.settings.emailNotificationsLabel')}</span>
-              <p className="text-sm text-text-muted">
-                {t('caregiverApp.settings.emailNotificationsDesc')}
-              </p>
-            </div>
-          </label>
-          <div className="flex items-center gap-3 pt-2">
-            <button
-              onClick={handleSaveNotifications}
-              disabled={isSavingNotifications}
-              className="btn-primary disabled:opacity-50"
-            >
-              {isSavingNotifications ? t('caregiverApp.settings.savingPreferences') : t('caregiverApp.settings.savePreferences')}
-            </button>
-            {notificationsSaved && (
-              <span className="text-sm text-status-success">{t('common.saved')}</span>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Subscription */}
-      <div className="card-paper p-6">
-        <h2 className="text-lg font-display font-bold text-text-primary mb-4">{t('caregiverApp.settings.subscription')}</h2>
-        <div className="flex items-center justify-between mb-4">
-          <div>
-            <p className="font-medium text-text-primary">
-              {t('caregiverApp.settings.currentPlanLabel')}{' '}
-              <span className={household.subscription_status === 'plus' ? 'text-brand-600 dark:text-brand-400' : ''}>
-                {household.subscription_status === 'plus' ? t('caregiverApp.settings.ourturnPlus') : t('caregiverApp.settings.free')}
-              </span>
-            </p>
-            {household.subscription_platform && (
-              <p className="text-sm text-text-muted">
-                {t('caregiverApp.settings.subscribedVia', { platform: household.subscription_platform })}
-              </p>
-            )}
-          </div>
-          {household.subscription_status !== 'plus' && (
-            <button
-              onClick={handleUpgradeSubscription}
-              disabled={isCreatingCheckout}
-              className="btn-primary disabled:opacity-50"
-            >
-              {isCreatingCheckout ? t('common.loading') : t('caregiverApp.settings.upgradeToPlus')}
-            </button>
-          )}
-        </div>
-        {subscriptionError && (
-          <p className="text-sm text-status-danger mb-4">{subscriptionError}</p>
-        )}
-        {household.subscription_status === 'plus' && (
-          <button
-            onClick={handleManageSubscription}
-            disabled={isOpeningPortal}
-            className="text-sm text-text-muted hover:text-text-secondary underline disabled:opacity-50"
-          >
-            {isOpeningPortal ? t('common.loading') : t('caregiverApp.settings.manageSubscription')}
-          </button>
-        )}
-        {household.subscription_status === 'plus' && household.subscription_platform !== 'web' && (
-          <p className="text-sm text-text-muted mt-2">
-            {household.subscription_platform === 'ios' ? t('caregiverApp.settings.manageViaAppStore') : t('caregiverApp.settings.manageViaPlayStore')}
-          </p>
-        )}
-        {household.subscription_status !== 'plus' && (
-          <div className="card-inset rounded-2xl p-4 mt-4">
-            <p className="font-medium text-brand-800 dark:text-brand-200 mb-2">{t('caregiverApp.settings.plusBenefitsTitle')}</p>
-            <ul className="text-sm text-brand-700 dark:text-brand-300 space-y-1">
-              <li>&bull; {t('caregiverApp.settings.plusBenefitTasks')}</li>
-              <li>&bull; {t('caregiverApp.settings.plusBenefitCoach')}</li>
-              <li>&bull; {t('caregiverApp.settings.plusBenefitZones')}</li>
-              <li>&bull; {t('caregiverApp.settings.plusBenefitFamily')}</li>
-              <li>&bull; {t('caregiverApp.settings.plusBenefitReports')}</li>
-              <li>&bull; {t('caregiverApp.settings.plusBenefitSupport')}</li>
-            </ul>
-          </div>
-        )}
-      </div>
-
-      {/* Change Password */}
-      <div className="card-paper p-6">
-        <h2 className="text-lg font-display font-bold text-text-primary mb-4">{t('caregiverApp.settings.changePassword')}</h2>
-        <div className="space-y-4">
-          <div>
-            <label className="block text-sm font-semibold text-text-secondary mb-1.5">
-              {t('caregiverApp.settings.newPassword')}
-            </label>
-            <input
-              type="password"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-              className="input-warm w-full"
-              placeholder={t('caregiverApp.settings.newPasswordPlaceholder')}
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-semibold text-text-secondary mb-1.5">
-              {t('caregiverApp.settings.confirmNewPassword')}
-            </label>
-            <input
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              className="input-warm w-full"
-            />
-          </div>
-          {passwordError && (
-            <p className="text-sm text-status-danger">{passwordError}</p>
-          )}
-          {passwordSuccess && (
-            <p className="text-sm text-status-success">{t('caregiverApp.settings.passwordChangedSuccess')}</p>
-          )}
-          <button
-            onClick={handleChangePassword}
-            disabled={isChangingPassword || !newPassword || !confirmPassword}
-            className="btn-primary disabled:opacity-50"
-          >
-            {isChangingPassword ? t('caregiverApp.settings.changingPassword') : t('caregiverApp.settings.changePasswordButton')}
-          </button>
-        </div>
-      </div>
-
-      {/* Sign Out */}
-      <div className="card-paper p-6">
-        <button
-          onClick={handleSignOut}
-          className="px-4 py-2 border border-surface-border rounded-2xl text-text-secondary hover:bg-brand-50 dark:hover:bg-surface-elevated transition-colors"
-        >
-          {t('caregiverApp.settings.signOut')}
-        </button>
-      </div>
-
-      {/* Privacy & Data */}
-      <div className="card-paper p-6">
-        <h2 className="text-lg font-display font-bold text-text-primary mb-4">{t('caregiverApp.settings.privacy')}</h2>
-        <div className="space-y-4">
-          <div>
-            <button
-              onClick={handleExportData}
-              disabled={isExporting}
-              className="px-4 py-2 border border-surface-border rounded-2xl text-text-secondary hover:bg-brand-50 dark:hover:bg-surface-elevated transition-colors disabled:opacity-50"
-            >
-              {isExporting ? t('caregiverApp.settings.exporting') : t('caregiverApp.settings.exportData')}
-            </button>
-            <p className="text-sm text-text-muted mt-1">
-              {t('caregiverApp.settings.exportDataDesc')}
-            </p>
-          </div>
-          <div className="flex gap-4 text-sm">
-            <a href="/privacy" target="_blank" className="text-brand-600 dark:text-brand-400 hover:underline">
-              {t('caregiverApp.settings.privacyPolicy')}
-            </a>
-            <a href="/terms" target="_blank" className="text-brand-600 dark:text-brand-400 hover:underline">
-              {t('caregiverApp.settings.termsOfService')}
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Danger Zone */}
-      <div className="bg-status-danger-bg rounded-[20px] border border-status-danger/20 p-6">
-        <h2 className="text-lg font-display font-bold text-status-danger mb-4">{t('caregiverApp.settings.dangerZone')}</h2>
-        <div className="space-y-4">
-          <div>
-            <button
-              onClick={() => setShowDeleteConfirm(!showDeleteConfirm)}
-              className="px-4 py-2 bg-status-danger text-white rounded-2xl hover:bg-status-danger/90 transition-colors"
-            >
-              {t('caregiverApp.settings.deleteAccount')}
-            </button>
-            <p className="text-sm text-status-danger mt-1">
-              {t('caregiverApp.settings.deleteAccountDesc')}
-            </p>
-            {showDeleteConfirm && (
-              <div className="mt-4 p-4 bg-surface-card dark:bg-surface-elevated rounded-2xl border border-status-danger/30">
-                <p className="text-sm text-status-danger mb-3">
-                  {t('caregiverApp.settings.typeDeleteToConfirm')}
-                </p>
+    <div className="max-w-3xl space-y-10">
+      {/* ── YOUR PROFILE ── */}
+      <section>
+        <h2 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-4">
+          {t('caregiverApp.settings.groupProfile')}
+        </h2>
+        <div className="space-y-6">
+          <div className="card-paper p-6">
+            <h3 className="text-lg font-display font-bold text-text-primary mb-4">{t('caregiverApp.settings.profile')}</h3>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-semibold text-text-secondary mb-1.5">
+                  {t('caregiverApp.settings.name')}
+                </label>
                 <input
                   type="text"
-                  value={deleteConfirmText}
-                  onChange={(e) => setDeleteConfirmText(e.target.value)}
-                  className="w-full px-4 py-2 border border-status-danger/30 rounded-2xl bg-surface-card dark:bg-surface-elevated text-text-primary focus:outline-none focus:ring-2 focus:ring-status-danger mb-3"
-                  placeholder={t('caregiverApp.settings.typeDeletePlaceholder')}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="input-warm w-full"
                 />
-                {deleteError && (
-                  <p className="text-sm text-status-danger mb-3">{deleteError}</p>
-                )}
-                <button
-                  onClick={handleDeleteAccount}
-                  disabled={deleteConfirmText !== 'DELETE' || isDeleting}
-                  className="px-4 py-2 bg-status-danger text-white rounded-2xl hover:bg-status-danger/90 disabled:opacity-50 transition-colors"
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-text-secondary mb-1.5">
+                  {t('caregiverApp.settings.email')}
+                </label>
+                <input
+                  type="email"
+                  value={caregiver.email}
+                  disabled
+                  className="w-full px-4 py-2 border border-surface-border rounded-2xl bg-surface-background dark:bg-surface-elevated text-text-muted cursor-not-allowed"
+                />
+                <p className="text-xs text-text-muted mt-1">{t('caregiverApp.settings.emailCannotBeChanged')}</p>
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-text-secondary mb-1.5">
+                  {t('caregiverApp.settings.relationshipToPatient')}
+                </label>
+                <select
+                  value={relationship}
+                  onChange={(e) => setRelationship(e.target.value)}
+                  className="input-warm w-full"
                 >
-                  {isDeleting ? t('caregiverApp.settings.deleting') : t('caregiverApp.settings.confirmDelete')}
+                  <option value="">{t('caregiverApp.settings.selectRelationship')}</option>
+                  <option value="spouse">{t('caregiverApp.settings.relationshipSpouse')}</option>
+                  <option value="child">{t('caregiverApp.settings.relationshipChild')}</option>
+                  <option value="sibling">{t('caregiverApp.settings.relationshipSibling')}</option>
+                  <option value="parent">{t('caregiverApp.settings.relationshipParent')}</option>
+                  <option value="grandchild">{t('caregiverApp.settings.relationshipGrandchild')}</option>
+                  <option value="friend">{t('caregiverApp.settings.relationshipFriend')}</option>
+                  <option value="caregiver">{t('caregiverApp.settings.relationshipCaregiver')}</option>
+                  <option value="other">{t('caregiverApp.settings.relationshipOther')}</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-text-secondary mb-1.5">
+                  {t('caregiverApp.settings.country')}
+                </label>
+                <select
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
+                  className="input-warm w-full"
+                >
+                  <option value="">{t('caregiverApp.settings.selectCountry')}</option>
+                  {countries.map((c) => (
+                    <option key={c.code} value={c.code}>
+                      {c.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={handleSaveProfile}
+                  disabled={isSavingProfile}
+                  className="btn-primary disabled:opacity-50"
+                >
+                  {isSavingProfile ? t('caregiverApp.settings.savingProfile') : t('caregiverApp.settings.saveProfile')}
+                </button>
+                {profileSaved && (
+                  <span className="text-sm text-status-success">{t('common.saved')}</span>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── ABOUT [PATIENT NAME] ── */}
+      {patient && (
+        <section>
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-4">
+            {patient.name
+              ? t('caregiverApp.settings.groupAboutPatient', { name: patient.name })
+              : t('caregiverApp.settings.groupAboutPatientGeneric')}
+          </h2>
+          <div className="space-y-6">
+            <PatientInformationSection patient={patient} />
+            <LifeStorySection patient={patient} />
+            <DailyScheduleSection patient={patient} />
+            <EmergencyContactsSection patient={patient} />
+
+            {/* Photo Gallery */}
+            {patientId && (
+              <div className="card-paper p-6">
+                <h3 className="text-lg font-display font-bold text-text-primary mb-2">{t('caregiverApp.settings.photoGallery')}</h3>
+                <p className="text-sm text-text-secondary mb-4">{t('caregiverApp.settings.photoGalleryDesc')}</p>
+
+                {/* Photo Grid */}
+                {photos.length > 0 ? (
+                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 mb-4">
+                    {photos.map((url) => (
+                      <div key={url} className="relative group aspect-square rounded-xl overflow-hidden border border-surface-border">
+                        <Image
+                          src={url}
+                          alt=""
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 640px) 33vw, (max-width: 768px) 25vw, 20vw"
+                        />
+                        <button
+                          onClick={() => handleDeletePhoto(url)}
+                          className="absolute top-1 right-1 w-7 h-7 rounded-full bg-status-danger text-white text-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                          title={t('caregiverApp.settings.deletePhoto')}
+                        >
+                          &times;
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-sm text-text-muted mb-4">{t('caregiverApp.settings.noPhotosYet')}</p>
+                )}
+
+                {/* Upload Button */}
+                <div>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={handleUploadPhotos}
+                    className="hidden"
+                  />
+                  <button
+                    onClick={() => fileInputRef.current?.click()}
+                    disabled={isUploadingPhotos || photos.length >= 20}
+                    className="btn-primary disabled:opacity-50"
+                  >
+                    {isUploadingPhotos
+                      ? t('caregiverApp.settings.uploading')
+                      : photos.length >= 20
+                        ? t('caregiverApp.settings.maxPhotosReached')
+                        : t('caregiverApp.settings.uploadPhotos')}
+                  </button>
+                  <p className="text-xs text-text-muted mt-2">{t('caregiverApp.settings.photoUploadHint')}</p>
+                </div>
+
+                {photoError && (
+                  <p className="text-sm text-status-danger mt-2">{photoError}</p>
+                )}
+              </div>
+            )}
+
+            {/* Patient App Complexity */}
+            {patientId && (
+              <div className="card-paper p-6">
+                <h3 className="text-lg font-display font-bold text-text-primary mb-2">{t('caregiverApp.settings.patientComplexity')}</h3>
+                <p className="text-sm text-text-secondary mb-4">{t('caregiverApp.settings.patientComplexityDesc')}</p>
+                <div className="space-y-3">
+                  {(['full', 'simplified', 'essential'] as const).map((level) => (
+                    <label key={level} className="flex items-start gap-3 p-3 rounded-2xl hover:bg-brand-50 dark:hover:bg-surface-elevated cursor-pointer">
+                      <input
+                        type="radio"
+                        name="complexity"
+                        checked={complexity === level}
+                        onChange={() => handleSaveComplexity(level)}
+                        disabled={isSavingComplexity}
+                        className="mt-1 w-5 h-5 text-brand-600 focus:ring-brand-500"
+                      />
+                      <div>
+                        <span className="font-medium text-text-primary">{t(`caregiverApp.settings.complexity.${level}`)}</span>
+                        <p className="text-sm text-text-muted">{t(`caregiverApp.settings.complexity.${level}Desc`)}</p>
+                      </div>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* ── SHARING & CONNECTION ── */}
+      <section>
+        <h2 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-4">
+          {t('caregiverApp.settings.groupSharing')}
+        </h2>
+        <div className="space-y-6">
+          <div className="card-paper p-6">
+            <h3 className="text-lg font-display font-bold text-text-primary mb-4">{t('caregiverApp.settings.careCode')}</h3>
+            <p className="text-sm text-text-secondary mb-4">
+              {t('caregiverApp.settings.careCodeDesc')}
+            </p>
+            <div className="flex items-center gap-4">
+              {showCareCode ? (
+                <div className="flex items-center gap-4">
+                  <span className="text-3xl font-mono font-bold text-brand-700 dark:text-brand-300 tracking-widest card-inset px-6 py-3 rounded-2xl">
+                    {careCode}
+                  </span>
+                  <button
+                    onClick={handleCopyCode}
+                    className="px-4 py-2 border border-surface-border rounded-2xl text-text-secondary hover:bg-brand-50 dark:hover:bg-surface-elevated transition-colors"
+                  >
+                    {t('caregiverApp.settings.copy')}
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={() => setShowCareCode(true)}
+                  className="btn-primary"
+                >
+                  {t('caregiverApp.settings.showCareCode')}
+                </button>
+              )}
+            </div>
+            {showCareCode && (
+              <div className="mt-4">
+                <button
+                  onClick={handleRegenerateCode}
+                  disabled={isRegenerating}
+                  className="text-sm text-text-muted hover:text-text-secondary underline"
+                >
+                  {isRegenerating ? t('caregiverApp.settings.regenerating') : t('caregiverApp.settings.regenerateCode')}
                 </button>
               </div>
             )}
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* ── SAFETY & NOTIFICATIONS ── */}
+      <section>
+        <h2 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-4">
+          {t('caregiverApp.settings.groupSafety')}
+        </h2>
+        <div className="space-y-6">
+          {/* Safety & Escalation Settings */}
+          <div className="card-paper p-6">
+            <h3 className="text-lg font-display font-bold text-text-primary mb-4">{t('caregiverApp.settings.safetyEscalation')}</h3>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-semibold text-text-secondary mb-1.5">
+                  {t('caregiverApp.settings.escalationTiming')}
+                </label>
+                <select
+                  value={escalationMinutes}
+                  onChange={(e) => setEscalationMinutes(Number(e.target.value))}
+                  className="input-warm w-full"
+                >
+                  <option value={3}>3 {t('caregiverApp.settings.minutes')}</option>
+                  <option value={5}>5 {t('caregiverApp.settings.minutes')}</option>
+                  <option value={10}>10 {t('caregiverApp.settings.minutes')}</option>
+                  <option value={15}>15 {t('caregiverApp.settings.minutes')}</option>
+                </select>
+                <p className="text-xs text-text-muted mt-1">{t('caregiverApp.settings.escalationTimingDesc')}</p>
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-text-secondary mb-1.5">
+                  {t('caregiverApp.settings.offlineThreshold')}
+                </label>
+                <select
+                  value={offlineAlertMinutes}
+                  onChange={(e) => setOfflineAlertMinutes(Number(e.target.value))}
+                  className="input-warm w-full"
+                >
+                  <option value={15}>15 {t('caregiverApp.settings.minutes')}</option>
+                  <option value={30}>30 {t('caregiverApp.settings.minutes')}</option>
+                  <option value={60}>60 {t('caregiverApp.settings.minutes')}</option>
+                  <option value={120}>120 {t('caregiverApp.settings.minutes')}</option>
+                </select>
+                <p className="text-xs text-text-muted mt-1">{t('caregiverApp.settings.offlineThresholdDesc')}</p>
+              </div>
+              <div className="flex items-center gap-3 pt-2">
+                <button
+                  onClick={handleSaveSafetySettings}
+                  disabled={isSavingSafety}
+                  className="btn-primary disabled:opacity-50"
+                >
+                  {isSavingSafety ? t('caregiverApp.settings.savingPreferences') : t('caregiverApp.settings.savePreferences')}
+                </button>
+                {safetySaved && (
+                  <span className="text-sm text-status-success">{t('common.saved')}</span>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Notification Preferences */}
+          <div className="card-paper p-6">
+            <h3 className="text-lg font-display font-bold text-text-primary mb-4">{t('caregiverApp.settings.notifications')}</h3>
+            <div className="space-y-4">
+              <label className="flex items-center gap-3">
+                <input
+                  type="checkbox"
+                  checked={notificationPrefs.safety_alerts}
+                  onChange={(e) =>
+                    setNotificationPrefs((prev) => ({
+                      ...prev,
+                      safety_alerts: e.target.checked,
+                    }))
+                  }
+                  className="w-5 h-5 rounded border-surface-border text-brand-600 focus:ring-brand-500"
+                />
+                <div>
+                  <span className="font-medium text-text-primary">{t('caregiverApp.settings.safetyAlertsLabel')}</span>
+                  <p className="text-sm text-text-muted">
+                    {t('caregiverApp.settings.safetyAlertsDesc')}
+                  </p>
+                </div>
+              </label>
+              <label className="flex items-center gap-3">
+                <input
+                  type="checkbox"
+                  checked={notificationPrefs.daily_summary}
+                  onChange={(e) =>
+                    setNotificationPrefs((prev) => ({
+                      ...prev,
+                      daily_summary: e.target.checked,
+                    }))
+                  }
+                  className="w-5 h-5 rounded border-surface-border text-brand-600 focus:ring-brand-500"
+                />
+                <div>
+                  <span className="font-medium text-text-primary">{t('caregiverApp.settings.dailySummary')}</span>
+                  <p className="text-sm text-text-muted">
+                    {t('caregiverApp.settings.dailySummaryDesc')}
+                  </p>
+                </div>
+              </label>
+              <label className="flex items-center gap-3">
+                <input
+                  type="checkbox"
+                  checked={notificationPrefs.email_notifications}
+                  onChange={(e) =>
+                    setNotificationPrefs((prev) => ({
+                      ...prev,
+                      email_notifications: e.target.checked,
+                    }))
+                  }
+                  className="w-5 h-5 rounded border-surface-border text-brand-600 focus:ring-brand-500"
+                />
+                <div>
+                  <span className="font-medium text-text-primary">{t('caregiverApp.settings.emailNotificationsLabel')}</span>
+                  <p className="text-sm text-text-muted">
+                    {t('caregiverApp.settings.emailNotificationsDesc')}
+                  </p>
+                </div>
+              </label>
+              <label className="flex items-center gap-3">
+                <input
+                  type="checkbox"
+                  checked={notificationPrefs.respite_reminders ?? true}
+                  onChange={(e) =>
+                    setNotificationPrefs((prev) => ({
+                      ...prev,
+                      respite_reminders: e.target.checked,
+                    }))
+                  }
+                  className="w-5 h-5 rounded border-surface-border text-brand-600 focus:ring-brand-500"
+                />
+                <div>
+                  <span className="font-medium text-text-primary">{t('caregiverApp.settings.respiteReminders')}</span>
+                  <p className="text-sm text-text-muted">
+                    {t('caregiverApp.settings.respiteRemindersDesc')}
+                  </p>
+                </div>
+              </label>
+              <div className="flex items-center gap-3 pt-2">
+                <button
+                  onClick={handleSaveNotifications}
+                  disabled={isSavingNotifications}
+                  className="btn-primary disabled:opacity-50"
+                >
+                  {isSavingNotifications ? t('caregiverApp.settings.savingPreferences') : t('caregiverApp.settings.savePreferences')}
+                </button>
+                {notificationsSaved && (
+                  <span className="text-sm text-status-success">{t('common.saved')}</span>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── ACCOUNT ── */}
+      <section>
+        <h2 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-4">
+          {t('caregiverApp.settings.groupAccount')}
+        </h2>
+        <div className="space-y-6">
+          {/* Subscription */}
+          <div className="card-paper p-6">
+            <h3 className="text-lg font-display font-bold text-text-primary mb-4">{t('caregiverApp.settings.subscription')}</h3>
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <p className="font-medium text-text-primary">
+                  {t('caregiverApp.settings.currentPlanLabel')}{' '}
+                  <span className={household.subscription_status === 'plus' ? 'text-brand-600 dark:text-brand-400' : ''}>
+                    {household.subscription_status === 'plus' ? t('caregiverApp.settings.ourturnPlus') : t('caregiverApp.settings.free')}
+                  </span>
+                </p>
+                {household.subscription_platform && (
+                  <p className="text-sm text-text-muted">
+                    {t('caregiverApp.settings.subscribedVia', { platform: household.subscription_platform })}
+                  </p>
+                )}
+              </div>
+              {household.subscription_status !== 'plus' && (
+                <button
+                  onClick={handleUpgradeSubscription}
+                  disabled={isCreatingCheckout}
+                  className="btn-primary disabled:opacity-50"
+                >
+                  {isCreatingCheckout ? t('common.loading') : t('caregiverApp.settings.upgradeToPlus')}
+                </button>
+              )}
+            </div>
+            {subscriptionError && (
+              <p className="text-sm text-status-danger mb-4">{subscriptionError}</p>
+            )}
+            {household.subscription_status === 'plus' && (
+              <button
+                onClick={handleManageSubscription}
+                disabled={isOpeningPortal}
+                className="text-sm text-text-muted hover:text-text-secondary underline disabled:opacity-50"
+              >
+                {isOpeningPortal ? t('common.loading') : t('caregiverApp.settings.manageSubscription')}
+              </button>
+            )}
+            {household.subscription_status === 'plus' && household.subscription_platform !== 'web' && (
+              <p className="text-sm text-text-muted mt-2">
+                {household.subscription_platform === 'ios' ? t('caregiverApp.settings.manageViaAppStore') : t('caregiverApp.settings.manageViaPlayStore')}
+              </p>
+            )}
+            {household.subscription_status !== 'plus' && (
+              <div className="card-inset rounded-2xl p-4 mt-4">
+                <p className="font-medium text-brand-800 dark:text-brand-200 mb-2">{t('caregiverApp.settings.plusBenefitsTitle')}</p>
+                <ul className="text-sm text-brand-700 dark:text-brand-300 space-y-1">
+                  <li>&bull; {t('caregiverApp.settings.plusBenefitTasks')}</li>
+                  <li>&bull; {t('caregiverApp.settings.plusBenefitCoach')}</li>
+                  <li>&bull; {t('caregiverApp.settings.plusBenefitZones')}</li>
+                  <li>&bull; {t('caregiverApp.settings.plusBenefitFamily')}</li>
+                  <li>&bull; {t('caregiverApp.settings.plusBenefitReports')}</li>
+                  <li>&bull; {t('caregiverApp.settings.plusBenefitSupport')}</li>
+                </ul>
+              </div>
+            )}
+          </div>
+
+          {/* Change Password */}
+          <div className="card-paper p-6">
+            <h3 className="text-lg font-display font-bold text-text-primary mb-4">{t('caregiverApp.settings.changePassword')}</h3>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-semibold text-text-secondary mb-1.5">
+                  {t('caregiverApp.settings.newPassword')}
+                </label>
+                <input
+                  type="password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  className="input-warm w-full"
+                  placeholder={t('caregiverApp.settings.newPasswordPlaceholder')}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-text-secondary mb-1.5">
+                  {t('caregiverApp.settings.confirmNewPassword')}
+                </label>
+                <input
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  className="input-warm w-full"
+                />
+              </div>
+              {passwordError && (
+                <p className="text-sm text-status-danger">{passwordError}</p>
+              )}
+              {passwordSuccess && (
+                <p className="text-sm text-status-success">{t('caregiverApp.settings.passwordChangedSuccess')}</p>
+              )}
+              <button
+                onClick={handleChangePassword}
+                disabled={isChangingPassword || !newPassword || !confirmPassword}
+                className="btn-primary disabled:opacity-50"
+              >
+                {isChangingPassword ? t('caregiverApp.settings.changingPassword') : t('caregiverApp.settings.changePasswordButton')}
+              </button>
+            </div>
+          </div>
+
+          {/* Sign Out */}
+          <div className="card-paper p-6">
+            <button
+              onClick={handleSignOut}
+              className="px-4 py-2 border border-surface-border rounded-2xl text-text-secondary hover:bg-brand-50 dark:hover:bg-surface-elevated transition-colors"
+            >
+              {t('caregiverApp.settings.signOut')}
+            </button>
+          </div>
+
+          {/* Privacy & Data */}
+          <div className="card-paper p-6">
+            <h3 className="text-lg font-display font-bold text-text-primary mb-4">{t('caregiverApp.settings.privacy')}</h3>
+            <div className="space-y-4">
+              <div>
+                <button
+                  onClick={handleExportData}
+                  disabled={isExporting}
+                  className="px-4 py-2 border border-surface-border rounded-2xl text-text-secondary hover:bg-brand-50 dark:hover:bg-surface-elevated transition-colors disabled:opacity-50"
+                >
+                  {isExporting ? t('caregiverApp.settings.exporting') : t('caregiverApp.settings.exportData')}
+                </button>
+                <p className="text-sm text-text-muted mt-1">
+                  {t('caregiverApp.settings.exportDataDesc')}
+                </p>
+              </div>
+              <div className="flex gap-4 text-sm">
+                <a href="/privacy" target="_blank" className="text-brand-600 dark:text-brand-400 hover:underline">
+                  {t('caregiverApp.settings.privacyPolicy')}
+                </a>
+                <a href="/terms" target="_blank" className="text-brand-600 dark:text-brand-400 hover:underline">
+                  {t('caregiverApp.settings.termsOfService')}
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Danger Zone */}
+          <div className="bg-status-danger-bg rounded-[20px] border border-status-danger/20 p-6">
+            <h3 className="text-lg font-display font-bold text-status-danger mb-4">{t('caregiverApp.settings.dangerZone')}</h3>
+            <div className="space-y-4">
+              <div>
+                <button
+                  onClick={() => setShowDeleteConfirm(!showDeleteConfirm)}
+                  className="px-4 py-2 bg-status-danger text-white rounded-2xl hover:bg-status-danger/90 transition-colors"
+                >
+                  {t('caregiverApp.settings.deleteAccount')}
+                </button>
+                <p className="text-sm text-status-danger mt-1">
+                  {t('caregiverApp.settings.deleteAccountDesc')}
+                </p>
+                {showDeleteConfirm && (
+                  <div className="mt-4 p-4 bg-surface-card dark:bg-surface-elevated rounded-2xl border border-status-danger/30">
+                    <p className="text-sm text-status-danger mb-3">
+                      {t('caregiverApp.settings.typeDeleteToConfirm')}
+                    </p>
+                    <input
+                      type="text"
+                      value={deleteConfirmText}
+                      onChange={(e) => setDeleteConfirmText(e.target.value)}
+                      className="w-full px-4 py-2 border border-status-danger/30 rounded-2xl bg-surface-card dark:bg-surface-elevated text-text-primary focus:outline-none focus:ring-2 focus:ring-status-danger mb-3"
+                      placeholder={t('caregiverApp.settings.typeDeletePlaceholder')}
+                    />
+                    {deleteError && (
+                      <p className="text-sm text-status-danger mb-3">{deleteError}</p>
+                    )}
+                    <button
+                      onClick={handleDeleteAccount}
+                      disabled={deleteConfirmText !== 'DELETE' || isDeleting}
+                      className="px-4 py-2 bg-status-danger text-white rounded-2xl hover:bg-status-danger/90 disabled:opacity-50 transition-colors"
+                    >
+                      {isDeleting ? t('caregiverApp.settings.deleting') : t('caregiverApp.settings.confirmDelete')}
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

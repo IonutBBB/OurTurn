@@ -1,6 +1,6 @@
 // Care Journal types
 
-export type JournalEntryType = 'observation' | 'note' | 'milestone';
+export type JournalEntryType = 'observation' | 'note' | 'milestone' | 'crisis';
 
 export interface CareJournalEntry {
   id: string;
@@ -9,6 +9,7 @@ export interface CareJournalEntry {
   content: string;
   entry_type: JournalEntryType;
   created_at: string;
+  updated_at: string | null;
 }
 
 export interface CareJournalEntryInsert {

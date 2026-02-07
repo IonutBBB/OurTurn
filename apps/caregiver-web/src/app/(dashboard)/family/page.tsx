@@ -2,7 +2,12 @@ import { createClient as createServerClient } from '@/lib/supabase/server';
 import FamilyClient from './family-client';
 import en from '../../../../locales/en.json';
 
-export default async function FamilyPage() {
+export default async function FamilyPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ tab?: string }>;
+}) {
+  const params = await searchParams;
   const supabase = await createServerClient();
 
   // Get user and caregiver data
@@ -94,6 +99,7 @@ export default async function FamilyPage() {
         initialCaregivers={caregivers || []}
         initialJournalEntries={transformedEntries}
         subscriptionStatus={fullHousehold?.subscription_status || 'free'}
+        initialTab={(params.tab === 'journal' ? 'journal' : 'family') as 'family' | 'journal'}
       />
     </div>
   );

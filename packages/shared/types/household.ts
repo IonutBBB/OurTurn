@@ -12,6 +12,8 @@ export interface Household {
   subscription_status: SubscriptionStatus;
   subscription_platform: SubscriptionPlatform | null;
   stripe_customer_id: string | null;
+  escalation_minutes: number;
+  offline_alert_minutes: number;
   created_at: string;
   updated_at: string;
 }
@@ -29,4 +31,6 @@ export interface HouseholdUpdate {
   subscription_status?: SubscriptionStatus;
   subscription_platform?: SubscriptionPlatform;
   stripe_customer_id?: string;
+  escalation_minutes?: number;
+  offline_alert_minutes?: number;
 }

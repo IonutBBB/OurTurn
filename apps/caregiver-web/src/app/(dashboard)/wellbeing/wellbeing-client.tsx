@@ -12,12 +12,22 @@ import {
   CAREGIVER_MOOD_LABELS,
   SELF_CARE_ITEMS,
 } from '@ourturn/shared';
+import { useToast } from '@/components/toast';
+
+interface BurnoutAlert {
+  id: string;
+  average_mood: number;
+  consecutive_low_days: number;
+  message_key: string | null;
+  dismissed: boolean;
+}
 
 interface WellbeingClientProps {
   caregiverId: string;
   caregiverName: string;
   initialLog?: CaregiverWellbeingLog | null;
   recentLogs: CaregiverWellbeingLog[];
+  burnoutAlerts?: BurnoutAlert[];
 }
 
 export default function WellbeingClient({
@@ -25,8 +35,10 @@ export default function WellbeingClient({
   caregiverName,
   initialLog,
   recentLogs,
+  burnoutAlerts: initialBurnoutAlerts,
 }: WellbeingClientProps) {
   const { t } = useTranslation();
+  const { showToast } = useToast();
   const supabase = createBrowserClient();
   const [todayLog, setTodayLog] = useState<CaregiverWellbeingLog | null>(initialLog || null);
   const [mood, setMood] = useState<WellbeingMood | null>(initialLog?.mood || null);
@@ -36,6 +48,7 @@ export default function WellbeingClient({
   const [notes, setNotes] = useState(initialLog?.notes || '');
   const [isSaving, setIsSaving] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [burnoutAlerts, setBurnoutAlerts] = useState<BurnoutAlert[]>(initialBurnoutAlerts || []);
 
   // Use ref to track todayLog without causing re-renders in useCallback
   const todayLogRef = useRef<CaregiverWellbeingLog | null>(todayLog);
@@ -87,11 +100,11 @@ export default function WellbeingClient({
       setShowSuccess(true);
       setTimeout(() => setShowSuccess(false), 2000);
     } catch (err) {
-      // Failed to save wellbeing log
+      showToast(t('common.error'), 'error');
     } finally {
       setIsSaving(false);
     }
-  }, [mood, selfCare, notes, caregiverId, today, supabase]);
+  }, [mood, selfCare, notes, caregiverId, today, supabase, showToast, t]);
 
   // Auto-save when data changes
   useEffect(() => {
@@ -107,6 +120,24 @@ export default function WellbeingClient({
       [key]: !prev[key],
     }));
   };
+
+  const handleDismissBurnoutAlert = async (alertId: string) => {
+    try {
+      await supabase
+        .from('caregiver_burnout_alerts')
+        .update({ dismissed: true, dismissed_at: new Date().toISOString() })
+        .eq('id', alertId);
+      setBurnoutAlerts((prev) => prev.filter((a) => a.id !== alertId));
+    } catch {
+      showToast(t('common.error'), 'error');
+    }
+  };
+
+  // Calculate respite days this week
+  const respiteDays = recentLogs.filter((log) => {
+    const checklist = log.self_care_checklist || {};
+    return (checklist as Record<string, boolean>).took_break || (checklist as Record<string, boolean>).did_something_enjoyable;
+  }).length;
 
   // Calculate weekly stats
   const weeklyStats = {
@@ -125,8 +156,9 @@ export default function WellbeingClient({
 
   const checkedCount = Object.values(selfCare).filter(Boolean).length;
 
-  // Burnout detection: mood <= 2 for 3+ consecutive days
+  // Burnout detection: mood <= 2 for 3+ consecutive days (client-side fallback)
   const showBurnoutWarning = (() => {
+    if (burnoutAlerts.length > 0) return true;
     if (recentLogs.length < 3) return false;
     const sortedLogs = [...recentLogs].sort(
       (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -152,9 +184,17 @@ export default function WellbeingClient({
               <a href="/coach" className="btn-primary text-sm px-4 py-2">
                 {t('caregiverApp.wellbeing.talkToCoach')}
               </a>
-              <a href="#support-resources" className="btn-secondary text-sm px-4 py-2">
-                {t('caregiverApp.wellbeing.supportResources')}
+              <a href="/crisis" className="btn-secondary text-sm px-4 py-2">
+                {t('caregiverApp.wellbeing.viewResources')}
               </a>
+              {burnoutAlerts.length > 0 && (
+                <button
+                  onClick={() => handleDismissBurnoutAlert(burnoutAlerts[0].id)}
+                  className="text-sm text-text-muted hover:text-text-secondary underline"
+                >
+                  {t('common.dismiss')}
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -311,6 +351,29 @@ export default function WellbeingClient({
             </div>
           </div>
 
+          {/* Respite Tracker */}
+          <div className="card-paper p-6">
+            <h3 className="text-lg font-display font-bold text-text-primary mb-3">
+              {t('caregiverApp.wellbeing.respiteTracker')}
+            </h3>
+            <div className="flex items-center gap-3 mb-3">
+              <div className="flex gap-1">
+                {[...Array(7)].map((_, i) => (
+                  <div
+                    key={i}
+                    className={`w-6 h-6 rounded-full ${
+                      i < respiteDays ? 'bg-status-success' : 'bg-surface-border'
+                    }`}
+                  />
+                ))}
+              </div>
+              <span className="text-sm font-medium text-text-primary">{respiteDays}/7</span>
+            </div>
+            <p className="text-sm text-text-muted">
+              {t('caregiverApp.wellbeing.respiteHint')}
+            </p>
+          </div>
+
           {/* Mood History */}
           <div className="card-paper p-6">
             <h3 className="text-lg font-display font-bold text-text-primary mb-4">
@@ -353,10 +416,10 @@ export default function WellbeingClient({
 
           {/* Support Resources */}
           <div id="support-resources" className="bg-brand-50 dark:bg-brand-900/30 rounded-[20px] border border-brand-200 dark:border-brand-800 p-6">
-            <h3 className="text-lg font-semibold text-brand-800 dark:text-brand-200 mb-3">
+            <h3 className="text-lg font-semibold text-brand-800 dark:text-brand-700 mb-3">
               {t('caregiverApp.wellbeing.needSupport')}
             </h3>
-            <p className="text-brand-700 dark:text-brand-300 text-sm mb-4">
+            <p className="text-brand-700 dark:text-brand-600 text-sm mb-4">
               {t('caregiverApp.wellbeing.needSupportDesc')}
             </p>
             <div className="space-y-2 text-sm">
@@ -364,7 +427,7 @@ export default function WellbeingClient({
                 href="https://www.alz.org/help-support/caregiving"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-brand-700 dark:text-brand-300 hover:text-brand-800 dark:hover:text-brand-200 underline"
+                className="block text-brand-700 dark:text-brand-600 hover:text-brand-800 dark:hover:text-brand-700 underline"
               >
                 {t('caregiverApp.wellbeing.alzheimersResources')}
               </a>
@@ -372,7 +435,7 @@ export default function WellbeingClient({
                 href="https://www.caregiver.org/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-brand-700 dark:text-brand-300 hover:text-brand-800 dark:hover:text-brand-200 underline"
+                className="block text-brand-700 dark:text-brand-600 hover:text-brand-800 dark:hover:text-brand-700 underline"
               >
                 {t('caregiverApp.wellbeing.familyCaregiverAlliance')}
               </a>

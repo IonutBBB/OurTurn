@@ -3,6 +3,8 @@ import type {
   CaregiverWellbeingLog,
   CaregiverWellbeingLogInsert,
   CaregiverWellbeingLogUpdate,
+  CaregiverBurnoutAlert,
+  SliderValue,
 } from '@ourturn/shared';
 
 /**
@@ -21,6 +23,44 @@ export async function logWellbeing(
         mood: data.mood,
         self_care_checklist: data.self_care_checklist || {},
         notes: data.notes,
+      },
+      { onConflict: 'caregiver_id,date' }
+    )
+    .select()
+    .single();
+
+  if (error) throw error;
+
+  return log;
+}
+
+/**
+ * Log toolkit check-in with slider values (upsert for today)
+ */
+export async function logToolkitCheckin(
+  caregiverId: string,
+  data: {
+    date: string;
+    energy_level?: SliderValue;
+    stress_level?: SliderValue;
+    sleep_quality_rating?: SliderValue;
+    daily_goal?: string;
+    goal_completed?: boolean;
+    relief_exercises_used?: string[];
+  }
+): Promise<CaregiverWellbeingLog> {
+  const { data: log, error } = await supabase
+    .from('caregiver_wellbeing_logs')
+    .upsert(
+      {
+        caregiver_id: caregiverId,
+        date: data.date,
+        energy_level: data.energy_level,
+        stress_level: data.stress_level,
+        sleep_quality_rating: data.sleep_quality_rating,
+        daily_goal: data.daily_goal,
+        goal_completed: data.goal_completed,
+        relief_exercises_used: data.relief_exercises_used || [],
       },
       { onConflict: 'caregiver_id,date' }
     )
@@ -179,7 +219,130 @@ export async function getWellbeingStats(
 }
 
 /**
- * Check for burnout warning (3+ consecutive low mood days)
+ * Get toolkit weekly stats (new slider-based)
+ */
+export async function getToolkitWeeklyStats(
+  caregiverId: string,
+  days: number = 28
+): Promise<{
+  avgEnergy: number;
+  avgStress: number;
+  avgSleep: number;
+  goalsCompleted: number;
+  goalsTotal: number;
+  exercisesUsed: string[];
+  trend: { date: string; energy: number | null; stress: number | null; sleep: number | null }[];
+}> {
+  const logs = await getWellbeingHistory(caregiverId, days);
+
+  const withEnergy = logs.filter((l) => l.energy_level !== null);
+  const withStress = logs.filter((l) => l.stress_level !== null);
+  const withSleep = logs.filter((l) => l.sleep_quality_rating !== null);
+
+  const avgEnergy = withEnergy.length > 0
+    ? withEnergy.reduce((s, l) => s + (l.energy_level || 0), 0) / withEnergy.length
+    : 0;
+  const avgStress = withStress.length > 0
+    ? withStress.reduce((s, l) => s + (l.stress_level || 0), 0) / withStress.length
+    : 0;
+  const avgSleep = withSleep.length > 0
+    ? withSleep.reduce((s, l) => s + (l.sleep_quality_rating || 0), 0) / withSleep.length
+    : 0;
+
+  const goalsTotal = logs.filter((l) => l.daily_goal).length;
+  const goalsCompleted = logs.filter((l) => l.goal_completed).length;
+
+  const allExercises = logs.flatMap((l) => l.relief_exercises_used || []);
+  const exercisesUsed = [...new Set(allExercises)];
+
+  const trend = logs
+    .map((l) => ({
+      date: l.date,
+      energy: l.energy_level,
+      stress: l.stress_level,
+      sleep: l.sleep_quality_rating,
+    }))
+    .reverse(); // chronological order
+
+  return { avgEnergy, avgStress, avgSleep, goalsCompleted, goalsTotal, exercisesUsed, trend };
+}
+
+/**
+ * Check for toolkit burnout warning (stress >= 4 for 3+ days OR energy <= 2 for 3+ days)
+ */
+export async function checkToolkitBurnoutWarning(
+  caregiverId: string
+): Promise<boolean> {
+  const recentLogs = await getWellbeingHistory(caregiverId, 7);
+  const sorted = [...recentLogs].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
+  let consecutiveHighStress = 0;
+  let consecutiveLowEnergy = 0;
+
+  for (const log of sorted) {
+    if (log.stress_level !== null && log.stress_level >= 4) {
+      consecutiveHighStress++;
+    } else {
+      consecutiveHighStress = 0;
+    }
+
+    if (log.energy_level !== null && log.energy_level <= 2) {
+      consecutiveLowEnergy++;
+    } else {
+      consecutiveLowEnergy = 0;
+    }
+
+    if (consecutiveHighStress >= 3 || consecutiveLowEnergy >= 3) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+/**
+ * Get burnout alerts for a caregiver
+ */
+export async function getBurnoutAlerts(
+  caregiverId: string,
+  onlyActive: boolean = true
+): Promise<CaregiverBurnoutAlert[]> {
+  let query = supabase
+    .from('caregiver_burnout_alerts')
+    .select('*')
+    .eq('caregiver_id', caregiverId)
+    .order('triggered_at', { ascending: false });
+
+  if (onlyActive) {
+    query = query.eq('dismissed', false);
+  }
+
+  const { data, error } = await query;
+
+  if (error) throw error;
+
+  return data;
+}
+
+/**
+ * Dismiss a burnout alert
+ */
+export async function dismissBurnoutAlert(alertId: string): Promise<void> {
+  const { error } = await supabase
+    .from('caregiver_burnout_alerts')
+    .update({
+      dismissed: true,
+      dismissed_at: new Date().toISOString(),
+    })
+    .eq('id', alertId);
+
+  if (error) throw error;
+}
+
+/**
+ * Check for burnout warning (3+ consecutive low mood days) — legacy
  */
 export async function checkBurnoutWarning(
   caregiverId: string

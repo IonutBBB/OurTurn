@@ -8,3 +8,8 @@ export * from './journal';
 export * from './activities';
 export * from './wellbeing';
 export * from './conversations';
+export * from './escalations';
+export * from './consent';
+export * from './metrics';
+export * from './help-requests';
+export * from './daily-tips';

@@ -9,3 +9,5 @@ export * from './location';
 export * from './journal';
 export * from './ai';
 export * from './wellbeing';
+export * from './consent';
+export * from './metrics';

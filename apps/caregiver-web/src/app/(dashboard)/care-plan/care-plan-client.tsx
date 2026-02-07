@@ -169,7 +169,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
       );
       resetForm();
     } catch (err) {
-      // Failed to update task
+      showToast(t('common.error'), 'error');
     } finally {
       setSaving(false);
     }
@@ -188,7 +188,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
 
       setTasks((prev) => prev.filter((t) => t.id !== taskId));
     } catch (err) {
-      // Failed to delete task
+      showToast(t('common.error'), 'error');
     }
   };
 
@@ -204,7 +204,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
         body: JSON.stringify({
           householdId,
           category: suggestCategory || undefined,
-          count: 3,
+          count: 5,
         }),
       });
 
@@ -215,7 +215,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
       const data = await response.json();
       setSuggestedTasks(data.suggestions || []);
     } catch (err) {
-      // Failed to get AI suggestions
+      showToast(t('common.error'), 'error');
     } finally {
       setSuggestLoading(false);
     }
@@ -249,7 +249,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
       // Remove from suggestions
       setSuggestedTasks((prev) => prev.filter((s) => s.title !== suggestion.title));
     } catch (err) {
-      // Failed to add suggested task
+      showToast(t('common.error'), 'error');
     } finally {
       setAddingSuggestion(null);
     }
@@ -300,7 +300,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
       setShowCopyModal(false);
       setCopyTargetDays([]);
     } catch (err) {
-      alert(t('caregiverApp.carePlan.copyFailed'));
+      showToast(t('common.error'), 'error');
     } finally {
       setCopying(false);
     }

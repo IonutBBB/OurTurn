@@ -3,7 +3,7 @@
 import type { Household, SubscriptionStatus } from '../types/household';
 
 export const FREE_LIMITS = {
-  maxTasks: 5,
+  maxTasks: 20,
   maxCaregivers: 1,
   aiMessages: 5,
 } as const;

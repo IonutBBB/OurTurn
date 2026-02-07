@@ -26,12 +26,14 @@ const ENTRY_TYPE_EMOJIS: Record<JournalEntryType, string> = {
   observation: '👀',
   note: '📝',
   milestone: '⭐',
+  crisis: '🚨',
 };
 
 const ENTRY_TYPE_KEYS: Record<JournalEntryType, string> = {
   observation: 'caregiverApp.family.observation',
   note: 'caregiverApp.family.note',
   milestone: 'caregiverApp.family.milestone',
+  crisis: 'caregiverApp.family.crisis',
 };
 
 export default function FamilyClient({

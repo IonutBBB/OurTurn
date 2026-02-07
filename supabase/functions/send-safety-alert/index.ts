@@ -15,7 +15,7 @@ const FROM_EMAIL = 'OurTurn <alerts@ourturn.app>';
 interface LocationAlert {
   id: string;
   household_id: string;
-  type: 'left_safe_zone' | 'inactive' | 'night_movement' | 'take_me_home_tapped';
+  type: 'left_safe_zone' | 'inactive' | 'night_movement' | 'take_me_home_tapped' | 'sos_triggered';
   triggered_at: string;
   latitude: number | null;
   longitude: number | null;
@@ -130,6 +130,32 @@ function buildEmailContent(alert: LocationAlert, patientName: string): { subject
     : 'Location unavailable');
 
   switch (alert.type) {
+    case 'sos_triggered':
+      return {
+        subject: `URGENT: ${patientName} has triggered an SOS alert`,
+        body: `
+          <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
+            <div style="background: #DC2626; color: white; padding: 16px 24px; border-radius: 12px 12px 0 0;">
+              <h2 style="margin: 0; font-size: 24px;">🆘 SOS Emergency Alert</h2>
+            </div>
+            <div style="padding: 24px; border: 2px solid #DC2626; border-top: none; border-radius: 0 0 12px 12px;">
+              <p style="font-size: 18px;"><strong>${patientName}</strong> has triggered an SOS emergency alert at <strong>${time}</strong>.</p>
+              <p style="font-size: 16px;">${locationInfo}</p>
+              <p style="font-size: 16px; color: #DC2626; font-weight: bold;">Please check on them immediately.</p>
+              ${alert.latitude && alert.longitude ? `
+              <p style="margin-top: 24px;">
+                <a href="https://maps.google.com/?q=${alert.latitude},${alert.longitude}" style="display: inline-block; background: #DC2626; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">View Location on Map</a>
+              </p>
+              ` : ''}
+              <hr style="border: none; border-top: 1px solid #E7E5E4; margin: 24px 0;">
+              <p style="font-size: 12px; color: #A8A29E;">
+                This is an urgent automated alert from OurTurn.
+              </p>
+            </div>
+          </div>
+        `,
+      };
+
     case 'take_me_home_tapped':
       return {
         subject: `${patientName} tapped "Take Me Home"`,

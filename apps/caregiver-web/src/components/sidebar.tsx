@@ -13,8 +13,9 @@ const navItems = [
   { href: '/care-plan', icon: '📋', key: 'carePlan' },
   { href: '/location', icon: '📍', key: 'location' },
   { href: '/coach', icon: '🤖', key: 'coach' },
+  { href: '/crisis', icon: '🛡️', key: 'crisis' },
   { href: '/family', icon: '👨‍👩‍👧', key: 'family' },
-  { href: '/wellbeing', icon: '💙', key: 'wellbeing' },
+  { href: '/wellbeing', icon: '🧰', key: 'toolkit' },
   { href: '/reports', icon: '📄', key: 'reports' },
 ];
 

@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
 import { hasReachedAIMessageLimit, FREE_LIMITS } from '@ourturn/shared/utils/subscription';
 import { UpgradeBanner } from '@/components/upgrade-gate';
+import { useToast } from '@/components/toast';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -46,7 +47,7 @@ function parseAIResponse(content: string): {
     try {
       carePlanSuggestions.push(JSON.parse(match[1].trim()));
     } catch (e) {
-      // Failed to parse care plan suggestion
+      console.warn('Failed to parse care plan suggestion:', e);
     }
   }
 
@@ -55,7 +56,7 @@ function parseAIResponse(content: string): {
     try {
       doctorNotes.push(JSON.parse(match[1].trim()));
     } catch (e) {
-      // Failed to parse doctor note
+      console.warn('Failed to parse doctor note:', e);
     }
   }
 
@@ -75,6 +76,7 @@ export default function CoachClient({
   subscriptionStatus,
 }: CoachClientProps) {
   const { t } = useTranslation();
+  const { showToast } = useToast();
   const supabase = createBrowserClient();
   const [messages, setMessages] = useState<Message[]>([]);
 

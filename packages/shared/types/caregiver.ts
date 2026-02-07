@@ -13,6 +13,7 @@ export interface NotificationPreferences {
   daily_summary: boolean;
   email_notifications: boolean;
   summary_time?: string;
+  respite_reminders?: boolean;
 }
 
 export interface Caregiver {

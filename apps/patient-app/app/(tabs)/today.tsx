@@ -42,11 +42,14 @@ import {
   supabase,
 } from '@ourturn/supabase';
 import type { CarePlanTask, TaskCompletion } from '@ourturn/shared';
+import { useComplexity } from '../../src/hooks/use-complexity';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
 
 export default function TodayScreen() {
   const { t } = useTranslation();
   const { patient, session } = useAuthStore();
+  const complexity = useComplexity();
+  const isSimplified = complexity === 'simplified';
 
   const [tasks, setTasks] = useState<CarePlanTask[]>([]);
   const [completions, setCompletions] = useState<TaskCompletion[]>([]);
@@ -269,7 +272,7 @@ export default function TodayScreen() {
           {/* Greeting */}
           <View style={styles.greetingContainer}>
             <Text
-              style={styles.greeting}
+              style={[styles.greeting, isSimplified && styles.greetingSimplified]}
               accessibilityRole="header"
               accessibilityLabel={t(greeting, { name: patient?.name || '' })}
             >
@@ -361,6 +364,7 @@ export default function TodayScreen() {
                 completion={completion}
                 status={status}
                 onComplete={handleCompleteTask}
+                simplified={isSimplified}
               />
             );
           })}
@@ -416,6 +420,10 @@ const styles = StyleSheet.create({
     color: COLORS.textPrimary,
     lineHeight: 40,
     letterSpacing: -0.5,
+  },
+  greetingSimplified: {
+    fontSize: 38,
+    lineHeight: 48,
   },
   progressContainer: {
     marginBottom: 28,

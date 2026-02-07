@@ -1,10 +1,11 @@
 'use client';
 
 import { useState, useCallback, useEffect } from 'react';
-import { APIProvider, Map, AdvancedMarker, Pin, useMap } from '@vis.gl/react-google-maps';
+import { APIProvider, Map, Marker, useMap } from '@vis.gl/react-google-maps';
 import { createBrowserClient } from '@/lib/supabase';
 import { useTranslation } from 'react-i18next';
 import type { LocationLog, SafeZone, LocationAlert, LocationAlertType } from '@ourturn/shared';
+import { useToast } from '@/components/toast';
 
 interface LocationClientProps {
   householdId: string;
@@ -24,6 +25,7 @@ const ALERT_TYPE_LABEL_KEYS: Record<LocationAlertType, string> = {
   inactive: 'caregiverApp.location.alertTypes.inactive',
   night_movement: 'caregiverApp.location.alertTypes.night_movement',
   take_me_home_tapped: 'caregiverApp.location.alertTypes.take_me_home_tapped',
+  sos_triggered: 'caregiverApp.location.alertTypes.sos_triggered',
 };
 
 const ALERT_TYPE_ICONS: Record<LocationAlertType, string> = {
@@ -31,6 +33,7 @@ const ALERT_TYPE_ICONS: Record<LocationAlertType, string> = {
   inactive: '⏳',
   night_movement: '🌙',
   take_me_home_tapped: '🏠',
+  sos_triggered: '🆘',
 };
 
 // Default center (London) if no location available
@@ -215,6 +218,7 @@ export default function LocationClient({
   caregiverId,
 }: LocationClientProps) {
   const { t } = useTranslation();
+  const { showToast } = useToast();
   const supabase = createBrowserClient();
   const [safeZones, setSafeZones] = useState<SafeZone[]>(initialSafeZones);
   const [alerts, setAlerts] = useState<LocationAlert[]>(initialAlerts);
@@ -315,7 +319,7 @@ export default function LocationClient({
     [supabase]
   );
 
-  // Handle acknowledging alert
+  // Handle acknowledging alert (also resolves any escalation)
   const handleAcknowledgeAlert = useCallback(
     async (alertId: string) => {
       try {
@@ -324,10 +328,23 @@ export default function LocationClient({
           .update({
             acknowledged: true,
             acknowledged_by: caregiverId,
+            acknowledged_at: new Date().toISOString(),
           })
           .eq('id', alertId);
 
         if (error) throw error;
+
+        // Also resolve any active escalation for this alert
+        await supabase
+          .from('alert_escalations')
+          .update({
+            resolved: true,
+            resolved_at: new Date().toISOString(),
+            resolved_by: caregiverId,
+          })
+          .eq('alert_id', alertId)
+          .eq('resolved', false);
+
         setAlerts((prev) =>
           prev.map((a) =>
             a.id === alertId
@@ -336,10 +353,10 @@ export default function LocationClient({
           )
         );
       } catch (err) {
-        // Alert acknowledgment failed silently
+        showToast(t('common.error'), 'error');
       }
     },
-    [caregiverId, supabase]
+    [caregiverId, supabase, showToast, t]
   );
 
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
@@ -443,55 +460,38 @@ export default function LocationClient({
               <Map
                 defaultCenter={mapCenter}
                 defaultZoom={15}
-                mapId="ourturn-location-map"
                 gestureHandling="greedy"
                 disableDefaultUI={false}
               >
                 {/* Current location marker */}
                 {currentLocation && (
-                  <AdvancedMarker
+                  <Marker
                     position={{
                       lat: currentLocation.latitude,
                       lng: currentLocation.longitude,
                     }}
                     title={t('caregiverApp.location.patientLocation', { name: patientName })}
-                  >
-                    <Pin
-                      background="#4A7C59"
-                      borderColor="#3A6A49"
-                      glyphColor="#FFFDF8"
-                    />
-                  </AdvancedMarker>
+                  />
                 )}
 
                 {/* Home marker */}
                 {homeLatitude && homeLongitude && (
-                  <AdvancedMarker
+                  <Marker
                     position={{ lat: homeLatitude, lng: homeLongitude }}
                     title={t('caregiverApp.location.home')}
-                  >
-                    <div className="bg-white rounded-full p-2 shadow-lg border-2 border-brand-600">
-                      <span className="text-lg">🏠</span>
-                    </div>
-                  </AdvancedMarker>
+                    label="🏠"
+                  />
                 )}
 
                 {/* Location history markers */}
-                {locationHistory.map((loc, index) => (
-                  <AdvancedMarker
+                {locationHistory.map((loc) => (
+                  <Marker
                     key={loc.id}
                     position={{ lat: loc.latitude, lng: loc.longitude }}
                     onClick={() => setSelectedHistoryPoint(loc)}
-                  >
-                    <div
-                      className={`w-3 h-3 rounded-full border-2 border-white shadow ${
-                        selectedHistoryPoint?.id === loc.id
-                          ? 'bg-brand-600'
-                          : 'bg-brand-300'
-                      }`}
-                      title={formatTime(loc.timestamp)}
-                    />
-                  </AdvancedMarker>
+                    title={formatTime(loc.timestamp)}
+                    opacity={selectedHistoryPoint?.id === loc.id ? 1 : 0.5}
+                  />
                 ))}
 
                 {/* Safe zone circles are drawn via useEffect in SafeZoneCircle */}

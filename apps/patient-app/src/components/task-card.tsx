@@ -27,6 +27,7 @@ interface TaskCardProps {
   completion?: TaskCompletion;
   status: TaskStatus;
   onComplete: (taskId: string) => Promise<void>;
+  simplified?: boolean;
 }
 
 function formatTime(time: string): string {
@@ -42,7 +43,7 @@ function formatCompletedTime(isoString: string): string {
   return formatTime(`${date.getHours()}:${date.getMinutes()}`);
 }
 
-function TaskCard({ task, completion, status, onComplete }: TaskCardProps) {
+function TaskCard({ task, completion, status, onComplete, simplified = false }: TaskCardProps) {
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
   const [scaleAnim] = useState(new Animated.Value(1));
@@ -143,19 +144,19 @@ function TaskCard({ task, completion, status, onComplete }: TaskCardProps) {
 
       {/* Time and category */}
       <View style={styles.header}>
-        <Text style={[styles.time, isCompleted && styles.textMuted]}>
+        <Text style={[styles.time, isCompleted && styles.textMuted, simplified && styles.timeSimplified]}>
           🕐 {formatTime(task.time)}
         </Text>
       </View>
 
       {/* Title with category icon */}
       <View style={styles.titleRow}>
-        <Text style={styles.categoryIcon}>{categoryIcon}</Text>
-        <Text style={[styles.title, isCompleted && styles.textMuted]}>{task.title}</Text>
+        <Text style={[styles.categoryIcon, simplified && styles.categoryIconSimplified]}>{categoryIcon}</Text>
+        <Text style={[styles.title, isCompleted && styles.textMuted, simplified && styles.titleSimplified]}>{task.title}</Text>
       </View>
 
-      {/* Hint text (hidden when completed) */}
-      {!isCompleted && task.hint_text && (
+      {/* Hint text (hidden in simplified mode and when completed) */}
+      {!isCompleted && !simplified && task.hint_text && (
         <Text style={styles.hint}>"{task.hint_text}"</Text>
       )}
 
@@ -170,7 +171,7 @@ function TaskCard({ task, completion, status, onComplete }: TaskCardProps) {
       {!isCompleted && (
         <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
           <TouchableOpacity
-            style={[styles.doneButton, isLoading && styles.doneButtonLoading]}
+            style={[styles.doneButton, simplified && styles.doneButtonSimplified, isLoading && styles.doneButtonLoading]}
             onPress={handleComplete}
             disabled={isLoading}
             activeOpacity={0.8}
@@ -182,10 +183,10 @@ function TaskCard({ task, completion, status, onComplete }: TaskCardProps) {
               busy: isLoading,
             }}
           >
-            <Animated.Text style={[styles.doneButtonText, { opacity: checkmarkOpacity }]}>
+            <Animated.Text style={[styles.doneButtonText, simplified && styles.doneButtonTextSimplified, { opacity: checkmarkOpacity }]}>
               ✓{' '}
             </Animated.Text>
-            <Text style={styles.doneButtonText}>{t('common.done')}</Text>
+            <Text style={[styles.doneButtonText, simplified && styles.doneButtonTextSimplified]}>{t('common.done')}</Text>
           </TouchableOpacity>
         </Animated.View>
       )}
@@ -322,5 +323,21 @@ const styles = StyleSheet.create({
   },
   textMuted: {
     color: COLORS.textMuted,
+  },
+  // Simplified mode overrides
+  timeSimplified: {
+    fontSize: 24,
+  },
+  categoryIconSimplified: {
+    fontSize: 36,
+  },
+  titleSimplified: {
+    fontSize: 28,
+  },
+  doneButtonSimplified: {
+    height: 76,
+  },
+  doneButtonTextSimplified: {
+    fontSize: 24,
   },
 });

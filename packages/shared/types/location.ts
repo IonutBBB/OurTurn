@@ -4,7 +4,8 @@ export type LocationAlertType =
   | 'left_safe_zone'
   | 'inactive'
   | 'night_movement'
-  | 'take_me_home_tapped';
+  | 'take_me_home_tapped'
+  | 'sos_triggered';
 
 export interface LocationLog {
   id: string;
@@ -64,6 +65,19 @@ export interface LocationAlert {
   location_label: string | null;
   acknowledged: boolean;
   acknowledged_by: string | null;
+  acknowledged_at: string | null;
+}
+
+export interface AlertEscalation {
+  id: string;
+  alert_id: string;
+  household_id: string;
+  escalation_level: number;
+  escalated_at: string;
+  next_escalation_at: string;
+  resolved: boolean;
+  resolved_at: string | null;
+  resolved_by: string | null;
 }
 
 export interface LocationAlertInsert {

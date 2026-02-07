@@ -4,6 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../../src/stores/auth-store';
 import { ErrorBoundary } from '../../src/components/error-boundary';
+import { SOSButton } from '../../src/components/sos-button';
 import { COLORS, FONTS, SHADOWS } from '../../src/theme';
 
 interface TabIconProps {
@@ -24,7 +25,9 @@ function TabIcon({ emoji, label, focused }: TabIconProps) {
 export default function TabsLayout() {
   const { t } = useTranslation();
   const router = useRouter();
-  const { isAuthenticated, isInitialized } = useAuthStore();
+  const { isAuthenticated, isInitialized, patient } = useAuthStore();
+
+  const complexity = patient?.app_complexity || 'full';
 
   // Redirect to care code screen if not authenticated
   useEffect(() => {
@@ -33,8 +36,16 @@ export default function TabsLayout() {
     }
   }, [isAuthenticated, isInitialized, router]);
 
+  // Redirect to essential mode if set
+  useEffect(() => {
+    if (isInitialized && isAuthenticated && complexity === 'essential') {
+      router.replace('/essential-mode');
+    }
+  }, [isInitialized, isAuthenticated, complexity, router]);
+
   return (
     <ErrorBoundary>
+    <View style={{ flex: 1 }}>
     <Tabs
       screenOptions={{
         headerShown: false,
@@ -71,6 +82,8 @@ export default function TabsLayout() {
         }}
       />
     </Tabs>
+    <SOSButton />
+    </View>
     </ErrorBoundary>
   );
 }

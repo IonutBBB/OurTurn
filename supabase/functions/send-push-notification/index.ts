@@ -14,7 +14,7 @@ const EXPO_PUSH_URL = 'https://exp.host/--/api/v2/push/send';
 interface LocationAlert {
   id: string;
   household_id: string;
-  type: 'left_safe_zone' | 'inactive' | 'night_movement' | 'take_me_home_tapped';
+  type: 'left_safe_zone' | 'inactive' | 'night_movement' | 'take_me_home_tapped' | 'sos_triggered';
   triggered_at: string;
   latitude: number | null;
   longitude: number | null;
@@ -160,6 +160,12 @@ function buildNotificationContent(
   patientName: string
 ): { title: string; body: string } {
   switch (alert.type) {
+    case 'sos_triggered':
+      return {
+        title: 'SOS Emergency Alert',
+        body: `${patientName} has triggered an SOS emergency alert. Please check on them immediately.`,
+      };
+
     case 'take_me_home_tapped':
       return {
         title: 'Take Me Home Alert',

@@ -1,6 +1,9 @@
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import SettingsClient from './settings-client';
 import en from '../../../../locales/en.json';
+import type { Patient } from '@ourturn/shared';
+
+export const dynamic = 'force-dynamic';
 
 export default async function SettingsPage() {
   const supabase = await createServerClient();
@@ -19,20 +22,22 @@ export default async function SettingsPage() {
 
   const household = caregiver?.households;
 
-  // Get patient for photo gallery
-  let patientId: string | null = null;
+  // Get full patient data for all settings sections
+  let patient: Patient | null = null;
   let existingPhotos: string[] = [];
+  let patientComplexity: string = 'full';
   if (household) {
-    const { data: patient } = await supabase
+    const { data: patientData } = await supabase
       .from('patients')
-      .select('id, biography')
+      .select('*')
       .eq('household_id', household.id)
       .single();
 
-    if (patient) {
-      patientId = patient.id;
+    if (patientData) {
+      patient = patientData as Patient;
       const bio = patient.biography as Record<string, unknown> | null;
       existingPhotos = (bio?.photos as string[]) || [];
+      patientComplexity = patient.app_complexity || 'full';
     }
   }
 
@@ -71,8 +76,9 @@ export default async function SettingsPage() {
         caregiver={caregiver}
         household={household}
         careCode={household.care_code}
-        patientId={patientId}
+        patient={patient}
         existingPhotos={existingPhotos}
+        patientComplexity={patientComplexity}
       />
     </div>
   );

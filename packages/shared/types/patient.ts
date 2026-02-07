@@ -2,6 +2,7 @@
 import type { DeviceToken } from './common';
 
 export type DementiaStage = 'early' | 'moderate' | 'advanced';
+export type AppComplexity = 'full' | 'simplified' | 'essential';
 
 export interface Medication {
   name: string;
@@ -53,6 +54,8 @@ export interface Patient {
   sleep_time: string;
   emergency_number: string | null;
   emergency_contacts: EmergencyContact[];
+  app_complexity: AppComplexity;
+  last_seen_at: string | null;
   device_tokens: DeviceToken[];
   created_at: string;
   updated_at: string;
@@ -92,4 +95,6 @@ export interface PatientUpdate {
   emergency_number?: string;
   emergency_contacts?: EmergencyContact[];
   device_tokens?: DeviceToken[];
+  app_complexity?: AppComplexity;
+  last_seen_at?: string;
 }

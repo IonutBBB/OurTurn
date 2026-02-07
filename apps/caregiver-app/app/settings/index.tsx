@@ -22,6 +22,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { useAuthStore } from '../../src/stores/auth-store';
 import { supabase } from '@ourturn/supabase';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
+import type { EmergencyContact, PatientBiography } from '@ourturn/shared';
 
 export default function SettingsScreen() {
   const { t } = useTranslation();
@@ -63,6 +64,77 @@ export default function SettingsScreen() {
   // Photo gallery
   const [photos, setPhotos] = useState<string[]>([]);
   const [isUploadingPhotos, setIsUploadingPhotos] = useState(false);
+
+  // Patient information
+  const [patientName, setPatientName] = useState(patient?.name || '');
+  const [dateOfBirth, setDateOfBirth] = useState(patient?.date_of_birth || '');
+  const [dementiaType, setDementiaType] = useState(patient?.dementia_type || '');
+  const [homeAddress, setHomeAddress] = useState(patient?.home_address_formatted || '');
+  const [isSavingPatientInfo, setIsSavingPatientInfo] = useState(false);
+  const [patientInfoSaved, setPatientInfoSaved] = useState(false);
+
+  // Life story
+  const bio = (patient?.biography || {}) as Record<string, unknown>;
+  const toArray = (value: unknown): string[] => {
+    if (Array.isArray(value)) return value;
+    if (typeof value === 'string' && value.trim()) return value.split(',').map((s) => s.trim());
+    return [];
+  };
+  const formatPeople = (value: unknown): string => {
+    if (Array.isArray(value)) {
+      return value.map((item) => {
+        if (typeof item === 'object' && item !== null && 'name' in item) {
+          const rel = (item as any).relationship;
+          return rel ? `${(item as any).name} (${rel})` : String((item as any).name);
+        }
+        return String(item);
+      }).join('\n');
+    }
+    return typeof value === 'string' ? value : '';
+  };
+  const formatEvents = (value: unknown): string => {
+    if (Array.isArray(value)) {
+      return value.map((item) =>
+        typeof item === 'object' && item !== null && 'description' in item
+          ? String((item as any).description)
+          : String(item)
+      ).join('\n');
+    }
+    return typeof value === 'string' ? value : '';
+  };
+  const [childhoodLocation, setChildhoodLocation] = useState(String(bio.childhood_location || ''));
+  const [career, setCareer] = useState(String(bio.career || ''));
+  const [hobbies, setHobbies] = useState(toArray(bio.hobbies).join(', '));
+  const [favoriteMusic, setFavoriteMusic] = useState(toArray(bio.favorite_music).join(', '));
+  const [favoriteFoods, setFavoriteFoods] = useState(toArray(bio.favorite_foods).join(', '));
+  const [importantPeople, setImportantPeople] = useState(formatPeople(bio.important_people));
+  const [keyEvents, setKeyEvents] = useState(formatEvents(bio.key_events));
+  const [isSavingLifeStory, setIsSavingLifeStory] = useState(false);
+  const [lifeStorySaved, setLifeStorySaved] = useState(false);
+
+  // Daily schedule
+  const [wakeTime, setWakeTime] = useState(patient?.wake_time || '07:00');
+  const [sleepTime, setSleepTime] = useState(patient?.sleep_time || '21:00');
+  const [isSavingSchedule, setIsSavingSchedule] = useState(false);
+  const [scheduleSaved, setScheduleSaved] = useState(false);
+
+  // Emergency contacts
+  const [contacts, setContacts] = useState<EmergencyContact[]>(patient?.emergency_contacts || []);
+  const [newContactName, setNewContactName] = useState('');
+  const [newContactPhone, setNewContactPhone] = useState('');
+  const [newContactRelationship, setNewContactRelationship] = useState('');
+  const [isSavingContacts, setIsSavingContacts] = useState(false);
+  const [contactsSaved, setContactsSaved] = useState(false);
+
+  // Patient complexity
+  const [complexity, setComplexity] = useState(patient?.app_complexity || 'full');
+  const [isSavingComplexity, setIsSavingComplexity] = useState(false);
+
+  // Safety & escalation
+  const [escalationMinutes, setEscalationMinutes] = useState(household?.escalation_minutes || 5);
+  const [offlineAlertMinutes, setOfflineAlertMinutes] = useState(household?.offline_alert_minutes || 30);
+  const [isSavingSafety, setIsSavingSafety] = useState(false);
+  const [safetySaved, setSafetySaved] = useState(false);
 
   // Delete confirmation modal (cross-platform replacement for Alert.prompt)
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -176,6 +248,182 @@ export default function SettingsScreen() {
       ]
     );
   }, [photos, patient?.id]);
+
+  const handleSavePatientInfo = useCallback(async () => {
+    if (!patient?.id) return;
+    setIsSavingPatientInfo(true);
+    try {
+      const { error } = await supabase
+        .from('patients')
+        .update({
+          name: patientName.trim(),
+          date_of_birth: dateOfBirth || null,
+          dementia_type: dementiaType || null,
+          home_address_formatted: homeAddress || null,
+        })
+        .eq('id', patient.id);
+      if (error) throw error;
+      await loadCaregiverData();
+      setPatientInfoSaved(true);
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      setTimeout(() => setPatientInfoSaved(false), 3000);
+    } catch {
+      Alert.alert(t('common.error'));
+    } finally {
+      setIsSavingPatientInfo(false);
+    }
+  }, [patient?.id, patientName, dateOfBirth, dementiaType, homeAddress]);
+
+  const handleSaveLifeStory = useCallback(async () => {
+    if (!patient?.id) return;
+    setIsSavingLifeStory(true);
+    try {
+      const { data: current } = await supabase
+        .from('patients')
+        .select('biography')
+        .eq('id', patient.id)
+        .single();
+      const currentBio = (current?.biography as Record<string, unknown>) || {};
+      const updatedBio: PatientBiography & Record<string, unknown> = {
+        ...currentBio,
+        childhood_location: childhoodLocation || undefined,
+        career: career || undefined,
+        hobbies: hobbies ? hobbies.split(',').map((s) => s.trim()).filter(Boolean) : undefined,
+        favorite_music: favoriteMusic ? favoriteMusic.split(',').map((s) => s.trim()).filter(Boolean) : undefined,
+        favorite_foods: favoriteFoods ? favoriteFoods.split(',').map((s) => s.trim()).filter(Boolean) : undefined,
+        important_people: importantPeople.trim()
+          ? importantPeople.split('\n').filter(Boolean).map((line) => {
+              const match = line.match(/^(.+?)\s*\((.+?)\)\s*$/);
+              if (match) return { name: match[1].trim(), relationship: match[2].trim() };
+              return { name: line.trim(), relationship: '' };
+            })
+          : undefined,
+        key_events: keyEvents.trim()
+          ? keyEvents.split('\n').filter(Boolean).map((line) => {
+              const yearMatch = line.match(/(\d{4})/);
+              return { description: line.trim(), year: yearMatch ? parseInt(yearMatch[1]) : undefined };
+            })
+          : undefined,
+      };
+      const { error } = await supabase
+        .from('patients')
+        .update({ biography: updatedBio })
+        .eq('id', patient.id);
+      if (error) throw error;
+      setLifeStorySaved(true);
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      setTimeout(() => setLifeStorySaved(false), 3000);
+    } catch {
+      Alert.alert(t('common.error'));
+    } finally {
+      setIsSavingLifeStory(false);
+    }
+  }, [patient?.id, childhoodLocation, career, hobbies, favoriteMusic, favoriteFoods, importantPeople, keyEvents]);
+
+  const handleSaveSchedule = useCallback(async () => {
+    if (!patient?.id) return;
+    setIsSavingSchedule(true);
+    try {
+      const { error } = await supabase
+        .from('patients')
+        .update({ wake_time: wakeTime, sleep_time: sleepTime })
+        .eq('id', patient.id);
+      if (error) throw error;
+      setScheduleSaved(true);
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      setTimeout(() => setScheduleSaved(false), 3000);
+    } catch {
+      Alert.alert(t('common.error'));
+    } finally {
+      setIsSavingSchedule(false);
+    }
+  }, [patient?.id, wakeTime, sleepTime]);
+
+  const handleAddContact = useCallback(() => {
+    if (!newContactName.trim() || !newContactPhone.trim()) return;
+    setContacts((prev) => [...prev, { name: newContactName.trim(), phone: newContactPhone.trim(), relationship: newContactRelationship.trim() }]);
+    setNewContactName('');
+    setNewContactPhone('');
+    setNewContactRelationship('');
+  }, [newContactName, newContactPhone, newContactRelationship]);
+
+  const handleRemoveContact = useCallback((index: number) => {
+    Alert.alert(
+      t('caregiverApp.settings.removeContactConfirm'),
+      '',
+      [
+        { text: t('common.cancel'), style: 'cancel' },
+        {
+          text: t('common.remove'),
+          style: 'destructive',
+          onPress: () => setContacts((prev) => prev.filter((_, i) => i !== index)),
+        },
+      ]
+    );
+  }, []);
+
+  const handleSaveContacts = useCallback(async () => {
+    if (!patient?.id) return;
+    setIsSavingContacts(true);
+    try {
+      const { error } = await supabase
+        .from('patients')
+        .update({
+          emergency_contacts: contacts,
+          emergency_number: contacts.length > 0 ? contacts[0].phone : null,
+        })
+        .eq('id', patient.id);
+      if (error) throw error;
+      await loadCaregiverData();
+      setContactsSaved(true);
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      setTimeout(() => setContactsSaved(false), 3000);
+    } catch {
+      Alert.alert(t('common.error'));
+    } finally {
+      setIsSavingContacts(false);
+    }
+  }, [patient?.id, contacts]);
+
+  const handleSaveComplexity = useCallback(async (newComplexity: string) => {
+    if (!patient?.id) return;
+    setIsSavingComplexity(true);
+    try {
+      const { error } = await supabase
+        .from('patients')
+        .update({ app_complexity: newComplexity })
+        .eq('id', patient.id);
+      if (error) throw error;
+      setComplexity(newComplexity);
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    } catch {
+      Alert.alert(t('common.error'));
+    } finally {
+      setIsSavingComplexity(false);
+    }
+  }, [patient?.id]);
+
+  const handleSaveSafetySettings = useCallback(async () => {
+    if (!household?.id) return;
+    setIsSavingSafety(true);
+    try {
+      const { error } = await supabase
+        .from('households')
+        .update({
+          escalation_minutes: escalationMinutes,
+          offline_alert_minutes: offlineAlertMinutes,
+        })
+        .eq('id', household.id);
+      if (error) throw error;
+      setSafetySaved(true);
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      setTimeout(() => setSafetySaved(false), 3000);
+    } catch {
+      Alert.alert(t('common.error'));
+    } finally {
+      setIsSavingSafety(false);
+    }
+  }, [household?.id, escalationMinutes, offlineAlertMinutes]);
 
   const handleSaveProfile = useCallback(async () => {
     if (!caregiver?.id) return;
@@ -402,7 +650,9 @@ export default function SettingsScreen() {
           <Text style={styles.title}>{t('caregiverApp.settings.title')}</Text>
         </View>
 
-        {/* Profile Section */}
+        {/* ── YOUR PROFILE ── */}
+        <Text style={styles.groupHeading}>{t('caregiverApp.settings.groupProfile')}</Text>
+
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>{t('caregiverApp.settings.profile')}</Text>
           <View style={styles.card}>
@@ -451,7 +701,496 @@ export default function SettingsScreen() {
           </View>
         </View>
 
-        {/* Notifications Section */}
+        {/* ── ABOUT [PATIENT NAME] ── */}
+        {patient && (
+          <>
+            <Text style={styles.groupHeading}>
+              {patient.name
+                ? t('caregiverApp.settings.groupAboutPatient', { name: patient.name })
+                : t('caregiverApp.settings.groupAboutPatientGeneric')}
+            </Text>
+
+            {/* Patient Information */}
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>{t('caregiverApp.settings.patientInformation')}</Text>
+              <View style={styles.card}>
+                <Text style={styles.cardDesc}>{t('caregiverApp.settings.patientInformationDesc')}</Text>
+                <View style={styles.fieldGroup}>
+                  <Text style={styles.fieldLabel}>{t('caregiverApp.settings.patientName')}</Text>
+                  <TextInput
+                    style={styles.textInput}
+                    value={patientName}
+                    onChangeText={setPatientName}
+                    placeholderTextColor={COLORS.textMuted}
+                  />
+                </View>
+                <View style={styles.fieldGroup}>
+                  <Text style={styles.fieldLabel}>{t('caregiverApp.settings.dateOfBirth')}</Text>
+                  <TextInput
+                    style={styles.textInput}
+                    value={dateOfBirth}
+                    onChangeText={setDateOfBirth}
+                    placeholder="YYYY-MM-DD"
+                    placeholderTextColor={COLORS.textMuted}
+                  />
+                </View>
+                <View style={styles.fieldGroup}>
+                  <Text style={styles.fieldLabel}>{t('caregiverApp.settings.dementiaType')}</Text>
+                  <TextInput
+                    style={styles.textInput}
+                    value={dementiaType}
+                    onChangeText={setDementiaType}
+                    placeholder={t('caregiverApp.settings.selectDementiaType')}
+                    placeholderTextColor={COLORS.textMuted}
+                  />
+                </View>
+                <View style={styles.fieldGroup}>
+                  <Text style={styles.fieldLabel}>{t('caregiverApp.settings.homeAddress')}</Text>
+                  <TextInput
+                    style={styles.textInput}
+                    value={homeAddress}
+                    onChangeText={setHomeAddress}
+                    placeholder={t('caregiverApp.settings.homeAddressPlaceholder')}
+                    placeholderTextColor={COLORS.textMuted}
+                  />
+                </View>
+                <View style={styles.saveRow}>
+                  <TouchableOpacity
+                    style={[styles.saveButton, (isSavingPatientInfo || !patientName.trim()) && styles.saveButtonDisabled]}
+                    onPress={handleSavePatientInfo}
+                    disabled={isSavingPatientInfo || !patientName.trim()}
+                    activeOpacity={0.7}
+                  >
+                    {isSavingPatientInfo ? (
+                      <ActivityIndicator color={COLORS.textInverse} size="small" />
+                    ) : (
+                      <Text style={styles.saveButtonText}>{t('caregiverApp.settings.savePatientInfo')}</Text>
+                    )}
+                  </TouchableOpacity>
+                  {patientInfoSaved && (
+                    <Text style={styles.savedText}>{t('caregiverApp.settings.saved')}</Text>
+                  )}
+                </View>
+              </View>
+            </View>
+
+            {/* Life Story */}
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>{t('caregiverApp.settings.lifeStory')}</Text>
+              <View style={styles.card}>
+                <Text style={styles.cardDesc}>{t('caregiverApp.settings.lifeStoryDesc')}</Text>
+                <View style={styles.fieldGroup}>
+                  <Text style={styles.fieldLabel}>{t('caregiverApp.settings.childhoodLocation')}</Text>
+                  <TextInput
+                    style={styles.textInput}
+                    value={childhoodLocation}
+                    onChangeText={setChildhoodLocation}
+                    placeholderTextColor={COLORS.textMuted}
+                  />
+                </View>
+                <View style={styles.fieldGroup}>
+                  <Text style={styles.fieldLabel}>{t('caregiverApp.settings.career')}</Text>
+                  <TextInput
+                    style={styles.textInput}
+                    value={career}
+                    onChangeText={setCareer}
+                    placeholderTextColor={COLORS.textMuted}
+                  />
+                </View>
+                <View style={styles.fieldGroup}>
+                  <Text style={styles.fieldLabel}>{t('caregiverApp.settings.hobbies')}</Text>
+                  <TextInput
+                    style={styles.textInput}
+                    value={hobbies}
+                    onChangeText={setHobbies}
+                    placeholder={t('caregiverApp.settings.hobbiesPlaceholder')}
+                    placeholderTextColor={COLORS.textMuted}
+                  />
+                </View>
+                <View style={styles.fieldGroup}>
+                  <Text style={styles.fieldLabel}>{t('caregiverApp.settings.favoriteMusic')}</Text>
+                  <TextInput
+                    style={styles.textInput}
+                    value={favoriteMusic}
+                    onChangeText={setFavoriteMusic}
+                    placeholder={t('caregiverApp.settings.favoriteMusicPlaceholder')}
+                    placeholderTextColor={COLORS.textMuted}
+                  />
+                </View>
+                <View style={styles.fieldGroup}>
+                  <Text style={styles.fieldLabel}>{t('caregiverApp.settings.favoriteFoods')}</Text>
+                  <TextInput
+                    style={styles.textInput}
+                    value={favoriteFoods}
+                    onChangeText={setFavoriteFoods}
+                    placeholder={t('caregiverApp.settings.favoriteFoodsPlaceholder')}
+                    placeholderTextColor={COLORS.textMuted}
+                  />
+                </View>
+                <View style={styles.fieldGroup}>
+                  <Text style={styles.fieldLabel}>{t('caregiverApp.settings.importantPeople')}</Text>
+                  <TextInput
+                    style={[styles.textInput, styles.textArea]}
+                    value={importantPeople}
+                    onChangeText={setImportantPeople}
+                    placeholder={t('caregiverApp.settings.importantPeoplePlaceholder')}
+                    placeholderTextColor={COLORS.textMuted}
+                    multiline
+                    numberOfLines={3}
+                  />
+                </View>
+                <View style={styles.fieldGroup}>
+                  <Text style={styles.fieldLabel}>{t('caregiverApp.settings.keyEvents')}</Text>
+                  <TextInput
+                    style={[styles.textInput, styles.textArea]}
+                    value={keyEvents}
+                    onChangeText={setKeyEvents}
+                    placeholder={t('caregiverApp.settings.keyEventsPlaceholder')}
+                    placeholderTextColor={COLORS.textMuted}
+                    multiline
+                    numberOfLines={3}
+                  />
+                </View>
+                <View style={styles.saveRow}>
+                  <TouchableOpacity
+                    style={[styles.saveButton, isSavingLifeStory && styles.saveButtonDisabled]}
+                    onPress={handleSaveLifeStory}
+                    disabled={isSavingLifeStory}
+                    activeOpacity={0.7}
+                  >
+                    {isSavingLifeStory ? (
+                      <ActivityIndicator color={COLORS.textInverse} size="small" />
+                    ) : (
+                      <Text style={styles.saveButtonText}>{t('caregiverApp.settings.saveLifeStory')}</Text>
+                    )}
+                  </TouchableOpacity>
+                  {lifeStorySaved && (
+                    <Text style={styles.savedText}>{t('caregiverApp.settings.saved')}</Text>
+                  )}
+                </View>
+              </View>
+            </View>
+
+            {/* Daily Schedule */}
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>{t('caregiverApp.settings.dailySchedule')}</Text>
+              <View style={styles.card}>
+                <Text style={styles.cardDesc}>{t('caregiverApp.settings.dailyScheduleDesc')}</Text>
+                <View style={styles.fieldRow}>
+                  <View style={styles.fieldHalf}>
+                    <Text style={styles.fieldLabel}>{t('caregiverApp.settings.wakeTime')}</Text>
+                    <TextInput
+                      style={styles.textInput}
+                      value={wakeTime}
+                      onChangeText={setWakeTime}
+                      placeholder="07:00"
+                      placeholderTextColor={COLORS.textMuted}
+                    />
+                  </View>
+                  <View style={styles.fieldHalf}>
+                    <Text style={styles.fieldLabel}>{t('caregiverApp.settings.sleepTime')}</Text>
+                    <TextInput
+                      style={styles.textInput}
+                      value={sleepTime}
+                      onChangeText={setSleepTime}
+                      placeholder="21:00"
+                      placeholderTextColor={COLORS.textMuted}
+                    />
+                  </View>
+                </View>
+                <View style={styles.saveRow}>
+                  <TouchableOpacity
+                    style={[styles.saveButton, isSavingSchedule && styles.saveButtonDisabled]}
+                    onPress={handleSaveSchedule}
+                    disabled={isSavingSchedule}
+                    activeOpacity={0.7}
+                  >
+                    {isSavingSchedule ? (
+                      <ActivityIndicator color={COLORS.textInverse} size="small" />
+                    ) : (
+                      <Text style={styles.saveButtonText}>{t('caregiverApp.settings.saveSchedule')}</Text>
+                    )}
+                  </TouchableOpacity>
+                  {scheduleSaved && (
+                    <Text style={styles.savedText}>{t('caregiverApp.settings.saved')}</Text>
+                  )}
+                </View>
+              </View>
+            </View>
+
+            {/* Emergency Contacts */}
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>{t('caregiverApp.settings.emergencyContacts')}</Text>
+              <View style={styles.card}>
+                <Text style={styles.cardDesc}>{t('caregiverApp.settings.emergencyContactsDesc')}</Text>
+
+                {contacts.length > 0 ? (
+                  <View style={{ marginBottom: 16 }}>
+                    {contacts.map((contact, index) => (
+                      <View key={index} style={styles.contactRow}>
+                        <View style={{ flex: 1 }}>
+                          <Text style={styles.contactName}>{contact.name}</Text>
+                          <Text style={styles.contactDetail}>
+                            {contact.phone}{contact.relationship ? ` \u2022 ${contact.relationship}` : ''}
+                          </Text>
+                        </View>
+                        <TouchableOpacity onPress={() => handleRemoveContact(index)} activeOpacity={0.7}>
+                          <Text style={styles.removeText}>{t('common.remove')}</Text>
+                        </TouchableOpacity>
+                      </View>
+                    ))}
+                  </View>
+                ) : (
+                  <Text style={styles.noContactsText}>{t('caregiverApp.settings.noContactsYet')}</Text>
+                )}
+
+                <View style={styles.addContactBox}>
+                  <Text style={[styles.fieldLabel, { marginBottom: 12 }]}>{t('caregiverApp.settings.addContact')}</Text>
+                  <View style={styles.fieldGroup}>
+                    <Text style={styles.fieldLabel}>{t('caregiverApp.settings.contactName')} *</Text>
+                    <TextInput
+                      style={styles.textInput}
+                      value={newContactName}
+                      onChangeText={setNewContactName}
+                      placeholderTextColor={COLORS.textMuted}
+                    />
+                  </View>
+                  <View style={styles.fieldGroup}>
+                    <Text style={styles.fieldLabel}>{t('caregiverApp.settings.contactPhone')} *</Text>
+                    <TextInput
+                      style={styles.textInput}
+                      value={newContactPhone}
+                      onChangeText={setNewContactPhone}
+                      placeholder="+1 555 123 4567"
+                      placeholderTextColor={COLORS.textMuted}
+                      keyboardType="phone-pad"
+                    />
+                  </View>
+                  <View style={styles.fieldGroup}>
+                    <Text style={styles.fieldLabel}>{t('caregiverApp.settings.contactRelationship')}</Text>
+                    <TextInput
+                      style={styles.textInput}
+                      value={newContactRelationship}
+                      onChangeText={setNewContactRelationship}
+                      placeholder={t('caregiverApp.settings.contactRelationshipPlaceholder')}
+                      placeholderTextColor={COLORS.textMuted}
+                    />
+                  </View>
+                  <TouchableOpacity
+                    style={[styles.secondaryButton, (!newContactName.trim() || !newContactPhone.trim()) && styles.saveButtonDisabled]}
+                    onPress={handleAddContact}
+                    disabled={!newContactName.trim() || !newContactPhone.trim()}
+                    activeOpacity={0.7}
+                  >
+                    <Text style={styles.secondaryButtonText}>+ {t('caregiverApp.settings.addContact')}</Text>
+                  </TouchableOpacity>
+                </View>
+
+                <View style={styles.saveRow}>
+                  <TouchableOpacity
+                    style={[styles.saveButton, isSavingContacts && styles.saveButtonDisabled]}
+                    onPress={handleSaveContacts}
+                    disabled={isSavingContacts}
+                    activeOpacity={0.7}
+                  >
+                    {isSavingContacts ? (
+                      <ActivityIndicator color={COLORS.textInverse} size="small" />
+                    ) : (
+                      <Text style={styles.saveButtonText}>{t('caregiverApp.settings.saveContacts')}</Text>
+                    )}
+                  </TouchableOpacity>
+                  {contactsSaved && (
+                    <Text style={styles.savedText}>{t('caregiverApp.settings.saved')}</Text>
+                  )}
+                </View>
+              </View>
+            </View>
+
+            {/* Photo Gallery */}
+            {patient.id && (
+              <View style={styles.section}>
+                <Text style={styles.sectionTitle}>{t('caregiverApp.settings.photoGallery')}</Text>
+                <View style={styles.card}>
+                  <Text style={styles.photoDesc}>{t('caregiverApp.settings.photoGalleryDesc')}</Text>
+
+                  {photos.length > 0 ? (
+                    <>
+                      <Text style={styles.photoCount}>
+                        {t('caregiverApp.settings.photosCount', { count: photos.length })}
+                      </Text>
+                      <View style={styles.photoGrid}>
+                        {photos.map((url) => (
+                          <TouchableOpacity
+                            key={url}
+                            style={styles.photoThumb}
+                            onLongPress={() => handleDeletePhoto(url)}
+                            activeOpacity={0.8}
+                          >
+                            <Image source={{ uri: url }} style={styles.photoImage} />
+                          </TouchableOpacity>
+                        ))}
+                      </View>
+                      <Text style={styles.photoHintText}>{t('caregiverApp.settings.photoUploadHint')}</Text>
+                    </>
+                  ) : (
+                    <Text style={styles.noPhotosText}>{t('caregiverApp.settings.noPhotosYet')}</Text>
+                  )}
+
+                  <TouchableOpacity
+                    style={[styles.saveButton, (isUploadingPhotos || photos.length >= 20) && styles.saveButtonDisabled]}
+                    onPress={handleUploadPhotos}
+                    disabled={isUploadingPhotos || photos.length >= 20}
+                    activeOpacity={0.7}
+                  >
+                    {isUploadingPhotos ? (
+                      <ActivityIndicator color={COLORS.textInverse} size="small" />
+                    ) : (
+                      <Text style={styles.saveButtonText}>
+                        {photos.length >= 20
+                          ? t('caregiverApp.settings.maxPhotosReached')
+                          : t('caregiverApp.settings.uploadPhotos')}
+                      </Text>
+                    )}
+                  </TouchableOpacity>
+                </View>
+              </View>
+            )}
+
+            {/* Patient App Complexity */}
+            {patient.id && (
+              <View style={styles.section}>
+                <Text style={styles.sectionTitle}>{t('caregiverApp.settings.patientComplexity')}</Text>
+                <View style={styles.card}>
+                  <Text style={styles.cardDesc}>{t('caregiverApp.settings.patientComplexityDesc')}</Text>
+                  {(['full', 'simplified', 'essential'] as const).map((level) => (
+                    <TouchableOpacity
+                      key={level}
+                      style={styles.radioRow}
+                      onPress={() => handleSaveComplexity(level)}
+                      disabled={isSavingComplexity}
+                      activeOpacity={0.7}
+                    >
+                      <View style={[styles.radioOuter, complexity === level && styles.radioOuterSelected]}>
+                        {complexity === level && <View style={styles.radioInner} />}
+                      </View>
+                      <View style={{ flex: 1 }}>
+                        <Text style={styles.radioLabel}>{t(`caregiverApp.settings.complexity.${level}`)}</Text>
+                        <Text style={styles.radioDesc}>{t(`caregiverApp.settings.complexity.${level}Desc`)}</Text>
+                      </View>
+                    </TouchableOpacity>
+                  ))}
+                </View>
+              </View>
+            )}
+          </>
+        )}
+
+        {/* ── SHARING & CONNECTION ── */}
+        <Text style={styles.groupHeading}>{t('caregiverApp.settings.groupSharing')}</Text>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>{t('caregiverApp.family.careCode')}</Text>
+          <View style={styles.card}>
+            <View style={styles.codeContainer}>
+              <Text style={styles.careCode}>
+                {household?.care_code
+                  ? `${household.care_code.slice(0, 3)} ${household.care_code.slice(3)}`
+                  : '--- ---'}
+              </Text>
+            </View>
+            <Text style={styles.codeHelp}>{t('caregiverApp.family.careCodeHelp')}</Text>
+            <View style={styles.codeActions}>
+              <TouchableOpacity
+                style={styles.codeButton}
+                onPress={handleCopyCode}
+                activeOpacity={0.7}
+              >
+                <Text style={styles.codeButtonText}>
+                  {codeCopied ? t('caregiverApp.settings.codeCopied') : t('caregiverApp.settings.copyCode')}
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.codeButton, styles.codeButtonDanger]}
+                onPress={handleRegenerateCode}
+                disabled={isRegenerating}
+                activeOpacity={0.7}
+              >
+                {isRegenerating ? (
+                  <ActivityIndicator color={COLORS.danger} size="small" />
+                ) : (
+                  <Text style={[styles.codeButtonText, styles.codeButtonTextDanger]}>
+                    {t('caregiverApp.settings.regenerateCode')}
+                  </Text>
+                )}
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+
+        {/* ── SAFETY & NOTIFICATIONS ── */}
+        <Text style={styles.groupHeading}>{t('caregiverApp.settings.groupSafety')}</Text>
+
+        {/* Safety & Escalation */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>{t('caregiverApp.settings.safetyEscalation')}</Text>
+          <View style={styles.card}>
+            <View style={styles.fieldGroup}>
+              <Text style={styles.fieldLabel}>{t('caregiverApp.settings.escalationTiming')}</Text>
+              <View style={styles.pickerRow}>
+                {[3, 5, 10, 15].map((val) => (
+                  <TouchableOpacity
+                    key={val}
+                    style={[styles.pickerOption, escalationMinutes === val && styles.pickerOptionSelected]}
+                    onPress={() => setEscalationMinutes(val)}
+                    activeOpacity={0.7}
+                  >
+                    <Text style={[styles.pickerOptionText, escalationMinutes === val && styles.pickerOptionTextSelected]}>
+                      {val} {t('caregiverApp.settings.minutes')}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+              <Text style={styles.fieldHint}>{t('caregiverApp.settings.escalationTimingDesc')}</Text>
+            </View>
+            <View style={styles.fieldGroup}>
+              <Text style={styles.fieldLabel}>{t('caregiverApp.settings.offlineThreshold')}</Text>
+              <View style={styles.pickerRow}>
+                {[15, 30, 60, 120].map((val) => (
+                  <TouchableOpacity
+                    key={val}
+                    style={[styles.pickerOption, offlineAlertMinutes === val && styles.pickerOptionSelected]}
+                    onPress={() => setOfflineAlertMinutes(val)}
+                    activeOpacity={0.7}
+                  >
+                    <Text style={[styles.pickerOptionText, offlineAlertMinutes === val && styles.pickerOptionTextSelected]}>
+                      {val} {t('caregiverApp.settings.minutes')}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+              <Text style={styles.fieldHint}>{t('caregiverApp.settings.offlineThresholdDesc')}</Text>
+            </View>
+            <View style={styles.saveRow}>
+              <TouchableOpacity
+                style={[styles.saveButton, isSavingSafety && styles.saveButtonDisabled]}
+                onPress={handleSaveSafetySettings}
+                disabled={isSavingSafety}
+                activeOpacity={0.7}
+              >
+                {isSavingSafety ? (
+                  <ActivityIndicator color={COLORS.textInverse} size="small" />
+                ) : (
+                  <Text style={styles.saveButtonText}>{t('common.save')}</Text>
+                )}
+              </TouchableOpacity>
+              {safetySaved && (
+                <Text style={styles.savedText}>{t('caregiverApp.settings.saved')}</Text>
+              )}
+            </View>
+          </View>
+        </View>
+
+        {/* Notifications */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>{t('caregiverApp.settings.notifications')}</Text>
           <View style={styles.card}>
@@ -508,95 +1247,8 @@ export default function SettingsScreen() {
           </View>
         </View>
 
-        {/* Care Code Section */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>{t('caregiverApp.family.careCode')}</Text>
-          <View style={styles.card}>
-            <View style={styles.codeContainer}>
-              <Text style={styles.careCode}>
-                {household?.care_code
-                  ? `${household.care_code.slice(0, 3)} ${household.care_code.slice(3)}`
-                  : '--- ---'}
-              </Text>
-            </View>
-            <Text style={styles.codeHelp}>{t('caregiverApp.family.careCodeHelp')}</Text>
-            <View style={styles.codeActions}>
-              <TouchableOpacity
-                style={styles.codeButton}
-                onPress={handleCopyCode}
-                activeOpacity={0.7}
-              >
-                <Text style={styles.codeButtonText}>
-                  {codeCopied ? t('caregiverApp.settings.codeCopied') : t('caregiverApp.settings.copyCode')}
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={[styles.codeButton, styles.codeButtonDanger]}
-                onPress={handleRegenerateCode}
-                disabled={isRegenerating}
-                activeOpacity={0.7}
-              >
-                {isRegenerating ? (
-                  <ActivityIndicator color={COLORS.danger} size="small" />
-                ) : (
-                  <Text style={[styles.codeButtonText, styles.codeButtonTextDanger]}>
-                    {t('caregiverApp.settings.regenerateCode')}
-                  </Text>
-                )}
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-
-        {/* Photo Gallery Section */}
-        {patient?.id && (
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>{t('caregiverApp.settings.photoGallery')}</Text>
-            <View style={styles.card}>
-              <Text style={styles.photoDesc}>{t('caregiverApp.settings.photoGalleryDesc')}</Text>
-
-              {photos.length > 0 ? (
-                <>
-                  <Text style={styles.photoCount}>
-                    {t('caregiverApp.settings.photosCount', { count: photos.length })}
-                  </Text>
-                  <View style={styles.photoGrid}>
-                    {photos.map((url) => (
-                      <TouchableOpacity
-                        key={url}
-                        style={styles.photoThumb}
-                        onLongPress={() => handleDeletePhoto(url)}
-                        activeOpacity={0.8}
-                      >
-                        <Image source={{ uri: url }} style={styles.photoImage} />
-                      </TouchableOpacity>
-                    ))}
-                  </View>
-                  <Text style={styles.photoHintText}>{t('caregiverApp.settings.photoUploadHint')}</Text>
-                </>
-              ) : (
-                <Text style={styles.noPhotosText}>{t('caregiverApp.settings.noPhotosYet')}</Text>
-              )}
-
-              <TouchableOpacity
-                style={[styles.saveButton, (isUploadingPhotos || photos.length >= 20) && styles.saveButtonDisabled]}
-                onPress={handleUploadPhotos}
-                disabled={isUploadingPhotos || photos.length >= 20}
-                activeOpacity={0.7}
-              >
-                {isUploadingPhotos ? (
-                  <ActivityIndicator color={COLORS.textInverse} size="small" />
-                ) : (
-                  <Text style={styles.saveButtonText}>
-                    {photos.length >= 20
-                      ? t('caregiverApp.settings.maxPhotosReached')
-                      : t('caregiverApp.settings.uploadPhotos')}
-                  </Text>
-                )}
-              </TouchableOpacity>
-            </View>
-          </View>
-        )}
+        {/* ── ACCOUNT ── */}
+        <Text style={styles.groupHeading}>{t('caregiverApp.settings.groupAccount')}</Text>
 
         {/* Change Password Section */}
         <View style={styles.section}>
@@ -819,6 +1471,26 @@ const styles = StyleSheet.create({
     ...SHADOWS.sm,
   },
 
+  // Group headings
+  groupHeading: {
+    fontSize: 13,
+    fontWeight: '700',
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textMuted,
+    textTransform: 'uppercase',
+    letterSpacing: 1,
+    marginBottom: 16,
+    marginTop: 8,
+  },
+
+  // Card description
+  cardDesc: {
+    fontSize: 14,
+    fontFamily: FONTS.body,
+    color: COLORS.textSecondary,
+    marginBottom: 16,
+  },
+
   // Profile fields
   fieldGroup: {
     marginBottom: 16,
@@ -883,6 +1555,157 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: FONTS.bodyMedium,
     color: COLORS.success,
+  },
+
+  // Multiline text input
+  textArea: {
+    minHeight: 80,
+    textAlignVertical: 'top',
+    paddingTop: 12,
+  },
+
+  // Field row (side by side)
+  fieldRow: {
+    flexDirection: 'row',
+    gap: 12,
+    marginBottom: 16,
+  },
+  fieldHalf: {
+    flex: 1,
+  },
+  fieldHint: {
+    fontSize: 12,
+    fontFamily: FONTS.body,
+    color: COLORS.textMuted,
+    marginTop: 4,
+  },
+
+  // Contact styles
+  contactRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: COLORS.background,
+    borderRadius: RADIUS.lg,
+    padding: 14,
+    marginBottom: 8,
+  },
+  contactName: {
+    fontSize: 16,
+    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textPrimary,
+  },
+  contactDetail: {
+    fontSize: 14,
+    fontFamily: FONTS.body,
+    color: COLORS.textSecondary,
+    marginTop: 2,
+  },
+  removeText: {
+    fontSize: 14,
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.danger,
+  },
+  noContactsText: {
+    fontSize: 14,
+    fontFamily: FONTS.body,
+    color: COLORS.textMuted,
+    backgroundColor: COLORS.brand50,
+    borderRadius: RADIUS.lg,
+    padding: 12,
+    marginBottom: 16,
+  },
+  addContactBox: {
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    borderRadius: RADIUS.lg,
+    padding: 16,
+    marginBottom: 16,
+  },
+  secondaryButton: {
+    borderWidth: 1,
+    borderColor: COLORS.brand600,
+    borderRadius: RADIUS.lg,
+    paddingVertical: 12,
+    alignItems: 'center',
+  },
+  secondaryButtonText: {
+    fontSize: 15,
+    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.brand600,
+  },
+
+  // Radio buttons (complexity)
+  radioRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 12,
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: COLORS.border,
+  },
+  radioOuter: {
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    borderWidth: 2,
+    borderColor: COLORS.border,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 2,
+  },
+  radioOuterSelected: {
+    borderColor: COLORS.brand600,
+  },
+  radioInner: {
+    width: 12,
+    height: 12,
+    borderRadius: 6,
+    backgroundColor: COLORS.brand600,
+  },
+  radioLabel: {
+    fontSize: 16,
+    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textPrimary,
+  },
+  radioDesc: {
+    fontSize: 14,
+    fontFamily: FONTS.body,
+    color: COLORS.textMuted,
+    marginTop: 2,
+  },
+
+  // Picker row (escalation/offline options)
+  pickerRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+    marginTop: 8,
+  },
+  pickerOption: {
+    paddingVertical: 8,
+    paddingHorizontal: 14,
+    borderRadius: RADIUS.lg,
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    backgroundColor: COLORS.background,
+  },
+  pickerOptionSelected: {
+    borderColor: COLORS.brand600,
+    backgroundColor: COLORS.brand50,
+  },
+  pickerOptionText: {
+    fontSize: 14,
+    fontFamily: FONTS.body,
+    color: COLORS.textSecondary,
+  },
+  pickerOptionTextSelected: {
+    color: COLORS.brand700,
+    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
   },
 
   // Rows

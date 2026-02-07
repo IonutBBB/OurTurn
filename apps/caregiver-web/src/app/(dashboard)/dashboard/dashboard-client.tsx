@@ -164,7 +164,7 @@ export function JournalCard({ householdId }: { householdId: string }) {
       <div className="flex items-center justify-between mb-4">
         <p className="section-label">{t('caregiverApp.dashboard.careJournal')}</p>
         <Link
-          href="/family"
+          href="/family?tab=journal"
           className="text-xs text-brand-600 hover:text-brand-700 font-medium"
         >
           {t('caregiverApp.dashboard.viewAllArrow')}

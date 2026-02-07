@@ -16,6 +16,7 @@ import * as Haptics from 'expo-haptics';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../../src/stores/auth-store';
 import { queueAlert } from '../../src/utils/offline-cache';
+import { sendEmergencySMS } from '../../src/utils/emergency-sms';
 import { createLocationAlert } from '@ourturn/supabase';
 import { getEmergencyNumber } from '@ourturn/shared';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
@@ -172,6 +173,14 @@ export default function HelpScreen() {
         latitude,
         longitude,
         triggeredAt: new Date().toISOString(),
+      });
+      // SMS fallback when offline
+      sendEmergencySMS({
+        patientName: patient?.name,
+        latitude,
+        longitude,
+        emergencyContacts,
+        countryCode,
       });
     }
   };

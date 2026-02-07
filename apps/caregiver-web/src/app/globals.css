@@ -105,7 +105,7 @@
 
   --text-primary: #EDE5D8;
   --text-secondary: #B8A898;
-  --text-muted: #7A6E62;
+  --text-muted: #9A8E82;
   --text-inverse: #1A1612;
 
   --status-success: #7BC48D;
@@ -774,4 +774,60 @@ body::before {
   .page-enter {
     opacity: 1;
   }
+}
+
+/* ============================================================
+   Toolkit Sliders
+   ============================================================ */
+.slider-toolkit {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.slider-toolkit::-webkit-slider-runnable-track {
+  height: 8px;
+  border-radius: 9999px;
+  background: var(--surface-border);
+}
+
+.slider-toolkit::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--brand-600);
+  border: 3px solid white;
+  margin-top: -8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s ease;
+}
+
+.slider-toolkit::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.slider-toolkit::-moz-range-track {
+  height: 8px;
+  border-radius: 9999px;
+  background: var(--surface-border);
+}
+
+.slider-toolkit::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--brand-600);
+  border: 3px solid white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.slider-toolkit:focus-visible {
+  outline: 2px solid var(--brand-600);
+  outline-offset: 4px;
+  border-radius: 4px;
 }
