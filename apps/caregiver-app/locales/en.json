@@ -20,7 +20,11 @@
     "next": "Next",
     "confirm": "Confirm",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "you": "You",
+    "unknown": "Unknown",
+    "saving": "Saving...",
+    "primary": "Primary"
   },
   "categories": {
     "medication": "Medication",
@@ -568,32 +572,98 @@
       "toolkit": "Toolkit",
       "reports": "Reports",
       "settings": "Settings",
-      "crisis": "Crisis Toolkit"
+      "crisis": "Crisis Hub"
     },
     "crisis": {
-      "title": "Crisis Toolkit",
-      "callHelpline": "Call Dementia Helpline",
-      "callHelplineDesc": "Speak to a trained advisor now",
-      "logCrisisEvent": "Log Crisis Event",
-      "logCrisisPlaceholder": "Describe what happened...",
-      "logCrisisSaving": "Saving...",
-      "logCrisisSaved": "Crisis event logged",
-      "deEscalation": "De-escalation Guide",
-      "step1Title": "Stay Calm",
-      "step1Desc": "Take a slow, deep breath. Your calm energy will help them feel safe.",
-      "step2Title": "Validate Feelings",
-      "step2Desc": "Say 'I can see you're upset. That must be really hard.' Don't argue or correct.",
-      "step3Title": "Simplify",
-      "step3Desc": "Use short, simple sentences. One idea at a time.",
-      "step4Title": "Redirect",
-      "step4Desc": "Gently change the subject. Suggest a familiar activity, song, or walk.",
-      "step5Title": "Gentle Touch",
-      "step5Desc": "If welcome, a gentle hand on the arm can be reassuring.",
-      "step6Title": "Give Space",
-      "step6Desc": "If nothing works, ensure safety and give them space.",
-      "supportResources": "Support Resources",
-      "callNow": "Call now",
-      "visitWebsite": "Visit website"
+      "title": "Crisis Hub",
+      "subtitle": "Real-time crisis management and de-escalation support",
+      "eventLogged": "Crisis event logged",
+      "logEvent": "Log Crisis Event",
+      "logPlaceholder": "Describe what happened...",
+      "status": {
+        "allClear": "All Clear",
+        "allClearDesc": "No active alerts",
+        "activeAlerts": "Active Alerts",
+        "lastKnownLocation": "Last known location",
+        "viewOnMap": "View on map",
+        "noLocationData": "No location data available"
+      },
+      "actions": {
+        "modeLabel": "Your situation",
+        "withThem": "I'm with them",
+        "remote": "I'm remote",
+        "startDeEscalation": "Start De-Escalation",
+        "startDeEscalationDesc": "Step-by-step guided calming flow",
+        "callEmergency": "Call Emergency",
+        "callEmergencyDesc": "Call local emergency services",
+        "alertFamily": "Alert Family",
+        "alertFamilyDesc": "Send push notification to all caregivers",
+        "alertFamilySent": "Family members notified",
+        "alertFamilyFailed": "Failed to notify family. Please try again.",
+        "viewLocation": "View Location",
+        "viewLocationDesc": "See {{name}}'s current location on map",
+        "contactPrimary": "Contact Primary Caregiver",
+        "contactPrimaryDesc": "Reach the primary caregiver via email",
+        "logEvent": "Log Event",
+        "logEventDesc": "Record this moment in the crisis journal"
+      },
+      "wizard": {
+        "breathingTitle": "Let's start with a calming breath",
+        "breathingInstruction": "Breathe in slowly... hold... breathe out...",
+        "stepOf": "Step {{current}} of {{total}}",
+        "thisHelped": "This helped",
+        "tryNext": "Try next step",
+        "skip": "Skip",
+        "completionTitle": "Well done. You handled that with care.",
+        "completionDesc": "Would you like to record any notes about what happened?",
+        "crisisNotesPlaceholder": "What happened? What helped? Any triggers noticed...",
+        "saveAndClose": "Save & Close",
+        "closeWithoutSaving": "Close without saving"
+      },
+      "history": {
+        "title": "Recent Crisis Events",
+        "noEvents": "No crisis events in the last 30 days.",
+        "viewAllInJournal": "View all in Journal"
+      },
+      "steps": {
+        "stayCalm": {
+          "title": "Stay Calm",
+          "detail": "Take a slow, deep breath. Your calm energy will help them feel safe.",
+          "script": "I'm right here with you. Everything is okay."
+        },
+        "validateFeelings": {
+          "title": "Validate Feelings",
+          "detail": "Say 'I can see you're upset. That must be really hard.' Don't argue or correct.",
+          "script": "I can see you're upset. That must be really difficult."
+        },
+        "simplifyEnvironment": {
+          "title": "Simplify the Environment",
+          "detail": "Use short, simple sentences. One idea at a time. Avoid asking 'why' questions.",
+          "script": "Let's make things simpler. One thing at a time."
+        },
+        "redirectAttention": {
+          "title": "Redirect Attention",
+          "detail": "Gently change the subject. Suggest a familiar activity, song, or walk.",
+          "script": "How about we try something different? Let's take a little walk together."
+        },
+        "useGentleTouch": {
+          "title": "Use Gentle Touch",
+          "detail": "If welcome, a gentle hand on the arm can be reassuring. Watch their response.",
+          "script": "Is it okay if I hold your hand? I'm right here."
+        },
+        "giveSpace": {
+          "title": "Give Space",
+          "detail": "If nothing works, ensure safety and give them space. It's okay to step back.",
+          "script": "I'll be right nearby if you need me. Take your time."
+        }
+      },
+      "helplines": "Helplines",
+      "noHelplineAvailable": "No helpline found for your country",
+      "call": "Call",
+      "email": "Email",
+      "website": "Website",
+      "familyContacts": "Family Contacts",
+      "supportResources": "Support Resources"
     },
     "tabs": {
       "dashboard": "Dashboard",

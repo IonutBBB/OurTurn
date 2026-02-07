@@ -30,19 +30,6 @@ export function HelpRequestForm({ caregiverId, householdId, initialRequests }: H
   const sendRequest = async (message: string, templateKey?: string) => {
     setIsSending(true);
     try {
-      const todayStart = new Date();
-      todayStart.setHours(0, 0, 0, 0);
-      const { count } = await supabase
-        .from('caregiver_help_requests')
-        .select('*', { count: 'exact', head: true })
-        .eq('requester_id', caregiverId)
-        .gte('created_at', todayStart.toISOString());
-
-      if ((count || 0) >= 5) {
-        Alert.alert('', t('caregiverApp.toolkit.help.limitReached'));
-        return;
-      }
-
       const { data, error } = await supabase
         .from('caregiver_help_requests')
         .insert({

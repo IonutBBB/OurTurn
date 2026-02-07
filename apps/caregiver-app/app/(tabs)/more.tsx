@@ -17,6 +17,7 @@ export default function MoreScreen() {
   const menuItems = [
     { icon: '👨‍👩‍👧', label: t('caregiverApp.nav.family'), onPress: () => router.push('/family') },
     { icon: '🧰', label: t('caregiverApp.nav.toolkit'), onPress: () => router.push('/wellbeing') },
+    { icon: '🚨', label: t('caregiverApp.nav.crisis'), onPress: () => router.push('/crisis') },
     { icon: '📄', label: t('caregiverApp.nav.reports'), onPress: () => router.push('/reports') },
     { icon: '⚙️', label: t('caregiverApp.nav.settings'), onPress: () => router.push('/settings') },
   ];

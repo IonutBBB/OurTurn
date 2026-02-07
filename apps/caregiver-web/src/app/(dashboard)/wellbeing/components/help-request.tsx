@@ -29,6 +29,27 @@ export function HelpRequest({ caregiverId, householdId, initialRequests }: HelpR
   const [customMessage, setCustomMessage] = useState('');
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null);
   const [isSending, setIsSending] = useState(false);
+  const [showAll, setShowAll] = useState(false);
+  const [allLoaded, setAllLoaded] = useState(false);
+
+  const loadAllRequests = async () => {
+    const { data } = await supabase
+      .from('caregiver_help_requests')
+      .select('*')
+      .eq('household_id', householdId)
+      .order('created_at', { ascending: false });
+    if (data) {
+      setRequests(data);
+      setAllLoaded(true);
+    }
+  };
+
+  const handleViewAll = async () => {
+    if (!showAll && !allLoaded) {
+      await loadAllRequests();
+    }
+    setShowAll((prev) => !prev);
+  };
 
   const sendRequest = async (message: string, templateKey?: string) => {
     setIsSending(true);
@@ -38,25 +59,6 @@ export function HelpRequest({ caregiverId, householdId, initialRequests }: HelpR
       if (!session) {
         console.error('[HelpRequest] No auth session — user may need to re-login');
         showToast(t('common.error'), 'error');
-        return;
-      }
-
-      // Client-side rate limit check
-      const todayStart = new Date();
-      todayStart.setHours(0, 0, 0, 0);
-      const { count, error: countError } = await supabase
-        .from('caregiver_help_requests')
-        .select('*', { count: 'exact', head: true })
-        .eq('requester_id', caregiverId)
-        .gte('created_at', todayStart.toISOString());
-
-      if (countError) {
-        console.error('[HelpRequest] Rate limit check failed:', countError.message, '| code:', countError.code);
-        throw countError;
-      }
-
-      if ((count || 0) >= 5) {
-        showToast(t('caregiverApp.toolkit.help.limitReached'), 'error');
         return;
       }
 
@@ -183,14 +185,26 @@ export function HelpRequest({ caregiverId, householdId, initialRequests }: HelpR
 
       {/* Recent requests */}
       <div className="mt-4">
-        <h3 className="text-sm font-semibold text-text-secondary mb-3">
-          {t('caregiverApp.toolkit.help.recentRequests')}
-        </h3>
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="text-sm font-semibold text-text-secondary">
+            {t('caregiverApp.toolkit.help.recentRequests')}
+          </h3>
+          {requests.length > 5 && (
+            <button
+              onClick={handleViewAll}
+              className="text-xs text-brand-600 hover:text-brand-700 font-medium"
+            >
+              {showAll
+                ? t('caregiverApp.toolkit.help.showLess')
+                : t('caregiverApp.toolkit.help.viewAll')}
+            </button>
+          )}
+        </div>
         {requests.length === 0 ? (
           <p className="text-sm text-text-muted">{t('caregiverApp.toolkit.help.noRequests')}</p>
         ) : (
           <div className="space-y-2">
-            {requests.slice(0, 5).map((req) => (
+            {(showAll ? requests : requests.slice(0, 5)).map((req) => (
               <div
                 key={req.id}
                 className="flex items-center justify-between p-3 rounded-xl bg-surface-elevated/50 border border-surface-border"
