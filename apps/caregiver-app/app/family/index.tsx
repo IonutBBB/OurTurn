@@ -41,6 +41,11 @@ export default function FamilyScreen() {
   const [newEntryType, setNewEntryType] = useState<JournalEntryType>('observation');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Edit/delete state
+  const [editingEntryId, setEditingEntryId] = useState<string | null>(null);
+  const [editContent, setEditContent] = useState('');
+  const [editEntryType, setEditEntryType] = useState<JournalEntryType>('observation');
+
   const loadData = async () => {
     if (!household?.id) return;
 
@@ -142,6 +147,93 @@ export default function FamilyScreen() {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const startEditing = (entry: CareJournalEntry & { author_name?: string }) => {
+    setEditingEntryId(entry.id);
+    setEditContent(entry.content);
+    setEditEntryType(entry.entry_type as JournalEntryType);
+  };
+
+  const cancelEditing = () => {
+    setEditingEntryId(null);
+    setEditContent('');
+    setEditEntryType('observation');
+  };
+
+  const handleEditEntry = async () => {
+    if (!editingEntryId || !editContent.trim()) return;
+
+    try {
+      const { error } = await supabase
+        .from('care_journal_entries')
+        .update({ content: editContent.trim(), entry_type: editEntryType })
+        .eq('id', editingEntryId);
+
+      if (error) throw error;
+
+      setJournalEntries((prev) =>
+        prev.map((e) =>
+          e.id === editingEntryId
+            ? { ...e, content: editContent.trim(), entry_type: editEntryType }
+            : e
+        )
+      );
+      cancelEditing();
+      await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    } catch (err) {
+      if (__DEV__) console.error('Failed to update entry:', err);
+      Alert.alert(t('common.errorTitle'), t('common.error'));
+    }
+  };
+
+  const handleDeleteEntry = (entryId: string) => {
+    Alert.alert(
+      t('caregiverApp.family.deleteConfirmTitle'),
+      t('caregiverApp.family.deleteConfirmMessage'),
+      [
+        { text: t('common.cancel'), style: 'cancel' },
+        {
+          text: t('common.delete'),
+          style: 'destructive',
+          onPress: async () => {
+            try {
+              const { error } = await supabase
+                .from('care_journal_entries')
+                .delete()
+                .eq('id', entryId);
+
+              if (error) throw error;
+
+              setJournalEntries((prev) => prev.filter((e) => e.id !== entryId));
+              await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+            } catch (err) {
+              if (__DEV__) console.error('Failed to delete entry:', err);
+              Alert.alert(t('common.errorTitle'), t('common.error'));
+            }
+          },
+        },
+      ]
+    );
+  };
+
+  const showEntryActions = (entry: CareJournalEntry & { author_name?: string }) => {
+    Alert.alert(
+      undefined as any,
+      undefined as any,
+      [
+        {
+          text: t('common.edit'),
+          onPress: () => startEditing(entry),
+        },
+        {
+          text: t('common.delete'),
+          style: 'destructive',
+          onPress: () => handleDeleteEntry(entry.id),
+        },
+        { text: t('common.cancel'), style: 'cancel' },
+      ]
+    );
   };
 
   const formatDate = (dateStr: string) => {
@@ -320,20 +412,80 @@ export default function FamilyScreen() {
               </View>
             ) : (
               journalEntries.map((entry) => {
-                const typeConfig = ENTRY_TYPE_CONFIG[entry.entry_type as JournalEntryType] || {
-                  emoji: '📝',
-                  label: 'Note',
-                };
+                const isEditing = editingEntryId === entry.id;
+                const typeConfig = isEditing
+                  ? ENTRY_TYPE_CONFIG[editEntryType]
+                  : ENTRY_TYPE_CONFIG[entry.entry_type as JournalEntryType] || {
+                      emoji: '📝',
+                      label: 'Note',
+                    };
                 return (
                   <View key={entry.id} style={styles.entryCard}>
                     <View style={styles.entryHeader}>
                       <Text style={styles.entryEmoji}>{typeConfig.emoji}</Text>
                       <View style={styles.entryMeta}>
-                        <Text style={styles.entryAuthor}>{entry.author_name}</Text>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+                          <Text style={styles.entryAuthor}>{entry.author_name}</Text>
+                          {entry.updated_at && entry.updated_at !== entry.created_at && !isEditing && (
+                            <Text style={styles.editedLabel}>{t('caregiverApp.family.edited')}</Text>
+                          )}
+                        </View>
                         <Text style={styles.entryTime}>{formatDate(entry.created_at)}</Text>
                       </View>
+                      {!isEditing && (
+                        <TouchableOpacity
+                          style={styles.kebabButton}
+                          onPress={() => showEntryActions(entry)}
+                          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                        >
+                          <Text style={styles.kebabText}>⋮</Text>
+                        </TouchableOpacity>
+                      )}
                     </View>
-                    <Text style={styles.entryContent}>{entry.content}</Text>
+                    {isEditing ? (
+                      <View style={styles.editContainer}>
+                        <TextInput
+                          style={styles.editInput}
+                          value={editContent}
+                          onChangeText={setEditContent}
+                          multiline
+                          autoFocus
+                          placeholderTextColor={COLORS.textMuted}
+                        />
+                        <View style={styles.entryTypeRow}>
+                          {(Object.keys(ENTRY_TYPE_CONFIG) as JournalEntryType[]).map((type) => {
+                            const config = ENTRY_TYPE_CONFIG[type];
+                            const isSelected = editEntryType === type;
+                            return (
+                              <TouchableOpacity
+                                key={type}
+                                style={[styles.entryTypeButton, isSelected && styles.entryTypeButtonActive]}
+                                onPress={() => setEditEntryType(type)}
+                              >
+                                <Text style={styles.entryTypeEmoji}>{config.emoji}</Text>
+                                <Text style={[styles.entryTypeLabel, isSelected && styles.entryTypeLabelActive]}>
+                                  {config.label}
+                                </Text>
+                              </TouchableOpacity>
+                            );
+                          })}
+                        </View>
+                        <View style={styles.editActions}>
+                          <TouchableOpacity
+                            style={[styles.saveButton, !editContent.trim() && styles.postButtonDisabled]}
+                            onPress={handleEditEntry}
+                            disabled={!editContent.trim()}
+                          >
+                            <Text style={styles.saveButtonText}>{t('common.save')}</Text>
+                          </TouchableOpacity>
+                          <TouchableOpacity style={styles.cancelButton} onPress={cancelEditing}>
+                            <Text style={styles.cancelButtonText}>{t('common.cancel')}</Text>
+                          </TouchableOpacity>
+                        </View>
+                      </View>
+                    ) : (
+                      <Text style={styles.entryContent}>{entry.content}</Text>
+                    )}
                   </View>
                 );
               })
@@ -684,5 +836,65 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.body,
     color: COLORS.textPrimary,
     lineHeight: 22,
+  },
+  kebabButton: {
+    padding: 4,
+  },
+  kebabText: {
+    fontSize: 20,
+    fontWeight: '700',
+    color: COLORS.textMuted,
+    lineHeight: 24,
+  },
+  editedLabel: {
+    fontSize: 12,
+    fontStyle: 'italic',
+    color: COLORS.textMuted,
+    fontFamily: FONTS.body,
+  },
+  editContainer: {
+    gap: 12,
+  },
+  editInput: {
+    fontSize: 16,
+    fontFamily: FONTS.body,
+    color: COLORS.textPrimary,
+    minHeight: 80,
+    textAlignVertical: 'top',
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    borderRadius: RADIUS.md,
+    padding: 12,
+    backgroundColor: COLORS.background,
+  },
+  editActions: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+  saveButton: {
+    backgroundColor: COLORS.brand600,
+    borderRadius: RADIUS.lg,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    ...SHADOWS.sm,
+  },
+  saveButtonText: {
+    fontSize: 15,
+    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textInverse,
+  },
+  cancelButton: {
+    borderRadius: RADIUS.lg,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderWidth: 1,
+    borderColor: COLORS.border,
+  },
+  cancelButtonText: {
+    fontSize: 15,
+    fontWeight: '500',
+    fontFamily: FONTS.bodyMedium,
+    color: COLORS.textSecondary,
   },
 });

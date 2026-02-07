@@ -167,7 +167,21 @@
       "sleepPoor": "Poor",
       "sleepFair": "Fair",
       "sleepWell": "Well",
-      "patient": "Patient"
+      "patient": "Patient",
+      "deviceStatus": "Device Status",
+      "deviceOnline": "Online",
+      "deviceOffline": "Offline",
+      "lastSeenAt": "Last seen: {{time}}",
+      "lastSeenNever": "Never connected",
+      "engagementSummary": "Today's Engagement",
+      "tasksCompletedPercent": "{{percent}}% tasks",
+      "checkedIn": "Checked in",
+      "notCheckedIn": "Not checked in",
+      "brainActivity": "Brain activity",
+      "brainActivityDone": "Done",
+      "brainActivityPending": "Pending",
+      "alertsToday": "Alerts today",
+      "noAlertsToday": "None"
     },
     "carePlan": {
       "title": "{{name}}'s Daily Plan",
@@ -241,7 +255,8 @@
         "left_safe_zone": "Left Safe Zone",
         "inactive": "Inactive",
         "night_movement": "Night Movement",
-        "take_me_home_tapped": "Take Me Home Tapped"
+        "take_me_home_tapped": "Take Me Home Tapped",
+        "sos_triggered": "SOS Triggered"
       },
       "leaveZoneAlert": "Notify when {{name}} leaves a safe zone",
       "inactivityAlert": "Notify when no movement for",
@@ -336,7 +351,10 @@
       "inviteName": "Name",
       "inviteRelationship": "Relationship",
       "sendInvite": "Send Invite",
-      "viewAll": "View all entries"
+      "viewAll": "View all entries",
+      "deleteConfirmTitle": "Delete Journal Entry",
+      "deleteConfirmMessage": "Are you sure you want to delete this journal entry? This cannot be undone.",
+      "edited": "(edited)"
     },
     "wellbeing": {
       "title": "How are YOU doing, {{name}}?",
@@ -377,10 +395,16 @@
       "burnoutNotice": "We notice you've been having a tough time",
       "burnoutWarning": "You've been feeling stressed lately. That's completely understandable. Would you like to talk to the AI Coach, or access support resources?",
       "selfCareReminder": "Remember: You can't pour from an empty cup. Your wellbeing matters too.",
+      "respiteTracker": "Respite Tracker",
+      "respiteHint": "Track the days you took time for yourself this week. Even small breaks count!",
       "moodHistory": "Mood History",
       "moodHistoryEmpty": "Start tracking your mood to see your history here.",
       "talkToCoach": "Talk to AI Coach",
-      "viewResources": "View Resources"
+      "viewResources": "View Resources",
+      "burnoutAlertTitle": "Burnout Alert",
+      "burnoutAlertDismiss": "Dismiss",
+      "burnoutAlertDays": "{{count}} consecutive low-mood days detected",
+      "burnoutAlertMessage": "We've noticed you've been feeling low for several days in a row. Please reach out to someone you trust, or try the AI Coach for support."
     },
     "reports": {
       "title": "Doctor Visit Report",
@@ -617,7 +641,25 @@
       "photoUploadHint": "Upload up to 20 photos (max 5MB each). These will appear in your loved one's daily brain wellness activities.",
       "photoUploadFailed": "Failed to upload photo. Please try again.",
       "photoDeleteFailed": "Failed to delete photo. Please try again.",
-      "noPhotosYet": "No photos uploaded yet"
+      "noPhotosYet": "No photos uploaded yet",
+      "patientComplexity": "Patient App Mode",
+      "patientComplexityDesc": "Adjust the patient app interface based on your loved one's needs. Changes take effect immediately.",
+      "complexity": {
+        "full": "Full",
+        "fullDesc": "All features — daily plan, check-in, brain activity, help tab",
+        "simplified": "Simplified",
+        "simplifiedDesc": "Larger text, fewer details — easier to use on harder days",
+        "essential": "Essential",
+        "essentialDesc": "Minimal interface — only music and call for help buttons"
+      },
+      "safetyEscalation": "Safety & Escalation",
+      "escalationTiming": "Escalation timing",
+      "escalationTimingDesc": "How long to wait before escalating an unacknowledged safety alert to the next level",
+      "offlineThreshold": "Offline alert threshold",
+      "offlineThresholdDesc": "Alert caregivers if the patient's device hasn't been seen for this long during waking hours",
+      "minutes": "minutes",
+      "respiteReminders": "Respite Reminders",
+      "respiteRemindersDesc": "Get gentle reminders to take breaks and practice self-care"
     },
     "auth": {
       "login": "Log in",
@@ -660,7 +702,63 @@
       "family": "Family",
       "wellbeing": "Wellbeing",
       "reports": "Reports",
-      "settings": "Settings"
+      "settings": "Settings",
+      "crisis": "Crisis Toolkit"
+    },
+    "crisis": {
+      "title": "Crisis Toolkit",
+      "subtitle": "Resources and guidance for difficult moments",
+      "pageTitle": "Crisis Toolkit",
+      "pageSubtitle": "Resources and guidance for difficult moments",
+      "setupDesc": "Set up your care profile to access crisis management tools.",
+      "completeSetupFirst": "Complete Setup First",
+      "startOnboarding": "Start Onboarding",
+      "callHelpline": "Call Dementia Helpline",
+      "callHelplineDesc": "Speak to a trained advisor now",
+      "logEvent": "Log Crisis Event",
+      "logEventDesc": "Record what happened for your care journal",
+      "logPlaceholder": "Describe what happened...",
+      "eventLogged": "Crisis event logged",
+      "logCrisisEvent": "Log Crisis Event",
+      "logCrisisPlaceholder": "Describe what happened...",
+      "logCrisisSaving": "Saving...",
+      "logCrisisSaved": "Crisis event logged",
+      "logCrisisFailed": "Failed to save. Please try again.",
+      "deEscalationGuide": "De-Escalation Guide",
+      "deEscalation": "De-escalation Guide",
+      "steps": {
+        "stayCalm": {
+          "title": "Stay Calm",
+          "detail": "Take a slow, deep breath. Your calm energy will help them feel safe."
+        },
+        "validateFeelings": {
+          "title": "Validate Feelings",
+          "detail": "Say 'I can see you're upset. That must be really hard.' Don't argue or correct."
+        },
+        "simplifyEnvironment": {
+          "title": "Simplify the Environment",
+          "detail": "Use short, simple sentences. One idea at a time. Avoid asking 'why' questions."
+        },
+        "redirectAttention": {
+          "title": "Redirect Attention",
+          "detail": "Gently change the subject. Suggest a familiar activity, song, or walk."
+        },
+        "useGentleTouch": {
+          "title": "Use Gentle Touch",
+          "detail": "If welcome, a gentle hand on the arm can be reassuring. Watch their response."
+        },
+        "giveSpace": {
+          "title": "Give Space",
+          "detail": "If nothing works, ensure safety and give them space. It's okay to step back."
+        }
+      },
+      "resources": "Support Resources",
+      "supportResources": "Support Resources",
+      "noHelplineAvailable": "No helpline found for your country",
+      "call": "Call",
+      "website": "Website",
+      "visitWebsite": "Visit website",
+      "callNow": "Call now"
     }
   },
   "notifications": {

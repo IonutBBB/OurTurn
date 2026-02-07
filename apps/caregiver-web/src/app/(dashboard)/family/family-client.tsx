@@ -10,6 +10,7 @@ import type {
 } from '@ourturn/shared';
 import { hasReachedCaregiverLimit } from '@ourturn/shared/utils/subscription';
 import { UpgradeBanner } from '@/components/upgrade-gate';
+import { useToast } from '@/components/toast';
 
 interface FamilyClientProps {
   householdId: string;
@@ -18,6 +19,7 @@ interface FamilyClientProps {
   initialCaregivers: Caregiver[];
   initialJournalEntries: (CareJournalEntry & { author_name?: string })[];
   subscriptionStatus: string;
+  initialTab?: 'family' | 'journal';
 }
 
 const ENTRY_TYPE_EMOJIS: Record<JournalEntryType, string> = {
@@ -39,8 +41,10 @@ export default function FamilyClient({
   initialCaregivers,
   initialJournalEntries,
   subscriptionStatus,
+  initialTab = 'family',
 }: FamilyClientProps) {
   const { t } = useTranslation();
+  const { showToast } = useToast();
   const supabase = createBrowserClient();
   const [caregivers, setCaregivers] = useState<Caregiver[]>(initialCaregivers);
 
@@ -49,13 +53,27 @@ export default function FamilyClient({
   const [journalEntries, setJournalEntries] = useState<(CareJournalEntry & { author_name?: string })[]>(
     initialJournalEntries
   );
-  const [activeTab, setActiveTab] = useState<'family' | 'journal'>('family');
+  const [activeTab, setActiveTab] = useState<'family' | 'journal'>(initialTab);
   const [showCareCode, setShowCareCode] = useState(false);
 
   // Journal entry form
   const [newEntryContent, setNewEntryContent] = useState('');
   const [newEntryType, setNewEntryType] = useState<JournalEntryType>('observation');
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Edit/delete state
+  const [editingEntryId, setEditingEntryId] = useState<string | null>(null);
+  const [editContent, setEditContent] = useState('');
+  const [editEntryType, setEditEntryType] = useState<JournalEntryType>('observation');
+  const [openMenuId, setOpenMenuId] = useState<string | null>(null);
+
+  // Close menu on click outside
+  useEffect(() => {
+    if (!openMenuId) return;
+    const handleClick = () => setOpenMenuId(null);
+    document.addEventListener('click', handleClick);
+    return () => document.removeEventListener('click', handleClick);
+  }, [openMenuId]);
 
   // Subscribe to real-time updates
   useEffect(() => {
@@ -88,26 +106,41 @@ export default function FamilyClient({
       .on(
         'postgres_changes',
         {
-          event: 'INSERT',
+          event: '*',
           schema: 'public',
           table: 'care_journal_entries',
           filter: `household_id=eq.${householdId}`,
         },
         async (payload) => {
-          // Fetch with author name
-          const { data } = await supabase
-            .from('care_journal_entries')
-            .select('*, caregivers!author_id(name)')
-            .eq('id', (payload.new as CareJournalEntry).id)
-            .single();
+          if (payload.eventType === 'INSERT') {
+            // Fetch with author name
+            const { data } = await supabase
+              .from('care_journal_entries')
+              .select('*, caregivers!author_id(name)')
+              .eq('id', (payload.new as CareJournalEntry).id)
+              .single();
 
-          if (data) {
-            const entry = {
-              ...data,
-              author_name: (data.caregivers as any)?.name || 'Unknown',
-            };
-            delete (entry as any).caregivers;
-            setJournalEntries((prev) => [entry, ...prev]);
+            if (data) {
+              const entry = {
+                ...data,
+                author_name: (data.caregivers as any)?.name || 'Unknown',
+              };
+              delete (entry as any).caregivers;
+              setJournalEntries((prev) => {
+                if (prev.some((e) => e.id === entry.id)) return prev;
+                return [entry, ...prev];
+              });
+            }
+          } else if (payload.eventType === 'UPDATE') {
+            const updated = payload.new as CareJournalEntry;
+            setJournalEntries((prev) =>
+              prev.map((e) =>
+                e.id === updated.id ? { ...e, ...updated } : e
+              )
+            );
+          } else if (payload.eventType === 'DELETE') {
+            const deleted = payload.old as { id: string };
+            setJournalEntries((prev) => prev.filter((e) => e.id !== deleted.id));
           }
         }
       )
@@ -125,21 +158,90 @@ export default function FamilyClient({
 
     setIsSubmitting(true);
     try {
-      const { error } = await supabase.from('care_journal_entries').insert({
-        household_id: householdId,
-        author_id: currentCaregiverId,
-        content: newEntryContent.trim(),
-        entry_type: newEntryType,
-      });
+      const { data, error } = await supabase
+        .from('care_journal_entries')
+        .insert({
+          household_id: householdId,
+          author_id: currentCaregiverId,
+          content: newEntryContent.trim(),
+          entry_type: newEntryType,
+        })
+        .select('*, caregivers!author_id(name)')
+        .single();
 
       if (error) throw error;
+
+      if (data) {
+        const entry = {
+          ...data,
+          author_name: (data.caregivers as any)?.name || 'Unknown',
+        };
+        delete (entry as any).caregivers;
+        setJournalEntries((prev) => [entry, ...prev]);
+      }
 
       setNewEntryContent('');
       setNewEntryType('observation');
     } catch (err) {
-      // Failed to add journal entry
+      showToast(t('common.error'), 'error');
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const startEditing = (entry: CareJournalEntry & { author_name?: string }) => {
+    setEditingEntryId(entry.id);
+    setEditContent(entry.content);
+    setEditEntryType(entry.entry_type as JournalEntryType);
+    setOpenMenuId(null);
+  };
+
+  const cancelEditing = () => {
+    setEditingEntryId(null);
+    setEditContent('');
+    setEditEntryType('observation');
+  };
+
+  const handleEditEntry = async () => {
+    if (!editingEntryId || !editContent.trim()) return;
+
+    try {
+      const { error } = await supabase
+        .from('care_journal_entries')
+        .update({ content: editContent.trim(), entry_type: editEntryType })
+        .eq('id', editingEntryId);
+
+      if (error) throw error;
+
+      setJournalEntries((prev) =>
+        prev.map((e) =>
+          e.id === editingEntryId
+            ? { ...e, content: editContent.trim(), entry_type: editEntryType }
+            : e
+        )
+      );
+      cancelEditing();
+    } catch (err) {
+      showToast(t('common.error'), 'error');
+    }
+  };
+
+  const handleDeleteEntry = async (entryId: string) => {
+    setOpenMenuId(null);
+    const confirmed = window.confirm(t('caregiverApp.family.deleteConfirmMessage'));
+    if (!confirmed) return;
+
+    try {
+      const { error } = await supabase
+        .from('care_journal_entries')
+        .delete()
+        .eq('id', entryId);
+
+      if (error) throw error;
+
+      setJournalEntries((prev) => prev.filter((e) => e.id !== entryId));
+    } catch (err) {
+      showToast(t('common.error'), 'error');
     }
   };
 
@@ -255,8 +357,8 @@ export default function FamilyClient({
             <div className="divide-y divide-surface-border">
               {caregivers.map((caregiver) => (
                 <div key={caregiver.id} className="p-4 flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-brand-100 dark:bg-brand-900/30 flex items-center justify-center">
-                    <span className="text-xl font-semibold text-brand-700 dark:text-brand-300">
+                  <div className="w-12 h-12 rounded-full bg-brand-100 dark:bg-brand-100 flex items-center justify-center">
+                    <span className="text-xl font-semibold text-brand-700 dark:text-brand-600">
                       {caregiver.name.charAt(0).toUpperCase()}
                     </span>
                   </div>
@@ -264,7 +366,7 @@ export default function FamilyClient({
                     <div className="flex items-center gap-2">
                       <span className="font-medium text-text-primary">{caregiver.name}</span>
                       {caregiver.id === currentCaregiverId && (
-                        <span className="text-xs bg-brand-100 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 px-2 py-0.5 rounded-full">
+                        <span className="text-xs bg-brand-100 dark:bg-brand-100 text-brand-700 dark:text-brand-600 px-2 py-0.5 rounded-full">
                           {t('common.you')}
                         </span>
                       )}
@@ -315,10 +417,10 @@ export default function FamilyClient({
                       key={type}
                       type="button"
                       onClick={() => setNewEntryType(type)}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm transition-colors ${
+                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
                         newEntryType === type
-                          ? 'bg-brand-100 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 border border-brand-300 dark:border-brand-700'
-                          : 'card-inset text-text-secondary hover:bg-brand-50 dark:hover:bg-surface-elevated'
+                          ? 'bg-brand-500 dark:bg-brand-600 text-white border border-brand-600 dark:border-brand-500'
+                          : 'bg-surface-card dark:bg-surface-card text-brand-600 dark:text-brand-400 hover:bg-brand-50 dark:hover:bg-brand-900/20 border border-brand-200 dark:border-brand-800'
                       }`}
                     >
                       <span>{ENTRY_TYPE_EMOJIS[type]}</span>
@@ -350,14 +452,16 @@ export default function FamilyClient({
                 const entryType = entry.entry_type as JournalEntryType;
                 const emoji = ENTRY_TYPE_EMOJIS[entryType] || '📝';
                 const labelKey = ENTRY_TYPE_KEYS[entryType] || 'caregiverApp.family.note';
+                const isEditing = editingEntryId === entry.id;
+
                 return (
                   <div
                     key={entry.id}
                     className="card-paper p-4"
                   >
                     <div className="flex items-start gap-3">
-                      <span className="text-2xl">{emoji}</span>
-                      <div className="flex-1">
+                      <span className="text-2xl">{isEditing ? ENTRY_TYPE_EMOJIS[editEntryType] : emoji}</span>
+                      <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-2">
                           <span className="font-medium text-text-primary">
                             {entry.author_name || t('common.unknown')}
@@ -367,11 +471,90 @@ export default function FamilyClient({
                             {formatDate(entry.created_at)}
                           </span>
                           <span className="text-xs card-inset text-text-secondary px-2 py-0.5 rounded-full">
-                            {t(labelKey)}
+                            {isEditing ? t(ENTRY_TYPE_KEYS[editEntryType]) : t(labelKey)}
                           </span>
+                          {entry.updated_at && entry.updated_at !== entry.created_at && !isEditing && (
+                            <span className="text-xs text-text-muted italic">
+                              {t('caregiverApp.family.edited')}
+                            </span>
+                          )}
                         </div>
-                        <p className="text-text-primary whitespace-pre-wrap">{entry.content}</p>
+                        {isEditing ? (
+                          <div className="space-y-3">
+                            <textarea
+                              value={editContent}
+                              onChange={(e) => setEditContent(e.target.value)}
+                              className="input-warm w-full resize-none"
+                              rows={3}
+                              autoFocus
+                            />
+                            <div className="flex gap-2">
+                              {(Object.keys(ENTRY_TYPE_EMOJIS) as JournalEntryType[]).map((type) => (
+                                <button
+                                  key={type}
+                                  type="button"
+                                  onClick={() => setEditEntryType(type)}
+                                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                                    editEntryType === type
+                                      ? 'bg-brand-500 dark:bg-brand-600 text-white border border-brand-600 dark:border-brand-500'
+                                      : 'bg-surface-card dark:bg-surface-card text-brand-600 dark:text-brand-400 hover:bg-brand-50 dark:hover:bg-brand-900/20 border border-brand-200 dark:border-brand-800'
+                                  }`}
+                                >
+                                  <span>{ENTRY_TYPE_EMOJIS[type]}</span>
+                                  <span>{t(ENTRY_TYPE_KEYS[type])}</span>
+                                </button>
+                              ))}
+                            </div>
+                            <div className="flex gap-2">
+                              <button
+                                onClick={handleEditEntry}
+                                disabled={!editContent.trim()}
+                                className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                              >
+                                {t('common.save')}
+                              </button>
+                              <button
+                                onClick={cancelEditing}
+                                className="px-4 py-2 text-sm font-medium text-text-secondary hover:text-text-primary rounded-lg border border-surface-border hover:bg-surface-card transition-colors"
+                              >
+                                {t('common.cancel')}
+                              </button>
+                            </div>
+                          </div>
+                        ) : (
+                          <p className="text-text-primary whitespace-pre-wrap">{entry.content}</p>
+                        )}
                       </div>
+                      {/* Kebab menu */}
+                      {!isEditing && (
+                        <div className="relative">
+                          <button
+                            onClick={(e) => { e.stopPropagation(); setOpenMenuId(openMenuId === entry.id ? null : entry.id); }}
+                            className="p-1.5 rounded-lg text-text-muted hover:text-text-secondary hover:bg-surface-card transition-colors"
+                            aria-label="Entry actions"
+                          >
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M10 6a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4z" />
+                            </svg>
+                          </button>
+                          {openMenuId === entry.id && (
+                            <div className="absolute right-0 top-8 z-10 w-36 bg-surface-card dark:bg-surface-elevated rounded-lg shadow-lg border border-surface-border py-1">
+                              <button
+                                onClick={() => startEditing(entry)}
+                                className="w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-brand-50 dark:hover:bg-brand-900/20 transition-colors"
+                              >
+                                {t('common.edit')}
+                              </button>
+                              <button
+                                onClick={() => handleDeleteEntry(entry.id)}
+                                className="w-full text-left px-4 py-2 text-sm text-status-red hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+                              >
+                                {t('common.delete')}
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      )}
                     </div>
                   </div>
                 );

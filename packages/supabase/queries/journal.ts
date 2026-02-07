@@ -134,6 +134,26 @@ export async function getEntriesRange(
 }
 
 /**
+ * Update a journal entry
+ */
+export async function updateEntry(
+  entryId: string,
+  content: string,
+  entryType: JournalEntryType
+): Promise<CareJournalEntry> {
+  const { data, error } = await supabase
+    .from('care_journal_entries')
+    .update({ content, entry_type: entryType })
+    .eq('id', entryId)
+    .select()
+    .single();
+
+  if (error) throw error;
+
+  return data;
+}
+
+/**
  * Delete a journal entry
  */
 export async function deleteEntry(entryId: string): Promise<void> {
