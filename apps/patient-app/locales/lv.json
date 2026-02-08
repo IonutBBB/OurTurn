@@ -11,9 +11,9 @@
     "loading": "Ielādē...",
     "error": "Kaut kas nogāja greizi. Lūdzu, mēģiniet vēlreiz.",
     "errorTitle": "Kaut kas nogāja greizi",
-    "errorDefault": "Gadījās neparedzēta kļūda.",
+    "errorDefault": "Notika neparedzēta kļūda.",
     "tryAgain": "Mēģiniet vēlreiz",
-    "offline": "Jūs esat bezsaistē — jūsu dati tiks sinhronizēti, kad būs izveidots savienojums",
+    "offline": "Jūs esat bezsaistē — jūsu dati tiks sinhronizēti, kad būsiet tiešsaistē",
     "synced": "Sinhronizēts"
   },
   "categories": {
@@ -27,15 +27,17 @@
   "patientApp": {
     "todaysPlan": {
       "title": "Šodienas plāns",
-      "progress": "Šodien paveiktas {{completed}} no {{total}} aktivitātēm",
-      "noPlan": "Šodienai nav plānotu aktivitāšu. Jūsu ģimene visu sagatavo!",
+      "progress": "Šodien pabeigtas {{completed}} no {{total}} aktivitātēm",
+      "noPlan": "Šodienai nav plānotu aktivitāšu. Jūsu ģimene visu sakārto!",
       "overdue": "Nokavēts",
       "upcoming": "Gaidāms",
       "nowBadge": "TAGAD",
       "doneAt": "Pabeigts {{time}}",
-      "greatMorning": "Lielisks rīts!",
-      "keepGoing": "Jūs darāt brīnišķīgi!",
-      "allDone": "Viss paveikts šodienai!",
+      "greatMorning": "Lielisks progress šorīt",
+      "keepGoing": "Labi virzāties",
+      "allDone": "Viss paveikts šodienai",
+      "yesterdayCompleted_one": "Vakar jūs pabeidzāt {{count}} aktivitāti",
+      "yesterdayCompleted_other": "Vakar jūs pabeidzāt {{count}} aktivitātes",
       "tapToStart": "Pieskarieties, lai sāktu smadzeņu aktivitāti",
       "opensActivity": "Atver šodienas smadzeņu labsajūtas aktivitāti"
     },
@@ -66,7 +68,7 @@
       },
       "dataCollection": {
         "title": "Vai saglabāt jūsu ikdienas informāciju?",
-        "description": "Lai jūsu ģimene varētu redzēt, kā jums iet"
+        "description": "Lai jūsu ģimene varētu redzēt, kā jums klājas"
       },
       "pushNotifications": {
         "title": "Vai saņemt atgādinājumus?",
@@ -116,12 +118,12 @@
     "activity": {
       "title": "Šodienas aktivitāte",
       "noActivity": "Šodienai nav aktivitātes",
-      "comeBackLater": "Pārbaudiet rīt, lai uzzinātu par jaunu aktivitāti!",
+      "comeBackLater": "Atgriezieties rīt, lai redzētu jaunu aktivitāti!",
       "tapToSpeak": "Pieskarieties, lai runātu",
       "tapToStop": "Pieskarieties, lai apturētu ierakstīšanu",
-      "typeInstead": "Ierakstiet savu atbildi",
+      "typeInstead": "Tā vietā ierakstiet savu atbildi",
       "typeHere": "Ierakstiet savu atbildi šeit...",
-      "speakInstead": "Runājiet",
+      "speakInstead": "Runājiet tā vietā",
       "recordAgain": "Ierakstīt vēlreiz",
       "skipForToday": "Izlaist šodien",
       "defaultFollowUp": "Cik brīnišķīga atmiņa! Paldies, ka dalījāties.",
@@ -147,30 +149,30 @@
       "uploadPhoto": "Augšupielādēt fotoattēlu",
       "removePhoto": "Noņemt fotoattēlu",
       "medicationItems": "Zāles šajā grupā",
-      "medicationItemsHint": "Apvienojiet līdz 3 zālēm, kas tiek lietotas vienlaikus",
+      "medicationItemsHint": "Apvienojiet līdz 3 zālēm, kas jālieto vienlaikus",
       "addMedication": "Pievienot zāles",
       "medName": "Zāļu nosaukums",
       "medDosage": "Deva",
       "removeMedication": "Noņemt",
-      "maxMedications": "Maksimums 3 zāles vienā grupā",
+      "maxMedications": "Maksimāli 3 zāles vienā grupā",
       "uploadingPhoto": "Augšupielāde..."
     }
   },
   "a11y": {
     "doubleTapToComplete": "Divreiz pieskarieties, lai atzīmētu kā pabeigtu",
     "callContact": "Zvanīt {{name}}",
-    "emergencyCallConfirmHint": "Pirms zvana parādīsies apstiprinājums",
+    "emergencyCallConfirmHint": "Pirms zvanīšanas parādīsies apstiprinājums",
     "takeMeHomeHint": "Atver navigāciju uz jūsu mājas adresi",
-    "gettingLocation": "Saņem jūsu atrašanās vietu",
+    "gettingLocation": "Atrašanās vietas iegūšana",
     "removesVoiceRecording": "Noņem jūsu balss ierakstu",
-    "submittingCheckin": "Iesniedz jūsu reģistrēšanos"
+    "submittingCheckin": "Reģistrēšanās iesniegšana"
   },
   "locationTracking": {
     "backgroundNotificationTitle": "OurTurn nodrošina jūsu drošību",
     "backgroundNotificationBody": "Jūsu ģimene var redzēt, ka jums viss ir kārtībā"
   },
   "notifications": {
-    "taskReminder": "{{patientName}}, ir pienācis laiks: {{taskTitle}}",
-    "checkinPrompt": "Laiks jūsu ikdienas reģistrēšanās reizei!"
+    "taskReminder": "{{patientName}}, ir laiks: {{taskTitle}}",
+    "checkinPrompt": "Laiks jūsu ikdienas reģistrācijai!"
   }
 }

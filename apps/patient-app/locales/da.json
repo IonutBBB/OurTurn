@@ -18,33 +18,35 @@
   },
   "categories": {
     "medication": "Medicin",
-    "nutrition": "Måltider og ernæring",
-    "physical": "Fysisk aktivitet",
+    "nutrition": "Måltider & Ernæring",
+    "physical": "Fysisk Aktivitet",
     "cognitive": "Hjernetræning",
-    "social": "Socialt samvær og kontakt",
+    "social": "Socialt & Samvær",
     "health": "Helbredstjek"
   },
   "patientApp": {
     "todaysPlan": {
-      "title": "Dagens plan",
+      "title": "Dagens Plan",
       "progress": "{{completed}} af {{total}} aktiviteter er udført i dag",
-      "noPlan": "Ingen aktiviteter planlagt for i dag. Din familie er ved at planlægge!",
+      "noPlan": "Ingen aktiviteter planlagt for i dag. Din familie er ved at sætte tingene op!",
       "overdue": "Forsinket",
       "upcoming": "Kommende",
       "nowBadge": "NU",
       "doneAt": "Udført kl. {{time}}",
-      "greatMorning": "Godmorgen!",
-      "keepGoing": "Du klarer det fantastisk!",
-      "allDone": "Færdig for i dag!",
+      "greatMorning": "Godt fremskridt her til morgen",
+      "keepGoing": "Godt på vej",
+      "allDone": "Færdig for i dag",
+      "yesterdayCompleted_one": "I går fuldførte du {{count}} aktivitet",
+      "yesterdayCompleted_other": "I går fuldførte du {{count}} aktiviteter",
       "tapToStart": "Tryk for at starte din hjerneaktivitet",
       "opensActivity": "Åbner dagens hjerneaktivitet"
     },
     "help": {
-      "title": "Jeg har brug for hjælp",
-      "callSomeone": "Ring til nogen",
-      "getHomeSafely": "Kom sikkert hjem",
-      "takeMeHome": "Tag mig hjem",
-      "takeMeHomeDesc": "Tryk for at få rutevejledning til dit hjem",
+      "title": "Jeg Har Brug For Hjælp",
+      "callSomeone": "Ring Til Nogen",
+      "getHomeSafely": "Kom Sikkert Hjem",
+      "takeMeHome": "Tag Mig Hjem",
+      "takeMeHomeDesc": "Tryk for at få gåanvisninger til dit hjem",
       "emergency": "Nødsituation",
       "confirmEmergency": "Er du sikker på, at du vil ringe til alarmcentralen?"
     },
@@ -52,7 +54,7 @@
       "button": "SOS",
       "label": "SOS",
       "holdHint": "Hold nede i 2 sekunder for at sende en alarm til din familie",
-      "helpOnTheWay": "Hjælpen er på vej",
+      "helpOnTheWay": "Hjælp er på vej",
       "familyNotified": "Din familie er blevet underrettet",
       "callCaregiver": "Ring til {{name}}",
       "imOkay": "Jeg er okay, gå tilbage"
@@ -61,11 +63,11 @@
       "yes": "Ja",
       "no": "Nej",
       "locationTracking": {
-        "title": "Dele din placering?",
+        "title": "Del din placering?",
         "description": "Så din familie kan hjælpe dig med at komme sikkert hjem"
       },
       "dataCollection": {
-        "title": "Gemme dine daglige oplysninger?",
+        "title": "Gem dine daglige oplysninger?",
         "description": "Så din familie kan se, hvordan du har det"
       },
       "pushNotifications": {
@@ -73,11 +75,11 @@
         "description": "Nyttige påmindelser om måltider og aktiviteter"
       },
       "dataSharing": {
-        "title": "Dele med din familie?",
+        "title": "Del med din familie?",
         "description": "Så dine omsorgspersoner kan støtte dig"
       },
       "voiceRecording": {
-        "title": "Optage stemmebeskeder?",
+        "title": "Optag beskeder?",
         "description": "Så du kan efterlade beskeder til din familie"
       }
     },
@@ -97,7 +99,7 @@
       "moodBad": "Ikke så godt",
       "sleepQuestion": "Har du sovet godt?",
       "sleepGood": "Ja",
-      "sleepOkay": "Sådan okay",
+      "sleepOkay": "Så-så",
       "sleepBad": "Ikke rigtigt",
       "voicePrompt": "Er der noget, du vil fortælle din familie?",
       "voiceTap": "Tryk for at tale",
@@ -107,14 +109,14 @@
       "voicePause": "Pause",
       "voiceDiscard": "Optag igen",
       "send": "Send til familie",
-      "skipVoice": "Spring stemmebesked over",
+      "skipVoice": "Spring talebesked over",
       "thankYou": "Tak! Din familie vil se dette.",
-      "alreadyDone": "Du har allerede checket ind i dag!",
-      "tapToCheckin": "Tryk for at checke ind",
-      "opensCheckin": "Åbner skærmen til daglig check-in"
+      "alreadyDone": "Du har allerede tjekket ind i dag!",
+      "tapToCheckin": "Tryk for at tjekke ind",
+      "opensCheckin": "Åbner skærmen til dagligt check-in"
     },
     "activity": {
-      "title": "Dagens aktivitet",
+      "title": "Dagens Aktivitet",
       "noActivity": "Ingen aktivitet for i dag",
       "comeBackLater": "Kom tilbage i morgen for en ny aktivitet!",
       "tapToSpeak": "Tryk for at tale",
@@ -130,7 +132,7 @@
     },
     "careCode": {
       "welcome": "Velkommen til OurTurn",
-      "enterCode": "Indtast din plejekode",
+      "enterCode": "Indtast din Omsorgskode",
       "helperText": "Dit familiemedlem vil give dig denne kode.",
       "connect": "Forbind",
       "invalidCode": "Kontroller din kode, og prøv igen.",
@@ -144,15 +146,15 @@
     },
     "taskPhoto": {
       "taskPhoto": "Opgavefoto (valgfrit)",
-      "uploadPhoto": "Upload foto",
-      "removePhoto": "Fjern foto",
+      "uploadPhoto": "Upload Foto",
+      "removePhoto": "Fjern Foto",
       "medicationItems": "Medicin i denne gruppe",
       "medicationItemsHint": "Gruppér op til 3 typer medicin, der tages på samme tid",
-      "addMedication": "Tilføj medicin",
-      "medName": "Medicinnens navn",
-      "medDosage": "Dosering",
+      "addMedication": "Tilføj Medicin",
+      "medName": "Medicinnavn",
+      "medDosage": "Dosis",
       "removeMedication": "Fjern",
-      "maxMedications": "Maksimalt 3 typer medicin pr. gruppe",
+      "maxMedications": "Maksimum 3 typer medicin pr. gruppe",
       "uploadingPhoto": "Uploader..."
     }
   },
@@ -163,10 +165,10 @@
     "takeMeHomeHint": "Åbner navigation til din hjemadresse",
     "gettingLocation": "Henter din placering",
     "removesVoiceRecording": "Fjerner din stemmeoptagelse",
-    "submittingCheckin": "Indsender dit check-in"
+    "submittingCheckin": "Sender dit check-in"
   },
   "locationTracking": {
-    "backgroundNotificationTitle": "OurTurn holder dig sikker",
+    "backgroundNotificationTitle": "OurTurn passer på dig",
     "backgroundNotificationBody": "Din familie kan se, at du er okay"
   },
   "notifications": {

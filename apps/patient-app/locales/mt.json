@@ -8,7 +8,7 @@
     "done": "Magħmul",
     "skip": "Aqbeż għal-lum",
     "or": "jew",
-    "loading": "Qed jitgħabba...",
+    "loading": "Qed jillowdja...",
     "error": "Xi ħaġa marret ħażin. Jekk jogħġbok erġa' pprova.",
     "errorTitle": "Xi ħaġa marret ħażin",
     "errorDefault": "Seħħ żball mhux mistenni.",
@@ -28,21 +28,23 @@
     "todaysPlan": {
       "title": "Il-Pjan tal-lum",
       "progress": "{{completed}} minn {{total}} attivitajiet magħmula llum",
-      "noPlan": "L-ebda attività ppjanata għal-lum. Il-familja tiegħek qed tipprepara l-affarijiet!",
+      "noPlan": "L-ebda attività ppjanata għal-lum. Il-familja tiegħek qed tħejji l-affarijiet!",
       "overdue": "Skadut",
       "upcoming": "Li ġej",
       "nowBadge": "ISSA",
       "doneAt": "Magħmul f'{{time}}",
-      "greatMorning": "L-aqwa filgħodu!",
-      "keepGoing": "Qed tagħmel ħafna progress!",
-      "allDone": "Kollox magħmul għal-lum!",
+      "greatMorning": "Progress tajjeb dalgħodu",
+      "keepGoing": "Żomm sejjer hekk",
+      "allDone": "Kollox magħmul għal-lum",
+      "yesterdayCompleted_one": "Il-bieraħ lestejt attività {{count}}",
+      "yesterdayCompleted_other": "Il-bieraħ lestejt attivitajiet {{count}}",
       "tapToStart": "Tektek biex tibda l-attività tal-moħħ tiegħek",
       "opensActivity": "Jiftaħ l-attività tal-benessri tal-moħħ tal-lum"
     },
     "help": {
       "title": "Għandi Bżonn l-Għajnuna",
       "callSomeone": "Ċempel lil Xi Ħadd",
-      "getHomeSafely": "Wasal id-Dar Bla Periklu",
+      "getHomeSafely": "Wasal id-Dar b'Sigurtà",
       "takeMeHome": "Ħudni d-Dar",
       "takeMeHomeDesc": "Tektek biex tikseb direzzjonijiet bil-mixi lejn darek",
       "emergency": "Emerġenza",
@@ -62,11 +64,11 @@
       "no": "Le",
       "locationTracking": {
         "title": "Aqsam il-lokalità tiegħek?",
-        "description": "Biex il-familja tiegħek tkun tista' tgħinek tasal id-dar bla periklu"
+        "description": "Biex il-familja tiegħek tkun tista' tgħinek tasal id-dar b'sigurtà"
       },
       "dataCollection": {
         "title": "Issejvja l-informazzjoni ta' kuljum tiegħek?",
-        "description": "Biex il-familja tiegħek tkun tista' tara kif qed tħossok"
+        "description": "Biex il-familja tiegħek tkun tista' tara kif qed tagħmel"
       },
       "pushNotifications": {
         "title": "Irċievi tfakkiriet?",
@@ -88,18 +90,18 @@
     "checkin": {
       "greeting": {
         "morning": "L-Għodwa t-Tajba, {{name}}!",
-        "afternoon": "Il-Wara nofsinhar it-Tajjeb, {{name}}!",
-        "evening": "Il-lejla t-Tajba, {{name}}!"
+        "afternoon": "Wara nofsinhar it-tajjeb, {{name}}!",
+        "evening": "Il-lejla t-tajba, {{name}}!"
       },
       "moodQuestion": "Kif qed tħossok illum?",
       "moodGood": "Tajjeb",
       "moodOkay": "Okay",
-      "moodBad": "Mhux daqshekk tajjeb",
-      "sleepQuestion": "Rajt rqadt sew?",
+      "moodBad": "Mhux tajjeb",
+      "sleepQuestion": "Rajt sew?",
       "sleepGood": "Iva",
       "sleepOkay": "Hekk hekk",
-      "sleepBad": "Mhux verament",
-      "voicePrompt": "Xi trid tgħid lill-familja tiegħek?",
+      "sleepBad": "Mhux veru",
+      "voicePrompt": "Xi ħaġa li trid tgħid lill-familja tiegħek?",
       "voiceTap": "Tektek biex titkellem",
       "voiceRecording": "Qed nirrekordja...",
       "voiceStop": "Waqqaf",
@@ -119,12 +121,12 @@
       "comeBackLater": "Erġa' ċċekkja għada għal attività ġdida!",
       "tapToSpeak": "Tektek biex titkellem",
       "tapToStop": "Tektek biex twaqqaf ir-reġistrazzjoni",
-      "typeInstead": "Ittajpja t-tweġiba tiegħek minflok",
-      "typeHere": "Ittajpja t-tweġiba tiegħek hawnhekk...",
+      "typeInstead": "Ikteb it-tweġiba tiegħek minflok",
+      "typeHere": "Ikteb it-tweġiba tiegħek hawnhekk...",
       "speakInstead": "Tkellem minflok",
       "recordAgain": "Erġa' rrekordja",
       "skipForToday": "Aqbeż għal-lum",
-      "defaultFollowUp": "X'memorja sabiħa! Grazzi talli qsamtha.",
+      "defaultFollowUp": "X'memorja mill-isbaħ! Grazzi talli qsamtha.",
       "listenToSong": "Isma' l-Kanzunetta",
       "photoMemory": "Memorja minn ħajtek"
     },

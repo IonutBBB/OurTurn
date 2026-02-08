@@ -22,6 +22,8 @@ import {
   getBackgroundGradient,
   getDayOfWeek,
   formatDateForDb,
+  formatFullDate,
+  getYesterdayDateForDb,
   timeToMinutes,
   getCurrentTimeInMinutes,
   isTaskOverdue,
@@ -45,7 +47,7 @@ import { COLORS, FONTS, RADIUS, SHADOWS, GRADIENT_TEXT_COLOR } from '../../src/t
 import { scheduleAllTaskReminders } from '../../src/services/notifications';
 
 export default function TodayScreen() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { patient, session } = useAuthStore();
   const complexity = useComplexity();
   const isSimplified = complexity === 'simplified';
@@ -58,6 +60,7 @@ export default function TodayScreen() {
   const [error, setError] = useState<string | null>(null);
   const [hasCheckedIn, setHasCheckedIn] = useState(true); // Assume true initially
   const [brainActivity, setBrainActivity] = useState<BrainActivity | null>(null);
+  const [yesterdayCompletedCount, setYesterdayCompletedCount] = useState<number | null>(null);
 
   const timeOfDay = getTimeOfDay();
   const greeting = getGreetingKey(timeOfDay);
@@ -148,6 +151,16 @@ export default function TodayScreen() {
         .single();
 
       setBrainActivity(activityData && !activityData.completed ? activityData : null);
+
+      // Fetch yesterday's completed count (non-blocking)
+      try {
+        const yesterdayDate = getYesterdayDateForDb();
+        const yesterdayCompletions = await getTodaysCompletions(householdId, yesterdayDate);
+        const count = yesterdayCompletions.filter((c) => c.completed).length;
+        setYesterdayCompletedCount(count);
+      } catch {
+        setYesterdayCompletedCount(null);
+      }
     } catch (err) {
       if (__DEV__) console.error('Failed to fetch tasks:', err);
 
@@ -317,6 +330,14 @@ export default function TodayScreen() {
             >
               {t(greeting, { name: patient?.name || '' })} {emoji}
             </Text>
+            <Text style={[styles.dateText, { color: gradientTextColor }]}>
+              {formatFullDate(new Date(), i18n.language)}
+            </Text>
+            {yesterdayCompletedCount != null && yesterdayCompletedCount > 0 && (
+              <Text style={[styles.yesterdayText, { color: gradientTextColor }]}>
+                {t('patientApp.todaysPlan.yesterdayCompleted', { count: yesterdayCompletedCount })}
+              </Text>
+            )}
           </View>
 
           {/* Progress bar */}
@@ -484,6 +505,19 @@ const styles = StyleSheet.create({
     fontSize: 38,
     lineHeight: 48,
   },
+  dateText: {
+    fontSize: 28,
+    fontFamily: FONTS.bodySemiBold,
+    marginTop: 6,
+    lineHeight: 36,
+  },
+  yesterdayText: {
+    fontSize: 22,
+    fontFamily: FONTS.body,
+    marginTop: 4,
+    lineHeight: 30,
+    opacity: 0.85,
+  },
   progressContainer: {
     marginBottom: 28,
     backgroundColor: COLORS.card,
@@ -525,7 +559,6 @@ const styles = StyleSheet.create({
   errorText: {
     fontSize: 20,
     color: COLORS.danger,
-    textAlign: 'center',
     fontFamily: FONTS.bodyMedium,
   },
   emptyContainer: {
@@ -541,7 +574,6 @@ const styles = StyleSheet.create({
   emptyText: {
     fontSize: 22,
     color: COLORS.textSecondary,
-    textAlign: 'center',
     paddingHorizontal: 32,
     lineHeight: 32,
     fontFamily: FONTS.bodyMedium,

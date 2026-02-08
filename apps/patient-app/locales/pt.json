@@ -22,20 +22,22 @@
     "physical": "Atividade Física",
     "cognitive": "Bem-Estar Cerebral",
     "social": "Social e Conexão",
-    "health": "Exame de Saúde"
+    "health": "Verificação de Saúde"
   },
   "patientApp": {
     "todaysPlan": {
       "title": "Plano de Hoje",
       "progress": "{{completed}} de {{total}} atividades concluídas hoje",
-      "noPlan": "Nenhuma atividade planejada para hoje. Sua família está preparando tudo!",
+      "noPlan": "Nenhuma atividade planejada para hoje. Sua família está configurando tudo!",
       "overdue": "Atrasado",
       "upcoming": "Próximo",
       "nowBadge": "AGORA",
       "doneAt": "Concluído às {{time}}",
-      "greatMorning": "Ótima manhã!",
-      "keepGoing": "Você está indo maravilhosamente!",
-      "allDone": "Tudo pronto para hoje!",
+      "greatMorning": "Bom progresso esta manhã",
+      "keepGoing": "Bem encaminhado",
+      "allDone": "Tudo concluído por hoje",
+      "yesterdayCompleted_one": "Ontem você completou {{count}} atividade",
+      "yesterdayCompleted_other": "Ontem você completou {{count}} atividades",
       "tapToStart": "Toque para iniciar sua atividade cerebral",
       "opensActivity": "Abre a atividade de bem-estar cerebral de hoje"
     },
@@ -70,7 +72,7 @@
       },
       "pushNotifications": {
         "title": "Receber lembretes?",
-        "description": "Lembretes úteis para refeições e atividades"
+        "description": "Notificações úteis para refeições e atividades"
       },
       "dataSharing": {
         "title": "Compartilhar com sua família?",
@@ -93,7 +95,7 @@
       },
       "moodQuestion": "Como você está se sentindo hoje?",
       "moodGood": "Bem",
-      "moodOkay": "Ok",
+      "moodOkay": "Okay",
       "moodBad": "Não muito bem",
       "sleepQuestion": "Você dormiu bem?",
       "sleepGood": "Sim",
@@ -144,7 +146,7 @@
     },
     "taskPhoto": {
       "taskPhoto": "Foto da Tarefa (opcional)",
-      "uploadPhoto": "Carregar Foto",
+      "uploadPhoto": "Enviar Foto",
       "removePhoto": "Remover Foto",
       "medicationItems": "Medicamentos neste grupo",
       "medicationItemsHint": "Agrupe até 3 medicamentos tomados ao mesmo tempo",
@@ -153,7 +155,7 @@
       "medDosage": "Dosagem",
       "removeMedication": "Remover",
       "maxMedications": "Máximo de 3 medicamentos por grupo",
-      "uploadingPhoto": "Carregando..."
+      "uploadingPhoto": "Enviando..."
     }
   },
   "a11y": {

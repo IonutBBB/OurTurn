@@ -14,13 +14,13 @@
     "errorDefault": "Ilmnes ootamatu viga.",
     "tryAgain": "Proovi uuesti",
     "offline": "Oled võrguühenduseta – andmed sünkroonitakse ühenduse loomisel",
-    "synced": "Sünkroniseeritud"
+    "synced": "Sünkroonitud"
   },
   "categories": {
     "medication": "Ravimid",
     "nutrition": "Söögid ja toitumine",
     "physical": "Füüsiline aktiivsus",
-    "cognitive": "Aju heaolu",
+    "cognitive": "Aju tervis",
     "social": "Suhtlus ja kontakt",
     "health": "Tervisekontroll"
   },
@@ -28,23 +28,25 @@
     "todaysPlan": {
       "title": "Tänane plaan",
       "progress": "{{completed}} / {{total}} tegevust täna tehtud",
-      "noPlan": "Tänaseks pole tegevusi planeeritud. Sinu pere alles seab asju üles!",
-      "overdue": "Hilinenud",
+      "noPlan": "Tänaseks pole tegevusi planeeritud. Sinu pere alles seadistab asju!",
+      "overdue": "Aegunud",
       "upcoming": "Eelseisvad",
       "nowBadge": "NÜÜD",
       "doneAt": "Tehtud kell {{time}}",
-      "greatMorning": "Suurepärane hommik!",
-      "keepGoing": "Sa teed imelist tööd!",
-      "allDone": "Kõik tänaseks tehtud!",
+      "greatMorning": "Hea edenemine täna hommikul",
+      "keepGoing": "Hoiad head kurssi",
+      "allDone": "Kõik tänaseks tehtud",
+      "yesterdayCompleted_one": "Eile lõpetasid {{count}} tegevuse",
+      "yesterdayCompleted_other": "Eile lõpetasid {{count}} tegevust",
       "tapToStart": "Puuduta, et alustada oma aju tegevust",
-      "opensActivity": "Avab tänase aju heaolu tegevuse"
+      "opensActivity": "Avab tänase aju tervise tegevuse"
     },
     "help": {
       "title": "Ma vajan abi",
       "callSomeone": "Helista kellelegi",
       "getHomeSafely": "Jõua turvaliselt koju",
       "takeMeHome": "Vii mind koju",
-      "takeMeHomeDesc": "Puuduta, et saada juhised koju kõndimiseks",
+      "takeMeHomeDesc": "Puuduta, et saada juhised oma koju kõndimiseks",
       "emergency": "Hädaolukord",
       "confirmEmergency": "Oled sa kindel, et soovid kutsuda hädaabiteenuseid?"
     },
@@ -78,12 +80,12 @@
       },
       "voiceRecording": {
         "title": "Salvesta häälsõnumeid?",
-        "description": "Et sa saaksid oma perele sõnumeid jätta"
+        "description": "Et saaksid oma perele sõnumeid jätta"
       }
     },
     "essential": {
       "music": "Muusika",
-      "callHelp": "Helista abi saamiseks"
+      "callHelp": "Helista abi"
     },
     "checkin": {
       "greeting": {
@@ -98,8 +100,8 @@
       "sleepQuestion": "Kas sa magasid hästi?",
       "sleepGood": "Jah",
       "sleepOkay": "Nii ja naa",
-      "sleepBad": "Päriselt mitte",
-      "voicePrompt": "Kas on midagi, mida sa soovid oma perele öelda?",
+      "sleepBad": "Pigem mitte",
+      "voicePrompt": "Kas on midagi, mida sa tahad oma perele öelda?",
       "voiceTap": "Puuduta, et rääkida",
       "voiceRecording": "Salvestamine...",
       "voiceStop": "Lõpeta",
@@ -119,17 +121,17 @@
       "comeBackLater": "Tule homme tagasi uue tegevuse jaoks!",
       "tapToSpeak": "Puuduta, et rääkida",
       "tapToStop": "Puuduta, et salvestamise lõpetada",
-      "typeInstead": "Kirjuta oma vastus selle asemel",
+      "typeInstead": "Kirjuta selle asemel oma vastus",
       "typeHere": "Kirjuta oma vastus siia...",
       "speakInstead": "Räägi selle asemel",
       "recordAgain": "Salvesta uuesti",
       "skipForToday": "Jäta täna vahele",
-      "defaultFollowUp": "Milline imeline mälestus! Aitäh jagamast.",
+      "defaultFollowUp": "Milline imeline mälestus! Aitäh, et jagasid.",
       "listenToSong": "Kuula laulu",
       "photoMemory": "Mälestus sinu elust"
     },
     "careCode": {
-      "welcome": "Tere tulemast OurTurn'i",
+      "welcome": "Tere tulemast OurTurni",
       "enterCode": "Sisesta oma hoolduskood",
       "helperText": "Sinu pereliige annab sulle selle koodi.",
       "connect": "Ühenda",
@@ -146,7 +148,7 @@
       "taskPhoto": "Ülesande foto (valikuline)",
       "uploadPhoto": "Laadi foto üles",
       "removePhoto": "Eemalda foto",
-      "medicationItems": "Selle grupi ravimid",
+      "medicationItems": "Ravimid selles grupis",
       "medicationItemsHint": "Grupeeri kuni 3 ravimit, mida võetakse samal ajal",
       "addMedication": "Lisa ravim",
       "medName": "Ravimi nimi",
@@ -157,7 +159,7 @@
     }
   },
   "a11y": {
-    "doubleTapToComplete": "Topeltpuuduta, et märkida tehtuks",
+    "doubleTapToComplete": "Topeltpuudutus, et märkida tehtuks",
     "callContact": "Helista {{name}}",
     "emergencyCallConfirmHint": "Enne helistamist ilmub kinnitus",
     "takeMeHomeHint": "Avab navigeerimise sinu kodu aadressile",

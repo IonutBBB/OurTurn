@@ -6,13 +6,13 @@
     "delete": "Verwijderen",
     "edit": "Bewerken",
     "done": "Klaar",
-    "skip": "Sla over voor vandaag",
+    "skip": "Overslaan voor vandaag",
     "or": "of",
     "loading": "Laden...",
     "error": "Er is iets misgegaan. Probeer het opnieuw.",
     "errorTitle": "Er is iets misgegaan",
     "errorDefault": "Er is een onverwachte fout opgetreden.",
-    "tryAgain": "Probeer opnieuw",
+    "tryAgain": "Probeer het opnieuw",
     "offline": "Je bent offline — je gegevens worden gesynchroniseerd wanneer je verbinding hebt",
     "synced": "Gesynchroniseerd"
   },
@@ -29,21 +29,23 @@
       "title": "Het plan van vandaag",
       "progress": "{{completed}} van de {{total}} activiteiten voltooid vandaag",
       "noPlan": "Er zijn geen activiteiten gepland voor vandaag. Je familie is bezig met de voorbereidingen!",
-      "overdue": "Verlopen",
-      "upcoming": "Aankomend",
+      "overdue": "Te laat",
+      "upcoming": "Binnenkort",
       "nowBadge": "NU",
-      "doneAt": "Klaar om {{time}}",
-      "greatMorning": "Goede morgen!",
-      "keepGoing": "Je bent geweldig bezig!",
-      "allDone": "Alles klaar voor vandaag!",
+      "doneAt": "Gedaan om {{time}}",
+      "greatMorning": "Goede voortgang vanochtend",
+      "keepGoing": "Goed op weg",
+      "allDone": "Alles gedaan voor vandaag",
+      "yesterdayCompleted_one": "Gisteren heb je {{count}} activiteit voltooid",
+      "yesterdayCompleted_other": "Gisteren heb je {{count}} activiteiten voltooid",
       "tapToStart": "Tik om je hersenactiviteit te starten",
       "opensActivity": "Opent de hersentraining van vandaag"
     },
     "help": {
-      "title": "Ik Heb Hulp Nodig",
-      "callSomeone": "Iemand Bellen",
-      "getHomeSafely": "Veilig Thuis Komen",
-      "takeMeHome": "Breng Me Naar Huis",
+      "title": "Ik heb hulp nodig",
+      "callSomeone": "Iemand bellen",
+      "getHomeSafely": "Veilig thuiskomen",
+      "takeMeHome": "Breng me naar huis",
       "takeMeHomeDesc": "Tik om een routebeschrijving naar huis te krijgen",
       "emergency": "Noodgeval",
       "confirmEmergency": "Weet je zeker dat je de hulpdiensten wilt bellen?"
@@ -52,9 +54,9 @@
       "button": "SOS",
       "label": "SOS",
       "holdHint": "Houd 2 seconden vast om een waarschuwing naar je familie te sturen",
-      "helpOnTheWay": "Er is hulp onderweg",
+      "helpOnTheWay": "Hulp is onderweg",
       "familyNotified": "Je familie is op de hoogte gesteld",
-      "callCaregiver": "Bel {{name}}",
+      "callCaregiver": "{{name}} bellen",
       "imOkay": "Het gaat goed met me, ga terug"
     },
     "consent": {
@@ -83,7 +85,7 @@
     },
     "essential": {
       "music": "Muziek",
-      "callHelp": "Bel om Hulp"
+      "callHelp": "Bel om hulp"
     },
     "checkin": {
       "greeting": {
@@ -106,7 +108,7 @@
       "voicePlay": "Afspelen",
       "voicePause": "Pauze",
       "voiceDiscard": "Opnieuw opnemen",
-      "send": "Verstuur naar familie",
+      "send": "Versturen naar familie",
       "skipVoice": "Spraakbericht overslaan",
       "thankYou": "Bedankt! Je familie zal dit zien.",
       "alreadyDone": "Je hebt vandaag al ingecheckt!",
@@ -123,20 +125,20 @@
       "typeHere": "Typ hier je antwoord...",
       "speakInstead": "Spreek in plaats daarvan",
       "recordAgain": "Opnieuw opnemen",
-      "skipForToday": "Sla over voor vandaag",
+      "skipForToday": "Overslaan voor vandaag",
       "defaultFollowUp": "Wat een prachtige herinnering! Bedankt voor het delen.",
-      "listenToSong": "Luister naar Liedje",
+      "listenToSong": "Luister naar het lied",
       "photoMemory": "Een herinnering uit je leven"
     },
     "careCode": {
       "welcome": "Welkom bij OurTurn",
-      "enterCode": "Voer je Zorgcode in",
+      "enterCode": "Voer je zorgcode in",
       "helperText": "Je familielid zal je deze code geven.",
       "connect": "Verbinden",
       "invalidCode": "Controleer je code en probeer het opnieuw.",
       "connecting": "Verbinden...",
       "digitLabel": "Cijfer {{current}} van {{total}}",
-      "changeLanguage": "Verander taal"
+      "changeLanguage": "Taal wijzigen"
     },
     "tabs": {
       "today": "Vandaag",
@@ -144,11 +146,11 @@
     },
     "taskPhoto": {
       "taskPhoto": "Taakfoto (optioneel)",
-      "uploadPhoto": "Foto Uploaden",
-      "removePhoto": "Foto Verwijderen",
+      "uploadPhoto": "Foto uploaden",
+      "removePhoto": "Foto verwijderen",
       "medicationItems": "Medicijnen in deze groep",
       "medicationItemsHint": "Groepeer maximaal 3 medicijnen die tegelijkertijd worden ingenomen",
-      "addMedication": "Medicatie Toevoegen",
+      "addMedication": "Medicatie toevoegen",
       "medName": "Naam medicijn",
       "medDosage": "Dosering",
       "removeMedication": "Verwijderen",
@@ -157,10 +159,10 @@
     }
   },
   "a11y": {
-    "doubleTapToComplete": "Dubbeltik om als voltooid te markeren",
-    "callContact": "Bel {{name}}",
+    "doubleTapToComplete": "Dubbeltik om te markeren als voltooid",
+    "callContact": "{{name}} bellen",
     "emergencyCallConfirmHint": "Er verschijnt een bevestiging voordat je belt",
-    "takeMeHomeHint": "Opent de navigatie naar je huisadres",
+    "takeMeHomeHint": "Opent navigatie naar je huisadres",
     "gettingLocation": "Je locatie ophalen",
     "removesVoiceRecording": "Verwijdert je spraakopname",
     "submittingCheckin": "Je check-in verzenden"

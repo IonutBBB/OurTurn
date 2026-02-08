@@ -27,16 +27,18 @@
   "patientApp": {
     "todaysPlan": {
       "title": "Današnji načrt",
-      "progress": "{{completed}} od {{total}} aktivnosti opravljenih danes",
+      "progress": "Danes je opravljenih {{completed}} od {{total}} aktivnosti",
       "noPlan": "Za danes ni načrtovanih aktivnosti. Vaša družina pripravlja stvari!",
-      "overdue": "Zamik",
+      "overdue": "Zamujeno",
       "upcoming": "Prihajajoče",
       "nowBadge": "ZDRAV",
-      "doneAt": "Opravljeno ob {{time}}",
-      "greatMorning": "Čudovito jutro!",
-      "keepGoing": "Odlično vam gre!",
-      "allDone": "Vse opravljeno za danes!",
-      "tapToStart": "Tapnite za začetek možganske aktivnosti",
+      "doneAt": "Končano ob {{time}}",
+      "greatMorning": "Dober napredek to jutro",
+      "keepGoing": "Dobro na pravi poti",
+      "allDone": "Vse opravljeno za danes",
+      "yesterdayCompleted_one": "Včeraj ste opravili {{count}} aktivnost",
+      "yesterdayCompleted_other": "Včeraj ste opravili {{count}} aktivnosti",
+      "tapToStart": "Dotaknite se za začetek možganske aktivnosti",
       "opensActivity": "Odpre današnjo aktivnost za dobro počutje možganov"
     },
     "help": {
@@ -44,7 +46,7 @@
       "callSomeone": "Pokliči nekoga",
       "getHomeSafely": "Varno pridi domov",
       "takeMeHome": "Peljite me domov",
-      "takeMeHomeDesc": "Tapnite za navodila za hojo do vašega doma",
+      "takeMeHomeDesc": "Dotaknite se za navodila za hojo do vašega doma",
       "emergency": "Nujni primer",
       "confirmEmergency": "Ali ste prepričani, da želite poklicati službo za nujno pomoč?"
     },
@@ -70,15 +72,15 @@
       },
       "pushNotifications": {
         "title": "Želite prejemati opomnike?",
-        "description": "Uporabni opomniki za obroke in aktivnosti"
+        "description": "Koristni opomniki za obroke in aktivnosti"
       },
       "dataSharing": {
-        "title": "Želite deliti z vašo družino?",
+        "title": "Želite deliti z družino?",
         "description": "Da vas lahko negovalci podpirajo"
       },
       "voiceRecording": {
         "title": "Želite snemati glasovna sporočila?",
-        "description": "Da lahko pustite sporočila za vašo družino"
+        "description": "Da lahko pustite sporočila svoji družini"
       }
     },
     "essential": {
@@ -100,7 +102,7 @@
       "sleepOkay": "Tako-tako",
       "sleepBad": "Ne ravno",
       "voicePrompt": "Želite kaj povedati svoji družini?",
-      "voiceTap": "Tapnite za govor",
+      "voiceTap": "Dotaknite se za govor",
       "voiceRecording": "Snemanje...",
       "voiceStop": "Ustavi",
       "voicePlay": "Predvajaj",
@@ -110,15 +112,15 @@
       "skipVoice": "Preskoči glasovno sporočilo",
       "thankYou": "Hvala! Vaša družina bo to videla.",
       "alreadyDone": "Danes ste se že prijavili!",
-      "tapToCheckin": "Tapnite za prijavo",
+      "tapToCheckin": "Dotaknite se za prijavo",
       "opensCheckin": "Odpre zaslon za dnevno prijavo"
     },
     "activity": {
       "title": "Današnja aktivnost",
       "noActivity": "Za danes ni aktivnosti",
       "comeBackLater": "Vrnite se jutri za novo aktivnost!",
-      "tapToSpeak": "Tapnite za govor",
-      "tapToStop": "Tapnite za ustavitev snemanja",
+      "tapToSpeak": "Dotaknite se za govor",
+      "tapToStop": "Dotaknite se za ustavitev snemanja",
       "typeInstead": "Namesto tega vnesite svoj odgovor",
       "typeHere": "Vnesite svoj odgovor tukaj...",
       "speakInstead": "Namesto tega govorite",
@@ -131,8 +133,8 @@
     "careCode": {
       "welcome": "Dobrodošli v OurTurn",
       "enterCode": "Vnesite svojo kodo za nego",
-      "helperText": "To kodo vam bo dal družinski član.",
-      "connect": "Poveži",
+      "helperText": "Ta kodo vam bo dal družinski član.",
+      "connect": "Poveži se",
       "invalidCode": "Preverite svojo kodo in poskusite znova.",
       "connecting": "Povezovanje...",
       "digitLabel": "Številka {{current}} od {{total}}",
@@ -157,9 +159,9 @@
     }
   },
   "a11y": {
-    "doubleTapToComplete": "Dvakrat tapnite, da označite kot dokončano",
+    "doubleTapToComplete": "Dvakrat se dotaknite, da označite kot končano",
     "callContact": "Pokliči {{name}}",
-    "emergencyCallConfirmHint": "Pred klicem se bo prikazala potrditev",
+    "emergencyCallConfirmHint": "Pred klicem se bo pojavilo potrdilo",
     "takeMeHomeHint": "Odpre navigacijo do vašega domačega naslova",
     "gettingLocation": "Pridobivanje vaše lokacije",
     "removesVoiceRecording": "Odstrani vaš glasovni posnetek",
@@ -171,6 +173,6 @@
   },
   "notifications": {
     "taskReminder": "{{patientName}}, čas je za: {{taskTitle}}",
-    "checkinPrompt": "Čas za vašo dnevno prijavo!"
+    "checkinPrompt": "Čas je za vašo dnevno prijavo!"
   }
 }

@@ -17,7 +17,7 @@
     "synced": "Synkroniserad"
   },
   "categories": {
-    "medication": "Medicinering",
+    "medication": "Medicin",
     "nutrition": "Måltider & Näring",
     "physical": "Fysisk aktivitet",
     "cognitive": "Hjärnans välmående",
@@ -28,14 +28,16 @@
     "todaysPlan": {
       "title": "Dagens plan",
       "progress": "{{completed}} av {{total}} aktiviteter klara idag",
-      "noPlan": "Inga aktiviteter planerade för idag. Din familj håller på att ordna saker!",
+      "noPlan": "Inga aktiviteter planerade för idag. Din familj håller på att ordna!",
       "overdue": "Försenad",
       "upcoming": "Kommande",
       "nowBadge": "NU",
       "doneAt": "Klar vid {{time}}",
-      "greatMorning": "Bra morgon!",
-      "keepGoing": "Du gör det jättebra!",
-      "allDone": "Allt klart för idag!",
+      "greatMorning": "Bra framsteg i morse",
+      "keepGoing": "Bra på gång",
+      "allDone": "Allt klart för idag",
+      "yesterdayCompleted_one": "Igår slutförde du {{count}} aktivitet",
+      "yesterdayCompleted_other": "Igår slutförde du {{count}} aktiviteter",
       "tapToStart": "Tryck för att starta din hjärnaktivitet",
       "opensActivity": "Öppnar dagens hjärnaktivitet"
     },
@@ -44,7 +46,7 @@
       "callSomeone": "Ring någon",
       "getHomeSafely": "Kom hem säkert",
       "takeMeHome": "Ta mig hem",
-      "takeMeHomeDesc": "Tryck för att få gånganvisningar till ditt hem",
+      "takeMeHomeDesc": "Tryck för att få vägbeskrivning till ditt hem",
       "emergency": "Nödsituation",
       "confirmEmergency": "Är du säker på att du vill ringa larmtjänsten?"
     },
@@ -131,7 +133,7 @@
     "careCode": {
       "welcome": "Välkommen till OurTurn",
       "enterCode": "Ange din vårdkod",
-      "helperText": "Din familjemedlem kommer att ge dig denna kod.",
+      "helperText": "Din familjemedlem kommer att ge dig den här koden.",
       "connect": "Anslut",
       "invalidCode": "Kontrollera din kod och försök igen.",
       "connecting": "Ansluter...",
@@ -167,7 +169,7 @@
   },
   "locationTracking": {
     "backgroundNotificationTitle": "OurTurn håller dig säker",
-    "backgroundNotificationBody": "Din familj kan se att du är okej"
+    "backgroundNotificationBody": "Din familj kan se att du mår bra"
   },
   "notifications": {
     "taskReminder": "{{patientName}}, det är dags för: {{taskTitle}}",

@@ -6,21 +6,21 @@
     "delete": "Scrios",
     "edit": "Cuir in eagar",
     "done": "Déanta",
-    "skip": "Scip inniu",
+    "skip": "Scipeáil don lá inniu",
     "or": "nó",
     "loading": "Ag lódáil...",
-    "error": "Tharla fadhb éigin. Bain triail eile as.",
+    "error": "Tharla fadhb éigin. Bain triail as arís.",
     "errorTitle": "Tharla fadhb éigin",
     "errorDefault": "Tharla earráid gan choinne.",
-    "tryAgain": "Bain triail eile as",
+    "tryAgain": "Bain triail as arís",
     "offline": "Tá tú as líne — déanfar do shonraí a shioncronú nuair a bheidh tú ceangailte",
     "synced": "Arna shioncronú"
   },
   "categories": {
-    "medication": "Cógais",
+    "medication": "Cógas",
     "nutrition": "Béilí & Cothú",
-    "physical": "Gníomhaíocht Choirp",
-    "cognitive": "Folláine na hIntinne",
+    "physical": "Gníomhaíocht Fhisiciúil",
+    "cognitive": "Folláine Intinne",
     "social": "Sóisialta & Ceangal",
     "health": "Seiceáil Sláinte"
   },
@@ -33,28 +33,30 @@
       "upcoming": "Ag teacht aníos",
       "nowBadge": "ANOIS",
       "doneAt": "Déanta ag {{time}}",
-      "greatMorning": "Maidin mhaith agat!",
-      "keepGoing": "Tá tú ag déanamh go hiontach!",
-      "allDone": "Gach rud déanta don lá inniu!",
+      "greatMorning": "Dul chun cinn maith ar maidin",
+      "keepGoing": "Ar an mbóthar ceart",
+      "allDone": "Gach rud déanta don lá inniu",
+      "yesterdayCompleted_one": "Inné chríochnaigh tú gníomhaíocht {{count}}",
+      "yesterdayCompleted_other": "Inné chríochnaigh tú gníomhaíochtaí {{count}}",
       "tapToStart": "Tapáil chun do ghníomhaíocht intinne a thosú",
-      "opensActivity": "Osclaíonn gníomhaíocht folláine intinne an lae inniu"
+      "opensActivity": "Osclaíonn sé gníomhaíocht folláine intinne an lae inniu"
     },
     "help": {
       "title": "Tá Cabhair Uaim",
-      "callSomeone": "Cuir glaoch ar dhuine",
-      "getHomeSafely": "Faigh Baile go Sábháilte",
+      "callSomeone": "Glaoigh ar Dhuine Éigin",
+      "getHomeSafely": "Faigh Abhaile go Sábháilte",
       "takeMeHome": "Tabhair Abhaile Mé",
       "takeMeHomeDesc": "Tapáil chun treoracha siúil a fháil chuig do theach",
       "emergency": "Éigeandáil",
-      "confirmEmergency": "An bhfuil tú cinnte gur mhaith leat glaoch a chur ar na seirbhísí éigeandála?"
+      "confirmEmergency": "An bhfuil tú cinnte gur mhaith leat glaoch ar na seirbhísí éigeandála?"
     },
     "sos": {
       "button": "SOS",
       "label": "SOS",
       "holdHint": "Coinnigh ar feadh 2 soicind chun foláireamh a sheoladh chuig do theaghlach",
       "helpOnTheWay": "Tá cabhair ar an mbealach",
-      "familyNotified": "Tá do theaghlach curtha ar an eolas",
-      "callCaregiver": "Cuir glaoch ar {{name}}",
+      "familyNotified": "Cuireadh do theaghlach ar an eolas",
+      "callCaregiver": "Glaoigh ar {{name}}",
       "imOkay": "Tá mé ceart go leor, téigh ar ais"
     },
     "consent": {
@@ -66,7 +68,7 @@
       },
       "dataCollection": {
         "title": "Sábháil d'eolas laethúil?",
-        "description": "Ionas go bhfeicfidh do theaghlach conas atá tú ag déanamh"
+        "description": "Ionas gur féidir le do theaghlach a fheiceáil conas atá tú ag déanamh"
       },
       "pushNotifications": {
         "title": "Faigh meabhrúcháin?",
@@ -94,24 +96,24 @@
       "moodQuestion": "Conas a bhraitheann tú inniu?",
       "moodGood": "Go maith",
       "moodOkay": "Ceart go leor",
-      "moodBad": "Ní go hiontach",
+      "moodBad": "Níl go hiontach",
       "sleepQuestion": "Ar chodail tú go maith?",
       "sleepGood": "Tá",
       "sleepOkay": "Mar sin de",
       "sleepBad": "Ní hea i ndáiríre",
       "voicePrompt": "Ar mhaith leat aon rud a insint do do theaghlach?",
       "voiceTap": "Tapáil chun labhairt",
-      "voiceRecording": "Ag taifead...",
+      "voiceRecording": "Ag taifeadadh...",
       "voiceStop": "Stop",
       "voicePlay": "Seinn",
       "voicePause": "Sos",
       "voiceDiscard": "Taifead arís",
       "send": "Seol chuig an teaghlach",
-      "skipVoice": "Scip teachtaireacht gutha",
+      "skipVoice": "Scipeáil teachtaireacht gutha",
       "thankYou": "Go raibh maith agat! Feicfidh do theaghlach é seo.",
-      "alreadyDone": "Tá tú tar éis seiceáil isteach cheana féin inniu!",
-      "tapToCheckin": "Tapáil chun seiceáil isteach",
-      "opensCheckin": "Osclaíonn an scáileán seiceála isteach laethúil"
+      "alreadyDone": "Tá tú cláraithe cheana féin inniu!",
+      "tapToCheckin": "Tapáil chun clárú isteach",
+      "opensCheckin": "Osclaíonn sé an scáileán clárúcháin laethúil"
     },
     "activity": {
       "title": "Gníomhaíocht an Lae Inniu",
@@ -123,17 +125,17 @@
       "typeHere": "Clóscríobh d'fhreagra anseo...",
       "speakInstead": "Labhair ina ionad",
       "recordAgain": "Taifead arís",
-      "skipForToday": "Scip inniu",
+      "skipForToday": "Scipeáil don lá inniu",
       "defaultFollowUp": "Cuimhne iontach! Go raibh maith agat as é a roinnt.",
-      "listenToSong": "Éist le hAmhrán",
+      "listenToSong": "Éist leis an Amhrán",
       "photoMemory": "Cuimhne ó do shaol"
     },
     "careCode": {
       "welcome": "Fáilte go OurTurn",
-      "enterCode": "Cuir isteach do Chód Cúraim",
+      "enterCode": "Iontráil do Chód Cúraim",
       "helperText": "Tabharfaidh do bhall teaghlaigh an cód seo duit.",
       "connect": "Ceangail",
-      "invalidCode": "Seiceáil do chód agus bain triail eile as.",
+      "invalidCode": "Seiceáil do chód agus bain triail as arís.",
       "connecting": "Ag ceangal...",
       "digitLabel": "Digit {{current}} de {{total}}",
       "changeLanguage": "Athraigh teanga"
@@ -148,7 +150,7 @@
       "removePhoto": "Bain Grianghraf",
       "medicationItems": "Cógais sa ghrúpa seo",
       "medicationItemsHint": "Grúpáil suas le 3 chógas a ghlactar ag an am céanna",
-      "addMedication": "Cuir Cógas leis",
+      "addMedication": "Cuir Cógas Leis",
       "medName": "Ainm an chógais",
       "medDosage": "Dáileog",
       "removeMedication": "Bain",
@@ -158,19 +160,19 @@
   },
   "a11y": {
     "doubleTapToComplete": "Tapáil faoi dhó chun é a mharcáil mar dhéanta",
-    "callContact": "Cuir glaoch ar {{name}}",
-    "emergencyCallConfirmHint": "Beidh deimhniú le feiceáil sula gcuirfear glaoch",
-    "takeMeHomeHint": "Osclaíonn sé nascleanúint chuig do sheoladh baile",
+    "callContact": "Glaoigh ar {{name}}",
+    "emergencyCallConfirmHint": "Beidh deimhniú le feiceáil sula nglaofar",
+    "takeMeHomeHint": "Osclaíonn sé loingseoireacht chuig do sheoladh baile",
     "gettingLocation": "Ag fáil do shuíomh",
     "removesVoiceRecording": "Baineann sé do thaifeadadh gutha",
-    "submittingCheckin": "Ag cur isteach do sheiceáil isteach"
+    "submittingCheckin": "Ag cur isteach do chlárú isteach"
   },
   "locationTracking": {
     "backgroundNotificationTitle": "Tá OurTurn ag coinneáil tú sábháilte",
     "backgroundNotificationBody": "Is féidir le do theaghlach a fheiceáil go bhfuil tú ceart go leor"
   },
   "notifications": {
-    "taskReminder": "{{patientName}}, tá sé in am do: {{taskTitle}}",
-    "checkinPrompt": "Am do sheiceáil isteach laethúil!"
+    "taskReminder": "{{patientName}}, tá sé in am agat: {{taskTitle}}",
+    "checkinPrompt": "Am do chlárú isteach laethúil!"
   }
 }

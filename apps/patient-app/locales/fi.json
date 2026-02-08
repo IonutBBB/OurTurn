@@ -19,25 +19,27 @@
   "categories": {
     "medication": "Lääkitys",
     "nutrition": "Ateriat ja ravitsemus",
-    "physical": "Liikunta",
+    "physical": "Fyysinen aktiivisuus",
     "cognitive": "Aivojen hyvinvointi",
-    "social": "Sosiaalisuus ja yhteydet",
+    "social": "Sosiaalisuus ja yhteys",
     "health": "Terveystarkastus"
   },
   "patientApp": {
     "todaysPlan": {
       "title": "Päivän suunnitelma",
       "progress": "{{completed}} / {{total}} aktiviteettia suoritettu tänään",
-      "noPlan": "Tälle päivälle ei ole suunniteltu aktiviteetteja. Perheesi on järjestämässä asioita!",
+      "noPlan": "Tälle päivälle ei ole suunniteltu aktiviteetteja. Perheesi valmistelee asioita!",
       "overdue": "Myöhässä",
       "upcoming": "Tulossa",
       "nowBadge": "NYT",
       "doneAt": "Tehty klo {{time}}",
-      "greatMorning": "Hyvää huomenta!",
-      "keepGoing": "Hienosti menee!",
-      "allDone": "Kaikki on tehty tältä päivältä!",
+      "greatMorning": "Hyvää edistystä tänä aamuna",
+      "keepGoing": "Hyvin aikataulussa",
+      "allDone": "Kaikki tehty tältä päivältä",
+      "yesterdayCompleted_one": "Eilen suoritit {{count}} aktiviteetin",
+      "yesterdayCompleted_other": "Eilen suoritit {{count}} aktiviteettia",
       "tapToStart": "Aloita aivojumppa napauttamalla",
-      "opensActivity": "Avaa päivän aivojumppa-aktiviteetin"
+      "opensActivity": "Avaa tämän päivän aivojumppa-aktiviteetin"
     },
     "help": {
       "title": "Tarvitsen apua",
@@ -70,7 +72,7 @@
       },
       "pushNotifications": {
         "title": "Saadaanko muistutuksia?",
-        "description": "Hyödyllisiä muistutuksia aterioista ja aktiviteeteista"
+        "description": "Hyödyllisiä vinkkejä aterioista ja aktiviteeteista"
       },
       "dataSharing": {
         "title": "Jaetaanko perheesi kanssa?",
@@ -93,13 +95,13 @@
       },
       "moodQuestion": "Miten voit tänään?",
       "moodGood": "Hyvin",
-      "moodOkay": "Ihan ok",
-      "moodBad": "Ei kovin hyvin",
+      "moodOkay": "Ok",
+      "moodBad": "Ei hyvin",
       "sleepQuestion": "Nukuitko hyvin?",
       "sleepGood": "Kyllä",
       "sleepOkay": "Niin ja näin",
-      "sleepBad": "En oikeastaan",
-      "voicePrompt": "Onko sinulla jotain kerrottavaa perheellesi?",
+      "sleepBad": "En oikein",
+      "voicePrompt": "Onko sinulla jotain, mitä haluat kertoa perheellesi?",
       "voiceTap": "Napauta puhuaksesi",
       "voiceRecording": "Äänitetään...",
       "voiceStop": "Lopeta",
@@ -116,7 +118,7 @@
     "activity": {
       "title": "Päivän aktiviteetti",
       "noActivity": "Ei aktiviteettia tälle päivälle",
-      "comeBackLater": "Palaa huomenna katsomaan uutta aktiviteettia!",
+      "comeBackLater": "Tarkista huomenna uusi aktiviteetti!",
       "tapToSpeak": "Napauta puhuaksesi",
       "tapToStop": "Napauta lopettaaksesi äänityksen",
       "typeInstead": "Kirjoita vastauksesi sen sijaan",
@@ -129,25 +131,25 @@
       "photoMemory": "Muisto elämästäsi"
     },
     "careCode": {
-      "welcome": "Tervetuloa OurTurn-sovellukseen",
+      "welcome": "Tervetuloa OurTurniin",
       "enterCode": "Syötä hoitokoodisi",
       "helperText": "Perheenjäsenesi antaa sinulle tämän koodin.",
       "connect": "Yhdistä",
       "invalidCode": "Tarkista koodisi ja yritä uudelleen.",
       "connecting": "Yhdistetään...",
       "digitLabel": "Numero {{current}} / {{total}}",
-      "changeLanguage": "Vaihda kieltä"
+      "changeLanguage": "Vaihda kieli"
     },
     "tabs": {
       "today": "Tänään",
       "help": "Apua"
     },
     "taskPhoto": {
-      "taskPhoto": "Tehtävän valokuva (valinnainen)",
+      "taskPhoto": "Tehtäväkuva (valinnainen)",
       "uploadPhoto": "Lataa valokuva",
       "removePhoto": "Poista valokuva",
       "medicationItems": "Tämän ryhmän lääkkeet",
-      "medicationItemsHint": "Ryhmittele enintään 3 lääkettä, jotka otetaan samaan aikaan",
+      "medicationItemsHint": "Ryhmittele enintään 3 samanaikaisesti otettavaa lääkettä",
       "addMedication": "Lisää lääke",
       "medName": "Lääkkeen nimi",
       "medDosage": "Annostus",

@@ -33,16 +33,18 @@
       "upcoming": "Nadolazeće",
       "nowBadge": "SADA",
       "doneAt": "Obavljeno u {{time}}",
-      "greatMorning": "Odlično jutro!",
-      "keepGoing": "Odlično vam ide!",
-      "allDone": "Sve obavljeno za danas!",
+      "greatMorning": "Odličan napredak jutros",
+      "keepGoing": "Dobro napredujete",
+      "allDone": "Sve obavljeno za danas",
+      "yesterdayCompleted_one": "Jučer ste obavili {{count}} aktivnost",
+      "yesterdayCompleted_other": "Jučer ste obavili {{count}} aktivnosti",
       "tapToStart": "Dodirnite za početak vježbanja uma",
       "opensActivity": "Otvara današnju aktivnost za vježbanje uma"
     },
     "help": {
       "title": "Trebam pomoć",
       "callSomeone": "Nazovi nekoga",
-      "getHomeSafely": "Sigurno dođite kući",
+      "getHomeSafely": "Sigurno stigni kući",
       "takeMeHome": "Odvedi me kući",
       "takeMeHomeDesc": "Dodirnite za upute za hodanje do vašeg doma",
       "emergency": "Hitni slučaj",
@@ -62,22 +64,22 @@
       "no": "Ne",
       "locationTracking": {
         "title": "Podijelite svoju lokaciju?",
-        "description": "Kako bi vam vaša obitelj mogla pomoći da sigurno dođete kući"
+        "description": "Kako bi vam obitelj mogla pomoći da sigurno stignete kući"
       },
       "dataCollection": {
-        "title": "Spremite svoje dnevne informacije?",
+        "title": "Spremati vaše dnevne informacije?",
         "description": "Kako bi vaša obitelj mogla vidjeti kako ste"
       },
       "pushNotifications": {
-        "title": "Primajte podsjetnike?",
+        "title": "Primati podsjetnike?",
         "description": "Korisni podsjetnici za obroke i aktivnosti"
       },
       "dataSharing": {
-        "title": "Podijelite sa svojom obitelji?",
+        "title": "Podijeliti s vašom obitelji?",
         "description": "Kako bi vas njegovatelji mogli podržati"
       },
       "voiceRecording": {
-        "title": "Snimajte glasovne poruke?",
+        "title": "Snimati glasovne poruke?",
         "description": "Kako biste mogli ostavljati poruke svojoj obitelji"
       }
     },
@@ -91,7 +93,7 @@
         "afternoon": "Dobar dan, {{name}}!",
         "evening": "Dobra večer, {{name}}!"
       },
-      "moodQuestion": "Kako se osjećate danas?",
+      "moodQuestion": "Kako se danas osjećate?",
       "moodGood": "Dobro",
       "moodOkay": "U redu",
       "moodBad": "Ne baš dobro",
@@ -125,7 +127,7 @@
       "recordAgain": "Snimi ponovno",
       "skipForToday": "Preskoči za danas",
       "defaultFollowUp": "Kakva divna uspomena! Hvala vam što ste je podijelili.",
-      "listenToSong": "Slušajte pjesmu",
+      "listenToSong": "Slušaj pjesmu",
       "photoMemory": "Uspomena iz vašeg života"
     },
     "careCode": {
@@ -135,7 +137,7 @@
       "connect": "Poveži se",
       "invalidCode": "Provjerite svoj kod i pokušajte ponovno.",
       "connecting": "Povezivanje...",
-      "digitLabel": "Broj {{current}} od {{total}}",
+      "digitLabel": "Znamenka {{current}} od {{total}}",
       "changeLanguage": "Promijeni jezik"
     },
     "tabs": {
@@ -144,7 +146,7 @@
     },
     "taskPhoto": {
       "taskPhoto": "Fotografija zadatka (nije obavezno)",
-      "uploadPhoto": "Učitaj fotografiju",
+      "uploadPhoto": "Prenesi fotografiju",
       "removePhoto": "Ukloni fotografiju",
       "medicationItems": "Lijekovi u ovoj grupi",
       "medicationItemsHint": "Grupirajte do 3 lijeka koja se uzimaju u isto vrijeme",

@@ -26,16 +26,18 @@
   },
   "patientApp": {
     "todaysPlan": {
-      "title": "Plan du jour",
+      "title": "Le programme d'aujourd'hui",
       "progress": "{{completed}} sur {{total}} activités réalisées aujourd'hui",
       "noPlan": "Aucune activité prévue pour aujourd'hui. Votre famille est en train de tout organiser !",
       "overdue": "En retard",
       "upcoming": "À venir",
       "nowBadge": "MAINTENANT",
-      "doneAt": "Fait à {{time}}",
-      "greatMorning": "Bonne matinée !",
-      "keepGoing": "Vous vous en sortez à merveille !",
-      "allDone": "Tout est fait pour aujourd'hui !",
+      "doneAt": "Terminé à {{time}}",
+      "greatMorning": "Bonne progression ce matin",
+      "keepGoing": "Bien parti",
+      "allDone": "Tout est fait pour aujourd'hui",
+      "yesterdayCompleted_one": "Hier, vous avez terminé {{count}} activité",
+      "yesterdayCompleted_other": "Hier, vous avez terminé {{count}} activités",
       "tapToStart": "Appuyez pour commencer votre activité cérébrale",
       "opensActivity": "Ouvre l'activité de bien-être cérébral d'aujourd'hui"
     },
@@ -94,12 +96,12 @@
       "moodQuestion": "Comment vous sentez-vous aujourd'hui ?",
       "moodGood": "Bien",
       "moodOkay": "Ça va",
-      "moodBad": "Pas très bien",
+      "moodBad": "Pas super",
       "sleepQuestion": "Avez-vous bien dormi ?",
       "sleepGood": "Oui",
       "sleepOkay": "Moyen",
       "sleepBad": "Pas vraiment",
-      "voicePrompt": "Voulez-vous dire quelque chose à votre famille ?",
+      "voicePrompt": "Avez-vous quelque chose à dire à votre famille ?",
       "voiceTap": "Appuyez pour parler",
       "voiceRecording": "Enregistrement...",
       "voiceStop": "Arrêter",
@@ -109,12 +111,12 @@
       "send": "Envoyer à la famille",
       "skipVoice": "Passer le message vocal",
       "thankYou": "Merci ! Votre famille verra ceci.",
-      "alreadyDone": "Vous avez déjà fait votre enregistrement aujourd'hui !",
+      "alreadyDone": "Vous vous êtes déjà enregistré aujourd'hui !",
       "tapToCheckin": "Appuyez pour vous enregistrer",
       "opensCheckin": "Ouvre l'écran d'enregistrement quotidien"
     },
     "activity": {
-      "title": "Activité du jour",
+      "title": "L'activité d'aujourd'hui",
       "noActivity": "Pas d'activité pour aujourd'hui",
       "comeBackLater": "Revenez demain pour une nouvelle activité !",
       "tapToSpeak": "Appuyez pour parler",
@@ -171,6 +173,6 @@
   },
   "notifications": {
     "taskReminder": "{{patientName}}, il est temps de : {{taskTitle}}",
-    "checkinPrompt": "Il est temps de faire votre enregistrement quotidien !"
+    "checkinPrompt": "Il est temps de vous enregistrer quotidiennement !"
   }
 }

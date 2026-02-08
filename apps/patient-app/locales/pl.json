@@ -11,7 +11,7 @@
     "loading": "Ładowanie...",
     "error": "Coś poszło nie tak. Spróbuj ponownie.",
     "errorTitle": "Coś poszło nie tak",
-    "errorDefault": "Wystąpił nieoczekiwany błąd.",
+    "errorDefault": "Wystąpił niespodziewany błąd.",
     "tryAgain": "Spróbuj ponownie",
     "offline": "Jesteś offline – Twoje dane zostaną zsynchronizowane po połączeniu",
     "synced": "Zsynchronizowano"
@@ -20,7 +20,7 @@
     "medication": "Leki",
     "nutrition": "Posiłki i odżywianie",
     "physical": "Aktywność fizyczna",
-    "cognitive": "Dobre samopoczucie umysłowe",
+    "cognitive": "Sprawność umysłowa",
     "social": "Relacje społeczne",
     "health": "Kontrola stanu zdrowia"
   },
@@ -33,17 +33,19 @@
       "upcoming": "Nadchodzące",
       "nowBadge": "TERAZ",
       "doneAt": "Wykonano o {{time}}",
-      "greatMorning": "Wspaniały poranek!",
-      "keepGoing": "Świetnie Ci idzie!",
-      "allDone": "Wszystko zrobione na dzisiaj!",
+      "greatMorning": "Świetny postęp z samego rana",
+      "keepGoing": "Dobrze Ci idzie",
+      "allDone": "Wszystko zrobione na dzisiaj",
+      "yesterdayCompleted_one": "Wczoraj ukończono {{count}} aktywność",
+      "yesterdayCompleted_other": "Wczoraj ukończono {{count}} aktywności",
       "tapToStart": "Dotknij, aby rozpocząć ćwiczenie umysłu",
       "opensActivity": "Otwiera dzisiejsze ćwiczenie umysłu"
     },
     "help": {
       "title": "Potrzebuję pomocy",
       "callSomeone": "Zadzwoń do kogoś",
-      "getHomeSafely": "Bezpiecznie wróć do domu",
-      "takeMeHome": "Zabierz mnie do domu",
+      "getHomeSafely": "Bezpieczny powrót do domu",
+      "takeMeHome": "Zaprowadź mnie do domu",
       "takeMeHomeDesc": "Dotknij, aby uzyskać wskazówki dojścia do Twojego domu",
       "emergency": "Nagły wypadek",
       "confirmEmergency": "Czy na pewno chcesz wezwać służby ratunkowe?"
@@ -66,14 +68,14 @@
       },
       "dataCollection": {
         "title": "Zapisywać Twoje codzienne informacje?",
-        "description": "Aby Twoja rodzina mogła zobaczyć, jak się masz"
+        "description": "Aby Twoja rodzina mogła zobaczyć, jak się czujesz"
       },
       "pushNotifications": {
         "title": "Otrzymywać przypomnienia?",
-        "description": "Pomocne powiadomienia o posiłkach i aktywnościach"
+        "description": "Pomocne przypomnienia o posiłkach i aktywnościach"
       },
       "dataSharing": {
-        "title": "Udostępniać dane Twojej rodzinie?",
+        "title": "Udostępniać dane rodzinie?",
         "description": "Aby Twoi opiekunowie mogli Cię wspierać"
       },
       "voiceRecording": {
@@ -94,7 +96,7 @@
       "moodQuestion": "Jak się dzisiaj czujesz?",
       "moodGood": "Dobrze",
       "moodOkay": "W porządku",
-      "moodBad": "Niezbyt dobrze",
+      "moodBad": "Nieszczególnie",
       "sleepQuestion": "Czy dobrze spałeś?",
       "sleepGood": "Tak",
       "sleepOkay": "Tak sobie",
@@ -130,7 +132,7 @@
     },
     "careCode": {
       "welcome": "Witamy w OurTurn",
-      "enterCode": "Wprowadź swój Kod Opieki",
+      "enterCode": "Wprowadź swój kod opieki",
       "helperText": "Ten kod przekaże Ci członek Twojej rodziny.",
       "connect": "Połącz",
       "invalidCode": "Sprawdź swój kod i spróbuj ponownie.",
@@ -152,7 +154,7 @@
       "medName": "Nazwa leku",
       "medDosage": "Dawkowanie",
       "removeMedication": "Usuń",
-      "maxMedications": "Maksymalnie 3 leki na grupę",
+      "maxMedications": "Maksymalnie 3 leki w grupie",
       "uploadingPhoto": "Przesyłanie..."
     }
   },

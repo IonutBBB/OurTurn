@@ -9,7 +9,7 @@
     "skip": "Preskočiť na dnes",
     "or": "alebo",
     "loading": "Načítava sa...",
-    "error": "Niečo sa pokazilo. Skúste to znova.",
+    "error": "Niečo sa pokazilo. Skúste znova.",
     "errorTitle": "Niečo sa pokazilo",
     "errorDefault": "Vyskytla sa neočakávaná chyba.",
     "tryAgain": "Skúsiť znova",
@@ -21,7 +21,7 @@
     "nutrition": "Jedlá a výživa",
     "physical": "Fyzická aktivita",
     "cognitive": "Starostlivosť o mozog",
-    "social": "Spoločenský život a spojenie",
+    "social": "Spoločenské aktivity a spojenie",
     "health": "Kontrola zdravia"
   },
   "patientApp": {
@@ -33,10 +33,12 @@
       "upcoming": "Pripravované",
       "nowBadge": "TERAZ",
       "doneAt": "Dokončené o {{time}}",
-      "greatMorning": "Krásne ráno!",
-      "keepGoing": "Darí sa vám skvele!",
-      "allDone": "Na dnes všetko hotové!",
-      "tapToStart": "Klepnutím spustíte aktivitu pre starostlivosť o mozog",
+      "greatMorning": "Dobrý pokrok dnes ráno",
+      "keepGoing": "Výborne na ceste",
+      "allDone": "Na dnes všetko hotové",
+      "yesterdayCompleted_one": "Včera ste dokončili {{count}} aktivitu",
+      "yesterdayCompleted_other": "Včera ste dokončili {{count}} aktivity",
+      "tapToStart": "Ťuknutím spustíte aktivitu pre starostlivosť o mozog",
       "opensActivity": "Otvorí dnešnú aktivitu pre starostlivosť o mozog"
     },
     "help": {
@@ -44,18 +46,18 @@
       "callSomeone": "Zavolať niekomu",
       "getHomeSafely": "Dostať sa bezpečne domov",
       "takeMeHome": "Zobrať ma domov",
-      "takeMeHomeDesc": "Klepnutím získate pešie trasy do vášho domova",
+      "takeMeHomeDesc": "Ťuknutím získate pešie trasy do vášho domova",
       "emergency": "Núdzový stav",
       "confirmEmergency": "Ste si istý, že chcete zavolať záchranné služby?"
     },
     "sos": {
       "button": "SOS",
       "label": "SOS",
-      "holdHint": "Podržte 2 sekundy, aby ste odoslali upozornenie svojej rodine",
+      "holdHint": "Podržte 2 sekundy na odoslanie upozornenia vašej rodine",
       "helpOnTheWay": "Pomoc je na ceste",
       "familyNotified": "Vaša rodina bola upozornená",
       "callCaregiver": "Zavolať {{name}}",
-      "imOkay": "Som v poriadku, vrátiť sa"
+      "imOkay": "Som v poriadku, ísť späť"
     },
     "consent": {
       "yes": "Áno",
@@ -100,25 +102,25 @@
       "sleepOkay": "Tak-tak",
       "sleepBad": "Nie veľmi",
       "voicePrompt": "Chcete niečo povedať svojej rodine?",
-      "voiceTap": "Klepnutím hovorte",
+      "voiceTap": "Ťuknutím hovorte",
       "voiceRecording": "Nahrávanie...",
       "voiceStop": "Zastaviť",
       "voicePlay": "Prehrať",
       "voicePause": "Pozastaviť",
       "voiceDiscard": "Nahrať znova",
-      "send": "Odoslať rodine",
+      "send": "Poslať rodine",
       "skipVoice": "Preskočiť hlasovú správu",
-      "thankYou": "Ďakujem! Vaša rodina to uvidí.",
+      "thankYou": "Ďakujeme! Vaša rodina to uvidí.",
       "alreadyDone": "Dnes ste sa už prihlásili!",
-      "tapToCheckin": "Klepnutím sa prihláste",
-      "opensCheckin": "Otvorí obrazovku dennej registrácie"
+      "tapToCheckin": "Ťuknutím sa prihláste",
+      "opensCheckin": "Otvorí obrazovku denného prihlásenia"
     },
     "activity": {
       "title": "Dnešná aktivita",
       "noActivity": "Na dnes žiadna aktivita",
-      "comeBackLater": "Zajtra sa vráťte a pozrite si novú aktivitu!",
-      "tapToSpeak": "Klepnutím hovorte",
-      "tapToStop": "Klepnutím zastavte nahrávanie",
+      "comeBackLater": "Zajtra sa vráťte pre novú aktivitu!",
+      "tapToSpeak": "Ťuknutím hovorte",
+      "tapToStop": "Ťuknutím zastavte nahrávanie",
       "typeInstead": "Napíšte svoju odpoveď namiesto toho",
       "typeHere": "Napíšte svoju odpoveď sem...",
       "speakInstead": "Hovorte namiesto toho",
@@ -133,7 +135,7 @@
       "enterCode": "Zadajte svoj kód starostlivosti",
       "helperText": "Tento kód vám poskytne člen vašej rodiny.",
       "connect": "Pripojiť",
-      "invalidCode": "Skontrolujte svoj kód a skúste to znova.",
+      "invalidCode": "Skontrolujte svoj kód a skúste znova.",
       "connecting": "Pripája sa...",
       "digitLabel": "Číslica {{current}} z {{total}}",
       "changeLanguage": "Zmeniť jazyk"
@@ -157,13 +159,13 @@
     }
   },
   "a11y": {
-    "doubleTapToComplete": "Dvojitým klepnutím označíte ako hotové",
+    "doubleTapToComplete": "Dvojitým ťuknutím označíte ako hotové",
     "callContact": "Zavolať {{name}}",
     "emergencyCallConfirmHint": "Pred volaním sa zobrazí potvrdenie",
     "takeMeHomeHint": "Otvorí navigáciu na vašu domácu adresu",
     "gettingLocation": "Získava sa vaša poloha",
-    "removesVoiceRecording": "Odstráni vašu hlasovú nahrávku",
-    "submittingCheckin": "Odosiela sa vaša registrácia"
+    "removesVoiceRecording": "Odstráni vaše hlasové nahrávky",
+    "submittingCheckin": "Odosiela sa vaše prihlásenie"
   },
   "locationTracking": {
     "backgroundNotificationTitle": "OurTurn vás chráni",
@@ -171,6 +173,6 @@
   },
   "notifications": {
     "taskReminder": "{{patientName}}, je čas na: {{taskTitle}}",
-    "checkinPrompt": "Čas na vašu dennú registráciu!"
+    "checkinPrompt": "Čas na vaše denné prihlásenie!"
   }
 }

@@ -67,6 +67,22 @@ export function formatDateForDb(date: Date = new Date()): string {
   return date.toISOString().split('T')[0];
 }
 
+// Format a date as a full readable string for orientation (e.g. "Sunday, 8 February")
+export function formatFullDate(date: Date = new Date(), locale: string = 'en'): string {
+  return new Intl.DateTimeFormat(locale, {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+  }).format(date);
+}
+
+// Get yesterday's date as YYYY-MM-DD for database queries
+export function getYesterdayDateForDb(): string {
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  return formatDateForDb(yesterday);
+}
+
 // Parse a time string (HH:MM) to minutes since midnight
 export function timeToMinutes(time: string): number {
   const [hours, minutes] = time.split(':').map(Number);

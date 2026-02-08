@@ -5,10 +5,6 @@ import { View, ActivityIndicator, StyleSheet, AppState } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font';
 import {
-  Fraunces_500Medium,
-  Fraunces_700Bold,
-} from '@expo-google-fonts/fraunces';
-import {
   Nunito_400Regular,
   Nunito_500Medium,
   Nunito_600SemiBold,
@@ -127,8 +123,6 @@ export default function RootLayout() {
   const appState = useRef(AppState.currentState);
 
   const [fontsLoaded, fontError] = useFonts({
-    Fraunces_500Medium,
-    Fraunces_700Bold,
     Nunito_400Regular,
     Nunito_500Medium,
     Nunito_600SemiBold,

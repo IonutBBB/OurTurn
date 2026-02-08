@@ -5,7 +5,7 @@
     "cancel": "Cancelar",
     "delete": "Eliminar",
     "edit": "Editar",
-    "done": "Hecho",
+    "done": "Listo",
     "skip": "Omitir por hoy",
     "or": "o",
     "loading": "Cargando...",
@@ -33,17 +33,19 @@
       "upcoming": "Próximo",
       "nowBadge": "AHORA",
       "doneAt": "Hecho a las {{time}}",
-      "greatMorning": "¡Qué buena mañana!",
-      "keepGoing": "¡Lo estás haciendo de maravilla!",
-      "allDone": "¡Todo listo por hoy!",
+      "greatMorning": "Buen progreso esta mañana",
+      "keepGoing": "Bien encaminado",
+      "allDone": "Todo listo por hoy",
+      "yesterdayCompleted_one": "Ayer completaste {{count}} actividad",
+      "yesterdayCompleted_other": "Ayer completaste {{count}} actividades",
       "tapToStart": "Toca para comenzar tu actividad mental",
       "opensActivity": "Abre la actividad de bienestar mental de hoy"
     },
     "help": {
-      "title": "Necesito ayuda",
-      "callSomeone": "Llamar a alguien",
-      "getHomeSafely": "Llegar a casa de forma segura",
-      "takeMeHome": "Llévame a casa",
+      "title": "Necesito Ayuda",
+      "callSomeone": "Llamar a Alguien",
+      "getHomeSafely": "Llegar a Casa Seguro",
+      "takeMeHome": "Llévame a Casa",
       "takeMeHomeDesc": "Toca para obtener indicaciones para llegar caminando a tu casa",
       "emergency": "Emergencia",
       "confirmEmergency": "¿Estás seguro de que quieres llamar a los servicios de emergencia?"
@@ -52,7 +54,7 @@
       "button": "SOS",
       "label": "SOS",
       "holdHint": "Mantén presionado durante 2 segundos para enviar una alerta a tu familia",
-      "helpOnTheWay": "La ayuda está en camino",
+      "helpOnTheWay": "Ayuda en camino",
       "familyNotified": "Tu familia ha sido notificada",
       "callCaregiver": "Llamar a {{name}}",
       "imOkay": "Estoy bien, volver"
@@ -62,7 +64,7 @@
       "no": "No",
       "locationTracking": {
         "title": "¿Compartir tu ubicación?",
-        "description": "Para que tu familia pueda ayudarte a llegar a casa de forma segura"
+        "description": "Para que tu familia pueda ayudarte a llegar a casa seguro"
       },
       "dataCollection": {
         "title": "¿Guardar tu información diaria?",
@@ -83,7 +85,7 @@
     },
     "essential": {
       "music": "Música",
-      "callHelp": "Llamar para pedir ayuda"
+      "callHelp": "Llamar por Ayuda"
     },
     "checkin": {
       "greeting": {
@@ -114,7 +116,7 @@
       "opensCheckin": "Abre la pantalla de registro diario"
     },
     "activity": {
-      "title": "Actividad de hoy",
+      "title": "Actividad de Hoy",
       "noActivity": "No hay actividad para hoy",
       "comeBackLater": "¡Vuelve mañana para una nueva actividad!",
       "tapToSpeak": "Toca para hablar",
@@ -124,8 +126,8 @@
       "speakInstead": "Habla en su lugar",
       "recordAgain": "Grabar de nuevo",
       "skipForToday": "Omitir por hoy",
-      "defaultFollowUp": "¡Qué recuerdo maravilloso! Gracias por compartir.",
-      "listenToSong": "Escuchar canción",
+      "defaultFollowUp": "¡Qué recuerdo tan maravilloso! Gracias por compartir.",
+      "listenToSong": "Escuchar Canción",
       "photoMemory": "Un recuerdo de tu vida"
     },
     "careCode": {
@@ -144,11 +146,11 @@
     },
     "taskPhoto": {
       "taskPhoto": "Foto de la tarea (opcional)",
-      "uploadPhoto": "Subir foto",
-      "removePhoto": "Eliminar foto",
+      "uploadPhoto": "Subir Foto",
+      "removePhoto": "Eliminar Foto",
       "medicationItems": "Medicamentos en este grupo",
       "medicationItemsHint": "Agrupa hasta 3 medicamentos tomados al mismo tiempo",
-      "addMedication": "Agregar medicamento",
+      "addMedication": "Agregar Medicamento",
       "medName": "Nombre del medicamento",
       "medDosage": "Dosis",
       "removeMedication": "Eliminar",

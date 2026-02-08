@@ -6,7 +6,7 @@
     "delete": "Șterge",
     "edit": "Editează",
     "done": "Gata",
-    "skip": "Sari peste astăzi",
+    "skip": "Sari peste azi",
     "or": "sau",
     "loading": "Se încarcă...",
     "error": "Ceva nu a mers bine. Te rugăm să încerci din nou.",
@@ -18,35 +18,37 @@
   },
   "categories": {
     "medication": "Medicamente",
-    "nutrition": "Mese și nutriție",
-    "physical": "Activitate fizică",
-    "cognitive": "Bunăstare cerebrală",
-    "social": "Socializare și conexiune",
-    "health": "Control medical"
+    "nutrition": "Mese și Nutriție",
+    "physical": "Activitate Fizică",
+    "cognitive": "Stare de Bine a Creierului",
+    "social": "Socializare și Conectare",
+    "health": "Verificare Stare de Sănătate"
   },
   "patientApp": {
     "todaysPlan": {
-      "title": "Planul de astăzi",
-      "progress": "{{completed}} din {{total}} activități finalizate astăzi",
-      "noPlan": "Nu sunt activități planificate pentru astăzi. Familia ta configurează lucrurile!",
-      "overdue": "Restant",
+      "title": "Planul de azi",
+      "progress": "{{completed}} din {{total}} activități efectuate azi",
+      "noPlan": "Nu sunt activități planificate pentru azi. Familia ta configurează lucrurile!",
+      "overdue": "Întârziată",
       "upcoming": "Urmează",
       "nowBadge": "ACUM",
-      "doneAt": "Finalizat la {{time}}",
-      "greatMorning": "Bună dimineața!",
-      "keepGoing": "Te descurci minunat!",
-      "allDone": "Gata pentru astăzi!",
-      "tapToStart": "Atinge pentru a începe activitatea cerebrală",
-      "opensActivity": "Deschide activitatea de bunăstare cerebrală de astăzi"
+      "doneAt": "Efectuat la {{time}}",
+      "greatMorning": "Progres bun în această dimineață",
+      "keepGoing": "Ești pe drumul cel bun",
+      "allDone": "Totul este gata pentru azi",
+      "yesterdayCompleted_one": "Ieri ai finalizat {{count}} activitate",
+      "yesterdayCompleted_other": "Ieri ai finalizat {{count}} activități",
+      "tapToStart": "Atinge pentru a începe activitatea ta cerebrală",
+      "opensActivity": "Deschide activitatea de stare de bine a creierului de azi"
     },
     "help": {
       "title": "Am nevoie de ajutor",
       "callSomeone": "Sună pe cineva",
       "getHomeSafely": "Ajungi acasă în siguranță",
       "takeMeHome": "Du-mă acasă",
-      "takeMeHomeDesc": "Atinge pentru a obține indicații de mers pe jos către casă",
+      "takeMeHomeDesc": "Atinge pentru a obține indicații de mers pe jos către casa ta",
       "emergency": "Urgență",
-      "confirmEmergency": "Ești sigur că vrei să suni la serviciile de urgență?"
+      "confirmEmergency": "Ești sigur că vrei să apelezi serviciile de urgență?"
     },
     "sos": {
       "button": "SOS",
@@ -61,11 +63,11 @@
       "yes": "Da",
       "no": "Nu",
       "locationTracking": {
-        "title": "Permiteți urmărirea locației?",
+        "title": "Permite partajarea locației tale?",
         "description": "Pentru ca familia ta să te poată ajuta să ajungi acasă în siguranță"
       },
       "dataCollection": {
-        "title": "Salvează informațiile zilnice?",
+        "title": "Salvează informațiile tale zilnice?",
         "description": "Pentru ca familia ta să vadă cum te simți"
       },
       "pushNotifications": {
@@ -91,7 +93,7 @@
         "afternoon": "Bună ziua, {{name}}!",
         "evening": "Bună seara, {{name}}!"
       },
-      "moodQuestion": "Cum te simți astăzi?",
+      "moodQuestion": "Cum te simți azi?",
       "moodGood": "Bine",
       "moodOkay": "Acceptabil",
       "moodBad": "Nu prea bine",
@@ -109,37 +111,37 @@
       "send": "Trimite familiei",
       "skipVoice": "Sari peste mesajul vocal",
       "thankYou": "Mulțumim! Familia ta va vedea asta.",
-      "alreadyDone": "Ai făcut deja check-in-ul astăzi!",
-      "tapToCheckin": "Atinge pentru a face check-in",
+      "alreadyDone": "Ai făcut deja check-in-ul azi!",
+      "tapToCheckin": "Atinge pentru a face check-in-ul",
       "opensCheckin": "Deschide ecranul de check-in zilnic"
     },
     "activity": {
-      "title": "Activitatea de astăzi",
-      "noActivity": "Nicio activitate pentru astăzi",
-      "comeBackLater": "Verifică din nou mâine pentru o nouă activitate!",
+      "title": "Activitatea de azi",
+      "noActivity": "Nicio activitate pentru azi",
+      "comeBackLater": "Revino mâine pentru o activitate nouă!",
       "tapToSpeak": "Atinge pentru a vorbi",
       "tapToStop": "Atinge pentru a opri înregistrarea",
-      "typeInstead": "Scrie răspunsul în schimb",
-      "typeHere": "Scrie răspunsul aici...",
+      "typeInstead": "Scrie răspunsul tău în schimb",
+      "typeHere": "Scrie răspunsul tău aici...",
       "speakInstead": "Vorbește în schimb",
       "recordAgain": "Înregistrează din nou",
-      "skipForToday": "Sari peste astăzi",
-      "defaultFollowUp": "Ce amintire minunată! Mulțumim că ai împărtășit.",
+      "skipForToday": "Sari peste azi",
+      "defaultFollowUp": "Ce amintire minunată! Îți mulțumim că ai împărtășit-o.",
       "listenToSong": "Ascultă melodia",
       "photoMemory": "O amintire din viața ta"
     },
     "careCode": {
       "welcome": "Bun venit la OurTurn",
-      "enterCode": "Introdu codul tău de îngrijire",
+      "enterCode": "Introdu Codul tău de Îngrijire",
       "helperText": "Membrul familiei tale îți va da acest cod.",
-      "connect": "Conectează-te",
+      "connect": "Conectează",
       "invalidCode": "Verifică codul și încearcă din nou.",
       "connecting": "Se conectează...",
       "digitLabel": "Cifra {{current}} din {{total}}",
       "changeLanguage": "Schimbă limba"
     },
     "tabs": {
-      "today": "Astăzi",
+      "today": "Azi",
       "help": "Ajutor"
     },
     "taskPhoto": {
@@ -159,8 +161,8 @@
   "a11y": {
     "doubleTapToComplete": "Atinge de două ori pentru a marca ca finalizat",
     "callContact": "Sună pe {{name}}",
-    "emergencyCallConfirmHint": "Va apărea o confirmare înainte de a suna",
-    "takeMeHomeHint": "Deschide navigarea către adresa ta de domiciliu",
+    "emergencyCallConfirmHint": "Va apărea o confirmare înainte de a apela",
+    "takeMeHomeHint": "Deschide navigarea către adresa ta de acasă",
     "gettingLocation": "Se obține locația ta",
     "removesVoiceRecording": "Elimină înregistrarea ta vocală",
     "submittingCheckin": "Se trimite check-in-ul tău"

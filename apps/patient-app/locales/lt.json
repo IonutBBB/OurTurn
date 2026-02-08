@@ -9,11 +9,11 @@
     "skip": "Praleisti šiandien",
     "or": "arba",
     "loading": "Įkeliama...",
-    "error": "Kažkas nepavyko. Bandykite dar kartą.",
-    "errorTitle": "Kažkas nepavyko",
+    "error": "Įvyko klaida. Bandykite dar kartą.",
+    "errorTitle": "Įvyko klaida",
     "errorDefault": "Įvyko netikėta klaida.",
     "tryAgain": "Bandyti dar kartą",
-    "offline": "Jūs esate neprisijungęs – jūsų duomenys bus sinchronizuojami, kai prisijungsite",
+    "offline": "Jūs esate neprisijungę – jūsų duomenys bus sinchronizuoti, kai prisijungsite",
     "synced": "Sinchronizuota"
   },
   "categories": {
@@ -22,7 +22,7 @@
     "physical": "Fizinis aktyvumas",
     "cognitive": "Smegenų sveikata",
     "social": "Socialiniai ryšiai",
-    "health": "Sveikatos patikrinimas"
+    "health": "Sveikatos patikra"
   },
   "patientApp": {
     "todaysPlan": {
@@ -30,12 +30,14 @@
       "progress": "Šiandien atlikta {{completed}} iš {{total}} veiklų",
       "noPlan": "Šiandienai veiklų nesuplanuota. Jūsų šeima viską ruošia!",
       "overdue": "Pavėluota",
-      "upcoming": "Artėjantis",
+      "upcoming": "Artėjanti",
       "nowBadge": "DABAR",
       "doneAt": "Atlikta {{time}}",
-      "greatMorning": "Puikus rytas!",
-      "keepGoing": "Puikiai sekasi!",
-      "allDone": "Šiandienai viskas atlikta!",
+      "greatMorning": "Puiki pažanga šį rytą",
+      "keepGoing": "Puikiai sekasi",
+      "allDone": "Viskas atlikta šiandienai",
+      "yesterdayCompleted_one": "Vakar atlikote {{count}} veiklą",
+      "yesterdayCompleted_other": "Vakar atlikote {{count}} veiklas",
       "tapToStart": "Palieskite, kad pradėtumėte smegenų veiklą",
       "opensActivity": "Atidaro šiandienos smegenų sveikatos veiklą"
     },
@@ -43,10 +45,10 @@
       "title": "Man reikia pagalbos",
       "callSomeone": "Paskambinti kam nors",
       "getHomeSafely": "Saugiai grįžti namo",
-      "takeMeHome": "Nuvežkite mane namo",
-      "takeMeHomeDesc": "Palieskite, kad gautumėte nurodymus, kaip nueiti iki jūsų namų",
-      "emergency": "Skubios pagalbos",
-      "confirmEmergency": "Ar tikrai norite iškviesti skubios pagalbos tarnybas?"
+      "takeMeHome": "Parvežkite mane namo",
+      "takeMeHomeDesc": "Palieskite, kad gautumėte pėsčiųjų nuorodas į savo namus",
+      "emergency": "Avarinė situacija",
+      "confirmEmergency": "Ar tikrai norite iškviesti pagalbos tarnybas?"
     },
     "sos": {
       "button": "SOS",
@@ -61,19 +63,19 @@
       "yes": "Taip",
       "no": "Ne",
       "locationTracking": {
-        "title": "Dalintis savo buvimo vieta?",
+        "title": "Ar norite dalytis savo buvimo vieta?",
         "description": "Kad jūsų šeima galėtų padėti jums saugiai grįžti namo"
       },
       "dataCollection": {
-        "title": "Išsaugoti jūsų dienos informaciją?",
+        "title": "Ar norite išsaugoti savo dienos informaciją?",
         "description": "Kad jūsų šeima galėtų matyti, kaip jums sekasi"
       },
       "pushNotifications": {
         "title": "Gauti priminimus?",
-        "description": "Naudingi priminimai apie maistą ir veiklą"
+        "description": "Naudingi priminimai apie maistą ir veiklas"
       },
       "dataSharing": {
-        "title": "Dalintis su savo šeima?",
+        "title": "Dalytis su savo šeima?",
         "description": "Kad jūsų globėjai galėtų jus palaikyti"
       },
       "voiceRecording": {
@@ -83,7 +85,7 @@
     },
     "essential": {
       "music": "Muzika",
-      "callHelp": "Kviesti pagalbą"
+      "callHelp": "Išsikviesti pagalbą"
     },
     "checkin": {
       "greeting": {
@@ -116,7 +118,7 @@
     "activity": {
       "title": "Šiandienos veikla",
       "noActivity": "Šiandienai veiklos nėra",
-      "comeBackLater": "Patikrinkite rytoj, ar yra naujos veiklos!",
+      "comeBackLater": "Patikrinkite rytoj, ar yra naujų veiklų!",
       "tapToSpeak": "Palieskite, kad kalbėtumėte",
       "tapToStop": "Palieskite, kad sustabdytumėte įrašymą",
       "typeInstead": "Įveskite savo atsakymą",
@@ -167,7 +169,7 @@
   },
   "locationTracking": {
     "backgroundNotificationTitle": "OurTurn užtikrina jūsų saugumą",
-    "backgroundNotificationBody": "Jūsų šeima gali matyti, kad jums viskas gerai"
+    "backgroundNotificationBody": "Jūsų šeima mato, kad jums viskas gerai"
   },
   "notifications": {
     "taskReminder": "{{patientName}}, laikas: {{taskTitle}}",

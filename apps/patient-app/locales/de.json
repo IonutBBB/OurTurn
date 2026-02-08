@@ -8,7 +8,7 @@
     "done": "Fertig",
     "skip": "Für heute überspringen",
     "or": "oder",
-    "loading": "Lädt...",
+    "loading": "Laden...",
     "error": "Etwas ist schief gelaufen. Bitte versuche es noch einmal.",
     "errorTitle": "Etwas ist schief gelaufen",
     "errorDefault": "Ein unerwarteter Fehler ist aufgetreten.",
@@ -33,10 +33,12 @@
       "upcoming": "Bevorstehend",
       "nowBadge": "JETZT",
       "doneAt": "Erledigt um {{time}}",
-      "greatMorning": "Guten Morgen!",
-      "keepGoing": "Du machst das wunderbar!",
-      "allDone": "Für heute alles erledigt!",
-      "tapToStart": "Tippen, um deine Gehirnaktivität zu starten",
+      "greatMorning": "Guter Fortschritt heute Morgen",
+      "keepGoing": "Gut im Zeitplan",
+      "allDone": "Alles für heute erledigt",
+      "yesterdayCompleted_one": "Gestern hast du {{count}} Aktivität abgeschlossen",
+      "yesterdayCompleted_other": "Gestern hast du {{count}} Aktivitäten abgeschlossen",
+      "tapToStart": "Tippe, um deine Gehirnaktivität zu starten",
       "opensActivity": "Öffnet die heutige Aktivität für geistiges Wohlbefinden"
     },
     "help": {
@@ -44,14 +46,14 @@
       "callSomeone": "Jemanden anrufen",
       "getHomeSafely": "Sicher nach Hause kommen",
       "takeMeHome": "Bring mich nach Hause",
-      "takeMeHomeDesc": "Tippen, um eine Wegbeschreibung zu deinem Zuhause zu erhalten",
+      "takeMeHomeDesc": "Tippe, um eine Wegbeschreibung zu deinem Zuhause zu erhalten",
       "emergency": "Notfall",
       "confirmEmergency": "Bist du sicher, dass du den Notruf verständigen möchtest?"
     },
     "sos": {
       "button": "SOS",
       "label": "SOS",
-      "holdHint": "2 Sekunden gedrückt halten, um eine Benachrichtigung an deine Familie zu senden",
+      "holdHint": "Halte 2 Sekunden lang gedrückt, um eine Benachrichtigung an deine Familie zu senden",
       "helpOnTheWay": "Hilfe ist unterwegs",
       "familyNotified": "Deine Familie wurde benachrichtigt",
       "callCaregiver": "{{name}} anrufen",
@@ -83,7 +85,7 @@
     },
     "essential": {
       "music": "Musik",
-      "callHelp": "Hilfe rufen"
+      "callHelp": "Um Hilfe rufen"
     },
     "checkin": {
       "greeting": {
@@ -109,7 +111,7 @@
       "send": "An Familie senden",
       "skipVoice": "Sprachnachricht überspringen",
       "thankYou": "Vielen Dank! Deine Familie wird dies sehen.",
-      "alreadyDone": "Du hast dich heute schon eingecheckt!",
+      "alreadyDone": "Du hast heute schon eingecheckt!",
       "tapToCheckin": "Zum Einchecken tippen",
       "opensCheckin": "Öffnet den täglichen Check-in-Bildschirm"
     },
@@ -120,11 +122,11 @@
       "tapToSpeak": "Zum Sprechen tippen",
       "tapToStop": "Zum Stoppen der Aufnahme tippen",
       "typeInstead": "Gib deine Antwort stattdessen ein",
-      "typeHere": "Gib hier deine Antwort ein...",
+      "typeHere": "Gib deine Antwort hier ein...",
       "speakInstead": "Stattdessen sprechen",
       "recordAgain": "Erneut aufnehmen",
       "skipForToday": "Für heute überspringen",
-      "defaultFollowUp": "Was für eine wundervolle Erinnerung! Vielen Dank für das Teilen.",
+      "defaultFollowUp": "Was für eine wundervolle Erinnerung! Danke, dass du sie geteilt hast.",
       "listenToSong": "Lied anhören",
       "photoMemory": "Eine Erinnerung aus deinem Leben"
     },
@@ -134,7 +136,7 @@
       "helperText": "Dein Familienmitglied wird dir diesen Code geben.",
       "connect": "Verbinden",
       "invalidCode": "Bitte überprüfe deinen Code und versuche es noch einmal.",
-      "connecting": "Verbindet...",
+      "connecting": "Verbinden...",
       "digitLabel": "Ziffer {{current}} von {{total}}",
       "changeLanguage": "Sprache ändern"
     },
@@ -153,7 +155,7 @@
       "medDosage": "Dosierung",
       "removeMedication": "Entfernen",
       "maxMedications": "Maximal 3 Medikamente pro Gruppe",
-      "uploadingPhoto": "Wird hochgeladen..."
+      "uploadingPhoto": "Hochladen..."
     }
   },
   "a11y": {
@@ -161,9 +163,9 @@
     "callContact": "{{name}} anrufen",
     "emergencyCallConfirmHint": "Vor dem Anrufen erscheint eine Bestätigung",
     "takeMeHomeHint": "Öffnet die Navigation zu deiner Wohnadresse",
-    "gettingLocation": "Ermittelt deinen Standort",
+    "gettingLocation": "Ermitteln deines Standorts",
     "removesVoiceRecording": "Entfernt deine Sprachaufnahme",
-    "submittingCheckin": "Übermittelt deinen Check-in"
+    "submittingCheckin": "Check-in wird gesendet"
   },
   "locationTracking": {
     "backgroundNotificationTitle": "OurTurn sorgt für deine Sicherheit",

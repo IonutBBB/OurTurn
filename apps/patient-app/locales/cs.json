@@ -27,15 +27,17 @@
   "patientApp": {
     "todaysPlan": {
       "title": "Dnešní plán",
-      "progress": "{{completed}} z {{total}} aktivit dnes hotovo",
+      "progress": "Dnes hotovo {{completed}} z {{total}} aktivit",
       "noPlan": "Na dnešek nejsou naplánované žádné aktivity. Vaše rodina to připravuje!",
       "overdue": "Po termínu",
       "upcoming": "Nadcházející",
       "nowBadge": "TEĎ",
       "doneAt": "Hotovo v {{time}}",
-      "greatMorning": "Skvělé ráno!",
-      "keepGoing": "Výborně si vedete!",
-      "allDone": "Na dnes vše hotovo!",
+      "greatMorning": "Dnes ráno skvělý pokrok",
+      "keepGoing": "Dobře se daří",
+      "allDone": "Na dnešek vše hotovo",
+      "yesterdayCompleted_one": "Včera jste dokončili {{count}} aktivitu",
+      "yesterdayCompleted_other": "Včera jste dokončili {{count}} aktivity",
       "tapToStart": "Klepnutím spusťte aktivitu pro duševní pohodu",
       "opensActivity": "Otevře dnešní aktivitu pro duševní pohodu"
     },
@@ -43,8 +45,8 @@
       "title": "Potřebuji pomoc",
       "callSomeone": "Zavolat někomu",
       "getHomeSafely": "Bezpečně se dostat domů",
-      "takeMeHome": "Doveď mě domů",
-      "takeMeHomeDesc": "Klepnutím získáte navigační pokyny k vašemu domovu",
+      "takeMeHome": "Dostat mě domů",
+      "takeMeHomeDesc": "Klepnutím získáte pěší trasu k vašemu domovu",
       "emergency": "Nouzová situace",
       "confirmEmergency": "Jste si jistí, že chcete zavolat záchranné služby?"
     },
@@ -70,7 +72,7 @@
       },
       "pushNotifications": {
         "title": "Dostávat připomenutí?",
-        "description": "Užitečné upozornění na jídla a aktivity"
+        "description": "Užitečné upozornění na jídlo a aktivity"
       },
       "dataSharing": {
         "title": "Sdílet s vaší rodinou?",
@@ -98,7 +100,7 @@
       "sleepQuestion": "Spali jste dobře?",
       "sleepGood": "Ano",
       "sleepOkay": "Tak nějak",
-      "sleepBad": "Ani ne",
+      "sleepBad": "Ne moc",
       "voicePrompt": "Chcete něco říct vaší rodině?",
       "voiceTap": "Klepnutím mluvte",
       "voiceRecording": "Nahrávání...",
@@ -115,16 +117,16 @@
     },
     "activity": {
       "title": "Dnešní aktivita",
-      "noActivity": "Na dnes žádná aktivita",
-      "comeBackLater": "Zítra se podívejte na novou aktivitu!",
+      "noActivity": "Na dnešek žádná aktivita",
+      "comeBackLater": "Zítra se vraťte pro novou aktivitu!",
       "tapToSpeak": "Klepnutím mluvte",
-      "tapToStop": "Klepnutím zastavíte nahrávání",
-      "typeInstead": "Napište svou odpověď místo toho",
+      "tapToStop": "Klepnutím zastavte nahrávání",
+      "typeInstead": "Místo toho napište svou odpověď",
       "typeHere": "Zde napište svou odpověď...",
-      "speakInstead": "Mluvte místo toho",
+      "speakInstead": "Místo toho mluvte",
       "recordAgain": "Nahrát znovu",
       "skipForToday": "Přeskočit pro dnešek",
-      "defaultFollowUp": "To je krásná vzpomínka! Děkujeme, že jste se podělili.",
+      "defaultFollowUp": "To je krásná vzpomínka! Děkuji, že jste se podělili.",
       "listenToSong": "Poslechněte si píseň",
       "photoMemory": "Vzpomínka z vašeho života"
     },

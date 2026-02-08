@@ -18,11 +18,11 @@
   },
   "categories": {
     "medication": "Farmaci",
-    "nutrition": "Pasti e Nutrizione",
-    "physical": "Attività Fisica",
-    "cognitive": "Benessere Mentale",
-    "social": "Socialità e Connessione",
-    "health": "Controllo della Salute"
+    "nutrition": "Pasti e nutrizione",
+    "physical": "Attività fisica",
+    "cognitive": "Benessere mentale",
+    "social": "Socialità e connessione",
+    "health": "Controllo della salute"
   },
   "patientApp": {
     "todaysPlan": {
@@ -30,13 +30,15 @@
       "progress": "{{completed}} di {{total}} attività completate oggi",
       "noPlan": "Nessuna attività pianificata per oggi. La tua famiglia sta preparando tutto!",
       "overdue": "Scaduto",
-      "upcoming": "Prossimo",
+      "upcoming": "Prossimamente",
       "nowBadge": "ORA",
       "doneAt": "Fatto alle {{time}}",
-      "greatMorning": "Ottima mattinata!",
-      "keepGoing": "Stai andando alla grande!",
-      "allDone": "Tutto fatto per oggi!",
-      "tapToStart": "Tocca per iniziare la tua attività mentale",
+      "greatMorning": "Ottimi progressi questa mattina",
+      "keepGoing": "Ben avviato",
+      "allDone": "Tutto fatto per oggi",
+      "yesterdayCompleted_one": "Ieri hai completato {{count}} attività",
+      "yesterdayCompleted_other": "Ieri hai completato {{count}} attività",
+      "tapToStart": "Tocca per iniziare la tua attività per il benessere mentale",
       "opensActivity": "Apre l'attività di benessere mentale di oggi"
     },
     "help": {
@@ -44,7 +46,7 @@
       "callSomeone": "Chiama qualcuno",
       "getHomeSafely": "Torna a casa in sicurezza",
       "takeMeHome": "Portami a casa",
-      "takeMeHomeDesc": "Tocca per ottenere indicazioni stradali per tornare a casa",
+      "takeMeHomeDesc": "Tocca per ottenere indicazioni stradali a piedi per la tua casa",
       "emergency": "Emergenza",
       "confirmEmergency": "Sei sicuro di voler chiamare i servizi di emergenza?"
     },
@@ -99,7 +101,7 @@
       "sleepGood": "Sì",
       "sleepOkay": "Così così",
       "sleepBad": "Non proprio",
-      "voicePrompt": "Vuoi dire qualcosa alla tua famiglia?",
+      "voicePrompt": "Qualcosa che vuoi dire alla tua famiglia?",
       "voiceTap": "Tocca per parlare",
       "voiceRecording": "Registrazione...",
       "voiceStop": "Stop",
@@ -124,14 +126,14 @@
       "speakInstead": "Parla invece",
       "recordAgain": "Registra di nuovo",
       "skipForToday": "Salta per oggi",
-      "defaultFollowUp": "Che ricordo meraviglioso! Grazie per averlo condiviso.",
+      "defaultFollowUp": "Che bel ricordo! Grazie per averlo condiviso.",
       "listenToSong": "Ascolta la canzone",
       "photoMemory": "Un ricordo della tua vita"
     },
     "careCode": {
       "welcome": "Benvenuto in OurTurn",
-      "enterCode": "Inserisci il tuo Care Code",
-      "helperText": "Il tuo familiare ti fornirà questo codice.",
+      "enterCode": "Inserisci il tuo codice di assistenza",
+      "helperText": "Il tuo familiare ti darà questo codice.",
       "connect": "Connetti",
       "invalidCode": "Controlla il tuo codice e riprova.",
       "connecting": "Connessione...",
@@ -157,16 +159,16 @@
     }
   },
   "a11y": {
-    "doubleTapToComplete": "Tocca due volte per contrassegnare come completato",
+    "doubleTapToComplete": "Tocca due volte per contrassegnare come fatto",
     "callContact": "Chiama {{name}}",
     "emergencyCallConfirmHint": "Apparirà una conferma prima di chiamare",
     "takeMeHomeHint": "Apre la navigazione verso il tuo indirizzo di casa",
-    "gettingLocation": "Acquisizione della posizione",
+    "gettingLocation": "Ottenendo la tua posizione",
     "removesVoiceRecording": "Rimuove la tua registrazione vocale",
     "submittingCheckin": "Invio del tuo check-in"
   },
   "locationTracking": {
-    "backgroundNotificationTitle": "OurTurn ti tiene al sicuro",
+    "backgroundNotificationTitle": "OurTurn ti sta proteggendo",
     "backgroundNotificationBody": "La tua famiglia può vedere che stai bene"
   },
   "notifications": {

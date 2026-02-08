@@ -57,8 +57,8 @@ export const COLORS = {
 } as const;
 
 export const FONTS = {
-  display: 'Fraunces_700Bold',
-  displayMedium: 'Fraunces_500Medium',
+  display: 'Nunito_700Bold',
+  displayMedium: 'Nunito_500Medium',
   body: 'Nunito_400Regular',
   bodyMedium: 'Nunito_500Medium',
   bodySemiBold: 'Nunito_600SemiBold',
