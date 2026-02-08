@@ -1,11 +1,11 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import * as Haptics from 'expo-haptics';
 import { supabase } from '@ourturn/supabase';
 import type { CaregiverWellbeingLog, SliderValue } from '@ourturn/shared';
 import { ENERGY_LABELS, STRESS_LABELS, CAREGIVER_SLEEP_LABELS } from '@ourturn/shared';
-import { COLORS, FONTS, RADIUS, SHADOWS } from '../../theme';
+import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS } from '../../theme';
 
 interface SliderCheckinProps {
   caregiverId: string;
@@ -15,6 +15,8 @@ interface SliderCheckinProps {
 
 export function SliderCheckin({ caregiverId, initialLog, onLogUpdated }: SliderCheckinProps) {
   const { t } = useTranslation();
+  const styles = useStyles();
+  const colors = useColors();
   const today = new Date().toISOString().split('T')[0];
 
   const [energy, setEnergy] = useState<SliderValue>((initialLog?.energy_level as SliderValue) || 3);
@@ -75,7 +77,7 @@ export function SliderCheckin({ caregiverId, initialLog, onLogUpdated }: SliderC
         value={energy}
         labels={ENERGY_LABELS}
         onChange={handleChange(setEnergy)}
-        activeColor={COLORS.success}
+        activeColor={colors.success}
       />
 
       <DiscreteSlider
@@ -85,7 +87,7 @@ export function SliderCheckin({ caregiverId, initialLog, onLogUpdated }: SliderC
         value={stress}
         labels={STRESS_LABELS}
         onChange={handleChange(setStress)}
-        activeColor={COLORS.amber}
+        activeColor={colors.amber}
       />
 
       <DiscreteSlider
@@ -95,7 +97,7 @@ export function SliderCheckin({ caregiverId, initialLog, onLogUpdated }: SliderC
         value={sleep}
         labels={CAREGIVER_SLEEP_LABELS}
         onChange={handleChange(setSleep)}
-        activeColor={COLORS.info}
+        activeColor={colors.info}
       />
     </View>
   );
@@ -118,6 +120,9 @@ function DiscreteSlider({
   onChange: (v: SliderValue) => void;
   activeColor: string;
 }) {
+  const styles = useStyles();
+  const colors = useColors();
+
   return (
     <View style={styles.sliderContainer}>
       <View style={styles.sliderHeader}>
@@ -137,7 +142,7 @@ function DiscreteSlider({
                 styles.dot,
                 v <= value
                   ? { backgroundColor: activeColor }
-                  : { backgroundColor: COLORS.border },
+                  : { backgroundColor: colors.border },
                 v === value && styles.dotActive,
               ]}
             />
@@ -152,20 +157,20 @@ function DiscreteSlider({
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   card: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     padding: 20,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     ...SHADOWS.sm,
   },
   title: {
     fontSize: 18,
     fontWeight: '600',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 20,
   },
   sliderContainer: {
@@ -181,7 +186,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   sliderValue: {
     fontSize: 14,
@@ -217,7 +222,7 @@ const styles = StyleSheet.create({
   },
   endLabel: {
     fontSize: 11,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     fontFamily: FONTS.body,
   },
-});
+}));

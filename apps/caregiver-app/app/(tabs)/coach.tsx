@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
@@ -15,7 +14,7 @@ import SituationCards from '../../src/components/coach/situation-cards';
 import WorkflowCards from '../../src/components/coach/workflow-cards';
 
 import OpenChatInput from '../../src/components/coach/open-chat-input';
-import { COLORS, FONTS, RADIUS, SPACING } from '../../src/theme';
+import { createThemedStyles, FONTS, RADIUS, SPACING } from '../../src/theme';
 
 // Human-readable prompts for each situation
 const SITUATION_PROMPTS: Record<string, string> = {
@@ -48,6 +47,8 @@ export default function CoachScreen() {
   const router = useRouter();
   const { patient, household } = useAuthStore();
   const [insight, setInsight] = useState<InsightData | null>(null);
+
+  const styles = useStyles();
 
   const patientName = patient?.name || 'your loved one';
 
@@ -180,10 +181,10 @@ export default function CoachScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
   },
   content: {
     flex: 1,
@@ -199,7 +200,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '700',
     fontFamily: FONTS.displayMedium,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     letterSpacing: -0.3,
   },
   scrollView: {
@@ -218,23 +219,23 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.displayMedium,
     textTransform: 'uppercase',
     letterSpacing: 1.5,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginBottom: 2,
   },
   sectionSubLabel: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginBottom: SPACING[3],
   },
   behaviourLink: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     borderLeftWidth: 3,
-    borderLeftColor: COLORS.brand500,
+    borderLeftColor: colors.brand500,
     borderRadius: RADIUS.md,
     paddingHorizontal: SPACING[4],
     paddingVertical: SPACING[4],
@@ -248,23 +249,23 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: FONTS.bodyMedium,
     fontWeight: '500',
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   behaviourLinkArrow: {
     fontSize: 22,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   placeholder: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: 20,
     padding: 40,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     alignItems: 'center',
   },
   placeholderText: {
     fontSize: 16,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
-});
+}));

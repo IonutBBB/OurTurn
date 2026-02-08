@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { COLORS, FONTS, RADIUS, SPACING } from '../../theme';
+import { createThemedStyles, useColors, FONTS, RADIUS, SPACING } from '../../theme';
 
 interface OpenChatInputProps {
   patientName: string;
@@ -10,6 +10,8 @@ interface OpenChatInputProps {
 
 export default function OpenChatInput({ patientName, onSubmit }: OpenChatInputProps) {
   const { t } = useTranslation();
+  const styles = useStyles();
+  const colors = useColors();
   const [input, setInput] = useState('');
 
   const handleSend = () => {
@@ -28,7 +30,7 @@ export default function OpenChatInput({ patientName, onSubmit }: OpenChatInputPr
           value={input}
           onChangeText={setInput}
           placeholder={t('caregiverApp.coach.hub.askAnything.placeholder', { name: patientName })}
-          placeholderTextColor={COLORS.textMuted}
+          placeholderTextColor={colors.textMuted}
           onSubmitEditing={handleSend}
           returnKeyType="send"
         />
@@ -47,13 +49,13 @@ export default function OpenChatInput({ patientName, onSubmit }: OpenChatInputPr
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   title: {
     fontSize: 11,
     fontFamily: FONTS.displayMedium,
     textTransform: 'uppercase',
     letterSpacing: 1.5,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginBottom: SPACING[3],
   },
   inputRow: {
@@ -63,18 +65,18 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
     borderRadius: RADIUS.lg,
     paddingHorizontal: SPACING[4],
     paddingVertical: SPACING[3],
     fontSize: 16,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   sendButton: {
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     borderRadius: RADIUS.xl,
     paddingHorizontal: SPACING[5],
     paddingVertical: SPACING[3],
@@ -85,13 +87,13 @@ const styles = StyleSheet.create({
   sendText: {
     fontSize: 16,
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
   disclaimer: {
     fontSize: 12,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     textAlign: 'center',
     marginTop: SPACING[2],
   },
-});
+}));

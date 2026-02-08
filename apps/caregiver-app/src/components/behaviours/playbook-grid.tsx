@@ -1,7 +1,7 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import type { BehaviourPlaybook } from '@ourturn/shared';
-import { COLORS, FONTS, RADIUS, SPACING } from '../../theme';
+import { createThemedStyles, FONTS, RADIUS, SPACING } from '../../theme';
 
 interface PlaybookGridProps {
   playbooks: BehaviourPlaybook[];
@@ -10,6 +10,7 @@ interface PlaybookGridProps {
 
 export function PlaybookGrid({ playbooks, onSelect }: PlaybookGridProps) {
   const { t } = useTranslation();
+  const styles = useStyles();
 
   return (
     <View style={styles.container}>
@@ -39,25 +40,25 @@ export function PlaybookGrid({ playbooks, onSelect }: PlaybookGridProps) {
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     padding: SPACING[5],
   },
   title: {
     fontSize: 18,
     fontFamily: FONTS.display,
     fontWeight: '700',
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 4,
   },
   subtitle: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     marginBottom: SPACING[4],
   },
   grid: {
@@ -71,8 +72,8 @@ const styles = StyleSheet.create({
     padding: SPACING[4],
     borderRadius: RADIUS.lg,
     borderWidth: 2,
-    borderColor: COLORS.border,
-    backgroundColor: COLORS.background,
+    borderColor: colors.border,
+    backgroundColor: colors.background,
     minHeight: 88,
     justifyContent: 'center',
   },
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: FONTS.bodySemiBold,
     fontWeight: '600',
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     textAlign: 'center',
   },
-});
+}));

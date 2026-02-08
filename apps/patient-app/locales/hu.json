@@ -1,0 +1,176 @@
+{
+  "common": {
+    "appName": "OurTurn",
+    "save": "Mentés",
+    "cancel": "Mégse",
+    "delete": "Törlés",
+    "edit": "Szerkesztés",
+    "done": "Kész",
+    "skip": "Ma kihagyom",
+    "or": "vagy",
+    "loading": "Betöltés...",
+    "error": "Valami hiba történt. Kérjük, próbálja újra.",
+    "errorTitle": "Valami hiba történt",
+    "errorDefault": "Váratlan hiba történt.",
+    "tryAgain": "Újrapróbálkozás",
+    "offline": "Nincs internetkapcsolat – az adatok szinkronizálása a kapcsolat létrejöttekor történik",
+    "synced": "Szinkronizálva"
+  },
+  "categories": {
+    "medication": "Gyógyszer",
+    "nutrition": "Étkezés és táplálkozás",
+    "physical": "Fizikai aktivitás",
+    "cognitive": "Agytorna",
+    "social": "Szociális kapcsolatok",
+    "health": "Egészségügyi ellenőrzés"
+  },
+  "patientApp": {
+    "todaysPlan": {
+      "title": "Mai terv",
+      "progress": "{{completed}} a mai {{total}} tevékenységből elvégezve",
+      "noPlan": "Mára nincsenek tervezett tevékenységek. A családod még beállítja a dolgokat!",
+      "overdue": "Lejárt",
+      "upcoming": "Közelgő",
+      "nowBadge": "MOST",
+      "doneAt": "Elvégezve ekkor: {{time}}",
+      "greatMorning": "Nagyszerű reggelt!",
+      "keepGoing": "Csodálatosan haladsz!",
+      "allDone": "Mára minden kész!",
+      "tapToStart": "Érintsd meg az agytorna elindításához",
+      "opensActivity": "Megnyitja a mai agytorna tevékenységet"
+    },
+    "help": {
+      "title": "Segítségre van szükségem",
+      "callSomeone": "Hívj fel valakit",
+      "getHomeSafely": "Juss haza biztonságosan",
+      "takeMeHome": "Vigyél haza",
+      "takeMeHomeDesc": "Érintsd meg a gyalogos útvonaltervhez az otthonodhoz",
+      "emergency": "Vészhelyzet",
+      "confirmEmergency": "Biztosan hívni szeretnéd a segélyszolgálatot?"
+    },
+    "sos": {
+      "button": "SOS",
+      "label": "SOS",
+      "holdHint": "Tartsd lenyomva 2 másodpercig, hogy riasztást küldj a családodnak",
+      "helpOnTheWay": "A segítség úton van",
+      "familyNotified": "A családod értesítést kapott",
+      "callCaregiver": "{{name}} hívása",
+      "imOkay": "Jól vagyok, vissza"
+    },
+    "consent": {
+      "yes": "Igen",
+      "no": "Nem",
+      "locationTracking": {
+        "title": "Megosztod a helyzeted?",
+        "description": "Hogy a családod segíthessen biztonságosan hazajutni"
+      },
+      "dataCollection": {
+        "title": "Elmented a napi infóid?",
+        "description": "Hogy a családod láthassa, hogy vagy"
+      },
+      "pushNotifications": {
+        "title": "Emlékeztetőket kapsz?",
+        "description": "Hasznos emlékeztetők az étkezésekhez és tevékenységekhez"
+      },
+      "dataSharing": {
+        "title": "Megosztod a családoddal?",
+        "description": "Hogy a gondozóid támogathassanak"
+      },
+      "voiceRecording": {
+        "title": "Hangüzeneteket rögzítesz?",
+        "description": "Hogy üzeneteket hagyhass a családodnak"
+      }
+    },
+    "essential": {
+      "music": "Zene",
+      "callHelp": "Segítség hívása"
+    },
+    "checkin": {
+      "greeting": {
+        "morning": "Jó reggelt, {{name}}!",
+        "afternoon": "Jó napot, {{name}}!",
+        "evening": "Jó estét, {{name}}!"
+      },
+      "moodQuestion": "Hogy érzed magad ma?",
+      "moodGood": "Jól",
+      "moodOkay": "Közepesen",
+      "moodBad": "Nem túl jól",
+      "sleepQuestion": "Jól aludtál?",
+      "sleepGood": "Igen",
+      "sleepOkay": "Sehogyse",
+      "sleepBad": "Nem igazán",
+      "voicePrompt": "Szeretnél valamit mondani a családodnak?",
+      "voiceTap": "Érintsd meg a beszédhez",
+      "voiceRecording": "Felvétel...",
+      "voiceStop": "Leállítás",
+      "voicePlay": "Lejátszás",
+      "voicePause": "Szünet",
+      "voiceDiscard": "Újra felveszem",
+      "send": "Küldés a családnak",
+      "skipVoice": "Hangüzenet kihagyása",
+      "thankYou": "Köszönjük! A családod látni fogja ezt.",
+      "alreadyDone": "Ma már bejelentkeztél!",
+      "tapToCheckin": "Érintsd meg a bejelentkezéshez",
+      "opensCheckin": "Megnyitja a napi bejelentkezési képernyőt"
+    },
+    "activity": {
+      "title": "Mai tevékenység",
+      "noActivity": "Mára nincs tevékenység",
+      "comeBackLater": "Gyere vissza holnap egy új tevékenységért!",
+      "tapToSpeak": "Érintsd meg a beszédhez",
+      "tapToStop": "Érintsd meg a felvétel leállításához",
+      "typeInstead": "Írd be a válaszod helyette",
+      "typeHere": "Írd be a válaszod ide...",
+      "speakInstead": "Beszélj helyette",
+      "recordAgain": "Újra felveszem",
+      "skipForToday": "Ma kihagyom",
+      "defaultFollowUp": "Milyen csodálatos emlék! Köszönöm, hogy megosztottad.",
+      "listenToSong": "Hallgasd meg a dalt",
+      "photoMemory": "Egy emlék az életedből"
+    },
+    "careCode": {
+      "welcome": "Üdvözöljük az OurTurn alkalmazásban",
+      "enterCode": "Írd be a gondozási kódot",
+      "helperText": "A családtagod adja meg ezt a kódot.",
+      "connect": "Csatlakozás",
+      "invalidCode": "Kérjük, ellenőrizd a kódot, és próbáld újra.",
+      "connecting": "Csatlakozás...",
+      "digitLabel": "{{current}}. számjegy a {{total}} közül",
+      "changeLanguage": "Nyelv módosítása"
+    },
+    "tabs": {
+      "today": "Ma",
+      "help": "Segítség"
+    },
+    "taskPhoto": {
+      "taskPhoto": "Feladat fotó (opcionális)",
+      "uploadPhoto": "Fotó feltöltése",
+      "removePhoto": "Fotó eltávolítása",
+      "medicationItems": "Gyógyszerek ebben a csoportban",
+      "medicationItemsHint": "Csoportosíts legfeljebb 3, egyszerre bevett gyógyszert",
+      "addMedication": "Gyógyszer hozzáadása",
+      "medName": "Gyógyszer neve",
+      "medDosage": "Adagolás",
+      "removeMedication": "Eltávolítás",
+      "maxMedications": "Maximum 3 gyógyszer csoportonként",
+      "uploadingPhoto": "Feltöltés..."
+    }
+  },
+  "a11y": {
+    "doubleTapToComplete": "Dupla koppintással jelöld késznek",
+    "callContact": "{{name}} hívása",
+    "emergencyCallConfirmHint": "A hívás előtt megjelenik egy megerősítés",
+    "takeMeHomeHint": "Megnyitja a navigációt az otthoni címedre",
+    "gettingLocation": "A helyzeted meghatározása",
+    "removesVoiceRecording": "Eltávolítja a hangfelvételed",
+    "submittingCheckin": "A bejelentkezés elküldése"
+  },
+  "locationTracking": {
+    "backgroundNotificationTitle": "Az OurTurn biztonságban tart",
+    "backgroundNotificationBody": "A családod láthatja, hogy jól vagy"
+  },
+  "notifications": {
+    "taskReminder": "{{patientName}}, itt az ideje: {{taskTitle}}",
+    "checkinPrompt": "Itt az ideje a napi bejelentkezésnek!"
+  }
+}

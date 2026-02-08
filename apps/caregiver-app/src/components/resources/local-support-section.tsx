@@ -1,8 +1,8 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import type { LocalSupportOrganization } from '@ourturn/shared';
 import { LocalSupportCard } from './local-support-card';
-import { COLORS, FONTS, SPACING } from '../../theme';
+import { createThemedStyles, FONTS, SPACING } from '../../theme';
 
 const CATEGORY_ORDER = ['helpline', 'organization', 'government', 'respite', 'financial'];
 
@@ -13,6 +13,7 @@ interface LocalSupportSectionProps {
 
 export function LocalSupportSection({ supportByCategory, isEmpty }: LocalSupportSectionProps) {
   const { t } = useTranslation('resources');
+  const styles = useStyles();
 
   return (
     <View style={styles.container}>
@@ -48,7 +49,7 @@ export function LocalSupportSection({ supportByCategory, isEmpty }: LocalSupport
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
     gap: SPACING[3],
   },
@@ -57,12 +58,12 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.displayMedium,
     textTransform: 'uppercase',
     letterSpacing: 1.5,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   sectionSubLabel: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginBottom: SPACING[1],
   },
   categoryGroup: {
@@ -72,28 +73,28 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontFamily: FONTS.bodySemiBold,
     fontWeight: '600',
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   emptyState: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: 16,
     padding: SPACING[8],
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     alignItems: 'center',
   },
   emptyText: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     textAlign: 'center',
     lineHeight: 22,
   },
   disclaimer: {
     fontSize: 12,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     fontStyle: 'italic',
     lineHeight: 18,
   },
-});
+}));

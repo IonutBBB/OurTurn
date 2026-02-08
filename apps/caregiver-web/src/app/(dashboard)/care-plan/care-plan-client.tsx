@@ -54,6 +54,14 @@ const CATEGORIES = [
 
 const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
+type DayFilter = 'All' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat' | 'Sun';
+
+const DAY_INDEX_TO_ABBR: DayFilter[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+function getTodayAbbr(): DayFilter {
+  return DAY_INDEX_TO_ABBR[new Date().getDay()];
+}
+
 const EMPTY_MED_ITEM: MedicationItem = { name: '', dosage: '', photo_url: null };
 
 export function CarePlanClient({ householdId, patientName, initialTasks, subscriptionStatus }: Props) {
@@ -65,6 +73,32 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
 
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const [showAddForm, setShowAddForm] = useState(false);
+
+  // Day filter state
+  const [selectedDay, setSelectedDay] = useState<DayFilter>(getTodayAbbr());
+
+  const filteredTasks = selectedDay === 'All'
+    ? tasks
+    : tasks.filter((task) => {
+        if (task.recurrence === 'daily') return true;
+        if (task.recurrence === 'specific_days') {
+          return task.recurrence_days?.includes(selectedDay);
+        }
+        return false; // one_time tasks only on "All"
+      });
+
+  const taskCountForDay = (day: DayFilter): number => {
+    if (day === 'All') return tasks.length;
+    return tasks.filter((task) => {
+      if (task.recurrence === 'daily') return true;
+      if (task.recurrence === 'specific_days') {
+        return task.recurrence_days?.includes(day);
+      }
+      return false;
+    }).length;
+  };
+
+  const todayAbbr = getTodayAbbr();
 
   const household = { subscription_status: subscriptionStatus as 'free' | 'plus' | 'cancelled' };
   const taskLimitReached = hasReachedTaskLimit(household, tasks.length);
@@ -484,6 +518,38 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
       {taskLimitReached && (
         <UpgradeBanner message={t('subscription.limits.taskLimitReached', { max: FREE_LIMITS.maxTasks })} />
       )}
+
+      {/* Day Filter Tabs */}
+      <div className="mb-6 overflow-x-auto" role="tablist" aria-label={t('caregiverApp.carePlan.dayFilterLabel')}>
+        <div className="flex gap-2 min-w-max">
+          {(['All', ...DAYS] as DayFilter[]).map((day) => {
+            const isSelected = selectedDay === day;
+            const isToday = day !== 'All' && day === todayAbbr;
+            const count = taskCountForDay(day);
+            return (
+              <button
+                key={day}
+                role="tab"
+                aria-selected={isSelected}
+                onClick={() => setSelectedDay(day)}
+                className={`px-4 py-2 text-sm font-medium rounded-full border transition-colors relative flex items-center gap-1.5 ${
+                  isSelected
+                    ? 'bg-brand-600 text-white border-brand-600'
+                    : 'bg-surface-card dark:bg-surface-elevated text-text-secondary border-surface-border hover:border-brand-300'
+                }`}
+              >
+                {day === 'All' ? t('caregiverApp.carePlan.allDays') : day}
+                <span className={`text-xs ${isSelected ? 'text-white/80' : 'text-text-muted'}`}>
+                  ({count})
+                </span>
+                {isToday && !isSelected && (
+                  <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-brand-500 rounded-full" />
+                )}
+              </button>
+            );
+          })}
+        </div>
+      </div>
 
       {/* AI Suggest Panel */}
       {showSuggestPanel && (
@@ -1075,6 +1141,10 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
         <div className="card-paper p-12 text-center">
           <p className="text-text-muted">{t('caregiverApp.carePlan.noTasks')}</p>
         </div>
+      ) : filteredTasks.length === 0 ? (
+        <div className="card-paper p-12 text-center">
+          <p className="text-text-muted">{t('caregiverApp.carePlan.noTasksForDay')}</p>
+        </div>
       ) : (
         <div className="card-paper overflow-hidden">
           <table className="w-full">
@@ -1101,7 +1171,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
               </tr>
             </thead>
             <tbody className="divide-y divide-surface-border">
-              {tasks.map((task) => {
+              {filteredTasks.map((task) => {
                 const category = getCategoryInfo(task.category);
                 const hasPhoto = task.photo_url || (task.medication_items && task.medication_items.some((m) => m.photo_url));
                 return (

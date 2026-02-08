@@ -59,26 +59,9 @@ const customStorage = {
   },
 };
 
-// Create the Supabase client
-// Note: For patient devices using Care Code JWT, a custom client will be created
-// with the JWT token in the authorization header
-let supabaseInstance: SupabaseClient | null = null;
-
-export function getSupabaseClient(): SupabaseClient {
-  if (!supabaseInstance) {
-    supabaseInstance = createClient(getSupabaseUrl(), getSupabaseAnonKey(), {
-      auth: {
-        autoRefreshToken: true,
-        persistSession: true,
-        storage: customStorage,
-      },
-    });
-  }
-  return supabaseInstance;
-}
-
-// Export a default instance for convenience
-export const supabase = createClient(getSupabaseUrl(), getSupabaseAnonKey(), {
+// Active client — starts as the default anon client, but can be swapped
+// to a patient JWT client via setPatientToken()
+let _activeClient: SupabaseClient = createClient(getSupabaseUrl(), getSupabaseAnonKey(), {
   auth: {
     autoRefreshToken: true,
     persistSession: true,
@@ -86,7 +69,66 @@ export const supabase = createClient(getSupabaseUrl(), getSupabaseAnonKey(), {
   },
 });
 
-// Create a client with a custom JWT (for patient devices using Care Code)
+// Proxy so all imports of `supabase` automatically delegate to the current
+// _activeClient. When setPatientToken() swaps the underlying client, every
+// query file that imported `supabase` sees the new client instantly.
+export const supabase: SupabaseClient = new Proxy({} as SupabaseClient, {
+  get(_target, prop) {
+    const value = (_activeClient as Record<string | symbol, unknown>)[prop];
+    if (typeof value === 'function') {
+      return value.bind(_activeClient);
+    }
+    return value;
+  },
+});
+
+/**
+ * Replace the active Supabase client with one that sends a patient JWT
+ * in the Authorization header. All queries that import `supabase` will
+ * automatically use this client.
+ */
+export function setPatientToken(jwtToken: string): void {
+  _activeClient = createClient(getSupabaseUrl(), getSupabaseAnonKey(), {
+    global: {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+    },
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false,
+    },
+    realtime: {
+      params: {
+        apikey: getSupabaseAnonKey(),
+      },
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+        apikey: getSupabaseAnonKey(),
+      },
+    },
+  });
+}
+
+/**
+ * Reset back to the default anon client (used on logout).
+ */
+export function clearPatientToken(): void {
+  _activeClient = createClient(getSupabaseUrl(), getSupabaseAnonKey(), {
+    auth: {
+      autoRefreshToken: true,
+      persistSession: true,
+      storage: customStorage,
+    },
+  });
+}
+
+// Legacy helper — returns the active client
+export function getSupabaseClient(): SupabaseClient {
+  return supabase;
+}
+
+// Create a standalone client with a custom JWT (for one-off usage)
 export function createPatientClient(jwtToken: string): SupabaseClient {
   return createClient(getSupabaseUrl(), getSupabaseAnonKey(), {
     global: {

@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { View, Text, StyleSheet, Modal, TouchableOpacity, AppState } from 'react-native';
+import { View, Text, Modal, TouchableOpacity, AppState } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import * as Haptics from 'expo-haptics';
 import type { ReliefExercise } from '@ourturn/shared';
-import { COLORS, FONTS, RADIUS } from '../../theme';
+import { createThemedStyles, FONTS, RADIUS } from '../../theme';
 
 interface ExercisePlayerProps {
   exercise: ReliefExercise;
@@ -13,6 +13,7 @@ interface ExercisePlayerProps {
 
 export function ExercisePlayer({ exercise, onComplete, onClose }: ExercisePlayerProps) {
   const { t } = useTranslation();
+  const styles = useStyles();
   const [currentStep, setCurrentStep] = useState(0);
   const [timeLeft, setTimeLeft] = useState(exercise.steps[0].duration_seconds);
   const [isPaused, setIsPaused] = useState(false);
@@ -77,7 +78,7 @@ export function ExercisePlayer({ exercise, onComplete, onClose }: ExercisePlayer
       <View style={styles.container}>
         {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.exerciseName}>{exercise.icon} {exercise.name}</Text>
+          <Text style={styles.exerciseName}>{exercise.icon} {t(`caregiverApp.toolkit.relief.exercises.${exercise.id}.name`)}</Text>
           <TouchableOpacity onPress={onClose} style={styles.closeButton}>
             <Text style={styles.closeText}>✕</Text>
           </TouchableOpacity>
@@ -113,7 +114,7 @@ export function ExercisePlayer({ exercise, onComplete, onClose }: ExercisePlayer
             </View>
 
             {/* Instruction */}
-            <Text style={styles.instruction}>{step.instruction}</Text>
+            <Text style={styles.instruction}>{t(`caregiverApp.toolkit.relief.exercises.${exercise.id}.step${currentStep}`)}</Text>
 
             {/* Controls */}
             <View style={styles.controls}>
@@ -153,10 +154,10 @@ export function ExercisePlayer({ exercise, onComplete, onClose }: ExercisePlayer
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
     paddingTop: 60,
     paddingHorizontal: 24,
   },
@@ -170,19 +171,19 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   closeButton: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: COLORS.border,
+    backgroundColor: colors.border,
     alignItems: 'center',
     justifyContent: 'center',
   },
   closeText: {
     fontSize: 18,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   completeContainer: {
     flex: 1,
@@ -198,11 +199,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 24,
   },
   doneButton: {
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     paddingHorizontal: 32,
     paddingVertical: 14,
     borderRadius: RADIUS.lg,
@@ -220,7 +221,7 @@ const styles = StyleSheet.create({
   },
   stepIndicator: {
     fontSize: 14,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     fontFamily: FONTS.body,
     marginBottom: 24,
   },
@@ -236,16 +237,16 @@ const styles = StyleSheet.create({
     height: 140,
     borderRadius: 70,
     borderWidth: 6,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
   },
   timerText: {
     fontSize: 40,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.brand600,
+    color: colors.brand600,
   },
   progressRing: {
     position: 'absolute',
@@ -253,7 +254,7 @@ const styles = StyleSheet.create({
     height: 140,
     borderRadius: 70,
     borderWidth: 6,
-    borderColor: COLORS.brand500,
+    borderColor: colors.brand500,
     borderTopColor: 'transparent',
     borderRightColor: 'transparent',
   },
@@ -261,7 +262,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '500',
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     textAlign: 'center',
     lineHeight: 28,
     paddingHorizontal: 16,
@@ -273,22 +274,22 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   pauseButton: {
-    backgroundColor: COLORS.brand100,
+    backgroundColor: colors.brand100,
     paddingHorizontal: 28,
     paddingVertical: 12,
     borderRadius: RADIUS.lg,
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
   },
   pauseButtonText: {
     fontSize: 16,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.brand700,
+    color: colors.brand700,
   },
   cancelText: {
     fontSize: 14,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     textDecorationLine: 'underline',
     fontFamily: FONTS.body,
   },
@@ -304,13 +305,13 @@ const styles = StyleSheet.create({
     width: 8,
     height: 4,
     borderRadius: 2,
-    backgroundColor: COLORS.border,
+    backgroundColor: colors.border,
   },
   stepDotCompleted: {
-    backgroundColor: COLORS.brand500,
+    backgroundColor: colors.brand500,
   },
   stepDotCurrent: {
-    backgroundColor: COLORS.brand300,
+    backgroundColor: colors.brand300,
     width: 16,
   },
-});
+}));

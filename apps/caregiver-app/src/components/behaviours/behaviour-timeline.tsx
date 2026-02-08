@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import type { BehaviourIncident, BehaviourType } from '@ourturn/shared';
 import { BEHAVIOUR_TYPES } from '@ourturn/shared';
-import { COLORS, FONTS, RADIUS, SPACING } from '../../theme';
+import { createThemedStyles, useColors, FONTS, RADIUS, SPACING } from '../../theme';
 
 interface BehaviourTimelineProps {
   incidents: BehaviourIncident[];
@@ -11,6 +11,8 @@ interface BehaviourTimelineProps {
 
 export function BehaviourTimeline({ incidents }: BehaviourTimelineProps) {
   const { t } = useTranslation();
+  const styles = useStyles();
+  const colors = useColors();
   const [filter, setFilter] = useState<BehaviourType | 'all'>('all');
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
@@ -33,7 +35,7 @@ export function BehaviourTimeline({ incidents }: BehaviourTimelineProps) {
     BEHAVIOUR_TYPES.find((bt) => bt.type === type) || { emoji: '❓', label: type };
 
   const getSeverityColor = (level: number) =>
-    level <= 2 ? COLORS.success : level === 3 ? COLORS.amber : COLORS.danger;
+    level <= 2 ? colors.success : level === 3 ? colors.amber : colors.danger;
 
   return (
     <View style={styles.container}>
@@ -100,7 +102,7 @@ export function BehaviourTimeline({ incidents }: BehaviourTimelineProps) {
                               key={i}
                               style={[
                                 styles.dot,
-                                { backgroundColor: i <= incident.severity ? getSeverityColor(incident.severity) : COLORS.border },
+                                { backgroundColor: i <= incident.severity ? getSeverityColor(incident.severity) : colors.border },
                               ]}
                             />
                           ))}
@@ -157,67 +159,67 @@ export function BehaviourTimeline({ incidents }: BehaviourTimelineProps) {
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     padding: SPACING[5],
   },
   title: {
     fontSize: 18,
     fontFamily: FONTS.display,
     fontWeight: '700',
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: SPACING[3],
   },
   filterScroll: { marginBottom: SPACING[4] },
   filterRow: { flexDirection: 'row', gap: SPACING[2] },
   filterPill: {
     paddingHorizontal: SPACING[3], paddingVertical: SPACING[1],
-    borderRadius: RADIUS.full, borderWidth: 1, borderColor: COLORS.border,
+    borderRadius: RADIUS.full, borderWidth: 1, borderColor: colors.border,
   },
-  filterPillActive: { borderColor: COLORS.brand600, backgroundColor: COLORS.brand50 },
-  filterText: { fontSize: 12, fontFamily: FONTS.body, color: COLORS.textSecondary },
-  filterTextActive: { color: COLORS.brand700, fontFamily: FONTS.bodyMedium, fontWeight: '500' },
+  filterPillActive: { borderColor: colors.brand600, backgroundColor: colors.brand50 },
+  filterText: { fontSize: 12, fontFamily: FONTS.body, color: colors.textSecondary },
+  filterTextActive: { color: colors.brand700, fontFamily: FONTS.bodyMedium, fontWeight: '500' },
   empty: {
-    fontSize: 14, fontFamily: FONTS.body, color: COLORS.textMuted,
+    fontSize: 14, fontFamily: FONTS.body, color: colors.textMuted,
     textAlign: 'center', paddingVertical: SPACING[4],
   },
   dayGroup: { marginBottom: SPACING[4] },
   dayTitle: {
     fontSize: 14, fontFamily: FONTS.bodySemiBold, fontWeight: '600',
-    color: COLORS.textSecondary, marginBottom: SPACING[2],
+    color: colors.textSecondary, marginBottom: SPACING[2],
   },
   incidentRow: {
     flexDirection: 'row', alignItems: 'center', gap: SPACING[3],
     paddingVertical: SPACING[3], paddingHorizontal: SPACING[3],
-    borderRadius: RADIUS.lg, backgroundColor: COLORS.background,
-    borderWidth: 1, borderColor: COLORS.border, marginBottom: SPACING[2],
+    borderRadius: RADIUS.lg, backgroundColor: colors.background,
+    borderWidth: 1, borderColor: colors.border, marginBottom: SPACING[2],
   },
   incidentEmoji: { fontSize: 20 },
   incidentContent: { flex: 1 },
   incidentHeader: { flexDirection: 'row', alignItems: 'center', gap: SPACING[2] },
-  incidentType: { fontSize: 14, fontFamily: FONTS.bodyMedium, fontWeight: '500', color: COLORS.textPrimary },
+  incidentType: { fontSize: 14, fontFamily: FONTS.bodyMedium, fontWeight: '500', color: colors.textPrimary },
   severityDots: { flexDirection: 'row', gap: 2 },
   dot: { width: 6, height: 6, borderRadius: 3 },
-  incidentPreview: { fontSize: 12, fontFamily: FONTS.body, color: COLORS.textMuted, marginTop: 2 },
-  incidentTime: { fontSize: 12, fontFamily: FONTS.body, color: COLORS.textMuted },
+  incidentPreview: { fontSize: 12, fontFamily: FONTS.body, color: colors.textMuted, marginTop: 2 },
+  incidentTime: { fontSize: 12, fontFamily: FONTS.body, color: colors.textMuted },
   expandedContent: {
     marginLeft: SPACING[10], marginBottom: SPACING[3],
     padding: SPACING[4], borderRadius: RADIUS.lg,
-    backgroundColor: COLORS.card, borderWidth: 1, borderColor: COLORS.border,
+    backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border,
     gap: SPACING[3],
   },
   detailSection: {},
-  detailLabel: { fontSize: 12, fontFamily: FONTS.bodySemiBold, fontWeight: '600', color: COLORS.textSecondary },
-  detailText: { fontSize: 14, fontFamily: FONTS.body, color: COLORS.textPrimary, marginTop: 2 },
+  detailLabel: { fontSize: 12, fontFamily: FONTS.bodySemiBold, fontWeight: '600', color: colors.textSecondary },
+  detailText: { fontSize: 14, fontFamily: FONTS.body, color: colors.textPrimary, marginTop: 2 },
   triggerTags: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACING[1], marginTop: 4 },
   triggerTag: {
     paddingHorizontal: SPACING[2], paddingVertical: 2,
-    borderRadius: RADIUS.full, backgroundColor: COLORS.background,
-    borderWidth: 1, borderColor: COLORS.border,
+    borderRadius: RADIUS.full, backgroundColor: colors.background,
+    borderWidth: 1, borderColor: colors.border,
   },
-  triggerTagText: { fontSize: 11, fontFamily: FONTS.body, color: COLORS.textSecondary },
-});
+  triggerTagText: { fontSize: 11, fontFamily: FONTS.body, color: colors.textSecondary },
+}));

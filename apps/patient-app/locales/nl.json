@@ -1,0 +1,176 @@
+{
+  "common": {
+    "appName": "OurTurn",
+    "save": "Opslaan",
+    "cancel": "Annuleren",
+    "delete": "Verwijderen",
+    "edit": "Bewerken",
+    "done": "Klaar",
+    "skip": "Sla over voor vandaag",
+    "or": "of",
+    "loading": "Laden...",
+    "error": "Er is iets misgegaan. Probeer het opnieuw.",
+    "errorTitle": "Er is iets misgegaan",
+    "errorDefault": "Er is een onverwachte fout opgetreden.",
+    "tryAgain": "Probeer opnieuw",
+    "offline": "Je bent offline — je gegevens worden gesynchroniseerd wanneer je verbinding hebt",
+    "synced": "Gesynchroniseerd"
+  },
+  "categories": {
+    "medication": "Medicatie",
+    "nutrition": "Maaltijden & Voeding",
+    "physical": "Lichamelijke Activiteit",
+    "cognitive": "Hersentraining",
+    "social": "Sociaal & Contact",
+    "health": "Gezondheidscheck"
+  },
+  "patientApp": {
+    "todaysPlan": {
+      "title": "Het plan van vandaag",
+      "progress": "{{completed}} van de {{total}} activiteiten voltooid vandaag",
+      "noPlan": "Er zijn geen activiteiten gepland voor vandaag. Je familie is bezig met de voorbereidingen!",
+      "overdue": "Verlopen",
+      "upcoming": "Aankomend",
+      "nowBadge": "NU",
+      "doneAt": "Klaar om {{time}}",
+      "greatMorning": "Goede morgen!",
+      "keepGoing": "Je bent geweldig bezig!",
+      "allDone": "Alles klaar voor vandaag!",
+      "tapToStart": "Tik om je hersenactiviteit te starten",
+      "opensActivity": "Opent de hersentraining van vandaag"
+    },
+    "help": {
+      "title": "Ik Heb Hulp Nodig",
+      "callSomeone": "Iemand Bellen",
+      "getHomeSafely": "Veilig Thuis Komen",
+      "takeMeHome": "Breng Me Naar Huis",
+      "takeMeHomeDesc": "Tik om een routebeschrijving naar huis te krijgen",
+      "emergency": "Noodgeval",
+      "confirmEmergency": "Weet je zeker dat je de hulpdiensten wilt bellen?"
+    },
+    "sos": {
+      "button": "SOS",
+      "label": "SOS",
+      "holdHint": "Houd 2 seconden vast om een waarschuwing naar je familie te sturen",
+      "helpOnTheWay": "Er is hulp onderweg",
+      "familyNotified": "Je familie is op de hoogte gesteld",
+      "callCaregiver": "Bel {{name}}",
+      "imOkay": "Het gaat goed met me, ga terug"
+    },
+    "consent": {
+      "yes": "Ja",
+      "no": "Nee",
+      "locationTracking": {
+        "title": "Je locatie delen?",
+        "description": "Zodat je familie je kan helpen veilig thuis te komen"
+      },
+      "dataCollection": {
+        "title": "Je dagelijkse info opslaan?",
+        "description": "Zodat je familie kan zien hoe het met je gaat"
+      },
+      "pushNotifications": {
+        "title": "Herinneringen ontvangen?",
+        "description": "Handige reminders voor maaltijden en activiteiten"
+      },
+      "dataSharing": {
+        "title": "Delen met je familie?",
+        "description": "Zodat je verzorgers je kunnen ondersteunen"
+      },
+      "voiceRecording": {
+        "title": "Spraakberichten opnemen?",
+        "description": "Zodat je berichten kunt achterlaten voor je familie"
+      }
+    },
+    "essential": {
+      "music": "Muziek",
+      "callHelp": "Bel om Hulp"
+    },
+    "checkin": {
+      "greeting": {
+        "morning": "Goedemorgen, {{name}}!",
+        "afternoon": "Goedemiddag, {{name}}!",
+        "evening": "Goedenavond, {{name}}!"
+      },
+      "moodQuestion": "Hoe voel je je vandaag?",
+      "moodGood": "Goed",
+      "moodOkay": "Oké",
+      "moodBad": "Niet geweldig",
+      "sleepQuestion": "Heb je goed geslapen?",
+      "sleepGood": "Ja",
+      "sleepOkay": "Zo-zo",
+      "sleepBad": "Niet echt",
+      "voicePrompt": "Wil je iets aan je familie vertellen?",
+      "voiceTap": "Tik om te spreken",
+      "voiceRecording": "Opnemen...",
+      "voiceStop": "Stop",
+      "voicePlay": "Afspelen",
+      "voicePause": "Pauze",
+      "voiceDiscard": "Opnieuw opnemen",
+      "send": "Verstuur naar familie",
+      "skipVoice": "Spraakbericht overslaan",
+      "thankYou": "Bedankt! Je familie zal dit zien.",
+      "alreadyDone": "Je hebt vandaag al ingecheckt!",
+      "tapToCheckin": "Tik om in te checken",
+      "opensCheckin": "Opent het dagelijkse check-in scherm"
+    },
+    "activity": {
+      "title": "Activiteit van vandaag",
+      "noActivity": "Geen activiteit voor vandaag",
+      "comeBackLater": "Kom morgen terug voor een nieuwe activiteit!",
+      "tapToSpeak": "Tik om te spreken",
+      "tapToStop": "Tik om de opname te stoppen",
+      "typeInstead": "Typ je antwoord in plaats daarvan",
+      "typeHere": "Typ hier je antwoord...",
+      "speakInstead": "Spreek in plaats daarvan",
+      "recordAgain": "Opnieuw opnemen",
+      "skipForToday": "Sla over voor vandaag",
+      "defaultFollowUp": "Wat een prachtige herinnering! Bedankt voor het delen.",
+      "listenToSong": "Luister naar Liedje",
+      "photoMemory": "Een herinnering uit je leven"
+    },
+    "careCode": {
+      "welcome": "Welkom bij OurTurn",
+      "enterCode": "Voer je Zorgcode in",
+      "helperText": "Je familielid zal je deze code geven.",
+      "connect": "Verbinden",
+      "invalidCode": "Controleer je code en probeer het opnieuw.",
+      "connecting": "Verbinden...",
+      "digitLabel": "Cijfer {{current}} van {{total}}",
+      "changeLanguage": "Verander taal"
+    },
+    "tabs": {
+      "today": "Vandaag",
+      "help": "Help"
+    },
+    "taskPhoto": {
+      "taskPhoto": "Taakfoto (optioneel)",
+      "uploadPhoto": "Foto Uploaden",
+      "removePhoto": "Foto Verwijderen",
+      "medicationItems": "Medicijnen in deze groep",
+      "medicationItemsHint": "Groepeer maximaal 3 medicijnen die tegelijkertijd worden ingenomen",
+      "addMedication": "Medicatie Toevoegen",
+      "medName": "Naam medicijn",
+      "medDosage": "Dosering",
+      "removeMedication": "Verwijderen",
+      "maxMedications": "Maximaal 3 medicijnen per groep",
+      "uploadingPhoto": "Uploaden..."
+    }
+  },
+  "a11y": {
+    "doubleTapToComplete": "Dubbeltik om als voltooid te markeren",
+    "callContact": "Bel {{name}}",
+    "emergencyCallConfirmHint": "Er verschijnt een bevestiging voordat je belt",
+    "takeMeHomeHint": "Opent de navigatie naar je huisadres",
+    "gettingLocation": "Je locatie ophalen",
+    "removesVoiceRecording": "Verwijdert je spraakopname",
+    "submittingCheckin": "Je check-in verzenden"
+  },
+  "locationTracking": {
+    "backgroundNotificationTitle": "OurTurn houdt je veilig",
+    "backgroundNotificationBody": "Je familie kan zien dat het goed met je gaat"
+  },
+  "notifications": {
+    "taskReminder": "{{patientName}}, het is tijd voor: {{taskTitle}}",
+    "checkinPrompt": "Tijd voor je dagelijkse check-in!"
+  }
+}

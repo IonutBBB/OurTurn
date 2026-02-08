@@ -1,6 +1,7 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { COLORS, FONTS, RADIUS, SHADOWS, SPACING } from '../../theme';
+import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS, SPACING } from '../../theme';
+import type { ThemeColors } from '../../theme';
 
 interface InsightData {
   text: string;
@@ -14,10 +15,13 @@ interface ProactiveInsightCardProps {
   onDiscuss: (insightText: string) => void;
 }
 
-const borderColors = {
-  positive: COLORS.success,
-  attention: COLORS.amber,
-  suggestion: COLORS.brand500,
+const getBorderColor = (colors: ThemeColors, category: InsightData['category']) => {
+  const borderColors = {
+    positive: colors.success,
+    attention: colors.amber,
+    suggestion: colors.brand500,
+  };
+  return borderColors[category];
 };
 
 export default function ProactiveInsightCard({
@@ -26,10 +30,12 @@ export default function ProactiveInsightCard({
   onDiscuss,
 }: ProactiveInsightCardProps) {
   const { t } = useTranslation();
+  const styles = useStyles();
+  const colors = useColors();
 
   if (!insight) {
     return (
-      <View style={[styles.card, { borderLeftColor: COLORS.brand200 }]}>
+      <View style={[styles.card, { borderLeftColor: colors.brand200 }]}>
         <Text style={styles.label}>{t('caregiverApp.coach.hub.insight.title')}</Text>
         <Text style={styles.fallback}>
           {t('caregiverApp.coach.hub.insight.fallback', { name: patientName })}
@@ -39,7 +45,7 @@ export default function ProactiveInsightCard({
   }
 
   return (
-    <View style={[styles.card, { borderLeftColor: borderColors[insight.category] }]}>
+    <View style={[styles.card, { borderLeftColor: getBorderColor(colors, insight.category) }]}>
       <View style={styles.row}>
         <View style={styles.content}>
           <Text style={styles.label}>{t('caregiverApp.coach.hub.insight.title')}</Text>
@@ -59,12 +65,12 @@ export default function ProactiveInsightCard({
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   card: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.md,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     borderLeftWidth: 4,
     padding: SPACING[4],
     ...SHADOWS.sm,
@@ -82,29 +88,29 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.displayMedium,
     textTransform: 'uppercase',
     letterSpacing: 1.5,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginBottom: SPACING[1],
   },
   insightText: {
     fontSize: 15,
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     lineHeight: 22,
   },
   suggestion: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     marginTop: SPACING[1],
   },
   fallback: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     lineHeight: 20,
   },
   discussButton: {
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     paddingHorizontal: SPACING[3],
     paddingVertical: SPACING[2],
     borderRadius: RADIUS.lg,
@@ -112,6 +118,6 @@ const styles = StyleSheet.create({
   discussText: {
     fontSize: 13,
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
-});
+}));

@@ -1,7 +1,7 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import type { JourneyStepDefinition, JourneyProgress } from '@ourturn/shared';
-import { COLORS, FONTS, RADIUS, SHADOWS, SPACING } from '../../theme';
+import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS, SPACING } from '../../theme';
 
 interface JourneyStepCardProps {
   step: JourneyStepDefinition;
@@ -11,14 +11,16 @@ interface JourneyStepCardProps {
 
 export function JourneyStepCard({ step, progress, onPress }: JourneyStepCardProps) {
   const { t } = useTranslation('resources');
+  const styles = useStyles();
+  const colors = useColors();
   const status = progress?.status ?? 'not_started';
 
   const accentColor =
     status === 'completed'
-      ? COLORS.success
+      ? colors.success
       : status === 'in_progress'
-        ? COLORS.amber
-        : COLORS.border;
+        ? colors.amber
+        : colors.border;
 
   const checklist = progress?.checklist_state ?? [];
   const checkedCount = checklist.filter(Boolean).length;
@@ -52,11 +54,11 @@ export function JourneyStepCard({ step, progress, onPress }: JourneyStepCardProp
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   card: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     borderLeftWidth: 3,
     borderRadius: RADIUS.md,
     padding: SPACING[4],
@@ -78,12 +80,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: FONTS.bodySemiBold,
     fontWeight: '600',
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   subtitle: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     lineHeight: 18,
   },
   meta: {
@@ -95,15 +97,15 @@ const styles = StyleSheet.create({
   time: {
     fontSize: 12,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   checklistPreview: {
     fontSize: 12,
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.success,
+    color: colors.success,
   },
   chevron: {
     fontSize: 22,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
-});
+}));

@@ -1,6 +1,6 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { COLORS, FONTS, RADIUS, SPACING } from '../../theme';
+import { createThemedStyles, FONTS, RADIUS, SPACING } from '../../theme';
 
 const TOPICS = [
   'daily_routines',
@@ -19,6 +19,7 @@ interface TopicCardsProps {
 
 export default function TopicCards({ patientName, onSelect }: TopicCardsProps) {
   const { t } = useTranslation();
+  const styles = useStyles();
 
   return (
     <View>
@@ -42,19 +43,19 @@ export default function TopicCards({ patientName, onSelect }: TopicCardsProps) {
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   title: {
     fontSize: 11,
     fontFamily: FONTS.displayMedium,
     textTransform: 'uppercase',
     letterSpacing: 1.5,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginBottom: 2,
   },
   subtitle: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginBottom: SPACING[3],
   },
   grid: {
@@ -63,11 +64,11 @@ const styles = StyleSheet.create({
     gap: SPACING[2],
   },
   card: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     borderLeftWidth: 3,
-    borderLeftColor: COLORS.brand300,
+    borderLeftColor: colors.brand300,
     borderRadius: RADIUS.sm,
     paddingHorizontal: SPACING[3],
     paddingVertical: SPACING[2],
@@ -75,6 +76,6 @@ const styles = StyleSheet.create({
   cardText: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
-});
+}));

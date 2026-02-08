@@ -1,8 +1,8 @@
-import { View, Text, StyleSheet, TouchableOpacity, Linking, ActivityIndicator } from 'react-native';
+import { View, Text, TouchableOpacity, Linking, ActivityIndicator } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { router } from 'expo-router';
 import { getEmergencyNumber } from '@ourturn/shared/constants/emergency-numbers';
-import { COLORS, FONTS, RADIUS, SHADOWS } from '../../theme';
+import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS } from '../../theme';
 
 type Mode = 'in_person' | 'remote';
 
@@ -39,6 +39,8 @@ export function QuickActions({
   isAlertingFamily,
 }: QuickActionsProps) {
   const { t } = useTranslation();
+  const styles = useStyles();
+  const colors = useColors();
   const emergency = getEmergencyNumber(country);
 
   const inPersonActions: ActionItem[] = [
@@ -108,16 +110,16 @@ export function QuickActions({
   const getVariantStyles = (variant?: string) => {
     if (variant === 'danger') {
       return {
-        borderColor: COLORS.danger + '30',
+        borderColor: colors.danger + '30',
       };
     }
     if (variant === 'warning') {
       return {
-        borderColor: COLORS.amber + '30',
+        borderColor: colors.amber + '30',
       };
     }
     return {
-      borderColor: COLORS.border,
+      borderColor: colors.border,
     };
   };
 
@@ -182,7 +184,7 @@ export function QuickActions({
             {action.loading && (
               <ActivityIndicator
                 size="small"
-                color={COLORS.brand500}
+                color={colors.brand500}
                 style={styles.spinner}
               />
             )}
@@ -193,13 +195,13 @@ export function QuickActions({
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     padding: 16,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     ...SHADOWS.sm,
   },
   modeSection: {
@@ -209,12 +211,12 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontFamily: FONTS.bodyMedium,
     fontWeight: '500',
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginBottom: 8,
   },
   toggleContainer: {
     flexDirection: 'row',
-    backgroundColor: COLORS.border + '60',
+    backgroundColor: colors.border + '60',
     borderRadius: RADIUS.full,
     padding: 3,
   },
@@ -225,7 +227,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   toggleActive: {
-    backgroundColor: COLORS.brand500,
+    backgroundColor: colors.brand500,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.15,
@@ -236,7 +238,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: FONTS.bodyMedium,
     fontWeight: '500',
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
   },
   toggleTextActive: {
     color: 'white',
@@ -249,17 +251,17 @@ const styles = StyleSheet.create({
   actionCard: {
     width: '48%',
     flexGrow: 1,
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.lg,
     padding: 14,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
   },
   actionIconContainer: {
     width: 40,
     height: 40,
     borderRadius: RADIUS.md,
-    backgroundColor: COLORS.border + '40',
+    backgroundColor: colors.border + '40',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 10,
@@ -271,16 +273,16 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 4,
   },
   actionDesc: {
     fontSize: 12,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     lineHeight: 17,
   },
   spinner: {
     marginTop: 6,
   },
-});
+}));

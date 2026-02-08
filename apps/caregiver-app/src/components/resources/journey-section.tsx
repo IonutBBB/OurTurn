@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { JOURNEY_STEPS } from '@ourturn/shared';
 import type { JourneyStepDefinition, JourneyProgress } from '@ourturn/shared';
 import { JourneyStepCard } from './journey-step-card';
-import { COLORS, FONTS, SPACING } from '../../theme';
+import { createThemedStyles, FONTS, SPACING } from '../../theme';
 
 interface JourneySectionProps {
   progressMap: Record<string, JourneyProgress>;
@@ -15,6 +15,7 @@ const INITIAL_VISIBLE = 3;
 
 export function JourneySection({ progressMap, onSelectStep }: JourneySectionProps) {
   const { t } = useTranslation('resources');
+  const styles = useStyles();
   const [showAll, setShowAll] = useState(false);
 
   const visibleSteps = showAll ? JOURNEY_STEPS : JOURNEY_STEPS.slice(0, INITIAL_VISIBLE);
@@ -50,7 +51,7 @@ export function JourneySection({ progressMap, onSelectStep }: JourneySectionProp
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
     gap: SPACING[3],
   },
@@ -59,12 +60,12 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.displayMedium,
     textTransform: 'uppercase',
     letterSpacing: 1.5,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   sectionSubLabel: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginBottom: SPACING[1],
   },
   stepList: {
@@ -78,6 +79,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: FONTS.bodySemiBold,
     fontWeight: '600',
-    color: COLORS.brand600,
+    color: colors.brand600,
   },
-});
+}));

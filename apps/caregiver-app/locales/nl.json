@@ -1,0 +1,1395 @@
+{
+  "common": {
+    "appName": "OurTurn",
+    "save": "Opslaan",
+    "cancel": "Annuleren",
+    "delete": "Verwijderen",
+    "edit": "Bewerken",
+    "done": "Klaar",
+    "skip": "Overslaan voor vandaag",
+    "loading": "Laden...",
+    "error": "Er is iets misgegaan. Probeer het opnieuw.",
+    "errorTitle": "Er is iets misgegaan",
+    "errorDefault": "Er is een onverwachte fout opgetreden.",
+    "tryAgain": "Probeer het opnieuw",
+    "logOut": "Uitloggen",
+    "offline": "Je bent offline — je gegevens worden gesynchroniseerd wanneer je verbinding hebt",
+    "synced": "Gesynchroniseerd",
+    "viewMore": "Meer weergeven",
+    "back": "Terug",
+    "next": "Volgende",
+    "confirm": "Bevestigen",
+    "yes": "Ja",
+    "no": "Nee",
+    "you": "Jij",
+    "unknown": "Onbekend",
+    "saving": "Opslaan...",
+    "primary": "Primair"
+  },
+  "categories": {
+    "medication": "Medicatie",
+    "nutrition": "Maaltijden & Voeding",
+    "physical": "Lichamelijke Activiteit",
+    "cognitive": "Hersenen Wellness",
+    "social": "Sociaal & Verbinding",
+    "health": "Gezondheidscheck"
+  },
+  "caregiverApp": {
+    "dashboard": {
+      "greeting": "Goede{{timeOfDay}}, {{name}}",
+      "statusGood": "Het gaat goed met {{patientName}} vandaag",
+      "statusConcern": "{{patientName}} heeft mogelijk wat aandacht nodig",
+      "todaysStatus": "Status van vandaag",
+      "tasksCompleted": "{{completed}} van de {{total}} taken voltooid",
+      "dailyCheckin": "Dagelijkse Check-In",
+      "noCheckinYet": "Nog geen check-in ingediend vandaag",
+      "location": "Locatie",
+      "atHome": "{{name}} is thuis",
+      "lastUpdate": "Laatst bijgewerkt: {{time}}",
+      "aiInsights": "Inzichten",
+      "quickActions": "Snelle acties",
+      "callPatient": "Bel {{name}}",
+      "tasksCompletedLabel": "taken voltooid",
+      "careCode": "Zorgcode",
+      "careCodeHint": "Delen om de patiënt-app te verbinden",
+      "careCodeNotAvailable": "Code niet beschikbaar",
+      "morningActivityPattern": "Ochtendactiviteitenpatroon",
+      "insightText": "{{name}} voltooit meer taken op dagen dat er ochtendwandelingen gepland staan.",
+      "noJournalEntries": "Nog geen journal entries",
+      "unknown": "Onbekend",
+      "moodStruggling": "Moeite",
+      "moodLow": "Laag",
+      "moodOkay": "Oké",
+      "moodGood": "Goed",
+      "moodGreat": "Geweldig",
+      "sleepPoor": "Slecht",
+      "sleepFair": "Redelijk",
+      "sleepWell": "Goed",
+      "mood": "Stemming",
+      "sleep": "Slaap",
+      "minutesAgo": "{{count}}m geleden",
+      "hoursAgo": "{{count}}u geleden",
+      "daysAgo": "{{count}}d geleden",
+      "deviceStatus": "Apparaatstatus",
+      "deviceOnline": "Online",
+      "deviceOffline": "Offline",
+      "lastSeenAt": "Laatst gezien: {{time}}",
+      "lastSeenNever": "Nooit verbonden",
+      "engagementSummary": "Betrokkenheid van vandaag",
+      "alertsToday": "Waarschuwingen vandaag",
+      "checkedIn": "Ingecheckt",
+      "notCheckedIn": "Niet ingecheckt",
+      "brainActivity": "Hersenactiviteit"
+    },
+    "carePlan": {
+      "title": "{{name}}'s Dagplan",
+      "addTask": "Taak toevoegen",
+      "aiSuggest": "AI Stelt Taken Voor",
+      "hintLabel": "Instructies ({{name}} zal dit zien)",
+      "hintPlaceholder": "Bijv. Uw pillen bevinden zich in de pillendoos op het aanrecht in de keuken",
+      "recurrence": "Herhaalt",
+      "daily": "Elke dag",
+      "specificDays": "Specifieke dagen",
+      "oneTime": "Eenmalig",
+      "copyDay": "Kopiëren naar andere dagen",
+      "saved": "Opgeslagen",
+      "noTasks": "Nog geen taken. Voeg uw eerste taak toe om te beginnen.",
+      "category": "Categorie",
+      "taskTitle": "Taaktitel",
+      "time": "Tijd",
+      "deleteConfirm": "Deze taak verwijderen?",
+      "noMoreSuggestions": "Geen suggesties meer beschikbaar.",
+      "copyFromTo": "Taken kopiëren van {{day}} naar:",
+      "copyCount": "{{taskCount}} taken worden gekopieerd naar {{dayCount}} dag(en)",
+      "days": {
+        "mon": "Ma",
+        "tue": "Di",
+        "wed": "Wo",
+        "thu": "Do",
+        "fri": "Vr",
+        "sat": "Za",
+        "sun": "Zo"
+      },
+      "taskPhoto": "Taakfoto (optioneel)",
+      "uploadPhoto": "Foto uploaden",
+      "removePhoto": "Foto verwijderen",
+      "medicationItems": "Medicijnen in deze groep",
+      "medicationItemsHint": "Groepeer maximaal 3 medicijnen die tegelijkertijd worden ingenomen",
+      "addMedication": "Medicatie toevoegen",
+      "medName": "Naam medicijn",
+      "medNamePlaceholder": "bijv. Donepezil",
+      "medDosage": "Dosering of instructie",
+      "medDosagePlaceholder": "bijv. 10mg tablet",
+      "medPhotoLabel": "Foto",
+      "medItemLabel": "Medicatie {{number}}",
+      "removeMedication": "Verwijderen",
+      "maxMedications": "Maximaal 3 medicijnen per groep",
+      "uploadingPhoto": "Uploaden...",
+      "evidenceBased": "Evidence-based"
+    },
+    "location": {
+      "title": "Locatie & Veiligheid",
+      "currentLocation": "Huidige locatie",
+      "safeZones": "Veilige zones",
+      "addSafeZone": "Veilige zone toevoegen",
+      "editSafeZone": "Veilige zone bewerken",
+      "alerts": "Waarschuwingsinstellingen",
+      "leaveZoneAlert": "Waarschuwen wanneer {{name}} een veilige zone verlaat",
+      "inactivityAlert": "Waarschuwen bij geen beweging gedurende",
+      "nightAlert": "Waarschuwen wanneer buiten na",
+      "takeMeHomeAlert": "Waarschuwen wanneer {{name}} op 'Breng me naar huis' tikt",
+      "locationHistory": "Locatiegeschiedenis",
+      "takeMeHomeTapped": "{{name}} tikte op 'Breng me naar huis'",
+      "hours": "uur",
+      "zoneName": "Zonenaam",
+      "zoneRadius": "Radius (meters)",
+      "unknownLocation": "Onbekende locatie",
+      "completeOnboarding": "Voltooi eerst de onboarding.",
+      "unacknowledgedAlerts": "{{count}} Niet-erkende waarschuwing",
+      "unacknowledgedAlertsPlural": "{{count}} Niet-erkende waarschuwingen",
+      "acknowledge": "Erkennen",
+      "patientLocation": "Locatie van {{name}}",
+      "updated": "Bijgewerkt: {{time}}",
+      "noLocationData": "Nog geen locatiegegevens",
+      "live": "Live",
+      "add": "+ Toevoegen",
+      "noSafeZonesYet": "Nog geen veilige zones geconfigureerd.\nVoeg zones toe om waarschuwingen te ontvangen wanneer {{name}} vertrekt.",
+      "radiusMeters": "{{radius}}m radius",
+      "recentAlerts24h": "Recente waarschuwingen (24 uur)",
+      "noRecentAlerts": "Geen waarschuwingen in de afgelopen 24 uur. Alles is goed!",
+      "deleteSafeZone": "Veilige zone verwijderen",
+      "deleteSafeZoneConfirm": "Weet je zeker dat je \"{{name}}\" wilt verwijderen?",
+      "failedToSaveSafeZone": "Het opslaan van de veilige zone is mislukt",
+      "failedToDeleteSafeZone": "Het verwijderen van de veilige zone is mislukt",
+      "fillAllFields": "Vul alle velden in",
+      "name": "Naam",
+      "nameExample": "bijv. Thuis, Dokterspraktijk",
+      "latitude": "Breedtegraad",
+      "longitude": "Lengtegraad",
+      "radiusHint": "Aanbevolen: 100-500 meter voor typische locaties",
+      "mapView": "Kaartweergave",
+      "mapRequiresBuild": "Kaarten vereisen een ontwikkelingsversie.\nGebruik EAS Build om kaarten in te schakelen.",
+      "home": "Thuis",
+      "patient": "Patiënt",
+      "alertTypeLeftSafeZone": "Veilige zone verlaten",
+      "alertTypeInactive": "Inactief",
+      "alertTypeNightMovement": "Nachtelijke beweging",
+      "alertTypeTakeMeHomeTapped": "Breng me naar huis aangetikt",
+      "alertTypeSosTriggered": "SOS geactiveerd"
+    },
+    "coach": {
+      "title": "AI Zorgcoach",
+      "tabs": {
+        "chat": "Chat",
+        "behaviours": "Gedrag",
+        "resources": "Bronnen"
+      },
+      "resources": {
+        "title": "Bronnen",
+        "subtitle": "Gidsen, artikelen en lokale ondersteuning om u te helpen tijdens uw zorgtraject",
+        "linkLabel": "Bronnen & Gidsen"
+      },
+      "intro": "Vraag me alles over de zorg voor {{name}}. Ik ken hun routine, voorkeuren en algemene best practices.",
+      "placeholder": "Typ uw vraag...",
+      "disclaimer": "Ik ben hier om u te ondersteunen, niet om medisch advies te vervangen. Raadpleeg altijd uw arts voor gezondheidsproblemen.",
+      "disclaimerShort": "De Zorgcoach biedt alleen algemene begeleiding. Raadpleeg altijd zorgprofessionals voor medisch advies.",
+      "suggestedTopics": "Voorgestelde onderwerpen",
+      "addToCarePlan": "Toevoegen aan zorgplan",
+      "addToDoctorNotes": "Toevoegen aan doktersnotities",
+      "newConversation": "Nieuw gesprek",
+      "newChat": "Nieuwe Chat",
+      "careCoach": "Zorgcoach",
+      "completeOnboarding": "Voltooi eerst de onboarding.",
+      "greeting": "Hallo {{name}}!",
+      "greetingIntro": "Ik ben hier om u te helpen bij de zorg voor {{patientName}}. Vraag me alles over dagelijkse zorg, activiteiten of het omgaan met uitdagende situaties.",
+      "tryAsking": "Probeer te vragen:",
+      "askAbout": "Vraag over de zorg voor {{name}}...",
+      "send": "Verzenden",
+      "signingIn": "Aanmelden",
+      "taskAddedSuccess": "Taak toegevoegd aan zorgplan!",
+      "taskAddedError": "Taak kon niet worden toegevoegd. Probeer het opnieuw.",
+      "noteAddedSuccess": "Notitie opgeslagen voor doktersbezoek!",
+      "noteAddedError": "Notitie kon niet worden opgeslagen. Probeer het opnieuw.",
+      "addToCarePlanButton": "Toevoegen aan Zorgplan",
+      "saveForDoctorVisit": "Opslaan voor Doktersbezoek",
+      "success": "Succes",
+      "suggestions": {
+        "sundowning": "Hoe ga ik om met avondlijke onrust?",
+        "rainyDays": "Welke activiteiten werken voor regenachtige dagen?",
+        "siblings": "Help me praten met mijn broers en zussen over het delen van de zorg",
+        "refusesFood": "{{name}} weigert te eten. Help.",
+        "repetitive": "Hoe ga ik om met herhaalde vragen?"
+      },
+      "hub": {
+        "backToHub": "Terug naar Coach",
+        "insight": {
+          "title": "Voor Jou",
+          "discuss": "Bespreek",
+          "fallback": "Check in op de dag van {{name}} voor gepersonaliseerde inzichten"
+        },
+        "rightNow": {
+          "title": "Nu meteen",
+          "subtitle": "Directe hulp",
+          "refusing_food": "Weigert eten",
+          "refusing_medication": "Wil geen medicatie innemen",
+          "agitated": "Geagiteerd",
+          "not_recognizing": "Herkent me niet",
+          "repetitive_questions": "Steeds dezelfde vraag",
+          "sundowning": "Avondlijke onrust",
+          "wants_to_leave": "Wil weggaan",
+          "caregiver_overwhelmed": "Ik verlies mijn geduld"
+        },
+        "planPrepare": {
+          "title": "Plan & Bereid voor",
+          "subtitle": "Begeleide workflows",
+          "plan_tomorrow": "Plan morgen",
+          "plan_tomorrow_desc": "Bouw samen een geweldige dag",
+          "doctor_visit": "Voorbereiden op doktersbezoek",
+          "doctor_visit_desc": "Genereer een gestructureerde samenvatting",
+          "review_week": "Bekijk deze week",
+          "review_week_desc": "Wat ging goed, wat heeft aandacht nodig",
+          "adjust_plan": "Pas het zorgplan aan",
+          "adjust_plan_desc": "Optimaliseer op basis van wat werkt"
+        },
+        "learn": {
+          "title": "Leer",
+          "subtitle": "Onderwerpgidsen voor {{name}}",
+          "daily_routines": "Dagelijkse Routines",
+          "communication": "Communicatie",
+          "behaviors": "Gedrag",
+          "activities": "Activiteiten",
+          "nutrition": "Voeding",
+          "safety": "Veiligheid",
+          "sleep": "Slaap & Nacht"
+        },
+        "askAnything": {
+          "title": "Vraag Alles",
+          "placeholder": "Wat houdt u bezig over de zorg voor {{name}}?"
+        }
+      }
+    },
+    "family": {
+      "title": "Het Zorgteam van {{patientName}}",
+      "inviteMember": "Familielid uitnodigen",
+      "primaryCaregiver": "Primaire zorgverlener",
+      "familyMember": "Familielid",
+      "careCode": "Zorgcode",
+      "careCodeHelp": "Deel deze code om de patiënt-app te koppelen",
+      "regenerateCode": "Code opnieuw genereren",
+      "regenerateWarning": "Dit verbreekt de verbinding met alle gekoppelde patiëntapparaten. Ze hebben de nieuwe code nodig.",
+      "journal": "Zorgjournaal",
+      "addNote": "Notitie toevoegen",
+      "observation": "Observatie",
+      "note": "Notitie",
+      "milestone": "Mijlpaal",
+      "inviteEmail": "E-mailadres",
+      "inviteName": "Naam",
+      "inviteRelationship": "Relatie",
+      "familyCircle": "Familiekring",
+      "back": "Terug",
+      "family": "Familie",
+      "careJournal": "Zorgjournaal",
+      "inviteFamilyMembers": "Familieleden uitnodigen",
+      "shareCareCodeDesc": "Deel uw Zorgcode om andere familieleden te laten deelnemen.",
+      "showCareCode": "Toon Zorgcode",
+      "copy": "Kopiëren",
+      "share": "Delen",
+      "copied": "Gekopieerd!",
+      "codeCopiedToClipboard": "Zorgcode gekopieerd naar klembord",
+      "familyMembers": "Familieleden ({{count}})",
+      "you": "U",
+      "primary": "Primair",
+      "entryPlaceholder": "Voeg een notitie, observatie of mijlpaal toe...",
+      "posting": "Plaatsen...",
+      "post": "Plaatsen",
+      "noJournalEntries": "Nog geen journaalitems.",
+      "startDocumenting": "Begin met het documenteren van uw zorgtraject!",
+      "yesterday": "Gisteren",
+      "failedToAddEntry": "Item kon niet worden toegevoegd. Probeer het opnieuw.",
+      "shareCareCodeMessage": "Word lid van mijn OurTurn-zorgkring! Gebruik deze Zorgcode: {{code}}",
+      "deleteConfirmTitle": "Journaalitem verwijderen",
+      "deleteConfirmMessage": "Weet u zeker dat u dit dagboekitem wilt verwijderen? Dit kan niet ongedaan worden gemaakt.",
+      "edited": "(bewerkt)",
+      "crisis": "Crisis",
+      "canEditPlan": "Kan plan bewerken",
+      "receivesAlerts": "Ontvangt meldingen",
+      "caregiverLimitReached": "U hebt de limiet voor familieleden van de gratis versie bereikt. Upgrade om meer toe te voegen."
+    },
+    "toolkit": {
+      "pageTitle": "Hulpmiddelen voor mantelzorgers",
+      "pageSubtitle": "Praktische hulpmiddelen en ondersteuning voor uw welzijn",
+      "introMessage": "Hallo {{name}}! Dit is uw plek voor snelle verlichting, ondersteuning en zelfzorg.",
+      "checkin": {
+        "title": "Hoe voelt u zich vandaag?",
+        "energy": "Energie",
+        "energyLow": "Uitgeput",
+        "energyHigh": "Energiek",
+        "stress": "Stress",
+        "stressLow": "Kalm",
+        "stressHigh": "Overweldigd",
+        "sleep": "Slaapkwaliteit",
+        "sleepLow": "Verschrikkelijk",
+        "sleepHigh": "Geweldig"
+      },
+      "relief": {
+        "title": "Snelhulppost",
+        "recommended": "Aanbevolen",
+        "duration": "{{min}} min",
+        "startExercise": "Start",
+        "stepOf": "Stap {{current}} van {{total}}",
+        "complete": "Goed gedaan! Oefening voltooid.",
+        "close": "Sluiten",
+        "pause": "Pauze",
+        "resume": "Hervatten",
+        "exercises": {
+          "box-breathing": {
+            "name": "Vierkante Ademhaling",
+            "step0": "Ga comfortabel zitten en sluit je ogen",
+            "step1": "Adem langzaam in door je neus",
+            "step2": "Houd je adem zachtjes vast",
+            "step3": "Adem langzaam uit door je mond",
+            "step4": "Pauzeer voor de volgende ademhaling",
+            "step5": "Adem langzaam in door je neus",
+            "step6": "Houd je adem zachtjes vast",
+            "step7": "Adem langzaam uit door je mond",
+            "step8": "Pauzeer voor de volgende ademhaling",
+            "step9": "Adem langzaam in door je neus",
+            "step10": "Houd je adem zachtjes vast",
+            "step11": "Adem langzaam uit door je mond",
+            "step12": "Pauzeer voor de volgende ademhaling",
+            "step13": "Adem langzaam in door je neus",
+            "step14": "Houd je adem zachtjes vast",
+            "step15": "Adem langzaam uit door je mond",
+            "step16": "Pauzeer voor de volgende ademhaling",
+            "step17": "Adem langzaam in door je neus",
+            "step18": "Houd je adem zachtjes vast",
+            "step19": "Adem langzaam uit door je mond",
+            "step20": "Pauzeer voor de volgende ademhaling",
+            "step21": "Adem langzaam in door je neus",
+            "step22": "Houd je adem zachtjes vast",
+            "step23": "Adem langzaam uit door je mond",
+            "step24": "Goed gedaan. Neem even de tijd om te voelen hoe je je voelt."
+          },
+          "54321-grounding": {
+            "name": "5-4-3-2-1 Aarding",
+            "step0": "Neem een langzame, diepe ademhaling en kijk om je heen",
+            "step1": "Noem 5 dingen die je nu kunt ZIEN",
+            "step2": "Noem 4 dingen die je nu kunt VOELEN",
+            "step3": "Noem 3 dingen die je nu kunt HOREN",
+            "step4": "Noem 2 dingen die je nu kunt RUIKEN",
+            "step5": "Noem 1 ding dat je nu kunt PROEVEN",
+            "step6": "Neem nog een diepe ademhaling. Je bent hier en je bent veilig."
+          },
+          "gratitude-moment": {
+            "name": "Dankbaarheidsmoment",
+            "step0": "Sluit je ogen en neem een kalmerende ademhaling",
+            "step1": "Denk aan iemand waarvoor je dankbaar bent en waarom",
+            "step2": "Denk aan iets goeds dat vandaag is gebeurd, hoe klein ook",
+            "step3": "Denk aan iets van jezelf dat je waardeert",
+            "step4": "Houd deze drie dingen in gedachten en adem diep in",
+            "step5": "Draag dit gevoel van dankbaarheid met je mee."
+          },
+          "progressive-muscle-relaxation": {
+            "name": "Progressieve Spierontspanning",
+            "step0": "Ga zitten of liggen in een comfortabele houding. Sluit je ogen.",
+            "step1": "Bal beide vuisten stevig voor 5 seconden...",
+            "step2": "Laat los en voel de spanning wegsmelten",
+            "step3": "Span je schouders — trek ze naar je oren...",
+            "step4": "Laat los en laat je schouders zakken",
+            "step5": "Span je gezicht — voorhoofd, ogen, kaak...",
+            "step6": "Laat los en ontspan je gezicht volledig",
+            "step7": "Span je buikspieren...",
+            "step8": "Laat los en adem in je buik",
+            "step9": "Knijp je benen en voeten stevig samen...",
+            "step10": "Laat los en voel de warmte door je benen stromen",
+            "step11": "Adem diep in. Je hele lichaam is ontspannen.",
+            "step12": "Open zachtjes je ogen wanneer je klaar bent."
+          },
+          "mindful-break": {
+            "name": "Bewuste Pauze",
+            "step0": "Pauzeer wat je aan het doen bent. Dit moment is van jou.",
+            "step1": "Sluit je ogen en neem 3 langzame, diepe ademhalingen",
+            "step2": "Merk op hoe je lichaam zich nu voelt — je hoeft niets te veranderen",
+            "step3": "Luister naar de geluiden om je heen, dichtbij en ver weg",
+            "step4": "Voel het oppervlak onder je en de lucht op je huid",
+            "step5": "Zeg in stilte: \"Ik doe mijn best, en dat is genoeg.\"",
+            "step6": "Neem nog een diepe ademhaling",
+            "step7": "Open zachtjes je ogen. Je bent verfrist."
+          },
+          "breathing-478": {
+            "name": "4-7-8 Ademhaling",
+            "step0": "Ga comfortabel zitten en ontspan je schouders",
+            "step1": "Adem rustig in door je neus terwijl je tot 4 telt",
+            "step2": "Houd je adem vast terwijl je tot 7 telt",
+            "step3": "Adem volledig uit door je mond terwijl je tot 8 telt",
+            "step4": "Adem rustig in door je neus terwijl je tot 4 telt",
+            "step5": "Houd je adem vast terwijl je tot 7 telt",
+            "step6": "Adem volledig uit door je mond terwijl je tot 8 telt",
+            "step7": "Adem rustig in door je neus terwijl je tot 4 telt",
+            "step8": "Houd je adem vast terwijl je tot 7 telt",
+            "step9": "Adem volledig uit door je mond terwijl je tot 8 telt",
+            "step10": "Adem rustig in door je neus terwijl je tot 4 telt",
+            "step11": "Houd je adem vast terwijl je tot 7 telt",
+            "step12": "Adem volledig uit door je mond terwijl je tot 8 telt",
+            "step13": "Adem rustig in door je neus terwijl je tot 4 telt",
+            "step14": "Houd je adem vast terwijl je tot 7 telt",
+            "step15": "Adem volledig uit door je mond terwijl je tot 8 telt",
+            "step16": "Merk op hoeveel rustiger je lichaam zich nu voelt."
+          },
+          "permission-slip": {
+            "name": "Toestemmingsbriefje",
+            "step0": "Neem een diepe ademhaling en gun jezelf een moment",
+            "step1": "Zeg tegen jezelf: \"Ik geef mezelf toestemming om vandaag niet perfect te zijn\"",
+            "step2": "Zeg: \"Ik geef mezelf toestemming om hulp te vragen\"",
+            "step3": "Zeg: \"Ik geef mezelf toestemming om te voelen wat ik voel zonder schuldgevoel\"",
+            "step4": "Zeg: \"Ik geef mezelf toestemming om pauze te nemen\"",
+            "step5": "Zeg: \"Ik doe mijn best, en dat is genoeg\"",
+            "step6": "Neem een diepe ademhaling en houd deze woorden dichtbij",
+            "step7": "Jij verdient ook compassie. Draag dit met je mee."
+          },
+          "quick-walk": {
+            "name": "Korte Wandeling",
+            "step0": "Sta op en strek je armen boven je hoofd",
+            "step1": "Loop naar het dichtstbijzijnde raam of deur en kijk naar buiten",
+            "step2": "Neem 5 langzame stappen en voel elke voet de grond raken",
+            "step3": "Kijk omhoog — merk de lucht, het plafond of iets boven je op",
+            "step4": "Neem nog 5 langzame, bewuste stappen",
+            "step5": "Schud je handen en armen een paar seconden los",
+            "step6": "Rol je schouders 3 keer naar achteren",
+            "step7": "Je hebt bewogen. Dat telt. Goed gedaan."
+          }
+        }
+      },
+      "help": {
+        "title": "Vraag om hulp",
+        "sendRequest": "Verzenden",
+        "customPlaceholder": "Typ uw bericht...",
+        "recentRequests": "Recente verzoeken",
+        "statusPending": "In behandeling",
+        "statusAccepted": "Geaccepteerd",
+        "statusCompleted": "Klaar",
+        "statusExpired": "Verlopen",
+        "sent": "Hulpverzoek verzonden!",
+        "limitReached": "U kunt maximaal 5 hulpverzoeken per dag verzenden.",
+        "noRequests": "Geen recente hulpverzoeken.",
+        "accept": "Ik kan helpen",
+        "complete": "Markeer als klaar",
+        "template_need_break": "Pauze nodig",
+        "template_handle_meds": "Medicatiehulp",
+        "template_need_visit": "Bezoek nodig",
+        "template_groceries": "Boodschappen",
+        "template_custom": "Eigen bericht",
+        "message_need_break": "Ik heb echt een pauze nodig. Kan iemand het even overnemen?",
+        "message_handle_meds": "Kan iemand vandaag helpen met de medicatie?",
+        "message_need_visit": "Het zou veel betekenen als iemand vandaag langs kon komen.",
+        "message_groceries": "Kan iemand helpen met boodschappen?"
+      },
+      "agent": {
+        "title": "Welzijnsmaatje",
+        "disclaimer": "Alleen voor emotionele ondersteuning. Geen medisch advies.",
+        "placeholder": "Hoe voelt u zich?",
+        "greeting": "Ik denk aan u...",
+        "rateLimited": "Haal even adem — u kunt binnenkort weer chatten.",
+        "errorMessage": "Kon geen verbinding maken. Probeer het opnieuw.",
+        "expand": "Uitvouwen",
+        "collapse": "Samenvouwen",
+        "prompts": {
+          "overwhelmed": "Ik voel me op dit moment overweldigd",
+          "calmDown": "Help me om binnen 2 minuten te kalmeren",
+          "needEnergy": "Ik heb energie nodig, maar kan geen pauze nemen",
+          "poorSleep": "Ik heb gisteravond slecht geslapen",
+          "needMoment": "Ik heb even een momentje voor mezelf nodig",
+          "uplifting": "Vertel me iets opbeurends"
+        }
+      },
+      "goal": {
+        "title": "Doel van vandaag",
+        "placeholder": "Stel een doel voor vandaag...",
+        "done": "Klaar!",
+        "weekLabel": "Deze week",
+        "suggest": "Suggestie"
+      },
+      "burnout": {
+        "title": "We merken dat u mogelijk extra ondersteuning nodig heeft",
+        "message": "Uw recente check-ins tonen een verhoogde stress of lage energie aan. Dat is volkomen begrijpelijk — mantelzorg is zwaar."
+      },
+      "support": {
+        "title": "Ondersteuning nodig?",
+        "description": "Mantelzorg is een uitdaging. Het is oké om hulp te vragen."
+      },
+      "footer": "Vergeet niet: je kunt niet schenken uit een lege beker. Uw welzijn is ook belangrijk.",
+      "weeklyStats": {
+        "title": "Wekelijkse inzichten",
+        "subtitle": "Uw 7-daagse welzijnsoverzicht",
+        "avgEnergy": "Gem. energie",
+        "avgStress": "Gem. stress",
+        "avgSleep": "Gem. slaap",
+        "noData": "Voltooi dagelijkse check-ins om uw wekelijkse trends te bekijken.",
+        "generateDigest": "Genereer AI-overzicht",
+        "generating": "Genereren...",
+        "behaviourSummary": "{{count}} gedragsincidenten geregistreerd deze week"
+      },
+      "sos": {
+        "title": "Wat gebeurt er op dit moment?",
+        "subtitle": "Kies waar u hulp bij nodig heeft — wij begeleiden u.",
+        "calmDown": "Ik moet kalmeren",
+        "calmDownDesc": "Snelle ademhalings- en ontspanningsoefeningen",
+        "behaviourNow": "Gedrag dat nu plaatsvindt",
+        "behaviourNowDesc": "Registreer een incident en ontvang begeleiding",
+        "callHelp": "Ik heb spoedeisende hulp nodig",
+        "callHelpDesc": "Neem contact op met hulpdiensten of familie",
+        "needBreak": "Ik heb iemand nodig om het over te nemen",
+        "needBreakDesc": "Stuur een hulpverzoek naar familie"
+      },
+      "behaviours": {
+        "playbooks": {
+          "title": "Gedraaiboeken voor gedrag",
+          "subtitle": "Tik op een gedrag voor stapsgewijze begeleiding",
+          "rightNow": "Nu meteen",
+          "understandWhy": "Begrijp waarom",
+          "prevent": "Preventie",
+          "whenToCallDoctor": "Wanneer de dokter te bellen"
+        },
+        "logger": {
+          "title": "Incident registreren",
+          "logIncident": "Registreer een incident",
+          "typeLabel": "Soort gedrag",
+          "selectType": "Selecteer een type...",
+          "severity": "Ernst",
+          "mild": "Mild",
+          "severe": "Ernstig",
+          "timeOfDay": "Tijd van de dag",
+          "morning": "Ochtend",
+          "afternoon": "Middag",
+          "evening": "Avond",
+          "night": "Nacht",
+          "duration": "Duur (minuten)",
+          "durationPlaceholder": "Hoe lang duurde het?",
+          "triggers": "Mogelijke triggers",
+          "trigger_pain": "Pijn",
+          "trigger_hunger": "Honger",
+          "trigger_thirst": "Dorst",
+          "trigger_fatigue": "Vermoeidheid",
+          "trigger_overstimulation": "Overstimulatie",
+          "trigger_unfamiliar_environment": "Onbekende plaats",
+          "trigger_unfamiliar_person": "Onbekend persoon",
+          "trigger_routine_change": "Verandering in routine",
+          "trigger_medication": "Medicatie",
+          "trigger_noise": "Lawaai",
+          "trigger_loneliness": "Eenzaamheid",
+          "trigger_boredom": "Verveling",
+          "trigger_bathroom_need": "Behoefte aan toilet",
+          "trigger_frustration": "Frustratie",
+          "trigger_fear": "Angst",
+          "trigger_unknown": "Onbekend",
+          "whatHappened": "Wat is er gebeurd?",
+          "whatHappenedPlaceholder": "Beschrijf het incident...",
+          "whatHelped": "Wat hielp? (optioneel)",
+          "whatHelpedPlaceholder": "Beschrijf wat hielp om de situatie te kalmeren...",
+          "save": "Incident opslaan",
+          "saved": "Incident opgeslagen"
+        },
+        "timeline": {
+          "title": "Tijdlijn van incidenten",
+          "all": "Alle",
+          "noIncidents": "Er zijn geen incidenten die overeenkomen met het huidige filter."
+        }
+      }
+    },
+    "reports": {
+      "title": "Rapport dokterbezoek",
+      "period": "Rapportperiode",
+      "lastDays": "Laatste {{days}} dagen",
+      "generate": "Rapport genereren",
+      "include": "Opnemen in rapport",
+      "moodTrends": "Stemmingstrends en check-in samenvatting",
+      "sleepPatterns": "Slaappatronen",
+      "activityCompletion": "Percentage voltooide activiteiten",
+      "medicationAdherence": "Medicatie therapietrouw",
+      "journalNotes": "Opmerkelijke observaties uit het zorgdagboek",
+      "locationPatterns": "Locatiepatronen",
+      "caregiverConcerns": "Zorgen van de verzorger",
+      "customNotes": "Aanvullende notities voor de dokter",
+      "print": "Afdrukken",
+      "downloadPdf": "PDF downloaden",
+      "emailDoctor": "E-mail naar dokter",
+      "disclaimer": "Deze samenvatting is gebaseerd op zelf-gerapporteerde wellnessgegevens en observaties van de familie. Het is geen klinische beoordeling.",
+      "webNote": "Voor de volledige rapportbouwer met print- en PDF-export, bezoek de OurTurn web app.",
+      "openInWebApp": "Openen in web app",
+      "previousReports": "Eerdere rapporten",
+      "generated": "Gegenereerd {{date}}",
+      "avgQuality": "gem. kwaliteit",
+      "moodStruggling": "Moeite",
+      "moodLow": "Laag",
+      "moodOkay": "Oké",
+      "moodGood": "Goed",
+      "moodGreat": "Geweldig",
+      "careSummary": "OurTurn Zorgsamenvatting",
+      "patient": "Patiënt",
+      "periodLabel": "Periode",
+      "checkinsRecorded": "Check-ins vastgelegd",
+      "averageMood": "Gemiddelde stemming",
+      "averageSleepQuality": "Gemiddelde slaapkwaliteit",
+      "activityCompletionRate": "Voltooiing van activiteiten",
+      "medicationAdherenceRate": "Medicatie therapietrouw",
+      "observations": "Observaties",
+      "categoryMedication": "Medicatie",
+      "categoryMeals": "Maaltijden",
+      "categoryPhysical": "Fysiek",
+      "categoryCognitive": "Cognitief",
+      "categorySocial": "Sociaal",
+      "categoryHealth": "Gezondheid"
+    },
+    "onboarding": {
+      "step1Title": "Over jou",
+      "step2Title": "Over je dierbare",
+      "step3Title": "Hun levensverhaal",
+      "step4Title": "Dagelijkse routine",
+      "step5Title": "Veiligheidsinstellingen",
+      "step6Title": "Uw Zorgcode",
+      "next": "Volgende",
+      "back": "Terug",
+      "finish": "Aan de slag",
+      "careCodeInstructions": "Installeer OurTurn op de telefoon van uw dierbare en voer deze code in om verbinding te maken.",
+      "quickSetup": "Snelle installatie",
+      "yourName": "Uw naam",
+      "yourNameRequired": "Uw naam *",
+      "lovedOneNameRequired": "De naam van uw dierbare *",
+      "relationship": "Uw relatie tot hen",
+      "relationshipPlaceholder": "bijv. dochter, zoon, partner",
+      "settingsHint": "U kunt later meer details toevoegen in de instellingen",
+      "fillRequired": "Vul alle verplichte velden in",
+      "setupFailed": "Installatie mislukt",
+      "country": "Land",
+      "theirName": "Hun voornaam",
+      "dateOfBirth": "Geboortedatum",
+      "dementiaType": "Type dementie (optioneel)",
+      "homeAddress": "Woonadres",
+      "medications": "Medicijnen",
+      "addMedication": "Medicijn toevoegen",
+      "childhoodLocation": "Waar ze zijn opgegroeid",
+      "career": "Carrière / beroep",
+      "hobbies": "Hobby's en interesses",
+      "favoriteMusic": "Favoriete muziek / artiesten",
+      "favoriteFoods": "Favoriete gerechten",
+      "importantPeople": "Belangrijke mensen",
+      "keyEvents": "Belangrijke levensgebeurtenissen",
+      "uploadPhotos": "Familiefoto's uploaden",
+      "wakeTime": "Tijd van wakker worden",
+      "sleepTime": "Slaaptijd",
+      "generatePlan": "Stel een voorgesteld plan op",
+      "emergencyContacts": "Contactpersonen voor noodgevallen",
+      "alertSettings": "Waarschuwingsinstellingen",
+      "stepOf": "Stap {{current}} van {{total}}",
+      "breakfastTime": "Ontbijttijd",
+      "lunchTime": "Lunchtijd",
+      "dinnerTime": "Dinertijd",
+      "typicalDay": "Beschrijving van een typische dag",
+      "typicalDayPlaceholder": "Beschrijf een typische dag...",
+      "emergencyContactsHint": "Voeg contactpersonen voor noodgevallen toe die verschijnen op het tabblad Help van de patiënt-app.",
+      "remove": "Verwijderen",
+      "addContact": "Contactpersoon toevoegen",
+      "contactNameRequired": "Naam *",
+      "phoneRequired": "Telefoonnummer *",
+      "relationshipOptional": "Relatie (optioneel)",
+      "addContactButton": "+ Contactpersoon toevoegen",
+      "emergencyContactWarning": "We raden aan om minstens één contactpersoon voor noodgevallen toe te voegen.",
+      "allSet": "Je bent er helemaal klaar voor!",
+      "careCodeLabel": "ZORGCODE",
+      "copied": "Gekopieerd!",
+      "copyCode": "Code kopiëren",
+      "nextSteps": "Volgende stappen:",
+      "nextStep1": "1. Installeer OurTurn op de telefoon van {{name}}",
+      "nextStep2": "2. Open de app en voer de bovenstaande Zorgcode in",
+      "nextStep3": "3. Dat is alles! Het dagelijkse plan van {{name}} verschijnt op hun telefoon",
+      "homeAddressPlaceholder": "Hoofdstraat 123, Stad"
+    },
+    "settings": {
+      "title": "Instellingen",
+      "appearance": "Uiterlijk",
+      "theme": {
+        "label": "Thema",
+        "light": "Licht",
+        "dark": "Donker",
+        "system": "Systeem"
+      },
+      "profile": "Profiel",
+      "account": "Account",
+      "subscription": "Abonnement",
+      "notifications": "Meldingen",
+      "privacy": "Privacy en gegevens",
+      "exportData": "Mijn gegevens exporteren",
+      "exportNote": "Download een kopie van al uw gegevens (GDPR-recht op overdraagbaarheid)",
+      "exportClipboard": "Uw gegevens zijn naar het klembord gekopieerd. U kunt ze in een document of e-mail plakken.",
+      "deleteAccount": "Account verwijderen",
+      "deleteWarning": "Dit verwijdert permanent alle gegevens voor dit huishouden. Dit kan niet ongedaan worden gemaakt.",
+      "deleteConfirmType": "Typ DELETE om de verwijdering van het account te bevestigen",
+      "confirmDelete": "Verwijdering bevestigen",
+      "language": "Taal",
+      "about": "Over OurTurn",
+      "version": "Versie",
+      "notMedicalDevice": "OurTurn is geen medisch hulpmiddel",
+      "dailySummary": "Dagelijks overzicht",
+      "dailySummaryTime": "Tijdstip dagelijks overzicht",
+      "emailNotifications": "E-mailnotificaties",
+      "pushNotifications": "Pushnotificaties",
+      "safetyAlerts": "Veiligheidswaarschuwingen",
+      "signOut": "Uitloggen",
+      "saveProfile": "Profiel opslaan",
+      "saved": "Opgeslagen!",
+      "saving": "Opslaan...",
+      "changePassword": "Wachtwoord wijzigen",
+      "newPassword": "Nieuw wachtwoord",
+      "confirmNewPassword": "Nieuw wachtwoord bevestigen",
+      "passwordPlaceholder": "Minimaal 8 tekens",
+      "passwordChanged": "Wachtwoord succesvol gewijzigd!",
+      "changingPassword": "Wijzigen...",
+      "copyCode": "Code kopiëren",
+      "codeCopied": "Code gekopieerd!",
+      "regenerateCode": "Code opnieuw genereren",
+      "regenerateWarning": "De oude code werkt niet meer. Alle gekoppelde patiëntapparaten hebben de nieuwe code nodig.",
+      "dangerZone": "Gevarenzone",
+      "relationship": "Relatie",
+      "deleteConfirm": "Typ DELETE om de verwijdering van het account te bevestigen",
+      "photoGallery": "Fotoalbum",
+      "photoGalleryDesc": "Upload familiefoto's voor gepersonaliseerde herinneringsactiviteiten",
+      "uploadPhotos": "Foto's uploaden",
+      "uploading": "Uploaden...",
+      "deletePhoto": "Deze foto verwijderen?",
+      "maxPhotosReached": "Maximum van 20 foto's bereikt",
+      "photoUploadHint": "Maximaal 20 foto's, max. 5 MB per stuk",
+      "photoUploadFailed": "Het uploaden van de foto is mislukt. Probeer het opnieuw.",
+      "photoDeleteFailed": "Het verwijderen van de foto is mislukt. Probeer het opnieuw.",
+      "noPhotosYet": "Nog geen foto's geüpload",
+      "photosCount": "{{count}} van 20 foto's",
+      "patientComplexity": "Patiënt App Modus",
+      "patientComplexityDesc": "Pas de interface van de patiënt-app aan op basis van de behoeften van uw dierbare.",
+      "complexity": {
+        "full": "Volledig",
+        "fullDesc": "Alle functies beschikbaar",
+        "simplified": "Vereenvoudigd",
+        "simplifiedDesc": "Grotere tekst, minder details",
+        "essential": "Essentieel",
+        "essentialDesc": "Minimaal - alleen muziek en bel om hulp"
+      },
+      "safetyEscalation": "Veiligheid & Escalatie",
+      "escalationTiming": "Escalatietiming",
+      "escalationTimingDesc": "Hoe lang duurt het voordat niet-erkende waarschuwingen worden geëscaleerd",
+      "offlineThreshold": "Offline waarschuwingsdrempel",
+      "offlineThresholdDesc": "Waarschuwing wanneer apparaat zo lang niet is gezien",
+      "minutes": "minuten",
+      "respiteReminders": "Respijt Herinneringen",
+      "respiteRemindersDesc": "Ontvang herinneringen om pauzes te nemen",
+      "groupProfile": "Uw profiel",
+      "groupAboutPatient": "Over {{name}}",
+      "groupAboutPatientGeneric": "Over uw dierbare",
+      "groupSharing": "Delen & Verbinding",
+      "groupSafety": "Veiligheid & Meldingen",
+      "groupAccount": "Account",
+      "patientInformation": "Patiëntinformatie",
+      "patientInformationDesc": "Basisgegevens over uw dierbare",
+      "patientName": "Naam van de patiënt",
+      "dateOfBirth": "Geboortedatum",
+      "dementiaType": "Type dementie",
+      "selectDementiaType": "Selecteer type (optioneel)",
+      "homeAddress": "Woonadres",
+      "homeAddressPlaceholder": "Volledig woonadres",
+      "savingPatientInfo": "Opslaan...",
+      "savePatientInfo": "Patiëntinformatie opslaan",
+      "lifeStory": "Levensverhaal",
+      "lifeStoryDesc": "Deze details helpen bij het personaliseren van dagelijkse activiteiten en herinneringsprompts.",
+      "childhoodLocation": "Waar ze zijn opgegroeid",
+      "career": "Carrière / Beroep",
+      "hobbies": "Hobby's & Interesses",
+      "hobbiesPlaceholder": "bijv. tuinieren, schilderen, schaken",
+      "favoriteMusic": "Favoriete muziek / artiesten",
+      "favoriteMusicPlaceholder": "bijv. Frank Sinatra, Beatles",
+      "favoriteFoods": "Favoriete gerechten",
+      "favoriteFoodsPlaceholder": "bijv. appeltaart, gebraden kip",
+      "importantPeople": "Belangrijke mensen",
+      "importantPeoplePlaceholder": "bijv. John (broer), Mary (beste vriendin)",
+      "keyEvents": "Belangrijke levensgebeurtenissen",
+      "keyEventsPlaceholder": "bijv. Afgestudeerd in 1965, Verhuisd naar Londen in 1970",
+      "savingLifeStory": "Opslaan...",
+      "saveLifeStory": "Levensverhaal opslaan",
+      "dailySchedule": "Dagelijks schema",
+      "dailyScheduleDesc": "Stel de waak- en slaaptijden in voor de routine van uw dierbare.",
+      "wakeTime": "Wakkertijd",
+      "sleepTime": "Slaaptijd",
+      "savingSchedule": "Opslaan...",
+      "saveSchedule": "Schema opslaan",
+      "emergencyContacts": "Contactpersonen voor noodgevallen",
+      "emergencyContactsDesc": "Deze contactpersonen verschijnen op het tabblad Help van de patiënt-app.",
+      "addContact": "Contactpersoon toevoegen",
+      "contactName": "Naam contactpersoon",
+      "contactPhone": "Telefoonnummer",
+      "contactRelationship": "Relatie",
+      "contactRelationshipPlaceholder": "bijv. Dochter, buur",
+      "noContactsYet": "Nog geen contactpersonen voor noodgevallen toegevoegd.",
+      "savingContacts": "Opslaan...",
+      "saveContacts": "Contactpersonen opslaan",
+      "removeContactConfirm": "Deze contactpersoon verwijderen?",
+      "country": "Land",
+      "selectCountry": "Selecteer land",
+      "selectLanguage": "Selecteer taal",
+      "languageSaved": "Taal bijgewerkt"
+    },
+    "auth": {
+      "login": "Inloggen",
+      "signup": "Aanmelden",
+      "email": "E-mail",
+      "password": "Wachtwoord",
+      "forgotPassword": "Wachtwoord vergeten?",
+      "noAccount": "Nog geen account?",
+      "hasAccount": "Al een account?",
+      "continueWithGoogle": "Doorgaan met Google",
+      "continueWithApple": "Doorgaan met Apple",
+      "or": "of",
+      "confirmPassword": "Wachtwoord bevestigen",
+      "createAccount": "Account aanmaken",
+      "getStarted": "Aan de slag",
+      "fillAllFields": "Vul alle velden in",
+      "passwordsNoMatch": "Wachtwoorden komen niet overeen",
+      "passwordTooShort": "Wachtwoord moet minimaal 8 tekens lang zijn",
+      "checkEmail": "Controleer uw e-mail om uw account te bevestigen",
+      "enterEmailFirst": "Voer eerst uw e-mailadres in.",
+      "resetEmailSent": "Controleer uw e-mail",
+      "resetEmailSentDesc": "We hebben een link om uw wachtwoord opnieuw in te stellen naar uw e-mailadres gestuurd.",
+      "welcomeBack": "Welkom terug",
+      "enterEmailAndPassword": "Voer e-mail en wachtwoord in",
+      "signingIn": "Aanmelden",
+      "orContinueWith": "Of ga verder met"
+    },
+    "nav": {
+      "family": "Familiekring",
+      "toolkit": "Toolkit",
+      "reports": "Rapporten",
+      "settings": "Instellingen",
+      "crisis": "Crisis Hub"
+    },
+    "crisis": {
+      "title": "Crisis Hub",
+      "subtitle": "Real-time crisismanagement en de-escalatie ondersteuning",
+      "eventLogged": "Crisisgebeurtenis geregistreerd",
+      "logEvent": "Registreer Crisisgebeurtenis",
+      "logPlaceholder": "Beschrijf wat er is gebeurd...",
+      "status": {
+        "allClear": "Alles veilig",
+        "allClearDesc": "Geen actieve meldingen",
+        "activeAlerts": "Actieve meldingen",
+        "lastKnownLocation": "Laatst bekende locatie",
+        "viewOnMap": "Bekijk op kaart",
+        "noLocationData": "Geen locatiegegevens beschikbaar"
+      },
+      "actions": {
+        "modeLabel": "Uw situatie",
+        "withThem": "Ik ben bij hen",
+        "remote": "Ik ben op afstand",
+        "startDeEscalation": "Start De-escalatie",
+        "startDeEscalationDesc": "Stapsgewijze begeleide kalmeringsflow",
+        "callEmergency": "Bel noodgeval",
+        "callEmergencyDesc": "Bel lokale hulpdiensten",
+        "alertFamily": "Waarschuw familie",
+        "alertFamilyDesc": "Stuur pushnotificatie naar alle verzorgers",
+        "alertFamilySent": "Familieleden op de hoogte gebracht",
+        "alertFamilyFailed": "Het lukte niet om de familie op de hoogte te brengen. Probeer het opnieuw.",
+        "viewLocation": "Bekijk locatie",
+        "viewLocationDesc": "Bekijk de huidige locatie van {{name}} op de kaart",
+        "contactPrimary": "Neem contact op met de primaire verzorger",
+        "contactPrimaryDesc": "Bereik de primaire verzorger via e-mail",
+        "logEvent": "Registreer gebeurtenis",
+        "logEventDesc": "Leg dit moment vast in het crisisdagboek"
+      },
+      "wizard": {
+        "breathingTitle": "Laten we beginnen met een kalmerende ademhaling",
+        "breathingInstruction": "Adem langzaam in... houd vast... adem uit...",
+        "stepOf": "Stap {{current}} van {{total}}",
+        "thisHelped": "Dit hielp",
+        "tryNext": "Probeer volgende stap",
+        "skip": "Overslaan",
+        "completionTitle": "Goed gedaan. U heeft dat met zorg aangepakt.",
+        "completionDesc": "Wilt u aantekeningen maken over wat er is gebeurd?",
+        "crisisNotesPlaceholder": "Wat is er gebeurd? Wat hielp? Zijn er triggers opgemerkt...",
+        "saveAndClose": "Opslaan en sluiten",
+        "closeWithoutSaving": "Sluiten zonder opslaan"
+      },
+      "history": {
+        "title": "Recente crisisgebeurtenissen",
+        "noEvents": "Geen crisisgebeurtenissen in de afgelopen 30 dagen.",
+        "viewAllInJournal": "Bekijk alles in het dagboek",
+        "yesterday": "Gisteren",
+        "daysAgo": "{{count}}d geleden"
+      },
+      "steps": {
+        "stayCalm": {
+          "title": "Blijf kalm",
+          "detail": "Haal langzaam en diep adem. Uw kalme energie helpt hen zich veilig te voelen.",
+          "script": "Ik ben hier bij je. Alles is in orde."
+        },
+        "validateFeelings": {
+          "title": "Valideer gevoelens",
+          "detail": "Zeg 'Ik zie dat je overstuur bent. Dat moet heel moeilijk zijn.' Maak geen ruzie en corrigeer niet.",
+          "script": "Ik zie dat je overstuur bent. Dat moet heel moeilijk zijn."
+        },
+        "simplifyEnvironment": {
+          "title": "Vereenvoudig de omgeving",
+          "detail": "Gebruik korte, eenvoudige zinnen. Eén idee tegelijk. Vermijd het stellen van 'waarom'-vragen.",
+          "script": "Laten we het eenvoudiger maken. Eén ding tegelijk."
+        },
+        "redirectAttention": {
+          "title": "Leid de aandacht af",
+          "detail": "Verander voorzichtig van onderwerp. Stel een bekende activiteit, lied of wandeling voor.",
+          "script": "Zullen we iets anders proberen? Laten we een kleine wandeling samen maken."
+        },
+        "useGentleTouch": {
+          "title": "Gebruik zachte aanraking",
+          "detail": "Indien welkom, kan een zachte hand op de arm geruststellend zijn. Let op hun reactie.",
+          "script": "Vind je het goed als ik je hand vasthoud? Ik ben hier."
+        },
+        "giveSpace": {
+          "title": "Geef ruimte",
+          "detail": "Als niets werkt, zorg dan voor veiligheid en geef ze ruimte. Het is oké om een stap terug te doen.",
+          "script": "Ik ben vlakbij als je me nodig hebt. Neem de tijd."
+        }
+      },
+      "helplines": "Helplijnen",
+      "noHelplineAvailable": "Geen hulplijn gevonden voor uw land",
+      "call": "Bel",
+      "email": "E-mail",
+      "website": "Website",
+      "familyContacts": "Familiecontacten",
+      "supportResources": "Ondersteuningsbronnen",
+      "scenarios": {
+        "title": "Wat gebeurt er?",
+        "subtitle": "Tik op een situatie voor stapsgewijze begeleiding",
+        "urgent": "Urgent",
+        "stepCountLabel": "{{count}} stappen",
+        "backToSituations": "Terug naar situaties",
+        "breathe": "Ademhalingsoefening",
+        "callEmergency": "Bel hulpdiensten"
+      },
+      "patterns": {
+        "title": "Inzicht in patronen",
+        "noEvents": "Registreer incidenten om patronen in de loop van de tijd te zien.",
+        "fewEvents": "{{count}} incidenten geregistreerd. Meer gegevens nodig voor patronen.",
+        "timePattern": "De meeste incidenten gebeuren in de {{time}}.",
+        "weekCount": "{{count}} deze week."
+      },
+      "personalization": {
+        "label": "Wat kalmeert {{name}}",
+        "empty": "Voeg kalmerende strategieën toe in de biografie van {{name}} om hier gepersonaliseerde tips te zien."
+      },
+      "scenarioData": {
+        "stepsCount": "{{count}} stappen",
+        "agitated": {
+          "label": "Opgewonden / Overstuur",
+          "steps": [
+            {
+              "title": "Jij eerst",
+              "instruction": "Haal één keer diep adem voordat je iets doet. Je kunt iemand niet kalmeren als je zelf niet kalm bent."
+            },
+            {
+              "title": "Snelle check — zou er iets fysieks aan de hand kunnen zijn?",
+              "instruction": "Pijn, honger, naar het toilet moeten of een infectie kunnen allemaal agitatie veroorzaken.",
+              "checklist": [
+                "Pijn of ongemak?",
+                "Honger of dorst?",
+                "Moet naar het toilet?",
+                "Recente medicatiewijziging?",
+                "Koorts of tekenen van ziekte?"
+              ]
+            },
+            {
+              "title": "Verlaag de temperatuur",
+              "instruction": "Spreek langzaam en zacht. Maak geen ruzie, corrigeer niet en leg niets uit. Bevestig wat ze voelen.",
+              "tips": [
+                "\"Ik zie dat je overstuur bent. Ik ben hier.\"",
+                "Verminder lawaai — zet de tv uit, sluit de ramen",
+                "Geef ze fysieke ruimte, ga niet opdringen",
+                "Bied een vertrouwd troostobject aan"
+              ]
+            },
+            {
+              "title": "Leid af, redeneer niet",
+              "instruction": "Verander zachtjes van onderwerp of omgeving. Probeer ze er niet uit te redeneren.",
+              "tips": [
+                "Stel een wandeling voor of verplaats naar een andere kamer",
+                "Zet muziek op waar ze van houden",
+                "Bied een snack of warme drank aan",
+                "Bekijk samen foto's"
+              ]
+            },
+            {
+              "title": "Wanneer hulp in te roepen",
+              "instruction": "Als de agitatie langer dan 30 minuten aanhoudt, als ze het risico lopen zichzelf of jou pijn te doen, of als dit een plotseling nieuw gedrag is — bel dan de hulpdiensten.",
+              "actionLabel": "Bel de hulpdiensten"
+            }
+          ]
+        },
+        "wandering": {
+          "label": "Dwalen / Vermist",
+          "steps": [
+            {
+              "title": "Controleer eerst de gebruikelijke plaatsen",
+              "instruction": "De meeste mensen met dementie gaan naar bekende plaatsen — een voormalige werkplek, een ouderlijk huis, het huis van een buur.",
+              "tips": [
+                "Controleer de tuin, garage, nabijgelegen straten",
+                "Vraag buren of ze hen hebben gezien",
+                "Controleer plaatsen waar ze vroeger regelmatig naartoe gingen"
+              ]
+            },
+            {
+              "title": "Gebruik hun locatie",
+              "instruction": "Als locatietracking is ingesteld, controleer dan nu hun huidige positie."
+            },
+            {
+              "title": "Waarschuw de familie",
+              "instruction": "Laat iedereen het onmiddellijk weten. Meer zoekende ogen is beter."
+            },
+            {
+              "title": "Bel de politie als ze niet binnen 15 minuten worden gevonden",
+              "instruction": "Wacht niet. Mensen met dementie lopen een hoog risico op letsel. Bel de hulpdiensten en vertel hen dat de persoon dementie heeft.",
+              "actionLabel": "Bel de hulpdiensten"
+            }
+          ]
+        },
+        "refusing": {
+          "label": "Zorg weigeren",
+          "steps": [
+            {
+              "title": "Pauze — dit is geen verzet",
+              "instruction": "Weigering is bijna altijd angst, verwarring of ongemak. Ze begrijpen misschien niet wat je vraagt."
+            },
+            {
+              "title": "Doe een stap terug en probeer het anders",
+              "instruction": "Dring niet aan. Kom over 15–20 minuten terug en benader het alsof het de eerste keer is.",
+              "tips": [
+                "Verander wie het vraagt",
+                "Verander de omgeving",
+                "Verdeel de taak in kleinere stappen",
+                "Bied keuzes aan: \"Bad of douche?\""
+              ]
+            },
+            {
+              "title": "Zorg ervoor dat het veilig voelt",
+              "instruction": "Leg elke stap uit voordat je het doet. Beweeg langzaam. Houd ze warm.",
+              "tips": [
+                "Waarschuw voordat je aanraakt",
+                "Gebruik een kalme, warme toon",
+                "Speel hun favoriete muziek af tijdens de taak",
+                "Houd de routine consistent"
+              ]
+            },
+            {
+              "title": "Is dit een patroon?",
+              "instruction": "Als ze consequent dezelfde taak weigeren, noteer dit dan. Er kan een onderliggend probleem zijn — pijn, angst, gevoeligheid. Bespreek dit met hun arts."
+            }
+          ]
+        },
+        "hallucinations": {
+          "label": "Dingen zien / horen",
+          "steps": [
+            {
+              "title": "Maak geen ruzie — het is echt voor hen",
+              "instruction": "Erken wat ze ervaren zonder te bevestigen dat het waar is.",
+              "tips": [
+                "\"Dat klinkt beangstigend. Ik ben hier bij je.\"",
+                "\"Vertel me wat je ziet.\"",
+                "Zeg niet \"er is niets\""
+              ]
+            },
+            {
+              "title": "Controleer de omgeving",
+              "instruction": "Schaduwen, reflecties, tv-geluiden en rommel kunnen verkeerde interpretaties veroorzaken.",
+              "checklist": [
+                "Schaduwen van ramen of lampen?",
+                "Tv of radio aan op de achtergrond?",
+                "Spiegelreflecties?",
+                "Slechte verlichting?"
+              ]
+            },
+            {
+              "title": "Leid zachtjes af",
+              "instruction": "Verleg hun aandacht naar iets concreets en troostends.",
+              "tips": [
+                "Verplaats naar een goed verlichte kamer",
+                "Bied een praktische activiteit aan",
+                "Maak samen een korte wandeling",
+                "Zet samen een kop thee"
+              ]
+            },
+            {
+              "title": "Wanneer de dokter bellen",
+              "instruction": "Als hallucinaties nieuw, frequent zijn of extreme angst veroorzaken. Plotseling begin kan duiden op infectie, bijwerkingen van medicatie of delirium."
+            }
+          ]
+        },
+        "sundowning": {
+          "label": "Avondverwardheid",
+          "steps": [
+            {
+              "title": "Herken het patroon",
+              "instruction": "Avondverwardheid begint meestal laat in de middag. Dit komt zeer vaak voor en is niet iets wat ze kunnen controleren."
+            },
+            {
+              "title": "Pas nu de omgeving aan",
+              "instruction": "Verminder alle stimulatie en creëer veiligheidssignalen.",
+              "tips": [
+                "Zet warme lichten aan voordat het donker wordt",
+                "Sluit de gordijnen om schaduwen te verminderen",
+                "Zet het tv-volume uit of lager",
+                "Verminder het aantal mensen in de kamer"
+              ]
+            },
+            {
+              "title": "Bied kalmerende activiteiten aan",
+              "instruction": "Zachte, repetitieve, bekende activiteiten werken het beste.",
+              "tips": [
+                "Zachte handmassage met lotion",
+                "Zachte, bekende muziek",
+                "Handdoeken vouwen of objecten sorteren",
+                "Samen door een fotoalbum bladeren"
+              ]
+            },
+            {
+              "title": "Voorkom het morgen",
+              "instruction": "Noteer de episode met timingdetails. Patronen helpen bij het aanpassen van schema's — meer ochtendactiviteit, minder cafeïne in de middag."
+            }
+          ]
+        },
+        "fall": {
+          "label": "Val / Fysiek noodgeval",
+          "steps": [
+            {
+              "title": "Verplaats ze niet",
+              "instruction": "Tenzij ze in direct gevaar zijn, probeer ze niet op te tillen of te verplaatsen.",
+              "tips": [
+                "Ga naar hun niveau",
+                "Stel ze gerust: \"Ik ben hier, je bent veilig\"",
+                "Controleer op zichtbaar letsel"
+              ]
+            },
+            {
+              "title": "Kunnen ze opstaan?",
+              "instruction": "Als er geen duidelijk letsel is, help ze dan langzaam in fasen op te staan.",
+              "checklist": [
+                "Zijn ze alert en reageren ze?",
+                "Enig duidelijk letsel of pijn?",
+                "Kunnen ze alle ledematen bewegen?",
+                "Hebben ze hun hoofd gestoten?"
+              ]
+            },
+            {
+              "title": "Bel om hulp als...",
+              "instruction": "Hoofdletsel, niet kunnen opstaan, ernstige pijn, verwarring erger dan normaal, of bloeding die niet stopt."
+            },
+            {
+              "title": "Na de val",
+              "instruction": "Noteer deze gebeurtenis en vermeld het aan hun arts. Herhaalde vallen kunnen duiden op medicatieproblemen of ziekteprogressie."
+            }
+          ]
+        },
+        "repetitive_questions": {
+          "label": "Herhaalde vragen",
+          "steps": [
+            {
+              "title": "Adem — dit is de ziekte, niet zij",
+              "instruction": "Ze herinneren zich oprecht niet dat ze het hebben gevraagd. Je frustratie is terecht, maar het tonen ervan maakt ze angstiger."
+            },
+            {
+              "title": "Wat vragen ze eigenlijk?",
+              "instruction": "De oppervlakkige vraag is zelden de echte vraag. \"Hoe laat is het eten?\" kan betekenen \"Ik heb honger.\"",
+              "checklist": [
+                "Zijn ze ergens angstig over?",
+                "Zouden ze honger, dorst of verveling kunnen hebben?",
+                "Is er een aanstaande gebeurtenis die zorgen veroorzaakt?"
+              ]
+            },
+            {
+              "title": "Reageer op het gevoel",
+              "instruction": "Beantwoord de emotie achter de vraag in plaats van de letterlijke woorden.",
+              "tips": [
+                "Schrijf het antwoord op een zichtbaar whiteboard",
+                "Geef elke keer een eenvoudig, geruststellend antwoord",
+                "Leid na het beantwoorden af naar een praktische activiteit",
+                "Gebruik visuele schema's om onzekerheid te verminderen"
+              ]
+            },
+            {
+              "title": "Bescherm je eigen welzijn",
+              "instruction": "Wissel indien mogelijk af met een andere verzorger. Gebruik een koptelefoon met zachte muziek wanneer je een mentale pauze nodig hebt."
+            }
+          ]
+        },
+        "aggression": {
+          "label": "Agressie",
+          "steps": [
+            {
+              "title": "Uw veiligheid komt eerst",
+              "instruction": "Als u zich fysiek onveilig voelt, neem dan onmiddellijk afstand. Probeer ze niet te bedwingen.",
+              "tips": [
+                "Positioneer uzelf in de buurt van een uitgang",
+                "Verwijder gevaarlijke voorwerpen uit het bereik",
+                "Houd uw stem laag en kalm",
+                "Maak geen plotselinge bewegingen"
+              ]
+            },
+            {
+              "title": "Grond uzelf",
+              "instruction": "Agressie triggert ook vecht-of-vlucht in u. Neem even de tijd om adem te halen."
+            },
+            {
+              "title": "Wat heeft dit getriggerd?",
+              "instruction": "Agressie is bijna altijd een reactie — pijn, angst, frustratie, sensorische overbelasting.",
+              "checklist": [
+                "Werd hen gevraagd iets te doen?",
+                "Hadden ze pijn?",
+                "Was de omgeving lawaaierig of chaotisch?",
+                "Voelden ze zich in het nauw gedreven?"
+              ]
+            },
+            {
+              "title": "Geef ruimte en tijd",
+              "instruction": "Neem afstand. Stop de triggerende activiteit. Kom na 15-20 minuten terug alsof er niets is gebeurd.",
+              "tips": [
+                "Verlaat de kamer als het veilig is",
+                "Verwijder de trigger",
+                "Vat het niet persoonlijk op",
+                "Nader langzaam bij terugkomst"
+              ]
+            },
+            {
+              "title": "Wanneer dit een noodgeval is",
+              "instruction": "Als ze een wapen hebben, als iemand gewond is, of als de agressie niet afneemt — bel dan de hulpdiensten."
+            }
+          ]
+        },
+        "sleep_disruption": {
+          "label": "Slaapstoornis",
+          "steps": [
+            {
+              "title": "Houd de omgeving veilig",
+              "instruction": "Als ze 's nachts wakker zijn en rondlopen, is uw eerste prioriteit veiligheid.",
+              "tips": [
+                "Zet lage nachtlampjes aan",
+                "Verwijder struikelgevaar",
+                "Sluit buitendeuren af als dwalen een probleem is",
+                "\"Het is nacht, alles is veilig\""
+              ]
+            },
+            {
+              "title": "Wat heeft hen wakker gemaakt?",
+              "instruction": "Wakker worden 's nachts kan worden veroorzaakt door pijn, toiletbezoek, medicatietiming of honger.",
+              "checklist": [
+                "Moeten ze naar het toilet?",
+                "Hebben ze pijn?",
+                "Heeft een geluid of licht hen wakker gemaakt?",
+                "Hebben ze honger of dorst?"
+              ]
+            },
+            {
+              "title": "Begeleid ze zachtjes terug",
+              "instruction": "Maak geen ruzie over hoe laat het is. Leid ze terug naar bed met kalmerende signalen.",
+              "tips": [
+                "Bied een warme, cafeïnevrije drank aan",
+                "Gebruik een kalme, zachte stem",
+                "Zet zachte, bekende muziek op",
+                "Blijf bij hen zitten tot ze rustig zijn"
+              ]
+            },
+            {
+              "title": "Verbeter de volgende nacht",
+              "instruction": "Meer activiteit overdag, geen cafeïne na de middag, consistente bedtijdroutine, beperk dutjes tot 30 minuten."
+            }
+          ]
+        },
+        "shadowing": {
+          "label": "Schaduwen",
+          "steps": [
+            {
+              "title": "Erken uw frustratie",
+              "instruction": "Overal gevolgd worden is uitputtend. Die gevoelens zijn terecht. Haal adem.",
+              "checklist": [
+                "Heeft er recent een routineverandering plaatsgevonden?",
+                "Bevinden ze zich in een onbekende omgeving?",
+                "Bent u recent weggeweest?",
+                "Voelen ze zich niet lekker?"
+              ]
+            },
+            {
+              "title": "Waarom volgen ze u?",
+              "instruction": "Schaduwen wordt gedreven door angst en verlatingsangst. In uw buurt zijn is hun enige bron van veiligheid.",
+              "checklist": [
+                "Heeft er recent een routineverandering plaatsgevonden?",
+                "Bevinden ze zich in een onbekende omgeving?",
+                "Bent u recent weggeweest?",
+                "Voelen ze zich niet lekker?"
+              ]
+            },
+            {
+              "title": "Verminder hun angst",
+              "instruction": "Help hen zich veilig te voelen zonder fysiek elk moment aanwezig te zijn.",
+              "tips": [
+                "Geef ze een \"taak\" in de buurt van waar u bent",
+                "Laat een persoonlijk item bij hen achter als een troostanker",
+                "\"Ik ben even in de keuken, ik ben zo terug\"",
+                "Probeer bekende tv of muziek als gezelschap"
+              ]
+            },
+            {
+              "title": "Bouw pauzes in voor uzelf",
+              "instruction": "Vraag iemand om bij hen te zitten terwijl u 20 minuten neemt. Zelfs 10 minuten alleen helpt.",
+              "tips": [
+                "Wacht niet tot u uitgeput bent",
+                "Het is oké om de badkamerdeur voorzichtig te sluiten",
+                "Overweeg een steungroep",
+                "Dit gedrag vermindert vaak met een stabiele routine"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "tabs": {
+      "dashboard": "Dashboard",
+      "plan": "Plan",
+      "location": "Locatie",
+      "coach": "Coach",
+      "more": "Meer"
+    }
+  },
+  "notifications": {
+    "taskReminder": "{{patientName}}, het is tijd voor: {{taskTitle}}",
+    "taskCompleted": "{{patientName}} heeft voltooid: {{taskTitle}}",
+    "checkinReceived": "{{patientName}} heeft de check-in van vandaag voltooid",
+    "leftSafeZone": "{{patientName}} heeft {{zoneName}} verlaten",
+    "inactivity": "Geen beweging gedetecteerd van {{patientName}} in {{hours}} uur",
+    "nightMovement": "{{patientName}} beweegt buiten om {{time}}",
+    "takeMeHome": "{{patientName}} tikte op 'Breng me naar huis' vanaf {{location}}",
+    "eveningSummary": "De dag van {{patientName}}: {{completed}}/{{total}} taken voltooid. Stemming: {{mood}}"
+  },
+  "subscription": {
+    "free": "Gratis",
+    "plus": "OurTurn Plus",
+    "upgradeTitle": "Ontgrendel OurTurn Plus",
+    "upgradeFeature": "Deze functie vereist OurTurn Plus",
+    "monthly": "{{price}}/maand",
+    "annual": "{{price}}/jaar",
+    "annualSavings": "Bespaar {{percent}}%",
+    "subscribe": "Abonneren",
+    "restore": "Aankoop herstellen",
+    "manage": "Abonnement beheren",
+    "features": {
+      "unlimitedTasks": "Onbeperkt aantal taken per dag",
+      "aiCoach": "Volledige AI Zorg Coach",
+      "brainActivities": "AI-gegenereerde hersen wellness activiteiten",
+      "safeZones": "Veilige zones & locatie-waarschuwingen",
+      "multiCaregiver": "Tot 5 familieleden",
+      "journal": "Gedeeld Zorg Journal",
+      "insights": "AI patroon inzichten",
+      "reports": "Verslagen van doktersbezoeken",
+      "toolkit": "Zorg toolkit & wellness",
+      "priority": "Prioriteit ondersteuning"
+    }
+  }
+}

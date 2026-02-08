@@ -1,6 +1,6 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { COLORS, FONTS, RADIUS, SHADOWS, SPACING } from '../../theme';
+import { createThemedStyles, FONTS, RADIUS, SHADOWS, SPACING } from '../../theme';
 
 const WORKFLOWS = [
   { key: 'plan_tomorrow', emoji: '\u{1F4C5}' },
@@ -15,6 +15,7 @@ interface WorkflowCardsProps {
 
 export default function WorkflowCards({ onSelect }: WorkflowCardsProps) {
   const { t } = useTranslation();
+  const styles = useStyles();
 
   return (
     <View>
@@ -42,19 +43,19 @@ export default function WorkflowCards({ onSelect }: WorkflowCardsProps) {
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   title: {
     fontSize: 11,
     fontFamily: FONTS.displayMedium,
     textTransform: 'uppercase',
     letterSpacing: 1.5,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginBottom: 2,
   },
   subtitle: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginBottom: SPACING[3],
   },
   grid: {
@@ -64,9 +65,9 @@ const styles = StyleSheet.create({
   },
   card: {
     width: '48%',
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     borderRadius: RADIUS.md,
     padding: SPACING[4],
     ...SHADOWS.sm,
@@ -78,12 +79,12 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: 15,
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   cardDesc: {
     fontSize: 12,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     marginTop: 2,
   },
-});
+}));

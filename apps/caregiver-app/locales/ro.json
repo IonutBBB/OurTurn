@@ -1,0 +1,1391 @@
+{
+  "common": {
+    "appName": "OurTurn",
+    "save": "Salvează",
+    "cancel": "Anulează",
+    "delete": "Șterge",
+    "edit": "Editează",
+    "done": "Gata",
+    "skip": "Sari peste astăzi",
+    "loading": "Se încarcă...",
+    "error": "Ceva nu a mers bine. Te rugăm să încerci din nou.",
+    "errorTitle": "Ceva nu a mers bine",
+    "errorDefault": "A apărut o eroare neașteptată.",
+    "tryAgain": "Încearcă din nou",
+    "logOut": "Deconectează-te",
+    "offline": "Ești offline — datele tale se vor sincroniza când ești conectat",
+    "synced": "Sincronizat",
+    "viewMore": "Vezi mai mult",
+    "back": "Înapoi",
+    "next": "Înainte",
+    "confirm": "Confirmă",
+    "yes": "Da",
+    "no": "Nu",
+    "you": "Tu",
+    "unknown": "Necunoscut",
+    "saving": "Se salvează...",
+    "primary": "Principal"
+  },
+  "categories": {
+    "medication": "Medicamente",
+    "nutrition": "Mese și Nutriție",
+    "physical": "Activitate Fizică",
+    "cognitive": "Bunăstare Cerebrală",
+    "social": "Socializare și Conectare",
+    "health": "Verificare Sănătate"
+  },
+  "caregiverApp": {
+    "dashboard": {
+      "greeting": "{{timeOfDay}}, {{name}}",
+      "statusGood": "Ziua lui/a lui {{patientName}} merge bine",
+      "statusConcern": "{{patientName}} ar putea avea nevoie de atenție",
+      "todaysStatus": "Starea de azi",
+      "tasksCompleted": "{{completed}} din {{total}} sarcini finalizate",
+      "dailyCheckin": "Verificare Zilnică",
+      "noCheckinYet": "Nicio verificare trimisă astăzi",
+      "location": "Locație",
+      "atHome": "{{name}} este acasă",
+      "lastUpdate": "Ultima actualizare: {{time}}",
+      "aiInsights": "Informații",
+      "quickActions": "Acțiuni rapide",
+      "callPatient": "Sună-l pe/o pe {{name}}",
+      "tasksCompletedLabel": "sarcini finalizate",
+      "careCode": "Cod de Îngrijire",
+      "careCodeHint": "Distribuie pentru a conecta aplicația pacientului",
+      "careCodeNotAvailable": "Codul nu este disponibil",
+      "morningActivityPattern": "Modelul activității de dimineață",
+      "insightText": "{{name}} finalizează mai multe sarcini în zilele cu plimbări de dimineață programate.",
+      "noJournalEntries": "Încă nu există înregistrări în jurnal",
+      "unknown": "Necunoscut",
+      "moodStruggling": "Se chinuie",
+      "moodLow": "Scăzut",
+      "moodOkay": "Acceptabil",
+      "moodGood": "Bun",
+      "moodGreat": "Excelent",
+      "sleepPoor": "Slab",
+      "sleepFair": "Acceptabil",
+      "sleepWell": "Bine",
+      "mood": "Dispoziție",
+      "sleep": "Somn",
+      "minutesAgo": "acum {{count}}m",
+      "hoursAgo": "acum {{count}}h",
+      "daysAgo": "acum {{count}}z",
+      "deviceStatus": "Starea dispozitivului",
+      "deviceOnline": "Online",
+      "deviceOffline": "Offline",
+      "lastSeenAt": "Ultima dată văzut: {{time}}",
+      "lastSeenNever": "Nu s-a conectat niciodată",
+      "engagementSummary": "Implicarea de azi",
+      "alertsToday": "Alerte astăzi",
+      "checkedIn": "S-a înregistrat",
+      "notCheckedIn": "Nu s-a înregistrat",
+      "brainActivity": "Activitate cerebrală"
+    },
+    "carePlan": {
+      "title": "Planul zilnic al lui/a lui {{name}}",
+      "addTask": "Adaugă sarcină",
+      "aiSuggest": "Sugerează sarcini cu ajutorul AI",
+      "hintLabel": "Instrucțiuni ({{name}} va vedea asta)",
+      "hintPlaceholder": "De exemplu, pastilele tale sunt în cutia de pastile de pe tejgheaua din bucătărie",
+      "recurrence": "Se repetă",
+      "daily": "În fiecare zi",
+      "specificDays": "Zile specifice",
+      "oneTime": "O singură dată",
+      "copyDay": "Copiază în alte zile",
+      "saved": "Salvat",
+      "noTasks": "Încă nu există sarcini. Adaugă prima sarcină pentru a începe.",
+      "category": "Categorie",
+      "taskTitle": "Titlul sarcinii",
+      "time": "Ora",
+      "deleteConfirm": "Ștergi această sarcină?",
+      "noMoreSuggestions": "Nu mai sunt sugestii disponibile.",
+      "copyFromTo": "Copiază sarcinile din {{day}} în:",
+      "copyCount": "{{taskCount}} sarcini vor fi copiate în {{dayCount}} zi(le)",
+      "days": {
+        "mon": "Lun",
+        "tue": "Mar",
+        "wed": "Mie",
+        "thu": "Joi",
+        "fri": "Vin",
+        "sat": "Sâm",
+        "sun": "Dum"
+      },
+      "taskPhoto": "Fotografia sarcinii (opțional)",
+      "uploadPhoto": "Încarcă fotografia",
+      "removePhoto": "Elimină fotografia",
+      "medicationItems": "Medicamente în acest grup",
+      "medicationItemsHint": "Grupează până la 3 medicamente luate în același timp",
+      "addMedication": "Adaugă medicament",
+      "medName": "Numele medicamentului",
+      "medNamePlaceholder": "De exemplu, Donepezil",
+      "medDosage": "Doza sau instrucțiunea",
+      "medDosagePlaceholder": "De exemplu, comprimat de 10 mg",
+      "medPhotoLabel": "Fotografie",
+      "medItemLabel": "Medicamentul {{number}}",
+      "removeMedication": "Elimină",
+      "maxMedications": "Maximum 3 medicamente per grup",
+      "uploadingPhoto": "Se încarcă...",
+      "evidenceBased": "Bazat pe dovezi"
+    },
+    "location": {
+      "title": "Locație și Siguranță",
+      "currentLocation": "Locația curentă",
+      "safeZones": "Zone sigure",
+      "addSafeZone": "Adaugă zonă sigură",
+      "editSafeZone": "Editează zona sigură",
+      "alerts": "Setări de alertă",
+      "leaveZoneAlert": "Notifică atunci când {{name}} părăsește o zonă sigură",
+      "inactivityAlert": "Notifică atunci când nu există mișcare timp de",
+      "nightAlert": "Notifică atunci când este afară după",
+      "takeMeHomeAlert": "Notifică atunci când {{name}} apasă 'Du-mă acasă'",
+      "locationHistory": "Istoricul locațiilor",
+      "takeMeHomeTapped": "{{name}} a apăsat 'Du-mă acasă'",
+      "hours": "ore",
+      "zoneName": "Numele zonei",
+      "zoneRadius": "Raza (metri)",
+      "unknownLocation": "Locație necunoscută",
+      "completeOnboarding": "Te rugăm să finalizezi mai întâi înregistrarea.",
+      "unacknowledgedAlerts": "{{count}} Alertă Neconfirmată",
+      "unacknowledgedAlertsPlural": "{{count}} Alerte Neconfirmate",
+      "acknowledge": "Confirmă",
+      "patientLocation": "Locația lui/a lui {{name}}",
+      "updated": "Actualizat: {{time}}",
+      "noLocationData": "Încă nu există date despre locație",
+      "live": "În direct",
+      "add": "+ Adaugă",
+      "noSafeZonesYet": "Încă nu sunt configurate zone sigure.\nAdaugă zone pentru a primi alerte când {{name}} pleacă.",
+      "radiusMeters": "Rază de {{radius}}m",
+      "recentAlerts24h": "Alerte recente (24h)",
+      "noRecentAlerts": "Nicio alertă în ultimele 24 de ore. Totul este bine!",
+      "deleteSafeZone": "Șterge zona sigură",
+      "deleteSafeZoneConfirm": "Ești sigur că vrei să ștergi \"{{name}}\"?",
+      "failedToSaveSafeZone": "Nu s-a putut salva zona sigură",
+      "failedToDeleteSafeZone": "Nu s-a putut șterge zona sigură",
+      "fillAllFields": "Vă rugăm să completați toate câmpurile",
+      "name": "Nume",
+      "nameExample": "de ex., Acasă, Cabinetul Doctorului",
+      "latitude": "Latitudine",
+      "longitude": "Longitudine",
+      "radiusHint": "Recomandat: 100-500 metri pentru locații tipice",
+      "mapView": "Vizualizare Hartă",
+      "mapRequiresBuild": "Hărțile necesită o versiune de dezvoltare.\nUtilizați EAS Build pentru a activa hărțile.",
+      "home": "Acasă",
+      "patient": "Pacient",
+      "alertTypeLeftSafeZone": "A părăsit Zona Sigură",
+      "alertTypeInactive": "Inactiv",
+      "alertTypeNightMovement": "Mișcare Nocturnă",
+      "alertTypeTakeMeHomeTapped": "Mă Du Acasă Atinge",
+      "alertTypeSosTriggered": "SOS Declanșat"
+    },
+    "coach": {
+      "title": "Antrenor de Îngrijire AI",
+      "tabs": {
+        "chat": "Chat",
+        "behaviours": "Comportamente",
+        "resources": "Resurse"
+      },
+      "resources": {
+        "title": "Resurse",
+        "subtitle": "Ghiduri, articole și suport local pentru a vă ajuta în călătoria de îngrijire",
+        "linkLabel": "Resurse și Ghiduri"
+      },
+      "intro": "Întreabă-mă orice despre îngrijirea lui {{name}}. Cunosc rutina, preferințele și cele mai bune practici generale.",
+      "placeholder": "Scrie întrebarea ta...",
+      "disclaimer": "Sunt aici pentru a te sprijini, nu pentru a înlocui sfaturile medicale. Pentru probleme de sănătate, consultă întotdeauna medicul.",
+      "disclaimerShort": "Care Coach oferă doar îndrumări generale. Consultă întotdeauna profesioniști din domeniul sănătății pentru sfaturi medicale.",
+      "suggestedTopics": "Subiecte sugerate",
+      "addToCarePlan": "Adaugă la planul de îngrijire",
+      "addToDoctorNotes": "Adaugă la notele medicului",
+      "newConversation": "Conversație nouă",
+      "newChat": "Chat nou",
+      "careCoach": "Care Coach",
+      "completeOnboarding": "Vă rugăm să finalizați mai întâi înregistrarea.",
+      "greeting": "Bună {{name}}!",
+      "greetingIntro": "Sunt aici pentru a te ajuta să ai grijă de {{patientName}}. Întreabă-mă orice despre îngrijirea zilnică, activități sau gestionarea situațiilor dificile.",
+      "tryAsking": "Încearcă să întrebi:",
+      "askAbout": "Întreabă despre îngrijirea lui {{name}}...",
+      "send": "Trimite",
+      "signingIn": "Se conectează",
+      "taskAddedSuccess": "Sarcină adăugată la planul de îngrijire!",
+      "taskAddedError": "Nu s-a putut adăuga sarcina. Vă rugăm să încercați din nou.",
+      "noteAddedSuccess": "Notă salvată pentru vizita la medic!",
+      "noteAddedError": "Nu s-a putut salva nota. Vă rugăm să încercați din nou.",
+      "addToCarePlanButton": "Adaugă la Planul de Îngrijire",
+      "saveForDoctorVisit": "Salvează pentru Vizita la Medic",
+      "success": "Succes",
+      "suggestions": {
+        "sundowning": "Cum gestionez sindromul crepuscular?",
+        "rainyDays": "Ce activități funcționează pentru zilele ploioase?",
+        "siblings": "Ajută-mă să vorbesc cu frații mei despre împărțirea îngrijirii",
+        "refusesFood": "{{name}} refuză să mănânce. Ajutor.",
+        "repetitive": "Cum gestionez întrebările repetitive?"
+      },
+      "hub": {
+        "backToHub": "Înapoi la Antrenor",
+        "insight": {
+          "title": "Pentru Tine",
+          "discuss": "Discută",
+          "fallback": "Verifică ziua lui {{name}} pentru a obține informații personalizate"
+        },
+        "rightNow": {
+          "title": "Acum",
+          "subtitle": "Ajutor la momentul potrivit",
+          "refusing_food": "Refuză mâncarea",
+          "refusing_medication": "Nu vrea să ia medicamente",
+          "agitated": "Agitat",
+          "not_recognizing": "Nu mă recunoaște",
+          "repetitive_questions": "Aceeași întrebare din nou",
+          "sundowning": "Sindrom crepuscular",
+          "wants_to_leave": "Vrea să plece",
+          "caregiver_overwhelmed": "Îmi pierd răbdarea"
+        },
+        "planPrepare": {
+          "title": "Planifică și Pregătește",
+          "subtitle": "Fluxuri de lucru ghidate",
+          "plan_tomorrow": "Planifică ziua de mâine",
+          "plan_tomorrow_desc": "Construiește o zi minunată împreună",
+          "doctor_visit": "Pregătește-te pentru vizita la medic",
+          "doctor_visit_desc": "Generează un rezumat structurat",
+          "review_week": "Revizuiește săptămâna aceasta",
+          "review_week_desc": "Ce a mers bine, ce necesită atenție",
+          "adjust_plan": "Ajustează planul de îngrijire",
+          "adjust_plan_desc": "Optimizează pe baza a ceea ce funcționează"
+        },
+        "learn": {
+          "title": "Învață",
+          "subtitle": "Ghiduri tematice pentru {{name}}",
+          "daily_routines": "Rutine Zilnice",
+          "communication": "Comunicare",
+          "behaviors": "Comportamente",
+          "activities": "Activități",
+          "nutrition": "Nutriție",
+          "safety": "Siguranță",
+          "sleep": "Somn și Noapte"
+        },
+        "askAnything": {
+          "title": "Întreabă Orice",
+          "placeholder": "Ce te preocupă în legătură cu îngrijirea lui {{name}}?"
+        }
+      }
+    },
+    "family": {
+      "title": "Echipa de Îngrijire a lui {{patientName}}",
+      "inviteMember": "Invită un Membru al Familiei",
+      "primaryCaregiver": "Îngrijitor principal",
+      "familyMember": "Membru al familiei",
+      "careCode": "Cod de Îngrijire",
+      "careCodeHelp": "Partajează acest cod pentru a asocia aplicația pacientului",
+      "regenerateCode": "Regenerare Cod",
+      "regenerateWarning": "Aceasta va deconecta toate dispozitivele pacientului asociate. Vor avea nevoie de codul nou.",
+      "journal": "Jurnal de Îngrijire",
+      "addNote": "Adaugă notă",
+      "observation": "Observație",
+      "note": "Notă",
+      "milestone": "Etapă importantă",
+      "inviteEmail": "Adresă de e-mail",
+      "inviteName": "Nume",
+      "inviteRelationship": "Relație",
+      "familyCircle": "Cercul Familiei",
+      "back": "Înapoi",
+      "family": "Familie",
+      "careJournal": "Jurnal de Îngrijire",
+      "inviteFamilyMembers": "Invită Membri ai Familiei",
+      "shareCareCodeDesc": "Partajează Codul de Îngrijire pentru a permite altor membri ai familiei să se alăture.",
+      "showCareCode": "Arată Codul de Îngrijire",
+      "copy": "Copiază",
+      "share": "Partajează",
+      "copied": "Copiat!",
+      "codeCopiedToClipboard": "Codul de Îngrijire a fost copiat în clipboard",
+      "familyMembers": "Membri ai Familiei ({{count}})",
+      "you": "Tu",
+      "primary": "Principal",
+      "entryPlaceholder": "Adaugă o notă, observație sau etapă importantă...",
+      "posting": "Se postează...",
+      "post": "Postează",
+      "noJournalEntries": "Nu există încă intrări în jurnal.",
+      "startDocumenting": "Începe să documentezi călătoria ta de îngrijire!",
+      "yesterday": "Ieri",
+      "failedToAddEntry": "Nu s-a putut adăuga intrarea. Vă rugăm să încercați din nou.",
+      "shareCareCodeMessage": "Alătură-te cercului meu de îngrijire OurTurn! Folosește acest Cod de Îngrijire: {{code}}",
+      "deleteConfirmTitle": "Ștergeți înregistrarea din jurnal",
+      "deleteConfirmMessage": "Sigur doriți să ștergeți această înregistrare din jurnal? Această acțiune nu poate fi anulată.",
+      "edited": "(modificat)",
+      "crisis": "Criză",
+      "canEditPlan": "Poate edita planul",
+      "receivesAlerts": "Primește alerte",
+      "caregiverLimitReached": "Ați atins limita nivelului gratuit pentru membrii familiei. Faceți upgrade pentru a adăuga mai mulți."
+    },
+    "toolkit": {
+      "pageTitle": "Set de instrumente pentru îngrijitori",
+      "pageSubtitle": "Instrumente practice și sprijin pentru bunăstarea dvs.",
+      "introMessage": "Bună, {{name}}! Acesta este spațiul tău pentru ajutor rapid, sprijin și auto-îngrijire.",
+      "checkin": {
+        "title": "Cum te simți azi?",
+        "energy": "Energie",
+        "energyLow": "Epizat",
+        "energyHigh": "Energizat",
+        "stress": "Stres",
+        "stressLow": "Calm",
+        "stressHigh": "Copleșit",
+        "sleep": "Calitatea somnului",
+        "sleepLow": "Groaznic",
+        "sleepHigh": "Excelent"
+      },
+      "relief": {
+        "title": "Stație de ajutor rapid",
+        "recommended": "Recomandat",
+        "duration": "{{min}} min",
+        "startExercise": "Începe",
+        "stepOf": "Pasul {{current}} din {{total}}",
+        "complete": "Bravo! Exercițiul este complet.",
+        "close": "Închide",
+        "pause": "Pauză",
+        "resume": "Reia",
+        "exercises": {
+          "box-breathing": {
+            "name": "Respirație în cutie",
+            "step0": "Așezați-vă confortabil și închideți ochii",
+            "step1": "Inspirați încet pe nas",
+            "step2": "Țineți-vă respirația ușor",
+            "step3": "Expirați încet pe gură",
+            "step4": "Țineți înainte de următoarea respirație",
+            "step5": "Inspirați încet pe nas",
+            "step6": "Țineți-vă respirația ușor",
+            "step7": "Expirați încet pe gură",
+            "step8": "Țineți înainte de următoarea respirație",
+            "step9": "Inspirați încet pe nas",
+            "step10": "Țineți-vă respirația ușor",
+            "step11": "Expirați încet pe gură",
+            "step12": "Țineți înainte de următoarea respirație",
+            "step13": "Inspirați încet pe nas",
+            "step14": "Țineți-vă respirația ușor",
+            "step15": "Expirați încet pe gură",
+            "step16": "Țineți înainte de următoarea respirație",
+            "step17": "Inspirați încet pe nas",
+            "step18": "Țineți-vă respirația ușor",
+            "step19": "Expirați încet pe gură",
+            "step20": "Țineți înainte de următoarea respirație",
+            "step21": "Inspirați încet pe nas",
+            "step22": "Țineți-vă respirația ușor",
+            "step23": "Expirați încet pe gură",
+            "step24": "Bravo. Acordați-vă un moment pentru a observa cum vă simțiți."
+          },
+          "54321-grounding": {
+            "name": "Împământare 5-4-3-2-1",
+            "step0": "Respirați încet și adânc și uitați-vă în jur",
+            "step1": "Numiți 5 lucruri pe care le puteți VEDEA chiar acum",
+            "step2": "Numiți 4 lucruri pe care le puteți ATINGE chiar acum",
+            "step3": "Numiți 3 lucruri pe care le puteți AUZI chiar acum",
+            "step4": "Numiți 2 lucruri pe care le puteți MIROSI chiar acum",
+            "step5": "Numiți 1 lucru pe care îl puteți GUSTA chiar acum",
+            "step6": "Respirați din nou adânc. Sunteți aici și sunteți în siguranță."
+          },
+          "gratitude-moment": {
+            "name": "Moment de recunoștință",
+            "step0": "Închideți ochii și respirați calm",
+            "step1": "Gândiți-vă la o persoană pentru care sunteți recunoscător și de ce",
+            "step2": "Gândiți-vă la un lucru care s-a întâmplat astăzi și care a fost bun, chiar dacă a fost mic",
+            "step3": "Gândiți-vă la un lucru despre dvs. pe care îl apreciați",
+            "step4": "Țineți aceste trei lucruri în minte și respirați adânc",
+            "step5": "Purtați cu dvs. acest sentiment de recunoștință."
+          },
+          "progressive-muscle-relaxation": {
+            "name": "Relaxare musculară progresivă",
+            "step0": "Așezați-vă sau întindeți-vă confortabil. Închideți ochii.",
+            "step1": "Strângeți ambii pumni bine timp de 5 secunde...",
+            "step2": "Eliberați și simțiți cum tensiunea se topește",
+            "step3": "Încordați-vă umerii — ridicați-i spre urechi...",
+            "step4": "Eliberați și lăsați umerii să cadă",
+            "step5": "Strângeți-vă fața bine — fruntea, ochii, maxilarul...",
+            "step6": "Eliberați și lăsați-vă fața să se relaxeze complet",
+            "step7": "Încordați-vă mușchii stomacului...",
+            "step8": "Eliberați și respirați în burtă",
+            "step9": "Strângeți-vă bine picioarele și picioarele...",
+            "step10": "Eliberați și simțiți căldura curgând prin picioare",
+            "step11": "Respirați adânc. Tot corpul tău este relaxat.",
+            "step12": "Deschideți ușor ochii când sunteți gata."
+          },
+          "mindful-break": {
+            "name": "Pauză conștientă",
+            "step0": "Întrerupeți orice faceți. Acest moment este al tău.",
+            "step1": "Închideți ochii și respirați de 3 ori încet și adânc",
+            "step2": "Observați cum se simte corpul dvs. chiar acum — nu este nevoie să schimbați nimic",
+            "step3": "Ascultă sunetele din jurul tău, apropiate și îndepărtate",
+            "step4": "Simte suprafața de sub tine și aerul pe pielea ta",
+            "step5": "Spune în tăcere: \"Fac tot ce pot, și asta este suficient.\"",
+            "step6": "Inspiră adânc încă o dată",
+            "step7": "Deschide ușor ochii. Ești revigorat."
+          },
+          "breathing-478": {
+            "name": "Respirația 4-7-8",
+            "step0": "Așază-te confortabil și relaxează-ți umerii",
+            "step1": "Inspiră în liniște pe nas timp de 4 secunde",
+            "step2": "Ține-ți respirația timp de 7 secunde",
+            "step3": "Expiră complet pe gură timp de 8 secunde",
+            "step4": "Inspiră în liniște pe nas timp de 4 secunde",
+            "step5": "Ține-ți respirația timp de 7 secunde",
+            "step6": "Expiră complet pe gură timp de 8 secunde",
+            "step7": "Inspiră în liniște pe nas timp de 4 secunde",
+            "step8": "Ține-ți respirația timp de 7 secunde",
+            "step9": "Expiră complet pe gură timp de 8 secunde",
+            "step10": "Inspiră în liniște pe nas timp de 4 secunde",
+            "step11": "Ține-ți respirația timp de 7 secunde",
+            "step12": "Expiră complet pe gură timp de 8 secunde",
+            "step13": "Inspiră în liniște pe nas timp de 4 secunde",
+            "step14": "Ține-ți respirația timp de 7 secunde",
+            "step15": "Expiră complet pe gură timp de 8 secunde",
+            "step16": "Observă cât de calm se simte corpul tău acum."
+          },
+          "permission-slip": {
+            "name": "Bilet de permisiune",
+            "step0": "Respiră adânc și acordă-ți un moment",
+            "step1": "Spune-ți: \"Îmi dau permisiunea să nu fiu perfect astăzi\"",
+            "step2": "Spune: \"Îmi dau permisiunea să cer ajutor\"",
+            "step3": "Spune: \"Îmi dau permisiunea să simt ceea ce simt fără vinovăție\"",
+            "step4": "Spune: \"Îmi dau permisiunea să iau o pauză\"",
+            "step5": "Spune: \"Fac tot ce pot, și asta este suficient\"",
+            "step6": "Respiră adânc și ține aceste cuvinte aproape",
+            "step7": "Și tu meriți compasiune. Poartă asta cu tine."
+          },
+          "quick-walk": {
+            "name": "Prompt de plimbare rapidă",
+            "step0": "Ridică-te și întinde-ți brațele deasupra capului",
+            "step1": "Mergi până la cea mai apropiată fereastră sau ușă și uită-te afară",
+            "step2": "Fă 5 pași lenți și simte fiecare picior atingând pământul",
+            "step3": "Uită-te în sus — observă cerul, tavanul sau ceva deasupra ta",
+            "step4": "Fă încă 5 pași lenți, intenționați",
+            "step5": "Scutură-ți mâinile și brațele lejer timp de câteva secunde",
+            "step6": "Rulează-ți umerii înapoi de 3 ori",
+            "step7": "Ți-ai mișcat corpul. Asta contează. Bravo."
+          }
+        }
+      },
+      "help": {
+        "title": "Cere ajutor",
+        "sendRequest": "Trimite",
+        "customPlaceholder": "Scrie mesajul tău...",
+        "recentRequests": "Cereri recente",
+        "statusPending": "În așteptare",
+        "statusAccepted": "Acceptată",
+        "statusCompleted": "Finalizată",
+        "statusExpired": "Expirată",
+        "sent": "Cerere de ajutor trimisă!",
+        "limitReached": "Poți trimite până la 5 cereri de ajutor pe zi.",
+        "noRequests": "Nicio cerere de ajutor recentă.",
+        "accept": "Pot ajuta",
+        "complete": "Marchează ca finalizat",
+        "template_need_break": "Am nevoie de o pauză",
+        "template_handle_meds": "Ajutor cu medicamentele",
+        "template_need_visit": "Am nevoie de o vizită",
+        "template_groceries": "Alimente",
+        "template_custom": "Mesaj personalizat",
+        "message_need_break": "Chiar mi-ar prinde bine o pauză. Ar putea cineva să preia pentru puțin timp?",
+        "message_handle_meds": "Poate cineva să ajute cu medicamentele astăzi?",
+        "message_need_visit": "Ar însemna mult dacă cineva ar putea vizita astăzi.",
+        "message_groceries": "Poate cineva să ajute cu cumpărăturile?"
+      },
+      "agent": {
+        "title": "Companion de bunăstare",
+        "disclaimer": "Doar pentru sprijin emoțional. Nu este un sfat medical.",
+        "placeholder": "Cum te simți?",
+        "greeting": "Mă gândesc la tine...",
+        "rateLimited": "Ia o pauză — poți discuta din nou în curând.",
+        "errorMessage": "Nu s-a putut conecta. Te rugăm să încerci din nou.",
+        "expand": "Extinde",
+        "collapse": "Restrânge",
+        "prompts": {
+          "overwhelmed": "Mă simt copleșit acum",
+          "calmDown": "Ajută-mă să mă calmez în 2 minute",
+          "needEnergy": "Am nevoie de energie, dar nu pot lua o pauză",
+          "poorSleep": "Nu am putut dormi bine noaptea trecută",
+          "needMoment": "Am nevoie de un moment doar pentru mine",
+          "uplifting": "Spune-mi ceva înălțător"
+        }
+      },
+      "goal": {
+        "title": "Obiectivul de astăzi",
+        "placeholder": "Stabilește un obiectiv pentru astăzi...",
+        "done": "Gata!",
+        "weekLabel": "Săptămâna aceasta",
+        "suggest": "Sugerează"
+      },
+      "burnout": {
+        "title": "Observăm că s-ar putea să ai nevoie de sprijin suplimentar",
+        "message": "Verificările tale recente arată un nivel ridicat de stres sau energie scăzută. Acest lucru este complet de înțeles — îngrijirea este dificilă."
+      },
+      "support": {
+        "title": "Ai nevoie de sprijin?",
+        "description": "Îngrijirea este o provocare. Este în regulă să ceri ajutor."
+      },
+      "footer": "Amintește-ți: Nu poți turna dintr-o ceașcă goală. Și bunăstarea ta contează.",
+      "weeklyStats": {
+        "title": "Informații săptămânale",
+        "subtitle": "Rezumatul bunăstării tale pe 7 zile",
+        "avgEnergy": "Energie medie",
+        "avgStress": "Stres mediu",
+        "avgSleep": "Somn mediu",
+        "noData": "Completează verificările zilnice pentru a vedea tendințele săptămânale.",
+        "generateDigest": "Generează Rezumat AI",
+        "generating": "Se generează...",
+        "behaviourSummary": "{{count}} incidente comportamentale înregistrate săptămâna aceasta"
+      },
+      "sos": {
+        "title": "Ce se întâmplă acum?",
+        "subtitle": "Alege cu ce ai nevoie de ajutor — te vom ghida.",
+        "calmDown": "Am nevoie să mă calmez",
+        "calmDownDesc": "Exerciții rapide de respirație și relaxare",
+        "behaviourNow": "Comportament care se manifestă acum",
+        "behaviourNowDesc": "Înregistrează un incident și primește îndrumare",
+        "callHelp": "Am nevoie de ajutor de urgență",
+        "callHelpDesc": "Contactează serviciile de urgență sau familia",
+        "needBreak": "Am nevoie de cineva care să mă înlocuiască",
+        "needBreakDesc": "Trimite o cerere de ajutor familiei"
+      },
+      "behaviours": {
+        "playbooks": {
+          "title": "Ghiduri de comportament",
+          "subtitle": "Atinge un comportament pentru îndrumare pas cu pas",
+          "rightNow": "Acum",
+          "understandWhy": "Înțelege De Ce",
+          "prevent": "Prevenire",
+          "whenToCallDoctor": "Când să suni medicul"
+        },
+        "logger": {
+          "title": "Înregistrează Incident",
+          "logIncident": "Înregistrează un Incident",
+          "typeLabel": "Tipul comportamentului",
+          "selectType": "Selectează un tip...",
+          "severity": "Severitate",
+          "mild": "Ușoară",
+          "severe": "Severă",
+          "timeOfDay": "Momentul zilei",
+          "morning": "Dimineața",
+          "afternoon": "După-amiaza",
+          "evening": "Seara",
+          "night": "Noaptea",
+          "duration": "Durata (minute)",
+          "durationPlaceholder": "Cât a durat?",
+          "triggers": "Posibili factori declanșatori",
+          "trigger_pain": "Durere",
+          "trigger_hunger": "Foame",
+          "trigger_thirst": "Sete",
+          "trigger_fatigue": "Oboseală",
+          "trigger_overstimulation": "Stimulare excesivă",
+          "trigger_unfamiliar_environment": "Loc necunoscut",
+          "trigger_unfamiliar_person": "Persoană necunoscută",
+          "trigger_routine_change": "Schimbare de rutină",
+          "trigger_medication": "Medicație",
+          "trigger_noise": "Zgomot",
+          "trigger_loneliness": "Singurătate",
+          "trigger_boredom": "Plictiseală",
+          "trigger_bathroom_need": "Nevoie la baie",
+          "trigger_frustration": "Frustrare",
+          "trigger_fear": "Frică",
+          "trigger_unknown": "Necunoscut",
+          "whatHappened": "Ce s-a întâmplat?",
+          "whatHappenedPlaceholder": "Descrie incidentul...",
+          "whatHelped": "Ce a ajutat? (opțional)",
+          "whatHelpedPlaceholder": "Descrie ce a ajutat la calmarea situației...",
+          "save": "Salvează Incidentul",
+          "saved": "Incident înregistrat"
+        },
+        "timeline": {
+          "title": "Cronologia Incidentelor",
+          "all": "Toate",
+          "noIncidents": "Niciun incident nu se potrivește cu filtrul curent."
+        }
+      }
+    },
+    "reports": {
+      "title": "Raport Vizită Medicală",
+      "period": "Perioada raportului",
+      "lastDays": "Ultimele {{days}} zile",
+      "generate": "Generează Raport",
+      "include": "Include în raport",
+      "moodTrends": "Tendințe de dispoziție și rezumat al verificărilor",
+      "sleepPatterns": "Modele de somn",
+      "activityCompletion": "Rate de finalizare a activităților",
+      "medicationAdherence": "Aderență la medicație",
+      "journalNotes": "Observații notabile din jurnalul de îngrijire",
+      "locationPatterns": "Modele de locație",
+      "caregiverConcerns": "Preocupările îngrijitorului",
+      "customNotes": "Note suplimentare pentru medic",
+      "print": "Imprimă",
+      "downloadPdf": "Descarcă PDF",
+      "emailDoctor": "Trimite prin e-mail medicului",
+      "disclaimer": "Acest rezumat se bazează pe datele de wellness auto-raportate și pe observațiile familiei. Nu este o evaluare clinică.",
+      "webNote": "Pentru constructorul complet de rapoarte cu export de imprimare și PDF, vizitați aplicația web OurTurn.",
+      "openInWebApp": "Deschide în Aplicația Web",
+      "previousReports": "Rapoarte Anterioare",
+      "generated": "Generat {{date}}",
+      "avgQuality": "calitate medie",
+      "moodStruggling": "Dificultate",
+      "moodLow": "Scăzută",
+      "moodOkay": "Acceptabilă",
+      "moodGood": "Bună",
+      "moodGreat": "Excelentă",
+      "careSummary": "Rezumatul Îngrijirii OurTurn",
+      "patient": "Pacient",
+      "periodLabel": "Perioada",
+      "checkinsRecorded": "Verificări înregistrate",
+      "averageMood": "Dispoziție medie",
+      "averageSleepQuality": "Calitatea medie a somnului",
+      "activityCompletionRate": "Finalizarea activităților",
+      "medicationAdherenceRate": "Aderența la medicație",
+      "observations": "Observații",
+      "categoryMedication": "Medicație",
+      "categoryMeals": "Mese",
+      "categoryPhysical": "Fizic",
+      "categoryCognitive": "Cognitiv",
+      "categorySocial": "Social",
+      "categoryHealth": "Sănătate"
+    },
+    "onboarding": {
+      "step1Title": "Despre Tine",
+      "step2Title": "Despre Persoana Dragă",
+      "step3Title": "Povestea Vieții Lor",
+      "step4Title": "Rutina Zilnică",
+      "step5Title": "Configurare Siguranță",
+      "step6Title": "Codul Tău de Îngrijire",
+      "next": "Înainte",
+      "back": "Înapoi",
+      "finish": "Începe",
+      "careCodeInstructions": "Instalează OurTurn pe telefonul persoanei dragi și introdu acest cod pentru a te conecta.",
+      "quickSetup": "Configurare Rapidă",
+      "yourName": "Numele tău",
+      "yourNameRequired": "Numele tău *",
+      "lovedOneNameRequired": "Numele persoanei dragi *",
+      "relationship": "Relația ta cu aceasta",
+      "relationshipPlaceholder": "de ex., fiică, fiu, soț/soție",
+      "settingsHint": "Poți adăuga mai multe detalii mai târziu în Setări",
+      "fillRequired": "Te rugăm să completezi toate câmpurile obligatorii",
+      "setupFailed": "Configurarea nu a putut fi finalizată",
+      "country": "Țara",
+      "theirName": "Prenumele său/ei",
+      "dateOfBirth": "Data nașterii",
+      "dementiaType": "Tipul de demență (opțional)",
+      "homeAddress": "Adresa de domiciliu",
+      "medications": "Medicamente",
+      "addMedication": "Adaugă medicament",
+      "childhoodLocation": "Unde a crescut",
+      "career": "Carieră / ocupație",
+      "hobbies": "Hobby-uri și interese",
+      "favoriteMusic": "Muzică / artiști preferați",
+      "favoriteFoods": "Alimente preferate",
+      "importantPeople": "Persoane importante",
+      "keyEvents": "Evenimente cheie din viață",
+      "uploadPhotos": "Încarcă fotografii de familie",
+      "wakeTime": "Ora de trezire",
+      "sleepTime": "Ora de culcare",
+      "generatePlan": "Generează plan sugerat",
+      "emergencyContacts": "Contacte de urgență",
+      "alertSettings": "Setări de alertă",
+      "stepOf": "Pasul {{current}} din {{total}}",
+      "breakfastTime": "Ora micului dejun",
+      "lunchTime": "Ora prânzului",
+      "dinnerTime": "Ora cinei",
+      "typicalDay": "Descrierea unei zile tipice",
+      "typicalDayPlaceholder": "Descrie o zi tipică...",
+      "emergencyContactsHint": "Adaugă contacte de urgență care vor apărea în fila Ajutor a aplicației pacientului.",
+      "remove": "Elimină",
+      "addContact": "Adaugă contact",
+      "contactNameRequired": "Nume *",
+      "phoneRequired": "Număr de telefon *",
+      "relationshipOptional": "Relație (opțional)",
+      "addContactButton": "+ Adaugă contact",
+      "emergencyContactWarning": "Vă recomandăm să adăugați cel puțin un contact de urgență.",
+      "allSet": "Totul este gata!",
+      "careCodeLabel": "COD DE ÎNGRIJIRE",
+      "copied": "Copiat!",
+      "copyCode": "Copiază codul",
+      "nextSteps": "Pașii următori:",
+      "nextStep1": "1. Instalează OurTurn pe telefonul lui/ei {{name}}",
+      "nextStep2": "2. Deschide aplicația și introdu codul de îngrijire de mai sus",
+      "nextStep3": "3. Gata! Planul zilnic al lui/ei {{name}} va apărea pe telefonul său/ei",
+      "homeAddressPlaceholder": "Str. Principală 123, Oraș"
+    },
+    "settings": {
+      "title": "Setări",
+      "appearance": "Aspect",
+      "theme": {
+        "label": "Temă",
+        "light": "Deschisă",
+        "dark": "Întunecată",
+        "system": "Sistem"
+      },
+      "profile": "Profil",
+      "account": "Cont",
+      "subscription": "Abonament",
+      "notifications": "Notificări",
+      "privacy": "Confidențialitate și date",
+      "exportData": "Exportă datele mele",
+      "exportNote": "Descarcă o copie a tuturor datelor tale (dreptul GDPR la portabilitate)",
+      "exportClipboard": "Datele tale au fost copiate în clipboard. Le poți lipi într-un document sau e-mail.",
+      "deleteAccount": "Șterge contul",
+      "deleteWarning": "Aceasta va șterge definitiv toate datele pentru această gospodărie. Această acțiune nu poate fi anulată.",
+      "deleteConfirmType": "Tastează ȘTERGE pentru a confirma ștergerea contului",
+      "confirmDelete": "Confirmă ștergerea",
+      "language": "Limba",
+      "about": "Despre OurTurn",
+      "version": "Versiune",
+      "notMedicalDevice": "OurTurn nu este un dispozitiv medical",
+      "dailySummary": "Rezumat zilnic",
+      "dailySummaryTime": "Ora rezumatului zilnic",
+      "emailNotifications": "Notificări prin e-mail",
+      "pushNotifications": "Notificări push",
+      "safetyAlerts": "Alerte de siguranță",
+      "signOut": "Deconectare",
+      "saveProfile": "Salvează profilul",
+      "saved": "Salvat!",
+      "saving": "Se salvează...",
+      "changePassword": "Schimbă parola",
+      "newPassword": "Parolă nouă",
+      "confirmNewPassword": "Confirmă parola nouă",
+      "passwordPlaceholder": "Cel puțin 8 caractere",
+      "passwordChanged": "Parola a fost schimbată cu succes!",
+      "changingPassword": "Se schimbă...",
+      "copyCode": "Copiază codul",
+      "codeCopied": "Cod copiat!",
+      "regenerateCode": "Regenerează codul",
+      "regenerateWarning": "Codul vechi nu va mai funcționa. Toate dispozitivele pacientului asociate vor avea nevoie de codul nou.",
+      "dangerZone": "Zonă de pericol",
+      "relationship": "Relație",
+      "deleteConfirm": "Tastează ȘTERGE pentru a confirma ștergerea contului",
+      "photoGallery": "Galerie foto",
+      "photoGalleryDesc": "Încarcă fotografii de familie pentru activități personalizate de rememorare",
+      "uploadPhotos": "Încarcă fotografii",
+      "uploading": "Se încarcă...",
+      "deletePhoto": "Ștergi această fotografie?",
+      "maxPhotosReached": "S-a atins numărul maxim de 20 de fotografii",
+      "photoUploadHint": "Până la 20 de fotografii, max. 5 MB fiecare",
+      "photoUploadFailed": "Încărcarea fotografiei nu a reușit. Vă rugăm să încercați din nou.",
+      "photoDeleteFailed": "Ștergerea fotografiei nu a reușit. Vă rugăm să încercați din nou.",
+      "noPhotosYet": "Nu au fost încărcate fotografii",
+      "photosCount": "{{count}} din 20 de fotografii",
+      "patientComplexity": "Modul aplicației pacient",
+      "patientComplexityDesc": "Ajustează interfața aplicației pacientului în funcție de nevoile persoanei dragi.",
+      "complexity": {
+        "full": "Complet",
+        "fullDesc": "Toate funcțiile disponibile",
+        "simplified": "Simplificat",
+        "simplifiedDesc": "Text mai mare, mai puține detalii",
+        "essential": "Esențial",
+        "essentialDesc": "Minimal — doar muzică și apel pentru ajutor"
+      },
+      "safetyEscalation": "Siguranță și escaladare",
+      "escalationTiming": "Timpul de escaladare",
+      "escalationTimingDesc": "Cât timp înainte de a escalada alertele nerecunoscute",
+      "offlineThreshold": "Pragul de alertă offline",
+      "offlineThresholdDesc": "Alertă când dispozitivul nu este văzut de atâta timp",
+      "minutes": "minute",
+      "respiteReminders": "Mementouri de pauză",
+      "respiteRemindersDesc": "Primește mementouri pentru a lua pauze",
+      "groupProfile": "Profilul tău",
+      "groupAboutPatient": "Despre {{name}}",
+      "groupAboutPatientGeneric": "Despre persoana dragă",
+      "groupSharing": "Partajare și conectare",
+      "groupSafety": "Siguranță și notificări",
+      "groupAccount": "Cont",
+      "patientInformation": "Informații despre pacient",
+      "patientInformationDesc": "Detalii de bază despre persoana dragă",
+      "patientName": "Numele pacientului",
+      "dateOfBirth": "Data nașterii",
+      "dementiaType": "Tipul de demență",
+      "selectDementiaType": "Selectați tipul (opțional)",
+      "homeAddress": "Adresa de domiciliu",
+      "homeAddressPlaceholder": "Adresa completă",
+      "savingPatientInfo": "Se salvează...",
+      "savePatientInfo": "Salvați informațiile pacientului",
+      "lifeStory": "Povestea vieții",
+      "lifeStoryDesc": "Aceste detalii ajută la personalizarea activităților zilnice și a sugestiilor de rememorare.",
+      "childhoodLocation": "Unde au crescut",
+      "career": "Carieră / Ocupație",
+      "hobbies": "Hobby-uri și interese",
+      "hobbiesPlaceholder": "de ex., grădinărit, pictură, șah",
+      "favoriteMusic": "Muzică / Artiști preferați",
+      "favoriteMusicPlaceholder": "de ex., Frank Sinatra, Beatles",
+      "favoriteFoods": "Mâncăruri preferate",
+      "favoriteFoodsPlaceholder": "de ex., plăcintă cu mere, pui fript",
+      "importantPeople": "Persoane importante",
+      "importantPeoplePlaceholder": "de ex., John (frate), Mary (cea mai bună prietenă)",
+      "keyEvents": "Evenimente cheie din viață",
+      "keyEventsPlaceholder": "de ex., Absolvit în 1965, Mutați la Londra în 1970",
+      "savingLifeStory": "Se salvează...",
+      "saveLifeStory": "Salvați povestea vieții",
+      "dailySchedule": "Programul zilnic",
+      "dailyScheduleDesc": "Setați orele de trezire și de culcare pentru rutina persoanei dragi.",
+      "wakeTime": "Ora de trezire",
+      "sleepTime": "Ora de culcare",
+      "savingSchedule": "Se salvează...",
+      "saveSchedule": "Salvați programul",
+      "emergencyContacts": "Contacte de urgență",
+      "emergencyContactsDesc": "Aceste contacte apar în fila Ajutor din aplicația pacientului.",
+      "addContact": "Adăugați contact",
+      "contactName": "Numele contactului",
+      "contactPhone": "Număr de telefon",
+      "contactRelationship": "Relație",
+      "contactRelationshipPlaceholder": "de ex., Fiică, vecin",
+      "noContactsYet": "Nu au fost adăugate încă contacte de urgență.",
+      "savingContacts": "Se salvează...",
+      "saveContacts": "Salvați contactele",
+      "removeContactConfirm": "Eliminați acest contact?",
+      "country": "Țară",
+      "selectCountry": "Selectați țara",
+      "selectLanguage": "Selectați limba",
+      "languageSaved": "Limba a fost actualizată"
+    },
+    "auth": {
+      "login": "Autentificare",
+      "signup": "Înregistrare",
+      "email": "E-mail",
+      "password": "Parolă",
+      "forgotPassword": "Ați uitat parola?",
+      "noAccount": "Nu aveți un cont?",
+      "hasAccount": "Aveți deja un cont?",
+      "continueWithGoogle": "Continuați cu Google",
+      "continueWithApple": "Continuați cu Apple",
+      "or": "sau",
+      "confirmPassword": "Confirmați parola",
+      "createAccount": "Creați cont",
+      "getStarted": "Începeți",
+      "fillAllFields": "Vă rugăm să completați toate câmpurile",
+      "passwordsNoMatch": "Parolele nu se potrivesc",
+      "passwordTooShort": "Parola trebuie să aibă cel puțin 8 caractere",
+      "checkEmail": "Vă rugăm să verificați e-mailul pentru a vă confirma contul",
+      "enterEmailFirst": "Vă rugăm să introduceți mai întâi adresa de e-mail.",
+      "resetEmailSent": "Verificați-vă e-mailul",
+      "resetEmailSentDesc": "V-am trimis un link de resetare a parolei la adresa dvs. de e-mail.",
+      "welcomeBack": "Bine ați revenit",
+      "enterEmailAndPassword": "Vă rugăm să introduceți e-mailul și parola",
+      "signingIn": "Se conectează",
+      "orContinueWith": "Sau continuați cu"
+    },
+    "nav": {
+      "family": "Cercul Familiei",
+      "toolkit": "Set de instrumente",
+      "reports": "Rapoarte",
+      "settings": "Setări",
+      "crisis": "Centru de criză"
+    },
+    "crisis": {
+      "title": "Centru de criză",
+      "subtitle": "Gestionarea crizelor în timp real și asistență pentru detensionare",
+      "eventLogged": "Eveniment de criză înregistrat",
+      "logEvent": "Înregistrați evenimentul de criză",
+      "logPlaceholder": "Descrieți ce s-a întâmplat...",
+      "status": {
+        "allClear": "Totul este clar",
+        "allClearDesc": "Fără alerte active",
+        "activeAlerts": "Alerte active",
+        "lastKnownLocation": "Ultima locație cunoscută",
+        "viewOnMap": "Vizualizați pe hartă",
+        "noLocationData": "Nu sunt disponibile date despre locație"
+      },
+      "actions": {
+        "modeLabel": "Situația dvs.",
+        "withThem": "Sunt cu ei",
+        "remote": "Sunt la distanță",
+        "startDeEscalation": "Începeți detensionarea",
+        "startDeEscalationDesc": "Flux de calmare ghidat pas cu pas",
+        "callEmergency": "Apelați serviciile de urgență",
+        "callEmergencyDesc": "Apelați serviciile locale de urgență",
+        "alertFamily": "Alertă familie",
+        "alertFamilyDesc": "Trimiteți notificări push tuturor îngrijitorilor",
+        "alertFamilySent": "Membrii familiei au fost notificați",
+        "alertFamilyFailed": "Nu s-a putut notifica familia. Vă rugăm să încercați din nou.",
+        "viewLocation": "Vizualizați locația",
+        "viewLocationDesc": "Vedeți locația actuală a lui {{name}} pe hartă",
+        "contactPrimary": "Contactați îngrijitorul principal",
+        "contactPrimaryDesc": "Contactați îngrijitorul principal prin e-mail",
+        "logEvent": "Înregistrați evenimentul",
+        "logEventDesc": "Înregistrați acest moment în jurnalul de criză"
+      },
+      "wizard": {
+        "breathingTitle": "Să începem cu o respirație calmantă",
+        "breathingInstruction": "Inspirați încet... țineți... expirați...",
+        "stepOf": "Pasul {{current}} din {{total}}",
+        "thisHelped": "Acest lucru a ajutat",
+        "tryNext": "Încercați pasul următor",
+        "skip": "Omiteți",
+        "completionTitle": "Bravo. Ați gestionat asta cu grijă.",
+        "completionDesc": "Doriți să înregistrați note despre ce s-a întâmplat?",
+        "crisisNotesPlaceholder": "Ce s-a întâmplat? Ce a ajutat? Ce declanșatoare ați observat...",
+        "saveAndClose": "Salvați și închideți",
+        "closeWithoutSaving": "Închideți fără a salva"
+      },
+      "history": {
+        "title": "Evenimente recente de criză",
+        "noEvents": "Nu au existat evenimente de criză în ultimele 30 de zile.",
+        "viewAllInJournal": "Vizualizați totul în Jurnal",
+        "yesterday": "Ieri",
+        "daysAgo": "acum {{count}} zile"
+      },
+      "steps": {
+        "stayCalm": {
+          "title": "Păstrați-vă calmul",
+          "detail": "Respirați încet și adânc. Energia ta calmă îi va ajuta să se simtă în siguranță.",
+          "script": "Sunt aici cu tine. Totul este în regulă."
+        },
+        "validateFeelings": {
+          "title": "Validați sentimentele",
+          "detail": "Spuneți „Văd că sunteți supărat. Trebuie să fie foarte greu.” Nu argumentați și nu corectați.",
+          "script": "Văd că sunteți supărat. Trebuie să fie foarte dificil."
+        },
+        "simplifyEnvironment": {
+          "title": "Simplificați mediul",
+          "detail": "Folosiți propoziții scurte și simple. O idee odată. Evitați întrebările de tipul „de ce”.",
+          "script": "Să simplificăm lucrurile. Un lucru odată."
+        },
+        "redirectAttention": {
+          "title": "Redirecționați Atenția",
+          "detail": "Schimbați ușor subiectul. Sugerați o activitate familiară, un cântec sau o plimbare.",
+          "script": "Ce-ar fi să încercăm ceva diferit? Hai să facem o mică plimbare împreună."
+        },
+        "useGentleTouch": {
+          "title": "Folosiți Atingerea Delicată",
+          "detail": "Dacă este binevenită, o mână delicată pe braț poate fi liniștitoare. Observați reacția lor.",
+          "script": "Pot să te țin de mână? Sunt aici."
+        },
+        "giveSpace": {
+          "title": "Oferiți Spațiu",
+          "detail": "Dacă nimic nu funcționează, asigurați siguranța și oferiți-le spațiu. Este bine să faceți un pas înapoi.",
+          "script": "Voi fi prin apropiere dacă ai nevoie de mine. Ia-ți timp."
+        }
+      },
+      "helplines": "Linii de Asistență",
+      "noHelplineAvailable": "Nu a fost găsită nicio linie de asistență pentru țara dvs.",
+      "call": "Sună",
+      "email": "Email",
+      "website": "Site web",
+      "familyContacts": "Contacte Familiale",
+      "supportResources": "Resurse de Sprijin",
+      "scenarios": {
+        "title": "Ce se întâmplă?",
+        "subtitle": "Atingeți o situație pentru îndrumări pas cu pas",
+        "urgent": "Urgent",
+        "stepCountLabel": "{{count}} pași",
+        "backToSituations": "Înapoi la situații",
+        "breathe": "Exercițiu de respirație",
+        "callEmergency": "Sună la Serviciile de Urgență"
+      },
+      "patterns": {
+        "title": "Informații despre Tipare",
+        "noEvents": "Înregistrați incidente pentru a vedea tiparele în timp.",
+        "fewEvents": "{{count}} incidente înregistrate. Sunt necesare mai multe date pentru tipare.",
+        "timePattern": "Majoritatea incidentelor se întâmplă în {{time}}.",
+        "weekCount": "{{count}} săptămâna aceasta."
+      },
+      "personalization": {
+        "label": "Ce îl/o calmează pe {{name}}",
+        "empty": "Adăugați strategii de calmare în biografia lui/ei {{name}} pentru a vedea sfaturi personalizate aici."
+      },
+      "scenarioData": {
+        "stepsCount": "{{count}} pași",
+        "agitated": {
+          "label": "Agitat / Supărat",
+          "steps": [
+            {
+              "title": "Tu primul/prima",
+              "instruction": "Respiră adânc o dată înainte de a face ceva. Nu poți calma pe cineva dacă nu ești calm/ă."
+            },
+            {
+              "title": "Verificare rapidă – ar putea fi ceva fizic în neregulă?",
+              "instruction": "Durerea, foamea, nevoia de a merge la baie sau o infecție pot provoca agitație.",
+              "checklist": [
+                "Durere sau disconfort?",
+                "Foame sau sete?",
+                "Are nevoie la baie?",
+                "Schimbare recentă a medicamentelor?",
+                "Semne de febră sau boală?"
+              ]
+            },
+            {
+              "title": "Scade temperatura",
+              "instruction": "Vorbește încet și blând. Nu te certa, nu corecta și nu explica. Validează ceea ce simt.",
+              "tips": [
+                "„Văd că ești supărat/ă. Sunt aici.”",
+                "Reduce zgomotul – oprește televizorul, închide ferestrele",
+                "Oferă-le spațiu fizic, nu-i aglomera",
+                "Oferă un obiect de confort familiar"
+              ]
+            },
+            {
+              "title": "Redirecționează, nu raționa",
+              "instruction": "Schimbă ușor subiectul sau mediul. Nu încerca să-i scoți din asta prin logică.",
+              "tips": [
+                "Sugerează o plimbare sau mută-te într-o altă cameră",
+                "Pune muzică pe care o adoră",
+                "Oferă o gustare sau o băutură caldă",
+                "Uită-te la fotografii împreună"
+              ]
+            },
+            {
+              "title": "Când să ceri ajutor",
+              "instruction": "Dacă agitația durează mai mult de 30 de minute, dacă există riscul să se rănească pe ei înșiși sau pe tine, sau dacă acesta este un comportament nou brusc – sună la serviciile de urgență.",
+              "actionLabel": "Sună la Serviciile de Urgență"
+            }
+          ]
+        },
+        "wandering": {
+          "label": "Rătăcire / Dispariție",
+          "steps": [
+            {
+              "title": "Verifică mai întâi locurile obișnuite",
+              "instruction": "Majoritatea persoanelor cu demență merg în locuri familiare – un fost loc de muncă, o casă din copilărie, casa unui vecin.",
+              "tips": [
+                "Verifică grădina, garajul, străzile din apropiere",
+                "Întreabă vecinii dacă i-au văzut",
+                "Verifică locurile în care obișnuiau să meargă regulat"
+              ]
+            },
+            {
+              "title": "Folosește-le locația",
+              "instruction": "Dacă urmărirea locației este configurată, verifică poziția lor actuală acum."
+            },
+            {
+              "title": "Alertează familia",
+              "instruction": "Anunță imediat pe toată lumea. Mai mulți ochi care caută este mai bine."
+            },
+            {
+              "title": "Sună la poliție dacă nu sunt găsiți în 15 minute",
+              "instruction": "Nu aștepta. Persoanele cu demență prezintă un risc ridicat de rănire. Sună la serviciile de urgență și spune-le că persoana are demență.",
+              "actionLabel": "Sună la Serviciile de Urgență"
+            }
+          ]
+        },
+        "refusing": {
+          "label": "Refuzul Îngrijirii",
+          "steps": [
+            {
+              "title": "Pauză – aceasta nu este sfidare",
+              "instruction": "Refuzul este aproape întotdeauna frică, confuzie sau disconfort. Este posibil să nu înțeleagă ce ceri."
+            },
+            {
+              "title": "Fă un pas înapoi și încearcă diferit",
+              "instruction": "Nu insista. Revino în 15–20 de minute și abordează ca și cum ar fi prima dată.",
+              "tips": [
+                "Schimbă persoana care întreabă",
+                "Schimbă mediul",
+                "Împarte sarcina în pași mai mici",
+                "Oferă opțiuni: „Baie sau duș?”"
+              ]
+            },
+            {
+              "title": "Fă-o să se simtă în siguranță",
+              "instruction": "Explică fiecare pas înainte de a-l face. Mișcă-te încet. Păstrează-i cald.",
+              "tips": [
+                "Avertizează înainte de a atinge",
+                "Folosește un ton calm, cald",
+                "Pune muzica lor preferată în timpul sarcinii",
+                "Păstrează rutina consistentă"
+              ]
+            },
+            {
+              "title": "Este acesta un tipar?",
+              "instruction": "Dacă refuză în mod constant aceeași sarcină, înregistrează-o. Poate exista o problemă subiacentă – durere, frică, sensibilitate. Discută cu medicul lor."
+            }
+          ]
+        },
+        "hallucinations": {
+          "label": "Văzând / Auzind Lucruri",
+          "steps": [
+            {
+              "title": "Nu te certa – este real pentru ei",
+              "instruction": "Recunoaște ceea ce trăiesc fără a confirma că este adevărat.",
+              "tips": [
+                "„Sună înfricoșător. Sunt aici cu tine.”",
+                "„Spune-mi ce vezi.”",
+                "Nu spune „nu este nimic acolo”"
+              ]
+            },
+            {
+              "title": "Verifică mediul",
+              "instruction": "Umbrele, reflexiile, sunetele televizorului și dezordinea pot declanșa interpretări greșite.",
+              "checklist": [
+                "Umbre de la ferestre sau lămpi?",
+                "Televizor sau radio pornit în fundal?",
+                "Reflexii în oglindă?",
+                "Iluminare slabă?"
+              ]
+            },
+            {
+              "title": "Redirecționează ușor",
+              "instruction": "Mută-le atenția către ceva concret și reconfortant.",
+              "tips": [
+                "Mută-te într-o cameră bine luminată",
+                "Oferă o activitate practică",
+                "Mergeți la o scurtă plimbare împreună",
+                "Pregătiți o ceașcă de ceai împreună"
+              ]
+            },
+            {
+              "title": "Când să suni medicul",
+              "instruction": "Dacă halucinațiile sunt noi, frecvente sau provoacă suferință extremă. Debutul brusc poate indica infecție, efecte secundare ale medicamentelor sau delir."
+            }
+          ]
+        },
+        "sundowning": {
+          "label": "Sundowning",
+          "steps": [
+            {
+              "title": "Recunoaște tiparul",
+              "instruction": "Sundowning-ul începe de obicei după-amiaza târziu. Acest lucru este extrem de frecvent și nu este ceva ce pot controla."
+            },
+            {
+              "title": "Ajustează mediul acum",
+              "instruction": "Reduce toată stimularea și creează semnale de siguranță.",
+              "tips": [
+                "Aprinde lumini calde înainte de a se întuneca",
+                "Închide perdelele pentru a reduce umbrele",
+                "Oprește sau reduce volumul televizorului",
+                "Reduce numărul de persoane din cameră"
+              ]
+            },
+            {
+              "title": "Oferă activități de calmare",
+              "instruction": "Activitățile blânde, repetitive, familiare funcționează cel mai bine.",
+              "tips": [
+                "Masaj blând al mâinilor cu loțiune",
+                "Muzică moale, familiară",
+                "Împăturirea prosoapelor sau sortarea obiectelor",
+                "Răsfoirea unui album foto împreună"
+              ]
+            },
+            {
+              "title": "Previne-l mâine",
+              "instruction": "Înregistrează episodul cu detalii de sincronizare. Tiparele ajută la ajustarea programelor – mai multă activitate dimineața, mai puțină cofeină după-amiaza."
+            }
+          ]
+        },
+        "fall": {
+          "label": "Cădere / Urgență Fizică",
+          "steps": [
+            {
+              "title": "Nu-l mișcați",
+              "instruction": "Dacă nu este într-un pericol imediat, nu încercați să-l ridicați sau să-l mutați.",
+              "tips": [
+                "Aplecați-vă la nivelul lui",
+                "Asigurați-l: \"Sunt aici, ești în siguranță\"",
+                "Verificați dacă are vreo rană vizibilă"
+              ]
+            },
+            {
+              "title": "Se poate ridica?",
+              "instruction": "Dacă nu are o rană evidentă, ajutați-l să se ridice încet, în etape.",
+              "checklist": [
+                "Este alert și receptiv?",
+                "Are vreo rană sau durere evidentă?",
+                "Își poate mișca toate membrele?",
+                "S-a lovit la cap?"
+              ]
+            },
+            {
+              "title": "Sunați după ajutor dacă...",
+              "instruction": "S-a lovit la cap, nu se poate ridica, are dureri severe, confuzia este mai gravă decât de obicei sau sângerarea nu se oprește."
+            },
+            {
+              "title": "După cădere",
+              "instruction": "Înregistrați acest eveniment și menționați-l medicului. Căderile repetate pot indica probleme cu medicația sau progresia bolii."
+            }
+          ]
+        },
+        "repetitive_questions": {
+          "label": "Întrebări repetitive",
+          "steps": [
+            {
+              "title": "Respirați — aceasta este boala, nu el/ea",
+              "instruction": "Chiar nu-și amintește că a întrebat. Frustrarea dumneavoastră este validă, dar dacă o arătați, îl/o faceți mai anxios/anxioasă.",
+              "tips": []
+            },
+            {
+              "title": "Ce întreabă cu adevărat?",
+              "instruction": "Întrebarea de la suprafață este rareori întrebarea reală. „La ce oră este cina?” ar putea însemna „Mi-e foame”.",
+              "checklist": [
+                "Este anxios/anxioasă din cauza a ceva?",
+                "Ar putea să-i fie foame, sete sau să se plictisească?",
+                "Există un eveniment viitor care îi provoacă îngrijorare?"
+              ]
+            },
+            {
+              "title": "Răspundeți la sentiment",
+              "instruction": "Răspundeți la emoția din spatele întrebării, mai degrabă decât la cuvintele literale.",
+              "tips": [
+                "Scrieți răspunsul pe o tablă albă vizibilă",
+                "Oferiți un răspuns simplu și liniștitor de fiecare dată",
+                "Redirecționați către o activitate practică după ce răspundeți",
+                "Utilizați programe vizuale pentru a reduce incertitudinea"
+              ]
+            },
+            {
+              "title": "Protejați-vă propria bunăstare",
+              "instruction": "Schimbați-vă cu un alt îngrijitor dacă este posibil. Folosiți căști cu muzică blândă atunci când aveți nevoie de o pauză mentală."
+            }
+          ]
+        },
+        "aggression": {
+          "label": "Agresivitate",
+          "steps": [
+            {
+              "title": "Siguranța dumneavoastră este pe primul loc",
+              "instruction": "Dacă vă simțiți în pericol fizic, dați-vă imediat înapoi. Nu încercați să-l rețineți.",
+              "tips": [
+                "Poziționați-vă lângă o ieșire",
+                "Îndepărtați obiectele periculoase din raza de acțiune",
+                "Păstrați-vă vocea joasă și calmă",
+                "Nu faceți mișcări bruște"
+              ]
+            },
+            {
+              "title": "Ancorați-vă",
+              "instruction": "Agresivitatea declanșează reacția de luptă sau fugă și în dumneavoastră. Acordați-vă un moment pentru a respira."
+            },
+            {
+              "title": "Ce a declanșat asta?",
+              "instruction": "Agresivitatea este aproape întotdeauna o reacție — durere, frică, frustrare, supraîncărcare senzorială.",
+              "checklist": [
+                "I s-a cerut să facă ceva?",
+                "Avea dureri?",
+                "Mediul era zgomotos sau haotic?",
+                "S-a simțit încolțit?"
+              ]
+            },
+            {
+              "title": "Oferiți spațiu și timp",
+              "instruction": "Dați-vă înapoi. Opriți activitatea declanșatoare. Reveniți în 15–20 de minute ca și cum nimic nu s-ar fi întâmplat.",
+              "tips": [
+                "Părăsiți camera dacă este sigur",
+                "Îndepărtați declanșatorul",
+                "Nu o luați personal",
+                "Apropiați-vă încet când reveniți"
+              ]
+            },
+            {
+              "title": "Când aceasta este o urgență",
+              "instruction": "Dacă are o armă, dacă cineva este rănit sau dacă agresivitatea nu se diminuează — sunați la serviciile de urgență."
+            }
+          ]
+        },
+        "sleep_disruption": {
+          "label": "Tulburări de somn",
+          "steps": [
+            {
+              "title": "Păstrați mediul sigur",
+              "instruction": "Dacă este treaz și se mișcă noaptea, prima dumneavoastră prioritate este siguranța.",
+              "tips": [
+                "Aprindeți lumini de veghe slabe",
+                "Îndepărtați pericolele de împiedicare",
+                "Încuiați ușile exterioare dacă rătăcirea este o problemă",
+                "\"Este noapte, totul este sigur\""
+              ]
+            },
+            {
+              "title": "Ce l-a trezit?",
+              "instruction": "Trezirea nocturnă poate fi cauzată de durere, nevoia de a merge la baie, momentul administrării medicamentelor sau foame.",
+              "checklist": [
+                "Trebuie să meargă la baie?",
+                "Are dureri?",
+                "L-a trezit un zgomot sau o lumină?",
+                "Îi este foame sau sete?"
+              ]
+            },
+            {
+              "title": "Ghidati-l înapoi cu blândețe",
+              "instruction": "Nu vă certați cu privire la ce oră este. Redirecționați-l înapoi la pat cu indicii calmante.",
+              "tips": [
+                "Oferiți-i o băutură caldă, fără cofeină",
+                "Folosiți o voce calmă și liniștită",
+                "Puneți muzică moale, familiară",
+                "Stați cu el/ea până se liniștește"
+              ]
+            },
+            {
+              "title": "Îmbunătățiți noaptea de mâine",
+              "instruction": "Mai multă activitate în timpul zilei, fără cofeină după prânz, rutină consistentă de culcare, limitați somnul de după-amiază la 30 de minute."
+            }
+          ]
+        },
+        "shadowing": {
+          "label": "Urmărire",
+          "steps": [
+            {
+              "title": "Recunoașteți-vă frustrarea",
+              "instruction": "Să fii urmărit peste tot este epuizant. Aceste sentimente sunt valide. Respirați.",
+              "tips": []
+            },
+            {
+              "title": "De ce vă urmărește?",
+              "instruction": "Urmărirea este determinată de anxietate și teama de abandon. A fi lângă dumneavoastră este singura lor sursă de siguranță.",
+              "checklist": [
+                "A existat o schimbare recentă a rutinei?",
+                "Se află într-un mediu necunoscut?",
+                "Ați fost plecat recent?",
+                "Se simte rău?"
+              ]
+            },
+            {
+              "title": "Reduceți-i anxietatea",
+              "instruction": "Ajutați-l să se simtă în siguranță fără a fi prezent fizic în fiecare moment.",
+              "tips": [
+                "Dați-i o „sarcină” lângă locul unde vă aflați",
+                "Lăsați un obiect personal cu el/ea ca ancoră de confort",
+                "\"Sunt doar în bucătărie, mă întorc imediat\"",
+                "Încercați un program TV sau muzică familiară ca un companion"
+              ]
+            },
+            {
+              "title": "Construiți pauze pentru dumneavoastră",
+              "instruction": "Rugați pe cineva să stea cu el/ea în timp ce vă luați 20 de minute. Chiar și 10 minute singur ajută.",
+              "tips": [
+                "Nu așteptați până când sunteți epuizat",
+                "Este în regulă să închideți ușor ușa de la baie",
+                "Luați în considerare un grup de sprijin",
+                "Acest comportament se reduce adesea cu o rutină stabilă"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "tabs": {
+      "dashboard": "Panou",
+      "plan": "Plan",
+      "location": "Locație",
+      "coach": "Antrenor",
+      "more": "Mai mult"
+    }
+  },
+  "notifications": {
+    "taskReminder": "{{patientName}}, este timpul pentru: {{taskTitle}}",
+    "taskCompleted": "{{patientName}} a finalizat: {{taskTitle}}",
+    "checkinReceived": "{{patientName}} a finalizat check-in-ul de astăzi",
+    "leftSafeZone": "{{patientName}} a părăsit {{zoneName}}",
+    "inactivity": "Nicio mișcare detectată de la {{patientName}} în {{hours}} ore",
+    "nightMovement": "{{patientName}} se mișcă afară la {{time}}",
+    "takeMeHome": "{{patientName}} a apăsat pe „Du-mă acasă” din {{location}}",
+    "eveningSummary": "Ziua lui/ei {{patientName}}: {{completed}}/{{total}} sarcini efectuate. Stare de spirit: {{mood}}"
+  },
+  "subscription": {
+    "free": "Gratuit",
+    "plus": "OurTurn Plus",
+    "upgradeTitle": "Deblocați OurTurn Plus",
+    "upgradeFeature": "Această funcție necesită OurTurn Plus",
+    "monthly": "{{price}}/lună",
+    "annual": "{{price}}/an",
+    "annualSavings": "Economisiți {{percent}}%",
+    "subscribe": "Abonați-vă",
+    "restore": "Restabiliți achiziția",
+    "manage": "Gestionați abonamentul",
+    "features": {
+      "unlimitedTasks": "Sarcini nelimitate pe zi",
+      "aiCoach": "Antrenor AI complet",
+      "brainActivities": "Activități de wellness cerebral generate de AI",
+      "safeZones": "Zone sigure și alerte de locație",
+      "multiCaregiver": "Până la 5 membri ai familiei",
+      "journal": "Jurnal de îngrijire partajat",
+      "insights": "Informații despre modele AI",
+      "reports": "Rapoarte pentru vizita la medic",
+      "toolkit": "Set de instrumente pentru îngrijitor și wellness",
+      "priority": "Asistență prioritară"
+    }
+  }
+}

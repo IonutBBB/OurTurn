@@ -1,6 +1,6 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { COLORS, FONTS, SPACING } from '../../theme';
+import { createThemedStyles, useColors, FONTS, SPACING } from '../../theme';
 
 interface JourneyProgressBarProps {
   completedCount: number;
@@ -14,15 +14,17 @@ export function JourneyProgressBar({
   stepStatuses,
 }: JourneyProgressBarProps) {
   const { t } = useTranslation('resources');
+  const styles = useStyles();
+  const colors = useColors();
 
   const getColor = (status: string) => {
     switch (status) {
       case 'completed':
-        return COLORS.success;
+        return colors.success;
       case 'in_progress':
-        return COLORS.amber;
+        return colors.amber;
       default:
-        return COLORS.border;
+        return colors.border;
     }
   };
 
@@ -38,8 +40,8 @@ export function JourneyProgressBar({
                   {
                     backgroundColor:
                       stepStatuses[i - 1] === 'completed'
-                        ? COLORS.success
-                        : COLORS.border,
+                        ? colors.success
+                        : colors.border,
                   },
                 ]}
               />
@@ -49,7 +51,7 @@ export function JourneyProgressBar({
                 styles.dot,
                 {
                   backgroundColor:
-                    status === 'not_started' ? COLORS.card : getColor(status),
+                    status === 'not_started' ? colors.card : getColor(status),
                   borderColor: getColor(status),
                 },
               ]}
@@ -64,7 +66,7 @@ export function JourneyProgressBar({
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
     alignItems: 'center',
     gap: SPACING[2],
@@ -90,6 +92,6 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
-});
+}));

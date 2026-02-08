@@ -1,0 +1,1395 @@
+{
+  "common": {
+    "appName": "OurTurn",
+    "save": "Mentés",
+    "cancel": "Mégse",
+    "delete": "Törlés",
+    "edit": "Szerkesztés",
+    "done": "Kész",
+    "skip": "Ma kihagyom",
+    "loading": "Betöltés...",
+    "error": "Valami hiba történt. Kérjük, próbálja újra.",
+    "errorTitle": "Valami hiba történt",
+    "errorDefault": "Váratlan hiba történt.",
+    "tryAgain": "Újrapróbálkozás",
+    "logOut": "Kijelentkezés",
+    "offline": "Nincs internetkapcsolat – az adatok szinkronizálásra kerülnek, amint létrejön a kapcsolat",
+    "synced": "Szinkronizálva",
+    "viewMore": "Tovább",
+    "back": "Vissza",
+    "next": "Következő",
+    "confirm": "Megerősítés",
+    "yes": "Igen",
+    "no": "Nem",
+    "you": "Ön",
+    "unknown": "Ismeretlen",
+    "saving": "Mentés...",
+    "primary": "Elsődleges"
+  },
+  "categories": {
+    "medication": "Gyógyszer",
+    "nutrition": "Étkezés és táplálkozás",
+    "physical": "Fizikai aktivitás",
+    "cognitive": "Agytorna",
+    "social": "Közösségi kapcsolatok",
+    "health": "Egészségügyi ellenőrzés"
+  },
+  "caregiverApp": {
+    "dashboard": {
+      "greeting": "Jó {{timeOfDay}}, {{name}}",
+      "statusGood": "{{patientName}} napja jól alakul",
+      "statusConcern": "Lehet, hogy {{patientName}} -nek szüksége van egy kis figyelemre",
+      "todaysStatus": "Mai állapot",
+      "tasksCompleted": "{{completed}} / {{total}} feladat elvégezve",
+      "dailyCheckin": "Napi bejelentkezés",
+      "noCheckinYet": "Még nem történt bejelentkezés ma",
+      "location": "Helyszín",
+      "atHome": "{{name}} otthon van",
+      "lastUpdate": "Utolsó frissítés: {{time}}",
+      "aiInsights": "Észrevételek",
+      "quickActions": "Gyorsműveletek",
+      "callPatient": "{{name}} hívása",
+      "tasksCompletedLabel": "feladat elvégezve",
+      "careCode": "Gondozási kód",
+      "careCodeHint": "Ossza meg a betegalkalmazás csatlakoztatásához",
+      "careCodeNotAvailable": "A kód nem elérhető",
+      "morningActivityPattern": "Reggeli aktivitási minta",
+      "insightText": "{{name}} több feladatot végez el azokon a napokon, amikor reggeli séták vannak beütemezve.",
+      "noJournalEntries": "Még nincsenek naplóbejegyzések",
+      "unknown": "Ismeretlen",
+      "moodStruggling": "Küzd",
+      "moodLow": "Rossz",
+      "moodOkay": "Elmegy",
+      "moodGood": "Jó",
+      "moodGreat": "Nagyszerű",
+      "sleepPoor": "Gyenge",
+      "sleepFair": "Közepes",
+      "sleepWell": "Jó",
+      "mood": "Hangulat",
+      "sleep": "Alvás",
+      "minutesAgo": "{{count}} perce",
+      "hoursAgo": "{{count}} órája",
+      "daysAgo": "{{count}} napja",
+      "deviceStatus": "Eszköz állapota",
+      "deviceOnline": "Online",
+      "deviceOffline": "Offline",
+      "lastSeenAt": "Utoljára látta: {{time}}",
+      "lastSeenNever": "Soha nem csatlakozott",
+      "engagementSummary": "Mai elfoglaltság",
+      "alertsToday": "Mai riasztások",
+      "checkedIn": "Bejelentkezett",
+      "notCheckedIn": "Nincs bejelentkezve",
+      "brainActivity": "Agyi aktivitás"
+    },
+    "carePlan": {
+      "title": "{{name}} napi terve",
+      "addTask": "Feladat hozzáadása",
+      "aiSuggest": "AI javaslatok",
+      "hintLabel": "Útmutatások ({{name}} ezt fogja látni)",
+      "hintPlaceholder": "Pl. A gyógyszerei a konyhapulton lévő gyógyszeres dobozban vannak",
+      "recurrence": "Ismétlődik",
+      "daily": "Minden nap",
+      "specificDays": "Adott napokon",
+      "oneTime": "Egyszeri",
+      "copyDay": "Másolás más napokra",
+      "saved": "Mentve",
+      "noTasks": "Még nincsenek feladatok. Kezdéshez adjon hozzá egy feladatot.",
+      "category": "Kategória",
+      "taskTitle": "Feladat címe",
+      "time": "Idő",
+      "deleteConfirm": "Törli ezt a feladatot?",
+      "noMoreSuggestions": "Nincs több javaslat.",
+      "copyFromTo": "Feladatok másolása innen: {{day}} ide:",
+      "copyCount": "{{taskCount}} feladat lesz átmásolva {{dayCount}} napra",
+      "days": {
+        "mon": "Hét",
+        "tue": "Kedd",
+        "wed": "Szer",
+        "thu": "Csüt",
+        "fri": "Pén",
+        "sat": "Szom",
+        "sun": "Vas"
+      },
+      "taskPhoto": "Feladat fotó (opcionális)",
+      "uploadPhoto": "Fotó feltöltése",
+      "removePhoto": "Fotó eltávolítása",
+      "medicationItems": "Gyógyszerek ebben a csoportban",
+      "medicationItemsHint": "Csoportosítson legfeljebb 3, egyszerre bevett gyógyszert",
+      "addMedication": "Gyógyszer hozzáadása",
+      "medName": "Gyógyszer neve",
+      "medNamePlaceholder": "pl. Donepezil",
+      "medDosage": "Adagolás vagy utasítás",
+      "medDosagePlaceholder": "pl. 10mg tabletta",
+      "medPhotoLabel": "Fotó",
+      "medItemLabel": "{{number}}. gyógyszer",
+      "removeMedication": "Eltávolítás",
+      "maxMedications": "Maximum 3 gyógyszer csoportonként",
+      "uploadingPhoto": "Feltöltés...",
+      "evidenceBased": "Bizonyítékokon alapuló"
+    },
+    "location": {
+      "title": "Helyszín és biztonság",
+      "currentLocation": "Jelenlegi helyszín",
+      "safeZones": "Biztonságos zónák",
+      "addSafeZone": "Biztonságos zóna hozzáadása",
+      "editSafeZone": "Biztonságos zóna szerkesztése",
+      "alerts": "Riasztási beállítások",
+      "leaveZoneAlert": "Értesítés, ha {{name}} elhagy egy biztonságos zónát",
+      "inactivityAlert": "Értesítés, ha nincs mozgás",
+      "nightAlert": "Értesítés, ha kint van utána",
+      "takeMeHomeAlert": "Értesítés, ha {{name}} megérinti a 'Vigyél haza' gombot",
+      "locationHistory": "Helyelőzmények",
+      "takeMeHomeTapped": "{{name}} megérintette a 'Vigyél haza' gombot",
+      "hours": "óra",
+      "zoneName": "Zóna neve",
+      "zoneRadius": "Sugár (méter)",
+      "unknownLocation": "Ismeretlen helyszín",
+      "completeOnboarding": "Kérjük, először fejezze be az előkészítést.",
+      "unacknowledgedAlerts": "{{count}} Nem nyugtázott riasztás",
+      "unacknowledgedAlertsPlural": "{{count}} Nem nyugtázott riasztás",
+      "acknowledge": "Nyugtázás",
+      "patientLocation": "{{name}} helyszíne",
+      "updated": "Frissítve: {{time}}",
+      "noLocationData": "Még nincsenek helyadatok",
+      "live": "Élő",
+      "add": "+ Hozzáadás",
+      "noSafeZonesYet": "Még nincsenek biztonságos zónák beállítva.\nAdjon hozzá zónákat, hogy riasztásokat kapjon, amikor {{name}} elhagyja azokat.",
+      "radiusMeters": "{{radius}}m sugár",
+      "recentAlerts24h": "Legutóbbi riasztások (24 óra)",
+      "noRecentAlerts": "Az elmúlt 24 órában nem voltak riasztások. Minden rendben!",
+      "deleteSafeZone": "Biztonságos zóna törlése",
+      "deleteSafeZoneConfirm": "Biztosan törli a következőt: \"{{name}}\"?",
+      "failedToSaveSafeZone": "Nem sikerült menteni a biztonságos zónát",
+      "failedToDeleteSafeZone": "Nem sikerült törölni a biztonságos zónát",
+      "fillAllFields": "Kérjük, töltse ki az összes mezőt",
+      "name": "Név",
+      "nameExample": "pl. Otthon, Orvosi rendelő",
+      "latitude": "Szélesség",
+      "longitude": "Hosszúság",
+      "radiusHint": "Ajánlott: 100-500 méter tipikus helyszínekhez",
+      "mapView": "Térkép nézet",
+      "mapRequiresBuild": "A térképek fejlesztői verziót igényelnek.\nA térképek engedélyezéséhez használja az EAS Build-et.",
+      "home": "Otthon",
+      "patient": "Beteg",
+      "alertTypeLeftSafeZone": "Elhagyta a biztonságos zónát",
+      "alertTypeInactive": "Inaktív",
+      "alertTypeNightMovement": "Éjszakai mozgás",
+      "alertTypeTakeMeHomeTapped": "Vigyél haza koppintás",
+      "alertTypeSosTriggered": "SOS aktiválva"
+    },
+    "coach": {
+      "title": "AI Gondozási Tanácsadó",
+      "tabs": {
+        "chat": "Csevegés",
+        "behaviours": "Viselkedések",
+        "resources": "Források"
+      },
+      "resources": {
+        "title": "Források",
+        "subtitle": "Útmutatók, cikkek és helyi támogatás, hogy segítsünk a gondozási utazásodon",
+        "linkLabel": "Források és útmutatók"
+      },
+      "intro": "Kérdezz tőlem bármit a {{name}} gondozásával kapcsolatban. Ismerem a rutinját, preferenciáit és az általános legjobb gyakorlatokat.",
+      "placeholder": "Írd be a kérdésed...",
+      "disclaimer": "Azért vagyok itt, hogy támogassalak, nem helyettesítem az orvosi tanácsot. Egészségügyi problémák esetén mindig konzultálj orvosoddal.",
+      "disclaimerShort": "A Care Coach csak általános útmutatást nyújt. Orvosi tanácsért mindig fordulj egészségügyi szakemberhez.",
+      "suggestedTopics": "Javasolt témák",
+      "addToCarePlan": "Hozzáadás a gondozási tervhez",
+      "addToDoctorNotes": "Hozzáadás az orvosi jegyzetekhez",
+      "newConversation": "Új beszélgetés",
+      "newChat": "Új csevegés",
+      "careCoach": "Gondozási tanácsadó",
+      "completeOnboarding": "Kérjük, először fejezd be a bevezetést.",
+      "greeting": "Szia {{name}}!",
+      "greetingIntro": "Azért vagyok itt, hogy segítsek {{patientName}} gondozásában. Kérdezz tőlem bármit a napi gondozással, tevékenységekkel vagy a nehéz helyzetek kezelésével kapcsolatban.",
+      "tryAsking": "Próbáld meg kérdezni:",
+      "askAbout": "Kérdezz a {{name}} gondozásáról...",
+      "send": "Küldés",
+      "signingIn": "Bejelentkezés",
+      "taskAddedSuccess": "A feladat hozzáadva a gondozási tervhez!",
+      "taskAddedError": "Nem sikerült hozzáadni a feladatot. Kérjük, próbálja újra.",
+      "noteAddedSuccess": "A jegyzet elmentve az orvosi látogatáshoz!",
+      "noteAddedError": "Nem sikerült elmenteni a jegyzetet. Kérjük, próbálja újra.",
+      "addToCarePlanButton": "Hozzáadás a gondozási tervhez",
+      "saveForDoctorVisit": "Mentés orvosi látogatáshoz",
+      "success": "Siker",
+      "suggestions": {
+        "sundowning": "Hogyan kezeljem a napnyugta-szindrómát?",
+        "rainyDays": "Milyen tevékenységek működnek esős napokon?",
+        "siblings": "Segíts megbeszélni a testvéreimmel a gondozás megosztását",
+        "refusesFood": "{{name}} nem hajlandó enni. Segítség.",
+        "repetitive": "Hogyan kezeljem az ismétlődő kérdéseket?"
+      },
+      "hub": {
+        "backToHub": "Vissza a tanácsadóhoz",
+        "insight": {
+          "title": "Neked",
+          "discuss": "Megbeszélés",
+          "fallback": "Nézz be {{name}} napjába, hogy személyre szabott betekintést nyerj"
+        },
+        "rightNow": {
+          "title": "Most",
+          "subtitle": "Azonnali segítség",
+          "refusing_food": "Nem hajlandó enni",
+          "refusing_medication": "Nem veszi be a gyógyszert",
+          "agitated": "Izgatott",
+          "not_recognizing": "Nem ismer fel",
+          "repetitive_questions": "Ugyanaz a kérdés újra",
+          "sundowning": "Napnyugta-szindróma",
+          "wants_to_leave": "El akar menni",
+          "caregiver_overwhelmed": "Elfogy a türelmem"
+        },
+        "planPrepare": {
+          "title": "Tervezés és felkészülés",
+          "subtitle": "Irányított munkafolyamatok",
+          "plan_tomorrow": "Tervezd meg a holnapot",
+          "plan_tomorrow_desc": "Építs egy nagyszerű napot együtt",
+          "doctor_visit": "Készülj fel az orvosi látogatásra",
+          "doctor_visit_desc": "Generálj egy strukturált összefoglalót",
+          "review_week": "Tekintsd át ezt a hetet",
+          "review_week_desc": "Mi ment jól, mire kell figyelni",
+          "adjust_plan": "Igazítsd a gondozási tervet",
+          "adjust_plan_desc": "Optimalizálj a működő dolgok alapján"
+        },
+        "learn": {
+          "title": "Tanulás",
+          "subtitle": "Téma útmutatók {{name}} számára",
+          "daily_routines": "Napi rutinok",
+          "communication": "Kommunikáció",
+          "behaviors": "Viselkedések",
+          "activities": "Tevékenységek",
+          "nutrition": "Táplálkozás",
+          "safety": "Biztonság",
+          "sleep": "Alvás és éjszaka"
+        },
+        "askAnything": {
+          "title": "Kérdezz bármit",
+          "placeholder": "Mi jár a fejedben a {{name}} gondozásával kapcsolatban?"
+        }
+      }
+    },
+    "family": {
+      "title": "{{patientName}} gondozó csapata",
+      "inviteMember": "Családtag meghívása",
+      "primaryCaregiver": "Elsődleges gondozó",
+      "familyMember": "Családtag",
+      "careCode": "Gondozási kód",
+      "careCodeHelp": "Oszd meg ezt a kódot a beteg alkalmazásának párosításához",
+      "regenerateCode": "Kód újragenerálása",
+      "regenerateWarning": "Ez leválasztja az összes párosított beteg eszközt. Szükségük lesz az új kódra.",
+      "journal": "Gondozási napló",
+      "addNote": "Jegyzet hozzáadása",
+      "observation": "Megfigyelés",
+      "note": "Jegyzet",
+      "milestone": "Mérföldkő",
+      "inviteEmail": "E-mail cím",
+      "inviteName": "Név",
+      "inviteRelationship": "Kapcsolat",
+      "familyCircle": "Családi kör",
+      "back": "Vissza",
+      "family": "Család",
+      "careJournal": "Gondozási napló",
+      "inviteFamilyMembers": "Családtagok meghívása",
+      "shareCareCodeDesc": "Oszd meg a gondozási kódodat, hogy más családtagok is csatlakozhassanak.",
+      "showCareCode": "Gondozási kód mutatása",
+      "copy": "Másolás",
+      "share": "Megosztás",
+      "copied": "Másolva!",
+      "codeCopiedToClipboard": "A gondozási kód a vágólapra másolva",
+      "familyMembers": "Családtagok ({{count}})",
+      "you": "Te",
+      "primary": "Elsődleges",
+      "entryPlaceholder": "Adj hozzá egy jegyzetet, megfigyelést vagy mérföldkövet...",
+      "posting": "Közzététel...",
+      "post": "Közzététel",
+      "noJournalEntries": "Még nincsenek naplóbejegyzések.",
+      "startDocumenting": "Kezdd el dokumentálni a gondozási utazásodat!",
+      "yesterday": "Tegnap",
+      "failedToAddEntry": "Nem sikerült hozzáadni a bejegyzést. Kérjük, próbálja újra.",
+      "shareCareCodeMessage": "Csatlakozz az OurTurn gondozási körömhöz! Használd ezt a gondozási kódot: {{code}}",
+      "deleteConfirmTitle": "Naplóbejegyzés törlése",
+      "deleteConfirmMessage": "Biztosan törölni szeretné ezt a naplóbejegyzést? Ez nem vonható vissza.",
+      "edited": "(szerkesztve)",
+      "crisis": "Válság",
+      "canEditPlan": "Szerkesztheti a tervet",
+      "receivesAlerts": "Értesítéseket kap",
+      "caregiverLimitReached": "Elérte a családtagok ingyenes szintjének korlátját. Frissítsen a bővítéshez."
+    },
+    "toolkit": {
+      "pageTitle": "Gondozói eszköztár",
+      "pageSubtitle": "Gyakorlati eszközök és támogatás a jóllétéhez",
+      "introMessage": "Szia, {{name}}! Ez a te helyed a gyors megkönnyebbüléshez, támogatáshoz és öngondoskodáshoz.",
+      "checkin": {
+        "title": "Hogy vagy ma?",
+        "energy": "Energia",
+        "energyLow": "Kimerült",
+        "energyHigh": "Energikus",
+        "stress": "Stressz",
+        "stressLow": "Nyugodt",
+        "stressHigh": "Lelki teher alatt",
+        "sleep": "Alvás minősége",
+        "sleepLow": "Szörnyű",
+        "sleepHigh": "Nagyszerű"
+      },
+      "relief": {
+        "title": "Gyorssegély állomás",
+        "recommended": "Ajánlott",
+        "duration": "{{min}} perc",
+        "startExercise": "Kezdés",
+        "stepOf": "{{current}}. lépés a {{total}} lépésből",
+        "complete": "Nagyszerű! A gyakorlat befejeződött.",
+        "close": "Bezárás",
+        "pause": "Szünet",
+        "resume": "Folytatás",
+        "exercises": {
+          "box-breathing": {
+            "name": "Doboz légzés",
+            "step0": "Helyezkedj el kényelmesen és csukd be a szemed",
+            "step1": "Lassan lélegezz be az orrodon keresztül",
+            "step2": "Tartsd vissza a lélegzeted finoman",
+            "step3": "Lassan lélegezz ki a szádon keresztül",
+            "step4": "Tartsd vissza a következő lélegzet előtt",
+            "step5": "Lassan lélegezz be az orrodon keresztül",
+            "step6": "Tartsd vissza a lélegzeted finoman",
+            "step7": "Lassan lélegezz ki a szádon keresztül",
+            "step8": "Tartsd vissza a következő lélegzet előtt",
+            "step9": "Lassan lélegezz be az orrodon keresztül",
+            "step10": "Tartsd vissza a lélegzeted finoman",
+            "step11": "Lassan lélegezz ki a szádon keresztül",
+            "step12": "Tartsd vissza a következő lélegzet előtt",
+            "step13": "Lassan lélegezz be az orrodon keresztül",
+            "step14": "Tartsd vissza a lélegzeted finoman",
+            "step15": "Lassan lélegezz ki a szádon keresztül",
+            "step16": "Tartsd vissza a következő lélegzet előtt",
+            "step17": "Lassan lélegezz be az orrodon keresztül",
+            "step18": "Tartsd vissza a lélegzeted finoman",
+            "step19": "Lassan lélegezz ki a szádon keresztül",
+            "step20": "Tartsd vissza a következő lélegzet előtt",
+            "step21": "Lassan lélegezz be az orrodon keresztül",
+            "step22": "Tartsd vissza a lélegzeted finoman",
+            "step23": "Lassan lélegezz ki a szádon keresztül",
+            "step24": "Nagyszerű. Szánj egy percet arra, hogy észrevedd, hogy érzed magad."
+          },
+          "54321-grounding": {
+            "name": "5-4-3-2-1 Földelés",
+            "step0": "Végy egy lassú, mély lélegzetet, és nézz körül",
+            "step1": "Nevezz meg 5 dolgot, amit most LÁTSZ",
+            "step2": "Nevezz meg 4 dolgot, amit most ÉRINTHETSZ",
+            "step3": "Nevezz meg 3 dolgot, amit most HALLHATSZ",
+            "step4": "Nevezz meg 2 dolgot, amit most SZAGOLHATSZ",
+            "step5": "Nevezz meg 1 dolgot, amit most ÍZLELHETSZ",
+            "step6": "Végy egy újabb mély lélegzetet. Itt vagy, és biztonságban vagy."
+          },
+          "gratitude-moment": {
+            "name": "Hála pillanat",
+            "step0": "Csukd be a szemed és vegyél egy nyugtató lélegzetet",
+            "step1": "Gondolj egy emberre, akiért hálás vagy, és hogy miért",
+            "step2": "Gondolj egy dologra, ami ma történt, ami jó volt, még ha kicsi is",
+            "step3": "Gondolj egy dologra magaddal kapcsolatban, amit értékelsz",
+            "step4": "Tartsd az elmédben ezt a három dolgot, és lélegezz mélyen",
+            "step5": "Vidd magaddal ezt a hála érzését."
+          },
+          "progressive-muscle-relaxation": {
+            "name": "Progresszív izomlazítás",
+            "step0": "Ülj le vagy feküdj le kényelmesen. Csukd be a szemed.",
+            "step1": "Szorítsd ökölbe mindkét kezed erősen 5 másodpercig...",
+            "step2": "Engedd el, és érezd, ahogy a feszültség elolvad",
+            "step3": "Feszítsd meg a vállaid – emeld őket a füleid felé...",
+            "step4": "Engedd el, és hagyd, hogy a vállaid leessenek",
+            "step5": "Húzd össze az arcod erősen – homlok, szemek, állkapocs...",
+            "step6": "Engedd el, és hagyd, hogy az arcod teljesen ellazuljon",
+            "step7": "Feszítsd meg a hasizmaidat...",
+            "step8": "Engedd el, és lélegezz a hasadba",
+            "step9": "Szorítsd össze erősen a lábaidat és a lábfejeidet...",
+            "step10": "Engedd el, és érezd, ahogy a melegség átjárja a lábaidat",
+            "step11": "Lélegezz mélyen. Az egész tested ellazult.",
+            "step12": "Óvatosan nyisd ki a szemed, amikor készen állsz."
+          },
+          "mindful-break": {
+            "name": "Tudatos szünet",
+            "step0": "Állj meg bármit is csinálsz. Ez a pillanat a tiéd.",
+            "step1": "Csukd be a szemed, és vegyél 3 lassú, mély lélegzetet",
+            "step2": "Figyeld meg, hogy érzi magát most a tested – nem kell semmit sem változtatni",
+            "step3": "Figyelj a körülötted lévő hangokra, közel és távol",
+            "step4": "Érezd a felületet magad alatt és a levegőt a bőrödön",
+            "step5": "Csendben mondd: \"Mindent megteszek, ami tőlem telik, és ez elég.\"",
+            "step6": "Végy még egy mély lélegzetet",
+            "step7": "Óvatosan nyisd ki a szemed. Friss vagy."
+          },
+          "breathing-478": {
+            "name": "4-7-8 Légzés",
+            "step0": "Ülj kényelmesen és lazítsd el a vállad",
+            "step1": "Lélegezz be halkan az orrodon keresztül 4 számolásig",
+            "step2": "Tartsd vissza a lélegzeted 7 számolásig",
+            "step3": "Fújd ki teljesen a levegőt a szádon keresztül 8 számolásig",
+            "step4": "Lélegezz be halkan az orrodon keresztül 4 számolásig",
+            "step5": "Tartsd vissza a lélegzeted 7 számolásig",
+            "step6": "Fújd ki teljesen a levegőt a szádon keresztül 8 számolásig",
+            "step7": "Lélegezz be halkan az orrodon keresztül 4 számolásig",
+            "step8": "Tartsd vissza a lélegzeted 7 számolásig",
+            "step9": "Fújd ki teljesen a levegőt a szádon keresztül 8 számolásig",
+            "step10": "Lélegezz be halkan az orrodon keresztül 4 számolásig",
+            "step11": "Tartsd vissza a lélegzeted 7 számolásig",
+            "step12": "Fújd ki teljesen a levegőt a szádon keresztül 8 számolásig",
+            "step13": "Lélegezz be halkan az orrodon keresztül 4 számolásig",
+            "step14": "Tartsd vissza a lélegzeted 7 számolásig",
+            "step15": "Fújd ki teljesen a levegőt a szádon keresztül 8 számolásig",
+            "step16": "Figyeld meg, mennyivel nyugodtabbnak érzed most a tested."
+          },
+          "permission-slip": {
+            "name": "Engedélyező Cédula",
+            "step0": "Végy egy mély lélegzetet, és szánj magadra egy pillanatot",
+            "step1": "Mondd magadnak: \"Megengedem magamnak, hogy ma ne legyek tökéletes\"",
+            "step2": "Mondd: \"Megengedem magamnak, hogy segítséget kérjek\"",
+            "step3": "Mondd: \"Megengedem magamnak, hogy azt érezzem, amit érzek, bűntudat nélkül\"",
+            "step4": "Mondd: \"Megengedem magamnak, hogy szünetet tartsak\"",
+            "step5": "Mondd: \"Mindent megteszek, ami tőlem telik, és ez elég\"",
+            "step6": "Végy egy mély lélegzetet, és tartsd közel magadhoz ezeket a szavakat",
+            "step7": "Te is megérdemled az együttérzést. Vidd ezt magaddal."
+          },
+          "quick-walk": {
+            "name": "Gyors Séta Emlékeztető",
+            "step0": "Állj fel, és nyújtsd a karjaid a fejed fölé",
+            "step1": "Sétálj a legközelebbi ablakhoz vagy ajtóhoz, és nézz ki",
+            "step2": "Tegyél 5 lassú lépést, és érezd, ahogy a lábad megérinti a talajt",
+            "step3": "Nézz fel – figyeld meg az eget, a mennyezetet vagy valami mást a feletted",
+            "step4": "Tegyél még 5 lassú, szándékos lépést",
+            "step5": "Rázd meg lazán a kezeidet és a karjaidat néhány másodpercig",
+            "step6": "Gördítsd hátra a vállaidat 3-szor",
+            "step7": "Megmozgattad a tested. Ez is számít. Nagyszerűen csináltad."
+          }
+        }
+      },
+      "help": {
+        "title": "Segítségkérés",
+        "sendRequest": "Küldés",
+        "customPlaceholder": "Írd be az üzeneted...",
+        "recentRequests": "Legutóbbi Kérések",
+        "statusPending": "Függőben",
+        "statusAccepted": "Elfogadva",
+        "statusCompleted": "Kész",
+        "statusExpired": "Lejárt",
+        "sent": "Segítségkérés elküldve!",
+        "limitReached": "Naponta legfeljebb 5 segítségkérést küldhetsz.",
+        "noRequests": "Nincsenek legutóbbi segítségkérések.",
+        "accept": "Tudok segíteni",
+        "complete": "Késznek jelölés",
+        "template_need_break": "Szükségem van egy kis szünetre",
+        "template_handle_meds": "Segítség a gyógyszerekkel",
+        "template_need_visit": "Szükségem lenne egy látogatásra",
+        "template_groceries": "Bevásárlás",
+        "template_custom": "Egyéni üzenet",
+        "message_need_break": "Jól jönne egy kis szünet. Tudna valaki átvenni egy kicsit?",
+        "message_handle_meds": "Tudna valaki segíteni ma a gyógyszerekkel?",
+        "message_need_visit": "Sokat jelentene, ha valaki ma meglátogatna.",
+        "message_groceries": "Tudna valaki segíteni a bevásárlásban?"
+      },
+      "agent": {
+        "title": "Jóléti Segítő",
+        "disclaimer": "Csak érzelmi támogatásra. Nem orvosi tanács.",
+        "placeholder": "Hogy érzed magad?",
+        "greeting": "Gondolok rád...",
+        "rateLimited": "Vegyél egy mély lélegzetet – hamarosan újra cseveghetsz.",
+        "errorMessage": "Nem sikerült csatlakozni. Kérjük, próbálja újra.",
+        "expand": "Kibontás",
+        "collapse": "Összecsukás",
+        "prompts": {
+          "overwhelmed": "Mostanában túlterheltnek érzem magam",
+          "calmDown": "Segíts lecsillapodni 2 perc alatt",
+          "needEnergy": "Energiára van szükségem, de nem tudok szünetet tartani",
+          "poorSleep": "Nem tudtam jól aludni tegnap éjjel",
+          "needMoment": "Szükségem van egy pillanatra csak magamnak",
+          "uplifting": "Mondj valami felemelőt"
+        }
+      },
+      "goal": {
+        "title": "A mai cél",
+        "placeholder": "Tűzz ki egy célt mára...",
+        "done": "Kész!",
+        "weekLabel": "Ezen a héten",
+        "suggest": "Javaslat"
+      },
+      "burnout": {
+        "title": "Észrevettük, hogy extra támogatásra lehet szükséged",
+        "message": "A legutóbbi bejelentkezéseid emelkedett stresszt vagy alacsony energiaszintet mutatnak. Ez teljesen érthető – a gondozás nehéz."
+      },
+      "support": {
+        "title": "Támogatásra van szükséged?",
+        "description": "A gondozás kihívást jelent. Segítséget kérni rendben van."
+      },
+      "footer": "Ne feledd: Nem tudsz üres pohárból tölteni. A te jóléted is számít.",
+      "weeklyStats": {
+        "title": "Heti Statisztikák",
+        "subtitle": "A 7 napos jóléti összefoglalód",
+        "avgEnergy": "Átlagos Energia",
+        "avgStress": "Átlagos Stressz",
+        "avgSleep": "Átlagos Alvás",
+        "noData": "Töltsön ki napi ellenőrzéseket, hogy lássa a heti trendeket.",
+        "generateDigest": "AI összefoglaló generálása",
+        "generating": "Generálás...",
+        "behaviourSummary": "{{count}} viselkedési incidens rögzítve ezen a héten"
+      },
+      "sos": {
+        "title": "Mi történik most?",
+        "subtitle": "Válassza ki, miben van szüksége segítségre – mi végigvezetjük.",
+        "calmDown": "Meg kell nyugodnom",
+        "calmDownDesc": "Gyors légző- és megkönnyebbülési gyakorlatok",
+        "behaviourNow": "Viselkedés most történik",
+        "behaviourNowDesc": "Incidens naplózása és útmutatás kérése",
+        "callHelp": "Sürgősségi segítségre van szükségem",
+        "callHelpDesc": "Kapcsolatfelvétel a sürgősségi szolgálatokkal vagy a családdal",
+        "needBreak": "Szükségem van valakire, aki átveszi",
+        "needBreakDesc": "Segítségkérés küldése a családnak"
+      },
+      "behaviours": {
+        "playbooks": {
+          "title": "Viselkedési forgatókönyvek",
+          "subtitle": "Koppintson egy viselkedésre a lépésről lépésre történő útmutatásért",
+          "rightNow": "Most",
+          "understandWhy": "Értsd meg, miért",
+          "prevent": "Megelőzés",
+          "whenToCallDoctor": "Mikor kell orvost hívni"
+        },
+        "logger": {
+          "title": "Incidens naplózása",
+          "logIncident": "Incidens naplózása",
+          "typeLabel": "Viselkedés típusa",
+          "selectType": "Válasszon egy típust...",
+          "severity": "Súlyosság",
+          "mild": "Enyhe",
+          "severe": "Súlyos",
+          "timeOfDay": "Napszak",
+          "morning": "Reggel",
+          "afternoon": "Délután",
+          "evening": "Este",
+          "night": "Éjszaka",
+          "duration": "Időtartam (perc)",
+          "durationPlaceholder": "Mennyi ideig tartott?",
+          "triggers": "Lehetséges kiváltó okok",
+          "trigger_pain": "Fájdalom",
+          "trigger_hunger": "Éhség",
+          "trigger_thirst": "Szomjúság",
+          "trigger_fatigue": "Fáradtság",
+          "trigger_overstimulation": "Túlstimuláció",
+          "trigger_unfamiliar_environment": "Ismeretlen hely",
+          "trigger_unfamiliar_person": "Ismeretlen személy",
+          "trigger_routine_change": "A rutin változása",
+          "trigger_medication": "Gyógyszer",
+          "trigger_noise": "Zaj",
+          "trigger_loneliness": "Magány",
+          "trigger_boredom": "Unalom",
+          "trigger_bathroom_need": "WC-szükséglet",
+          "trigger_frustration": "Frusztráció",
+          "trigger_fear": "Félelem",
+          "trigger_unknown": "Ismeretlen",
+          "whatHappened": "Mi történt?",
+          "whatHappenedPlaceholder": "Írja le az incidenst...",
+          "whatHelped": "Mi segített? (opcionális)",
+          "whatHelpedPlaceholder": "Írja le, mi segített megnyugtatni a helyzetet...",
+          "save": "Incidens mentése",
+          "saved": "Incidens naplózva"
+        },
+        "timeline": {
+          "title": "Incidens idővonala",
+          "all": "Összes",
+          "noIncidents": "Egyetlen incidens sem felel meg a jelenlegi szűrőnek."
+        }
+      }
+    },
+    "reports": {
+      "title": "Orvosi látogatási jelentés",
+      "period": "Jelentési időszak",
+      "lastDays": "Utolsó {{days}} nap",
+      "generate": "Jelentés generálása",
+      "include": "Belefoglalás a jelentésbe",
+      "moodTrends": "Hangulati trendek és ellenőrzési összefoglaló",
+      "sleepPatterns": "Alvási szokások",
+      "activityCompletion": "Tevékenységteljesítési arányok",
+      "medicationAdherence": "Gyógyszeres kezelés betartása",
+      "journalNotes": "Figyelemre méltó gondozási napló megfigyelések",
+      "locationPatterns": "Helyminták",
+      "caregiverConcerns": "Gondozói aggályok",
+      "customNotes": "További megjegyzések az orvos számára",
+      "print": "Nyomtatás",
+      "downloadPdf": "PDF letöltése",
+      "emailDoctor": "E-mail küldése az orvosnak",
+      "disclaimer": "Ez az összefoglaló önbevalláson alapuló wellness adatokon és családi megfigyeléseken alapul. Ez nem klinikai értékelés.",
+      "webNote": "A teljes jelentéskészítőhöz nyomtatási és PDF exportálási lehetőséggel látogasson el az OurTurn webalkalmazásba.",
+      "openInWebApp": "Megnyitás a webalkalmazásban",
+      "previousReports": "Korábbi jelentések",
+      "generated": "Generálva: {{date}}",
+      "avgQuality": "átlagos minőség",
+      "moodStruggling": "Küzd",
+      "moodLow": "Alacsony",
+      "moodOkay": "Rendben",
+      "moodGood": "Jó",
+      "moodGreat": "Nagyszerű",
+      "careSummary": "OurTurn gondozási összefoglaló",
+      "patient": "Beteg",
+      "periodLabel": "Időszak",
+      "checkinsRecorded": "Rögzített bejelentkezések",
+      "averageMood": "Átlagos hangulat",
+      "averageSleepQuality": "Átlagos alvásminőség",
+      "activityCompletionRate": "Tevékenységteljesítés",
+      "medicationAdherenceRate": "Gyógyszeres kezelés betartása",
+      "observations": "Megfigyelések",
+      "categoryMedication": "Gyógyszer",
+      "categoryMeals": "Ételek",
+      "categoryPhysical": "Fizikai",
+      "categoryCognitive": "Kognitív",
+      "categorySocial": "Szociális",
+      "categoryHealth": "Egészség"
+    },
+    "onboarding": {
+      "step1Title": "Önről",
+      "step2Title": "Szerettéről",
+      "step3Title": "Élettörténetük",
+      "step4Title": "Napi rutin",
+      "step5Title": "Biztonsági beállítások",
+      "step6Title": "Az Ön gondozási kódja",
+      "next": "Következő",
+      "back": "Vissza",
+      "finish": "Kezdés",
+      "careCodeInstructions": "Telepítse az OurTurn alkalmazást szerette telefonjára, és adja meg ezt a kódot a csatlakozáshoz.",
+      "quickSetup": "Gyors beállítás",
+      "yourName": "Az Ön neve",
+      "yourNameRequired": "Az Ön neve *",
+      "lovedOneNameRequired": "Szerette neve *",
+      "relationship": "Az Ön kapcsolata vele",
+      "relationshipPlaceholder": "pl. lánya, fia, házastársa",
+      "settingsHint": "Később a Beállításokban további részleteket is megadhat",
+      "fillRequired": "Kérjük, töltse ki az összes kötelező mezőt",
+      "setupFailed": "A beállítás befejezése sikertelen",
+      "country": "Ország",
+      "theirName": "Az ő keresztneve",
+      "dateOfBirth": "Születési dátum",
+      "dementiaType": "Demencia típusa (nem kötelező)",
+      "homeAddress": "Lakcím",
+      "medications": "Gyógyszerek",
+      "addMedication": "Gyógyszer hozzáadása",
+      "childhoodLocation": "Hol nőtt fel",
+      "career": "Karrier / foglalkozás",
+      "hobbies": "Hobbi és érdeklődési körök",
+      "favoriteMusic": "Kedvenc zene / előadók",
+      "favoriteFoods": "Kedvenc ételek",
+      "importantPeople": "Fontos emberek",
+      "keyEvents": "Fontos életesemények",
+      "uploadPhotos": "Családi fotók feltöltése",
+      "wakeTime": "Ébredési idő",
+      "sleepTime": "Lefekvési idő",
+      "generatePlan": "Javasolt terv generálása",
+      "emergencyContacts": "Sürgősségi kapcsolattartók",
+      "alertSettings": "Értesítési beállítások",
+      "stepOf": "{{current}}. lépés a {{total}} lépésből",
+      "breakfastTime": "Reggeli idő",
+      "lunchTime": "Ebéd idő",
+      "dinnerTime": "Vacsora idő",
+      "typicalDay": "Egy tipikus nap leírása",
+      "typicalDayPlaceholder": "Írja le egy tipikus napot...",
+      "emergencyContactsHint": "Adjon hozzá sürgősségi kapcsolattartókat, amelyek megjelennek a beteg alkalmazás Súgó fülén.",
+      "remove": "Eltávolítás",
+      "addContact": "Kapcsolat hozzáadása",
+      "contactNameRequired": "Név *",
+      "phoneRequired": "Telefonszám *",
+      "relationshipOptional": "Kapcsolat (nem kötelező)",
+      "addContactButton": "+ Kapcsolat hozzáadása",
+      "emergencyContactWarning": "Javasoljuk, hogy adjon hozzá legalább egy sürgősségi kapcsolattartót.",
+      "allSet": "Minden be van állítva!",
+      "careCodeLabel": "GONDOZÁSI KÓD",
+      "copied": "Másolva!",
+      "copyCode": "Kód másolása",
+      "nextSteps": "Következő lépések:",
+      "nextStep1": "1. Telepítse az OurTurn alkalmazást {{name}} telefonjára",
+      "nextStep2": "2. Nyissa meg az alkalmazást, és írja be a fenti Gondozási kódot",
+      "nextStep3": "3. Ennyi! {{name}} napi terve megjelenik a telefonján",
+      "homeAddressPlaceholder": "Fő utca 123, Város"
+    },
+    "settings": {
+      "title": "Beállítások",
+      "appearance": "Megjelenés",
+      "theme": {
+        "label": "Téma",
+        "light": "Világos",
+        "dark": "Sötét",
+        "system": "Rendszer"
+      },
+      "profile": "Profil",
+      "account": "Fiók",
+      "subscription": "Előfizetés",
+      "notifications": "Értesítések",
+      "privacy": "Adatvédelem és adatok",
+      "exportData": "Adatok exportálása",
+      "exportNote": "Töltse le az összes adatának másolatát (GDPR szerinti adathordozhatósághoz való jog)",
+      "exportClipboard": "Az adatok a vágólapra kerültek. Beillesztheti egy dokumentumba vagy e-mailbe.",
+      "deleteAccount": "Fiók törlése",
+      "deleteWarning": "Ez véglegesen törli a háztartás összes adatát. Ez nem vonható vissza.",
+      "deleteConfirmType": "Írja be a DELETE szót a fiók törlésének megerősítéséhez",
+      "confirmDelete": "Törlés megerősítése",
+      "language": "Nyelv",
+      "about": "Az OurTurn névjegye",
+      "version": "Verzió",
+      "notMedicalDevice": "Az OurTurn nem orvosi eszköz",
+      "dailySummary": "Napi összefoglaló",
+      "dailySummaryTime": "Napi összefoglaló időpontja",
+      "emailNotifications": "E-mail értesítések",
+      "pushNotifications": "Push értesítések",
+      "safetyAlerts": "Biztonsági riasztások",
+      "signOut": "Kijelentkezés",
+      "saveProfile": "Profil mentése",
+      "saved": "Mentve!",
+      "saving": "Mentés...",
+      "changePassword": "Jelszó megváltoztatása",
+      "newPassword": "Új jelszó",
+      "confirmNewPassword": "Új jelszó megerősítése",
+      "passwordPlaceholder": "Legalább 8 karakter",
+      "passwordChanged": "A jelszó sikeresen megváltoztatva!",
+      "changingPassword": "Változtatás...",
+      "copyCode": "Kód másolása",
+      "codeCopied": "Kód másolva!",
+      "regenerateCode": "Kód újragenerálása",
+      "regenerateWarning": "A régi kód nem fog működni. Minden párosított beteg eszköznek szüksége lesz az új kódra.",
+      "dangerZone": "Veszélyzóna",
+      "relationship": "Kapcsolat",
+      "deleteConfirm": "Írja be a DELETE szót a fiók törlésének megerősítéséhez",
+      "photoGallery": "Fotógaléria",
+      "photoGalleryDesc": "Töltsön fel családi fotókat a személyre szabott emlékezési tevékenységekhez",
+      "uploadPhotos": "Fotók feltöltése",
+      "uploading": "Feltöltés...",
+      "deletePhoto": "Törli ezt a fotót?",
+      "maxPhotosReached": "Elérte a maximális 20 fotót",
+      "photoUploadHint": "Legfeljebb 20 fotó, maximum 5 MB méretűek",
+      "photoUploadFailed": "A fénykép feltöltése sikertelen. Kérjük, próbálja újra.",
+      "photoDeleteFailed": "A fénykép törlése sikertelen. Kérjük, próbálja újra.",
+      "noPhotosYet": "Még nincsenek feltöltött fotók",
+      "photosCount": "{{count}} / 20 fotó",
+      "patientComplexity": "Beteg alkalmazás mód",
+      "patientComplexityDesc": "Állítsa be a beteg alkalmazás felületét szerettei igényei alapján.",
+      "complexity": {
+        "full": "Teljes",
+        "fullDesc": "Minden funkció elérhető",
+        "simplified": "Egyszerűsített",
+        "simplifiedDesc": "Nagyobb szöveg, kevesebb részlet",
+        "essential": "Alapvető",
+        "essentialDesc": "Minimális – csak zene és segítségkérés"
+      },
+      "safetyEscalation": "Biztonság és eszkaláció",
+      "escalationTiming": "Eszkalációs időzítés",
+      "escalationTimingDesc": "Mennyi idő teljen el a nyugtázatlan riasztások eszkalálása előtt",
+      "offlineThreshold": "Offline riasztási küszöbérték",
+      "offlineThresholdDesc": "Riasztás, ha az eszköz ilyen hosszú ideje nem látható",
+      "minutes": "perc",
+      "respiteReminders": "Pihenő emlékeztetők",
+      "respiteRemindersDesc": "Emlékeztetőket kaphat a szünetek tartására",
+      "groupProfile": "Az Ön profilja",
+      "groupAboutPatient": "A {{name}} névjegye",
+      "groupAboutPatientGeneric": "Szerettének névjegye",
+      "groupSharing": "Megosztás és kapcsolat",
+      "groupSafety": "Biztonság és értesítések",
+      "groupAccount": "Fiók",
+      "patientInformation": "Beteginformáció",
+      "patientInformationDesc": "Alapvető információk szeretteiről",
+      "patientName": "Beteg neve",
+      "dateOfBirth": "Születési dátum",
+      "dementiaType": "Demencia típusa",
+      "selectDementiaType": "Válasszon típust (opcionális)",
+      "homeAddress": "Lakcím",
+      "homeAddressPlaceholder": "Teljes lakcím",
+      "savingPatientInfo": "Mentés...",
+      "savePatientInfo": "Beteg információinak mentése",
+      "lifeStory": "Élettörténet",
+      "lifeStoryDesc": "Ezek az adatok segítenek személyre szabni a napi tevékenységeket és a felidéző üzeneteket.",
+      "childhoodLocation": "Hol nőtt fel",
+      "career": "Karrier / Foglalkozás",
+      "hobbies": "Hobbi és érdeklődési körök",
+      "hobbiesPlaceholder": "pl. kertészkedés, festés, sakk",
+      "favoriteMusic": "Kedvenc zene / Előadók",
+      "favoriteMusicPlaceholder": "pl. Frank Sinatra, Beatles",
+      "favoriteFoods": "Kedvenc ételek",
+      "favoriteFoodsPlaceholder": "pl. almás pite, sült csirke",
+      "importantPeople": "Fontos emberek",
+      "importantPeoplePlaceholder": "pl. János (testvér), Mária (legjobb barát)",
+      "keyEvents": "Fontos életesemények",
+      "keyEventsPlaceholder": "pl. Érettségi 1965-ben, Költözés Londonba 1970-ben",
+      "savingLifeStory": "Mentés...",
+      "saveLifeStory": "Élettörténet mentése",
+      "dailySchedule": "Napi menetrend",
+      "dailyScheduleDesc": "Állítsa be a szerettének a felkelési és lefekvési időpontját a napi rutinhoz.",
+      "wakeTime": "Ébredési idő",
+      "sleepTime": "Lefekvési idő",
+      "savingSchedule": "Mentés...",
+      "saveSchedule": "Menetrend mentése",
+      "emergencyContacts": "Sürgősségi kapcsolattartók",
+      "emergencyContactsDesc": "Ezek a kapcsolattartók a beteg alkalmazás Súgó fülén jelennek meg.",
+      "addContact": "Kapcsolat hozzáadása",
+      "contactName": "Kapcsolat neve",
+      "contactPhone": "Telefonszám",
+      "contactRelationship": "Kapcsolat",
+      "contactRelationshipPlaceholder": "pl. Lánya, szomszéd",
+      "noContactsYet": "Még nincsenek hozzáadva sürgősségi kapcsolattartók.",
+      "savingContacts": "Mentés...",
+      "saveContacts": "Kapcsolatok mentése",
+      "removeContactConfirm": "Eltávolítja ezt a kapcsolatot?",
+      "country": "Ország",
+      "selectCountry": "Válasszon országot",
+      "selectLanguage": "Válasszon nyelvet",
+      "languageSaved": "Nyelv frissítve"
+    },
+    "auth": {
+      "login": "Bejelentkezés",
+      "signup": "Regisztráció",
+      "email": "E-mail",
+      "password": "Jelszó",
+      "forgotPassword": "Elfelejtette a jelszavát?",
+      "noAccount": "Nincs még fiókja?",
+      "hasAccount": "Már van fiókja?",
+      "continueWithGoogle": "Folytatás a Google-lal",
+      "continueWithApple": "Folytatás az Apple-lel",
+      "or": "vagy",
+      "confirmPassword": "Jelszó megerősítése",
+      "createAccount": "Fiók létrehozása",
+      "getStarted": "Kezdje el",
+      "fillAllFields": "Kérjük, töltse ki az összes mezőt",
+      "passwordsNoMatch": "A jelszavak nem egyeznek",
+      "passwordTooShort": "A jelszónak legalább 8 karakter hosszúnak kell lennie",
+      "checkEmail": "Kérjük, ellenőrizze az e-mail fiókját a fiókja megerősítéséhez",
+      "enterEmailFirst": "Kérjük, először adja meg az e-mail címét.",
+      "resetEmailSent": "Ellenőrizze az e-mail fiókját",
+      "resetEmailSentDesc": "Elküldtünk egy jelszó-visszaállítási linket az e-mail címére.",
+      "welcomeBack": "Üdv újra",
+      "enterEmailAndPassword": "Kérjük, adja meg az e-mail címét és a jelszavát",
+      "signingIn": "Bejelentkezés",
+      "orContinueWith": "Vagy folytassa a következővel"
+    },
+    "nav": {
+      "family": "Családi kör",
+      "toolkit": "Eszköztár",
+      "reports": "Jelentések",
+      "settings": "Beállítások",
+      "crisis": "Vészhelyzeti központ"
+    },
+    "crisis": {
+      "title": "Vészhelyzeti központ",
+      "subtitle": "Valós idejű válságkezelés és de-eszkalációs támogatás",
+      "eventLogged": "Válsághelyzet naplózva",
+      "logEvent": "Válsághelyzet naplózása",
+      "logPlaceholder": "Írja le, mi történt...",
+      "status": {
+        "allClear": "Minden rendben",
+        "allClearDesc": "Nincsenek aktív riasztások",
+        "activeAlerts": "Aktív riasztások",
+        "lastKnownLocation": "Utolsó ismert hely",
+        "viewOnMap": "Megtekintés a térképen",
+        "noLocationData": "Nincs elérhető helyadat"
+      },
+      "actions": {
+        "modeLabel": "Az Ön helyzete",
+        "withThem": "Vele vagyok",
+        "remote": "Távol vagyok",
+        "startDeEscalation": "De-eszkaláció indítása",
+        "startDeEscalationDesc": "Lépésről lépésre vezetett nyugtató folyamat",
+        "callEmergency": "Segélyhívás",
+        "callEmergencyDesc": "Hívja a helyi segélyszolgálatokat",
+        "alertFamily": "Család értesítése",
+        "alertFamilyDesc": "Push értesítés küldése az összes gondozónak",
+        "alertFamilySent": "Családtagok értesítve",
+        "alertFamilyFailed": "Nem sikerült értesíteni a családot. Kérjük, próbálja újra.",
+        "viewLocation": "Hely megtekintése",
+        "viewLocationDesc": "{{name}} aktuális helyének megtekintése a térképen",
+        "contactPrimary": "Kapcsolatfelvétel az elsődleges gondozóval",
+        "contactPrimaryDesc": "Az elsődleges gondozó elérése e-mailben",
+        "logEvent": "Esemény naplózása",
+        "logEventDesc": "Jegyezze fel ezt a pillanatot a válságnaplóba"
+      },
+      "wizard": {
+        "breathingTitle": "Kezdjük egy nyugtató lélegzettel",
+        "breathingInstruction": "Lassan lélegezzen be... tartsa... lélegezzen ki...",
+        "stepOf": "{{current}}. lépés a {{total}} lépésből",
+        "thisHelped": "Ez segített",
+        "tryNext": "Következő lépés",
+        "skip": "Kihagyás",
+        "completionTitle": "Nagyszerű. Gondosan kezelte a helyzetet.",
+        "completionDesc": "Szeretne jegyzeteket rögzíteni a történtekről?",
+        "crisisNotesPlaceholder": "Mi történt? Mi segített? Milyen kiváltó okokat vett észre...",
+        "saveAndClose": "Mentés és bezárás",
+        "closeWithoutSaving": "Bezárás mentés nélkül"
+      },
+      "history": {
+        "title": "Legutóbbi válsághelyzetek",
+        "noEvents": "Az elmúlt 30 napban nem történt válsághelyzet.",
+        "viewAllInJournal": "Összes megtekintése a naplóban",
+        "yesterday": "Tegnap",
+        "daysAgo": "{{count}} napja"
+      },
+      "steps": {
+        "stayCalm": {
+          "title": "Maradjon nyugodt",
+          "detail": "Vegyen egy lassú, mély lélegzetet. Az Ön nyugodt energiája segít nekik biztonságban érezni magukat.",
+          "script": "Itt vagyok veled. Minden rendben van."
+        },
+        "validateFeelings": {
+          "title": "Érzelmek érvényesítése",
+          "detail": "Mondja azt, hogy 'Látom, hogy ideges vagy. Ez nagyon nehéz lehet.' Ne vitatkozzon vagy helyesbítse.",
+          "script": "Látom, hogy ideges vagy. Ez nagyon nehéz lehet."
+        },
+        "simplifyEnvironment": {
+          "title": "Egyszerűsítse a környezetet",
+          "detail": "Használjon rövid, egyszerű mondatokat. Egyszerre csak egy gondolatot. Kerülje a „miért” kérdések feltevését.",
+          "script": "Tegyük egyszerűbbé a dolgokat. Egyszerre csak egy dologgal foglalkozzunk."
+        },
+        "redirectAttention": {
+          "title": "Terelje el a figyelmét",
+          "detail": "Finoman változtassa meg a témát. Javasoljon egy ismerős tevékenységet, dalt vagy sétát.",
+          "script": "Mit szólnál, ha valami mást próbálnánk? Menjünk egy kicsit sétálni együtt."
+        },
+        "useGentleTouch": {
+          "title": "Alkalmazzon gyengéd érintést",
+          "detail": "Ha szívesen fogadja, egy gyengéd kéz a karon megnyugtató lehet. Figyelje a reakcióját.",
+          "script": "Rendben van, ha megfogom a kezed? Itt vagyok veled."
+        },
+        "giveSpace": {
+          "title": "Hagyjon teret",
+          "detail": "Ha semmi sem működik, gondoskodjon a biztonságról, és hagyjon neki teret. Rendben van, ha hátralép.",
+          "script": "Itt leszek a közelben, ha szükséged van rám. Szánj rá időt."
+        }
+      },
+      "helplines": "Segélyvonalak",
+      "noHelplineAvailable": "Az Ön országához nem található segélyvonal",
+      "call": "Hívás",
+      "email": "E-mail",
+      "website": "Weboldal",
+      "familyContacts": "Családi kapcsolatok",
+      "supportResources": "Támogató források",
+      "scenarios": {
+        "title": "Mi történik?",
+        "subtitle": "Érintsen meg egy helyzetet a lépésről lépésre történő útmutatásért",
+        "urgent": "Sürgős",
+        "stepCountLabel": "{{count}} lépés",
+        "backToSituations": "Vissza a helyzetekhez",
+        "breathe": "Légzőgyakorlat",
+        "callEmergency": "Hívja a mentőket"
+      },
+      "patterns": {
+        "title": "Mintázat betekintés",
+        "noEvents": "Naplózza az eseményeket, hogy idővel láthassa a mintákat.",
+        "fewEvents": "{{count}} esemény naplózva. További adatokra van szükség a mintákhoz.",
+        "timePattern": "A legtöbb esemény {{time}}-kor történik.",
+        "weekCount": "{{count}} ezen a héten."
+      },
+      "personalization": {
+        "label": "Mi nyugtatja meg {{name}}-t",
+        "empty": "Adjon hozzá nyugtató stratégiákat {{name}} életrajzában, hogy személyre szabott tippeket lásson itt."
+      },
+      "scenarioData": {
+        "stepsCount": "{{count}} lépés",
+        "agitated": {
+          "label": "Izgatott / Felzaklatott",
+          "steps": [
+            {
+              "title": "Először te",
+              "instruction": "Vegyen egy lassú lélegzetet, mielőtt bármit is tenne. Nem tudsz megnyugtatni valakit, ha nem vagy nyugodt."
+            },
+            {
+              "title": "Gyors ellenőrzés – valami fizikai probléma lehet?",
+              "instruction": "A fájdalom, az éhség, a fürdőszoba szükségessége vagy egy fertőzés mind izgatottságot okozhat.",
+              "checklist": [
+                "Fájdalom vagy kellemetlenség?",
+                "Éhes vagy szomjas?",
+                "Szüksége van a fürdőszobára?",
+                "Legutóbbi gyógyszerváltozás?",
+                "Láz vagy betegség jelei?"
+              ]
+            },
+            {
+              "title": "Csökkentse a hőmérsékletet",
+              "instruction": "Beszéljen lassan és halkan. Ne vitatkozzon, ne javítson ki és ne magyarázzon. Erősítse meg, amit érez.",
+              "tips": [
+                "„Látom, hogy ideges vagy. Itt vagyok neked.”",
+                "Csökkentse a zajt – kapcsolja ki a TV-t, zárja be az ablakokat",
+                "Hagyjon neki fizikai teret, ne zsúfolódjon össze",
+                "Kínáljon egy ismerős, kényelmes tárgyat"
+              ]
+            },
+            {
+              "title": "Terelje el a figyelmét, ne érveljen",
+              "instruction": "Finoman változtassa meg a témát vagy a környezetet. Ne próbálja meg logikusan levezetni belőle.",
+              "tips": [
+                "Javasoljon egy sétát, vagy menjen egy másik szobába",
+                "Tegyen fel zenét, amit szeret",
+                "Kínáljon egy harapnivalót vagy meleg italt",
+                "Nézzenek együtt fényképeket"
+              ]
+            },
+            {
+              "title": "Mikor kérjen segítséget",
+              "instruction": "Ha az izgatottság több mint 30 percig tart, ha fennáll annak a veszélye, hogy kárt tesz magában vagy Önben, vagy ha ez egy hirtelen új viselkedés – hívja a mentőket.",
+              "actionLabel": "Hívja a mentőket"
+            }
+          ]
+        },
+        "wandering": {
+          "label": "Elkóborlás / Eltűnés",
+          "steps": [
+            {
+              "title": "Először nézze meg a szokásos helyeket",
+              "instruction": "A demenciában szenvedő emberek többsége ismerős helyekre megy – egykori munkahelyre, gyermekkori otthonba, szomszéd házába.",
+              "tips": [
+                "Nézze meg a kertet, a garázst, a közeli utcákat",
+                "Kérdezze meg a szomszédokat, hogy látták-e",
+                "Nézze meg azokat a helyeket, ahová rendszeresen járt"
+              ]
+            },
+            {
+              "title": "Használja a helymeghatározást",
+              "instruction": "Ha a helymeghatározás be van állítva, ellenőrizze a jelenlegi pozícióját most."
+            },
+            {
+              "title": "Értesítse a családot",
+              "instruction": "Azonnal tudassa mindenkivel. Több szem többet lát, ha keresésről van szó."
+            },
+            {
+              "title": "Hívja a rendőrséget, ha 15 percen belül nem találja meg",
+              "instruction": "Ne várjon. A demenciában szenvedő embereknél nagy a sérülés kockázata. Hívja a mentőket, és mondja el nekik, hogy az illető demenciában szenved.",
+              "actionLabel": "Hívja a mentőket"
+            }
+          ]
+        },
+        "refusing": {
+          "label": "A gondozás megtagadása",
+          "steps": [
+            {
+              "title": "Álljon meg – ez nem dac",
+              "instruction": "A megtagadás szinte mindig félelem, zavarodottság vagy kényelmetlenség. Lehet, hogy nem érti, mit kérsz tőle."
+            },
+            {
+              "title": "Lépjen hátra, és próbálja meg másképp",
+              "instruction": "Ne erőltesse. Térjen vissza 15–20 perc múlva, és közelítse meg úgy, mintha ez lenne az első alkalom.",
+              "tips": [
+                "Változtassa meg, ki kérdezi",
+                "Változtassa meg a környezetet",
+                "Bontsa a feladatot kisebb lépésekre",
+                "Kínáljon választási lehetőségeket: „Fürdés vagy zuhanyzás?”"
+              ]
+            },
+            {
+              "title": "Érezze biztonságban magát",
+              "instruction": "Magyarázza el az egyes lépéseket, mielőtt megtenné. Mozogjon lassan. Tartsa melegen.",
+              "tips": [
+                "Figyelmeztesse, mielőtt megérinti",
+                "Használjon nyugodt, meleg hangot",
+                "Játssza le a kedvenc zenéjét a feladat közben",
+                "Tartsa a rutint következetesen"
+              ]
+            },
+            {
+              "title": "Ez egy minta?",
+              "instruction": "Ha következetesen megtagadja ugyanazt a feladatot, naplózza azt. Lehet, hogy van egy mögöttes probléma – fájdalom, félelem, érzékenység. Beszélje meg orvosával."
+            }
+          ]
+        },
+        "hallucinations": {
+          "label": "Dolgok látása / hallása",
+          "steps": [
+            {
+              "title": "Ne vitatkozzon – ez valóságos számára",
+              "instruction": "Ismerje el, amit tapasztal, anélkül, hogy megerősítené, hogy igaz.",
+              "tips": [
+                "„Ez ijesztően hangzik. Itt vagyok veled.”",
+                "„Mondd el, mit látsz.”",
+                "Ne mondd, hogy „nincs ott semmi”"
+              ]
+            },
+            {
+              "title": "Ellenőrizze a környezetet",
+              "instruction": "Az árnyékok, a tükröződések, a TV hangjai és a rendetlenség félreértelmezést válthatnak ki.",
+              "checklist": [
+                "Árnyékok az ablakokból vagy lámpákból?",
+                "TV vagy rádió szól a háttérben?",
+                "Tükör tükröződések?",
+                "Gyenge világítás?"
+              ]
+            },
+            {
+              "title": "Terelje el finoman",
+              "instruction": "Terelje a figyelmét valami konkrétra és megnyugtatóra.",
+              "tips": [
+                "Menjen egy jól megvilágított szobába",
+                "Kínáljon egy gyakorlati tevékenységet",
+                "Menjen egy rövid sétára együtt",
+                "Főzzön együtt egy csésze teát"
+              ]
+            },
+            {
+              "title": "Mikor hívja az orvost",
+              "instruction": "Ha a hallucinációk újak, gyakoriak vagy rendkívüli szorongást okoznak. A hirtelen kezdet fertőzésre, gyógyszer mellékhatásaira vagy delíriumra utalhat."
+            }
+          ]
+        },
+        "sundowning": {
+          "label": "Naplemente-szindróma",
+          "steps": [
+            {
+              "title": "Ismerje fel a mintát",
+              "instruction": "A naplemente-szindróma általában késő délután kezdődik. Ez rendkívül gyakori, és nem tudják irányítani."
+            },
+            {
+              "title": "Állítsa be a környezetet most",
+              "instruction": "Csökkentse az összes stimulációt, és hozzon létre biztonsági jeleket.",
+              "tips": [
+                "Kapcsolja be a meleg fényeket, mielőtt besötétedik",
+                "Húzza be a függönyöket, hogy csökkentse az árnyékokat",
+                "Kapcsolja ki vagy halkítsa le a TV hangerejét",
+                "Csökkentse a szobában tartózkodók számát"
+              ]
+            },
+            {
+              "title": "Kínáljon nyugtató tevékenységeket",
+              "instruction": "A gyengéd, ismétlődő, ismerős tevékenységek a legjobbak.",
+              "tips": [
+                "Gyengéd kézmasszázs testápolóval",
+                "Lágy, ismerős zene",
+                "Törölközők hajtogatása vagy tárgyak válogatása",
+                "Nézzenek át együtt egy fotóalbumot"
+              ]
+            },
+            {
+              "title": "Előzze meg holnap",
+              "instruction": "Naplózza az epizódot az időzítési adatokkal. A minták segítenek a menetrendek módosításában – több reggeli tevékenység, kevesebb délutáni koffein."
+            }
+          ]
+        },
+        "fall": {
+          "label": "Elesés / Fizikai vészhelyzet",
+          "steps": [
+            {
+              "title": "Ne mozdítsa meg",
+              "instruction": "Hacsak nincs közvetlen veszélyben, ne próbálja meg felemelni vagy mozgatni.",
+              "tips": [
+                "Guggoljon le az ő szintjükre",
+                "Nyugtassa meg: „Itt vagyok, biztonságban vagy”",
+                "Ellenőrizze, hogy van-e látható sérülés"
+              ]
+            },
+            {
+              "title": "Fel tud állni?",
+              "instruction": "Ha nincs nyilvánvaló sérülés, segítsen lassan, fokozatosan felállni.",
+              "checklist": [
+                "Éber és reagál?",
+                "Van nyilvánvaló sérülés vagy fájdalom?",
+                "Tudja mozgatni az összes végtagját?",
+                "Megütötte a fejét?"
+              ]
+            },
+            {
+              "title": "Hívjon segítséget, ha...",
+              "instruction": "Fejsérülés, nem tud felállni, erős fájdalom, a szokásosnál rosszabb zavartság vagy el nem álló vérzés."
+            },
+            {
+              "title": "Az esés után",
+              "instruction": "Jegyezze fel ezt az eseményt, és említse meg az orvosának. Az ismétlődő esések gyógyszeres problémákra vagy a betegség előrehaladására utalhatnak."
+            }
+          ]
+        },
+        "repetitive_questions": {
+          "label": "Ismétlődő kérdések",
+          "steps": [
+            {
+              "title": "Lélegezzen – ez a betegség, nem ő",
+              "instruction": "Őszintén nem emlékszik, hogy kérdezte. Az Ön frusztrációja jogos, de ha kimutatja, az még szorongóbbá teszi.",
+              "checklist": [
+                "Szorong valami miatt?",
+                "Lehet, hogy éhes, szomjas vagy unatkozik?",
+                "Van valamilyen közelgő esemény, ami aggodalmat okoz?"
+              ]
+            },
+            {
+              "title": "Valójában mit kérdez?",
+              "instruction": "A felszíni kérdés ritkán a valódi kérdés. A „Mikor lesz a vacsora?” jelentheti azt, hogy „Éhes vagyok.”",
+              "checklist": [
+                "Szorong valami miatt?",
+                "Lehet, hogy éhes, szomjas vagy unatkozik?",
+                "Van valamilyen közelgő esemény, ami aggodalmat okoz?"
+              ]
+            },
+            {
+              "title": "Reagáljon az érzésre",
+              "instruction": "A kérdés mögötti érzelemre válaszoljon, ne a szó szerinti szavakra.",
+              "tips": [
+                "Írja fel a választ egy jól látható táblára",
+                "Minden alkalommal adjon egyszerű, megnyugtató választ",
+                "Válaszadás után irányítsa át egy gyakorlati tevékenységre",
+                "Használjon vizuális ütemterveket a bizonytalanság csökkentésére"
+              ]
+            },
+            {
+              "title": "Óvja a saját jólétét",
+              "instruction": "Ha lehetséges, váltsa le egy másik gondozóval. Használjon fejhallgatót lágy zenével, amikor mentális szünetre van szüksége."
+            }
+          ]
+        },
+        "aggression": {
+          "label": "Agresszió",
+          "steps": [
+            {
+              "title": "Az Ön biztonsága az első",
+              "instruction": "Ha fizikailag nem érzi magát biztonságban, azonnal lépjen hátra. Ne próbálja megfékezni.",
+              "tips": [
+                "Helyezkedjen el egy kijárat közelében",
+                "Távolítsa el a veszélyes tárgyakat a hatótávolságon belülről",
+                "Tartsa a hangját mélyen és nyugodtan",
+                "Ne tegyen hirtelen mozdulatokat"
+              ]
+            },
+            {
+              "title": "Földelje le magát",
+              "instruction": "Az agresszió Önnél is beindítja a harcolj vagy menekülj reakciót. Szánjon egy pillanatot a lélegzésre."
+            },
+            {
+              "title": "Mi váltotta ki ezt?",
+              "instruction": "Az agresszió szinte mindig reakció – fájdalom, félelem, frusztráció, érzékszervi túlterhelés.",
+              "checklist": [
+                "Megkérték, hogy csináljon valamit?",
+                "Fájt neki valami?",
+                "Zajos vagy kaotikus volt a környezet?",
+                "Sarokba szorítva érezte magát?"
+              ]
+            },
+            {
+              "title": "Adjon teret és időt",
+              "instruction": "Lépjen hátra. Állítsa le a kiváltó tevékenységet. Jöjjön vissza 15–20 perc múlva, mintha mi sem történt volna.",
+              "tips": [
+                "Hagyja el a szobát, ha biztonságos",
+                "Távolítsa el a kiváltó okot",
+                "Ne vegye személyesre",
+                "Lassan közelítsen, amikor visszatér"
+              ]
+            },
+            {
+              "title": "Amikor ez vészhelyzet",
+              "instruction": "Ha van fegyvere, ha valaki megsérült, vagy ha az agresszió nem csillapodik – hívja a mentőket."
+            }
+          ]
+        },
+        "sleep_disruption": {
+          "label": "Alvászavar",
+          "steps": [
+            {
+              "title": "Tartsa biztonságban a környezetet",
+              "instruction": "Ha éjszaka ébren van és mozog, az elsődleges prioritás a biztonság.",
+              "tips": [
+                "Kapcsoljon be alacsony éjszakai fényeket",
+                "Távolítsa el a botlásveszélyeket",
+                "Zárja le a külső ajtókat, ha aggódik a kóborlás miatt",
+                "„Éjszaka van, minden biztonságos”"
+              ]
+            },
+            {
+              "title": "Mi ébresztette fel?",
+              "instruction": "Az éjszakai ébredést fájdalom, fürdőszoba szükségessége, gyógyszeres kezelés időzítése vagy éhség okozhatja.",
+              "checklist": [
+                "Ki kell mennie a mosdóba?",
+                "Fáj neki valami?",
+                "Zaj vagy fény ébresztette fel?",
+                "Éhes vagy szomjas?"
+              ]
+            },
+            {
+              "title": "Óvatosan vezesse vissza",
+              "instruction": "Ne vitatkozzon arról, hogy mennyi az idő. Nyugtató jelekkel irányítsa vissza az ágyba.",
+              "tips": [
+                "Kínáljon egy meleg, koffeinmentes italt",
+                "Használjon nyugodt, halk hangot",
+                "Tegyen be lágy, ismerős zenét",
+                "Üljön le mellé, amíg meg nem nyugszik"
+              ]
+            },
+            {
+              "title": "Javítsa a holnap éjszakát",
+              "instruction": "Több nappali tevékenység, dél után ne fogyasszon koffeint, következetes lefekvési rutin, korlátozza a szunyókálást 30 percre."
+            }
+          ]
+        },
+        "shadowing": {
+          "label": "Árnyékként követés",
+          "steps": [
+            {
+              "title": "Ismerje el a frusztrációját",
+              "instruction": "Kimerítő, ha mindenhova követnek. Ezek az érzések jogosak. Vegyen egy levegőt.",
+              "tips": []
+            },
+            {
+              "title": "Miért követi Önt?",
+              "instruction": "Az árnyékként követést a szorongás és az elhagyástól való félelem okozza. Az Ön közelében lenni az egyetlen biztonságforrása.",
+              "checklist": [
+                "Volt mostanában valamilyen rutinváltozás?",
+                "Ismeretlen környezetben van?",
+                "Volt mostanában távol?",
+                "Rosszul érzi magát?"
+              ]
+            },
+            {
+              "title": "Csökkentse a szorongását",
+              "instruction": "Segítsen neki biztonságban érezni magát anélkül, hogy minden pillanatban fizikailag jelen lenne.",
+              "tips": [
+                "Adjon neki egy „munkát” az Ön közelében",
+                "Hagyjon nála egy személyes tárgyat, mint vigasztaló horgonyt",
+                "„Csak a konyhában vagyok, mindjárt visszajövök”",
+                "Próbáljon meg ismerős tévét vagy zenét, mint társat"
+              ]
+            },
+            {
+              "title": "Építsen be szüneteket magának",
+              "instruction": "Kérjen meg valakit, hogy üljön le mellé, amíg Ön 20 percet szán magára. Már 10 perc egyedüllét is segít.",
+              "tips": [
+                "Ne várja meg, amíg kimerül",
+                "Rendben van, ha óvatosan becsukja a fürdőszoba ajtaját",
+                "Fontolja meg a támogató csoportot",
+                "Ez a viselkedés gyakran csökken egy stabil rutinnal"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "tabs": {
+      "dashboard": "Műszerfal",
+      "plan": "Terv",
+      "location": "Helyszín",
+      "coach": "Edző",
+      "more": "Több"
+    }
+  },
+  "notifications": {
+    "taskReminder": "{{patientName}}, itt az ideje: {{taskTitle}}",
+    "taskCompleted": "{{patientName}} elvégezte: {{taskTitle}}",
+    "checkinReceived": "{{patientName}} elvégezte a mai bejelentkezést",
+    "leftSafeZone": "{{patientName}} elhagyta a(z) {{zoneName}} zónát",
+    "inactivity": "Nem észleltünk mozgást a(z) {{patientName}} személytől {{hours}} órája",
+    "nightMovement": "{{patientName}} kint mozog {{time}} időpontban",
+    "takeMeHome": "{{patientName}} a(z) {{location}} helyről a „Vigyél haza” gombra koppintott",
+    "eveningSummary": "{{patientName}} napja: {{completed}}/{{total}} feladat elvégezve. Hangulat: {{mood}}"
+  },
+  "subscription": {
+    "free": "Ingyenes",
+    "plus": "OurTurn Plus",
+    "upgradeTitle": "Oldja fel az OurTurn Plus szolgáltatást",
+    "upgradeFeature": "Ez a funkció OurTurn Plus előfizetést igényel",
+    "monthly": "{{price}}/hónap",
+    "annual": "{{price}}/év",
+    "annualSavings": "{{percent}}% megtakarítás",
+    "subscribe": "Feliratkozás",
+    "restore": "Vásárlás visszaállítása",
+    "manage": "Előfizetés kezelése",
+    "features": {
+      "unlimitedTasks": "Korlátlan számú feladat naponta",
+      "aiCoach": "Teljes AI gondozási edző",
+      "brainActivities": "AI által generált agyi wellness tevékenységek",
+      "safeZones": "Biztonságos zónák és helymeghatározási figyelmeztetések",
+      "multiCaregiver": "Akár 5 családtag",
+      "journal": "Megosztott gondozási napló",
+      "insights": "AI minta betekintések",
+      "reports": "Orvosi látogatási jelentések",
+      "toolkit": "Gondozói eszközkészlet és wellness",
+      "priority": "Prioritásos támogatás"
+    }
+  }
+}

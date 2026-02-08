@@ -1,0 +1,176 @@
+{
+  "common": {
+    "appName": "OurTurn",
+    "save": "Tallenna",
+    "cancel": "Peruuta",
+    "delete": "Poista",
+    "edit": "Muokkaa",
+    "done": "Valmis",
+    "skip": "Ohita tältä päivältä",
+    "or": "tai",
+    "loading": "Ladataan...",
+    "error": "Jokin meni vikaan. Yritä uudelleen.",
+    "errorTitle": "Jokin meni vikaan",
+    "errorDefault": "Tapahtui odottamaton virhe.",
+    "tryAgain": "Yritä uudelleen",
+    "offline": "Olet offline-tilassa – tietosi synkronoidaan, kun yhteys on muodostettu",
+    "synced": "Synkronoitu"
+  },
+  "categories": {
+    "medication": "Lääkitys",
+    "nutrition": "Ateriat ja ravitsemus",
+    "physical": "Liikunta",
+    "cognitive": "Aivojen hyvinvointi",
+    "social": "Sosiaalisuus ja yhteydet",
+    "health": "Terveystarkastus"
+  },
+  "patientApp": {
+    "todaysPlan": {
+      "title": "Päivän suunnitelma",
+      "progress": "{{completed}} / {{total}} aktiviteettia suoritettu tänään",
+      "noPlan": "Tälle päivälle ei ole suunniteltu aktiviteetteja. Perheesi on järjestämässä asioita!",
+      "overdue": "Myöhässä",
+      "upcoming": "Tulossa",
+      "nowBadge": "NYT",
+      "doneAt": "Tehty klo {{time}}",
+      "greatMorning": "Hyvää huomenta!",
+      "keepGoing": "Hienosti menee!",
+      "allDone": "Kaikki on tehty tältä päivältä!",
+      "tapToStart": "Aloita aivojumppa napauttamalla",
+      "opensActivity": "Avaa päivän aivojumppa-aktiviteetin"
+    },
+    "help": {
+      "title": "Tarvitsen apua",
+      "callSomeone": "Soita jollekin",
+      "getHomeSafely": "Pääse turvallisesti kotiin",
+      "takeMeHome": "Vie minut kotiin",
+      "takeMeHomeDesc": "Napauta saadaksesi kävelyohjeet kotiisi",
+      "emergency": "Hätätilanne",
+      "confirmEmergency": "Oletko varma, että haluat soittaa hätänumeroon?"
+    },
+    "sos": {
+      "button": "SOS",
+      "label": "SOS",
+      "holdHint": "Pidä painettuna 2 sekuntia lähettääksesi hälytyksen perheellesi",
+      "helpOnTheWay": "Apua on tulossa",
+      "familyNotified": "Perheellesi on ilmoitettu",
+      "callCaregiver": "Soita {{name}}",
+      "imOkay": "Olen kunnossa, palaa takaisin"
+    },
+    "consent": {
+      "yes": "Kyllä",
+      "no": "Ei",
+      "locationTracking": {
+        "title": "Jaetaanko sijaintisi?",
+        "description": "Jotta perheesi voi auttaa sinua pääsemään turvallisesti kotiin"
+      },
+      "dataCollection": {
+        "title": "Tallennetaanko päivittäiset tietosi?",
+        "description": "Jotta perheesi näkee, miten voit"
+      },
+      "pushNotifications": {
+        "title": "Saadaanko muistutuksia?",
+        "description": "Hyödyllisiä muistutuksia aterioista ja aktiviteeteista"
+      },
+      "dataSharing": {
+        "title": "Jaetaanko perheesi kanssa?",
+        "description": "Jotta hoitajasi voivat tukea sinua"
+      },
+      "voiceRecording": {
+        "title": "Äänitetäänkö ääniviestejä?",
+        "description": "Jotta voit jättää viestejä perheellesi"
+      }
+    },
+    "essential": {
+      "music": "Musiikki",
+      "callHelp": "Soita apua"
+    },
+    "checkin": {
+      "greeting": {
+        "morning": "Hyvää huomenta, {{name}}!",
+        "afternoon": "Hyvää iltapäivää, {{name}}!",
+        "evening": "Hyvää iltaa, {{name}}!"
+      },
+      "moodQuestion": "Miten voit tänään?",
+      "moodGood": "Hyvin",
+      "moodOkay": "Ihan ok",
+      "moodBad": "Ei kovin hyvin",
+      "sleepQuestion": "Nukuitko hyvin?",
+      "sleepGood": "Kyllä",
+      "sleepOkay": "Niin ja näin",
+      "sleepBad": "En oikeastaan",
+      "voicePrompt": "Onko sinulla jotain kerrottavaa perheellesi?",
+      "voiceTap": "Napauta puhuaksesi",
+      "voiceRecording": "Äänitetään...",
+      "voiceStop": "Lopeta",
+      "voicePlay": "Toista",
+      "voicePause": "Tauko",
+      "voiceDiscard": "Äänitä uudelleen",
+      "send": "Lähetä perheelle",
+      "skipVoice": "Ohita ääniviesti",
+      "thankYou": "Kiitos! Perheesi näkee tämän.",
+      "alreadyDone": "Olet jo kirjautunut sisään tänään!",
+      "tapToCheckin": "Napauta kirjautuaksesi sisään",
+      "opensCheckin": "Avaa päivittäisen sisäänkirjautumisen näytön"
+    },
+    "activity": {
+      "title": "Päivän aktiviteetti",
+      "noActivity": "Ei aktiviteettia tälle päivälle",
+      "comeBackLater": "Palaa huomenna katsomaan uutta aktiviteettia!",
+      "tapToSpeak": "Napauta puhuaksesi",
+      "tapToStop": "Napauta lopettaaksesi äänityksen",
+      "typeInstead": "Kirjoita vastauksesi sen sijaan",
+      "typeHere": "Kirjoita vastauksesi tähän...",
+      "speakInstead": "Puhu sen sijaan",
+      "recordAgain": "Äänitä uudelleen",
+      "skipForToday": "Ohita tältä päivältä",
+      "defaultFollowUp": "Mikä ihana muisto! Kiitos, että jaoit sen.",
+      "listenToSong": "Kuuntele kappale",
+      "photoMemory": "Muisto elämästäsi"
+    },
+    "careCode": {
+      "welcome": "Tervetuloa OurTurn-sovellukseen",
+      "enterCode": "Syötä hoitokoodisi",
+      "helperText": "Perheenjäsenesi antaa sinulle tämän koodin.",
+      "connect": "Yhdistä",
+      "invalidCode": "Tarkista koodisi ja yritä uudelleen.",
+      "connecting": "Yhdistetään...",
+      "digitLabel": "Numero {{current}} / {{total}}",
+      "changeLanguage": "Vaihda kieltä"
+    },
+    "tabs": {
+      "today": "Tänään",
+      "help": "Apua"
+    },
+    "taskPhoto": {
+      "taskPhoto": "Tehtävän valokuva (valinnainen)",
+      "uploadPhoto": "Lataa valokuva",
+      "removePhoto": "Poista valokuva",
+      "medicationItems": "Tämän ryhmän lääkkeet",
+      "medicationItemsHint": "Ryhmittele enintään 3 lääkettä, jotka otetaan samaan aikaan",
+      "addMedication": "Lisää lääke",
+      "medName": "Lääkkeen nimi",
+      "medDosage": "Annostus",
+      "removeMedication": "Poista",
+      "maxMedications": "Enintään 3 lääkettä per ryhmä",
+      "uploadingPhoto": "Ladataan..."
+    }
+  },
+  "a11y": {
+    "doubleTapToComplete": "Kaksoisnapauta merkitäksesi valmiiksi",
+    "callContact": "Soita {{name}}",
+    "emergencyCallConfirmHint": "Vahvistus tulee näkyviin ennen soittamista",
+    "takeMeHomeHint": "Avaa navigoinnin kotiosoitteeseesi",
+    "gettingLocation": "Haetaan sijaintiasi",
+    "removesVoiceRecording": "Poistaa äänityksesi",
+    "submittingCheckin": "Lähetetään sisäänkirjautumistasi"
+  },
+  "locationTracking": {
+    "backgroundNotificationTitle": "OurTurn pitää sinut turvassa",
+    "backgroundNotificationBody": "Perheesi näkee, että olet kunnossa"
+  },
+  "notifications": {
+    "taskReminder": "{{patientName}}, on aika: {{taskTitle}}",
+    "checkinPrompt": "Aika päivittäiselle sisäänkirjautumisellesi!"
+  }
+}

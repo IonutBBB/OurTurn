@@ -11,7 +11,7 @@ import {
 import Markdown from 'react-native-markdown-display';
 import { useTranslation } from 'react-i18next';
 import type { SliderValue } from '@ourturn/shared';
-import { COLORS, FONTS, RADIUS, SHADOWS } from '../../theme';
+import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS } from '../../theme';
 
 interface Message {
   id: string;
@@ -35,6 +35,8 @@ function nextMsgId() {
 
 export function WellbeingAgent({ caregiverId, caregiverName, energy, stress, sleep, apiBaseUrl }: WellbeingAgentProps) {
   const { t } = useTranslation();
+  const styles = useStyles();
+  const colors = useColors();
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -228,6 +230,52 @@ export function WellbeingAgent({ caregiverId, caregiverName, energy, stress, sle
 
   const displayMessages = messages.slice(-10);
 
+  const markdownStyles = StyleSheet.create({
+    body: {
+      fontSize: 14,
+      lineHeight: 20,
+      fontFamily: FONTS.body,
+      color: colors.textPrimary,
+    },
+    heading2: {
+      fontSize: 15,
+      fontWeight: '600',
+      fontFamily: FONTS.bodySemiBold,
+      color: colors.textPrimary,
+      marginTop: 8,
+      marginBottom: 4,
+    },
+    heading3: {
+      fontSize: 14,
+      fontWeight: '600',
+      fontFamily: FONTS.bodySemiBold,
+      color: colors.textPrimary,
+      marginTop: 6,
+      marginBottom: 3,
+    },
+    paragraph: {
+      marginBottom: 6,
+    },
+    bullet_list: {
+      marginBottom: 6,
+    },
+    ordered_list: {
+      marginBottom: 6,
+    },
+    list_item: {
+      marginBottom: 3,
+    },
+    strong: {
+      fontWeight: '700',
+      fontFamily: FONTS.bodyBold,
+    },
+    hr: {
+      backgroundColor: colors.border,
+      height: 1,
+      marginVertical: 8,
+    },
+  });
+
   return (
     <View style={styles.card}>
       {/* Header */}
@@ -304,7 +352,7 @@ export function WellbeingAgent({ caregiverId, caregiverName, energy, stress, sle
           value={input}
           onChangeText={setInput}
           placeholder={t('caregiverApp.toolkit.agent.placeholder')}
-          placeholderTextColor={COLORS.textMuted}
+          placeholderTextColor={colors.textMuted}
           style={styles.input}
           editable={!isLoading}
           onSubmitEditing={handleSubmit}
@@ -325,59 +373,13 @@ export function WellbeingAgent({ caregiverId, caregiverName, energy, stress, sle
   );
 }
 
-const markdownStyles = StyleSheet.create({
-  body: {
-    fontSize: 14,
-    lineHeight: 20,
-    fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
-  },
-  heading2: {
-    fontSize: 15,
-    fontWeight: '600',
-    fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
-    marginTop: 8,
-    marginBottom: 4,
-  },
-  heading3: {
-    fontSize: 14,
-    fontWeight: '600',
-    fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
-    marginTop: 6,
-    marginBottom: 3,
-  },
-  paragraph: {
-    marginBottom: 6,
-  },
-  bullet_list: {
-    marginBottom: 6,
-  },
-  ordered_list: {
-    marginBottom: 6,
-  },
-  list_item: {
-    marginBottom: 3,
-  },
-  strong: {
-    fontWeight: '700',
-    fontFamily: FONTS.bodyBold,
-  },
-  hr: {
-    backgroundColor: COLORS.border,
-    height: 1,
-    marginVertical: 8,
-  },
-});
-
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   card: {
-    backgroundColor: COLORS.brand50,
+    backgroundColor: colors.brand50,
     borderRadius: RADIUS.xl,
     padding: 16,
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
     ...SHADOWS.sm,
   },
   header: {
@@ -395,7 +397,7 @@ const styles = StyleSheet.create({
     width: 28,
     height: 28,
     borderRadius: 8,
-    backgroundColor: COLORS.brand100,
+    backgroundColor: colors.brand100,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -406,11 +408,11 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.brand800,
+    color: colors.brand800,
   },
   expandText: {
     fontSize: 12,
-    color: COLORS.brand600,
+    color: colors.brand600,
     fontWeight: '500',
     fontFamily: FONTS.bodyMedium,
   },
@@ -426,7 +428,7 @@ const styles = StyleSheet.create({
   },
   greetingText: {
     fontSize: 13,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     textAlign: 'center',
     paddingVertical: 16,
     fontFamily: FONTS.body,
@@ -438,12 +440,12 @@ const styles = StyleSheet.create({
     maxWidth: '90%',
   },
   userBubble: {
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     alignSelf: 'flex-end',
     borderBottomRightRadius: 4,
   },
   assistantBubble: {
-    backgroundColor: COLORS.surface,
+    backgroundColor: colors.background,
     alignSelf: 'flex-start',
     borderBottomLeftRadius: 4,
   },
@@ -451,7 +453,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 20,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   userBubbleText: {
     color: '#FFFFFF',
@@ -463,19 +465,19 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   promptChip: {
-    backgroundColor: COLORS.brand100,
+    backgroundColor: colors.brand100,
     borderRadius: 20,
     paddingHorizontal: 10,
     paddingVertical: 6,
   },
   promptText: {
     fontSize: 12,
-    color: COLORS.brand700,
+    color: colors.brand700,
     fontFamily: FONTS.body,
   },
   errorText: {
     fontSize: 12,
-    color: COLORS.danger,
+    color: colors.danger,
     marginTop: 8,
     fontFamily: FONTS.body,
   },
@@ -487,18 +489,18 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    backgroundColor: COLORS.surface,
+    backgroundColor: colors.background,
     borderRadius: RADIUS.lg,
     paddingHorizontal: 12,
     paddingVertical: 10,
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
   },
   sendButton: {
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     borderRadius: RADIUS.lg,
     paddingHorizontal: 14,
     paddingVertical: 10,
@@ -514,9 +516,9 @@ const styles = StyleSheet.create({
   },
   disclaimer: {
     fontSize: 10,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     textAlign: 'center',
     marginTop: 8,
     fontFamily: FONTS.body,
   },
-});
+}));

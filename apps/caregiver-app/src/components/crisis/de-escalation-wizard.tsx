@@ -2,7 +2,6 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   Modal,
   TouchableOpacity,
   TextInput,
@@ -10,7 +9,7 @@ import {
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import * as Haptics from 'expo-haptics';
-import { COLORS, FONTS, RADIUS } from '../../theme';
+import { createThemedStyles, useColors, FONTS, RADIUS } from '../../theme';
 
 const DE_ESCALATION_STEPS = [
   { key: 'stayCalm', icon: '🧘' },
@@ -38,6 +37,8 @@ export function DeEscalationWizard({
   onComplete,
 }: DeEscalationWizardProps) {
   const { t } = useTranslation();
+  const styles = useStyles();
+  const colors = useColors();
   const [phase, setPhase] = useState<Phase>('breathing');
   const [currentStep, setCurrentStep] = useState(0);
   const [timeLeft, setTimeLeft] = useState(BREATHING_DURATION);
@@ -168,7 +169,7 @@ export function DeEscalationWizard({
               <View
                 style={[
                   styles.timerCircle,
-                  { borderColor: COLORS.brand200 },
+                  { borderColor: colors.brand200 },
                 ]}
               >
                 <Text style={styles.timerText}>{timeLeft}</Text>
@@ -176,7 +177,7 @@ export function DeEscalationWizard({
               <View
                 style={[
                   styles.progressRing,
-                  { opacity: progress, borderColor: COLORS.brand500 },
+                  { opacity: progress, borderColor: colors.brand500 },
                 ]}
               />
             </View>
@@ -203,7 +204,7 @@ export function DeEscalationWizard({
               <View
                 style={[
                   styles.timerCircleSmall,
-                  { borderColor: COLORS.brand200 },
+                  { borderColor: colors.brand200 },
                 ]}
               >
                 <Text style={styles.timerTextSmall}>{timeLeft}</Text>
@@ -211,7 +212,7 @@ export function DeEscalationWizard({
               <View
                 style={[
                   styles.progressRingSmall,
-                  { opacity: progress, borderColor: COLORS.brand500 },
+                  { opacity: progress, borderColor: colors.brand500 },
                 ]}
               />
             </View>
@@ -295,7 +296,7 @@ export function DeEscalationWizard({
               value={notes}
               onChangeText={setNotes}
               placeholder={t('caregiverApp.crisis.wizard.crisisNotesPlaceholder')}
-              placeholderTextColor={COLORS.textMuted}
+              placeholderTextColor={colors.textMuted}
               multiline
               textAlignVertical="top"
             />
@@ -323,10 +324,10 @@ export function DeEscalationWizard({
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
     paddingTop: 60,
     paddingHorizontal: 24,
   },
@@ -343,13 +344,13 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: COLORS.border,
+    backgroundColor: colors.border,
     alignItems: 'center',
     justifyContent: 'center',
   },
   closeText: {
     fontSize: 18,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   centeredContent: {
     flex: 1,
@@ -360,14 +361,14 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     textAlign: 'center',
     marginBottom: 8,
   },
   phaseInstruction: {
     fontSize: 15,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     textAlign: 'center',
     marginBottom: 28,
     lineHeight: 22,
@@ -387,13 +388,13 @@ const styles = StyleSheet.create({
     borderWidth: 6,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
   },
   timerText: {
     fontSize: 40,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.brand600,
+    color: colors.brand600,
   },
   progressRing: {
     position: 'absolute',
@@ -411,13 +412,13 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
   },
   timerTextSmall: {
     fontSize: 32,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.brand600,
+    color: colors.brand600,
   },
   progressRingSmall: {
     position: 'absolute',
@@ -431,7 +432,7 @@ const styles = StyleSheet.create({
   stepIndicator: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginBottom: 16,
   },
   stepEmoji: {
@@ -442,21 +443,21 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     textAlign: 'center',
     marginBottom: 8,
   },
   stepDetail: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     textAlign: 'center',
     lineHeight: 22,
     paddingHorizontal: 16,
     marginBottom: 16,
   },
   scriptCard: {
-    backgroundColor: COLORS.brand50,
+    backgroundColor: colors.brand50,
     borderRadius: RADIUS.lg,
     padding: 14,
     marginHorizontal: 16,
@@ -466,7 +467,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontStyle: 'italic',
     fontFamily: FONTS.body,
-    color: COLORS.brand700,
+    color: colors.brand700,
     textAlign: 'center',
     lineHeight: 22,
   },
@@ -476,7 +477,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   primaryButton: {
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     paddingHorizontal: 24,
     paddingVertical: 12,
     borderRadius: RADIUS.lg,
@@ -488,15 +489,15 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.bodySemiBold,
   },
   secondaryButton: {
-    backgroundColor: COLORS.brand100,
+    backgroundColor: colors.brand100,
     paddingHorizontal: 24,
     paddingVertical: 12,
     borderRadius: RADIUS.lg,
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
   },
   secondaryButtonText: {
-    color: COLORS.brand700,
+    color: colors.brand700,
     fontSize: 15,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
@@ -504,7 +505,7 @@ const styles = StyleSheet.create({
   skipText: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     textDecorationLine: 'underline',
     marginTop: 8,
   },
@@ -517,13 +518,13 @@ const styles = StyleSheet.create({
     width: 8,
     height: 4,
     borderRadius: 2,
-    backgroundColor: COLORS.border,
+    backgroundColor: colors.border,
   },
   stepDotCompleted: {
-    backgroundColor: COLORS.brand500,
+    backgroundColor: colors.brand500,
   },
   stepDotCurrent: {
-    backgroundColor: COLORS.brand300,
+    backgroundColor: colors.brand300,
     width: 16,
   },
   completionEmoji: {
@@ -533,14 +534,14 @@ const styles = StyleSheet.create({
   notesInput: {
     width: '100%',
     height: 120,
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     borderRadius: RADIUS.lg,
     padding: 14,
     fontSize: 15,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 20,
   },
-});
+}));

@@ -1,0 +1,176 @@
+{
+  "common": {
+    "appName": "OurTurn",
+    "save": "Uložit",
+    "cancel": "Zrušit",
+    "delete": "Smazat",
+    "edit": "Upravit",
+    "done": "Hotovo",
+    "skip": "Přeskočit pro dnešek",
+    "or": "nebo",
+    "loading": "Načítání...",
+    "error": "Něco se pokazilo. Zkuste to prosím znovu.",
+    "errorTitle": "Něco se pokazilo",
+    "errorDefault": "Došlo k neočekávané chybě.",
+    "tryAgain": "Zkusit znovu",
+    "offline": "Jste offline – vaše data se synchronizují po připojení",
+    "synced": "Synchronizováno"
+  },
+  "categories": {
+    "medication": "Léky",
+    "nutrition": "Jídlo a výživa",
+    "physical": "Fyzická aktivita",
+    "cognitive": "Duševní pohoda",
+    "social": "Sociální kontakty",
+    "health": "Kontrola zdraví"
+  },
+  "patientApp": {
+    "todaysPlan": {
+      "title": "Dnešní plán",
+      "progress": "{{completed}} z {{total}} aktivit dnes hotovo",
+      "noPlan": "Na dnešek nejsou naplánované žádné aktivity. Vaše rodina to připravuje!",
+      "overdue": "Po termínu",
+      "upcoming": "Nadcházející",
+      "nowBadge": "TEĎ",
+      "doneAt": "Hotovo v {{time}}",
+      "greatMorning": "Skvělé ráno!",
+      "keepGoing": "Výborně si vedete!",
+      "allDone": "Na dnes vše hotovo!",
+      "tapToStart": "Klepnutím spusťte aktivitu pro duševní pohodu",
+      "opensActivity": "Otevře dnešní aktivitu pro duševní pohodu"
+    },
+    "help": {
+      "title": "Potřebuji pomoc",
+      "callSomeone": "Zavolat někomu",
+      "getHomeSafely": "Bezpečně se dostat domů",
+      "takeMeHome": "Doveď mě domů",
+      "takeMeHomeDesc": "Klepnutím získáte navigační pokyny k vašemu domovu",
+      "emergency": "Nouzová situace",
+      "confirmEmergency": "Jste si jistí, že chcete zavolat záchranné služby?"
+    },
+    "sos": {
+      "button": "SOS",
+      "label": "SOS",
+      "holdHint": "Podržte 2 sekundy pro odeslání upozornění vaší rodině",
+      "helpOnTheWay": "Pomoc je na cestě",
+      "familyNotified": "Vaše rodina byla upozorněna",
+      "callCaregiver": "Zavolat {{name}}",
+      "imOkay": "Jsem v pořádku, zpět"
+    },
+    "consent": {
+      "yes": "Ano",
+      "no": "Ne",
+      "locationTracking": {
+        "title": "Sdílet vaši polohu?",
+        "description": "Aby vám vaše rodina mohla pomoci bezpečně se dostat domů"
+      },
+      "dataCollection": {
+        "title": "Uložit vaše denní informace?",
+        "description": "Aby vaše rodina viděla, jak se vám daří"
+      },
+      "pushNotifications": {
+        "title": "Dostávat připomenutí?",
+        "description": "Užitečné upozornění na jídla a aktivity"
+      },
+      "dataSharing": {
+        "title": "Sdílet s vaší rodinou?",
+        "description": "Aby vás vaši pečovatelé mohli podpořit"
+      },
+      "voiceRecording": {
+        "title": "Nahrávat hlasové zprávy?",
+        "description": "Abyste mohli zanechat zprávy pro vaši rodinu"
+      }
+    },
+    "essential": {
+      "music": "Hudba",
+      "callHelp": "Zavolat o pomoc"
+    },
+    "checkin": {
+      "greeting": {
+        "morning": "Dobré ráno, {{name}}!",
+        "afternoon": "Dobré odpoledne, {{name}}!",
+        "evening": "Dobrý večer, {{name}}!"
+      },
+      "moodQuestion": "Jak se dnes cítíte?",
+      "moodGood": "Dobře",
+      "moodOkay": "Ujde to",
+      "moodBad": "Nic moc",
+      "sleepQuestion": "Spali jste dobře?",
+      "sleepGood": "Ano",
+      "sleepOkay": "Tak nějak",
+      "sleepBad": "Ani ne",
+      "voicePrompt": "Chcete něco říct vaší rodině?",
+      "voiceTap": "Klepnutím mluvte",
+      "voiceRecording": "Nahrávání...",
+      "voiceStop": "Stop",
+      "voicePlay": "Přehrát",
+      "voicePause": "Pauza",
+      "voiceDiscard": "Nahrát znovu",
+      "send": "Odeslat rodině",
+      "skipVoice": "Přeskočit hlasovou zprávu",
+      "thankYou": "Děkujeme! Vaše rodina to uvidí.",
+      "alreadyDone": "Dnes jste se již přihlásili!",
+      "tapToCheckin": "Klepnutím se přihlaste",
+      "opensCheckin": "Otevře obrazovku denního přihlášení"
+    },
+    "activity": {
+      "title": "Dnešní aktivita",
+      "noActivity": "Na dnes žádná aktivita",
+      "comeBackLater": "Zítra se podívejte na novou aktivitu!",
+      "tapToSpeak": "Klepnutím mluvte",
+      "tapToStop": "Klepnutím zastavíte nahrávání",
+      "typeInstead": "Napište svou odpověď místo toho",
+      "typeHere": "Zde napište svou odpověď...",
+      "speakInstead": "Mluvte místo toho",
+      "recordAgain": "Nahrát znovu",
+      "skipForToday": "Přeskočit pro dnešek",
+      "defaultFollowUp": "To je krásná vzpomínka! Děkujeme, že jste se podělili.",
+      "listenToSong": "Poslechněte si píseň",
+      "photoMemory": "Vzpomínka z vašeho života"
+    },
+    "careCode": {
+      "welcome": "Vítejte v OurTurn",
+      "enterCode": "Zadejte svůj kód péče",
+      "helperText": "Tento kód vám poskytne člen vaší rodiny.",
+      "connect": "Připojit",
+      "invalidCode": "Zkontrolujte svůj kód a zkuste to znovu.",
+      "connecting": "Připojování...",
+      "digitLabel": "Číslice {{current}} z {{total}}",
+      "changeLanguage": "Změnit jazyk"
+    },
+    "tabs": {
+      "today": "Dnes",
+      "help": "Pomoc"
+    },
+    "taskPhoto": {
+      "taskPhoto": "Fotografie úkolu (volitelné)",
+      "uploadPhoto": "Nahrát fotografii",
+      "removePhoto": "Odebrat fotografii",
+      "medicationItems": "Léky v této skupině",
+      "medicationItemsHint": "Seskupte až 3 léky užívané současně",
+      "addMedication": "Přidat lék",
+      "medName": "Název léku",
+      "medDosage": "Dávkování",
+      "removeMedication": "Odebrat",
+      "maxMedications": "Maximálně 3 léky na skupinu",
+      "uploadingPhoto": "Nahrávání..."
+    }
+  },
+  "a11y": {
+    "doubleTapToComplete": "Dvojitým klepnutím označíte jako hotové",
+    "callContact": "Zavolat {{name}}",
+    "emergencyCallConfirmHint": "Před voláním se zobrazí potvrzení",
+    "takeMeHomeHint": "Otevře navigaci na vaši domovskou adresu",
+    "gettingLocation": "Získávání vaší polohy",
+    "removesVoiceRecording": "Odebere vaši hlasovou nahrávku",
+    "submittingCheckin": "Odesílání vašeho přihlášení"
+  },
+  "locationTracking": {
+    "backgroundNotificationTitle": "OurTurn vás chrání",
+    "backgroundNotificationBody": "Vaše rodina vidí, že jste v pořádku"
+  },
+  "notifications": {
+    "taskReminder": "{{patientName}}, je čas na: {{taskTitle}}",
+    "checkinPrompt": "Čas na vaše denní přihlášení!"
+  }
+}

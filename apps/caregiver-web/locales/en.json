@@ -243,7 +243,10 @@
       "medItemLabel": "Medication {{number}}",
       "removeMedication": "Remove",
       "maxMedications": "Maximum 3 medications per group",
-      "uploadingPhoto": "Uploading..."
+      "uploadingPhoto": "Uploading...",
+      "allDays": "All",
+      "dayFilterLabel": "Filter tasks by day of week",
+      "noTasksForDay": "No tasks scheduled for this day."
     },
     "location": {
       "title": "Location & Safety",
@@ -925,6 +928,9 @@
       "respiteRemindersDesc": "Get gentle reminders to take breaks and practice self-care",
       "country": "Country",
       "selectCountry": "Select country",
+      "language": "Language",
+      "selectLanguage": "Select language",
+      "languageSaved": "Language updated",
       "patientInformation": "Patient Information",
       "patientInformationDesc": "Basic details about your loved one",
       "patientName": "Patient Name",

@@ -5,7 +5,6 @@ import {
   TouchableOpacity,
   TextInput,
   ScrollView,
-  StyleSheet,
   Modal,
   Alert,
 } from 'react-native';
@@ -14,7 +13,7 @@ import type { BehaviourIncident, BehaviourType, TimeOfDay } from '@ourturn/share
 import { BEHAVIOUR_TYPES, BEHAVIOUR_TRIGGERS } from '@ourturn/shared';
 import { useAuthStore } from '../../stores/auth-store';
 import { supabase } from '@ourturn/supabase';
-import { COLORS, FONTS, RADIUS, SPACING } from '../../theme';
+import { createThemedStyles, useColors, FONTS, RADIUS, SPACING } from '../../theme';
 
 interface IncidentLoggerProps {
   prefillType?: string;
@@ -24,6 +23,8 @@ interface IncidentLoggerProps {
 
 export function IncidentLogger({ prefillType, onClose, onSaved }: IncidentLoggerProps) {
   const { t } = useTranslation();
+  const styles = useStyles();
+  const colors = useColors();
   const { caregiver, household, patient } = useAuthStore();
 
   const [behaviourType, setBehaviourType] = useState<BehaviourType | ''>(
@@ -185,7 +186,7 @@ export function IncidentLogger({ prefillType, onClose, onSaved }: IncidentLogger
               value={durationMinutes}
               onChangeText={setDurationMinutes}
               placeholder={t('caregiverApp.toolkit.behaviours.logger.durationPlaceholder')}
-              placeholderTextColor={COLORS.textMuted}
+              placeholderTextColor={colors.textMuted}
               keyboardType="number-pad"
             />
           </View>
@@ -224,7 +225,7 @@ export function IncidentLogger({ prefillType, onClose, onSaved }: IncidentLogger
               value={whatHappened}
               onChangeText={setWhatHappened}
               placeholder={t('caregiverApp.toolkit.behaviours.logger.whatHappenedPlaceholder')}
-              placeholderTextColor={COLORS.textMuted}
+              placeholderTextColor={colors.textMuted}
               multiline
               textAlignVertical="top"
             />
@@ -240,7 +241,7 @@ export function IncidentLogger({ prefillType, onClose, onSaved }: IncidentLogger
               value={whatHelped}
               onChangeText={setWhatHelped}
               placeholder={t('caregiverApp.toolkit.behaviours.logger.whatHelpedPlaceholder')}
-              placeholderTextColor={COLORS.textMuted}
+              placeholderTextColor={colors.textMuted}
               multiline
               textAlignVertical="top"
             />
@@ -265,8 +266,8 @@ export function IncidentLogger({ prefillType, onClose, onSaved }: IncidentLogger
   );
 }
 
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: COLORS.background },
+const useStyles = createThemedStyles((colors) => ({
+  container: { flex: 1, backgroundColor: colors.background },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -275,21 +276,21 @@ const styles = StyleSheet.create({
     paddingTop: SPACING[6],
     paddingBottom: SPACING[4],
     borderBottomWidth: 1,
-    borderBottomColor: COLORS.border,
-    backgroundColor: COLORS.card,
+    borderBottomColor: colors.border,
+    backgroundColor: colors.card,
   },
   headerTitle: {
     fontSize: 18,
     fontFamily: FONTS.display,
     fontWeight: '700',
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   closeBtn: {
     width: 32, height: 32, borderRadius: 16,
-    backgroundColor: COLORS.border,
+    backgroundColor: colors.border,
     alignItems: 'center', justifyContent: 'center',
   },
-  closeBtnText: { fontSize: 14, color: COLORS.textMuted, fontWeight: '600' },
+  closeBtnText: { fontSize: 14, color: colors.textMuted, fontWeight: '600' },
   scroll: { flex: 1 },
   scrollContent: { padding: SPACING[5], gap: SPACING[5] },
   field: { gap: SPACING[2] },
@@ -297,13 +298,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: FONTS.bodySemiBold,
     fontWeight: '600',
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   input: {
-    backgroundColor: COLORS.card,
-    borderWidth: 1, borderColor: COLORS.border, borderRadius: RADIUS.lg,
+    backgroundColor: colors.card,
+    borderWidth: 1, borderColor: colors.border, borderRadius: RADIUS.lg,
     paddingHorizontal: SPACING[4], paddingVertical: SPACING[3],
-    fontSize: 16, fontFamily: FONTS.body, color: COLORS.textPrimary,
+    fontSize: 16, fontFamily: FONTS.body, color: colors.textPrimary,
   },
   textArea: { minHeight: 80 },
   chipRow: { flexDirection: 'row', gap: SPACING[2] },
@@ -311,42 +312,42 @@ const styles = StyleSheet.create({
   chip: {
     flexDirection: 'row', alignItems: 'center', gap: SPACING[1],
     paddingHorizontal: SPACING[3], paddingVertical: SPACING[2],
-    borderRadius: RADIUS.full, borderWidth: 1, borderColor: COLORS.border,
-    backgroundColor: COLORS.card,
+    borderRadius: RADIUS.full, borderWidth: 1, borderColor: colors.border,
+    backgroundColor: colors.card,
   },
-  chipActive: { borderColor: COLORS.brand600, backgroundColor: COLORS.brand50 },
+  chipActive: { borderColor: colors.brand600, backgroundColor: colors.brand50 },
   chipEmoji: { fontSize: 16 },
-  chipText: { fontSize: 14, fontFamily: FONTS.body, color: COLORS.textSecondary },
-  chipTextActive: { color: COLORS.brand700, fontFamily: FONTS.bodyMedium, fontWeight: '500' },
+  chipText: { fontSize: 14, fontFamily: FONTS.body, color: colors.textSecondary },
+  chipTextActive: { color: colors.brand700, fontFamily: FONTS.bodyMedium, fontWeight: '500' },
   chipSmall: {
     paddingHorizontal: SPACING[3], paddingVertical: SPACING[1],
-    borderRadius: RADIUS.full, borderWidth: 1, borderColor: COLORS.border,
-    backgroundColor: COLORS.card,
+    borderRadius: RADIUS.full, borderWidth: 1, borderColor: colors.border,
+    backgroundColor: colors.card,
   },
-  chipSmallText: { fontSize: 12, fontFamily: FONTS.body, color: COLORS.textSecondary },
+  chipSmallText: { fontSize: 12, fontFamily: FONTS.body, color: colors.textSecondary },
   severityRow: { flexDirection: 'row', gap: SPACING[2] },
   severityDot: {
     width: 40, height: 40, borderRadius: 20,
-    borderWidth: 2, borderColor: COLORS.border,
+    borderWidth: 2, borderColor: colors.border,
     alignItems: 'center', justifyContent: 'center',
   },
-  severityGreen: { borderColor: COLORS.success, backgroundColor: COLORS.success },
-  severityAmber: { borderColor: COLORS.amber, backgroundColor: COLORS.amber },
-  severityRed: { borderColor: COLORS.danger, backgroundColor: COLORS.danger },
-  severityText: { fontSize: 14, fontFamily: FONTS.bodyBold, fontWeight: '700', color: COLORS.textMuted },
-  severityTextActive: { color: COLORS.textInverse },
+  severityGreen: { borderColor: colors.success, backgroundColor: colors.success },
+  severityAmber: { borderColor: colors.amber, backgroundColor: colors.amber },
+  severityRed: { borderColor: colors.danger, backgroundColor: colors.danger },
+  severityText: { fontSize: 14, fontFamily: FONTS.bodyBold, fontWeight: '700', color: colors.textMuted },
+  severityTextActive: { color: colors.textInverse },
   severityLabels: { flexDirection: 'row', justifyContent: 'space-between' },
-  severityLabel: { fontSize: 12, fontFamily: FONTS.body, color: COLORS.textMuted },
+  severityLabel: { fontSize: 12, fontFamily: FONTS.body, color: colors.textMuted },
   footer: {
     paddingHorizontal: SPACING[5], paddingVertical: SPACING[4],
-    borderTopWidth: 1, borderTopColor: COLORS.border, backgroundColor: COLORS.card,
+    borderTopWidth: 1, borderTopColor: colors.border, backgroundColor: colors.card,
   },
   saveBtn: {
-    backgroundColor: COLORS.brand600, borderRadius: RADIUS.lg,
+    backgroundColor: colors.brand600, borderRadius: RADIUS.lg,
     paddingVertical: SPACING[4], alignItems: 'center',
   },
   saveBtnDisabled: { opacity: 0.5 },
   saveBtnText: {
-    fontSize: 16, fontFamily: FONTS.bodySemiBold, fontWeight: '600', color: COLORS.textInverse,
+    fontSize: 16, fontFamily: FONTS.bodySemiBold, fontWeight: '600', color: colors.textInverse,
   },
-});
+}));

@@ -116,3 +116,11 @@ export const TIME_GRADIENTS = {
   evening: ['#E5D8CE', '#F0E6DC'] as const,
   night: ['#2D1F14', '#3A2920'] as const,
 } as const;
+
+/** Text color for content rendered directly on the time-of-day gradient */
+export const GRADIENT_TEXT_COLOR = {
+  morning: COLORS.textPrimary,
+  afternoon: COLORS.textPrimary,
+  evening: COLORS.textPrimary,
+  night: COLORS.textInverse,
+} as const;

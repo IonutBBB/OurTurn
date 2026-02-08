@@ -1,11 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Tabs, useRouter } from 'expo-router';
 import { View, Text, StyleSheet } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../../src/stores/auth-store';
 import { ErrorBoundary } from '../../src/components/error-boundary';
-import { SOSButton } from '../../src/components/sos-button';
-import { COLORS, FONTS, SHADOWS } from '../../src/theme';
+import { getConsents } from '@ourturn/supabase';
+import { COLORS, FONTS } from '../../src/theme';
 
 interface TabIconProps {
   emoji: string;
@@ -25,7 +26,8 @@ function TabIcon({ emoji, label, focused }: TabIconProps) {
 export default function TabsLayout() {
   const { t } = useTranslation();
   const router = useRouter();
-  const { isAuthenticated, isInitialized, patient } = useAuthStore();
+  const { isAuthenticated, isInitialized, patient, session } = useAuthStore();
+  const [consentChecked, setConsentChecked] = useState(false);
 
   const complexity = patient?.app_complexity || 'full';
 
@@ -43,13 +45,37 @@ export default function TabsLayout() {
     }
   }, [isInitialized, isAuthenticated, complexity, router]);
 
+  // Check if patient has given consent; redirect to consent flow if not
+  useEffect(() => {
+    if (!isInitialized || !isAuthenticated || !session?.householdId || consentChecked) return;
+
+    const checkConsent = async () => {
+      try {
+        const records = await getConsents(session.householdId);
+        const patientConsents = records.filter(
+          (r) => r.granted_by_type === 'patient'
+        );
+        if (patientConsents.length === 0) {
+          router.push('/consent');
+        }
+      } catch {
+        // If we can't check consent (e.g. offline), let them through
+      } finally {
+        setConsentChecked(true);
+      }
+    };
+
+    checkConsent();
+  }, [isInitialized, isAuthenticated, session?.householdId, consentChecked, router]);
+
+  const insets = useSafeAreaInsets();
+
   return (
     <ErrorBoundary>
-    <View style={{ flex: 1 }}>
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarStyle: styles.tabBar,
+        tabBarStyle: [styles.tabBar, { paddingBottom: Math.max(insets.bottom, 12) }],
         tabBarShowLabel: false,
         tabBarActiveTintColor: COLORS.brand600,
         tabBarInactiveTintColor: COLORS.textMuted,
@@ -82,20 +108,18 @@ export default function TabsLayout() {
         }}
       />
     </Tabs>
-    <SOSButton />
-    </View>
     </ErrorBoundary>
   );
 }
 
 const styles = StyleSheet.create({
   tabBar: {
-    height: 80,
     backgroundColor: COLORS.card,
     borderTopWidth: 1,
     borderTopColor: COLORS.border,
     paddingTop: 8,
-    paddingBottom: 16,
+    height: undefined,
+    minHeight: 70,
   },
   tabIconContainer: {
     alignItems: 'center',

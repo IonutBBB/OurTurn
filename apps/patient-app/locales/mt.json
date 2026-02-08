@@ -1,0 +1,176 @@
+{
+  "common": {
+    "appName": "OurTurn",
+    "save": "Issejvja",
+    "cancel": "Ikkanċella",
+    "delete": "Ħassar",
+    "edit": "Editja",
+    "done": "Magħmul",
+    "skip": "Aqbeż għal-lum",
+    "or": "jew",
+    "loading": "Qed jitgħabba...",
+    "error": "Xi ħaġa marret ħażin. Jekk jogħġbok erġa' pprova.",
+    "errorTitle": "Xi ħaġa marret ħażin",
+    "errorDefault": "Seħħ żball mhux mistenni.",
+    "tryAgain": "Erġa' pprova",
+    "offline": "M'intix online — id-data tiegħek se tissinkronizza meta tikkonnettja",
+    "synced": "Sinkronizzat"
+  },
+  "categories": {
+    "medication": "Medikazzjoni",
+    "nutrition": "Ikel u Nutrizzjoni",
+    "physical": "Attività Fiżika",
+    "cognitive": "Benessri tal-Moħħ",
+    "social": "Soċjali u Konnessjoni",
+    "health": "Kontroll tas-Saħħa"
+  },
+  "patientApp": {
+    "todaysPlan": {
+      "title": "Il-Pjan tal-lum",
+      "progress": "{{completed}} minn {{total}} attivitajiet magħmula llum",
+      "noPlan": "L-ebda attività ppjanata għal-lum. Il-familja tiegħek qed tipprepara l-affarijiet!",
+      "overdue": "Skadut",
+      "upcoming": "Li ġej",
+      "nowBadge": "ISSA",
+      "doneAt": "Magħmul f'{{time}}",
+      "greatMorning": "L-aqwa filgħodu!",
+      "keepGoing": "Qed tagħmel ħafna progress!",
+      "allDone": "Kollox magħmul għal-lum!",
+      "tapToStart": "Tektek biex tibda l-attività tal-moħħ tiegħek",
+      "opensActivity": "Jiftaħ l-attività tal-benessri tal-moħħ tal-lum"
+    },
+    "help": {
+      "title": "Għandi Bżonn l-Għajnuna",
+      "callSomeone": "Ċempel lil Xi Ħadd",
+      "getHomeSafely": "Wasal id-Dar Bla Periklu",
+      "takeMeHome": "Ħudni d-Dar",
+      "takeMeHomeDesc": "Tektek biex tikseb direzzjonijiet bil-mixi lejn darek",
+      "emergency": "Emerġenza",
+      "confirmEmergency": "Żgur li trid iċċempel lis-servizzi ta' emerġenza?"
+    },
+    "sos": {
+      "button": "SOS",
+      "label": "SOS",
+      "holdHint": "Żomm għal 2 sekondi biex tibgħat twissija lill-familja tiegħek",
+      "helpOnTheWay": "L-għajnuna fi triqitha",
+      "familyNotified": "Il-familja tiegħek ġiet notifikata",
+      "callCaregiver": "Ċempel lil {{name}}",
+      "imOkay": "Jien tajjeb, erġa' lura"
+    },
+    "consent": {
+      "yes": "Iva",
+      "no": "Le",
+      "locationTracking": {
+        "title": "Aqsam il-lokalità tiegħek?",
+        "description": "Biex il-familja tiegħek tkun tista' tgħinek tasal id-dar bla periklu"
+      },
+      "dataCollection": {
+        "title": "Issejvja l-informazzjoni ta' kuljum tiegħek?",
+        "description": "Biex il-familja tiegħek tkun tista' tara kif qed tħossok"
+      },
+      "pushNotifications": {
+        "title": "Irċievi tfakkiriet?",
+        "description": "Imbuttaturi utli għall-ikliet u l-attivitajiet"
+      },
+      "dataSharing": {
+        "title": "Aqsam mal-familja tiegħek?",
+        "description": "Biex dawk li jieħdu ħsiebek ikunu jistgħu jappoġġjawk"
+      },
+      "voiceRecording": {
+        "title": "Irrekordja messaġġi bil-vuċi?",
+        "description": "Biex tkun tista' tħalli messaġġi għall-familja tiegħek"
+      }
+    },
+    "essential": {
+      "music": "Mużika",
+      "callHelp": "Ċempel għall-Għajnuna"
+    },
+    "checkin": {
+      "greeting": {
+        "morning": "L-Għodwa t-Tajba, {{name}}!",
+        "afternoon": "Il-Wara nofsinhar it-Tajjeb, {{name}}!",
+        "evening": "Il-lejla t-Tajba, {{name}}!"
+      },
+      "moodQuestion": "Kif qed tħossok illum?",
+      "moodGood": "Tajjeb",
+      "moodOkay": "Okay",
+      "moodBad": "Mhux daqshekk tajjeb",
+      "sleepQuestion": "Rajt rqadt sew?",
+      "sleepGood": "Iva",
+      "sleepOkay": "Hekk hekk",
+      "sleepBad": "Mhux verament",
+      "voicePrompt": "Xi trid tgħid lill-familja tiegħek?",
+      "voiceTap": "Tektek biex titkellem",
+      "voiceRecording": "Qed nirrekordja...",
+      "voiceStop": "Waqqaf",
+      "voicePlay": "Daqq",
+      "voicePause": "Pawża",
+      "voiceDiscard": "Erġa' rrekordja",
+      "send": "Ibgħat lill-familja",
+      "skipVoice": "Aqbeż il-messaġġ bil-vuċi",
+      "thankYou": "Grazzi! Il-familja tiegħek se tara dan.",
+      "alreadyDone": "Diġà għamilt iċ-check-in illum!",
+      "tapToCheckin": "Tektek biex tagħmel iċ-check-in",
+      "opensCheckin": "Jiftaħ l-iskrin taċ-check-in ta' kuljum"
+    },
+    "activity": {
+      "title": "L-Attività tal-lum",
+      "noActivity": "L-ebda attività għal-lum",
+      "comeBackLater": "Erġa' ċċekkja għada għal attività ġdida!",
+      "tapToSpeak": "Tektek biex titkellem",
+      "tapToStop": "Tektek biex twaqqaf ir-reġistrazzjoni",
+      "typeInstead": "Ittajpja t-tweġiba tiegħek minflok",
+      "typeHere": "Ittajpja t-tweġiba tiegħek hawnhekk...",
+      "speakInstead": "Tkellem minflok",
+      "recordAgain": "Erġa' rrekordja",
+      "skipForToday": "Aqbeż għal-lum",
+      "defaultFollowUp": "X'memorja sabiħa! Grazzi talli qsamtha.",
+      "listenToSong": "Isma' l-Kanzunetta",
+      "photoMemory": "Memorja minn ħajtek"
+    },
+    "careCode": {
+      "welcome": "Merħba f'OurTurn",
+      "enterCode": "Daħħal il-Kodiċi tal-Kura tiegħek",
+      "helperText": "Il-membru tal-familja tiegħek jagħtik dan il-kodiċi.",
+      "connect": "Qabbad",
+      "invalidCode": "Jekk jogħġbok iċċekkja l-kodiċi tiegħek u erġa' pprova.",
+      "connecting": "Qed nikkonnettja...",
+      "digitLabel": "Ċifra {{current}} minn {{total}}",
+      "changeLanguage": "Ibdel il-lingwa"
+    },
+    "tabs": {
+      "today": "Illum",
+      "help": "Għajnuna"
+    },
+    "taskPhoto": {
+      "taskPhoto": "Ritratt tal-Kompitu (mhux obbligatorju)",
+      "uploadPhoto": "Tella' Ritratt",
+      "removePhoto": "Neħħi Ritratt",
+      "medicationItems": "Medikazzjonijiet f'dan il-grupp",
+      "medicationItemsHint": "Iġbor sa 3 medikazzjonijiet meħuda fl-istess ħin",
+      "addMedication": "Żid Medikazzjoni",
+      "medName": "Isem tal-medikazzjoni",
+      "medDosage": "Dożaġġ",
+      "removeMedication": "Neħħi",
+      "maxMedications": "Massimu ta' 3 medikazzjonijiet għal kull grupp",
+      "uploadingPhoto": "Qed ittella'..."
+    }
+  },
+  "a11y": {
+    "doubleTapToComplete": "Tektek darbtejn biex timmarka bħala magħmula",
+    "callContact": "Ċempel lil {{name}}",
+    "emergencyCallConfirmHint": "Se tidher konferma qabel ma ċċempel",
+    "takeMeHomeHint": "Jiftaħ in-navigazzjoni lejn l-indirizz tad-dar tiegħek",
+    "gettingLocation": "Qed nikseb il-lokalità tiegħek",
+    "removesVoiceRecording": "Tneħħi r-reġistrazzjoni tal-vuċi tiegħek",
+    "submittingCheckin": "Qed nissottometti ċ-check-in tiegħek"
+  },
+  "locationTracking": {
+    "backgroundNotificationTitle": "OurTurn qed iżommok sigur",
+    "backgroundNotificationBody": "Il-familja tiegħek tista' tara li int tajjeb"
+  },
+  "notifications": {
+    "taskReminder": "{{patientName}}, wasal iż-żmien għal: {{taskTitle}}",
+    "checkinPrompt": "Wasal iż-żmien għaċ-check-in ta' kuljum tiegħek!"
+  }
+}

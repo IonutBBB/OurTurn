@@ -1,0 +1,176 @@
+{
+  "common": {
+    "appName": "OurTurn",
+    "save": "Išsaugoti",
+    "cancel": "Atšaukti",
+    "delete": "Ištrinti",
+    "edit": "Redaguoti",
+    "done": "Atlikta",
+    "skip": "Praleisti šiandien",
+    "or": "arba",
+    "loading": "Įkeliama...",
+    "error": "Kažkas nepavyko. Bandykite dar kartą.",
+    "errorTitle": "Kažkas nepavyko",
+    "errorDefault": "Įvyko netikėta klaida.",
+    "tryAgain": "Bandyti dar kartą",
+    "offline": "Jūs esate neprisijungęs – jūsų duomenys bus sinchronizuojami, kai prisijungsite",
+    "synced": "Sinchronizuota"
+  },
+  "categories": {
+    "medication": "Vaistai",
+    "nutrition": "Maistas ir mityba",
+    "physical": "Fizinis aktyvumas",
+    "cognitive": "Smegenų sveikata",
+    "social": "Socialiniai ryšiai",
+    "health": "Sveikatos patikrinimas"
+  },
+  "patientApp": {
+    "todaysPlan": {
+      "title": "Šiandienos planas",
+      "progress": "Šiandien atlikta {{completed}} iš {{total}} veiklų",
+      "noPlan": "Šiandienai veiklų nesuplanuota. Jūsų šeima viską ruošia!",
+      "overdue": "Pavėluota",
+      "upcoming": "Artėjantis",
+      "nowBadge": "DABAR",
+      "doneAt": "Atlikta {{time}}",
+      "greatMorning": "Puikus rytas!",
+      "keepGoing": "Puikiai sekasi!",
+      "allDone": "Šiandienai viskas atlikta!",
+      "tapToStart": "Palieskite, kad pradėtumėte smegenų veiklą",
+      "opensActivity": "Atidaro šiandienos smegenų sveikatos veiklą"
+    },
+    "help": {
+      "title": "Man reikia pagalbos",
+      "callSomeone": "Paskambinti kam nors",
+      "getHomeSafely": "Saugiai grįžti namo",
+      "takeMeHome": "Nuvežkite mane namo",
+      "takeMeHomeDesc": "Palieskite, kad gautumėte nurodymus, kaip nueiti iki jūsų namų",
+      "emergency": "Skubios pagalbos",
+      "confirmEmergency": "Ar tikrai norite iškviesti skubios pagalbos tarnybas?"
+    },
+    "sos": {
+      "button": "SOS",
+      "label": "SOS",
+      "holdHint": "Palaikykite 2 sekundes, kad išsiųstumėte įspėjimą savo šeimai",
+      "helpOnTheWay": "Pagalba jau pakeliui",
+      "familyNotified": "Jūsų šeima buvo informuota",
+      "callCaregiver": "Paskambinti {{name}}",
+      "imOkay": "Man viskas gerai, grįžti atgal"
+    },
+    "consent": {
+      "yes": "Taip",
+      "no": "Ne",
+      "locationTracking": {
+        "title": "Dalintis savo buvimo vieta?",
+        "description": "Kad jūsų šeima galėtų padėti jums saugiai grįžti namo"
+      },
+      "dataCollection": {
+        "title": "Išsaugoti jūsų dienos informaciją?",
+        "description": "Kad jūsų šeima galėtų matyti, kaip jums sekasi"
+      },
+      "pushNotifications": {
+        "title": "Gauti priminimus?",
+        "description": "Naudingi priminimai apie maistą ir veiklą"
+      },
+      "dataSharing": {
+        "title": "Dalintis su savo šeima?",
+        "description": "Kad jūsų globėjai galėtų jus palaikyti"
+      },
+      "voiceRecording": {
+        "title": "Įrašyti balso pranešimus?",
+        "description": "Kad galėtumėte palikti pranešimus savo šeimai"
+      }
+    },
+    "essential": {
+      "music": "Muzika",
+      "callHelp": "Kviesti pagalbą"
+    },
+    "checkin": {
+      "greeting": {
+        "morning": "Labas rytas, {{name}}!",
+        "afternoon": "Laba diena, {{name}}!",
+        "evening": "Labas vakaras, {{name}}!"
+      },
+      "moodQuestion": "Kaip jaučiatės šiandien?",
+      "moodGood": "Gerai",
+      "moodOkay": "Normaliai",
+      "moodBad": "Nelabai gerai",
+      "sleepQuestion": "Ar gerai miegojote?",
+      "sleepGood": "Taip",
+      "sleepOkay": "Vidutiniškai",
+      "sleepBad": "Nelabai",
+      "voicePrompt": "Ar norite ką nors pasakyti savo šeimai?",
+      "voiceTap": "Palieskite, kad kalbėtumėte",
+      "voiceRecording": "Įrašoma...",
+      "voiceStop": "Sustabdyti",
+      "voicePlay": "Paleisti",
+      "voicePause": "Pauzė",
+      "voiceDiscard": "Įrašyti iš naujo",
+      "send": "Siųsti šeimai",
+      "skipVoice": "Praleisti balso pranešimą",
+      "thankYou": "Ačiū! Jūsų šeima tai pamatys.",
+      "alreadyDone": "Jūs jau užsiregistravote šiandien!",
+      "tapToCheckin": "Palieskite, kad užsiregistruotumėte",
+      "opensCheckin": "Atidaro dienos registracijos ekraną"
+    },
+    "activity": {
+      "title": "Šiandienos veikla",
+      "noActivity": "Šiandienai veiklos nėra",
+      "comeBackLater": "Patikrinkite rytoj, ar yra naujos veiklos!",
+      "tapToSpeak": "Palieskite, kad kalbėtumėte",
+      "tapToStop": "Palieskite, kad sustabdytumėte įrašymą",
+      "typeInstead": "Įveskite savo atsakymą",
+      "typeHere": "Įveskite savo atsakymą čia...",
+      "speakInstead": "Kalbėkite",
+      "recordAgain": "Įrašyti iš naujo",
+      "skipForToday": "Praleisti šiandien",
+      "defaultFollowUp": "Koks nuostabus prisiminimas! Ačiū, kad pasidalinote.",
+      "listenToSong": "Klausytis dainos",
+      "photoMemory": "Prisiminimas iš jūsų gyvenimo"
+    },
+    "careCode": {
+      "welcome": "Sveiki atvykę į OurTurn",
+      "enterCode": "Įveskite savo priežiūros kodą",
+      "helperText": "Šį kodą jums duos jūsų šeimos narys.",
+      "connect": "Prisijungti",
+      "invalidCode": "Patikrinkite savo kodą ir bandykite dar kartą.",
+      "connecting": "Jungiamasi...",
+      "digitLabel": "{{current}} skaitmuo iš {{total}}",
+      "changeLanguage": "Pakeisti kalbą"
+    },
+    "tabs": {
+      "today": "Šiandien",
+      "help": "Pagalba"
+    },
+    "taskPhoto": {
+      "taskPhoto": "Užduoties nuotrauka (nebūtina)",
+      "uploadPhoto": "Įkelti nuotrauką",
+      "removePhoto": "Pašalinti nuotrauką",
+      "medicationItems": "Šios grupės vaistai",
+      "medicationItemsHint": "Sugrupuokite iki 3 vaistų, vartojamų tuo pačiu metu",
+      "addMedication": "Pridėti vaistą",
+      "medName": "Vaisto pavadinimas",
+      "medDosage": "Dozė",
+      "removeMedication": "Pašalinti",
+      "maxMedications": "Daugiausia 3 vaistai vienoje grupėje",
+      "uploadingPhoto": "Įkeliama..."
+    }
+  },
+  "a11y": {
+    "doubleTapToComplete": "Dukart palieskite, kad pažymėtumėte kaip atliktą",
+    "callContact": "Paskambinti {{name}}",
+    "emergencyCallConfirmHint": "Prieš skambinant pasirodys patvirtinimas",
+    "takeMeHomeHint": "Atidaro navigaciją į jūsų namų adresą",
+    "gettingLocation": "Gaunama jūsų buvimo vieta",
+    "removesVoiceRecording": "Pašalina jūsų balso įrašą",
+    "submittingCheckin": "Pateikiama jūsų registracija"
+  },
+  "locationTracking": {
+    "backgroundNotificationTitle": "OurTurn užtikrina jūsų saugumą",
+    "backgroundNotificationBody": "Jūsų šeima gali matyti, kad jums viskas gerai"
+  },
+  "notifications": {
+    "taskReminder": "{{patientName}}, laikas: {{taskTitle}}",
+    "checkinPrompt": "Laikas jūsų dienos registracijai!"
+  }
+}

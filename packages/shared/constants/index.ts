@@ -4,3 +4,4 @@ export * from './emergency-numbers';
 export * from './accessibility';
 export * from './theme';
 export * from './relief-exercises';
+export * from './languages';

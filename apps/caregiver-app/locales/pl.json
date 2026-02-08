@@ -1,0 +1,1395 @@
+{
+  "common": {
+    "appName": "OurTurn",
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+    "delete": "Usuń",
+    "edit": "Edytuj",
+    "done": "Gotowe",
+    "skip": "Pomiń na dziś",
+    "loading": "Ładowanie...",
+    "error": "Coś poszło nie tak. Spróbuj ponownie.",
+    "errorTitle": "Coś poszło nie tak",
+    "errorDefault": "Wystąpił nieoczekiwany błąd.",
+    "tryAgain": "Spróbuj ponownie",
+    "logOut": "Wyloguj się",
+    "offline": "Jesteś offline – Twoje dane zostaną zsynchronizowane po połączeniu",
+    "synced": "Zsynchronizowano",
+    "viewMore": "Zobacz więcej",
+    "back": "Wstecz",
+    "next": "Dalej",
+    "confirm": "Potwierdź",
+    "yes": "Tak",
+    "no": "Nie",
+    "you": "Ty",
+    "unknown": "Nieznane",
+    "saving": "Zapisywanie...",
+    "primary": "Podstawowy"
+  },
+  "categories": {
+    "medication": "Leki",
+    "nutrition": "Posiłki i odżywianie",
+    "physical": "Aktywność fizyczna",
+    "cognitive": "Sprawność umysłowa",
+    "social": "Relacje społeczne",
+    "health": "Kontrola stanu zdrowia"
+  },
+  "caregiverApp": {
+    "dashboard": {
+      "greeting": "Dzień dobry, {{timeOfDay}}, {{name}}",
+      "statusGood": "Dzień {{patientName}} przebiega pomyślnie",
+      "statusConcern": "{{patientName}} może potrzebować trochę uwagi",
+      "todaysStatus": "Dzisiejszy status",
+      "tasksCompleted": "Wykonano {{completed}} z {{total}} zadań",
+      "dailyCheckin": "Codzienne sprawdzenie",
+      "noCheckinYet": "Nie przesłano jeszcze dzisiejszego sprawdzenia",
+      "location": "Lokalizacja",
+      "atHome": "{{name}} jest w domu",
+      "lastUpdate": "Ostatnia aktualizacja: {{time}}",
+      "aiInsights": "Wnioski",
+      "quickActions": "Szybkie akcje",
+      "callPatient": "Zadzwoń do {{name}}",
+      "tasksCompletedLabel": "wykonane zadania",
+      "careCode": "Kod opieki",
+      "careCodeHint": "Udostępnij, aby połączyć aplikację pacjenta",
+      "careCodeNotAvailable": "Kod niedostępny",
+      "morningActivityPattern": "Poranny wzorzec aktywności",
+      "insightText": "{{name}} wykonuje więcej zadań w dni, w które zaplanowane są poranne spacery.",
+      "noJournalEntries": "Brak wpisów w dzienniku",
+      "unknown": "Nieznany",
+      "moodStruggling": "Ciężko",
+      "moodLow": "Źle",
+      "moodOkay": "W porządku",
+      "moodGood": "Dobrze",
+      "moodGreat": "Świetnie",
+      "sleepPoor": "Słaby",
+      "sleepFair": "Średni",
+      "sleepWell": "Dobry",
+      "mood": "Nastrój",
+      "sleep": "Sen",
+      "minutesAgo": "{{count}} min temu",
+      "hoursAgo": "{{count}} godz. temu",
+      "daysAgo": "{{count}} dni temu",
+      "deviceStatus": "Status urządzenia",
+      "deviceOnline": "Online",
+      "deviceOffline": "Offline",
+      "lastSeenAt": "Ostatnio widziano: {{time}}",
+      "lastSeenNever": "Nigdy nie połączono",
+      "engagementSummary": "Dzisiejsze zaangażowanie",
+      "alertsToday": "Alerty dzisiaj",
+      "checkedIn": "Zameldowany",
+      "notCheckedIn": "Nie zameldowany",
+      "brainActivity": "Aktywność mózgu"
+    },
+    "carePlan": {
+      "title": "Plan dnia {{name}}",
+      "addTask": "Dodaj zadanie",
+      "aiSuggest": "Zasugeruj zadania (AI)",
+      "hintLabel": "Instrukcje ({{name}} to zobaczy)",
+      "hintPlaceholder": "Np. Twoje leki są w pudełku na leki na blacie w kuchni",
+      "recurrence": "Powtarza się",
+      "daily": "Codziennie",
+      "specificDays": "Określone dni",
+      "oneTime": "Jeden raz",
+      "copyDay": "Kopiuj do innych dni",
+      "saved": "Zapisano",
+      "noTasks": "Brak zadań. Dodaj pierwsze zadanie, aby rozpocząć.",
+      "category": "Kategoria",
+      "taskTitle": "Tytuł zadania",
+      "time": "Czas",
+      "deleteConfirm": "Usunąć to zadanie?",
+      "noMoreSuggestions": "Brak więcej dostępnych sugestii.",
+      "copyFromTo": "Kopiuj zadania z {{day}} do:",
+      "copyCount": "{{taskCount}} zadań zostanie skopiowanych do {{dayCount}} dni",
+      "days": {
+        "mon": "Pon",
+        "tue": "Wt",
+        "wed": "Śr",
+        "thu": "Czw",
+        "fri": "Pt",
+        "sat": "Sob",
+        "sun": "Niedz"
+      },
+      "taskPhoto": "Zdjęcie zadania (opcjonalne)",
+      "uploadPhoto": "Prześlij zdjęcie",
+      "removePhoto": "Usuń zdjęcie",
+      "medicationItems": "Leki w tej grupie",
+      "medicationItemsHint": "Grupuj do 3 leków przyjmowanych w tym samym czasie",
+      "addMedication": "Dodaj lek",
+      "medName": "Nazwa leku",
+      "medNamePlaceholder": "np. Donepezil",
+      "medDosage": "Dawkowanie lub instrukcja",
+      "medDosagePlaceholder": "np. tabletka 10mg",
+      "medPhotoLabel": "Zdjęcie",
+      "medItemLabel": "Lek {{number}}",
+      "removeMedication": "Usuń",
+      "maxMedications": "Maksymalnie 3 leki w grupie",
+      "uploadingPhoto": "Przesyłanie...",
+      "evidenceBased": "Oparte na dowodach"
+    },
+    "location": {
+      "title": "Lokalizacja i bezpieczeństwo",
+      "currentLocation": "Aktualna lokalizacja",
+      "safeZones": "Bezpieczne strefy",
+      "addSafeZone": "Dodaj bezpieczną strefę",
+      "editSafeZone": "Edytuj bezpieczną strefę",
+      "alerts": "Ustawienia alertów",
+      "leaveZoneAlert": "Powiadom, gdy {{name}} opuści bezpieczną strefę",
+      "inactivityAlert": "Powiadom, gdy brak ruchu przez",
+      "nightAlert": "Powiadom, gdy na zewnątrz po",
+      "takeMeHomeAlert": "Powiadom, gdy {{name}} dotknie „Zabierz mnie do domu”",
+      "locationHistory": "Historia lokalizacji",
+      "takeMeHomeTapped": "{{name}} dotknął(ęła) „Zabierz mnie do domu”",
+      "hours": "godzin",
+      "zoneName": "Nazwa strefy",
+      "zoneRadius": "Promień (metry)",
+      "unknownLocation": "Nieznana lokalizacja",
+      "completeOnboarding": "Najpierw dokończ proces onboardingu.",
+      "unacknowledgedAlerts": "{{count}} Niepotwierdzony alert",
+      "unacknowledgedAlertsPlural": "{{count}} Niepotwierdzone alerty",
+      "acknowledge": "Potwierdź",
+      "patientLocation": "Lokalizacja {{name}}",
+      "updated": "Zaktualizowano: {{time}}",
+      "noLocationData": "Brak danych o lokalizacji",
+      "live": "Na żywo",
+      "add": "+ Dodaj",
+      "noSafeZonesYet": "Nie skonfigurowano jeszcze bezpiecznych stref.\nDodaj strefy, aby otrzymywać alerty, gdy {{name}} je opuści.",
+      "radiusMeters": "Promień {{radius}}m",
+      "recentAlerts24h": "Ostatnie alerty (24h)",
+      "noRecentAlerts": "Brak alertów w ciągu ostatnich 24 godzin. Wszystko w porządku!",
+      "deleteSafeZone": "Usuń bezpieczną strefę",
+      "deleteSafeZoneConfirm": "Czy na pewno chcesz usunąć „{{name}}”?",
+      "failedToSaveSafeZone": "Nie udało się zapisać bezpiecznej strefy",
+      "failedToDeleteSafeZone": "Nie udało się usunąć bezpiecznej strefy",
+      "fillAllFields": "Wypełnij wszystkie pola",
+      "name": "Nazwa",
+      "nameExample": "np. Dom, Gabinet Lekarski",
+      "latitude": "Szerokość geograficzna",
+      "longitude": "Długość geograficzna",
+      "radiusHint": "Zalecane: 100-500 metrów dla typowych lokalizacji",
+      "mapView": "Widok mapy",
+      "mapRequiresBuild": "Mapy wymagają kompilacji deweloperskiej.\nUżyj EAS Build, aby włączyć mapy.",
+      "home": "Dom",
+      "patient": "Pacjent",
+      "alertTypeLeftSafeZone": "Opuszczenie bezpiecznej strefy",
+      "alertTypeInactive": "Brak aktywności",
+      "alertTypeNightMovement": "Ruch w nocy",
+      "alertTypeTakeMeHomeTapped": "Dotknięto „Zabierz mnie do domu”",
+      "alertTypeSosTriggered": "Uruchomiono SOS"
+    },
+    "coach": {
+      "title": "Trener Opieki AI",
+      "tabs": {
+        "chat": "Czat",
+        "behaviours": "Zachowania",
+        "resources": "Zasoby"
+      },
+      "resources": {
+        "title": "Zasoby",
+        "subtitle": "Przewodniki, artykuły i lokalne wsparcie, które pomogą Ci w opiece",
+        "linkLabel": "Zasoby i przewodniki"
+      },
+      "intro": "Zapytaj mnie o wszystko, co dotyczy opieki nad {{name}}. Znam jego/jej rutynę, preferencje i ogólne najlepsze praktyki.",
+      "placeholder": "Wpisz swoje pytanie...",
+      "disclaimer": "Jestem tutaj, aby Cię wspierać, a nie zastępować porady medyczne. W przypadku problemów zdrowotnych zawsze skonsultuj się z lekarzem.",
+      "disclaimerShort": "Trener Opieki zapewnia jedynie ogólne wskazówki. Zawsze konsultuj się z lekarzem w sprawach medycznych.",
+      "suggestedTopics": "Sugerowane tematy",
+      "addToCarePlan": "Dodaj do planu opieki",
+      "addToDoctorNotes": "Dodaj do notatek dla lekarza",
+      "newConversation": "Nowa rozmowa",
+      "newChat": "Nowy czat",
+      "careCoach": "Trener Opieki",
+      "completeOnboarding": "Najpierw dokończ proces wdrażania.",
+      "greeting": "Cześć {{name}}!",
+      "greetingIntro": "Jestem tutaj, aby pomóc Ci w opiece nad {{patientName}}. Zapytaj mnie o wszystko, co dotyczy codziennej opieki, aktywności lub radzenia sobie w trudnych sytuacjach.",
+      "tryAsking": "Spróbuj zapytać:",
+      "askAbout": "Zapytaj o opiekę nad {{name}}...",
+      "send": "Wyślij",
+      "signingIn": "Logowanie",
+      "taskAddedSuccess": "Zadanie dodane do planu opieki!",
+      "taskAddedError": "Nie udało się dodać zadania. Spróbuj ponownie.",
+      "noteAddedSuccess": "Notatka zapisana dla wizyty u lekarza!",
+      "noteAddedError": "Nie udało się zapisać notatki. Spróbuj ponownie.",
+      "addToCarePlanButton": "Dodaj do Planu Opieki",
+      "saveForDoctorVisit": "Zapisz dla Wizyty u Lekarza",
+      "success": "Sukces",
+      "suggestions": {
+        "sundowning": "Jak radzić sobie z majaczeniem wieczornym?",
+        "rainyDays": "Jakie aktywności sprawdzają się w deszczowe dni?",
+        "siblings": "Pomóż mi porozmawiać z rodzeństwem o podziale opieki",
+        "refusesFood": "{{name}} odmawia jedzenia. Pomocy.",
+        "repetitive": "Jak radzić sobie z powtarzającymi się pytaniami?"
+      },
+      "hub": {
+        "backToHub": "Powrót do Trenera",
+        "insight": {
+          "title": "Dla Ciebie",
+          "discuss": "Porozmawiaj",
+          "fallback": "Sprawdź dzień {{name}}, aby uzyskać spersonalizowane wskazówki"
+        },
+        "rightNow": {
+          "title": "Właśnie Teraz",
+          "subtitle": "Pomoc w danej chwili",
+          "refusing_food": "Odmawia jedzenia",
+          "refusing_medication": "Nie chce brać leków",
+          "agitated": "Pobudzony",
+          "not_recognizing": "Nie rozpoznaje mnie",
+          "repetitive_questions": "Znowu to samo pytanie",
+          "sundowning": "Majaczenie wieczorne",
+          "wants_to_leave": "Chce wyjść",
+          "caregiver_overwhelmed": "Tracę cierpliwość"
+        },
+        "planPrepare": {
+          "title": "Planuj i Przygotuj",
+          "subtitle": "Kierowane procesy robocze",
+          "plan_tomorrow": "Zaplanuj jutro",
+          "plan_tomorrow_desc": "Zbudujcie razem wspaniały dzień",
+          "doctor_visit": "Przygotuj się do wizyty u lekarza",
+          "doctor_visit_desc": "Wygeneruj uporządkowane podsumowanie",
+          "review_week": "Przejrzyj ten tydzień",
+          "review_week_desc": "Co poszło dobrze, co wymaga uwagi",
+          "adjust_plan": "Dostosuj plan opieki",
+          "adjust_plan_desc": "Optymalizuj na podstawie tego, co działa"
+        },
+        "learn": {
+          "title": "Dowiedz się",
+          "subtitle": "Przewodniki tematyczne dla {{name}}",
+          "daily_routines": "Codzienne Rutyny",
+          "communication": "Komunikacja",
+          "behaviors": "Zachowania",
+          "activities": "Aktywności",
+          "nutrition": "Odżywianie",
+          "safety": "Bezpieczeństwo",
+          "sleep": "Sen i Noc"
+        },
+        "askAnything": {
+          "title": "Zapytaj o Cokolwiek",
+          "placeholder": "Co Cię nurtuje w opiece nad {{name}}?"
+        }
+      }
+    },
+    "family": {
+      "title": "Zespół Opieki {{patientName}}",
+      "inviteMember": "Zaproś członka rodziny",
+      "primaryCaregiver": "Główny opiekun",
+      "familyMember": "Członek rodziny",
+      "careCode": "Kod Opieki",
+      "careCodeHelp": "Udostępnij ten kod, aby sparować aplikację pacjenta",
+      "regenerateCode": "Wygeneruj nowy kod",
+      "regenerateWarning": "Spowoduje to rozłączenie wszystkich sparowanych urządzeń pacjenta. Będą potrzebować nowego kodu.",
+      "journal": "Dziennik Opieki",
+      "addNote": "Dodaj notatkę",
+      "observation": "Obserwacja",
+      "note": "Notatka",
+      "milestone": "Kamień milowy",
+      "inviteEmail": "Adres e-mail",
+      "inviteName": "Imię",
+      "inviteRelationship": "Pokrewieństwo",
+      "familyCircle": "Krąg Rodzinny",
+      "back": "Wstecz",
+      "family": "Rodzina",
+      "careJournal": "Dziennik Opieki",
+      "inviteFamilyMembers": "Zaproś Członków Rodziny",
+      "shareCareCodeDesc": "Udostępnij swój Kod Opieki, aby umożliwić dołączenie innym członkom rodziny.",
+      "showCareCode": "Pokaż Kod Opieki",
+      "copy": "Kopiuj",
+      "share": "Udostępnij",
+      "copied": "Skopiowano!",
+      "codeCopiedToClipboard": "Kod Opieki skopiowany do schowka",
+      "familyMembers": "Członkowie rodziny ({{count}})",
+      "you": "Ty",
+      "primary": "Główny",
+      "entryPlaceholder": "Dodaj notatkę, obserwację lub kamień milowy...",
+      "posting": "Wysyłanie...",
+      "post": "Opublikuj",
+      "noJournalEntries": "Brak wpisów w dzienniku.",
+      "startDocumenting": "Zacznij dokumentować swoją podróż opiekuńczą!",
+      "yesterday": "Wczoraj",
+      "failedToAddEntry": "Nie udało się dodać wpisu. Spróbuj ponownie.",
+      "shareCareCodeMessage": "Dołącz do mojego kręgu opieki OurTurn! Użyj tego Kodu Opieki: {{code}}",
+      "deleteConfirmTitle": "Usuń Wpis z Dziennika",
+      "deleteConfirmMessage": "Czy na pewno chcesz usunąć ten wpis w dzienniku? Tej operacji nie można cofnąć.",
+      "edited": "(edytowano)",
+      "crisis": "Kryzys",
+      "canEditPlan": "Może edytować plan",
+      "receivesAlerts": "Otrzymuje powiadomienia",
+      "caregiverLimitReached": "Osiągnięto limit darmowej wersji dla członków rodziny. Zaktualizuj, aby dodać więcej."
+    },
+    "toolkit": {
+      "pageTitle": "Zestaw narzędzi dla opiekuna",
+      "pageSubtitle": "Praktyczne narzędzia i wsparcie dla Twojego dobrego samopoczucia",
+      "introMessage": "Witaj, {{name}}! To Twoja przestrzeń szybkiej ulgi, wsparcia i dbania o siebie.",
+      "checkin": {
+        "title": "Jak się dziś czujesz?",
+        "energy": "Energia",
+        "energyLow": "Wyczerpany(a)",
+        "energyHigh": "Pełen(na) energii",
+        "stress": "Stres",
+        "stressLow": "Spokojny(a)",
+        "stressHigh": "Przytłoczony(a)",
+        "sleep": "Jakość snu",
+        "sleepLow": "Okropna",
+        "sleepHigh": "Świetna"
+      },
+      "relief": {
+        "title": "Punkt szybkiej ulgi",
+        "recommended": "Polecane",
+        "duration": "{{min}} min",
+        "startExercise": "Rozpocznij",
+        "stepOf": "Krok {{current}} z {{total}}",
+        "complete": "Brawo! Ćwiczenie zakończone.",
+        "close": "Zamknij",
+        "pause": "Pauza",
+        "resume": "Wznów",
+        "exercises": {
+          "box-breathing": {
+            "name": "Oddychanie Kwadratowe",
+            "step0": "Usiądź wygodnie i zamknij oczy",
+            "step1": "Wdychaj powoli przez nos",
+            "step2": "Delikatnie wstrzymaj oddech",
+            "step3": "Wydychaj powoli przez usta",
+            "step4": "Wstrzymaj się przed kolejnym oddechem",
+            "step5": "Wdychaj powoli przez nos",
+            "step6": "Delikatnie wstrzymaj oddech",
+            "step7": "Wydychaj powoli przez usta",
+            "step8": "Wstrzymaj się przed kolejnym oddechem",
+            "step9": "Wdychaj powoli przez nos",
+            "step10": "Delikatnie wstrzymaj oddech",
+            "step11": "Wydychaj powoli przez usta",
+            "step12": "Wstrzymaj się przed kolejnym oddechem",
+            "step13": "Wdychaj powoli przez nos",
+            "step14": "Delikatnie wstrzymaj oddech",
+            "step15": "Wydychaj powoli przez usta",
+            "step16": "Wstrzymaj się przed kolejnym oddechem",
+            "step17": "Wdychaj powoli przez nos",
+            "step18": "Delikatnie wstrzymaj oddech",
+            "step19": "Wydychaj powoli przez usta",
+            "step20": "Wstrzymaj się przed kolejnym oddechem",
+            "step21": "Wdychaj powoli przez nos",
+            "step22": "Delikatnie wstrzymaj oddech",
+            "step23": "Wydychaj powoli przez usta",
+            "step24": "Świetnie. Poświęć chwilę, aby zauważyć, jak się czujesz."
+          },
+          "54321-grounding": {
+            "name": "Uziemienie 5-4-3-2-1",
+            "step0": "Weź wolny, głęboki oddech i rozejrzyj się",
+            "step1": "Wymień 5 rzeczy, które teraz WIDZISZ",
+            "step2": "Wymień 4 rzeczy, które teraz możesz DOTKNĄĆ",
+            "step3": "Wymień 3 rzeczy, które teraz SŁYSZYSZ",
+            "step4": "Wymień 2 rzeczy, które teraz CZUJESZ zapachem",
+            "step5": "Wymień 1 rzecz, którą teraz SMAKUJESZ",
+            "step6": "Weź kolejny głęboki oddech. Jesteś tu i jesteś bezpieczny/a."
+          },
+          "gratitude-moment": {
+            "name": "Chwila Wdzięczności",
+            "step0": "Zamknij oczy i weź uspokajający oddech",
+            "step1": "Pomyśl o jednej osobie, za którą jesteś wdzięczny/a i dlaczego",
+            "step2": "Pomyśl o czymś dobrym, co wydarzyło się dzisiaj, nawet małym",
+            "step3": "Pomyśl o czymś w sobie, co cenisz",
+            "step4": "Trzymaj te trzy rzeczy w myślach i oddychaj głęboko",
+            "step5": "Nieś to uczucie wdzięczności ze sobą."
+          },
+          "progressive-muscle-relaxation": {
+            "name": "Progresywna Relaksacja Mięśni",
+            "step0": "Usiądź lub połóż się wygodnie. Zamknij oczy.",
+            "step1": "Zaciśnij obie pięści mocno na 5 sekund...",
+            "step2": "Puść i poczuj, jak napięcie topnieje",
+            "step3": "Napnij ramiona — podnieś je do uszu...",
+            "step4": "Puść i pozwól ramionom opaść",
+            "step5": "Napnij twarz — czoło, oczy, szczękę...",
+            "step6": "Puść i rozluźnij twarz całkowicie",
+            "step7": "Napnij mięśnie brzucha...",
+            "step8": "Puść i oddychaj w brzuch",
+            "step9": "Ściśnij nogi i stopy mocno...",
+            "step10": "Puść i poczuj ciepło przepływające przez nogi",
+            "step11": "Oddychaj głęboko. Całe twoje ciało jest rozluźnione.",
+            "step12": "Delikatnie otwórz oczy, kiedy będziesz gotowy/a."
+          },
+          "mindful-break": {
+            "name": "Świadoma Przerwa",
+            "step0": "Przerwij to, co robisz. Ta chwila należy do ciebie.",
+            "step1": "Zamknij oczy i weź 3 wolne, głębokie oddechy",
+            "step2": "Zauważ, jak czuje się twoje ciało — nie musisz niczego zmieniać",
+            "step3": "Posłuchaj dźwięków wokół ciebie, bliskich i dalekich",
+            "step4": "Poczuj powierzchnię pod sobą i powietrze na skórze",
+            "step5": "Powiedz cicho: \"Robię co mogę, i to wystarczy.\"",
+            "step6": "Weź jeszcze jeden głęboki oddech",
+            "step7": "Delikatnie otwórz oczy. Czujesz się odświeżony/a."
+          },
+          "breathing-478": {
+            "name": "Oddychanie 4-7-8",
+            "step0": "Usiądź wygodnie i rozluźnij ramiona",
+            "step1": "Wdychaj spokojnie przez nos licząc do 4",
+            "step2": "Wstrzymaj oddech licząc do 7",
+            "step3": "Wydychaj całkowicie przez usta licząc do 8",
+            "step4": "Wdychaj spokojnie przez nos licząc do 4",
+            "step5": "Wstrzymaj oddech licząc do 7",
+            "step6": "Wydychaj całkowicie przez usta licząc do 8",
+            "step7": "Wdychaj spokojnie przez nos licząc do 4",
+            "step8": "Wstrzymaj oddech licząc do 7",
+            "step9": "Wydychaj całkowicie przez usta licząc do 8",
+            "step10": "Wdychaj spokojnie przez nos licząc do 4",
+            "step11": "Wstrzymaj oddech licząc do 7",
+            "step12": "Wydychaj całkowicie przez usta licząc do 8",
+            "step13": "Wdychaj spokojnie przez nos licząc do 4",
+            "step14": "Wstrzymaj oddech licząc do 7",
+            "step15": "Wydychaj całkowicie przez usta licząc do 8",
+            "step16": "Zauważ, o ile spokojniejsze jest teraz twoje ciało."
+          },
+          "permission-slip": {
+            "name": "Pozwolenie dla Siebie",
+            "step0": "Weź głęboki oddech i daj sobie chwilę",
+            "step1": "Powiedz sobie: \"Daję sobie pozwolenie, by nie być dzisiaj idealnym/ą\"",
+            "step2": "Powiedz: \"Daję sobie pozwolenie, by prosić o pomoc\"",
+            "step3": "Powiedz: \"Daję sobie pozwolenie, by czuć to, co czuję, bez poczucia winy\"",
+            "step4": "Powiedz: \"Daję sobie pozwolenie na przerwę\"",
+            "step5": "Powiedz: \"Robię co mogę, i to wystarczy\"",
+            "step6": "Weź głęboki oddech i trzymaj te słowa blisko",
+            "step7": "Ty też zasługujesz na współczucie. Nieś to ze sobą."
+          },
+          "quick-walk": {
+            "name": "Krótki Spacer",
+            "step0": "Wstań i rozciągnij ręce nad głową",
+            "step1": "Podejdź do najbliższego okna lub drzwi i popatrz na zewnątrz",
+            "step2": "Zrób 5 wolnych kroków i poczuj każdą stopę dotykającą podłogi",
+            "step3": "Popatrz w górę — zauważ niebo, sufit lub coś nad tobą",
+            "step4": "Zrób kolejne 5 wolnych, świadomych kroków",
+            "step5": "Potrząśnij luźno rękami i ramionami przez kilka sekund",
+            "step6": "Obróć ramiona do tyłu 3 razy",
+            "step7": "Poruszyłeś/aś się. To się liczy. Dobra robota."
+          }
+        }
+      },
+      "help": {
+        "title": "Poproś o pomoc",
+        "sendRequest": "Wyślij",
+        "customPlaceholder": "Wpisz swoją wiadomość...",
+        "recentRequests": "Ostatnie prośby",
+        "statusPending": "Oczekujące",
+        "statusAccepted": "Zaakceptowane",
+        "statusCompleted": "Zakończone",
+        "statusExpired": "Wygasłe",
+        "sent": "Prośba o pomoc wysłana!",
+        "limitReached": "Możesz wysłać do 5 próśb o pomoc dziennie.",
+        "noRequests": "Brak ostatnich próśb o pomoc.",
+        "accept": "Mogę pomóc",
+        "complete": "Oznacz jako zakończone",
+        "template_need_break": "Potrzebuję przerwy",
+        "template_handle_meds": "Pomoc z lekami",
+        "template_need_visit": "Potrzebna wizyta",
+        "template_groceries": "Zakupy",
+        "template_custom": "Własna wiadomość",
+        "message_need_break": "Naprawdę potrzebuję przerwy. Czy ktoś mógłby mnie zastąpić na chwilę?",
+        "message_handle_meds": "Czy ktoś może pomóc z lekami dzisiaj?",
+        "message_need_visit": "Bardzo by to znaczyło, gdyby ktoś mógł nas odwiedzić dzisiaj.",
+        "message_groceries": "Czy ktoś mógłby pomóc z zakupami?"
+      },
+      "agent": {
+        "title": "Towarzysz dobrego samopoczucia",
+        "disclaimer": "Wyłącznie wsparcie emocjonalne. Nie jest to porada medyczna.",
+        "placeholder": "Jak się czujesz?",
+        "greeting": "Myślę o Tobie...",
+        "rateLimited": "Zrób sobie przerwę – wkrótce możesz porozmawiać ponownie.",
+        "errorMessage": "Nie można się połączyć. Spróbuj ponownie.",
+        "expand": "Rozwiń",
+        "collapse": "Zwiń",
+        "prompts": {
+          "overwhelmed": "Czuję się teraz przytłoczony(a)",
+          "calmDown": "Pomóż mi się uspokoić w 2 minuty",
+          "needEnergy": "Potrzebuję energii, ale nie mogę zrobić sobie przerwy",
+          "poorSleep": "Nie mogłem(am) dobrze spać ostatniej nocy",
+          "needMoment": "Potrzebuję chwili tylko dla siebie",
+          "uplifting": "Powiedz mi coś podnoszącego na duchu"
+        }
+      },
+      "goal": {
+        "title": "Dzisiejszy cel",
+        "placeholder": "Ustaw cel na dziś...",
+        "done": "Gotowe!",
+        "weekLabel": "Ten tydzień",
+        "suggest": "Zaproponuj"
+      },
+      "burnout": {
+        "title": "Zauważyliśmy, że możesz potrzebować dodatkowego wsparcia",
+        "message": "Twoje ostatnie raporty wskazują na podwyższony stres lub niski poziom energii. To całkowicie zrozumiałe – opieka jest trudna."
+      },
+      "support": {
+        "title": "Potrzebujesz wsparcia?",
+        "description": "Opieka jest wyzwaniem. Można prosić o pomoc."
+      },
+      "footer": "Pamiętaj: Nie możesz nalewać z pustego kubka. Twoje dobre samopoczucie też ma znaczenie.",
+      "weeklyStats": {
+        "title": "Cotygodniowe statystyki",
+        "subtitle": "Podsumowanie Twojego samopoczucia z ostatnich 7 dni",
+        "avgEnergy": "Średnia energia",
+        "avgStress": "Średni stres",
+        "avgSleep": "Średni sen",
+        "noData": "Uzupełniaj codzienne raporty, aby zobaczyć swoje cotygodniowe trendy.",
+        "generateDigest": "Wygeneruj podsumowanie AI",
+        "generating": "Generowanie...",
+        "behaviourSummary": "W tym tygodniu zarejestrowano {{count}} incydentów behawioralnych"
+      },
+      "sos": {
+        "title": "Co się teraz dzieje?",
+        "subtitle": "Wybierz, z czym potrzebujesz pomocy – poprowadzimy Cię.",
+        "calmDown": "Muszę się uspokoić",
+        "calmDownDesc": "Szybkie ćwiczenia oddechowe i relaksacyjne",
+        "behaviourNow": "Zachowanie ma miejsce teraz",
+        "behaviourNowDesc": "Zarejestruj incydent i uzyskaj wskazówki",
+        "callHelp": "Potrzebuję pomocy w nagłym wypadku",
+        "callHelpDesc": "Skontaktuj się ze służbami ratunkowymi lub rodziną",
+        "needBreak": "Potrzebuję, żeby ktoś mnie zastąpił",
+        "needBreakDesc": "Wyślij prośbę o pomoc do rodziny"
+      },
+      "behaviours": {
+        "playbooks": {
+          "title": "Scenariusze postępowania",
+          "subtitle": "Dotknij zachowania, aby uzyskać szczegółowe wskazówki",
+          "rightNow": "Teraz",
+          "understandWhy": "Zrozum dlaczego",
+          "prevent": "Zapobieganie",
+          "whenToCallDoctor": "Kiedy wezwać lekarza"
+        },
+        "logger": {
+          "title": "Zarejestruj incydent",
+          "logIncident": "Zarejestruj incydent",
+          "typeLabel": "Rodzaj zachowania",
+          "selectType": "Wybierz rodzaj...",
+          "severity": "Nasilenie",
+          "mild": "Łagodne",
+          "severe": "Ciężkie",
+          "timeOfDay": "Pora dnia",
+          "morning": "Rano",
+          "afternoon": "Popołudnie",
+          "evening": "Wieczór",
+          "night": "Noc",
+          "duration": "Czas trwania (minuty)",
+          "durationPlaceholder": "Jak długo to trwało?",
+          "triggers": "Możliwe wyzwalacze",
+          "trigger_pain": "Ból",
+          "trigger_hunger": "Głód",
+          "trigger_thirst": "Pragnienie",
+          "trigger_fatigue": "Zmęczenie",
+          "trigger_overstimulation": "Przebodźcowanie",
+          "trigger_unfamiliar_environment": "Nieznane miejsce",
+          "trigger_unfamiliar_person": "Nieznana osoba",
+          "trigger_routine_change": "Zmiana rutyny",
+          "trigger_medication": "Leki",
+          "trigger_noise": "Hałas",
+          "trigger_loneliness": "Samotność",
+          "trigger_boredom": "Nuda",
+          "trigger_bathroom_need": "Potrzeba skorzystania z toalety",
+          "trigger_frustration": "Frustracja",
+          "trigger_fear": "Strach",
+          "trigger_unknown": "Nieznane",
+          "whatHappened": "Co się stało?",
+          "whatHappenedPlaceholder": "Opisz zdarzenie...",
+          "whatHelped": "Co pomogło? (opcjonalne)",
+          "whatHelpedPlaceholder": "Opisz, co pomogło uspokoić sytuację...",
+          "save": "Zapisz zdarzenie",
+          "saved": "Zdarzenie zapisane"
+        },
+        "timeline": {
+          "title": "Oś czasu zdarzeń",
+          "all": "Wszystkie",
+          "noIncidents": "Brak zdarzeń pasujących do bieżącego filtra."
+        }
+      }
+    },
+    "reports": {
+      "title": "Raport z wizyty lekarskiej",
+      "period": "Okres raportu",
+      "lastDays": "Ostatnie {{days}} dni",
+      "generate": "Wygeneruj raport",
+      "include": "Uwzględnij w raporcie",
+      "moodTrends": "Trendy nastroju i podsumowanie meldunków",
+      "sleepPatterns": "Wzorce snu",
+      "activityCompletion": "Wskaźniki ukończenia aktywności",
+      "medicationAdherence": "Przestrzeganie zaleceń dotyczących leków",
+      "journalNotes": "Istotne obserwacje z dziennika opieki",
+      "locationPatterns": "Wzorce lokalizacji",
+      "caregiverConcerns": "Obawy opiekuna",
+      "customNotes": "Dodatkowe uwagi dla lekarza",
+      "print": "Drukuj",
+      "downloadPdf": "Pobierz PDF",
+      "emailDoctor": "Wyślij e-mail do lekarza",
+      "disclaimer": "To podsumowanie opiera się na samodzielnie zgłaszanych danych dotyczących samopoczucia i obserwacjach rodziny. Nie jest to ocena kliniczna.",
+      "webNote": "Aby uzyskać pełny kreator raportów z funkcją drukowania i eksportu do formatu PDF, odwiedź aplikację internetową OurTurn.",
+      "openInWebApp": "Otwórz w aplikacji internetowej",
+      "previousReports": "Poprzednie raporty",
+      "generated": "Wygenerowano {{date}}",
+      "avgQuality": "średnia jakość",
+      "moodStruggling": "Trudny",
+      "moodLow": "Niski",
+      "moodOkay": "W porządku",
+      "moodGood": "Dobry",
+      "moodGreat": "Świetny",
+      "careSummary": "Podsumowanie opieki OurTurn",
+      "patient": "Pacjent",
+      "periodLabel": "Okres",
+      "checkinsRecorded": "Zarejestrowane meldunki",
+      "averageMood": "Średni nastrój",
+      "averageSleepQuality": "Średnia jakość snu",
+      "activityCompletionRate": "Ukończenie aktywności",
+      "medicationAdherenceRate": "Przestrzeganie zaleceń dotyczących leków",
+      "observations": "Obserwacje",
+      "categoryMedication": "Leki",
+      "categoryMeals": "Posiłki",
+      "categoryPhysical": "Aktywność fizyczna",
+      "categoryCognitive": "Funkcje poznawcze",
+      "categorySocial": "Relacje społeczne",
+      "categoryHealth": "Zdrowie"
+    },
+    "onboarding": {
+      "step1Title": "O Tobie",
+      "step2Title": "O Twojej Bliskiej Osobie",
+      "step3Title": "Historia Ich Życia",
+      "step4Title": "Codzienna Rutyna",
+      "step5Title": "Ustawienia Bezpieczeństwa",
+      "step6Title": "Twój Kod Opieki",
+      "next": "Dalej",
+      "back": "Wstecz",
+      "finish": "Rozpocznij",
+      "careCodeInstructions": "Zainstaluj OurTurn na telefonie bliskiej osoby i wprowadź ten kod, aby się połączyć.",
+      "quickSetup": "Szybka konfiguracja",
+      "yourName": "Twoje imię",
+      "yourNameRequired": "Twoje imię *",
+      "lovedOneNameRequired": "Imię Twojej bliskiej osoby *",
+      "relationship": "Twoje pokrewieństwo",
+      "relationshipPlaceholder": "np. córka, syn, małżonek",
+      "settingsHint": "Możesz dodać więcej szczegółów później w Ustawieniach",
+      "fillRequired": "Proszę wypełnić wszystkie wymagane pola",
+      "setupFailed": "Nie udało się zakończyć konfiguracji",
+      "country": "Kraj",
+      "theirName": "Ich imię",
+      "dateOfBirth": "Data urodzenia",
+      "dementiaType": "Rodzaj demencji (opcjonalne)",
+      "homeAddress": "Adres domowy",
+      "medications": "Leki",
+      "addMedication": "Dodaj lek",
+      "childhoodLocation": "Miejsce, w którym dorastali",
+      "career": "Kariera / zawód",
+      "hobbies": "Hobby i zainteresowania",
+      "favoriteMusic": "Ulubiona muzyka / artyści",
+      "favoriteFoods": "Ulubione potrawy",
+      "importantPeople": "Ważne osoby",
+      "keyEvents": "Kluczowe wydarzenia z życia",
+      "uploadPhotos": "Prześlij zdjęcia rodzinne",
+      "wakeTime": "Godzina pobudki",
+      "sleepTime": "Godzina snu",
+      "generatePlan": "Wygeneruj sugerowany plan",
+      "emergencyContacts": "Kontakty alarmowe",
+      "alertSettings": "Ustawienia alertów",
+      "stepOf": "Krok {{current}} z {{total}}",
+      "breakfastTime": "Godzina śniadania",
+      "lunchTime": "Godzina obiadu",
+      "dinnerTime": "Godzina kolacji",
+      "typicalDay": "Opis typowego dnia",
+      "typicalDayPlaceholder": "Opisz typowy dzień...",
+      "emergencyContactsHint": "Dodaj kontakty alarmowe, które pojawią się w zakładce Pomoc w aplikacji pacjenta.",
+      "remove": "Usuń",
+      "addContact": "Dodaj kontakt",
+      "contactNameRequired": "Imię *",
+      "phoneRequired": "Numer telefonu *",
+      "relationshipOptional": "Pokrewieństwo (opcjonalne)",
+      "addContactButton": "+ Dodaj kontakt",
+      "emergencyContactWarning": "Zalecamy dodanie co najmniej jednego kontaktu alarmowego.",
+      "allSet": "Wszystko gotowe!",
+      "careCodeLabel": "KOD OPIEKI",
+      "copied": "Skopiowano!",
+      "copyCode": "Kopiuj kod",
+      "nextSteps": "Następne kroki:",
+      "nextStep1": "1. Zainstaluj OurTurn na telefonie {{name}}",
+      "nextStep2": "2. Otwórz aplikację i wprowadź Kod Opieki powyżej",
+      "nextStep3": "3. To wszystko! Plan dnia {{name}} pojawi się na ich telefonie",
+      "homeAddressPlaceholder": "ul. Główna 123, Miasto"
+    },
+    "settings": {
+      "title": "Ustawienia",
+      "appearance": "Wygląd",
+      "theme": {
+        "label": "Motyw",
+        "light": "Jasny",
+        "dark": "Ciemny",
+        "system": "Systemowy"
+      },
+      "profile": "Profil",
+      "account": "Konto",
+      "subscription": "Subskrypcja",
+      "notifications": "Powiadomienia",
+      "privacy": "Prywatność i dane",
+      "exportData": "Eksportuj moje dane",
+      "exportNote": "Pobierz kopię wszystkich swoich danych (prawo do przenoszenia danych zgodnie z RODO)",
+      "exportClipboard": "Twoje dane zostały skopiowane do schowka. Możesz wkleić je do dokumentu lub e-maila.",
+      "deleteAccount": "Usuń konto",
+      "deleteWarning": "Spowoduje to trwałe usunięcie wszystkich danych dla tego gospodarstwa domowego. Nie można tego cofnąć.",
+      "deleteConfirmType": "Wpisz DELETE, aby potwierdzić usunięcie konta",
+      "confirmDelete": "Potwierdź usunięcie",
+      "language": "Język",
+      "about": "O OurTurn",
+      "version": "Wersja",
+      "notMedicalDevice": "OurTurn nie jest urządzeniem medycznym",
+      "dailySummary": "Podsumowanie dzienne",
+      "dailySummaryTime": "Godzina podsumowania dziennego",
+      "emailNotifications": "Powiadomienia e-mail",
+      "pushNotifications": "Powiadomienia push",
+      "safetyAlerts": "Alerty bezpieczeństwa",
+      "signOut": "Wyloguj się",
+      "saveProfile": "Zapisz profil",
+      "saved": "Zapisano!",
+      "saving": "Zapisywanie...",
+      "changePassword": "Zmień hasło",
+      "newPassword": "Nowe hasło",
+      "confirmNewPassword": "Potwierdź nowe hasło",
+      "passwordPlaceholder": "Co najmniej 8 znaków",
+      "passwordChanged": "Hasło zostało pomyślnie zmienione!",
+      "changingPassword": "Zmienianie...",
+      "copyCode": "Kopiuj kod",
+      "codeCopied": "Kod skopiowany!",
+      "regenerateCode": "Wygeneruj nowy kod",
+      "regenerateWarning": "Stary kod przestanie działać. Wszystkie sparowane urządzenia pacjenta będą potrzebować nowego kodu.",
+      "dangerZone": "Strefa zagrożenia",
+      "relationship": "Pokrewieństwo",
+      "deleteConfirm": "Wpisz DELETE, aby potwierdzić usunięcie konta",
+      "photoGallery": "Galeria zdjęć",
+      "photoGalleryDesc": "Prześlij zdjęcia rodzinne do spersonalizowanych zajęć wspomnieniowych",
+      "uploadPhotos": "Prześlij zdjęcia",
+      "uploading": "Przesyłanie...",
+      "deletePhoto": "Usunąć to zdjęcie?",
+      "maxPhotosReached": "Osiągnięto maksymalną liczbę 20 zdjęć",
+      "photoUploadHint": "Do 20 zdjęć, maks. 5 MB każde",
+      "photoUploadFailed": "Nie udało się przesłać zdjęcia. Spróbuj ponownie.",
+      "photoDeleteFailed": "Nie udało się usunąć zdjęcia. Spróbuj ponownie.",
+      "noPhotosYet": "Nie przesłano jeszcze żadnych zdjęć",
+      "photosCount": "{{count}} z 20 zdjęć",
+      "patientComplexity": "Tryb aplikacji pacjenta",
+      "patientComplexityDesc": "Dostosuj interfejs aplikacji pacjenta w zależności od potrzeb Twojej bliskiej osoby.",
+      "complexity": {
+        "full": "Pełny",
+        "fullDesc": "Dostępne wszystkie funkcje",
+        "simplified": "Uproszczony",
+        "simplifiedDesc": "Większy tekst, mniej szczegółów",
+        "essential": "Podstawowy",
+        "essentialDesc": "Minimalny — tylko muzyka i wezwanie pomocy"
+      },
+      "safetyEscalation": "Bezpieczeństwo i eskalacja",
+      "escalationTiming": "Czas eskalacji",
+      "escalationTimingDesc": "Jak długo czekać przed eskalacją niepotwierdzonych alertów",
+      "offlineThreshold": "Próg alertu offline",
+      "offlineThresholdDesc": "Alert, gdy urządzenie jest niewidoczne przez określony czas",
+      "minutes": "minut",
+      "respiteReminders": "Przypomnienia o wytchnieniu",
+      "respiteRemindersDesc": "Otrzymuj przypomnienia o robieniu przerw",
+      "groupProfile": "Twój profil",
+      "groupAboutPatient": "O {{name}}",
+      "groupAboutPatientGeneric": "O Twojej bliskiej osobie",
+      "groupSharing": "Udostępnianie i połączenie",
+      "groupSafety": "Bezpieczeństwo i powiadomienia",
+      "groupAccount": "Konto",
+      "patientInformation": "Informacje o pacjencie",
+      "patientInformationDesc": "Podstawowe informacje o Twojej bliskiej osobie",
+      "patientName": "Imię pacjenta",
+      "dateOfBirth": "Data urodzenia",
+      "dementiaType": "Rodzaj demencji",
+      "selectDementiaType": "Wybierz rodzaj (opcjonalnie)",
+      "homeAddress": "Adres domowy",
+      "homeAddressPlaceholder": "Pełny adres domowy",
+      "savingPatientInfo": "Zapisywanie...",
+      "savePatientInfo": "Zapisz informacje o pacjencie",
+      "lifeStory": "Historia życia",
+      "lifeStoryDesc": "Te szczegóły pomagają spersonalizować codzienne czynności i podpowiedzi wspomnieniowe.",
+      "childhoodLocation": "Miejsce dorastania",
+      "career": "Kariera / Zawód",
+      "hobbies": "Hobby i zainteresowania",
+      "hobbiesPlaceholder": "np. ogrodnictwo, malarstwo, szachy",
+      "favoriteMusic": "Ulubiona muzyka / Artyści",
+      "favoriteMusicPlaceholder": "np. Frank Sinatra, Beatles",
+      "favoriteFoods": "Ulubione potrawy",
+      "favoriteFoodsPlaceholder": "np. szarlotka, pieczony kurczak",
+      "importantPeople": "Ważne osoby",
+      "importantPeoplePlaceholder": "np. Jan (brat), Maria (najlepsza przyjaciółka)",
+      "keyEvents": "Kluczowe wydarzenia z życia",
+      "keyEventsPlaceholder": "np. Ukończył studia w 1965, Przeprowadził się do Londynu w 1970",
+      "savingLifeStory": "Zapisywanie...",
+      "saveLifeStory": "Zapisz historię życia",
+      "dailySchedule": "Plan dnia",
+      "dailyScheduleDesc": "Ustaw godziny wstawania i zasypiania dla codziennej rutyny Twojej bliskiej osoby.",
+      "wakeTime": "Godzina pobudki",
+      "sleepTime": "Godzina snu",
+      "savingSchedule": "Zapisywanie...",
+      "saveSchedule": "Zapisz plan",
+      "emergencyContacts": "Kontakty alarmowe",
+      "emergencyContactsDesc": "Te kontakty pojawiają się w zakładce Pomoc w aplikacji pacjenta.",
+      "addContact": "Dodaj kontakt",
+      "contactName": "Imię kontaktu",
+      "contactPhone": "Numer telefonu",
+      "contactRelationship": "Pokrewieństwo",
+      "contactRelationshipPlaceholder": "np. Córka, sąsiad",
+      "noContactsYet": "Nie dodano jeszcze żadnych kontaktów alarmowych.",
+      "savingContacts": "Zapisywanie...",
+      "saveContacts": "Zapisz kontakty",
+      "removeContactConfirm": "Usunąć ten kontakt?",
+      "country": "Kraj",
+      "selectCountry": "Wybierz kraj",
+      "selectLanguage": "Wybierz język",
+      "languageSaved": "Język zaktualizowany"
+    },
+    "auth": {
+      "login": "Zaloguj się",
+      "signup": "Zarejestruj się",
+      "email": "E-mail",
+      "password": "Hasło",
+      "forgotPassword": "Zapomniałeś hasła?",
+      "noAccount": "Nie masz konta?",
+      "hasAccount": "Masz już konto?",
+      "continueWithGoogle": "Kontynuuj z Google",
+      "continueWithApple": "Kontynuuj z Apple",
+      "or": "lub",
+      "confirmPassword": "Potwierdź hasło",
+      "createAccount": "Utwórz konto",
+      "getStarted": "Zacznij",
+      "fillAllFields": "Proszę wypełnić wszystkie pola",
+      "passwordsNoMatch": "Hasła nie pasują do siebie",
+      "passwordTooShort": "Hasło musi mieć co najmniej 8 znaków",
+      "checkEmail": "Sprawdź swój e-mail, aby potwierdzić swoje konto",
+      "enterEmailFirst": "Najpierw wprowadź swój adres e-mail.",
+      "resetEmailSent": "Sprawdź swoją skrzynkę e-mail",
+      "resetEmailSentDesc": "Wysłaliśmy link do zresetowania hasła na Twój adres e-mail.",
+      "welcomeBack": "Witamy ponownie",
+      "enterEmailAndPassword": "Wprowadź e-mail i hasło",
+      "signingIn": "Logowanie",
+      "orContinueWith": "Lub kontynuuj z"
+    },
+    "nav": {
+      "family": "Krąg Rodzinny",
+      "toolkit": "Zestaw Narzędzi",
+      "reports": "Raporty",
+      "settings": "Ustawienia",
+      "crisis": "Centrum Kryzysowe"
+    },
+    "crisis": {
+      "title": "Centrum Kryzysowe",
+      "subtitle": "Zarządzanie kryzysowe w czasie rzeczywistym i wsparcie w deeskalacji",
+      "eventLogged": "Zarejestrowano zdarzenie kryzysowe",
+      "logEvent": "Zarejestruj Zdarzenie Kryzysowe",
+      "logPlaceholder": "Opisz, co się stało...",
+      "status": {
+        "allClear": "Wszystko w Porządku",
+        "allClearDesc": "Brak aktywnych alertów",
+        "activeAlerts": "Aktywne Alerty",
+        "lastKnownLocation": "Ostatnia znana lokalizacja",
+        "viewOnMap": "Zobacz na mapie",
+        "noLocationData": "Brak dostępnych danych o lokalizacji"
+      },
+      "actions": {
+        "modeLabel": "Twoja sytuacja",
+        "withThem": "Jestem z nimi",
+        "remote": "Jestem zdalnie",
+        "startDeEscalation": "Rozpocznij Deeskalację",
+        "startDeEscalationDesc": "Krok po kroku, uspokajający przepływ",
+        "callEmergency": "Zadzwoń na Numer Alarmowy",
+        "callEmergencyDesc": "Zadzwoń na lokalne służby ratunkowe",
+        "alertFamily": "Powiadom Rodzinę",
+        "alertFamilyDesc": "Wyślij powiadomienie push do wszystkich opiekunów",
+        "alertFamilySent": "Powiadomiono członków rodziny",
+        "alertFamilyFailed": "Nie udało się powiadomić rodziny. Spróbuj ponownie.",
+        "viewLocation": "Zobacz Lokalizację",
+        "viewLocationDesc": "Zobacz aktualną lokalizację {{name}} na mapie",
+        "contactPrimary": "Skontaktuj się z Głównym Opiekunem",
+        "contactPrimaryDesc": "Skontaktuj się z głównym opiekunem przez e-mail",
+        "logEvent": "Zarejestruj Zdarzenie",
+        "logEventDesc": "Zapisz ten moment w dzienniku kryzysowym"
+      },
+      "wizard": {
+        "breathingTitle": "Zacznijmy od uspokajającego oddechu",
+        "breathingInstruction": "Wdychaj powoli... zatrzymaj... wydychaj...",
+        "stepOf": "Krok {{current}} z {{total}}",
+        "thisHelped": "To pomogło",
+        "tryNext": "Spróbuj następny krok",
+        "skip": "Pomiń",
+        "completionTitle": "Brawo. Poradziłeś sobie z tym z troską.",
+        "completionDesc": "Czy chcesz zapisać jakieś notatki o tym, co się stało?",
+        "crisisNotesPlaceholder": "Co się stało? Co pomogło? Jakie wyzwalacze zauważono...",
+        "saveAndClose": "Zapisz i Zamknij",
+        "closeWithoutSaving": "Zamknij bez zapisywania"
+      },
+      "history": {
+        "title": "Ostatnie Zdarzenia Kryzysowe",
+        "noEvents": "Brak zdarzeń kryzysowych w ciągu ostatnich 30 dni.",
+        "viewAllInJournal": "Zobacz wszystko w Dzienniku",
+        "yesterday": "Wczoraj",
+        "daysAgo": "{{count}} dni temu"
+      },
+      "steps": {
+        "stayCalm": {
+          "title": "Zachowaj Spokój",
+          "detail": "Weź powolny, głęboki oddech. Twoja spokojna energia pomoże im poczuć się bezpiecznie.",
+          "script": "Jestem tu z Tobą. Wszystko jest w porządku."
+        },
+        "validateFeelings": {
+          "title": "Potwierdź Uczucia",
+          "detail": "Powiedz 'Widzę, że jesteś zdenerwowany/a. To musi być naprawdę trudne.' Nie kłóć się i nie poprawiaj.",
+          "script": "Widzę, że jesteś zdenerwowany/a. To musi być naprawdę trudne."
+        },
+        "simplifyEnvironment": {
+          "title": "Uprość Otoczenie",
+          "detail": "Używaj krótkich, prostych zdań. Jeden pomysł na raz. Unikaj pytań 'dlaczego'.",
+          "script": "Uprośćmy to. Jedna rzecz na raz."
+        },
+        "redirectAttention": {
+          "title": "Przekieruj Uwagę",
+          "detail": "Delikatnie zmień temat. Zaproponuj znaną aktywność, piosenkę lub spacer.",
+          "script": "Może spróbujemy czegoś innego? Chodźmy na mały spacer."
+        },
+        "useGentleTouch": {
+          "title": "Użyj Delikatnego Dotyku",
+          "detail": "Jeśli to mile widziane, delikatne położenie ręki na ramieniu może być uspokajające. Obserwuj ich reakcję.",
+          "script": "Czy mogę Cię potrzymać za rękę? Jestem tu."
+        },
+        "giveSpace": {
+          "title": "Daj Przestrzeń",
+          "detail": "Jeśli nic nie działa, zapewnij bezpieczeństwo i daj im przestrzeń. Można się wycofać.",
+          "script": "Będę w pobliżu, jeśli będziesz mnie potrzebować/a. Nie spiesz się."
+        }
+      },
+      "helplines": "Linie Pomocy",
+      "noHelplineAvailable": "Nie znaleziono linii pomocy dla Twojego kraju",
+      "call": "Zadzwoń",
+      "email": "E-mail",
+      "website": "Strona internetowa",
+      "familyContacts": "Kontakty Rodzinne",
+      "supportResources": "Zasoby Wsparcia",
+      "scenarios": {
+        "title": "Co się dzieje?",
+        "subtitle": "Dotknij sytuację, aby uzyskać wskazówki krok po kroku",
+        "urgent": "Pilne",
+        "stepCountLabel": "{{count}} kroki",
+        "backToSituations": "Powrót do sytuacji",
+        "breathe": "Ćwiczenie oddechowe",
+        "callEmergency": "Zadzwoń na Służby Ratunkowe"
+      },
+      "patterns": {
+        "title": "Wgląd w Wzorce",
+        "noEvents": "Rejestruj incydenty, aby zobaczyć wzorce w czasie.",
+        "fewEvents": "Zarejestrowano {{count}} incydenty. Potrzeba więcej danych, aby zobaczyć wzorce.",
+        "timePattern": "Większość incydentów zdarza się {{time}}.",
+        "weekCount": "{{count}} w tym tygodniu."
+      },
+      "personalization": {
+        "label": "Co uspokaja {{name}}",
+        "empty": "Dodaj strategie uspokajające w biografii {{name}}, aby zobaczyć spersonalizowane wskazówki tutaj."
+      },
+      "scenarioData": {
+        "stepsCount": "{{count}} kroki",
+        "agitated": {
+          "label": "Pobudzony / Zaniepokojony",
+          "steps": [
+            {
+              "title": "Ty najpierw",
+              "instruction": "Zanim cokolwiek zrobisz, weź jeden głęboki oddech. Nie możesz nikogo uspokoić, jeśli sam(a) nie jesteś spokojny(a)."
+            },
+            {
+              "title": "Szybkie sprawdzenie – czy coś dolega fizycznie?",
+              "instruction": "Ból, głód, potrzeba skorzystania z toalety lub infekcja mogą powodować pobudzenie.",
+              "checklist": [
+                "Ból lub dyskomfort?",
+                "Głodny(a) lub spragniony(a)?",
+                "Potrzeba skorzystania z toalety?",
+                "Ostatnia zmiana leków?",
+                "Oznaki gorączki lub choroby?"
+              ]
+            },
+            {
+              "title": "Obniż temperaturę",
+              "instruction": "Mów powoli i cicho. Nie kłóć się, nie poprawiaj, nie wyjaśniaj. Potwierdź, że rozumiesz, co czują.",
+              "tips": [
+                "\"Widzę, że jesteś zdenerwowany(a). Jestem tutaj.\"",
+                "Zredukuj hałas – wyłącz telewizor, zamknij okna",
+                "Daj im przestrzeń fizyczną, nie naciskaj",
+                "Zaoferuj znajomy przedmiot, który daje komfort"
+              ]
+            },
+            {
+              "title": "Przekieruj, nie rozumuj",
+              "instruction": "Delikatnie zmień temat lub otoczenie. Nie próbuj wyprowadzać ich z tego stanu logiką.",
+              "tips": [
+                "Zaproponuj spacer lub przejście do innego pokoju",
+                "Włącz muzykę, którą kochają",
+                "Zaoferuj przekąskę lub ciepły napój",
+                "Oglądajcie razem zdjęcia"
+              ]
+            },
+            {
+              "title": "Kiedy szukać pomocy",
+              "instruction": "Jeśli pobudzenie trwa dłużej niż 30 minut, jeśli istnieje ryzyko, że zrobią krzywdę sobie lub Tobie, lub jeśli jest to nagłe nowe zachowanie – wezwij służby ratunkowe.",
+              "actionLabel": "Wezwij służby ratunkowe"
+            }
+          ]
+        },
+        "wandering": {
+          "label": "Włóczęga / Zaginięcie",
+          "steps": [
+            {
+              "title": "Najpierw sprawdź zwykłe miejsca",
+              "instruction": "Większość osób z demencją udaje się w znajome miejsca – dawne miejsce pracy, dom z dzieciństwa, dom sąsiada.",
+              "tips": [
+                "Sprawdź ogród, garaż, pobliskie ulice",
+                "Zapytaj sąsiadów, czy ich widzieli",
+                "Sprawdź miejsca, do których regularnie chodzili"
+              ]
+            },
+            {
+              "title": "Użyj ich lokalizacji",
+              "instruction": "Jeśli śledzenie lokalizacji jest skonfigurowane, sprawdź teraz ich aktualną pozycję."
+            },
+            {
+              "title": "Powiadom rodzinę",
+              "instruction": "Powiadom wszystkich natychmiast. Im więcej osób szuka, tym lepiej."
+            },
+            {
+              "title": "Zadzwoń na policję, jeśli nie zostaną znalezieni w ciągu 15 minut",
+              "instruction": "Nie czekaj. Osoby z demencją są narażone na wysokie ryzyko obrażeń. Wezwij służby ratunkowe i powiedz im, że osoba ma demencję.",
+              "actionLabel": "Wezwij służby ratunkowe"
+            }
+          ]
+        },
+        "refusing": {
+          "label": "Odmowa opieki",
+          "steps": [
+            {
+              "title": "Zatrzymaj się – to nie jest bunt",
+              "instruction": "Odmowa to prawie zawsze strach, dezorientacja lub dyskomfort. Mogą nie rozumieć, o co prosisz."
+            },
+            {
+              "title": "Cofnij się i spróbuj inaczej",
+              "instruction": "Nie naciskaj. Wróć za 15–20 minut i podejdź do tego, jakby to był pierwszy raz.",
+              "tips": [
+                "Zmień osobę, która prosi",
+                "Zmień otoczenie",
+                "Podziel zadanie na mniejsze kroki",
+                "Zaoferuj wybór: \"Kąpiel czy prysznic?\""
+              ]
+            },
+            {
+              "title": "Spraw, aby czuli się bezpiecznie",
+              "instruction": "Wyjaśnij każdy krok, zanim go wykonasz. Poruszaj się powoli. Zapewnij im ciepło.",
+              "tips": [
+                "Ostrzegaj przed dotknięciem",
+                "Używaj spokojnego, ciepłego tonu",
+                "Włącz ich ulubioną muzykę podczas wykonywania zadania",
+                "Utrzymuj spójność rutyny"
+              ]
+            },
+            {
+              "title": "Czy to jest wzorzec?",
+              "instruction": "Jeśli konsekwentnie odmawiają wykonania tego samego zadania, zapisz to. Może istnieć problem podstawowy – ból, strach, wrażliwość. Porozmawiaj z ich lekarzem."
+            }
+          ]
+        },
+        "hallucinations": {
+          "label": "Widzenie / Słyszenie rzeczy",
+          "steps": [
+            {
+              "title": "Nie kłóć się – to jest dla nich realne",
+              "instruction": "Potwierdź, że rozumiesz, co przeżywają, nie potwierdzając, że to prawda.",
+              "tips": [
+                "\"To brzmi przerażająco. Jestem tutaj z Tobą.\"",
+                "\"Powiedz mi, co widzisz.\"",
+                "Nie mów \"nic tam nie ma\""
+              ]
+            },
+            {
+              "title": "Sprawdź otoczenie",
+              "instruction": "Cienie, odbicia, dźwięki telewizora i bałagan mogą wywoływać błędną interpretację.",
+              "checklist": [
+                "Cienie z okien lub lamp?",
+                "Włączony telewizor lub radio w tle?",
+                "Odbicia w lustrze?",
+                "Słabe oświetlenie?"
+              ]
+            },
+            {
+              "title": "Delikatnie przekieruj",
+              "instruction": "Przenieś ich uwagę na coś konkretnego i pocieszającego.",
+              "tips": [
+                "Przejdź do dobrze oświetlonego pokoju",
+                "Zaproponuj aktywność manualną",
+                "Idźcie razem na krótki spacer",
+                "Zróbcie razem filiżankę herbaty"
+              ]
+            },
+            {
+              "title": "Kiedy zadzwonić do lekarza",
+              "instruction": "Jeśli halucynacje są nowe, częste lub powodują skrajny niepokój. Nagłe pojawienie się może wskazywać na infekcję, skutki uboczne leków lub delirium."
+            }
+          ]
+        },
+        "sundowning": {
+          "label": "Zespół zachodzącego słońca",
+          "steps": [
+            {
+              "title": "Rozpoznaj wzorzec",
+              "instruction": "Zespół zachodzącego słońca zazwyczaj zaczyna się późnym popołudniem. Jest to niezwykle powszechne i nie jest to coś, nad czym mogą panować."
+            },
+            {
+              "title": "Dostosuj teraz otoczenie",
+              "instruction": "Zredukuj wszystkie bodźce i stwórz sygnały bezpieczeństwa.",
+              "tips": [
+                "Włącz ciepłe światła, zanim zrobi się ciemno",
+                "Zasłoń zasłony, aby zredukować cienie",
+                "Wyłącz lub ścisz telewizor",
+                "Zmniejsz liczbę osób w pokoju"
+              ]
+            },
+            {
+              "title": "Zaproponuj uspokajające aktywności",
+              "instruction": "Delikatne, powtarzalne, znajome aktywności działają najlepiej.",
+              "tips": [
+                "Delikatny masaż dłoni z balsamem",
+                "Cicha, znajoma muzyka",
+                "Składanie ręczników lub sortowanie przedmiotów",
+                "Oglądanie razem albumu ze zdjęciami"
+              ]
+            },
+            {
+              "title": "Zapobiegaj temu jutro",
+              "instruction": "Zapisz epizod ze szczegółami czasowymi. Wzorce pomagają dostosować harmonogram – więcej aktywności rano, mniej kofeiny po południu."
+            }
+          ]
+        },
+        "fall": {
+          "label": "Upadek / Nagły wypadek",
+          "steps": [
+            {
+              "title": "Nie ruszaj ich",
+              "instruction": "Chyba że są w bezpośrednim niebezpieczeństwie, nie próbuj ich podnosić ani ruszać.",
+              "tips": [
+                "Zejdź do ich poziomu",
+                "Uspokój ich: \"Jestem tutaj, jesteś bezpieczny(a)\"",
+                "Sprawdź, czy nie ma widocznych obrażeń"
+              ]
+            },
+            {
+              "title": "Czy mogą wstać?",
+              "instruction": "Jeśli nie ma oczywistych obrażeń, pomóż im powoli wstać etapami.",
+              "checklist": [
+                "Czy są przytomni i reagują?",
+                "Czy są jakieś oczywiste obrażenia lub ból?",
+                "Czy mogą poruszać wszystkimi kończynami?",
+                "Czy uderzyli się w głowę?"
+              ]
+            },
+            {
+              "title": "Zadzwoń po pomoc, jeśli...",
+              "instruction": "Uraz głowy, nie mogą wstać, silny ból, dezorientacja gorsza niż zwykle lub krwawienie, które nie ustaje."
+            },
+            {
+              "title": "Po upadku",
+              "instruction": "Zapisz to zdarzenie i wspomnij o tym lekarzowi. Powtarzające się upadki mogą wskazywać na problemy z lekami lub postęp choroby."
+            }
+          ]
+        },
+        "repetitive_questions": {
+          "label": "Powtarzające się pytania",
+          "steps": [
+            {
+              "title": "Weź oddech – to choroba, nie oni",
+              "instruction": "Oni naprawdę nie pamiętają, że pytali. Twoja frustracja jest uzasadniona, ale okazywanie jej sprawia, że stają się bardziej niespokojni."
+            },
+            {
+              "title": "O co tak naprawdę pytają?",
+              "instruction": "Pytanie na powierzchni rzadko jest prawdziwym pytaniem. \"O której jest obiad?\" może oznaczać \"Jestem głodny(a)\".",
+              "checklist": [
+                "Czy są o coś zaniepokojeni?",
+                "Czy mogą być głodni, spragnieni lub znudzeni?",
+                "Czy zbliża się jakieś wydarzenie, które powoduje zmartwienie?"
+              ]
+            },
+            {
+              "title": "Odpowiedz na uczucie",
+              "instruction": "Odpowiedz na emocje kryjące się za pytaniem, a nie na dosłowne słowa.",
+              "tips": [
+                "Zapisz odpowiedź na widocznej tablicy",
+                "Za każdym razem udzielaj prostej, uspokajającej odpowiedzi",
+                "Po udzieleniu odpowiedzi przekieruj do aktywności manualnej",
+                "Używaj wizualnych harmonogramów, aby zmniejszyć niepewność"
+              ]
+            },
+            {
+              "title": "Chroń swoje własne samopoczucie",
+              "instruction": "Jeśli to możliwe, zmień się z innym opiekunem. Używaj słuchawek z delikatną muzyką, gdy potrzebujesz przerwy psychicznej."
+            }
+          ]
+        },
+        "aggression": {
+          "label": "Agresja",
+          "steps": [
+            {
+              "title": "Twoje bezpieczeństwo jest najważniejsze",
+              "instruction": "Jeśli czujesz się fizycznie zagrożony, natychmiast się wycofaj. Nie próbuj ich powstrzymywać.",
+              "tips": [
+                "Ustaw się w pobliżu wyjścia",
+                "Usuń niebezpieczne przedmioty z zasięgu",
+                "Mów cicho i spokojnie",
+                "Nie wykonuj gwałtownych ruchów"
+              ]
+            },
+            {
+              "title": "Ugruntuj się",
+              "instruction": "Agresja wywołuje u ciebie reakcję walki lub ucieczki. Poświęć chwilę na oddech."
+            },
+            {
+              "title": "Co to wywołało?",
+              "instruction": "Agresja jest prawie zawsze reakcją – na ból, strach, frustrację, przeciążenie sensoryczne.",
+              "checklist": [
+                "Czy proszono ich o zrobienie czegoś?",
+                "Czy odczuwali ból?",
+                "Czy otoczenie było hałaśliwe lub chaotyczne?",
+                "Czy czuli się osaczeni?"
+              ]
+            },
+            {
+              "title": "Daj przestrzeń i czas",
+              "instruction": "Wycofaj się. Przerwij wyzwalającą czynność. Wróć za 15–20 minut, jakby nic się nie stało.",
+              "tips": [
+                "Opuść pokój, jeśli to bezpieczne",
+                "Usuń czynnik wyzwalający",
+                "Nie bierz tego do siebie",
+                "Zbliżaj się powoli po powrocie"
+              ]
+            },
+            {
+              "title": "Kiedy to jest nagły wypadek",
+              "instruction": "Jeśli mają broń, ktoś jest ranny lub agresja nie ustępuje – wezwij służby ratunkowe."
+            }
+          ]
+        },
+        "sleep_disruption": {
+          "label": "Zaburzenia snu",
+          "steps": [
+            {
+              "title": "Zadbaj o bezpieczeństwo otoczenia",
+              "instruction": "Jeśli nie śpią i poruszają się w nocy, Twoim priorytetem jest bezpieczeństwo.",
+              "tips": [
+                "Włącz delikatne lampki nocne",
+                "Usuń przeszkody",
+                "Zamknij drzwi zewnętrzne, jeśli istnieje obawa o oddalenie się",
+                "„Jest noc, wszystko jest bezpieczne”"
+              ]
+            },
+            {
+              "title": "Co ich obudziło?",
+              "instruction": "Nocne pobudki mogą być spowodowane bólem, potrzebą skorzystania z toalety, porą przyjmowania leków lub głodem.",
+              "checklist": [
+                "Czy muszą skorzystać z toalety?",
+                "Czy odczuwają ból?",
+                "Czy obudził ich hałas lub światło?",
+                "Czy są głodni lub spragnieni?"
+              ]
+            },
+            {
+              "title": "Delikatnie zaprowadź ich z powrotem",
+              "instruction": "Nie kłóć się o to, która jest godzina. Skieruj ich z powrotem do łóżka za pomocą uspokajających sygnałów.",
+              "tips": [
+                "Zaoferuj ciepły napój bezkofeinowy",
+                "Używaj spokojnego, cichego głosu",
+                "Włącz cichą, znajomą muzykę",
+                "Usiądź z nimi, aż się uspokoją"
+              ]
+            },
+            {
+              "title": "Popraw jutrzejszą noc",
+              "instruction": "Więcej aktywności w ciągu dnia, bez kofeiny po południu, konsekwentna rutyna przed snem, ograniczenie drzemek do 30 minut."
+            }
+          ]
+        },
+        "shadowing": {
+          "label": "Ciągłe podążanie za opiekunem",
+          "steps": [
+            {
+              "title": "Uznaj swoją frustrację",
+              "instruction": "Bycie śledzonym wszędzie jest wyczerpujące. Te uczucia są uzasadnione. Weź oddech.",
+              "checklist": [
+                "Czy nastąpiła ostatnio zmiana rutyny?",
+                "Czy znajdują się w nieznanym otoczeniu?",
+                "Czy byłeś ostatnio nieobecny?",
+                "Czy czują się źle?"
+              ]
+            },
+            {
+              "title": "Dlaczego za tobą podążają?",
+              "instruction": "Ciągłe podążanie za opiekunem wynika z lęku i strachu przed porzuceniem. Bycie blisko ciebie jest ich jedynym źródłem bezpieczeństwa.",
+              "checklist": [
+                "Czy nastąpiła ostatnio zmiana rutyny?",
+                "Czy znajdują się w nieznanym otoczeniu?",
+                "Czy byłeś ostatnio nieobecny?",
+                "Czy czują się źle?"
+              ]
+            },
+            {
+              "title": "Zmniejsz ich niepokój",
+              "instruction": "Pomóż im poczuć się bezpiecznie, bez konieczności fizycznej obecności w każdej chwili.",
+              "tips": [
+                "Daj im „zadanie” w pobliżu miejsca, w którym się znajdujesz",
+                "Zostaw im osobisty przedmiot jako kotwicę komfortu",
+                "„Jestem tylko w kuchni, zaraz wracam”",
+                "Wypróbuj znajome programy telewizyjne lub muzykę jako towarzysza"
+              ]
+            },
+            {
+              "title": "Zaplanuj przerwy dla siebie",
+              "instruction": "Poproś kogoś, aby z nimi posiedział, podczas gdy ty weźmiesz 20 minut. Nawet 10 minut samotności pomaga.",
+              "tips": [
+                "Nie czekaj, aż będziesz wyczerpany",
+                "Można delikatnie zamknąć drzwi do łazienki",
+                "Rozważ grupę wsparcia",
+                "To zachowanie często zmniejsza się przy stabilnej rutynie"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "tabs": {
+      "dashboard": "Panel",
+      "plan": "Plan",
+      "location": "Lokalizacja",
+      "coach": "Trener",
+      "more": "Więcej"
+    }
+  },
+  "notifications": {
+    "taskReminder": "{{patientName}}, czas na: {{taskTitle}}",
+    "taskCompleted": "{{patientName}} ukończył(a): {{taskTitle}}",
+    "checkinReceived": "{{patientName}} ukończył(a) dzisiejsze zameldowanie",
+    "leftSafeZone": "{{patientName}} opuścił(a) {{zoneName}}",
+    "inactivity": "Brak ruchu od {{patientName}} od {{hours}} godzin",
+    "nightMovement": "{{patientName}} porusza się na zewnątrz o {{time}}",
+    "takeMeHome": "{{patientName}} dotknął(ęła) „Zabierz mnie do domu” z {{location}}",
+    "eveningSummary": "Dzień {{patientName}}: wykonano {{completed}}/{{total}} zadań. Nastrój: {{mood}}"
+  },
+  "subscription": {
+    "free": "Darmowy",
+    "plus": "OurTurn Plus",
+    "upgradeTitle": "Odblokuj OurTurn Plus",
+    "upgradeFeature": "Ta funkcja wymaga OurTurn Plus",
+    "monthly": "{{price}}/miesiąc",
+    "annual": "{{price}}/rok",
+    "annualSavings": "Oszczędź {{percent}}%",
+    "subscribe": "Subskrybuj",
+    "restore": "Przywróć zakup",
+    "manage": "Zarządzaj subskrypcją",
+    "features": {
+      "unlimitedTasks": "Nieograniczona liczba zadań dziennie",
+      "aiCoach": "Pełny Trener Opieki AI",
+      "brainActivities": "Generowane przez AI ćwiczenia na dobre samopoczucie mózgu",
+      "safeZones": "Bezpieczne strefy i alerty lokalizacyjne",
+      "multiCaregiver": "Do 5 członków rodziny",
+      "journal": "Wspólny dziennik opieki",
+      "insights": "Wglądy w wzorce AI",
+      "reports": "Raporty z wizyt lekarskich",
+      "toolkit": "Zestaw narzędzi dla opiekuna i dobre samopoczucie",
+      "priority": "Priorytetowe wsparcie"
+    }
+  }
+}

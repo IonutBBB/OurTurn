@@ -10,6 +10,8 @@ import {
   getPatientData,
   type PatientSession,
 } from '../utils/session';
+import { initLanguageFromHousehold } from '../i18n';
+import { getHouseholdByCareCode } from '@ourturn/supabase';
 
 interface AuthState {
   isInitialized: boolean;
@@ -23,6 +25,7 @@ interface AuthState {
   login: (household: Household & { patient: Patient }, careCode: string) => Promise<void>;
   logout: () => Promise<void>;
   setHouseholdData: (household: Household, patient: Patient) => Promise<void>;
+  refreshFromServer: () => Promise<void>;
 }
 
 export const useAuthStore = create<AuthState>((set, get) => ({
@@ -51,6 +54,11 @@ export const useAuthStore = create<AuthState>((set, get) => ({
           household,
           patient,
         });
+        // Sync language from household (respects manual override)
+        initLanguageFromHousehold(household?.language).catch(() => {});
+
+        // Refresh from server in background to pick up any changes
+        get().refreshFromServer().catch(() => {});
       } else {
         set({
           isInitialized: true,
@@ -107,5 +115,25 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     await saveHouseholdData(household);
     await savePatientData(patient);
     set({ household, patient });
+    // Sync language if household language changed
+    initLanguageFromHousehold(household?.language).catch(() => {});
+  },
+
+  refreshFromServer: async () => {
+    const { session } = get();
+    if (!session?.careCode) return;
+
+    try {
+      const data = await getHouseholdByCareCode(session.careCode);
+      if (data) {
+        const { patient, ...household } = data;
+        await saveHouseholdData(household);
+        await savePatientData(patient);
+        set({ household, patient });
+        initLanguageFromHousehold(household?.language).catch(() => {});
+      }
+    } catch {
+      // Silently fail — cached data is still usable
+    }
   },
 }));

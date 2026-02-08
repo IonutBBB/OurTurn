@@ -1,0 +1,1400 @@
+{
+  "common": {
+    "appName": "OurTurn",
+    "save": "Uložit",
+    "cancel": "Zrušit",
+    "delete": "Smazat",
+    "edit": "Upravit",
+    "done": "Hotovo",
+    "skip": "Přeskočit pro dnešek",
+    "loading": "Načítání...",
+    "error": "Něco se pokazilo. Zkuste to prosím znovu.",
+    "errorTitle": "Něco se pokazilo",
+    "errorDefault": "Vyskytla se neočekávaná chyba.",
+    "tryAgain": "Zkusit znovu",
+    "logOut": "Odhlásit se",
+    "offline": "Jste offline – data se synchronizují po připojení",
+    "synced": "Synchronizováno",
+    "viewMore": "Zobrazit více",
+    "back": "Zpět",
+    "next": "Další",
+    "confirm": "Potvrdit",
+    "yes": "Ano",
+    "no": "Ne",
+    "you": "Vy",
+    "unknown": "Neznámý",
+    "saving": "Ukládání...",
+    "primary": "Primární"
+  },
+  "categories": {
+    "medication": "Léky",
+    "nutrition": "Jídlo a výživa",
+    "physical": "Fyzická aktivita",
+    "cognitive": "Duševní pohoda",
+    "social": "Společnost a spojení",
+    "health": "Kontrola zdraví"
+  },
+  "caregiverApp": {
+    "dashboard": {
+      "greeting": "Dobré {{timeOfDay}}, {{name}}",
+      "statusGood": "Den probíhá pro {{patientName}} dobře",
+      "statusConcern": "{{patientName}} může potřebovat trochu pozornosti",
+      "todaysStatus": "Dnešní stav",
+      "tasksCompleted": "{{completed}} z {{total}} úkolů hotovo",
+      "dailyCheckin": "Denní kontrola",
+      "noCheckinYet": "Dnes ještě nebyla odeslána žádná kontrola",
+      "location": "Poloha",
+      "atHome": "{{name}} je doma",
+      "lastUpdate": "Poslední aktualizace: {{time}}",
+      "aiInsights": "Postřehy",
+      "quickActions": "Rychlé akce",
+      "callPatient": "Zavolat {{name}}",
+      "tasksCompletedLabel": "dokončené úkoly",
+      "careCode": "Kód péče",
+      "careCodeHint": "Sdílejte pro připojení aplikace pacienta",
+      "careCodeNotAvailable": "Kód není k dispozici",
+      "morningActivityPattern": "Ranní aktivita",
+      "insightText": "{{name}} plní více úkolů ve dnech, kdy jsou naplánované ranní procházky.",
+      "noJournalEntries": "Zatím žádné záznamy v deníku",
+      "unknown": "Neznámý",
+      "moodStruggling": "Snaží se",
+      "moodLow": "Špatná",
+      "moodOkay": "Dobrá",
+      "moodGood": "Dobrá",
+      "moodGreat": "Skvělá",
+      "sleepPoor": "Špatný",
+      "sleepFair": "Uspokojivý",
+      "sleepWell": "Dobrý",
+      "mood": "Nálada",
+      "sleep": "Spánek",
+      "minutesAgo": "před {{count}} m",
+      "hoursAgo": "před {{count}} h",
+      "daysAgo": "před {{count}} d",
+      "deviceStatus": "Stav zařízení",
+      "deviceOnline": "Online",
+      "deviceOffline": "Offline",
+      "lastSeenAt": "Naposledy viděno: {{time}}",
+      "lastSeenNever": "Nikdy se nepřipojilo",
+      "engagementSummary": "Dnešní aktivita",
+      "alertsToday": "Upozornění dnes",
+      "checkedIn": "Zkontrolováno",
+      "notCheckedIn": "Nezkontrolováno",
+      "brainActivity": "Mozková aktivita"
+    },
+    "carePlan": {
+      "title": "Denní plán pro {{name}}",
+      "addTask": "Přidat úkol",
+      "aiSuggest": "Návrhy úkolů od AI",
+      "hintLabel": "Instrukce ({{name}} to uvidí)",
+      "hintPlaceholder": "Např. Vaše léky jsou v krabičce na léky na kuchyňské lince",
+      "recurrence": "Opakuje se",
+      "daily": "Každý den",
+      "specificDays": "Konkrétní dny",
+      "oneTime": "Jednorázově",
+      "copyDay": "Kopírovat do jiných dnů",
+      "saved": "Uloženo",
+      "noTasks": "Zatím žádné úkoly. Přidejte svůj první úkol a začněte.",
+      "category": "Kategorie",
+      "taskTitle": "Název úkolu",
+      "time": "Čas",
+      "deleteConfirm": "Smazat tento úkol?",
+      "noMoreSuggestions": "Nejsou k dispozici žádné další návrhy.",
+      "copyFromTo": "Kopírovat úkoly z {{day}} do:",
+      "copyCount": "{{taskCount}} úkolů bude zkopírováno do {{dayCount}} dnů",
+      "days": {
+        "mon": "Po",
+        "tue": "Út",
+        "wed": "St",
+        "thu": "Čt",
+        "fri": "Pá",
+        "sat": "So",
+        "sun": "Ne"
+      },
+      "taskPhoto": "Fotografie úkolu (volitelné)",
+      "uploadPhoto": "Nahrát fotografii",
+      "removePhoto": "Odebrat fotografii",
+      "medicationItems": "Léky v této skupině",
+      "medicationItemsHint": "Seskupte až 3 léky užívané ve stejnou dobu",
+      "addMedication": "Přidat lék",
+      "medName": "Název léku",
+      "medNamePlaceholder": "např. Donepezil",
+      "medDosage": "Dávkování nebo instrukce",
+      "medDosagePlaceholder": "např. 10mg tableta",
+      "medPhotoLabel": "Fotografie",
+      "medItemLabel": "Lék {{number}}",
+      "removeMedication": "Odebrat",
+      "maxMedications": "Maximálně 3 léky na skupinu",
+      "uploadingPhoto": "Nahrávání...",
+      "evidenceBased": "Podložené důkazy"
+    },
+    "location": {
+      "title": "Poloha a bezpečnost",
+      "currentLocation": "Aktuální poloha",
+      "safeZones": "Bezpečné zóny",
+      "addSafeZone": "Přidat bezpečnou zónu",
+      "editSafeZone": "Upravit bezpečnou zónu",
+      "alerts": "Nastavení upozornění",
+      "leaveZoneAlert": "Upozornit, když {{name}} opustí bezpečnou zónu",
+      "inactivityAlert": "Upozornit, když se nehýbe po dobu",
+      "nightAlert": "Upozornit, když je venku po",
+      "takeMeHomeAlert": "Upozornit, když {{name}} klepne na 'Vezmi mě domů'",
+      "locationHistory": "Historie polohy",
+      "takeMeHomeTapped": "{{name}} klepl(a) na 'Vezmi mě domů'",
+      "hours": "hodin",
+      "zoneName": "Název zóny",
+      "zoneRadius": "Poloměr (metry)",
+      "unknownLocation": "Neznámá poloha",
+      "completeOnboarding": "Nejprve dokončete úvodní nastavení.",
+      "unacknowledgedAlerts": "{{count}} Nepotvrzené upozornění",
+      "unacknowledgedAlertsPlural": "{{count}} Nepotvrzená upozornění",
+      "acknowledge": "Potvrdit",
+      "patientLocation": "Poloha {{name}}",
+      "updated": "Aktualizováno: {{time}}",
+      "noLocationData": "Zatím žádná data o poloze",
+      "live": "Živě",
+      "add": "+ Přidat",
+      "noSafeZonesYet": "Zatím nejsou nakonfigurovány žádné bezpečné zóny.\nPřidejte zóny, abyste dostávali upozornění, když {{name}} odejde.",
+      "radiusMeters": "poloměr {{radius}} m",
+      "recentAlerts24h": "Nedávná upozornění (24h)",
+      "noRecentAlerts": "Za posledních 24 hodin žádná upozornění. Vše je v pořádku!",
+      "deleteSafeZone": "Smazat bezpečnou zónu",
+      "deleteSafeZoneConfirm": "Opravdu chcete smazat \"{{name}}\"?",
+      "failedToSaveSafeZone": "Nepodařilo se uložit bezpečnou zónu",
+      "failedToDeleteSafeZone": "Nepodařilo se smazat bezpečnou zónu",
+      "fillAllFields": "Vyplňte prosím všechna pole",
+      "name": "Název",
+      "nameExample": "např. Domov, Ordinace lékaře",
+      "latitude": "Zeměpisná šířka",
+      "longitude": "Zeměpisná délka",
+      "radiusHint": "Doporučeno: 100-500 metrů pro typické lokace",
+      "mapView": "Zobrazení mapy",
+      "mapRequiresBuild": "Mapy vyžadují vývojovou verzi.\nPoužijte EAS Build pro aktivaci map.",
+      "home": "Domov",
+      "patient": "Pacient",
+      "alertTypeLeftSafeZone": "Opustil bezpečnou zónu",
+      "alertTypeInactive": "Neaktivní",
+      "alertTypeNightMovement": "Noční pohyb",
+      "alertTypeTakeMeHomeTapped": "Klepnutí na „Vezmi mě domů“",
+      "alertTypeSosTriggered": "SOS aktivováno"
+    },
+    "coach": {
+      "title": "AI Care Coach",
+      "tabs": {
+        "chat": "Chat",
+        "behaviours": "Chování",
+        "resources": "Zdroje"
+      },
+      "resources": {
+        "title": "Zdroje",
+        "subtitle": "Průvodci, články a místní podpora, které vám pomohou na vaší pečovatelské cestě",
+        "linkLabel": "Zdroje a průvodci"
+      },
+      "intro": "Zeptejte se mě na cokoliv ohledně péče o {{name}}. Znám jejich rutinu, preference a obecné osvědčené postupy.",
+      "placeholder": "Zadejte svou otázku...",
+      "disclaimer": "Jsem tu, abych vás podpořil, nenahrazuji lékařskou radu. V případě zdravotních problémů se vždy poraďte se svým lékařem.",
+      "disclaimerShort": "Care Coach poskytuje pouze obecné rady. Vždy se poraďte se zdravotnickými pracovníky ohledně lékařské rady.",
+      "suggestedTopics": "Navrhovaná témata",
+      "addToCarePlan": "Přidat do plánu péče",
+      "addToDoctorNotes": "Přidat do poznámek pro lékaře",
+      "newConversation": "Nová konverzace",
+      "newChat": "Nový chat",
+      "careCoach": "Care Coach",
+      "completeOnboarding": "Nejprve dokončete úvodní nastavení.",
+      "greeting": "Ahoj {{name}}!",
+      "greetingIntro": "Jsem tu, abych vám pomohl pečovat o {{patientName}}. Zeptejte se mě na cokoliv ohledně každodenní péče, aktivit nebo zvládání náročných situací.",
+      "tryAsking": "Zkuste se zeptat:",
+      "askAbout": "Zeptejte se na péči o {{name}}...",
+      "send": "Odeslat",
+      "signingIn": "Přihlašování",
+      "taskAddedSuccess": "Úkol byl přidán do plánu péče!",
+      "taskAddedError": "Nepodařilo se přidat úkol. Zkuste to prosím znovu.",
+      "noteAddedSuccess": "Poznámka uložena pro návštěvu lékaře!",
+      "noteAddedError": "Nepodařilo se uložit poznámku. Zkuste to prosím znovu.",
+      "addToCarePlanButton": "Přidat do plánu péče",
+      "saveForDoctorVisit": "Uložit pro návštěvu lékaře",
+      "success": "Úspěch",
+      "suggestions": {
+        "sundowning": "Jak mám zvládat večerní neklid?",
+        "rainyDays": "Jaké aktivity jsou vhodné pro deštivé dny?",
+        "siblings": "Pomozte mi promluvit si se sourozenci o sdílení péče",
+        "refusesFood": "{{name}} odmítá jíst. Pomoc.",
+        "repetitive": "Jak mám zvládat opakující se otázky?"
+      },
+      "hub": {
+        "backToHub": "Zpět do Care Coach",
+        "insight": {
+          "title": "Pro vás",
+          "discuss": "Diskutovat",
+          "fallback": "Zkontrolujte den {{name}}, abyste získali personalizované poznatky"
+        },
+        "rightNow": {
+          "title": "Právě teď",
+          "subtitle": "Okamžitá pomoc",
+          "refusing_food": "Odmítá jídlo",
+          "refusing_medication": "Nechce si vzít léky",
+          "agitated": "Rozrušený",
+          "not_recognizing": "Mě nepoznává",
+          "repetitive_questions": "Znovu stejná otázka",
+          "sundowning": "Večerní neklid",
+          "wants_to_leave": "Chce odejít",
+          "caregiver_overwhelmed": "Ztrácím trpělivost"
+        },
+        "planPrepare": {
+          "title": "Plánování a příprava",
+          "subtitle": "Průvodci pracovními postupy",
+          "plan_tomorrow": "Naplánujte zítřek",
+          "plan_tomorrow_desc": "Vytvořte společně skvělý den",
+          "doctor_visit": "Připravte se na návštěvu lékaře",
+          "doctor_visit_desc": "Vytvořte strukturované shrnutí",
+          "review_week": "Zhodnoťte tento týden",
+          "review_week_desc": "Co se povedlo, čemu je třeba věnovat pozornost",
+          "adjust_plan": "Upravte plán péče",
+          "adjust_plan_desc": "Optimalizujte na základě toho, co funguje"
+        },
+        "learn": {
+          "title": "Učte se",
+          "subtitle": "Tématické průvodce pro {{name}}",
+          "daily_routines": "Denní rutina",
+          "communication": "Komunikace",
+          "behaviors": "Chování",
+          "activities": "Aktivity",
+          "nutrition": "Výživa",
+          "safety": "Bezpečnost",
+          "sleep": "Spánek a noc"
+        },
+        "askAnything": {
+          "title": "Zeptejte se na cokoliv",
+          "placeholder": "Co vás trápí ohledně péče o {{name}}?"
+        }
+      }
+    },
+    "family": {
+      "title": "Tým péče o {{patientName}}",
+      "inviteMember": "Pozvat člena rodiny",
+      "primaryCaregiver": "Hlavní pečovatel",
+      "familyMember": "Člen rodiny",
+      "careCode": "Kód péče",
+      "careCodeHelp": "Sdílejte tento kód pro spárování aplikace pacienta",
+      "regenerateCode": "Obnovit kód",
+      "regenerateWarning": "Tímto se odpojí všechna spárovaná zařízení pacienta. Budou potřebovat nový kód.",
+      "journal": "Deník péče",
+      "addNote": "Přidat poznámku",
+      "observation": "Pozorování",
+      "note": "Poznámka",
+      "milestone": "Milník",
+      "inviteEmail": "E-mailová adresa",
+      "inviteName": "Jméno",
+      "inviteRelationship": "Vztah",
+      "familyCircle": "Rodinný kruh",
+      "back": "Zpět",
+      "family": "Rodina",
+      "careJournal": "Deník péče",
+      "inviteFamilyMembers": "Pozvat členy rodiny",
+      "shareCareCodeDesc": "Sdílejte svůj kód péče, aby se mohli připojit další členové rodiny.",
+      "showCareCode": "Zobrazit kód péče",
+      "copy": "Kopírovat",
+      "share": "Sdílet",
+      "copied": "Zkopírováno!",
+      "codeCopiedToClipboard": "Kód péče zkopírován do schránky",
+      "familyMembers": "Členové rodiny ({{count}})",
+      "you": "Vy",
+      "primary": "Hlavní",
+      "entryPlaceholder": "Přidejte poznámku, pozorování nebo milník...",
+      "posting": "Odesílání...",
+      "post": "Odeslat",
+      "noJournalEntries": "Zatím žádné záznamy v deníku.",
+      "startDocumenting": "Začněte dokumentovat svou cestu péče!",
+      "yesterday": "Včera",
+      "failedToAddEntry": "Nepodařilo se přidat záznam. Zkuste to prosím znovu.",
+      "shareCareCodeMessage": "Připojte se k mému kruhu péče OurTurn! Použijte tento kód péče: {{code}}",
+      "deleteConfirmTitle": "Smazat záznam v deníku",
+      "deleteConfirmMessage": "Opravdu chcete smazat tento záznam v deníku? Tato akce je nevratná.",
+      "edited": "(upraveno)",
+      "crisis": "Krize",
+      "canEditPlan": "Může upravovat plán",
+      "receivesAlerts": "Dostává upozornění",
+      "caregiverLimitReached": "Dosáhli jste limitu bezplatné úrovně pro členy rodiny. Upgradujte, abyste mohli přidat další."
+    },
+    "toolkit": {
+      "pageTitle": "Sada nástrojů pro pečovatele",
+      "pageSubtitle": "Praktické nástroje a podpora pro vaši pohodu",
+      "introMessage": "Ahoj {{name}}! Toto je váš prostor pro rychlou úlevu, podporu a péči o sebe.",
+      "checkin": {
+        "title": "Jak se dnes máte?",
+        "energy": "Energie",
+        "energyLow": "Vyčerpaný/á",
+        "energyHigh": "Plný/á energie",
+        "stress": "Stres",
+        "stressLow": "Klidný/á",
+        "stressHigh": "Přetížený/á",
+        "sleep": "Kvalita spánku",
+        "sleepLow": "Hrozná",
+        "sleepHigh": "Skvělá"
+      },
+      "relief": {
+        "title": "Stanice rychlé úlevy",
+        "recommended": "Doporučeno",
+        "duration": "{{min}} min",
+        "startExercise": "Začít",
+        "stepOf": "Krok {{current}} z {{total}}",
+        "complete": "Výborně! Cvičení dokončeno.",
+        "close": "Zavřít",
+        "pause": "Pauza",
+        "resume": "Pokračovat",
+        "exercises": {
+          "box-breathing": {
+            "name": "Krabicové dýchání",
+            "step0": "Pohodlně se usaďte nebo uložte a zavřete oči",
+            "step1": "Pomalu se nadechněte nosem",
+            "step2": "Jemně zadržte dech",
+            "step3": "Pomalu vydechněte ústy",
+            "step4": "Před dalším nádechem zadržte dech",
+            "step5": "Pomalu se nadechněte nosem",
+            "step6": "Jemně zadržte dech",
+            "step7": "Pomalu vydechněte ústy",
+            "step8": "Před dalším nádechem zadržte dech",
+            "step9": "Pomalu se nadechněte nosem",
+            "step10": "Jemně zadržte dech",
+            "step11": "Pomalu vydechněte ústy",
+            "step12": "Před dalším nádechem zadržte dech",
+            "step13": "Pomalu se nadechněte nosem",
+            "step14": "Jemně zadržte dech",
+            "step15": "Pomalu vydechněte ústy",
+            "step16": "Před dalším nádechem zadržte dech",
+            "step17": "Pomalu se nadechněte nosem",
+            "step18": "Jemně zadržte dech",
+            "step19": "Pomalu vydechněte ústy",
+            "step20": "Před dalším nádechem zadržte dech",
+            "step21": "Pomalu se nadechněte nosem",
+            "step22": "Jemně zadržte dech",
+            "step23": "Pomalu vydechněte ústy",
+            "step24": "Výborně. Věnujte chvíli tomu, abyste si všimli, jak se cítíte."
+          },
+          "54321-grounding": {
+            "name": "Uzemnění 5-4-3-2-1",
+            "step0": "Zhluboka se nadechněte a rozhlédněte se kolem sebe",
+            "step1": "Pojmenujte 5 věcí, které právě teď VIDÍTE",
+            "step2": "Pojmenujte 4 věci, kterých se právě teď můžete DOTKNOUT",
+            "step3": "Pojmenujte 3 věci, které právě teď SLYŠÍTE",
+            "step4": "Pojmenujte 2 věci, které právě teď CÍTÍTE",
+            "step5": "Pojmenujte 1 věc, kterou můžete právě teď OCHUTNAT",
+            "step6": "Znovu se zhluboka nadechněte. Jste tady a jste v bezpečí."
+          },
+          "gratitude-moment": {
+            "name": "Chvíle vděčnosti",
+            "step0": "Zavřete oči a zklidněte dech",
+            "step1": "Vzpomeňte si na jednu osobu, za kterou jste vděční, a proč",
+            "step2": "Vzpomeňte si na jednu věc, která se dnes stala a byla dobrá, i když malá",
+            "step3": "Vzpomeňte si na jednu věc, kterou na sobě oceňujete",
+            "step4": "Udržujte tyto tři věci ve své mysli a zhluboka dýchejte",
+            "step5": "Noste s sebou tento pocit vděčnosti."
+          },
+          "progressive-muscle-relaxation": {
+            "name": "Progresivní svalová relaxace",
+            "step0": "Pohodlně se posaďte nebo položte. Zavřete oči.",
+            "step1": "Pevně zatněte obě pěsti na 5 sekund...",
+            "step2": "Uvolněte a vnímejte, jak napětí mizí",
+            "step3": "Napněte ramena – zvedněte je k uším...",
+            "step4": "Uvolněte se a nechte ramena klesnout",
+            "step5": "Pevně našpulte obličej – čelo, oči, čelist...",
+            "step6": "Uvolněte se a nechte obličej zcela uvolnit",
+            "step7": "Napněte břišní svaly...",
+            "step8": "Uvolněte se a dýchejte do břicha",
+            "step9": "Pevně zatněte nohy a chodidla...",
+            "step10": "Uvolněte se a vnímejte, jak nohama proudí teplo",
+            "step11": "Zhluboka dýchejte. Celé vaše tělo je uvolněné.",
+            "step12": "Až budete připraveni, jemně otevřete oči."
+          },
+          "mindful-break": {
+            "name": "Vědomá přestávka",
+            "step0": "Přerušte vše, co děláte. Tato chvíle je vaše.",
+            "step1": "Zavřete oči a 3x se pomalu a zhluboka nadechněte",
+            "step2": "Všimněte si, jak se právě teď cítí vaše tělo – není třeba nic měnit",
+            "step3": "Poslouchejte zvuky kolem sebe, blízké i vzdálené",
+            "step4": "Vnímejte povrch pod sebou a vzduch na své pokožce",
+            "step5": "Tiše si řekněte: \"Dělám, co můžu, a to stačí.\"",
+            "step6": "Ještě jednou se zhluboka nadechněte",
+            "step7": "Jemně otevřete oči. Jste osvěženi."
+          },
+          "breathing-478": {
+            "name": "Dýchání 4-7-8",
+            "step0": "Pohodlně se posaďte a uvolněte ramena",
+            "step1": "Tiše se nadechněte nosem na 4 doby",
+            "step2": "Zadržte dech na 7 dob",
+            "step3": "Úplně vydechněte ústy na 8 dob",
+            "step4": "Tiše se nadechněte nosem na 4 doby",
+            "step5": "Zadržte dech na 7 dob",
+            "step6": "Úplně vydechněte ústy na 8 dob",
+            "step7": "Tiše se nadechněte nosem na 4 doby",
+            "step8": "Zadržte dech na 7 dob",
+            "step9": "Úplně vydechněte ústy na 8 dob",
+            "step10": "Tiše se nadechněte nosem na 4 doby",
+            "step11": "Zadržte dech na 7 dob",
+            "step12": "Úplně vydechněte ústy na 8 dob",
+            "step13": "Tiše se nadechněte nosem na 4 doby",
+            "step14": "Zadržte dech na 7 dob",
+            "step15": "Úplně vydechněte ústy na 8 dob",
+            "step16": "Všimněte si, jak moc klidnější se teď vaše tělo cítí."
+          },
+          "permission-slip": {
+            "name": "Dovolení",
+            "step0": "Zhluboka se nadechněte a dejte si chvilku",
+            "step1": "Řekněte si: \"Dávám si svolení nebýt dnes dokonalý/á\"",
+            "step2": "Řekněte: \"Dávám si svolení požádat o pomoc\"",
+            "step3": "Řekněte: \"Dávám si svolení cítit to, co cítím, bez pocitu viny\"",
+            "step4": "Řekněte: \"Dávám si svolení udělat si přestávku\"",
+            "step5": "Řekněte: \"Dělám, co můžu, a to stačí\"",
+            "step6": "Zhluboka se nadechněte a uchovejte si tato slova v mysli",
+            "step7": "I vy si zasloužíte soucit. Vezměte si to s sebou."
+          },
+          "quick-walk": {
+            "name": "Výzva k rychlé procházce",
+            "step0": "Vstaňte a natáhněte ruce nad hlavu",
+            "step1": "Přejděte k nejbližšímu oknu nebo dveřím a podívejte se ven",
+            "step2": "Udělejte 5 pomalých kroků a vnímejte, jak se každá noha dotýká země",
+            "step3": "Podívejte se nahoru – všímejte si oblohy, stropu nebo něčeho nad vámi",
+            "step4": "Udělejte dalších 5 pomalých, záměrných kroků",
+            "step5": "Uvolněně protřepejte ruce a paže po dobu několika sekund",
+            "step6": "3x zakružte rameny dozadu",
+            "step7": "Pohybovali jste tělem. To se počítá. Dobrá práce."
+          }
+        }
+      },
+      "help": {
+        "title": "Požádat o pomoc",
+        "sendRequest": "Odeslat",
+        "customPlaceholder": "Napište svou zprávu...",
+        "recentRequests": "Nedávné žádosti",
+        "statusPending": "Čeká se",
+        "statusAccepted": "Přijato",
+        "statusCompleted": "Hotovo",
+        "statusExpired": "Vypršelo",
+        "sent": "Žádost o pomoc odeslána!",
+        "limitReached": "Můžete odeslat až 5 žádostí o pomoc denně.",
+        "noRequests": "Žádné nedávné žádosti o pomoc.",
+        "accept": "Mohu pomoci",
+        "complete": "Označit jako hotové",
+        "template_need_break": "Potřebuji si odpočinout",
+        "template_handle_meds": "Pomoc s léky",
+        "template_need_visit": "Potřebuji návštěvu",
+        "template_groceries": "Nákup potravin",
+        "template_custom": "Vlastní zpráva",
+        "message_need_break": "Opravdu bych si potřeboval/a odpočinout. Mohl by někdo na chvíli převzít péči?",
+        "message_handle_meds": "Může dnes někdo pomoci s léky?",
+        "message_need_visit": "Moc by pro mě znamenalo, kdyby dnes někdo mohl přijít na návštěvu.",
+        "message_groceries": "Mohl by někdo pomoci s nákupem potravin?"
+      },
+      "agent": {
+        "title": "Společník pro duševní pohodu",
+        "disclaimer": "Pouze pro emocionální podporu. Nejedná se o lékařskou radu.",
+        "placeholder": "Jak se cítíte?",
+        "greeting": "Myslím na vás...",
+        "rateLimited": "Zhluboka se nadechněte – brzy si budete moci znovu popovídat.",
+        "errorMessage": "Nelze se připojit. Zkuste to prosím znovu.",
+        "expand": "Rozbalit",
+        "collapse": "Sbalit",
+        "prompts": {
+          "overwhelmed": "Právě teď se cítím zahlcený/á",
+          "calmDown": "Pomozte mi se uklidnit za 2 minuty",
+          "needEnergy": "Potřebuji energii, ale nemůžu si dát pauzu",
+          "poorSleep": "Minulou noc jsem se špatně vyspal/a",
+          "needMoment": "Potřebuji chvilku jen pro sebe",
+          "uplifting": "Řekněte mi něco povznášejícího"
+        }
+      },
+      "goal": {
+        "title": "Dnešní cíl",
+        "placeholder": "Stanovte si cíl pro dnešek...",
+        "done": "Hotovo!",
+        "weekLabel": "Tento týden",
+        "suggest": "Navrhnout"
+      },
+      "burnout": {
+        "title": "Všimli jsme si, že možná potřebujete další podporu",
+        "message": "Vaše nedávné kontroly ukazují zvýšený stres nebo nízkou energii. To je naprosto pochopitelné – péče o druhé je náročná."
+      },
+      "support": {
+        "title": "Potřebujete podporu?",
+        "description": "Péče o druhé je náročná. Je v pořádku požádat o pomoc."
+      },
+      "footer": "Pamatujte: Nemůžete nalévat z prázdného hrnku. I vaše pohoda je důležitá.",
+      "weeklyStats": {
+        "title": "Týdenní statistiky",
+        "subtitle": "Souhrn vaší pohody za 7 dní",
+        "avgEnergy": "Průměrná energie",
+        "avgStress": "Průměrný stres",
+        "avgSleep": "Průměrný spánek",
+        "noData": "Prohlédněte si denní záznamy, abyste viděli své týdenní trendy.",
+        "generateDigest": "Generovat souhrn pomocí AI",
+        "generating": "Generování...",
+        "behaviourSummary": "Tento týden bylo zaznamenáno {{count}} incidentů chování"
+      },
+      "sos": {
+        "title": "Co se právě teď děje?",
+        "subtitle": "Vyberte, s čím potřebujete pomoct – provedeme vás.",
+        "calmDown": "Potřebuji se uklidnit",
+        "calmDownDesc": "Rychlé dýchací a uvolňovací cvičení",
+        "behaviourNow": "Právě probíhá problémové chování",
+        "behaviourNowDesc": "Zaznamenejte incident a získejte rady",
+        "callHelp": "Potřebuji akutní pomoc",
+        "callHelpDesc": "Kontaktujte záchranné služby nebo rodinu",
+        "needBreak": "Potřebuji, aby mě někdo vystřídal",
+        "needBreakDesc": "Pošlete žádost o pomoc rodině"
+      },
+      "behaviours": {
+        "playbooks": {
+          "title": "Průvodce chováním",
+          "subtitle": "Klepněte na chování a získejte podrobné pokyny",
+          "rightNow": "Právě teď",
+          "understandWhy": "Pochopte proč",
+          "prevent": "Prevence",
+          "whenToCallDoctor": "Kdy zavolat lékaře"
+        },
+        "logger": {
+          "title": "Zaznamenat incident",
+          "logIncident": "Zaznamenat incident",
+          "typeLabel": "Typ chování",
+          "selectType": "Vyberte typ...",
+          "severity": "Závažnost",
+          "mild": "Mírná",
+          "severe": "Závažná",
+          "timeOfDay": "Denní doba",
+          "morning": "Ráno",
+          "afternoon": "Odpoledne",
+          "evening": "Večer",
+          "night": "Noc",
+          "duration": "Doba trvání (minuty)",
+          "durationPlaceholder": "Jak dlouho to trvalo?",
+          "triggers": "Možné spouštěče",
+          "trigger_pain": "Bolest",
+          "trigger_hunger": "Hlad",
+          "trigger_thirst": "Žízeň",
+          "trigger_fatigue": "Únava",
+          "trigger_overstimulation": "Přestimulování",
+          "trigger_unfamiliar_environment": "Neznámé místo",
+          "trigger_unfamiliar_person": "Neznámá osoba",
+          "trigger_routine_change": "Změna rutiny",
+          "trigger_medication": "Léky",
+          "trigger_noise": "Hluk",
+          "trigger_loneliness": "Osamělost",
+          "trigger_boredom": "Nuda",
+          "trigger_bathroom_need": "Potřeba jít na toaletu",
+          "trigger_frustration": "Frustrace",
+          "trigger_fear": "Strach",
+          "trigger_unknown": "Neznámý",
+          "whatHappened": "Co se stalo?",
+          "whatHappenedPlaceholder": "Popište incident...",
+          "whatHelped": "Co pomohlo? (volitelné)",
+          "whatHelpedPlaceholder": "Popište, co pomohlo situaci uklidnit...",
+          "save": "Uložit incident",
+          "saved": "Incident zaznamenán"
+        },
+        "timeline": {
+          "title": "Časová osa incidentů",
+          "all": "Vše",
+          "noIncidents": "Žádné incidenty neodpovídají aktuálnímu filtru."
+        }
+      }
+    },
+    "reports": {
+      "title": "Zpráva pro lékaře",
+      "period": "Období zprávy",
+      "lastDays": "Posledních {{days}} dní",
+      "generate": "Generovat zprávu",
+      "include": "Zahrnout do zprávy",
+      "moodTrends": "Trendy nálady a souhrn kontrol",
+      "sleepPatterns": "Spánkové vzorce",
+      "activityCompletion": "Míra dokončení aktivit",
+      "medicationAdherence": "Dodržování léčby",
+      "journalNotes": "Pozoruhodné poznámky z pečovatelského deníku",
+      "locationPatterns": "Vzorce pohybu",
+      "caregiverConcerns": "Obavy pečovatele",
+      "customNotes": "Další poznámky pro lékaře",
+      "print": "Tisk",
+      "downloadPdf": "Stáhnout PDF",
+      "emailDoctor": "Odeslat e-mailem lékaři",
+      "disclaimer": "Tento souhrn je založen na datech o pohodě a rodinných pozorováních. Nejedná se o klinické hodnocení.",
+      "webNote": "Pro kompletní nástroj pro tvorbu zpráv s tiskem a exportem do PDF navštivte webovou aplikaci OurTurn.",
+      "openInWebApp": "Otevřít ve webové aplikaci",
+      "previousReports": "Předchozí zprávy",
+      "generated": "Vygenerováno {{date}}",
+      "avgQuality": "průměrná kvalita",
+      "moodStruggling": "Snaží se",
+      "moodLow": "Špatná",
+      "moodOkay": "Dobrá",
+      "moodGood": "Dobrá",
+      "moodGreat": "Skvělá",
+      "careSummary": "Souhrn péče OurTurn",
+      "patient": "Pacient",
+      "periodLabel": "Období",
+      "checkinsRecorded": "Zaznamenané kontroly",
+      "averageMood": "Průměrná nálada",
+      "averageSleepQuality": "Průměrná kvalita spánku",
+      "activityCompletionRate": "Dokončení aktivity",
+      "medicationAdherenceRate": "Dodržování léčby",
+      "observations": "Pozorování",
+      "categoryMedication": "Léky",
+      "categoryMeals": "Jídlo",
+      "categoryPhysical": "Fyzické",
+      "categoryCognitive": "Kognitivní",
+      "categorySocial": "Sociální",
+      "categoryHealth": "Zdraví"
+    },
+    "onboarding": {
+      "step1Title": "O vás",
+      "step2Title": "O vašem blízkém",
+      "step3Title": "Jejich životní příběh",
+      "step4Title": "Denní rutina",
+      "step5Title": "Nastavení bezpečnosti",
+      "step6Title": "Váš kód péče",
+      "next": "Další",
+      "back": "Zpět",
+      "finish": "Začít",
+      "careCodeInstructions": "Nainstalujte OurTurn do telefonu vašeho blízkého a zadejte tento kód pro připojení.",
+      "quickSetup": "Rychlé nastavení",
+      "yourName": "Vaše jméno",
+      "yourNameRequired": "Vaše jméno *",
+      "lovedOneNameRequired": "Jméno vašeho blízkého *",
+      "relationship": "Váš vztah k nim",
+      "relationshipPlaceholder": "např. dcera, syn, manžel/ka",
+      "settingsHint": "Další podrobnosti můžete přidat později v Nastavení",
+      "fillRequired": "Vyplňte prosím všechna povinná pole",
+      "setupFailed": "Nastavení se nepodařilo dokončit",
+      "country": "Země",
+      "theirName": "Jejich křestní jméno",
+      "dateOfBirth": "Datum narození",
+      "dementiaType": "Typ demence (volitelné)",
+      "homeAddress": "Adresa bydliště",
+      "medications": "Léky",
+      "addMedication": "Přidat lék",
+      "childhoodLocation": "Kde vyrůstali",
+      "career": "Kariéra / povolání",
+      "hobbies": "Zájmy a koníčky",
+      "favoriteMusic": "Oblíbená hudba / interpreti",
+      "favoriteFoods": "Oblíbená jídla",
+      "importantPeople": "Důležité osoby",
+      "keyEvents": "Klíčové životní události",
+      "uploadPhotos": "Nahrát rodinné fotografie",
+      "wakeTime": "Čas probuzení",
+      "sleepTime": "Čas spánku",
+      "generatePlan": "Generovat navrhovaný plán",
+      "emergencyContacts": "Nouzové kontakty",
+      "alertSettings": "Nastavení upozornění",
+      "stepOf": "Krok {{current}} z {{total}}",
+      "breakfastTime": "Čas snídaně",
+      "lunchTime": "Čas oběda",
+      "dinnerTime": "Čas večeře",
+      "typicalDay": "Popis typického dne",
+      "typicalDayPlaceholder": "Popište typický den...",
+      "emergencyContactsHint": "Přidejte nouzové kontakty, které se zobrazí na kartě Nápověda v aplikaci pro pacienta.",
+      "remove": "Odebrat",
+      "addContact": "Přidat kontakt",
+      "contactNameRequired": "Jméno *",
+      "phoneRequired": "Telefonní číslo *",
+      "relationshipOptional": "Vztah (volitelné)",
+      "addContactButton": "+ Přidat kontakt",
+      "emergencyContactWarning": "Doporučujeme přidat alespoň jeden nouzový kontakt.",
+      "allSet": "Vše je nastaveno!",
+      "careCodeLabel": "KÓD PÉČE",
+      "copied": "Zkopírováno!",
+      "copyCode": "Kopírovat kód",
+      "nextSteps": "Další kroky:",
+      "nextStep1": "1. Nainstalujte OurTurn do telefonu osoby {{name}}",
+      "nextStep2": "2. Otevřete aplikaci a zadejte výše uvedený kód péče",
+      "nextStep3": "3. To je vše! Denní plán osoby {{name}} se zobrazí v jejím telefonu",
+      "homeAddressPlaceholder": "Ulice 123, Město"
+    },
+    "settings": {
+      "title": "Nastavení",
+      "appearance": "Vzhled",
+      "theme": {
+        "label": "Motiv",
+        "light": "Světlý",
+        "dark": "Tmavý",
+        "system": "Systémový"
+      },
+      "profile": "Profil",
+      "account": "Účet",
+      "subscription": "Předplatné",
+      "notifications": "Oznámení",
+      "privacy": "Soukromí a data",
+      "exportData": "Exportovat moje data",
+      "exportNote": "Stáhněte si kopii všech svých dat (právo GDPR na přenositelnost)",
+      "exportClipboard": "Vaše data byla zkopírována do schránky. Můžete je vložit do dokumentu nebo e-mailu.",
+      "deleteAccount": "Smazat účet",
+      "deleteWarning": "Tímto trvale smažete všechna data pro tuto domácnost. Tuto akci nelze vrátit.",
+      "deleteConfirmType": "Pro potvrzení smazání účtu napište SMAZAT",
+      "confirmDelete": "Potvrdit smazání",
+      "language": "Jazyk",
+      "about": "O aplikaci OurTurn",
+      "version": "Verze",
+      "notMedicalDevice": "OurTurn není zdravotnický prostředek",
+      "dailySummary": "Denní souhrn",
+      "dailySummaryTime": "Čas denního souhrnu",
+      "emailNotifications": "E-mailová oznámení",
+      "pushNotifications": "Push oznámení",
+      "safetyAlerts": "Bezpečnostní upozornění",
+      "signOut": "Odhlásit se",
+      "saveProfile": "Uložit profil",
+      "saved": "Uloženo!",
+      "saving": "Ukládání...",
+      "changePassword": "Změnit heslo",
+      "newPassword": "Nové heslo",
+      "confirmNewPassword": "Potvrdit nové heslo",
+      "passwordPlaceholder": "Alespoň 8 znaků",
+      "passwordChanged": "Heslo bylo úspěšně změněno!",
+      "changingPassword": "Probíhá změna...",
+      "copyCode": "Kopírovat kód",
+      "codeCopied": "Kód zkopírován!",
+      "regenerateCode": "Regenerovat kód",
+      "regenerateWarning": "Starý kód přestane fungovat. Všechna spárovaná zařízení pacienta budou potřebovat nový kód.",
+      "dangerZone": "Nebezpečná zóna",
+      "relationship": "Vztah",
+      "deleteConfirm": "Pro potvrzení smazání účtu napište SMAZAT",
+      "photoGallery": "Fotogalerie",
+      "photoGalleryDesc": "Nahrajte rodinné fotografie pro personalizované reminiscenční aktivity",
+      "uploadPhotos": "Nahrát fotografie",
+      "uploading": "Nahrávání...",
+      "deletePhoto": "Smazat tuto fotografii?",
+      "maxPhotosReached": "Bylo dosaženo maximálního počtu 20 fotografií",
+      "photoUploadHint": "Až 20 fotografií, maximálně 5 MB každá",
+      "photoUploadFailed": "Nepodařilo se nahrát fotografii. Zkuste to prosím znovu.",
+      "photoDeleteFailed": "Nepodařilo se smazat fotografii. Zkuste to prosím znovu.",
+      "noPhotosYet": "Zatím nebyly nahrány žádné fotografie",
+      "photosCount": "{{count}} z 20 fotografií",
+      "patientComplexity": "Režim aplikace pro pacienta",
+      "patientComplexityDesc": "Upravte rozhraní aplikace pro pacienta podle potřeb vašeho blízkého.",
+      "complexity": {
+        "full": "Plný",
+        "fullDesc": "K dispozici jsou všechny funkce",
+        "simplified": "Zjednodušený",
+        "simplifiedDesc": "Větší text, méně detailů",
+        "essential": "Základní",
+        "essentialDesc": "Minimální – pouze hudba a volání o pomoc"
+      },
+      "safetyEscalation": "Bezpečnost a eskalace",
+      "escalationTiming": "Časování eskalace",
+      "escalationTimingDesc": "Jak dlouho trvá, než se eskalují nerozpoznaná upozornění",
+      "offlineThreshold": "Práh upozornění na offline stav",
+      "offlineThresholdDesc": "Upozornění, když zařízení nebylo vidět po tuto dobu",
+      "minutes": "minut",
+      "respiteReminders": "Připomenutí odpočinku",
+      "respiteRemindersDesc": "Získejte připomenutí, abyste si udělali přestávky",
+      "groupProfile": "Váš profil",
+      "groupAboutPatient": "O {{name}}",
+      "groupAboutPatientGeneric": "O vašem blízkém",
+      "groupSharing": "Sdílení a připojení",
+      "groupSafety": "Bezpečnost a oznámení",
+      "groupAccount": "Účet",
+      "patientInformation": "Informace o pacientovi",
+      "patientInformationDesc": "Základní údaje o vašem blízkém",
+      "patientName": "Jméno pacienta",
+      "dateOfBirth": "Datum narození",
+      "dementiaType": "Typ demence",
+      "selectDementiaType": "Vyberte typ (volitelné)",
+      "homeAddress": "Adresa bydliště",
+      "homeAddressPlaceholder": "Celá adresa bydliště",
+      "savingPatientInfo": "Ukládání...",
+      "savePatientInfo": "Uložit informace o pacientovi",
+      "lifeStory": "Životní příběh",
+      "lifeStoryDesc": "Tyto údaje pomáhají personalizovat denní aktivity a podněty k vzpomínání.",
+      "childhoodLocation": "Kde vyrůstali",
+      "career": "Kariéra / Povolání",
+      "hobbies": "Zájmy a koníčky",
+      "hobbiesPlaceholder": "např. zahradničení, malování, šachy",
+      "favoriteMusic": "Oblíbená hudba / Interpreti",
+      "favoriteMusicPlaceholder": "např. Frank Sinatra, Beatles",
+      "favoriteFoods": "Oblíbená jídla",
+      "favoriteFoodsPlaceholder": "např. jablečný koláč, pečené kuře",
+      "importantPeople": "Důležité osoby",
+      "importantPeoplePlaceholder": "např. Jan (bratr), Marie (nejlepší kamarádka)",
+      "keyEvents": "Klíčové životní události",
+      "keyEventsPlaceholder": "např. Promoval 1965, Přestěhoval se do Londýna 1970",
+      "savingLifeStory": "Ukládání...",
+      "saveLifeStory": "Uložit životní příběh",
+      "dailySchedule": "Denní rozvrh",
+      "dailyScheduleDesc": "Nastavte časy probuzení a spánku pro denní režim vašeho blízkého.",
+      "wakeTime": "Čas probuzení",
+      "sleepTime": "Čas spánku",
+      "savingSchedule": "Ukládání...",
+      "saveSchedule": "Uložit rozvrh",
+      "emergencyContacts": "Nouzové kontakty",
+      "emergencyContactsDesc": "Tyto kontakty se zobrazí na kartě Nápověda v aplikaci pro pacienta.",
+      "addContact": "Přidat kontakt",
+      "contactName": "Jméno kontaktu",
+      "contactPhone": "Telefonní číslo",
+      "contactRelationship": "Vztah",
+      "contactRelationshipPlaceholder": "např. Dcera, soused",
+      "noContactsYet": "Zatím nebyly přidány žádné nouzové kontakty.",
+      "savingContacts": "Ukládání...",
+      "saveContacts": "Uložit kontakty",
+      "removeContactConfirm": "Odstranit tento kontakt?",
+      "country": "Země",
+      "selectCountry": "Vyberte zemi",
+      "selectLanguage": "Vyberte jazyk",
+      "languageSaved": "Jazyk byl aktualizován"
+    },
+    "auth": {
+      "login": "Přihlásit se",
+      "signup": "Zaregistrovat se",
+      "email": "E-mail",
+      "password": "Heslo",
+      "forgotPassword": "Zapomenuté heslo?",
+      "noAccount": "Nemáte účet?",
+      "hasAccount": "Už máte účet?",
+      "continueWithGoogle": "Pokračovat s Google",
+      "continueWithApple": "Pokračovat s Apple",
+      "or": "nebo",
+      "confirmPassword": "Potvrdit heslo",
+      "createAccount": "Vytvořit účet",
+      "getStarted": "Začít",
+      "fillAllFields": "Vyplňte prosím všechna pole",
+      "passwordsNoMatch": "Hesla se neshodují",
+      "passwordTooShort": "Heslo musí mít alespoň 8 znaků",
+      "checkEmail": "Zkontrolujte prosím svůj e-mail a potvrďte svůj účet",
+      "enterEmailFirst": "Nejprve zadejte svou e-mailovou adresu.",
+      "resetEmailSent": "Zkontrolujte svůj e-mail",
+      "resetEmailSentDesc": "Na vaši e-mailovou adresu jsme odeslali odkaz pro obnovení hesla.",
+      "welcomeBack": "Vítejte zpět",
+      "enterEmailAndPassword": "Zadejte prosím e-mail a heslo",
+      "signingIn": "Přihlašování",
+      "orContinueWith": "Nebo pokračujte s"
+    },
+    "nav": {
+      "family": "Rodinný kruh",
+      "toolkit": "Nástroje",
+      "reports": "Zprávy",
+      "settings": "Nastavení",
+      "crisis": "Krizové centrum"
+    },
+    "crisis": {
+      "title": "Krizové centrum",
+      "subtitle": "Řízení krizí v reálném čase a podpora deeskalace",
+      "eventLogged": "Krizová událost zaznamenána",
+      "logEvent": "Zaznamenat krizovou událost",
+      "logPlaceholder": "Popište, co se stalo...",
+      "status": {
+        "allClear": "Vše v pořádku",
+        "allClearDesc": "Žádné aktivní výstrahy",
+        "activeAlerts": "Aktivní výstrahy",
+        "lastKnownLocation": "Poslední známá poloha",
+        "viewOnMap": "Zobrazit na mapě",
+        "noLocationData": "Nejsou k dispozici žádné údaje o poloze"
+      },
+      "actions": {
+        "modeLabel": "Vaše situace",
+        "withThem": "Jsem s nimi",
+        "remote": "Jsem mimo",
+        "startDeEscalation": "Zahájit deeskalaci",
+        "startDeEscalationDesc": "Průvodce uklidňujícím postupem krok za krokem",
+        "callEmergency": "Zavolat záchranku",
+        "callEmergencyDesc": "Zavolat místní záchranné služby",
+        "alertFamily": "Upozornit rodinu",
+        "alertFamilyDesc": "Odeslat push notifikaci všem pečovatelům",
+        "alertFamilySent": "Členové rodiny byli upozorněni",
+        "alertFamilyFailed": "Nepodařilo se upozornit rodinu. Zkuste to prosím znovu.",
+        "viewLocation": "Zobrazit polohu",
+        "viewLocationDesc": "Zobrazit aktuální polohu osoby {{name}} na mapě",
+        "contactPrimary": "Kontaktovat hlavního pečovatele",
+        "contactPrimaryDesc": "Kontaktovat hlavního pečovatele e-mailem",
+        "logEvent": "Zaznamenat událost",
+        "logEventDesc": "Zaznamenat tento okamžik do krizového deníku"
+      },
+      "wizard": {
+        "breathingTitle": "Začněme uklidňujícím dechem",
+        "breathingInstruction": "Pomalu se nadechněte... zadržte... vydechněte...",
+        "stepOf": "Krok {{current}} z {{total}}",
+        "thisHelped": "To pomohlo",
+        "tryNext": "Zkusit další krok",
+        "skip": "Přeskočit",
+        "completionTitle": "Výborně. Zvládli jste to s péčí.",
+        "completionDesc": "Chcete si zaznamenat nějaké poznámky o tom, co se stalo?",
+        "crisisNotesPlaceholder": "Co se stalo? Co pomohlo? Jaké spouštěče jste si všimli...",
+        "saveAndClose": "Uložit a zavřít",
+        "closeWithoutSaving": "Zavřít bez uložení"
+      },
+      "history": {
+        "title": "Nedávné krizové události",
+        "noEvents": "Za posledních 30 dní žádné krizové události.",
+        "viewAllInJournal": "Zobrazit vše v deníku",
+        "yesterday": "Včera",
+        "daysAgo": "Před {{count}} dny"
+      },
+      "steps": {
+        "stayCalm": {
+          "title": "Zůstaňte v klidu",
+          "detail": "Zhluboka se nadechněte. Vaše klidná energie jim pomůže cítit se bezpečně.",
+          "script": "Jsem tady s tebou. Všechno je v pořádku."
+        },
+        "validateFeelings": {
+          "title": "Potvrďte pocity",
+          "detail": "Řekněte: 'Vidím, že jsi rozrušený/á. To musí být opravdu těžké.' Nehádajte se ani neopravujte.",
+          "script": "Vidím, že jsi rozrušený/á. To musí být opravdu těžké."
+        },
+        "simplifyEnvironment": {
+          "title": "Zjednodušte prostředí",
+          "detail": "Používejte krátké, jednoduché věty. Vždy jen jednu myšlenku. Vyhýbejte se otázkám začínajícím slovem „proč“.",
+          "script": "Zjednodušme to. Vždy jen jednu věc."
+        },
+        "redirectAttention": {
+          "title": "Odveďte pozornost",
+          "detail": "Jemně změňte téma. Navrhněte známou aktivitu, píseň nebo procházku.",
+          "script": "Co kdybychom zkusili něco jiného? Pojďme se spolu projít."
+        },
+        "useGentleTouch": {
+          "title": "Použijte jemný dotek",
+          "detail": "Pokud je to příjemné, jemná ruka na paži může být uklidňující. Sledujte jejich reakci.",
+          "script": "Můžu tě držet za ruku? Jsem tady."
+        },
+        "giveSpace": {
+          "title": "Dejte prostor",
+          "detail": "Pokud nic nefunguje, zajistěte bezpečnost a dejte jim prostor. Je v pořádku ustoupit.",
+          "script": "Budu poblíž, kdybys mě potřeboval/a. Udělej si čas."
+        }
+      },
+      "helplines": "Linky pomoci",
+      "noHelplineAvailable": "Pro vaši zemi nebyla nalezena žádná linka pomoci",
+      "call": "Volat",
+      "email": "E-mail",
+      "website": "Webové stránky",
+      "familyContacts": "Rodinné kontakty",
+      "supportResources": "Zdroje podpory",
+      "scenarios": {
+        "title": "Co se děje?",
+        "subtitle": "Klepnutím na situaci zobrazíte podrobné pokyny",
+        "urgent": "Naléhavé",
+        "stepCountLabel": "{{count}} kroků",
+        "backToSituations": "Zpět k situacím",
+        "breathe": "Dechové cvičení",
+        "callEmergency": "Zavolejte záchrannou službu"
+      },
+      "patterns": {
+        "title": "Analýza vzorců",
+        "noEvents": "Zaznamenávejte incidenty, abyste viděli vzorce v průběhu času.",
+        "fewEvents": "Zaznamenáno {{count}} incidentů. Pro zjištění vzorců je potřeba více dat.",
+        "timePattern": "K většině incidentů dochází v {{time}}.",
+        "weekCount": "{{count}} tento týden."
+      },
+      "personalization": {
+        "label": "Co {{name}} uklidňuje",
+        "empty": "Přidejte uklidňující strategie do biografie osoby {{name}}, abyste zde viděli personalizované tipy."
+      },
+      "scenarioData": {
+        "stepsCount": "{{count}} kroků",
+        "agitated": {
+          "label": "Rozrušený / Rozčilený",
+          "steps": [
+            {
+              "title": "Nejdřív vy",
+              "instruction": "Než začnete cokoliv dělat, zhluboka se nadechněte. Nemůžete nikoho uklidnit, pokud nejste sami klidní."
+            },
+            {
+              "title": "Rychlá kontrola – nemůže být něco fyzicky špatně?",
+              "instruction": "Bolest, hlad, potřeba jít na záchod nebo infekce mohou způsobit rozrušení.",
+              "checklist": [
+                "Bolest nebo nepohodlí?",
+                "Hlad nebo žízeň?",
+                "Potřeba jít na záchod?",
+                "Nedávná změna léků?",
+                "Horečka nebo příznaky nemoci?"
+              ]
+            },
+            {
+              "title": "Snižte teplotu",
+              "instruction": "Mluvte pomalu a tiše. Nehádajte se, neopravujte ani nevysvětlujte. Potvrďte, co cítí.",
+              "tips": [
+                "„Vidím, že jsi rozrušený/á. Jsem tady.“",
+                "Snižte hluk – vypněte televizi, zavřete okna",
+                "Dejte jim fyzický prostor, netlačte se na ně",
+                "Nabídněte jim známý uklidňující předmět"
+              ]
+            },
+            {
+              "title": "Odveďte pozornost, neargumentujte",
+              "instruction": "Jemně změňte téma nebo prostředí. Nesnažte se je z toho vyargumentovat.",
+              "tips": [
+                "Navrhněte procházku nebo se přesuňte do jiné místnosti",
+                "Pusťte jim hudbu, kterou mají rádi",
+                "Nabídněte jim svačinu nebo teplý nápoj",
+                "Prohlédněte si společně fotografie"
+              ]
+            },
+            {
+              "title": "Kdy vyhledat pomoc",
+              "instruction": "Pokud rozrušení trvá déle než 30 minut, pokud hrozí, že ublíží sobě nebo vám, nebo pokud se jedná o náhlé nové chování – zavolejte záchrannou službu.",
+              "actionLabel": "Zavolejte záchrannou službu"
+            }
+          ]
+        },
+        "wandering": {
+          "label": "Toulání / Pohřešování",
+          "steps": [
+            {
+              "title": "Nejprve zkontrolujte obvyklá místa",
+              "instruction": "Většina lidí s demencí chodí na známá místa – bývalé pracoviště, domov z dětství, dům souseda.",
+              "tips": [
+                "Zkontrolujte zahradu, garáž, okolní ulice",
+                "Zeptejte se sousedů, jestli je neviděli",
+                "Zkontrolujte místa, kam chodili pravidelně"
+              ]
+            },
+            {
+              "title": "Použijte jejich polohu",
+              "instruction": "Pokud je nastaveno sledování polohy, zkontrolujte nyní jejich aktuální pozici."
+            },
+            {
+              "title": "Upozorněte rodinu",
+              "instruction": "Okamžitě dejte všem vědět. Více očí, které hledají, je lepší."
+            },
+            {
+              "title": "Pokud je nenajdete do 15 minut, zavolejte policii",
+              "instruction": "Nečekejte. Lidé s demencí jsou vystaveni vysokému riziku zranění. Zavolejte záchrannou službu a řekněte jim, že osoba má demenci.",
+              "actionLabel": "Zavolejte záchrannou službu"
+            }
+          ]
+        },
+        "refusing": {
+          "label": "Odmítání péče",
+          "steps": [
+            {
+              "title": "Zastavte se – tohle není vzdor",
+              "instruction": "Odmítnutí je téměř vždy strach, zmatenost nebo nepohodlí. Nemusí rozumět tomu, co žádáte."
+            },
+            {
+              "title": "Ustupte a zkuste to jinak",
+              "instruction": "Netlačte na ně. Vraťte se za 15–20 minut a přistupte k nim, jako by to bylo poprvé.",
+              "tips": [
+                "Změňte osobu, která žádá",
+                "Změňte prostředí",
+                "Rozdělte úkol na menší kroky",
+                "Nabídněte možnosti: „Koupel nebo sprcha?“"
+              ]
+            },
+            {
+              "title": "Zajistěte, aby se cítili bezpečně",
+              "instruction": "Vysvětlete každý krok, než ho uděláte. Pohybujte se pomalu. Udržujte je v teple.",
+              "tips": [
+                "Varujte je, než se jich dotknete",
+                "Používejte klidný, vřelý tón",
+                "Během úkolu jim pusťte jejich oblíbenou hudbu",
+                "Udržujte rutinu konzistentní"
+              ]
+            },
+            {
+              "title": "Je to vzorec?",
+              "instruction": "Pokud soustavně odmítají stejný úkol, zaznamenejte to. Může existovat základní problém – bolest, strach, citlivost. Promluvte si o tom s jejich lékařem."
+            }
+          ]
+        },
+        "hallucinations": {
+          "label": "Vidění / Slyšení věcí",
+          "steps": [
+            {
+              "title": "Nehádejte se – je to pro ně skutečné",
+              "instruction": "Uvědomte si, co prožívají, aniž byste potvrzovali, že je to pravda.",
+              "tips": [
+                "„To zní děsivě. Jsem tady s tebou.“",
+                "„Řekni mi, co vidíš.“",
+                "Neříkejte „nic tam není“"
+              ]
+            },
+            {
+              "title": "Zkontrolujte prostředí",
+              "instruction": "Stíny, odrazy, zvuky televize a nepořádek mohou vyvolat nesprávnou interpretaci.",
+              "checklist": [
+                "Stíny z oken nebo lamp?",
+                "Zapnutá televize nebo rádio v pozadí?",
+                "Odrazy v zrcadle?",
+                "Špatné osvětlení?"
+              ]
+            },
+            {
+              "title": "Jemně odveďte pozornost",
+              "instruction": "Přeneste jejich pozornost na něco konkrétního a uklidňujícího.",
+              "tips": [
+                "Přesuňte se do dobře osvětlené místnosti",
+                "Nabídněte jim praktickou aktivitu",
+                "Jděte se spolu na krátkou procházku",
+                "Uvařte si spolu šálek čaje"
+              ]
+            },
+            {
+              "title": "Kdy zavolat lékaře",
+              "instruction": "Pokud jsou halucinace nové, časté nebo způsobují extrémní úzkost. Náhlý nástup může naznačovat infekci, vedlejší účinky léků nebo delirium."
+            }
+          ]
+        },
+        "sundowning": {
+          "label": "Syndrom západu slunce",
+          "steps": [
+            {
+              "title": "Rozpoznejte vzorec",
+              "instruction": "Syndrom západu slunce obvykle začíná pozdě odpoledne. Je to velmi běžné a nemohou to ovlivnit."
+            },
+            {
+              "title": "Upravte prostředí hned teď",
+              "instruction": "Snižte veškerou stimulaci a vytvořte bezpečnostní signály.",
+              "tips": [
+                "Rozsviťte teplá světla, než se setmí",
+                "Zatáhněte závěsy, abyste snížili stíny",
+                "Vypněte nebo ztlumte hlasitost televize",
+                "Snižte počet lidí v místnosti"
+              ]
+            },
+            {
+              "title": "Nabídněte uklidňující aktivity",
+              "instruction": "Nejlépe fungují jemné, opakující se a známé aktivity.",
+              "tips": [
+                "Jemná masáž rukou s pleťovou vodou",
+                "Jemná, známá hudba",
+                "Skládání ručníků nebo třídění předmětů",
+                "Prohlížení fotoalba společně"
+              ]
+            },
+            {
+              "title": "Zabraňte tomu zítra",
+              "instruction": "Zaznamenejte epizodu s podrobnostmi o načasování. Vzorce pomáhají upravit rozvrhy – více ranní aktivity, méně odpoledního kofeinu."
+            }
+          ]
+        },
+        "fall": {
+          "label": "Pád / Fyzická pohotovost",
+          "steps": [
+            {
+              "title": "Nepřemisťujte je",
+              "instruction": "Pokud nejsou v bezprostředním nebezpečí, nepokoušejte se je zvedat nebo s nimi hýbat.",
+              "tips": [
+                "Sestupte na jejich úroveň",
+                "Ujistěte je: „Jsem tady, jsi v bezpečí“",
+                "Zkontrolujte viditelná zranění"
+              ]
+            },
+            {
+              "title": "Mohou vstát?",
+              "instruction": "Pokud nemají žádné zjevné zranění, pomalu jim pomozte vstát postupně.",
+              "checklist": [
+                "Jsou bdělí a reagují?",
+                "Mají nějaké zjevné zranění nebo bolest?",
+                "Mohou hýbat všemi končetinami?",
+                "Udeřili se do hlavy?"
+              ]
+            },
+            {
+              "title": "Volejte o pomoc, pokud...",
+              "instruction": "Zranění hlavy, nemohou vstát, silná bolest, zhoršení zmatenosti oproti obvyklému stavu nebo krvácení, které se nedá zastavit."
+            },
+            {
+              "title": "Po pádu",
+              "instruction": "Zaznamenejte tuto událost a zmiňte se o ní u lékaře. Opakované pády mohou naznačovat problémy s léky nebo progresi onemocnění."
+            }
+          ]
+        },
+        "repetitive_questions": {
+          "label": "Opakující se otázky",
+          "steps": [
+            {
+              "title": "Zhluboka se nadechněte – to je nemoc, ne oni",
+              "instruction": "Opravdu si nepamatují, že se ptali. Vaše frustrace je oprávněná, ale když ji dáte najevo, způsobí jim to větší úzkost.",
+              "checklist": [
+                "Mají z něčeho úzkost?",
+                "Mohou mít hlad, žízeň nebo se nudí?",
+                "Blíží se nějaká událost, která jim dělá starosti?"
+              ]
+            },
+            {
+              "title": "Na co se ve skutečnosti ptají?",
+              "instruction": "Povrchní otázka je zřídka skutečnou otázkou. „V kolik hodin je večeře?“ může znamenat „Mám hlad.“",
+              "checklist": [
+                "Mají z něčeho úzkost?",
+                "Mohou mít hlad, žízeň nebo se nudí?",
+                "Blíží se nějaká událost, která jim dělá starosti?"
+              ]
+            },
+            {
+              "title": "Reagujte na pocit",
+              "instruction": "Odpovězte na emoci za otázkou, spíše než na doslovná slova.",
+              "tips": [
+                "Napište odpověď na viditelnou tabuli",
+                "Poskytněte jednoduchou, uklidňující odpověď pokaždé",
+                "Po odpovědi přesměrujte na praktickou činnost",
+                "Používejte vizuální rozvrhy ke snížení nejistoty"
+              ]
+            },
+            {
+              "title": "Chraňte svou vlastní pohodu",
+              "instruction": "Pokud je to možné, vystřídejte se s jiným pečovatelem. Používejte sluchátka s jemnou hudbou, když potřebujete duševní přestávku."
+            }
+          ]
+        },
+        "aggression": {
+          "label": "Agrese",
+          "steps": [
+            {
+              "title": "Vaše bezpečnost je na prvním místě",
+              "instruction": "Pokud se necítíte fyzicky v bezpečí, okamžitě ustupte. Nepokoušejte se je omezovat.",
+              "tips": [
+                "Umístěte se poblíž východu",
+                "Odstraňte nebezpečné předměty z dosahu",
+                "Mluvte tichým a klidným hlasem",
+                "Nedělejte prudké pohyby"
+              ]
+            },
+            {
+              "title": "Uzemněte se",
+              "instruction": "Agrese spouští reakci bojuj nebo uteč i ve vás. Věnujte chvíli dýchání."
+            },
+            {
+              "title": "Co to spustilo?",
+              "instruction": "Agrese je téměř vždy reakce – bolest, strach, frustrace, smyslové přetížení.",
+              "checklist": [
+                "Byli požádáni, aby něco udělali?",
+                "Měli bolesti?",
+                "Bylo prostředí hlučné nebo chaotické?",
+                "Cítili se zahnaní do kouta?"
+              ]
+            },
+            {
+              "title": "Dejte prostor a čas",
+              "instruction": "Ustupte. Zastavte spouštěcí aktivitu. Vraťte se za 15–20 minut, jako by se nic nestalo.",
+              "tips": [
+                "Opusťte místnost, pokud je to bezpečné",
+                "Odstraňte spouštěč",
+                "Neberte si to osobně",
+                "Při návratu se přibližujte pomalu"
+              ]
+            },
+            {
+              "title": "Kdy se jedná o nouzovou situaci",
+              "instruction": "Pokud mají zbraň, pokud je někdo zraněn nebo pokud agrese neustupuje – volejte záchrannou službu."
+            }
+          ]
+        },
+        "sleep_disruption": {
+          "label": "Poruchy spánku",
+          "steps": [
+            {
+              "title": "Udržujte bezpečné prostředí",
+              "instruction": "Pokud jsou v noci vzhůru a pohybují se, vaší prioritou je bezpečnost.",
+              "tips": [
+                "Zapněte tlumená noční světla",
+                "Odstraňte překážky",
+                "Zamkněte vnější dveře, pokud máte obavy z toulání",
+                "„Je noc, všechno je v bezpečí“"
+              ]
+            },
+            {
+              "title": "Co je probudilo?",
+              "instruction": "Noční probuzení může být způsobeno bolestí, potřebou na toaletu, načasováním léků nebo hladem.",
+              "checklist": [
+                "Potřebují na toaletu?",
+                "Mají bolesti?",
+                "Probudil je hluk nebo světlo?",
+                "Mají hlad nebo žízeň?"
+              ]
+            },
+            {
+              "title": "Jemně je veďte zpět",
+              "instruction": "Nehádejte se o tom, kolik je hodin. Nasměrujte je zpět do postele uklidňujícími podněty.",
+              "tips": [
+                "Nabídněte teplý nápoj bez kofeinu",
+                "Používejte klidný, tichý hlas",
+                "Pusťte jemnou, známou hudbu",
+                "Seďte s nimi, dokud se neuklidní"
+              ]
+            },
+            {
+              "title": "Zlepšete zítřejší noc",
+              "instruction": "Více denní aktivity, žádný kofein po poledni, konzistentní večerní rutina, omezte zdřímnutí na 30 minut."
+            }
+          ]
+        },
+        "shadowing": {
+          "label": "Stínování",
+          "steps": [
+            {
+              "title": "Uvědomte si svou frustraci",
+              "instruction": "Být všude sledován je vyčerpávající. Tyto pocity jsou oprávněné. Zhluboka se nadechněte.",
+              "checklist": [
+                "Došlo k nedávné změně rutiny?",
+                "Jsou v neznámém prostředí?",
+                "Byli jste nedávno pryč?",
+                "Necítí se dobře?"
+              ]
+            },
+            {
+              "title": "Proč vás sledují?",
+              "instruction": "Stínování je poháněno úzkostí a strachem z opuštění. Být ve vaší blízkosti je jejich jediný zdroj bezpečí.",
+              "checklist": [
+                "Došlo k nedávné změně rutiny?",
+                "Jsou v neznámém prostředí?",
+                "Byli jste nedávno pryč?",
+                "Necítí se dobře?"
+              ]
+            },
+            {
+              "title": "Snižte jejich úzkost",
+              "instruction": "Pomozte jim cítit se bezpečně, aniž byste byli fyzicky přítomni každou chvíli.",
+              "tips": [
+                "Dejte jim „práci“ poblíž místa, kde se nacházíte",
+                "Nechte jim osobní věc jako uklidňující kotvu",
+                "„Jsem jen v kuchyni, hned se vrátím“",
+                "Zkuste známou televizi nebo hudbu jako společníka"
+              ]
+            },
+            {
+              "title": "Naplánujte si přestávky pro sebe",
+              "instruction": "Požádejte někoho, aby s nimi seděl, zatímco si vezmete 20 minut. I 10 minut o samotě pomůže.",
+              "tips": [
+                "Nečekejte, až budete vyčerpaní",
+                "Je v pořádku jemně zavřít dveře do koupelny",
+                "Zvažte podpůrnou skupinu",
+                "Toto chování se často snižuje se stabilní rutinou"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "tabs": {
+      "dashboard": "Řídicí panel",
+      "plan": "Plán",
+      "location": "Poloha",
+      "coach": "Kouč",
+      "more": "Více"
+    }
+  },
+  "notifications": {
+    "taskReminder": "{{patientName}}, je čas na: {{taskTitle}}",
+    "taskCompleted": "{{patientName}} dokončil(a): {{taskTitle}}",
+    "checkinReceived": "{{patientName}} dokončil(a) dnešní kontrolu",
+    "leftSafeZone": "{{patientName}} opustil(a) {{zoneName}}",
+    "inactivity": "Od {{patientName}} nebyl zjištěn žádný pohyb za {{hours}} hodin",
+    "nightMovement": "{{patientName}} se pohybuje venku v {{time}}",
+    "takeMeHome": "{{patientName}} klepnul(a) na „Zavést domů“ z {{location}}",
+    "eveningSummary": "Den {{patientName}}: {{completed}}/{{total}} úkolů hotovo. Nálada: {{mood}}"
+  },
+  "subscription": {
+    "free": "Zdarma",
+    "plus": "OurTurn Plus",
+    "upgradeTitle": "Odemkněte OurTurn Plus",
+    "upgradeFeature": "Tato funkce vyžaduje OurTurn Plus",
+    "monthly": "{{price}}/měsíc",
+    "annual": "{{price}}/rok",
+    "annualSavings": "Ušetřete {{percent}} %",
+    "subscribe": "Předplatit",
+    "restore": "Obnovit nákup",
+    "manage": "Spravovat předplatné",
+    "features": {
+      "unlimitedTasks": "Neomezený počet úkolů denně",
+      "aiCoach": "Plnohodnotný AI Care Coach",
+      "brainActivities": "Aktivity pro duševní pohodu generované umělou inteligencí",
+      "safeZones": "Bezpečné zóny a upozornění na polohu",
+      "multiCaregiver": "Až 5 členů rodiny",
+      "journal": "Sdílený deník péče",
+      "insights": "Přehledy vzorců pomocí umělé inteligence",
+      "reports": "Zprávy z návštěv lékaře",
+      "toolkit": "Sada nástrojů pro pečovatele a wellness",
+      "priority": "Prioritní podpora"
+    }
+  }
+}

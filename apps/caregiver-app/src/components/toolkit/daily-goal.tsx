@@ -1,10 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import * as Haptics from 'expo-haptics';
 import { supabase } from '@ourturn/supabase';
 import type { CaregiverWellbeingLog } from '@ourturn/shared';
-import { COLORS, FONTS, RADIUS, SHADOWS } from '../../theme';
+import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS } from '../../theme';
 
 interface DailyGoalProps {
   caregiverId: string;
@@ -13,7 +13,9 @@ interface DailyGoalProps {
 }
 
 export function DailyGoal({ caregiverId, initialLog, recentLogs }: DailyGoalProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const styles = useStyles();
+  const colors = useColors();
   const today = new Date().toISOString().split('T')[0];
 
   const [goal, setGoal] = useState(initialLog?.daily_goal || '');
@@ -26,7 +28,7 @@ export function DailyGoal({ caregiverId, initialLog, recentLogs }: DailyGoalProp
     const log = recentLogs.find((l) => l.date === dateStr);
     return {
       date: dateStr,
-      day: d.toLocaleDateString('en-US', { weekday: 'narrow' }),
+      day: d.toLocaleDateString(i18n.language, { weekday: 'narrow' }),
       hasGoal: !!log?.daily_goal,
       completed: !!log?.goal_completed,
     };
@@ -75,7 +77,7 @@ export function DailyGoal({ caregiverId, initialLog, recentLogs }: DailyGoalProp
           value={goal}
           onChangeText={setGoal}
           placeholder={t('caregiverApp.toolkit.goal.placeholder')}
-          placeholderTextColor={COLORS.textMuted}
+          placeholderTextColor={colors.textMuted}
           style={styles.input}
         />
         {goal.length > 0 && (
@@ -113,20 +115,20 @@ export function DailyGoal({ caregiverId, initialLog, recentLogs }: DailyGoalProp
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   card: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     padding: 16,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     ...SHADOWS.sm,
   },
   title: {
     fontSize: 14,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 12,
   },
   inputRow: {
@@ -136,31 +138,31 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
     borderRadius: RADIUS.md,
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
     paddingHorizontal: 14,
     paddingVertical: 10,
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   doneButton: {
     paddingHorizontal: 16,
     paddingVertical: 10,
     borderRadius: RADIUS.md,
-    backgroundColor: COLORS.border,
+    backgroundColor: colors.border,
     justifyContent: 'center',
   },
   doneButtonComplete: {
-    backgroundColor: COLORS.success,
+    backgroundColor: colors.success,
   },
   doneText: {
     fontSize: 14,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   doneTextComplete: {
     color: 'white',
@@ -170,7 +172,7 @@ const styles = StyleSheet.create({
   },
   weekLabel: {
     fontSize: 11,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     fontFamily: FONTS.body,
     marginBottom: 8,
   },
@@ -186,17 +188,17 @@ const styles = StyleSheet.create({
     width: 18,
     height: 18,
     borderRadius: 9,
-    backgroundColor: COLORS.border,
+    backgroundColor: colors.border,
   },
   dayDotCompleted: {
-    backgroundColor: COLORS.success,
+    backgroundColor: colors.success,
   },
   dayDotHasGoal: {
-    backgroundColor: COLORS.amber + '66',
+    backgroundColor: colors.amber + '66',
   },
   dayLabel: {
     fontSize: 10,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     fontFamily: FONTS.body,
   },
-});
+}));

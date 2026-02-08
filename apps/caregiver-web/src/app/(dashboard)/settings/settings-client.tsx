@@ -6,29 +6,15 @@ import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
 import type { Caregiver, Household, NotificationPreferences, Patient } from '@ourturn/shared';
+import { SUPPORTED_LANGUAGES, EU_COUNTRIES } from '@ourturn/shared';
 import { useToast } from '@/components/toast';
+import { changeLanguage } from '@/i18n';
 import PatientInformationSection from './sections/patient-information-section';
 import LifeStorySection from './sections/life-story-section';
 import DailyScheduleSection from './sections/daily-schedule-section';
 import EmergencyContactsSection from './sections/emergency-contacts-section';
 
-const countries = [
-  { code: 'US', name: 'United States' },
-  { code: 'GB', name: 'United Kingdom' },
-  { code: 'CA', name: 'Canada' },
-  { code: 'AU', name: 'Australia' },
-  { code: 'DE', name: 'Germany' },
-  { code: 'FR', name: 'France' },
-  { code: 'ES', name: 'Spain' },
-  { code: 'IT', name: 'Italy' },
-  { code: 'NL', name: 'Netherlands' },
-  { code: 'RO', name: 'Romania' },
-  { code: 'PL', name: 'Poland' },
-  { code: 'IN', name: 'India' },
-  { code: 'JP', name: 'Japan' },
-  { code: 'BR', name: 'Brazil' },
-  { code: 'MX', name: 'Mexico' },
-];
+const countries = EU_COUNTRIES;
 
 interface SettingsClientProps {
   caregiver: Caregiver;
@@ -58,6 +44,7 @@ export default function SettingsClient({
   const [name, setName] = useState(caregiver.name);
   const [relationship, setRelationship] = useState(caregiver.relationship || '');
   const [country, setCountry] = useState(household.country || '');
+  const [language, setLanguage] = useState(household.language || 'en');
   const [isSavingProfile, setIsSavingProfile] = useState(false);
   const [profileSaved, setProfileSaved] = useState(false);
 
@@ -220,13 +207,16 @@ export default function SettingsClient({
 
       if (error) throw error;
 
-      // Also update country on household
+      // Also update country and language on household
       const { error: householdError } = await supabase
         .from('households')
-        .update({ country: country || null })
+        .update({ country: country || null, language })
         .eq('id', household.id);
 
       if (householdError) throw householdError;
+
+      // Apply language change to UI
+      changeLanguage(language);
 
       setProfileSaved(true);
       setTimeout(() => setProfileSaved(false), 3000);
@@ -566,6 +556,22 @@ export default function SettingsClient({
                   {countries.map((c) => (
                     <option key={c.code} value={c.code}>
                       {c.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-text-secondary mb-1.5">
+                  {t('caregiverApp.settings.language')}
+                </label>
+                <select
+                  value={language}
+                  onChange={(e) => setLanguage(e.target.value)}
+                  className="input-warm w-full"
+                >
+                  {SUPPORTED_LANGUAGES.map((l) => (
+                    <option key={l.code} value={l.code}>
+                      {l.nativeName} ({l.name})
                     </option>
                   ))}
                 </select>

@@ -4,12 +4,11 @@ import {
   Text,
   TouchableOpacity,
   ScrollView,
-  StyleSheet,
   Modal,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import type { BehaviourPlaybook } from '@ourturn/shared';
-import { COLORS, FONTS, RADIUS, SPACING } from '../../theme';
+import { createThemedStyles, FONTS, RADIUS, SPACING } from '../../theme';
 
 interface PlaybookDetailProps {
   playbook: BehaviourPlaybook;
@@ -21,6 +20,7 @@ type SectionKey = 'right_now' | 'understand_why' | 'prevent' | 'when_to_call_doc
 
 export function PlaybookDetail({ playbook, onClose, onLogIncident }: PlaybookDetailProps) {
   const { t } = useTranslation();
+  const styles = useStyles();
   const [openSection, setOpenSection] = useState<SectionKey>('right_now');
 
   const sections: { key: SectionKey; title: string; icon: string }[] = [
@@ -118,10 +118,10 @@ export function PlaybookDetail({ playbook, onClose, onLogIncident }: PlaybookDet
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
   },
   header: {
     flexDirection: 'row',
@@ -131,8 +131,8 @@ const styles = StyleSheet.create({
     paddingTop: SPACING[6],
     paddingBottom: SPACING[4],
     borderBottomWidth: 1,
-    borderBottomColor: COLORS.border,
-    backgroundColor: COLORS.card,
+    borderBottomColor: colors.border,
+    backgroundColor: colors.card,
   },
   headerLeft: {
     flexDirection: 'row',
@@ -150,26 +150,26 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: FONTS.display,
     fontWeight: '700',
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   description: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     marginTop: 2,
   },
   closeBtn: {
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: COLORS.border,
+    backgroundColor: colors.border,
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: SPACING[3],
   },
   closeBtnText: {
     fontSize: 14,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     fontWeight: '600',
   },
   scroll: {
@@ -182,9 +182,9 @@ const styles = StyleSheet.create({
   accordion: {
     borderRadius: RADIUS.lg,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     overflow: 'hidden',
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
   },
   accordionHeader: {
     flexDirection: 'row',
@@ -201,11 +201,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: FONTS.bodySemiBold,
     fontWeight: '600',
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   chevron: {
     fontSize: 10,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   accordionBody: {
     paddingHorizontal: SPACING[4],
@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     borderRadius: 12,
-    backgroundColor: COLORS.brand100,
+    backgroundColor: colors.brand100,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -231,13 +231,13 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: FONTS.bodyBold,
     fontWeight: '700',
-    color: COLORS.brand700,
+    color: colors.brand700,
   },
   stepText: {
     flex: 1,
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     lineHeight: 20,
   },
   bulletRow: {
@@ -247,25 +247,25 @@ const styles = StyleSheet.create({
   },
   bullet: {
     fontSize: 14,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginTop: 2,
   },
   bulletText: {
     flex: 1,
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     lineHeight: 20,
   },
   footer: {
     paddingHorizontal: SPACING[5],
     paddingVertical: SPACING[4],
     borderTopWidth: 1,
-    borderTopColor: COLORS.border,
-    backgroundColor: COLORS.card,
+    borderTopColor: colors.border,
+    backgroundColor: colors.card,
   },
   logButton: {
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     borderRadius: RADIUS.lg,
     paddingVertical: SPACING[4],
     alignItems: 'center',
@@ -274,6 +274,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: FONTS.bodySemiBold,
     fontWeight: '600',
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
-});
+}));

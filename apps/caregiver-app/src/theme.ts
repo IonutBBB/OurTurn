@@ -1,53 +1,21 @@
 // OurTurn Caregiver App — "Hearthstone" Warm & Organic Theme
 
-export const COLORS = {
-  // Brand - Terracotta
-  brand50: '#FFF8F3',
-  brand100: '#FDEEE1',
-  brand200: '#F9D4B4',
-  brand300: '#F0B589',
-  brand400: '#E0895A',
-  brand500: '#C8693A',
-  brand600: '#B85A2F',
-  brand700: '#964A27',
-  brand800: '#7A3D22',
-  brand900: '#5C2E1A',
+// Color palettes (light + dark)
+export { lightColors, darkColors } from './theme/colors';
+export type { ThemeColors } from './theme/colors';
 
-  // Surfaces
-  background: '#FAF7F2',
-  card: '#FFFDF8',
-  border: '#E8E0D4',
+// Themed styles system
+export {
+  ThemeContext,
+  useColors,
+  useResolvedTheme,
+  useResolveTheme,
+  createThemedStyles,
+} from './theme/themed-styles';
 
-  // Text
-  textPrimary: '#2D1F14',
-  textSecondary: '#5C4A3A',
-  textMuted: '#9C8B7A',
-  textInverse: '#FFFDF8',
-
-  // Status
-  success: '#4A7C59',
-  successBg: '#EFF5F0',
-  amber: '#C4882C',
-  amberBg: '#FDF6EA',
-  danger: '#B8463A',
-  dangerBg: '#FAF0EE',
-  info: '#4A6FA5',
-  infoBg: '#EDF2F8',
-
-  // Categories
-  medication: '#7B6198',
-  medicationBg: '#F3EFF7',
-  nutrition: '#4A7C59',
-  nutritionBg: '#EFF5F0',
-  physical: '#C4882C',
-  physicalBg: '#FDF6EA',
-  cognitive: '#4A6FA5',
-  cognitiveBg: '#EDF2F8',
-  social: '#B85A6F',
-  socialBg: '#F8EFF2',
-  health: '#B8463A',
-  healthBg: '#FAF0EE',
-} as const;
+// Backward compatibility: COLORS = lightColors
+import { lightColors } from './theme/colors';
+export const COLORS = lightColors;
 
 export const FONTS = {
   display: 'Fraunces_700Bold',

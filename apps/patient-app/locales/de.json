@@ -1,0 +1,176 @@
+{
+  "common": {
+    "appName": "OurTurn",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "done": "Fertig",
+    "skip": "Für heute überspringen",
+    "or": "oder",
+    "loading": "Lädt...",
+    "error": "Etwas ist schief gelaufen. Bitte versuche es noch einmal.",
+    "errorTitle": "Etwas ist schief gelaufen",
+    "errorDefault": "Ein unerwarteter Fehler ist aufgetreten.",
+    "tryAgain": "Erneut versuchen",
+    "offline": "Du bist offline – deine Daten werden synchronisiert, sobald du verbunden bist",
+    "synced": "Synchronisiert"
+  },
+  "categories": {
+    "medication": "Medikation",
+    "nutrition": "Mahlzeiten & Ernährung",
+    "physical": "Körperliche Aktivität",
+    "cognitive": "Geistiges Wohlbefinden",
+    "social": "Soziales & Kontakte",
+    "health": "Gesundheitscheck"
+  },
+  "patientApp": {
+    "todaysPlan": {
+      "title": "Der heutige Plan",
+      "progress": "{{completed}} von {{total}} Aktivitäten heute erledigt",
+      "noPlan": "Für heute sind keine Aktivitäten geplant. Deine Familie richtet alles ein!",
+      "overdue": "Überfällig",
+      "upcoming": "Bevorstehend",
+      "nowBadge": "JETZT",
+      "doneAt": "Erledigt um {{time}}",
+      "greatMorning": "Guten Morgen!",
+      "keepGoing": "Du machst das wunderbar!",
+      "allDone": "Für heute alles erledigt!",
+      "tapToStart": "Tippen, um deine Gehirnaktivität zu starten",
+      "opensActivity": "Öffnet die heutige Aktivität für geistiges Wohlbefinden"
+    },
+    "help": {
+      "title": "Ich brauche Hilfe",
+      "callSomeone": "Jemanden anrufen",
+      "getHomeSafely": "Sicher nach Hause kommen",
+      "takeMeHome": "Bring mich nach Hause",
+      "takeMeHomeDesc": "Tippen, um eine Wegbeschreibung zu deinem Zuhause zu erhalten",
+      "emergency": "Notfall",
+      "confirmEmergency": "Bist du sicher, dass du den Notruf verständigen möchtest?"
+    },
+    "sos": {
+      "button": "SOS",
+      "label": "SOS",
+      "holdHint": "2 Sekunden gedrückt halten, um eine Benachrichtigung an deine Familie zu senden",
+      "helpOnTheWay": "Hilfe ist unterwegs",
+      "familyNotified": "Deine Familie wurde benachrichtigt",
+      "callCaregiver": "{{name}} anrufen",
+      "imOkay": "Mir geht es gut, zurück"
+    },
+    "consent": {
+      "yes": "Ja",
+      "no": "Nein",
+      "locationTracking": {
+        "title": "Deinen Standort teilen?",
+        "description": "Damit deine Familie dir helfen kann, sicher nach Hause zu kommen"
+      },
+      "dataCollection": {
+        "title": "Deine täglichen Informationen speichern?",
+        "description": "Damit deine Familie sehen kann, wie es dir geht"
+      },
+      "pushNotifications": {
+        "title": "Erinnerungen erhalten?",
+        "description": "Hilfreiche Anstöße für Mahlzeiten und Aktivitäten"
+      },
+      "dataSharing": {
+        "title": "Mit deiner Familie teilen?",
+        "description": "Damit deine Betreuer dich unterstützen können"
+      },
+      "voiceRecording": {
+        "title": "Sprachnachrichten aufnehmen?",
+        "description": "Damit du Nachrichten für deine Familie hinterlassen kannst"
+      }
+    },
+    "essential": {
+      "music": "Musik",
+      "callHelp": "Hilfe rufen"
+    },
+    "checkin": {
+      "greeting": {
+        "morning": "Guten Morgen, {{name}}!",
+        "afternoon": "Guten Tag, {{name}}!",
+        "evening": "Guten Abend, {{name}}!"
+      },
+      "moodQuestion": "Wie fühlst du dich heute?",
+      "moodGood": "Gut",
+      "moodOkay": "Okay",
+      "moodBad": "Nicht gut",
+      "sleepQuestion": "Hast du gut geschlafen?",
+      "sleepGood": "Ja",
+      "sleepOkay": "So lala",
+      "sleepBad": "Nicht wirklich",
+      "voicePrompt": "Möchtest du deiner Familie etwas mitteilen?",
+      "voiceTap": "Zum Sprechen tippen",
+      "voiceRecording": "Aufnahme...",
+      "voiceStop": "Stopp",
+      "voicePlay": "Abspielen",
+      "voicePause": "Pause",
+      "voiceDiscard": "Erneut aufnehmen",
+      "send": "An Familie senden",
+      "skipVoice": "Sprachnachricht überspringen",
+      "thankYou": "Vielen Dank! Deine Familie wird dies sehen.",
+      "alreadyDone": "Du hast dich heute schon eingecheckt!",
+      "tapToCheckin": "Zum Einchecken tippen",
+      "opensCheckin": "Öffnet den täglichen Check-in-Bildschirm"
+    },
+    "activity": {
+      "title": "Die heutige Aktivität",
+      "noActivity": "Keine Aktivität für heute",
+      "comeBackLater": "Schau morgen wieder vorbei für eine neue Aktivität!",
+      "tapToSpeak": "Zum Sprechen tippen",
+      "tapToStop": "Zum Stoppen der Aufnahme tippen",
+      "typeInstead": "Gib deine Antwort stattdessen ein",
+      "typeHere": "Gib hier deine Antwort ein...",
+      "speakInstead": "Stattdessen sprechen",
+      "recordAgain": "Erneut aufnehmen",
+      "skipForToday": "Für heute überspringen",
+      "defaultFollowUp": "Was für eine wundervolle Erinnerung! Vielen Dank für das Teilen.",
+      "listenToSong": "Lied anhören",
+      "photoMemory": "Eine Erinnerung aus deinem Leben"
+    },
+    "careCode": {
+      "welcome": "Willkommen bei OurTurn",
+      "enterCode": "Gib deinen Pflegecode ein",
+      "helperText": "Dein Familienmitglied wird dir diesen Code geben.",
+      "connect": "Verbinden",
+      "invalidCode": "Bitte überprüfe deinen Code und versuche es noch einmal.",
+      "connecting": "Verbindet...",
+      "digitLabel": "Ziffer {{current}} von {{total}}",
+      "changeLanguage": "Sprache ändern"
+    },
+    "tabs": {
+      "today": "Heute",
+      "help": "Hilfe"
+    },
+    "taskPhoto": {
+      "taskPhoto": "Aufgabenfoto (optional)",
+      "uploadPhoto": "Foto hochladen",
+      "removePhoto": "Foto entfernen",
+      "medicationItems": "Medikamente in dieser Gruppe",
+      "medicationItemsHint": "Gruppiere bis zu 3 Medikamente, die gleichzeitig eingenommen werden",
+      "addMedication": "Medikament hinzufügen",
+      "medName": "Name des Medikaments",
+      "medDosage": "Dosierung",
+      "removeMedication": "Entfernen",
+      "maxMedications": "Maximal 3 Medikamente pro Gruppe",
+      "uploadingPhoto": "Wird hochgeladen..."
+    }
+  },
+  "a11y": {
+    "doubleTapToComplete": "Doppeltippen, um als erledigt zu markieren",
+    "callContact": "{{name}} anrufen",
+    "emergencyCallConfirmHint": "Vor dem Anrufen erscheint eine Bestätigung",
+    "takeMeHomeHint": "Öffnet die Navigation zu deiner Wohnadresse",
+    "gettingLocation": "Ermittelt deinen Standort",
+    "removesVoiceRecording": "Entfernt deine Sprachaufnahme",
+    "submittingCheckin": "Übermittelt deinen Check-in"
+  },
+  "locationTracking": {
+    "backgroundNotificationTitle": "OurTurn sorgt für deine Sicherheit",
+    "backgroundNotificationBody": "Deine Familie kann sehen, dass es dir gut geht"
+  },
+  "notifications": {
+    "taskReminder": "{{patientName}}, es ist Zeit für: {{taskTitle}}",
+    "checkinPrompt": "Zeit für deinen täglichen Check-in!"
+  }
+}

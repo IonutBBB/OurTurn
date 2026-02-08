@@ -35,7 +35,9 @@
       "doneAt": "Done at {{time}}",
       "greatMorning": "Great morning!",
       "keepGoing": "You're doing wonderfully!",
-      "allDone": "All done for today!"
+      "allDone": "All done for today!",
+      "tapToStart": "Tap to start your brain activity",
+      "opensActivity": "Opens today's brain wellness activity"
     },
     "help": {
       "title": "I Need Help",
@@ -133,7 +135,8 @@
       "connect": "Connect",
       "invalidCode": "Please check your code and try again.",
       "connecting": "Connecting...",
-      "digitLabel": "Digit {{current}} of {{total}}"
+      "digitLabel": "Digit {{current}} of {{total}}",
+      "changeLanguage": "Change language"
     },
     "tabs": {
       "today": "Today",

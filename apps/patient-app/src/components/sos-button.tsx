@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import {
   Pressable,
   Text,
@@ -15,7 +15,7 @@ import { useAuthStore } from '../stores/auth-store';
 import { createLocationAlert } from '@ourturn/supabase';
 import { queueAlert } from '../utils/offline-cache';
 import { sendEmergencySMS } from '../utils/emergency-sms';
-import { COLORS, FONTS, SHADOWS } from '../theme';
+import { COLORS } from '../theme';
 
 export function SOSButton() {
   const { t } = useTranslation();
@@ -43,9 +43,9 @@ export function SOSButton() {
   };
 
   // Start pulse on mount
-  useState(() => {
+  useEffect(() => {
     startPulse();
-  });
+  }, []);
 
   const handleLongPress = async () => {
     if (isTriggering) return;
@@ -144,7 +144,6 @@ export function SOSButton() {
           accessibilityHint={t('patientApp.sos.holdHint')}
         >
           <Text style={styles.icon}>🆘</Text>
-          <Text style={styles.label}>{t('patientApp.sos.label')}</Text>
         </Pressable>
       </Animated.View>
     </View>
@@ -176,12 +175,6 @@ const styles = StyleSheet.create({
     transform: [{ scale: 0.95 }],
   },
   icon: {
-    fontSize: 28,
-  },
-  label: {
-    fontSize: 20,
-    fontFamily: FONTS.bodyBold,
-    color: COLORS.textInverse,
-    marginTop: 2,
+    fontSize: 32,
   },
 });

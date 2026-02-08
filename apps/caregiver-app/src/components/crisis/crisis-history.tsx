@@ -1,7 +1,7 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { router } from 'expo-router';
-import { COLORS, FONTS, RADIUS, SHADOWS } from '../../theme';
+import { createThemedStyles, FONTS, RADIUS, SHADOWS } from '../../theme';
 
 interface CrisisEntry {
   id: string;
@@ -14,22 +14,23 @@ interface CrisisHistoryProps {
   entries: CrisisEntry[];
 }
 
-function formatDate(timestamp: string): string {
+function formatDate(timestamp: string, t: (key: string, opts?: Record<string, unknown>) => string, locale: string): string {
   const date = new Date(timestamp);
   const now = new Date();
   const diffMs = now.getTime() - date.getTime();
   const diffDays = Math.floor(diffMs / 86400000);
 
   if (diffDays === 0) {
-    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    return date.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' });
   }
-  if (diffDays === 1) return 'Yesterday';
-  if (diffDays < 7) return `${diffDays}d ago`;
-  return date.toLocaleDateString([], { month: 'short', day: 'numeric' });
+  if (diffDays === 1) return t('caregiverApp.crisis.history.yesterday');
+  if (diffDays < 7) return t('caregiverApp.crisis.history.daysAgo', { count: diffDays });
+  return date.toLocaleDateString(locale, { month: 'short', day: 'numeric' });
 }
 
 export function CrisisHistory({ entries }: CrisisHistoryProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const styles = useStyles();
 
   return (
     <View style={styles.container}>
@@ -54,7 +55,7 @@ export function CrisisHistory({ entries }: CrisisHistoryProps) {
             <View style={styles.entryHeader}>
               <Text style={styles.authorName}>{entry.author_name}</Text>
               <Text style={styles.entryDate}>
-                {formatDate(entry.created_at)}
+                {formatDate(entry.created_at, t, i18n.language)}
               </Text>
             </View>
             <Text style={styles.entryContent} numberOfLines={3}>
@@ -67,13 +68,13 @@ export function CrisisHistory({ entries }: CrisisHistoryProps) {
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     padding: 16,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     ...SHADOWS.sm,
   },
   headerRow: {
@@ -86,23 +87,26 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
+    flex: 1,
+    marginRight: 8,
   },
   viewAllLink: {
     fontSize: 13,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.brand600,
+    color: colors.brand600,
+    flexShrink: 0,
   },
   emptyText: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     textAlign: 'center',
     paddingVertical: 20,
   },
   entryCard: {
-    backgroundColor: COLORS.brand50,
+    backgroundColor: colors.brand50,
     borderRadius: RADIUS.lg,
     padding: 12,
     marginBottom: 8,
@@ -117,17 +121,17 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '500',
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   entryDate: {
     fontSize: 12,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   entryContent: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     lineHeight: 20,
   },
-});
+}));

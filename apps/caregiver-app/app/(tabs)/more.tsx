@@ -1,13 +1,15 @@
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { router } from 'expo-router';
 import { useAuthStore } from '../../src/stores/auth-store';
-import { COLORS, FONTS, RADIUS, SHADOWS, SPACING } from '../../src/theme';
+import { createThemedStyles, FONTS, RADIUS, SHADOWS, SPACING } from '../../src/theme';
 
 export default function MoreScreen() {
   const { t } = useTranslation();
   const { logout, caregiver } = useAuthStore();
+
+  const styles = useStyles();
 
   const handleLogout = async () => {
     await logout();
@@ -69,10 +71,10 @@ export default function MoreScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
   },
   scrollView: {
     flex: 1,
@@ -86,29 +88,29 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     letterSpacing: -0.3,
     marginBottom: 24,
   },
   userCard: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     padding: 20,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     flexDirection: 'row',
     alignItems: 'center',
     gap: 16,
     marginBottom: 24,
     borderLeftWidth: 4,
-    borderLeftColor: COLORS.brand400,
+    borderLeftColor: colors.brand400,
     ...SHADOWS.md,
   },
   avatar: {
     width: 56,
     height: 56,
     borderRadius: 28,
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -116,25 +118,25 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
   userName: {
     fontSize: 18,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   userEmail: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     marginTop: 2,
   },
   menuContainer: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     overflow: 'hidden',
     marginBottom: 24,
     ...SHADOWS.sm,
@@ -145,7 +147,7 @@ const styles = StyleSheet.create({
     paddingVertical: 18,
     paddingHorizontal: 20,
     borderBottomWidth: 1,
-    borderBottomColor: COLORS.border,
+    borderBottomColor: colors.border,
   },
   menuIcon: {
     fontSize: 24,
@@ -156,18 +158,18 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: FONTS.bodyMedium,
     fontWeight: '500',
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   menuArrow: {
     fontSize: 20,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   logoutButton: {
-    backgroundColor: COLORS.dangerBg,
+    backgroundColor: colors.dangerBg,
     borderRadius: RADIUS.xl,
     padding: 16,
     borderWidth: 1,
-    borderColor: COLORS.danger,
+    borderColor: colors.danger,
     alignItems: 'center',
     ...SHADOWS.sm,
   },
@@ -175,6 +177,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.danger,
+    color: colors.danger,
   },
-});
+}));

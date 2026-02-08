@@ -1,8 +1,8 @@
-import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Modal } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Modal } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import Markdown from 'react-native-markdown-display';
 import type { JourneyStepDefinition, JourneyProgress, JourneyStepStatus } from '@ourturn/shared';
-import { COLORS, FONTS, RADIUS, SPACING } from '../../theme';
+import { createThemedStyles, FONTS, RADIUS, SPACING } from '../../theme';
 
 interface JourneyStepDetailProps {
   step: JourneyStepDefinition;
@@ -20,6 +20,8 @@ export function JourneyStepDetail({
   onUpdateStatus,
 }: JourneyStepDetailProps) {
   const { t } = useTranslation('resources');
+  const styles = useStyles();
+  const mdStyles = useMarkdownStyles();
   const status = progress?.status ?? 'not_started';
   const checklist = progress?.checklist_state ?? new Array(step.checklistKeys.length).fill(false);
 
@@ -52,7 +54,7 @@ export function JourneyStepDetail({
 
         <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollContent}>
           {/* Markdown Content */}
-          <Markdown style={markdownStyles}>{t(step.contentKey)}</Markdown>
+          <Markdown style={mdStyles}>{t(step.contentKey)}</Markdown>
 
           {/* Checklist */}
           <View style={styles.checklistSection}>
@@ -108,18 +110,18 @@ export function JourneyStepDetail({
   );
 }
 
-const markdownStyles = StyleSheet.create({
+const useMarkdownStyles = createThemedStyles((colors) => ({
   body: {
     fontSize: 16,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     lineHeight: 24,
   },
   heading1: {
     fontSize: 20,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginTop: 20,
     marginBottom: 10,
   },
@@ -127,7 +129,7 @@ const markdownStyles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '600',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginTop: 16,
     marginBottom: 8,
   },
@@ -135,7 +137,7 @@ const markdownStyles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginTop: 12,
     marginBottom: 6,
   },
@@ -143,7 +145,7 @@ const markdownStyles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginTop: 10,
     marginBottom: 4,
   },
@@ -168,22 +170,22 @@ const markdownStyles = StyleSheet.create({
   },
   blockquote: {
     borderLeftWidth: 4,
-    borderLeftColor: COLORS.brand300,
+    borderLeftColor: colors.brand300,
     paddingLeft: 12,
     marginVertical: 10,
     opacity: 0.85,
   },
   hr: {
-    backgroundColor: COLORS.border,
+    backgroundColor: colors.border,
     height: 1,
     marginVertical: 16,
   },
-});
+}));
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
   },
   header: {
     flexDirection: 'row',
@@ -193,8 +195,8 @@ const styles = StyleSheet.create({
     paddingTop: SPACING[6],
     paddingBottom: SPACING[4],
     borderBottomWidth: 1,
-    borderBottomColor: COLORS.border,
-    backgroundColor: COLORS.card,
+    borderBottomColor: colors.border,
+    backgroundColor: colors.card,
   },
   headerLeft: {
     flexDirection: 'row',
@@ -212,26 +214,26 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: FONTS.display,
     fontWeight: '700',
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   time: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginTop: 2,
   },
   closeBtn: {
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: COLORS.border,
+    backgroundColor: colors.border,
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: SPACING[3],
   },
   closeBtnText: {
     fontSize: 14,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     fontWeight: '600',
   },
   scroll: {
@@ -249,7 +251,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: FONTS.bodySemiBold,
     fontWeight: '600',
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   checklistItem: {
     flexDirection: 'row',
@@ -263,35 +265,35 @@ const styles = StyleSheet.create({
     height: 28,
     borderRadius: RADIUS.sm,
     borderWidth: 2,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
   },
   checkboxChecked: {
-    backgroundColor: COLORS.success,
-    borderColor: COLORS.success,
+    backgroundColor: colors.success,
+    borderColor: colors.success,
   },
   checkmark: {
     fontSize: 16,
-    color: COLORS.textInverse,
+    color: colors.textInverse,
     fontWeight: '700',
   },
   checklistText: {
     flex: 1,
     fontSize: 15,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     lineHeight: 22,
   },
   checklistTextChecked: {
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     textDecorationLine: 'line-through',
   },
   disclaimer: {
     fontSize: 12,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     fontStyle: 'italic',
     lineHeight: 18,
   },
@@ -299,27 +301,27 @@ const styles = StyleSheet.create({
     paddingHorizontal: SPACING[5],
     paddingVertical: SPACING[4],
     borderTopWidth: 1,
-    borderTopColor: COLORS.border,
-    backgroundColor: COLORS.card,
+    borderTopColor: colors.border,
+    backgroundColor: colors.card,
   },
   completeBtn: {
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     borderRadius: RADIUS.lg,
     paddingVertical: SPACING[4],
     alignItems: 'center',
   },
   completeBtnDone: {
-    backgroundColor: COLORS.successBg,
+    backgroundColor: colors.successBg,
     borderWidth: 1,
-    borderColor: COLORS.success,
+    borderColor: colors.success,
   },
   completeBtnText: {
     fontSize: 16,
     fontFamily: FONTS.bodySemiBold,
     fontWeight: '600',
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
   completeBtnTextDone: {
-    color: COLORS.success,
+    color: colors.success,
   },
-});
+}));

@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { ARTICLES, ARTICLE_CATEGORIES } from '@ourturn/shared';
 import type { ArticleDefinition, ArticleCategory } from '@ourturn/shared';
 import { ArticleCard } from './article-card';
-import { COLORS, FONTS, RADIUS, SPACING } from '../../theme';
+import { createThemedStyles, FONTS, RADIUS, SPACING } from '../../theme';
 
 interface ArticleSectionProps {
   onSelectArticle: (article: ArticleDefinition) => void;
@@ -12,6 +12,7 @@ interface ArticleSectionProps {
 
 export function ArticleSection({ onSelectArticle }: ArticleSectionProps) {
   const { t } = useTranslation('resources');
+  const styles = useStyles();
   const [selectedCategory, setSelectedCategory] = useState<ArticleCategory | 'all'>('all');
 
   const filteredArticles =
@@ -63,7 +64,7 @@ export function ArticleSection({ onSelectArticle }: ArticleSectionProps) {
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
     gap: SPACING[3],
   },
@@ -72,12 +73,12 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.displayMedium,
     textTransform: 'uppercase',
     letterSpacing: 1.5,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   sectionSubLabel: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginBottom: SPACING[1],
   },
   chips: {
@@ -89,20 +90,20 @@ const styles = StyleSheet.create({
     paddingVertical: SPACING[2],
     borderRadius: RADIUS.full,
     borderWidth: 1,
-    borderColor: COLORS.border,
-    backgroundColor: COLORS.card,
+    borderColor: colors.border,
+    backgroundColor: colors.card,
   },
   chipActive: {
-    backgroundColor: COLORS.brand100,
-    borderColor: COLORS.brand600,
+    backgroundColor: colors.brand100,
+    borderColor: colors.brand600,
   },
   chipText: {
     fontSize: 13,
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
   },
   chipTextActive: {
-    color: COLORS.brand700,
+    color: colors.brand700,
     fontFamily: FONTS.bodySemiBold,
     fontWeight: '600',
   },
@@ -111,4 +112,4 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     gap: SPACING[3],
   },
-});
+}));

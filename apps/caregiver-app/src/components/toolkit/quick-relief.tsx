@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import type { ReliefExercise, SliderValue } from '@ourturn/shared';
 import { getRecommendedExercises } from '@ourturn/shared';
 import { ExercisePlayer } from './exercise-player';
-import { COLORS, FONTS, RADIUS, SHADOWS } from '../../theme';
+import { createThemedStyles, FONTS, RADIUS, SHADOWS } from '../../theme';
 
 interface QuickReliefProps {
   stress: SliderValue | null;
@@ -15,6 +15,7 @@ interface QuickReliefProps {
 
 export function QuickRelief({ stress, energy, sleep, onExerciseComplete }: QuickReliefProps) {
   const { t } = useTranslation();
+  const styles = useStyles();
   const [activeExercise, setActiveExercise] = useState<ReliefExercise | null>(null);
 
   const exercises = getRecommendedExercises(stress, energy, sleep);
@@ -50,7 +51,7 @@ export function QuickRelief({ stress, energy, sleep, onExerciseComplete }: Quick
                   </View>
                 )}
                 <Text style={styles.exerciseIcon}>{exercise.icon}</Text>
-                <Text style={styles.exerciseName}>{exercise.name}</Text>
+                <Text style={styles.exerciseName}>{t(`caregiverApp.toolkit.relief.exercises.${exercise.id}.name`)}</Text>
                 <Text style={styles.exerciseDuration}>
                   {t('caregiverApp.toolkit.relief.duration', { min: exercise.duration_minutes })}
                 </Text>
@@ -74,20 +75,20 @@ export function QuickRelief({ stress, energy, sleep, onExerciseComplete }: Quick
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   card: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     padding: 20,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     ...SHADOWS.sm,
   },
   title: {
     fontSize: 18,
     fontWeight: '600',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 16,
   },
   grid: {
@@ -101,18 +102,18 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: RADIUS.lg,
     borderWidth: 2,
-    borderColor: COLORS.border,
-    backgroundColor: COLORS.card,
+    borderColor: colors.border,
+    backgroundColor: colors.card,
   },
   exerciseCardRecommended: {
-    borderColor: COLORS.brand300,
-    backgroundColor: COLORS.brand50,
+    borderColor: colors.brand300,
+    backgroundColor: colors.brand50,
   },
   badge: {
     position: 'absolute',
     top: -8,
     right: -4,
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     paddingHorizontal: 8,
     paddingVertical: 2,
     borderRadius: RADIUS.full,
@@ -131,13 +132,13 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     textAlign: 'center',
   },
   exerciseDuration: {
     fontSize: 11,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     fontFamily: FONTS.body,
     marginTop: 4,
   },
-});
+}));

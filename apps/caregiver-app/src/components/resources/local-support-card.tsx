@@ -1,7 +1,7 @@
-import { View, Text, TouchableOpacity, Linking, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, Linking } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import type { LocalSupportOrganization } from '@ourturn/shared';
-import { COLORS, FONTS, RADIUS, SHADOWS, SPACING } from '../../theme';
+import { createThemedStyles, FONTS, RADIUS, SHADOWS, SPACING } from '../../theme';
 
 interface LocalSupportCardProps {
   org: LocalSupportOrganization;
@@ -9,6 +9,7 @@ interface LocalSupportCardProps {
 
 export function LocalSupportCard({ org }: LocalSupportCardProps) {
   const { t } = useTranslation('resources');
+  const styles = useStyles();
 
   const handleCall = () => {
     if (org.phone) {
@@ -79,11 +80,11 @@ export function LocalSupportCard({ org }: LocalSupportCardProps) {
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   card: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     borderRadius: RADIUS.md,
     padding: SPACING[4],
     gap: SPACING[3],
@@ -99,10 +100,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: FONTS.bodySemiBold,
     fontWeight: '600',
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   badge: {
-    backgroundColor: COLORS.successBg,
+    backgroundColor: colors.successBg,
     borderRadius: RADIUS.sm,
     paddingHorizontal: SPACING[2],
     paddingVertical: 2,
@@ -111,12 +112,12 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontFamily: FONTS.bodySemiBold,
     fontWeight: '600',
-    color: COLORS.success,
+    color: colors.success,
   },
   description: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     lineHeight: 20,
   },
   actions: {
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: COLORS.success,
+    backgroundColor: colors.success,
     borderRadius: RADIUS.md,
     minHeight: 56,
     paddingHorizontal: SPACING[4],
@@ -136,18 +137,18 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: FONTS.bodySemiBold,
     fontWeight: '600',
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
   phoneNumber: {
     fontSize: 16,
     fontFamily: FONTS.body,
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
   outlineBtn: {
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
-    borderColor: COLORS.brand500,
+    borderColor: colors.brand500,
     borderRadius: RADIUS.md,
     minHeight: 48,
     paddingHorizontal: SPACING[4],
@@ -156,6 +157,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontFamily: FONTS.bodySemiBold,
     fontWeight: '600',
-    color: COLORS.brand600,
+    color: colors.brand600,
   },
-});
+}));

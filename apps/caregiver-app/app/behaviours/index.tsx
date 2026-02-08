@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
@@ -10,13 +10,15 @@ import { PlaybookGrid } from '../../src/components/behaviours/playbook-grid';
 import { PlaybookDetail } from '../../src/components/behaviours/playbook-detail';
 import { IncidentLogger } from '../../src/components/behaviours/incident-logger';
 import { BehaviourTimeline } from '../../src/components/behaviours/behaviour-timeline';
-import { COLORS, FONTS, SPACING } from '../../src/theme';
+import { createThemedStyles, useColors, FONTS, SPACING } from '../../src/theme';
 
 export default function BehavioursScreen() {
   const { t } = useTranslation();
   const router = useRouter();
   const params = useLocalSearchParams<{ log?: string }>();
   const { household } = useAuthStore();
+  const styles = useStyles();
+  const colors = useColors();
 
   const [playbooks, setPlaybooks] = useState<BehaviourPlaybook[]>([]);
   const [incidents, setIncidents] = useState<BehaviourIncident[]>([]);
@@ -68,7 +70,7 @@ export default function BehavioursScreen() {
     return (
       <SafeAreaView style={styles.container} edges={['top']}>
         <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color={COLORS.brand600} />
+          <ActivityIndicator size="large" color={colors.brand600} />
         </View>
       </SafeAreaView>
     );
@@ -78,7 +80,7 @@ export default function BehavioursScreen() {
     <SafeAreaView style={styles.container} edges={['top']}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.back()} style={styles.backBtn}>
-          <Text style={styles.backText}>‹ {t('common.back')}</Text>
+          <Text style={styles.backText}>&#8249; {t('common.back')}</Text>
         </TouchableOpacity>
         <Text style={styles.title}>
           {t('caregiverApp.toolkit.behaviours.playbooks.title')}
@@ -130,10 +132,10 @@ export default function BehavioursScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
   },
   loadingContainer: {
     flex: 1,
@@ -145,7 +147,7 @@ const styles = StyleSheet.create({
     paddingTop: SPACING[3],
     paddingBottom: SPACING[3],
     borderBottomWidth: 1,
-    borderBottomColor: COLORS.border,
+    borderBottomColor: colors.border,
   },
   backBtn: {
     marginBottom: SPACING[2],
@@ -153,13 +155,13 @@ const styles = StyleSheet.create({
   backText: {
     fontSize: 16,
     fontFamily: FONTS.body,
-    color: COLORS.brand600,
+    color: colors.brand600,
   },
   title: {
     fontSize: 22,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   scroll: {
     flex: 1,
@@ -170,7 +172,7 @@ const styles = StyleSheet.create({
     paddingBottom: SPACING[12],
   },
   logBtn: {
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     borderRadius: 16,
     paddingVertical: SPACING[4],
     alignItems: 'center',
@@ -179,6 +181,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: FONTS.bodySemiBold,
     fontWeight: '600',
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
-});
+}));

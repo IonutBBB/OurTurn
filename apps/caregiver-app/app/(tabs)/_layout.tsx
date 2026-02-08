@@ -1,8 +1,9 @@
 import { Tabs } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ErrorBoundary } from '../../src/components/error-boundary';
-import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
+import { FONTS, RADIUS, SHADOWS, createThemedStyles, useColors } from '../../src/theme';
 
 interface TabIconProps {
   icon: string;
@@ -11,25 +12,29 @@ interface TabIconProps {
 }
 
 function TabIcon({ icon, label, focused }: TabIconProps) {
+  const styles = useStyles();
   return (
     <View style={styles.tabIconContainer}>
       <View style={[styles.iconWrap, focused && styles.iconWrapFocused]}>
         <Text style={[styles.tabIcon, focused && styles.tabIconFocused]}>{icon}</Text>
       </View>
-      <Text style={[styles.tabLabel, focused && styles.tabLabelFocused]}>{label}</Text>
+      <Text style={[styles.tabLabel, focused && styles.tabLabelFocused]} numberOfLines={1}>{label}</Text>
     </View>
   );
 }
 
 export default function TabsLayout() {
   const { t } = useTranslation();
+  const insets = useSafeAreaInsets();
+  const styles = useStyles();
+  const colors = useColors();
 
   return (
     <ErrorBoundary>
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarStyle: styles.tabBar,
+        tabBarStyle: [styles.tabBar, { paddingBottom: Math.max(insets.bottom, 6), height: 72 + Math.max(insets.bottom - 6, 0) }],
         tabBarShowLabel: false,
       }}
     >
@@ -98,14 +103,12 @@ export default function TabsLayout() {
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   tabBar: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderTopWidth: 1,
-    borderTopColor: COLORS.border,
+    borderTopColor: colors.border,
     paddingTop: 6,
-    paddingBottom: 6,
-    height: 72,
     ...SHADOWS.sm,
   },
   tabIconContainer: {
@@ -123,27 +126,29 @@ const styles = StyleSheet.create({
     marginBottom: 3,
   },
   iconWrapFocused: {
-    backgroundColor: COLORS.brand100,
+    backgroundColor: colors.brand100,
     borderRadius: RADIUS.lg,
     width: 48,
     height: 32,
   },
   tabIcon: {
     fontSize: 22,
+    textAlign: 'center',
+    lineHeight: 28,
   },
   tabIconFocused: {
     transform: [{ scale: 1.05 }],
   },
   tabLabel: {
     fontSize: 10,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     fontWeight: '500',
     fontFamily: FONTS.bodyMedium,
     letterSpacing: 0.2,
   },
   tabLabelFocused: {
-    color: COLORS.brand700,
+    color: colors.brand700,
     fontWeight: '700',
     fontFamily: FONTS.bodyBold,
   },
-});
+}));

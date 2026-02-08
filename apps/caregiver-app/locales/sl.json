@@ -1,0 +1,1398 @@
+{
+  "common": {
+    "appName": "OurTurn",
+    "save": "Shrani",
+    "cancel": "Prekliči",
+    "delete": "Izbriši",
+    "edit": "Uredi",
+    "done": "Končano",
+    "skip": "Preskoči za danes",
+    "loading": "Nalaganje...",
+    "error": "Nekaj je šlo narobe. Prosimo, poskusite znova.",
+    "errorTitle": "Nekaj je šlo narobe",
+    "errorDefault": "Prišlo je do nepričakovane napake.",
+    "tryAgain": "Poskusite znova",
+    "logOut": "Odjava",
+    "offline": "Niste povezani – vaši podatki se bodo sinhronizirali, ko bo povezava vzpostavljena",
+    "synced": "Sinhronizirano",
+    "viewMore": "Prikaži več",
+    "back": "Nazaj",
+    "next": "Naprej",
+    "confirm": "Potrdi",
+    "yes": "Da",
+    "no": "Ne",
+    "you": "Vi",
+    "unknown": "Neznano",
+    "saving": "Shranjevanje...",
+    "primary": "Primarno"
+  },
+  "categories": {
+    "medication": "Zdravila",
+    "nutrition": "Obroki in prehrana",
+    "physical": "Telesna aktivnost",
+    "cognitive": "Duševno dobro počutje",
+    "social": "Socialno življenje in povezovanje",
+    "health": "Zdravstveni pregled"
+  },
+  "caregiverApp": {
+    "dashboard": {
+      "greeting": "Dober {{timeOfDay}}, {{name}}",
+      "statusGood": "Dan za {{patientName}} poteka dobro",
+      "statusConcern": "{{patientName}} morda potrebuje nekaj pozornosti",
+      "todaysStatus": "Današnje stanje",
+      "tasksCompleted": "{{completed}} od {{total}} opravil opravljenih",
+      "dailyCheckin": "Dnevna prijava",
+      "noCheckinYet": "Danes še ni bila oddana nobena prijava",
+      "location": "Lokacija",
+      "atHome": "{{name}} je doma",
+      "lastUpdate": "Zadnja posodobitev: {{time}}",
+      "aiInsights": "Ugotovitve",
+      "quickActions": "Hitra dejanja",
+      "callPatient": "Pokliči {{name}}",
+      "tasksCompletedLabel": "opravila opravljena",
+      "careCode": "Koda za oskrbo",
+      "careCodeHint": "Delite za povezavo aplikacije za bolnika",
+      "careCodeNotAvailable": "Koda ni na voljo",
+      "morningActivityPattern": "Vzorec jutranje aktivnosti",
+      "insightText": "{{name}} opravi več nalog v dneh, ko so načrtovani jutranji sprehodi.",
+      "noJournalEntries": "Še ni vnosov v dnevnik",
+      "unknown": "Neznano",
+      "moodStruggling": "Se bori",
+      "moodLow": "Slabo",
+      "moodOkay": "V redu",
+      "moodGood": "Dobro",
+      "moodGreat": "Odlično",
+      "sleepPoor": "Slabo",
+      "sleepFair": "Zadovoljivo",
+      "sleepWell": "Dobro",
+      "mood": "Razpoloženje",
+      "sleep": "Spanje",
+      "minutesAgo": "pred {{count}}m",
+      "hoursAgo": "pred {{count}}h",
+      "daysAgo": "pred {{count}}d",
+      "deviceStatus": "Stanje naprave",
+      "deviceOnline": "Povezana",
+      "deviceOffline": "Nepovezana",
+      "lastSeenAt": "Zadnjič videno: {{time}}",
+      "lastSeenNever": "Nikoli ni bila povezana",
+      "engagementSummary": "Današnja aktivnost",
+      "alertsToday": "Opozorila danes",
+      "checkedIn": "Prijavljen",
+      "notCheckedIn": "Ni prijavljen",
+      "brainActivity": "Možganska aktivnost"
+    },
+    "carePlan": {
+      "title": "Dnevni načrt za {{name}}",
+      "addTask": "Dodaj opravilo",
+      "aiSuggest": "Predlogi opravil s pomočjo umetne inteligence",
+      "hintLabel": "Navodila ({{name}} jih bo videl)",
+      "hintPlaceholder": "Npr. Vaše tablete so v škatli za tablete na kuhinjskem pultu",
+      "recurrence": "Se ponavlja",
+      "daily": "Vsak dan",
+      "specificDays": "Določeni dnevi",
+      "oneTime": "Enkratno",
+      "copyDay": "Kopiraj v druge dni",
+      "saved": "Shranjeno",
+      "noTasks": "Še ni opravil. Dodajte svoje prvo opravilo za začetek.",
+      "category": "Kategorija",
+      "taskTitle": "Naslov opravila",
+      "time": "Čas",
+      "deleteConfirm": "Izbrišem to opravilo?",
+      "noMoreSuggestions": "Ni več razpoložljivih predlogov.",
+      "copyFromTo": "Kopiraj opravila iz {{day}} v:",
+      "copyCount": "{{taskCount}} opravil bo kopiranih v {{dayCount}} dni",
+      "days": {
+        "mon": "Pon",
+        "tue": "Tor",
+        "wed": "Sre",
+        "thu": "Čet",
+        "fri": "Pet",
+        "sat": "Sob",
+        "sun": "Ned"
+      },
+      "taskPhoto": "Fotografija opravila (izbirno)",
+      "uploadPhoto": "Naloži fotografijo",
+      "removePhoto": "Odstrani fotografijo",
+      "medicationItems": "Zdravila v tej skupini",
+      "medicationItemsHint": "Združite do 3 zdravila, ki jih jemljete hkrati",
+      "addMedication": "Dodaj zdravilo",
+      "medName": "Ime zdravila",
+      "medNamePlaceholder": "npr. Donepezil",
+      "medDosage": "Odmerek ali navodilo",
+      "medDosagePlaceholder": "npr. 10mg tableta",
+      "medPhotoLabel": "Fotografija",
+      "medItemLabel": "Zdravilo {{number}}",
+      "removeMedication": "Odstrani",
+      "maxMedications": "Največ 3 zdravila na skupino",
+      "uploadingPhoto": "Nalaganje...",
+      "evidenceBased": "Na podlagi dokazov"
+    },
+    "location": {
+      "title": "Lokacija in varnost",
+      "currentLocation": "Trenutna lokacija",
+      "safeZones": "Varne cone",
+      "addSafeZone": "Dodaj varno cono",
+      "editSafeZone": "Uredi varno cono",
+      "alerts": "Nastavitve opozoril",
+      "leaveZoneAlert": "Obvesti, ko {{name}} zapusti varno cono",
+      "inactivityAlert": "Obvesti, ko ni gibanja že",
+      "nightAlert": "Obvesti, ko je zunaj po",
+      "takeMeHomeAlert": "Obvesti, ko {{name}} pritisne 'Pelji me domov'",
+      "locationHistory": "Zgodovina lokacij",
+      "takeMeHomeTapped": "{{name}} je pritisnil 'Pelji me domov'",
+      "hours": "ur",
+      "zoneName": "Ime cone",
+      "zoneRadius": "Polmer (metri)",
+      "unknownLocation": "Neznana lokacija",
+      "completeOnboarding": "Prosimo, najprej dokončajte postopek uvajanja.",
+      "unacknowledgedAlerts": "{{count}} Nepotrjeno opozorilo",
+      "unacknowledgedAlertsPlural": "{{count}} Nepotrjena opozorila",
+      "acknowledge": "Potrdi",
+      "patientLocation": "Lokacija osebe {{name}}",
+      "updated": "Posodobljeno: {{time}}",
+      "noLocationData": "Še ni podatkov o lokaciji",
+      "live": "V živo",
+      "add": "+ Dodaj",
+      "noSafeZonesYet": "Še ni konfiguriranih varnih con.\nDodajte cone, da boste prejemali opozorila, ko {{name}} odide.",
+      "radiusMeters": "Polmer {{radius}}m",
+      "recentAlerts24h": "Nedavna opozorila (24 ur)",
+      "noRecentAlerts": "V zadnjih 24 urah ni bilo opozoril. Vse je v redu!",
+      "deleteSafeZone": "Izbriši varno cono",
+      "deleteSafeZoneConfirm": "Ali ste prepričani, da želite izbrisati »{{name}}«?",
+      "failedToSaveSafeZone": "Varnih cone ni bilo mogoče shraniti",
+      "failedToDeleteSafeZone": "Varne cone ni bilo mogoče izbrisati",
+      "fillAllFields": "Prosimo, izpolnite vsa polja",
+      "name": "Ime",
+      "nameExample": "npr. Dom, zdravniška ordinacija",
+      "latitude": "Širina",
+      "longitude": "Dolžina",
+      "radiusHint": "Priporočeno: 100-500 metrov za tipične lokacije",
+      "mapView": "Pogled zemljevida",
+      "mapRequiresBuild": "Zemljevidi zahtevajo razvojno različico.\nUporabite EAS Build za omogočitev zemljevidov.",
+      "home": "Domov",
+      "patient": "Pacient",
+      "alertTypeLeftSafeZone": "Zapustil varno območje",
+      "alertTypeInactive": "Neaktiven",
+      "alertTypeNightMovement": "Nočno gibanje",
+      "alertTypeTakeMeHomeTapped": "Dotaknjeno 'Pelji me domov'",
+      "alertTypeSosTriggered": "SOS sprožen",
+      "invalidLatitude": "Prosimo, vnesite veljavno širino (-90 do 90)",
+      "invalidLongitude": "Prosimo, vnesite veljavno dolžino (-180 do 180)",
+      "invalidRadius": "Prosimo, vnesite pozitivno vrednost radija"
+    },
+    "coach": {
+      "title": "AI Pomočnik za nego",
+      "tabs": {
+        "chat": "Klepet",
+        "behaviours": "Vedenja",
+        "resources": "Viri"
+      },
+      "resources": {
+        "title": "Viri",
+        "subtitle": "Vodiči, članki in lokalna podpora, ki vam bodo pomagali na vaši poti nege",
+        "linkLabel": "Viri in vodiči"
+      },
+      "intro": "Vprašajte me karkoli o negi osebe {{name}}. Poznam njeno rutino, preference in splošne najboljše prakse.",
+      "placeholder": "Vnesite svoje vprašanje...",
+      "disclaimer": "Tukaj sem, da vas podpiram, ne da bi nadomestil zdravniški nasvet. Za zdravstvene težave se vedno posvetujte s svojim zdravnikom.",
+      "disclaimerShort": "OurTurn Pomočnik za nego nudi le splošne smernice. Za zdravstvene nasvete se vedno posvetujte z zdravstvenimi strokovnjaki.",
+      "suggestedTopics": "Predlagane teme",
+      "addToCarePlan": "Dodaj v načrt nege",
+      "addToDoctorNotes": "Dodaj v zdravniške zapiske",
+      "newConversation": "Nov pogovor",
+      "newChat": "Nov klepet",
+      "careCoach": "Pomočnik za nego",
+      "completeOnboarding": "Prosimo, najprej dokončajte postopek uvajanja.",
+      "greeting": "Živjo {{name}}!",
+      "greetingIntro": "Tukaj sem, da vam pomagam pri negi osebe {{patientName}}. Vprašajte me karkoli o dnevni negi, aktivnostih ali obvladovanju zahtevnih situacij.",
+      "tryAsking": "Poskusite vprašati:",
+      "askAbout": "Vprašajte o negi osebe {{name}}...",
+      "send": "Pošlji",
+      "signingIn": "Prijava",
+      "taskAddedSuccess": "Naloga je bila dodana v načrt nege!",
+      "taskAddedError": "Naloge ni bilo mogoče dodati. Prosimo, poskusite znova.",
+      "noteAddedSuccess": "Zapis je bil shranjen za obisk pri zdravniku!",
+      "noteAddedError": "Zapisa ni bilo mogoče shraniti. Prosimo, poskusite znova.",
+      "addToCarePlanButton": "Dodaj v načrt nege",
+      "saveForDoctorVisit": "Shrani za obisk pri zdravniku",
+      "success": "Uspeh",
+      "suggestions": {
+        "sundowning": "Kako naj obvladujem večerno zmedenost?",
+        "rainyDays": "Katere aktivnosti so primerne za deževne dni?",
+        "siblings": "Pomagajte mi se pogovoriti z mojimi brati in sestrami o delitvi nege",
+        "refusesFood": "{{name}} noče jesti. Pomoč.",
+        "repetitive": "Kako naj obvladujem ponavljajoča se vprašanja?"
+      },
+      "hub": {
+        "backToHub": "Nazaj na pomočnika",
+        "insight": {
+          "title": "Za vas",
+          "discuss": "Razpravljaj",
+          "fallback": "Preverite, kako je potekal dan osebe {{name}}, da dobite prilagojene vpoglede"
+        },
+        "rightNow": {
+          "title": "Takoj zdaj",
+          "subtitle": "Pomoč v trenutku",
+          "refusing_food": "Noče jesti",
+          "refusing_medication": "Noče vzeti zdravil",
+          "agitated": "Vznemirjen",
+          "not_recognizing": "Me ne prepozna",
+          "repetitive_questions": "Isto vprašanje znova",
+          "sundowning": "Večerna zmedenost",
+          "wants_to_leave": "Želi oditi",
+          "caregiver_overwhelmed": "Izgubljam potrpljenje"
+        },
+        "planPrepare": {
+          "title": "Načrtuj in se pripravi",
+          "subtitle": "Vodeni poteki dela",
+          "plan_tomorrow": "Načrtuj jutrišnji dan",
+          "plan_tomorrow_desc": "Skupaj ustvarite odličen dan",
+          "doctor_visit": "Pripravite se na obisk pri zdravniku",
+          "doctor_visit_desc": "Ustvarite strukturirano povzetek",
+          "review_week": "Preglejte ta teden",
+          "review_week_desc": "Kaj je šlo dobro, kaj potrebuje pozornost",
+          "adjust_plan": "Prilagodite načrt nege",
+          "adjust_plan_desc": "Optimizirajte glede na to, kaj deluje"
+        },
+        "learn": {
+          "title": "Učenje",
+          "subtitle": "Tematski vodniki za {{name}}",
+          "daily_routines": "Dnevne rutine",
+          "communication": "Komunikacija",
+          "behaviors": "Vedenja",
+          "activities": "Aktivnosti",
+          "nutrition": "Prehrana",
+          "safety": "Varnost",
+          "sleep": "Spanje in noč"
+        },
+        "askAnything": {
+          "title": "Vprašajte karkoli",
+          "placeholder": "Kaj vas zanima glede nege osebe {{name}}?"
+        }
+      }
+    },
+    "family": {
+      "title": "Ekipa za nego osebe {{patientName}}",
+      "inviteMember": "Povabi družinskega člana",
+      "primaryCaregiver": "Glavni negovalec",
+      "familyMember": "Družinski član",
+      "careCode": "Koda za nego",
+      "careCodeHelp": "Delite to kodo za povezavo aplikacije za pacienta",
+      "regenerateCode": "Ponovno ustvari kodo",
+      "regenerateWarning": "To bo prekinilo povezavo vseh povezanih naprav pacienta. Potrebovali bodo novo kodo.",
+      "journal": "Dnevnik nege",
+      "addNote": "Dodaj opombo",
+      "observation": "Opazovanje",
+      "note": "Opomba",
+      "milestone": "Mejnik",
+      "inviteEmail": "E-poštni naslov",
+      "inviteName": "Ime",
+      "inviteRelationship": "Razmerje",
+      "familyCircle": "Družinski krog",
+      "back": "Nazaj",
+      "family": "Družina",
+      "careJournal": "Dnevnik nege",
+      "inviteFamilyMembers": "Povabi družinske člane",
+      "shareCareCodeDesc": "Delite svojo kodo za nego, da se lahko pridružijo tudi drugi družinski člani.",
+      "showCareCode": "Pokaži kodo za nego",
+      "copy": "Kopiraj",
+      "share": "Deli",
+      "copied": "Kopirano!",
+      "codeCopiedToClipboard": "Koda za nego je bila kopirana v odložišče",
+      "familyMembers": "Družinski člani ({{count}})",
+      "you": "Vi",
+      "primary": "Glavni",
+      "entryPlaceholder": "Dodajte opombo, opazovanje ali mejnik...",
+      "posting": "Objava...",
+      "post": "Objavi",
+      "noJournalEntries": "Še ni vnosov v dnevnik.",
+      "startDocumenting": "Začnite dokumentirati svojo pot nege!",
+      "yesterday": "Včeraj",
+      "failedToAddEntry": "Vnos ni bil dodan. Prosimo, poskusite znova.",
+      "shareCareCodeMessage": "Pridružite se mojemu krogu nege OurTurn! Uporabite to kodo nege: {{code}}",
+      "deleteConfirmTitle": "Izbriši vnos v dnevnik",
+      "deleteConfirmMessage": "Ste prepričani, da želite izbrisati ta vnos v dnevnik? Tega ne bo mogoče razveljaviti.",
+      "edited": "(urejeno)",
+      "crisis": "Kriza",
+      "canEditPlan": "Lahko ureja načrt",
+      "receivesAlerts": "Prejema opozorila",
+      "caregiverLimitReached": "Dosegli ste omejitev brezplačne stopnje za družinske člane. Nadgradite, da dodate več."
+    },
+    "toolkit": {
+      "pageTitle": "Orodjarna za negovalce",
+      "pageSubtitle": "Praktična orodja in podpora za vaše dobro počutje",
+      "introMessage": "Živjo, {{name}}! To je vaš prostor za hitro olajšanje, podporo in samooskrbo.",
+      "checkin": {
+        "title": "Kako se počutite danes?",
+        "energy": "Energija",
+        "energyLow": "Izčrpani",
+        "energyHigh": "Polni energije",
+        "stress": "Stres",
+        "stressLow": "Mirni",
+        "stressHigh": "Preobremenjeni",
+        "sleep": "Kakovost spanja",
+        "sleepLow": "Grozen",
+        "sleepHigh": "Odličen"
+      },
+      "relief": {
+        "title": "Postaja za hitro olajšanje",
+        "recommended": "Priporočeno",
+        "duration": "{{min}} min",
+        "startExercise": "Začni",
+        "stepOf": "Korak {{current}} od {{total}}",
+        "complete": "Odlično! Vadba je končana.",
+        "close": "Zapri",
+        "pause": "Premor",
+        "resume": "Nadaljuj",
+        "exercises": {
+          "box-breathing": {
+            "name": "Škatlasto dihanje",
+            "step0": "Udobno se namestite in zaprite oči",
+            "step1": "Počasi vdihnite skozi nos",
+            "step2": "Nežno zadržite dih",
+            "step3": "Počasi izdihnite skozi usta",
+            "step4": "Zadržite pred naslednjim vdihom",
+            "step5": "Počasi vdihnite skozi nos",
+            "step6": "Nežno zadržite dih",
+            "step7": "Počasi izdihnite skozi usta",
+            "step8": "Zadržite pred naslednjim vdihom",
+            "step9": "Počasi vdihnite skozi nos",
+            "step10": "Nežno zadržite dih",
+            "step11": "Počasi izdihnite skozi usta",
+            "step12": "Zadržite pred naslednjim vdihom",
+            "step13": "Počasi vdihnite skozi nos",
+            "step14": "Nežno zadržite dih",
+            "step15": "Počasi izdihnite skozi usta",
+            "step16": "Zadržite pred naslednjim vdihom",
+            "step17": "Počasi vdihnite skozi nos",
+            "step18": "Nežno zadržite dih",
+            "step19": "Počasi izdihnite skozi usta",
+            "step20": "Zadržite pred naslednjim vdihom",
+            "step21": "Počasi vdihnite skozi nos",
+            "step22": "Nežno zadržite dih",
+            "step23": "Počasi izdihnite skozi usta",
+            "step24": "Odlično. Vzemite si trenutek in opazite, kako se počutite."
+          },
+          "54321-grounding": {
+            "name": "5-4-3-2-1 Prizemljitev",
+            "step0": "Počasi, globoko vdihnite in se ozrite okoli sebe",
+            "step1": "Poimenujte 5 stvari, ki jih lahko VIDITE zdaj",
+            "step2": "Poimenujte 4 stvari, ki se jih lahko DOTAKNETE zdaj",
+            "step3": "Poimenujte 3 stvari, ki jih lahko SLIŠITE zdaj",
+            "step4": "Poimenujte 2 stvari, ki jih lahko VOHATE zdaj",
+            "step5": "Poimenujte 1 stvar, ki jo lahko OKUSITE zdaj",
+            "step6": "Še enkrat globoko vdihnite. Tukaj ste in ste varni."
+          },
+          "gratitude-moment": {
+            "name": "Trenutek hvaležnosti",
+            "step0": "Zaprite oči in umirjeno vdihnite",
+            "step1": "Pomislite na eno osebo, za katero ste hvaležni, in zakaj",
+            "step2": "Pomislite na eno stvar, ki se je danes zgodila dobrega, pa četudi majhna",
+            "step3": "Pomislite na eno stvar pri sebi, ki jo cenite",
+            "step4": "Imejte te tri stvari v mislih in globoko vdihnite",
+            "step5": "Nosite ta občutek hvaležnosti s seboj."
+          },
+          "progressive-muscle-relaxation": {
+            "name": "Progresivna mišična relaksacija",
+            "step0": "Udobno se usedite ali ulezite. Zaprite oči.",
+            "step1": "Močno stisnite obe pesti za 5 sekund...",
+            "step2": "Sprostite in občutite, kako napetost izginja",
+            "step3": "Napnite ramena – dvignite jih proti ušesom...",
+            "step4": "Sprostite se in spustite ramena",
+            "step5": "Močno nagubajte obraz – čelo, oči, čeljust...",
+            "step6": "Sprostite se in pustite, da se vaš obraz popolnoma sprosti",
+            "step7": "Napnite trebušne mišice...",
+            "step8": "Sprostite se in vdihnite v trebuh",
+            "step9": "Močno stisnite noge in stopala...",
+            "step10": "Sprostite se in občutite, kako toplota teče skozi vaše noge",
+            "step11": "Globoko vdihnite. Celotno telo je sproščeno.",
+            "step12": "Nežno odprite oči, ko ste pripravljeni."
+          },
+          "mindful-break": {
+            "name": "Čuječ odmor",
+            "step0": "Ustavite se pri tem, kar počnete. Ta trenutek je vaš.",
+            "step1": "Zaprite oči in 3-krat počasi in globoko vdihnite",
+            "step2": "Opazujte, kako se vaše telo počuti zdaj – ni treba ničesar spreminjati",
+            "step3": "Poslušajte zvoke okoli sebe, blizu in daleč",
+            "step4": "Občutite površino pod seboj in zrak na svoji koži",
+            "step5": "V tišini recite: \"Delam po svojih najboljših močeh in to je dovolj.\"",
+            "step6": "Še enkrat globoko vdihnite",
+            "step7": "Nežno odprite oči. Ste osveženi."
+          },
+          "breathing-478": {
+            "name": "Dihanje 4-7-8",
+            "step0": "Udobno se usedite in sprostite ramena",
+            "step1": "Tiho vdihnite skozi nos 4 štetja",
+            "step2": "Zadržite dih za 7 štetij",
+            "step3": "Popolnoma izdihnite skozi usta za 8 štetij",
+            "step4": "Tiho vdihnite skozi nos 4 štetja",
+            "step5": "Zadržite dih za 7 štetij",
+            "step6": "Popolnoma izdihnite skozi usta za 8 štetij",
+            "step7": "Tiho vdihnite skozi nos 4 štetja",
+            "step8": "Zadržite dih za 7 štetij",
+            "step9": "Popolnoma izdihnite skozi usta za 8 štetij",
+            "step10": "Tiho vdihnite skozi nos 4 štetja",
+            "step11": "Zadržite dih za 7 štetij",
+            "step12": "Popolnoma izdihnite skozi usta za 8 štetij",
+            "step13": "Tiho vdihnite skozi nos 4 štetja",
+            "step14": "Zadržite dih za 7 štetij",
+            "step15": "Popolnoma izdihnite skozi usta za 8 štetij",
+            "step16": "Opazite, kako bolj umirjeno se počuti vaše telo zdaj."
+          },
+          "permission-slip": {
+            "name": "Dovolilnica",
+            "step0": "Globoko vdihnite in si vzemite trenutek",
+            "step1": "Recite si: \"Dovoljujem si, da danes nisem popoln/a\"",
+            "step2": "Recite: \"Dovoljujem si prositi za pomoč\"",
+            "step3": "Recite: \"Dovoljujem si čutiti, kar čutim, brez krivde\"",
+            "step4": "Recite: \"Dovoljujem si vzeti si odmor\"",
+            "step5": "Recite: \"Delam po svojih najboljših močeh in to je dovolj\"",
+            "step6": "Globoko vdihnite in te besede imejte blizu",
+            "step7": "Tudi vi si zaslužite sočutje. Nosite to s seboj."
+          },
+          "quick-walk": {
+            "name": "Spodbuda za hiter sprehod",
+            "step0": "Vstanite in iztegnite roke nad glavo",
+            "step1": "Pojdite do najbližjega okna ali vrat in poglejte ven",
+            "step2": "Naredite 5 počasnih korakov in občutite, kako se vsaka noga dotakne tal",
+            "step3": "Poglejte gor – opazite nebo, strop ali nekaj nad vami",
+            "step4": "Naredite še 5 počasnih, namernih korakov",
+            "step5": "Za nekaj sekund ohlapno stresajte roke in roke",
+            "step6": "3-krat zavrtite ramena nazaj",
+            "step7": "Premaknili ste svoje telo. To šteje. Dobro opravljeno."
+          }
+        }
+      },
+      "help": {
+        "title": "Prošnja za pomoč",
+        "sendRequest": "Pošlji",
+        "customPlaceholder": "Vnesite sporočilo ...",
+        "recentRequests": "Nedavne zahteve",
+        "statusPending": "Čaka se",
+        "statusAccepted": "Sprejeto",
+        "statusCompleted": "Končano",
+        "statusExpired": "Poteklo",
+        "sent": "Zahteva za pomoč poslana!",
+        "limitReached": "Na dan lahko pošljete do 5 prošenj za pomoč.",
+        "noRequests": "Ni nedavnih prošenj za pomoč.",
+        "accept": "Lahko pomagam",
+        "complete": "Označi kot končano",
+        "template_need_break": "Potrebujem odmor",
+        "template_handle_meds": "Pomoč pri zdravilih",
+        "template_need_visit": "Potrebujem obisk",
+        "template_groceries": "Živila",
+        "template_custom": "Sporočilo po meri",
+        "message_need_break": "Res bi potreboval/a odmor. Bi me lahko kdo malo nadomestil?",
+        "message_handle_meds": "Mi lahko danes kdo pomaga pri zdravilih?",
+        "message_need_visit": "Veliko bi mi pomenilo, če bi me danes kdo obiskal.",
+        "message_groceries": "Mi lahko kdo pomaga pri nakupu živil?"
+      },
+      "agent": {
+        "title": "Spremljevalec dobrega počutja",
+        "disclaimer": "Samo za čustveno podporo. Ne gre za zdravniški nasvet.",
+        "placeholder": "Kako se počutite?",
+        "greeting": "Mislim nate ...",
+        "rateLimited": "Umirite se – kmalu lahko spet klepetate.",
+        "errorMessage": "Povezava ni bila vzpostavljena. Poskusite znova.",
+        "expand": "Razširi",
+        "collapse": "Strni",
+        "prompts": {
+          "overwhelmed": "Trenutno se počutim preobremenjen/a",
+          "calmDown": "Pomagaj mi, da se umirim v 2 minutah",
+          "needEnergy": "Potrebujem energijo, vendar si ne morem vzeti odmora",
+          "poorSleep": "Slabo sem spal/a prejšnjo noč",
+          "needMoment": "Potrebujem trenutek samo zase",
+          "uplifting": "Povej mi nekaj spodbudnega"
+        }
+      },
+      "goal": {
+        "title": "Današnji cilj",
+        "placeholder": "Zastavite si cilj za danes ...",
+        "done": "Končano!",
+        "weekLabel": "Ta teden",
+        "suggest": "Predlagaj"
+      },
+      "burnout": {
+        "title": "Opazili smo, da morda potrebujete dodatno podporo",
+        "message": "Vaše nedavne prijave kažejo na povečan stres ali nizko raven energije. To je povsem razumljivo – skrb za druge je težka."
+      },
+      "support": {
+        "title": "Potrebujete podporo?",
+        "description": "Skrb za druge je zahtevna. V redu je prositi za pomoč."
+      },
+      "footer": "Ne pozabite: Ne morete nalivati iz prazne skodelice. Tudi vaše dobro počutje je pomembno.",
+      "weeklyStats": {
+        "title": "Tedenski vpogledi",
+        "subtitle": "Vaš 7-dnevni povzetek dobrega počutja",
+        "avgEnergy": "Povprečna energija",
+        "avgStress": "Povprečni stres",
+        "avgSleep": "Povprečen spanec",
+        "noData": "Izpolnite dnevne prijave, da si ogledate svoje tedenske trende.",
+        "generateDigest": "Ustvari AI povzetek",
+        "generating": "Ustvarjanje...",
+        "behaviourSummary": "Zabeleženih {{count}} vedenjskih incidentov ta teden"
+      },
+      "sos": {
+        "title": "Kaj se dogaja zdaj?",
+        "subtitle": "Izberite, s čim potrebujete pomoč – vodili vas bomo.",
+        "calmDown": "Želim se umiriti",
+        "calmDownDesc": "Hitre dihalne vaje in vaje za lajšanje",
+        "behaviourNow": "Vedenje se dogaja zdaj",
+        "behaviourNowDesc": "Zabeležite incident in pridobite navodila",
+        "callHelp": "Potrebujem nujno pomoč",
+        "callHelpDesc": "Kontaktirajte službe za nujno pomoč ali družino",
+        "needBreak": "Potrebujem nekoga, da me nadomesti",
+        "needBreakDesc": "Pošljite zahtevo za pomoč družini"
+      },
+      "behaviours": {
+        "playbooks": {
+          "title": "Priročniki za vedenje",
+          "subtitle": "Dotaknite se vedenja za navodila po korakih",
+          "rightNow": "Takoj zdaj",
+          "understandWhy": "Razumeti zakaj",
+          "prevent": "Preprečevanje",
+          "whenToCallDoctor": "Kdaj poklicati zdravnika"
+        },
+        "logger": {
+          "title": "Zabeleži incident",
+          "logIncident": "Zabeleži incident",
+          "typeLabel": "Vrsta vedenja",
+          "selectType": "Izberite vrsto...",
+          "severity": "Resnost",
+          "mild": "Blaga",
+          "severe": "Huda",
+          "timeOfDay": "Čas dneva",
+          "morning": "Jutro",
+          "afternoon": "Popoldne",
+          "evening": "Večer",
+          "night": "Noč",
+          "duration": "Trajanje (minute)",
+          "durationPlaceholder": "Kako dolgo je trajalo?",
+          "triggers": "Možni sprožilci",
+          "trigger_pain": "Bolečina",
+          "trigger_hunger": "Lakota",
+          "trigger_thirst": "Žeja",
+          "trigger_fatigue": "Utrujenost",
+          "trigger_overstimulation": "Preobremenjenost",
+          "trigger_unfamiliar_environment": "Neznano mesto",
+          "trigger_unfamiliar_person": "Neznana oseba",
+          "trigger_routine_change": "Sprememba rutine",
+          "trigger_medication": "Zdravila",
+          "trigger_noise": "Hrup",
+          "trigger_loneliness": "Osamljenost",
+          "trigger_boredom": "Dolgčas",
+          "trigger_bathroom_need": "Potreba po stranišču",
+          "trigger_frustration": "Frustracija",
+          "trigger_fear": "Strah",
+          "trigger_unknown": "Neznano",
+          "whatHappened": "Kaj se je zgodilo?",
+          "whatHappenedPlaceholder": "Opišite incident...",
+          "whatHelped": "Kaj je pomagalo? (neobvezno)",
+          "whatHelpedPlaceholder": "Opišite, kaj je pomagalo umiriti stvari...",
+          "save": "Shrani incident",
+          "saved": "Incident zabeležen"
+        },
+        "timeline": {
+          "title": "Časovnica incidentov",
+          "all": "Vse",
+          "noIncidents": "Noben incident ne ustreza trenutnemu filtru."
+        }
+      }
+    },
+    "reports": {
+      "title": "Poročilo za obisk pri zdravniku",
+      "period": "Obdobje poročila",
+      "lastDays": "Zadnjih {{days}} dni",
+      "generate": "Ustvari poročilo",
+      "include": "Vključi v poročilo",
+      "moodTrends": "Trendi razpoloženja in povzetek prijave",
+      "sleepPatterns": "Vzorci spanja",
+      "activityCompletion": "Stopnje dokončanja aktivnosti",
+      "medicationAdherence": "Upoštevanje zdravil",
+      "journalNotes": "Pomembne opazke v dnevniku nege",
+      "locationPatterns": "Vzorci lokacije",
+      "caregiverConcerns": "Skrbi negovalca",
+      "customNotes": "Dodatne opombe za zdravnika",
+      "print": "Natisni",
+      "downloadPdf": "Prenesi PDF",
+      "emailDoctor": "Pošlji zdravniku po e-pošti",
+      "disclaimer": "Ta povzetek temelji na samoprijavljenih podatkih o dobrem počutju in opazovanjih družine. To ni klinična ocena.",
+      "webNote": "Za celoten graditelj poročil s tiskanjem in izvozom PDF obiščite spletno aplikacijo OurTurn.",
+      "openInWebApp": "Odpri v spletni aplikaciji",
+      "previousReports": "Prejšnja poročila",
+      "generated": "Ustvarjeno {{date}}",
+      "avgQuality": "povprečna kakovost",
+      "moodStruggling": "Se bori",
+      "moodLow": "Nizko",
+      "moodOkay": "V redu",
+      "moodGood": "Dobro",
+      "moodGreat": "Odlično",
+      "careSummary": "Povzetek nege OurTurn",
+      "patient": "Pacient",
+      "periodLabel": "Obdobje",
+      "checkinsRecorded": "Zabeležene prijave",
+      "averageMood": "Povprečno razpoloženje",
+      "averageSleepQuality": "Povprečna kakovost spanja",
+      "activityCompletionRate": "Dokončanje aktivnosti",
+      "medicationAdherenceRate": "Upoštevanje zdravil",
+      "observations": "Opazovanja",
+      "categoryMedication": "Zdravila",
+      "categoryMeals": "Obroki",
+      "categoryPhysical": "Fizično",
+      "categoryCognitive": "Kognitivno",
+      "categorySocial": "Socialno",
+      "categoryHealth": "Zdravje"
+    },
+    "onboarding": {
+      "step1Title": "O vas",
+      "step2Title": "O vaši ljubljeni osebi",
+      "step3Title": "Njihova življenjska zgodba",
+      "step4Title": "Dnevna rutina",
+      "step5Title": "Varnostna nastavitev",
+      "step6Title": "Vaša koda za nego",
+      "next": "Naprej",
+      "back": "Nazaj",
+      "finish": "Začni",
+      "careCodeInstructions": "Namestite OurTurn na telefon vaše ljubljene osebe in vnesite to kodo za povezavo.",
+      "quickSetup": "Hitra nastavitev",
+      "yourName": "Vaše ime",
+      "yourNameRequired": "Vaše ime *",
+      "lovedOneNameRequired": "Ime vaše ljubljene osebe *",
+      "relationship": "Vaše razmerje do njih",
+      "relationshipPlaceholder": "npr. hči, sin, zakonec",
+      "settingsHint": "Več podrobnosti lahko dodate pozneje v Nastavitvah",
+      "fillRequired": "Prosimo, izpolnite vsa obvezna polja",
+      "setupFailed": "Nastavitev ni bila uspešna",
+      "country": "Država",
+      "theirName": "Njihovo ime",
+      "dateOfBirth": "Datum rojstva",
+      "dementiaType": "Vrsta demence (neobvezno)",
+      "homeAddress": "Domači naslov",
+      "medications": "Zdravila",
+      "addMedication": "Dodaj zdravilo",
+      "childhoodLocation": "Kraj odraščanja",
+      "career": "Poklic / zaposlitev",
+      "hobbies": "Hobiji in zanimanja",
+      "favoriteMusic": "Najljubša glasba / izvajalci",
+      "favoriteFoods": "Najljubša hrana",
+      "importantPeople": "Pomembni ljudje",
+      "keyEvents": "Ključni življenjski dogodki",
+      "uploadPhotos": "Naložite družinske fotografije",
+      "wakeTime": "Čas zbujanja",
+      "sleepTime": "Čas spanja",
+      "generatePlan": "Ustvari predlagani načrt",
+      "emergencyContacts": "Kontakti za nujne primere",
+      "alertSettings": "Nastavitve opozoril",
+      "stepOf": "Korak {{current}} od {{total}}",
+      "breakfastTime": "Čas zajtrka",
+      "lunchTime": "Čas kosila",
+      "dinnerTime": "Čas večerje",
+      "typicalDay": "Opis tipičnega dneva",
+      "typicalDayPlaceholder": "Opišite tipičen dan...",
+      "emergencyContactsHint": "Dodajte kontakte za nujne primere, ki se bodo pojavili v zavihku Pomoč v aplikaciji za bolnika.",
+      "remove": "Odstrani",
+      "addContact": "Dodaj kontakt",
+      "contactNameRequired": "Ime *",
+      "phoneRequired": "Telefonska številka *",
+      "relationshipOptional": "Razmerje (neobvezno)",
+      "addContactButton": "+ Dodaj kontakt",
+      "emergencyContactWarning": "Priporočamo, da dodate vsaj en kontakt za nujne primere.",
+      "allSet": "Vse je pripravljeno!",
+      "careCodeLabel": "KODA ZA NEGO",
+      "copied": "Kopirano!",
+      "copyCode": "Kopiraj kodo",
+      "nextSteps": "Naslednji koraki:",
+      "nextStep1": "1. Namestite OurTurn na telefon osebe {{name}}",
+      "nextStep2": "2. Odprite aplikacijo in vnesite zgornjo kodo za nego",
+      "nextStep3": "3. To je to! Dnevni načrt osebe {{name}} se bo pojavil na njenem telefonu",
+      "homeAddressPlaceholder": "Glavna ulica 123, Mesto"
+    },
+    "settings": {
+      "title": "Nastavitve",
+      "appearance": "Videz",
+      "theme": {
+        "label": "Tema",
+        "light": "Svetla",
+        "dark": "Temna",
+        "system": "Sistem"
+      },
+      "profile": "Profil",
+      "account": "Račun",
+      "subscription": "Naročnina",
+      "notifications": "Obvestila",
+      "privacy": "Zasebnost in podatki",
+      "exportData": "Izvozi moje podatke",
+      "exportNote": "Prenesite kopijo vseh svojih podatkov (pravica GDPR do prenosljivosti)",
+      "exportClipboard": "Vaši podatki so bili kopirani v odložišče. Lahko jih prilepite v dokument ali e-pošto.",
+      "deleteAccount": "Izbriši račun",
+      "deleteWarning": "To bo trajno izbrisalo vse podatke za to gospodinjstvo. Tega ni mogoče razveljaviti.",
+      "deleteConfirmType": "Vnesite IZBRIŠI za potrditev izbrisa računa",
+      "confirmDelete": "Potrdi izbris",
+      "language": "Jezik",
+      "about": "O OurTurn",
+      "version": "Različica",
+      "notMedicalDevice": "OurTurn ni medicinski pripomoček",
+      "dailySummary": "Dnevni povzetek",
+      "dailySummaryTime": "Čas dnevnega povzetka",
+      "emailNotifications": "E-poštna obvestila",
+      "pushNotifications": "Potisna obvestila",
+      "safetyAlerts": "Varnostna opozorila",
+      "signOut": "Odjava",
+      "saveProfile": "Shrani profil",
+      "saved": "Shranjeno!",
+      "saving": "Shranjujem...",
+      "changePassword": "Spremeni geslo",
+      "newPassword": "Novo geslo",
+      "confirmNewPassword": "Potrdi novo geslo",
+      "passwordPlaceholder": "Vsaj 8 znakov",
+      "passwordChanged": "Geslo je bilo uspešno spremenjeno!",
+      "changingPassword": "Spreminjam...",
+      "copyCode": "Kopiraj kodo",
+      "codeCopied": "Koda kopirana!",
+      "regenerateCode": "Ponovno ustvari kodo",
+      "regenerateWarning": "Stara koda ne bo več delovala. Vse povezane naprave bolnika bodo potrebovale novo kodo.",
+      "dangerZone": "Nevarno območje",
+      "relationship": "Razmerje",
+      "deleteConfirm": "Vnesite IZBRIŠI za potrditev izbrisa računa",
+      "photoGallery": "Galerija slik",
+      "photoGalleryDesc": "Naložite družinske fotografije za prilagojene aktivnosti spominjanja",
+      "uploadPhotos": "Naloži slike",
+      "uploading": "Nalaganje...",
+      "deletePhoto": "Izbrišem to sliko?",
+      "maxPhotosReached": "Doseženo je največje število 20 slik",
+      "photoUploadHint": "Do 20 slik, največ 5 MB vsaka",
+      "photoUploadFailed": "Nalaganje slike ni uspelo. Poskusite znova.",
+      "photoDeleteFailed": "Brisanje slike ni uspelo. Poskusite znova.",
+      "noPhotosYet": "Še ni naloženih slik",
+      "photosCount": "{{count}} od 20 slik",
+      "patientComplexity": "Način aplikacije za bolnika",
+      "patientComplexityDesc": "Prilagodite vmesnik aplikacije za bolnika glede na potrebe vaše ljubljene osebe.",
+      "complexity": {
+        "full": "Polna",
+        "fullDesc": "Vse funkcije so na voljo",
+        "simplified": "Poenostavljena",
+        "simplifiedDesc": "Večje besedilo, manj podrobnosti",
+        "essential": "Bistvena",
+        "essentialDesc": "Minimalno – samo glasba in klic na pomoč"
+      },
+      "safetyEscalation": "Varnost in stopnjevanje",
+      "escalationTiming": "Čas stopnjevanja",
+      "escalationTimingDesc": "Koliko časa preteče, preden se stopnjujejo neprepoznana opozorila",
+      "offlineThreshold": "Prag opozorila o nedosegljivosti",
+      "offlineThresholdDesc": "Opozorilo, ko naprava ni vidna toliko časa",
+      "minutes": "minute",
+      "respiteReminders": "Opomniki za počitek",
+      "respiteRemindersDesc": "Prejemajte opomnike za odmor",
+      "groupProfile": "Vaš profil",
+      "groupAboutPatient": "O osebi {{name}}",
+      "groupAboutPatientGeneric": "O vaši ljubljeni osebi",
+      "groupSharing": "Deljenje in povezava",
+      "groupSafety": "Varnost in obvestila",
+      "groupAccount": "Račun",
+      "patientInformation": "Informacije o bolniku",
+      "patientInformationDesc": "Osnovni podatki o vaši ljubljeni osebi",
+      "patientName": "Ime bolnika",
+      "dateOfBirth": "Datum rojstva",
+      "dementiaType": "Vrsta demence",
+      "selectDementiaType": "Izberite vrsto (izbirno)",
+      "homeAddress": "Domači naslov",
+      "homeAddressPlaceholder": "Celoten domači naslov",
+      "savingPatientInfo": "Shranjevanje...",
+      "savePatientInfo": "Shrani informacije o bolniku",
+      "lifeStory": "Življenjska zgodba",
+      "lifeStoryDesc": "Ti podatki pomagajo pri prilagajanju dnevnih aktivnosti in spodbujevalnih vprašanj za spominjanje.",
+      "childhoodLocation": "Kraj odraščanja",
+      "career": "Poklic / Zaposlitev",
+      "hobbies": "Hobiji in zanimanja",
+      "hobbiesPlaceholder": "npr. vrtnarjenje, slikanje, šah",
+      "favoriteMusic": "Najljubša glasba / Izvajalci",
+      "favoriteMusicPlaceholder": "npr. Frank Sinatra, Beatles",
+      "favoriteFoods": "Najljubša hrana",
+      "favoriteFoodsPlaceholder": "npr. jabolčni zavitek, pečen piščanec",
+      "importantPeople": "Pomembni ljudje",
+      "importantPeoplePlaceholder": "npr. Janez (brat), Marija (najboljša prijateljica)",
+      "keyEvents": "Ključni življenjski dogodki",
+      "keyEventsPlaceholder": "npr. Diplomiral 1965, Preselil se v London 1970",
+      "savingLifeStory": "Shranjevanje...",
+      "saveLifeStory": "Shrani življenjsko zgodbo",
+      "dailySchedule": "Dnevni urnik",
+      "dailyScheduleDesc": "Nastavite čas zbujanja in spanja za rutino vaše ljubljene osebe.",
+      "wakeTime": "Čas zbujanja",
+      "sleepTime": "Čas spanja",
+      "savingSchedule": "Shranjevanje...",
+      "saveSchedule": "Shrani urnik",
+      "emergencyContacts": "Kontakti za nujne primere",
+      "emergencyContactsDesc": "Ti kontakti se pojavijo v zavihku Pomoč v aplikaciji za bolnika.",
+      "addContact": "Dodaj kontakt",
+      "contactName": "Ime kontakta",
+      "contactPhone": "Telefonska številka",
+      "contactRelationship": "Razmerje",
+      "contactRelationshipPlaceholder": "npr. Hči, sosed",
+      "noContactsYet": "Še ni dodanih kontaktov za nujne primere.",
+      "savingContacts": "Shranjevanje...",
+      "saveContacts": "Shrani kontakte",
+      "removeContactConfirm": "Odstrani ta kontakt?",
+      "country": "Država",
+      "selectCountry": "Izberite državo",
+      "selectLanguage": "Izberite jezik",
+      "languageSaved": "Jezik posodobljen"
+    },
+    "auth": {
+      "login": "Prijava",
+      "signup": "Registracija",
+      "email": "E-pošta",
+      "password": "Geslo",
+      "forgotPassword": "Ste pozabili geslo?",
+      "noAccount": "Nimate računa?",
+      "hasAccount": "Že imate račun?",
+      "continueWithGoogle": "Nadaljujte z Google",
+      "continueWithApple": "Nadaljujte z Apple",
+      "or": "ali",
+      "confirmPassword": "Potrdite geslo",
+      "createAccount": "Ustvari račun",
+      "getStarted": "Začnite",
+      "fillAllFields": "Prosimo, izpolnite vsa polja",
+      "passwordsNoMatch": "Gesli se ne ujemata",
+      "passwordTooShort": "Geslo mora imeti vsaj 8 znakov",
+      "checkEmail": "Prosimo, preverite svojo e-pošto za potrditev računa",
+      "enterEmailFirst": "Prosimo, najprej vnesite svoj e-poštni naslov.",
+      "resetEmailSent": "Preverite svojo e-pošto",
+      "resetEmailSentDesc": "Na vaš e-poštni naslov smo poslali povezavo za ponastavitev gesla.",
+      "welcomeBack": "Dobrodošli nazaj",
+      "enterEmailAndPassword": "Prosimo, vnesite e-pošto in geslo",
+      "signingIn": "Prijava",
+      "orContinueWith": "Ali nadaljujte z"
+    },
+    "nav": {
+      "family": "Družinski krog",
+      "toolkit": "Orodjarna",
+      "reports": "Poročila",
+      "settings": "Nastavitve",
+      "crisis": "Krizno središče"
+    },
+    "crisis": {
+      "title": "Krizno središče",
+      "subtitle": "Upravljanje krize v realnem času in podpora za umiritev",
+      "eventLogged": "Krizni dogodek zabeležen",
+      "logEvent": "Zabeleži krizni dogodek",
+      "logPlaceholder": "Opišite, kaj se je zgodilo...",
+      "status": {
+        "allClear": "Vse je v redu",
+        "allClearDesc": "Ni aktivnih opozoril",
+        "activeAlerts": "Aktivna opozorila",
+        "lastKnownLocation": "Zadnja znana lokacija",
+        "viewOnMap": "Poglej na zemljevidu",
+        "noLocationData": "Podatki o lokaciji niso na voljo"
+      },
+      "actions": {
+        "modeLabel": "Vaša situacija",
+        "withThem": "Sem z njimi",
+        "remote": "Sem oddaljen",
+        "startDeEscalation": "Začni umirjanje",
+        "startDeEscalationDesc": "Voden postopek umirjanja po korakih",
+        "callEmergency": "Pokliči nujno pomoč",
+        "callEmergencyDesc": "Pokliči lokalne službe za nujno pomoč",
+        "alertFamily": "Opozori družino",
+        "alertFamilyDesc": "Pošlji potisno obvestilo vsem negovalcem",
+        "alertFamilySent": "Družinski člani so bili obveščeni",
+        "alertFamilyFailed": "Obveščanje družine ni uspelo. Prosimo, poskusite znova.",
+        "viewLocation": "Poglej lokacijo",
+        "viewLocationDesc": "Oglejte si trenutno lokacijo osebe {{name}} na zemljevidu",
+        "contactPrimary": "Kontaktiraj glavnega negovalca",
+        "contactPrimaryDesc": "Stopite v stik z glavnim negovalcem prek e-pošte",
+        "logEvent": "Zabeleži dogodek",
+        "logEventDesc": "Zabeležite ta trenutek v krizni dnevnik"
+      },
+      "wizard": {
+        "breathingTitle": "Začnimo z umirjenim dihom",
+        "breathingInstruction": "Počasi vdihnite... zadržite... izdihnite...",
+        "stepOf": "Korak {{current}} od {{total}}",
+        "thisHelped": "To je pomagalo",
+        "tryNext": "Poskusite naslednji korak",
+        "skip": "Preskoči",
+        "completionTitle": "Odlično. To ste obvladali s skrbnostjo.",
+        "completionDesc": "Želite zabeležiti kakšne opombe o tem, kaj se je zgodilo?",
+        "crisisNotesPlaceholder": "Kaj se je zgodilo? Kaj je pomagalo? Kateri sprožilci so bili opaženi...",
+        "saveAndClose": "Shrani in zapri",
+        "closeWithoutSaving": "Zapri brez shranjevanja"
+      },
+      "history": {
+        "title": "Nedavni krizni dogodki",
+        "noEvents": "V zadnjih 30 dneh ni bilo kriznih dogodkov.",
+        "viewAllInJournal": "Poglej vse v dnevniku",
+        "yesterday": "Včeraj",
+        "daysAgo": "pred {{count}}d"
+      },
+      "steps": {
+        "stayCalm": {
+          "title": "Ostanite mirni",
+          "detail": "Počasi in globoko vdihnite. Vaša mirna energija jim bo pomagala, da se bodo počutili varne.",
+          "script": "Tukaj sem s teboj. Vse je v redu."
+        },
+        "validateFeelings": {
+          "title": "Potrdite občutke",
+          "detail": "Recite: »Vidim, da si razburjen/a. To mora biti res težko.« Ne prepirajte se ali popravljajte.",
+          "script": "Vidim, da si razburjen/a. To mora biti res težko."
+        },
+        "simplifyEnvironment": {
+          "title": "Poenostavite okolje",
+          "detail": "Uporabljajte kratke, preproste stavke. Ena ideja naenkrat. Izogibajte se vprašanjem 'zakaj'.",
+          "script": "Poenostavimo stvari. Ena stvar naenkrat."
+        },
+        "redirectAttention": {
+          "title": "Preusmerite pozornost",
+          "detail": "Nežno spremenite temo. Predlagajte znano dejavnost, pesem ali sprehod.",
+          "script": "Kaj pa, če poskusimo nekaj drugega? Pojdimo skupaj na kratek sprehod."
+        },
+        "useGentleTouch": {
+          "title": "Uporabite nežen dotik",
+          "detail": "Če je dobrodošel, je lahko nežen dotik roke pomirjujoč. Opazujte njihov odziv.",
+          "script": "Je v redu, če te primem za roko? Tukaj sem."
+        },
+        "giveSpace": {
+          "title": "Dajte prostor",
+          "detail": "Če nič ne deluje, zagotovite varnost in jim dajte prostor. V redu je, da se umaknete.",
+          "script": "Bom v bližini, če me boš potreboval/a. Vzemite si čas."
+        }
+      },
+      "helplines": "Telefonske številke za pomoč",
+      "noHelplineAvailable": "Za vašo državo ni na voljo telefonske številke za pomoč",
+      "call": "Pokliči",
+      "email": "E-pošta",
+      "website": "Spletna stran",
+      "familyContacts": "Družinski stiki",
+      "supportResources": "Viri podpore",
+      "scenarios": {
+        "title": "Kaj se dogaja?",
+        "subtitle": "Dotaknite se situacije za navodila po korakih",
+        "urgent": "Nujno",
+        "stepCountLabel": "{{count}} korakov",
+        "backToSituations": "Nazaj na situacije",
+        "breathe": "Dihalna vaja",
+        "callEmergency": "Pokliči službo za nujno pomoč"
+      },
+      "patterns": {
+        "title": "Vpogled v vzorce",
+        "noEvents": "Zabeležite incidente, da boste sčasoma videli vzorce.",
+        "fewEvents": "Zabeleženih je {{count}} incidentov. Za vzorce je potrebnih več podatkov.",
+        "timePattern": "Večina incidentov se zgodi v {{time}}.",
+        "weekCount": "{{count}} ta teden."
+      },
+      "personalization": {
+        "label": "Kaj pomirja osebo {{name}}",
+        "empty": "Dodajte pomirjujoče strategije v biografijo osebe {{name}}, da si ogledate prilagojene nasvete tukaj."
+      },
+      "scenarioData": {
+        "stepsCount": "{{count}} korakov",
+        "agitated": {
+          "label": "Vznemirjenost / Razburjenost",
+          "steps": [
+            {
+              "title": "Najprej vi",
+              "instruction": "Preden karkoli naredite, globoko vdihnite. Ne morete pomiriti nekoga, če niste mirni."
+            },
+            {
+              "title": "Hiter pregled – ali je lahko kaj fizičnega narobe?",
+              "instruction": "Bolečina, lakota, potreba po stranišču ali okužba lahko povzročijo vznemirjenost.",
+              "checklist": [
+                "Bolečina ali nelagodje?",
+                "Lačen/a ali žejen/a?",
+                "Potrebuje stranišče?",
+                "Nedavna sprememba zdravil?",
+                "Znaki vročine ali bolezni?"
+              ]
+            },
+            {
+              "title": "Znižajte temperaturo",
+              "instruction": "Govorite počasi in tiho. Ne prepirajte se, ne popravljajte ali razlagajte. Potrdite, kaj čutijo.",
+              "tips": [
+                "»Vidim, da si razburjen/a. Tukaj sem.«",
+                "Zmanjšajte hrup – izklopite televizor, zaprite okna",
+                "Dajte jim fizični prostor, ne stiskajte jih",
+                "Ponudite jim znan predmet za udobje"
+              ]
+            },
+            {
+              "title": "Preusmerite, ne razmišljajte",
+              "instruction": "Nežno spremenite temo ali okolje. Ne poskušajte jih prepričati z logiko.",
+              "tips": [
+                "Predlagajte sprehod ali se premaknite v drugo sobo",
+                "Predvajajte glasbo, ki jo imajo radi",
+                "Ponudite prigrizek ali topel napitek",
+                "Skupaj si oglejte fotografije"
+              ]
+            },
+            {
+              "title": "Kdaj poiskati pomoč",
+              "instruction": "Če vznemirjenost traja več kot 30 minut, če obstaja nevarnost, da bodo poškodovali sebe ali vas, ali če gre za nenadno novo vedenje – pokličite službo za nujno pomoč.",
+              "actionLabel": "Pokliči službo za nujno pomoč"
+            }
+          ]
+        },
+        "wandering": {
+          "label": "Potepanje / Pogrešan/a",
+          "steps": [
+            {
+              "title": "Najprej preverite običajna mesta",
+              "instruction": "Večina ljudi z demenco gre na znana mesta – nekdanje delovno mesto, dom iz otroštva, sosedova hiša.",
+              "tips": [
+                "Preverite vrt, garažo, bližnje ulice",
+                "Vprašajte sosede, če so jih videli",
+                "Preverite mesta, kamor so redno hodili"
+              ]
+            },
+            {
+              "title": "Uporabite njihovo lokacijo",
+              "instruction": "Če je nastavljeno sledenje lokaciji, preverite njihov trenutni položaj zdaj."
+            },
+            {
+              "title": "Opozorite družino",
+              "instruction": "Takoj obvestite vse. Več oči, ki iščejo, je bolje."
+            },
+            {
+              "title": "Pokličite policijo, če jih ne najdete v 15 minutah",
+              "instruction": "Ne čakajte. Ljudje z demenco so izpostavljeni velikemu tveganju za poškodbe. Pokličite službo za nujno pomoč in jim povejte, da ima oseba demenco.",
+              "actionLabel": "Pokliči službo za nujno pomoč"
+            }
+          ]
+        },
+        "refusing": {
+          "label": "Zavrnitev oskrbe",
+          "steps": [
+            {
+              "title": "Ustavite se – to ni kljubovanje",
+              "instruction": "Zavrnitev je skoraj vedno strah, zmedenost ali nelagodje. Morda ne razumejo, kaj sprašujete."
+            },
+            {
+              "title": "Umaknite se in poskusite drugače",
+              "instruction": "Ne silite. Vrnite se čez 15–20 minut in se približajte, kot da je prvič.",
+              "tips": [
+                "Spremenite, kdo sprašuje",
+                "Spremenite okolje",
+                "Razdelite nalogo na manjše korake",
+                "Ponudite izbiro: »Kopel ali tuš?«"
+              ]
+            },
+            {
+              "title": "Poskrbite, da se bodo počutili varno",
+              "instruction": "Razložite vsak korak, preden ga naredite. Premikajte se počasi. Ogrejte jih.",
+              "tips": [
+                "Opozorite pred dotikom",
+                "Uporabite miren, topel ton",
+                "Med nalogo predvajajte njihovo najljubšo glasbo",
+                "Ohranite rutino dosledno"
+              ]
+            },
+            {
+              "title": "Ali je to vzorec?",
+              "instruction": "Če dosledno zavračajo isto nalogo, jo zabeležite. Morda obstaja osnovni problem – bolečina, strah, občutljivost. Pogovorite se z njihovim zdravnikom."
+            }
+          ]
+        },
+        "hallucinations": {
+          "label": "Videnje / Slišanje stvari",
+          "steps": [
+            {
+              "title": "Ne prepirajte se – zanje je resnično",
+              "instruction": "Priznajte, kaj doživljajo, ne da bi potrdili, da je res.",
+              "tips": [
+                "»To se sliši strašljivo. Tukaj sem s teboj.«",
+                "»Povej mi, kaj vidiš.«",
+                "Ne recite »tam ni nič«"
+              ]
+            },
+            {
+              "title": "Preverite okolje",
+              "instruction": "Sence, odsevi, zvoki televizije in nered lahko sprožijo napačno razlago.",
+              "checklist": [
+                "Sence iz oken ali svetilk?",
+                "Televizija ali radio v ozadju?",
+                "Odsevi ogledal?",
+                "Slabo osvetljena?"
+              ]
+            },
+            {
+              "title": "Nežno preusmerite",
+              "instruction": "Preusmerite njihovo pozornost na nekaj konkretnega in pomirjujočega.",
+              "tips": [
+                "Premaknite se v dobro osvetljeno sobo",
+                "Ponudite praktično dejavnost",
+                "Pojdite skupaj na kratek sprehod",
+                "Skupaj skuhajte skodelico čaja"
+              ]
+            },
+            {
+              "title": "Kdaj poklicati zdravnika",
+              "instruction": "Če so halucinacije nove, pogoste ali povzročajo izjemno stisko. Nenaden začetek lahko kaže na okužbo, neželene učinke zdravil ali delirij."
+            }
+          ]
+        },
+        "sundowning": {
+          "label": "Sindrom večernega sonca",
+          "steps": [
+            {
+              "title": "Prepoznajte vzorec",
+              "instruction": "Somrakov sindrom se običajno začne pozno popoldne. To je izjemno pogosto in tega ne morejo nadzorovati."
+            },
+            {
+              "title": "Takoj prilagodite okolje",
+              "instruction": "Zmanjšajte vse dražljaje in ustvarite varnostne signale.",
+              "tips": [
+                "Prižgite tople luči, preden se stemni",
+                "Zaprite zavese, da zmanjšate sence",
+                "Izklopite ali zmanjšajte glasnost televizorja",
+                "Zmanjšajte število ljudi v sobi"
+              ]
+            },
+            {
+              "title": "Ponudite pomirjujoče dejavnosti",
+              "instruction": "Nežne, ponavljajoče se, znane dejavnosti delujejo najbolje.",
+              "tips": [
+                "Nežna masaža rok z losjonom",
+                "Mehka, znana glasba",
+                "Zlaganje brisač ali razvrščanje predmetov",
+                "Skupno gledanje foto albuma"
+              ]
+            },
+            {
+              "title": "Preprečite to jutri",
+              "instruction": "Zabeležite epizodo s podrobnostmi o času. Vzorci pomagajo prilagoditi urnike – več jutranje aktivnosti, manj popoldanskega kofeina."
+            }
+          ]
+        },
+        "fall": {
+          "label": "Padec / Fizična nujnost",
+          "steps": [
+            {
+              "title": "Ne premikajte jih",
+              "instruction": "Če niso v neposredni nevarnosti, jih ne poskušajte dvigniti ali premakniti.",
+              "tips": [
+                "Spustite se na njihovo raven",
+                "Pomirite jih: \"Tukaj sem, varno si\"",
+                "Preverite vidne poškodbe"
+              ]
+            },
+            {
+              "title": "Se lahko dvignejo?",
+              "instruction": "Če ni očitnih poškodb, jim počasi pomagajte vstati v fazah.",
+              "checklist": [
+                "So budni in odzivni?",
+                "Imajo kakšne očitne poškodbe ali bolečine?",
+                "Lahko premikajo vse ude?",
+                "So udarili z glavo?"
+              ]
+            },
+            {
+              "title": "Pokličite na pomoč, če...",
+              "instruction": "Poškodba glave, ne morejo vstati, huda bolečina, zmedenost hujša kot običajno ali krvavitev, ki se ne ustavi."
+            },
+            {
+              "title": "Po padcu",
+              "instruction": "Zabeležite ta dogodek in ga omenite njihovemu zdravniku. Ponavljajoči se padci lahko kažejo na težave z zdravili ali napredovanje bolezni."
+            }
+          ]
+        },
+        "repetitive_questions": {
+          "label": "Ponavljajoča se vprašanja",
+          "steps": [
+            {
+              "title": "Globoko vdihnite – to je bolezen, ne oni",
+              "instruction": "Resnično se ne spomnijo, da so vprašali. Vaša frustracija je upravičena, vendar jih bo to še bolj vznemirilo."
+            },
+            {
+              "title": "Kaj v resnici sprašujejo?",
+              "instruction": "Vprašanje na površini je redko pravo vprašanje. \"Koliko je ura za večerjo?\" lahko pomeni \"Lačen sem.\"",
+              "checklist": [
+                "So zaradi nečesa zaskrbljeni?",
+                "So morda lačni, žejni ali jim je dolgčas?",
+                "Ali jih skrbi prihajajoči dogodek?"
+              ]
+            },
+            {
+              "title": "Odzovite se na občutek",
+              "instruction": "Odgovorite na čustvo za vprašanjem, ne pa na dobesedne besede.",
+              "tips": [
+                "Napišite odgovor na vidno tablo",
+                "Vsakič dajte preprost, pomirjujoč odgovor",
+                "Po odgovoru preusmerite na praktično dejavnost",
+                "Uporabite vizualne urnike za zmanjšanje negotovosti"
+              ]
+            },
+            {
+              "title": "Zaščitite svoje dobro počutje",
+              "instruction": "Če je mogoče, se zamenjajte z drugim negovalcem. Uporabite slušalke z nežno glasbo, ko potrebujete duševni odmor."
+            }
+          ]
+        },
+        "aggression": {
+          "label": "Agresija",
+          "steps": [
+            {
+              "title": "Vaša varnost je na prvem mestu",
+              "instruction": "Če se počutite fizično ogrožene, se takoj umaknite. Ne poskušajte jih zadrževati.",
+              "tips": [
+                "Postavite se blizu izhoda",
+                "Odstranite nevarne predmete iz dosega",
+                "Ohranjajte nizek in miren glas",
+                "Ne delajte nenadnih gibov"
+              ]
+            },
+            {
+              "title": "Prizemljite se",
+              "instruction": "Agresija sproži odziv boj ali beg tudi v vas. Vzemite si trenutek za dihanje."
+            },
+            {
+              "title": "Kaj je to sprožilo?",
+              "instruction": "Agresija je skoraj vedno reakcija – bolečina, strah, frustracija, senzorična preobremenitev.",
+              "checklist": [
+                "So jih prosili, naj nekaj naredijo?",
+                "So jih bolele?",
+                "Je bilo okolje hrupno ali kaotično?",
+                "So se počutili utesnjene?"
+              ]
+            },
+            {
+              "title": "Dajte prostor in čas",
+              "instruction": "Umaknite se. Ustavite sprožilno dejavnost. Vrnite se čez 15–20 minut, kot da se ni nič zgodilo.",
+              "tips": [
+                "Zapustite sobo, če je varno",
+                "Odstranite sprožilec",
+                "Ne jemljite si osebno",
+                "Ko se vračate, se približajte počasi"
+              ]
+            },
+            {
+              "title": "Kdaj je to nujno",
+              "instruction": "Če imajo orožje, če je kdo poškodovan ali če agresija ne popusti – pokličite službo za nujno pomoč."
+            }
+          ]
+        },
+        "sleep_disruption": {
+          "label": "Motnje spanja",
+          "steps": [
+            {
+              "title": "Ohranjajte varno okolje",
+              "instruction": "Če so ponoči budni in se premikajo, je vaša prva prioriteta varnost.",
+              "tips": [
+                "Prižgite nizke nočne lučke",
+                "Odstranite nevarnosti spotikanja",
+                "Zaklenite zunanja vrata, če vas skrbi tavanje",
+                "\"Noč je, vse je varno\""
+              ]
+            },
+            {
+              "title": "Kaj jih je zbudilo?",
+              "instruction": "Nočno prebujanje lahko povzročijo bolečine, potreba po stranišču, čas jemanja zdravil ali lakota.",
+              "checklist": [
+                "Morajo na stranišče?",
+                "Imajo bolečine?",
+                "Jih je zbudil hrup ali svetloba?",
+                "So lačni ali žejni?"
+              ]
+            },
+            {
+              "title": "Nežno jih vodite nazaj",
+              "instruction": "Ne prepirajte se o tem, koliko je ura. Preusmerite jih nazaj v posteljo s pomirjujočimi znaki.",
+              "tips": [
+                "Ponudite topel napitek brez kofeina",
+                "Uporabite miren, tih glas",
+                "Predvajajte mehko, znano glasbo",
+                "Sedite z njimi, dokler se ne umirijo"
+              ]
+            },
+            {
+              "title": "Izboljšajte jutrišnjo noč",
+              "instruction": "Več dnevne aktivnosti, brez kofeina po poldnevu, dosledna rutina pred spanjem, omejite dremež na 30 minut."
+            }
+          ]
+        },
+        "shadowing": {
+          "label": "Spremljanje",
+          "steps": [
+            {
+              "title": "Priznajte svojo frustracijo",
+              "instruction": "Biti povsod spremljan je izčrpavajoče. Ti občutki so upravičeni. Vdihnite.",
+              "checklist": [
+                "Je prišlo do nedavne spremembe rutine?",
+                "So v neznanem okolju?",
+                "Ste bili nedavno odsotni?",
+                "Se počutijo slabo?"
+              ]
+            },
+            {
+              "title": "Zakaj vam sledijo?",
+              "instruction": "Spremljanje je posledica tesnobe in strahu pred zapuščenostjo. Biti v vaši bližini je njihov edini vir varnosti.",
+              "checklist": [
+                "Je prišlo do nedavne spremembe rutine?",
+                "So v neznanem okolju?",
+                "Ste bili nedavno odsotni?",
+                "Se počutijo slabo?"
+              ]
+            },
+            {
+              "title": "Zmanjšajte njihovo tesnobo",
+              "instruction": "Pomagajte jim, da se počutijo varne, ne da bi bili fizično prisotni vsak trenutek.",
+              "tips": [
+                "Dajte jim \"delo\" v bližini, kjer ste vi",
+                "Pustite jim osebni predmet kot sidro za udobje",
+                "\"Samo v kuhinji sem, takoj se vrnem\"",
+                "Poskusite znano televizijo ali glasbo kot spremljevalca"
+              ]
+            },
+            {
+              "title": "Vključite odmore zase",
+              "instruction": "Prosite nekoga, da sedi z njimi, medtem ko si vzamete 20 minut. Že 10 minut samote pomaga.",
+              "tips": [
+                "Ne čakajte, da boste izčrpani",
+                "V redu je nežno zapreti vrata kopalnice",
+                "Razmislite o podporni skupini",
+                "To vedenje se pogosto zmanjša s stabilno rutino"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "tabs": {
+      "dashboard": "Nadzorna plošča",
+      "plan": "Načrt",
+      "location": "Lokacija",
+      "coach": "Trener",
+      "more": "Več"
+    }
+  },
+  "notifications": {
+    "taskReminder": "{{patientName}}, čas je za: {{taskTitle}}",
+    "taskCompleted": "{{patientName}} je zaključil: {{taskTitle}}",
+    "checkinReceived": "{{patientName}} je opravil današnjo prijavo",
+    "leftSafeZone": "{{patientName}} je zapustil {{zoneName}}",
+    "inactivity": "Od {{patientName}} ni zaznano gibanje v {{hours}} urah",
+    "nightMovement": "{{patientName}} se premika zunaj ob {{time}}",
+    "takeMeHome": "{{patientName}} je pritisnil 'Pelji me domov' iz {{location}}",
+    "eveningSummary": "Dan osebe {{patientName}}: {{completed}}/{{total}} opravljenih nalog. Razpoloženje: {{mood}}"
+  },
+  "subscription": {
+    "free": "Brezplačno",
+    "plus": "OurTurn Plus",
+    "upgradeTitle": "Odkleni OurTurn Plus",
+    "upgradeFeature": "Ta funkcija zahteva OurTurn Plus",
+    "monthly": "{{price}}/mesec",
+    "annual": "{{price}}/leto",
+    "annualSavings": "Prihranite {{percent}}%",
+    "subscribe": "Naročite se",
+    "restore": "Obnovi nakup",
+    "manage": "Upravljaj naročnino",
+    "features": {
+      "unlimitedTasks": "Neomejeno število nalog na dan",
+      "aiCoach": "Popoln AI negovalni trener",
+      "brainActivities": "Dejavnosti za dobro počutje možganov, ki jih ustvari AI",
+      "safeZones": "Varne cone in opozorila o lokaciji",
+      "multiCaregiver": "Do 5 družinskih članov",
+      "journal": "Shared Care Journal",
+      "insights": "AI pattern insights",
+      "reports": "Doctor visit reports",
+      "toolkit": "Caregiver toolkit & wellness",
+      "priority": "Priority support"
+    }
+  }
+}

@@ -15,8 +15,9 @@ import {
   Nunito_700Bold,
 } from '@expo-google-fonts/nunito';
 import { useAuthStore } from '../src/stores/auth-store';
+import { useThemeStore } from '../src/stores/theme-store';
 import { ErrorBoundary } from '../src/components/error-boundary';
-import { COLORS } from '../src/theme';
+import { ThemeContext, useResolveTheme, useColors, useResolvedTheme } from '../src/theme';
 
 // Initialize i18n
 import '../src/i18n';
@@ -24,8 +25,39 @@ import { validateEnv } from '../src/utils/validate-env';
 
 validateEnv();
 
+function RootLayoutInner() {
+  const colors = useColors();
+  const resolvedTheme = useResolvedTheme();
+
+  return (
+    <>
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          contentStyle: { backgroundColor: colors.background },
+          animation: 'fade',
+        }}
+      >
+        <Stack.Screen name="index" />
+        <Stack.Screen name="(auth)" />
+        <Stack.Screen name="(tabs)" />
+        <Stack.Screen name="onboarding" />
+        <Stack.Screen name="settings/index" />
+        <Stack.Screen name="reports/index" />
+        <Stack.Screen name="behaviours/index" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="resources/index" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="coach-conversation" options={{ animation: 'slide_from_right' }} />
+      </Stack>
+      <StatusBar style={resolvedTheme === 'dark' ? 'light' : 'dark'} />
+    </>
+  );
+}
+
 export default function RootLayout() {
   const { isInitialized, initialize } = useAuthStore();
+  const initTheme = useThemeStore((s) => s.initFromStorage);
+  const themeReady = useThemeStore((s) => s.isInitialized);
+  const themeValue = useResolveTheme();
 
   const [fontsLoaded] = useFonts({
     Fraunces_500Medium,
@@ -38,13 +70,14 @@ export default function RootLayout() {
 
   useEffect(() => {
     initialize();
-  }, [initialize]);
+    initTheme();
+  }, [initialize, initTheme]);
 
   // Show loading screen while initializing auth state or loading fonts
-  if (!isInitialized || !fontsLoaded) {
+  if (!isInitialized || !fontsLoaded || !themeReady) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color={COLORS.brand600} />
+        <ActivityIndicator size="large" color="#B85A2F" />
         <StatusBar style="dark" />
       </View>
     );
@@ -52,26 +85,11 @@ export default function RootLayout() {
 
   return (
     <ErrorBoundary>
-    <SafeAreaProvider>
-      <Stack
-        screenOptions={{
-          headerShown: false,
-          contentStyle: { backgroundColor: COLORS.background },
-          animation: 'fade',
-        }}
-      >
-        <Stack.Screen name="index" />
-        <Stack.Screen name="(auth)" />
-        <Stack.Screen name="(tabs)" />
-        <Stack.Screen name="onboarding" />
-        <Stack.Screen name="settings" />
-        <Stack.Screen name="reports" />
-        <Stack.Screen name="behaviours" options={{ animation: 'slide_from_right' }} />
-        <Stack.Screen name="resources" options={{ animation: 'slide_from_right' }} />
-        <Stack.Screen name="coach-conversation" options={{ animation: 'slide_from_right' }} />
-      </Stack>
-      <StatusBar style="dark" />
-    </SafeAreaProvider>
+      <ThemeContext.Provider value={themeValue}>
+        <SafeAreaProvider>
+          <RootLayoutInner />
+        </SafeAreaProvider>
+      </ThemeContext.Provider>
     </ErrorBoundary>
   );
 }
@@ -81,6 +99,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: COLORS.background,
+    backgroundColor: '#FAF7F2',
   },
 });

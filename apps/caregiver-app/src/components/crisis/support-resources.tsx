@@ -1,7 +1,7 @@
-import { View, Text, StyleSheet, TouchableOpacity, Linking } from 'react-native';
+import { View, Text, TouchableOpacity, Linking } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { getDementiaHelplines } from '@ourturn/shared/constants/helplines';
-import { COLORS, FONTS, RADIUS, SHADOWS } from '../../theme';
+import { createThemedStyles, FONTS, RADIUS, SHADOWS } from '../../theme';
 
 interface FamilyMember {
   id: string;
@@ -20,6 +20,7 @@ export function SupportResources({
   familyCaregivers,
 }: SupportResourcesProps) {
   const { t } = useTranslation();
+  const styles = useStyles();
   const helplines = getDementiaHelplines(country);
 
   return (
@@ -127,29 +128,29 @@ export function SupportResources({
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   wrapper: {
     gap: 16,
   },
   card: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     padding: 16,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     ...SHADOWS.sm,
   },
   sectionTitle: {
     fontSize: 17,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 12,
   },
   emptyText: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     textAlign: 'center',
     paddingVertical: 12,
   },
@@ -157,7 +158,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: COLORS.brand50,
+    backgroundColor: colors.brand50,
     borderRadius: RADIUS.lg,
     padding: 12,
     marginBottom: 8,
@@ -170,12 +171,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '500',
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   resourcePhone: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.brand600,
+    color: colors.brand600,
     marginTop: 2,
   },
   resourceActions: {
@@ -183,7 +184,7 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   callButton: {
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     borderRadius: RADIUS.sm,
     paddingHorizontal: 12,
     paddingVertical: 6,
@@ -195,15 +196,15 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.bodySemiBold,
   },
   websiteButton: {
-    backgroundColor: COLORS.brand100,
+    backgroundColor: colors.brand100,
     borderRadius: RADIUS.sm,
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
   },
   websiteButtonText: {
-    color: COLORS.brand700,
+    color: colors.brand700,
     fontSize: 12,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
@@ -214,26 +215,26 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   roleBadge: {
-    backgroundColor: COLORS.border,
+    backgroundColor: colors.border,
     borderRadius: RADIUS.full,
     paddingHorizontal: 8,
     paddingVertical: 2,
   },
   primaryBadge: {
-    backgroundColor: COLORS.brand100,
+    backgroundColor: colors.brand100,
   },
   roleText: {
     fontSize: 11,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   primaryRoleText: {
-    color: COLORS.brand700,
+    color: colors.brand700,
   },
   emailText: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginTop: 2,
   },
-});
+}));

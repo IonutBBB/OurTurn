@@ -36,6 +36,7 @@ import { COLORS } from '../src/theme';
 
 // Initialize i18n
 import '../src/i18n';
+import { initLanguageFromHousehold } from '../src/i18n';
 import { validateEnv } from '../src/utils/validate-env';
 
 validateEnv();
@@ -121,7 +122,7 @@ async function syncOfflineData(householdId?: string | null) {
 }
 
 export default function RootLayout() {
-  const { isInitialized, initialize, session, patient } = useAuthStore();
+  const { isInitialized, initialize, session, patient, refreshFromServer } = useAuthStore();
   const [fontTimeout, setFontTimeout] = useState(false);
   const appState = useRef(AppState.currentState);
 
@@ -150,26 +151,28 @@ export default function RootLayout() {
     syncOfflineData(session?.householdId);
   }, [session?.householdId]);
 
-  // Sync offline data when app comes to foreground
+  // Sync offline data and refresh patient data when app comes to foreground
   useEffect(() => {
     const subscription = AppState.addEventListener('change', (nextState) => {
       if (appState.current.match(/inactive|background/) && nextState === 'active') {
         syncOfflineData(session?.householdId);
+        refreshFromServer().catch(() => {});
       }
       appState.current = nextState;
     });
     return () => subscription.remove();
-  }, [session?.householdId]);
+  }, [session?.householdId, refreshFromServer]);
 
-  // Sync offline data when network connectivity is restored
+  // Sync offline data and refresh when network connectivity is restored
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener((state) => {
       if (state.isConnected && state.isInternetReachable) {
         syncOfflineData(session?.householdId);
+        refreshFromServer().catch(() => {});
       }
     });
     return () => unsubscribe();
-  }, [session?.householdId]);
+  }, [session?.householdId, refreshFromServer]);
 
   // Heartbeat: update last_seen_at every 10 minutes
   useEffect(() => {
@@ -188,6 +191,47 @@ export default function RootLayout() {
       stopLocationTracking();
     };
   }, [patient?.id, session?.householdId]);
+
+  // Realtime sync: detect when caregiver changes household or patient data
+  useEffect(() => {
+    if (!session?.householdId) return;
+    const channel = supabase
+      .channel(`household-sync-${session.householdId}`)
+      .on(
+        'postgres_changes',
+        {
+          event: 'UPDATE',
+          schema: 'public',
+          table: 'households',
+          filter: `id=eq.${session.householdId}`,
+        },
+        (payload) => {
+          const newLang = (payload.new as { language?: string }).language;
+          if (newLang) {
+            initLanguageFromHousehold(newLang).catch(() => {});
+          }
+          // Refresh full data to pick up any household changes
+          refreshFromServer().catch(() => {});
+        },
+      )
+      .on(
+        'postgres_changes',
+        {
+          event: 'UPDATE',
+          schema: 'public',
+          table: 'patients',
+          filter: `household_id=eq.${session.householdId}`,
+        },
+        () => {
+          // Refresh to pick up name, emergency contacts, home address changes
+          refreshFromServer().catch(() => {});
+        },
+      )
+      .subscribe();
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [session?.householdId, refreshFromServer]);
 
   // Font loading timeout - don't block forever
   useEffect(() => {
@@ -223,28 +267,35 @@ export default function RootLayout() {
         <Stack.Screen name="index" />
         <Stack.Screen name="(tabs)" />
         <Stack.Screen
-          name="checkin"
+          name="checkin/index"
           options={{
             presentation: 'modal',
             animation: 'slide_from_bottom',
           }}
         />
         <Stack.Screen
-          name="sos-confirmation"
+          name="sos-confirmation/index"
           options={{
             presentation: 'modal',
             animation: 'slide_from_bottom',
           }}
         />
         <Stack.Screen
-          name="consent"
+          name="activity/index"
           options={{
             presentation: 'modal',
             animation: 'slide_from_bottom',
           }}
         />
         <Stack.Screen
-          name="essential-mode"
+          name="consent/index"
+          options={{
+            presentation: 'modal',
+            animation: 'slide_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="essential-mode/index"
           options={{
             animation: 'fade',
           }}

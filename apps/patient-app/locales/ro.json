@@ -1,0 +1,176 @@
+{
+  "common": {
+    "appName": "OurTurn",
+    "save": "Salvează",
+    "cancel": "Anulează",
+    "delete": "Șterge",
+    "edit": "Editează",
+    "done": "Gata",
+    "skip": "Sari peste astăzi",
+    "or": "sau",
+    "loading": "Se încarcă...",
+    "error": "Ceva nu a mers bine. Te rugăm să încerci din nou.",
+    "errorTitle": "Ceva nu a mers bine",
+    "errorDefault": "A apărut o eroare neașteptată.",
+    "tryAgain": "Încearcă din nou",
+    "offline": "Ești offline — datele tale se vor sincroniza când te conectezi",
+    "synced": "Sincronizat"
+  },
+  "categories": {
+    "medication": "Medicamente",
+    "nutrition": "Mese și nutriție",
+    "physical": "Activitate fizică",
+    "cognitive": "Bunăstare cerebrală",
+    "social": "Socializare și conexiune",
+    "health": "Control medical"
+  },
+  "patientApp": {
+    "todaysPlan": {
+      "title": "Planul de astăzi",
+      "progress": "{{completed}} din {{total}} activități finalizate astăzi",
+      "noPlan": "Nu sunt activități planificate pentru astăzi. Familia ta configurează lucrurile!",
+      "overdue": "Restant",
+      "upcoming": "Urmează",
+      "nowBadge": "ACUM",
+      "doneAt": "Finalizat la {{time}}",
+      "greatMorning": "Bună dimineața!",
+      "keepGoing": "Te descurci minunat!",
+      "allDone": "Gata pentru astăzi!",
+      "tapToStart": "Atinge pentru a începe activitatea cerebrală",
+      "opensActivity": "Deschide activitatea de bunăstare cerebrală de astăzi"
+    },
+    "help": {
+      "title": "Am nevoie de ajutor",
+      "callSomeone": "Sună pe cineva",
+      "getHomeSafely": "Ajungi acasă în siguranță",
+      "takeMeHome": "Du-mă acasă",
+      "takeMeHomeDesc": "Atinge pentru a obține indicații de mers pe jos către casă",
+      "emergency": "Urgență",
+      "confirmEmergency": "Ești sigur că vrei să suni la serviciile de urgență?"
+    },
+    "sos": {
+      "button": "SOS",
+      "label": "SOS",
+      "holdHint": "Ține apăsat timp de 2 secunde pentru a trimite o alertă familiei tale",
+      "helpOnTheWay": "Ajutorul este pe drum",
+      "familyNotified": "Familia ta a fost notificată",
+      "callCaregiver": "Sună pe {{name}}",
+      "imOkay": "Sunt bine, întoarce-te"
+    },
+    "consent": {
+      "yes": "Da",
+      "no": "Nu",
+      "locationTracking": {
+        "title": "Permiteți urmărirea locației?",
+        "description": "Pentru ca familia ta să te poată ajuta să ajungi acasă în siguranță"
+      },
+      "dataCollection": {
+        "title": "Salvează informațiile zilnice?",
+        "description": "Pentru ca familia ta să vadă cum te simți"
+      },
+      "pushNotifications": {
+        "title": "Primește mementouri?",
+        "description": "Impulsuri utile pentru mese și activități"
+      },
+      "dataSharing": {
+        "title": "Partajează cu familia ta?",
+        "description": "Pentru ca îngrijitorii tăi să te poată sprijini"
+      },
+      "voiceRecording": {
+        "title": "Înregistrează mesaje vocale?",
+        "description": "Pentru a putea lăsa mesaje familiei tale"
+      }
+    },
+    "essential": {
+      "music": "Muzică",
+      "callHelp": "Sună pentru ajutor"
+    },
+    "checkin": {
+      "greeting": {
+        "morning": "Bună dimineața, {{name}}!",
+        "afternoon": "Bună ziua, {{name}}!",
+        "evening": "Bună seara, {{name}}!"
+      },
+      "moodQuestion": "Cum te simți astăzi?",
+      "moodGood": "Bine",
+      "moodOkay": "Acceptabil",
+      "moodBad": "Nu prea bine",
+      "sleepQuestion": "Ai dormit bine?",
+      "sleepGood": "Da",
+      "sleepOkay": "Așa și așa",
+      "sleepBad": "Nu prea",
+      "voicePrompt": "Vrei să spui ceva familiei tale?",
+      "voiceTap": "Atinge pentru a vorbi",
+      "voiceRecording": "Se înregistrează...",
+      "voiceStop": "Oprește",
+      "voicePlay": "Redă",
+      "voicePause": "Pauză",
+      "voiceDiscard": "Înregistrează din nou",
+      "send": "Trimite familiei",
+      "skipVoice": "Sari peste mesajul vocal",
+      "thankYou": "Mulțumim! Familia ta va vedea asta.",
+      "alreadyDone": "Ai făcut deja check-in-ul astăzi!",
+      "tapToCheckin": "Atinge pentru a face check-in",
+      "opensCheckin": "Deschide ecranul de check-in zilnic"
+    },
+    "activity": {
+      "title": "Activitatea de astăzi",
+      "noActivity": "Nicio activitate pentru astăzi",
+      "comeBackLater": "Verifică din nou mâine pentru o nouă activitate!",
+      "tapToSpeak": "Atinge pentru a vorbi",
+      "tapToStop": "Atinge pentru a opri înregistrarea",
+      "typeInstead": "Scrie răspunsul în schimb",
+      "typeHere": "Scrie răspunsul aici...",
+      "speakInstead": "Vorbește în schimb",
+      "recordAgain": "Înregistrează din nou",
+      "skipForToday": "Sari peste astăzi",
+      "defaultFollowUp": "Ce amintire minunată! Mulțumim că ai împărtășit.",
+      "listenToSong": "Ascultă melodia",
+      "photoMemory": "O amintire din viața ta"
+    },
+    "careCode": {
+      "welcome": "Bun venit la OurTurn",
+      "enterCode": "Introdu codul tău de îngrijire",
+      "helperText": "Membrul familiei tale îți va da acest cod.",
+      "connect": "Conectează-te",
+      "invalidCode": "Verifică codul și încearcă din nou.",
+      "connecting": "Se conectează...",
+      "digitLabel": "Cifra {{current}} din {{total}}",
+      "changeLanguage": "Schimbă limba"
+    },
+    "tabs": {
+      "today": "Astăzi",
+      "help": "Ajutor"
+    },
+    "taskPhoto": {
+      "taskPhoto": "Fotografia sarcinii (opțional)",
+      "uploadPhoto": "Încarcă fotografia",
+      "removePhoto": "Elimină fotografia",
+      "medicationItems": "Medicamente în acest grup",
+      "medicationItemsHint": "Grupează până la 3 medicamente luate în același timp",
+      "addMedication": "Adaugă medicament",
+      "medName": "Numele medicamentului",
+      "medDosage": "Doza",
+      "removeMedication": "Elimină",
+      "maxMedications": "Maximum 3 medicamente per grup",
+      "uploadingPhoto": "Se încarcă..."
+    }
+  },
+  "a11y": {
+    "doubleTapToComplete": "Atinge de două ori pentru a marca ca finalizat",
+    "callContact": "Sună pe {{name}}",
+    "emergencyCallConfirmHint": "Va apărea o confirmare înainte de a suna",
+    "takeMeHomeHint": "Deschide navigarea către adresa ta de domiciliu",
+    "gettingLocation": "Se obține locația ta",
+    "removesVoiceRecording": "Elimină înregistrarea ta vocală",
+    "submittingCheckin": "Se trimite check-in-ul tău"
+  },
+  "locationTracking": {
+    "backgroundNotificationTitle": "OurTurn te menține în siguranță",
+    "backgroundNotificationBody": "Familia ta poate vedea că ești bine"
+  },
+  "notifications": {
+    "taskReminder": "{{patientName}}, este timpul pentru: {{taskTitle}}",
+    "checkinPrompt": "Este timpul pentru check-in-ul tău zilnic!"
+  }
+}

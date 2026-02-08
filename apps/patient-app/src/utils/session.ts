@@ -5,6 +5,7 @@ import type { Household, Patient } from '@ourturn/shared';
 const SESSION_KEY = 'ourturn_patient_session';
 const HOUSEHOLD_KEY = 'ourturn_household_data';
 const PATIENT_KEY = 'ourturn_patient_data';
+const JWT_KEY = 'ourturn_patient_jwt';
 
 export interface PatientSession {
   householdId: string;
@@ -64,6 +65,25 @@ export async function clearSession(): Promise<void> {
   await deleteItem(SESSION_KEY);
   await deleteItem(HOUSEHOLD_KEY);
   await deleteItem(PATIENT_KEY);
+  await deleteItem(JWT_KEY);
+}
+
+/**
+ * Save patient JWT token to secure storage
+ */
+export async function savePatientJwt(jwt: string): Promise<void> {
+  await setItem(JWT_KEY, jwt);
+}
+
+/**
+ * Get stored patient JWT token
+ */
+export async function getPatientJwt(): Promise<string | null> {
+  try {
+    return await getItem(JWT_KEY);
+  } catch {
+    return null;
+  }
 }
 
 /**

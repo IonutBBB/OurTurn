@@ -1,8 +1,8 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { router } from 'expo-router';
 import type { LocationAlert } from '@ourturn/shared';
-import { COLORS, FONTS, RADIUS, SHADOWS } from '../../theme';
+import { createThemedStyles, FONTS, RADIUS, SHADOWS } from '../../theme';
 
 const ALERT_TYPE_ICONS: Record<string, string> = {
   left_safe_zone: '🚶',
@@ -43,6 +43,7 @@ export function StatusPanel({
   onAcknowledge,
 }: StatusPanelProps) {
   const { t } = useTranslation();
+  const styles = useStyles();
   const unacknowledged = alerts.filter((a) => !a.acknowledged);
 
   if (unacknowledged.length === 0) {
@@ -134,13 +135,13 @@ export function StatusPanel({
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   allClearCard: {
-    backgroundColor: COLORS.successBg,
+    backgroundColor: colors.successBg,
     borderRadius: RADIUS.xl,
     padding: 16,
     borderWidth: 1,
-    borderColor: COLORS.success + '30',
+    borderColor: colors.success + '30',
     ...SHADOWS.sm,
   },
   statusRow: {
@@ -152,13 +153,13 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: COLORS.success + '30',
+    backgroundColor: colors.success + '30',
     alignItems: 'center',
     justifyContent: 'center',
   },
   checkMark: {
     fontSize: 20,
-    color: COLORS.success,
+    color: colors.success,
     fontWeight: '700',
   },
   statusTextContainer: {
@@ -168,12 +169,12 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.success,
+    color: colors.success,
   },
   allClearDesc: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     marginTop: 2,
   },
   locationRow: {
@@ -183,13 +184,13 @@ const styles = StyleSheet.create({
     marginTop: 12,
     paddingTop: 12,
     borderTopWidth: 1,
-    borderTopColor: COLORS.success + '20',
+    borderTopColor: colors.success + '20',
   },
   locationText: {
     flex: 1,
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     marginRight: 8,
   },
   locationLabel: {
@@ -197,20 +198,20 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.bodyMedium,
   },
   locationTime: {
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   viewMapLink: {
     fontSize: 13,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.brand600,
+    color: colors.brand600,
   },
   alertCard: {
-    backgroundColor: COLORS.dangerBg,
+    backgroundColor: colors.dangerBg,
     borderRadius: RADIUS.xl,
     padding: 16,
     borderWidth: 1,
-    borderColor: COLORS.danger + '30',
+    borderColor: colors.danger + '30',
     ...SHADOWS.sm,
   },
   alertHeader: {
@@ -226,13 +227,13 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.danger,
+    color: colors.danger,
   },
   alertItem: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.lg,
     padding: 12,
     marginBottom: 8,
@@ -253,17 +254,17 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '500',
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     textTransform: 'capitalize',
   },
   alertTime: {
     fontSize: 12,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginTop: 2,
   },
   ackButton: {
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     borderRadius: RADIUS.sm,
     paddingHorizontal: 12,
     paddingVertical: 6,
@@ -282,6 +283,6 @@ const styles = StyleSheet.create({
     marginTop: 4,
     paddingTop: 12,
     borderTopWidth: 1,
-    borderTopColor: COLORS.danger + '15',
+    borderTopColor: colors.danger + '15',
   },
-});
+}));

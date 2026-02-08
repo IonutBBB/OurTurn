@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   TouchableOpacity,
   ScrollView,
   ActivityIndicator,
@@ -17,19 +16,23 @@ import type {
   SliderValue,
   HelpRequest,
 } from '@ourturn/shared';
-import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
+import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS } from '../../src/theme';
 
 import { SliderCheckin } from '../../src/components/toolkit/slider-checkin';
 import { QuickRelief } from '../../src/components/toolkit/quick-relief';
 import { HelpRequestForm } from '../../src/components/toolkit/help-request-form';
 import { WellbeingAgent } from '../../src/components/toolkit/wellbeing-agent';
 import { DailyGoal } from '../../src/components/toolkit/daily-goal';
+import { WeeklyStats } from '../../src/components/toolkit/weekly-stats';
+import { SosButton } from '../../src/components/toolkit/sos-button';
 
 const API_BASE_URL = process.env.EXPO_PUBLIC_WEB_URL || '';
 
 export default function ToolkitScreen() {
   const { t } = useTranslation();
   const { caregiver } = useAuthStore();
+  const styles = useStyles();
+  const colors = useColors();
 
   const [todayLog, setTodayLog] = useState<CaregiverWellbeingLog | null>(null);
   const [recentLogs, setRecentLogs] = useState<CaregiverWellbeingLog[]>([]);
@@ -135,7 +138,7 @@ export default function ToolkitScreen() {
     return (
       <SafeAreaView style={styles.container} edges={['top']}>
         <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color={COLORS.brand600} />
+          <ActivityIndicator size="large" color={colors.brand600} />
         </View>
       </SafeAreaView>
     );
@@ -151,7 +154,7 @@ export default function ToolkitScreen() {
         {/* Header */}
         <View style={styles.header}>
           <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-            <Text style={styles.backText}>‹ {t('common.back')}</Text>
+            <Text style={styles.backText}>&#8249; {t('common.back')}</Text>
           </TouchableOpacity>
           <Text style={styles.title}>{t('caregiverApp.toolkit.pageTitle')}</Text>
         </View>
@@ -163,7 +166,7 @@ export default function ToolkitScreen() {
         {/* Burnout Warning */}
         {showBurnout && (
           <View style={styles.burnoutBanner}>
-            <Text style={styles.burnoutEmoji}>💛</Text>
+            <Text style={styles.burnoutEmoji}>{'\u{1F49B}'}</Text>
             <View style={styles.burnoutContent}>
               <Text style={styles.burnoutTitle}>{t('caregiverApp.toolkit.burnout.title')}</Text>
               <Text style={styles.burnoutMessage}>{t('caregiverApp.toolkit.burnout.message')}</Text>
@@ -220,6 +223,14 @@ export default function ToolkitScreen() {
 
         <View style={styles.spacer} />
 
+        {/* Weekly Insights */}
+        <WeeklyStats
+          recentLogs={recentLogs}
+          apiBaseUrl={API_BASE_URL}
+        />
+
+        <View style={styles.spacer} />
+
         {/* Support Resources */}
         <View style={styles.supportCard}>
           <Text style={styles.supportTitle}>{t('caregiverApp.toolkit.support.title')}</Text>
@@ -231,14 +242,17 @@ export default function ToolkitScreen() {
           <Text style={styles.footerText}>{t('caregiverApp.toolkit.footer')}</Text>
         </View>
       </ScrollView>
+
+      {/* SOS Floating Button */}
+      <SosButton householdId={caregiver?.household_id || ''} />
     </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
   },
   loadingContainer: {
     flex: 1,
@@ -263,7 +277,7 @@ const styles = StyleSheet.create({
   },
   backText: {
     fontSize: 18,
-    color: COLORS.brand600,
+    color: colors.brand600,
     fontWeight: '500',
     fontFamily: FONTS.bodyMedium,
   },
@@ -272,13 +286,13 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     letterSpacing: -0.3,
   },
   subtitle: {
     fontSize: 16,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     marginBottom: 24,
     lineHeight: 24,
   },
@@ -287,11 +301,11 @@ const styles = StyleSheet.create({
   },
   burnoutBanner: {
     flexDirection: 'row',
-    backgroundColor: COLORS.amberBg,
+    backgroundColor: colors.amberBg,
     borderRadius: RADIUS.xl,
     padding: 16,
     borderWidth: 1,
-    borderColor: COLORS.amber + '30',
+    borderColor: colors.amber + '30',
     marginBottom: 20,
     gap: 12,
   },
@@ -305,49 +319,49 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.amber,
+    color: colors.amber,
     marginBottom: 4,
   },
   burnoutMessage: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     lineHeight: 20,
   },
   supportCard: {
-    backgroundColor: COLORS.brand50,
+    backgroundColor: colors.brand50,
     borderRadius: RADIUS.xl,
     padding: 20,
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
     ...SHADOWS.sm,
   },
   supportTitle: {
     fontSize: 18,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.brand800,
+    color: colors.brand800,
     marginBottom: 8,
   },
   supportText: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.brand700,
+    color: colors.brand700,
     lineHeight: 20,
   },
   footer: {
     marginTop: 20,
     padding: 16,
-    backgroundColor: COLORS.brand50,
+    backgroundColor: colors.brand50,
     borderRadius: RADIUS.lg,
     alignItems: 'center',
   },
   footerText: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     fontStyle: 'italic',
     textAlign: 'center',
     lineHeight: 20,
   },
-});
+}));

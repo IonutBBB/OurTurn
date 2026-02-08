@@ -87,10 +87,13 @@ export function isTaskOverdue(taskTime: string): boolean {
   return currentMinutes > taskMinutes + 15;
 }
 
-// Format time for display (12-hour format)
-export function formatTimeDisplay(time: string): string {
+// Format time for display using locale-aware formatting
+export function formatTimeDisplay(time: string, locale?: string): string {
   const [hours, minutes] = time.split(':').map(Number);
-  const ampm = hours >= 12 ? 'PM' : 'AM';
-  const displayHours = hours % 12 || 12;
-  return `${displayHours}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+  const date = new Date();
+  date.setHours(hours, minutes, 0, 0);
+  return new Intl.DateTimeFormat(locale || 'en', {
+    hour: 'numeric',
+    minute: '2-digit',
+  }).format(date);
 }

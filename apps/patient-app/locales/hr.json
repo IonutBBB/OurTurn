@@ -1,0 +1,176 @@
+{
+  "common": {
+    "appName": "OurTurn",
+    "save": "Spremi",
+    "cancel": "Odustani",
+    "delete": "Izbriši",
+    "edit": "Uredi",
+    "done": "Gotovo",
+    "skip": "Preskoči za danas",
+    "or": "ili",
+    "loading": "Učitavanje...",
+    "error": "Nešto je pošlo po zlu. Molimo pokušajte ponovno.",
+    "errorTitle": "Nešto je pošlo po zlu",
+    "errorDefault": "Došlo je do neočekivane pogreške.",
+    "tryAgain": "Pokušajte ponovno",
+    "offline": "Niste povezani s internetom — vaši će se podaci sinkronizirati kada se povežete",
+    "synced": "Sinkronizirano"
+  },
+  "categories": {
+    "medication": "Lijekovi",
+    "nutrition": "Obroci i prehrana",
+    "physical": "Tjelesna aktivnost",
+    "cognitive": "Vježbanje uma",
+    "social": "Društvo i povezanost",
+    "health": "Provjera zdravlja"
+  },
+  "patientApp": {
+    "todaysPlan": {
+      "title": "Današnji plan",
+      "progress": "{{completed}} od {{total}} aktivnosti obavljeno danas",
+      "noPlan": "Za danas nisu planirane aktivnosti. Vaša obitelj sve priprema!",
+      "overdue": "Kasni",
+      "upcoming": "Nadolazeće",
+      "nowBadge": "SADA",
+      "doneAt": "Obavljeno u {{time}}",
+      "greatMorning": "Odlično jutro!",
+      "keepGoing": "Odlično vam ide!",
+      "allDone": "Sve obavljeno za danas!",
+      "tapToStart": "Dodirnite za početak vježbanja uma",
+      "opensActivity": "Otvara današnju aktivnost za vježbanje uma"
+    },
+    "help": {
+      "title": "Trebam pomoć",
+      "callSomeone": "Nazovi nekoga",
+      "getHomeSafely": "Sigurno dođite kući",
+      "takeMeHome": "Odvedi me kući",
+      "takeMeHomeDesc": "Dodirnite za upute za hodanje do vašeg doma",
+      "emergency": "Hitni slučaj",
+      "confirmEmergency": "Jeste li sigurni da želite pozvati hitnu službu?"
+    },
+    "sos": {
+      "button": "SOS",
+      "label": "SOS",
+      "holdHint": "Držite 2 sekunde za slanje upozorenja vašoj obitelji",
+      "helpOnTheWay": "Pomoć je na putu",
+      "familyNotified": "Vaša je obitelj obaviještena",
+      "callCaregiver": "Nazovi {{name}}",
+      "imOkay": "Dobro sam, vrati se"
+    },
+    "consent": {
+      "yes": "Da",
+      "no": "Ne",
+      "locationTracking": {
+        "title": "Podijelite svoju lokaciju?",
+        "description": "Kako bi vam vaša obitelj mogla pomoći da sigurno dođete kući"
+      },
+      "dataCollection": {
+        "title": "Spremite svoje dnevne informacije?",
+        "description": "Kako bi vaša obitelj mogla vidjeti kako ste"
+      },
+      "pushNotifications": {
+        "title": "Primajte podsjetnike?",
+        "description": "Korisni podsjetnici za obroke i aktivnosti"
+      },
+      "dataSharing": {
+        "title": "Podijelite sa svojom obitelji?",
+        "description": "Kako bi vas njegovatelji mogli podržati"
+      },
+      "voiceRecording": {
+        "title": "Snimajte glasovne poruke?",
+        "description": "Kako biste mogli ostavljati poruke svojoj obitelji"
+      }
+    },
+    "essential": {
+      "music": "Glazba",
+      "callHelp": "Pozovi pomoć"
+    },
+    "checkin": {
+      "greeting": {
+        "morning": "Dobro jutro, {{name}}!",
+        "afternoon": "Dobar dan, {{name}}!",
+        "evening": "Dobra večer, {{name}}!"
+      },
+      "moodQuestion": "Kako se osjećate danas?",
+      "moodGood": "Dobro",
+      "moodOkay": "U redu",
+      "moodBad": "Ne baš dobro",
+      "sleepQuestion": "Jeste li dobro spavali?",
+      "sleepGood": "Da",
+      "sleepOkay": "Tako-tako",
+      "sleepBad": "Ne baš",
+      "voicePrompt": "Želite li nešto reći svojoj obitelji?",
+      "voiceTap": "Dodirnite za govor",
+      "voiceRecording": "Snimanje...",
+      "voiceStop": "Zaustavi",
+      "voicePlay": "Reproduciraj",
+      "voicePause": "Pauziraj",
+      "voiceDiscard": "Snimi ponovno",
+      "send": "Pošalji obitelji",
+      "skipVoice": "Preskoči glasovnu poruku",
+      "thankYou": "Hvala vam! Vaša će obitelj ovo vidjeti.",
+      "alreadyDone": "Već ste se prijavili danas!",
+      "tapToCheckin": "Dodirnite za prijavu",
+      "opensCheckin": "Otvara zaslon za dnevnu prijavu"
+    },
+    "activity": {
+      "title": "Današnja aktivnost",
+      "noActivity": "Nema aktivnosti za danas",
+      "comeBackLater": "Vratite se sutra za novu aktivnost!",
+      "tapToSpeak": "Dodirnite za govor",
+      "tapToStop": "Dodirnite za zaustavljanje snimanja",
+      "typeInstead": "Upišite svoj odgovor umjesto toga",
+      "typeHere": "Upišite svoj odgovor ovdje...",
+      "speakInstead": "Govorite umjesto toga",
+      "recordAgain": "Snimi ponovno",
+      "skipForToday": "Preskoči za danas",
+      "defaultFollowUp": "Kakva divna uspomena! Hvala vam što ste je podijelili.",
+      "listenToSong": "Slušajte pjesmu",
+      "photoMemory": "Uspomena iz vašeg života"
+    },
+    "careCode": {
+      "welcome": "Dobrodošli u OurTurn",
+      "enterCode": "Unesite svoj Care Code",
+      "helperText": "Vaš član obitelji dat će vam ovaj kod.",
+      "connect": "Poveži se",
+      "invalidCode": "Provjerite svoj kod i pokušajte ponovno.",
+      "connecting": "Povezivanje...",
+      "digitLabel": "Broj {{current}} od {{total}}",
+      "changeLanguage": "Promijeni jezik"
+    },
+    "tabs": {
+      "today": "Danas",
+      "help": "Pomoć"
+    },
+    "taskPhoto": {
+      "taskPhoto": "Fotografija zadatka (nije obavezno)",
+      "uploadPhoto": "Učitaj fotografiju",
+      "removePhoto": "Ukloni fotografiju",
+      "medicationItems": "Lijekovi u ovoj grupi",
+      "medicationItemsHint": "Grupirajte do 3 lijeka koja se uzimaju u isto vrijeme",
+      "addMedication": "Dodaj lijek",
+      "medName": "Naziv lijeka",
+      "medDosage": "Doziranje",
+      "removeMedication": "Ukloni",
+      "maxMedications": "Maksimalno 3 lijeka po grupi",
+      "uploadingPhoto": "Učitavanje..."
+    }
+  },
+  "a11y": {
+    "doubleTapToComplete": "Dvaput dodirnite za označavanje kao gotovo",
+    "callContact": "Nazovi {{name}}",
+    "emergencyCallConfirmHint": "Prije poziva pojavit će se potvrda",
+    "takeMeHomeHint": "Otvara navigaciju do vaše kućne adrese",
+    "gettingLocation": "Dobivanje vaše lokacije",
+    "removesVoiceRecording": "Uklanja vašu glasovnu snimku",
+    "submittingCheckin": "Slanje vaše prijave"
+  },
+  "locationTracking": {
+    "backgroundNotificationTitle": "OurTurn vas čuva",
+    "backgroundNotificationBody": "Vaša obitelj može vidjeti da ste dobro"
+  },
+  "notifications": {
+    "taskReminder": "{{patientName}}, vrijeme je za: {{taskTitle}}",
+    "checkinPrompt": "Vrijeme je za vašu dnevnu prijavu!"
+  }
+}

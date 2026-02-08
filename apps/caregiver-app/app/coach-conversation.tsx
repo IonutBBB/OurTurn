@@ -18,7 +18,7 @@ import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../src/stores/auth-store';
 import { useAICoach } from '../src/hooks/use-ai-coach';
 import type { CarePlanSuggestion, DoctorNote } from '../src/services/ai-coach';
-import { COLORS, FONTS, SPACING, RADIUS, SHADOWS } from '../src/theme';
+import { createThemedStyles, useColors, FONTS, SPACING, RADIUS, SHADOWS } from '../src/theme';
 
 export default function CoachConversationScreen() {
   const { t } = useTranslation();
@@ -28,6 +28,9 @@ export default function CoachConversationScreen() {
     conversationContext: string;
     initialMessage: string;
   }>();
+
+  const styles = useStyles();
+  const colors = useColors();
 
   const { patient } = useAuthStore();
   const patientName = patient?.name || 'your loved one';
@@ -90,6 +93,52 @@ export default function CoachConversationScreen() {
       Alert.alert(t('common.errorTitle'), t('caregiverApp.coach.noteAddedError'));
     }
   };
+
+  const markdownStyles = StyleSheet.create({
+    body: {
+      fontSize: 16,
+      fontFamily: FONTS.body,
+      color: colors.textPrimary,
+      lineHeight: 24,
+    },
+    heading2: {
+      fontSize: 17,
+      fontWeight: '600',
+      fontFamily: FONTS.bodySemiBold,
+      color: colors.textPrimary,
+      marginTop: 12,
+      marginBottom: 6,
+    },
+    heading3: {
+      fontSize: 16,
+      fontWeight: '600',
+      fontFamily: FONTS.bodySemiBold,
+      color: colors.textPrimary,
+      marginTop: 8,
+      marginBottom: 4,
+    },
+    paragraph: {
+      marginBottom: 8,
+    },
+    bullet_list: {
+      marginBottom: 8,
+    },
+    ordered_list: {
+      marginBottom: 8,
+    },
+    list_item: {
+      marginBottom: 4,
+    },
+    strong: {
+      fontWeight: '700',
+      fontFamily: FONTS.bodyBold,
+    },
+    hr: {
+      backgroundColor: colors.border,
+      height: 1,
+      marginVertical: 12,
+    },
+  });
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
@@ -234,7 +283,7 @@ export default function CoachConversationScreen() {
             value={input}
             onChangeText={setInput}
             placeholder={t('caregiverApp.coach.askAbout', { name: patientName })}
-            placeholderTextColor={COLORS.textMuted}
+            placeholderTextColor={colors.textMuted}
             multiline
             maxLength={1000}
             editable={!isLoading}
@@ -250,7 +299,7 @@ export default function CoachConversationScreen() {
             disabled={!input.trim() || isLoading}
           >
             {isLoading ? (
-              <ActivityIndicator color={COLORS.textInverse} size="small" />
+              <ActivityIndicator color={colors.textInverse} size="small" />
             ) : (
               <Text style={styles.sendButtonText}>{t('caregiverApp.coach.send')}</Text>
             )}
@@ -266,56 +315,10 @@ export default function CoachConversationScreen() {
   );
 }
 
-const markdownStyles = StyleSheet.create({
-  body: {
-    fontSize: 16,
-    fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
-    lineHeight: 24,
-  },
-  heading2: {
-    fontSize: 17,
-    fontWeight: '600',
-    fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
-    marginTop: 12,
-    marginBottom: 6,
-  },
-  heading3: {
-    fontSize: 16,
-    fontWeight: '600',
-    fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
-    marginTop: 8,
-    marginBottom: 4,
-  },
-  paragraph: {
-    marginBottom: 8,
-  },
-  bullet_list: {
-    marginBottom: 8,
-  },
-  ordered_list: {
-    marginBottom: 8,
-  },
-  list_item: {
-    marginBottom: 4,
-  },
-  strong: {
-    fontWeight: '700',
-    fontFamily: FONTS.bodyBold,
-  },
-  hr: {
-    backgroundColor: COLORS.border,
-    height: 1,
-    marginVertical: 12,
-  },
-});
-
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
   },
   keyboardView: {
     flex: 1,
@@ -331,7 +334,7 @@ const styles = StyleSheet.create({
   backText: {
     fontSize: 15,
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.brand600,
+    color: colors.brand600,
   },
   messagesContainer: {
     flex: 1,
@@ -355,7 +358,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   userBubble: {
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     borderTopLeftRadius: RADIUS.xl,
     borderTopRightRadius: RADIUS.xl,
     borderBottomLeftRadius: RADIUS.xl,
@@ -363,9 +366,9 @@ const styles = StyleSheet.create({
     ...SHADOWS.sm,
   },
   assistantBubble: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     borderTopLeftRadius: RADIUS.xl,
     borderTopRightRadius: RADIUS.xl,
     borderBottomLeftRadius: RADIUS.sm,
@@ -384,16 +387,16 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '500',
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.brand700,
+    color: colors.brand700,
   },
   messageText: {
     fontSize: 16,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     lineHeight: 24,
   },
   userMessageText: {
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
   loadingDots: {
     flexDirection: 'row',
@@ -405,7 +408,7 @@ const styles = StyleSheet.create({
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: COLORS.brand400,
+    backgroundColor: colors.brand400,
   },
   dotDelayed1: {
     opacity: 0.7,
@@ -419,9 +422,9 @@ const styles = StyleSheet.create({
   suggestionButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: COLORS.brand50,
+    backgroundColor: colors.brand50,
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
     borderRadius: RADIUS.md,
     paddingHorizontal: 12,
     paddingVertical: 10,
@@ -438,15 +441,15 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '500',
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.brand700,
+    color: colors.brand700,
   },
   suggestionSubtitle: {
     fontSize: 13,
-    color: COLORS.brand600,
+    color: colors.brand600,
   },
   suggestionPlus: {
     fontSize: 20,
-    color: COLORS.brand600,
+    color: colors.brand600,
     fontWeight: '500',
   },
   notesContainer: {
@@ -455,9 +458,9 @@ const styles = StyleSheet.create({
   noteButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: COLORS.amberBg,
+    backgroundColor: colors.amberBg,
     borderWidth: 1,
-    borderColor: COLORS.amber,
+    borderColor: colors.amber,
     borderRadius: RADIUS.md,
     paddingHorizontal: 12,
     paddingVertical: 10,
@@ -474,31 +477,31 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '500',
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.amber,
+    color: colors.amber,
   },
   noteSubtitle: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.amber,
+    color: colors.amber,
   },
   notePlus: {
     fontSize: 20,
-    color: COLORS.amber,
+    color: colors.amber,
     fontWeight: '500',
   },
   errorContainer: {
     marginHorizontal: 20,
     marginBottom: 8,
     padding: 12,
-    backgroundColor: COLORS.dangerBg,
+    backgroundColor: colors.dangerBg,
     borderWidth: 1,
-    borderColor: COLORS.danger,
+    borderColor: colors.danger,
     borderRadius: RADIUS.md,
   },
   errorText: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.danger,
+    color: colors.danger,
   },
   inputContainer: {
     flexDirection: 'row',
@@ -509,20 +512,20 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
     borderRadius: RADIUS.lg,
     paddingHorizontal: 16,
     paddingVertical: 12,
     fontSize: 16,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     maxHeight: 100,
     minHeight: 48,
   },
   sendButton: {
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     borderRadius: RADIUS.xl,
     paddingHorizontal: 20,
     paddingVertical: 12,
@@ -537,14 +540,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
   disclaimer: {
     fontSize: 12,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     textAlign: 'center',
     paddingHorizontal: 20,
     paddingBottom: 8,
   },
-});
+}));

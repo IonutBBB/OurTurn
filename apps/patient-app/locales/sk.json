@@ -1,0 +1,176 @@
+{
+  "common": {
+    "appName": "OurTurn",
+    "save": "Uložiť",
+    "cancel": "Zrušiť",
+    "delete": "Odstrániť",
+    "edit": "Upraviť",
+    "done": "Hotovo",
+    "skip": "Preskočiť na dnes",
+    "or": "alebo",
+    "loading": "Načítava sa...",
+    "error": "Niečo sa pokazilo. Skúste to znova.",
+    "errorTitle": "Niečo sa pokazilo",
+    "errorDefault": "Vyskytla sa neočakávaná chyba.",
+    "tryAgain": "Skúsiť znova",
+    "offline": "Ste offline – vaše údaje sa synchronizujú po pripojení",
+    "synced": "Synchronizované"
+  },
+  "categories": {
+    "medication": "Lieky",
+    "nutrition": "Jedlá a výživa",
+    "physical": "Fyzická aktivita",
+    "cognitive": "Starostlivosť o mozog",
+    "social": "Spoločenský život a spojenie",
+    "health": "Kontrola zdravia"
+  },
+  "patientApp": {
+    "todaysPlan": {
+      "title": "Dnešný plán",
+      "progress": "{{completed}} z {{total}} aktivít dnes dokončených",
+      "noPlan": "Na dnes nie sú naplánované žiadne aktivity. Vaša rodina to pripravuje!",
+      "overdue": "Po termíne",
+      "upcoming": "Pripravované",
+      "nowBadge": "TERAZ",
+      "doneAt": "Dokončené o {{time}}",
+      "greatMorning": "Krásne ráno!",
+      "keepGoing": "Darí sa vám skvele!",
+      "allDone": "Na dnes všetko hotové!",
+      "tapToStart": "Klepnutím spustíte aktivitu pre starostlivosť o mozog",
+      "opensActivity": "Otvorí dnešnú aktivitu pre starostlivosť o mozog"
+    },
+    "help": {
+      "title": "Potrebujem pomoc",
+      "callSomeone": "Zavolať niekomu",
+      "getHomeSafely": "Dostať sa bezpečne domov",
+      "takeMeHome": "Zobrať ma domov",
+      "takeMeHomeDesc": "Klepnutím získate pešie trasy do vášho domova",
+      "emergency": "Núdzový stav",
+      "confirmEmergency": "Ste si istý, že chcete zavolať záchranné služby?"
+    },
+    "sos": {
+      "button": "SOS",
+      "label": "SOS",
+      "holdHint": "Podržte 2 sekundy, aby ste odoslali upozornenie svojej rodine",
+      "helpOnTheWay": "Pomoc je na ceste",
+      "familyNotified": "Vaša rodina bola upozornená",
+      "callCaregiver": "Zavolať {{name}}",
+      "imOkay": "Som v poriadku, vrátiť sa"
+    },
+    "consent": {
+      "yes": "Áno",
+      "no": "Nie",
+      "locationTracking": {
+        "title": "Zdieľať vašu polohu?",
+        "description": "Aby vám vaša rodina mohla pomôcť bezpečne sa dostať domov"
+      },
+      "dataCollection": {
+        "title": "Uložiť vaše denné informácie?",
+        "description": "Aby vaša rodina videla, ako sa vám darí"
+      },
+      "pushNotifications": {
+        "title": "Dostávať pripomienky?",
+        "description": "Užitočné upozornenia na jedlá a aktivity"
+      },
+      "dataSharing": {
+        "title": "Zdieľať s vašou rodinou?",
+        "description": "Aby vás vaši opatrovatelia mohli podporovať"
+      },
+      "voiceRecording": {
+        "title": "Nahrávať hlasové správy?",
+        "description": "Aby ste mohli zanechávať správy pre svoju rodinu"
+      }
+    },
+    "essential": {
+      "music": "Hudba",
+      "callHelp": "Zavolať o pomoc"
+    },
+    "checkin": {
+      "greeting": {
+        "morning": "Dobré ráno, {{name}}!",
+        "afternoon": "Dobré popoludnie, {{name}}!",
+        "evening": "Dobrý večer, {{name}}!"
+      },
+      "moodQuestion": "Ako sa dnes cítite?",
+      "moodGood": "Dobre",
+      "moodOkay": "Priemerne",
+      "moodBad": "Nie veľmi dobre",
+      "sleepQuestion": "Spali ste dobre?",
+      "sleepGood": "Áno",
+      "sleepOkay": "Tak-tak",
+      "sleepBad": "Nie veľmi",
+      "voicePrompt": "Chcete niečo povedať svojej rodine?",
+      "voiceTap": "Klepnutím hovorte",
+      "voiceRecording": "Nahrávanie...",
+      "voiceStop": "Zastaviť",
+      "voicePlay": "Prehrať",
+      "voicePause": "Pozastaviť",
+      "voiceDiscard": "Nahrať znova",
+      "send": "Odoslať rodine",
+      "skipVoice": "Preskočiť hlasovú správu",
+      "thankYou": "Ďakujem! Vaša rodina to uvidí.",
+      "alreadyDone": "Dnes ste sa už prihlásili!",
+      "tapToCheckin": "Klepnutím sa prihláste",
+      "opensCheckin": "Otvorí obrazovku dennej registrácie"
+    },
+    "activity": {
+      "title": "Dnešná aktivita",
+      "noActivity": "Na dnes žiadna aktivita",
+      "comeBackLater": "Zajtra sa vráťte a pozrite si novú aktivitu!",
+      "tapToSpeak": "Klepnutím hovorte",
+      "tapToStop": "Klepnutím zastavte nahrávanie",
+      "typeInstead": "Napíšte svoju odpoveď namiesto toho",
+      "typeHere": "Napíšte svoju odpoveď sem...",
+      "speakInstead": "Hovorte namiesto toho",
+      "recordAgain": "Nahrať znova",
+      "skipForToday": "Preskočiť na dnes",
+      "defaultFollowUp": "Aká nádherná spomienka! Ďakujem, že ste sa podelili.",
+      "listenToSong": "Počúvať pieseň",
+      "photoMemory": "Spomienka z vášho života"
+    },
+    "careCode": {
+      "welcome": "Vitajte v OurTurn",
+      "enterCode": "Zadajte svoj kód starostlivosti",
+      "helperText": "Tento kód vám poskytne člen vašej rodiny.",
+      "connect": "Pripojiť",
+      "invalidCode": "Skontrolujte svoj kód a skúste to znova.",
+      "connecting": "Pripája sa...",
+      "digitLabel": "Číslica {{current}} z {{total}}",
+      "changeLanguage": "Zmeniť jazyk"
+    },
+    "tabs": {
+      "today": "Dnes",
+      "help": "Pomoc"
+    },
+    "taskPhoto": {
+      "taskPhoto": "Fotografia úlohy (voliteľné)",
+      "uploadPhoto": "Nahrať fotografiu",
+      "removePhoto": "Odstrániť fotografiu",
+      "medicationItems": "Lieky v tejto skupine",
+      "medicationItemsHint": "Zoskupte až 3 lieky užívané súčasne",
+      "addMedication": "Pridať liek",
+      "medName": "Názov lieku",
+      "medDosage": "Dávkovanie",
+      "removeMedication": "Odstrániť",
+      "maxMedications": "Maximálne 3 lieky na skupinu",
+      "uploadingPhoto": "Nahráva sa..."
+    }
+  },
+  "a11y": {
+    "doubleTapToComplete": "Dvojitým klepnutím označíte ako hotové",
+    "callContact": "Zavolať {{name}}",
+    "emergencyCallConfirmHint": "Pred volaním sa zobrazí potvrdenie",
+    "takeMeHomeHint": "Otvorí navigáciu na vašu domácu adresu",
+    "gettingLocation": "Získava sa vaša poloha",
+    "removesVoiceRecording": "Odstráni vašu hlasovú nahrávku",
+    "submittingCheckin": "Odosiela sa vaša registrácia"
+  },
+  "locationTracking": {
+    "backgroundNotificationTitle": "OurTurn vás chráni",
+    "backgroundNotificationBody": "Vaša rodina vidí, že ste v poriadku"
+  },
+  "notifications": {
+    "taskReminder": "{{patientName}}, je čas na: {{taskTitle}}",
+    "checkinPrompt": "Čas na vašu dennú registráciu!"
+  }
+}

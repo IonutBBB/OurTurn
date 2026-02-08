@@ -1,0 +1,1392 @@
+{
+  "common": {
+    "appName": "OurTurn",
+    "save": "Issejvja",
+    "cancel": "Ikkanċella",
+    "delete": "Ħassar",
+    "edit": "Editja",
+    "done": "Magħmul",
+    "skip": "Aqbeż għal-lum",
+    "loading": "Qed jitgħabba...",
+    "error": "Xi ħaġa marret ħażin. Jekk jogħġbok erġa' pprova.",
+    "errorTitle": "Xi ħaġa marret ħażin",
+    "errorDefault": "Seħħ żball mhux mistenni.",
+    "tryAgain": "Erġa' pprova",
+    "logOut": "Oħroġ",
+    "offline": "Int offline — id-data tiegħek se tissinkronizza meta tkun konness/a",
+    "synced": "Sinkronizzat",
+    "viewMore": "Ara aktar",
+    "back": "Lura",
+    "next": "Li jmiss",
+    "confirm": "Ikkonferma",
+    "yes": "Iva",
+    "no": "Le",
+    "you": "Int",
+    "unknown": "Mhux magħruf",
+    "saving": "Qed nissejvja...",
+    "primary": "Primarju"
+  },
+  "categories": {
+    "medication": "Medikazzjoni",
+    "nutrition": "Ikel u Nutrizzjoni",
+    "physical": "Attività Fiżika",
+    "cognitive": "Benessri tal-Moħħ",
+    "social": "Soċjali u Konnessjoni",
+    "health": "Kontroll tas-Saħħa"
+  },
+  "caregiverApp": {
+    "dashboard": {
+      "greeting": "Il-{{timeOfDay}} t-tajba, {{name}}",
+      "statusGood": "Il-ġurnata ta' {{patientName}} sejra tajjeb",
+      "statusConcern": "{{patientName}} jista' jkollu bżonn ftit attenzjoni",
+      "todaysStatus": "L-Istatus tal-lum",
+      "tasksCompleted": "{{completed}} minn {{total}} kompiti magħmula",
+      "dailyCheckin": "Check-In ta' Kuljum",
+      "noCheckinYet": "Għadu ma ġie sottomess l-ebda check-in illum",
+      "location": "Post",
+      "atHome": "{{name}} jinsab/qiegħda d-dar",
+      "lastUpdate": "Aġġornat l-aħħar: {{time}}",
+      "aiInsights": "Għarfien",
+      "quickActions": "Azzjonijiet Rapidi",
+      "callPatient": "Ċempel lil {{name}}",
+      "tasksCompletedLabel": "kompiti kompluti",
+      "careCode": "Kodiċi tal-Kura",
+      "careCodeHint": "Aqsam biex tikkonnettja l-app tal-pazjent",
+      "careCodeNotAvailable": "Kodiċi mhux disponibbli",
+      "morningActivityPattern": "Mudell ta' Attività ta' Filgħodu",
+      "insightText": "{{name}} jlesti/t l-aktar kompiti fil-ġranet meta jkun hemm mixjiet ta' filgħodu skedati.",
+      "noJournalEntries": "Għad m'hemm l-ebda entrata fil-ġurnal",
+      "unknown": "Mhux magħruf",
+      "moodStruggling": "Qed jitħabat",
+      "moodLow": "Baxx",
+      "moodOkay": "Tajjeb",
+      "moodGood": "Tajjeb",
+      "moodGreat": "Eċċellenti",
+      "sleepPoor": "Ħażin",
+      "sleepFair": "Fiera",
+      "sleepWell": "Tajjeb",
+      "mood": "Burdata",
+      "sleep": "Irqad",
+      "minutesAgo": "{{count}}m ilu",
+      "hoursAgo": "{{count}}siegħa ilu",
+      "daysAgo": "{{count}}jum ilu",
+      "deviceStatus": "Status tal-Apparat",
+      "deviceOnline": "Online",
+      "deviceOffline": "Offline",
+      "lastSeenAt": "Deher l-aħħar: {{time}}",
+      "lastSeenNever": "Qatt ma kkonnettja",
+      "engagementSummary": "Impenn tal-lum",
+      "alertsToday": "Twissijiet illum",
+      "checkedIn": "Għamel check-in",
+      "notCheckedIn": "Ma għamilx check-in",
+      "brainActivity": "Attività tal-moħħ"
+    },
+    "carePlan": {
+      "title": "Il-Pjan ta' Kuljum ta' {{name}}",
+      "addTask": "Żid Kompitu",
+      "aiSuggest": "Suġġerimenti ta' Kompiti mill-AI",
+      "hintLabel": "Istruzzjonijiet ({{name}} se jara dan)",
+      "hintPlaceholder": "Eż., Il-pilloli tiegħek jinsabu fil-kaxxa tal-pilloli fuq il-bank tal-kċina",
+      "recurrence": "Jirrepeti",
+      "daily": "Kuljum",
+      "specificDays": "Ġranet speċifiċi",
+      "oneTime": "Darba waħda",
+      "copyDay": "Ikkopja għal ġranet oħra",
+      "saved": "Issejvjat",
+      "noTasks": "Għad m'hemm l-ebda kompitu. Żid l-ewwel kompitu tiegħek biex tibda.",
+      "category": "Kategorija",
+      "taskTitle": "Titolu tal-kompitu",
+      "time": "Ħin",
+      "deleteConfirm": "Trid tħassar dan il-kompitu?",
+      "noMoreSuggestions": "M'hemmx aktar suġġerimenti disponibbli.",
+      "copyFromTo": "Ikkopja l-kompiti minn {{day}} għal:",
+      "copyCount": "{{taskCount}} kompiti se jiġu kkupjati għal {{dayCount}} jum/ijiet",
+      "days": {
+        "mon": "Tne",
+        "tue": "Mar",
+        "wed": "Erb",
+        "thu": "Ħam",
+        "fri": "Ġim",
+        "sat": "Sibt",
+        "sun": "Ħad"
+      },
+      "taskPhoto": "Ritratt tal-Kompitu (mhux obbligatorju)",
+      "uploadPhoto": "Tella' Ritratt",
+      "removePhoto": "Neħħi Ritratt",
+      "medicationItems": "Medikazzjonijiet f'dan il-grupp",
+      "medicationItemsHint": "Iġbor sa 3 medikazzjonijiet li jittieħdu fl-istess ħin",
+      "addMedication": "Żid Medikazzjoni",
+      "medName": "Isem tal-medikazzjoni",
+      "medNamePlaceholder": "eż. Donepezil",
+      "medDosage": "Dożaġġ jew istruzzjoni",
+      "medDosagePlaceholder": "eż. Pillola ta' 10mg",
+      "medPhotoLabel": "Ritratt",
+      "medItemLabel": "Medikazzjoni {{number}}",
+      "removeMedication": "Neħħi",
+      "maxMedications": "Massimu ta' 3 medikazzjonijiet għal kull grupp",
+      "uploadingPhoto": "Qed ittella'...",
+      "evidenceBased": "Ibbażat fuq l-evidenza"
+    },
+    "location": {
+      "title": "Post u Sigurtà",
+      "currentLocation": "Post Attwali",
+      "safeZones": "Żoni Sikuri",
+      "addSafeZone": "Żid Żona Sikura",
+      "editSafeZone": "Editja Żona Sikura",
+      "alerts": "Settings ta' Twissijiet",
+      "leaveZoneAlert": "Avża meta {{name}} titlaq żona sikura",
+      "inactivityAlert": "Avża meta ma jkunx hemm moviment għal",
+      "nightAlert": "Avża meta tkun barra wara",
+      "takeMeHomeAlert": "Avża meta {{name}} taptap 'Ħudni d-Dar'",
+      "locationHistory": "Storja tal-Post",
+      "takeMeHomeTapped": "{{name}} taptap 'Ħudni d-Dar'",
+      "hours": "sigħat",
+      "zoneName": "Isem taż-żona",
+      "zoneRadius": "Raġġ (metri)",
+      "unknownLocation": "Post mhux magħruf",
+      "completeOnboarding": "Jekk jogħġbok lesti l-ewwel l-integrazzjoni.",
+      "unacknowledgedAlerts": "{{count}} Twissija Mhux Rikonoxxuta",
+      "unacknowledgedAlertsPlural": "{{count}} Twissijiet Mhux Rikonoxxuti",
+      "acknowledge": "Irrikonoxxi",
+      "patientLocation": "Il-Post ta' {{name}}",
+      "updated": "Aġġornat: {{time}}",
+      "noLocationData": "Għad m'hemm l-ebda data tal-post",
+      "live": "Live",
+      "add": "+ Żid",
+      "noSafeZonesYet": "Għad m'hemm l-ebda żona sikura kkonfigurata.\nŻid żoni biex tirċievi twissijiet meta {{name}} titlaq.",
+      "radiusMeters": "Raġġ ta' {{radius}}m",
+      "recentAlerts24h": "Twissijiet Riċenti (24 siegħa)",
+      "noRecentAlerts": "L-ebda twissija fl-aħħar 24 siegħa. Kollox sew!",
+      "deleteSafeZone": "Ħassar Żona Sikura",
+      "deleteSafeZoneConfirm": "Żgur li trid tħassar \"{{name}}\"?",
+      "failedToSaveSafeZone": "Naqas li jissejvja ż-żona sikura",
+      "failedToDeleteSafeZone": "Naqas li titħassar iż-żona sikura",
+      "fillAllFields": "Jekk jogħġbok imla l-oqsma kollha",
+      "name": "Isem",
+      "nameExample": "eż., Dar, Uffiċċju tat-Tabib",
+      "latitude": "Latitudni",
+      "longitude": "Lonġitudni",
+      "radiusHint": "Rakkomandat: 100-500 metru għal postijiet tipiċi",
+      "mapView": "Dehra tal-Mappa",
+      "mapRequiresBuild": "Il-mapep jeħtieġu build ta' żvilupp.\nUża EAS Build biex tippermetti l-mapep.",
+      "home": "Dar",
+      "patient": "Pazjent",
+      "alertTypeLeftSafeZone": "Telaq iż-Żona Sikura",
+      "alertTypeInactive": "Inattiv",
+      "alertTypeNightMovement": "Moviment bil-Lejl",
+      "alertTypeTakeMeHomeTapped": "Ġie Mismugħ Ħudni d-Dar",
+      "alertTypeSosTriggered": "SOS Ġie Attivat",
+      "invalidLatitude": "Jekk jogħġbok daħħal latitudni valida (-90 sa 90)",
+      "invalidLongitude": "Jekk jogħġbok daħħal lonġitudni valida (-180 sa 180)",
+      "invalidRadius": "Jekk jogħġbok daħħal valur pożittiv tar-raġġ"
+    },
+    "coach": {
+      "title": "Kowċ tal-Kura AI",
+      "tabs": {
+        "chat": "Chat",
+        "behaviours": "Imġieba",
+        "resources": "Riżorsi"
+      },
+      "resources": {
+        "title": "Riżorsi",
+        "subtitle": "Gwidi, artikli u appoġġ lokali biex jgħinuk fil-vjaġġ tiegħek ta' min jieħu ħsieb",
+        "linkLabel": "Riżorsi u Gwidi"
+      },
+      "intro": "Staqsini kwalunkwe ħaġa dwar il-kura ta' {{name}}. Naf ir-rutina, il-preferenzi u l-aħjar prattiki ġenerali tagħhom.",
+      "placeholder": "Ikteb il-mistoqsija tiegħek...",
+      "disclaimer": "Jien hawn biex nappoġġjak, mhux biex nissostitwixxi parir mediku. Għal tħassib dwar is-saħħa, dejjem ikkonsulta lit-tabib tiegħek.",
+      "disclaimerShort": "Il-Kowċ tal-Kura jipprovdi gwida ġenerali biss. Dejjem ikkonsulta professjonisti tal-kura tas-saħħa għal parir mediku.",
+      "suggestedTopics": "Suġġetti suġġeriti",
+      "addToCarePlan": "Żid mal-pjan tal-kura",
+      "addToDoctorNotes": "Żid man-noti tat-tabib",
+      "newConversation": "Konverżazzjoni ġdida",
+      "newChat": "Chat Ġdid",
+      "careCoach": "Kowċ tal-Kura",
+      "completeOnboarding": "Jekk jogħġbok lesti l-ewwel l-integrazzjoni.",
+      "greeting": "Hi {{name}}!",
+      "greetingIntro": "Jien hawn biex ngħinek tieħu ħsieb {{patientName}}. Staqsini kwalunkwe ħaġa dwar il-kura ta' kuljum, l-attivitajiet jew il-ġestjoni ta' sitwazzjonijiet diffiċli.",
+      "tryAsking": "Ipprova staqsi:",
+      "askAbout": "Staqsi dwar il-kura ta' {{name}}...",
+      "send": "Ibgħat",
+      "signingIn": "Qed jidħol",
+      "taskAddedSuccess": "Kompitu miżjud mal-pjan tal-kura!",
+      "taskAddedError": "Naqas milli jżid il-kompitu. Jekk jogħġbok erġa' pprova.",
+      "noteAddedSuccess": "Nota ssejvjata għaż-żjara tat-tabib!",
+      "noteAddedError": "Naqas milli jissejvja n-nota. Jekk jogħġbok erġa' pprova.",
+      "addToCarePlanButton": "Żid mal-Pjan tal-Kura",
+      "saveForDoctorVisit": "Issejvja għaż-Żjara tat-Tabib",
+      "success": "Suċċess",
+      "suggestions": {
+        "sundowning": "Kif nittratta s-sundowning?",
+        "rainyDays": "Liema attivitajiet jaħdmu għal ġranet tax-xita?",
+        "siblings": "Għinni nitkellem ma' ħuti dwar il-qsim tal-kura",
+        "refusesFood": "{{name}} jirrifjuta li jiekol. Għajnuna.",
+        "repetitive": "Kif nittratta mistoqsijiet ripetittivi?"
+      },
+      "hub": {
+        "backToHub": "Lura għall-Kowċ",
+        "insight": {
+          "title": "Għalik",
+          "discuss": "Iddiskuti",
+          "fallback": "Iċċekkja l-ġurnata ta' {{name}} biex tikseb għarfien personalizzat"
+        },
+        "rightNow": {
+          "title": "Bħalissa",
+          "subtitle": "Għajnuna fil-mument",
+          "refusing_food": "Jirrifjuta l-ikel",
+          "refusing_medication": "Mhux se jieħu l-medikazzjoni",
+          "agitated": "Aġitat",
+          "not_recognizing": "Ma jagħrafnix",
+          "repetitive_questions": "L-istess mistoqsija għal darb'oħra",
+          "sundowning": "Sundowning",
+          "wants_to_leave": "Irid jitlaq",
+          "caregiver_overwhelmed": "Qed nitlef il-paċenzja"
+        },
+        "planPrepare": {
+          "title": "Ippjana u Ipprepara",
+          "subtitle": "Flussi tax-xogħol iggwidati",
+          "plan_tomorrow": "Ippjana għada",
+          "plan_tomorrow_desc": "Ibni ġurnata mill-isbaħ flimkien",
+          "doctor_visit": "Ipprepara għaż-żjara tat-tabib",
+          "doctor_visit_desc": "Iġġenera sommarju strutturat",
+          "review_week": "Irrevedi din il-ġimgħa",
+          "review_week_desc": "X'mar tajjeb, x'jeħtieġ attenzjoni",
+          "adjust_plan": "Aġġusta l-pjan tal-kura",
+          "adjust_plan_desc": "Ottimizza abbażi ta' dak li qed jaħdem"
+        },
+        "learn": {
+          "title": "Tgħallem",
+          "subtitle": "Gwidi tas-suġġetti għal {{name}}",
+          "daily_routines": "Rutini ta' Kuljum",
+          "communication": "Komunikazzjoni",
+          "behaviors": "Imġieba",
+          "activities": "Attivitajiet",
+          "nutrition": "Nutrizzjoni",
+          "safety": "Sikurezza",
+          "sleep": "Irqad u Lejl"
+        },
+        "askAnything": {
+          "title": "Staqsi Kwalunkwe Ħaġa",
+          "placeholder": "X'hemm f'moħħok dwar il-kura ta' {{name}}?"
+        }
+      }
+    },
+    "family": {
+      "title": "It-Tim tal-Kura ta' {{patientName}}",
+      "inviteMember": "Stieden Membru tal-Familja",
+      "primaryCaregiver": "Min jieħu ħsieb primarju",
+      "familyMember": "Membru tal-familja",
+      "careCode": "Kodiċi tal-Kura",
+      "careCodeHelp": "Aqsam dan il-kodiċi biex tgħaqqad l-app tal-pazjent",
+      "regenerateCode": "Iġġenera mill-ġdid il-Kodiċi",
+      "regenerateWarning": "Dan se jiskonnettja l-apparat kollu tal-pazjent imqabbad. Huma ser jeħtieġu l-kodiċi l-ġdid.",
+      "journal": "Ġurnal tal-Kura",
+      "addNote": "Żid nota",
+      "observation": "Osservazzjoni",
+      "note": "Nota",
+      "milestone": "Pass importanti",
+      "inviteEmail": "Indirizz elettroniku",
+      "inviteName": "Isem",
+      "inviteRelationship": "Relazzjoni",
+      "familyCircle": "Ċirku tal-Familja",
+      "back": "Lura",
+      "family": "Familja",
+      "careJournal": "Ġurnal tal-Kura",
+      "inviteFamilyMembers": "Stieden Membri tal-Familja",
+      "shareCareCodeDesc": "Aqsam il-Kodiċi tal-Kura tiegħek biex tħalli membri oħra tal-familja jingħaqdu.",
+      "showCareCode": "Uri l-Kodiċi tal-Kura",
+      "copy": "Ikkopja",
+      "share": "Aqsam",
+      "copied": "Ikkopjat!",
+      "codeCopiedToClipboard": "Il-Kodiċi tal-Kura ġie kkupjat fil-clipboard",
+      "familyMembers": "Membri tal-Familja ({{count}})",
+      "you": "Int",
+      "primary": "Primarju",
+      "entryPlaceholder": "Żid nota, osservazzjoni, jew pass importanti...",
+      "posting": "Qed jippubblika...",
+      "post": "Ippubblika",
+      "noJournalEntries": "Għad m'hemm l-ebda entrata fil-ġurnal.",
+      "startDocumenting": "Ibda d-dokumentazzjoni tal-vjaġġ tal-kura tiegħek!",
+      "yesterday": "Il-bieraħ",
+      "failedToAddEntry": "Naqas li żżid l-entrata. Jekk jogħġbok erġa' pprova.",
+      "shareCareCodeMessage": "Ingħaqad maċ-ċirku tal-kura OurTurn tiegħi! Uża dan il-Kodiċi tal-Kura: {{code}}",
+      "deleteConfirmTitle": "Ħassar l-Entrata tal-Ġurnal",
+      "deleteConfirmMessage": "Żgur li trid tħassar din l-entrata tal-ġurnal? Dan ma jistax jitneħħa.",
+      "edited": "(editjat)",
+      "crisis": "Kriżi",
+      "canEditPlan": "Jista' jeditja l-pjan",
+      "receivesAlerts": "Jirċievi twissijiet",
+      "caregiverLimitReached": "Int laħaq il-limitu tal-livell b'xejn għall-membri tal-familja. Aġġorna biex iżżid aktar."
+    },
+    "toolkit": {
+      "pageTitle": "Sett ta' Għodod għall-Persuna li Tieħu Ħsieb",
+      "pageSubtitle": "Għodod prattiċi u appoġġ għall-benesseri tiegħek",
+      "introMessage": "Hi {{name}}! Dan huwa l-ispazju tiegħek għal serħan, appoġġ u kura personali malajr.",
+      "checkin": {
+        "title": "Kif int illum?",
+        "energy": "Enerġija",
+        "energyLow": "Eżawrit",
+        "energyHigh": "Enerġizzat",
+        "stress": "Stress",
+        "stressLow": "Kalm",
+        "stressHigh": "Megħlub",
+        "sleep": "Kwalità tal-Irqad",
+        "sleepLow": "Terribbli",
+        "sleepHigh": "Kbira"
+      },
+      "relief": {
+        "title": "Stazzjon ta' Serħan Rapidu",
+        "recommended": "Irrakkomandat",
+        "duration": "{{min}} min",
+        "startExercise": "Ibda",
+        "stepOf": "Pass {{current}} minn {{total}}",
+        "complete": "Prosit! Eżerċizzju komplut.",
+        "close": "Agħlaq",
+        "pause": "Pawża",
+        "resume": "Kompli",
+        "exercises": {
+          "box-breathing": {
+            "name": "Nifs fil-Kaxxa",
+            "step0": "Ikkumfita ruħek u agħlaq għajnejk",
+            "step1": "Nifs bil-mod minn imnieħrek",
+            "step2": "Żomm in-nifs bil-mod",
+            "step3": "Oħroġ in-nifs bil-mod minn ħalqek",
+            "step4": "Żomm qabel in-nifs li jmiss",
+            "step5": "Nifs bil-mod minn imnieħrek",
+            "step6": "Żomm in-nifs bil-mod",
+            "step7": "Oħroġ in-nifs bil-mod minn ħalqek",
+            "step8": "Żomm qabel in-nifs li jmiss",
+            "step9": "Nifs bil-mod minn imnieħrek",
+            "step10": "Żomm in-nifs bil-mod",
+            "step11": "Oħroġ in-nifs bil-mod minn ħalqek",
+            "step12": "Żomm qabel in-nifs li jmiss",
+            "step13": "Nifs bil-mod minn imnieħrek",
+            "step14": "Żomm in-nifs bil-mod",
+            "step15": "Oħroġ in-nifs bil-mod minn ħalqek",
+            "step16": "Żomm qabel in-nifs li jmiss",
+            "step17": "Nifs bil-mod minn imnieħrek",
+            "step18": "Żomm in-nifs bil-mod",
+            "step19": "Oħroġ in-nifs bil-mod minn ħalqek",
+            "step20": "Żomm qabel in-nifs li jmiss",
+            "step21": "Nifs bil-mod minn imnieħrek",
+            "step22": "Żomm in-nifs bil-mod",
+            "step23": "Oħroġ in-nifs bil-mod minn ħalqek",
+            "step24": "Prosit. Ħu mument biex tinnota kif tħossok."
+          },
+          "54321-grounding": {
+            "name": "5-4-3-2-1 Ankorar",
+            "step0": "Ħu nifs bil-mod u fil-fond u ħares madwarek",
+            "step1": "Semmi 5 affarijiet li tista' TARA bħalissa",
+            "step2": "Semmi 4 affarijiet li tista' Tmiss bħalissa",
+            "step3": "Semmi 3 affarijiet li tista' Tisma' bħalissa",
+            "step4": "Semmi 2 affarijiet li tista' Xamm bħalissa",
+            "step5": "Semmi ħaġa waħda li tista' Togħma bħalissa",
+            "step6": "Erġa' ħu nifs fil-fond. Int hawn, u int sigur."
+          },
+          "gratitude-moment": {
+            "name": "Mument ta' Gratitudni",
+            "step0": "Agħlaq għajnejk u ħu nifs kalm",
+            "step1": "Aħseb f'persuna waħda li int grat għaliha u għaliex",
+            "step2": "Aħseb f'ħaġa waħda li ġrat illum li kienet tajba, anke jekk żgħira",
+            "step3": "Aħseb f'ħaġa waħda dwarek innifsek li tapprezza",
+            "step4": "Żomm dawk it-tliet affarijiet f'moħħok u nifs fil-fond",
+            "step5": "Ġorr dan is-sentiment ta' gratitudni miegħek."
+          },
+          "progressive-muscle-relaxation": {
+            "name": "Rilassament Progressiv tal-Muskoli",
+            "step0": "Oqgħod bilqiegħda jew imtedd komdu. Agħlaq għajnejk.",
+            "step1": "Agħfas iż-żewġ ponnijiet sewwa għal 5 sekondi...",
+            "step2": "Itlaq u ħoss it-tensjoni tinħall",
+            "step3": "Tensjoni l-ispallejn tiegħek — erfa'hom lejn widnejk...",
+            "step4": "Itlaq u ħalli l-ispallejn tiegħek jinżlu",
+            "step5": "Agħfas wiċċek sewwa — forehead, għajnejn, xedaq...",
+            "step6": "Itlaq u ħalli wiċċek jirrilassa kompletament",
+            "step7": "Tensjoni l-muskoli tal-istonku tiegħek...",
+            "step8": "Itlaq u nifs f'żaqqek",
+            "step9": "Agħfas riġlejk u saqajk sewwa...",
+            "step10": "Itlaq u ħoss is-sħana tgħaddi minn riġlejk",
+            "step11": "Nifs fil-fond. Ġismek kollu huwa rilassat.",
+            "step12": "Iftaħ għajnejk bil-mod meta tkun lest."
+          },
+          "mindful-break": {
+            "name": "Pawża Konxja",
+            "step0": "Ieqaf dak li qed tagħmel. Dan il-mument huwa tiegħek.",
+            "step1": "Agħlaq għajnejk u ħu 3 nifsijiet bil-mod u fil-fond",
+            "step2": "Innota kif iħoss ġismek bħalissa — m'hemmx bżonn tibdel xejn",
+            "step3": "Isma' l-ħsejjes ta' madwarek, viċin u 'l bogħod",
+            "step4": "Ħoss il-wiċċ ta' taħtek u l-arja fuq il-ġilda tiegħek",
+            "step5": "Għid fis-skiet: \"Qed nagħmel l-almu tiegħi, u dan huwa biżżejjed.\"",
+            "step6": "Ħu nifs fil-fond ieħor",
+            "step7": "Iftaħ għajnejk bil-mod. Int imġedded."
+          },
+          "breathing-478": {
+            "name": "Nifs 4-7-8",
+            "step0": "Oqgħod bil-kumdità u rrilassa spallejk",
+            "step1": "Nifs 'il ġewwa bil-kwiet minn imnieħrek għal 4 għaddiet",
+            "step2": "Żomm in-nifs tiegħek għal 7 għaddiet",
+            "step3": "Oħroġ in-nifs kompletament minn ħalqek għal 8 għaddiet",
+            "step4": "Nifs 'il ġewwa bil-kwiet minn imnieħrek għal 4 għaddiet",
+            "step5": "Żomm in-nifs tiegħek għal 7 għaddiet",
+            "step6": "Oħroġ in-nifs kompletament minn ħalqek għal 8 għaddiet",
+            "step7": "Nifs 'il ġewwa bil-kwiet minn imnieħrek għal 4 għaddiet",
+            "step8": "Żomm in-nifs tiegħek għal 7 għaddiet",
+            "step9": "Oħroġ in-nifs kompletament minn ħalqek għal 8 għaddiet",
+            "step10": "Nifs 'il ġewwa bil-kwiet minn imnieħrek għal 4 għaddiet",
+            "step11": "Żomm in-nifs tiegħek għal 7 għaddiet",
+            "step12": "Oħroġ in-nifs kompletament minn ħalqek għal 8 għaddiet",
+            "step13": "Nifs 'il ġewwa bil-kwiet minn imnieħrek għal 4 għaddiet",
+            "step14": "Żomm in-nifs tiegħek għal 7 għaddiet",
+            "step15": "Oħroġ in-nifs kompletament minn ħalqek għal 8 għaddiet",
+            "step16": "Innota kemm ġismek iħossu aktar kalm issa."
+          },
+          "permission-slip": {
+            "name": "Slitta tal-Permess",
+            "step0": "Ħu nifs fil-fond u agħti lilek innifsek mument",
+            "step1": "Għid lilek innifsek: \"Nagħti lili nnifsi permess li ma nkunx perfett illum\"",
+            "step2": "Għid: \"Nagħti lili nnifsi permess li nitlob l-għajnuna\"",
+            "step3": "Għid: \"Nagħti lili nnifsi permess li nħoss dak li nħoss mingħajr ħtija\"",
+            "step4": "Għid: \"Nagħti lili nnifsi permess li nieħu pawża\"",
+            "step5": "Għid: \"Qed nagħmel l-almu tiegħi, u dan huwa biżżejjed\"",
+            "step6": "Ħu nifs fil-fond u żomm dawn il-kliem qrib",
+            "step7": "Int ukoll jistħoqqlok il-kompassjoni. Ġorr dan miegħek."
+          },
+          "quick-walk": {
+            "name": "Ħjiel ta' Mixja Mgħaġġla",
+            "step0": "Qum bilwieqfa u medd idejk 'il fuq minn rasek",
+            "step1": "Imxi lejn l-eqreb tieqa jew bieb u ħares 'il barra",
+            "step2": "Ħu 5 passi bil-mod u ħoss kull sieq tmiss l-art",
+            "step3": "Ħares 'il fuq — innota s-sema, is-saqaf, jew xi ħaġa fuqek",
+            "step4": "Ħu 5 passi oħra bil-mod u intenzjonali",
+            "step5": "Ħawwad idejk u dirgħajk laxk għal ftit sekondi",
+            "step6": "Dawwar spallejk lura 3 darbiet",
+            "step7": "Mexxejt ġismek. Dak jgħodd. Prosit."
+          }
+        }
+      },
+      "help": {
+        "title": "Itlob l-Għajnuna",
+        "sendRequest": "Ibgħat",
+        "customPlaceholder": "Ittajpja l-messaġġ tiegħek...",
+        "recentRequests": "Talbiet Riċenti",
+        "statusPending": "Pendenti",
+        "statusAccepted": "Aċċettat",
+        "statusCompleted": "Magħmul",
+        "statusExpired": "Skadut",
+        "sent": "Talba għall-għajnuna mibgħuta!",
+        "limitReached": "Tista' tibgħat sa 5 talbiet għall-għajnuna kuljum.",
+        "noRequests": "L-ebda talba riċenti għall-għajnuna.",
+        "accept": "Nista' ngħin",
+        "complete": "Immarka bħala magħmul",
+        "template_need_break": "Għandi bżonn pawża",
+        "template_handle_meds": "Għajnuna bil-medikazzjoni",
+        "template_need_visit": "Għandi bżonn żjara",
+        "template_groceries": "Prodotti tal-merċa",
+        "template_custom": "Messaġġ personalizzat",
+        "message_need_break": "Verament għandi bżonn pawża. Jista' xi ħadd jieħu postni għal ftit?",
+        "message_handle_meds": "Jista' xi ħadd jgħin bil-medikazzjoni llum?",
+        "message_need_visit": "Ikun ifisser ħafna jekk xi ħadd jista' jiġi jżur illum.",
+        "message_groceries": "Jista' xi ħadd jgħin biex jixtri l-prodotti tal-merċa?"
+      },
+      "agent": {
+        "title": "Kumpann tal-Benesseri",
+        "disclaimer": "Għal appoġġ emozzjonali biss. Mhux parir mediku.",
+        "placeholder": "Kif qed tħossok?",
+        "greeting": "Qed naħseb fik...",
+        "rateLimited": "Ħu nifs — tista' terġa' tkellem dalwaqt.",
+        "errorMessage": "Ma stajtx nikkonnettja. Jekk jogħġbok erġa' pprova.",
+        "expand": "Espandi",
+        "collapse": "Ikkollassa",
+        "prompts": {
+          "overwhelmed": "Qed inħossni megħlub bħalissa",
+          "calmDown": "Għinni nikkalma f'2 minuti",
+          "needEnergy": "Għandi bżonn l-enerġija imma ma nistax nieħu pawża",
+          "poorSleep": "Ma stajtx norqod tajjeb ilbieraħ filgħaxija",
+          "needMoment": "Għandi bżonn mument għalija nnifsi",
+          "uplifting": "Għidli xi ħaġa li tferraħ"
+        }
+      },
+      "goal": {
+        "title": "L-Għan tal-lum",
+        "placeholder": "Issettja għan għal-lum...",
+        "done": "Magħmul!",
+        "weekLabel": "Din il-ġimgħa",
+        "suggest": "Issuġġerixxi"
+      },
+      "burnout": {
+        "title": "Ninnutaw li jista' jkollok bżonn appoġġ żejjed",
+        "message": "Iċ-check-ins riċenti tiegħek juru stress elevat jew enerġija baxxa. Dak huwa kompletament komprensibbli — il-kura hija diffiċli."
+      },
+      "support": {
+        "title": "Għandek Bżonn Appoġġ?",
+        "description": "Il-kura hija ta' sfida. Huwa tajjeb li titlob l-għajnuna."
+      },
+      "footer": "Ftakar: Ma tistax tferra' minn tazza vojta. Il-benesseri tiegħek jgħodd ukoll.",
+      "weeklyStats": {
+        "title": "Ħarsa ġenerali ta' kull ġimgħa",
+        "subtitle": "Sommarju tal-benessri tiegħek ta' 7 ijiem",
+        "avgEnergy": "Enerġija Medja",
+        "avgStress": "Stress Medju",
+        "avgSleep": "Irqad Medju",
+        "noData": "Imla check-ins ta' kuljum biex tara x-xejriet ta' kull ġimgħa tiegħek.",
+        "generateDigest": "Iġġenera Sommarju tal-AI",
+        "generating": "Qed jiġġenera...",
+        "behaviourSummary": "{{count}} inċident ta' mġiba rreġistrat din il-ġimgħa"
+      },
+      "sos": {
+        "title": "X'qed jiġri bħalissa?",
+        "subtitle": "Agħżel dak li għandek bżonn l-għajnuna tiegħu — aħna niggwidawk.",
+        "calmDown": "Għandi bżonn nikkalma",
+        "calmDownDesc": "Eżerċizzji ta' nifs u serħan malajr",
+        "behaviourNow": "Imġiba qed isseħħ issa",
+        "behaviourNowDesc": "Irreġistra inċident u ikseb gwida",
+        "callHelp": "Għandi bżonn għajnuna ta' emerġenza",
+        "callHelpDesc": "Ikkuntattja s-servizzi ta' emerġenza jew il-familja",
+        "needBreak": "Għandi bżonn lil xi ħadd biex jieħu postni",
+        "needBreakDesc": "Ibgħat talba għall-għajnuna lill-familja"
+      },
+      "behaviours": {
+        "playbooks": {
+          "title": "Kotba tal-Logħob tal-Imġiba",
+          "subtitle": "Tektek imġiba għal gwida pass pass",
+          "rightNow": "Bħalissa",
+          "understandWhy": "Iffhem Għaliex",
+          "prevent": "Prevenzjoni",
+          "whenToCallDoctor": "Meta Ċċempel lit-Tabib"
+        },
+        "logger": {
+          "title": "Irreġistra Inċident",
+          "logIncident": "Irreġistra Inċident",
+          "typeLabel": "Tip ta' mġiba",
+          "selectType": "Agħżel tip...",
+          "severity": "Severità",
+          "mild": "Ħafif",
+          "severe": "Sever",
+          "timeOfDay": "Ħin tal-ġurnata",
+          "morning": "Filgħodu",
+          "afternoon": "Wara nofsinhar",
+          "evening": "Filgħaxija",
+          "night": "Bil-lejl",
+          "duration": "Tul (minuti)",
+          "durationPlaceholder": "Kemm dam?",
+          "triggers": "Triggers possibbli",
+          "trigger_pain": "Uġigħ",
+          "trigger_hunger": "Ġuħ",
+          "trigger_thirst": "Għatx",
+          "trigger_fatigue": "Għeja",
+          "trigger_overstimulation": "Stimulazzjoni żejda",
+          "trigger_unfamiliar_environment": "Post mhux familjari",
+          "trigger_unfamiliar_person": "Persuna mhux familjari",
+          "trigger_routine_change": "Bidla fir-rutina",
+          "trigger_medication": "Medikazzjoni",
+          "trigger_noise": "Storbju",
+          "trigger_loneliness": "Solitudni",
+          "trigger_boredom": "Dwejjaq",
+          "trigger_bathroom_need": "Bżonn tal-kamra tal-banju",
+          "trigger_frustration": "Frustrazzjoni",
+          "trigger_fear": "Biża'",
+          "trigger_unknown": "Mhux magħruf",
+          "whatHappened": "X'ġara?",
+          "whatHappenedPlaceholder": "Iddeskrivi l-inċident...",
+          "whatHelped": "X'għen? (mhux obbligatorju)",
+          "whatHelpedPlaceholder": "Iddeskrivi x'għen biex tikkalma s-sitwazzjoni...",
+          "save": "Issejvja l-Inċident",
+          "saved": "Inċident irreġistrat"
+        },
+        "timeline": {
+          "title": "Kronoloġija tal-Inċidenti",
+          "all": "Kollha",
+          "noIncidents": "L-ebda inċident ma jaqbel mal-filtru attwali."
+        }
+      }
+    },
+    "reports": {
+      "title": "Rapport taż-Żjara tat-Tabib",
+      "period": "Perjodu tar-rapport",
+      "lastDays": "L-aħħar {{days}} jiem",
+      "generate": "Iġġenera Rapport",
+      "include": "Inkludi fir-rapport",
+      "moodTrends": "Xejriet tal-burdata u sommarju taċ-check-in",
+      "sleepPatterns": "Mudelli ta' rqad",
+      "activityCompletion": "Rati ta' tlestija tal-attività",
+      "medicationAdherence": "Aderenza mal-medikazzjoni",
+      "journalNotes": "Osservazzjonijiet notevoli tal-ġurnal tal-kura",
+      "locationPatterns": "Mudelli tal-lokazzjoni",
+      "caregiverConcerns": "Tħassib tal-persuna li tieħu ħsieb",
+      "customNotes": "Noti addizzjonali għat-tabib",
+      "print": "Ipprintja",
+      "downloadPdf": "Niżżel PDF",
+      "emailDoctor": "Ibgħat email lit-tabib",
+      "disclaimer": "Dan is-sommarju huwa bbażat fuq dejta tal-benessri rrappurtata minnha nnifisha u osservazzjonijiet tal-familja. Mhuwiex valutazzjoni klinika.",
+      "webNote": "Għall-bennej tar-rapport sħiħ bl-esportazzjoni tal-istampar u tal-PDF, żur l-app web OurTurn.",
+      "openInWebApp": "Iftaħ fl-App Web",
+      "previousReports": "Rapporti Preċedenti",
+      "generated": "Iġġenerat {{date}}",
+      "avgQuality": "kwalità medja",
+      "moodStruggling": "Qed tissielet",
+      "moodLow": "Baxx",
+      "moodOkay": "Tajjeb",
+      "moodGood": "Tajjeb",
+      "moodGreat": "Eċċellenti",
+      "careSummary": "Sommarju tal-Kura ta' OurTurn",
+      "patient": "Pazjent",
+      "periodLabel": "Perjodu",
+      "checkinsRecorded": "Check-ins irreġistrati",
+      "averageMood": "Burdata medja",
+      "averageSleepQuality": "Kwalità medja tal-irqad",
+      "activityCompletionRate": "Tlestija tal-attività",
+      "medicationAdherenceRate": "Aderenza mal-medikazzjoni",
+      "observations": "Osservazzjonijiet",
+      "categoryMedication": "Medikazzjoni",
+      "categoryMeals": "Ikliet",
+      "categoryPhysical": "Fiżiku",
+      "categoryCognitive": "Konjittiv",
+      "categorySocial": "Soċjali",
+      "categoryHealth": "Saħħa"
+    },
+    "onboarding": {
+      "step1Title": "Dwarek",
+      "step2Title": "Dwar il-Persuna Għażiża Tiegħek",
+      "step3Title": "L-Istorja tal-Ħajja Tagħhom",
+      "step4Title": "Rutina ta' Kuljum",
+      "step5Title": "Setup tas-Sigurtà",
+      "step6Title": "Il-Kodiċi tal-Kura Tiegħek",
+      "next": "Li jmiss",
+      "back": "Lura",
+      "finish": "Ibda",
+      "careCodeInstructions": "Installa OurTurn fuq it-telefon tal-persuna għażiża tiegħek u daħħal dan il-kodiċi biex tikkonnettja.",
+      "quickSetup": "Setup Rapidu",
+      "yourName": "Ismek",
+      "yourNameRequired": "Ismek *",
+      "lovedOneNameRequired": "Isem il-persuna għażiża tiegħek *",
+      "relationship": "Ir-relazzjoni tiegħek magħhom",
+      "relationshipPlaceholder": "eż., bint, iben, konjuġi",
+      "settingsHint": "Tista' żżid aktar dettalji aktar tard fis-Settings",
+      "fillRequired": "Jekk jogħġbok imla l-oqsma kollha meħtieġa",
+      "setupFailed": "Ma rnexxilux jitlesta s-setup",
+      "country": "Pajjiż",
+      "theirName": "L-ewwel isem tagħhom",
+      "dateOfBirth": "Data tat-twelid",
+      "dementiaType": "Tip ta' dimenzja (mhux obbligatorju)",
+      "homeAddress": "Indirizz tad-dar",
+      "medications": "Medikazzjonijiet",
+      "addMedication": "Żid medikazzjoni",
+      "childhoodLocation": "Fejn trabbew",
+      "career": "Karriera / okkupazzjoni",
+      "hobbies": "Passatempi u interessi",
+      "favoriteMusic": "Mużika / artisti favoriti",
+      "favoriteFoods": "Ikel favorit",
+      "importantPeople": "Nies importanti",
+      "keyEvents": "Ġrajjiet ewlenin fil-ħajja",
+      "uploadPhotos": "Ittella' ritratti tal-familja",
+      "wakeTime": "Ħin tal-qawmien",
+      "sleepTime": "Ħin tal-irqad",
+      "generatePlan": "Iġġenera pjan suġġerit",
+      "emergencyContacts": "Kuntatti ta' emerġenza",
+      "alertSettings": "Settings ta' twissija",
+      "stepOf": "Pass {{current}} minn {{total}}",
+      "breakfastTime": "Ħin tal-kolazzjon",
+      "lunchTime": "Ħin tal-ikel ta' nofsinhar",
+      "dinnerTime": "Ħin tal-pranzu",
+      "typicalDay": "Deskrizzjoni ta' ġurnata tipika",
+      "typicalDayPlaceholder": "Iddeskrivi ġurnata tipika...",
+      "emergencyContactsHint": "Żid kuntatti ta' emerġenza li se jidhru fit-tab tal-Għajnuna tal-app tal-pazjent.",
+      "remove": "Neħħi",
+      "addContact": "Żid Kuntatt",
+      "contactNameRequired": "Isem *",
+      "phoneRequired": "Numru tat-telefon *",
+      "relationshipOptional": "Relazzjoni (mhux obbligatorja)",
+      "addContactButton": "+ Żid Kuntatt",
+      "emergencyContactWarning": "Nirrakkomandaw li żżid mill-inqas kuntatt ta' emerġenza wieħed.",
+      "allSet": "Kollox lest!",
+      "careCodeLabel": "KODIĊI TAL-KURA",
+      "copied": "Ikkupjat!",
+      "copyCode": "Ikkopja l-Kodiċi",
+      "nextSteps": "Il-passi li jmiss:",
+      "nextStep1": "1. Installa OurTurn fuq it-telefon ta' {{name}}",
+      "nextStep2": "2. Iftaħ l-app u daħħal il-Kodiċi tal-Kura ta' hawn fuq",
+      "nextStep3": "3. Dak hu! Il-pjan ta' kuljum ta' {{name}} se jidher fuq it-telefon tagħhom",
+      "homeAddressPlaceholder": "123 Triq il-Kbira, Belt"
+    },
+    "settings": {
+      "title": "Settings",
+      "appearance": "Dehra",
+      "theme": {
+        "label": "Tema",
+        "light": "Dawl",
+        "dark": "Skur",
+        "system": "Sistema"
+      },
+      "profile": "Profil",
+      "account": "Kont",
+      "subscription": "Abbonament",
+      "notifications": "Notifiki",
+      "privacy": "Privatezza u Dejta",
+      "exportData": "Esporta d-Dejta Tiegħi",
+      "exportNote": "Niżżel kopja tad-dejta kollha tiegħek (dritt tal-GDPR għall-portabbiltà)",
+      "exportClipboard": "Id-dejta tiegħek ġiet ikkupjata fil-clipboard. Tista' tippejstjaha f'dokument jew email.",
+      "deleteAccount": "Ħassar il-Kont",
+      "deleteWarning": "Dan se jħassar b'mod permanenti d-dejta kollha għal dan id-dar. Dan ma jistax jitneħħa.",
+      "deleteConfirmType": "Ittajpja ĦASSAR biex tikkonferma t-tħassir tal-kont",
+      "confirmDelete": "Ikkonferma Ħassar",
+      "language": "Lingwa",
+      "about": "Dwar OurTurn",
+      "version": "Verżjoni",
+      "notMedicalDevice": "OurTurn mhuwiex apparat mediku",
+      "dailySummary": "Sommarju ta' Kuljum",
+      "dailySummaryTime": "Ħin tas-sommarju ta' kuljum",
+      "emailNotifications": "Notifiki bl-email",
+      "pushNotifications": "Notifiki push",
+      "safetyAlerts": "Twissijiet tas-sigurtà",
+      "signOut": "Oħroġ",
+      "saveProfile": "Issejvja l-Profil",
+      "saved": "Issejvjat!",
+      "saving": "Qed jissejvja...",
+      "changePassword": "Ibdel il-Password",
+      "newPassword": "Password Ġdida",
+      "confirmNewPassword": "Ikkonferma l-Password Ġdida",
+      "passwordPlaceholder": "Mill-inqas 8 karattri",
+      "passwordChanged": "Il-password inbidlet b'suċċess!",
+      "changingPassword": "Qed jinbidel...",
+      "copyCode": "Ikkopja l-Kodiċi",
+      "codeCopied": "Il-kodiċi ġie kkupjat!",
+      "regenerateCode": "Iġġenera mill-ġdid il-Kodiċi",
+      "regenerateWarning": "Il-kodiċi l-antik se jieqaf jaħdem. L-apparati kollha tal-pazjenti mqabbla se jeħtieġu l-kodiċi l-ġdid.",
+      "dangerZone": "Żona ta' Periklu",
+      "relationship": "Relazzjoni",
+      "deleteConfirm": "Ittajpja ĦASSAR biex tikkonferma t-tħassir tal-kont",
+      "photoGallery": "Gallerija tar-Ritratti",
+      "photoGalleryDesc": "Ittella' ritratti tal-familja għal attivitajiet ta' reminixxenza personalizzati",
+      "uploadPhotos": "Ittella' Ritratti",
+      "uploading": "Qed ittella'...",
+      "deletePhoto": "Ħassar dan ir-ritratt?",
+      "maxPhotosReached": "Intlaħaq massimu ta' 20 ritratt",
+      "photoUploadHint": "Sa 20 ritratt, massimu ta' 5MB kull wieħed",
+      "photoUploadFailed": "Ma rnexxilux itella' r-ritratt. Jekk jogħġbok erġa' pprova.",
+      "photoDeleteFailed": "Ma rnexxilux iħassar ir-ritratt. Jekk jogħġbok erġa' pprova.",
+      "noPhotosYet": "Għad m'hemmx ritratti mtellgħin",
+      "photosCount": "{{count}} minn 20 ritratt",
+      "patientComplexity": "Modalità tal-App tal-Pazjent",
+      "patientComplexityDesc": "Aġġusta l-interface tal-app tal-pazjent ibbażat fuq il-bżonnijiet tal-maħbub tiegħek.",
+      "complexity": {
+        "full": "Sħiħ",
+        "fullDesc": "Il-karatteristiċi kollha disponibbli",
+        "simplified": "Simplifikat",
+        "simplifiedDesc": "Test akbar, inqas dettalji",
+        "essential": "Essenzjali",
+        "essentialDesc": "Minimali — mużika u sejħa għall-għajnuna biss"
+      },
+      "safetyEscalation": "Sigurtà u Eskalazzjoni",
+      "escalationTiming": "Ħin tal-eskalazzjoni",
+      "escalationTimingDesc": "Kemm iddum qabel ma teskala twissijiet mhux rikonoxxuti",
+      "offlineThreshold": "Limitu ta' twissija offline",
+      "offlineThresholdDesc": "Twissija meta l-apparat ma jidhirx għal dan it-tul",
+      "minutes": "minuti",
+      "respiteReminders": "Tfakkiriet ta' Serħan",
+      "respiteRemindersDesc": "Irċievi tfakkiriet biex tieħu pawżi",
+      "groupProfile": "Il-Profil Tiegħek",
+      "groupAboutPatient": "Dwar {{name}}",
+      "groupAboutPatientGeneric": "Dwar il-Maħbub Tiegħek",
+      "groupSharing": "Kondiviżjoni u Konnessjoni",
+      "groupSafety": "Sigurtà u Notifiki",
+      "groupAccount": "Kont",
+      "patientInformation": "Informazzjoni dwar il-Pazjent",
+      "patientInformationDesc": "Dettalji bażiċi dwar il-persuna għażiża tiegħek",
+      "patientName": "Isem il-Pazjent",
+      "dateOfBirth": "Data tat-Twelid",
+      "dementiaType": "Tip ta' Dimenzja",
+      "selectDementiaType": "Agħżel it-tip (mhux obbligatorju)",
+      "homeAddress": "Indirizz tad-Dar",
+      "homeAddressPlaceholder": "Indirizz sħiħ tad-dar",
+      "savingPatientInfo": "Qed nissejvja...",
+      "savePatientInfo": "Issejvja l-Informazzjoni dwar il-Pazjent",
+      "lifeStory": "Storja tal-Ħajja",
+      "lifeStoryDesc": "Dawn id-dettalji jgħinu biex jippersonalizzaw l-attivitajiet ta' kuljum u l-prompts ta' reminisċenza.",
+      "childhoodLocation": "Fejn trabbew",
+      "career": "Karriera / Okkupazzjoni",
+      "hobbies": "Passatempi u Interessi",
+      "hobbiesPlaceholder": "eż., ġardinaġġ, pittura, ċess",
+      "favoriteMusic": "Mużika / Artisti Favoriti",
+      "favoriteMusicPlaceholder": "eż., Frank Sinatra, Beatles",
+      "favoriteFoods": "Ikel Favorit",
+      "favoriteFoodsPlaceholder": "eż., apple pie, tiġieġ mixwi",
+      "importantPeople": "Nies Importanti",
+      "importantPeoplePlaceholder": "eż., John (ħu), Mary (l-aqwa ħabiba)",
+      "keyEvents": "Ġrajjiet Ewlenin fil-Ħajja",
+      "keyEventsPlaceholder": "eż., Igradwa fl-1965, Mar joqgħod Londra fl-1970",
+      "savingLifeStory": "Qed nissejvja...",
+      "saveLifeStory": "Issejvja l-Istorja tal-Ħajja",
+      "dailySchedule": "Skeda ta' Kuljum",
+      "dailyScheduleDesc": "Issettja l-ħinijiet tal-qawmien u l-irqad għar-rutina tal-persuna għażiża tiegħek.",
+      "wakeTime": "Ħin tal-Qawmien",
+      "sleepTime": "Ħin tal-Irqad",
+      "savingSchedule": "Qed nissejvja...",
+      "saveSchedule": "Issejvja l-Iskeda",
+      "emergencyContacts": "Kuntatti ta' Emerġenza",
+      "emergencyContactsDesc": "Dawn il-kuntatti jidhru fit-tab tal-Għajnuna tal-app tal-pazjent.",
+      "addContact": "Żid Kuntatt",
+      "contactName": "Isem tal-Kuntatt",
+      "contactPhone": "Numru tat-Telefon",
+      "contactRelationship": "Relazzjoni",
+      "contactRelationshipPlaceholder": "eż., Bint, ġar",
+      "noContactsYet": "Għad m'hemm l-ebda kuntatt ta' emerġenza miżjud.",
+      "savingContacts": "Qed nissejvja...",
+      "saveContacts": "Issejvja l-Kuntatti",
+      "removeContactConfirm": "Neħħi dan il-kuntatt?",
+      "country": "Pajjiż",
+      "selectCountry": "Agħżel pajjiż",
+      "selectLanguage": "Agħżel lingwa",
+      "languageSaved": "Lingwa aġġornata"
+    },
+    "auth": {
+      "login": "Idħol",
+      "signup": "Irreġistra",
+      "email": "Email",
+      "password": "Password",
+      "forgotPassword": "Insejt il-password?",
+      "noAccount": "M'għandekx kont?",
+      "hasAccount": "Diġà għandek kont?",
+      "continueWithGoogle": "Kompli bil-Google",
+      "continueWithApple": "Kompli bl-Apple",
+      "or": "jew",
+      "confirmPassword": "Ikkonferma l-password",
+      "createAccount": "Oħloq Kont",
+      "getStarted": "Ibda",
+      "fillAllFields": "Jekk jogħġbok imla l-oqsma kollha",
+      "passwordsNoMatch": "Il-passwords ma jaqblux",
+      "passwordTooShort": "Il-password trid tkun mill-inqas 8 karattri",
+      "checkEmail": "Jekk jogħġbok iċċekkja l-email tiegħek biex tikkonferma l-kont tiegħek",
+      "enterEmailFirst": "Jekk jogħġbok daħħal l-indirizz tal-email tiegħek l-ewwel.",
+      "resetEmailSent": "Iċċekkja l-email tiegħek",
+      "resetEmailSentDesc": "Bgħatna link biex terġa' tissettja l-password fl-indirizz tal-email tiegħek.",
+      "welcomeBack": "Merħba lura",
+      "enterEmailAndPassword": "Jekk jogħġbok daħħal l-email u l-password",
+      "signingIn": "Qed nidħol",
+      "orContinueWith": "Jew kompli bi"
+    },
+    "nav": {
+      "family": "Ċirku tal-Familja",
+      "toolkit": "Sett ta' Għodod",
+      "reports": "Rapporti",
+      "settings": "Settings",
+      "crisis": "Ċentru ta' Kriżi"
+    },
+    "crisis": {
+      "title": "Ċentru ta' Kriżi",
+      "subtitle": "Ġestjoni ta' kriżi f'ħin reali u appoġġ għad-de-escalation",
+      "eventLogged": "Ġrajja ta' kriżi rreġistrata",
+      "logEvent": "Irreġistra Ġrajja ta' Kriżi",
+      "logPlaceholder": "Iddeskrivi x'ġara...",
+      "status": {
+        "allClear": "Kollox Sew",
+        "allClearDesc": "L-ebda twissija attiva",
+        "activeAlerts": "Twissijiet Attivi",
+        "lastKnownLocation": "L-aħħar post magħruf",
+        "viewOnMap": "Ara fuq il-mappa",
+        "noLocationData": "L-ebda data tal-post disponibbli"
+      },
+      "actions": {
+        "modeLabel": "Is-sitwazzjoni tiegħek",
+        "withThem": "Jien magħhom",
+        "remote": "Jien 'il bogħod",
+        "startDeEscalation": "Ibda d-De-Escalation",
+        "startDeEscalationDesc": "Fluss ta' kalma ggwidat pass pass",
+        "callEmergency": "Ċempel l-Emerġenza",
+        "callEmergencyDesc": "Ċempel is-servizzi ta' emerġenza lokali",
+        "alertFamily": "Avża lill-Familja",
+        "alertFamilyDesc": "Ibgħat notifika push lill-persuni kollha li jieħdu ħsieb",
+        "alertFamilySent": "Il-membri tal-familja ġew notifikati",
+        "alertFamilyFailed": "Naqas li tinnotifika lill-familja. Jekk jogħġbok erġa' pprova.",
+        "viewLocation": "Ara l-Post",
+        "viewLocationDesc": "Ara l-post attwali ta' {{name}} fuq il-mappa",
+        "contactPrimary": "Ikkuntattja lill-Persuna Primarja li Tieħu Ħsieb",
+        "contactPrimaryDesc": "Ikkuntattja lill-persuna primarja li tieħu ħsieb permezz tal-email",
+        "logEvent": "Irreġistra Ġrajja",
+        "logEventDesc": "Irreġistra dan il-mument fil-ġurnal tal-kriżi"
+      },
+      "wizard": {
+        "breathingTitle": "Ejjew nibdew b'nifs ta' kalma",
+        "breathingInstruction": "Nifs bil-mod 'il ġewwa... żomm... nifs 'il barra...",
+        "stepOf": "Pass {{current}} minn {{total}}",
+        "thisHelped": "Dan għen",
+        "tryNext": "Ipprova l-pass li jmiss",
+        "skip": "Aqbeż",
+        "completionTitle": "Prosit. Immaniġġjajt dan b'attenzjoni.",
+        "completionDesc": "Tixtieq tirreġistra xi noti dwar x'ġara?",
+        "crisisNotesPlaceholder": "X'ġara? X'għen? Xi triggers innutati...",
+        "saveAndClose": "Issejvja u Agħlaq",
+        "closeWithoutSaving": "Agħlaq mingħajr ma ssalva"
+      },
+      "history": {
+        "title": "Ġrajjiet Riċenti ta' Kriżi",
+        "noEvents": "L-ebda ġrajja ta' kriżi fl-aħħar 30 jum.",
+        "viewAllInJournal": "Ara kollox fil-Ġurnal",
+        "yesterday": "Ilbieraħ",
+        "daysAgo": "{{count}}d ilu"
+      },
+      "steps": {
+        "stayCalm": {
+          "title": "Ibqa' Kalm",
+          "detail": "Ħu nifs bil-mod u fil-fond. L-enerġija kalma tiegħek se tgħinhom iħossuhom siguri.",
+          "script": "Jien hawn miegħek. Kollox sew."
+        },
+        "validateFeelings": {
+          "title": "Ikkonferma s-Sentimenti",
+          "detail": "Għid 'Nista' nara li int imdejjaq. Żgur li din hija diffiċli ħafna.' Targumentax jew tikkoreġi.",
+          "script": "Nista' nara li int imdejjaq. Żgur li din hija diffiċli ħafna."
+        },
+        "simplifyEnvironment": {
+          "title": "Issimplifika l-Ambjent",
+          "detail": "Uża sentenzi qosra u sempliċi. Idea waħda kull darba. Evita li tistaqsi mistoqsijiet 'għaliex'.",
+          "script": "Ejjew nagħmlu l-affarijiet aktar sempliċi. Ħaġa waħda kull darba."
+        },
+        "redirectAttention": {
+          "title": "Idderieġi mill-ġdid l-Attenzjoni",
+          "detail": "Ibdel is-suġġett bil-mod. Issuġġerixxi attività familjari, kanzunetta, jew mixja.",
+          "script": "Xi ngħidu nippruvaw xi ħaġa differenti? Ejjew nagħmlu mixja żgħira flimkien."
+        },
+        "useGentleTouch": {
+          "title": "Uża Tmiss Ġentili",
+          "detail": "Jekk milqugħ, id ġentili fuq id-driegħ tista' tkun ta' serħan il-moħħ. Ara r-rispons tagħhom.",
+          "script": "Huwa tajjeb jekk inżomm idek? Jiena hawnhekk."
+        },
+        "giveSpace": {
+          "title": "Agħti Spazju",
+          "detail": "Jekk xejn ma jaħdem, żgura s-sigurtà u agħtihom spazju. Huwa tajjeb li tieħu pass lura.",
+          "script": "Jiena se nkun fil-qrib jekk ikollok bżonnni. Ħu l-ħin tiegħek."
+        }
+      },
+      "helplines": "Linji ta' Għajnuna",
+      "noHelplineAvailable": "L-ebda linja ta' għajnuna ma nstabet għall-pajjiż tiegħek",
+      "call": "Ċempel",
+      "email": "Email",
+      "website": "Sit elettroniku",
+      "familyContacts": "Kuntatti tal-Familja",
+      "supportResources": "Riżorsi ta' Appoġġ",
+      "scenarios": {
+        "title": "X'qed jiġri?",
+        "subtitle": "Tektek sitwazzjoni għal gwida pass pass",
+        "urgent": "Urġenti",
+        "stepCountLabel": "{{count}} passi",
+        "backToSituations": "Lura għas-sitwazzjonijiet",
+        "breathe": "Eżerċizzju tan-nifs",
+        "callEmergency": "Ċempel lis-Servizzi ta' Emerġenza"
+      },
+      "patterns": {
+        "title": "Ħarsa lejn ix-Xejra",
+        "noEvents": "Irreġistra inċidenti biex tara xejriet maż-żmien.",
+        "fewEvents": "{{count}} inċidenti rreġistrati. Hemm bżonn ta' aktar dejta għax-xejriet.",
+        "timePattern": "Ħafna mill-inċidenti jseħħu fil-{{time}}.",
+        "weekCount": "{{count}} din il-ġimgħa."
+      },
+      "personalization": {
+        "label": "X'jikkalma lil {{name}}",
+        "empty": "Żid strateġiji ta' kalma fil-bijografija ta' {{name}} biex tara suġġerimenti personalizzati hawnhekk."
+      },
+      "scenarioData": {
+        "stepsCount": "{{count}} passi",
+        "agitated": {
+          "label": "Aġitat / Imdejjaq",
+          "steps": [
+            {
+              "title": "Int l-ewwel",
+              "instruction": "Ħu nifs bil-mod wieħed qabel ma tagħmel xi ħaġa. Ma tistax tikkalma lil xi ħadd jekk m'intix kalm."
+            },
+            {
+              "title": "Iċċekkja malajr — jista' jkun hemm xi ħaġa fiżika ħażina?",
+              "instruction": "Uġigħ, ġuħ, bżonn il-kamra tal-banju, jew infezzjoni jistgħu jikkawżaw aġitazzjoni.",
+              "checklist": [
+                "Uġigħ jew skumdità?",
+                "Ġuħ jew għatx?",
+                "Jeħtieġ il-kamra tal-banju?",
+                "Bidla riċenti fil-medikazzjoni?",
+                "Denna jew sinjali ta' mard?"
+              ]
+            },
+            {
+              "title": "Baxxi t-temperatura",
+              "instruction": "Tkellem bil-mod u bil-mod. Targumentax, tikkoreġix, jew tispjega. Ivvalida dak li qed iħossu.",
+              "tips": [
+                "\"Nista' nara li int imdejjaq. Jiena hawn.\"",
+                "Naqqas l-istorbju — itfi t-TV, agħlaq it-twieqi",
+                "Agħtihom spazju fiżiku, tiffullax",
+                "Offri oġġett ta' kumdità familjari"
+              ]
+            },
+            {
+              "title": "Idderieġi mill-ġdid, tirraġunax",
+              "instruction": "Ibdel is-suġġett jew l-ambjent bil-mod. Tippruvax toħroġhom minnha bil-loġika.",
+              "tips": [
+                "Issuġġerixxi mixja jew imxi lejn kamra oħra",
+                "Poġġi mużika li jħobbu",
+                "Offri snack jew xarba sħuna",
+                "Ħares lejn ritratti flimkien"
+              ]
+            },
+            {
+              "title": "Meta tikseb l-għajnuna",
+              "instruction": "Jekk l-aġitazzjoni ddum aktar minn 30 minuta, jekk huma f'riskju li jweġġgħu lilhom infushom jew lilek, jew jekk dan huwa mġiba ġdida f'daqqa waħda — ċempel lis-servizzi ta' emerġenza.",
+              "actionLabel": "Ċempel lis-Servizzi ta' Emerġenza"
+            }
+          ]
+        },
+        "wandering": {
+          "label": "Tgergir / Nieqes",
+          "steps": [
+            {
+              "title": "Iċċekkja l-postijiet tas-soltu l-ewwel",
+              "instruction": "Ħafna nies bid-dimenzja jmorru f'postijiet familjari — post tax-xogħol preċedenti, dar tat-tfulija, dar ta' ġar.",
+              "tips": [
+                "Iċċekkja l-ġnien, il-garaxx, it-toroq fil-qrib",
+                "Staqsi lill-ġirien jekk rawhom",
+                "Iċċekkja postijiet li kienu jmorru regolarment"
+              ]
+            },
+            {
+              "title": "Uża l-lokalità tagħhom",
+              "instruction": "Jekk it-traċċar tal-lokalità huwa ssettjat, iċċekkja l-pożizzjoni attwali tagħhom issa."
+            },
+            {
+              "title": "Avża lill-familja",
+              "instruction": "Għarraf lil kulħadd immedjatament. Aktar għajnejn ifittxu huwa aħjar."
+            },
+            {
+              "title": "Ċempel lill-pulizija jekk ma jinstabux fi żmien 15-il minuta",
+              "instruction": "Tistenna. Nies bid-dimenzja huma f'riskju għoli ta' korriment. Ċempel lis-servizzi ta' emerġenza u għidilhom li l-persuna għandha d-dimenzja.",
+              "actionLabel": "Ċempel lis-Servizzi ta' Emerġenza"
+            }
+          ]
+        },
+        "refusing": {
+          "label": "Tirrifjuta l-Kura",
+          "steps": [
+            {
+              "title": "Ieqaf — dan mhux sfida",
+              "instruction": "Ir-rifjut huwa kważi dejjem biża', konfużjoni, jew skumdità. Jista' jkun li ma jifhmux dak li qed titlob."
+            },
+            {
+              "title": "Erġa' lura u pprova b'mod differenti",
+              "instruction": "Timbuttax. Erġa' lura fi 15–20 minuta u avviċina bħallikieku hija l-ewwel darba.",
+              "tips": [
+                "Ibdel min qed jistaqsi",
+                "Ibdel l-ambjent",
+                "Aqsam il-kompitu f'passi iżgħar",
+                "Offri għażliet: \"Banju jew doċċa?\""
+              ]
+            },
+            {
+              "title": "Agħmilha tħossha sigura",
+              "instruction": "Spjega kull pass qabel ma tagħmlu. Imxi bil-mod. Żommhom sħan.",
+              "tips": [
+                "Wissi qabel ma tmiss",
+                "Uża ton kalm u sħun",
+                "Daqq il-mużika favorita tagħhom waqt il-kompitu",
+                "Żomm ir-rutina konsistenti"
+              ]
+            },
+            {
+              "title": "Din hija xejra?",
+              "instruction": "Jekk jirrifjutaw b'mod konsistenti l-istess kompitu, irreġistrah. Jista' jkun hemm kwistjoni sottostanti — uġigħ, biża', sensittività. Iddiskuti mat-tabib tagħhom."
+            }
+          ]
+        },
+        "hallucinations": {
+          "label": "Tara / Tisma' Affarijiet",
+          "steps": [
+            {
+              "title": "Targumentax — hija reali għalihom",
+              "instruction": "Irrikonoxxi dak li qed jesperjenzaw mingħajr ma tikkonferma li huwa veru.",
+              "tips": [
+                "\"Dak jinstema' tal-biża'. Jiena hawn miegħek.\"",
+                "\"Għidli x'qed tara.\"",
+                "Tgħidx \"m'hemm xejn hemmhekk\""
+              ]
+            },
+            {
+              "title": "Iċċekkja l-ambjent",
+              "instruction": "Dellijiet, riflessjonijiet, ħsejjes tat-TV, u l-imbarazz jistgħu jikkawżaw interpretazzjoni ħażina.",
+              "checklist": [
+                "Dellijiet mit-twieqi jew lampi?",
+                "TV jew radju mixgħula fl-isfond?",
+                "Riflessjonijiet tal-mera?",
+                "Dawl ħażin?"
+              ]
+            },
+            {
+              "title": "Idderieġi mill-ġdid bil-mod",
+              "instruction": "Ċaqlaq l-attenzjoni tagħhom għal xi ħaġa konkreta u ta' faraġ.",
+              "tips": [
+                "Imxi lejn kamra mdawla sew",
+                "Offri attività prattika",
+                "Mur għal mixja qasira flimkien",
+                "Agħmel kikkra tè flimkien"
+              ]
+            },
+            {
+              "title": "Meta ċċempel lit-tabib",
+              "instruction": "Jekk l-alluċinazzjonijiet huma ġodda, frekwenti, jew qed jikkawżaw dwejjaq estrem. Bidu f'daqqa jista' jindika infezzjoni, effetti sekondarji tal-medikazzjoni, jew delirju."
+            }
+          ]
+        },
+        "sundowning": {
+          "label": "Sundowning",
+          "steps": [
+            {
+              "title": "Irrikonoxxi x-xejra",
+              "instruction": "Is-sindromu ta' nżul ix-xemx tipikament jibda tard wara nofsinhar. Dan huwa estremament komuni u mhux xi ħaġa li jistgħu jikkontrollaw."
+            },
+            {
+              "title": "Aġġusta l-ambjent issa",
+              "instruction": "Naqqas l-istimulazzjoni kollha u oħloq sinjali ta' sigurtà.",
+              "tips": [
+                "Ixgħel dwal sħan qabel jidlam",
+                "Agħlaq il-purtieri biex tnaqqas id-dellijiet",
+                "Itfi jew baxxi l-volum tat-TV",
+                "Naqqas in-numru ta' nies fil-kamra"
+              ]
+            },
+            {
+              "title": "Offri attivitajiet li jikkalmaw",
+              "instruction": "Attivitajiet ġentili, ripetittivi u familjari jaħdmu l-aħjar.",
+              "tips": [
+                "Massaġġ ġentili tal-idejn bil-lotion",
+                "Mużika ratba u familjari",
+                "Itwi xugamani jew issortja oġġetti",
+                "Ara album tar-ritratti flimkien"
+              ]
+            },
+            {
+              "title": "Ipprevjeniha għada",
+              "instruction": "Irreġistra l-episodju b'dettalji tal-ħin. Xejriet jgħinu biex jiġu aġġustati l-iskedi — aktar attività filgħodu, inqas kaffeina wara nofsinhar."
+            }
+          ]
+        },
+        "fall": {
+          "label": "Waqgħa / Emerġenza Fiżika",
+          "steps": [
+            {
+              "title": "Tiċċaqlaqhomx",
+              "instruction": "Sakemm ma jkunux f'periklu immedjat, tippruvax terfagħhom jew iċċaqlaqhom.",
+              "tips": [
+                "Inżel sal-livell tagħhom",
+                "Aserraħhom: \"Jien hawn, int sigur/a\"",
+                "Iċċekkja għal korriment viżibbli"
+              ]
+            },
+            {
+              "title": "Jistgħu jqumu?",
+              "instruction": "Jekk m'hemm l-ebda korriment ovvju, għinhom iqumu bil-mod f'diversi stadji.",
+              "checklist": [
+                "Huma attenti u reattivi?",
+                "Xi korriment jew uġigħ ovvju?",
+                "Jistgħu jċaqalqu r-riġlejn kollha?",
+                "Ħabtu rashom?"
+              ]
+            },
+            {
+              "title": "Ċempel għall-għajnuna jekk...",
+              "instruction": "Korriment f'ras, ma jistgħux iqumu, uġigħ qawwi, konfużjoni agħar mis-soltu, jew fsada li ma tieqafx."
+            },
+            {
+              "title": "Wara l-waqgħa",
+              "instruction": "Irreġistra dan l-avveniment u semmih lit-tabib tagħhom. Waqgħat ripetuti jistgħu jindikaw problemi ta' medikazzjoni jew progressjoni tal-marda."
+            }
+          ]
+        },
+        "repetitive_questions": {
+          "label": "Mistoqsijiet Ripetittivi",
+          "steps": [
+            {
+              "title": "Nifs — din hija l-marda, mhux huma",
+              "instruction": "Ġenwinament ma jiftakrux li staqsew. Il-frustrazzjoni tiegħek hija valida, iżda jekk turihom, tagħmilhom aktar ansjużi."
+            },
+            {
+              "title": "X'qed jistaqsu verament?",
+              "instruction": "Il-mistoqsija fil-wiċċ rari hija l-mistoqsija vera. \"X'ħin hija l-pranzu?\" tista' tfisser \"Għandi l-ġuħ.\"",
+              "checklist": [
+                "Huma ansjużi dwar xi ħaġa?",
+                "Jista' jkun li għandhom il-ġuħ, l-għatx, jew huma mdejqin?",
+                "Hemm xi avveniment li ġej li qed jikkawża inkwiet?"
+              ]
+            },
+            {
+              "title": "Irrispondi għas-sentiment",
+              "instruction": "Wieġeb għall-emozzjoni wara l-mistoqsija aktar milli għall-kliem litterali.",
+              "tips": [
+                "Ikteb it-tweġiba fuq whiteboard viżibbli",
+                "Ipprovdi tweġiba sempliċi u serħan il-moħħ kull darba",
+                "Idderieġi mill-ġdid għal attività prattika wara li twieġeb",
+                "Uża skedi viżwali biex tnaqqas l-inċertezza"
+              ]
+            },
+            {
+              "title": "Ipproteġi l-benesseri tiegħek",
+              "instruction": "Aqleb ma' caregiver ieħor jekk possibbli. Uża headphones b'mużika ġentili meta jkollok bżonn pawża mentali."
+            }
+          ]
+        },
+        "aggression": {
+          "label": "Aggressjoni",
+          "steps": [
+            {
+              "title": "Is-sigurtà tiegħek tiġi l-ewwel",
+              "instruction": "Jekk tħossok fiżikament mhux sigur/a, erġa' lura immedjatament. Tippruvax iżżommhom.",
+              "tips": [
+                "Poġġi lilek innifsek ħdejn ħruġ",
+                "Neħħi oġġetti perikolużi minn fejn jistgħu jilħquhom",
+                "Żomm leħnek baxx u kalm",
+                "Tagħmel l-ebda moviment f'daqqa"
+              ]
+            },
+            {
+              "title": "Ikkalma lilek innifsek",
+              "instruction": "L-aggressjoni tqanqal reazzjoni ta' ġlieda jew ħarba fik ukoll. Ħu mument biex tieħu n-nifs."
+            },
+            {
+              "title": "X'qed jikkawża dan?",
+              "instruction": "L-aggressjoni hija kważi dejjem reazzjoni — uġigħ, biża', frustrazzjoni, tagħbija żejda sensorja.",
+              "checklist": [
+                "Kienu qed jintalbu jagħmlu xi ħaġa?",
+                "Kienu qed iħossu uġigħ?",
+                "L-ambjent kien storbjuż jew kaotiku?",
+                "Ħassewhom maqbuda?"
+              ]
+            },
+            {
+              "title": "Agħti spazju u ħin",
+              "instruction": "Erġa' lura. Waqqaf l-attività li qed tikkawża dan. Erġa' lura fi 15–20 minuta bħallikieku ma ġara xejn.",
+              "tips": [
+                "Oħroġ mill-kamra jekk huwa sigur",
+                "Neħħi l-kawża",
+                "Tiħduhiex personalment",
+                "Avviċina bil-mod meta terġa' lura"
+              ]
+            },
+            {
+              "title": "Meta din hija emerġenza",
+              "instruction": "Jekk għandhom arma, jekk xi ħadd ikun imweġġa', jew jekk l-aggressjoni ma tonqosx — ċempel lis-servizzi ta' emerġenza."
+            }
+          ]
+        },
+        "sleep_disruption": {
+          "label": "Tfixkil fl-Irqad",
+          "steps": [
+            {
+              "title": "Żomm l-ambjent sigur",
+              "instruction": "Jekk huma mqajmin u jiċċaqalqu bil-lejl, l-ewwel prijorità tiegħek hija s-sigurtà.",
+              "tips": [
+                "Ixgħel dwal baxxi ta' billejl",
+                "Neħħi perikli ta' tfixkil",
+                "Sakkar il-bibien ta' barra jekk it-tbiegħed huwa ta' tħassib",
+                "\"Huwa l-ħin tal-lejl, kollox huwa sigur\""
+              ]
+            },
+            {
+              "title": "X'qajjimhom?",
+              "instruction": "Qawmien bil-lejl jista' jkun ikkawżat minn uġigħ, il-bżonn tal-kamra tal-banju, il-ħin tal-medikazzjoni, jew il-ġuħ.",
+              "checklist": [
+                "Għandhom bżonn il-kamra tal-banju?",
+                "Qed iħossu uġigħ?",
+                "Storbju jew dawl qajjimhom?",
+                "Għandhom il-ġuħ jew l-għatx?"
+              ]
+            },
+            {
+              "title": "Iggwidahom lura bil-mod",
+              "instruction": "Targumentax dwar x'ħin huwa. Idderieġihom lura lejn is-sodda b'sinjali li jikkalmaw.",
+              "tips": [
+                "Offri xarba sħuna mingħajr kaffeina",
+                "Uża vuċi kalma u kwieta",
+                "Poġġi mużika ratba u familjari",
+                "Oqgħod magħhom sakemm jikkalmaw"
+              ]
+            },
+            {
+              "title": "Ittejjeb għal-lejl ta' għada",
+              "instruction": "Aktar attività matul il-ġurnata, l-ebda kaffeina wara nofsinhar, rutina konsistenti qabel is-sodda, illimita n-nap għal 30 minuta."
+            }
+          ]
+        },
+        "shadowing": {
+          "label": "Dellijiet",
+          "steps": [
+            {
+              "title": "Irrikonoxxi l-frustrazzjoni tiegħek",
+              "instruction": "Li tkun segwit kullimkien huwa eżawrjenti. Dawk is-sentimenti huma validi. Ħu nifs."
+            },
+            {
+              "title": "Għaliex qed isegwuk?",
+              "instruction": "Id-dellijiet huma mmexxija minn ansjetà u biża' ta' abbandun. Li jkunu qrib tiegħek huwa l-uniku sors ta' sigurtà tagħhom.",
+              "checklist": [
+                "Kien hemm bidla reċenti fir-rutina?",
+                "Jinsabu f'ambjent mhux familjari?",
+                "Kont 'il bogħod reċentement?",
+                "Qed iħossuhom ma jifilħux?"
+              ]
+            },
+            {
+              "title": "Naqqas l-ansjetà tagħhom",
+              "instruction": "Għinhom iħossuhom siguri mingħajr ma jkunu fiżikament preżenti kull mument.",
+              "tips": [
+                "Agħtihom \"xogħol\" ħdejn fejn int",
+                "Ħalli oġġett personali magħhom bħala ankra ta' kumdità",
+                "\"Jien biss fil-kċina, nerġa' lura\"",
+                "Ipprova TV jew mużika familjari bħala kumpann"
+              ]
+            },
+            {
+              "title": "Ibni pawżi għalik innifsek",
+              "instruction": "Itlob lil xi ħadd biex joqgħod magħhom waqt li tieħu 20 minuta. Anke 10 minuti waħdek jgħinu.",
+              "tips": [
+                "Tistenna sakemm tkun eżawrit/a",
+                "Huwa okay li tagħlaq bil-mod il-bieb tal-kamra tal-banju",
+                "Ikkunsidra grupp ta' appoġġ",
+                "Dan l-imġieba ħafna drabi tonqos b'rutina stabbli"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "tabs": {
+      "dashboard": "Dashboard",
+      "plan": "Pjan",
+      "location": "Post",
+      "coach": "Kowċ",
+      "more": "Aktar"
+    }
+  },
+  "notifications": {
+    "taskReminder": "{{patientName}}, wasal iż-żmien għal: {{taskTitle}}",
+    "taskCompleted": "{{patientName}} lesta: {{taskTitle}}",
+    "checkinReceived": "{{patientName}} lesta ċ-check-in tal-lum",
+    "leftSafeZone": "{{patientName}} ħalla {{zoneName}}",
+    "inactivity": "L-ebda moviment misjub minn {{patientName}} f'{{hours}} sigħat",
+    "nightMovement": "{{patientName}} qed jiċċaqlaq barra f'{{time}}",
+    "takeMeHome": "{{patientName}} ippressa 'Ħudni d-Dar' minn {{location}}",
+    "eveningSummary": "Il-ġurnata ta' {{patientName}}: {{completed}}/{{total}} kompiti saru. Burdata: {{mood}}"
+  },
+  "subscription": {
+    "free": "B'xejn",
+    "plus": "OurTurn Plus",
+    "upgradeTitle": "Iftaħ OurTurn Plus",
+    "upgradeFeature": "Din il-karatteristika teħtieġ OurTurn Plus",
+    "monthly": "{{price}}/xahar",
+    "annual": "{{price}}/sena",
+    "annualSavings": "Iffranka {{percent}}%",
+    "subscribe": "Abbona",
+    "restore": "Irrestawra x-Xiri",
+    "manage": "Immaniġġja l-Abbonament",
+    "features": {
+      "unlimitedTasks": "Kompiti illimitati kuljum",
+      "aiCoach": "Kowċ Sħiħ tal-AI Care",
+      "brainActivities": "Attivitajiet ta' benesseri tal-moħħ iġġenerati mill-AI",
+      "safeZones": "Żoni sikuri u twissijiet tal-post",
+      "multiCaregiver": "Sa 5 membri tal-familja",
+      "journal": "Shared Care Journal",
+      "insights": "AI pattern insights",
+      "reports": "Doctor visit reports",
+      "toolkit": "Caregiver toolkit & wellness",
+      "priority": "Priority support"
+    }
+  }
+}
