@@ -2,13 +2,13 @@ import { useState } from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   TextInput,
   TouchableOpacity,
   ScrollView,
   ActivityIndicator,
   Alert,
   Platform,
+  KeyboardAvoidingView,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
@@ -17,7 +17,7 @@ import * as Haptics from 'expo-haptics';
 import * as Clipboard from 'expo-clipboard';
 import { supabase } from '@ourturn/supabase';
 import { useAuthStore } from '../src/stores/auth-store';
-import { COLORS, FONTS, RADIUS, SHADOWS } from '../src/theme';
+import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS } from '../src/theme';
 
 const TOTAL_STEPS = 6;
 
@@ -69,6 +69,9 @@ export default function OnboardingScreen() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+
+  const styles = useStyles();
+  const colors = useColors();
 
   const [data, setData] = useState<OnboardingData>({
     caregiverName: '',
@@ -288,7 +291,7 @@ export default function OnboardingScreen() {
         value={value}
         onChangeText={(v) => updateData({ [field]: v })}
         placeholder="HH:MM"
-        placeholderTextColor={COLORS.textMuted}
+        placeholderTextColor={colors.textMuted}
         keyboardType="numbers-and-punctuation"
       />
     </View>
@@ -307,7 +310,7 @@ export default function OnboardingScreen() {
                 value={data.caregiverName}
                 onChangeText={(v) => updateData({ caregiverName: v })}
                 placeholder={t('caregiverApp.onboarding.yourName')}
-                placeholderTextColor={COLORS.textMuted}
+                placeholderTextColor={colors.textMuted}
               />
             </View>
             <View style={styles.inputGroup}>
@@ -332,7 +335,7 @@ export default function OnboardingScreen() {
                 value={data.patientName}
                 onChangeText={(v) => updateData({ patientName: v })}
                 placeholder={t('caregiverApp.onboarding.theirName')}
-                placeholderTextColor={COLORS.textMuted}
+                placeholderTextColor={colors.textMuted}
               />
             </View>
             <View style={styles.inputGroup}>
@@ -342,7 +345,7 @@ export default function OnboardingScreen() {
                 value={data.dateOfBirth}
                 onChangeText={(v) => updateData({ dateOfBirth: v })}
                 placeholder="YYYY-MM-DD"
-                placeholderTextColor={COLORS.textMuted}
+                placeholderTextColor={colors.textMuted}
               />
             </View>
             <View style={styles.inputGroup}>
@@ -358,7 +361,7 @@ export default function OnboardingScreen() {
                 value={data.homeAddress}
                 onChangeText={(v) => updateData({ homeAddress: v })}
                 placeholder={t('caregiverApp.onboarding.homeAddressPlaceholder')}
-                placeholderTextColor={COLORS.textMuted}
+                placeholderTextColor={colors.textMuted}
               />
             </View>
           </View>
@@ -381,9 +384,9 @@ export default function OnboardingScreen() {
                 <Text style={styles.label}>{label}</Text>
                 <TextInput
                   style={[styles.input, styles.textArea]}
-                  value={(data as any)[key]}
+                  value={data[key as keyof OnboardingData] as string}
                   onChangeText={(v) => updateData({ [key]: v })}
-                  placeholderTextColor={COLORS.textMuted}
+                  placeholderTextColor={colors.textMuted}
                   multiline
                   numberOfLines={2}
                 />
@@ -408,7 +411,7 @@ export default function OnboardingScreen() {
                 value={data.typicalDay}
                 onChangeText={(v) => updateData({ typicalDay: v })}
                 placeholder={t('caregiverApp.onboarding.typicalDayPlaceholder')}
-                placeholderTextColor={COLORS.textMuted}
+                placeholderTextColor={colors.textMuted}
                 multiline
                 numberOfLines={3}
               />
@@ -445,14 +448,14 @@ export default function OnboardingScreen() {
                 value={newContact.name}
                 onChangeText={(v) => setNewContact({ ...newContact, name: v })}
                 placeholder={t('caregiverApp.onboarding.contactNameRequired')}
-                placeholderTextColor={COLORS.textMuted}
+                placeholderTextColor={colors.textMuted}
               />
               <TextInput
                 style={[styles.input, { marginTop: 10 }]}
                 value={newContact.phone}
                 onChangeText={(v) => setNewContact({ ...newContact, phone: v })}
                 placeholder={t('caregiverApp.onboarding.phoneRequired')}
-                placeholderTextColor={COLORS.textMuted}
+                placeholderTextColor={colors.textMuted}
                 keyboardType="phone-pad"
               />
               <TextInput
@@ -460,7 +463,7 @@ export default function OnboardingScreen() {
                 value={newContact.relationship}
                 onChangeText={(v) => setNewContact({ ...newContact, relationship: v })}
                 placeholder={t('caregiverApp.onboarding.relationshipOptional')}
-                placeholderTextColor={COLORS.textMuted}
+                placeholderTextColor={colors.textMuted}
               />
               <TouchableOpacity
                 style={[styles.addButton, (!newContact.name || !newContact.phone) && styles.addButtonDisabled]}
@@ -528,6 +531,10 @@ export default function OnboardingScreen() {
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      >
       <ScrollView
         style={styles.scrollView}
         contentContainerStyle={styles.scrollContent}
@@ -586,7 +593,7 @@ export default function OnboardingScreen() {
               activeOpacity={0.8}
             >
               {loading ? (
-                <ActivityIndicator color={COLORS.textInverse} />
+                <ActivityIndicator color={colors.textInverse} />
               ) : (
                 <Text style={styles.nextButtonText}>{t('caregiverApp.onboarding.next')}</Text>
               )}
@@ -598,14 +605,15 @@ export default function OnboardingScreen() {
           )}
         </View>
       </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
   },
   scrollView: {
     flex: 1,
@@ -623,7 +631,7 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: RADIUS.lg,
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 8,
@@ -633,38 +641,38 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
   stepCounter: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   progressBar: {
     height: 6,
-    backgroundColor: COLORS.border,
+    backgroundColor: colors.border,
     borderRadius: 3,
     marginBottom: 24,
     overflow: 'hidden',
   },
   progressFill: {
     height: '100%',
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     borderRadius: 3,
   },
   stepTitle: {
     fontSize: 22,
     fontFamily: FONTS.display,
     fontWeight: '600',
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 20,
   },
   form: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     padding: 20,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     ...SHADOWS.sm,
   },
   inputGroup: {
@@ -674,19 +682,19 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 6,
   },
   input: {
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
     borderRadius: RADIUS.lg,
     paddingHorizontal: 16,
     paddingVertical: 12,
     fontSize: 16,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
-    backgroundColor: COLORS.card,
+    color: colors.textPrimary,
+    backgroundColor: colors.card,
   },
   textArea: {
     minHeight: 60,
@@ -701,68 +709,68 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     borderRadius: RADIUS.full,
     borderWidth: 1,
-    borderColor: COLORS.border,
-    backgroundColor: COLORS.card,
+    borderColor: colors.border,
+    backgroundColor: colors.card,
     marginRight: 8,
   },
   chipSelected: {
-    borderColor: COLORS.brand600,
-    backgroundColor: COLORS.brand50,
+    borderColor: colors.brand600,
+    backgroundColor: colors.brand50,
   },
   chipText: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
   },
   chipTextSelected: {
-    color: COLORS.brand700,
+    color: colors.brand700,
     fontFamily: FONTS.bodySemiBold,
   },
   hintText: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     marginBottom: 16,
   },
   contactCard: {
     flexDirection: 'row',
     alignItems: 'center',
     padding: 14,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
     borderRadius: RADIUS.lg,
     marginBottom: 8,
   },
   contactName: {
     fontSize: 15,
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   contactPhone: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     marginTop: 2,
   },
   removeText: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.danger,
+    color: colors.danger,
   },
   addContactCard: {
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     borderRadius: RADIUS.lg,
     padding: 16,
     marginTop: 8,
   },
   addButton: {
-    backgroundColor: COLORS.brand50,
+    backgroundColor: colors.brand50,
     borderRadius: RADIUS.lg,
     paddingVertical: 12,
     alignItems: 'center',
     marginTop: 12,
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
   },
   addButtonDisabled: {
     opacity: 0.5,
@@ -770,7 +778,7 @@ const styles = StyleSheet.create({
   addButtonText: {
     fontSize: 14,
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.brand700,
+    color: colors.brand700,
   },
   warningBox: {
     backgroundColor: '#FEF3C7',
@@ -787,7 +795,7 @@ const styles = StyleSheet.create({
     width: 72,
     height: 72,
     borderRadius: 36,
-    backgroundColor: COLORS.brand50,
+    backgroundColor: colors.brand50,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 16,
@@ -796,20 +804,20 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontFamily: FONTS.display,
     fontWeight: '600',
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 8,
   },
   allSetSubtitle: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     textAlign: 'center',
     marginBottom: 24,
   },
   codeBox: {
-    backgroundColor: COLORS.brand50,
+    backgroundColor: colors.brand50,
     borderWidth: 2,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
     borderRadius: RADIUS['2xl'],
     padding: 24,
     alignItems: 'center',
@@ -819,14 +827,14 @@ const styles = StyleSheet.create({
   codeLabel: {
     fontSize: 12,
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.brand700,
+    color: colors.brand700,
     letterSpacing: 2,
     marginBottom: 8,
   },
   codeValue: {
     fontSize: 40,
     fontWeight: '700',
-    color: COLORS.brand700,
+    color: colors.brand700,
     letterSpacing: 6,
   },
   copyButton: {
@@ -834,16 +842,16 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: RADIUS.lg,
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
     marginBottom: 24,
   },
   copyButtonText: {
     fontSize: 15,
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.brand700,
+    color: colors.brand700,
   },
   nextStepsCard: {
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
     borderRadius: RADIUS.lg,
     padding: 16,
     width: '100%',
@@ -852,26 +860,26 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontFamily: FONTS.display,
     fontWeight: '600',
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 10,
   },
   nextStepsItem: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     marginBottom: 6,
     lineHeight: 20,
   },
   errorContainer: {
-    backgroundColor: COLORS.dangerBg,
+    backgroundColor: colors.dangerBg,
     borderWidth: 1,
-    borderColor: COLORS.danger,
+    borderColor: colors.danger,
     borderRadius: RADIUS.md,
     padding: 12,
     marginBottom: 16,
   },
   errorText: {
-    color: COLORS.danger,
+    color: colors.danger,
     fontSize: 14,
   },
   navRow: {
@@ -885,15 +893,15 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     borderRadius: RADIUS.lg,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
   },
   backButtonText: {
     fontSize: 16,
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
   },
   nextButton: {
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     paddingHorizontal: 28,
     paddingVertical: 14,
     borderRadius: RADIUS.lg,
@@ -905,6 +913,6 @@ const styles = StyleSheet.create({
   nextButtonText: {
     fontSize: 16,
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
-});
+}));

@@ -2,7 +2,6 @@ import { useEffect, useState, useCallback } from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   ScrollView,
   RefreshControl,
   Platform,
@@ -12,13 +11,15 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'expo-router';
 import { useAuthStore } from '../../src/stores/auth-store';
 import { supabase } from '@ourturn/supabase';
 import { getProgressLabel, getLocationStatusLabel } from '@ourturn/shared';
-import { COLORS, FONTS, RADIUS, SHADOWS, SPACING } from '../../src/theme';
+import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS, SPACING } from '../../src/theme';
 
 export default function DashboardScreen() {
   const { t } = useTranslation();
+  const router = useRouter();
   const { caregiver, household, patient, loadCaregiverData } = useAuthStore();
   const [refreshing, setRefreshing] = useState(false);
   const [taskStats, setTaskStats] = useState({ completed: 0, total: 0 });
@@ -26,6 +27,12 @@ export default function DashboardScreen() {
   const [journalEntries, setJournalEntries] = useState<any[]>([]);
   const [journalNote, setJournalNote] = useState('');
   const [savingNote, setSavingNote] = useState(false);
+  const [alertsToday, setAlertsToday] = useState(0);
+  const [hasBrainActivity, setHasBrainActivity] = useState(false);
+  const [loadError, setLoadError] = useState(false);
+
+  const styles = useStyles();
+  const colors = useColors();
 
   const getTimeOfDay = () => {
     const hour = new Date().getHours();
@@ -36,6 +43,7 @@ export default function DashboardScreen() {
 
   const loadDashboardData = async () => {
     if (!household?.id) return;
+    setLoadError(false);
     try {
       const today = new Date().toISOString().split('T')[0];
       const { data: completions } = await supabase
@@ -66,8 +74,28 @@ export default function DashboardScreen() {
         .limit(5);
 
       if (journalData) setJournalEntries(journalData);
+
+      // Load alerts today
+      const { count } = await supabase
+        .from('location_alerts')
+        .select('*', { count: 'exact', head: true })
+        .eq('household_id', household.id)
+        .gte('triggered_at', `${today}T00:00:00`);
+
+      setAlertsToday(count || 0);
+
+      // Check brain activity
+      const { data: brainData } = await supabase
+        .from('brain_activity_completions')
+        .select('id')
+        .eq('household_id', household.id)
+        .eq('date', today)
+        .limit(1);
+
+      setHasBrainActivity((brainData?.length || 0) > 0);
     } catch (error) {
       if (__DEV__) console.error('Failed to load dashboard data:', error);
+      setLoadError(true);
     }
   };
 
@@ -142,6 +170,11 @@ export default function DashboardScreen() {
     ? Math.round((taskStats.completed / taskStats.total) * 100)
     : 0;
 
+  // Device status
+  const lastSeenAt = patient?.last_seen_at ? new Date(patient.last_seen_at) : null;
+  const offlineThresholdMs = (household?.offline_alert_minutes || 30) * 60 * 1000;
+  const isDeviceOnline = lastSeenAt ? (Date.now() - lastSeenAt.getTime()) < offlineThresholdMs : false;
+
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <ScrollView
@@ -152,7 +185,7 @@ export default function DashboardScreen() {
           <RefreshControl
             refreshing={refreshing}
             onRefresh={onRefresh}
-            tintColor={COLORS.brand600}
+            tintColor={colors.brand600}
           />
         }
       >
@@ -179,6 +212,14 @@ export default function DashboardScreen() {
             </View>
           </View>
         </View>
+
+        {/* Error Banner */}
+        {loadError && (
+          <TouchableOpacity style={styles.errorBanner} onPress={loadDashboardData} activeOpacity={0.7}>
+            <Text style={styles.errorBannerText}>{t('common.error')}</Text>
+            <Text style={styles.errorBannerRetry}>{t('common.tryAgain')}</Text>
+          </TouchableOpacity>
+        )}
 
         {/* ── Cards ── */}
         <View style={styles.cardsContainer}>
@@ -271,24 +312,49 @@ export default function DashboardScreen() {
             </View>
           </View>
 
-          {/* Care Code Card */}
-          <View
-            style={styles.card}
-            accessible={true}
-            accessibilityLabel={`${t('caregiverApp.dashboard.careCode')}: ${household?.care_code ? household.care_code.split('').join(' ') : t('caregiverApp.dashboard.careCodeNotAvailable')}`}
-          >
-            <Text style={styles.sectionLabel}>{t('caregiverApp.dashboard.careCode')}</Text>
-            <View style={styles.codeBox}>
-              <Text
-                style={styles.careCode}
-                accessibilityLabel={household?.care_code ? `${t('caregiverApp.dashboard.careCode')}: ${household.care_code.split('').join(' ')}` : t('caregiverApp.dashboard.careCodeNotAvailable')}
-              >
-                {household?.care_code
-                  ? `${household.care_code.slice(0, 3)} ${household.care_code.slice(3)}`
-                  : '--- ---'}
-              </Text>
+          {/* Device Status + Engagement Card */}
+          <View style={styles.card} accessible={true} accessibilityRole="summary">
+            <Text style={styles.sectionLabel}>{t('caregiverApp.dashboard.deviceStatus')}</Text>
+            <View style={styles.deviceRow}>
+              <View style={[styles.deviceIconWrap, isDeviceOnline ? styles.deviceOnlineBg : styles.deviceOfflineBg]}>
+                <Text style={styles.deviceIcon}>{isDeviceOnline ? '📱' : '📵'}</Text>
+              </View>
+              <View style={styles.deviceInfo}>
+                <View style={styles.deviceStatusRow}>
+                  <View style={[styles.deviceDot, isDeviceOnline ? styles.dotOnline : styles.dotOffline]} />
+                  <Text style={styles.deviceStatusText}>
+                    {isDeviceOnline ? t('caregiverApp.dashboard.deviceOnline') : t('caregiverApp.dashboard.deviceOffline')}
+                  </Text>
+                </View>
+                <Text style={styles.deviceLastSeen}>
+                  {lastSeenAt
+                    ? t('caregiverApp.dashboard.lastSeenAt', { time: lastSeenAt.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }) })
+                    : t('caregiverApp.dashboard.lastSeenNever')}
+                </Text>
+              </View>
             </View>
-            <Text style={styles.codeHint}>{t('caregiverApp.dashboard.careCodeHint')}</Text>
+
+            {/* Engagement Summary */}
+            <View style={styles.engagementDivider} />
+            <Text style={styles.sectionLabel}>{t('caregiverApp.dashboard.engagementSummary')}</Text>
+            <View style={styles.engagementGrid}>
+              <View style={styles.engagementBox}>
+                <Text style={styles.engagementValue}>{progressPercent}%</Text>
+                <Text style={styles.engagementLabel}>{t('caregiverApp.dashboard.tasksCompletedLabel')}</Text>
+              </View>
+              <View style={styles.engagementBox}>
+                <Text style={styles.engagementValue}>{checkin ? '✅' : '—'}</Text>
+                <Text style={styles.engagementLabel}>{checkin ? t('caregiverApp.dashboard.checkedIn') : t('caregiverApp.dashboard.notCheckedIn')}</Text>
+              </View>
+              <View style={styles.engagementBox}>
+                <Text style={styles.engagementValue}>{hasBrainActivity ? '🧠' : '—'}</Text>
+                <Text style={styles.engagementLabel}>{t('caregiverApp.dashboard.brainActivity')}</Text>
+              </View>
+              <View style={styles.engagementBox}>
+                <Text style={styles.engagementValue}>{alertsToday}</Text>
+                <Text style={styles.engagementLabel}>{t('caregiverApp.dashboard.alertsToday')}</Text>
+              </View>
+            </View>
           </View>
 
           {/* AI Insights Card */}
@@ -326,7 +392,7 @@ export default function DashboardScreen() {
                 value={journalNote}
                 onChangeText={setJournalNote}
                 placeholder={t('caregiverApp.family.addNote')}
-                placeholderTextColor={COLORS.textMuted}
+                placeholderTextColor={colors.textMuted}
                 returnKeyType="send"
                 onSubmitEditing={handleAddJournalNote}
               />
@@ -337,7 +403,7 @@ export default function DashboardScreen() {
                 activeOpacity={0.7}
               >
                 {savingNote ? (
-                  <ActivityIndicator color={COLORS.textInverse} size="small" />
+                  <ActivityIndicator color={colors.textInverse} size="small" />
                 ) : (
                   <Text style={styles.journalAddButtonText}>+</Text>
                 )}
@@ -377,10 +443,10 @@ export default function DashboardScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
   },
   scrollView: {
     flex: 1,
@@ -407,28 +473,54 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     letterSpacing: -0.5,
   },
   status: {
     fontSize: 15,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     marginTop: 4,
   },
   dateChip: {
-    backgroundColor: COLORS.brand50,
+    backgroundColor: colors.brand50,
     paddingHorizontal: SPACING[3],
     paddingVertical: SPACING[1],
     borderRadius: RADIUS.full,
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
   },
   dateText: {
     fontSize: 11,
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.brand700,
+    color: colors.brand700,
     letterSpacing: 0.3,
+  },
+
+  // Error banner
+  errorBanner: {
+    backgroundColor: colors.dangerBg,
+    borderRadius: RADIUS.lg,
+    padding: SPACING[4],
+    marginBottom: SPACING[4],
+    borderWidth: 1,
+    borderColor: colors.danger,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  errorBannerText: {
+    fontSize: 14,
+    fontFamily: FONTS.body,
+    color: colors.danger,
+    flex: 1,
+  },
+  errorBannerRetry: {
+    fontSize: 14,
+    fontFamily: FONTS.bodySemiBold,
+    fontWeight: '600',
+    color: colors.danger,
+    marginLeft: SPACING[3],
   },
 
   // Cards
@@ -436,22 +528,22 @@ const styles = StyleSheet.create({
     gap: SPACING[4],
   },
   card: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     padding: SPACING[5],
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     ...SHADOWS.sm,
   },
   cardAccent: {
     borderLeftWidth: 4,
-    borderLeftColor: COLORS.brand500,
+    borderLeftColor: colors.brand500,
   },
   sectionLabel: {
     fontSize: 11,
     fontWeight: '700',
     fontFamily: FONTS.displayMedium,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     textTransform: 'uppercase',
     letterSpacing: 1.2,
     marginBottom: SPACING[4],
@@ -460,7 +552,7 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontWeight: '700',
     fontFamily: FONTS.displayMedium,
-    color: COLORS.brand700,
+    color: colors.brand700,
     textTransform: 'uppercase',
     letterSpacing: 1.2,
   },
@@ -477,18 +569,18 @@ const styles = StyleSheet.create({
     fontSize: 42,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     letterSpacing: -1,
   },
   progressSmall: {
     fontSize: 20,
     fontWeight: '400',
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   progressCaption: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     marginTop: 2,
   },
   ringWrap: {
@@ -496,7 +588,7 @@ const styles = StyleSheet.create({
     height: 56,
     borderRadius: 28,
     borderWidth: 4,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -504,17 +596,17 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: FONTS.display,
     fontWeight: '700',
-    color: COLORS.brand600,
+    color: colors.brand600,
   },
   progressBar: {
     height: 8,
-    backgroundColor: COLORS.brand50,
+    backgroundColor: colors.brand50,
     borderRadius: 4,
     overflow: 'hidden',
   },
   progressFill: {
     height: '100%',
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     borderRadius: 4,
   },
 
@@ -525,12 +617,12 @@ const styles = StyleSheet.create({
   },
   checkinBox: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
     borderRadius: RADIUS.lg,
     padding: SPACING[4],
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
   },
   checkinEmoji: {
     fontSize: 28,
@@ -539,7 +631,7 @@ const styles = StyleSheet.create({
   checkinBoxLabel: {
     fontSize: 11,
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     textTransform: 'uppercase',
     letterSpacing: 0.8,
   },
@@ -557,7 +649,7 @@ const styles = StyleSheet.create({
   emptyText: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
 
   // Location
@@ -570,7 +662,7 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: RADIUS.lg,
-    backgroundColor: COLORS.successBg,
+    backgroundColor: colors.successBg,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -584,7 +676,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   locationStatusRow: {
     flexDirection: 'row',
@@ -596,43 +688,107 @@ const styles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: COLORS.success,
+    backgroundColor: colors.success,
   },
   locationTime: {
     fontSize: 12,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
 
-  // Care Code
-  codeBox: {
-    backgroundColor: COLORS.brand50,
-    borderRadius: RADIUS.lg,
-    paddingVertical: SPACING[4],
-    paddingHorizontal: SPACING[5],
+  // Device Status
+  deviceRow: {
+    flexDirection: 'row',
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: COLORS.brand200,
+    gap: SPACING[3],
   },
-  careCode: {
-    fontSize: 32,
-    fontWeight: '700',
-    color: COLORS.brand700,
-    letterSpacing: 6,
-    fontFamily: Platform.OS === 'ios' ? 'Menlo' : 'monospace',
+  deviceIconWrap: {
+    width: 48,
+    height: 48,
+    borderRadius: RADIUS.lg,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  codeHint: {
+  deviceOnlineBg: {
+    backgroundColor: colors.successBg,
+  },
+  deviceOfflineBg: {
+    backgroundColor: colors.dangerBg,
+  },
+  deviceIcon: {
+    fontSize: 24,
+  },
+  deviceInfo: {
+    flex: 1,
+  },
+  deviceStatusRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  deviceDot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+  },
+  dotOnline: {
+    backgroundColor: colors.success,
+  },
+  dotOffline: {
+    backgroundColor: colors.danger,
+  },
+  deviceStatusText: {
+    fontSize: 15,
+    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
+    color: colors.textPrimary,
+  },
+  deviceLastSeen: {
     fontSize: 12,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
+    marginTop: 2,
+  },
+
+  // Engagement Summary
+  engagementDivider: {
+    height: 1,
+    backgroundColor: colors.border,
+    marginVertical: SPACING[4],
+  },
+  engagementGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: SPACING[2],
+  },
+  engagementBox: {
+    flex: 1,
+    minWidth: '45%',
+    backgroundColor: colors.background,
+    borderRadius: RADIUS.lg,
+    padding: SPACING[3],
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  engagementValue: {
+    fontSize: 18,
+    fontWeight: '700',
+    fontFamily: FONTS.display,
+    color: colors.brand600,
+    marginBottom: 2,
+  },
+  engagementLabel: {
+    fontSize: 11,
+    fontFamily: FONTS.body,
+    color: colors.textMuted,
     textAlign: 'center',
-    marginTop: SPACING[3],
   },
 
   // AI Insights
   insightsCard: {
-    backgroundColor: COLORS.brand50,
-    borderColor: COLORS.brand200,
+    backgroundColor: colors.brand50,
+    borderColor: colors.brand200,
   },
   insightHeader: {
     flexDirection: 'row',
@@ -646,11 +802,11 @@ const styles = StyleSheet.create({
   insightBox: {
     flexDirection: 'row',
     gap: SPACING[3],
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     padding: SPACING[4],
     borderRadius: RADIUS.lg,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
   },
   insightIcon: {
     fontSize: 20,
@@ -662,13 +818,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: FONTS.bodySemiBold,
     fontWeight: '600',
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 3,
   },
   insightText: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     lineHeight: 19,
   },
 
@@ -686,20 +842,20 @@ const styles = StyleSheet.create({
   journalInput: {
     flex: 1,
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
     borderRadius: RADIUS.lg,
     paddingHorizontal: 14,
     paddingVertical: 10,
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
-    backgroundColor: COLORS.background,
+    color: colors.textPrimary,
+    backgroundColor: colors.background,
   },
   journalAddButton: {
     width: 40,
     height: 40,
     borderRadius: RADIUS.lg,
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -709,7 +865,7 @@ const styles = StyleSheet.create({
   journalAddButtonText: {
     fontSize: 20,
     fontWeight: '500',
-    color: COLORS.textInverse,
+    color: colors.textInverse,
     marginTop: -1,
   },
   journalEmpty: {
@@ -724,14 +880,14 @@ const styles = StyleSheet.create({
   journalEmptyText: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   journalEntry: {
     flexDirection: 'row',
     gap: SPACING[3],
     paddingVertical: SPACING[2],
     borderTopWidth: 1,
-    borderTopColor: COLORS.border,
+    borderTopColor: colors.border,
   },
   journalEntryIcon: {
     fontSize: 16,
@@ -743,13 +899,13 @@ const styles = StyleSheet.create({
   journalEntryText: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     lineHeight: 19,
   },
   journalEntryMeta: {
     fontSize: 11,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginTop: 2,
   },
-});
+}));

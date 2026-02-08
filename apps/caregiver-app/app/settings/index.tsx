@@ -2,7 +2,6 @@ import { useState, useCallback, useEffect } from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   ScrollView,
   TouchableOpacity,
   Switch,
@@ -11,6 +10,7 @@ import {
   ActivityIndicator,
   Modal,
   Image,
+  FlatList,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Constants from 'expo-constants';
@@ -21,11 +21,16 @@ import * as Haptics from 'expo-haptics';
 import * as ImagePicker from 'expo-image-picker';
 import { useAuthStore } from '../../src/stores/auth-store';
 import { supabase } from '@ourturn/supabase';
-import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
+import { FONTS, RADIUS, SHADOWS, createThemedStyles, useColors } from '../../src/theme';
+import { ThemeToggle } from '../../src/components/theme-toggle';
 import type { EmergencyContact, PatientBiography } from '@ourturn/shared';
+import { SUPPORTED_LANGUAGES } from '@ourturn/shared';
+import { changeLanguage, getCurrentLanguage } from '../../src/i18n';
 
 export default function SettingsScreen() {
   const { t } = useTranslation();
+  const styles = useStyles();
+  const colors = useColors();
   const { caregiver, household, patient, logout, loadCaregiverData } = useAuthStore();
 
   // Profile editing
@@ -34,15 +39,34 @@ export default function SettingsScreen() {
   const [isSavingProfile, setIsSavingProfile] = useState(false);
   const [profileSaved, setProfileSaved] = useState(false);
 
+  // Language picker
+  const [showLanguagePicker, setShowLanguagePicker] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState(getCurrentLanguage());
+
+  const handleLanguageChange = async (langCode: string) => {
+    setSelectedLanguage(langCode);
+    setShowLanguagePicker(false);
+    await changeLanguage(langCode);
+    // Sync to household so patient app picks it up
+    if (household?.id) {
+      await supabase
+        .from('households')
+        .update({ language: langCode })
+        .eq('id', household.id);
+    }
+  };
+
   // Notification preferences
   const notifPrefs = caregiver?.notification_preferences || {
     safety_alerts: true,
     daily_summary: true,
     email_notifications: true,
+    respite_reminders: true,
   };
   const [safetyAlerts, setSafetyAlerts] = useState(notifPrefs.safety_alerts ?? true);
   const [dailySummary, setDailySummary] = useState(notifPrefs.daily_summary ?? true);
   const [emailNotifs, setEmailNotifs] = useState(notifPrefs.email_notifications ?? true);
+  const [respiteReminders, setRespiteReminders] = useState(notifPrefs.respite_reminders ?? true);
   const [isSavingNotifs, setIsSavingNotifs] = useState(false);
   const [notifsSaved, setNotifsSaved] = useState(false);
 
@@ -84,8 +108,8 @@ export default function SettingsScreen() {
     if (Array.isArray(value)) {
       return value.map((item) => {
         if (typeof item === 'object' && item !== null && 'name' in item) {
-          const rel = (item as any).relationship;
-          return rel ? `${(item as any).name} (${rel})` : String((item as any).name);
+          const person = item as { name: string; relationship?: string };
+          return person.relationship ? `${person.name} (${person.relationship})` : person.name;
         }
         return String(item);
       }).join('\n');
@@ -96,7 +120,7 @@ export default function SettingsScreen() {
     if (Array.isArray(value)) {
       return value.map((item) =>
         typeof item === 'object' && item !== null && 'description' in item
-          ? String((item as any).description)
+          ? String((item as { description: string }).description)
           : String(item)
       ).join('\n');
     }
@@ -385,7 +409,7 @@ export default function SettingsScreen() {
     }
   }, [patient?.id, contacts]);
 
-  const handleSaveComplexity = useCallback(async (newComplexity: string) => {
+  const handleSaveComplexity = useCallback(async (newComplexity: 'full' | 'simplified' | 'essential') => {
     if (!patient?.id) return;
     setIsSavingComplexity(true);
     try {
@@ -461,6 +485,7 @@ export default function SettingsScreen() {
             safety_alerts: safetyAlerts,
             daily_summary: dailySummary,
             email_notifications: emailNotifs,
+            respite_reminders: respiteReminders,
           },
         })
         .eq('id', caregiver.id);
@@ -475,7 +500,7 @@ export default function SettingsScreen() {
     } finally {
       setIsSavingNotifs(false);
     }
-  }, [caregiver?.id, safetyAlerts, dailySummary, emailNotifs]);
+  }, [caregiver?.id, safetyAlerts, dailySummary, emailNotifs, respiteReminders]);
 
   const handleCopyCode = useCallback(async () => {
     if (!household?.care_code) return;
@@ -650,6 +675,15 @@ export default function SettingsScreen() {
           <Text style={styles.title}>{t('caregiverApp.settings.title')}</Text>
         </View>
 
+        {/* ── APPEARANCE ── */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>{t('caregiverApp.settings.appearance')}</Text>
+          <View style={styles.card}>
+            <Text style={styles.fieldLabel}>{t('caregiverApp.settings.theme.label')}</Text>
+            <ThemeToggle />
+          </View>
+        </View>
+
         {/* ── YOUR PROFILE ── */}
         <Text style={styles.groupHeading}>{t('caregiverApp.settings.groupProfile')}</Text>
 
@@ -662,13 +696,13 @@ export default function SettingsScreen() {
                 style={styles.textInput}
                 value={editName}
                 onChangeText={setEditName}
-                placeholderTextColor={COLORS.textMuted}
+                placeholderTextColor={colors.textMuted}
               />
             </View>
             <View style={styles.fieldGroup}>
               <Text style={styles.fieldLabel}>{t('caregiverApp.auth.email')}</Text>
               <View style={styles.disabledInput}>
-                <Text style={styles.disabledText}>{caregiver?.email || '—'}</Text>
+                <Text style={styles.disabledText}>{caregiver?.email || '\u2014'}</Text>
               </View>
             </View>
             <View style={styles.fieldGroup}>
@@ -678,7 +712,7 @@ export default function SettingsScreen() {
                 value={editRelationship}
                 onChangeText={setEditRelationship}
                 placeholder={t('caregiverApp.onboarding.relationshipPlaceholder')}
-                placeholderTextColor={COLORS.textMuted}
+                placeholderTextColor={colors.textMuted}
               />
             </View>
             <View style={styles.saveRow}>
@@ -689,7 +723,7 @@ export default function SettingsScreen() {
                 activeOpacity={0.7}
               >
                 {isSavingProfile ? (
-                  <ActivityIndicator color={COLORS.textInverse} size="small" />
+                  <ActivityIndicator color={colors.textInverse} size="small" />
                 ) : (
                   <Text style={styles.saveButtonText}>{t('caregiverApp.settings.saveProfile')}</Text>
                 )}
@@ -700,6 +734,61 @@ export default function SettingsScreen() {
             </View>
           </View>
         </View>
+
+        {/* Language Picker */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>{t('caregiverApp.settings.language')}</Text>
+          <View style={styles.card}>
+            <TouchableOpacity
+              style={styles.languageRow}
+              onPress={() => setShowLanguagePicker(true)}
+              activeOpacity={0.7}
+            >
+              <Text style={styles.languageLabel}>
+                {SUPPORTED_LANGUAGES.find(l => l.code === selectedLanguage)?.nativeName || 'English'}
+              </Text>
+              <Text style={styles.languageChevron}>{'>'}</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        <Modal
+          visible={showLanguagePicker}
+          animationType="slide"
+          presentationStyle="pageSheet"
+          onRequestClose={() => setShowLanguagePicker(false)}
+        >
+          <SafeAreaView style={styles.langModalContainer}>
+            <View style={styles.langModalHeader}>
+              <Text style={styles.langModalTitle}>{t('caregiverApp.settings.selectLanguage')}</Text>
+              <TouchableOpacity onPress={() => setShowLanguagePicker(false)}>
+                <Text style={styles.langModalClose}>{t('common.cancel')}</Text>
+              </TouchableOpacity>
+            </View>
+            <FlatList
+              data={SUPPORTED_LANGUAGES}
+              keyExtractor={(item) => item.code}
+              renderItem={({ item }) => (
+                <TouchableOpacity
+                  style={[
+                    styles.languageOption,
+                    item.code === selectedLanguage && styles.languageOptionSelected,
+                  ]}
+                  onPress={() => handleLanguageChange(item.code)}
+                  activeOpacity={0.7}
+                >
+                  <View>
+                    <Text style={styles.languageNativeName}>{item.nativeName}</Text>
+                    <Text style={styles.languageEnglishName}>{item.name}</Text>
+                  </View>
+                  {item.code === selectedLanguage && (
+                    <Text style={styles.languageCheck}>{'\u2713'}</Text>
+                  )}
+                </TouchableOpacity>
+              )}
+            />
+          </SafeAreaView>
+        </Modal>
 
         {/* ── ABOUT [PATIENT NAME] ── */}
         {patient && (
@@ -721,7 +810,7 @@ export default function SettingsScreen() {
                     style={styles.textInput}
                     value={patientName}
                     onChangeText={setPatientName}
-                    placeholderTextColor={COLORS.textMuted}
+                    placeholderTextColor={colors.textMuted}
                   />
                 </View>
                 <View style={styles.fieldGroup}>
@@ -731,7 +820,7 @@ export default function SettingsScreen() {
                     value={dateOfBirth}
                     onChangeText={setDateOfBirth}
                     placeholder="YYYY-MM-DD"
-                    placeholderTextColor={COLORS.textMuted}
+                    placeholderTextColor={colors.textMuted}
                   />
                 </View>
                 <View style={styles.fieldGroup}>
@@ -741,7 +830,7 @@ export default function SettingsScreen() {
                     value={dementiaType}
                     onChangeText={setDementiaType}
                     placeholder={t('caregiverApp.settings.selectDementiaType')}
-                    placeholderTextColor={COLORS.textMuted}
+                    placeholderTextColor={colors.textMuted}
                   />
                 </View>
                 <View style={styles.fieldGroup}>
@@ -751,7 +840,7 @@ export default function SettingsScreen() {
                     value={homeAddress}
                     onChangeText={setHomeAddress}
                     placeholder={t('caregiverApp.settings.homeAddressPlaceholder')}
-                    placeholderTextColor={COLORS.textMuted}
+                    placeholderTextColor={colors.textMuted}
                   />
                 </View>
                 <View style={styles.saveRow}>
@@ -762,7 +851,7 @@ export default function SettingsScreen() {
                     activeOpacity={0.7}
                   >
                     {isSavingPatientInfo ? (
-                      <ActivityIndicator color={COLORS.textInverse} size="small" />
+                      <ActivityIndicator color={colors.textInverse} size="small" />
                     ) : (
                       <Text style={styles.saveButtonText}>{t('caregiverApp.settings.savePatientInfo')}</Text>
                     )}
@@ -785,7 +874,7 @@ export default function SettingsScreen() {
                     style={styles.textInput}
                     value={childhoodLocation}
                     onChangeText={setChildhoodLocation}
-                    placeholderTextColor={COLORS.textMuted}
+                    placeholderTextColor={colors.textMuted}
                   />
                 </View>
                 <View style={styles.fieldGroup}>
@@ -794,7 +883,7 @@ export default function SettingsScreen() {
                     style={styles.textInput}
                     value={career}
                     onChangeText={setCareer}
-                    placeholderTextColor={COLORS.textMuted}
+                    placeholderTextColor={colors.textMuted}
                   />
                 </View>
                 <View style={styles.fieldGroup}>
@@ -804,7 +893,7 @@ export default function SettingsScreen() {
                     value={hobbies}
                     onChangeText={setHobbies}
                     placeholder={t('caregiverApp.settings.hobbiesPlaceholder')}
-                    placeholderTextColor={COLORS.textMuted}
+                    placeholderTextColor={colors.textMuted}
                   />
                 </View>
                 <View style={styles.fieldGroup}>
@@ -814,7 +903,7 @@ export default function SettingsScreen() {
                     value={favoriteMusic}
                     onChangeText={setFavoriteMusic}
                     placeholder={t('caregiverApp.settings.favoriteMusicPlaceholder')}
-                    placeholderTextColor={COLORS.textMuted}
+                    placeholderTextColor={colors.textMuted}
                   />
                 </View>
                 <View style={styles.fieldGroup}>
@@ -824,7 +913,7 @@ export default function SettingsScreen() {
                     value={favoriteFoods}
                     onChangeText={setFavoriteFoods}
                     placeholder={t('caregiverApp.settings.favoriteFoodsPlaceholder')}
-                    placeholderTextColor={COLORS.textMuted}
+                    placeholderTextColor={colors.textMuted}
                   />
                 </View>
                 <View style={styles.fieldGroup}>
@@ -834,7 +923,7 @@ export default function SettingsScreen() {
                     value={importantPeople}
                     onChangeText={setImportantPeople}
                     placeholder={t('caregiverApp.settings.importantPeoplePlaceholder')}
-                    placeholderTextColor={COLORS.textMuted}
+                    placeholderTextColor={colors.textMuted}
                     multiline
                     numberOfLines={3}
                   />
@@ -846,7 +935,7 @@ export default function SettingsScreen() {
                     value={keyEvents}
                     onChangeText={setKeyEvents}
                     placeholder={t('caregiverApp.settings.keyEventsPlaceholder')}
-                    placeholderTextColor={COLORS.textMuted}
+                    placeholderTextColor={colors.textMuted}
                     multiline
                     numberOfLines={3}
                   />
@@ -859,7 +948,7 @@ export default function SettingsScreen() {
                     activeOpacity={0.7}
                   >
                     {isSavingLifeStory ? (
-                      <ActivityIndicator color={COLORS.textInverse} size="small" />
+                      <ActivityIndicator color={colors.textInverse} size="small" />
                     ) : (
                       <Text style={styles.saveButtonText}>{t('caregiverApp.settings.saveLifeStory')}</Text>
                     )}
@@ -884,7 +973,7 @@ export default function SettingsScreen() {
                       value={wakeTime}
                       onChangeText={setWakeTime}
                       placeholder="07:00"
-                      placeholderTextColor={COLORS.textMuted}
+                      placeholderTextColor={colors.textMuted}
                     />
                   </View>
                   <View style={styles.fieldHalf}>
@@ -894,7 +983,7 @@ export default function SettingsScreen() {
                       value={sleepTime}
                       onChangeText={setSleepTime}
                       placeholder="21:00"
-                      placeholderTextColor={COLORS.textMuted}
+                      placeholderTextColor={colors.textMuted}
                     />
                   </View>
                 </View>
@@ -906,7 +995,7 @@ export default function SettingsScreen() {
                     activeOpacity={0.7}
                   >
                     {isSavingSchedule ? (
-                      <ActivityIndicator color={COLORS.textInverse} size="small" />
+                      <ActivityIndicator color={colors.textInverse} size="small" />
                     ) : (
                       <Text style={styles.saveButtonText}>{t('caregiverApp.settings.saveSchedule')}</Text>
                     )}
@@ -952,7 +1041,7 @@ export default function SettingsScreen() {
                       style={styles.textInput}
                       value={newContactName}
                       onChangeText={setNewContactName}
-                      placeholderTextColor={COLORS.textMuted}
+                      placeholderTextColor={colors.textMuted}
                     />
                   </View>
                   <View style={styles.fieldGroup}>
@@ -962,7 +1051,7 @@ export default function SettingsScreen() {
                       value={newContactPhone}
                       onChangeText={setNewContactPhone}
                       placeholder="+1 555 123 4567"
-                      placeholderTextColor={COLORS.textMuted}
+                      placeholderTextColor={colors.textMuted}
                       keyboardType="phone-pad"
                     />
                   </View>
@@ -973,7 +1062,7 @@ export default function SettingsScreen() {
                       value={newContactRelationship}
                       onChangeText={setNewContactRelationship}
                       placeholder={t('caregiverApp.settings.contactRelationshipPlaceholder')}
-                      placeholderTextColor={COLORS.textMuted}
+                      placeholderTextColor={colors.textMuted}
                     />
                   </View>
                   <TouchableOpacity
@@ -994,7 +1083,7 @@ export default function SettingsScreen() {
                     activeOpacity={0.7}
                   >
                     {isSavingContacts ? (
-                      <ActivityIndicator color={COLORS.textInverse} size="small" />
+                      <ActivityIndicator color={colors.textInverse} size="small" />
                     ) : (
                       <Text style={styles.saveButtonText}>{t('caregiverApp.settings.saveContacts')}</Text>
                     )}
@@ -1043,7 +1132,7 @@ export default function SettingsScreen() {
                     activeOpacity={0.7}
                   >
                     {isUploadingPhotos ? (
-                      <ActivityIndicator color={COLORS.textInverse} size="small" />
+                      <ActivityIndicator color={colors.textInverse} size="small" />
                     ) : (
                       <Text style={styles.saveButtonText}>
                         {photos.length >= 20
@@ -1116,7 +1205,7 @@ export default function SettingsScreen() {
                 activeOpacity={0.7}
               >
                 {isRegenerating ? (
-                  <ActivityIndicator color={COLORS.danger} size="small" />
+                  <ActivityIndicator color={colors.danger} size="small" />
                 ) : (
                   <Text style={[styles.codeButtonText, styles.codeButtonTextDanger]}>
                     {t('caregiverApp.settings.regenerateCode')}
@@ -1178,7 +1267,7 @@ export default function SettingsScreen() {
                 activeOpacity={0.7}
               >
                 {isSavingSafety ? (
-                  <ActivityIndicator color={COLORS.textInverse} size="small" />
+                  <ActivityIndicator color={colors.textInverse} size="small" />
                 ) : (
                   <Text style={styles.saveButtonText}>{t('common.save')}</Text>
                 )}
@@ -1201,8 +1290,8 @@ export default function SettingsScreen() {
               <Switch
                 value={safetyAlerts}
                 onValueChange={setSafetyAlerts}
-                trackColor={{ false: COLORS.border, true: COLORS.brand400 }}
-                thumbColor={safetyAlerts ? COLORS.brand600 : COLORS.textMuted}
+                trackColor={{ false: colors.border, true: colors.brand400 }}
+                thumbColor={safetyAlerts ? colors.brand600 : colors.textMuted}
               />
             </View>
             <View style={[styles.switchRow, styles.rowBorder]}>
@@ -1212,8 +1301,8 @@ export default function SettingsScreen() {
               <Switch
                 value={dailySummary}
                 onValueChange={setDailySummary}
-                trackColor={{ false: COLORS.border, true: COLORS.brand400 }}
-                thumbColor={dailySummary ? COLORS.brand600 : COLORS.textMuted}
+                trackColor={{ false: colors.border, true: colors.brand400 }}
+                thumbColor={dailySummary ? colors.brand600 : colors.textMuted}
               />
             </View>
             <View style={[styles.switchRow, styles.rowBorder]}>
@@ -1223,8 +1312,20 @@ export default function SettingsScreen() {
               <Switch
                 value={emailNotifs}
                 onValueChange={setEmailNotifs}
-                trackColor={{ false: COLORS.border, true: COLORS.brand400 }}
-                thumbColor={emailNotifs ? COLORS.brand600 : COLORS.textMuted}
+                trackColor={{ false: colors.border, true: colors.brand400 }}
+                thumbColor={emailNotifs ? colors.brand600 : colors.textMuted}
+              />
+            </View>
+            <View style={[styles.switchRow, styles.rowBorder]}>
+              <View style={styles.switchLabel}>
+                <Text style={styles.rowLabel}>{t('caregiverApp.settings.respiteReminders')}</Text>
+                <Text style={styles.fieldHint}>{t('caregiverApp.settings.respiteRemindersDesc')}</Text>
+              </View>
+              <Switch
+                value={respiteReminders}
+                onValueChange={setRespiteReminders}
+                trackColor={{ false: colors.border, true: colors.brand400 }}
+                thumbColor={respiteReminders ? colors.brand600 : colors.textMuted}
               />
             </View>
             <View style={styles.saveRow}>
@@ -1235,7 +1336,7 @@ export default function SettingsScreen() {
                 activeOpacity={0.7}
               >
                 {isSavingNotifs ? (
-                  <ActivityIndicator color={COLORS.textInverse} size="small" />
+                  <ActivityIndicator color={colors.textInverse} size="small" />
                 ) : (
                   <Text style={styles.saveButtonText}>{t('common.save')}</Text>
                 )}
@@ -1261,7 +1362,7 @@ export default function SettingsScreen() {
                 value={newPassword}
                 onChangeText={setNewPassword}
                 placeholder={t('caregiverApp.settings.passwordPlaceholder')}
-                placeholderTextColor={COLORS.textMuted}
+                placeholderTextColor={colors.textMuted}
                 secureTextEntry
                 autoComplete="new-password"
               />
@@ -1272,7 +1373,7 @@ export default function SettingsScreen() {
                 style={styles.textInput}
                 value={confirmPassword}
                 onChangeText={setConfirmPassword}
-                placeholderTextColor={COLORS.textMuted}
+                placeholderTextColor={colors.textMuted}
                 secureTextEntry
                 autoComplete="new-password"
               />
@@ -1293,7 +1394,7 @@ export default function SettingsScreen() {
               activeOpacity={0.7}
             >
               {isChangingPassword ? (
-                <ActivityIndicator color={COLORS.textInverse} size="small" />
+                <ActivityIndicator color={colors.textInverse} size="small" />
               ) : (
                 <Text style={styles.saveButtonText}>{t('caregiverApp.settings.changePassword')}</Text>
               )}
@@ -1329,11 +1430,11 @@ export default function SettingsScreen() {
               activeOpacity={0.7}
             >
               {isExporting ? (
-                <ActivityIndicator color={COLORS.brand600} size="small" />
+                <ActivityIndicator color={colors.brand600} size="small" />
               ) : (
                 <Text style={styles.rowLabel}>{t('caregiverApp.settings.exportData')}</Text>
               )}
-              <Text style={styles.rowArrow}>›</Text>
+              <Text style={styles.rowArrow}>{'\u203A'}</Text>
             </TouchableOpacity>
             <Text style={styles.exportNote}>{t('caregiverApp.settings.exportNote')}</Text>
           </View>
@@ -1368,7 +1469,7 @@ export default function SettingsScreen() {
             activeOpacity={0.7}
           >
             {isDeleting ? (
-              <ActivityIndicator color={COLORS.danger} size="small" />
+              <ActivityIndicator color={colors.danger} size="small" />
             ) : (
               <Text style={styles.deleteButtonText}>{t('caregiverApp.settings.deleteAccount')}</Text>
             )}
@@ -1393,7 +1494,7 @@ export default function SettingsScreen() {
               value={deleteConfirmText}
               onChangeText={setDeleteConfirmText}
               placeholder="DELETE"
-              placeholderTextColor={COLORS.textMuted}
+              placeholderTextColor={colors.textMuted}
               autoCapitalize="characters"
             />
             <View style={styles.modalActions}>
@@ -1418,10 +1519,10 @@ export default function SettingsScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
   },
   scrollView: {
     flex: 1,
@@ -1439,14 +1540,14 @@ const styles = StyleSheet.create({
   },
   backText: {
     fontSize: 16,
-    color: COLORS.brand600,
+    color: colors.brand600,
     fontFamily: FONTS.bodyMedium,
   },
   title: {
     fontSize: 24,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     letterSpacing: -0.3,
   },
   section: {
@@ -1456,16 +1557,16 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     textTransform: 'uppercase',
     letterSpacing: 0.5,
     marginBottom: 8,
   },
   card: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     overflow: 'hidden',
     padding: 20,
     ...SHADOWS.sm,
@@ -1476,7 +1577,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '700',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     textTransform: 'uppercase',
     letterSpacing: 1,
     marginBottom: 16,
@@ -1487,7 +1588,7 @@ const styles = StyleSheet.create({
   cardDesc: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     marginBottom: 16,
   },
 
@@ -1499,33 +1600,33 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     marginBottom: 6,
   },
   textInput: {
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
     borderRadius: RADIUS.md,
     paddingHorizontal: 16,
     paddingVertical: 12,
     fontSize: 16,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
-    backgroundColor: COLORS.background,
+    color: colors.textPrimary,
+    backgroundColor: colors.background,
   },
   disabledInput: {
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     borderRadius: RADIUS.md,
     paddingHorizontal: 16,
     paddingVertical: 12,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
     opacity: 0.6,
   },
   disabledText: {
     fontSize: 16,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   saveRow: {
     flexDirection: 'row',
@@ -1534,7 +1635,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   saveButton: {
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     borderRadius: RADIUS.lg,
     paddingVertical: 12,
     paddingHorizontal: 20,
@@ -1549,12 +1650,12 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
   savedText: {
     fontSize: 14,
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.success,
+    color: colors.success,
   },
 
   // Multiline text input
@@ -1576,7 +1677,7 @@ const styles = StyleSheet.create({
   fieldHint: {
     fontSize: 12,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginTop: 4,
   },
 
@@ -1585,7 +1686,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
     borderRadius: RADIUS.lg,
     padding: 14,
     marginBottom: 8,
@@ -1594,38 +1695,38 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   contactDetail: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     marginTop: 2,
   },
   removeText: {
     fontSize: 14,
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.danger,
+    color: colors.danger,
   },
   noContactsText: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
-    backgroundColor: COLORS.brand50,
+    color: colors.textMuted,
+    backgroundColor: colors.brand50,
     borderRadius: RADIUS.lg,
     padding: 12,
     marginBottom: 16,
   },
   addContactBox: {
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     borderRadius: RADIUS.lg,
     padding: 16,
     marginBottom: 16,
   },
   secondaryButton: {
     borderWidth: 1,
-    borderColor: COLORS.brand600,
+    borderColor: colors.brand600,
     borderRadius: RADIUS.lg,
     paddingVertical: 12,
     alignItems: 'center',
@@ -1634,7 +1735,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.brand600,
+    color: colors.brand600,
   },
 
   // Radio buttons (complexity)
@@ -1644,37 +1745,37 @@ const styles = StyleSheet.create({
     gap: 12,
     paddingVertical: 12,
     borderBottomWidth: 1,
-    borderBottomColor: COLORS.border,
+    borderBottomColor: colors.border,
   },
   radioOuter: {
     width: 22,
     height: 22,
     borderRadius: 11,
     borderWidth: 2,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 2,
   },
   radioOuterSelected: {
-    borderColor: COLORS.brand600,
+    borderColor: colors.brand600,
   },
   radioInner: {
     width: 12,
     height: 12,
     borderRadius: 6,
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
   },
   radioLabel: {
     fontSize: 16,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   radioDesc: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginTop: 2,
   },
 
@@ -1690,20 +1791,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     borderRadius: RADIUS.lg,
     borderWidth: 1,
-    borderColor: COLORS.border,
-    backgroundColor: COLORS.background,
+    borderColor: colors.border,
+    backgroundColor: colors.background,
   },
   pickerOptionSelected: {
-    borderColor: COLORS.brand600,
-    backgroundColor: COLORS.brand50,
+    borderColor: colors.brand600,
+    backgroundColor: colors.brand50,
   },
   pickerOptionText: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
   },
   pickerOptionTextSelected: {
-    color: COLORS.brand700,
+    color: colors.brand700,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
   },
@@ -1717,24 +1818,24 @@ const styles = StyleSheet.create({
   },
   rowBorder: {
     borderTopWidth: 1,
-    borderTopColor: COLORS.border,
+    borderTopColor: colors.border,
     paddingTop: 16,
     marginTop: 8,
   },
   rowLabel: {
     fontSize: 16,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     flex: 1,
   },
   rowValue: {
     fontSize: 16,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
   },
   rowArrow: {
     fontSize: 20,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   actionRow: {
     flexDirection: 'row',
@@ -1756,7 +1857,7 @@ const styles = StyleSheet.create({
 
   // Badge
   badge: {
-    backgroundColor: COLORS.brand100,
+    backgroundColor: colors.brand100,
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: RADIUS.full,
@@ -1765,29 +1866,29 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.brand700,
+    color: colors.brand700,
   },
 
   // Care code
   codeContainer: {
-    backgroundColor: COLORS.brand50,
+    backgroundColor: colors.brand50,
     borderRadius: RADIUS.lg,
     paddingVertical: 16,
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
   },
   careCode: {
     fontSize: 28,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.brand700,
+    color: colors.brand700,
     letterSpacing: 4,
   },
   codeHelp: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     textAlign: 'center',
     marginTop: 12,
     marginBottom: 16,
@@ -1801,33 +1902,33 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: RADIUS.lg,
     borderWidth: 1,
-    borderColor: COLORS.brand600,
+    borderColor: colors.brand600,
     alignItems: 'center',
   },
   codeButtonDanger: {
-    borderColor: COLORS.danger,
+    borderColor: colors.danger,
   },
   codeButtonText: {
     fontSize: 14,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.brand600,
+    color: colors.brand600,
   },
   codeButtonTextDanger: {
-    color: COLORS.danger,
+    color: colors.danger,
   },
 
   // Photo gallery
   photoDesc: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     marginBottom: 12,
   },
   photoCount: {
     fontSize: 13,
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginBottom: 8,
   },
   photoGrid: {
@@ -1842,7 +1943,7 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.md,
     overflow: 'hidden',
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
   },
   photoImage: {
     width: '100%',
@@ -1851,13 +1952,13 @@ const styles = StyleSheet.create({
   photoHintText: {
     fontSize: 12,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginBottom: 12,
   },
   noPhotosText: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginBottom: 12,
   },
 
@@ -1865,13 +1966,13 @@ const styles = StyleSheet.create({
   errorText: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.danger,
+    color: colors.danger,
     marginBottom: 12,
   },
   successText: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.success,
+    color: colors.success,
     marginBottom: 12,
   },
 
@@ -1879,17 +1980,17 @@ const styles = StyleSheet.create({
   exportNote: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginTop: 8,
   },
 
   // Logout
   logoutButton: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     padding: 16,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     alignItems: 'center',
     marginBottom: 24,
     ...SHADOWS.sm,
@@ -1898,23 +1999,23 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
 
   // Danger zone
   dangerSection: {
-    backgroundColor: COLORS.dangerBg,
+    backgroundColor: colors.dangerBg,
     borderRadius: RADIUS.xl,
     padding: 20,
     borderWidth: 1,
-    borderColor: COLORS.danger,
+    borderColor: colors.danger,
     marginBottom: 40,
   },
   dangerTitle: {
     fontSize: 16,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.danger,
+    color: colors.danger,
     marginBottom: 12,
   },
   deleteButton: {
@@ -1922,7 +2023,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderWidth: 1,
-    borderColor: COLORS.danger,
+    borderColor: colors.danger,
     alignItems: 'center',
     marginBottom: 8,
   },
@@ -1930,12 +2031,12 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.danger,
+    color: colors.danger,
   },
   dangerNote: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.danger,
+    color: colors.danger,
     opacity: 0.8,
   },
 
@@ -1948,7 +2049,7 @@ const styles = StyleSheet.create({
     padding: 24,
   },
   modalContent: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     padding: 24,
     width: '100%',
@@ -1958,24 +2059,24 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.danger,
+    color: colors.danger,
     marginBottom: 8,
   },
   modalDesc: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     marginBottom: 16,
   },
   modalInput: {
     borderWidth: 1,
-    borderColor: COLORS.danger,
+    borderColor: colors.danger,
     borderRadius: RADIUS.md,
     paddingHorizontal: 12,
     paddingVertical: 10,
     fontSize: 16,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 20,
     textAlign: 'center',
   },
@@ -1988,26 +2089,94 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     borderRadius: RADIUS.lg,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     alignItems: 'center',
   },
   modalCancelText: {
     fontSize: 15,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   modalDeleteButton: {
     flex: 1,
     paddingVertical: 12,
     borderRadius: RADIUS.lg,
-    backgroundColor: COLORS.danger,
+    backgroundColor: colors.danger,
     alignItems: 'center',
   },
   modalDeleteText: {
     fontSize: 15,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
-});
+  // Language picker
+  languageRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 4,
+  },
+  languageLabel: {
+    fontSize: 16,
+    fontFamily: FONTS.bodyMedium,
+    color: colors.textPrimary,
+  },
+  languageChevron: {
+    fontSize: 18,
+    color: colors.textMuted,
+  },
+  langModalContainer: {
+    flex: 1,
+    backgroundColor: colors.background,
+  },
+  langModalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
+  },
+  langModalTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+    fontFamily: FONTS.display,
+    color: colors.textPrimary,
+  },
+  langModalClose: {
+    fontSize: 16,
+    color: colors.brand600,
+    fontFamily: FONTS.bodyMedium,
+  },
+  languageOption: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 14,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
+  },
+  languageOptionSelected: {
+    backgroundColor: colors.brand50,
+  },
+  languageNativeName: {
+    fontSize: 16,
+    fontFamily: FONTS.bodyMedium,
+    color: colors.textPrimary,
+  },
+  languageEnglishName: {
+    fontSize: 13,
+    fontFamily: FONTS.body,
+    color: colors.textMuted,
+    marginTop: 2,
+  },
+  languageCheck: {
+    fontSize: 20,
+    color: colors.brand600,
+    fontWeight: '700',
+  },
+}));

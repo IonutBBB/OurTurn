@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, Alert } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import * as Haptics from 'expo-haptics';
 import { supabase } from '@ourturn/supabase';
 import type { HelpRequest } from '@ourturn/shared';
 import { HELP_REQUEST_TEMPLATES } from '@ourturn/shared';
-import { COLORS, FONTS, RADIUS, SHADOWS } from '../../theme';
+import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS } from '../../theme';
+import type { ThemeColors } from '../../theme';
 
 interface HelpRequestFormProps {
   caregiverId: string;
@@ -13,19 +14,25 @@ interface HelpRequestFormProps {
   initialRequests: HelpRequest[];
 }
 
-const STATUS_COLORS: Record<string, string> = {
-  pending: COLORS.amber,
-  accepted: COLORS.brand600,
-  completed: COLORS.success,
-  expired: COLORS.textMuted,
-};
+function getStatusColors(colors: ThemeColors): Record<string, string> {
+  return {
+    pending: colors.amber,
+    accepted: colors.brand600,
+    completed: colors.success,
+    expired: colors.textMuted,
+  };
+}
 
 export function HelpRequestForm({ caregiverId, householdId, initialRequests }: HelpRequestFormProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const styles = useStyles();
+  const colors = useColors();
   const [requests, setRequests] = useState<HelpRequest[]>(initialRequests);
   const [customMessage, setCustomMessage] = useState('');
   const [showCustom, setShowCustom] = useState(false);
   const [isSending, setIsSending] = useState(false);
+
+  const statusColors = getStatusColors(colors);
 
   const sendRequest = async (message: string, templateKey?: string) => {
     setIsSending(true);
@@ -78,13 +85,13 @@ export function HelpRequestForm({ caregiverId, householdId, initialRequests }: H
               if (tpl.key === 'custom') {
                 setShowCustom(true);
               } else {
-                sendRequest(tpl.message, tpl.key);
+                sendRequest(t(`caregiverApp.toolkit.help.message_${tpl.key}`), tpl.key);
               }
             }}
             disabled={isSending}
             activeOpacity={0.7}
           >
-            <Text style={styles.templateText}>{tpl.label}</Text>
+            <Text style={styles.templateText}>{t(`caregiverApp.toolkit.help.template_${tpl.key}`)}</Text>
           </TouchableOpacity>
         ))}
       </View>
@@ -96,7 +103,7 @@ export function HelpRequestForm({ caregiverId, householdId, initialRequests }: H
             value={customMessage}
             onChangeText={setCustomMessage}
             placeholder={t('caregiverApp.toolkit.help.customPlaceholder')}
-            placeholderTextColor={COLORS.textMuted}
+            placeholderTextColor={colors.textMuted}
             style={styles.customInput}
             returnKeyType="send"
             onSubmitEditing={() => {
@@ -122,7 +129,7 @@ export function HelpRequestForm({ caregiverId, householdId, initialRequests }: H
               <View style={styles.requestContent}>
                 <Text style={styles.requestMessage} numberOfLines={1}>{req.message}</Text>
                 <Text style={styles.requestTime}>
-                  {new Date(req.created_at).toLocaleDateString('en-US', {
+                  {new Date(req.created_at).toLocaleDateString(i18n.language, {
                     month: 'short',
                     day: 'numeric',
                     hour: 'numeric',
@@ -130,8 +137,8 @@ export function HelpRequestForm({ caregiverId, householdId, initialRequests }: H
                   })}
                 </Text>
               </View>
-              <View style={[styles.statusBadge, { backgroundColor: STATUS_COLORS[req.status] + '20' }]}>
-                <Text style={[styles.statusText, { color: STATUS_COLORS[req.status] }]}>
+              <View style={[styles.statusBadge, { backgroundColor: statusColors[req.status] + '20' }]}>
+                <Text style={[styles.statusText, { color: statusColors[req.status] }]}>
                   {getStatusLabel(req.status)}
                 </Text>
               </View>
@@ -143,20 +150,20 @@ export function HelpRequestForm({ caregiverId, householdId, initialRequests }: H
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   card: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     padding: 20,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     ...SHADOWS.sm,
   },
   title: {
     fontSize: 18,
     fontWeight: '600',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 16,
   },
   templates: {
@@ -169,12 +176,12 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: RADIUS.full,
     borderWidth: 1,
-    borderColor: COLORS.brand200,
-    backgroundColor: COLORS.brand50,
+    borderColor: colors.brand200,
+    backgroundColor: colors.brand50,
   },
   templateText: {
     fontSize: 13,
-    color: COLORS.brand700,
+    color: colors.brand700,
     fontFamily: FONTS.bodyMedium,
     fontWeight: '500',
   },
@@ -185,18 +192,18 @@ const styles = StyleSheet.create({
   },
   customInput: {
     flex: 1,
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.md,
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
     paddingHorizontal: 14,
     paddingVertical: 10,
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   sendButton: {
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     paddingHorizontal: 16,
     paddingVertical: 10,
     borderRadius: RADIUS.md,
@@ -206,7 +213,7 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   sendButtonText: {
-    color: 'white',
+    color: colors.textInverse,
     fontSize: 13,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
@@ -214,14 +221,14 @@ const styles = StyleSheet.create({
   recentSection: {
     marginTop: 20,
     borderTopWidth: 1,
-    borderTopColor: COLORS.border,
+    borderTopColor: colors.border,
     paddingTop: 16,
   },
   recentTitle: {
     fontSize: 13,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     marginBottom: 12,
   },
   requestItem: {
@@ -230,7 +237,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 10,
     borderBottomWidth: 1,
-    borderBottomColor: COLORS.border,
+    borderBottomColor: colors.border,
   },
   requestContent: {
     flex: 1,
@@ -239,11 +246,11 @@ const styles = StyleSheet.create({
   requestMessage: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   requestTime: {
     fontSize: 11,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     fontFamily: FONTS.body,
     marginTop: 2,
   },
@@ -257,4 +264,4 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
   },
-});
+}));

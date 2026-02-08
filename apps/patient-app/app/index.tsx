@@ -9,6 +9,8 @@ import {
   Platform,
   ActivityIndicator,
   ScrollView,
+  Modal,
+  FlatList,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
@@ -17,6 +19,8 @@ import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../src/stores/auth-store';
 import { getHouseholdByCareCode } from '@ourturn/supabase';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../src/theme';
+import { SUPPORTED_LANGUAGES } from '@ourturn/shared';
+import { changeLanguage, getCurrentLanguage } from '../src/i18n';
 
 export default function CareCodeScreen() {
   const { t } = useTranslation();
@@ -28,6 +32,16 @@ export default function CareCodeScreen() {
   const [digits, setDigits] = useState<string[]>(['', '', '', '', '', '']);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Language picker
+  const [showLanguagePicker, setShowLanguagePicker] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState(getCurrentLanguage());
+
+  const handleLanguageChange = async (langCode: string) => {
+    setSelectedLanguage(langCode);
+    setShowLanguagePicker(false);
+    await changeLanguage(langCode);
+  };
 
   // If already authenticated, redirect to tabs
   useEffect(() => {
@@ -128,6 +142,16 @@ export default function CareCodeScreen() {
           contentContainerStyle={styles.scrollContent}
           keyboardShouldPersistTaps="handled"
         >
+          {/* Language globe button */}
+          <TouchableOpacity
+            style={styles.globeButton}
+            onPress={() => setShowLanguagePicker(true)}
+            accessibilityLabel={t('patientApp.careCode.changeLanguage')}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.globeIcon}>🌐</Text>
+          </TouchableOpacity>
+
           {/* Logo */}
           <View style={styles.logoContainer}>
             <Text style={styles.logo}>{t('common.appName')}</Text>
@@ -189,6 +213,45 @@ export default function CareCodeScreen() {
           </TouchableOpacity>
         </ScrollView>
       </KeyboardAvoidingView>
+
+      {/* Language Picker Modal */}
+      <Modal
+        visible={showLanguagePicker}
+        animationType="slide"
+        presentationStyle="pageSheet"
+        onRequestClose={() => setShowLanguagePicker(false)}
+      >
+        <SafeAreaView style={styles.modalContainer}>
+          <View style={styles.modalHeader}>
+            <Text style={styles.modalTitle}>{t('patientApp.careCode.changeLanguage')}</Text>
+            <TouchableOpacity onPress={() => setShowLanguagePicker(false)}>
+              <Text style={styles.modalClose}>{t('common.cancel')}</Text>
+            </TouchableOpacity>
+          </View>
+          <FlatList
+            data={SUPPORTED_LANGUAGES}
+            keyExtractor={(item) => item.code}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                style={[
+                  styles.langOption,
+                  item.code === selectedLanguage && styles.langOptionSelected,
+                ]}
+                onPress={() => handleLanguageChange(item.code)}
+                activeOpacity={0.7}
+              >
+                <View>
+                  <Text style={styles.langNativeName}>{item.nativeName}</Text>
+                  <Text style={styles.langEnglishName}>{item.name}</Text>
+                </View>
+                {item.code === selectedLanguage && (
+                  <Text style={styles.langCheck}>✓</Text>
+                )}
+              </TouchableOpacity>
+            )}
+          />
+        </SafeAreaView>
+      </Modal>
     </SafeAreaView>
   );
 }
@@ -297,5 +360,67 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: FONTS.bodyBold,
     color: COLORS.textInverse,
+  },
+  // Language picker
+  globeButton: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    padding: 8,
+    zIndex: 10,
+  },
+  globeIcon: {
+    fontSize: 28,
+  },
+  modalContainer: {
+    flex: 1,
+    backgroundColor: COLORS.background,
+  },
+  modalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 24,
+    paddingVertical: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: COLORS.border,
+  },
+  modalTitle: {
+    fontSize: 22,
+    fontFamily: FONTS.display,
+    color: COLORS.textPrimary,
+  },
+  modalClose: {
+    fontSize: 20,
+    color: COLORS.brand600,
+    fontFamily: FONTS.bodyMedium,
+  },
+  langOption: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 24,
+    paddingVertical: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: COLORS.border,
+  },
+  langOptionSelected: {
+    backgroundColor: COLORS.brand50,
+  },
+  langNativeName: {
+    fontSize: 20,
+    fontFamily: FONTS.bodyMedium,
+    color: COLORS.textPrimary,
+  },
+  langEnglishName: {
+    fontSize: 20,
+    fontFamily: FONTS.body,
+    color: COLORS.textMuted,
+    marginTop: 2,
+  },
+  langCheck: {
+    fontSize: 24,
+    color: COLORS.brand600,
+    fontWeight: '700',
   },
 });

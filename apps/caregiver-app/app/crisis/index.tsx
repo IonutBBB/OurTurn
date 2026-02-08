@@ -1,8 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   TouchableOpacity,
   ScrollView,
   ActivityIndicator,
@@ -16,13 +15,17 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useAuthStore } from '../../src/stores/auth-store';
 import { supabase } from '@ourturn/supabase';
 import type { LocationAlert } from '@ourturn/shared';
-import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
+import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS } from '../../src/theme';
 
 import { StatusPanel } from '../../src/components/crisis/status-panel';
 import { QuickActions } from '../../src/components/crisis/quick-actions';
 import { DeEscalationWizard } from '../../src/components/crisis/de-escalation-wizard';
 import { CrisisHistory } from '../../src/components/crisis/crisis-history';
 import { SupportResources } from '../../src/components/crisis/support-resources';
+import { ScenarioGrid } from '../../src/components/crisis/scenario-grid';
+import { ScenarioGuide } from '../../src/components/crisis/scenario-guide';
+import { PatternInsight } from '../../src/components/crisis/pattern-insight';
+import { getCrisisScenarios } from '../../src/components/crisis/scenarios-data';
 
 type Mode = 'in_person' | 'remote';
 
@@ -39,11 +42,15 @@ const API_BASE_URL = process.env.EXPO_PUBLIC_WEB_URL || '';
 export default function CrisisScreen() {
   const { t } = useTranslation();
   const { caregiver, household, patient } = useAuthStore();
+  const styles = useStyles();
+  const colors = useColors();
+  const crisisScenarios = useMemo(() => getCrisisScenarios(t), [t]);
 
   const [loading, setLoading] = useState(true);
   const [mode, setMode] = useState<Mode>('in_person');
   const [showWizard, setShowWizard] = useState(false);
   const [showLogForm, setShowLogForm] = useState(false);
+  const [selectedScenarioId, setSelectedScenarioId] = useState<string | null>(null);
   const [isAlertingFamily, setIsAlertingFamily] = useState(false);
   const [isLogging, setIsLogging] = useState(false);
   const [logNotes, setLogNotes] = useState('');
@@ -132,20 +139,20 @@ export default function CrisisScreen() {
 
         // Map journal entries with author names
         const entries: CrisisEntry[] = (journalResult.data || []).map(
-          (entry: any) => ({
+          (entry: { id: string; content: string; created_at: string; author_id: string; caregivers: { name: string } | null }) => ({
             id: entry.id,
             content: entry.content,
             created_at: entry.created_at,
             author_name:
               entry.author_id === caregiver.id
                 ? t('common.you')
-                : (entry.caregivers as any)?.name || t('common.unknown'),
+                : entry.caregivers?.name || t('common.unknown'),
           })
         );
         setCrisisEntries(entries);
 
         const family = (familyResult.data || []).filter(
-          (c: any) => c.id !== caregiver.id
+          (c) => c.id !== caregiver.id
         );
         setFamilyCaregivers(family);
 
@@ -316,7 +323,7 @@ export default function CrisisScreen() {
     return (
       <SafeAreaView style={styles.container} edges={['top']}>
         <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color={COLORS.brand600} />
+          <ActivityIndicator size="large" color={colors.brand600} />
         </View>
       </SafeAreaView>
     );
@@ -337,7 +344,7 @@ export default function CrisisScreen() {
             onPress={() => router.back()}
             style={styles.backButton}
           >
-            <Text style={styles.backText}>‹ {t('common.back')}</Text>
+            <Text style={styles.backText}>&#8249; {t('common.back')}</Text>
           </TouchableOpacity>
           <Text style={styles.title}>
             {t('caregiverApp.crisis.title')}
@@ -371,6 +378,32 @@ export default function CrisisScreen() {
           isAlertingFamily={isAlertingFamily}
         />
 
+        <View style={styles.spacer} />
+
+        {/* Scenario Grid or Guide (A4, A6) */}
+        {selectedScenarioId ? (
+          <ScenarioGuide
+            scenario={crisisScenarios.find((s) => s.id === selectedScenarioId)!}
+            patientName={patient?.name || ''}
+            calmingStrategies={
+              patient?.calming_strategies || patient?.biography?.favorite_music
+                ? [
+                    ...(patient?.calming_strategies || []),
+                    ...(patient?.biography?.favorite_music ? patient.biography.favorite_music.map(m => `Music: ${m}`) : []),
+                  ]
+                : null
+            }
+            country={country}
+            onBack={() => setSelectedScenarioId(null)}
+            onAlertFamily={handleAlertFamily}
+          />
+        ) : (
+          <ScenarioGrid
+            scenarios={crisisScenarios}
+            onSelectScenario={(id) => setSelectedScenarioId(id)}
+          />
+        )}
+
         {/* Log Event Form */}
         {showLogForm && (
           <>
@@ -384,7 +417,7 @@ export default function CrisisScreen() {
                 value={logNotes}
                 onChangeText={setLogNotes}
                 placeholder={t('caregiverApp.crisis.logPlaceholder')}
-                placeholderTextColor={COLORS.textMuted}
+                placeholderTextColor={colors.textMuted}
                 multiline
                 textAlignVertical="top"
               />
@@ -418,6 +451,14 @@ export default function CrisisScreen() {
 
         <View style={styles.spacer} />
 
+        {/* Pattern Insight (A5) */}
+        {crisisEntries.length >= 3 && (
+          <>
+            <PatternInsight entries={crisisEntries} />
+            <View style={styles.spacer} />
+          </>
+        )}
+
         {/* Crisis History */}
         <CrisisHistory entries={crisisEntries} />
 
@@ -442,10 +483,10 @@ export default function CrisisScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
   },
   loadingContainer: {
     flex: 1,
@@ -470,7 +511,7 @@ const styles = StyleSheet.create({
   },
   backText: {
     fontSize: 18,
-    color: COLORS.brand600,
+    color: colors.brand600,
     fontWeight: '500',
     fontFamily: FONTS.bodyMedium,
   },
@@ -479,13 +520,13 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     letterSpacing: -0.3,
   },
   subtitle: {
     fontSize: 15,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     marginBottom: 20,
     lineHeight: 22,
   },
@@ -493,30 +534,30 @@ const styles = StyleSheet.create({
     height: 16,
   },
   logFormCard: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     padding: 16,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     ...SHADOWS.sm,
   },
   logFormTitle: {
     fontSize: 17,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 12,
   },
   logFormInput: {
     height: 100,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     borderRadius: RADIUS.lg,
     padding: 12,
     fontSize: 15,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 12,
   },
   logFormButtons: {
@@ -524,7 +565,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   logSaveButton: {
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     borderRadius: RADIUS.lg,
     paddingHorizontal: 20,
     paddingVertical: 10,
@@ -536,15 +577,15 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.bodySemiBold,
   },
   logCancelButton: {
-    backgroundColor: COLORS.brand100,
+    backgroundColor: colors.brand100,
     borderRadius: RADIUS.lg,
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
   },
   logCancelButtonText: {
-    color: COLORS.brand700,
+    color: colors.brand700,
     fontSize: 15,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
@@ -552,4 +593,4 @@ const styles = StyleSheet.create({
   disabledButton: {
     opacity: 0.5,
   },
-});
+}));

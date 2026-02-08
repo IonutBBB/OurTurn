@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   ScrollView,
   TouchableOpacity,
   ActivityIndicator,
@@ -17,6 +16,7 @@ import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../../src/stores/auth-store';
 import { supabase } from '@ourturn/supabase';
 import type { LocationLog, SafeZone, LocationAlert, LocationAlertType } from '@ourturn/shared';
+import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS, SPACING } from '../../src/theme';
 
 // Conditionally import react-native-maps (not available in Expo Go)
 let MapView: any = null;
@@ -37,30 +37,12 @@ try {
   mapsAvailable = false;
 }
 
-// Fallback map component for when react-native-maps is not available
-const MapPlaceholder = ({ region, children }: { region: any; children?: React.ReactNode }) => (
-  <View style={[styles.map, styles.mapPlaceholder]}>
-    <Text style={styles.mapPlaceholderIcon}>🗺️</Text>
-    <Text style={styles.mapPlaceholderTitle}>Map View</Text>
-    {region && (
-      <Text style={styles.mapPlaceholderCoords}>
-        {region.latitude.toFixed(4)}, {region.longitude.toFixed(4)}
-      </Text>
-    )}
-    <Text style={styles.mapPlaceholderHint}>
-      Maps require a development build.{'\n'}
-      Use EAS Build to enable maps.
-    </Text>
-  </View>
-);
-
-import { COLORS, FONTS, RADIUS, SHADOWS, SPACING } from '../../src/theme';
-
 const ALERT_TYPE_LABELS: Record<LocationAlertType, string> = {
   left_safe_zone: 'Left Safe Zone',
   inactive: 'Inactive',
   night_movement: 'Night Movement',
   take_me_home_tapped: 'Take Me Home Tapped',
+  sos_triggered: 'SOS Triggered',
 };
 
 const ALERT_TYPE_ICONS: Record<LocationAlertType, string> = {
@@ -68,6 +50,7 @@ const ALERT_TYPE_ICONS: Record<LocationAlertType, string> = {
   inactive: '⏳',
   night_movement: '🌙',
   take_me_home_tapped: '🏠',
+  sos_triggered: '🆘',
 };
 
 // Default region (London)
@@ -99,6 +82,8 @@ function formatDateTime(timestamp: string): string {
 export default function LocationScreen() {
   const { t } = useTranslation();
   const { household, patient, caregiver } = useAuthStore();
+  const styles = useStyles();
+  const colors = useColors();
 
   const [isLoading, setIsLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -188,7 +173,26 @@ export default function LocationScreen() {
 
   const handleSaveSafeZone = async () => {
     if (!household?.id || !zoneName || !zoneLatitude || !zoneLongitude) {
-      Alert.alert('Error', 'Please fill in all fields');
+      Alert.alert(t('common.errorTitle'), t('caregiverApp.location.fillAllFields'));
+      return;
+    }
+
+    const lat = parseFloat(zoneLatitude);
+    const lng = parseFloat(zoneLongitude);
+    const rad = parseInt(zoneRadius, 10);
+
+    if (isNaN(lat) || lat < -90 || lat > 90) {
+      Alert.alert(t('common.errorTitle'), t('caregiverApp.location.invalidLatitude'));
+      return;
+    }
+
+    if (isNaN(lng) || lng < -180 || lng > 180) {
+      Alert.alert(t('common.errorTitle'), t('caregiverApp.location.invalidLongitude'));
+      return;
+    }
+
+    if (isNaN(rad) || rad <= 0) {
+      Alert.alert(t('common.errorTitle'), t('caregiverApp.location.invalidRadius'));
       return;
     }
 
@@ -196,9 +200,9 @@ export default function LocationScreen() {
     try {
       const zoneData = {
         name: zoneName,
-        latitude: parseFloat(zoneLatitude),
-        longitude: parseFloat(zoneLongitude),
-        radius_meters: parseInt(zoneRadius, 10),
+        latitude: lat,
+        longitude: lng,
+        radius_meters: rad,
       };
 
       if (editingZone) {
@@ -231,7 +235,7 @@ export default function LocationScreen() {
       setIsModalOpen(false);
     } catch (err) {
       if (__DEV__) console.error('Failed to save safe zone:', err);
-      Alert.alert('Error', 'Failed to save safe zone');
+      Alert.alert(t('common.errorTitle'), t('caregiverApp.location.failedToSaveSafeZone'));
     } finally {
       setIsSaving(false);
     }
@@ -239,12 +243,12 @@ export default function LocationScreen() {
 
   const handleDeleteSafeZone = (zone: SafeZone) => {
     Alert.alert(
-      'Delete Safe Zone',
-      `Are you sure you want to delete "${zone.name}"?`,
+      t('caregiverApp.location.deleteSafeZone'),
+      t('caregiverApp.location.deleteSafeZoneConfirm', { name: zone.name }),
       [
-        { text: 'Cancel', style: 'cancel' },
+        { text: t('common.cancel'), style: 'cancel' },
         {
-          text: 'Delete',
+          text: t('common.delete'),
           style: 'destructive',
           onPress: async () => {
             try {
@@ -257,7 +261,7 @@ export default function LocationScreen() {
               setSafeZones((prev) => prev.filter((z) => z.id !== zone.id));
             } catch (err) {
               if (__DEV__) console.error('Failed to delete safe zone:', err);
-              Alert.alert('Error', 'Failed to delete safe zone');
+              Alert.alert(t('common.errorTitle'), t('caregiverApp.location.failedToDeleteSafeZone'));
             }
           },
         },
@@ -308,11 +312,28 @@ export default function LocationScreen() {
 
   const unacknowledgedAlerts = recentAlerts.filter((a) => !a.acknowledged);
 
+  // Fallback map component for when react-native-maps is not available
+  const MapPlaceholder = ({ region, children }: { region: any; children?: React.ReactNode }) => (
+    <View style={[styles.map, styles.mapPlaceholder]}>
+      <Text style={styles.mapPlaceholderIcon}>🗺️</Text>
+      <Text style={styles.mapPlaceholderTitle}>Map View</Text>
+      {region && (
+        <Text style={styles.mapPlaceholderCoords}>
+          {region.latitude.toFixed(4)}, {region.longitude.toFixed(4)}
+        </Text>
+      )}
+      <Text style={styles.mapPlaceholderHint}>
+        Maps require a development build.{'\n'}
+        Use EAS Build to enable maps.
+      </Text>
+    </View>
+  );
+
   if (isLoading) {
     return (
       <SafeAreaView style={styles.container} edges={['top']}>
         <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color={COLORS.brand600} />
+          <ActivityIndicator size="large" color={colors.brand600} />
         </View>
       </SafeAreaView>
     );
@@ -340,7 +361,7 @@ export default function LocationScreen() {
           <RefreshControl
             refreshing={isRefreshing}
             onRefresh={onRefresh}
-            tintColor={COLORS.brand600}
+            tintColor={colors.brand600}
           />
         }
       >
@@ -422,7 +443,7 @@ export default function LocationScreen() {
                     }}
                     title={`${patient?.name || 'Patient'}'s location`}
                     description={latestLocation.location_label}
-                    pinColor={COLORS.brand600}
+                    pinColor={colors.brand600}
                   />
                 )}
 
@@ -450,7 +471,7 @@ export default function LocationScreen() {
                       longitude: zone.longitude,
                     }}
                     radius={zone.radius_meters}
-                    strokeColor={COLORS.brand600}
+                    strokeColor={colors.brand600}
                     strokeWidth={2}
                     fillColor="rgba(184, 90, 47, 0.15)"
                   />
@@ -566,7 +587,7 @@ export default function LocationScreen() {
                 value={zoneName}
                 onChangeText={setZoneName}
                 placeholder="e.g., Home, Doctor's Office"
-                placeholderTextColor={COLORS.textMuted}
+                placeholderTextColor={colors.textMuted}
               />
             </View>
 
@@ -578,7 +599,7 @@ export default function LocationScreen() {
                   value={zoneLatitude}
                   onChangeText={setZoneLatitude}
                   placeholder="51.5074"
-                  placeholderTextColor={COLORS.textMuted}
+                  placeholderTextColor={colors.textMuted}
                   keyboardType="decimal-pad"
                 />
               </View>
@@ -589,7 +610,7 @@ export default function LocationScreen() {
                   value={zoneLongitude}
                   onChangeText={setZoneLongitude}
                   placeholder="-0.1278"
-                  placeholderTextColor={COLORS.textMuted}
+                  placeholderTextColor={colors.textMuted}
                   keyboardType="decimal-pad"
                 />
               </View>
@@ -602,7 +623,7 @@ export default function LocationScreen() {
                 value={zoneRadius}
                 onChangeText={setZoneRadius}
                 placeholder="200"
-                placeholderTextColor={COLORS.textMuted}
+                placeholderTextColor={colors.textMuted}
                 keyboardType="number-pad"
               />
               <Text style={styles.inputHint}>
@@ -623,7 +644,7 @@ export default function LocationScreen() {
                 disabled={isSaving}
               >
                 {isSaving ? (
-                  <ActivityIndicator color={COLORS.textInverse} size="small" />
+                  <ActivityIndicator color={colors.textInverse} size="small" />
                 ) : (
                   <Text style={styles.saveButtonText}>Save</Text>
                 )}
@@ -636,10 +657,10 @@ export default function LocationScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
   },
   loadingContainer: {
     flex: 1,
@@ -663,30 +684,30 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     letterSpacing: -0.3,
     marginBottom: 20,
   },
   emptyCard: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     padding: 40,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     alignItems: 'center',
   },
   emptyText: {
     fontSize: 16,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   alertBanner: {
-    backgroundColor: COLORS.dangerBg,
+    backgroundColor: colors.dangerBg,
     borderRadius: RADIUS.xl,
     padding: 16,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: COLORS.danger,
+    borderColor: colors.danger,
     ...SHADOWS.sm,
   },
   alertHeader: {
@@ -702,13 +723,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.danger,
+    color: colors.danger,
   },
   alertItem: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.md,
     padding: 12,
     marginBottom: 8,
@@ -729,14 +750,14 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '500',
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   alertTime: {
     fontSize: 12,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   ackButton: {
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     borderRadius: RADIUS.sm,
     paddingHorizontal: 12,
     paddingVertical: 6,
@@ -745,13 +766,13 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '500',
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
   mapCard: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     overflow: 'hidden',
     marginBottom: 16,
     ...SHADOWS.sm,
@@ -762,17 +783,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 16,
     borderBottomWidth: 1,
-    borderBottomColor: COLORS.border,
+    borderBottomColor: colors.border,
   },
   mapTitle: {
     fontSize: 16,
     fontWeight: '600',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   mapSubtitle: {
     fontSize: 12,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginTop: 2,
   },
   liveIndicator: {
@@ -783,12 +804,12 @@ const styles = StyleSheet.create({
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: COLORS.success,
+    backgroundColor: colors.success,
     marginRight: 6,
   },
   liveText: {
     fontSize: 12,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
   },
   mapContainer: {
     height: 250,
@@ -799,7 +820,7 @@ const styles = StyleSheet.create({
   mapPlaceholder: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: COLORS.border,
+    backgroundColor: colors.border,
   },
   mapPlaceholderIcon: {
     fontSize: 48,
@@ -808,35 +829,35 @@ const styles = StyleSheet.create({
   mapPlaceholderTitle: {
     fontSize: 18,
     fontWeight: '600',
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 4,
   },
   mapPlaceholderCoords: {
     fontSize: 14,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     marginBottom: 8,
   },
   mapPlaceholderHint: {
     fontSize: 12,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     textAlign: 'center',
   },
   homeMarker: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     padding: 8,
     borderWidth: 2,
-    borderColor: COLORS.brand600,
+    borderColor: colors.brand600,
   },
   homeMarkerEmoji: {
     fontSize: 16,
   },
   card: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     padding: 16,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     marginBottom: 16,
     ...SHADOWS.sm,
   },
@@ -851,10 +872,10 @@ const styles = StyleSheet.create({
     fontSize: 13,
     textTransform: 'uppercase',
     letterSpacing: 1.2,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   addButton: {
-    backgroundColor: COLORS.brand50,
+    backgroundColor: colors.brand50,
     borderRadius: RADIUS.sm,
     paddingHorizontal: 12,
     paddingVertical: 6,
@@ -864,11 +885,11 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '500',
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.brand700,
+    color: colors.brand700,
   },
   emptyZoneText: {
     fontSize: 14,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     textAlign: 'center',
     paddingVertical: 20,
   },
@@ -879,21 +900,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
     borderRadius: RADIUS.md,
     padding: 12,
     borderLeftWidth: 3,
-    borderLeftColor: COLORS.brand200,
+    borderLeftColor: colors.brand200,
   },
   zoneName: {
     fontSize: 14,
     fontWeight: '500',
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   zoneRadius: {
     fontSize: 12,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   zoneActions: {
     flexDirection: 'row',
@@ -904,7 +925,7 @@ const styles = StyleSheet.create({
   },
   emptyAlertText: {
     fontSize: 14,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     textAlign: 'center',
     paddingVertical: 20,
   },
@@ -914,14 +935,14 @@ const styles = StyleSheet.create({
   recentAlertItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
     borderRadius: RADIUS.md,
     padding: 12,
   },
   recentAlertUnack: {
-    backgroundColor: COLORS.amberBg,
+    backgroundColor: colors.amberBg,
     borderLeftWidth: 3,
-    borderLeftColor: COLORS.amber,
+    borderLeftColor: colors.amber,
   },
   recentAlertIcon: {
     fontSize: 18,
@@ -934,15 +955,15 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '500',
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   recentAlertTime: {
     fontSize: 12,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   ackCheck: {
     fontSize: 14,
-    color: COLORS.success,
+    color: colors.success,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
   },
@@ -954,7 +975,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   modalContent: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     padding: 24,
     width: '100%',
@@ -964,7 +985,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '600',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 20,
   },
   inputGroup: {
@@ -982,23 +1003,23 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 6,
   },
   input: {
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
     borderRadius: RADIUS.lg,
     paddingHorizontal: 16,
     paddingVertical: 12,
     fontSize: 16,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
-    backgroundColor: COLORS.card,
+    color: colors.textPrimary,
+    backgroundColor: colors.card,
   },
   inputHint: {
     fontSize: 12,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginTop: 4,
   },
   modalButtons: {
@@ -1009,7 +1030,7 @@ const styles = StyleSheet.create({
   cancelButton: {
     flex: 1,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     borderRadius: RADIUS.lg,
     paddingVertical: 14,
     alignItems: 'center',
@@ -1018,11 +1039,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '500',
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
   },
   saveButton: {
     flex: 1,
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     borderRadius: RADIUS.lg,
     paddingVertical: 14,
     alignItems: 'center',
@@ -1032,6 +1053,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
-});
+}));

@@ -4,7 +4,6 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  StyleSheet,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -15,7 +14,7 @@ import { Link, router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { supabase } from '@ourturn/supabase';
 import { useAuthStore } from '../../src/stores/auth-store';
-import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
+import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS } from '../../src/theme';
 
 export default function SignupScreen() {
   const { t } = useTranslation();
@@ -25,6 +24,9 @@ export default function SignupScreen() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const styles = useStyles();
+  const colors = useColors();
 
   const handleSignup = async () => {
     if (!email || !password || !confirmPassword) {
@@ -92,48 +94,80 @@ export default function SignupScreen() {
           {/* Signup form */}
           <View style={styles.form}>
             {error && (
-              <View style={styles.errorContainer}>
+              <View
+                style={styles.errorContainer}
+                accessible={true}
+                accessibilityRole="alert"
+                accessibilityLiveRegion="assertive"
+              >
                 <Text style={styles.errorText}>{error}</Text>
               </View>
             )}
 
             <View style={styles.inputGroup}>
-              <Text style={styles.label}>{t('caregiverApp.auth.email')}</Text>
+              <Text
+                style={styles.label}
+                nativeID="signup-email-label"
+              >
+                {t('caregiverApp.auth.email')}
+              </Text>
               <TextInput
                 style={styles.input}
                 value={email}
                 onChangeText={setEmail}
                 placeholder="you@example.com"
-                placeholderTextColor={COLORS.textMuted}
+                placeholderTextColor={colors.textMuted}
                 keyboardType="email-address"
                 autoCapitalize="none"
                 autoCorrect={false}
+                accessibilityLabel={t('caregiverApp.auth.email')}
+                accessibilityLabelledBy="signup-email-label"
+                textContentType="emailAddress"
+                autoComplete="email"
               />
             </View>
 
             <View style={styles.inputGroup}>
-              <Text style={styles.label}>{t('caregiverApp.auth.password')}</Text>
+              <Text
+                style={styles.label}
+                nativeID="signup-password-label"
+              >
+                {t('caregiverApp.auth.password')}
+              </Text>
               <TextInput
                 style={styles.input}
                 value={password}
                 onChangeText={setPassword}
                 placeholder="••••••••"
-                placeholderTextColor={COLORS.textMuted}
+                placeholderTextColor={colors.textMuted}
                 secureTextEntry
                 autoCapitalize="none"
+                accessibilityLabel={t('caregiverApp.auth.password')}
+                accessibilityLabelledBy="signup-password-label"
+                textContentType="newPassword"
+                autoComplete="new-password"
               />
             </View>
 
             <View style={styles.inputGroup}>
-              <Text style={styles.label}>{t('caregiverApp.auth.confirmPassword')}</Text>
+              <Text
+                style={styles.label}
+                nativeID="signup-confirm-password-label"
+              >
+                {t('caregiverApp.auth.confirmPassword')}
+              </Text>
               <TextInput
                 style={styles.input}
                 value={confirmPassword}
                 onChangeText={setConfirmPassword}
                 placeholder="••••••••"
-                placeholderTextColor={COLORS.textMuted}
+                placeholderTextColor={colors.textMuted}
                 secureTextEntry
                 autoCapitalize="none"
+                accessibilityLabel={t('caregiverApp.auth.confirmPassword')}
+                accessibilityLabelledBy="signup-confirm-password-label"
+                textContentType="newPassword"
+                autoComplete="new-password"
               />
             </View>
 
@@ -142,16 +176,27 @@ export default function SignupScreen() {
               onPress={handleSignup}
               disabled={loading}
               activeOpacity={0.8}
+              accessibilityRole="button"
+              accessibilityLabel={t('caregiverApp.auth.createAccount')}
+              accessibilityState={{
+                disabled: loading,
+                busy: loading,
+              }}
             >
               {loading ? (
-                <ActivityIndicator color={COLORS.textInverse} />
+                <ActivityIndicator color={colors.textInverse} accessibilityLabel={t('common.loading')} />
               ) : (
                 <Text style={styles.buttonText}>{t('caregiverApp.auth.createAccount')}</Text>
               )}
             </TouchableOpacity>
 
             {/* Divider */}
-            <View style={styles.divider}>
+            <View
+              style={styles.divider}
+              accessible={true}
+              accessibilityRole="none"
+              accessibilityLabel={t('caregiverApp.auth.orContinueWith')}
+            >
               <View style={styles.dividerLine} />
               <Text style={styles.dividerText}>{t('caregiverApp.auth.or')}</Text>
               <View style={styles.dividerLine} />
@@ -161,6 +206,8 @@ export default function SignupScreen() {
             <TouchableOpacity
               style={styles.oauthButton}
               activeOpacity={0.8}
+              accessibilityRole="button"
+              accessibilityLabel={t('caregiverApp.auth.continueWithGoogle')}
               onPress={async () => {
                 try {
                   setLoading(true);
@@ -187,6 +234,8 @@ export default function SignupScreen() {
             <TouchableOpacity
               style={styles.oauthButton}
               activeOpacity={0.8}
+              accessibilityRole="button"
+              accessibilityLabel={t('caregiverApp.auth.continueWithApple')}
               onPress={async () => {
                 try {
                   setLoading(true);
@@ -226,10 +275,10 @@ export default function SignupScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
   },
   keyboardView: {
     flex: 1,
@@ -248,7 +297,7 @@ const styles = StyleSheet.create({
     width: 56,
     height: 56,
     borderRadius: RADIUS.lg,
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 12,
@@ -258,32 +307,32 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
   subtitle: {
     fontSize: 22,
     fontFamily: FONTS.display,
     fontWeight: '600',
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   form: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     padding: 24,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     ...SHADOWS.md,
   },
   errorContainer: {
-    backgroundColor: COLORS.dangerBg,
+    backgroundColor: colors.dangerBg,
     borderWidth: 1,
-    borderColor: COLORS.danger,
+    borderColor: colors.danger,
     borderRadius: RADIUS.md,
     padding: 12,
     marginBottom: 16,
   },
   errorText: {
-    color: COLORS.danger,
+    color: colors.danger,
     fontSize: 14,
   },
   inputGroup: {
@@ -293,22 +342,22 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 6,
   },
   input: {
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
     borderRadius: RADIUS.lg,
     paddingHorizontal: 16,
     paddingVertical: 14,
     fontSize: 16,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
-    backgroundColor: COLORS.card,
+    color: colors.textPrimary,
+    backgroundColor: colors.card,
   },
   button: {
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     borderRadius: RADIUS.lg,
     paddingVertical: 16,
     alignItems: 'center',
@@ -323,7 +372,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
   divider: {
     flexDirection: 'row',
@@ -333,27 +382,27 @@ const styles = StyleSheet.create({
   dividerLine: {
     flex: 1,
     height: 1,
-    backgroundColor: COLORS.border,
+    backgroundColor: colors.border,
   },
   dividerText: {
     marginHorizontal: 16,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     fontSize: 14,
   },
   oauthButton: {
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     borderRadius: RADIUS.lg,
     paddingVertical: 14,
     alignItems: 'center',
     marginBottom: 12,
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
   },
   oauthButtonText: {
     fontSize: 16,
     fontWeight: '500',
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   footer: {
     flexDirection: 'row',
@@ -363,12 +412,12 @@ const styles = StyleSheet.create({
   footerText: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
   },
   footerLink: {
     fontSize: 14,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.brand600,
+    color: colors.brand600,
   },
-});
+}));

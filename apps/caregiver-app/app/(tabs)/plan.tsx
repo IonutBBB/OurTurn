@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import {
   View,
   Text,
@@ -19,29 +19,12 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { supabase } from '@ourturn/supabase';
 import { useAuthStore } from '../../src/stores/auth-store';
-import { COLORS, FONTS, RADIUS, SHADOWS, SPACING } from '../../src/theme';
+import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS, SPACING } from '../../src/theme';
 import type { CarePlanTask, TaskCategory, DayOfWeek, MedicationItem } from '@ourturn/shared';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
-const DAYS: { key: DayOfWeek; label: string }[] = [
-  { key: 'mon', label: 'Mon' },
-  { key: 'tue', label: 'Tue' },
-  { key: 'wed', label: 'Wed' },
-  { key: 'thu', label: 'Thu' },
-  { key: 'fri', label: 'Fri' },
-  { key: 'sat', label: 'Sat' },
-  { key: 'sun', label: 'Sun' },
-];
-
-const CATEGORIES: { key: TaskCategory; icon: string; color: string; bg: string }[] = [
-  { key: 'medication', icon: '💊', color: COLORS.medication, bg: COLORS.medicationBg },
-  { key: 'nutrition', icon: '🥗', color: COLORS.nutrition, bg: COLORS.nutritionBg },
-  { key: 'physical', icon: '🚶', color: COLORS.physical, bg: COLORS.physicalBg },
-  { key: 'cognitive', icon: '🧩', color: COLORS.cognitive, bg: COLORS.cognitiveBg },
-  { key: 'social', icon: '💬', color: COLORS.social, bg: COLORS.socialBg },
-  { key: 'health', icon: '❤️', color: COLORS.health, bg: COLORS.healthBg },
-];
+const DAY_KEYS: DayOfWeek[] = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
 function getTodayDayOfWeek(): DayOfWeek {
   const dayIndex = new Date().getDay();
@@ -57,13 +40,25 @@ function formatTime(time: string): string {
   return `${displayHour}:${minutes} ${ampm}`;
 }
 
-function getCategoryInfo(key: string) {
-  return CATEGORIES.find((c) => c.key === key) || CATEGORIES[0];
-}
-
 export default function PlanScreen() {
   const { t } = useTranslation();
   const { household, patient, user } = useAuthStore();
+
+  const styles = useStyles();
+  const colors = useColors();
+
+  const CATEGORIES: { key: TaskCategory; icon: string; color: string; bg: string }[] = useMemo(() => [
+    { key: 'medication', icon: '💊', color: colors.medication, bg: colors.medicationBg },
+    { key: 'nutrition', icon: '🥗', color: colors.nutrition, bg: colors.nutritionBg },
+    { key: 'physical', icon: '🚶', color: colors.physical, bg: colors.physicalBg },
+    { key: 'cognitive', icon: '🧩', color: colors.cognitive, bg: colors.cognitiveBg },
+    { key: 'social', icon: '💬', color: colors.social, bg: colors.socialBg },
+    { key: 'health', icon: '❤️', color: colors.health, bg: colors.healthBg },
+  ], [colors]);
+
+  const getCategoryInfo = (key: string) => {
+    return CATEGORIES.find((c) => c.key === key) || CATEGORIES[0];
+  };
 
   const [tasks, setTasks] = useState<CarePlanTask[]>([]);
   const [loading, setLoading] = useState(true);
@@ -487,7 +482,7 @@ export default function PlanScreen() {
     return (
       <SafeAreaView style={styles.container} edges={['top']}>
         <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color={COLORS.brand600} />
+          <ActivityIndicator size="large" color={colors.brand600} />
         </View>
       </SafeAreaView>
     );
@@ -524,12 +519,13 @@ export default function PlanScreen() {
         </View>
 
         {/* Day Selector Pills */}
+        <View style={styles.daySelectorWrap}>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.daySelector}
         >
-          {DAYS.map(({ key }) => {
+          {DAY_KEYS.map((key) => {
             const isSelected = selectedDay === key;
             const isToday = key === getTodayDayOfWeek();
             return (
@@ -563,13 +559,14 @@ export default function PlanScreen() {
             );
           })}
         </ScrollView>
+        </View>
 
         {/* Task List */}
         <ScrollView
           style={styles.taskList}
           contentContainerStyle={styles.taskListContent}
           refreshControl={
-            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={COLORS.brand600} />
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={colors.brand600} />
           }
           showsVerticalScrollIndicator={false}
         >
@@ -706,7 +703,7 @@ export default function PlanScreen() {
                 value={formTitle}
                 onChangeText={setFormTitle}
                 placeholder={t('caregiverApp.carePlan.taskTitle')}
-                placeholderTextColor={COLORS.textMuted}
+                placeholderTextColor={colors.textMuted}
               />
 
               {/* Hint */}
@@ -718,7 +715,7 @@ export default function PlanScreen() {
                 value={formHint}
                 onChangeText={setFormHint}
                 placeholder={t('caregiverApp.carePlan.hintPlaceholder')}
-                placeholderTextColor={COLORS.textMuted}
+                placeholderTextColor={colors.textMuted}
                 multiline
                 numberOfLines={2}
               />
@@ -730,7 +727,7 @@ export default function PlanScreen() {
                 value={formTime}
                 onChangeText={setFormTime}
                 placeholder="09:00"
-                placeholderTextColor={COLORS.textMuted}
+                placeholderTextColor={colors.textMuted}
                 keyboardType="numbers-and-punctuation"
               />
 
@@ -751,7 +748,7 @@ export default function PlanScreen() {
                   activeOpacity={0.7}
                 >
                   {isUploadingPhoto ? (
-                    <ActivityIndicator size="small" color={COLORS.brand600} />
+                    <ActivityIndicator size="small" color={colors.brand600} />
                   ) : (
                     <Text style={styles.uploadButtonText}>{t('caregiverApp.carePlan.uploadPhoto')}</Text>
                   )}
@@ -803,7 +800,7 @@ export default function PlanScreen() {
                               activeOpacity={0.7}
                             >
                               {uploadingMedIndex === index ? (
-                                <ActivityIndicator size="small" color={COLORS.textMuted} />
+                                <ActivityIndicator size="small" color={colors.textMuted} />
                               ) : (
                                 <Text style={styles.medItemPhotoPlaceholderText}>+</Text>
                               )}
@@ -821,7 +818,7 @@ export default function PlanScreen() {
                               setFormMedItems(items);
                             }}
                             placeholder={t('caregiverApp.carePlan.medNamePlaceholder')}
-                            placeholderTextColor={COLORS.textMuted}
+                            placeholderTextColor={colors.textMuted}
                           />
                           <Text style={[styles.medFieldLabel, { marginTop: 8 }]}>{t('caregiverApp.carePlan.medDosage')}</Text>
                           <TextInput
@@ -833,7 +830,7 @@ export default function PlanScreen() {
                               setFormMedItems(items);
                             }}
                             placeholder={t('caregiverApp.carePlan.medDosagePlaceholder')}
-                            placeholderTextColor={COLORS.textMuted}
+                            placeholderTextColor={colors.textMuted}
                           />
                         </View>
                       </View>
@@ -884,7 +881,7 @@ export default function PlanScreen() {
               {/* Day selector for specific days */}
               {formRecurrence === 'specific_days' && (
                 <View style={styles.dayPickerRow}>
-                  {DAYS.map(({ key }) => (
+                  {DAY_KEYS.map((key) => (
                     <TouchableOpacity
                       key={key}
                       style={[
@@ -926,7 +923,7 @@ export default function PlanScreen() {
                   activeOpacity={0.7}
                 >
                   {saving ? (
-                    <ActivityIndicator color={COLORS.textInverse} size="small" />
+                    <ActivityIndicator color={colors.textInverse} size="small" />
                   ) : (
                     <Text style={styles.saveButtonText}>
                       {editingTask ? t('common.save') : t('caregiverApp.carePlan.addTask')}
@@ -958,7 +955,7 @@ export default function PlanScreen() {
 
             {suggestLoading ? (
               <View style={styles.suggestLoading}>
-                <ActivityIndicator size="large" color={COLORS.brand600} />
+                <ActivityIndicator size="large" color={colors.brand600} />
                 <Text style={styles.suggestLoadingText}>{t('common.loading')}</Text>
               </View>
             ) : suggestedTasks.length === 0 ? (
@@ -996,7 +993,7 @@ export default function PlanScreen() {
                             activeOpacity={0.7}
                           >
                             {addingSuggestion === suggestion.title ? (
-                              <ActivityIndicator color={COLORS.textInverse} size="small" />
+                              <ActivityIndicator color={colors.textInverse} size="small" />
                             ) : (
                               <Text style={styles.addSuggestionText}>{t('caregiverApp.carePlan.addTask')}</Text>
                             )}
@@ -1034,7 +1031,7 @@ export default function PlanScreen() {
             </Text>
 
             <View style={styles.copyDayGrid}>
-              {DAYS.filter(d => d.key !== selectedDay).map(({ key }) => (
+              {DAY_KEYS.filter(d => d !== selectedDay).map((key) => (
                 <TouchableOpacity
                   key={key}
                   style={[
@@ -1076,7 +1073,7 @@ export default function PlanScreen() {
                 activeOpacity={0.7}
               >
                 {copying ? (
-                  <ActivityIndicator color={COLORS.textInverse} size="small" />
+                  <ActivityIndicator color={colors.textInverse} size="small" />
                 ) : (
                   <Text style={styles.saveButtonText}>{t('caregiverApp.carePlan.copyDay')}</Text>
                 )}
@@ -1089,10 +1086,10 @@ export default function PlanScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
   },
   content: {
     flex: 1,
@@ -1107,54 +1104,58 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     letterSpacing: -0.3,
     paddingHorizontal: 20,
     marginBottom: 16,
   },
 
   // Day Selector
+  daySelectorWrap: {
+    flexShrink: 0,
+  },
   daySelector: {
     paddingHorizontal: 16,
     paddingBottom: 16,
     gap: 8,
+    alignItems: 'flex-start',
   },
   dayPill: {
     paddingHorizontal: 18,
     paddingVertical: 10,
     borderRadius: RADIUS.full,
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     alignItems: 'center',
     minWidth: 54,
     ...SHADOWS.sm,
   },
   dayPillSelected: {
-    backgroundColor: COLORS.brand600,
-    borderColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
+    borderColor: colors.brand600,
   },
   dayPillToday: {
-    borderColor: COLORS.brand400,
+    borderColor: colors.brand400,
   },
   dayPillText: {
     fontSize: 14,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
   },
   dayPillTextSelected: {
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
   todayDot: {
     width: 4,
     height: 4,
     borderRadius: 2,
-    backgroundColor: COLORS.brand500,
+    backgroundColor: colors.brand500,
     marginTop: 4,
   },
   todayDotSelected: {
-    backgroundColor: COLORS.textInverse,
+    backgroundColor: colors.textInverse,
   },
 
   // Task List
@@ -1168,11 +1169,11 @@ const styles = StyleSheet.create({
 
   // Empty State
   emptyState: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     padding: 40,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     alignItems: 'center',
     marginTop: 20,
     ...SHADOWS.sm,
@@ -1184,16 +1185,16 @@ const styles = StyleSheet.create({
   emptyText: {
     fontSize: 16,
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     textAlign: 'center',
   },
 
   // Task Card
   taskCard: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     marginBottom: 12,
     flexDirection: 'row',
     overflow: 'hidden',
@@ -1232,19 +1233,19 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
   },
   taskTitle: {
     fontSize: 16,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 4,
   },
   taskHint: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     marginBottom: 8,
   },
   taskFooter: {
@@ -1255,7 +1256,7 @@ const styles = StyleSheet.create({
   recurrenceText: {
     fontSize: 12,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   deleteButton: {
     fontSize: 16,
@@ -1269,14 +1270,14 @@ const styles = StyleSheet.create({
     width: 56,
     height: 56,
     borderRadius: 28,
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     alignItems: 'center',
     justifyContent: 'center',
     ...SHADOWS.lg,
   },
   fabText: {
     fontSize: 28,
-    color: COLORS.textInverse,
+    color: colors.textInverse,
     fontWeight: '300',
     marginTop: -2,
   },
@@ -1291,7 +1292,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.4)',
   },
   modalSheet: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderTopLeftRadius: RADIUS['2xl'],
     borderTopRightRadius: RADIUS['2xl'],
     padding: 24,
@@ -1302,7 +1303,7 @@ const styles = StyleSheet.create({
     width: 36,
     height: 4,
     borderRadius: 2,
-    backgroundColor: COLORS.border,
+    backgroundColor: colors.border,
     alignSelf: 'center',
     marginBottom: 16,
   },
@@ -1310,7 +1311,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 20,
   },
 
@@ -1319,20 +1320,20 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 8,
     marginTop: 16,
   },
   textInput: {
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
     borderRadius: RADIUS.md,
     paddingHorizontal: 16,
     paddingVertical: 12,
     fontSize: 16,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
-    backgroundColor: COLORS.background,
+    color: colors.textPrimary,
+    backgroundColor: colors.background,
   },
   textArea: {
     minHeight: 60,
@@ -1351,7 +1352,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     borderRadius: RADIUS.full,
     borderWidth: 1.5,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     gap: 6,
   },
   categorySelectorIcon: {
@@ -1361,7 +1362,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
   },
 
   // Recurrence options
@@ -1374,22 +1375,22 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: RADIUS.md,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     alignItems: 'center',
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
   },
   recurrenceOptionSelected: {
-    borderColor: COLORS.brand600,
-    backgroundColor: COLORS.brand50,
+    borderColor: colors.brand600,
+    backgroundColor: colors.brand50,
   },
   recurrenceOptionText: {
     fontSize: 13,
     fontWeight: '500',
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
   },
   recurrenceOptionTextSelected: {
-    color: COLORS.brand700,
+    color: colors.brand700,
     fontWeight: '600',
   },
 
@@ -1404,22 +1405,22 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     borderRadius: RADIUS.sm,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     alignItems: 'center',
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
   },
   dayPickerItemSelected: {
-    borderColor: COLORS.brand600,
-    backgroundColor: COLORS.brand600,
+    borderColor: colors.brand600,
+    backgroundColor: colors.brand600,
   },
   dayPickerText: {
     fontSize: 12,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
   },
   dayPickerTextSelected: {
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
 
   // Modal actions
@@ -1434,20 +1435,20 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     borderRadius: RADIUS.lg,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     alignItems: 'center',
   },
   cancelButtonText: {
     fontSize: 16,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   saveButton: {
     flex: 1,
     paddingVertical: 14,
     borderRadius: RADIUS.lg,
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     alignItems: 'center',
     justifyContent: 'center',
     ...SHADOWS.sm,
@@ -1459,7 +1460,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
 
   // Action row (AI Suggest + Copy Day)
@@ -1478,8 +1479,8 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: RADIUS.lg,
     borderWidth: 1,
-    borderColor: COLORS.brand200,
-    backgroundColor: COLORS.brand50,
+    borderColor: colors.brand200,
+    backgroundColor: colors.brand50,
   },
   actionButtonIcon: {
     fontSize: 14,
@@ -1488,7 +1489,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.brand700,
+    color: colors.brand700,
   },
 
   // AI Suggest modal
@@ -1500,7 +1501,7 @@ const styles = StyleSheet.create({
   suggestLoadingText: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   suggestEmpty: {
     alignItems: 'center',
@@ -1509,14 +1510,14 @@ const styles = StyleSheet.create({
   suggestEmptyText: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   suggestionCard: {
     flexDirection: 'row',
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
     borderRadius: RADIUS.xl,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     marginBottom: 12,
     overflow: 'hidden',
   },
@@ -1531,7 +1532,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   addSuggestionButton: {
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     borderRadius: RADIUS.md,
     paddingHorizontal: 14,
     paddingVertical: 8,
@@ -1542,7 +1543,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
   evidenceBadge: {
     flexDirection: 'row',
@@ -1556,12 +1557,12 @@ const styles = StyleSheet.create({
   evidenceText: {
     fontSize: 11,
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.brand600,
+    color: colors.brand600,
   },
   evidenceSourceText: {
     fontSize: 11,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginBottom: 4,
   },
 
@@ -1569,12 +1570,12 @@ const styles = StyleSheet.create({
   copyLabel: {
     fontSize: 15,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     marginBottom: 16,
   },
   copyBold: {
     fontWeight: '700',
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   copyDayGrid: {
     flexDirection: 'row',
@@ -1587,26 +1588,26 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: RADIUS.full,
     borderWidth: 1,
-    borderColor: COLORS.border,
-    backgroundColor: COLORS.background,
+    borderColor: colors.border,
+    backgroundColor: colors.background,
   },
   copyDayItemSelected: {
-    borderColor: COLORS.brand600,
-    backgroundColor: COLORS.brand600,
+    borderColor: colors.brand600,
+    backgroundColor: colors.brand600,
   },
   copyDayText: {
     fontSize: 14,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
   },
   copyDayTextSelected: {
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
   copyCount: {
     fontSize: 13,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginBottom: 16,
   },
 
@@ -1621,7 +1622,7 @@ const styles = StyleSheet.create({
     height: 64,
     borderRadius: RADIUS.md,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
   },
   removePhotoText: {
     fontSize: 13,
@@ -1632,7 +1633,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 16,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     borderRadius: RADIUS.md,
     alignSelf: 'flex-start',
     alignItems: 'center',
@@ -1642,21 +1643,21 @@ const styles = StyleSheet.create({
   uploadButtonText: {
     fontSize: 14,
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
   },
 
   // Medication items form
   medHintText: {
     fontSize: 12,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginBottom: 12,
   },
   medItemForm: {
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
     borderRadius: RADIUS.md,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     padding: 10,
     marginBottom: 8,
     gap: 10,
@@ -1669,7 +1670,7 @@ const styles = StyleSheet.create({
     height: 48,
     borderRadius: RADIUS.sm,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
   },
   medItemPhotoRemove: {
     position: 'absolute',
@@ -1693,13 +1694,13 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.sm,
     borderWidth: 2,
     borderStyle: 'dashed',
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     alignItems: 'center',
     justifyContent: 'center',
   },
   medItemPhotoPlaceholderText: {
     fontSize: 18,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   medItemInputs: {
     flex: 1,
@@ -1707,14 +1708,14 @@ const styles = StyleSheet.create({
   },
   medItemInput: {
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
     borderRadius: RADIUS.sm,
     paddingHorizontal: 10,
     paddingVertical: 8,
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textPrimary,
-    backgroundColor: COLORS.card,
+    color: colors.textPrimary,
+    backgroundColor: colors.card,
   },
   medItemHeader: {
     flexDirection: 'row',
@@ -1727,14 +1728,14 @@ const styles = StyleSheet.create({
   medItemLabel: {
     fontSize: 12,
     fontFamily: FONTS.bodyBold,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     textTransform: 'uppercase',
     letterSpacing: 0.5,
   },
   medFieldLabel: {
     fontSize: 11,
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginBottom: 4,
   },
   medItemRow: {
@@ -1752,7 +1753,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 14,
     borderWidth: 1,
-    borderColor: COLORS.brand200,
+    borderColor: colors.brand200,
     borderRadius: RADIUS.md,
     alignSelf: 'flex-start',
     marginTop: 4,
@@ -1760,12 +1761,12 @@ const styles = StyleSheet.create({
   addMedButtonText: {
     fontSize: 13,
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.brand600,
+    color: colors.brand600,
   },
   maxMedText: {
     fontSize: 12,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginTop: 4,
   },
-});
+}));

@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   ScrollView,
   TouchableOpacity,
   ActivityIndicator,
@@ -14,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 import { router } from 'expo-router';
 import { supabase } from '@ourturn/supabase';
 import { useAuthStore } from '../../src/stores/auth-store';
-import { COLORS, FONTS, RADIUS, SHADOWS } from '../../src/theme';
+import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS } from '../../src/theme';
 
 interface ReportStats {
   avgMood: number;
@@ -71,6 +70,8 @@ function formatDate(dateStr: string): string {
 export default function ReportsScreen() {
   const { t } = useTranslation();
   const { household, patient, caregiver } = useAuthStore();
+  const styles = useStyles();
+  const colors = useColors();
 
   const [selectedPeriod, setSelectedPeriod] = useState(30);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -92,7 +93,7 @@ export default function ReportsScreen() {
           .limit(10);
         setReports(data || []);
       } catch (err) {
-        // Table may not exist yet — that's OK
+        // Table may not exist yet -- that's OK
       } finally {
         setLoadingReports(false);
       }
@@ -162,9 +163,11 @@ export default function ReportsScreen() {
         : 0;
 
       // Medication adherence
+      type CompletionWithTask = typeof completions extends (infer T)[] | null ? T & { care_plan_tasks: { category: string; title: string } | null } : never;
+      const typedCompletions = (completions || []) as CompletionWithTask[];
       const medTasks = (tasks || []).filter(t => t.category === 'medication');
-      const medCompletions = (completions || []).filter(
-        c => (c.care_plan_tasks as any)?.category === 'medication' && c.completed
+      const medCompletions = typedCompletions.filter(
+        c => c.care_plan_tasks?.category === 'medication' && c.completed
       ).length;
       const expectedMed = medTasks.length * daysInPeriod;
       const medAdherence = expectedMed > 0
@@ -174,8 +177,8 @@ export default function ReportsScreen() {
       // By category
       const byCategory: Record<string, number> = {};
       (tasks || []).forEach(task => {
-        const catCompletions = (completions || []).filter(
-          c => (c.care_plan_tasks as any)?.category === task.category && c.completed
+        const catCompletions = typedCompletions.filter(
+          c => c.care_plan_tasks?.category === task.category && c.completed
         ).length;
         const catExpected = daysInPeriod;
         byCategory[task.category] = catExpected > 0
@@ -234,7 +237,7 @@ export default function ReportsScreen() {
           setReports(prev => [newReport, ...prev]);
         }
       } catch {
-        // Table may not exist — report still displays in-app
+        // Table may not exist -- report still displays in-app
       }
     } catch (err) {
       Alert.alert(t('common.error'));
@@ -320,7 +323,7 @@ export default function ReportsScreen() {
             activeOpacity={0.7}
           >
             {isGenerating ? (
-              <ActivityIndicator color={COLORS.textInverse} size="small" />
+              <ActivityIndicator color={colors.textInverse} size="small" />
             ) : (
               <Text style={styles.generateButtonText}>{t('caregiverApp.reports.generate')}</Text>
             )}
@@ -332,7 +335,7 @@ export default function ReportsScreen() {
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>
               {viewingReport
-                ? `${formatDate(viewingReport.period_start)} — ${formatDate(viewingReport.period_end)}`
+                ? `${formatDate(viewingReport.period_start)} \u2014 ${formatDate(viewingReport.period_end)}`
                 : t('caregiverApp.reports.lastDays', { days: selectedPeriod })}
             </Text>
 
@@ -389,7 +392,7 @@ export default function ReportsScreen() {
                 <Text style={styles.cardTitle}>{t('caregiverApp.reports.journalNotes')}</Text>
                 {stats.notableObservations.map((obs, i) => (
                   <View key={i} style={styles.observationRow}>
-                    <Text style={styles.bullet}>•</Text>
+                    <Text style={styles.bullet}>{'\u2022'}</Text>
                     <Text style={styles.observationText}>{obs}</Text>
                   </View>
                 ))}
@@ -418,7 +421,7 @@ export default function ReportsScreen() {
                 activeOpacity={0.7}
               >
                 <Text style={styles.reportItemDate}>
-                  {formatDate(report.period_start)} — {formatDate(report.period_end)}
+                  {formatDate(report.period_start)} \u2014 {formatDate(report.period_end)}
                 </Text>
                 <Text style={styles.reportItemGenerated}>
                   {t('caregiverApp.reports.generated', { date: formatDate(report.generated_at) })}
@@ -432,10 +435,10 @@ export default function ReportsScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const useStyles = createThemedStyles((colors) => ({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
   },
   scrollView: {
     flex: 1,
@@ -453,14 +456,14 @@ const styles = StyleSheet.create({
   },
   backText: {
     fontSize: 16,
-    color: COLORS.brand600,
+    color: colors.brand600,
     fontFamily: FONTS.bodyMedium,
   },
   title: {
     fontSize: 24,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     letterSpacing: -0.3,
   },
   section: {
@@ -470,7 +473,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     textTransform: 'uppercase',
     letterSpacing: 0.5,
     marginBottom: 12,
@@ -487,26 +490,26 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: RADIUS.lg,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     alignItems: 'center',
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
   },
   periodPillSelected: {
-    borderColor: COLORS.brand600,
-    backgroundColor: COLORS.brand50,
+    borderColor: colors.brand600,
+    backgroundColor: colors.brand50,
   },
   periodText: {
     fontSize: 14,
     fontWeight: '500',
     fontFamily: FONTS.bodyMedium,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
   },
   periodTextSelected: {
-    color: COLORS.brand700,
+    color: colors.brand700,
     fontWeight: '600',
   },
   generateButton: {
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     borderRadius: RADIUS.lg,
     paddingVertical: 14,
     alignItems: 'center',
@@ -519,14 +522,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textInverse,
+    color: colors.textInverse,
   },
 
   // Summary
   summaryText: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     lineHeight: 20,
     marginBottom: 16,
   },
@@ -539,18 +542,18 @@ const styles = StyleSheet.create({
   },
   statCard: {
     flex: 1,
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     padding: 16,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     alignItems: 'center',
     ...SHADOWS.sm,
   },
   statLabel: {
     fontSize: 12,
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     textAlign: 'center',
     marginBottom: 8,
   },
@@ -558,22 +561,22 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.brand600,
+    color: colors.brand600,
   },
   statCaption: {
     fontSize: 12,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginTop: 4,
   },
 
   // Cards
   card: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.xl,
     padding: 20,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     marginBottom: 12,
     ...SHADOWS.sm,
   },
@@ -581,26 +584,26 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
     marginBottom: 8,
   },
   bigStat: {
     fontSize: 36,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.brand600,
+    color: colors.brand600,
     marginBottom: 8,
   },
   progressBar: {
     height: 8,
-    backgroundColor: COLORS.brand50,
+    backgroundColor: colors.brand50,
     borderRadius: 4,
     overflow: 'hidden',
     marginBottom: 12,
   },
   progressFill: {
     height: '100%',
-    backgroundColor: COLORS.brand600,
+    backgroundColor: colors.brand600,
     borderRadius: 4,
   },
 
@@ -611,25 +614,25 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   categoryStatItem: {
-    backgroundColor: COLORS.background,
+    backgroundColor: colors.background,
     borderRadius: RADIUS.lg,
     paddingHorizontal: 12,
     paddingVertical: 8,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     minWidth: '45%',
     flex: 1,
   },
   categoryStatLabel: {
     fontSize: 12,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
   },
   categoryStatValue: {
     fontSize: 18,
     fontWeight: '700',
     fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
 
   // Observations
@@ -640,13 +643,13 @@ const styles = StyleSheet.create({
   },
   bullet: {
     fontSize: 14,
-    color: COLORS.brand600,
+    color: colors.brand600,
     lineHeight: 20,
   },
   observationText: {
     fontSize: 14,
     fontFamily: FONTS.body,
-    color: COLORS.textSecondary,
+    color: colors.textSecondary,
     flex: 1,
     lineHeight: 20,
   },
@@ -656,7 +659,7 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.lg,
     paddingVertical: 12,
     borderWidth: 1,
-    borderColor: COLORS.brand600,
+    borderColor: colors.brand600,
     alignItems: 'center',
     marginBottom: 12,
   },
@@ -664,42 +667,42 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.brand600,
+    color: colors.brand600,
   },
 
   // Disclaimer
   disclaimer: {
     fontSize: 12,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     fontStyle: 'italic',
     lineHeight: 18,
   },
 
   // Previous reports
   reportItem: {
-    backgroundColor: COLORS.card,
+    backgroundColor: colors.card,
     borderRadius: RADIUS.lg,
     padding: 16,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: colors.border,
     marginBottom: 8,
     ...SHADOWS.sm,
   },
   reportItemActive: {
-    borderColor: COLORS.brand600,
-    backgroundColor: COLORS.brand50,
+    borderColor: colors.brand600,
+    backgroundColor: colors.brand50,
   },
   reportItemDate: {
     fontSize: 15,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
-    color: COLORS.textPrimary,
+    color: colors.textPrimary,
   },
   reportItemGenerated: {
     fontSize: 12,
     fontFamily: FONTS.body,
-    color: COLORS.textMuted,
+    color: colors.textMuted,
     marginTop: 4,
   },
-});
+}));

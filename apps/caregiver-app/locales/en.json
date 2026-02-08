@@ -76,7 +76,10 @@
       "lastSeenAt": "Last seen: {{time}}",
       "lastSeenNever": "Never connected",
       "engagementSummary": "Today's Engagement",
-      "alertsToday": "Alerts today"
+      "alertsToday": "Alerts today",
+      "checkedIn": "Checked in",
+      "notCheckedIn": "Not checked in",
+      "brainActivity": "Brain activity"
     },
     "carePlan": {
       "title": "{{name}}'s Daily Plan",
@@ -172,7 +175,10 @@
       "alertTypeInactive": "Inactive",
       "alertTypeNightMovement": "Night Movement",
       "alertTypeTakeMeHomeTapped": "Take Me Home Tapped",
-      "alertTypeSosTriggered": "SOS Triggered"
+      "alertTypeSosTriggered": "SOS Triggered",
+      "invalidLatitude": "Please enter a valid latitude (-90 to 90)",
+      "invalidLongitude": "Please enter a valid longitude (-180 to 180)",
+      "invalidRadius": "Please enter a positive radius value"
     },
     "coach": {
       "title": "AI Care Coach",
@@ -306,7 +312,11 @@
       "shareCareCodeMessage": "Join my OurTurn care circle! Use this Care Code: {{code}}",
       "deleteConfirmTitle": "Delete Journal Entry",
       "deleteConfirmMessage": "Are you sure you want to delete this journal entry? This cannot be undone.",
-      "edited": "(edited)"
+      "edited": "(edited)",
+      "crisis": "Crisis",
+      "canEditPlan": "Can edit plan",
+      "receivesAlerts": "Receives alerts",
+      "caregiverLimitReached": "You've reached the free tier limit for family members. Upgrade to add more."
     },
     "toolkit": {
       "pageTitle": "Caregiver Toolkit",
@@ -333,7 +343,125 @@
         "complete": "Well done! Exercise complete.",
         "close": "Close",
         "pause": "Pause",
-        "resume": "Resume"
+        "resume": "Resume",
+        "exercises": {
+          "box-breathing": {
+            "name": "Box Breathing",
+            "step0": "Get comfortable and close your eyes",
+            "step1": "Breathe in slowly through your nose",
+            "step2": "Hold your breath gently",
+            "step3": "Breathe out slowly through your mouth",
+            "step4": "Hold before the next breath",
+            "step5": "Breathe in slowly through your nose",
+            "step6": "Hold your breath gently",
+            "step7": "Breathe out slowly through your mouth",
+            "step8": "Hold before the next breath",
+            "step9": "Breathe in slowly through your nose",
+            "step10": "Hold your breath gently",
+            "step11": "Breathe out slowly through your mouth",
+            "step12": "Hold before the next breath",
+            "step13": "Breathe in slowly through your nose",
+            "step14": "Hold your breath gently",
+            "step15": "Breathe out slowly through your mouth",
+            "step16": "Hold before the next breath",
+            "step17": "Breathe in slowly through your nose",
+            "step18": "Hold your breath gently",
+            "step19": "Breathe out slowly through your mouth",
+            "step20": "Hold before the next breath",
+            "step21": "Breathe in slowly through your nose",
+            "step22": "Hold your breath gently",
+            "step23": "Breathe out slowly through your mouth",
+            "step24": "Well done. Take a moment to notice how you feel."
+          },
+          "54321-grounding": {
+            "name": "5-4-3-2-1 Grounding",
+            "step0": "Take a slow, deep breath and look around you",
+            "step1": "Name 5 things you can SEE right now",
+            "step2": "Name 4 things you can TOUCH right now",
+            "step3": "Name 3 things you can HEAR right now",
+            "step4": "Name 2 things you can SMELL right now",
+            "step5": "Name 1 thing you can TASTE right now",
+            "step6": "Take another deep breath. You are here, and you are safe."
+          },
+          "gratitude-moment": {
+            "name": "Gratitude Moment",
+            "step0": "Close your eyes and take a calming breath",
+            "step1": "Think of one person you are grateful for and why",
+            "step2": "Think of one thing that happened today that was good, even if small",
+            "step3": "Think of one thing about yourself that you appreciate",
+            "step4": "Hold those three things in your mind and breathe deeply",
+            "step5": "Carry this feeling of gratitude with you."
+          },
+          "progressive-muscle-relaxation": {
+            "name": "Progressive Muscle Relaxation",
+            "step0": "Sit or lie down comfortably. Close your eyes.",
+            "step1": "Squeeze both fists tightly for 5 seconds...",
+            "step2": "Release and feel the tension melt away",
+            "step3": "Tense your shoulders — lift them toward your ears...",
+            "step4": "Release and let your shoulders drop",
+            "step5": "Scrunch your face tightly — forehead, eyes, jaw...",
+            "step6": "Release and let your face relax completely",
+            "step7": "Tense your stomach muscles...",
+            "step8": "Release and breathe into your belly",
+            "step9": "Squeeze your legs and feet tightly...",
+            "step10": "Release and feel the warmth flow through your legs",
+            "step11": "Breathe deeply. Your whole body is relaxed.",
+            "step12": "Gently open your eyes when you are ready."
+          },
+          "mindful-break": {
+            "name": "Mindful Break",
+            "step0": "Pause whatever you are doing. This moment is yours.",
+            "step1": "Close your eyes and take 3 slow, deep breaths",
+            "step2": "Notice how your body feels right now — no need to change anything",
+            "step3": "Listen to the sounds around you, near and far",
+            "step4": "Feel the surface beneath you and the air on your skin",
+            "step5": "Silently say: \"I am doing my best, and that is enough.\"",
+            "step6": "Take one more deep breath",
+            "step7": "Gently open your eyes. You are refreshed."
+          },
+          "breathing-478": {
+            "name": "4-7-8 Breathing",
+            "step0": "Sit comfortably and relax your shoulders",
+            "step1": "Breathe in quietly through your nose for 4 counts",
+            "step2": "Hold your breath for 7 counts",
+            "step3": "Exhale completely through your mouth for 8 counts",
+            "step4": "Breathe in quietly through your nose for 4 counts",
+            "step5": "Hold your breath for 7 counts",
+            "step6": "Exhale completely through your mouth for 8 counts",
+            "step7": "Breathe in quietly through your nose for 4 counts",
+            "step8": "Hold your breath for 7 counts",
+            "step9": "Exhale completely through your mouth for 8 counts",
+            "step10": "Breathe in quietly through your nose for 4 counts",
+            "step11": "Hold your breath for 7 counts",
+            "step12": "Exhale completely through your mouth for 8 counts",
+            "step13": "Breathe in quietly through your nose for 4 counts",
+            "step14": "Hold your breath for 7 counts",
+            "step15": "Exhale completely through your mouth for 8 counts",
+            "step16": "Notice how much calmer your body feels now."
+          },
+          "permission-slip": {
+            "name": "Permission Slip",
+            "step0": "Take a deep breath and give yourself a moment",
+            "step1": "Say to yourself: \"I give myself permission to not be perfect today\"",
+            "step2": "Say: \"I give myself permission to ask for help\"",
+            "step3": "Say: \"I give myself permission to feel what I feel without guilt\"",
+            "step4": "Say: \"I give myself permission to take a break\"",
+            "step5": "Say: \"I am doing my best, and that is enough\"",
+            "step6": "Take a deep breath and hold these words close",
+            "step7": "You deserve compassion too. Carry this with you."
+          },
+          "quick-walk": {
+            "name": "Quick Walk Prompt",
+            "step0": "Stand up and stretch your arms above your head",
+            "step1": "Walk to the nearest window or door and look outside",
+            "step2": "Take 5 slow steps and feel each foot touch the ground",
+            "step3": "Look up — notice the sky, ceiling, or something above you",
+            "step4": "Take 5 more slow, intentional steps",
+            "step5": "Shake your hands and arms loosely for a few seconds",
+            "step6": "Roll your shoulders back 3 times",
+            "step7": "You moved your body. That counts. Well done."
+          }
+        }
       },
       "help": {
         "title": "Ask for Help",
@@ -348,7 +476,16 @@
         "limitReached": "You can send up to 5 help requests per day.",
         "noRequests": "No recent help requests.",
         "accept": "I can help",
-        "complete": "Mark done"
+        "complete": "Mark done",
+        "template_need_break": "Need a break",
+        "template_handle_meds": "Medication help",
+        "template_need_visit": "Need a visit",
+        "template_groceries": "Groceries",
+        "template_custom": "Custom message",
+        "message_need_break": "I could really use a break. Could someone take over for a bit?",
+        "message_handle_meds": "Can someone help with medication today?",
+        "message_need_visit": "It would mean a lot if someone could visit today.",
+        "message_groceries": "Could someone help pick up groceries?"
       },
       "agent": {
         "title": "Wellbeing Companion",
@@ -384,6 +521,29 @@
         "description": "Caregiving is challenging. It is okay to ask for help."
       },
       "footer": "Remember: You can't pour from an empty cup. Your wellbeing matters too.",
+      "weeklyStats": {
+        "title": "Weekly Insights",
+        "subtitle": "Your 7-day wellbeing summary",
+        "avgEnergy": "Avg Energy",
+        "avgStress": "Avg Stress",
+        "avgSleep": "Avg Sleep",
+        "noData": "Complete daily check-ins to see your weekly trends.",
+        "generateDigest": "Generate AI Digest",
+        "generating": "Generating...",
+        "behaviourSummary": "{{count}} behaviour incidents logged this week"
+      },
+      "sos": {
+        "title": "What's happening right now?",
+        "subtitle": "Choose what you need help with — we'll guide you.",
+        "calmDown": "I need to calm down",
+        "calmDownDesc": "Quick breathing & relief exercises",
+        "behaviourNow": "Behaviour happening now",
+        "behaviourNowDesc": "Log an incident and get guidance",
+        "callHelp": "I need emergency help",
+        "callHelpDesc": "Contact emergency services or family",
+        "needBreak": "I need someone to take over",
+        "needBreakDesc": "Send a help request to family"
+      },
       "behaviours": {
         "playbooks": {
           "title": "Behaviour Playbooks",
@@ -549,6 +709,13 @@
     },
     "settings": {
       "title": "Settings",
+      "appearance": "Appearance",
+      "theme": {
+        "label": "Theme",
+        "light": "Light",
+        "dark": "Dark",
+        "system": "System"
+      },
       "profile": "Profile",
       "account": "Account",
       "subscription": "Subscription",
@@ -666,7 +833,10 @@
       "saveContacts": "Save Contacts",
       "removeContactConfirm": "Remove this contact?",
       "country": "Country",
-      "selectCountry": "Select country"
+      "selectCountry": "Select country",
+      "language": "Language",
+      "selectLanguage": "Select language",
+      "languageSaved": "Language updated"
     },
     "auth": {
       "login": "Log in",
@@ -750,7 +920,9 @@
       "history": {
         "title": "Recent Crisis Events",
         "noEvents": "No crisis events in the last 30 days.",
-        "viewAllInJournal": "View all in Journal"
+        "viewAllInJournal": "View all in Journal",
+        "yesterday": "Yesterday",
+        "daysAgo": "{{count}}d ago"
       },
       "steps": {
         "stayCalm": {
@@ -790,7 +962,391 @@
       "email": "Email",
       "website": "Website",
       "familyContacts": "Family Contacts",
-      "supportResources": "Support Resources"
+      "supportResources": "Support Resources",
+      "scenarios": {
+        "title": "What's happening?",
+        "subtitle": "Tap a situation for step-by-step guidance",
+        "urgent": "Urgent",
+        "stepCountLabel": "{{count}} steps",
+        "backToSituations": "Back to situations",
+        "breathe": "Breathing exercise",
+        "callEmergency": "Call Emergency Services"
+      },
+      "patterns": {
+        "title": "Pattern Insight",
+        "noEvents": "Log incidents to see patterns over time.",
+        "fewEvents": "{{count}} incidents logged. More data needed for patterns.",
+        "timePattern": "Most incidents happen in the {{time}}.",
+        "weekCount": "{{count}} this week."
+      },
+      "personalization": {
+        "label": "What calms {{name}}",
+        "empty": "Add calming strategies in {{name}}'s biography to see personalized tips here."
+      },
+      "scenarioData": {
+        "stepsCount": "{{count}} steps",
+        "agitated": {
+          "label": "Agitated / Upset",
+          "steps": [
+            {
+              "title": "You first",
+              "instruction": "Take one slow breath before you do anything. You can't calm someone if you're not calm."
+            },
+            {
+              "title": "Quick check — could something physical be wrong?",
+              "instruction": "Pain, hunger, needing the bathroom, or an infection can all cause agitation.",
+              "checklist": [
+                "Pain or discomfort?",
+                "Hungry or thirsty?",
+                "Needs the bathroom?",
+                "Recent medication change?",
+                "Fever or illness signs?"
+              ]
+            },
+            {
+              "title": "Lower the temperature",
+              "instruction": "Speak slowly and softly. Don't argue, correct, or explain. Validate what they're feeling.",
+              "tips": [
+                "\"I can see you're upset. I'm here.\"",
+                "Reduce noise — turn off TV, close windows",
+                "Give them physical space, don't crowd",
+                "Offer a familiar comfort object"
+              ]
+            },
+            {
+              "title": "Redirect, don't reason",
+              "instruction": "Gently change the subject or environment. Don't try to logic them out of it.",
+              "tips": [
+                "Suggest a walk or move to another room",
+                "Put on music they love",
+                "Offer a snack or warm drink",
+                "Look at photos together"
+              ]
+            },
+            {
+              "title": "When to get help",
+              "instruction": "If agitation lasts more than 30 minutes, if they're at risk of hurting themselves or you, or if this is a sudden new behavior — call emergency services.",
+              "actionLabel": "Call Emergency Services"
+            }
+          ]
+        },
+        "wandering": {
+          "label": "Wandering / Missing",
+          "steps": [
+            {
+              "title": "Check the usual places first",
+              "instruction": "Most people with dementia go to familiar places — a former workplace, a childhood home, a neighbor's house.",
+              "tips": [
+                "Check the garden, garage, nearby streets",
+                "Ask neighbors if they've seen them",
+                "Check places they used to go regularly"
+              ]
+            },
+            {
+              "title": "Use their location",
+              "instruction": "If location tracking is set up, check their current position now."
+            },
+            {
+              "title": "Alert the family",
+              "instruction": "Let everyone know immediately. More eyes searching is better."
+            },
+            {
+              "title": "Call police if not found within 15 minutes",
+              "instruction": "Don't wait. People with dementia are at high risk of injury. Call emergency services and tell them the person has dementia.",
+              "actionLabel": "Call Emergency Services"
+            }
+          ]
+        },
+        "refusing": {
+          "label": "Refusing Care",
+          "steps": [
+            {
+              "title": "Pause — this isn't defiance",
+              "instruction": "Refusal is almost always fear, confusion, or discomfort. They may not understand what you're asking."
+            },
+            {
+              "title": "Step back and try differently",
+              "instruction": "Don't push. Come back in 15–20 minutes and approach as if it's the first time.",
+              "tips": [
+                "Change who's asking",
+                "Change the environment",
+                "Break the task into smaller steps",
+                "Offer choices: \"Bath or shower?\""
+              ]
+            },
+            {
+              "title": "Make it feel safe",
+              "instruction": "Explain each step before you do it. Move slowly. Keep them warm.",
+              "tips": [
+                "Warn before touching",
+                "Use a calm, warm tone",
+                "Play their favorite music during the task",
+                "Keep the routine consistent"
+              ]
+            },
+            {
+              "title": "Is this a pattern?",
+              "instruction": "If they consistently refuse the same task, log it. There may be an underlying issue — pain, fear, sensitivity. Discuss with their doctor."
+            }
+          ]
+        },
+        "hallucinations": {
+          "label": "Seeing / Hearing Things",
+          "steps": [
+            {
+              "title": "Don't argue — it's real to them",
+              "instruction": "Acknowledge what they're experiencing without confirming it's true.",
+              "tips": [
+                "\"That sounds frightening. I'm here with you.\"",
+                "\"Tell me what you're seeing.\"",
+                "Don't say \"there's nothing there\""
+              ]
+            },
+            {
+              "title": "Check the environment",
+              "instruction": "Shadows, reflections, TV sounds, and clutter can trigger misinterpretation.",
+              "checklist": [
+                "Shadows from windows or lamps?",
+                "TV or radio on in background?",
+                "Mirror reflections?",
+                "Poor lighting?"
+              ]
+            },
+            {
+              "title": "Redirect gently",
+              "instruction": "Shift their attention to something concrete and comforting.",
+              "tips": [
+                "Move to a well-lit room",
+                "Offer a hands-on activity",
+                "Go for a short walk together",
+                "Make a cup of tea together"
+              ]
+            },
+            {
+              "title": "When to call the doctor",
+              "instruction": "If hallucinations are new, frequent, or causing extreme distress. Sudden onset can indicate infection, medication side effects, or delirium."
+            }
+          ]
+        },
+        "sundowning": {
+          "label": "Sundowning",
+          "steps": [
+            {
+              "title": "Recognize the pattern",
+              "instruction": "Sundowning typically starts late afternoon. This is extremely common and not something they can control."
+            },
+            {
+              "title": "Adjust the environment now",
+              "instruction": "Reduce all stimulation and create safety signals.",
+              "tips": [
+                "Turn on warm lights before it gets dark",
+                "Close curtains to reduce shadows",
+                "Turn off or lower the TV volume",
+                "Reduce the number of people in the room"
+              ]
+            },
+            {
+              "title": "Offer calming activities",
+              "instruction": "Gentle, repetitive, familiar activities work best.",
+              "tips": [
+                "Gentle hand massage with lotion",
+                "Soft, familiar music",
+                "Folding towels or sorting objects",
+                "Looking through a photo album together"
+              ]
+            },
+            {
+              "title": "Prevent it tomorrow",
+              "instruction": "Log the episode with timing details. Patterns help adjust schedules — more morning activity, less afternoon caffeine."
+            }
+          ]
+        },
+        "fall": {
+          "label": "Fall / Physical Emergency",
+          "steps": [
+            {
+              "title": "Don't move them",
+              "instruction": "Unless they're in immediate danger, don't try to lift or move them.",
+              "tips": [
+                "Get down to their level",
+                "Reassure them: \"I'm here, you're safe\"",
+                "Check for visible injury"
+              ]
+            },
+            {
+              "title": "Can they get up?",
+              "instruction": "If no obvious injury, help them up slowly in stages.",
+              "checklist": [
+                "Are they alert and responsive?",
+                "Any obvious injury or pain?",
+                "Can they move all limbs?",
+                "Did they hit their head?"
+              ]
+            },
+            {
+              "title": "Call for help if...",
+              "instruction": "Head injury, can't get up, severe pain, confusion worse than usual, or bleeding that won't stop."
+            },
+            {
+              "title": "After the fall",
+              "instruction": "Log this event and mention it to their doctor. Repeated falls can indicate medication issues or disease progression."
+            }
+          ]
+        },
+        "repetitive_questions": {
+          "label": "Repetitive Questions",
+          "steps": [
+            {
+              "title": "Breathe — this is the disease, not them",
+              "instruction": "They genuinely don't remember asking. Your frustration is valid, but showing it makes them more anxious."
+            },
+            {
+              "title": "What are they really asking?",
+              "instruction": "The surface question is rarely the real question. \"What time is dinner?\" might mean \"I'm hungry.\"",
+              "checklist": [
+                "Are they anxious about something?",
+                "Could they be hungry, thirsty, or bored?",
+                "Is there an upcoming event causing worry?"
+              ]
+            },
+            {
+              "title": "Respond to the feeling",
+              "instruction": "Answer the emotion behind the question rather than the literal words.",
+              "tips": [
+                "Write the answer on a visible whiteboard",
+                "Provide a simple, reassuring answer each time",
+                "Redirect to a hands-on activity after answering",
+                "Use visual schedules to reduce uncertainty"
+              ]
+            },
+            {
+              "title": "Protect your own wellbeing",
+              "instruction": "Tag out with another caregiver if possible. Use headphones with gentle music when you need a mental break."
+            }
+          ]
+        },
+        "aggression": {
+          "label": "Aggression",
+          "steps": [
+            {
+              "title": "Your safety comes first",
+              "instruction": "If you feel physically unsafe, step back immediately. Do not try to restrain them.",
+              "tips": [
+                "Position yourself near an exit",
+                "Remove dangerous objects from reach",
+                "Keep your voice low and calm",
+                "Do not make sudden movements"
+              ]
+            },
+            {
+              "title": "Ground yourself",
+              "instruction": "Aggression triggers fight-or-flight in you too. Take one moment to breathe."
+            },
+            {
+              "title": "What triggered this?",
+              "instruction": "Aggression is almost always a reaction — pain, fear, frustration, sensory overload.",
+              "checklist": [
+                "Were they being asked to do something?",
+                "Were they in pain?",
+                "Was the environment noisy or chaotic?",
+                "Did they feel cornered?"
+              ]
+            },
+            {
+              "title": "Give space and time",
+              "instruction": "Back off. Stop the triggering activity. Come back in 15–20 minutes as if nothing happened.",
+              "tips": [
+                "Leave the room if safe",
+                "Remove the trigger",
+                "Don't take it personally",
+                "Approach slowly when returning"
+              ]
+            },
+            {
+              "title": "When this is an emergency",
+              "instruction": "If they have a weapon, if someone is injured, or if the aggression doesn't subside — call emergency services."
+            }
+          ]
+        },
+        "sleep_disruption": {
+          "label": "Sleep Disruption",
+          "steps": [
+            {
+              "title": "Keep the environment safe",
+              "instruction": "If they're awake and moving around at night, your first priority is safety.",
+              "tips": [
+                "Turn on low nightlights",
+                "Clear trip hazards",
+                "Lock exterior doors if wandering is a concern",
+                "\"It's nighttime, everything is safe\""
+              ]
+            },
+            {
+              "title": "What woke them?",
+              "instruction": "Night waking can be caused by pain, needing the bathroom, medication timing, or hunger.",
+              "checklist": [
+                "Do they need the bathroom?",
+                "Are they in pain?",
+                "Did a noise or light wake them?",
+                "Are they hungry or thirsty?"
+              ]
+            },
+            {
+              "title": "Guide them back gently",
+              "instruction": "Don't argue about what time it is. Redirect them back to bed with calming cues.",
+              "tips": [
+                "Offer a warm, caffeine-free drink",
+                "Use a calm, quiet voice",
+                "Put on soft, familiar music",
+                "Sit with them until they settle"
+              ]
+            },
+            {
+              "title": "Improve tomorrow night",
+              "instruction": "More daytime activity, no caffeine after noon, consistent bedtime routine, limit naps to 30 minutes."
+            }
+          ]
+        },
+        "shadowing": {
+          "label": "Shadowing",
+          "steps": [
+            {
+              "title": "Acknowledge your frustration",
+              "instruction": "Being followed everywhere is exhausting. Those feelings are valid. Take a breath."
+            },
+            {
+              "title": "Why are they following you?",
+              "instruction": "Shadowing is driven by anxiety and fear of abandonment. Being near you is their only source of safety.",
+              "checklist": [
+                "Has there been a recent routine change?",
+                "Are they in an unfamiliar environment?",
+                "Have you been away recently?",
+                "Are they feeling unwell?"
+              ]
+            },
+            {
+              "title": "Reduce their anxiety",
+              "instruction": "Help them feel secure without being physically present every moment.",
+              "tips": [
+                "Give them a \"job\" near where you are",
+                "Leave a personal item with them as a comfort anchor",
+                "\"I'm just in the kitchen, I'll be right back\"",
+                "Try familiar TV or music as a companion"
+              ]
+            },
+            {
+              "title": "Build in breaks for yourself",
+              "instruction": "Ask someone to sit with them while you take 20 minutes. Even 10 minutes alone helps.",
+              "tips": [
+                "Don't wait until you're depleted",
+                "It's okay to gently close the bathroom door",
+                "Consider a support group",
+                "This behavior often reduces with a stable routine"
+              ]
+            }
+          ]
+        }
+      }
     },
     "tabs": {
       "dashboard": "Dashboard",
