@@ -492,7 +492,16 @@
         "viewAll": "View all",
         "showLess": "Show less",
         "accept": "I can help",
-        "complete": "Mark done"
+        "complete": "Mark done",
+        "template_need_break": "Need a break",
+        "template_handle_meds": "Medication help",
+        "template_need_visit": "Need a visit",
+        "template_groceries": "Groceries",
+        "template_custom": "Custom message",
+        "message_need_break": "I could really use a break. Could someone take over for a bit?",
+        "message_handle_meds": "Can someone help with medication today?",
+        "message_need_visit": "It would mean a lot if someone could visit today.",
+        "message_groceries": "Could someone help pick up groceries?"
       },
       "agent": {
         "title": "Wellbeing Companion",

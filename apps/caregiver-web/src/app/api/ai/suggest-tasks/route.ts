@@ -19,6 +19,7 @@ import {
 } from '@ourturn/shared/utils/task-suggestion-validator';
 import type { TaskCategory } from '@ourturn/shared/types/care-plan';
 import { getLanguageInstruction } from '@/lib/ai-language';
+import { SUPPORTED_LANGUAGES } from '@ourturn/shared/constants/languages';
 
 const log = createLogger('ai/suggest-tasks');
 
@@ -158,9 +159,16 @@ export async function POST(request: NextRequest) {
     // Random seed for variety
     const randomSeed = Math.random().toString(36).substring(2, 8);
 
+    // Determine target language for AI output
+    const targetLanguageName = (() => {
+      if (!locale || locale === 'en') return null;
+      const lang = SUPPORTED_LANGUAGES.find((l) => l.code === locale);
+      return lang?.name || null;
+    })();
+
     // Build the evidence-based prompt
     const prompt = `You are an evidence-based care task generator for the OurTurn daily care platform.
-
+${targetLanguageName ? `\n**OUTPUT LANGUAGE: ${targetLanguageName.toUpperCase()}**\nYou MUST write ALL "title" and "hint_text" values in ${targetLanguageName}. This is mandatory — do NOT write them in English.\n` : ''}
 CRITICAL RULES:
 1. You must ONLY suggest tasks derived from the provided intervention library below. Never invent new interventions.
 2. Every task you generate MUST include the intervention_id from the library.
@@ -168,7 +176,7 @@ CRITICAL RULES:
 4. Task hint_text must be 2-4 sentences, direct and conversational ("Let's...", "Time to...", "How about...").
 5. NEVER use these terms: "dementia", "cognitive decline", "brain training", "Alzheimer's".
 6. Follow CST principle: opinions over facts, never test or quiz. Frame as enjoyable activities.
-7. Seed for variety: ${randomSeed}
+7. Seed for variety: ${randomSeed}${targetLanguageName ? `\n8. ALL "title" and "hint_text" fields MUST be in ${targetLanguageName}. The "category", "intervention_id", "time", and "recurrence" fields stay in English. Only translate the user-facing text (title, hint_text).` : ''}
 
 SAFETY CONSTRAINTS:
 - Never suggest balance exercises without noting seated alternative
@@ -205,9 +213,9 @@ DAILY PLAN STRUCTURE:
 - Space tasks with minimum 1.5-hour gaps between ${wakeTime} and ${sleepTime}
 
 Generate exactly ${count} UNIQUE task suggestions. Each must map to a different intervention_id.
-${getLanguageInstruction(locale) ? `\nThe title and hint_text for each task MUST be written in the user's language. ${getLanguageInstruction(locale)}` : ''}
+${targetLanguageName ? `\nREMINDER: Write "title" and "hint_text" in ${targetLanguageName}. Do NOT use English for these fields.` : ''}
 Return ONLY a valid JSON array. No markdown, no explanation.
-Each task: { "intervention_id": "...", "category": "...", "title": "short title max 6 words", "hint_text": "2-4 warm sentences with specific instructions", "time": "HH:MM", "recurrence": "daily" }`;
+Each task: { "intervention_id": "...", "category": "...", "title": "short title max 6 words${targetLanguageName ? ` in ${targetLanguageName}` : ''}", "hint_text": "2-4 warm sentences${targetLanguageName ? ` in ${targetLanguageName}` : ''}", "time": "HH:MM", "recurrence": "daily" }`;
 
     // Call Gemini API
     const response = await fetch(`${GEMINI_API_URL}?key=${GOOGLE_AI_API_KEY}`, {

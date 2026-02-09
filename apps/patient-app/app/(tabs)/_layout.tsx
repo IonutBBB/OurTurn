@@ -18,7 +18,14 @@ function TabIcon({ emoji, label, focused }: TabIconProps) {
   return (
     <View style={styles.tabIconContainer}>
       <Text style={[styles.tabEmoji, focused && styles.tabEmojiActive]}>{emoji}</Text>
-      <Text style={[styles.tabLabel, focused && styles.tabLabelActive]}>{label}</Text>
+      <Text
+        style={[styles.tabLabel, focused && styles.tabLabelActive]}
+        numberOfLines={1}
+        adjustsFontSizeToFit
+        minimumFontScale={0.75}
+      >
+        {label}
+      </Text>
     </View>
   );
 }
@@ -143,6 +150,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 4,
+    paddingHorizontal: 4,
+    maxWidth: 110,
   },
   tabEmoji: {
     fontSize: 28,
@@ -155,6 +164,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: FONTS.bodySemiBold,
     color: COLORS.textMuted,
+    textAlign: 'center',
   },
   tabLabelActive: {
     color: COLORS.brand600,

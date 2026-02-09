@@ -6,10 +6,8 @@ import {
   ScrollView,
   RefreshControl,
   ActivityIndicator,
-  TouchableOpacity,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
 import { getProgressLabel, getCategoryIcon } from '@ourturn/shared';
@@ -60,7 +58,6 @@ export default function TodayScreen() {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [isOffline, setIsOffline] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [hasCheckedIn, setHasCheckedIn] = useState(true); // Assume true initially
   const [yesterdayCompletedCount, setYesterdayCompletedCount] = useState<number | null>(null);
   const [currentTime, setCurrentTime] = useState(formatCurrentTime(i18n.language));
   const clockRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -134,16 +131,6 @@ export default function TodayScreen() {
         return !comp?.completed && !comp?.skipped;
       });
       scheduleAllTaskReminders(uncompletedTasks, patient?.name);
-
-      // Check if user has done their daily check-in
-      const { data: checkin } = await supabase
-        .from('daily_checkins')
-        .select('id')
-        .eq('household_id', householdId)
-        .eq('date', today)
-        .single();
-
-      setHasCheckedIn(!!checkin);
 
       // Fetch yesterday's completed count (non-blocking)
       try {
@@ -331,19 +318,13 @@ export default function TodayScreen() {
             </View>
           )}
 
-          {/* Enhanced Orientation Header */}
+          {/* Compact Orientation Header */}
           <View style={styles.greetingContainer}>
             <Text
-              style={[styles.dayOfWeekText, { color: gradientTextColor }]}
+              style={[styles.orientationLine, { color: gradientTextColor }]}
               accessibilityRole="header"
             >
-              {getDayOfWeekLong(new Date(), i18n.language)}
-            </Text>
-            <Text style={[styles.dateText, { color: gradientTextColor }]}>
-              {new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long' }).format(new Date())}
-            </Text>
-            <Text style={[styles.clockText, { color: gradientTextColor }]}>
-              {currentTime}
+              {getDayOfWeekLong(new Date(), i18n.language)}  ·  {new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long' }).format(new Date())}  ·  {currentTime}
             </Text>
             <Text
               style={[styles.greeting, isSimplified && styles.greetingSimplified, { color: gradientTextColor }]}
@@ -395,26 +376,6 @@ export default function TodayScreen() {
             </View>
           )}
 
-          {/* Daily Check-in Card */}
-          {!hasCheckedIn && (
-            <TouchableOpacity
-              style={styles.checkinCard}
-              onPress={() => router.push('/checkin')}
-              activeOpacity={0.8}
-              accessibilityRole="button"
-              accessibilityLabel={`${t('patientApp.checkin.moodQuestion')}. ${t('patientApp.checkin.tapToCheckin')}`}
-              accessibilityHint={t('patientApp.checkin.opensCheckin')}
-            >
-              <View style={styles.checkinContent} importantForAccessibility="no-hide-descendants">
-                <Text style={styles.checkinEmoji}>👋</Text>
-                <View style={styles.checkinTextContainer}>
-                  <Text style={styles.checkinTitle}>{t('patientApp.checkin.moodQuestion')}</Text>
-                  <Text style={styles.checkinSubtitle}>{t('patientApp.checkin.tapToCheckin')}</Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-          )}
-
           {/* Coming Up Next card */}
           {nextTask && (
             <View style={styles.comingUpCard}>
@@ -428,23 +389,6 @@ export default function TodayScreen() {
               </View>
             </View>
           )}
-
-          {/* Activities tab link */}
-          <TouchableOpacity
-            style={styles.activitiesLinkCard}
-            onPress={() => router.push('/(tabs)/activities')}
-            activeOpacity={0.8}
-            accessibilityRole="button"
-            accessibilityLabel={t('patientApp.todaysPlan.activitiesWaiting')}
-          >
-            <View style={styles.checkinContent} importantForAccessibility="no-hide-descendants">
-              <Text style={styles.checkinEmoji}>🎨</Text>
-              <View style={styles.checkinTextContainer}>
-                <Text style={styles.checkinTitle}>{t('patientApp.tabs.activities')}</Text>
-                <Text style={styles.checkinSubtitle}>{t('patientApp.todaysPlan.activitiesWaiting')}</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
 
           {/* Error state */}
           {error && (
@@ -503,7 +447,7 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingHorizontal: 24,
-    paddingTop: 28,
+    paddingTop: 20,
   },
   offlineBanner: {
     backgroundColor: COLORS.textMuted,
@@ -521,21 +465,13 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.bodyMedium,
   },
   greetingContainer: {
-    marginBottom: 28,
+    marginBottom: 20,
   },
-  dayOfWeekText: {
-    fontSize: 36,
-    fontFamily: FONTS.display,
+  orientationLine: {
+    fontSize: 22,
+    fontFamily: FONTS.bodySemiBold,
     color: COLORS.textPrimary,
-    lineHeight: 44,
-    letterSpacing: -0.5,
-  },
-  clockText: {
-    fontSize: 32,
-    fontFamily: FONTS.display,
-    color: COLORS.textPrimary,
-    marginTop: 4,
-    lineHeight: 40,
+    lineHeight: 30,
   },
   greeting: {
     fontSize: 28,
@@ -543,17 +479,11 @@ const styles = StyleSheet.create({
     color: COLORS.textPrimary,
     lineHeight: 36,
     letterSpacing: -0.3,
-    marginTop: 12,
+    marginTop: 8,
   },
   greetingSimplified: {
     fontSize: 32,
     lineHeight: 40,
-  },
-  dateText: {
-    fontSize: 28,
-    fontFamily: FONTS.bodySemiBold,
-    marginTop: 4,
-    lineHeight: 36,
   },
   yesterdayText: {
     fontSize: 22,
@@ -625,19 +555,6 @@ const styles = StyleSheet.create({
   bottomPadding: {
     height: 120,
   },
-  checkinCard: {
-    backgroundColor: COLORS.brand50,
-    borderRadius: RADIUS['2xl'],
-    padding: 24,
-    marginBottom: 20,
-    borderWidth: 2,
-    borderColor: COLORS.brand400,
-    shadowColor: COLORS.brand600,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.15,
-    shadowRadius: 12,
-    elevation: 4,
-  },
   comingUpCard: {
     backgroundColor: COLORS.card,
     borderRadius: RADIUS['2xl'],
@@ -675,37 +592,5 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.bodyMedium,
     color: COLORS.textSecondary,
     marginTop: 4,
-  },
-  activitiesLinkCard: {
-    backgroundColor: COLORS.nutritionBg,
-    borderRadius: RADIUS['2xl'],
-    padding: 24,
-    marginBottom: 20,
-    borderWidth: 2,
-    borderColor: COLORS.nutrition,
-    ...SHADOWS.sm,
-  },
-  checkinContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  checkinEmoji: {
-    fontSize: 44,
-    marginRight: 18,
-  },
-  checkinTextContainer: {
-    flex: 1,
-  },
-  checkinTitle: {
-    fontSize: 22,
-    fontFamily: FONTS.bodyBold,
-    color: COLORS.textPrimary,
-    letterSpacing: -0.3,
-  },
-  checkinSubtitle: {
-    fontSize: 20,
-    color: COLORS.brand700,
-    marginTop: 6,
-    fontFamily: FONTS.bodyMedium,
   },
 });
