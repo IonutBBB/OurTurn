@@ -200,5 +200,11 @@
       "respite": "Avlösning",
       "financial": "Ekonomiskt stöd"
     }
+  },
+  "whoIsupport": {
+    "sectionTitle": "WHO:s iSupport-program",
+    "sectionSubtitle": "Ett omfattande, evidensbaserat utbildningsprogram för vårdgivare utvecklat av Världshälsoorganisationen (WHO) — Förenta nationernas organ med ansvar för internationell folkhälsa.",
+    "whoExplanation": "WHO = Världshälsoorganisationen (Förenta nationerna)",
+    "badge": "Evidensbaserad utbildning"
   }
 }

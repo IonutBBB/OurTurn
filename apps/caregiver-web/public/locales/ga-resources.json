@@ -200,5 +200,11 @@
       "respite": "Cúram Sos",
       "financial": "Tacaíocht Airgeadais"
     }
+  },
+  "whoIsupport": {
+    "sectionTitle": "Clár WHO iSupport",
+    "sectionSubtitle": "Clár cuimsitheach oiliúna cúramóirí bunaithe ar fhianaise, arna fhorbairt ag Eagraíocht Dhomhanda na Sláinte (EDS) — gníomhaireacht na Náisiún Aontaithe atá freagrach as sláinte phoiblí idirnáisiúnta.",
+    "whoExplanation": "EDS = Eagraíocht Dhomhanda na Sláinte (Na Náisiúin Aontaithe)",
+    "badge": "Oiliúint bunaithe ar fhianaise"
   }
 }

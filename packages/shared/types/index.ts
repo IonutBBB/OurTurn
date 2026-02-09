@@ -12,3 +12,4 @@ export * from './wellbeing';
 export * from './consent';
 export * from './metrics';
 export * from './resources';
+export * from './activities';

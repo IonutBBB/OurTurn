@@ -1,8 +1,9 @@
 import { useEffect, useState, useRef } from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { View, ActivityIndicator, StyleSheet, AppState } from 'react-native';
+import { View, ActivityIndicator, StyleSheet, AppState, Platform } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import * as NavigationBar from 'expo-navigation-bar';
 import { useFonts } from 'expo-font';
 import {
   Nunito_400Regular,
@@ -137,6 +138,11 @@ export default function RootLayout() {
 
   useEffect(() => {
     initialize();
+    // Hide Android navigation bar so it doesn't cover tab buttons
+    if (Platform.OS === 'android') {
+      NavigationBar.setVisibilityAsync('hidden');
+      NavigationBar.setBehaviorAsync('overlay-swipe');
+    }
   }, [initialize]);
 
   // Clean up old cache on startup & sync offline data
@@ -261,35 +267,70 @@ export default function RootLayout() {
         <Stack.Screen name="index" />
         <Stack.Screen name="(tabs)" />
         <Stack.Screen
-          name="checkin/index"
+          name="checkin"
           options={{
             presentation: 'modal',
             animation: 'slide_from_bottom',
           }}
         />
         <Stack.Screen
-          name="sos-confirmation/index"
+          name="sos-confirmation"
           options={{
             presentation: 'modal',
             animation: 'slide_from_bottom',
           }}
         />
         <Stack.Screen
-          name="activity/index"
+          name="activity"
           options={{
             presentation: 'modal',
             animation: 'slide_from_bottom',
           }}
         />
         <Stack.Screen
-          name="consent/index"
+          name="activity-remember"
           options={{
             presentation: 'modal',
             animation: 'slide_from_bottom',
           }}
         />
         <Stack.Screen
-          name="essential-mode/index"
+          name="activity-listen"
+          options={{
+            presentation: 'modal',
+            animation: 'slide_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="activity-move"
+          options={{
+            presentation: 'modal',
+            animation: 'slide_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="activity-create"
+          options={{
+            presentation: 'modal',
+            animation: 'slide_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="activity-stim/[type]"
+          options={{
+            presentation: 'modal',
+            animation: 'slide_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="consent"
+          options={{
+            presentation: 'modal',
+            animation: 'slide_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="essential-mode"
           options={{
             animation: 'fade',
           }}

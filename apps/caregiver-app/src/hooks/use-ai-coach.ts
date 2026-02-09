@@ -1,4 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../stores/auth-store';
 import {
   Message,
@@ -8,9 +9,9 @@ import {
   sendMessageToCoach,
   addCarePlanSuggestion,
   addDoctorNote,
-  getSuggestedPrompts,
 } from '../services/ai-coach';
 import { supabase } from '@ourturn/supabase';
+import i18n from '../i18n';
 
 export interface UseAICoachOptions {
   conversationType?: string;
@@ -32,6 +33,7 @@ export interface UseAICoachReturn {
 }
 
 export function useAICoach(options?: UseAICoachOptions): UseAICoachReturn {
+  const { t } = useTranslation();
   const { household, patient, caregiver } = useAuthStore();
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -39,7 +41,12 @@ export function useAICoach(options?: UseAICoachOptions): UseAICoachReturn {
   const [conversationId, setConversationId] = useState<string | undefined>();
 
   const patientName = patient?.name || 'your loved one';
-  const suggestedPrompts = getSuggestedPrompts(patientName);
+  const suggestedPrompts = [
+    t('caregiverApp.coach.suggestions.stayEngaged', { name: patientName }),
+    t('caregiverApp.coach.suggestions.sundowning'),
+    t('caregiverApp.coach.suggestions.agitated', { name: patientName }),
+    t('caregiverApp.coach.suggestions.repetitive'),
+  ];
 
   // Load most recent conversation on mount (only for hub/open chat, not focused conversations)
   useEffect(() => {
@@ -122,7 +129,8 @@ export function useAICoach(options?: UseAICoachOptions): UseAICoachReturn {
               }
               return [...updated];
             });
-          }
+          },
+          i18n.language
         );
       } catch (err) {
         if (__DEV__) console.error('Chat error:', err);

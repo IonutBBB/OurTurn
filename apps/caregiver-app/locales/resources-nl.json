@@ -200,5 +200,11 @@
       "respite": "Respijtzorg",
       "financial": "Financiële ondersteuning"
     }
+  },
+  "whoIsupport": {
+    "sectionTitle": "WHO iSupport-programma",
+    "sectionSubtitle": "Een uitgebreid, wetenschappelijk onderbouwd opleidingsprogramma voor mantelzorgers, ontwikkeld door de Wereldgezondheidsorganisatie (WHO) — het agentschap van de Verenigde Naties dat verantwoordelijk is voor de internationale volksgezondheid.",
+    "whoExplanation": "WHO = Wereldgezondheidsorganisatie (Verenigde Naties)",
+    "badge": "Wetenschappelijk onderbouwde opleiding"
   }
 }

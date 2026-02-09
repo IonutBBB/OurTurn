@@ -16,24 +16,6 @@ import WorkflowCards from '../../src/components/coach/workflow-cards';
 import OpenChatInput from '../../src/components/coach/open-chat-input';
 import { createThemedStyles, FONTS, RADIUS, SPACING } from '../../src/theme';
 
-// Human-readable prompts for each situation
-const SITUATION_PROMPTS: Record<string, string> = {
-  refusing_food: '{{name}} is refusing to eat right now. What should I do?',
-  refusing_medication: "{{name}} won't take their medication. I need help right now.",
-  agitated: '{{name}} is very agitated right now. How do I help calm things down?',
-  not_recognizing: "{{name}} doesn't recognize me right now. It's really hard. What do I do?",
-  repetitive_questions: '{{name}} keeps asking the same question over and over. How do I handle this patiently?',
-  sundowning: "It's evening and {{name}} is getting really restless and confused. Help me with sundowning.",
-  wants_to_leave: '{{name}} wants to leave the house and is insisting on going somewhere. What do I do?',
-  caregiver_overwhelmed: "I'm feeling overwhelmed and losing patience right now. I need support.",
-};
-
-const WORKFLOW_PROMPTS: Record<string, string> = {
-  plan_tomorrow: "Let's plan a good day for {{name}} tomorrow. What do you suggest based on what's been working?",
-  doctor_visit: "I have a doctor visit coming up for {{name}}. Can you help me prepare a summary of how things have been going?",
-  review_week: "Let's review how this week went for {{name}}. What patterns do you see?",
-  adjust_plan: "I'd like to review {{name}}'s care plan and see what we should change based on how things are going.",
-};
 
 
 interface InsightData {
@@ -66,9 +48,6 @@ export default function CoachScreen() {
       .catch(() => {/* ignore */});
   }, [household?.id]);
 
-  const replacePatientName = (template: string) =>
-    template.replace(/\{\{name\}\}/g, patientName);
-
   const navigateToConversation = (type: string, context: string, firstMessage: string) => {
     router.push({
       pathname: '/coach-conversation',
@@ -81,17 +60,17 @@ export default function CoachScreen() {
   };
 
   const handleSituation = (key: string) => {
-    const prompt = replacePatientName(SITUATION_PROMPTS[key] || key);
+    const prompt = t(`caregiverApp.coach.situationPrompts.${key}`, { name: patientName });
     navigateToConversation('situation', key, prompt);
   };
 
   const handleWorkflow = (key: string) => {
-    const prompt = replacePatientName(WORKFLOW_PROMPTS[key] || key);
+    const prompt = t(`caregiverApp.coach.workflowPrompts.${key}`, { name: patientName });
     navigateToConversation('workflow', key, prompt);
   };
 
   const handleInsightDiscuss = (insightText: string) => {
-    const prompt = `I saw this insight: "${insightText}". Can you tell me more about what this means and what I should do?`;
+    const prompt = t('caregiverApp.coach.insightDiscussPrompt', { insight: insightText });
     navigateToConversation('open', 'insight_discussion', prompt);
   };
 

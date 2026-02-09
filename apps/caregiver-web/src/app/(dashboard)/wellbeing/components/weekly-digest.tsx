@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import i18n from '@/i18n';
 import { useToast } from '@/components/toast';
 
 interface TrendPoint {
@@ -33,7 +34,11 @@ export function WeeklyDigest({ trend, incidentCount }: WeeklyDigestProps) {
   const generateDigest = async () => {
     setIsGenerating(true);
     try {
-      const res = await fetch('/api/ai/toolkit-insights', { method: 'POST' });
+      const res = await fetch('/api/ai/toolkit-insights', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ locale: i18n.language }),
+      });
       if (res.status === 429) {
         showToast(t('common.error'), 'error');
         return;

@@ -10,8 +10,9 @@ test.describe('Landing Page', () => {
   });
 
   test('displays hero section', async ({ page }) => {
-    await expect(page.getByText(/daily care support/i)).toBeVisible();
-    await expect(page.getByText(/families living with dementia/i)).toBeVisible();
+    await expect(page.getByText(/care with/i)).toBeVisible();
+    await expect(page.getByText(/confidence/i)).toBeVisible();
+    await expect(page.getByText(/living with dementia/i)).toBeVisible();
   });
 
   test('displays feature cards', async ({ page }) => {
@@ -20,11 +21,11 @@ test.describe('Landing Page', () => {
     await expect(page.getByText(/ai care coach/i)).toBeVisible();
     await expect(page.getByText(/take me home/i)).toBeVisible();
     await expect(page.getByText(/family circle/i)).toBeVisible();
-    await expect(page.getByText(/caregiver wellbeing/i)).toBeVisible();
+    await expect(page.getByText(/your wellbeing/i)).toBeVisible();
   });
 
   test('displays call to action buttons', async ({ page }) => {
-    await expect(page.getByRole('link', { name: /start free trial/i })).toBeVisible();
+    await expect(page.getByRole('link', { name: /start.*free|get started/i }).first()).toBeVisible();
   });
 
   test('displays footer with disclaimer', async ({ page }) => {
@@ -32,7 +33,7 @@ test.describe('Landing Page', () => {
   });
 
   test('start free trial navigates to signup', async ({ page }) => {
-    await page.getByRole('link', { name: /start free trial/i }).click();
+    await page.getByRole('link', { name: /get started free/i }).click();
     await expect(page).toHaveURL('/signup');
   });
 });

@@ -6,6 +6,7 @@ import { createClient as createServerClient } from '@/lib/supabase/server';
 import { rateLimit } from '@/lib/rate-limit';
 import { createLogger } from '@/lib/logger';
 import { postProcess, logSafetyEvent, SafetyLevel } from '@/lib/ai-safety';
+import { getLanguageInstruction } from '@/lib/ai-language';
 
 const log = createLogger('ai/toolkit-insights');
 
@@ -22,6 +23,12 @@ interface InsightCard {
 export async function POST(request: NextRequest) {
   try {
     const startTime = Date.now();
+    // Parse optional body for locale
+    let locale: string | undefined;
+    try {
+      const body = await request.json();
+      locale = body?.locale;
+    } catch { /* empty body is fine */ }
     const supabase = await createServerClient();
 
     const {
@@ -102,7 +109,7 @@ RULES:
 
 Return ONLY a valid JSON array:
 [{"category": "pattern"|"correlation"|"suggestion", "text": "...", "suggestion": "..."}]
-No markdown, no explanation.`;
+No markdown, no explanation.${getLanguageInstruction(locale)}`;
 
     const response = await fetch(`${GEMINI_API_URL}?key=${GOOGLE_AI_API_KEY}`, {
       method: 'POST',

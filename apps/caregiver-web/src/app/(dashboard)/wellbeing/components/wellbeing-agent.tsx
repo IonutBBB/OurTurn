@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import i18n from '@/i18n';
 import type { SliderValue } from '@ourturn/shared';
 
 interface Message {
@@ -121,6 +122,7 @@ export function WellbeingAgent({ caregiverId, caregiverName, energy, stress, sle
           message: text,
           checkin: { energy: e ?? null, stress: s ?? null, sleep: sl ?? null },
           history,
+          locale: i18n.language,
         }),
         signal: controller.signal,
       });

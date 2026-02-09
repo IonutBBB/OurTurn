@@ -248,7 +248,8 @@ export async function sendMessageToCoach(
   onConversationId: (id: string) => void,
   conversationType?: string,
   conversationContext?: string,
-  onReplace?: (text: string) => void
+  onReplace?: (text: string) => void,
+  locale?: string
 ): Promise<void> {
   const apiBaseUrl = process.env.EXPO_PUBLIC_API_BASE_URL;
   if (!apiBaseUrl) {
@@ -266,6 +267,7 @@ export async function sendMessageToCoach(
       householdId,
       conversationType: conversationType || 'open',
       conversationContext: conversationContext || undefined,
+      locale: locale || undefined,
     }),
   });
 

@@ -217,7 +217,9 @@
       "saveForDoctorVisit": "Save for Doctor Visit",
       "success": "Success",
       "suggestions": {
+        "stayEngaged": "How can I help {{name}} stay engaged during the day?",
         "sundowning": "How do I handle sundowning?",
+        "agitated": "{{name}} seems agitated in the evenings. What can I do?",
         "rainyDays": "What activities work for rainy days?",
         "siblings": "Help me talk to my siblings about sharing care",
         "refusesFood": "{{name}} refuses to eat. Help.",
@@ -269,7 +271,24 @@
           "title": "Ask Anything",
           "placeholder": "What's on your mind about caring for {{name}}?"
         }
-      }
+      },
+      "situationPrompts": {
+        "refusing_food": "{{name}} is refusing to eat right now. What should I do?",
+        "refusing_medication": "{{name}} won't take their medication. I need help right now.",
+        "agitated": "{{name}} is very agitated right now. How do I help calm things down?",
+        "not_recognizing": "{{name}} doesn't recognize me right now. It's really hard. What do I do?",
+        "repetitive_questions": "{{name}} keeps asking the same question over and over. How do I handle this patiently?",
+        "sundowning": "It's evening and {{name}} is getting really restless and confused. Help me with sundowning.",
+        "wants_to_leave": "{{name}} wants to leave the house and is insisting on going somewhere. What do I do?",
+        "caregiver_overwhelmed": "I'm feeling overwhelmed and losing patience right now. I need support."
+      },
+      "workflowPrompts": {
+        "plan_tomorrow": "Let's plan a good day for {{name}} tomorrow. What do you suggest based on what's been working?",
+        "doctor_visit": "I have a doctor visit coming up for {{name}}. Can you help me prepare a summary of how things have been going?",
+        "review_week": "Let's review how this week went for {{name}}. What patterns do you see?",
+        "adjust_plan": "I'd like to review {{name}}'s care plan and see what we should change based on how things are going."
+      },
+      "insightDiscussPrompt": "I saw this insight: \"{{insight}}\". Can you tell me more about what this means and what I should do?"
     },
     "family": {
       "title": "{{patientName}}'s Care Team",

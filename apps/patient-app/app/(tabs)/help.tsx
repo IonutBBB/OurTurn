@@ -11,6 +11,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { router } from 'expo-router';
 import * as Location from 'expo-location';
 import * as Haptics from 'expo-haptics';
 import { useTranslation } from 'react-i18next';
@@ -31,6 +32,7 @@ export default function HelpScreen() {
   const { t } = useTranslation();
   const { patient, household, session } = useAuthStore();
   const [isLoadingLocation, setIsLoadingLocation] = useState(false);
+  const [isSendingHelp, setIsSendingHelp] = useState(false);
 
   // Get emergency contacts from patient data
   const emergencyContacts: EmergencyContact[] = (patient?.emergency_contacts as EmergencyContact[]) || [];
@@ -38,6 +40,79 @@ export default function HelpScreen() {
   // Get country-specific emergency number
   const countryCode = household?.country || 'default';
   const emergencyInfo = getEmergencyNumber(countryCode);
+
+  // Handle "I Need Help" SOS button
+  const handleINeedHelp = () => {
+    Alert.alert(
+      t('patientApp.help.title'),
+      t('patientApp.help.confirmHelp'),
+      [
+        {
+          text: t('common.cancel'),
+          style: 'cancel',
+        },
+        {
+          text: t('common.done'),
+          onPress: sendHelpAlert,
+        },
+      ],
+      { cancelable: true }
+    );
+  };
+
+  const sendHelpAlert = async () => {
+    const householdId = session?.householdId;
+    if (!householdId) return;
+
+    setIsSendingHelp(true);
+    await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+
+    try {
+      // Get GPS location
+      const { status } = await Location.requestForegroundPermissionsAsync();
+      let latitude = 0;
+      let longitude = 0;
+
+      if (status === 'granted') {
+        const location = await Location.getCurrentPositionAsync({
+          accuracy: Location.Accuracy.Balanced,
+        });
+        latitude = location.coords.latitude;
+        longitude = location.coords.longitude;
+      }
+
+      // Create SOS alert
+      await createLocationAlert(householdId, {
+        type: 'sos_triggered',
+        latitude,
+        longitude,
+      });
+
+      await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      router.push('/sos-confirmation');
+    } catch (error) {
+      if (__DEV__) console.error('Failed to send help alert:', error);
+      // Queue for offline sync
+      await queueAlert({
+        householdId,
+        type: 'sos_triggered',
+        latitude: 0,
+        longitude: 0,
+        triggeredAt: new Date().toISOString(),
+      });
+      // SMS fallback
+      sendEmergencySMS({
+        patientName: patient?.name,
+        latitude: 0,
+        longitude: 0,
+        emergencyContacts,
+        countryCode,
+      });
+      router.push('/sos-confirmation');
+    } finally {
+      setIsSendingHelp(false);
+    }
+  };
 
   // Handle calling a contact
   const handleCallContact = async (phone: string, isEmergency: boolean = false) => {
@@ -203,6 +278,27 @@ export default function HelpScreen() {
           {t('patientApp.help.title')} 💙
         </Text>
 
+        {/* I Need Help SOS Button */}
+        <TouchableOpacity
+          style={styles.iNeedHelpButton}
+          onPress={handleINeedHelp}
+          disabled={isSendingHelp}
+          activeOpacity={0.8}
+          accessibilityRole="button"
+          accessibilityLabel={`${t('patientApp.help.title')}. ${t('patientApp.help.iNeedHelpSend')}`}
+          accessibilityState={{ disabled: isSendingHelp, busy: isSendingHelp }}
+        >
+          {isSendingHelp ? (
+            <ActivityIndicator color={COLORS.textPrimary} size="large" accessibilityLabel={t('patientApp.help.sendingAlert')} />
+          ) : (
+            <>
+              <Text style={styles.iNeedHelpEmoji} importantForAccessibility="no">🤒</Text>
+              <Text style={styles.iNeedHelpTitle}>{t('patientApp.help.title')}</Text>
+              <Text style={styles.iNeedHelpSubtext}>{t('patientApp.help.iNeedHelpSend')}</Text>
+            </>
+          )}
+        </TouchableOpacity>
+
         {/* Call Someone Section */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>{t('patientApp.help.callSomeone')}</Text>
@@ -317,12 +413,45 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 0.5,
   },
+  iNeedHelpButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: COLORS.amberBg,
+    borderRadius: RADIUS['2xl'],
+    padding: 24,
+    marginBottom: 28,
+    minHeight: 100,
+    borderWidth: 2,
+    borderColor: COLORS.amber,
+    shadowColor: COLORS.amber,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
+    elevation: 4,
+  },
+  iNeedHelpEmoji: {
+    fontSize: 40,
+    marginBottom: 8,
+  },
+  iNeedHelpTitle: {
+    fontSize: 26,
+    fontFamily: FONTS.display,
+    color: COLORS.textPrimary,
+    letterSpacing: -0.3,
+  },
+  iNeedHelpSubtext: {
+    fontSize: 20,
+    fontFamily: FONTS.body,
+    color: COLORS.textSecondary,
+    marginTop: 6,
+    textAlign: 'center',
+  },
   contactButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: COLORS.card,
+    backgroundColor: COLORS.brand50,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: COLORS.brand200,
     borderRadius: RADIUS['2xl'],
     padding: 20,
     marginBottom: 14,
@@ -332,7 +461,7 @@ const styles = StyleSheet.create({
   contactIcon: {
     fontSize: 28,
     marginRight: 18,
-    backgroundColor: COLORS.brand50,
+    backgroundColor: COLORS.card,
     padding: 12,
     borderRadius: RADIUS.md,
     overflow: 'hidden',
@@ -348,19 +477,19 @@ const styles = StyleSheet.create({
   },
   contactRelation: {
     fontSize: 20,
-    color: COLORS.textSecondary,
-    fontFamily: FONTS.body,
+    color: COLORS.brand700,
+    fontFamily: FONTS.bodySemiBold,
     marginTop: 4,
   },
   emergencyButton: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: COLORS.danger,
+    backgroundColor: COLORS.brand700,
     borderRadius: RADIUS['2xl'],
     padding: 20,
     minHeight: 72,
-    shadowColor: COLORS.danger,
+    shadowColor: COLORS.brand700,
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.35,
     shadowRadius: 10,

@@ -74,7 +74,7 @@ let _activeClient: SupabaseClient = createClient(getSupabaseUrl(), getSupabaseAn
 // query file that imported `supabase` sees the new client instantly.
 export const supabase: SupabaseClient = new Proxy({} as SupabaseClient, {
   get(_target, prop) {
-    const value = (_activeClient as Record<string | symbol, unknown>)[prop];
+    const value = (_activeClient as unknown as Record<string | symbol, unknown>)[prop];
     if (typeof value === 'function') {
       return value.bind(_activeClient);
     }

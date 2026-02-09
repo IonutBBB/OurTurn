@@ -5,15 +5,15 @@
     "cancel": "Annuller",
     "delete": "Slet",
     "edit": "Rediger",
-    "done": "Udført",
+    "done": "Færdig",
     "skip": "Spring over i dag",
     "loading": "Indlæser...",
-    "error": "Noget gik galt. Prøv igen.",
+    "error": "Noget gik galt. Prøv venligst igen.",
     "errorTitle": "Noget gik galt",
     "errorDefault": "Der opstod en uventet fejl.",
     "tryAgain": "Prøv igen",
     "logOut": "Log ud",
-    "offline": "Du er offline – dine data synkroniseres, når der er forbindelse",
+    "offline": "Du er offline — dine data synkroniseres, når du er forbundet",
     "synced": "Synkroniseret",
     "viewMore": "Se mere",
     "back": "Tilbage",
@@ -21,18 +21,18 @@
     "confirm": "Bekræft",
     "yes": "Ja",
     "no": "Nej",
-    "you": "Dig",
+    "you": "Du",
     "unknown": "Ukendt",
     "saving": "Gemmer...",
     "primary": "Primær"
   },
   "categories": {
     "medication": "Medicin",
-    "nutrition": "Måltider og ernæring",
+    "nutrition": "Måltider & Ernæring",
     "physical": "Fysisk aktivitet",
-    "cognitive": "Hjernetræning",
-    "social": "Socialt samvær og kontakt",
-    "health": "Helbredstjek"
+    "cognitive": "Hjernesundhed",
+    "social": "Socialt samvær & Forbindelse",
+    "health": "Sundhedstjek"
   },
   "caregiverApp": {
     "dashboard": {
@@ -40,25 +40,25 @@
       "statusGood": "{{patientName}} har en god dag",
       "statusConcern": "{{patientName}} har måske brug for lidt opmærksomhed",
       "todaysStatus": "Dagens status",
-      "tasksCompleted": "{{completed}} af {{total}} opgaver er udført",
-      "dailyCheckin": "Dagligt tjek",
-      "noCheckinYet": "Intet tjek er indsendt endnu i dag",
-      "location": "Placering",
+      "tasksCompleted": "{{completed}} ud af {{total}} opgaver udført",
+      "dailyCheckin": "Dagligt tjek ind",
+      "noCheckinYet": "Intet tjek ind indsendt endnu i dag",
+      "location": "Sted",
       "atHome": "{{name}} er hjemme",
       "lastUpdate": "Sidst opdateret: {{time}}",
       "aiInsights": "Indsigt",
       "quickActions": "Hurtige handlinger",
       "callPatient": "Ring til {{name}}",
       "tasksCompletedLabel": "opgaver udført",
-      "careCode": "Plejekode",
+      "careCode": "Plejecode",
       "careCodeHint": "Del for at forbinde patient-app",
       "careCodeNotAvailable": "Kode ikke tilgængelig",
-      "morningActivityPattern": "Aktivitetsmønster om morgenen",
-      "insightText": "{{name}} fuldfører flere opgaver på dage, hvor der er planlagt gåture om morgenen.",
-      "noJournalEntries": "Ingen journalindlæg endnu",
+      "morningActivityPattern": "Morgenaktivitetsmønster",
+      "insightText": "{{name}} udfører flere opgaver på dage med planlagte morgenture.",
+      "noJournalEntries": "Ingen dagbogsnotater endnu",
       "unknown": "Ukendt",
-      "moodStruggling": "Kæmper",
-      "moodLow": "Lavt",
+      "moodStruggling": "Har det svært",
+      "moodLow": "Nedtrykt",
       "moodOkay": "Okay",
       "moodGood": "Godt",
       "moodGreat": "Fantastisk",
@@ -67,9 +67,9 @@
       "sleepWell": "God",
       "mood": "Humør",
       "sleep": "Søvn",
-      "minutesAgo": "{{count}}m siden",
-      "hoursAgo": "{{count}}t siden",
-      "daysAgo": "{{count}}d siden",
+      "minutesAgo": "For {{count}} minutter siden",
+      "hoursAgo": "For {{count}} timer siden",
+      "daysAgo": "For {{count}} dage siden",
       "deviceStatus": "Enhedsstatus",
       "deviceOnline": "Online",
       "deviceOffline": "Offline",
@@ -82,16 +82,16 @@
       "brainActivity": "Hjerneaktivitet"
     },
     "carePlan": {
-      "title": "{{name}}'s daglige plan",
+      "title": "{{name}}s daglige plan",
       "addTask": "Tilføj opgave",
-      "aiSuggest": "AI-forslag til opgaver",
+      "aiSuggest": "AI foreslår opgaver",
       "hintLabel": "Instruktioner ({{name}} vil se dette)",
-      "hintPlaceholder": "F.eks. Dine piller er i pilleæsken på køkkenbordet",
+      "hintPlaceholder": "F.eks. Dine piller ligger i pilleæsken på køkkenbordet",
       "recurrence": "Gentages",
       "daily": "Hver dag",
       "specificDays": "Specifikke dage",
       "oneTime": "Én gang",
-      "copyDay": "Kopiér til andre dage",
+      "copyDay": "Kopier til andre dage",
       "saved": "Gemt",
       "noTasks": "Ingen opgaver endnu. Tilføj din første opgave for at komme i gang.",
       "category": "Kategori",
@@ -99,13 +99,13 @@
       "time": "Tid",
       "deleteConfirm": "Slet denne opgave?",
       "noMoreSuggestions": "Ingen flere forslag tilgængelige.",
-      "copyFromTo": "Kopiér opgaver fra {{day}} til:",
+      "copyFromTo": "Kopier opgaver fra {{day}} til:",
       "copyCount": "{{taskCount}} opgaver vil blive kopieret til {{dayCount}} dag(e)",
       "days": {
         "mon": "Man",
-        "tue": "Tirs",
+        "tue": "Tir",
         "wed": "Ons",
-        "thu": "Tors",
+        "thu": "Tor",
         "fri": "Fre",
         "sat": "Lør",
         "sun": "Søn"
@@ -114,48 +114,48 @@
       "uploadPhoto": "Upload foto",
       "removePhoto": "Fjern foto",
       "medicationItems": "Medicin i denne gruppe",
-      "medicationItemsHint": "Gruppér op til 3 typer medicin, der tages på samme tid",
+      "medicationItemsHint": "Gruppér op til 3 slags medicin, der tages på samme tid",
       "addMedication": "Tilføj medicin",
-      "medName": "Medicinnens navn",
+      "medName": "Medicins navn",
       "medNamePlaceholder": "f.eks. Donepezil",
-      "medDosage": "Dosering eller instruktion",
-      "medDosagePlaceholder": "f.eks. 10 mg tablet",
+      "medDosage": "Dosis eller instruktion",
+      "medDosagePlaceholder": "f.eks. 10mg tablet",
       "medPhotoLabel": "Foto",
       "medItemLabel": "Medicin {{number}}",
       "removeMedication": "Fjern",
-      "maxMedications": "Maksimum 3 typer medicin pr. gruppe",
+      "maxMedications": "Maksimalt 3 slags medicin pr. gruppe",
       "uploadingPhoto": "Uploader...",
       "evidenceBased": "Evidensbaseret"
     },
     "location": {
-      "title": "Placering og sikkerhed",
-      "currentLocation": "Nuværende placering",
+      "title": "Sted & Sikkerhed",
+      "currentLocation": "Nuværende sted",
       "safeZones": "Sikre zoner",
       "addSafeZone": "Tilføj sikker zone",
       "editSafeZone": "Rediger sikker zone",
       "alerts": "Advarselsindstillinger",
       "leaveZoneAlert": "Giv besked, når {{name}} forlader en sikker zone",
-      "inactivityAlert": "Giv besked ved ingen bevægelse i",
+      "inactivityAlert": "Giv besked, når der ingen bevægelse er i",
       "nightAlert": "Giv besked, når udenfor efter",
       "takeMeHomeAlert": "Giv besked, når {{name}} trykker på 'Tag mig hjem'",
-      "locationHistory": "Placeringshistorik",
+      "locationHistory": "Stedhistorik",
       "takeMeHomeTapped": "{{name}} trykkede på 'Tag mig hjem'",
       "hours": "timer",
-      "zoneName": "Zonens navn",
+      "zoneName": "Zonenavn",
       "zoneRadius": "Radius (meter)",
-      "unknownLocation": "Ukendt placering",
-      "completeOnboarding": "Gennemfør onboarding først.",
-      "unacknowledgedAlerts": "{{count}} Ubekræftet advarsel",
-      "unacknowledgedAlertsPlural": "{{count}} Ubekræftede advarsler",
-      "acknowledge": "Anerkend",
-      "patientLocation": "{{name}}'s placering",
+      "unknownLocation": "Ukendt sted",
+      "completeOnboarding": "Udfyld venligst onboarding først.",
+      "unacknowledgedAlerts": "{{count}} ubekræftet advarsel",
+      "unacknowledgedAlertsPlural": "{{count}} ubekræftede advarsler",
+      "acknowledge": "Bekræft",
+      "patientLocation": "{{name}}s sted",
       "updated": "Opdateret: {{time}}",
-      "noLocationData": "Ingen placeringsdata endnu",
+      "noLocationData": "Ingen stedsdata endnu",
       "live": "Live",
       "add": "+ Tilføj",
-      "noSafeZonesYet": "Ingen sikre zoner konfigureret endnu.\nTilføj zoner for at få beskeder, når {{name}} forlader dem.",
+      "noSafeZonesYet": "Ingen sikre zoner konfigureret endnu.\nTilføj zoner for at få advarsler, når {{name}} forlader dem.",
       "radiusMeters": "{{radius}}m radius",
-      "recentAlerts24h": "Seneste advarsler (24 timer)",
+      "recentAlerts24h": "Seneste advarsler (24t)",
       "noRecentAlerts": "Ingen advarsler inden for de sidste 24 timer. Alt er godt!",
       "deleteSafeZone": "Slet sikker zone",
       "deleteSafeZoneConfirm": "Er du sikker på, at du vil slette \"{{name}}\"?",
@@ -163,25 +163,25 @@
       "failedToDeleteSafeZone": "Kunne ikke slette sikker zone",
       "fillAllFields": "Udfyld venligst alle felter",
       "name": "Navn",
-      "nameExample": "f.eks. Hjem, Lægekontor",
+      "nameExample": "f.eks. Hjem, Lægepraksis",
       "latitude": "Breddegrad",
       "longitude": "Længdegrad",
-      "radiusHint": "Anbefalet: 100-500 meter for typiske lokationer",
+      "radiusHint": "Anbefalet: 100-500 meter for typiske steder",
       "mapView": "Kortvisning",
-      "mapRequiresBuild": "Kort kræver en udviklingsversion.\nBrug EAS Build til at aktivere kort.",
+      "mapRequiresBuild": "Kort kræver en udviklingsversion.\nBrug EAS Build for at aktivere kort.",
       "home": "Hjem",
-      "patient": "Patient",
-      "alertTypeLeftSafeZone": "Forlod sikkerhedszone",
+      "patient": "Personen",
+      "alertTypeLeftSafeZone": "Forlod sikker zone",
       "alertTypeInactive": "Inaktiv",
-      "alertTypeNightMovement": "Natlig bevægelse",
-      "alertTypeTakeMeHomeTapped": "Tag mig hjem trykket",
+      "alertTypeNightMovement": "Bevægelse om natten",
+      "alertTypeTakeMeHomeTapped": "Trykkede på 'Tag mig hjem'",
       "alertTypeSosTriggered": "SOS udløst",
       "invalidLatitude": "Indtast venligst en gyldig breddegrad (-90 til 90)",
       "invalidLongitude": "Indtast venligst en gyldig længdegrad (-180 til 180)",
       "invalidRadius": "Indtast venligst en positiv radiusværdi"
     },
     "coach": {
-      "title": "AI Omsorgsvejleder",
+      "title": "AI Plejevejleder",
       "tabs": {
         "chat": "Chat",
         "behaviours": "Adfærd",
@@ -189,75 +189,75 @@
       },
       "resources": {
         "title": "Ressourcer",
-        "subtitle": "Vejledninger, artikler og lokal støtte til at hjælpe dig på din omsorgsrejse",
+        "subtitle": "Vejledninger, artikler og lokal støtte til at hjælpe dig på din plejevej",
         "linkLabel": "Ressourcer & Vejledninger"
       },
-      "intro": "Spørg mig om alt vedrørende pleje af {{name}}. Jeg kender deres rutine, præferencer og generelle bedste praksisser.",
+      "intro": "Spørg mig om alt vedrørende plejen af {{name}}. Jeg kender deres rutiner, præferencer og generelle bedste praksis.",
       "placeholder": "Skriv dit spørgsmål...",
-      "disclaimer": "Jeg er her for at støtte dig, ikke erstatte lægelig rådgivning. Ved sundhedsmæssige bekymringer skal du altid konsultere din læge.",
-      "disclaimerShort": "Omsorgsvejlederen giver kun generel vejledning. Konsulter altid sundhedspersonale for medicinsk rådgivning.",
+      "disclaimer": "Jeg er her for at støtte dig, ikke erstatte medicinsk rådgivning. Ved sundhedsmæssige bekymringer skal du altid kontakte din læge.",
+      "disclaimerShort": "Plejevejlederen giver kun generel vejledning. Konsulter altid sundhedspersonale for medicinsk rådgivning.",
       "suggestedTopics": "Foreslåede emner",
-      "addToCarePlan": "Tilføj til plejeplan",
-      "addToDoctorNotes": "Tilføj til lægenotater",
+      "addToCarePlan": "Føj til plejeplan",
+      "addToDoctorNotes": "Føj til lægenoter",
       "newConversation": "Ny samtale",
-      "newChat": "Ny Chat",
-      "careCoach": "Omsorgsvejleder",
-      "completeOnboarding": "Gennemfør venligst onboarding først.",
+      "newChat": "Ny chat",
+      "careCoach": "Plejevejleder",
+      "completeOnboarding": "Udfyld venligst onboarding først.",
       "greeting": "Hej {{name}}!",
-      "greetingIntro": "Jeg er her for at hjælpe dig med at pleje {{patientName}}. Spørg mig om alt vedrørende daglig pleje, aktiviteter eller håndtering af udfordrende situationer.",
+      "greetingIntro": "Jeg er her for at hjælpe dig med at passe {{patientName}}. Spørg mig om alt vedrørende daglig pleje, aktiviteter eller håndtering af udfordrende situationer.",
       "tryAsking": "Prøv at spørge:",
       "askAbout": "Spørg om pleje af {{name}}...",
       "send": "Send",
       "signingIn": "Logger ind",
       "taskAddedSuccess": "Opgave tilføjet til plejeplan!",
-      "taskAddedError": "Kunne ikke tilføje opgave. Prøv igen.",
+      "taskAddedError": "Kunne ikke tilføje opgave. Prøv venligst igen.",
       "noteAddedSuccess": "Note gemt til lægebesøg!",
-      "noteAddedError": "Kunne ikke gemme note. Prøv igen.",
-      "addToCarePlanButton": "Tilføj til Plejeplan",
-      "saveForDoctorVisit": "Gem til Lægebesøg",
+      "noteAddedError": "Kunne ikke gemme note. Prøv venligst igen.",
+      "addToCarePlanButton": "Føj til plejeplan",
+      "saveForDoctorVisit": "Gem til lægebesøg",
       "success": "Succes",
       "suggestions": {
-        "sundowning": "Hvordan håndterer jeg solnedgangssyndrom?",
+        "sundowning": "Hvordan håndterer jeg aftenuro?",
         "rainyDays": "Hvilke aktiviteter fungerer på regnvejrsdage?",
-        "siblings": "Hjælp mig med at tale med mine søskende om at dele pleje",
+        "siblings": "Hjælp mig med at tale med mine søskende om at dele plejen",
         "refusesFood": "{{name}} nægter at spise. Hjælp.",
         "repetitive": "Hvordan håndterer jeg gentagne spørgsmål?"
       },
       "hub": {
-        "backToHub": "Tilbage til Vejleder",
+        "backToHub": "Tilbage til vejleder",
         "insight": {
           "title": "Til dig",
           "discuss": "Diskuter",
-          "fallback": "Tjek ind på {{name}}'s dag for at få personlige indsigter"
+          "fallback": "Tjek ind på {{name}}'s dag for at få personlig indsigt"
         },
         "rightNow": {
           "title": "Lige nu",
           "subtitle": "Hjælp i øjeblikket",
           "refusing_food": "Nægter mad",
           "refusing_medication": "Vil ikke tage medicin",
-          "agitated": "Ophidset",
-          "not_recognizing": "Kan ikke genkende mig",
+          "agitated": "Urolig",
+          "not_recognizing": "Genkender mig ikke",
           "repetitive_questions": "Samme spørgsmål igen",
-          "sundowning": "Solnedgangssyndrom",
-          "wants_to_leave": "Vil forlade stedet",
-          "caregiver_overwhelmed": "Jeg er ved at miste tålmodigheden"
+          "sundowning": "Aftenuro",
+          "wants_to_leave": "Vil gerne gå",
+          "caregiver_overwhelmed": "Jeg mister tålmodigheden"
         },
         "planPrepare": {
           "title": "Planlæg & Forbered",
           "subtitle": "Guidede arbejdsgange",
           "plan_tomorrow": "Planlæg i morgen",
           "plan_tomorrow_desc": "Skab en god dag sammen",
-          "doctor_visit": "Forbered dig på lægebesøg",
-          "doctor_visit_desc": "Generer en struktureret opsummering",
+          "doctor_visit": "Forbered til lægebesøg",
+          "doctor_visit_desc": "Generer en struktureret oversigt",
           "review_week": "Gennemgå denne uge",
           "review_week_desc": "Hvad gik godt, hvad kræver opmærksomhed",
           "adjust_plan": "Juster plejeplanen",
-          "adjust_plan_desc": "Optimer baseret på hvad der virker"
+          "adjust_plan_desc": "Optimer baseret på det, der virker"
         },
         "learn": {
           "title": "Lær",
-          "subtitle": "Emnevejledninger til {{name}}",
-          "daily_routines": "Daglige Rutiner",
+          "subtitle": "Emnevejledninger for {{name}}",
+          "daily_routines": "Daglige rutiner",
           "communication": "Kommunikation",
           "behaviors": "Adfærd",
           "activities": "Aktiviteter",
@@ -266,21 +266,21 @@
           "sleep": "Søvn & Nat"
         },
         "askAnything": {
-          "title": "Spørg Om Alt",
-          "placeholder": "Hvad tænker du på vedrørende pleje af {{name}}?"
+          "title": "Spørg om alt",
+          "placeholder": "Hvad tænker du på vedrørende plejen af {{name}}?"
         }
       }
     },
     "family": {
       "title": "{{patientName}}'s Plejeteam",
-      "inviteMember": "Inviter Familiemedlem",
+      "inviteMember": "Inviter familiemedlem",
       "primaryCaregiver": "Primær omsorgsperson",
       "familyMember": "Familiemedlem",
       "careCode": "Plejekode",
-      "careCodeHelp": "Del denne kode for at parre patientappen",
-      "regenerateCode": "Gendan Kode",
-      "regenerateWarning": "Dette vil afbryde forbindelsen til alle parrede patientenheder. De skal bruge den nye kode.",
-      "journal": "Plejebog",
+      "careCodeHelp": "Del denne kode for at parre appen til den plejekrævende",
+      "regenerateCode": "Generer ny kode",
+      "regenerateWarning": "Dette vil afbryde forbindelsen til alle parrede enheder for den plejekrævende. De får brug for den nye kode.",
+      "journal": "Plejedagbog",
       "addNote": "Tilføj note",
       "observation": "Observation",
       "note": "Note",
@@ -288,11 +288,11 @@
       "inviteEmail": "E-mailadresse",
       "inviteName": "Navn",
       "inviteRelationship": "Relation",
-      "familyCircle": "Familiekreds",
+      "familyCircle": "Familiecirkel",
       "back": "Tilbage",
       "family": "Familie",
-      "careJournal": "Plejebog",
-      "inviteFamilyMembers": "Inviter Familiemedlemmer",
+      "careJournal": "Plejedagbog",
+      "inviteFamilyMembers": "Inviter familiemedlemmer",
       "shareCareCodeDesc": "Del din Plejekode for at lade andre familiemedlemmer deltage.",
       "showCareCode": "Vis Plejekode",
       "copy": "Kopiér",
@@ -304,29 +304,29 @@
       "primary": "Primær",
       "entryPlaceholder": "Tilføj en note, observation eller milepæl...",
       "posting": "Sender...",
-      "post": "Slå op",
-      "noJournalEntries": "Ingen journalopslag endnu.",
-      "startDocumenting": "Begynd at dokumentere din pleje-rejse!",
+      "post": "Send",
+      "noJournalEntries": "Ingen dagbogsnotater endnu.",
+      "startDocumenting": "Start dokumentationen af jeres omsorgsrejse!",
       "yesterday": "I går",
-      "failedToAddEntry": "Kunne ikke tilføje indlæg. Prøv igen.",
-      "shareCareCodeMessage": "Deltag i min OurTurn-plejecirkel! Brug denne plejekode: {{code}}",
+      "failedToAddEntry": "Kunne ikke tilføje indlæg. Prøv venligst igen.",
+      "shareCareCodeMessage": "Bliv en del af min OurTurn omsorgscirkel! Brug denne omsorgskode: {{code}}",
       "deleteConfirmTitle": "Slet journalindlæg",
       "deleteConfirmMessage": "Er du sikker på, at du vil slette dette journalindlæg? Dette kan ikke fortrydes.",
       "edited": "(redigeret)",
       "crisis": "Krise",
       "canEditPlan": "Kan redigere plan",
       "receivesAlerts": "Modtager alarmer",
-      "caregiverLimitReached": "Du har nået grænsen for familiemedlemmer i det gratis niveau. Opgrader for at tilføje flere."
+      "caregiverLimitReached": "Du har nået grænsen for gratis familiemedlemmer. Opgrader for at tilføje flere."
     },
     "toolkit": {
-      "pageTitle": "Værktøjskasse for plejere",
-      "pageSubtitle": "Praktiske værktøjer og støtte til dit velvære",
-      "introMessage": "Hej {{name}}! Dette er dit rum til hurtig lindring, støtte og selvpleje.",
+      "pageTitle": "Omsorgsværktøjskasse",
+      "pageSubtitle": "Praktiske værktøjer og støtte til dit velbefindende",
+      "introMessage": "Hej {{name}}! Dette er dit rum for hurtig lindring, støtte og egenomsorg.",
       "checkin": {
         "title": "Hvordan har du det i dag?",
         "energy": "Energi",
         "energyLow": "Udmattet",
-        "energyHigh": "Fyldt med energi",
+        "energyHigh": "Energisk",
         "stress": "Stress",
         "stressLow": "Rolig",
         "stressHigh": "Overvældet",
@@ -340,38 +340,38 @@
         "duration": "{{min}} min",
         "startExercise": "Start",
         "stepOf": "Trin {{current}} af {{total}}",
-        "complete": "Godt gået! Øvelsen er fuldført.",
+        "complete": "Godt klaret! Øvelse afsluttet.",
         "close": "Luk",
         "pause": "Pause",
-        "resume": "Genoptag",
+        "resume": "Fortsæt",
         "exercises": {
           "box-breathing": {
-            "name": "Kasseånding",
-            "step0": "Find dig godt til rette og luk øjnene",
-            "step1": "Træk vejret langsomt ind gennem næsen",
-            "step2": "Hold vejret forsigtigt",
-            "step3": "Ånd langsomt ud gennem munden",
-            "step4": "Hold vejret inden næste åndedrag",
-            "step5": "Træk vejret langsomt ind gennem næsen",
-            "step6": "Hold vejret forsigtigt",
-            "step7": "Ånd langsomt ud gennem munden",
-            "step8": "Hold vejret inden næste åndedrag",
-            "step9": "Træk vejret langsomt ind gennem næsen",
-            "step10": "Hold vejret forsigtigt",
-            "step11": "Ånd langsomt ud gennem munden",
-            "step12": "Hold vejret inden næste åndedrag",
-            "step13": "Træk vejret langsomt ind gennem næsen",
-            "step14": "Hold vejret forsigtigt",
-            "step15": "Ånd langsomt ud gennem munden",
-            "step16": "Hold vejret inden næste åndedrag",
-            "step17": "Træk vejret langsomt ind gennem næsen",
-            "step18": "Hold vejret forsigtigt",
-            "step19": "Ånd langsomt ud gennem munden",
-            "step20": "Hold vejret inden næste åndedrag",
-            "step21": "Træk vejret langsomt ind gennem næsen",
-            "step22": "Hold vejret forsigtigt",
-            "step23": "Ånd langsomt ud gennem munden",
-            "step24": "Godt gået. Tag et øjeblik til at bemærke, hvordan du har det."
+            "name": "Boksåndedræt",
+            "step0": "Find dig til rette og luk øjnene",
+            "step1": "Træk langsomt vejret ind gennem næsen",
+            "step2": "Hold forsigtigt vejret",
+            "step3": "Pust langsomt ud gennem munden",
+            "step4": "Hold vejret før næste indånding",
+            "step5": "Træk langsomt vejret ind gennem næsen",
+            "step6": "Hold forsigtigt vejret",
+            "step7": "Pust langsomt ud gennem munden",
+            "step8": "Hold vejret før næste indånding",
+            "step9": "Træk langsomt vejret ind gennem næsen",
+            "step10": "Hold forsigtigt vejret",
+            "step11": "Pust langsomt ud gennem munden",
+            "step12": "Hold vejret før næste indånding",
+            "step13": "Træk langsomt vejret ind gennem næsen",
+            "step14": "Hold forsigtigt vejret",
+            "step15": "Pust langsomt ud gennem munden",
+            "step16": "Hold vejret før næste indånding",
+            "step17": "Træk langsomt vejret ind gennem næsen",
+            "step18": "Hold forsigtigt vejret",
+            "step19": "Pust langsomt ud gennem munden",
+            "step20": "Hold vejret før næste indånding",
+            "step21": "Træk langsomt vejret ind gennem næsen",
+            "step22": "Hold forsigtigt vejret",
+            "step23": "Pust langsomt ud gennem munden",
+            "step24": "Godt klaret. Tag et øjeblik til at mærke efter, hvordan du har det."
           },
           "54321-grounding": {
             "name": "5-4-3-2-1 Jordforbindelse",
@@ -379,9 +379,9 @@
             "step1": "Nævn 5 ting, du kan SE lige nu",
             "step2": "Nævn 4 ting, du kan RØRE lige nu",
             "step3": "Nævn 3 ting, du kan HØRE lige nu",
-            "step4": "Nævn 2 ting, du kan DUFTE lige nu",
+            "step4": "Nævn 2 ting, du kan LUGTE lige nu",
             "step5": "Nævn 1 ting, du kan SMAGE lige nu",
-            "step6": "Tag endnu en dyb indånding. Du er her, og du er sikker."
+            "step6": "Tag endnu en dyb indånding. Du er her, og du er i sikkerhed."
           },
           "gratitude-moment": {
             "name": "Taknemmelighedsøjeblik",
@@ -390,76 +390,76 @@
             "step2": "Tænk på én ting, der skete i dag, som var god, selvom den var lille",
             "step3": "Tænk på én ting ved dig selv, som du sætter pris på",
             "step4": "Hold disse tre ting i tankerne og træk vejret dybt",
-            "step5": "Bær denne følelse af taknemmelighed med dig."
+            "step5": "Tag denne følelse af taknemmelighed med dig."
           },
           "progressive-muscle-relaxation": {
-            "name": "Progressiv muskelafslapning",
-            "step0": "Sæt dig eller læg dig behageligt. Luk øjnene.",
-            "step1": "Spænd begge knytnæver hårdt i 5 sekunder...",
+            "name": "Progressiv muskelafspænding",
+            "step0": "Sid eller lig komfortabelt. Luk øjnene.",
+            "step1": "Klem begge næver stramt i 5 sekunder...",
             "step2": "Slip og mærk spændingen smelte væk",
-            "step3": "Spænd dine skuldre — løft dem op mod dine ører...",
-            "step4": "Slip og lad dine skuldre falde ned",
-            "step5": "Rynk dit ansigt stramt — pande, øjne, kæbe...",
+            "step3": "Spænd dine skuldre — løft dem mod dine ører...",
+            "step4": "Slip og lad dine skuldre falde",
+            "step5": "Spænd dit ansigt stramt — pande, øjne, kæbe...",
             "step6": "Slip og lad dit ansigt slappe helt af",
             "step7": "Spænd dine mavemuskler...",
-            "step8": "Slip og træk vejret ind i maven",
-            "step9": "Spænd dine ben og fødder hårdt...",
+            "step8": "Slip og træk vejret ned i maven",
+            "step9": "Klem dine ben og fødder stramt...",
             "step10": "Slip og mærk varmen strømme gennem dine ben",
             "step11": "Træk vejret dybt. Hele din krop er afslappet.",
             "step12": "Åbn forsigtigt dine øjne, når du er klar."
           },
           "mindful-break": {
             "name": "Mindful pause",
-            "step0": "Hold inde med det, du laver. Dette øjeblik er dit.",
-            "step1": "Luk øjnene og tag 3 langsomme, dybe vejrtrækninger",
-            "step2": "Læg mærke til, hvordan din krop føles lige nu – du behøver ikke at ændre noget",
-            "step3": "Lyt til lydene omkring dig, nær og fjern",
-            "step4": "Mærk overfladen under dig og luften på din hud",
-            "step5": "Sig stille: \"Jeg gør mit bedste, og det er nok.\"",
+            "step0": "Sæt det, du laver, på pause. Dette øjeblik er dit.",
+            "step1": "Luk øjnene og tag 3 langsomme, dybe indåndinger",
+            "step2": "Læg mærke til, hvordan din krop føles lige nu – der er ingen grund til at ændre noget",
+            "step3": "Lyt til lydene omkring dig, tæt på og langt væk",
+            "step4": "Mærk underlaget under dig og luften på din hud",
+            "step5": "Sig stille til dig selv: \"Jeg gør mit bedste, og det er nok.\"",
             "step6": "Tag endnu en dyb indånding",
-            "step7": "Åbn forsigtigt dine øjne. Du er frisk."
+            "step7": "Åbn forsigtigt dine øjne. Du er frisket op."
           },
           "breathing-478": {
             "name": "4-7-8 Vejrtrækning",
             "step0": "Sid behageligt og slap af i skuldrene",
-            "step1": "Træk vejret stille ind gennem næsen i 4 takter",
-            "step2": "Hold vejret i 7 takter",
-            "step3": "Ånd helt ud gennem munden i 8 takter",
-            "step4": "Træk vejret stille ind gennem næsen i 4 takter",
-            "step5": "Hold vejret i 7 takter",
-            "step6": "Ånd helt ud gennem munden i 8 takter",
-            "step7": "Træk vejret stille ind gennem næsen i 4 takter",
-            "step8": "Hold vejret i 7 takter",
-            "step9": "Ånd helt ud gennem munden i 8 takter",
-            "step10": "Træk vejret stille ind gennem næsen i 4 takter",
-            "step11": "Hold vejret i 7 takter",
-            "step12": "Ånd helt ud gennem munden i 8 takter",
-            "step13": "Træk vejret stille ind gennem næsen i 4 takter",
-            "step14": "Hold vejret i 7 takter",
-            "step15": "Ånd helt ud gennem munden i 8 takter",
+            "step1": "Træk vejret stille ind gennem næsen i 4 tællinger",
+            "step2": "Hold vejret i 7 tællinger",
+            "step3": "Pust helt ud gennem munden i 8 tællinger",
+            "step4": "Træk vejret stille ind gennem næsen i 4 tællinger",
+            "step5": "Hold vejret i 7 tællinger",
+            "step6": "Pust helt ud gennem munden i 8 tællinger",
+            "step7": "Træk vejret stille ind gennem næsen i 4 tællinger",
+            "step8": "Hold vejret i 7 tællinger",
+            "step9": "Pust helt ud gennem munden i 8 tællinger",
+            "step10": "Træk vejret stille ind gennem næsen i 4 tællinger",
+            "step11": "Hold vejret i 7 tællinger",
+            "step12": "Pust helt ud gennem munden i 8 tællinger",
+            "step13": "Træk vejret stille ind gennem næsen i 4 tællinger",
+            "step14": "Hold vejret i 7 tællinger",
+            "step15": "Pust helt ud gennem munden i 8 tællinger",
             "step16": "Læg mærke til, hvor meget roligere din krop føles nu."
           },
           "permission-slip": {
-            "name": "Tilladelsesseddel",
-            "step0": "Træk vejret dybt og giv dig selv et øjeblik",
-            "step1": "Sig til dig selv: \"Jeg giver mig selv tilladelse til ikke at være perfekt i dag\"",
-            "step2": "Sig: \"Jeg giver mig selv tilladelse til at bede om hjælp\"",
-            "step3": "Sig: \"Jeg giver mig selv tilladelse til at føle, hvad jeg føler uden skyld\"",
-            "step4": "Sig: \"Jeg giver mig selv tilladelse til at tage en pause\"",
+            "name": "Tilladelsesbevis",
+            "step0": "Tag en dyb indånding og giv dig selv et øjeblik",
+            "step1": "Sig til dig selv: \"Jeg giver mig selv lov til ikke at være perfekt i dag\"",
+            "step2": "Sig: \"Jeg giver mig selv lov til at bede om hjælp\"",
+            "step3": "Sig: \"Jeg giver mig selv lov til at føle, hvad jeg føler, uden skyld\"",
+            "step4": "Sig: \"Jeg giver mig selv lov til at tage en pause\"",
             "step5": "Sig: \"Jeg gør mit bedste, og det er nok\"",
-            "step6": "Træk vejret dybt og hold disse ord tæt",
+            "step6": "Tag en dyb indånding og hold disse ord tæt på dig",
             "step7": "Du fortjener også medfølelse. Bær dette med dig."
           },
           "quick-walk": {
-            "name": "Hurtig gåtur prompt",
-            "step0": "Rejs dig og stræk armene over hovedet",
+            "name": "En hurtig gåtur",
+            "step0": "Rejs dig op og stræk armene over hovedet",
             "step1": "Gå hen til det nærmeste vindue eller dør og kig ud",
             "step2": "Tag 5 langsomme skridt og mærk hver fod røre jorden",
             "step3": "Kig op – læg mærke til himlen, loftet eller noget over dig",
-            "step4": "Tag 5 flere langsomme, bevidste skridt",
+            "step4": "Tag 5 mere langsomme, bevidste skridt",
             "step5": "Ryst dine hænder og arme løst i et par sekunder",
-            "step6": "Rul dine skuldre tilbage 3 gange",
-            "step7": "Du bevægede din krop. Det tæller. Godt gået."
+            "step6": "Rul skuldrene tilbage 3 gange",
+            "step7": "Du har bevæget din krop. Det tæller. Godt klaret."
           }
         }
       },
@@ -470,38 +470,38 @@
         "recentRequests": "Seneste anmodninger",
         "statusPending": "Afventer",
         "statusAccepted": "Accepteret",
-        "statusCompleted": "Færdig",
+        "statusCompleted": "Udført",
         "statusExpired": "Udløbet",
-        "sent": "Hjælpeforespørgsel sendt!",
-        "limitReached": "Du kan sende op til 5 hjælpeforespørgsler om dagen.",
-        "noRequests": "Ingen seneste hjælpeforespørgsler.",
+        "sent": "Hjælpeanmodning sendt!",
+        "limitReached": "Du kan sende op til 5 hjælpeanmodninger om dagen.",
+        "noRequests": "Ingen seneste hjælpeanmodninger.",
         "accept": "Jeg kan hjælpe",
-        "complete": "Markér som udført",
+        "complete": "Marker som udført",
         "template_need_break": "Har brug for en pause",
         "template_handle_meds": "Hjælp til medicin",
         "template_need_visit": "Har brug for et besøg",
-        "template_groceries": "Dagligvarer",
+        "template_groceries": "Indkøb",
         "template_custom": "Brugerdefineret besked",
-        "message_need_break": "Jeg kunne virkelig bruge en pause. Kunne nogen tage over et øjeblik?",
+        "message_need_break": "Jeg kunne virkelig godt bruge en pause. Kunne nogen tage over et stykke tid?",
         "message_handle_meds": "Kan nogen hjælpe med medicin i dag?",
-        "message_need_visit": "Det ville betyde meget, hvis nogen kunne komme på besøg i dag.",
-        "message_groceries": "Kunne nogen hjælpe med at hente dagligvarer?"
+        "message_need_visit": "Det ville betyde meget, hvis nogen kunne besøge i dag.",
+        "message_groceries": "Kunne nogen hjælpe med at hente indkøb?"
       },
       "agent": {
         "title": "Velvære-ledsager",
         "disclaimer": "Kun til følelsesmæssig støtte. Ikke medicinsk rådgivning.",
         "placeholder": "Hvordan har du det?",
         "greeting": "Tænker på dig...",
-        "rateLimited": "Tag en pause – du kan chatte igen om kort tid.",
-        "errorMessage": "Kunne ikke oprette forbindelse. Prøv igen.",
+        "rateLimited": "Tag en pause – du kan chatte igen om lidt.",
+        "errorMessage": "Kunne ikke oprette forbindelse. Prøv venligst igen.",
         "expand": "Udvid",
         "collapse": "Skjul",
         "prompts": {
           "overwhelmed": "Jeg føler mig overvældet lige nu",
           "calmDown": "Hjælp mig med at falde til ro på 2 minutter",
           "needEnergy": "Jeg har brug for energi, men kan ikke tage en pause",
-          "poorSleep": "Jeg kunne ikke sove godt i nat",
-          "needMoment": "Jeg har brug for et øjeblik for mig selv",
+          "poorSleep": "Jeg sov ikke godt i nat",
+          "needMoment": "Jeg har brug for et øjeblik bare for mig selv",
           "uplifting": "Fortæl mig noget opløftende"
         }
       },
@@ -513,55 +513,55 @@
         "suggest": "Foreslå"
       },
       "burnout": {
-        "title": "Vi bemærker, at du muligvis har brug for ekstra støtte",
-        "message": "Dine seneste check-ins viser forhøjet stress eller lav energi. Det er fuldt forståeligt – det er hårdt at være omsorgsperson."
+        "title": "Vi bemærker, at du måske har brug for ekstra støtte",
+        "message": "Dine seneste indtjekninger viser forhøjet stress eller lav energi. Det er helt forståeligt – det er hårdt at være omsorgsperson."
       },
       "support": {
-        "title": "Brug for støtte?",
-        "description": "Det er udfordrende at være omsorgsperson. Det er okay at bede om hjælp."
+        "title": "Har du brug for støtte?",
+        "description": "At være omsorgsperson er udfordrende. Det er okay at bede om hjælp."
       },
-      "footer": "Husk: Du kan ikke hælde fra en tom kop. Dit velvære betyder også noget.",
+      "footer": "Husk: Du kan ikke hælde fra en tom kop. Dit velbefindende betyder også noget.",
       "weeklyStats": {
-        "title": "Ugentlige indsigter",
-        "subtitle": "Dit 7-dages velværesammendrag",
+        "title": "Ugentlig indsigt",
+        "subtitle": "Din 7-dages trivselsoversigt",
         "avgEnergy": "Gns. energi",
         "avgStress": "Gns. stress",
         "avgSleep": "Gns. søvn",
-        "noData": "Udfyld daglige check-ins for at se dine ugentlige tendenser.",
+        "noData": "Udfyld daglige tjek-ind for at se dine ugentlige tendenser.",
         "generateDigest": "Generer AI-oversigt",
         "generating": "Genererer...",
-        "behaviourSummary": "{{count}} adfærdsepisoder logget i denne uge"
+        "behaviourSummary": "{{count}} adfærdsepisoder registreret denne uge"
       },
       "sos": {
         "title": "Hvad sker der lige nu?",
         "subtitle": "Vælg, hvad du har brug for hjælp til – vi guider dig.",
         "calmDown": "Jeg har brug for at falde til ro",
-        "calmDownDesc": "Hurtige åndedræts- og aflastningsøvelser",
-        "behaviourNow": "Adfærd sker nu",
-        "behaviourNowDesc": "Log en episode og få vejledning",
+        "calmDownDesc": "Hurtige vejrtræknings- og afspændingsøvelser",
+        "behaviourNow": "Adfærd sker lige nu",
+        "behaviourNowDesc": "Registrer en episode og få vejledning",
         "callHelp": "Jeg har brug for akut hjælp",
-        "callHelpDesc": "Kontakt alarmcentralen eller familien",
+        "callHelpDesc": "Kontakt alarmtjenester eller familie",
         "needBreak": "Jeg har brug for, at nogen tager over",
-        "needBreakDesc": "Send en hjælpeanmodning til familien"
+        "needBreakDesc": "Send en anmodning om hjælp til familien"
       },
       "behaviours": {
         "playbooks": {
-          "title": "Adfærdsplaybøger",
-          "subtitle": "Tryk på en adfærd for trinvis vejledning",
+          "title": "Adfærdsvejledninger",
+          "subtitle": "Tryk på en adfærd for trin-for-trin vejledning",
           "rightNow": "Lige nu",
           "understandWhy": "Forstå hvorfor",
           "prevent": "Forebyggelse",
-          "whenToCallDoctor": "Hvornår skal du ringe til lægen"
+          "whenToCallDoctor": "Hvornår skal lægen kontaktes?"
         },
         "logger": {
-          "title": "Log hændelse",
-          "logIncident": "Log en hændelse",
+          "title": "Registrer episode",
+          "logIncident": "Registrer en episode",
           "typeLabel": "Adfærdstype",
           "selectType": "Vælg en type...",
           "severity": "Alvorlighed",
           "mild": "Mild",
           "severe": "Alvorlig",
-          "timeOfDay": "Tidspunkt på dagen",
+          "timeOfDay": "Tid på dagen",
           "morning": "Morgen",
           "afternoon": "Eftermiddag",
           "evening": "Aften",
@@ -576,7 +576,7 @@
           "trigger_overstimulation": "Overstimulering",
           "trigger_unfamiliar_environment": "Ukendt sted",
           "trigger_unfamiliar_person": "Ukendt person",
-          "trigger_routine_change": "Rutineændring",
+          "trigger_routine_change": "Ændring i rutine",
           "trigger_medication": "Medicin",
           "trigger_noise": "Støj",
           "trigger_loneliness": "Ensomhed",
@@ -586,43 +586,43 @@
           "trigger_fear": "Frygt",
           "trigger_unknown": "Ukendt",
           "whatHappened": "Hvad skete der?",
-          "whatHappenedPlaceholder": "Beskriv hændelsen...",
+          "whatHappenedPlaceholder": "Beskriv episoden...",
           "whatHelped": "Hvad hjalp? (valgfrit)",
-          "whatHelpedPlaceholder": "Beskriv, hvad der hjalp med at falde til ro...",
-          "save": "Gem hændelse",
-          "saved": "Hændelse logget"
+          "whatHelpedPlaceholder": "Beskriv, hvad der hjalp med at berolige situationen...",
+          "save": "Gem episode",
+          "saved": "Episode registreret"
         },
         "timeline": {
-          "title": "Tidslinje for hændelser",
+          "title": "Episodetidslinje",
           "all": "Alle",
-          "noIncidents": "Ingen hændelser matcher det aktuelle filter."
+          "noIncidents": "Ingen episoder matcher det aktuelle filter."
         }
       }
     },
     "reports": {
-      "title": "Lægebesøgsrapport",
+      "title": "Rapport til lægebesøg",
       "period": "Rapportperiode",
       "lastDays": "Sidste {{days}} dage",
       "generate": "Generer rapport",
       "include": "Inkluder i rapport",
-      "moodTrends": "Humørtendenser og check-in-oversigt",
+      "moodTrends": "Humørtendenser og tjek-ind oversigt",
       "sleepPatterns": "Søvnmønstre",
-      "activityCompletion": "Gennemførelsesrater for aktiviteter",
+      "activityCompletion": "Fuldførelsesrater for aktiviteter",
       "medicationAdherence": "Medicinoverholdelse",
-      "journalNotes": "Bemærkelsesværdige observationer fra plejedagbogen",
-      "locationPatterns": "Lokationsmønstre",
+      "journalNotes": "Bemærkelsesværdige observationer fra plejedagbog",
+      "locationPatterns": "Stedsmønstre",
       "caregiverConcerns": "Pårørendes bekymringer",
       "customNotes": "Yderligere noter til lægen",
       "print": "Udskriv",
       "downloadPdf": "Download PDF",
-      "emailDoctor": "E-mail til lægen",
-      "disclaimer": "Dette resumé er baseret på selvrapporterede velværedata og familieobservationer. Det er ikke en klinisk vurdering.",
-      "webNote": "For den fulde rapportbygger med udskrivnings- og PDF-eksport, besøg OurTurn-webappen.",
-      "openInWebApp": "Åbn i webapp",
+      "emailDoctor": "Send e-mail til læge",
+      "disclaimer": "Denne oversigt er baseret på selvrapporterede trivselsdata og familieobservationer. Det er ikke en klinisk vurdering.",
+      "webNote": "For den fulde rapportbygger med udskrivning og PDF-eksport, besøg OurTurn web-appen.",
+      "openInWebApp": "Åbn i web-app",
       "previousReports": "Tidligere rapporter",
       "generated": "Genereret {{date}}",
-      "avgQuality": "Gns. kvalitet",
-      "moodStruggling": "Kæmper",
+      "avgQuality": "gns. kvalitet",
+      "moodStruggling": "Udfordret",
       "moodLow": "Lav",
       "moodOkay": "Okay",
       "moodGood": "God",
@@ -630,10 +630,10 @@
       "careSummary": "OurTurn Plejeoversigt",
       "patient": "Patient",
       "periodLabel": "Periode",
-      "checkinsRecorded": "Check-ins registreret",
+      "checkinsRecorded": "Tjek-ind registreret",
       "averageMood": "Gennemsnitligt humør",
       "averageSleepQuality": "Gennemsnitlig søvnkvalitet",
-      "activityCompletionRate": "Gennemførelse af aktiviteter",
+      "activityCompletionRate": "Aktivitetsfuldførelse",
       "medicationAdherenceRate": "Medicinoverholdelse",
       "observations": "Observationer",
       "categoryMedication": "Medicin",
@@ -645,7 +645,7 @@
     },
     "onboarding": {
       "step1Title": "Om dig",
-      "step2Title": "Om din elskede",
+      "step2Title": "Om din kære",
       "step3Title": "Deres livshistorie",
       "step4Title": "Daglig rutine",
       "step5Title": "Sikkerhedsopsætning",
@@ -653,48 +653,48 @@
       "next": "Næste",
       "back": "Tilbage",
       "finish": "Kom i gang",
-      "careCodeInstructions": "Installer OurTurn på din elskedes telefon, og indtast denne kode for at oprette forbindelse.",
+      "careCodeInstructions": "Installer OurTurn på din kæres telefon og indtast denne kode for at oprette forbindelse.",
       "quickSetup": "Hurtig opsætning",
       "yourName": "Dit navn",
       "yourNameRequired": "Dit navn *",
-      "lovedOneNameRequired": "Din elskedes navn *",
+      "lovedOneNameRequired": "Din kæres navn *",
       "relationship": "Dit forhold til dem",
       "relationshipPlaceholder": "f.eks. datter, søn, ægtefælle",
-      "settingsHint": "Du kan tilføje flere detaljer senere i Indstillinger",
+      "settingsHint": "Du kan tilføje flere detaljer senere under Indstillinger",
       "fillRequired": "Udfyld venligst alle obligatoriske felter",
-      "setupFailed": "Opsætningen kunne ikke fuldføres",
+      "setupFailed": "Opsætning mislykkedes",
       "country": "Land",
       "theirName": "Deres fornavn",
       "dateOfBirth": "Fødselsdato",
       "dementiaType": "Type af demens (valgfrit)",
-      "homeAddress": "Adresse",
+      "homeAddress": "Hjemmeadresse",
       "medications": "Medicin",
       "addMedication": "Tilføj medicin",
       "childhoodLocation": "Hvor de voksede op",
       "career": "Karriere / beskæftigelse",
-      "hobbies": "Hobbyer og interesser",
-      "favoriteMusic": "Favoritmusik / kunstnere",
-      "favoriteFoods": "Favoritmad",
+      "hobbies": "Fritidsinteresser og hobbyer",
+      "favoriteMusic": "Yndlingsmusik / kunstnere",
+      "favoriteFoods": "Yndlingsmad",
       "importantPeople": "Vigtige personer",
       "keyEvents": "Vigtige livsbegivenheder",
       "uploadPhotos": "Upload familiebilleder",
       "wakeTime": "Vågnetid",
-      "sleepTime": "Sengetid",
-      "generatePlan": "Generer forslag til plan",
+      "sleepTime": "Søvntid",
+      "generatePlan": "Generer foreslået plan",
       "emergencyContacts": "Nødkontakter",
-      "alertSettings": "Indstillinger for alarmer",
+      "alertSettings": "Indstillinger for advarsler",
       "stepOf": "Trin {{current}} af {{total}}",
       "breakfastTime": "Morgenmadstid",
       "lunchTime": "Frokosttid",
       "dinnerTime": "Aftensmadstid",
-      "typicalDay": "Beskrivelse af typisk dag",
+      "typicalDay": "Beskrivelse af en typisk dag",
       "typicalDayPlaceholder": "Beskriv en typisk dag...",
-      "emergencyContactsHint": "Tilføj nødkontakter, der vises i patient-appens Hjælp-fane.",
+      "emergencyContactsHint": "Tilføj nødkontakter, der vil vises under fanen Hjælp i patientappen.",
       "remove": "Fjern",
       "addContact": "Tilføj kontakt",
       "contactNameRequired": "Navn *",
       "phoneRequired": "Telefonnummer *",
-      "relationshipOptional": "Relation (valgfrit)",
+      "relationshipOptional": "Forhold (valgfrit)",
       "addContactButton": "+ Tilføj kontakt",
       "emergencyContactWarning": "Vi anbefaler at tilføje mindst én nødkontakt.",
       "allSet": "Du er klar!",
@@ -704,8 +704,8 @@
       "nextSteps": "Næste trin:",
       "nextStep1": "1. Installer OurTurn på {{name}}s telefon",
       "nextStep2": "2. Åbn appen og indtast plejekoden ovenfor",
-      "nextStep3": "3. Det er det! {{name}}s daglige plan vises på deres telefon",
-      "homeAddressPlaceholder": "Adresse"
+      "nextStep3": "3. Det var det! {{name}}s daglige plan vil vises på deres telefon",
+      "homeAddressPlaceholder": "Hovedgaden 123, By"
     },
     "settings": {
       "title": "Indstillinger",
@@ -721,7 +721,7 @@
       "subscription": "Abonnement",
       "notifications": "Notifikationer",
       "privacy": "Privatliv og data",
-      "exportData": "Eksportér mine data",
+      "exportData": "Eksporter mine data",
       "exportNote": "Download en kopi af alle dine data (GDPR-ret til dataportabilitet)",
       "exportClipboard": "Dine data er blevet kopieret til udklipsholderen. Du kan indsætte dem i et dokument eller en e-mail.",
       "deleteAccount": "Slet konto",
@@ -732,11 +732,11 @@
       "about": "Om OurTurn",
       "version": "Version",
       "notMedicalDevice": "OurTurn er ikke et medicinsk udstyr",
-      "dailySummary": "Daglig opsummering",
-      "dailySummaryTime": "Tidspunkt for daglig opsummering",
-      "emailNotifications": "E-mail notifikationer",
+      "dailySummary": "Daglig oversigt",
+      "dailySummaryTime": "Tidspunkt for daglig oversigt",
+      "emailNotifications": "E-mailnotifikationer",
       "pushNotifications": "Push-notifikationer",
-      "safetyAlerts": "Sikkerhedsalarmer",
+      "safetyAlerts": "Sikkerhedsadvarsler",
       "signOut": "Log ud",
       "saveProfile": "Gem profil",
       "saved": "Gemt!",
@@ -745,90 +745,90 @@
       "newPassword": "Ny adgangskode",
       "confirmNewPassword": "Bekræft ny adgangskode",
       "passwordPlaceholder": "Mindst 8 tegn",
-      "passwordChanged": "Adgangskoden er ændret!",
+      "passwordChanged": "Adgangskode er ændret!",
       "changingPassword": "Ændrer...",
       "copyCode": "Kopier kode",
       "codeCopied": "Kode kopieret!",
-      "regenerateCode": "Genskab kode",
-      "regenerateWarning": "Den gamle kode vil stoppe med at virke. Alle parrede patientenheder skal bruge den nye kode.",
+      "regenerateCode": "Generer ny kode",
+      "regenerateWarning": "Den gamle kode vil holde op med at virke. Alle parrede patientenheder skal bruge den nye kode.",
       "dangerZone": "Farezone",
-      "relationship": "Relation",
+      "relationship": "Forhold",
       "deleteConfirm": "Skriv SLET for at bekræfte sletning af konto",
       "photoGallery": "Fotogalleri",
-      "photoGalleryDesc": "Upload familiebilleder til personlige genopfriskningsaktiviteter",
+      "photoGalleryDesc": "Upload familiebilleder til personlige erindringsaktiviteter",
       "uploadPhotos": "Upload billeder",
       "uploading": "Uploader...",
       "deletePhoto": "Slet dette billede?",
       "maxPhotosReached": "Maksimum 20 billeder er nået",
-      "photoUploadHint": "Op til 20 billeder, maks. 5 MB hver",
-      "photoUploadFailed": "Kunne ikke uploade billede. Prøv igen.",
-      "photoDeleteFailed": "Kunne ikke slette billede. Prøv igen.",
-      "noPhotosYet": "Ingen billeder uploadet endnu",
+      "photoUploadHint": "Op til 20 billeder, maks. 5MB hver",
+      "photoUploadFailed": "Kunne ikke uploade billede. Prøv venligst igen.",
+      "photoDeleteFailed": "Kunne ikke slette billede. Prøv venligst igen.",
+      "noPhotosYet": "Ingen billeder er uploadet endnu",
       "photosCount": "{{count}} af 20 billeder",
-      "patientComplexity": "Patient App Tilstand",
-      "patientComplexityDesc": "Juster patient-appens interface baseret på din elskedes behov.",
+      "patientComplexity": "Patientapp-tilstand",
+      "patientComplexityDesc": "Juster patientappens grænseflade baseret på din kæres behov.",
       "complexity": {
         "full": "Fuld",
         "fullDesc": "Alle funktioner tilgængelige",
         "simplified": "Forenklet",
         "simplifiedDesc": "Større tekst, færre detaljer",
         "essential": "Essentiel",
-        "essentialDesc": "Minimal - kun musik og opkaldshjælp"
+        "essentialDesc": "Minimal – kun musik og ring efter hjælp"
       },
-      "safetyEscalation": "Sikkerhed & Eskalering",
+      "safetyEscalation": "Sikkerhed og eskalering",
       "escalationTiming": "Eskaleringstidspunkt",
-      "escalationTimingDesc": "Hvor lang tid før eskalering af ubekræftede alarmer",
-      "offlineThreshold": "Offline alarmtærskel",
+      "escalationTimingDesc": "Hvor lang tid før uopklarede advarsler eskalerer",
+      "offlineThreshold": "Grænse for offline-advarsel",
       "offlineThresholdDesc": "Advar, når enheden ikke er set i så lang tid",
       "minutes": "minutter",
-      "respiteReminders": "Pausereminders",
-      "respiteRemindersDesc": "Få påmindelser om at tage pauser",
+      "respiteReminders": "Påmindelser om pauser",
+      "respiteRemindersDesc": "Få påmindelser om at holde pauser",
       "groupProfile": "Din profil",
       "groupAboutPatient": "Om {{name}}",
-      "groupAboutPatientGeneric": "Om din elskede",
+      "groupAboutPatientGeneric": "Om din kære",
       "groupSharing": "Deling og forbindelse",
       "groupSafety": "Sikkerhed og notifikationer",
       "groupAccount": "Konto",
-      "patientInformation": "Patientinformation",
+      "patientInformation": "Oplysninger om den plejekrævende",
       "patientInformationDesc": "Grundlæggende oplysninger om din kære",
-      "patientName": "Patientens navn",
+      "patientName": "Navn på den plejekrævende",
       "dateOfBirth": "Fødselsdato",
       "dementiaType": "Type af demens",
       "selectDementiaType": "Vælg type (valgfrit)",
-      "homeAddress": "Adresse",
-      "homeAddressPlaceholder": "Fuld adresse",
+      "homeAddress": "Hjemmeadresse",
+      "homeAddressPlaceholder": "Fuld hjemmeadresse",
       "savingPatientInfo": "Gemmer...",
-      "savePatientInfo": "Gem patientinformation",
+      "savePatientInfo": "Gem oplysninger om den plejekrævende",
       "lifeStory": "Livshistorie",
-      "lifeStoryDesc": "Disse detaljer hjælper med at personliggøre daglige aktiviteter og erindringsspørgsmål.",
+      "lifeStoryDesc": "Disse oplysninger hjælper med at personliggøre daglige aktiviteter og erindringsøvelser.",
       "childhoodLocation": "Hvor de voksede op",
       "career": "Karriere / Beskæftigelse",
-      "hobbies": "Hobbyer og interesser",
+      "hobbies": "Fritidsinteresser og hobbyer",
       "hobbiesPlaceholder": "f.eks. havearbejde, maleri, skak",
-      "favoriteMusic": "Favoritmusik / Kunstnere",
+      "favoriteMusic": "Yndlingsmusik / Kunstnere",
       "favoriteMusicPlaceholder": "f.eks. Frank Sinatra, Beatles",
-      "favoriteFoods": "Livretter",
+      "favoriteFoods": "Yndlingsmad",
       "favoriteFoodsPlaceholder": "f.eks. æbletærte, stegt kylling",
       "importantPeople": "Vigtige personer",
       "importantPeoplePlaceholder": "f.eks. John (bror), Mary (bedste ven)",
-      "keyEvents": "Vigtige begivenheder i livet",
+      "keyEvents": "Vigtige livsbegivenheder",
       "keyEventsPlaceholder": "f.eks. dimitterede 1965, flyttede til London 1970",
       "savingLifeStory": "Gemmer...",
       "saveLifeStory": "Gem livshistorie",
       "dailySchedule": "Daglig tidsplan",
       "dailyScheduleDesc": "Indstil vågne- og sovetider for din kæres rutine.",
       "wakeTime": "Vågnetid",
-      "sleepTime": "Sengetid",
+      "sleepTime": "Søvntid",
       "savingSchedule": "Gemmer...",
       "saveSchedule": "Gem tidsplan",
       "emergencyContacts": "Nødkontakter",
-      "emergencyContactsDesc": "Disse kontakter vises i patientappens Hjælp-fane.",
+      "emergencyContactsDesc": "Disse kontakter vises under fanen Hjælp i den plejekrævendes app.",
       "addContact": "Tilføj kontakt",
-      "contactName": "Kontaktnavn",
+      "contactName": "Kontaktpersonens navn",
       "contactPhone": "Telefonnummer",
-      "contactRelationship": "Relation",
-      "contactRelationshipPlaceholder": "f.eks. Datter, nabo",
-      "noContactsYet": "Ingen nødkontakter er tilføjet endnu.",
+      "contactRelationship": "Forhold",
+      "contactRelationshipPlaceholder": "f.eks. datter, nabo",
+      "noContactsYet": "Ingen nødkontakter tilføjet endnu.",
       "savingContacts": "Gemmer...",
       "saveContacts": "Gem kontakter",
       "removeContactConfirm": "Fjern denne kontakt?",
@@ -854,109 +854,109 @@
       "fillAllFields": "Udfyld venligst alle felter",
       "passwordsNoMatch": "Adgangskoderne stemmer ikke overens",
       "passwordTooShort": "Adgangskoden skal være mindst 8 tegn",
-      "checkEmail": "Tjek din e-mail for at bekræfte din konto",
+      "checkEmail": "Tjek venligst din e-mail for at bekræfte din konto",
       "enterEmailFirst": "Indtast venligst din e-mailadresse først.",
       "resetEmailSent": "Tjek din e-mail",
-      "resetEmailSentDesc": "Vi har sendt et link til nulstilling af adgangskoden til din e-mailadresse.",
+      "resetEmailSentDesc": "Vi har sendt et link til nulstilling af adgangskode til din e-mailadresse.",
       "welcomeBack": "Velkommen tilbage",
       "enterEmailAndPassword": "Indtast venligst e-mail og adgangskode",
       "signingIn": "Logger ind",
       "orContinueWith": "Eller fortsæt med"
     },
     "nav": {
-      "family": "Familiekreds",
+      "family": "Familiecirkel",
       "toolkit": "Værktøjskasse",
       "reports": "Rapporter",
       "settings": "Indstillinger",
       "crisis": "Krisehjælp"
     },
     "crisis": {
-      "title": "Krisehjælp",
-      "subtitle": "Krisehåndtering i realtid og de-eskaleringssupport",
-      "eventLogged": "Krisehændelse logget",
-      "logEvent": "Log krisehændelse",
+      "title": "Krisesituation",
+      "subtitle": "Realtids krisehåndtering og de-eskaleringsstøtte",
+      "eventLogged": "Krisesituation logget",
+      "logEvent": "Log krisesituation",
       "logPlaceholder": "Beskriv hvad der skete...",
       "status": {
-        "allClear": "Alt er godt",
+        "allClear": "Alt er roligt",
         "allClearDesc": "Ingen aktive alarmer",
         "activeAlerts": "Aktive alarmer",
         "lastKnownLocation": "Sidst kendte placering",
-        "viewOnMap": "Vis på kort",
+        "viewOnMap": "Se på kort",
         "noLocationData": "Ingen placeringsdata tilgængelige"
       },
       "actions": {
         "modeLabel": "Din situation",
         "withThem": "Jeg er sammen med dem",
-        "remote": "Jeg er ekstern",
+        "remote": "Jeg er på afstand",
         "startDeEscalation": "Start de-eskalering",
         "startDeEscalationDesc": "Trin-for-trin guidet beroligende forløb",
         "callEmergency": "Ring til alarmcentralen",
         "callEmergencyDesc": "Ring til lokale alarmtjenester",
         "alertFamily": "Advar familie",
-        "alertFamilyDesc": "Send push-besked til alle plejere",
-        "alertFamilySent": "Familie medlemmer underrettet",
-        "alertFamilyFailed": "Kunne ikke underrette familien. Prøv igen.",
-        "viewLocation": "Vis placering",
-        "viewLocationDesc": "Se {{name}}s nuværende placering på kortet",
-        "contactPrimary": "Kontakt primær plejer",
-        "contactPrimaryDesc": "Kontakt den primære plejer via e-mail",
-        "logEvent": "Log hændelse",
+        "alertFamilyDesc": "Send push-besked til alle omsorgspersoner",
+        "alertFamilySent": "Familiemedlemmer er underrettet",
+        "alertFamilyFailed": "Kunne ikke underrette familien. Prøv venligst igen.",
+        "viewLocation": "Se placering",
+        "viewLocationDesc": "Se {{name}}'s nuværende placering på kortet",
+        "contactPrimary": "Kontakt primær omsorgsperson",
+        "contactPrimaryDesc": "Kontakt den primære omsorgsperson via e-mail",
+        "logEvent": "Log begivenhed",
         "logEventDesc": "Registrer dette øjeblik i krisejournalen"
       },
       "wizard": {
-        "breathingTitle": "Lad os starte med et beroligende åndedrag",
-        "breathingInstruction": "Træk vejret langsomt ind... hold... træk vejret ud...",
+        "breathingTitle": "Lad os starte med en beroligende vejrtrækning",
+        "breathingInstruction": "Træk langsomt vejret ind... hold... pust ud...",
         "stepOf": "Trin {{current}} af {{total}}",
         "thisHelped": "Dette hjalp",
         "tryNext": "Prøv næste trin",
         "skip": "Spring over",
-        "completionTitle": "Godt gået. Du håndterede det med omhu.",
-        "completionDesc": "Vil du gerne notere noget om, hvad der skete?",
-        "crisisNotesPlaceholder": "Hvad skete der? Hvad hjalp? Nogle udløsere bemærket...",
+        "completionTitle": "Godt klaret. Du håndterede det med omsorg.",
+        "completionDesc": "Vil du gerne skrive noter om, hvad der skete?",
+        "crisisNotesPlaceholder": "Hvad skete der? Hvad hjalp? Eventuelle udløsere bemærket...",
         "saveAndClose": "Gem og luk",
         "closeWithoutSaving": "Luk uden at gemme"
       },
       "history": {
-        "title": "Seneste krisehændelser",
-        "noEvents": "Ingen krisehændelser i de sidste 30 dage.",
+        "title": "Nylige krisesituationer",
+        "noEvents": "Ingen krisesituationer de sidste 30 dage.",
         "viewAllInJournal": "Se alle i journalen",
         "yesterday": "I går",
-        "daysAgo": "{{count}}d siden"
+        "daysAgo": "{{count}} dage siden"
       },
       "steps": {
         "stayCalm": {
-          "title": "Bevar roen",
+          "title": "Forbliv rolig",
           "detail": "Tag en langsom, dyb indånding. Din rolige energi vil hjælpe dem med at føle sig trygge.",
-          "script": "Jeg er lige her sammen med dig. Alt er okay."
+          "script": "Jeg er lige her hos dig. Alt er i orden."
         },
         "validateFeelings": {
           "title": "Valider følelser",
-          "detail": "Sig 'Jeg kan se, du er ked af det. Det må være rigtig svært.' Diskutér eller ret ikke.",
+          "detail": "Sig 'Jeg kan se, du er ked af det. Det må være rigtig svært.' Lad være med at argumentere eller rette.",
           "script": "Jeg kan se, du er ked af det. Det må være rigtig svært."
         },
         "simplifyEnvironment": {
-          "title": "Forenkl omgivelserne",
-          "detail": "Brug korte, simple sætninger. Én idé ad gangen. Undgå at stille 'hvorfor'-spørgsmål.",
+          "title": "Gør omgivelserne enklere",
+          "detail": "Brug korte, enkle sætninger. Én idé ad gangen. Undgå at spørge 'hvorfor'.",
           "script": "Lad os gøre tingene enklere. Én ting ad gangen."
         },
         "redirectAttention": {
           "title": "Omdiriger opmærksomheden",
-          "detail": "Skift forsigtigt emne. Foreslå en velkendt aktivitet, sang eller gåtur.",
+          "detail": "Skift forsigtigt emne. Foreslå en velkendt aktivitet, sang eller en gåtur.",
           "script": "Hvad med at vi prøver noget andet? Lad os tage en lille gåtur sammen."
         },
         "useGentleTouch": {
-          "title": "Brug blid berøring",
-          "detail": "Hvis det er velkomment, kan en blid hånd på armen være betryggende. Hold øje med deres reaktion.",
+          "title": "Brug en blid berøring",
+          "detail": "Hvis det er velkomment, kan en blid hånd på armen være beroligende. Observer deres reaktion.",
           "script": "Er det okay, hvis jeg holder din hånd? Jeg er lige her."
         },
         "giveSpace": {
           "title": "Giv plads",
-          "detail": "Hvis intet virker, skal du sørge for sikkerhed og give dem plads. Det er okay at træde tilbage.",
-          "script": "Jeg er lige i nærheden, hvis du har brug for mig. Tag dig god tid."
+          "detail": "Hvis intet virker, sørg for sikkerhed og giv dem plads. Det er okay at træde tilbage.",
+          "script": "Jeg er lige i nærheden, hvis du får brug for mig. Tag dig god tid."
         }
       },
-      "helplines": "Telefonlinjer",
-      "noHelplineAvailable": "Ingen telefonlinje fundet for dit land",
+      "helplines": "Hjælpelinjer",
+      "noHelplineAvailable": "Ingen hjælpelinje fundet for dit land",
       "call": "Ring",
       "email": "E-mail",
       "website": "Hjemmeside",
@@ -964,19 +964,19 @@
       "supportResources": "Støtteressourcer",
       "scenarios": {
         "title": "Hvad sker der?",
-        "subtitle": "Tryk på en situation for trin-for-trin-vejledning",
-        "urgent": "Haster",
+        "subtitle": "Tryk på en situation for trin-for-trin vejledning",
+        "urgent": "Akut",
         "stepCountLabel": "{{count}} trin",
         "backToSituations": "Tilbage til situationer",
         "breathe": "Åndedrætsøvelse",
         "callEmergency": "Ring til alarmcentralen"
       },
       "patterns": {
-        "title": "Indsigt i mønstre",
+        "title": "Mønsterindsigt",
         "noEvents": "Log hændelser for at se mønstre over tid.",
-        "fewEvents": "{{count}} hændelser logget. Der er brug for flere data for at se mønstre.",
-        "timePattern": "De fleste hændelser sker om {{time}}.",
-        "weekCount": "{{count}} i denne uge."
+        "fewEvents": "{{count}} hændelser logget. Mere data er nødvendig for at se mønstre.",
+        "timePattern": "De fleste hændelser sker {{time}}.",
+        "weekCount": "{{count}} denne uge."
       },
       "personalization": {
         "label": "Hvad beroliger {{name}}",
@@ -985,65 +985,65 @@
       "scenarioData": {
         "stepsCount": "{{count}} trin",
         "agitated": {
-          "label": "Ophidset/ked af det",
+          "label": "Ophidset / Ked af det",
           "steps": [
             {
-              "title": "Du først",
-              "instruction": "Tag en dyb indånding, før du gør noget. Du kan ikke berolige nogen, hvis du ikke selv er rolig."
+              "title": "Dig først",
+              "instruction": "Tag en langsom indånding, før du gør noget. Du kan ikke berolige nogen, hvis du ikke selv er rolig."
             },
             {
-              "title": "Hurtigt tjek – kan der være noget fysisk galt?",
-              "instruction": "Smerte, sult, behov for at gå på toilettet eller en infektion kan alle forårsage uro.",
+              "title": "Hurtigt tjek — kunne der være noget fysisk galt?",
+              "instruction": "Smerte, sult, behov for at komme på toilettet eller en infektion kan alle forårsage uro.",
               "checklist": [
                 "Smerte eller ubehag?",
                 "Sulten eller tørstig?",
-                "Har brug for at gå på toilettet?",
-                "Nylig ændring i medicin?",
+                "Skal på toilettet?",
+                "Nylig medicinændring?",
                 "Feber eller tegn på sygdom?"
               ]
             },
             {
               "title": "Sænk temperaturen",
-              "instruction": "Tal langsomt og blødt. Diskutér, ret eller forklar ikke. Bekræft, hvad de føler.",
+              "instruction": "Tal langsomt og blidt. Lad være med at argumentere, rette eller forklare. Anerkend, hvad de føler.",
               "tips": [
                 "\"Jeg kan se, du er ked af det. Jeg er her.\"",
-                "Reducer støj – sluk for tv, luk vinduer",
-                "Giv dem fysisk plads, undgå at trænge dem op i en krog",
-                "Tilbyd dem en velkendt tryghedsting"
+                "Reducer støj — sluk tv'et, luk vinduer",
+                "Giv dem fysisk plads, træng dig ikke på",
+                "Tilbyd en velkendt tryghedsgenstand"
               ]
             },
             {
-              "title": "Omdiriger, argumentér ikke",
-              "instruction": "Skift forsigtigt emne eller miljø. Forsøg ikke at tale dem ud af det.",
+              "title": "Omdiriger, lad være med at ræsonnere",
+              "instruction": "Skift forsigtigt emne eller omgivelser. Forsøg ikke at tale dem fra det med logik.",
               "tips": [
                 "Foreslå en gåtur eller flyt til et andet rum",
-                "Sæt musik på, som de elsker",
-                "Tilbyd en snack eller varm drik",
+                "Sæt musik på, de elsker",
+                "Tilbyd en snack eller en varm drik",
                 "Se på billeder sammen"
               ]
             },
             {
               "title": "Hvornår skal du søge hjælp",
-              "instruction": "Hvis uroen varer mere end 30 minutter, hvis de er i fare for at skade sig selv eller dig, eller hvis dette er en pludselig ny adfærd – ring til alarmcentralen.",
+              "instruction": "Hvis uroen varer mere end 30 minutter, hvis de er i fare for at skade sig selv eller dig, eller hvis dette er en pludselig ny adfærd — ring til alarmcentralen.",
               "actionLabel": "Ring til alarmcentralen"
             }
           ]
         },
         "wandering": {
-          "label": "Vandring/forsvundet",
+          "label": "Vandrende / Savnet",
           "steps": [
             {
               "title": "Tjek de sædvanlige steder først",
-              "instruction": "De fleste mennesker med demens går til velkendte steder – en tidligere arbejdsplads, et barndomshjem, en nabos hus.",
+              "instruction": "De fleste mennesker med demens tager til velkendte steder — en tidligere arbejdsplads, et barndomshjem, en nabos hus.",
               "tips": [
                 "Tjek haven, garagen, nærliggende gader",
-                "Spørg naboerne, om de har set dem",
-                "Tjek steder, de plejede at gå regelmæssigt"
+                "Spørg naboer, om de har set dem",
+                "Tjek steder, de plejede at komme regelmæssigt"
               ]
             },
             {
               "title": "Brug deres placering",
-              "instruction": "Hvis positionssporing er konfigureret, skal du tjekke deres aktuelle position nu."
+              "instruction": "Hvis lokationssporing er opsat, tjek deres nuværende position nu."
             },
             {
               "title": "Advar familien",
@@ -1051,59 +1051,59 @@
             },
             {
               "title": "Ring til politiet, hvis de ikke er fundet inden for 15 minutter",
-              "instruction": "Vent ikke. Mennesker med demens har høj risiko for skader. Ring til alarmcentralen og fortæl dem, at personen har demens.",
+              "instruction": "Vent ikke. Mennesker med demens er i høj risiko for skade. Ring til alarmcentralen og fortæl dem, at personen har demens.",
               "actionLabel": "Ring til alarmcentralen"
             }
           ]
         },
         "refusing": {
-          "label": "Afviser pleje",
+          "label": "Nægter pleje",
           "steps": [
             {
-              "title": "Hold en pause – det er ikke trods",
+              "title": "Pause — dette er ikke trods",
               "instruction": "Afvisning er næsten altid frygt, forvirring eller ubehag. De forstår måske ikke, hvad du beder om."
             },
             {
-              "title": "Træd tilbage og prøv anderledes",
-              "instruction": "Pres ikke på. Kom tilbage om 15-20 minutter og henvend dig, som om det er første gang.",
+              "title": "Træd tilbage og prøv på en anden måde",
+              "instruction": "Pres ikke. Kom tilbage om 15-20 minutter og tilgå det, som om det er første gang.",
               "tips": [
-                "Skift hvem der spørger",
-                "Skift miljøet",
+                "Skift, hvem der spørger",
+                "Skift omgivelserne",
                 "Opdel opgaven i mindre trin",
                 "Tilbyd valgmuligheder: \"Bad eller brusebad?\""
               ]
             },
             {
               "title": "Få det til at føles trygt",
-              "instruction": "Forklar hvert trin, før du gør det. Bevæg dig langsomt. Hold dem varme.",
+              "instruction": "Forklar hvert trin, før du udfører det. Bevæg dig langsomt. Hold dem varme.",
               "tips": [
                 "Advar før berøring",
                 "Brug en rolig, varm tone",
-                "Afspil deres yndlingsmusik under opgaven",
+                "Spil deres yndlingsmusik under opgaven",
                 "Hold rutinen konsekvent"
               ]
             },
             {
               "title": "Er dette et mønster?",
-              "instruction": "Hvis de konsekvent afviser den samme opgave, skal du logge det. Der kan være et underliggende problem – smerte, frygt, følsomhed. Diskutér det med deres læge."
+              "instruction": "Hvis de konsekvent nægter den samme opgave, log det. Der kan være et underliggende problem — smerte, frygt, følsomhed. Diskuter det med deres læge."
             }
           ]
         },
         "hallucinations": {
-          "label": "Ser/hører ting",
+          "label": "Ser / Hører ting",
           "steps": [
             {
-              "title": "Diskutér ikke – det er virkeligt for dem",
+              "title": "Lad være med at argumentere — det er virkeligt for dem",
               "instruction": "Anerkend, hvad de oplever, uden at bekræfte, at det er sandt.",
               "tips": [
                 "\"Det lyder skræmmende. Jeg er her sammen med dig.\"",
                 "\"Fortæl mig, hvad du ser.\"",
-                "Sig ikke \"der er ikke noget der\""
+                "Sig ikke \"der er intet der\""
               ]
             },
             {
-              "title": "Tjek miljøet",
-              "instruction": "Skygger, refleksioner, tv-lyde og rod kan udløse fejlfortolkning.",
+              "title": "Tjek omgivelserne",
+              "instruction": "Skygger, refleksioner, tv-lyde og rod kan udløse fejltolkning.",
               "checklist": [
                 "Skygger fra vinduer eller lamper?",
                 "Tv eller radio tændt i baggrunden?",
@@ -1113,45 +1113,45 @@
             },
             {
               "title": "Omdiriger forsigtigt",
-              "instruction": "Flyt deres opmærksomhed til noget konkret og trøstende.",
+              "instruction": "Flyt deres opmærksomhed til noget konkret og beroligende.",
               "tips": [
                 "Flyt til et godt oplyst rum",
                 "Tilbyd en praktisk aktivitet",
-                "Gå en kort tur sammen",
+                "Tag en kort gåtur sammen",
                 "Lav en kop te sammen"
               ]
             },
             {
               "title": "Hvornår skal du ringe til lægen",
-              "instruction": "Hvis hallucinationer er nye, hyppige eller forårsager ekstremt ubehag. Pludselig opståen kan indikere infektion, bivirkninger af medicin eller delirium."
+              "instruction": "Hvis hallucinationer er nye, hyppige eller forårsager ekstrem nød. Pludselig opståen kan indikere infektion, medicinbivirkninger eller delirium."
             }
           ]
         },
         "sundowning": {
-          "label": "Aftenssyndrom",
+          "label": "Aftenuro",
           "steps": [
             {
               "title": "Genkend mønsteret",
-              "instruction": "Sundowning starter typisk sidst på eftermiddagen. Dette er meget almindeligt og ikke noget, de kan kontrollere."
+              "instruction": "Aftenurolighed starter typisk sent på eftermiddagen. Dette er ekstremt almindeligt, og de kan ikke kontrollere det."
             },
             {
               "title": "Tilpas omgivelserne nu",
-              "instruction": "Reducer al stimulering og skab tryghedssignaler.",
+              "instruction": "Reducer al stimulation og skab tryghedssignaler.",
               "tips": [
-                "Tænd varmt lys, før det bliver mørkt",
-                "Træk gardinerne for at reducere skygger",
-                "Sluk eller skru ned for fjernsynet",
-                "Reducer antallet af mennesker i rummet"
+                "Tænd varme lys, før det bliver mørkt",
+                "Træk gardinerne for for at reducere skygger",
+                "Sluk eller sænk lydstyrken på TV'et",
+                "Reducer antallet af personer i rummet"
               ]
             },
             {
               "title": "Tilbyd beroligende aktiviteter",
-              "instruction": "Blide, repetitive, velkendte aktiviteter fungerer bedst.",
+              "instruction": "Blide, gentagne, velkendte aktiviteter virker bedst.",
               "tips": [
                 "Blid håndmassage med lotion",
                 "Blød, velkendt musik",
                 "Folde håndklæder eller sortere genstande",
-                "Se et fotoalbum sammen"
+                "Kigge i et fotoalbum sammen"
               ]
             },
             {
@@ -1161,34 +1161,34 @@
           ]
         },
         "fall": {
-          "label": "Fald / Fysisk nødsituation",
+          "label": "Fald / Fysisk Nødsituation",
           "steps": [
             {
               "title": "Flyt dem ikke",
-              "instruction": "Medmindre de er i umiddelbar fare, skal du ikke forsøge at løfte eller flytte dem.",
+              "instruction": "Medmindre de er i umiddelbar fare, så prøv ikke at løfte eller flytte dem.",
               "tips": [
-                "Kom ned på deres niveau",
-                "Berolig dem: \"Jeg er her, du er sikker\"",
+                "Kom ned i deres niveau",
+                "Berolig dem: \"Jeg er her, du er i sikkerhed\"",
                 "Tjek for synlige skader"
               ]
             },
             {
-              "title": "Kan de rejse sig?",
-              "instruction": "Hvis der ikke er nogen åbenlyse skader, hjælp dem langsomt op i etaper.",
+              "title": "Kan de komme op?",
+              "instruction": "Hvis der ikke er åbenlys skade, hjælp dem langsomt op i etaper.",
               "checklist": [
-                "Er de vågne og reagerer de?",
-                "Er der nogen åbenlys skade eller smerte?",
+                "Er de vågne og reagerende?",
+                "Er der åbenlys skade eller smerte?",
                 "Kan de bevæge alle lemmer?",
                 "Har de slået hovedet?"
               ]
             },
             {
               "title": "Ring efter hjælp hvis...",
-              "instruction": "Hovedskade, kan ikke rejse sig, stærke smerter, forvirring værre end normalt eller blødning, der ikke vil stoppe."
+              "instruction": "Hovedskade, kan ikke komme op, stærke smerter, forvirring værre end normalt, eller blødning der ikke stopper."
             },
             {
               "title": "Efter faldet",
-              "instruction": "Log denne begivenhed og nævn det for deres læge. Gentagne fald kan indikere medicinproblemer eller sygdomsudvikling."
+              "instruction": "Log denne begivenhed og nævn den for deres læge. Gentagne fald kan indikere medicinproblemer eller sygdomsprogression."
             }
           ]
         },
@@ -1197,15 +1197,15 @@
           "steps": [
             {
               "title": "Træk vejret – det er sygdommen, ikke dem",
-              "instruction": "De kan oprigtigt ikke huske, at de har spurgt. Din frustration er forståelig, men at vise den gør dem mere ængstelige."
+              "instruction": "De husker oprigtigt ikke, at de har spurgt. Din frustration er gyldig, men at vise den gør dem mere ængstelige."
             },
             {
               "title": "Hvad spørger de egentlig om?",
-              "instruction": "Overfladespørgsmålet er sjældent det virkelige spørgsmål. \"Hvad tid er der aftensmad?\" kan betyde \"Jeg er sulten.\"",
+              "instruction": "Det overfladiske spørgsmål er sjældent det virkelige spørgsmål. \"Hvad tid er aftensmad?\" kan betyde \"Jeg er sulten.\"",
               "checklist": [
                 "Er de ængstelige for noget?",
-                "Kan de være sultne, tørstige eller kede sig?",
-                "Er der en kommende begivenhed, der forårsager bekymring?"
+                "Kunne de være sultne, tørstige eller kede sig?",
+                "Er der en kommende begivenhed, der skaber bekymring?"
               ]
             },
             {
@@ -1214,13 +1214,13 @@
               "tips": [
                 "Skriv svaret på en synlig whiteboard",
                 "Giv et simpelt, beroligende svar hver gang",
-                "Omdiriger til en praktisk aktivitet efter besvarelse",
-                "Brug visuelle tidsplaner til at reducere usikkerhed"
+                "Omdiriger til en praktisk aktivitet efter at have svaret",
+                "Brug visuelle skemaer for at reducere usikkerhed"
               ]
             },
             {
-              "title": "Beskyt dit eget velvære",
-              "instruction": "Skift med en anden omsorgsperson, hvis det er muligt. Brug hovedtelefoner med blid musik, når du har brug for en mental pause."
+              "title": "Beskyt dit eget velbefindende",
+              "instruction": "Skift med en anden omsorgsperson, hvis muligt. Brug hovedtelefoner med blid musik, når du har brug for en mental pause."
             }
           ]
         },
@@ -1229,10 +1229,10 @@
           "steps": [
             {
               "title": "Din sikkerhed kommer først",
-              "instruction": "Hvis du føler dig fysisk usikker, skal du straks træde tilbage. Forsøg ikke at fastholde dem.",
+              "instruction": "Hvis du føler dig fysisk usikker, træd straks tilbage. Forsøg ikke at holde dem tilbage.",
               "tips": [
-                "Placer dig selv i nærheden af en udgang",
-                "Fjern farlige genstande fra rækkevidde",
+                "Placer dig selv nær en udgang",
+                "Fjern farlige genstande uden for rækkevidde",
                 "Hold din stemme lav og rolig",
                 "Foretag ikke pludselige bevægelser"
               ]
@@ -1248,12 +1248,12 @@
                 "Blev de bedt om at gøre noget?",
                 "Havde de smerter?",
                 "Var omgivelserne støjende eller kaotiske?",
-                "Følte de sig presset op i en krog?"
+                "Følte de sig trængt op i et hjørne?"
               ]
             },
             {
               "title": "Giv plads og tid",
-              "instruction": "Træk dig tilbage. Stop den udløsende aktivitet. Kom tilbage om 15-20 minutter, som om intet var hændt.",
+              "instruction": "Træk dig tilbage. Stop den udløsende aktivitet. Kom tilbage om 15-20 minutter, som om intet var sket.",
               "tips": [
                 "Forlad rummet, hvis det er sikkert",
                 "Fjern udløseren",
@@ -1263,7 +1263,7 @@
             },
             {
               "title": "Når dette er en nødsituation",
-              "instruction": "Hvis de har et våben, hvis nogen er kommet til skade, eller hvis aggressionen ikke aftager – ring til alarmtjenesterne."
+              "instruction": "Hvis de har et våben, hvis nogen er kommet til skade, eller hvis aggressionen ikke aftager – ring til alarmcentralen."
             }
           ]
         },
@@ -1274,73 +1274,73 @@
               "title": "Hold omgivelserne sikre",
               "instruction": "Hvis de er vågne og bevæger sig rundt om natten, er din første prioritet sikkerhed.",
               "tips": [
-                "Tænd lavt natlys",
-                "Fjern snublefarer",
+                "Tænd dæmpede natlys",
+                "Ryd snublefarer",
                 "Lås yderdøre, hvis vandring er en bekymring",
                 "\"Det er nat, alt er sikkert\""
               ]
             },
             {
               "title": "Hvad vækkede dem?",
-              "instruction": "Natlig opvågnen kan skyldes smerte, behov for at gå på toilettet, medicineringstidspunkt eller sult.",
+              "instruction": "Natlig opvågning kan skyldes smerte, behov for at komme på toilettet, medicintidspunkt eller sult.",
               "checklist": [
-                "Har de brug for at gå på toilettet?",
+                "Skal de på toilettet?",
                 "Har de smerter?",
-                "Vækkede en støj eller et lys dem?",
+                "Vækkede en lyd eller et lys dem?",
                 "Er de sultne eller tørstige?"
               ]
             },
             {
-              "title": "Guid dem blidt tilbage",
-              "instruction": "Diskuter ikke, hvad klokken er. Omdiriger dem tilbage til sengen med beroligende signaler.",
+              "title": "Led dem blidt tilbage",
+              "instruction": "Diskuter ikke, hvad klokken er. Led dem tilbage til sengen med beroligende signaler.",
               "tips": [
                 "Tilbyd en varm, koffeinfri drik",
                 "Brug en rolig, stille stemme",
                 "Sæt blød, velkendt musik på",
-                "Sid hos dem, indtil de falder til ro"
+                "Sid med dem, indtil de falder til ro"
               ]
             },
             {
-              "title": "Forbedre i morgen aften",
-              "instruction": "Mere aktivitet om dagen, ingen koffein efter middag, konsekvent sengetidsrutine, begræns lur til 30 minutter."
+              "title": "Forbedr næste nat",
+              "instruction": "Mere aktivitet om dagen, ingen koffein efter middag, konsekvent sengetidsrutine, begræns lure til 30 minutter."
             }
           ]
         },
         "shadowing": {
-          "label": "Skygge",
+          "label": "Skygning",
           "steps": [
             {
               "title": "Anerkend din frustration",
-              "instruction": "At blive fulgt overalt er udmattende. Disse følelser er forståelige. Træk vejret."
+              "instruction": "At blive fulgt overalt er udmattende. Disse følelser er gyldige. Træk vejret."
             },
             {
               "title": "Hvorfor følger de dig?",
-              "instruction": "Skygge er drevet af angst og frygt for at blive forladt. At være i nærheden af dig er deres eneste kilde til sikkerhed.",
+              "instruction": "Skygning drives af angst og frygt for at blive forladt. At være nær dig er deres eneste kilde til sikkerhed.",
               "checklist": [
                 "Har der været en nylig rutineændring?",
                 "Er de i et ukendt miljø?",
                 "Har du været væk for nylig?",
-                "Har de det dårligt?"
+                "Føler de sig utilpas?"
               ]
             },
             {
               "title": "Reducer deres angst",
               "instruction": "Hjælp dem med at føle sig trygge uden at være fysisk til stede hvert øjeblik.",
               "tips": [
-                "Giv dem et \"job\" i nærheden af, hvor du er",
+                "Giv dem en \"opgave\" i nærheden af, hvor du er",
                 "Efterlad en personlig genstand hos dem som et tryghedsanker",
-                "\"Jeg er lige i køkkenet, jeg er lige tilbage\"",
-                "Prøv velkendt tv eller musik som en ledsager"
+                "\"Jeg er bare i køkkenet, jeg er lige tilbage\"",
+                "Prøv velkendt TV eller musik som en ledsager"
               ]
             },
             {
-              "title": "Indlæg pauser for dig selv",
-              "instruction": "Bed nogen om at sidde hos dem, mens du tager 20 minutter. Selv 10 minutter alene hjælper.",
+              "title": "Indbyg pauser til dig selv",
+              "instruction": "Bed nogen om at sidde med dem, mens du tager 20 minutter. Selv 10 minutter alene hjælper.",
               "tips": [
                 "Vent ikke, til du er udmattet",
                 "Det er okay at lukke badeværelsesdøren forsigtigt",
                 "Overvej en støttegruppe",
-                "Denne adfærd reduceres ofte med en stabil rutine"
+                "Denne adfærd mindskes ofte med en stabil rutine"
               ]
             }
           ]
@@ -1349,26 +1349,26 @@
     },
     "tabs": {
       "dashboard": "Dashboard",
-      "plan": "Planlæg",
-      "location": "Placering",
+      "plan": "Plan",
+      "location": "Lokation",
       "coach": "Coach",
       "more": "Mere"
     }
   },
   "notifications": {
     "taskReminder": "{{patientName}}, det er tid til: {{taskTitle}}",
-    "taskCompleted": "{{patientName}} har fuldført: {{taskTitle}}",
-    "checkinReceived": "{{patientName}} har fuldført dagens check-in",
+    "taskCompleted": "{{patientName}} har gennemført: {{taskTitle}}",
+    "checkinReceived": "{{patientName}} har gennemført dagens check-in",
     "leftSafeZone": "{{patientName}} har forladt {{zoneName}}",
     "inactivity": "Ingen bevægelse registreret fra {{patientName}} i {{hours}} timer",
     "nightMovement": "{{patientName}} bevæger sig udenfor kl. {{time}}",
-    "takeMeHome": "{{patientName}} trykkede på 'Tag mig hjem' fra {{location}}",
-    "eveningSummary": "{{patientName}}'s dag: {{completed}}/{{total}} opgaver udført. Humør: {{mood}}"
+    "takeMeHome": "{{patientName}} trykkede 'Tag mig hjem' fra {{location}}",
+    "eveningSummary": "{{patientName}}s dag: {{completed}}/{{total}} opgaver udført. Humør: {{mood}}"
   },
   "subscription": {
     "free": "Gratis",
     "plus": "OurTurn Plus",
-    "upgradeTitle": "Lås OurTurn Plus op",
+    "upgradeTitle": "Lås op for OurTurn Plus",
     "upgradeFeature": "Denne funktion kræver OurTurn Plus",
     "monthly": "{{price}}/måned",
     "annual": "{{price}}/år",
@@ -1377,16 +1377,16 @@
     "restore": "Gendan køb",
     "manage": "Administrer abonnement",
     "features": {
-      "unlimitedTasks": "Ubegrænset antal opgaver pr. dag",
-      "aiCoach": "Fuld AI Care Coach",
-      "brainActivities": "AI-genererede hjerne wellness-aktiviteter",
-      "safeZones": "Sikre zoner og placeringsalarmer",
+      "unlimitedTasks": "Ubegrænsede opgaver pr. dag",
+      "aiCoach": "Fuld AI Pleje Coach",
+      "brainActivities": "AI-genererede hjerne-wellness-aktiviteter",
+      "safeZones": "Sikre zoner & lokationsadvarsler",
       "multiCaregiver": "Op til 5 familiemedlemmer",
-      "journal": "Shared Care Journal",
-      "insights": "AI pattern insights",
-      "reports": "Doctor visit reports",
-      "toolkit": "Caregiver toolkit & wellness",
-      "priority": "Priority support"
+      "journal": "Fælles Plejedagbog",
+      "insights": "AI-mønsterindsigt",
+      "reports": "Rapporter til lægebesøg",
+      "toolkit": "Værktøjskasse og velvære for omsorgspersoner",
+      "priority": "Prioriteret support"
     }
   }
 }

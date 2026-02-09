@@ -18,6 +18,7 @@ import {
   enrichWithEvidence,
 } from '@ourturn/shared/utils/task-suggestion-validator';
 import type { TaskCategory } from '@ourturn/shared/types/care-plan';
+import { getLanguageInstruction } from '@/lib/ai-language';
 
 const log = createLogger('ai/suggest-tasks');
 
@@ -52,7 +53,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Get request body
-    const { householdId, category, count = 5 } = await request.json();
+    const { householdId, category, count = 5, locale } = await request.json();
 
     if (!householdId) {
       return NextResponse.json({ error: 'Household ID is required' }, { status: 400 });
@@ -204,7 +205,7 @@ DAILY PLAN STRUCTURE:
 - Space tasks with minimum 1.5-hour gaps between ${wakeTime} and ${sleepTime}
 
 Generate exactly ${count} UNIQUE task suggestions. Each must map to a different intervention_id.
-
+${getLanguageInstruction(locale) ? `\nThe title and hint_text for each task MUST be written in the user's language. ${getLanguageInstruction(locale)}` : ''}
 Return ONLY a valid JSON array. No markdown, no explanation.
 Each task: { "intervention_id": "...", "category": "...", "title": "short title max 6 words", "hint_text": "2-4 warm sentences with specific instructions", "time": "HH:MM", "recurrence": "daily" }`;
 

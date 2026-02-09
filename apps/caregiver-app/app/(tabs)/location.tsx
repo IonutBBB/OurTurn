@@ -37,12 +37,12 @@ try {
   mapsAvailable = false;
 }
 
-const ALERT_TYPE_LABELS: Record<LocationAlertType, string> = {
-  left_safe_zone: 'Left Safe Zone',
-  inactive: 'Inactive',
-  night_movement: 'Night Movement',
-  take_me_home_tapped: 'Take Me Home Tapped',
-  sos_triggered: 'SOS Triggered',
+const ALERT_TYPE_I18N_KEYS: Record<LocationAlertType, string> = {
+  left_safe_zone: 'caregiverApp.location.alertTypeLeftSafeZone',
+  inactive: 'caregiverApp.location.alertTypeInactive',
+  night_movement: 'caregiverApp.location.alertTypeNightMovement',
+  take_me_home_tapped: 'caregiverApp.location.alertTypeTakeMeHomeTapped',
+  sos_triggered: 'caregiverApp.location.alertTypeSosTriggered',
 };
 
 const ALERT_TYPE_ICONS: Record<LocationAlertType, string> = {
@@ -385,7 +385,7 @@ export default function LocationScreen() {
                   </Text>
                   <View style={styles.alertText}>
                     <Text style={styles.alertTypeName}>
-                      {ALERT_TYPE_LABELS[alert.type]}
+                      {t(ALERT_TYPE_I18N_KEYS[alert.type])}
                     </Text>
                     <Text style={styles.alertTime}>
                       {formatDateTime(alert.triggered_at)}
@@ -551,7 +551,7 @@ export default function LocationScreen() {
                   </Text>
                   <View style={styles.recentAlertInfo}>
                     <Text style={styles.recentAlertType}>
-                      {ALERT_TYPE_LABELS[alert.type]}
+                      {t(ALERT_TYPE_I18N_KEYS[alert.type])}
                     </Text>
                     <Text style={styles.recentAlertTime}>
                       {formatDateTime(alert.triggered_at)}

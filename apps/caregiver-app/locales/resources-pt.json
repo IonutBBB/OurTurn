@@ -200,5 +200,11 @@
       "respite": "Cuidados de Repouso",
       "financial": "Apoio Financeiro"
     }
+  },
+  "whoIsupport": {
+    "sectionTitle": "Programa WHO iSupport",
+    "sectionSubtitle": "Um programa abrangente de formação de cuidadores baseado em evidências, desenvolvido pela Organização Mundial da Saúde (OMS) — a agência das Nações Unidas responsável pela saúde pública internacional.",
+    "whoExplanation": "OMS = Organização Mundial da Saúde (Nações Unidas)",
+    "badge": "Formação baseada em evidências"
   }
 }

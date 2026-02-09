@@ -200,5 +200,11 @@
       "respite": "Nega za razbremenitev",
       "financial": "Finančna podpora"
     }
+  },
+  "whoIsupport": {
+    "sectionTitle": "Program WHO iSupport",
+    "sectionSubtitle": "Celovit program usposabljanja negovalcev, ki temelji na dokazih, in ga je razvila Svetovna zdravstvena organizacija (WHO) — agencija Združenih narodov, odgovorna za mednarodno javno zdravje.",
+    "whoExplanation": "WHO = Svetovna zdravstvena organizacija (Združeni narodi)",
+    "badge": "Usposabljanje, ki temelji na dokazih"
   }
 }

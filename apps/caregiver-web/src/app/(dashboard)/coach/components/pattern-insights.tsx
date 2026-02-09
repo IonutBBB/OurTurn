@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import i18n from '@/i18n';
 import { useToast } from '@/components/toast';
 
 interface PatternInsightsProps {
@@ -27,7 +28,7 @@ export function PatternInsights({ householdId, incidentCount }: PatternInsightsP
       const res = await fetch('/api/ai/behaviour-insights', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ householdId }),
+        body: JSON.stringify({ householdId, locale: i18n.language }),
       });
       if (res.status === 429) {
         showToast(t('common.error'), 'error');

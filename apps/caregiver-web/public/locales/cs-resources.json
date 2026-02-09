@@ -200,5 +200,11 @@
       "respite": "Péče o odlehčení",
       "financial": "Finanční podpora"
     }
+  },
+  "whoIsupport": {
+    "sectionTitle": "Program WHO iSupport",
+    "sectionSubtitle": "Komplexní vzdělávací program pro pečující osoby založený na důkazech, vyvinutý Světovou zdravotnickou organizací (WHO) — agenturou Organizace spojených národů odpovědnou za mezinárodní veřejné zdraví.",
+    "whoExplanation": "WHO = Světová zdravotnická organizace (Organizace spojených národů)",
+    "badge": "Školení založené na důkazech"
   }
 }

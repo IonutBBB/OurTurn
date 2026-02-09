@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { View, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, ActivityIndicator, StyleSheet, Platform } from 'react-native';
+import * as NavigationBar from 'expo-navigation-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font';
 import {
@@ -42,11 +43,14 @@ function RootLayoutInner() {
         <Stack.Screen name="(auth)" />
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="onboarding" />
-        <Stack.Screen name="settings/index" />
-        <Stack.Screen name="reports/index" />
-        <Stack.Screen name="behaviours/index" options={{ animation: 'slide_from_right' }} />
-        <Stack.Screen name="resources/index" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="settings" />
+        <Stack.Screen name="reports" />
+        <Stack.Screen name="behaviours" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="resources" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="coach-conversation" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="wellbeing" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="family" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="crisis" options={{ animation: 'slide_from_right' }} />
       </Stack>
       <StatusBar style={resolvedTheme === 'dark' ? 'light' : 'dark'} />
     </>
@@ -71,6 +75,11 @@ export default function RootLayout() {
   useEffect(() => {
     initialize();
     initTheme();
+    // Hide Android navigation bar so it doesn't cover tab buttons
+    if (Platform.OS === 'android') {
+      NavigationBar.setVisibilityAsync('hidden');
+      NavigationBar.setBehaviorAsync('overlay-swipe');
+    }
   }, [initialize, initTheme]);
 
   // Show loading screen while initializing auth state or loading fonts

@@ -8,12 +8,12 @@
     "done": "Gatavs",
     "skip": "Izlaist šodien",
     "loading": "Ielādē...",
-    "error": "Radās kļūda. Lūdzu, mēģiniet vēlreiz.",
-    "errorTitle": "Radās kļūda",
-    "errorDefault": "Gadījās neparedzēta kļūda.",
-    "tryAgain": "Mēģiniet vēlreiz",
-    "logOut": "Izrakstīties",
-    "offline": "Jūs esat bezsaistē — dati tiks sinhronizēti, kad būsiet tiešsaistē",
+    "error": "Kaut kas nogāja greizi. Lūdzu, mēģiniet vēlreiz.",
+    "errorTitle": "Kaut kas nogāja greizi",
+    "errorDefault": "Radās neparedzēta kļūda.",
+    "tryAgain": "Mēģināt vēlreiz",
+    "logOut": "Izlogoties",
+    "offline": "Jūs esat bezsaistē — jūsu dati tiks sinhronizēti, kad būsiet tiešsaistē",
     "synced": "Sinhronizēts",
     "viewMore": "Skatīt vairāk",
     "back": "Atpakaļ",
@@ -27,53 +27,53 @@
     "primary": "Primārais"
   },
   "categories": {
-    "medication": "Zāles",
+    "medication": "Medikamenti",
     "nutrition": "Ēdienreizes un uzturs",
     "physical": "Fiziskās aktivitātes",
-    "cognitive": "Smadzeņu veselība",
-    "social": "Sociālā saikne",
+    "cognitive": "Prāta labsajūta",
+    "social": "Sociālās saites un savienojumi",
     "health": "Veselības pārbaude"
   },
   "caregiverApp": {
     "dashboard": {
-      "greeting": "Labdien, {{timeOfDay}}, {{name}}",
-      "statusGood": "{{patientName}} diena norit labi",
+      "greeting": "Labdien, {{name}}",
+      "statusGood": "{{patientName}} diena rit labi",
       "statusConcern": "{{patientName}} varētu būt nepieciešama uzmanība",
       "todaysStatus": "Šodienas statuss",
-      "tasksCompleted": "Izpildīti {{completed}} no {{total}} uzdevumiem",
-      "dailyCheckin": "Ikdienas reģistrēšanās",
-      "noCheckinYet": "Šodien vēl nav iesniegta reģistrēšanās",
+      "tasksCompleted": "Paveikti {{completed}} no {{total}} uzdevumiem",
+      "dailyCheckin": "Ikdienas reģistrācija",
+      "noCheckinYet": "Šodien vēl nav iesniegta reģistrācija",
       "location": "Atrašanās vieta",
       "atHome": "{{name}} ir mājās",
-      "lastUpdate": "Pēdējo reizi atjaunināts: {{time}}",
-      "aiInsights": "Ieskats",
+      "lastUpdate": "Pēdējoreiz atjaunināts: {{time}}",
+      "aiInsights": "Ieskati",
       "quickActions": "Ātrās darbības",
       "callPatient": "Zvanīt {{name}}",
-      "tasksCompletedLabel": "uzdevumi pabeigti",
+      "tasksCompletedLabel": "paveiktie uzdevumi",
       "careCode": "Aprūpes kods",
       "careCodeHint": "Kopīgojiet, lai savienotu pacienta lietotni",
       "careCodeNotAvailable": "Kods nav pieejams",
-      "morningActivityPattern": "Rīta aktivitāšu modelis",
-      "insightText": "{{name}} paveic vairāk uzdevumu dienās, kad ir plānotas rīta pastaigas.",
-      "noJournalEntries": "Žurnālā vēl nav ierakstu",
+      "morningActivityPattern": "Rīta aktivitātes modelis",
+      "insightText": "{{name}} paveic vairāk uzdevumu dienās, kad ir ieplānotas rīta pastaigas.",
+      "noJournalEntries": "Vēl nav žurnāla ierakstu",
       "unknown": "Nezināms",
-      "moodStruggling": "Cīņas",
+      "moodStruggling": "Grūtības",
       "moodLow": "Zems",
       "moodOkay": "Labi",
-      "moodGood": "Labi",
-      "moodGreat": "Lieliski",
+      "moodGood": "Labs",
+      "moodGreat": "Lielisks",
       "sleepPoor": "Slikts",
-      "sleepFair": "Vidējs",
-      "sleepWell": "Labi",
+      "sleepFair": "Viduvējs",
+      "sleepWell": "Labs",
       "mood": "Garastāvoklis",
       "sleep": "Miegs",
-      "minutesAgo": "Pirms {{count}} min.",
-      "hoursAgo": "Pirms {{count}} st.",
-      "daysAgo": "Pirms {{count}} d.",
+      "minutesAgo": "Pirms {{count}} min",
+      "hoursAgo": "Pirms {{count}} st",
+      "daysAgo": "Pirms {{count}} d",
       "deviceStatus": "Ierīces statuss",
       "deviceOnline": "Tiešsaistē",
       "deviceOffline": "Bezsaistē",
-      "lastSeenAt": "Pēdējo reizi redzēts: {{time}}",
+      "lastSeenAt": "Pēdējoreiz redzēts: {{time}}",
       "lastSeenNever": "Nekad nav savienots",
       "engagementSummary": "Šodienas iesaiste",
       "alertsToday": "Brīdinājumi šodien",
@@ -86,10 +86,10 @@
       "addTask": "Pievienot uzdevumu",
       "aiSuggest": "AI ieteiktie uzdevumi",
       "hintLabel": "Instrukcijas ({{name}} to redzēs)",
-      "hintPlaceholder": "Piem., Jūsu zāles atrodas virtuves letes zāļu kastītē",
+      "hintPlaceholder": "Piem., Jūsu tabletes ir virtuves letes zāļu kastītē",
       "recurrence": "Atkārtojas",
       "daily": "Katru dienu",
-      "specificDays": "Konkrētās dienās",
+      "specificDays": "Konkrētas dienas",
       "oneTime": "Vienreizējs",
       "copyDay": "Kopēt uz citām dienām",
       "saved": "Saglabāts",
@@ -97,10 +97,10 @@
       "category": "Kategorija",
       "taskTitle": "Uzdevuma nosaukums",
       "time": "Laiks",
-      "deleteConfirm": "Vai dzēst šo uzdevumu?",
+      "deleteConfirm": "Dzēst šo uzdevumu?",
       "noMoreSuggestions": "Vairs nav pieejami ieteikumi.",
       "copyFromTo": "Kopēt uzdevumus no {{day}} uz:",
-      "copyCount": "{{taskCount}} uzdevumi tiks kopēti uz {{dayCount}} dienām",
+      "copyCount": "{{taskCount}} uzdevumi tiks nokopēti uz {{dayCount}} dienām",
       "days": {
         "mon": "Pirmd.",
         "tue": "Otrd.",
@@ -110,105 +110,105 @@
         "sat": "Sestd.",
         "sun": "Svētd."
       },
-      "taskPhoto": "Uzdevuma fotoattēls (pēc izvēles)",
-      "uploadPhoto": "Augšupielādēt fotoattēlu",
-      "removePhoto": "Noņemt fotoattēlu",
-      "medicationItems": "Zāles šajā grupā",
-      "medicationItemsHint": "Apvienojiet līdz 3 zālēm, kas jālieto vienlaikus",
-      "addMedication": "Pievienot zāles",
-      "medName": "Zāļu nosaukums",
+      "taskPhoto": "Uzdevuma foto (pēc izvēles)",
+      "uploadPhoto": "Augšupielādēt foto",
+      "removePhoto": "Noņemt foto",
+      "medicationItems": "Medikamenti šajā grupā",
+      "medicationItemsHint": "Grupējiet līdz 3 medikamentiem, kas tiek lietoti vienlaicīgi",
+      "addMedication": "Pievienot medikamentu",
+      "medName": "Medikamenta nosaukums",
       "medNamePlaceholder": "piem., Donepezils",
-      "medDosage": "Deva vai instrukcija",
+      "medDosage": "Deva vai norādījums",
       "medDosagePlaceholder": "piem., 10 mg tablete",
-      "medPhotoLabel": "Fotoattēls",
-      "medItemLabel": "{{number}}. zāles",
+      "medPhotoLabel": "Foto",
+      "medItemLabel": "Medikaments {{number}}",
       "removeMedication": "Noņemt",
-      "maxMedications": "Maksimums 3 zāles vienā grupā",
+      "maxMedications": "Maksimāli 3 medikamenti vienā grupā",
       "uploadingPhoto": "Augšupielādē...",
-      "evidenceBased": "Pierādījumos balstīts"
+      "evidenceBased": "Uz pierādījumiem balstīts"
     },
     "location": {
       "title": "Atrašanās vieta un drošība",
       "currentLocation": "Pašreizējā atrašanās vieta",
       "safeZones": "Drošās zonas",
-      "addSafeZone": "Pievienot drošu zonu",
-      "editSafeZone": "Rediģēt drošu zonu",
+      "addSafeZone": "Pievienot drošo zonu",
+      "editSafeZone": "Rediģēt drošo zonu",
       "alerts": "Brīdinājumu iestatījumi",
-      "leaveZoneAlert": "Paziņot, kad {{name}} atstāj drošu zonu",
-      "inactivityAlert": "Paziņot, kad nav kustības",
-      "nightAlert": "Paziņot, kad ārpusē pēc",
-      "takeMeHomeAlert": "Paziņot, kad {{name}} pieskaras “Aizvest mani mājās”",
+      "leaveZoneAlert": "Paziņot, kad {{name}} atstāj drošo zonu",
+      "inactivityAlert": "Paziņot, ja nav kustības ilgāk par",
+      "nightAlert": "Paziņot, ja ārpus mājas pēc",
+      "takeMeHomeAlert": "Paziņot, kad {{name}} pieskaras 'Aizvest mani mājās'",
       "locationHistory": "Atrašanās vietas vēsture",
-      "takeMeHomeTapped": "{{name}} pieskārās “Aizvest mani mājās”",
-      "hours": "stundas",
+      "takeMeHomeTapped": "{{name}} pieskārās 'Aizvest mani mājās'",
+      "hours": "stundām",
       "zoneName": "Zonas nosaukums",
       "zoneRadius": "Rādiuss (metros)",
       "unknownLocation": "Nezināma atrašanās vieta",
-      "completeOnboarding": "Lūdzu, vispirms pabeidziet reģistrāciju.",
-      "unacknowledgedAlerts": "{{count}} Neapstiprināts brīdinājums",
-      "unacknowledgedAlertsPlural": "{{count}} Neapstiprināti brīdinājumi",
+      "completeOnboarding": "Lūdzu, vispirms pabeidziet ievadīšanu.",
+      "unacknowledgedAlerts": "{{count}} neapstiprināts brīdinājums",
+      "unacknowledgedAlertsPlural": "{{count}} neapstiprināti brīdinājumi",
       "acknowledge": "Apstiprināt",
       "patientLocation": "{{name}} atrašanās vieta",
       "updated": "Atjaunināts: {{time}}",
-      "noLocationData": "Vēl nav datu par atrašanās vietu",
+      "noLocationData": "Vēl nav atrašanās vietas datu",
       "live": "Tiešraide",
       "add": "+ Pievienot",
-      "noSafeZonesYet": "Vēl nav konfigurētas drošās zonas.\nPievienojiet zonas, lai saņemtu brīdinājumus, kad {{name}} atstāj.",
-      "radiusMeters": "{{radius}}m rādiuss",
-      "recentAlerts24h": "Jaunākie brīdinājumi (24 h)",
+      "noSafeZonesYet": "Vēl nav konfigurētas drošās zonas.\nPievienojiet zonas, lai saņemtu brīdinājumus, kad {{name}} tās atstāj.",
+      "radiusMeters": "{{radius}} m rādiuss",
+      "recentAlerts24h": "Jaunākie brīdinājumi (24 stundas)",
       "noRecentAlerts": "Pēdējo 24 stundu laikā nav brīdinājumu. Viss ir kārtībā!",
-      "deleteSafeZone": "Dzēst drošu zonu",
-      "deleteSafeZoneConfirm": "Vai tiešām vēlaties dzēst “{{name}}”?",
-      "failedToSaveSafeZone": "Neizdevās saglabāt drošu zonu",
-      "failedToDeleteSafeZone": "Neizdevās dzēst drošu zonu",
+      "deleteSafeZone": "Dzēst drošo zonu",
+      "deleteSafeZoneConfirm": "Vai tiešām vēlaties dzēst \"{{name}}\"?",
+      "failedToSaveSafeZone": "Neizdevās saglabāt drošo zonu",
+      "failedToDeleteSafeZone": "Neizdevās dzēst drošo zonu",
       "fillAllFields": "Lūdzu, aizpildiet visus laukus",
       "name": "Nosaukums",
       "nameExample": "piem., Mājas, Ārsta kabinets",
       "latitude": "Platums",
       "longitude": "Garums",
-      "radiusHint": "Ieteicams: 100-500 metri tipiskām vietām",
+      "radiusHint": "Ieteicams: 100-500 metri tipiskām atrašanās vietām",
       "mapView": "Kartes skats",
       "mapRequiresBuild": "Kartēm nepieciešama izstrādes versija.\nIzmantojiet EAS Build, lai iespējotu kartes.",
       "home": "Mājas",
-      "patient": "Pacients",
+      "patient": "Aprūpējamais",
       "alertTypeLeftSafeZone": "Atstāja drošo zonu",
       "alertTypeInactive": "Neaktīvs",
       "alertTypeNightMovement": "Nakts kustība",
-      "alertTypeTakeMeHomeTapped": "Pieskāriens “Aizved mani mājās”",
+      "alertTypeTakeMeHomeTapped": "Pieskārās 'Aizvediet mani mājās'",
       "alertTypeSosTriggered": "SOS aktivizēts",
       "invalidLatitude": "Lūdzu, ievadiet derīgu platumu (-90 līdz 90)",
       "invalidLongitude": "Lūdzu, ievadiet derīgu garumu (-180 līdz 180)",
       "invalidRadius": "Lūdzu, ievadiet pozitīvu rādiusa vērtību"
     },
     "coach": {
-      "title": "AI Aprūpes konsultants",
+      "title": "AI Aprūpes padomnieks",
       "tabs": {
-        "chat": "Čats",
+        "chat": "Tērzēšana",
         "behaviours": "Uzvedība",
         "resources": "Resursi"
       },
       "resources": {
         "title": "Resursi",
-        "subtitle": "Rokasgrāmatas, raksti un vietējais atbalsts, lai palīdzētu jums aprūpes ceļojumā",
-        "linkLabel": "Resursi un rokasgrāmatas"
+        "subtitle": "Ceļveži, raksti un vietējais atbalsts, lai palīdzētu jums jūsu aprūpes ceļā",
+        "linkLabel": "Resursi un ceļveži"
       },
-      "intro": "Jautājiet man jebko par rūpēm par {{name}}. Es zinu viņu rutīnu, preferences un vispārējo labāko praksi.",
+      "intro": "Jautājiet man jebko par {{name}} aprūpi. Es zinu viņu ikdienu, vēlmes un vispārējās labākās prakses.",
       "placeholder": "Ierakstiet savu jautājumu...",
-      "disclaimer": "Esmu šeit, lai jūs atbalstītu, nevis aizstātu medicīnisku padomu. Veselības problēmu gadījumā vienmēr konsultējieties ar savu ārstu.",
-      "disclaimerShort": "Aprūpes konsultants sniedz tikai vispārīgus norādījumus. Vienmēr konsultējieties ar veselības aprūpes speciālistiem, lai saņemtu medicīnisku padomu.",
-      "suggestedTopics": "Ieteiktās tēmas",
+      "disclaimer": "Esmu šeit, lai jūs atbalstītu, nevis aizstātu medicīniskas konsultācijas. Veselības problēmu gadījumā vienmēr konsultējieties ar savu ārstu.",
+      "disclaimerShort": "Aprūpes padomnieks sniedz tikai vispārīgus norādījumus. Medicīniskas konsultācijas gadījumā vienmēr konsultējieties ar veselības aprūpes speciālistiem.",
+      "suggestedTopics": "Ieteicamās tēmas",
       "addToCarePlan": "Pievienot aprūpes plānam",
       "addToDoctorNotes": "Pievienot ārsta piezīmēm",
       "newConversation": "Jauna saruna",
-      "newChat": "Jauns čats",
-      "careCoach": "Aprūpes konsultants",
-      "completeOnboarding": "Lūdzu, vispirms pabeidziet reģistrāciju.",
+      "newChat": "Jauna tērzēšana",
+      "careCoach": "Aprūpes padomnieks",
+      "completeOnboarding": "Lūdzu, vispirms pabeidziet iepazīšanās procesu.",
       "greeting": "Sveiki, {{name}}!",
-      "greetingIntro": "Esmu šeit, lai palīdzētu jums rūpēties par {{patientName}}. Jautājiet man jebko par ikdienas aprūpi, aktivitātēm vai sarežģītu situāciju pārvaldību.",
-      "tryAsking": "Pamēģiniet jautāt:",
-      "askAbout": "Jautājiet par rūpēm par {{name}}...",
+      "greetingIntro": "Esmu šeit, lai palīdzētu jums aprūpēt {{patientName}}. Jautājiet man jebko par ikdienas aprūpi, aktivitātēm vai sarežģītu situāciju risināšanu.",
+      "tryAsking": "Mēģiniet jautāt:",
+      "askAbout": "Jautājiet par {{name}} aprūpi...",
       "send": "Sūtīt",
-      "signingIn": "Pierakstīšanās",
+      "signingIn": "Pieslēgšanās",
       "taskAddedSuccess": "Uzdevums pievienots aprūpes plānam!",
       "taskAddedError": "Neizdevās pievienot uzdevumu. Lūdzu, mēģiniet vēlreiz.",
       "noteAddedSuccess": "Piezīme saglabāta ārsta apmeklējumam!",
@@ -217,47 +217,47 @@
       "saveForDoctorVisit": "Saglabāt ārsta apmeklējumam",
       "success": "Veiksmīgi",
       "suggestions": {
-        "sundowning": "Kā man rīkoties ar saulrieta sindromu?",
+        "sundowning": "Kā rīkoties ar saulrieta sindromu?",
         "rainyDays": "Kādas aktivitātes ir piemērotas lietainām dienām?",
-        "siblings": "Palīdziet man parunāt ar maniem brāļiem un māsām par aprūpes dalīšanu",
+        "siblings": "Palīdziet man runāt ar brāļiem un māsām par aprūpes dalīšanu",
         "refusesFood": "{{name}} atsakās ēst. Palīdziet.",
-        "repetitive": "Kā man rīkoties ar atkārtotiem jautājumiem?"
+        "repetitive": "Kā rīkoties ar atkārtotiem jautājumiem?"
       },
       "hub": {
-        "backToHub": "Atpakaļ uz konsultantu",
+        "backToHub": "Atpakaļ pie padomnieka",
         "insight": {
           "title": "Jums",
           "discuss": "Apspriediet",
-          "fallback": "Pārbaudiet {{name}} dienu, lai iegūtu personalizētus ieskatus"
+          "fallback": "Pārbaudiet, kāda bija {{name}} diena, lai iegūtu personalizētus ieskatus"
         },
         "rightNow": {
-          "title": "Šobrīd",
+          "title": "Tieši tagad",
           "subtitle": "Palīdzība šajā brīdī",
           "refusing_food": "Atsakās no ēdiena",
-          "refusing_medication": "Negrib lietot zāles",
-          "agitated": "Satraukts",
+          "refusing_medication": "Neņem medikamentus",
+          "agitated": "Uzbudināts",
           "not_recognizing": "Neatpazīst mani",
           "repetitive_questions": "Atkal tas pats jautājums",
           "sundowning": "Saulrieta sindroms",
-          "wants_to_leave": "Vēlas aiziet",
+          "wants_to_leave": "Vēlas doties prom",
           "caregiver_overwhelmed": "Es zaudēju pacietību"
         },
         "planPrepare": {
-          "title": "Plānojiet un sagatavojieties",
-          "subtitle": "Vadītas darbplūsmas",
-          "plan_tomorrow": "Plānojiet rītdienu",
-          "plan_tomorrow_desc": "Izveidojiet lielisku dienu kopā",
-          "doctor_visit": "Sagatavojieties ārsta apmeklējumam",
-          "doctor_visit_desc": "Ģenerējiet strukturētu kopsavilkumu",
-          "review_week": "Pārskatiet šo nedēļu",
+          "title": "Plānot un sagatavoties",
+          "subtitle": "Vadītas darba plūsmas",
+          "plan_tomorrow": "Plānot rītdienu",
+          "plan_tomorrow_desc": "Kopā izveidojiet lielisku dienu",
+          "doctor_visit": "Sagatavoties ārsta apmeklējumam",
+          "doctor_visit_desc": "Izveidot strukturētu kopsavilkumu",
+          "review_week": "Pārskatīt šo nedēļu",
           "review_week_desc": "Kas izdevās labi, kam jāpievērš uzmanība",
-          "adjust_plan": "Pielāgojiet aprūpes plānu",
-          "adjust_plan_desc": "Optimizējiet, pamatojoties uz to, kas darbojas"
+          "adjust_plan": "Pielāgot aprūpes plānu",
+          "adjust_plan_desc": "Optimizēt, pamatojoties uz to, kas darbojas"
         },
         "learn": {
-          "title": "Mācieties",
-          "subtitle": "Tēmu rokasgrāmatas {{name}}",
-          "daily_routines": "Ikdienas rutīnas",
+          "title": "Mācīties",
+          "subtitle": "Tēmu ceļveži priekš {{name}}",
+          "daily_routines": "Ikdienas rutīna",
           "communication": "Komunikācija",
           "behaviors": "Uzvedība",
           "activities": "Aktivitātes",
@@ -267,7 +267,7 @@
         },
         "askAnything": {
           "title": "Jautājiet jebko",
-          "placeholder": "Kas jums ir prātā par rūpēm par {{name}}?"
+          "placeholder": "Kas jums ir prātā par {{name}} aprūpi?"
         }
       }
     },
@@ -277,10 +277,10 @@
       "primaryCaregiver": "Galvenais aprūpētājs",
       "familyMember": "Ģimenes loceklis",
       "careCode": "Aprūpes kods",
-      "careCodeHelp": "Kopīgojiet šo kodu, lai savienotu pārī pacienta lietotni",
-      "regenerateCode": "Atjaunot kodu",
-      "regenerateWarning": "Tas atvienos visas savienotās pacienta ierīces. Viņiem būs nepieciešams jaunais kods.",
-      "journal": "Aprūpes žurnāls",
+      "careCodeHelp": "Kopīgojiet šo kodu, lai savienotu aprūpējamā lietotni",
+      "regenerateCode": "Ģenerēt jaunu kodu",
+      "regenerateWarning": "Tas atvienos visas savienotās aprūpējamā ierīces. Tām būs nepieciešams jaunais kods.",
+      "journal": "Aprūpes dienasgrāmata",
       "addNote": "Pievienot piezīmi",
       "observation": "Novērojums",
       "note": "Piezīme",
@@ -291,12 +291,12 @@
       "familyCircle": "Ģimenes loks",
       "back": "Atpakaļ",
       "family": "Ģimene",
-      "careJournal": "Aprūpes žurnāls",
+      "careJournal": "Aprūpes dienasgrāmata",
       "inviteFamilyMembers": "Uzaicināt ģimenes locekļus",
-      "shareCareCodeDesc": "Kopīgojiet savu aprūpes kodu, lai citi ģimenes locekļi varētu pievienoties.",
-      "showCareCode": "Parādīt aprūpes kodu",
+      "shareCareCodeDesc": "Kopīgojiet savu Aprūpes kodu, lai citi ģimenes locekļi varētu pievienoties.",
+      "showCareCode": "Rādīt Aprūpes kodu",
       "copy": "Kopēt",
-      "share": "Dalīties",
+      "share": "Kopīgot",
       "copied": "Nokopēts!",
       "codeCopiedToClipboard": "Aprūpes kods nokopēts starpliktuvē",
       "familyMembers": "Ģimenes locekļi ({{count}})",
@@ -305,96 +305,96 @@
       "entryPlaceholder": "Pievienojiet piezīmi, novērojumu vai svarīgu notikumu...",
       "posting": "Publicē...",
       "post": "Publicēt",
-      "noJournalEntries": "Žurnālā vēl nav ierakstu.",
+      "noJournalEntries": "Dienasgrāmatā vēl nav ierakstu.",
       "startDocumenting": "Sāciet dokumentēt savu aprūpes ceļojumu!",
       "yesterday": "Vakar",
       "failedToAddEntry": "Neizdevās pievienot ierakstu. Lūdzu, mēģiniet vēlreiz.",
       "shareCareCodeMessage": "Pievienojieties manam OurTurn aprūpes lokam! Izmantojiet šo aprūpes kodu: {{code}}",
       "deleteConfirmTitle": "Dzēst žurnāla ierakstu",
-      "deleteConfirmMessage": "Vai tiešām vēlaties dzēst šo žurnāla ierakstu? To nevarēs atsaukt.",
+      "deleteConfirmMessage": "Vai tiešām vēlaties dzēst šo žurnāla ierakstu? Šo darbību nevar atsaukt.",
       "edited": "(rediģēts)",
       "crisis": "Krīze",
       "canEditPlan": "Var rediģēt plānu",
       "receivesAlerts": "Saņem brīdinājumus",
-      "caregiverLimitReached": "Jūs esat sasniedzis bezmaksas līmeņa limitu ģimenes locekļiem. Jauniniet, lai pievienotu vairāk."
+      "caregiverLimitReached": "Esat sasniedzis bezmaksas līmeņa ierobežojumu ģimenes locekļiem. Jauniniet, lai pievienotu vairāk."
     },
     "toolkit": {
-      "pageTitle": "Aprūpētāja rīkkopa",
+      "pageTitle": "Aprūpētāja rīku komplekts",
       "pageSubtitle": "Praktiski rīki un atbalsts jūsu labsajūtai",
-      "introMessage": "Sveiki, {{name}}! Šī ir jūsu telpa ātrai atvieglojuma gūšanai, atbalstam un pašaprūpei.",
+      "introMessage": "Sveiki, {{name}}! Šī ir jūsu vieta ātrai atelpai, atbalstam un pašaprūpei.",
       "checkin": {
-        "title": "Kā jūs jūtaties šodien?",
+        "title": "Kā jums šodien klājas?",
         "energy": "Enerģija",
         "energyLow": "Izsmelts",
         "energyHigh": "Enerģisks",
         "stress": "Stress",
         "stressLow": "Mierīgs",
         "stressHigh": "Pārslogots",
-        "sleep": "Miegs",
-        "sleepLow": "Briesmīgs",
-        "sleepHigh": "Lielisks"
+        "sleep": "Miega kvalitāte",
+        "sleepLow": "Briesmīga",
+        "sleepHigh": "Lieliska"
       },
       "relief": {
-        "title": "Ātrās palīdzības stacija",
+        "title": "Ātrās atelpas stacija",
         "recommended": "Ieteicams",
         "duration": "{{min}} min",
         "startExercise": "Sākt",
-        "stepOf": "{{current}}. solis no {{total}}",
-        "complete": "Labi padarīts! Vingrinājums pabeigts.",
+        "stepOf": "Solis {{current}} no {{total}}",
+        "complete": "Lieliski paveikts! Vingrinājums pabeigts.",
         "close": "Aizvērt",
         "pause": "Pauze",
-        "resume": "Atsākt",
+        "resume": "Turpināt",
         "exercises": {
           "box-breathing": {
-            "name": "Kvadrātveida elpošana",
-            "step0": "Iejūtieties ērti un aizveriet acis",
+            "name": "Kastes elpošana",
+            "step0": "Iekārtojieties ērti un aizveriet acis",
             "step1": "Lēnām ieelpojiet caur degunu",
-            "step2": "Viegli aizturiet elpu",
+            "step2": "Maigi aizturiet elpu",
             "step3": "Lēnām izelpojiet caur muti",
-            "step4": "Aizturiet elpu pirms nākamās ieelpas",
+            "step4": "Aizturiet pirms nākamās ieelpas",
             "step5": "Lēnām ieelpojiet caur degunu",
-            "step6": "Viegli aizturiet elpu",
+            "step6": "Maigi aizturiet elpu",
             "step7": "Lēnām izelpojiet caur muti",
-            "step8": "Aizturiet elpu pirms nākamās ieelpas",
+            "step8": "Aizturiet pirms nākamās ieelpas",
             "step9": "Lēnām ieelpojiet caur degunu",
-            "step10": "Viegli aizturiet elpu",
+            "step10": "Maigi aizturiet elpu",
             "step11": "Lēnām izelpojiet caur muti",
-            "step12": "Aizturiet elpu pirms nākamās ieelpas",
+            "step12": "Aizturiet pirms nākamās ieelpas",
             "step13": "Lēnām ieelpojiet caur degunu",
-            "step14": "Viegli aizturiet elpu",
+            "step14": "Maigi aizturiet elpu",
             "step15": "Lēnām izelpojiet caur muti",
-            "step16": "Aizturiet elpu pirms nākamās ieelpas",
+            "step16": "Aizturiet pirms nākamās ieelpas",
             "step17": "Lēnām ieelpojiet caur degunu",
-            "step18": "Viegli aizturiet elpu",
+            "step18": "Maigi aizturiet elpu",
             "step19": "Lēnām izelpojiet caur muti",
-            "step20": "Aizturiet elpu pirms nākamās ieelpas",
+            "step20": "Aizturiet pirms nākamās ieelpas",
             "step21": "Lēnām ieelpojiet caur degunu",
-            "step22": "Viegli aizturiet elpu",
+            "step22": "Maigi aizturiet elpu",
             "step23": "Lēnām izelpojiet caur muti",
-            "step24": "Labi padarīts. Atvēliet brīdi, lai pamanītu, kā jūtaties."
+            "step24": "Lieliski paveikts. Veltiet brīdi, lai pamanītu, kā jūtaties."
           },
           "54321-grounding": {
-            "name": "5-4-3-2-1 Iemēšanās",
-            "step0": "Lēnām, dziļi ieelpojiet un apskatieties apkārt",
-            "step1": "Nosauciet 5 lietas, ko jūs varat REDZĒT šobrīd",
-            "step2": "Nosauciet 4 lietas, ko jūs varat PIESKARTIES šobrīd",
-            "step3": "Nosauciet 3 lietas, ko jūs varat DZIRDĒT šobrīd",
-            "step4": "Nosauciet 2 lietas, ko jūs varat SAOST šobrīd",
-            "step5": "Nosauciet 1 lietu, ko jūs varat PAGARŠOT šobrīd",
-            "step6": "Vēlreiz dziļi ieelpojiet. Jūs esat šeit, un jūs esat drošībā."
+            "name": "5-4-3-2-1 Iezemēšanās",
+            "step0": "Dziļi un lēnām ieelpojiet un paskatieties apkārt",
+            "step1": "Nosauciet 5 lietas, ko varat REDZĒT tieši tagad",
+            "step2": "Nosauciet 4 lietas, ko varat AIZTIKT tieši tagad",
+            "step3": "Nosauciet 3 lietas, ko varat DZIRDĒT tieši tagad",
+            "step4": "Nosauciet 2 lietas, ko varat SAOST tieši tagad",
+            "step5": "Nosauciet 1 lietu, ko varat NOGARŠOT tieši tagad",
+            "step6": "Vēlreiz dziļi ieelpojiet. Jūs esat šeit un esat drošībā."
           },
           "gratitude-moment": {
             "name": "Pateicības brīdis",
-            "step0": "Aizveriet acis un nomierinoši ieelpojiet",
+            "step0": "Aizveriet acis un mierīgi ieelpojiet",
             "step1": "Padomājiet par vienu cilvēku, par kuru esat pateicīgs, un kāpēc",
             "step2": "Padomājiet par vienu labu lietu, kas šodien notika, pat ja tā bija maza",
-            "step3": "Padomājiet par vienu lietu sevī, ko jūs novērtējat",
-            "step4": "Saglabājiet šīs trīs lietas savā prātā un dziļi elpojiet",
+            "step3": "Padomājiet par vienu lietu sevī, ko novērtējat",
+            "step4": "Paturiet šīs trīs lietas prātā un dziļi elpojiet",
             "step5": "Nēsājiet šo pateicības sajūtu sev līdzi."
           },
           "progressive-muscle-relaxation": {
             "name": "Progresīvā muskuļu relaksācija",
-            "step0": "Ērti apsēdieties vai apgulieties. Aizveriet acis.",
+            "step0": "Apsēdieties vai apgulieties ērti. Aizveriet acis.",
             "step1": "Stingri saspiediet abas dūres uz 5 sekundēm...",
             "step2": "Atlaidiet un sajūtiet, kā spriedze izzūd",
             "step3": "Sasprindziniet plecus — paceliet tos pret ausīm...",
@@ -402,154 +402,154 @@
             "step5": "Stingri savelciet seju — pieri, acis, žokli...",
             "step6": "Atlaidiet un ļaujiet sejai pilnībā atslābināties",
             "step7": "Sasprindziniet vēdera muskuļus...",
-            "step8": "Atlaidiet un ieelpojiet vēderā",
+            "step8": "Atlaidiet un elpojiet vēderā",
             "step9": "Stingri saspiediet kājas un pēdas...",
-            "step10": "Atlaidiet un sajūtiet, kā siltums plūst caur jūsu kājām",
-            "step11": "Dziļi elpojiet. Viss jūsu ķermenis ir atslābinājies.",
-            "step12": "Viegli atveriet acis, kad būsiet gatavs."
+            "step10": "Atlaidiet un sajūtiet siltumu, kas plūst caur kājām",
+            "step11": "Dziļi elpojiet. Viss jūsu ķermenis ir atslābināts.",
+            "step12": "Maigi atveriet acis, kad esat gatavs."
           },
           "mindful-break": {
             "name": "Apzināts pārtraukums",
-            "step0": "Pārtrauciet visu, ko darāt. Šis brīdis ir jūsu.",
-            "step1": "Aizveriet acis un veiciet 3 lēnas, dziļas ieelpas",
-            "step2": "Ievērojiet, kā jūtas jūsu ķermenis šobrīd — nav nepieciešams neko mainīt",
-            "step3": "Ieklausieties skaņās sev apkārt, tuvumā un tālumā",
-            "step4": "Sajūtiet virsmu zem sevis un gaisu uz savas ādas",
-            "step5": "Klusībā sakiet: \"Es daru visu, kas manos spēkos, un ar to pietiek.\"",
-            "step6": "Ievelciet vēl vienu dziļu elpu",
-            "step7": "Viegli atveriet acis. Jūs esat atjaunojies."
+            "step0": "Pārtrauciet visu, ko darāt. Šis brīdis pieder jums.",
+            "step1": "Aizveriet acis un ievelciet 3 lēnas, dziļas elpas.",
+            "step2": "Ievērojiet, kā jūsu ķermenis jūtas šobrīd — nav nepieciešams neko mainīt.",
+            "step3": "Ieklausieties skaņās ap jums, tuvu un tālu.",
+            "step4": "Sajūtiet virsmu zem sevis un gaisu uz savas ādas.",
+            "step5": "Klusībā sakiet: \"Es daru visu, ko varu, un ar to pietiek.\"",
+            "step6": "Ievelciet vēl vienu dziļu elpu.",
+            "step7": "Maigi atveriet acis. Jūs esat atjaunojies."
           },
           "breathing-478": {
             "name": "4-7-8 Elpošana",
-            "step0": "Ērti apsēdieties un atslābiniet plecus",
-            "step1": "Ieelpojiet klusi caur degunu 4 skaitļus",
-            "step2": "Aizturiet elpu 7 skaitļus",
-            "step3": "Pilnībā izelpojiet caur muti 8 skaitļus",
-            "step4": "Ieelpojiet klusi caur degunu 4 skaitļus",
-            "step5": "Aizturiet elpu 7 skaitļus",
-            "step6": "Pilnībā izelpojiet caur muti 8 skaitļus",
-            "step7": "Ieelpojiet klusi caur degunu 4 skaitļus",
-            "step8": "Aizturiet elpu 7 skaitļus",
-            "step9": "Pilnībā izelpojiet caur muti 8 skaitļus",
-            "step10": "Ieelpojiet klusi caur degunu 4 skaitļus",
-            "step11": "Aizturiet elpu 7 skaitļus",
-            "step12": "Pilnībā izelpojiet caur muti 8 skaitļus",
-            "step13": "Ieelpojiet klusi caur degunu 4 skaitļus",
-            "step14": "Aizturiet elpu 7 skaitļus",
-            "step15": "Pilnībā izelpojiet caur muti 8 skaitļus",
-            "step16": "Pievērsiet uzmanību, cik daudz mierīgāk jūtas jūsu ķermenis tagad."
+            "step0": "Apsēdieties ērti un atslābiniet plecus.",
+            "step1": "Klusi ieelpojiet caur degunu 4 skaitījumus.",
+            "step2": "Aizturiet elpu 7 skaitījumus.",
+            "step3": "Pilnībā izelpojiet caur muti 8 skaitījumus.",
+            "step4": "Klusi ieelpojiet caur degunu 4 skaitījumus.",
+            "step5": "Aizturiet elpu 7 skaitījumus.",
+            "step6": "Pilnībā izelpojiet caur muti 8 skaitījumus.",
+            "step7": "Klusi ieelpojiet caur degunu 4 skaitījumus.",
+            "step8": "Aizturiet elpu 7 skaitījumus.",
+            "step9": "Pilnībā izelpojiet caur muti 8 skaitījumus.",
+            "step10": "Klusi ieelpojiet caur degunu 4 skaitījumus.",
+            "step11": "Aizturiet elpu 7 skaitījumus.",
+            "step12": "Pilnībā izelpojiet caur muti 8 skaitījumus.",
+            "step13": "Klusi ieelpojiet caur degunu 4 skaitījumus.",
+            "step14": "Aizturiet elpu 7 skaitījumus.",
+            "step15": "Pilnībā izelpojiet caur muti 8 skaitījumus.",
+            "step16": "Ievērojiet, cik mierīgāks jūsu ķermenis jūtas tagad."
           },
           "permission-slip": {
-            "name": "Atļaujas lapa",
-            "step0": "Ievelciet dziļu elpu un veltiet sev brīdi",
-            "step1": "Sakiet sev: \"Es atļauju sev nebūt perfektai šodien\"",
-            "step2": "Sakiet: \"Es atļauju sev lūgt palīdzību\"",
-            "step3": "Sakiet: \"Es atļauju sev just to, ko jūtu, bez vainas apziņas\"",
-            "step4": "Sakiet: \"Es atļauju sev paņemt pārtraukumu\"",
-            "step5": "Sakiet: \"Es daru visu, kas manos spēkos, un ar to pietiek\"",
-            "step6": "Ievelciet dziļu elpu un turiet šos vārdus tuvu",
-            "step7": "Arī jūs esat pelnījis līdzjūtību. Nēsājiet to sev līdzi."
+            "name": "Atļauja sev",
+            "step0": "Ievelciet dziļu elpu un veltiet sev brīdi.",
+            "step1": "Sakiet sev: \"Es atļauju sev nebūt perfektam šodien.\"",
+            "step2": "Sakiet: \"Es atļauju sev lūgt palīdzību.\"",
+            "step3": "Sakiet: \"Es atļauju sev just to, ko jūtu, bez vainas apziņas.\"",
+            "step4": "Sakiet: \"Es atļauju sev paņemt pārtraukumu.\"",
+            "step5": "Sakiet: \"Es daru visu, ko varu, un ar to pietiek.\"",
+            "step6": "Ievelciet dziļu elpu un paturiet šos vārdus sev tuvu.",
+            "step7": "Jūs arī esat pelnījis līdzjūtību. Nēsājiet to sev līdzi."
           },
           "quick-walk": {
-            "name": "Ātras pastaigas pamudinājums",
-            "step0": "Piecelieties un izstiepiet rokas virs galvas",
-            "step1": "Aizejiet līdz tuvākajam logam vai durvīm un paskatieties ārā",
-            "step2": "Speriet 5 lēnus soļus un sajūtiet, kā katra pēda pieskaras zemei",
-            "step3": "Paskatieties uz augšu — pamanot debesis, griestus vai kaut ko virs jums",
-            "step4": "Speriet vēl 5 lēnus, apzinātus soļus",
-            "step5": "Viegli pakratiet rokas un rokas dažas sekundes",
-            "step6": "Atritiniet plecus atpakaļ 3 reizes",
-            "step7": "Jūs pakustinājāt savu ķermeni. Tas ir svarīgi. Lieliski padarīts."
+            "name": "Ātrās pastaigas ierosinājums",
+            "step0": "Piecelieties un izstiepiet rokas virs galvas.",
+            "step1": "Aizejiet līdz tuvākajam logam vai durvīm un paskatieties ārā.",
+            "step2": "Speriet 5 lēnus soļus un sajūtiet, kā katra pēda pieskaras zemei.",
+            "step3": "Paskatieties uz augšu — ievērojiet debesis, griestus vai kaut ko virs jums.",
+            "step4": "Speriet vēl 5 lēnus, apzinātus soļus.",
+            "step5": "Brīvi pakratiet rokas dažas sekundes.",
+            "step6": "Atgrieziet plecus atpakaļ 3 reizes.",
+            "step7": "Jūs kustinājāt savu ķermeni. Tas ir svarīgi. Labi padarīts."
           }
         }
       },
       "help": {
         "title": "Lūgt palīdzību",
         "sendRequest": "Sūtīt",
-        "customPlaceholder": "Ierakstiet savu ziņojumu...",
-        "recentRequests": "Nesenie pieprasījumi",
-        "statusPending": "Gaida apstiprinājumu",
+        "customPlaceholder": "Ierakstiet savu ziņu...",
+        "recentRequests": "Jaunākie pieprasījumi",
+        "statusPending": "Gaida",
         "statusAccepted": "Pieņemts",
-        "statusCompleted": "Pabeigts",
-        "statusExpired": "Termiņš ir beidzies",
+        "statusCompleted": "Paveikts",
+        "statusExpired": "Termiņš beidzies",
         "sent": "Palīdzības pieprasījums nosūtīts!",
-        "limitReached": "Jūs varat nosūtīt līdz 5 palīdzības pieprasījumiem dienā.",
-        "noRequests": "Nav nesenu palīdzības pieprasījumu.",
+        "limitReached": "Dienā varat nosūtīt līdz 5 palīdzības pieprasījumiem.",
+        "noRequests": "Nav jaunu palīdzības pieprasījumu.",
         "accept": "Es varu palīdzēt",
-        "complete": "Atzīmēt kā pabeigtu",
+        "complete": "Atzīmēt kā paveiktu",
         "template_need_break": "Nepieciešams pārtraukums",
-        "template_handle_meds": "Palīdzība ar zālēm",
-        "template_need_visit": "Nepieciešams apmeklējums",
-        "template_groceries": "Pārtikas produkti",
-        "template_custom": "Pielāgots ziņojums",
-        "message_need_break": "Man ļoti noderētu pārtraukums. Vai kāds varētu mani aizstāt uz brīdi?",
-        "message_handle_meds": "Vai kāds var palīdzēt ar zālēm šodien?",
-        "message_need_visit": "Man ļoti daudz nozīmētu, ja kāds varētu šodien apciemot.",
-        "message_groceries": "Vai kāds varētu palīdzēt iegādāties pārtikas produktus?"
+        "template_handle_meds": "Palīdzība ar medikamentiem",
+        "template_need_visit": "Nepieciešama vizīte",
+        "template_groceries": "Pārtikas preces",
+        "template_custom": "Pielāgota ziņa",
+        "message_need_break": "Man ļoti noderētu pārtraukums. Vai kāds varētu uz brīdi pārņemt?",
+        "message_handle_meds": "Vai kāds var palīdzēt ar medikamentiem šodien?",
+        "message_need_visit": "Tas daudz nozīmētu, ja kāds varētu apciemot šodien.",
+        "message_groceries": "Vai kāds varētu palīdzēt paņemt pārtikas preces?"
       },
       "agent": {
         "title": "Labsajūtas pavadonis",
         "disclaimer": "Tikai emocionālam atbalstam. Nav medicīnisks padoms.",
         "placeholder": "Kā jūs jūtaties?",
-        "greeting": "Domāju par tevi...",
-        "rateLimited": "Atpūtieties — drīzumā varēsiet tērzēt vēlreiz.",
+        "greeting": "Domājam par jums...",
+        "rateLimited": "Atvelciet elpu — drīz varēsiet atkal tērzēt.",
         "errorMessage": "Nevarēja izveidot savienojumu. Lūdzu, mēģiniet vēlreiz.",
         "expand": "Izvērst",
         "collapse": "Sakļaut",
         "prompts": {
-          "overwhelmed": "Es jūtos pārslogots šobrīd",
-          "calmDown": "Palīdziet man nomierināties 2 minūtēs",
-          "needEnergy": "Man ir vajadzīga enerģija, bet es nevaru paņemt pārtraukumu",
-          "poorSleep": "Es nevarēju labi gulēt pagājušajā naktī",
-          "needMoment": "Man vajag brīdi tikai sev",
-          "uplifting": "Pastāstiet man kaut ko pacilājošu"
+          "overwhelmed": "Šobrīd jūtos pārslogots",
+          "calmDown": "Palīdziet man nomierināties 2 minūtēs.",
+          "needEnergy": "Man vajag enerģiju, bet nevaru paņemt pārtraukumu.",
+          "poorSleep": "Es pagājušajā naktī slikti gulēju.",
+          "needMoment": "Man vajag brīdi tikai sev.",
+          "uplifting": "Pastāstiet man kaut ko iedvesmojošu."
         }
       },
       "goal": {
         "title": "Šodienas mērķis",
-        "placeholder": "Iestatiet mērķi šodienai...",
-        "done": "Gatavs!",
-        "weekLabel": "Šonedēļ",
+        "placeholder": "Uzstādiet mērķi šodienai...",
+        "done": "Paveikts!",
+        "weekLabel": "Šī nedēļa",
         "suggest": "Ieteikt"
       },
       "burnout": {
-        "title": "Mēs pamanām, ka jums varētu būt nepieciešams papildu atbalsts",
-        "message": "Jūsu nesenās reģistrēšanās liecina par paaugstinātu stresu vai zemu enerģiju. Tas ir pilnībā saprotams — aprūpe ir grūta."
+        "title": "Mēs pamanījām, ka jums varētu būt nepieciešams papildu atbalsts",
+        "message": "Jūsu jaunākās reģistrācijas liecina par paaugstinātu stresu vai zemu enerģijas līmeni. Tas ir pilnīgi saprotams — aprūpe ir grūta."
       },
       "support": {
         "title": "Nepieciešams atbalsts?",
-        "description": "Aprūpe ir sarežģīta. Ir labi lūgt palīdzību."
+        "description": "Aprūpe ir izaicinoša. Ir labi lūgt palīdzību."
       },
-      "footer": "Atcerieties: jūs nevarat ieliet no tukšas krūzes. Arī jūsu labsajūta ir svarīga.",
+      "footer": "Atcerieties: Jūs nevarat liet no tukšas krūzes. Jūsu labsajūta ir svarīga.",
       "weeklyStats": {
-        "title": "Nedēļas ieskati",
+        "title": "Iknedēļas ieskati",
         "subtitle": "Jūsu 7 dienu labsajūtas kopsavilkums",
-        "avgEnergy": "Vidējā enerģija",
-        "avgStress": "Vidējais stress",
-        "avgSleep": "Vidējais miegs",
-        "noData": "Veiciet ikdienas reģistrācijas, lai redzētu savas nedēļas tendences.",
-        "generateDigest": "Ģenerēt AI apkopojumu",
+        "avgEnergy": "Vid. enerģija",
+        "avgStress": "Vid. stress",
+        "avgSleep": "Vid. miegs",
+        "noData": "Aizpildiet ikdienas pārbaudes, lai redzētu savas iknedēļas tendences.",
+        "generateDigest": "Ģenerēt AI kopsavilkumu",
         "generating": "Ģenerē...",
         "behaviourSummary": "Šonedēļ reģistrēti {{count}} uzvedības incidenti"
       },
       "sos": {
-        "title": "Kas notiek šobrīd?",
+        "title": "Kas notiek tieši tagad?",
         "subtitle": "Izvēlieties, ar ko jums nepieciešama palīdzība — mēs jūs vadīsim.",
         "calmDown": "Man jānomierinās",
         "calmDownDesc": "Ātri elpošanas un atvieglojuma vingrinājumi",
         "behaviourNow": "Uzvedība notiek tagad",
         "behaviourNowDesc": "Reģistrējiet incidentu un saņemiet norādījumus",
-        "callHelp": "Man nepieciešama neatliekama palīdzība",
-        "callHelpDesc": "Sazinieties ar neatliekamās palīdzības dienestiem vai ģimeni",
-        "needBreak": "Man vajag, lai kāds pārņem vadību",
+        "callHelp": "Man vajadzīga neatliekamā palīdzība",
+        "callHelpDesc": "Sazinieties ar neatliekamajiem dienestiem vai ģimeni",
+        "needBreak": "Man vajadzīgs, lai kāds pārņemtu",
         "needBreakDesc": "Nosūtiet palīdzības pieprasījumu ģimenei"
       },
       "behaviours": {
         "playbooks": {
           "title": "Uzvedības rokasgrāmatas",
-          "subtitle": "Pieskarieties uzvedībai, lai iegūtu soli pa solim norādījumus",
+          "subtitle": "Pieskarieties uzvedībai, lai saņemtu soli pa solim norādījumus",
           "rightNow": "Tieši tagad",
-          "understandWhy": "Izprast, kāpēc",
+          "understandWhy": "Izprast iemeslu",
           "prevent": "Profilakse",
           "whenToCallDoctor": "Kad zvanīt ārstam"
         },
@@ -561,159 +561,159 @@
           "severity": "Smagums",
           "mild": "Viegls",
           "severe": "Smags",
-          "timeOfDay": "Diennakts laiks",
+          "timeOfDay": "Dienas laiks",
           "morning": "Rīts",
-          "afternoon": "Pusdiena",
+          "afternoon": "Pēcpusdiena",
           "evening": "Vakars",
           "night": "Nakts",
-          "duration": "Ilgums (minūtēs)",
+          "duration": "Ilgums (minūtes)",
           "durationPlaceholder": "Cik ilgi tas ilga?",
-          "triggers": "Iespējamie ierosinātāji",
+          "triggers": "Iespējamie cēloņi",
           "trigger_pain": "Sāpes",
           "trigger_hunger": "Izsalkums",
           "trigger_thirst": "Slāpes",
           "trigger_fatigue": "Nogurums",
           "trigger_overstimulation": "Pārmērīga stimulācija",
           "trigger_unfamiliar_environment": "Nepazīstama vieta",
-          "trigger_unfamiliar_person": "Nepazīstams cilvēks",
-          "trigger_routine_change": "Izmaiņas rutīnā",
-          "trigger_medication": "Zāles",
-          "trigger_noise": "Troksnis",
+          "trigger_unfamiliar_person": "Nepazīstama persona",
+          "trigger_routine_change": "Rutīnas maiņa",
+          "trigger_medication": "Medikamenti",
+          "trigger_noise": "Trokšņi",
           "trigger_loneliness": "Vientulība",
           "trigger_boredom": "Garlaicība",
-          "trigger_bathroom_need": "Nepieciešamība pēc tualetes",
+          "trigger_bathroom_need": "Vajadzība uz tualeti",
           "trigger_frustration": "Frustrācija",
           "trigger_fear": "Bailes",
           "trigger_unknown": "Nezināms",
           "whatHappened": "Kas notika?",
           "whatHappenedPlaceholder": "Aprakstiet incidentu...",
-          "whatHelped": "Kas palīdzēja? (nav obligāti)",
+          "whatHelped": "Kas palīdzēja? (pēc izvēles)",
           "whatHelpedPlaceholder": "Aprakstiet, kas palīdzēja nomierināt situāciju...",
           "save": "Saglabāt incidentu",
           "saved": "Incidents reģistrēts"
         },
         "timeline": {
-          "title": "Incidentu hronoloģija",
+          "title": "Incidentu laika josla",
           "all": "Visi",
           "noIncidents": "Neviens incidents neatbilst pašreizējam filtram."
         }
       }
     },
     "reports": {
-      "title": "Ziņojums par vizīti pie ārsta",
+      "title": "Ārsta apmeklējuma ziņojums",
       "period": "Ziņojuma periods",
       "lastDays": "Pēdējās {{days}} dienas",
       "generate": "Ģenerēt ziņojumu",
       "include": "Iekļaut ziņojumā",
-      "moodTrends": "Garastāvokļa tendences un reģistrācijas kopsavilkums",
-      "sleepPatterns": "Miegs",
-      "activityCompletion": "Aktivitāšu izpildes rādītāji",
-      "medicationAdherence": "Zāļu lietošanas atbilstība",
-      "journalNotes": "Ievērojami aprūpes žurnāla novērojumi",
-      "locationPatterns": "Atrašanās vietas modeļi",
+      "moodTrends": "Garastāvokļa tendences un pārbaudes kopsavilkums",
+      "sleepPatterns": "Miega paradumi",
+      "activityCompletion": "Aktivitāšu pabeigšanas rādītāji",
+      "medicationAdherence": "Medikamentu lietošanas regularitāte",
+      "journalNotes": "Ievērojamie aprūpes žurnāla novērojumi",
+      "locationPatterns": "Atrašanās vietas paradumi",
       "caregiverConcerns": "Aprūpētāja bažas",
       "customNotes": "Papildu piezīmes ārstam",
       "print": "Drukāt",
       "downloadPdf": "Lejupielādēt PDF",
-      "emailDoctor": "Nosūtīt ārstam pa e-pastu",
-      "disclaimer": "Šis kopsavilkums ir balstīts uz pašziņotiem labsajūtas datiem un ģimenes novērojumiem. Tas nav klīnisks novērtējums.",
-      "webNote": "Lai iegūtu pilnu ziņojumu veidotāju ar drukāšanas un PDF eksportēšanas funkciju, apmeklējiet OurTurn tīmekļa lietotni.",
+      "emailDoctor": "Nosūtīt e-pastu ārstam",
+      "disclaimer": "Šis kopsavilkums balstās uz pašziņotiem labsajūtas datiem un ģimenes novērojumiem. Tas nav klīnisks novērtējums.",
+      "webNote": "Lai izmantotu pilnu ziņojumu veidotāju ar drukāšanas un PDF eksporta iespējām, apmeklējiet OurTurn tīmekļa lietotni.",
       "openInWebApp": "Atvērt tīmekļa lietotnē",
       "previousReports": "Iepriekšējie ziņojumi",
       "generated": "Ģenerēts {{date}}",
-      "avgQuality": "vidējā kvalitāte",
-      "moodStruggling": "Cīņas",
+      "avgQuality": "vid. kvalitāte",
+      "moodStruggling": "Grūtības",
       "moodLow": "Zems",
       "moodOkay": "Labi",
-      "moodGood": "Labi",
-      "moodGreat": "Lieliski",
-      "careSummary": "OurTurn aprūpes kopsavilkums",
+      "moodGood": "Labs",
+      "moodGreat": "Lielisks",
+      "careSummary": "OurTurn Aprūpes kopsavilkums",
       "patient": "Pacients",
       "periodLabel": "Periods",
-      "checkinsRecorded": "Reģistrētas reģistrācijas",
+      "checkinsRecorded": "Reģistrētas pārbaudes",
       "averageMood": "Vidējais garastāvoklis",
       "averageSleepQuality": "Vidējā miega kvalitāte",
       "activityCompletionRate": "Aktivitāšu pabeigšana",
-      "medicationAdherenceRate": "Zāļu lietošanas atbilstība",
+      "medicationAdherenceRate": "Medikamentu lietošanas regularitāte",
       "observations": "Novērojumi",
-      "categoryMedication": "Zāles",
+      "categoryMedication": "Medikamenti",
       "categoryMeals": "Ēdienreizes",
-      "categoryPhysical": "Fiziskā",
-      "categoryCognitive": "Kognitīvā",
-      "categorySocial": "Sociālā",
+      "categoryPhysical": "Fiziskās aktivitātes",
+      "categoryCognitive": "Kognitīvās aktivitātes",
+      "categorySocial": "Sociālās aktivitātes",
       "categoryHealth": "Veselība"
     },
     "onboarding": {
       "step1Title": "Par jums",
-      "step2Title": "Par jūsu mīļoto cilvēku",
-      "step3Title": "Viņu dzīves stāsts",
+      "step2Title": "Par jūsu tuvinieku",
+      "step3Title": "Viņu dzīvesstāsts",
       "step4Title": "Ikdienas rutīna",
-      "step5Title": "Drošības iestatīšana",
+      "step5Title": "Drošības iestatījumi",
       "step6Title": "Jūsu aprūpes kods",
       "next": "Tālāk",
       "back": "Atpakaļ",
-      "finish": "Sākt darbu",
-      "careCodeInstructions": "Instalējiet OurTurn sava mīļotā cilvēka tālrunī un ievadiet šo kodu, lai izveidotu savienojumu.",
+      "finish": "Sākt",
+      "careCodeInstructions": "Instalējiet OurTurn sava tuvinieka tālrunī un ievadiet šo kodu, lai izveidotu savienojumu.",
       "quickSetup": "Ātrā iestatīšana",
       "yourName": "Jūsu vārds",
       "yourNameRequired": "Jūsu vārds *",
-      "lovedOneNameRequired": "Jūsu mīļotā cilvēka vārds *",
-      "relationship": "Jūsu attiecības ar viņu",
-      "relationshipPlaceholder": "piem., meita, dēls, dzīvesbiedrs",
-      "settingsHint": "Sīkāku informāciju varat pievienot vēlāk sadaļā Iestatījumi",
+      "lovedOneNameRequired": "Jūsu tuvinieka vārds *",
+      "relationship": "Jūsu radniecība ar viņu",
+      "relationshipPlaceholder": "piem., meita, dēls, laulātais",
+      "settingsHint": "Vairāk detaļu varat pievienot vēlāk Iestatījumos",
       "fillRequired": "Lūdzu, aizpildiet visus obligātos laukus",
-      "setupFailed": "Neizdevās pabeigt iestatīšanu",
+      "setupFailed": "Iestatīšana neizdevās",
       "country": "Valsts",
-      "theirName": "Viņu vārds",
+      "theirName": "Viņa/viņas vārds",
       "dateOfBirth": "Dzimšanas datums",
-      "dementiaType": "Demences veids (nav obligāts)",
+      "dementiaType": "Demences veids (nav obligāti)",
       "homeAddress": "Mājas adrese",
-      "medications": "Zāles",
-      "addMedication": "Pievienot zāles",
-      "childhoodLocation": "Vieta, kur viņi uzauga",
-      "career": "Karjera / nodarbošanās",
-      "hobbies": "Hobiji un intereses",
+      "medications": "Medikamenti",
+      "addMedication": "Pievienot medikamentu",
+      "childhoodLocation": "Kur viņš/viņa uzauga",
+      "career": "Karjera / profesija",
+      "hobbies": "Vaļasprieki un intereses",
       "favoriteMusic": "Mīļākā mūzika / mākslinieki",
       "favoriteFoods": "Mīļākie ēdieni",
       "importantPeople": "Svarīgi cilvēki",
-      "keyEvents": "Svarīgākie dzīves notikumi",
+      "keyEvents": "Galvenie dzīves notikumi",
       "uploadPhotos": "Augšupielādēt ģimenes fotogrāfijas",
-      "wakeTime": "Celšanās laiks",
+      "wakeTime": "Modināšanas laiks",
       "sleepTime": "Gulētiešanas laiks",
       "generatePlan": "Ģenerēt ieteikto plānu",
-      "emergencyContacts": "Kontaktpersonas ārkārtas situācijām",
+      "emergencyContacts": "Avārijas kontakti",
       "alertSettings": "Brīdinājumu iestatījumi",
-      "stepOf": "{{current}}. solis no {{total}}",
+      "stepOf": "Solis {{current}} no {{total}}",
       "breakfastTime": "Brokastu laiks",
       "lunchTime": "Pusdienu laiks",
       "dinnerTime": "Vakariņu laiks",
-      "typicalDay": "Tipiska dienas apraksts",
+      "typicalDay": "Tipiskas dienas apraksts",
       "typicalDayPlaceholder": "Aprakstiet tipisku dienu...",
-      "emergencyContactsHint": "Pievienojiet kontaktpersonas ārkārtas situācijām, kas tiks parādītas pacienta lietotnes cilnē Palīdzība.",
+      "emergencyContactsHint": "Pievienojiet avārijas kontaktus, kas parādīsies pacienta lietotnes cilnē Palīdzība.",
       "remove": "Noņemt",
       "addContact": "Pievienot kontaktu",
       "contactNameRequired": "Vārds *",
-      "phoneRequired": "Telefona numurs *",
-      "relationshipOptional": "Attiecības (nav obligātas)",
+      "phoneRequired": "Tālruņa numurs *",
+      "relationshipOptional": "Radniecība (nav obligāti)",
       "addContactButton": "+ Pievienot kontaktu",
-      "emergencyContactWarning": "Mēs iesakām pievienot vismaz vienu kontaktpersonu ārkārtas situācijām.",
+      "emergencyContactWarning": "Mēs iesakām pievienot vismaz vienu avārijas kontaktu.",
       "allSet": "Viss ir gatavs!",
       "careCodeLabel": "APRŪPES KODS",
       "copied": "Nokopēts!",
       "copyCode": "Kopēt kodu",
       "nextSteps": "Nākamie soļi:",
       "nextStep1": "1. Instalējiet OurTurn {{name}} tālrunī",
-      "nextStep2": "2. Atveriet lietotni un ievadiet iepriekš minēto aprūpes kodu",
-      "nextStep3": "3. Tas ir viss! {{name}} ikdienas plāns parādīsies viņu tālrunī",
-      "homeAddressPlaceholder": "iela 123, pilsēta"
+      "nextStep2": "2. Atveriet lietotni un ievadiet iepriekš minēto Aprūpes kodu",
+      "nextStep3": "3. Tas ir viss! {{name}} dienas plāns parādīsies viņa/viņas tālrunī",
+      "homeAddressPlaceholder": "Galvenā iela 123, Pilsēta"
     },
     "settings": {
       "title": "Iestatījumi",
       "appearance": "Izskats",
       "theme": {
         "label": "Tēma",
-        "light": "Gaiša",
-        "dark": "Tumša",
+        "light": "Gaišā",
+        "dark": "Tumšā",
         "system": "Sistēma"
       },
       "profile": "Profils",
@@ -725,13 +725,13 @@
       "exportNote": "Lejupielādējiet visu savu datu kopiju (GDPR tiesības uz datu pārnesamību)",
       "exportClipboard": "Jūsu dati ir nokopēti starpliktuvē. Varat tos ielīmēt dokumentā vai e-pastā.",
       "deleteAccount": "Dzēst kontu",
-      "deleteWarning": "Tas neatgriezeniski izdzēsīs visus šīs mājsaimniecības datus. To nevar atsaukt.",
-      "deleteConfirmType": "Lai apstiprinātu konta dzēšanu, ierakstiet DELETE",
+      "deleteWarning": "Tas neatgriezeniski dzēsīs visus datus par šo mājsaimniecību. To nevar atsaukt.",
+      "deleteConfirmType": "Ierakstiet DZĒST, lai apstiprinātu konta dzēšanu",
       "confirmDelete": "Apstiprināt dzēšanu",
       "language": "Valoda",
       "about": "Par OurTurn",
       "version": "Versija",
-      "notMedicalDevice": "OurTurn nav medicīnas ierīce",
+      "notMedicalDevice": "OurTurn nav medicīniska ierīce",
       "dailySummary": "Dienas kopsavilkums",
       "dailySummaryTime": "Dienas kopsavilkuma laiks",
       "emailNotifications": "E-pasta paziņojumi",
@@ -742,107 +742,107 @@
       "saved": "Saglabāts!",
       "saving": "Saglabā...",
       "changePassword": "Mainīt paroli",
-      "newPassword": "Jaunā parole",
+      "newPassword": "Jauna parole",
       "confirmNewPassword": "Apstiprināt jauno paroli",
       "passwordPlaceholder": "Vismaz 8 rakstzīmes",
-      "passwordChanged": "Parole veiksmīgi mainīta!",
+      "passwordChanged": "Parole veiksmīgi nomainīta!",
       "changingPassword": "Maina...",
       "copyCode": "Kopēt kodu",
       "codeCopied": "Kods nokopēts!",
-      "regenerateCode": "Atjaunot kodu",
+      "regenerateCode": "Reģenerēt kodu",
       "regenerateWarning": "Vecais kods vairs nedarbosies. Visām savienotajām pacienta ierīcēm būs nepieciešams jaunais kods.",
       "dangerZone": "Bīstamā zona",
-      "relationship": "Attiecības",
-      "deleteConfirm": "Lai apstiprinātu konta dzēšanu, ierakstiet DELETE",
+      "relationship": "Radniecība",
+      "deleteConfirm": "Ierakstiet DZĒST, lai apstiprinātu konta dzēšanu",
       "photoGallery": "Foto galerija",
-      "photoGalleryDesc": "Augšupielādējiet ģimenes fotogrāfijas personalizētām atmiņu aktivitātēm",
-      "uploadPhotos": "Augšupielādēt fotoattēlus",
-      "uploading": "Augšupielāde...",
+      "photoGalleryDesc": "Augšupielādējiet ģimenes fotogrāfijas personalizētām atmiņu atsaukšanas aktivitātēm",
+      "uploadPhotos": "Augšupielādēt fotogrāfijas",
+      "uploading": "Augšupielādē...",
       "deletePhoto": "Dzēst šo fotoattēlu?",
       "maxPhotosReached": "Sasniegts maksimālais fotoattēlu skaits — 20",
-      "photoUploadHint": "Līdz 20 fotoattēliem, katrs līdz 5 MB",
+      "photoUploadHint": "Līdz 20 fotoattēliem, katrs maks. 5 MB",
       "photoUploadFailed": "Neizdevās augšupielādēt fotoattēlu. Lūdzu, mēģiniet vēlreiz.",
-      "photoDeleteFailed": "Neizdevās izdzēst fotoattēlu. Lūdzu, mēģiniet vēlreiz.",
-      "noPhotosYet": "Fotoattēli vēl nav augšupielādēti",
-      "photosCount": "{{count}} no 20 fotoattēliem",
+      "photoDeleteFailed": "Neizdevās dzēst fotoattēlu. Lūdzu, mēģiniet vēlreiz.",
+      "noPhotosYet": "Vēl nav augšupielādētas fotogrāfijas",
+      "photosCount": "{{count}} no 20 fotogrāfijām",
       "patientComplexity": "Pacienta lietotnes režīms",
-      "patientComplexityDesc": "Pielāgojiet pacienta lietotnes saskarni atbilstoši jūsu tuvinieka vajadzībām.",
+      "patientComplexityDesc": "Pielāgojiet pacienta lietotnes saskarni atbilstoši jūsu mīļotā cilvēka vajadzībām.",
       "complexity": {
         "full": "Pilns",
-        "fullDesc": "Visas funkcijas ir pieejamas",
+        "fullDesc": "Visas funkcijas pieejamas",
         "simplified": "Vienkāršots",
         "simplifiedDesc": "Lielāks teksts, mazāk detaļu",
-        "essential": "Būtisks",
-        "essentialDesc": "Minimāls — tikai mūzika un zvans palīdzībai"
+        "essential": "Būtiskais",
+        "essentialDesc": "Minimāls — tikai mūzika un palīdzības izsaukšana"
       },
       "safetyEscalation": "Drošība un eskalācija",
       "escalationTiming": "Eskalācijas laiks",
-      "escalationTimingDesc": "Cik ilgi jāgaida pirms neapstiprinātu brīdinājumu eskalācijas",
-      "offlineThreshold": "Bezsavienojuma brīdinājuma slieksnis",
-      "offlineThresholdDesc": "Brīdinājums, kad ierīce nav redzēta tik ilgi",
+      "escalationTimingDesc": "Cik ilgi pirms neapstiprinātu brīdinājumu eskalācijas",
+      "offlineThreshold": "Bezsaistes brīdinājuma slieksnis",
+      "offlineThresholdDesc": "Brīdināt, ja ierīce nav redzama tik ilgu laiku",
       "minutes": "minūtes",
-      "respiteReminders": "Atelpas atgādinājumi",
-      "respiteRemindersDesc": "Saņemiet atgādinājumus par atpūtas pauzēm",
+      "respiteReminders": "Atpūtas atgādinājumi",
+      "respiteRemindersDesc": "Saņemiet atgādinājumus par pārtraukumu veikšanu",
       "groupProfile": "Jūsu profils",
       "groupAboutPatient": "Par {{name}}",
-      "groupAboutPatientGeneric": "Par jūsu tuvinieku",
-      "groupSharing": "Koplietošana un savienojums",
+      "groupAboutPatientGeneric": "Par jūsu mīļoto cilvēku",
+      "groupSharing": "Kopīgošana un savienojums",
       "groupSafety": "Drošība un paziņojumi",
       "groupAccount": "Konts",
-      "patientInformation": "Informācija par pacientu",
-      "patientInformationDesc": "Pamatinformācija par jūsu tuvinieku",
-      "patientName": "Pacienta vārds",
+      "patientInformation": "Informācija par aprūpējamo",
+      "patientInformationDesc": "Pamatinformācija par jūsu mīļoto cilvēku",
+      "patientName": "Aprūpējamā vārds",
       "dateOfBirth": "Dzimšanas datums",
       "dementiaType": "Demences veids",
-      "selectDementiaType": "Izvēlieties veidu (pēc izvēles)",
+      "selectDementiaType": "Izvēlēties veidu (nav obligāti)",
       "homeAddress": "Mājas adrese",
       "homeAddressPlaceholder": "Pilna mājas adrese",
       "savingPatientInfo": "Saglabā...",
-      "savePatientInfo": "Saglabāt pacienta informāciju",
-      "lifeStory": "Dzīves stāsts",
-      "lifeStoryDesc": "Šī informācija palīdz personalizēt ikdienas aktivitātes un atmiņu rosinošus jautājumus.",
-      "childhoodLocation": "Kur viņi uzauga",
+      "savePatientInfo": "Saglabāt informāciju par aprūpējamo",
+      "lifeStory": "Dzīvesstāsts",
+      "lifeStoryDesc": "Šī informācija palīdz personalizēt ikdienas aktivitātes un atmiņu atsaukšanas uzvednes.",
+      "childhoodLocation": "Kur uzauga",
       "career": "Karjera / Profesija",
-      "hobbies": "Hobiji un intereses",
+      "hobbies": "Vaļasprieki un intereses",
       "hobbiesPlaceholder": "piem., dārzkopība, gleznošana, šahs",
-      "favoriteMusic": "Iecienītākā mūzika / Izpildītāji",
-      "favoriteMusicPlaceholder": "piem., Frenks Sinatra, Beatles",
-      "favoriteFoods": "Iecienītākie ēdieni",
+      "favoriteMusic": "Mīļākā mūzika / Izpildītāji",
+      "favoriteMusicPlaceholder": "piem., Frenks Sinatra, The Beatles",
+      "favoriteFoods": "Mīļākie ēdieni",
       "favoriteFoodsPlaceholder": "piem., ābolu pīrāgs, cepta vista",
       "importantPeople": "Svarīgi cilvēki",
       "importantPeoplePlaceholder": "piem., Jānis (brālis), Marija (labākā draudzene)",
       "keyEvents": "Svarīgākie dzīves notikumi",
       "keyEventsPlaceholder": "piem., Absolvēja 1965. gadā, Pārcēlās uz Londonu 1970. gadā",
       "savingLifeStory": "Saglabā...",
-      "saveLifeStory": "Saglabāt dzīves stāstu",
+      "saveLifeStory": "Saglabāt dzīvesstāstu",
       "dailySchedule": "Dienas grafiks",
-      "dailyScheduleDesc": "Iestatiet pamošanās un gulētiešanas laikus jūsu tuvinieka rutīnai.",
+      "dailyScheduleDesc": "Iestatiet mīļotā cilvēka pamošanās un gulētiešanas laikus.",
       "wakeTime": "Pamošanās laiks",
       "sleepTime": "Gulētiešanas laiks",
       "savingSchedule": "Saglabā...",
       "saveSchedule": "Saglabāt grafiku",
-      "emergencyContacts": "Ārkārtas kontakti",
-      "emergencyContactsDesc": "Šie kontakti parādās pacienta lietotnes cilnē Palīdzība.",
+      "emergencyContacts": "Avārijas kontakti",
+      "emergencyContactsDesc": "Šie kontakti parādās aprūpējamā lietotnes cilnē 'Palīdzība'.",
       "addContact": "Pievienot kontaktu",
       "contactName": "Kontakta vārds",
-      "contactPhone": "Telefona numurs",
+      "contactPhone": "Tālruņa numurs",
       "contactRelationship": "Attiecības",
       "contactRelationshipPlaceholder": "piem., Meita, kaimiņš",
-      "noContactsYet": "Vēl nav pievienoti ārkārtas kontakti.",
+      "noContactsYet": "Vēl nav pievienoti avārijas kontakti.",
       "savingContacts": "Saglabā...",
       "saveContacts": "Saglabāt kontaktus",
       "removeContactConfirm": "Noņemt šo kontaktu?",
       "country": "Valsts",
-      "selectCountry": "Izvēlieties valsti",
-      "selectLanguage": "Izvēlieties valodu",
+      "selectCountry": "Izvēlēties valsti",
+      "selectLanguage": "Izvēlēties valodu",
       "languageSaved": "Valoda atjaunināta"
     },
     "auth": {
-      "login": "Ielogoties",
+      "login": "Pieteikties",
       "signup": "Reģistrēties",
       "email": "E-pasts",
       "password": "Parole",
-      "forgotPassword": "Aizmirsi paroli?",
+      "forgotPassword": "Aizmirsāt paroli?",
       "noAccount": "Nav konta?",
       "hasAccount": "Jau ir konts?",
       "continueWithGoogle": "Turpināt ar Google",
@@ -850,23 +850,23 @@
       "or": "vai",
       "confirmPassword": "Apstiprināt paroli",
       "createAccount": "Izveidot kontu",
-      "getStarted": "Sākt darbu",
+      "getStarted": "Sākt",
       "fillAllFields": "Lūdzu, aizpildiet visus laukus",
       "passwordsNoMatch": "Paroles nesakrīt",
-      "passwordTooShort": "Parolei jābūt vismaz 8 simbolus garai",
-      "checkEmail": "Lūdzu, pārbaudiet savu e-pastu, lai apstiprinātu savu kontu",
+      "passwordTooShort": "Parolei jābūt vismaz 8 rakstzīmes garai",
+      "checkEmail": "Lūdzu, pārbaudiet savu e-pastu, lai apstiprinātu kontu",
       "enterEmailFirst": "Lūdzu, vispirms ievadiet savu e-pasta adresi.",
       "resetEmailSent": "Pārbaudiet savu e-pastu",
-      "resetEmailSentDesc": "Mēs nosūtījām paroles atiestatīšanas saiti uz jūsu e-pasta adresi.",
-      "welcomeBack": "Esiet sveicināti atpakaļ",
+      "resetEmailSentDesc": "Mēs esam nosūtījuši paroles atiestatīšanas saiti uz jūsu e-pasta adresi.",
+      "welcomeBack": "Laipni lūdzam atpakaļ",
       "enterEmailAndPassword": "Lūdzu, ievadiet e-pastu un paroli",
-      "signingIn": "Ielogojas",
+      "signingIn": "Piesakās",
       "orContinueWith": "Vai turpināt ar"
     },
     "nav": {
       "family": "Ģimenes loks",
-      "toolkit": "Rīkkopa",
-      "reports": "Ziņojumi",
+      "toolkit": "Rīku komplekts",
+      "reports": "Pārskati",
       "settings": "Iestatījumi",
       "crisis": "Krīzes centrs"
     },
@@ -893,73 +893,73 @@
         "callEmergency": "Zvanīt neatliekamajai palīdzībai",
         "callEmergencyDesc": "Zvanīt vietējiem neatliekamās palīdzības dienestiem",
         "alertFamily": "Brīdināt ģimeni",
-        "alertFamilyDesc": "Nosūtīt push paziņojumu visiem aprūpētājiem",
-        "alertFamilySent": "Ģimenes locekļi ir informēti",
-        "alertFamilyFailed": "Neizdevās informēt ģimeni. Lūdzu, mēģiniet vēlreiz.",
+        "alertFamilyDesc": "Nosūtīt paziņojumu visiem aprūpētājiem",
+        "alertFamilySent": "Ģimenes locekļi informēti",
+        "alertFamilyFailed": "Neizdevās paziņot ģimenei. Lūdzu, mēģiniet vēlreiz.",
         "viewLocation": "Skatīt atrašanās vietu",
         "viewLocationDesc": "Skatīt {{name}} pašreizējo atrašanās vietu kartē",
-        "contactPrimary": "Sazināties ar galveno aprūpētāju",
-        "contactPrimaryDesc": "Sazinieties ar galveno aprūpētāju pa e-pastu",
+        "contactPrimary": "Sazināties ar primāro aprūpētāju",
+        "contactPrimaryDesc": "Sazināties ar primāro aprūpētāju, izmantojot e-pastu",
         "logEvent": "Reģistrēt notikumu",
-        "logEventDesc": "Ierakstiet šo brīdi krīzes žurnālā"
+        "logEventDesc": "Ierakstīt šo brīdi krīzes žurnālā"
       },
       "wizard": {
         "breathingTitle": "Sāksim ar nomierinošu elpu",
         "breathingInstruction": "Lēnām ieelpojiet... aizturiet... izelpojiet...",
         "stepOf": "Solis {{current}} no {{total}}",
         "thisHelped": "Tas palīdzēja",
-        "tryNext": "Mēģiniet nākamo soli",
+        "tryNext": "Mēģināt nākamo soli",
         "skip": "Izlaist",
-        "completionTitle": "Labi padarīts. Jūs to paveicāt ar rūpību.",
-        "completionDesc": "Vai vēlaties pierakstīt kādas piezīmes par notikušo?",
+        "completionTitle": "Labi padarīts. Jūs to paveicāt ar rūpēm.",
+        "completionDesc": "Vai vēlaties ierakstīt piezīmes par notikušo?",
         "crisisNotesPlaceholder": "Kas notika? Kas palīdzēja? Vai tika pamanīti kādi ierosinātāji...",
         "saveAndClose": "Saglabāt un aizvērt",
-        "closeWithoutSaving": "Aizvērt, nesaglabājot"
+        "closeWithoutSaving": "Aizvērt bez saglabāšanas"
       },
       "history": {
-        "title": "Nesenākie krīzes notikumi",
-        "noEvents": "Pēdējo 30 dienu laikā nav bijis krīzes notikumu.",
-        "viewAllInJournal": "Skatīt visu žurnālā",
+        "title": "Jaunākie krīzes notikumi",
+        "noEvents": "Pēdējās 30 dienās nav krīzes notikumu.",
+        "viewAllInJournal": "Skatīt visus žurnālā",
         "yesterday": "Vakar",
-        "daysAgo": "Pirms {{count}}d"
+        "daysAgo": "Pirms {{count}} d."
       },
       "steps": {
         "stayCalm": {
           "title": "Saglabājiet mieru",
           "detail": "Lēnām, dziļi ieelpojiet. Jūsu mierīgā enerģija palīdzēs viņiem justies droši.",
-          "script": "Esmu šeit kopā ar jums. Viss ir kārtībā."
+          "script": "Esmu tepat ar jums. Viss ir kārtībā."
         },
         "validateFeelings": {
-          "title": "Apstipriniet sajūtas",
-          "detail": "Sakiet: 'Es redzu, ka tu esi satraukts. Tam jābūt ļoti grūti.' Nestrīdieties un nekoriģējiet.",
-          "script": "Es redzu, ka tu esi satraukts. Tam jābūt ļoti grūti."
+          "title": "Apstipriniet jūtas",
+          "detail": "Sakiet 'Es redzu, ka esat satraukts. Tam jābūt ļoti grūti.' Nestrīdieties un nelabojiet.",
+          "script": "Es redzu, ka esat satraukts. Tam jābūt ļoti grūti."
         },
         "simplifyEnvironment": {
           "title": "Vienkāršojiet vidi",
-          "detail": "Izmantojiet īsus, vienkāršus teikumus. Viena ideja vienlaikus. Izvairieties no jautājumiem 'kāpēc'.",
-          "script": "Padarīsim lietas vienkāršākas. Viena lieta vienlaikus."
+          "detail": "Izmantojiet īsus, vienkāršus teikumus. Vienu ideju vienlaikus. Izvairieties no jautājumiem 'kāpēc'.",
+          "script": "Padarīsim lietas vienkāršākas. Vienu lietu vienlaikus."
         },
         "redirectAttention": {
-          "title": "Novirziet uzmanību",
-          "detail": "Maigi nomainiet tēmu. Ierosiniet pazīstamu aktivitāti, dziesmu vai pastaigu.",
-          "script": "Kā būtu, ja mēs pamēģinātu kaut ko citu? Iesim kopā nelielā pastaigā."
+          "title": "Novirzīt uzmanību",
+          "detail": "Maigi mainiet tēmu. Iesakiet pazīstamu nodarbi, dziesmu vai pastaigu.",
+          "script": "Kā būtu, ja mēs pamēģinātu kaut ko citu? Aiziesim kopā nelielā pastaigā."
         },
         "useGentleTouch": {
           "title": "Izmantojiet maigu pieskārienu",
-          "detail": "Ja tas ir vēlams, maigs rokas pieskāriens var būt nomierinošs. Vērojiet viņu reakciju.",
-          "script": "Vai drīkstu paturēt tavu roku? Esmu tepat."
+          "detail": "Ja tas ir vēlams, maiga roka uz rokas var būt nomierinoša. Vērojiet viņu reakciju.",
+          "script": "Vai drīkstu turēt jūsu roku? Esmu tepat blakus."
         },
         "giveSpace": {
           "title": "Dodiet telpu",
-          "detail": "Ja nekas nedarbojas, nodrošiniet drošību un dodiet viņiem telpu. Ir labi atkāpties.",
-          "script": "Es būšu tepat tuvumā, ja man vajadzēs. Nesteidzies."
+          "detail": "Ja nekas nelīdz, nodrošiniet drošību un dodiet viņiem telpu. Ir labi atkāpties.",
+          "script": "Es būšu tepat blakus, ja jums mani vajadzēs. Nesteidzieties."
         }
       },
-      "helplines": "Palīdzības līnijas",
-      "noHelplineAvailable": "Jūsu valstij nav pieejama palīdzības līnija",
+      "helplines": "Palīdzības tālruņi",
+      "noHelplineAvailable": "Jūsu valstij nav atrasts palīdzības tālrunis",
       "call": "Zvanīt",
       "email": "E-pasts",
-      "website": "Vietne",
+      "website": "Tīmekļa vietne",
       "familyContacts": "Ģimenes kontakti",
       "supportResources": "Atbalsta resursi",
       "scenarios": {
@@ -967,14 +967,14 @@
         "subtitle": "Pieskarieties situācijai, lai saņemtu soli pa solim norādījumus",
         "urgent": "Steidzami",
         "stepCountLabel": "{{count}} soļi",
-        "backToSituations": "Atpakaļ pie situācijām",
+        "backToSituations": "Atpakaļ uz situācijām",
         "breathe": "Elpošanas vingrinājums",
         "callEmergency": "Zvanīt neatliekamās palīdzības dienestiem"
       },
       "patterns": {
-        "title": "Ieskats modeļos",
+        "title": "Modeļu ieskats",
         "noEvents": "Reģistrējiet incidentus, lai redzētu modeļus laika gaitā.",
-        "fewEvents": "Reģistrēti {{count}} incidenti. Modeļiem nepieciešams vairāk datu.",
+        "fewEvents": "Reģistrēti {{count}} incidenti. Nepieciešams vairāk datu modeļu noteikšanai.",
         "timePattern": "Lielākā daļa incidentu notiek {{time}}.",
         "weekCount": "{{count}} šonedēļ."
       },
@@ -985,73 +985,73 @@
       "scenarioData": {
         "stepsCount": "{{count}} soļi",
         "agitated": {
-          "label": "Satraukts / Apmulsums",
+          "label": "Satraukts / Apmulsušais",
           "steps": [
             {
-              "title": "Vispirms tu",
-              "instruction": "Pirms kaut ko darāt, lēnām ieelpojiet. Jūs nevarat nomierināt kādu, ja neesat mierīgs."
+              "title": "Vispirms jūs",
+              "instruction": "Pirms kaut ko darāt, ievelciet vienu lēnu elpu. Jūs nevarat nomierināt kādu, ja pats neesat mierīgs."
             },
             {
-              "title": "Ātra pārbaude — vai kaut kas fiziski nav kārtībā?",
-              "instruction": "Sāpes, izsalkums, nepieciešamība pēc tualetes vai infekcija var izraisīt satraukumu.",
+              "title": "Ātra pārbaude — vai kaut kas fiziski varētu būt nepareizi?",
+              "instruction": "Sāpes, izsalkums, nepieciešamība apmeklēt tualeti vai infekcija var izraisīt satraukumu.",
               "checklist": [
                 "Sāpes vai diskomforts?",
                 "Izsalcis vai izslāpis?",
-                "Nepieciešama tualete?",
+                "Vajag uz tualeti?",
                 "Nesen mainītas zāles?",
                 "Drudzis vai slimības pazīmes?"
               ]
             },
             {
-              "title": "Pazemināt temperatūru",
-              "instruction": "Runājiet lēnām un klusi. Nestrīdieties, nekoriģējiet un nepaskaidrojiet. Apstipriniet to, ko viņi jūt.",
+              "title": "Samaziniet spriedzi",
+              "instruction": "Runājiet lēni un maigi. Nestrīdieties, nelabojiet un nepaskaidrojiet. Apstipriniet viņu jūtas.",
               "tips": [
-                "\"Es redzu, ka tu esi satraukts. Esmu šeit.\"",
-                "Samaziniet troksni — izslēdziet televizoru, aizveriet logus",
-                "Dodiet viņiem fizisku telpu, neapspiediet",
-                "Piedāvājiet pazīstamu komforta objektu"
+                "\"Es redzu, ka esat satraukts. Esmu šeit.\"",
+                "Samaziniet troksni — izslēdziet TV, aizveriet logus",
+                "Dodiet viņiem fizisku telpu, nedrūzmējieties",
+                "Piedāvājiet pazīstamu mierinājuma priekšmetu"
               ]
             },
             {
-              "title": "Novirziet, nedomājiet",
-              "instruction": "Maigi nomainiet tēmu vai vidi. Nemēģiniet viņus loģiski izvilināt no tā.",
+              "title": "Novirziet, nevis pamatojiet",
+              "instruction": "Maigi mainiet tēmu vai vidi. Nemēģiniet viņus pārliecināt ar loģiku.",
               "tips": [
-                "Ierosiniet pastaigu vai pārvietojieties uz citu istabu",
-                "Uzdodiet mūziku, kas viņiem patīk",
+                "Iesakiet pastaigu vai pārvietošanos uz citu istabu",
+                "Ieslēdziet mūziku, ko viņi mīl",
                 "Piedāvājiet uzkodu vai siltu dzērienu",
-                "Kopā apskatiet fotogrāfijas"
+                "Apskatiet fotogrāfijas kopā"
               ]
             },
             {
               "title": "Kad meklēt palīdzību",
-              "instruction": "Ja satraukums ilgst vairāk nekā 30 minūtes, ja viņiem ir risks ievainot sevi vai jūs, vai ja šī ir pēkšņa jauna uzvedība — zvaniet neatliekamās palīdzības dienestiem.",
+              "instruction": "Ja satraukums ilgst vairāk nekā 30 minūtes, ja pastāv risks, ka viņi var nodarīt pāri sev vai jums, vai ja šī ir pēkšņa jauna uzvedība — zvaniet neatliekamās palīdzības dienestiem.",
               "actionLabel": "Zvanīt neatliekamās palīdzības dienestiem"
             }
           ]
         },
         "wandering": {
-          "label": "Klaidonība / Pazudis",
+          "label": "Klaiņošana / Pazudis",
           "steps": [
             {
-              "title": "Vispirms pārbaudiet parastās vietas",
-              "instruction": "Lielākā daļa cilvēku ar demenci dodas uz pazīstamām vietām — bijušo darba vietu, bērnības mājām, kaimiņa māju.",
+              "title": "Vispirms pārbaudiet ierastās vietas",
+              "instruction": "Lielākā daļa cilvēku ar demenci dodas uz pazīstamām vietām — bijušo darba vietu, bērnības māju, kaimiņa māju.",
               "tips": [
                 "Pārbaudiet dārzu, garāžu, tuvējās ielas",
-                "Pajautājiet kaimiņiem, vai viņi viņus ir redzējuši",
-                "Pārbaudiet vietas, kur viņi regulāri devās"
+                "Pajautājiet kaimiņiem, vai viņi nav redzējuši",
+                "Pārbaudiet vietas, kur viņi regulāri gāja"
               ]
             },
             {
               "title": "Izmantojiet viņu atrašanās vietu",
-              "instruction": "Ja ir iestatīta atrašanās vietas izsekošana, pārbaudiet viņu pašreizējo pozīciju tūlīt."
+              "instruction": "Ja atrašanās vietas izsekošana ir iestatīta, pārbaudiet viņu pašreizējo pozīciju tagad."
             },
             {
               "title": "Brīdiniet ģimeni",
-              "instruction": "Paziņojiet visiem nekavējoties. Vairāk meklējošu acu ir labāk."
+              "instruction": "Nekavējoties paziņojiet visiem. Jo vairāk acu meklē, jo labāk."
             },
             {
               "title": "Zvaniet policijai, ja nav atrasts 15 minūšu laikā",
-              "instruction": "Negaidiet. Cilvēkiem ar demenci ir augsts traumu risks. Zvaniet neatliekamās palīdzības dienestiem un pasakiet, ka personai ir demence.",
+              "instruction": "Negaidiet. Cilvēkiem ar demenci ir augsts savainojumu risks. Zvaniet neatliekamās palīdzības dienestiem un paziņojiet, ka personai ir demence.",
               "actionLabel": "Zvanīt neatliekamās palīdzības dienestiem"
             }
           ]
@@ -1061,84 +1061,84 @@
           "steps": [
             {
               "title": "Pauze — tā nav nepaklausība",
-              "instruction": "Atteikums gandrīz vienmēr ir bailes, apjukums vai diskomforts. Viņi var nesaprast, ko jūs lūdzat."
+              "instruction": "Atteikšanās gandrīz vienmēr ir bailes, apjukums vai diskomforts. Viņi var nesaprast, ko jūs lūdzat."
             },
             {
               "title": "Atkāpieties un mēģiniet citādi",
-              "instruction": "Nespiediet. Atgriezieties pēc 15–20 minūtēm un vērsieties pie tā, it kā tā būtu pirmā reize.",
+              "instruction": "Nespiediet. Atgriezieties pēc 15–20 minūtēm un pieejiet, it kā tas būtu pirmo reizi.",
               "tips": [
                 "Mainiet to, kurš jautā",
                 "Mainiet vidi",
-                "Sadaliet uzdevumu mazākos soļos",
+                "Sadalīt uzdevumu mazākos soļos",
                 "Piedāvājiet izvēli: \"Vanna vai duša?\""
               ]
             },
             {
-              "title": "Padariet to drošu",
-              "instruction": "Paskaidrojiet katru soli, pirms to darāt. Kustieties lēnām. Uzturiet viņus siltus.",
+              "title": "Radiet drošības sajūtu",
+              "instruction": "Paskaidrojiet katru soli, pirms to veicat. Kustieties lēni. Uzturiet viņus siltumā.",
               "tips": [
                 "Brīdiniet pirms pieskaršanās",
                 "Izmantojiet mierīgu, siltu toni",
-                "Atskaņojiet viņu iecienīto mūziku uzdevuma laikā",
-                "Uzturiet rutīnu konsekventu"
+                "Atskaņojiet viņu iecienītāko mūziku uzdevuma laikā",
+                "Uzturiet konsekventu rutīnu"
               ]
             },
             {
               "title": "Vai tas ir modelis?",
-              "instruction": "Ja viņi konsekventi atsakās no viena un tā paša uzdevuma, reģistrējiet to. Var būt kāda pamatproblēma — sāpes, bailes, jutīgums. Apspriediet to ar savu ārstu."
+              "instruction": "Ja viņi konsekventi atsakās no viena un tā paša uzdevuma, reģistrējiet to. Var būt kāda pamatproblēma — sāpes, bailes, jutīgums. Apspriedieties ar viņu ārstu."
             }
           ]
         },
         "hallucinations": {
-          "label": "Redzēt / Dzirdēt lietas",
+          "label": "Redz / Dzird lietas",
           "steps": [
             {
-              "title": "Nestrīdieties — viņiem tas ir reāli",
-              "instruction": "Atzīstiet to, ko viņi piedzīvo, neapstiprinot, ka tā ir taisnība.",
+              "title": "Nestīdieties — viņiem tas ir reāli",
+              "instruction": "Atzīstiet to, ko viņi piedzīvo, neapstiprinot, ka tas ir patiess.",
               "tips": [
-                "\"Tas izklausās biedējoši. Esmu šeit ar tevi.\"",
-                "\"Pastāsti man, ko tu redzi.\"",
+                "\"Tas izklausās biedējoši. Esmu šeit ar jums.\"",
+                "\"Pastāstiet man, ko redzat.\"",
                 "Nesakiet \"tur nekā nav\""
               ]
             },
             {
               "title": "Pārbaudiet vidi",
-              "instruction": "Ēnas, atspulgi, TV skaņas un jucekli var izraisīt nepareizu interpretāciju.",
+              "instruction": "Ēnas, atspīdumi, TV skaņas un nekārtība var izraisīt nepareizu interpretāciju.",
               "checklist": [
                 "Ēnas no logiem vai lampām?",
-                "Televizors vai radio ieslēgts fonā?",
-                "Spoguļu atspulgi?",
+                "TV vai radio ieslēgts fonā?",
+                "Spoguļa atspīdumi?",
                 "Slikts apgaismojums?"
               ]
             },
             {
-              "title": "Maigi novirziet",
-              "instruction": "Pievērsiet viņu uzmanību kaut kam konkrētam un mierinošam.",
+              "title": "Maigi novirziet uzmanību",
+              "instruction": "Novirziet viņu uzmanību uz kaut ko konkrētu un mierinošu.",
               "tips": [
-                "Pārvietojieties uz labi apgaismotu telpu",
-                "Piedāvājiet praktisku aktivitāti",
-                "Dodieties kopā nelielā pastaigā",
-                "Kopā pagatavojiet tasi tējas"
+                "Pārvietojieties uz labi apgaismotu istabu",
+                "Piedāvājiet praktisku nodarbi",
+                "Aiziet kopā īsā pastaigā",
+                "Pagatavojiet kopā tasi tējas"
               ]
             },
             {
               "title": "Kad zvanīt ārstam",
-              "instruction": "Ja halucinācijas ir jaunas, biežas vai izraisa ārkārtēju stresu. Pēkšņs sākums var liecināt par infekciju, zāļu blakusparādībām vai delīriju."
+              "instruction": "Ja halucinācijas ir jaunas, biežas vai izraisa ārkārtēju ciešanas. Pēkšņa parādīšanās var liecināt par infekciju, zāļu blakusparādībām vai delīriju."
             }
           ]
         },
         "sundowning": {
-          "label": "Saulrieta sindroms",
+          "label": "Vakara apjukums",
           "steps": [
             {
-              "title": "Atpazīt modeli",
-              "instruction": "Saules rieta sindroms parasti sākas vēlā pēcpusdienā. Tas ir ļoti izplatīts un nav kaut kas, ko viņi var kontrolēt."
+              "title": "Atpazīstiet modeli",
+              "instruction": "Vakara nemiers parasti sākas vēlā pēcpusdienā. Tas ir ļoti izplatīts un nav kaut kas, ko viņi var kontrolēt."
             },
             {
               "title": "Pielāgojiet vidi tagad",
-              "instruction": "Samaziniet visu stimulāciju un izveidojiet drošības signālus.",
+              "instruction": "Samaziniet visus stimulus un izveidojiet drošības signālus.",
               "tips": [
-                "Ieslēdziet siltas gaismas, pirms satumst",
+                "Ieslēdziet siltas gaismas, pirms kļūst tumšs",
                 "Aizveriet aizkarus, lai samazinātu ēnas",
                 "Izslēdziet vai samaziniet televizora skaļumu",
                 "Samaziniet cilvēku skaitu telpā"
@@ -1151,24 +1151,24 @@
                 "Maiga roku masāža ar losjonu",
                 "Maiga, pazīstama mūzika",
                 "Dvieļu locīšana vai priekšmetu šķirošana",
-                "Kopīga fotoalbuma pārlūkošana"
+                "Kopīga fotoalbuma apskatīšana"
               ]
             },
             {
               "title": "Novērsiet to rīt",
-              "instruction": "Reģistrējiet epizodi ar laika informāciju. Modeļi palīdz pielāgot grafikus — vairāk aktivitāšu no rīta, mazāk kofeīna pēcpusdienā."
+              "instruction": "Pierakstiet epizodi ar laika detaļām. Modeļi palīdz pielāgot grafikus — vairāk aktivitātes no rīta, mazāk kofeīna pēcpusdienā."
             }
           ]
         },
         "fall": {
-          "label": "Krišana / Fiziska ārkārtas situācija",
+          "label": "Kritiens / Fiziska ārkārtas situācija",
           "steps": [
             {
               "title": "Nepārvietojiet viņus",
-              "instruction": "Ja vien viņi neatrodas tiešās briesmās, nemēģiniet viņus pacelt vai pārvietot.",
+              "instruction": "Ja vien viņi nav tiešās briesmās, nemēģiniet viņus celt vai pārvietot.",
               "tips": [
-                "Nolaidieties viņu līmenī",
-                "Nomieriniet viņus: \"Esmu šeit, tu esi drošībā\"",
+                "Nokāpiet līdz viņu līmenim",
+                "Nomieriniet viņus: \"Esmu šeit, jūs esat drošībā\"",
                 "Pārbaudiet, vai nav redzamu ievainojumu"
               ]
             },
@@ -1176,19 +1176,19 @@
               "title": "Vai viņi var piecelties?",
               "instruction": "Ja nav acīmredzamu ievainojumu, palīdziet viņiem lēnām piecelties pa posmiem.",
               "checklist": [
-                "Vai viņi ir modri un atsaucīgi?",
-                "Vai ir kādi acīmredzami ievainojumi vai sāpes?",
+                "Vai viņi ir modri un reaģē?",
+                "Vai ir kāds acīmredzams ievainojums vai sāpes?",
                 "Vai viņi var kustināt visas ekstremitātes?",
-                "Vai viņi ir sasituši galvu?"
+                "Vai viņi atsita galvu?"
               ]
             },
             {
               "title": "Zvaniet pēc palīdzības, ja...",
-              "instruction": "Galvas trauma, nevar piecelties, stipras sāpes, apjukums ir sliktāks nekā parasti vai asiņošana, ko nevar apturēt."
+              "instruction": "Galvas trauma, nevar piecelties, stipras sāpes, apjukums ir sliktāks nekā parasti, vai asiņošana, kas neapstājas."
             },
             {
               "title": "Pēc kritiena",
-              "instruction": "Reģistrējiet šo notikumu un pieminiet to viņu ārstam. Atkārtoti kritieni var liecināt par zāļu problēmām vai slimības progresēšanu."
+              "instruction": "Pierakstiet šo notikumu un pieminiet to viņu ārstam. Atkārtoti kritieni var liecināt par medikamentu problēmām vai slimības progresēšanu."
             }
           ]
         },
@@ -1196,16 +1196,16 @@
           "label": "Atkārtoti jautājumi",
           "steps": [
             {
-              "title": "Ieelpojiet — tā ir slimība, nevis viņi",
-              "instruction": "Viņi patiesi neatceras, ka jautāja. Jūsu neapmierinātība ir pamatota, bet, to parādot, viņi kļūst vēl nemierīgāki."
+              "title": "Elpojiet — tā ir slimība, nevis viņi",
+              "instruction": "Viņi patiesi neatceras, ka jautāja. Jūsu vilšanās ir pamatota, taču tās izrādīšana padara viņus vēl nemierīgākus."
             },
             {
               "title": "Ko viņi patiesībā jautā?",
-              "instruction": "Virsmas jautājums reti ir īstais jautājums. \"Cikos ir vakariņas?\" varētu nozīmēt \"Esmu izsalcis.\"",
+              "instruction": "Virsējs jautājums reti ir īstais jautājums. \"Cikos ir vakariņas?\" var nozīmēt \"Esmu izsalcis.\"",
               "checklist": [
                 "Vai viņi par kaut ko uztraucas?",
-                "Vai viņi varētu būt izsalkuši, izslāpuši vai garlaicīgi?",
-                "Vai ir kāds gaidāms notikums, kas rada raizes?"
+                "Vai viņi varētu būt izsalkuši, izslāpuši vai garlaikoti?",
+                "Vai ir gaidāms kāds notikums, kas rada raizes?"
               ]
             },
             {
@@ -1213,14 +1213,14 @@
               "instruction": "Atbildiet uz emocijām, kas slēpjas aiz jautājuma, nevis uz burtiskiem vārdiem.",
               "tips": [
                 "Uzrakstiet atbildi uz redzamas tāfeles",
-                "Sniedziet vienkāršu, nomierinošu atbildi katru reizi",
-                "Pēc atbildēšanas novirziet uz praktisku darbību",
-                "Izmantojiet vizuālos grafikus, lai samazinātu nenoteiktību"
+                "Katru reizi sniedziet vienkāršu, nomierinošu atbildi",
+                "Pēc atbildēšanas novirziet uz praktisku aktivitāti",
+                "Izmantojiet vizuālos grafikus, lai mazinātu neskaidrību"
               ]
             },
             {
               "title": "Aizsargājiet savu labklājību",
-              "instruction": "Ja iespējams, nomainieties ar citu aprūpētāju. Izmantojiet austiņas ar maigu mūziku, kad jums nepieciešams garīgs pārtraukums."
+              "instruction": "Ja iespējams, nomainieties ar citu aprūpētāju. Izmantojiet austiņas ar maigu mūziku, kad jums nepieciešams garīgs atpūtas brīdis."
             }
           ]
         },
@@ -1231,93 +1231,93 @@
               "title": "Jūsu drošība ir pirmajā vietā",
               "instruction": "Ja jūtaties fiziski nedroši, nekavējoties atkāpieties. Nemēģiniet viņus savaldīt.",
               "tips": [
-                "Novietojiet sevi pie izejas",
-                "Aizsniedziet bīstamus priekšmetus",
-                "Saglabājiet savu balsi zemu un mierīgu",
+                "Novietojieties pie izejas",
+                "Novāciet bīstamus priekšmetus no sasniedzamības",
+                "Saglabājiet zemu un mierīgu balsi",
                 "Neveiciet pēkšņas kustības"
               ]
             },
             {
               "title": "Nomierinieties",
-              "instruction": "Agresija izraisa cīņas vai bēgšanas reakciju arī jūsos. Atvēliet vienu mirkli, lai ieelpotu."
+              "instruction": "Agresija izraisa cīņas vai bēgšanas reakciju arī jūsos. Veltiet vienu brīdi elpošanai."
             },
             {
               "title": "Kas to izraisīja?",
-              "instruction": "Agresija gandrīz vienmēr ir reakcija — sāpes, bailes, neapmierinātība, maņu pārslodze.",
+              "instruction": "Agresija gandrīz vienmēr ir reakcija — sāpes, bailes, vilšanās, maņu pārslodze.",
               "checklist": [
                 "Vai viņiem tika lūgts kaut ko darīt?",
                 "Vai viņiem sāpēja?",
                 "Vai vide bija trokšņaina vai haotiska?",
-                "Vai viņi jutās iesprostoti?"
+                "Vai viņi jutās iedzīti stūrī?"
               ]
             },
             {
-              "title": "Dodiet vietu un laiku",
-              "instruction": "Atkāpieties. Pārtrauciet darbību, kas izraisa agresiju. Atgriezieties pēc 15–20 minūtēm tā, it kā nekas nebūtu noticis.",
+              "title": "Dodiet telpu un laiku",
+              "instruction": "Atkāpieties. Pārtrauciet izraisītāju aktivitāti. Atgriezieties pēc 15–20 minūtēm, it kā nekas nebūtu noticis.",
               "tips": [
                 "Atstājiet istabu, ja tas ir droši",
-                "Noņemiet izraisītāju",
+                "Novērsiet izraisītāju",
                 "Neuztveriet to personīgi",
-                "Atgriežoties, lēnām tuvoieties"
+                "Atgriežoties, tuvojieties lēnām"
               ]
             },
             {
-              "title": "Kad šī ir ārkārtas situācija",
-              "instruction": "Ja viņiem ir ierocis, ja kāds ir ievainots vai ja agresija nemazinās — zvaniet neatliekamās palīdzības dienestiem."
+              "title": "Kad tā ir ārkārtas situācija",
+              "instruction": "Ja viņiem ir ierocis, ja kāds ir ievainots vai ja agresija nepāriet — zvaniet neatliekamās palīdzības dienestiem."
             }
           ]
         },
         "sleep_disruption": {
-          "label": "Miegs traucējumi",
+          "label": "Miega traucējumi",
           "steps": [
             {
-              "title": "Uzturiet vidi drošu",
+              "title": "Saglabājiet vidi drošu",
               "instruction": "Ja viņi naktī ir nomodā un pārvietojas, jūsu galvenā prioritāte ir drošība.",
               "tips": [
-                "Ieslēdziet zemas naktslampiņas",
-                "Novērsiet paklupšanas riskus",
-                "Aizslēdziet ārdurvis, ja klaiņošana rada bažas",
+                "Ieslēdziet vājas naktsgaismas",
+                "Novāciet paklupšanas riskus",
+                "Aizslēdziet ārdurvis, ja ir bažas par klaiņošanu",
                 "\"Ir nakts, viss ir drošībā\""
               ]
             },
             {
               "title": "Kas viņus pamodināja?",
-              "instruction": "Nakts pamošanos var izraisīt sāpes, nepieciešamība pēc tualetes, zāļu lietošanas laiks vai izsalkums.",
+              "instruction": "Nakts pamošanos var izraisīt sāpes, nepieciešamība apmeklēt tualeti, medikamentu laiks vai izsalkums.",
               "checklist": [
-                "Vai viņiem ir nepieciešams tualete?",
+                "Vai viņiem vajag uz tualeti?",
                 "Vai viņiem sāp?",
                 "Vai troksnis vai gaisma viņus pamodināja?",
                 "Vai viņi ir izsalkuši vai izslāpuši?"
               ]
             },
             {
-              "title": "Maigi virziet viņus atpakaļ",
-              "instruction": "Nestrīdieties par to, cik ir pulkstenis. Virziet viņus atpakaļ uz gultu ar nomierinošiem signāliem.",
+              "title": "Vadiet viņus atpakaļ maigi",
+              "instruction": "Nestridieties par to, cik ir pulkstenis. Novirziet viņus atpakaļ gultā ar nomierinošiem signāliem.",
               "tips": [
                 "Piedāvājiet siltu dzērienu bez kofeīna",
                 "Izmantojiet mierīgu, klusu balsi",
                 "Ieslēdziet maigu, pazīstamu mūziku",
-                "Sēdiet ar viņiem, līdz viņi nomierinās"
+                "Sēdiet kopā ar viņiem, līdz viņi nomierinās"
               ]
             },
             {
               "title": "Uzlabojiet rītdienas nakti",
-              "instruction": "Vairāk aktivitāšu dienas laikā, bez kofeīna pēc pusdienlaika, konsekventa gulētiešanas rutīna, ierobežojiet snaudas līdz 30 minūtēm."
+              "instruction": "Vairāk aktivitātes dienas laikā, bez kofeīna pēc pusdienlaika, konsekventa gulētiešanas rutīna, ierobežojiet diendusas līdz 30 minūtēm."
             }
           ]
         },
         "shadowing": {
-          "label": "Ēnošana",
+          "label": "Sekošana",
           "steps": [
             {
-              "title": "Atzīstiet savu neapmierinātību",
-              "instruction": "Būt visur izsekotam ir nogurdinoši. Šīs sajūtas ir pamatotas. Ieelpojiet."
+              "title": "Atzīstiet savu vilšanos",
+              "instruction": "Būt visur sekojamam ir nogurdinoši. Šīs sajūtas ir pamatotas. Ieelpojiet."
             },
             {
               "title": "Kāpēc viņi jums seko?",
-              "instruction": "Ēnošanu izraisa trauksme un bailes no pamešanas. Būt jums tuvumā ir viņu vienīgais drošības avots.",
+              "instruction": "Sekošanu izraisa trauksme un bailes no pamešanas. Būt jūsu tuvumā ir viņu vienīgais drošības avots.",
               "checklist": [
-                "Vai nesen ir notikušas izmaiņas rutīnā?",
+                "Vai nesen ir mainījusies rutīna?",
                 "Vai viņi atrodas nepazīstamā vidē?",
                 "Vai jūs nesen esat bijis prom?",
                 "Vai viņi jūtas slikti?"
@@ -1325,22 +1325,22 @@
             },
             {
               "title": "Samaziniet viņu trauksmi",
-              "instruction": "Palīdziet viņiem justies droši, neesot fiziski klāt katru mirkli.",
+              "instruction": "Palīdziet viņiem justies droši, nebūdami fiziski klāt katru brīdi.",
               "tips": [
-                "Dodiet viņiem \"darbu\" netālu no vietas, kur atrodaties",
-                "Atstājiet viņiem personisku priekšmetu kā komforta enkuru",
-                "\"Esmu tikai virtuvē, es tūlīt atgriezīšos\"",
+                "Dodiet viņiem \"darbu\" netālu no jūsu atrašanās vietas",
+                "Atstājiet viņiem personīgu priekšmetu kā mierinājuma enkuru",
+                "\"Esmu tikai virtuvē, tūlīt atgriezīšos\"",
                 "Izmēģiniet pazīstamu TV vai mūziku kā pavadoni"
               ]
             },
             {
-              "title": "Ieplānojiet pārtraukumus sev",
+              "title": "Iekļaujiet pārtraukumus sev",
               "instruction": "Palūdziet kādam pasēdēt ar viņiem, kamēr jūs paņemat 20 minūtes. Pat 10 minūtes vienatnē palīdz.",
               "tips": [
                 "Negaidiet, līdz esat izsmelts",
                 "Ir labi maigi aizvērt vannas istabas durvis",
                 "Apsveriet atbalsta grupu",
-                "Šī uzvedība bieži vien samazinās ar stabilu rutīnu"
+                "Šī uzvedība bieži samazinās ar stabilu rutīnu"
               ]
             }
           ]
@@ -1358,18 +1358,18 @@
   "notifications": {
     "taskReminder": "{{patientName}}, ir laiks: {{taskTitle}}",
     "taskCompleted": "{{patientName}} pabeidza: {{taskTitle}}",
-    "checkinReceived": "{{patientName}} pabeidza šodienas reģistrēšanos",
+    "checkinReceived": "{{patientName}} pabeidza šodienas reģistrāciju",
     "leftSafeZone": "{{patientName}} ir atstājis {{zoneName}}",
-    "inactivity": "No {{patientName}} nav konstatēta kustība {{hours}} stundu laikā",
-    "nightMovement": "{{patientName}} pārvietojas ārā plkst. {{time}}",
-    "takeMeHome": "{{patientName}} pieskārās \"Aizved mani mājās\" no {{location}}",
-    "eveningSummary": "{{patientName}} diena: {{completed}}/{{total}} uzdevumi paveikti. Garastāvoklis: {{mood}}"
+    "inactivity": "Nav konstatēta kustība no {{patientName}} {{hours}} stundas",
+    "nightMovement": "{{patientName}} pārvietojas ārpusē plkst. {{time}}",
+    "takeMeHome": "{{patientName}} pieskārās 'Aizvediet mani mājās' no {{location}}",
+    "eveningSummary": "{{patientName}} diena: {{completed}}/{{total}} uzdevumi pabeigti. Garastāvoklis: {{mood}}"
   },
   "subscription": {
     "free": "Bezmaksas",
     "plus": "OurTurn Plus",
     "upgradeTitle": "Atbloķējiet OurTurn Plus",
-    "upgradeFeature": "Šai funkcijai ir nepieciešams OurTurn Plus",
+    "upgradeFeature": "Šai funkcijai nepieciešams OurTurn Plus",
     "monthly": "{{price}}/mēnesī",
     "annual": "{{price}}/gadā",
     "annualSavings": "Ietaupiet {{percent}}%",
@@ -1380,13 +1380,13 @@
       "unlimitedTasks": "Neierobežots uzdevumu skaits dienā",
       "aiCoach": "Pilns AI aprūpes treneris",
       "brainActivities": "AI ģenerētas smadzeņu labsajūtas aktivitātes",
-      "safeZones": "Drošas zonas un atrašanās vietas brīdinājumi",
+      "safeZones": "Drošās zonas un atrašanās vietas brīdinājumi",
       "multiCaregiver": "Līdz 5 ģimenes locekļiem",
-      "journal": "Shared Care Journal",
-      "insights": "AI pattern insights",
-      "reports": "Doctor visit reports",
-      "toolkit": "Caregiver toolkit & wellness",
-      "priority": "Priority support"
+      "journal": "Kopīga aprūpes dienasgrāmata",
+      "insights": "AI modeļu ieskati",
+      "reports": "Ziņojumi par ārsta apmeklējumiem",
+      "toolkit": "Aprūpētāja rīku komplekts un labsajūta",
+      "priority": "Prioritārs atbalsts"
     }
   }
 }

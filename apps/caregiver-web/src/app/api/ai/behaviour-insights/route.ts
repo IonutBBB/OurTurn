@@ -4,6 +4,7 @@ import { createClient as createServerClient } from '@/lib/supabase/server';
 import { rateLimit } from '@/lib/rate-limit';
 import { createLogger } from '@/lib/logger';
 import { postProcess, logSafetyEvent, SafetyLevel } from '@/lib/ai-safety';
+import { getLanguageInstruction } from '@/lib/ai-language';
 
 const log = createLogger('ai/behaviour-insights');
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY || '');
@@ -23,7 +24,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 });
     }
 
-    const { householdId } = await request.json();
+    const { householdId, locale } = await request.json();
 
     const { data: caregiver } = await supabase
       .from('caregivers')
@@ -76,7 +77,7 @@ RULES:
 
 Return ONLY a valid JSON array:
 [{"title": "...", "insight": "...", "suggestion": "..."}]
-No markdown, no explanation.`;
+No markdown, no explanation.${getLanguageInstruction(locale)}`;
 
     const model = genAI.getGenerativeModel({ model: 'gemini-3-flash-preview' });
     const result = await model.generateContent(prompt);

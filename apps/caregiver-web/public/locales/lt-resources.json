@@ -200,5 +200,11 @@
       "respite": "Atokvėpio priežiūra",
       "financial": "Finansinė parama"
     }
+  },
+  "whoIsupport": {
+    "sectionTitle": "PSO iSupport programa",
+    "sectionSubtitle": "Išsami, įrodymais pagrįsta globėjų mokymo programa, kurią sukūrė Pasaulio sveikatos organizacija (PSO) — Jungtinių Tautų agentūra, atsakinga už tarptautinę visuomenės sveikatą.",
+    "whoExplanation": "PSO = Pasaulio sveikatos organizacija (Jungtinės Tautos)",
+    "badge": "Įrodymais pagrįsti mokymai"
   }
 }

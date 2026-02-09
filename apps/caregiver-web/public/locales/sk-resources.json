@@ -200,5 +200,11 @@
       "respite": "Opatrovateľská služba",
       "financial": "Finančná podpora"
     }
+  },
+  "whoIsupport": {
+    "sectionTitle": "Program WHO iSupport",
+    "sectionSubtitle": "Komplexný vzdelávací program pre opatrovateľov založený na dôkazoch, vyvinutý Svetovou zdravotníckou organizáciou (WHO) — agentúrou Organizácie Spojených národov zodpovednou za medzinárodné verejné zdravie.",
+    "whoExplanation": "WHO = Svetová zdravotnícka organizácia (Organizácia Spojených národov)",
+    "badge": "Vzdelávanie založené na dôkazoch"
   }
 }

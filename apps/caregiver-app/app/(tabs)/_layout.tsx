@@ -1,6 +1,6 @@
 import { Tabs } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import { Text, View } from 'react-native';
+import { Text, View, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ErrorBoundary } from '../../src/components/error-boundary';
 import { FONTS, RADIUS, SHADOWS, createThemedStyles, useColors } from '../../src/theme';
@@ -29,12 +29,18 @@ export default function TabsLayout() {
   const styles = useStyles();
   const colors = useColors();
 
+  // On Android, Expo Go may run edge-to-edge while reporting insets.bottom as 0,
+  // causing the system nav bar to cover tab buttons. Use 48dp minimum on Android.
+  const bottomPadding = Platform.OS === 'android'
+    ? Math.max(insets.bottom, 48)
+    : Math.max(insets.bottom, 6);
+
   return (
     <ErrorBoundary>
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarStyle: [styles.tabBar, { paddingBottom: Math.max(insets.bottom, 6), height: 72 + Math.max(insets.bottom - 6, 0) }],
+        tabBarStyle: [styles.tabBar, { paddingBottom: bottomPadding, height: 72 + bottomPadding }],
         tabBarShowLabel: false,
       }}
     >

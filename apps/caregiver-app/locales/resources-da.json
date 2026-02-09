@@ -200,5 +200,11 @@
       "respite": "Aflastningshjælp",
       "financial": "Økonomisk støtte"
     }
+  },
+  "whoIsupport": {
+    "sectionTitle": "WHO iSupport-programmet",
+    "sectionSubtitle": "Et omfattende, evidensbaseret uddannelsesprogram for omsorgspersoner udviklet af Verdenssundhedsorganisationen (WHO) — De Forenede Nationers agentur med ansvar for international folkesundhed.",
+    "whoExplanation": "WHO = Verdenssundhedsorganisationen (De Forenede Nationer)",
+    "badge": "Evidensbaseret uddannelse"
   }
 }

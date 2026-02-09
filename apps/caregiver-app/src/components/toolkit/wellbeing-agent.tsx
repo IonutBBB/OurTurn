@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import Markdown from 'react-native-markdown-display';
 import { useTranslation } from 'react-i18next';
+import i18n from '../../i18n';
 import type { SliderValue } from '@ourturn/shared';
 import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS } from '../../theme';
 
@@ -122,6 +123,7 @@ export function WellbeingAgent({ caregiverId, caregiverName, energy, stress, sle
           message: text,
           checkin: { energy: e ?? null, stress: s ?? null, sleep: sl ?? null },
           history,
+          locale: i18n.language,
         }),
         signal: controller.signal,
       });

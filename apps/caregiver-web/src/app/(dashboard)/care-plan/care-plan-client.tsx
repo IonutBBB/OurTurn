@@ -7,6 +7,7 @@ import { hasReachedTaskLimit } from '@ourturn/shared/utils/subscription';
 import { UpgradeBanner } from '@/components/upgrade-gate';
 import { FREE_LIMITS } from '@ourturn/shared/utils/subscription';
 import { useToast } from '@/components/toast';
+import i18n from '@/i18n';
 import type { MedicationItem } from '@ourturn/shared';
 
 interface Task {
@@ -322,6 +323,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
           householdId,
           category: suggestCategory || undefined,
           count: 5,
+          locale: i18n.language,
         }),
       });
 

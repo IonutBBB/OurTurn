@@ -12,6 +12,7 @@ import {
   AI_SAFETY_SYSTEM_PROMPT,
   BLOCKED_RESPONSE_FALLBACK,
 } from '@/lib/ai-safety';
+import { getLanguageInstruction } from '@/lib/ai-language';
 
 const log = createLogger('ai/coach');
 
@@ -29,6 +30,7 @@ interface RequestBody {
   householdId: string;
   conversationType?: ConversationType;
   conversationContext?: string;
+  locale?: string;
 }
 
 // Build system prompt with patient and caregiver context
@@ -318,7 +320,7 @@ async function getCompletionRates(
 export async function POST(request: NextRequest) {
   try {
     const body: RequestBody = await request.json();
-    const { message, conversationId, householdId, conversationType = 'open', conversationContext } = body;
+    const { message, conversationId, householdId, conversationType = 'open', conversationContext, locale } = body;
 
     if (!message || !householdId) {
       return NextResponse.json(
@@ -522,11 +524,12 @@ export async function POST(request: NextRequest) {
     // Append mode-specific instructions
     const modeAppendix = getModePromptAppendix(conversationType, conversationContext, patientName);
 
-    // Inject safety system prompt + any ORANGE/YELLOW context injection
+    // Inject safety system prompt + any ORANGE/YELLOW context injection + language instruction
     let systemPrompt = AI_SAFETY_SYSTEM_PROMPT + '\n\n' + basePrompt + modeAppendix;
     if (safetyResult.contextInjection) {
       systemPrompt += '\n\n' + safetyResult.contextInjection;
     }
+    systemPrompt += getLanguageInstruction(locale);
 
     // Initialize Gemini model
     const model = genAI.getGenerativeModel({

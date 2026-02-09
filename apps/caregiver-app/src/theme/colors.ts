@@ -105,4 +105,4 @@ export const darkColors = {
   shadowColor: '#000000',
 } as const;
 
-export type ThemeColors = typeof lightColors;
+export type ThemeColors = { [K in keyof typeof lightColors]: string };

@@ -8,6 +8,7 @@ import { UpgradeBanner } from '@/components/upgrade-gate';
 import type { ConversationType } from '@ourturn/shared/types/ai';
 import ChatMessages, { parseAIResponse } from './components/chat-messages';
 import ChatInput from './components/chat-input';
+import i18n from '@/i18n';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -75,6 +76,7 @@ export default function CoachConversation({
             householdId,
             conversationType,
             conversationContext,
+            locale: i18n.language,
           }),
         });
 

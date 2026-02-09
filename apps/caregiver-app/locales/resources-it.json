@@ -200,5 +200,11 @@
       "respite": "Assistenza di sollievo",
       "financial": "Supporto finanziario"
     }
+  },
+  "whoIsupport": {
+    "sectionTitle": "Programma WHO iSupport",
+    "sectionSubtitle": "Un programma completo e basato sulle evidenze per la formazione dei caregiver, sviluppato dall'Organizzazione Mondiale della Sanità (OMS) — l'agenzia delle Nazioni Unite responsabile della salute pubblica internazionale.",
+    "whoExplanation": "OMS = Organizzazione Mondiale della Sanità (Nazioni Unite)",
+    "badge": "Formazione basata sulle evidenze"
   }
 }

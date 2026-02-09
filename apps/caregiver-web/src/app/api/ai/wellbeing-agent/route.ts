@@ -11,6 +11,7 @@ import {
   AI_SAFETY_SYSTEM_PROMPT,
   BLOCKED_RESPONSE_FALLBACK,
 } from '@/lib/ai-safety';
+import { getLanguageInstruction } from '@/lib/ai-language';
 
 const log = createLogger('ai/wellbeing-agent');
 
@@ -20,6 +21,7 @@ interface RequestBody {
   message: string;
   checkin: { energy: number | null; stress: number | null; sleep: number | null };
   history: { role: 'user' | 'assistant'; content: string }[];
+  locale?: string;
 }
 
 function buildSystemPrompt(
@@ -89,7 +91,7 @@ TONE: Warm, real, grounded. Like a late-night conversation with someone who gets
 export async function POST(request: NextRequest) {
   try {
     const body: RequestBody = await request.json();
-    const { message, checkin, history } = body;
+    const { message, checkin, history, locale } = body;
 
     if (!message) {
       return NextResponse.json({ error: 'Message is required' }, { status: 400 });
@@ -192,11 +194,12 @@ export async function POST(request: NextRequest) {
           .join('\n')
       : 'No recent check-in data available.';
 
-    // Build system prompt with safety layer
+    // Build system prompt with safety layer + language instruction
     let systemPrompt = AI_SAFETY_SYSTEM_PROMPT + '\n\n' + buildSystemPrompt(caregiver.name, checkin, trendSummary);
     if (safetyResult.contextInjection) {
       systemPrompt += '\n\n' + safetyResult.contextInjection;
     }
+    systemPrompt += getLanguageInstruction(locale);
 
     // Initialize Gemini
     const model = genAI.getGenerativeModel({

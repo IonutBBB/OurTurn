@@ -13,3 +13,4 @@ export * from './consent';
 export * from './metrics';
 export * from './help-requests';
 export * from './daily-tips';
+export * from './activity-sessions';

@@ -6,11 +6,11 @@
     "delete": "Ta bort",
     "edit": "Redigera",
     "done": "Klar",
-    "skip": "Hoppa över idag",
-    "loading": "Läser in...",
+    "skip": "Hoppa över för idag",
+    "loading": "Laddar...",
     "error": "Något gick fel. Försök igen.",
     "errorTitle": "Något gick fel",
-    "errorDefault": "Ett oväntat fel inträffade.",
+    "errorDefault": "Ett oväntat fel uppstod.",
     "tryAgain": "Försök igen",
     "logOut": "Logga ut",
     "offline": "Du är offline – din data synkroniseras när du är ansluten",
@@ -28,55 +28,55 @@
   },
   "categories": {
     "medication": "Medicinering",
-    "nutrition": "Måltider och näring",
+    "nutrition": "Måltider & Näring",
     "physical": "Fysisk aktivitet",
-    "cognitive": "Hjärnans välbefinnande",
-    "social": "Socialt och kontakt",
+    "cognitive": "Hjärnhälsa",
+    "social": "Socialt & Gemenskap",
     "health": "Hälsokontroll"
   },
   "caregiverApp": {
     "dashboard": {
       "greeting": "God {{timeOfDay}}, {{name}}",
-      "statusGood": "{{patientName}} har en bra dag",
+      "statusGood": "{{patientName}}s dag går bra",
       "statusConcern": "{{patientName}} kan behöva lite uppmärksamhet",
       "todaysStatus": "Dagens status",
       "tasksCompleted": "{{completed}} av {{total}} uppgifter klara",
       "dailyCheckin": "Daglig incheckning",
-      "noCheckinYet": "Ingen incheckning har skickats in idag ännu",
+      "noCheckinYet": "Ingen incheckning har skickats in idag",
       "location": "Plats",
       "atHome": "{{name}} är hemma",
       "lastUpdate": "Senast uppdaterad: {{time}}",
       "aiInsights": "Insikter",
-      "quickActions": "Snabbåtgärder",
+      "quickActions": "Snabba åtgärder",
       "callPatient": "Ring {{name}}",
       "tasksCompletedLabel": "uppgifter slutförda",
       "careCode": "Vårdkod",
       "careCodeHint": "Dela för att ansluta patientappen",
-      "careCodeNotAvailable": "Koden är inte tillgänglig",
+      "careCodeNotAvailable": "Kod ej tillgänglig",
       "morningActivityPattern": "Morgonaktivitetsmönster",
       "insightText": "{{name}} slutför fler uppgifter de dagar då morgonpromenader är schemalagda.",
       "noJournalEntries": "Inga journalanteckningar ännu",
       "unknown": "Okänd",
       "moodStruggling": "Kämpar",
-      "moodLow": "Lågt",
+      "moodLow": "Låg",
       "moodOkay": "Okej",
       "moodGood": "Bra",
-      "moodGreat": "Jättebra",
+      "moodGreat": "Toppen",
       "sleepPoor": "Dålig",
-      "sleepFair": "Okej",
+      "sleepFair": "Måttlig",
       "sleepWell": "Bra",
       "mood": "Humör",
       "sleep": "Sömn",
-      "minutesAgo": "{{count}}m sedan",
-      "hoursAgo": "{{count}}h sedan",
-      "daysAgo": "{{count}}d sedan",
+      "minutesAgo": "för {{count}} min sedan",
+      "hoursAgo": "för {{count}} t sedan",
+      "daysAgo": "för {{count}} d sedan",
       "deviceStatus": "Enhetsstatus",
       "deviceOnline": "Online",
       "deviceOffline": "Offline",
       "lastSeenAt": "Senast sedd: {{time}}",
       "lastSeenNever": "Aldrig ansluten",
       "engagementSummary": "Dagens engagemang",
-      "alertsToday": "Aviseringar idag",
+      "alertsToday": "Varningar idag",
       "checkedIn": "Incheckad",
       "notCheckedIn": "Inte incheckad",
       "brainActivity": "Hjärnaktivitet"
@@ -84,9 +84,9 @@
     "carePlan": {
       "title": "{{name}}s dagliga plan",
       "addTask": "Lägg till uppgift",
-      "aiSuggest": "AI-föreslagna uppgifter",
+      "aiSuggest": "AI föreslår uppgifter",
       "hintLabel": "Instruktioner ({{name}} kommer att se detta)",
-      "hintPlaceholder": "T.ex. Dina piller finns i pillerdosan på köksbänken",
+      "hintPlaceholder": "T.ex. Dina piller ligger i pillerburken på köksbänken",
       "recurrence": "Upprepas",
       "daily": "Varje dag",
       "specificDays": "Specifika dagar",
@@ -97,7 +97,7 @@
       "category": "Kategori",
       "taskTitle": "Uppgiftstitel",
       "time": "Tid",
-      "deleteConfirm": "Ta bort den här uppgiften?",
+      "deleteConfirm": "Ta bort denna uppgift?",
       "noMoreSuggestions": "Inga fler förslag tillgängliga.",
       "copyFromTo": "Kopiera uppgifter från {{day}} till:",
       "copyCount": "{{taskCount}} uppgifter kommer att kopieras till {{dayCount}} dag(ar)",
@@ -113,30 +113,30 @@
       "taskPhoto": "Uppgiftsfoto (valfritt)",
       "uploadPhoto": "Ladda upp foto",
       "removePhoto": "Ta bort foto",
-      "medicationItems": "Läkemedel i denna grupp",
-      "medicationItemsHint": "Gruppera upp till 3 läkemedel som tas samtidigt",
-      "addMedication": "Lägg till läkemedel",
-      "medName": "Läkemedelsnamn",
+      "medicationItems": "Mediciner i denna grupp",
+      "medicationItemsHint": "Gruppera upp till 3 mediciner som tas samtidigt",
+      "addMedication": "Lägg till medicin",
+      "medName": "Medicinnamn",
       "medNamePlaceholder": "t.ex. Donepezil",
       "medDosage": "Dosering eller instruktion",
       "medDosagePlaceholder": "t.ex. 10mg tablett",
       "medPhotoLabel": "Foto",
-      "medItemLabel": "Läkemedel {{number}}",
+      "medItemLabel": "Medicin {{number}}",
       "removeMedication": "Ta bort",
-      "maxMedications": "Maximalt 3 läkemedel per grupp",
+      "maxMedications": "Maximalt 3 mediciner per grupp",
       "uploadingPhoto": "Laddar upp...",
       "evidenceBased": "Evidensbaserad"
     },
     "location": {
-      "title": "Plats och säkerhet",
-      "currentLocation": "Nuvarande plats",
+      "title": "Plats & Säkerhet",
+      "currentLocation": "Aktuell plats",
       "safeZones": "Säkra zoner",
       "addSafeZone": "Lägg till säker zon",
       "editSafeZone": "Redigera säker zon",
-      "alerts": "Aviseringsinställningar",
+      "alerts": "Varningsinställningar",
       "leaveZoneAlert": "Meddela när {{name}} lämnar en säker zon",
       "inactivityAlert": "Meddela vid ingen rörelse under",
-      "nightAlert": "Meddela när ute efter",
+      "nightAlert": "Meddela om utanför efter",
       "takeMeHomeAlert": "Meddela när {{name}} trycker på 'Ta mig hem'",
       "locationHistory": "Platshistorik",
       "takeMeHomeTapped": "{{name}} tryckte på 'Ta mig hem'",
@@ -145,43 +145,43 @@
       "zoneRadius": "Radie (meter)",
       "unknownLocation": "Okänd plats",
       "completeOnboarding": "Vänligen slutför introduktionen först.",
-      "unacknowledgedAlerts": "{{count}} Obekräftad varning",
-      "unacknowledgedAlertsPlural": "{{count}} Obekräftade varningar",
+      "unacknowledgedAlerts": "{{count}} obekräftad varning",
+      "unacknowledgedAlertsPlural": "{{count}} obekräftade varningar",
       "acknowledge": "Bekräfta",
       "patientLocation": "{{name}}s plats",
       "updated": "Uppdaterad: {{time}}",
       "noLocationData": "Ingen platsdata ännu",
       "live": "Live",
       "add": "+ Lägg till",
-      "noSafeZonesYet": "Inga säkra zoner har konfigurerats ännu.\nLägg till zoner för att få varningar när {{name}} lämnar.",
+      "noSafeZonesYet": "Inga säkra zoner konfigurerade ännu.\nLägg till zoner för att få varningar när {{name}} lämnar.",
       "radiusMeters": "{{radius}}m radie",
       "recentAlerts24h": "Senaste varningar (24h)",
-      "noRecentAlerts": "Inga varningar under de senaste 24 timmarna. Allt är bra!",
+      "noRecentAlerts": "Inga varningar de senaste 24 timmarna. Allt är bra!",
       "deleteSafeZone": "Ta bort säker zon",
       "deleteSafeZoneConfirm": "Är du säker på att du vill ta bort \"{{name}}\"?",
-      "failedToSaveSafeZone": "Det gick inte att spara säker zon",
-      "failedToDeleteSafeZone": "Det gick inte att ta bort säker zon",
+      "failedToSaveSafeZone": "Misslyckades med att spara säker zon",
+      "failedToDeleteSafeZone": "Misslyckades med att ta bort säker zon",
       "fillAllFields": "Vänligen fyll i alla fält",
       "name": "Namn",
-      "nameExample": "t.ex. Hemma, Läkarmottagning",
+      "nameExample": "t.ex. Hem, Läkarmottagning",
       "latitude": "Latitud",
       "longitude": "Longitud",
       "radiusHint": "Rekommenderat: 100-500 meter för typiska platser",
       "mapView": "Kartvy",
       "mapRequiresBuild": "Kartor kräver en utvecklingsversion.\nAnvänd EAS Build för att aktivera kartor.",
-      "home": "Hemma",
+      "home": "Hem",
       "patient": "Patient",
       "alertTypeLeftSafeZone": "Lämnade säker zon",
       "alertTypeInactive": "Inaktiv",
       "alertTypeNightMovement": "Nattrörelse",
-      "alertTypeTakeMeHomeTapped": "Tryckte på Ta mig hem",
-      "alertTypeSosTriggered": "SOS Utlöst",
+      "alertTypeTakeMeHomeTapped": "Tryckte på 'Ta mig hem'",
+      "alertTypeSosTriggered": "SOS utlöst",
       "invalidLatitude": "Vänligen ange en giltig latitud (-90 till 90)",
       "invalidLongitude": "Vänligen ange en giltig longitud (-180 till 180)",
       "invalidRadius": "Vänligen ange ett positivt radiusvärde"
     },
     "coach": {
-      "title": "AI Vårdcoach",
+      "title": "AI Omsorgscoach",
       "tabs": {
         "chat": "Chatt",
         "behaviours": "Beteenden",
@@ -189,68 +189,68 @@
       },
       "resources": {
         "title": "Resurser",
-        "subtitle": "Guider, artiklar och lokalt stöd för att hjälpa dig på din vårdresa",
+        "subtitle": "Guider, artiklar och lokalt stöd för att hjälpa dig på din omsorgsresa",
         "linkLabel": "Resurser & Guider"
       },
-      "intro": "Fråga mig vad som helst om vård av {{name}}. Jag känner till deras rutin, preferenser och allmänna bästa praxis.",
+      "intro": "Fråga mig vad som helst om att ta hand om {{name}}. Jag känner till deras rutiner, preferenser och allmänna bästa metoder.",
       "placeholder": "Skriv din fråga...",
-      "disclaimer": "Jag är här för att stödja dig, inte ersätta medicinsk rådgivning. Vid hälsoproblem, konsultera alltid din läkare.",
-      "disclaimerShort": "Vårdcoachen ger endast allmän vägledning. Rådgör alltid med vårdpersonal för medicinsk rådgivning.",
+      "disclaimer": "Jag är här för att stötta dig, inte ersätta medicinsk rådgivning. Vid hälsoproblem, kontakta alltid din läkare.",
+      "disclaimerShort": "Omsorgscoachen ger endast allmän vägledning. Konsultera alltid vårdpersonal för medicinsk rådgivning.",
       "suggestedTopics": "Föreslagna ämnen",
       "addToCarePlan": "Lägg till i vårdplanen",
-      "addToDoctorNotes": "Lägg till i läkaranteckningar",
+      "addToDoctorNotes": "Lägg till i läkarens anteckningar",
       "newConversation": "Ny konversation",
       "newChat": "Ny chatt",
-      "careCoach": "Vårdcoach",
+      "careCoach": "Omsorgscoach",
       "completeOnboarding": "Vänligen slutför introduktionen först.",
       "greeting": "Hej {{name}}!",
-      "greetingIntro": "Jag är här för att hjälpa dig att ta hand om {{patientName}}. Fråga mig vad som helst om daglig vård, aktiviteter eller hantering av utmanande situationer.",
-      "tryAsking": "Försök att fråga:",
-      "askAbout": "Fråga om vård av {{name}}...",
+      "greetingIntro": "Jag är här för att hjälpa dig att ta hand om {{patientName}}. Fråga mig vad som helst om daglig omsorg, aktiviteter eller hur man hanterar utmanande situationer.",
+      "tryAsking": "Prova att fråga:",
+      "askAbout": "Fråga om att ta hand om {{name}}...",
       "send": "Skicka",
       "signingIn": "Loggar in",
       "taskAddedSuccess": "Uppgiften har lagts till i vårdplanen!",
-      "taskAddedError": "Det gick inte att lägga till uppgiften. Vänligen försök igen.",
-      "noteAddedSuccess": "Anteckningen sparades för läkarbesöket!",
-      "noteAddedError": "Det gick inte att spara anteckningen. Vänligen försök igen.",
+      "taskAddedError": "Kunde inte lägga till uppgiften. Vänligen försök igen.",
+      "noteAddedSuccess": "Anteckning sparad för läkarbesök!",
+      "noteAddedError": "Kunde inte spara anteckningen. Vänligen försök igen.",
       "addToCarePlanButton": "Lägg till i vårdplanen",
       "saveForDoctorVisit": "Spara för läkarbesök",
       "success": "Lyckades",
       "suggestions": {
         "sundowning": "Hur hanterar jag kvällsoro?",
         "rainyDays": "Vilka aktiviteter fungerar för regniga dagar?",
-        "siblings": "Hjälp mig att prata med mina syskon om att dela på vården",
+        "siblings": "Hjälp mig att prata med mina syskon om att dela på omsorgen",
         "refusesFood": "{{name}} vägrar att äta. Hjälp.",
-        "repetitive": "Hur hanterar jag upprepade frågor?"
+        "repetitive": "Hur hanterar jag repetitiva frågor?"
       },
       "hub": {
         "backToHub": "Tillbaka till Coachen",
         "insight": {
           "title": "För dig",
           "discuss": "Diskutera",
-          "fallback": "Checka in på {{name}}s dag för att få personliga insikter"
+          "fallback": "Kolla in {{name}}s dag för att få personliga insikter"
         },
         "rightNow": {
           "title": "Just nu",
           "subtitle": "Hjälp i stunden",
           "refusing_food": "Vägrar mat",
-          "refusing_medication": "Vill inte ta medicin",
-          "agitated": "Orolig",
+          "refusing_medication": "Vägrar ta medicin",
+          "agitated": "Agiterad",
           "not_recognizing": "Känner inte igen mig",
           "repetitive_questions": "Samma fråga igen",
           "sundowning": "Kvällsoro",
-          "wants_to_leave": "Vill gå",
+          "wants_to_leave": "Vill gå hemifrån",
           "caregiver_overwhelmed": "Jag tappar tålamodet"
         },
         "planPrepare": {
           "title": "Planera & Förbered",
           "subtitle": "Guidade arbetsflöden",
           "plan_tomorrow": "Planera morgondagen",
-          "plan_tomorrow_desc": "Skapa en bra dag tillsammans",
+          "plan_tomorrow_desc": "Skapa en fin dag tillsammans",
           "doctor_visit": "Förbered för läkarbesök",
           "doctor_visit_desc": "Generera en strukturerad sammanfattning",
           "review_week": "Granska denna vecka",
-          "review_week_desc": "Vad gick bra, vad behöver uppmärksamhet",
+          "review_week_desc": "Vad som gick bra, vad som behöver uppmärksamhet",
           "adjust_plan": "Justera vårdplanen",
           "adjust_plan_desc": "Optimera baserat på vad som fungerar"
         },
@@ -261,24 +261,24 @@
           "communication": "Kommunikation",
           "behaviors": "Beteenden",
           "activities": "Aktiviteter",
-          "nutrition": "Kost",
+          "nutrition": "Näring",
           "safety": "Säkerhet",
           "sleep": "Sömn & Natt"
         },
         "askAnything": {
           "title": "Fråga vad som helst",
-          "placeholder": "Vad tänker du på angående vård av {{name}}?"
+          "placeholder": "Vad funderar du på angående omsorgen om {{name}}?"
         }
       }
     },
     "family": {
-      "title": "{{patientName}}s Vårdteam",
+      "title": "{{patientName}}s vårdteam",
       "inviteMember": "Bjud in familjemedlem",
-      "primaryCaregiver": "Huvudansvarig",
+      "primaryCaregiver": "Primär vårdgivare",
       "familyMember": "Familjemedlem",
       "careCode": "Vårdkod",
-      "careCodeHelp": "Dela denna kod för att koppla patientappen",
-      "regenerateCode": "Återskapa kod",
+      "careCodeHelp": "Dela denna kod för att koppla ihop patientappen",
+      "regenerateCode": "Generera ny kod",
       "regenerateWarning": "Detta kommer att koppla bort alla parade patientenheter. De kommer att behöva den nya koden.",
       "journal": "Vårddagbok",
       "addNote": "Lägg till anteckning",
@@ -288,40 +288,40 @@
       "inviteEmail": "E-postadress",
       "inviteName": "Namn",
       "inviteRelationship": "Relation",
-      "familyCircle": "Familjecirkel",
+      "familyCircle": "Familjekrets",
       "back": "Tillbaka",
       "family": "Familj",
       "careJournal": "Vårddagbok",
       "inviteFamilyMembers": "Bjud in familjemedlemmar",
-      "shareCareCodeDesc": "Dela din vårdkod för att låta andra familjemedlemmar gå med.",
+      "shareCareCodeDesc": "Dela din vårdkod så att andra familjemedlemmar kan ansluta.",
       "showCareCode": "Visa vårdkod",
       "copy": "Kopiera",
       "share": "Dela",
       "copied": "Kopierat!",
-      "codeCopiedToClipboard": "Vårdkoden kopierades till urklipp",
+      "codeCopiedToClipboard": "Vårdkoden kopierad till urklipp",
       "familyMembers": "Familjemedlemmar ({{count}})",
       "you": "Du",
       "primary": "Primär",
       "entryPlaceholder": "Lägg till en anteckning, observation eller milstolpe...",
       "posting": "Publicerar...",
       "post": "Publicera",
-      "noJournalEntries": "Inga journalanteckningar ännu.",
-      "startDocumenting": "Börja dokumentera din vårdrutt!",
+      "noJournalEntries": "Inga dagboksanteckningar ännu.",
+      "startDocumenting": "Börja dokumentera er omsorgsresa!",
       "yesterday": "Igår",
-      "failedToAddEntry": "Det gick inte att lägga till posten. Försök igen.",
-      "shareCareCodeMessage": "Gå med i min OurTurn-vårdkrets! Använd denna vårdkod: {{code}}",
-      "deleteConfirmTitle": "Ta bort journalpost",
-      "deleteConfirmMessage": "Är du säker på att du vill ta bort den här journalposten? Detta kan inte ångras.",
+      "failedToAddEntry": "Kunde inte lägga till inlägg. Försök igen.",
+      "shareCareCodeMessage": "Gå med i min OurTurn omsorgscirkel! Använd denna omsorgskod: {{code}}",
+      "deleteConfirmTitle": "Ta bort journalanteckning",
+      "deleteConfirmMessage": "Är du säker på att du vill ta bort denna journalanteckning? Detta kan inte ångras.",
       "edited": "(redigerad)",
       "crisis": "Kris",
       "canEditPlan": "Kan redigera plan",
-      "receivesAlerts": "Tar emot varningar",
+      "receivesAlerts": "Tar emot aviseringar",
       "caregiverLimitReached": "Du har nått gränsen för gratisnivån för familjemedlemmar. Uppgradera för att lägga till fler."
     },
     "toolkit": {
-      "pageTitle": "Verktygslåda för vårdgivare",
+      "pageTitle": "Verktygslåda för omsorgsgivare",
       "pageSubtitle": "Praktiska verktyg och stöd för ditt välbefinnande",
-      "introMessage": "Hej {{name}}! Det här är ditt utrymme för snabb lindring, stöd och egenvård.",
+      "introMessage": "Hej {{name}}! Detta är ditt utrymme för snabb lindring, stöd och egenvård.",
       "checkin": {
         "title": "Hur mår du idag?",
         "energy": "Energi",
@@ -331,57 +331,57 @@
         "stressLow": "Lugn",
         "stressHigh": "Överväldigad",
         "sleep": "Sömnkvalitet",
-        "sleepLow": "Fruktansvärd",
-        "sleepHigh": "Fantastisk"
+        "sleepLow": "Usel",
+        "sleepHigh": "Utmärkt"
       },
       "relief": {
-        "title": "Snabbhjälpsstation",
+        "title": "Snabb lindringsstation",
         "recommended": "Rekommenderas",
         "duration": "{{min}} min",
         "startExercise": "Starta",
         "stepOf": "Steg {{current}} av {{total}}",
-        "complete": "Bra gjort! Övningen är klar.",
+        "complete": "Bra jobbat! Övningen är klar.",
         "close": "Stäng",
-        "pause": "Paus",
+        "pause": "Pausa",
         "resume": "Återuppta",
         "exercises": {
           "box-breathing": {
-            "name": "Boxandning",
+            "name": "Fyrkantsandning",
             "step0": "Sätt dig bekvämt och blunda",
             "step1": "Andas in långsamt genom näsan",
             "step2": "Håll andan försiktigt",
             "step3": "Andas ut långsamt genom munnen",
-            "step4": "Håll andan innan nästa andetag",
+            "step4": "Håll andan före nästa andetag",
             "step5": "Andas in långsamt genom näsan",
             "step6": "Håll andan försiktigt",
             "step7": "Andas ut långsamt genom munnen",
-            "step8": "Håll andan innan nästa andetag",
+            "step8": "Håll andan före nästa andetag",
             "step9": "Andas in långsamt genom näsan",
             "step10": "Håll andan försiktigt",
             "step11": "Andas ut långsamt genom munnen",
-            "step12": "Håll andan innan nästa andetag",
+            "step12": "Håll andan före nästa andetag",
             "step13": "Andas in långsamt genom näsan",
             "step14": "Håll andan försiktigt",
             "step15": "Andas ut långsamt genom munnen",
-            "step16": "Håll andan innan nästa andetag",
+            "step16": "Håll andan före nästa andetag",
             "step17": "Andas in långsamt genom näsan",
             "step18": "Håll andan försiktigt",
             "step19": "Andas ut långsamt genom munnen",
-            "step20": "Håll andan innan nästa andetag",
+            "step20": "Håll andan före nästa andetag",
             "step21": "Andas in långsamt genom näsan",
             "step22": "Håll andan försiktigt",
             "step23": "Andas ut långsamt genom munnen",
-            "step24": "Bra gjort. Ta en stund för att känna efter hur du mår."
+            "step24": "Bra jobbat. Ta en stund att känna efter hur du mår."
           },
           "54321-grounding": {
             "name": "5-4-3-2-1 Jordning",
             "step0": "Ta ett långsamt, djupt andetag och se dig omkring",
             "step1": "Nämn 5 saker du kan SE just nu",
-            "step2": "Nämn 4 saker du kan RÖRA just nu",
+            "step2": "Nämn 4 saker du kan RÖRA vid just nu",
             "step3": "Nämn 3 saker du kan HÖRA just nu",
-            "step4": "Nämn 2 saker du kan LUKTA just nu",
-            "step5": "Nämn 1 sak du kan SMAKA just nu",
-            "step6": "Ta ett djupt andetag till. Du är här, och du är säker."
+            "step4": "Nämn 2 saker du kan LUKTA på just nu",
+            "step5": "Nämn 1 sak du kan SMAKA på just nu",
+            "step6": "Ta ett djupt andetag till. Du är här, och du är trygg."
           },
           "gratitude-moment": {
             "name": "Tacksamhetsstund",
@@ -389,77 +389,77 @@
             "step1": "Tänk på en person du är tacksam för och varför",
             "step2": "Tänk på en sak som hände idag som var bra, även om den var liten",
             "step3": "Tänk på en sak med dig själv som du uppskattar",
-            "step4": "Håll dessa tre saker i tankarna och andas djupt",
+            "step4": "Håll dessa tre saker i åtanke och andas djupt",
             "step5": "Bär med dig denna känsla av tacksamhet."
           },
           "progressive-muscle-relaxation": {
             "name": "Progressiv muskelavslappning",
-            "step0": "Sitt eller ligg bekvämt. Blunda.",
-            "step1": "Knyt båda nävarna hårt i 5 sekunder...",
-            "step2": "Släpp och känn hur spänningen smälter bort",
-            "step3": "Spänn dina axlar – lyft dem mot öronen...",
-            "step4": "Släpp och låt axlarna falla ner",
-            "step5": "Rynka ansiktet hårt – panna, ögon, käke...",
-            "step6": "Släpp och låt ansiktet slappna av helt",
+            "step0": "Sitt eller lägg dig bekvämt. Blunda.",
+            "step1": "Knyt båda händerna hårt i 5 sekunder...",
+            "step2": "Släpp taget och känn hur spänningen försvinner",
+            "step3": "Spänn axlarna — lyft dem mot öronen...",
+            "step4": "Släpp taget och låt axlarna falla ner",
+            "step5": "Krympta ihop ansiktet hårt — panna, ögon, käke...",
+            "step6": "Släpp taget och låt ansiktet slappna av helt",
             "step7": "Spänn magmusklerna...",
-            "step8": "Släpp och andas in i magen",
-            "step9": "Kläm ihop benen och fötterna hårt...",
-            "step10": "Släpp och känn hur värmen strömmar genom benen",
-            "step11": "Andas djupt. Hela kroppen är avslappnad.",
+            "step8": "Släpp taget och andas in i magen",
+            "step9": "Spänn benen och fötterna hårt...",
+            "step10": "Släpp taget och känn värmen flöda genom benen",
+            "step11": "Andas djupt. Hela din kropp är avslappnad.",
             "step12": "Öppna försiktigt ögonen när du är redo."
           },
           "mindful-break": {
             "name": "Medveten paus",
-            "step0": "Stanna upp med det du gör. Det här ögonblicket är ditt.",
-            "step1": "Slut ögonen och ta 3 långsamma, djupa andetag",
+            "step0": "Pausa vad du än gör. Det här ögonblicket är ditt.",
+            "step1": "Blunda och ta 3 långsamma, djupa andetag",
             "step2": "Lägg märke till hur din kropp känns just nu – du behöver inte ändra något",
-            "step3": "Lyssna på ljuden omkring dig, nära och fjärran",
-            "step4": "Känn ytan under dig och luften mot din hud",
+            "step3": "Lyssna på ljuden runt omkring dig, nära och långt borta",
+            "step4": "Känn underlaget under dig och luften mot din hud",
             "step5": "Säg tyst: \"Jag gör mitt bästa, och det räcker.\"",
             "step6": "Ta ett djupt andetag till",
-            "step7": "Öppna försiktigt ögonen. Du är återhämtad."
+            "step7": "Öppna försiktigt ögonen. Du är utvilad."
           },
           "breathing-478": {
             "name": "4-7-8 Andning",
             "step0": "Sitt bekvämt och slappna av i axlarna",
-            "step1": "Andas in tyst genom näsan i 4 räkningar",
-            "step2": "Håll andan i 7 räkningar",
-            "step3": "Andas ut helt genom munnen i 8 räkningar",
-            "step4": "Andas in tyst genom näsan i 4 räkningar",
-            "step5": "Håll andan i 7 räkningar",
-            "step6": "Andas ut helt genom munnen i 8 räkningar",
-            "step7": "Andas in tyst genom näsan i 4 räkningar",
-            "step8": "Håll andan i 7 räkningar",
-            "step9": "Andas ut helt genom munnen i 8 räkningar",
-            "step10": "Andas in tyst genom näsan i 4 räkningar",
-            "step11": "Håll andan i 7 räkningar",
-            "step12": "Andas ut helt genom munnen i 8 räkningar",
-            "step13": "Andas in tyst genom näsan i 4 räkningar",
-            "step14": "Håll andan i 7 räkningar",
-            "step15": "Andas ut helt genom munnen i 8 räkningar",
+            "step1": "Andas tyst in genom näsan under 4 räkningar",
+            "step2": "Håll andan under 7 räkningar",
+            "step3": "Andas helt ut genom munnen under 8 räkningar",
+            "step4": "Andas tyst in genom näsan under 4 räkningar",
+            "step5": "Håll andan under 7 räkningar",
+            "step6": "Andas helt ut genom munnen under 8 räkningar",
+            "step7": "Andas tyst in genom näsan under 4 räkningar",
+            "step8": "Håll andan under 7 räkningar",
+            "step9": "Andas helt ut genom munnen under 8 räkningar",
+            "step10": "Andas tyst in genom näsan under 4 räkningar",
+            "step11": "Håll andan under 7 räkningar",
+            "step12": "Andas helt ut genom munnen under 8 räkningar",
+            "step13": "Andas tyst in genom näsan under 4 räkningar",
+            "step14": "Håll andan under 7 räkningar",
+            "step15": "Andas helt ut genom munnen under 8 räkningar",
             "step16": "Lägg märke till hur mycket lugnare din kropp känns nu."
           },
           "permission-slip": {
-            "name": "Tillåtelse",
+            "name": "Tillåtelse att vara mänsklig",
             "step0": "Ta ett djupt andetag och ge dig själv en stund",
             "step1": "Säg till dig själv: \"Jag ger mig själv tillåtelse att inte vara perfekt idag\"",
             "step2": "Säg: \"Jag ger mig själv tillåtelse att be om hjälp\"",
             "step3": "Säg: \"Jag ger mig själv tillåtelse att känna det jag känner utan skuld\"",
             "step4": "Säg: \"Jag ger mig själv tillåtelse att ta en paus\"",
             "step5": "Säg: \"Jag gör mitt bästa, och det räcker\"",
-            "step6": "Ta ett djupt andetag och håll dessa ord nära",
+            "step6": "Ta ett djupt andetag och håll dessa ord nära dig",
             "step7": "Du förtjänar också medkänsla. Bär med dig detta."
           },
           "quick-walk": {
-            "name": "Snabb Promenad",
-            "step0": "Ställ dig upp och sträck armarna ovanför huvudet",
+            "name": "Snabb promenad",
+            "step0": "Ställ dig upp och sträck armarna över huvudet",
             "step1": "Gå till närmaste fönster eller dörr och titta ut",
-            "step2": "Ta 5 långsamma steg och känn varje fot nudda marken",
+            "step2": "Ta 5 långsamma steg och känn hur varje fot nuddar marken",
             "step3": "Titta upp – lägg märke till himlen, taket eller något ovanför dig",
-            "step4": "Ta 5 långsammare, avsiktliga steg till",
-            "step5": "Skaka händerna och armarna löst i några sekunder",
+            "step4": "Ta 5 långsamma, medvetna steg till",
+            "step5": "Skaka löst på händer och armar i några sekunder",
             "step6": "Rulla axlarna bakåt 3 gånger",
-            "step7": "Du rörde din kropp. Det räknas. Bra gjort."
+            "step7": "Du rörde på kroppen. Det räknas. Bra jobbat."
           }
         }
       },
@@ -467,91 +467,91 @@
         "title": "Be om hjälp",
         "sendRequest": "Skicka",
         "customPlaceholder": "Skriv ditt meddelande...",
-        "recentRequests": "Senaste förfrågningar",
+        "recentRequests": "Senaste förfrågningarna",
         "statusPending": "Väntar",
         "statusAccepted": "Accepterad",
         "statusCompleted": "Klar",
         "statusExpired": "Utgången",
         "sent": "Hjälpförfrågan skickad!",
         "limitReached": "Du kan skicka upp till 5 hjälpförfrågningar per dag.",
-        "noRequests": "Inga senaste hjälpförfrågningar.",
-        "accept": "Jag kan hjälpa",
+        "noRequests": "Inga nya hjälpförfrågningar.",
+        "accept": "Jag kan hjälpa till",
         "complete": "Markera som klar",
         "template_need_break": "Behöver en paus",
         "template_handle_meds": "Hjälp med medicin",
         "template_need_visit": "Behöver ett besök",
         "template_groceries": "Matvaror",
-        "template_custom": "Eget meddelande",
+        "template_custom": "Anpassat meddelande",
         "message_need_break": "Jag skulle verkligen behöva en paus. Kan någon ta över en stund?",
         "message_handle_meds": "Kan någon hjälpa till med medicin idag?",
-        "message_need_visit": "Det skulle betyda mycket om någon kunde komma på besök idag.",
-        "message_groceries": "Kan någon hjälpa till att hämta matvaror?"
+        "message_need_visit": "Det skulle betyda mycket om någon kunde besöka idag.",
+        "message_groceries": "Kan någon hjälpa till att handla matvaror?"
       },
       "agent": {
-        "title": "Välbefinnande-kompis",
-        "disclaimer": "Endast för emotionellt stöd. Inte medicinsk rådgivning.",
+        "title": "Välmående-kompis",
+        "disclaimer": "Endast för känslomässigt stöd. Inte medicinsk rådgivning.",
         "placeholder": "Hur mår du?",
         "greeting": "Tänker på dig...",
-        "rateLimited": "Ta ett andetag – du kan chatta igen snart.",
+        "rateLimited": "Ta en paus – du kan chatta igen snart.",
         "errorMessage": "Kunde inte ansluta. Försök igen.",
         "expand": "Expandera",
-        "collapse": "Minimera",
+        "collapse": "Fäll ihop",
         "prompts": {
           "overwhelmed": "Jag känner mig överväldigad just nu",
           "calmDown": "Hjälp mig att lugna ner mig på 2 minuter",
           "needEnergy": "Jag behöver energi men kan inte ta en paus",
           "poorSleep": "Jag kunde inte sova bra i natt",
           "needMoment": "Jag behöver en stund bara för mig själv",
-          "uplifting": "Säg något upplyftande till mig"
+          "uplifting": "Berätta något upplyftande"
         }
       },
       "goal": {
         "title": "Dagens mål",
         "placeholder": "Sätt ett mål för idag...",
-        "done": "Klar!",
-        "weekLabel": "Den här veckan",
+        "done": "Klart!",
+        "weekLabel": "Denna vecka",
         "suggest": "Föreslå"
       },
       "burnout": {
         "title": "Vi märker att du kan behöva extra stöd",
-        "message": "Dina senaste incheckningar visar förhöjd stress eller låg energi. Det är fullt förståeligt – att vara vårdgivare är svårt."
+        "message": "Dina senaste incheckningar visar förhöjd stress eller låg energi. Det är helt förståeligt – att vara vårdgivare är svårt."
       },
       "support": {
         "title": "Behöver du stöd?",
         "description": "Att vara vårdgivare är utmanande. Det är okej att be om hjälp."
       },
-      "footer": "Kom ihåg: Du kan inte hälla från en tom kopp. Ditt välbefinnande är också viktigt.",
+      "footer": "Kom ihåg: Du kan inte hälla från en tom kopp. Ditt välmående är också viktigt.",
       "weeklyStats": {
-        "title": "Veckovis insikt",
-        "subtitle": "Din 7-dagars sammanfattning av välbefinnande",
+        "title": "Veckans insikter",
+        "subtitle": "Din 7-dagars sammanfattning av välmående",
         "avgEnergy": "Genomsnittlig energi",
         "avgStress": "Genomsnittlig stress",
         "avgSleep": "Genomsnittlig sömn",
-        "noData": "Genomför dagliga incheckningar för att se dina veckovisa trender.",
+        "noData": "Fyll i dagliga incheckningar för att se dina veckotrender.",
         "generateDigest": "Generera AI-sammanfattning",
         "generating": "Genererar...",
-        "behaviourSummary": "{{count}} beteendeincidenter loggade denna vecka"
+        "behaviourSummary": "{{count}} beteendeincidenter loggades denna vecka"
       },
       "sos": {
         "title": "Vad händer just nu?",
-        "subtitle": "Välj vad du behöver hjälp med – vi guidar dig.",
+        "subtitle": "Välj vad du behöver hjälp med – vi vägleder dig.",
         "calmDown": "Jag behöver lugna ner mig",
         "calmDownDesc": "Snabba andnings- och avslappningsövningar",
-        "behaviourNow": "Beteende som pågår nu",
+        "behaviourNow": "Beteende som sker nu",
         "behaviourNowDesc": "Logga en incident och få vägledning",
         "callHelp": "Jag behöver akut hjälp",
-        "callHelpDesc": "Kontakta larmtjänst eller familj",
-        "needBreak": "Jag behöver någon som tar över",
+        "callHelpDesc": "Kontakta räddningstjänst eller familj",
+        "needBreak": "Jag behöver att någon tar över",
         "needBreakDesc": "Skicka en hjälpförfrågan till familjen"
       },
       "behaviours": {
         "playbooks": {
-          "title": "Beteende-handböcker",
+          "title": "Beteendehandböcker",
           "subtitle": "Tryck på ett beteende för steg-för-steg-vägledning",
           "rightNow": "Just nu",
           "understandWhy": "Förstå varför",
           "prevent": "Förebyggande",
-          "whenToCallDoctor": "När du ska ringa läkaren"
+          "whenToCallDoctor": "När du ska kontakta läkare"
         },
         "logger": {
           "title": "Logga incident",
@@ -561,7 +561,7 @@
           "severity": "Allvarlighetsgrad",
           "mild": "Lindrig",
           "severe": "Allvarlig",
-          "timeOfDay": "Tid på dagen",
+          "timeOfDay": "Tid på dygnet",
           "morning": "Morgon",
           "afternoon": "Eftermiddag",
           "evening": "Kväll",
@@ -576,12 +576,12 @@
           "trigger_overstimulation": "Överstimulering",
           "trigger_unfamiliar_environment": "Okänd plats",
           "trigger_unfamiliar_person": "Okänd person",
-          "trigger_routine_change": "Förändring i rutin",
+          "trigger_routine_change": "Rutinändring",
           "trigger_medication": "Medicinering",
           "trigger_noise": "Ljud",
           "trigger_loneliness": "Ensamhet",
-          "trigger_boredom": "Ledsnad",
-          "trigger_bathroom_need": "Behov av toalett",
+          "trigger_boredom": "Uttråkning",
+          "trigger_bathroom_need": "Behov av toalettbesök",
           "trigger_frustration": "Frustration",
           "trigger_fear": "Rädsla",
           "trigger_unknown": "Okänd",
@@ -593,7 +593,7 @@
           "saved": "Incident loggad"
         },
         "timeline": {
-          "title": "Tidslinje för incidenter",
+          "title": "Incidenttidslinje",
           "all": "Alla",
           "noIncidents": "Inga incidenter matchar det aktuella filtret."
         }
@@ -607,33 +607,33 @@
       "include": "Inkludera i rapport",
       "moodTrends": "Humörtrender och sammanfattning av incheckningar",
       "sleepPatterns": "Sömnmönster",
-      "activityCompletion": "Fullföljandegrad av aktiviteter",
+      "activityCompletion": "Genomförandegrad för aktiviteter",
       "medicationAdherence": "Läkemedelsföljsamhet",
-      "journalNotes": "Anmärkningsvärda observationer från vårddagboken",
+      "journalNotes": "Anmärkningsvärda observationer i vårddagboken",
       "locationPatterns": "Platsmönster",
-      "caregiverConcerns": "Omsorgsgivares bekymmer",
+      "caregiverConcerns": "Anhörigas farhågor",
       "customNotes": "Ytterligare anteckningar till läkaren",
       "print": "Skriv ut",
       "downloadPdf": "Ladda ner PDF",
-      "emailDoctor": "E-posta till läkaren",
-      "disclaimer": "Denna sammanfattning är baserad på självrapporterade välbefinnandedata och familjeobservationer. Det är inte en klinisk bedömning.",
-      "webNote": "För den fullständiga rapportbyggaren med utskrifts- och PDF-export, besök OurTurn-webbappen.",
+      "emailDoctor": "Mejla till läkare",
+      "disclaimer": "Denna sammanfattning baseras på självrapporterad välmåendedata och familjeobservationer. Det är ingen klinisk bedömning.",
+      "webNote": "För den fullständiga rapportbyggaren med utskrifts- och PDF-export, besök OurTurn webbapp.",
       "openInWebApp": "Öppna i webbapp",
       "previousReports": "Tidigare rapporter",
       "generated": "Genererad {{date}}",
       "avgQuality": "genomsnittlig kvalitet",
       "moodStruggling": "Kämpar",
-      "moodLow": "Lågt",
+      "moodLow": "Låg",
       "moodOkay": "Okej",
       "moodGood": "Bra",
-      "moodGreat": "Jättebra",
-      "careSummary": "OurTurn Vårdsummering",
+      "moodGreat": "Toppen",
+      "careSummary": "OurTurn Vårdsammanfattning",
       "patient": "Patient",
       "periodLabel": "Period",
       "checkinsRecorded": "Incheckningar registrerade",
       "averageMood": "Genomsnittligt humör",
       "averageSleepQuality": "Genomsnittlig sömnkvalitet",
-      "activityCompletionRate": "Aktivitetsfullföljande",
+      "activityCompletionRate": "Genomförande av aktiviteter",
       "medicationAdherenceRate": "Läkemedelsföljsamhet",
       "observations": "Observationer",
       "categoryMedication": "Medicinering",
@@ -646,7 +646,7 @@
     "onboarding": {
       "step1Title": "Om dig",
       "step2Title": "Om din närstående",
-      "step3Title": "Deras livshistoria",
+      "step3Title": "Deras livsberättelse",
       "step4Title": "Daglig rutin",
       "step5Title": "Säkerhetsinställningar",
       "step6Title": "Din vårdkod",
@@ -660,9 +660,9 @@
       "lovedOneNameRequired": "Din närståendes namn *",
       "relationship": "Din relation till dem",
       "relationshipPlaceholder": "t.ex. dotter, son, make/maka",
-      "settingsHint": "Du kan lägga till mer information senare i Inställningar",
+      "settingsHint": "Du kan lägga till fler detaljer senare under Inställningar",
       "fillRequired": "Vänligen fyll i alla obligatoriska fält",
-      "setupFailed": "Det gick inte att slutföra installationen",
+      "setupFailed": "Kunde inte slutföra installationen",
       "country": "Land",
       "theirName": "Deras förnamn",
       "dateOfBirth": "Födelsedatum",
@@ -676,20 +676,20 @@
       "favoriteMusic": "Favoritmusik / artister",
       "favoriteFoods": "Favoritmat",
       "importantPeople": "Viktiga personer",
-      "keyEvents": "Viktiga händelser i livet",
+      "keyEvents": "Viktiga livshändelser",
       "uploadPhotos": "Ladda upp familjefoton",
-      "wakeTime": "Vakentid",
-      "sleepTime": "Läggdags",
+      "wakeTime": "Vaknar tid",
+      "sleepTime": "Sova tid",
       "generatePlan": "Generera föreslagen plan",
       "emergencyContacts": "Nödkontakter",
-      "alertSettings": "Aviseringsinställningar",
+      "alertSettings": "Varningsinställningar",
       "stepOf": "Steg {{current}} av {{total}}",
       "breakfastTime": "Frukosttid",
       "lunchTime": "Lunchtid",
       "dinnerTime": "Middagstid",
       "typicalDay": "Beskrivning av en typisk dag",
       "typicalDayPlaceholder": "Beskriv en typisk dag...",
-      "emergencyContactsHint": "Lägg till nödkontakter som kommer att visas i patientappens Hjälp-flik.",
+      "emergencyContactsHint": "Lägg till nödkontakter som kommer att visas under fliken Hjälp i patientappen.",
       "remove": "Ta bort",
       "addContact": "Lägg till kontakt",
       "contactNameRequired": "Namn *",
@@ -704,8 +704,8 @@
       "nextSteps": "Nästa steg:",
       "nextStep1": "1. Installera OurTurn på {{name}}s telefon",
       "nextStep2": "2. Öppna appen och ange Vård-koden ovan",
-      "nextStep3": "3. Det är allt! {{name}}s dagliga plan kommer att visas på deras telefon",
-      "homeAddressPlaceholder": "Storgatan 123, Stad"
+      "nextStep3": "3. Klart! {{name}}s dagliga plan kommer att visas på deras telefon",
+      "homeAddressPlaceholder": "123 Huvudgatan, Stad"
     },
     "settings": {
       "title": "Inställningar",
@@ -719,23 +719,23 @@
       "profile": "Profil",
       "account": "Konto",
       "subscription": "Prenumeration",
-      "notifications": "Aviseringar",
+      "notifications": "Meddelanden",
       "privacy": "Integritet & Data",
       "exportData": "Exportera min data",
-      "exportNote": "Ladda ner en kopia av all din data (GDPR-rätt till portabilitet)",
+      "exportNote": "Ladda ner en kopia av all din data (GDPR-rätt till dataportabilitet)",
       "exportClipboard": "Din data har kopierats till urklipp. Du kan klistra in den i ett dokument eller e-postmeddelande.",
-      "deleteAccount": "Radera konto",
-      "deleteWarning": "Detta kommer permanent att radera all data för detta hushåll. Detta kan inte ångras.",
-      "deleteConfirmType": "Skriv RADERA för att bekräfta radering av kontot",
-      "confirmDelete": "Bekräfta radering",
+      "deleteAccount": "Ta bort konto",
+      "deleteWarning": "Detta kommer att permanent ta bort all data för detta hushåll. Detta kan inte ångras.",
+      "deleteConfirmType": "Skriv RADERA för att bekräfta borttagning av konto",
+      "confirmDelete": "Bekräfta borttagning",
       "language": "Språk",
       "about": "Om OurTurn",
       "version": "Version",
       "notMedicalDevice": "OurTurn är inte en medicinsk enhet",
       "dailySummary": "Daglig sammanfattning",
       "dailySummaryTime": "Tid för daglig sammanfattning",
-      "emailNotifications": "E-postaviseringar",
-      "pushNotifications": "Push-aviseringar",
+      "emailNotifications": "E-postmeddelanden",
+      "pushNotifications": "Push-meddelanden",
       "safetyAlerts": "Säkerhetsvarningar",
       "signOut": "Logga ut",
       "saveProfile": "Spara profil",
@@ -748,83 +748,83 @@
       "passwordChanged": "Lösenordet har ändrats!",
       "changingPassword": "Ändrar...",
       "copyCode": "Kopiera kod",
-      "codeCopied": "Koden har kopierats!",
-      "regenerateCode": "Återskapa kod",
-      "regenerateWarning": "Den gamla koden slutar att fungera. Alla parkopplade patientenheter behöver den nya koden.",
-      "dangerZone": "Fara",
+      "codeCopied": "Koden kopierad!",
+      "regenerateCode": "Generera ny kod",
+      "regenerateWarning": "Den gamla koden kommer att sluta fungera. Alla parade patientenheter kommer att behöva den nya koden.",
+      "dangerZone": "Riskzon",
       "relationship": "Relation",
-      "deleteConfirm": "Skriv RADERA för att bekräfta radering av kontot",
+      "deleteConfirm": "Skriv RADERA för att bekräfta borttagning av konto",
       "photoGallery": "Fotogalleri",
       "photoGalleryDesc": "Ladda upp familjefoton för personliga minnesaktiviteter",
       "uploadPhotos": "Ladda upp foton",
       "uploading": "Laddar upp...",
-      "deletePhoto": "Radera detta foto?",
+      "deletePhoto": "Ta bort detta foto?",
       "maxPhotosReached": "Maximalt 20 foton har uppnåtts",
-      "photoUploadHint": "Upp till 20 foton, max 5 MB vardera",
-      "photoUploadFailed": "Det gick inte att ladda upp fotot. Försök igen.",
-      "photoDeleteFailed": "Det gick inte att radera fotot. Försök igen.",
+      "photoUploadHint": "Upp till 20 foton, max 5MB vardera",
+      "photoUploadFailed": "Kunde inte ladda upp foto. Vänligen försök igen.",
+      "photoDeleteFailed": "Kunde inte ta bort foto. Vänligen försök igen.",
       "noPhotosYet": "Inga foton har laddats upp ännu",
       "photosCount": "{{count}} av 20 foton",
       "patientComplexity": "Patientappläge",
-      "patientComplexityDesc": "Justera patientappens gränssnitt baserat på din älskades behov.",
+      "patientComplexityDesc": "Justera patientappens gränssnitt baserat på din närståendes behov.",
       "complexity": {
         "full": "Fullständig",
         "fullDesc": "Alla funktioner tillgängliga",
         "simplified": "Förenklad",
         "simplifiedDesc": "Större text, färre detaljer",
         "essential": "Väsentlig",
-        "essentialDesc": "Minimal – endast musik och ring efter hjälp"
+        "essentialDesc": "Minimal — endast musik och ring efter hjälp"
       },
       "safetyEscalation": "Säkerhet & Eskalering",
       "escalationTiming": "Eskaleringstid",
-      "escalationTimingDesc": "Hur lång tid innan ohanterade varningar eskaleras",
-      "offlineThreshold": "Tröskel för offline-varning",
-      "offlineThresholdDesc": "Varna när enheten inte setts på så här länge",
+      "escalationTimingDesc": "Hur lång tid innan obekräftade varningar eskalerar",
+      "offlineThreshold": "Tröskelvärde för offline-varning",
+      "offlineThresholdDesc": "Varna när enheten inte har setts på så här länge",
       "minutes": "minuter",
-      "respiteReminders": "Avlastningspåminnelser",
+      "respiteReminders": "Påminnelser om avlastning",
       "respiteRemindersDesc": "Få påminnelser om att ta pauser",
       "groupProfile": "Din profil",
       "groupAboutPatient": "Om {{name}}",
-      "groupAboutPatientGeneric": "Om din älskade",
+      "groupAboutPatientGeneric": "Om din närstående",
       "groupSharing": "Delning & Anslutning",
-      "groupSafety": "Säkerhet & Aviseringar",
+      "groupSafety": "Säkerhet & Meddelanden",
       "groupAccount": "Konto",
-      "patientInformation": "Patientinformation",
-      "patientInformationDesc": "Grundläggande information om din närstående",
-      "patientName": "Patientens namn",
+      "patientInformation": "Information om din närstående",
+      "patientInformationDesc": "Grundläggande uppgifter om din närstående",
+      "patientName": "Namn på din närstående",
       "dateOfBirth": "Födelsedatum",
       "dementiaType": "Typ av demens",
       "selectDementiaType": "Välj typ (valfritt)",
-      "homeAddress": "Hemmaadress",
+      "homeAddress": "Hemadress",
       "homeAddressPlaceholder": "Fullständig hemadress",
       "savingPatientInfo": "Sparar...",
-      "savePatientInfo": "Spara patientinformation",
-      "lifeStory": "Levnadshistoria",
-      "lifeStoryDesc": "Dessa detaljer hjälper till att anpassa dagliga aktiviteter och minnesfrämjande uppmaningar.",
+      "savePatientInfo": "Spara information om din närstående",
+      "lifeStory": "Livsberättelse",
+      "lifeStoryDesc": "Dessa uppgifter hjälper till att anpassa dagliga aktiviteter och minnesstunder.",
       "childhoodLocation": "Var de växte upp",
       "career": "Karriär / Yrke",
-      "hobbies": "Intressen och hobbyer",
-      "hobbiesPlaceholder": "t.ex. trädgårdsarbete, måleri, schack",
+      "hobbies": "Hobbys och intressen",
+      "hobbiesPlaceholder": "t.ex. trädgårdsarbete, målning, schack",
       "favoriteMusic": "Favoritmusik / Artister",
       "favoriteMusicPlaceholder": "t.ex. Frank Sinatra, Beatles",
       "favoriteFoods": "Favoritmat",
       "favoriteFoodsPlaceholder": "t.ex. äppelpaj, stekt kyckling",
       "importantPeople": "Viktiga personer",
       "importantPeoplePlaceholder": "t.ex. John (bror), Mary (bästa vän)",
-      "keyEvents": "Viktiga händelser i livet",
+      "keyEvents": "Viktiga livshändelser",
       "keyEventsPlaceholder": "t.ex. Examen 1965, Flyttade till London 1970",
       "savingLifeStory": "Sparar...",
-      "saveLifeStory": "Spara levnadshistoria",
+      "saveLifeStory": "Spara livsberättelse",
       "dailySchedule": "Dagligt schema",
-      "dailyScheduleDesc": "Ställ in vakna- och sovtider för din närståendes rutin.",
+      "dailyScheduleDesc": "Ställ in tider för uppvaknande och sömn för din närståendes rutin.",
       "wakeTime": "Vakentid",
-      "sleepTime": "Sovtid",
+      "sleepTime": "Sömntid",
       "savingSchedule": "Sparar...",
       "saveSchedule": "Spara schema",
       "emergencyContacts": "Nödkontakter",
-      "emergencyContactsDesc": "Dessa kontakter visas i patientappens hjälpflik.",
+      "emergencyContactsDesc": "Dessa kontakter visas under fliken Hjälp i den närståendes app.",
       "addContact": "Lägg till kontakt",
-      "contactName": "Kontaktens namn",
+      "contactName": "Kontaktnamn",
       "contactPhone": "Telefonnummer",
       "contactRelationship": "Relation",
       "contactRelationshipPlaceholder": "t.ex. Dotter, granne",
@@ -835,7 +835,7 @@
       "country": "Land",
       "selectCountry": "Välj land",
       "selectLanguage": "Välj språk",
-      "languageSaved": "Språket har uppdaterats"
+      "languageSaved": "Språk uppdaterat"
     },
     "auth": {
       "login": "Logga in",
@@ -853,34 +853,34 @@
       "getStarted": "Kom igång",
       "fillAllFields": "Vänligen fyll i alla fält",
       "passwordsNoMatch": "Lösenorden matchar inte",
-      "passwordTooShort": "Lösenordet måste vara minst 8 tecken",
+      "passwordTooShort": "Lösenordet måste vara minst 8 tecken långt",
       "checkEmail": "Vänligen kontrollera din e-post för att bekräfta ditt konto",
       "enterEmailFirst": "Vänligen ange din e-postadress först.",
       "resetEmailSent": "Kontrollera din e-post",
-      "resetEmailSentDesc": "Vi har skickat en länk för att återställa lösenordet till din e-postadress.",
+      "resetEmailSentDesc": "Vi har skickat en länk för återställning av lösenord till din e-postadress.",
       "welcomeBack": "Välkommen tillbaka",
       "enterEmailAndPassword": "Vänligen ange e-post och lösenord",
       "signingIn": "Loggar in",
       "orContinueWith": "Eller fortsätt med"
     },
     "nav": {
-      "family": "Familjecirkel",
+      "family": "Familjekrets",
       "toolkit": "Verktygslåda",
       "reports": "Rapporter",
       "settings": "Inställningar",
-      "crisis": "Kriscentrum"
+      "crisis": "Krishantering"
     },
     "crisis": {
-      "title": "Kriscentrum",
-      "subtitle": "Krisberedskap i realtid och stöd för nedtrappning",
-      "eventLogged": "Krishändelse loggad",
-      "logEvent": "Logga krishändelse",
+      "title": "Krishantering",
+      "subtitle": "Stöd för krishantering och de-eskalering i realtid",
+      "eventLogged": "Kris händelse registrerad",
+      "logEvent": "Registrera kris händelse",
       "logPlaceholder": "Beskriv vad som hände...",
       "status": {
-        "allClear": "Allt lugnt",
+        "allClear": "Läget är lugnt",
         "allClearDesc": "Inga aktiva varningar",
         "activeAlerts": "Aktiva varningar",
-        "lastKnownLocation": "Senast kända plats",
+        "lastKnownLocation": "Senaste kända plats",
         "viewOnMap": "Visa på karta",
         "noLocationData": "Ingen platsdata tillgänglig"
       },
@@ -888,71 +888,71 @@
         "modeLabel": "Din situation",
         "withThem": "Jag är med dem",
         "remote": "Jag är på distans",
-        "startDeEscalation": "Starta nedtrappning",
+        "startDeEscalation": "Starta de-eskalering",
         "startDeEscalationDesc": "Steg-för-steg guidad lugnande process",
-        "callEmergency": "Ring nödnummer",
+        "callEmergency": "Ring nödsamtal",
         "callEmergencyDesc": "Ring lokala räddningstjänsten",
         "alertFamily": "Varna familjen",
-        "alertFamilyDesc": "Skicka push-notis till alla vårdgivare",
-        "alertFamilySent": "Familjemedlemmar har meddelats",
-        "alertFamilyFailed": "Det gick inte att meddela familjen. Vänligen försök igen.",
+        "alertFamilyDesc": "Skicka push-meddelande till alla vårdgivare",
+        "alertFamilySent": "Familjemedlemmar meddelade",
+        "alertFamilyFailed": "Misslyckades med att meddela familjen. Vänligen försök igen.",
         "viewLocation": "Visa plats",
         "viewLocationDesc": "Se {{name}}s nuvarande plats på kartan",
         "contactPrimary": "Kontakta primär vårdgivare",
         "contactPrimaryDesc": "Nå den primära vårdgivaren via e-post",
-        "logEvent": "Logga händelse",
-        "logEventDesc": "Registrera detta ögonblick i krisjournalen"
+        "logEvent": "Registrera händelse",
+        "logEventDesc": "Anteckna detta ögonblick i krisjournalen"
       },
       "wizard": {
         "breathingTitle": "Låt oss börja med ett lugnande andetag",
         "breathingInstruction": "Andas in långsamt... håll... andas ut...",
         "stepOf": "Steg {{current}} av {{total}}",
         "thisHelped": "Detta hjälpte",
-        "tryNext": "Försök med nästa steg",
+        "tryNext": "Prova nästa steg",
         "skip": "Hoppa över",
-        "completionTitle": "Bra gjort. Du hanterade det med omsorg.",
-        "completionDesc": "Vill du skriva ner några anteckningar om vad som hände?",
-        "crisisNotesPlaceholder": "Vad hände? Vad hjälpte? Några triggers noterade...",
+        "completionTitle": "Bra jobbat. Du hanterade det med omsorg.",
+        "completionDesc": "Vill du anteckna något om vad som hände?",
+        "crisisNotesPlaceholder": "Vad hände? Vad hjälpte? Några utlösande faktorer noterades...",
         "saveAndClose": "Spara och stäng",
         "closeWithoutSaving": "Stäng utan att spara"
       },
       "history": {
-        "title": "Senaste krishändelser",
-        "noEvents": "Inga krishändelser under de senaste 30 dagarna.",
+        "title": "Senaste kris händelser",
+        "noEvents": "Inga kris händelser under de senaste 30 dagarna.",
         "viewAllInJournal": "Visa alla i journalen",
         "yesterday": "Igår",
-        "daysAgo": "{{count}}d sedan"
+        "daysAgo": "för {{count}} dagar sedan"
       },
       "steps": {
         "stayCalm": {
-          "title": "Behåll lugnet",
+          "title": "Förbli lugn",
           "detail": "Ta ett långsamt, djupt andetag. Din lugna energi hjälper dem att känna sig trygga.",
           "script": "Jag är här med dig. Allt är okej."
         },
         "validateFeelings": {
-          "title": "Bekräfta känslor",
-          "detail": "Säg 'Jag ser att du är upprörd. Det måste vara riktigt jobbigt.' Argumentera eller rätta inte.",
-          "script": "Jag ser att du är upprörd. Det måste vara svårt."
+          "title": "Validera känslor",
+          "detail": "Säg 'Jag ser att du är upprörd. Det måste vara väldigt svårt.' Argumentera eller korrigera inte.",
+          "script": "Jag ser att du är upprörd. Det måste vara väldigt svårt."
         },
         "simplifyEnvironment": {
           "title": "Förenkla omgivningen",
           "detail": "Använd korta, enkla meningar. En idé i taget. Undvik att ställa 'varför'-frågor.",
-          "script": "Låt oss göra det enklare. En sak i taget."
+          "script": "Låt oss göra saker enklare. En sak i taget."
         },
         "redirectAttention": {
           "title": "Omdirigera uppmärksamheten",
-          "detail": "Ändra försiktigt samtalsämnet. Föreslå en välbekant aktivitet, sång eller promenad.",
+          "detail": "Byt försiktigt ämne. Föreslå en bekant aktivitet, sång eller promenad.",
           "script": "Vad sägs om att vi provar något annat? Låt oss ta en liten promenad tillsammans."
         },
         "useGentleTouch": {
-          "title": "Använd varsam beröring",
-          "detail": "Om det är välkommet kan en försiktig hand på armen vara lugnande. Observera deras reaktion.",
+          "title": "Använd en mjuk beröring",
+          "detail": "Om det är välkommet kan en mjuk hand på armen vara lugnande. Se hur de reagerar.",
           "script": "Är det okej om jag håller din hand? Jag är här."
         },
         "giveSpace": {
           "title": "Ge utrymme",
           "detail": "Om inget fungerar, säkerställ säkerheten och ge dem utrymme. Det är okej att ta ett steg tillbaka.",
-          "script": "Jag är precis i närheten om du behöver mig. Ta din tid."
+          "script": "Jag finns i närheten om du behöver mig. Ta din tid."
         }
       },
       "helplines": "Hjälplinjer",
@@ -965,18 +965,18 @@
       "scenarios": {
         "title": "Vad händer?",
         "subtitle": "Tryck på en situation för steg-för-steg-vägledning",
-        "urgent": "Brådskande",
+        "urgent": "Akut",
         "stepCountLabel": "{{count}} steg",
         "backToSituations": "Tillbaka till situationer",
         "breathe": "Andningsövning",
-        "callEmergency": "Ring larmtjänsten"
+        "callEmergency": "Ring räddningstjänsten"
       },
       "patterns": {
         "title": "Mönsterinsikt",
-        "noEvents": "Logga incidenter för att se mönster över tid.",
-        "fewEvents": "{{count}} incidenter loggade. Mer data behövs för mönster.",
-        "timePattern": "De flesta incidenter inträffar på {{time}}.",
-        "weekCount": "{{count}} den här veckan."
+        "noEvents": "Logga händelser för att se mönster över tid.",
+        "fewEvents": "{{count}} händelser loggade. Mer data behövs för mönster.",
+        "timePattern": "De flesta incidenter inträffar under {{time}}.",
+        "weekCount": "{{count}} denna vecka."
       },
       "personalization": {
         "label": "Vad lugnar {{name}}",
@@ -985,36 +985,36 @@
       "scenarioData": {
         "stepsCount": "{{count}} steg",
         "agitated": {
-          "label": "Orolig / Upprörd",
+          "label": "Upprörd / Orolig",
           "steps": [
             {
               "title": "Du först",
-              "instruction": "Ta ett långsamt andetag innan du gör något. Du kan inte lugna någon om du inte är lugn."
+              "instruction": "Ta ett långsamt andetag innan du gör något. Du kan inte lugna någon om du inte själv är lugn."
             },
             {
-              "title": "Snabb kontroll – kan något fysiskt vara fel?",
+              "title": "Snabbkoll – kan något fysiskt vara fel?",
               "instruction": "Smärta, hunger, behov av att gå på toaletten eller en infektion kan alla orsaka oro.",
               "checklist": [
                 "Smärta eller obehag?",
                 "Hungrig eller törstig?",
                 "Behöver gå på toaletten?",
-                "Nyligen ändrad medicinering?",
+                "Nylig medicinförändring?",
                 "Feber eller tecken på sjukdom?"
               ]
             },
             {
               "title": "Sänk temperaturen",
-              "instruction": "Tala långsamt och mjukt. Argumentera, rätta eller förklara inte. Bekräfta vad de känner.",
+              "instruction": "Tala långsamt och mjukt. Argumentera, korrigera eller förklara inte. Bekräfta vad de känner.",
               "tips": [
                 "\"Jag ser att du är upprörd. Jag är här.\"",
                 "Minska buller – stäng av TV:n, stäng fönster",
-                "Ge dem fysiskt utrymme, träng inte",
-                "Erbjud ett välbekant trösteobjekt"
+                "Ge dem fysiskt utrymme, träng dig inte på",
+                "Erbjud ett bekant trygghetsföremål"
               ]
             },
             {
-              "title": "Omdirigera, resonera inte",
-              "instruction": "Ändra försiktigt samtalsämnet eller miljön. Försök inte att resonera dem ur det.",
+              "title": "Omdirigera, argumentera inte",
+              "instruction": "Byt försiktigt ämne eller miljö. Försök inte resonera med dem.",
               "tips": [
                 "Föreslå en promenad eller flytta till ett annat rum",
                 "Sätt på musik de älskar",
@@ -1023,22 +1023,22 @@
               ]
             },
             {
-              "title": "När du ska få hjälp",
-              "instruction": "Om oron varar mer än 30 minuter, om de riskerar att skada sig själva eller dig, eller om detta är ett plötsligt nytt beteende – ring larmtjänsten.",
-              "actionLabel": "Ring larmtjänsten"
+              "title": "När du ska söka hjälp",
+              "instruction": "Om oron varar längre än 30 minuter, om de riskerar att skada sig själva eller dig, eller om detta är ett plötsligt nytt beteende – ring räddningstjänsten.",
+              "actionLabel": "Ring räddningstjänsten"
             }
           ]
         },
         "wandering": {
-          "label": "Vandrande / Saknad",
+          "label": "Vandrar / Saknas",
           "steps": [
             {
               "title": "Kontrollera de vanliga platserna först",
-              "instruction": "De flesta personer med demens går till välbekanta platser – en tidigare arbetsplats, ett barndomshem, en grannes hus.",
+              "instruction": "De flesta personer med demens går till bekanta platser – en tidigare arbetsplats, ett barndomshem, en grannes hus.",
               "tips": [
                 "Kontrollera trädgården, garaget, närliggande gator",
-                "Fråga grannarna om de har sett dem",
-                "Kontrollera platser de brukade gå till regelbundet"
+                "Fråga grannar om de har sett dem",
+                "Kontrollera platser de brukade besöka regelbundet"
               ]
             },
             {
@@ -1046,13 +1046,13 @@
               "instruction": "Om platsspårning är inställd, kontrollera deras nuvarande position nu."
             },
             {
-              "title": "Larma familjen",
+              "title": "Varna familjen",
               "instruction": "Låt alla veta omedelbart. Fler ögon som söker är bättre."
             },
             {
               "title": "Ring polisen om de inte hittas inom 15 minuter",
-              "instruction": "Vänta inte. Personer med demens löper hög risk för skador. Ring larmtjänsten och berätta att personen har demens.",
-              "actionLabel": "Ring larmtjänsten"
+              "instruction": "Vänta inte. Personer med demens löper hög risk för skador. Ring räddningstjänsten och berätta att personen har demens.",
+              "actionLabel": "Ring räddningstjänsten"
             }
           ]
         },
@@ -1060,15 +1060,15 @@
           "label": "Vägrar vård",
           "steps": [
             {
-              "title": "Paus – detta är inte trots",
-              "instruction": "Vägran är nästan alltid rädsla, förvirring eller obehag. De kanske inte förstår vad du frågar."
+              "title": "Pausa – detta är inte trots",
+              "instruction": "Vägran beror nästan alltid på rädsla, förvirring eller obehag. De kanske inte förstår vad du ber om."
             },
             {
-              "title": "Ta ett steg tillbaka och försök annorlunda",
-              "instruction": "Pressa inte. Kom tillbaka om 15–20 minuter och närma dig som om det är första gången.",
+              "title": "Ta ett steg tillbaka och prova på ett annat sätt",
+              "instruction": "Pressa inte. Kom tillbaka om 15–20 minuter och närma dig som om det vore första gången.",
               "tips": [
-                "Ändra vem som frågar",
-                "Ändra miljön",
+                "Byt person som frågar",
+                "Byt miljö",
                 "Dela upp uppgiften i mindre steg",
                 "Erbjud val: \"Bad eller dusch?\""
               ]
@@ -1077,7 +1077,7 @@
               "title": "Få det att kännas tryggt",
               "instruction": "Förklara varje steg innan du gör det. Rör dig långsamt. Håll dem varma.",
               "tips": [
-                "Varna innan du rör",
+                "Varna innan du rör vid",
                 "Använd en lugn, varm ton",
                 "Spela deras favoritmusik under uppgiften",
                 "Håll rutinen konsekvent"
@@ -1102,12 +1102,12 @@
               ]
             },
             {
-              "title": "Kontrollera miljön",
-              "instruction": "Skuggor, reflektioner, TV-ljud och röran kan utlösa feltolkning.",
+              "title": "Kontrollera omgivningen",
+              "instruction": "Skuggor, reflektioner, TV-ljud och oordning kan utlösa feltolkningar.",
               "checklist": [
                 "Skuggor från fönster eller lampor?",
                 "TV eller radio på i bakgrunden?",
-                "Spegelreflektioner?",
+                "Speglingar?",
                 "Dålig belysning?"
               ]
             },
@@ -1123,7 +1123,7 @@
             },
             {
               "title": "När du ska ringa läkaren",
-              "instruction": "Om hallucinationer är nya, frekventa eller orsakar extrem ångest. Plötsligt debut kan indikera infektion, biverkningar av medicinering eller delirium."
+              "instruction": "Om hallucinationer är nya, frekventa eller orsakar extremt obehag. Plötslig debut kan indikera infektion, biverkningar av medicinering eller delirium."
             }
           ]
         },
@@ -1132,15 +1132,15 @@
           "steps": [
             {
               "title": "Känn igen mönstret",
-              "instruction": "Sundowning börjar vanligtvis sent på eftermiddagen. Detta är extremt vanligt och inget de kan kontrollera."
+              "instruction": "Kvällsoro börjar vanligtvis sent på eftermiddagen. Detta är extremt vanligt och inget de kan kontrollera."
             },
             {
               "title": "Anpassa miljön nu",
               "instruction": "Minska all stimulans och skapa trygghetssignaler.",
               "tips": [
                 "Tänd varma lampor innan det blir mörkt",
-                "Dra för gardinerna för att minska skuggor",
-                "Stäng av eller sänk volymen på TV:n",
+                "Dra för gardiner för att minska skuggor",
+                "Stäng av eller sänk TV-volymen",
                 "Minska antalet personer i rummet"
               ]
             },
@@ -1148,15 +1148,15 @@
               "title": "Erbjud lugnande aktiviteter",
               "instruction": "Mjuka, repetitiva, välbekanta aktiviteter fungerar bäst.",
               "tips": [
-                "Mild handmassage med lotion",
-                "Mjuk, välbekant musik",
-                "Vika handdukar eller sortera föremål",
+                "Mjuk handmassage med lotion",
+                "Lugn, välbekant musik",
+                "Vecka handdukar eller sortera föremål",
                 "Titta igenom ett fotoalbum tillsammans"
               ]
             },
             {
               "title": "Förebygg det imorgon",
-              "instruction": "Logga episoden med tidsdetaljer. Mönster hjälper till att justera scheman – mer aktivitet på morgonen, mindre koffein på eftermiddagen."
+              "instruction": "Logga händelsen med tidsdetaljer. Mönster hjälper till att anpassa scheman – mer aktivitet på morgonen, mindre koffein på eftermiddagen."
             }
           ]
         },
@@ -1167,52 +1167,52 @@
               "title": "Flytta dem inte",
               "instruction": "Om de inte är i omedelbar fara, försök inte lyfta eller flytta dem.",
               "tips": [
-                "Gå ner till deras nivå",
-                "Lugna dem: \"Jag är här, du är säker\"",
-                "Kontrollera om det finns synliga skador"
+                "Sätt dig ner på deras nivå",
+                "Lugna dem: \"Jag är här, du är trygg\"",
+                "Kontrollera efter synliga skador"
               ]
             },
             {
               "title": "Kan de resa sig?",
-              "instruction": "Om det inte finns någon uppenbar skada, hjälp dem upp långsamt i etapper.",
+              "instruction": "Om ingen uppenbar skada, hjälp dem upp långsamt i etapper.",
               "checklist": [
-                "Är de alerta och reagerar de?",
-                "Finns det någon uppenbar skada eller smärta?",
-                "Kan de röra alla sina lemmar?",
-                "Har de slagit i huvudet?"
+                "Är de alerta och responsiva?",
+                "Någon uppenbar skada eller smärta?",
+                "Kan de röra alla lemmar?",
+                "Slog de i huvudet?"
               ]
             },
             {
               "title": "Ring efter hjälp om...",
-              "instruction": "Huvudskada, kan inte resa sig, svår smärta, förvirring värre än vanligt eller blödning som inte slutar."
+              "instruction": "Huvudskada, kan inte resa sig, svår smärta, förvirring värre än vanligt, eller blödning som inte slutar."
             },
             {
               "title": "Efter fallet",
-              "instruction": "Logga denna händelse och nämn det för deras läkare. Upprepade fall kan tyda på medicineringsproblem eller sjukdomsprogression."
+              "instruction": "Logga denna händelse och nämn det för deras läkare. Upprepade fall kan tyda på medicinproblem eller sjukdomsprogression."
             }
           ]
         },
         "repetitive_questions": {
-          "label": "Repetitiva frågor",
+          "label": "Upprepade frågor",
           "steps": [
             {
-              "title": "Andas – det här är sjukdomen, inte dem",
-              "instruction": "De kommer verkligen inte ihåg att de frågade. Din frustration är befogad, men att visa den gör dem mer oroliga."
+              "title": "Andas – detta är sjukdomen, inte de",
+              "instruction": "De minns verkligen inte att de frågat. Din frustration är giltig, men att visa den gör dem mer oroliga."
             },
             {
               "title": "Vad frågar de egentligen?",
-              "instruction": "Frågan på ytan är sällan den verkliga frågan. \"Vilken tid är middagen?\" kan betyda \"Jag är hungrig.\"",
+              "instruction": "Ytfrågan är sällan den verkliga frågan. \"Vad är klockan?\" kan betyda \"Jag är hungrig.\"",
               "checklist": [
                 "Är de oroliga för något?",
                 "Kan de vara hungriga, törstiga eller uttråkade?",
-                "Är det en kommande händelse som orsakar oro?"
+                "Finns det en kommande händelse som orsakar oro?"
               ]
             },
             {
               "title": "Svara på känslan",
-              "instruction": "Besvara känslan bakom frågan snarare än de bokstavliga orden.",
+              "instruction": "Svara på känslan bakom frågan snarare än de bokstavliga orden.",
               "tips": [
-                "Skriv svaret på en synlig whiteboard",
+                "Skriv svaret på en synlig whiteboardtavla",
                 "Ge ett enkelt, lugnande svar varje gång",
                 "Omdirigera till en praktisk aktivitet efter att ha svarat",
                 "Använd visuella scheman för att minska osäkerheten"
@@ -1220,7 +1220,7 @@
             },
             {
               "title": "Skydda ditt eget välbefinnande",
-              "instruction": "Byt av med en annan vårdgivare om möjligt. Använd hörlurar med lugn musik när du behöver en mental paus."
+              "instruction": "Byt av med en annan vårdare om möjligt. Använd hörlurar med lugn musik när du behöver en mental paus."
             }
           ]
         },
@@ -1229,17 +1229,17 @@
           "steps": [
             {
               "title": "Din säkerhet kommer först",
-              "instruction": "Om du känner dig fysiskt osäker, ta ett steg tillbaka omedelbart. Försök inte att hålla fast dem.",
+              "instruction": "Om du känner dig fysiskt osäker, backa omedelbart. Försök inte hålla fast dem.",
               "tips": [
                 "Placera dig nära en utgång",
-                "Ta bort farliga föremål från räckhåll",
-                "Håll rösten låg och lugn",
+                "Ta bort farliga föremål utom räckhåll",
+                "Håll din röst låg och lugn",
                 "Gör inga plötsliga rörelser"
               ]
             },
             {
-              "title": "Jorda dig själv",
-              "instruction": "Aggression utlöser kamp-eller-flykt även hos dig. Ta ett ögonblick för att andas."
+              "title": "Hitta ditt lugn",
+              "instruction": "Aggression utlöser kamp- eller flyktrespons även hos dig. Ta en stund att andas."
             },
             {
               "title": "Vad utlöste detta?",
@@ -1253,7 +1253,7 @@
             },
             {
               "title": "Ge utrymme och tid",
-              "instruction": "Backa. Stoppa den utlösande aktiviteten. Kom tillbaka om 15–20 minuter som om ingenting hade hänt.",
+              "instruction": "Backa. Stoppa den utlösande aktiviteten. Kom tillbaka om 15–20 minuter som om inget hänt.",
               "tips": [
                 "Lämna rummet om det är säkert",
                 "Ta bort utlösaren",
@@ -1263,26 +1263,26 @@
             },
             {
               "title": "När detta är en nödsituation",
-              "instruction": "Om de har ett vapen, om någon är skadad eller om aggressionen inte avtar – ring räddningstjänsten."
+              "instruction": "Om de har ett vapen, om någon är skadad, eller om aggressionen inte avtar – ring räddningstjänsten."
             }
           ]
         },
         "sleep_disruption": {
-          "label": "Sömnstörning",
+          "label": "Sömnstörningar",
           "steps": [
             {
               "title": "Håll miljön säker",
               "instruction": "Om de är vakna och rör sig på natten är din första prioritet säkerheten.",
               "tips": [
-                "Tänd låga nattlampor",
+                "Tänd svaga nattlampor",
                 "Rensa bort snubbelrisker",
                 "Lås ytterdörrar om vandring är ett problem",
-                "\"Det är natt, allt är säkert\""
+                "\"Det är natt, allt är tryggt\""
               ]
             },
             {
               "title": "Vad väckte dem?",
-              "instruction": "Nattvak kan orsakas av smärta, behov av att gå på toaletten, medicineringstidpunkt eller hunger.",
+              "instruction": "Nattliga uppvaknanden kan orsakas av smärta, behov av toalettbesök, medicintider eller hunger.",
               "checklist": [
                 "Behöver de gå på toaletten?",
                 "Har de ont?",
@@ -1291,17 +1291,17 @@
               ]
             },
             {
-              "title": "Guida dem tillbaka försiktigt",
-              "instruction": "Argumentera inte om vilken tid det är. Omdirigera dem tillbaka till sängen med lugnande signaler.",
+              "title": "Led dem tillbaka försiktigt",
+              "instruction": "Argumentera inte om vad klockan är. Led dem tillbaka till sängen med lugnande signaler.",
               "tips": [
                 "Erbjud en varm, koffeinfri dryck",
                 "Använd en lugn, tyst röst",
-                "Sätt på mjuk, välbekant musik",
+                "Sätt på lugn, välbekant musik",
                 "Sitt med dem tills de lugnar sig"
               ]
             },
             {
-              "title": "Förbättra morgondagens natt",
+              "title": "Förbättra nästa natt",
               "instruction": "Mer aktivitet på dagen, inget koffein efter lunch, konsekvent läggdagsrutin, begränsa tupplurar till 30 minuter."
             }
           ]
@@ -1315,21 +1315,21 @@
             },
             {
               "title": "Varför följer de dig?",
-              "instruction": "Skuggning drivs av ångest och rädsla för övergivenhet. Att vara nära dig är deras enda källa till trygghet.",
+              "instruction": "Skuggning drivs av ångest och rädsla för att bli övergiven. Att vara nära dig är deras enda källa till trygghet.",
               "checklist": [
-                "Har det skett en nyligen genomförd rutinändring?",
-                "Befinner de sig i en obekant miljö?",
+                "Har det skett en nylig rutinändring?",
+                "Är de i en obekant miljö?",
                 "Har du varit borta nyligen?",
-                "Känner de sig dåliga?"
+                "Mår de dåligt?"
               ]
             },
             {
               "title": "Minska deras ångest",
               "instruction": "Hjälp dem att känna sig trygga utan att vara fysiskt närvarande varje ögonblick.",
               "tips": [
-                "Ge dem ett \"jobb\" nära där du är",
-                "Lämna ett personligt föremål hos dem som ett trygghetsankare",
-                "\"Jag är bara i köket, jag är strax tillbaka\"",
+                "Ge dem en \"uppgift\" nära där du är",
+                "Lämna ett personligt föremål hos dem som en trygghetsankare",
+                "\"Jag är bara i köket, jag kommer strax tillbaka\"",
                 "Prova välbekant TV eller musik som sällskap"
               ]
             },
@@ -1348,8 +1348,8 @@
       }
     },
     "tabs": {
-      "dashboard": "Dashboard",
-      "plan": "Planera",
+      "dashboard": "Översikt",
+      "plan": "Plan",
       "location": "Plats",
       "coach": "Coach",
       "more": "Mer"
@@ -1357,11 +1357,11 @@
   },
   "notifications": {
     "taskReminder": "{{patientName}}, det är dags för: {{taskTitle}}",
-    "taskCompleted": "{{patientName}} har slutfört: {{taskTitle}}",
-    "checkinReceived": "{{patientName}} har slutfört dagens incheckning",
+    "taskCompleted": "{{patientName}} slutförde: {{taskTitle}}",
+    "checkinReceived": "{{patientName}} slutförde dagens incheckning",
     "leftSafeZone": "{{patientName}} har lämnat {{zoneName}}",
-    "inactivity": "Ingen rörelse har upptäckts från {{patientName}} på {{hours}} timmar",
-    "nightMovement": "{{patientName}} rör sig utomhus kl. {{time}}",
+    "inactivity": "Ingen rörelse upptäckt från {{patientName}} på {{hours}} timmar",
+    "nightMovement": "{{patientName}} rör sig utomhus klockan {{time}}",
     "takeMeHome": "{{patientName}} tryckte på 'Ta mig hem' från {{location}}",
     "eveningSummary": "{{patientName}}s dag: {{completed}}/{{total}} uppgifter klara. Humör: {{mood}}"
   },
@@ -1369,7 +1369,7 @@
     "free": "Gratis",
     "plus": "OurTurn Plus",
     "upgradeTitle": "Lås upp OurTurn Plus",
-    "upgradeFeature": "Den här funktionen kräver OurTurn Plus",
+    "upgradeFeature": "Denna funktion kräver OurTurn Plus",
     "monthly": "{{price}}/månad",
     "annual": "{{price}}/år",
     "annualSavings": "Spara {{percent}}%",
@@ -1378,15 +1378,15 @@
     "manage": "Hantera prenumeration",
     "features": {
       "unlimitedTasks": "Obegränsat antal uppgifter per dag",
-      "aiCoach": "Full AI-vårdcoach",
-      "brainActivities": "AI-genererade aktiviteter för hjärnans välbefinnande",
-      "safeZones": "Säkra zoner och platsvarningar",
+      "aiCoach": "Fullständig AI-vårdcoach",
+      "brainActivities": "AI-genererade hjärnhälsoaktiviteter",
+      "safeZones": "Säkra zoner & platsvarningar",
       "multiCaregiver": "Upp till 5 familjemedlemmar",
-      "journal": "Shared Care Journal",
-      "insights": "AI pattern insights",
-      "reports": "Doctor visit reports",
-      "toolkit": "Caregiver toolkit & wellness",
-      "priority": "Priority support"
+      "journal": "Delad vårddagbok",
+      "insights": "AI-drivna insikter om mönster",
+      "reports": "Rapporter för läkarbesök",
+      "toolkit": "Verktygslåda och välmående för vårdgivare",
+      "priority": "Prioriterad support"
     }
   }
 }

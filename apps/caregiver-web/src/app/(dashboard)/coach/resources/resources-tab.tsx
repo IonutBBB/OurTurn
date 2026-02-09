@@ -7,6 +7,7 @@ import type { JourneyStepDefinition, JourneyProgress, ArticleDefinition, LocalSu
 import { JourneyProgressBar } from './components/journey-progress-bar';
 import { JourneySection } from './components/journey-section';
 import { JourneyStepDetail } from './components/journey-step-detail';
+import { WhoIsupportSection } from './components/who-isupport-section';
 import { ArticleSection } from './components/article-section';
 import { ArticleDetail } from './components/article-detail';
 import { LocalSupportSection } from './components/local-support-section';
@@ -192,6 +193,9 @@ export function ResourcesTab({
         progressMap={progressMap}
         onSelectStep={setSelectedStep}
       />
+
+      {/* WHO iSupport Featured Section */}
+      <WhoIsupportSection onSelectArticle={setSelectedArticle} />
 
       {/* Knowledge Library */}
       <ArticleSection onSelectArticle={setSelectedArticle} />

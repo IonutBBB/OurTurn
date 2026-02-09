@@ -200,5 +200,11 @@
       "respite": "Tehermentesítő Gondozás",
       "financial": "Pénzügyi Támogatás"
     }
+  },
+  "whoIsupport": {
+    "sectionTitle": "WHO iSupport program",
+    "sectionSubtitle": "Átfogó, bizonyítékokon alapuló gondozói képzési program, amelyet az Egészségügyi Világszervezet (WHO) fejlesztett ki — az Egyesült Nemzetek nemzetközi közegészségügyért felelős szervezete.",
+    "whoExplanation": "WHO = Egészségügyi Világszervezet (Egyesült Nemzetek)",
+    "badge": "Bizonyítékokon alapuló képzés"
   }
 }

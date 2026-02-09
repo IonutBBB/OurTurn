@@ -200,5 +200,11 @@
       "respite": "Puhkehooldus",
       "financial": "Rahaline toetus"
     }
+  },
+  "whoIsupport": {
+    "sectionTitle": "WHO iSupport programm",
+    "sectionSubtitle": "Terviklik tõenduspõhine hooldajate koolitusprogramm, mille on välja töötanud Maailma Terviseorganisatsioon (WHO) — Ühinenud Rahvaste Organisatsiooni agentuur, mis vastutab rahvusvahelise rahvatervise eest.",
+    "whoExplanation": "WHO = Maailma Terviseorganisatsioon (Ühinenud Rahvaste Organisatsioon)",
+    "badge": "Tõenduspõhine koolitus"
   }
 }

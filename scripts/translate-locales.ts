@@ -214,7 +214,7 @@ async function translateChunk(
   langName: string,
   retries = 2,
 ): Promise<Record<string, unknown>> {
-  const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+  const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
   const prompt = `Translate this JSON from English to ${langName} (${lang}).
 

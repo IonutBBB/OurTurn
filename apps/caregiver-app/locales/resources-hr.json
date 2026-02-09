@@ -200,5 +200,11 @@
       "respite": "Skrb za rasterećenje",
       "financial": "Financijska pomoć"
     }
+  },
+  "whoIsupport": {
+    "sectionTitle": "WHO iSupport program",
+    "sectionSubtitle": "Sveobuhvatan program osposobljavanja njegovatelja utemeljen na dokazima, koji je razvila Svjetska zdravstvena organizacija (WHO) — agencija Ujedinjenih naroda odgovorna za međunarodno javno zdravlje.",
+    "whoExplanation": "WHO = Svjetska zdravstvena organizacija (Ujedinjeni narodi)",
+    "badge": "Osposobljavanje utemeljeno na dokazima"
   }
 }

@@ -260,6 +260,26 @@ export async function clearPendingLocationLogs(): Promise<void> {
   }
 }
 
+// Cache stim activity content for a specific date
+export async function cacheStimContent(date: string, activityType: string, content: unknown): Promise<void> {
+  try {
+    await AsyncStorage.setItem(`stim_content_${activityType}_${date}`, JSON.stringify(content));
+  } catch (error) {
+    if (__DEV__) console.error('Failed to cache stim content:', error);
+  }
+}
+
+// Get cached stim activity content
+export async function getCachedStimContent(date: string, activityType: string): Promise<unknown | null> {
+  try {
+    const cached = await AsyncStorage.getItem(`stim_content_${activityType}_${date}`);
+    return cached ? JSON.parse(cached) : null;
+  } catch (error) {
+    if (__DEV__) console.error('Failed to get cached stim content:', error);
+    return null;
+  }
+}
+
 // Clean up old cache entries (keep last 7 days)
 export async function cleanupOldCache(): Promise<void> {
   try {

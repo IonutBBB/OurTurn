@@ -113,3 +113,16 @@ export function formatTimeDisplay(time: string, locale?: string): string {
     minute: '2-digit',
   }).format(date);
 }
+
+// Format current time as a locale-aware string (e.g. "2:30 PM")
+export function formatCurrentTime(locale: string = 'en'): string {
+  return new Intl.DateTimeFormat(locale, {
+    hour: 'numeric',
+    minute: '2-digit',
+  }).format(new Date());
+}
+
+// Get just the day of the week as a long name (e.g. "Monday")
+export function getDayOfWeekLong(date: Date = new Date(), locale: string = 'en'): string {
+  return new Intl.DateTimeFormat(locale, { weekday: 'long' }).format(date);
+}

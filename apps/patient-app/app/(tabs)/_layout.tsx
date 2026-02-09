@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Tabs, useRouter } from 'expo-router';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../../src/stores/auth-store';
@@ -69,13 +69,18 @@ export default function TabsLayout() {
   }, [isInitialized, isAuthenticated, session?.householdId, consentChecked, router]);
 
   const insets = useSafeAreaInsets();
+  // On Android, Expo Go may run edge-to-edge while reporting insets.bottom as 0,
+  // causing the system nav bar to cover tab buttons. Use 48dp minimum on Android.
+  const bottomPadding = Platform.OS === 'android'
+    ? Math.max(insets.bottom, 48)
+    : Math.max(insets.bottom, 12);
 
   return (
     <ErrorBoundary>
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarStyle: [styles.tabBar, { paddingBottom: Math.max(insets.bottom, 12) }],
+        tabBarStyle: [styles.tabBar, { paddingBottom: bottomPadding }],
         tabBarShowLabel: false,
         tabBarActiveTintColor: COLORS.brand600,
         tabBarInactiveTintColor: COLORS.textMuted,
@@ -92,6 +97,19 @@ export default function TabsLayout() {
             />
           ),
           tabBarAccessibilityLabel: t('patientApp.tabs.today'),
+        }}
+      />
+      <Tabs.Screen
+        name="activities"
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <TabIcon
+              emoji="🎨"
+              label={t('patientApp.tabs.activities')}
+              focused={focused}
+            />
+          ),
+          tabBarAccessibilityLabel: t('patientApp.tabs.activities'),
         }}
       />
       <Tabs.Screen

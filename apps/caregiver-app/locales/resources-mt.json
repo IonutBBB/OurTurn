@@ -200,5 +200,11 @@
       "respite": "Kura ta' Serħan",
       "financial": "Appoġġ Finanzjarju"
     }
+  },
+  "whoIsupport": {
+    "sectionTitle": "Programm WHO iSupport",
+    "sectionSubtitle": "Programm komprensiv ta' taħriġ għall-carers ibbażat fuq l-evidenza, żviluppat mill-Organizzazzjoni Dinjija tas-Saħħa (WHO) — l-aġenzija tan-Nazzjonijiet Magħquda responsabbli għas-saħħa pubblika internazzjonali.",
+    "whoExplanation": "WHO = Organizzazzjoni Dinjija tas-Saħħa (Nazzjonijiet Magħquda)",
+    "badge": "Taħriġ ibbażat fuq l-evidenza"
   }
 }

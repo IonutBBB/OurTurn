@@ -21,7 +21,7 @@ const STATUS_STYLES: Record<string, string> = {
 };
 
 export function HelpRequest({ caregiverId, householdId, initialRequests }: HelpRequestProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { showToast } = useToast();
   const supabase = createBrowserClient();
 
@@ -89,11 +89,12 @@ export function HelpRequest({ caregiverId, householdId, initialRequests }: HelpR
     }
   };
 
-  const handleTemplateClick = (templateKey: string, message: string) => {
+  const handleTemplateClick = (templateKey: string) => {
     if (templateKey === 'custom') {
       setSelectedTemplate('custom');
     } else {
-      sendRequest(message, templateKey);
+      const translatedMessage = t(`caregiverApp.toolkit.help.message_${templateKey}`);
+      sendRequest(translatedMessage, templateKey);
     }
   };
 
@@ -149,11 +150,11 @@ export function HelpRequest({ caregiverId, householdId, initialRequests }: HelpR
         {HELP_REQUEST_TEMPLATES.map((tpl) => (
           <button
             key={tpl.key}
-            onClick={() => handleTemplateClick(tpl.key, tpl.message)}
+            onClick={() => handleTemplateClick(tpl.key)}
             disabled={isSending}
             className="px-3 py-2 text-sm rounded-full border border-brand-200 dark:border-brand-800 bg-surface-elevated/50 text-text-secondary hover:bg-brand-100 dark:hover:bg-brand-900/40 transition-colors disabled:opacity-50"
           >
-            {tpl.label}
+            {t(`caregiverApp.toolkit.help.template_${tpl.key}`)}
           </button>
         ))}
       </div>
@@ -212,7 +213,7 @@ export function HelpRequest({ caregiverId, householdId, initialRequests }: HelpR
                 <div className="flex-1 min-w-0">
                   <p className="text-sm text-text-primary truncate">{req.message}</p>
                   <p className="text-xs text-text-muted mt-0.5">
-                    {new Date(req.created_at).toLocaleDateString('en-US', {
+                    {new Date(req.created_at).toLocaleDateString(i18n.language, {
                       month: 'short',
                       day: 'numeric',
                       hour: 'numeric',

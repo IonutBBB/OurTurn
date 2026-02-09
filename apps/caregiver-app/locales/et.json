@@ -6,24 +6,24 @@
     "delete": "Kustuta",
     "edit": "Muuda",
     "done": "Valmis",
-    "skip": "Jäta täna vahele",
-    "loading": "Laadimine...",
+    "skip": "Jäta tänaseks vahele",
+    "loading": "Laeb...",
     "error": "Midagi läks valesti. Palun proovi uuesti.",
     "errorTitle": "Midagi läks valesti",
     "errorDefault": "Ilmnes ootamatu viga.",
     "tryAgain": "Proovi uuesti",
     "logOut": "Logi välja",
-    "offline": "Oled võrguühenduseta – andmed sünkroonitakse, kui ühendus on taastatud",
+    "offline": "Oled võrguühenduseta – sinu andmed sünkroonitakse ühenduse loomisel",
     "synced": "Sünkroonitud",
     "viewMore": "Vaata rohkem",
     "back": "Tagasi",
-    "next": "Järgmine",
+    "next": "Edasi",
     "confirm": "Kinnita",
     "yes": "Jah",
     "no": "Ei",
     "you": "Sina",
-    "unknown": "Tundmatu",
-    "saving": "Salvestamine...",
+    "unknown": "Teadmata",
+    "saving": "Salvestan...",
     "primary": "Peamine"
   },
   "categories": {
@@ -31,39 +31,39 @@
     "nutrition": "Söögid ja toitumine",
     "physical": "Füüsiline aktiivsus",
     "cognitive": "Aju heaolu",
-    "social": "Suhtlus ja kontakt",
+    "social": "Sotsiaalne suhtlus ja ühendus",
     "health": "Tervisekontroll"
   },
   "caregiverApp": {
     "dashboard": {
-      "greeting": "Head {{timeOfDay}}, {{name}}",
-      "statusGood": "{{patientName}}'i päev läheb hästi",
+      "greeting": "Tere {{timeOfDay}}, {{name}}",
+      "statusGood": "{{patientName}} päev läheb hästi",
       "statusConcern": "{{patientName}} võib vajada tähelepanu",
-      "todaysStatus": "Tänane seisund",
-      "tasksCompleted": "{{completed}} / {{total}} ülesannet täidetud",
+      "todaysStatus": "Tänane seis",
+      "tasksCompleted": "{{completed}} {{total}}-st ülesandest tehtud",
       "dailyCheckin": "Igapäevane sisseregistreerimine",
       "noCheckinYet": "Täna pole veel sisseregistreerimist esitatud",
       "location": "Asukoht",
       "atHome": "{{name}} on kodus",
       "lastUpdate": "Viimati uuendatud: {{time}}",
-      "aiInsights": "Ülevaated",
-      "quickActions": "Kiired toimingud",
-      "callPatient": "Helista {{name}}",
-      "tasksCompletedLabel": "ülesannet täidetud",
-      "careCode": "Hoolduse kood",
-      "careCodeHint": "Jaga patsiendirakenduse ühendamiseks",
+      "aiInsights": "Tähelepanekud",
+      "quickActions": "Kiirtoimingud",
+      "callPatient": "Helista {{name}}-le",
+      "tasksCompletedLabel": "ülesandeid täidetud",
+      "careCode": "Hooldekood",
+      "careCodeHint": "Jaga, et ühendada patsiendirakendus",
       "careCodeNotAvailable": "Kood pole saadaval",
-      "morningActivityPattern": "Hommikune aktiivsusmuster",
-      "insightText": "{{name}} täidab rohkem ülesandeid päevadel, kui on planeeritud hommikused jalutuskäigud.",
-      "noJournalEntries": "Päevikukirjeid pole veel",
-      "unknown": "Tundmatu",
+      "morningActivityPattern": "Hommikuse tegevuse muster",
+      "insightText": "{{name}} täidab rohkem ülesandeid päevadel, mil on planeeritud hommikused jalutuskäigud.",
+      "noJournalEntries": "Päevikukirjeid veel pole",
+      "unknown": "Teadmata",
       "moodStruggling": "Raskustes",
       "moodLow": "Madal",
       "moodOkay": "Okei",
       "moodGood": "Hea",
       "moodGreat": "Suurepärane",
       "sleepPoor": "Kehv",
-      "sleepFair": "Keskmine",
+      "sleepFair": "Rahuldav",
       "sleepWell": "Hästi",
       "mood": "Tuju",
       "sleep": "Uni",
@@ -75,31 +75,31 @@
       "deviceOffline": "Võrguühenduseta",
       "lastSeenAt": "Viimati nähtud: {{time}}",
       "lastSeenNever": "Pole kunagi ühendatud",
-      "engagementSummary": "Tänane tegevus",
+      "engagementSummary": "Tänane kaasatus",
       "alertsToday": "Hoiatused täna",
       "checkedIn": "Sisse registreeritud",
       "notCheckedIn": "Pole sisse registreeritud",
       "brainActivity": "Aju aktiivsus"
     },
     "carePlan": {
-      "title": "{{name}}'i päevaplaan",
+      "title": "{{name}} igapäevane plaan",
       "addTask": "Lisa ülesanne",
       "aiSuggest": "AI soovitab ülesandeid",
       "hintLabel": "Juhised ({{name}} näeb seda)",
-      "hintPlaceholder": "Nt. Sinu tabletid on köögilaua tabletikarbis",
+      "hintPlaceholder": "Nt. Teie tabletid on köögilaua tabletikarbis",
       "recurrence": "Kordub",
       "daily": "Iga päev",
-      "specificDays": "Kindlad päevad",
-      "oneTime": "Üks kord",
+      "specificDays": "Kindlatel päevadel",
+      "oneTime": "Ühekordne",
       "copyDay": "Kopeeri teistele päevadele",
       "saved": "Salvestatud",
-      "noTasks": "Ülesandeid pole veel. Alustamiseks lisa oma esimene ülesanne.",
+      "noTasks": "Ülesandeid veel pole. Alustamiseks lisa oma esimene ülesanne.",
       "category": "Kategooria",
       "taskTitle": "Ülesande pealkiri",
       "time": "Aeg",
-      "deleteConfirm": "Kustuta see ülesanne?",
+      "deleteConfirm": "Kustutada see ülesanne?",
       "noMoreSuggestions": "Rohkem soovitusi pole saadaval.",
-      "copyFromTo": "Kopeeri ülesanded päevast {{day}}:",
+      "copyFromTo": "Kopeeri ülesanded päevast {{day}} järgmistesse:",
       "copyCount": "{{taskCount}} ülesannet kopeeritakse {{dayCount}} päevale",
       "days": {
         "mon": "E",
@@ -113,8 +113,8 @@
       "taskPhoto": "Ülesande foto (valikuline)",
       "uploadPhoto": "Laadi foto üles",
       "removePhoto": "Eemalda foto",
-      "medicationItems": "Ravimid selles grupis",
-      "medicationItemsHint": "Grupeeri kuni 3 ravimit, mida võetakse samal ajal",
+      "medicationItems": "Ravimid selles rühmas",
+      "medicationItemsHint": "Rühmitage kuni 3 ravimit, mida võetakse samal ajal",
       "addMedication": "Lisa ravim",
       "medName": "Ravimi nimi",
       "medNamePlaceholder": "nt. Donepezil",
@@ -123,177 +123,177 @@
       "medPhotoLabel": "Foto",
       "medItemLabel": "Ravim {{number}}",
       "removeMedication": "Eemalda",
-      "maxMedications": "Maksimaalselt 3 ravimit grupi kohta",
-      "uploadingPhoto": "Üleslaadimine...",
+      "maxMedications": "Maksimaalselt 3 ravimit rühma kohta",
+      "uploadingPhoto": "Laadin üles...",
       "evidenceBased": "Tõenduspõhine"
     },
     "location": {
       "title": "Asukoht ja ohutus",
       "currentLocation": "Praegune asukoht",
-      "safeZones": "Turvatsoonid",
-      "addSafeZone": "Lisa turvatsoon",
-      "editSafeZone": "Muuda turvatsooni",
+      "safeZones": "Turvalised tsoonid",
+      "addSafeZone": "Lisa turvaline tsoon",
+      "editSafeZone": "Muuda turvalist tsooni",
       "alerts": "Hoiatuste seaded",
-      "leaveZoneAlert": "Teavita, kui {{name}} lahkub turvatsoonist",
+      "leaveZoneAlert": "Teavita, kui {{name}} lahkub turvalisest tsoonist",
       "inactivityAlert": "Teavita, kui pole liikumist",
-      "nightAlert": "Teavita, kui on väljas pärast",
+      "nightAlert": "Teavita, kui väljas pärast",
       "takeMeHomeAlert": "Teavita, kui {{name}} puudutab 'Vii mind koju'",
       "locationHistory": "Asukoha ajalugu",
       "takeMeHomeTapped": "{{name}} puudutas 'Vii mind koju'",
       "hours": "tundi",
       "zoneName": "Tsooni nimi",
       "zoneRadius": "Raadius (meetrites)",
-      "unknownLocation": "Tundmatu asukoht",
+      "unknownLocation": "Teadmata asukoht",
       "completeOnboarding": "Palun lõpeta esmalt sisseelamine.",
-      "unacknowledgedAlerts": "{{count}} Kinnitamata hoiatus",
-      "unacknowledgedAlertsPlural": "{{count}} Kinnitamata hoiatust",
+      "unacknowledgedAlerts": "{{count}} kinnitamata hoiatus",
+      "unacknowledgedAlertsPlural": "{{count}} kinnitamata hoiatust",
       "acknowledge": "Kinnita",
-      "patientLocation": "{{name}}'i asukoht",
+      "patientLocation": "{{name}} asukoht",
       "updated": "Uuendatud: {{time}}",
-      "noLocationData": "Asukoha andmeid pole veel",
+      "noLocationData": "Asukohaandmeid veel pole",
       "live": "Reaalajas",
       "add": "+ Lisa",
-      "noSafeZonesYet": "Turvatsoone pole veel konfigureeritud.\nLisa tsoonid, et saada hoiatusi, kui {{name}} lahkub.",
+      "noSafeZonesYet": "Turvalisi tsoone pole veel seadistatud.\nLisa tsoone, et saada teavitusi, kui {{name}} lahkub.",
       "radiusMeters": "{{radius}}m raadius",
-      "recentAlerts24h": "Hiljutised hoiatused (24h)",
+      "recentAlerts24h": "Viimased hoiatused (24h)",
       "noRecentAlerts": "Viimase 24 tunni jooksul pole hoiatusi. Kõik on hästi!",
-      "deleteSafeZone": "Kustuta turvatsoon",
-      "deleteSafeZoneConfirm": "Oled sa kindel, et soovid kustutada \"{{name}}\"?",
-      "failedToSaveSafeZone": "Turvatsooni salvestamine ebaõnnestus",
-      "failedToDeleteSafeZone": "Turvatsooni kustutamine ebaõnnestus",
+      "deleteSafeZone": "Kustuta turvaline tsoon",
+      "deleteSafeZoneConfirm": "Oled kindel, et soovid kustutada \"{{name}}\"?",
+      "failedToSaveSafeZone": "Turvalise tsooni salvestamine ebaõnnestus",
+      "failedToDeleteSafeZone": "Turvalise tsooni kustutamine ebaõnnestus",
       "fillAllFields": "Palun täitke kõik väljad",
       "name": "Nimi",
-      "nameExample": "nt Kodu, arsti kabinet",
+      "nameExample": "nt Kodu, Arstikabinet",
       "latitude": "Laiuskraad",
       "longitude": "Pikkuskraad",
-      "radiusHint": "Soovituslik: 100–500 meetrit tüüpiliste asukohtade jaoks",
+      "radiusHint": "Soovitatav: 100-500 meetrit tavaliste asukohtade jaoks",
       "mapView": "Kaardivaade",
-      "mapRequiresBuild": "Kaardid nõuavad arendusversiooni.\nKasutage kaartide lubamiseks EAS Buildi.",
+      "mapRequiresBuild": "Kaardid vajavad arendusversiooni.\nKasutage EAS Buildi kaartide lubamiseks.",
       "home": "Kodu",
-      "patient": "Patsient",
+      "patient": "Hooldatav",
       "alertTypeLeftSafeZone": "Lahkus turvatsoonist",
-      "alertTypeInactive": "Passiivne",
+      "alertTypeInactive": "Mitteaktiivne",
       "alertTypeNightMovement": "Öine liikumine",
-      "alertTypeTakeMeHomeTapped": "Vajutati „Vii mind koju“",
+      "alertTypeTakeMeHomeTapped": "Koduviimise nuppu vajutatud",
       "alertTypeSosTriggered": "SOS käivitati",
       "invalidLatitude": "Palun sisestage kehtiv laiuskraad (-90 kuni 90)",
       "invalidLongitude": "Palun sisestage kehtiv pikkuskraad (-180 kuni 180)",
       "invalidRadius": "Palun sisestage positiivne raadiuse väärtus"
     },
     "coach": {
-      "title": "OurTurn AI hooldusnõustaja",
+      "title": "AI hooldusjuhendaja",
       "tabs": {
         "chat": "Vestlus",
-        "behaviours": "Käitumised",
+        "behaviours": "Käitumine",
         "resources": "Ressursid"
       },
       "resources": {
         "title": "Ressursid",
-        "subtitle": "Juhendid, artiklid ja kohalik tugi, mis aitavad teid hooldamisel",
+        "subtitle": "Juhendid, artiklid ja kohalik tugi, mis aitavad teid hooldusteekonnal",
         "linkLabel": "Ressursid ja juhendid"
       },
-      "intro": "Küsi minult {{name}} hooldamise kohta ükskõik mida. Ma tean tema rutiini, eelistusi ja üldiseid parimaid praktikaid.",
-      "placeholder": "Kirjuta oma küsimus...",
-      "disclaimer": "Olen siin, et sind toetada, mitte asendada meditsiinilist nõu. Terviseprobleemide korral konsulteeri alati oma arstiga.",
-      "disclaimerShort": "Hooldusnõustaja pakub ainult üldist juhendamist. Meditsiinilise nõu saamiseks konsulteerige alati tervishoiutöötajatega.",
-      "suggestedTopics": "Soovitatud teemad",
+      "intro": "Küsi minult kõike {{name}} hooldamise kohta. Ma tean nende rutiini, eelistusi ja üldisi parimaid tavasid.",
+      "placeholder": "Sisesta oma küsimus...",
+      "disclaimer": "Olen siin, et teid toetada, mitte asendada meditsiinilist nõu. Terviseküsimuste korral konsulteerige alati oma arstiga.",
+      "disclaimerShort": "Hooldusjuhendaja pakub ainult üldist juhendamist. Meditsiinilise nõu saamiseks konsulteerige alati tervishoiutöötajatega.",
+      "suggestedTopics": "Soovitatavad teemad",
       "addToCarePlan": "Lisa hooldusplaani",
       "addToDoctorNotes": "Lisa arsti märkmetesse",
       "newConversation": "Uus vestlus",
       "newChat": "Uus vestlus",
-      "careCoach": "Hooldusnõustaja",
+      "careCoach": "Hooldusjuhendaja",
       "completeOnboarding": "Palun lõpetage esmalt sisseelamine.",
       "greeting": "Tere, {{name}}!",
-      "greetingIntro": "Olen siin, et aidata sul {{patientName}} eest hoolitseda. Küsi minult ükskõik mida igapäevase hoolduse, tegevuste või keeruliste olukordade lahendamise kohta.",
+      "greetingIntro": "Olen siin, et aidata teil {{patientName}} eest hoolitseda. Küsi minult kõike igapäevase hoolduse, tegevuste või keeruliste olukordade haldamise kohta.",
       "tryAsking": "Proovi küsida:",
       "askAbout": "Küsi {{name}} hooldamise kohta...",
       "send": "Saada",
       "signingIn": "Sisselogimine",
-      "taskAddedSuccess": "Ülesanne lisati hooldusplaani!",
+      "taskAddedSuccess": "Ülesanne lisatud hooldusplaani!",
       "taskAddedError": "Ülesande lisamine ebaõnnestus. Palun proovige uuesti.",
-      "noteAddedSuccess": "Märkus salvestati arsti visiidi jaoks!",
+      "noteAddedSuccess": "Märkus salvestatud arstivisiidi jaoks!",
       "noteAddedError": "Märkme salvestamine ebaõnnestus. Palun proovige uuesti.",
       "addToCarePlanButton": "Lisa hooldusplaani",
-      "saveForDoctorVisit": "Salvesta arsti visiidi jaoks",
-      "success": "Edu",
+      "saveForDoctorVisit": "Salvesta arstivisiidi jaoks",
+      "success": "Edukas",
       "suggestions": {
-        "sundowning": "Kuidas ma peaksin päikeseloojangusündroomi käsitlema?",
-        "rainyDays": "Millised tegevused sobivad vihmastel päevadel?",
-        "siblings": "Aidake mul rääkida oma õdede-vendadega hoolduse jagamisest",
-        "refusesFood": "{{name}} keeldub söömast. Palun aidake.",
-        "repetitive": "Kuidas ma peaksin korduvaid küsimusi käsitlema?"
+        "sundowning": "Kuidas toime tulla õhtuse segadusega?",
+        "rainyDays": "Millised tegevused sobivad vihmaseks päevaks?",
+        "siblings": "Aita mul rääkida oma õdede-vendadega hoolduse jagamisest",
+        "refusesFood": "{{name}} keeldub söömast. Abi.",
+        "repetitive": "Kuidas toime tulla korduvate küsimustega?"
       },
       "hub": {
-        "backToHub": "Tagasi nõustaja juurde",
+        "backToHub": "Tagasi juhendaja juurde",
         "insight": {
           "title": "Sulle",
-          "discuss": "Aruta",
-          "fallback": "Isikupärastatud ülevaate saamiseks kontrollige {{name}} päeva"
+          "discuss": "Arutle",
+          "fallback": "Vaadake {{name}} päeva, et saada isikupärastatud teadmisi"
         },
         "rightNow": {
-          "title": "Kohe praegu",
-          "subtitle": "Abi kohapeal",
+          "title": "Praegu",
+          "subtitle": "Kiire abi",
           "refusing_food": "Keeldub söömast",
           "refusing_medication": "Ei võta ravimeid",
-          "agitated": "Ärev",
+          "agitated": "Ärevil",
           "not_recognizing": "Ei tunne mind ära",
-          "repetitive_questions": "Jälle sama küsimus",
-          "sundowning": "Päikeseloojangusündroom",
+          "repetitive_questions": "Sama küsimus uuesti",
+          "sundowning": "Õhtune segadus",
           "wants_to_leave": "Tahab lahkuda",
-          "caregiver_overwhelmed": "Ma kaotan kannatuse"
+          "caregiver_overwhelmed": "Ma kaotan kannatust"
         },
         "planPrepare": {
-          "title": "Plaani ja valmistu",
-          "subtitle": "Juhitud tööprotsessid",
-          "plan_tomorrow": "Plaani homne päev",
-          "plan_tomorrow_desc": "Koostage koos suurepärane päev",
-          "doctor_visit": "Valmistu arsti visiidiks",
-          "doctor_visit_desc": "Koosta struktureeritud kokkuvõte",
+          "title": "Plaani ja valmista ette",
+          "subtitle": "Juhendatud töövoogud",
+          "plan_tomorrow": "Plaani homset",
+          "plan_tomorrow_desc": "Looge koos suurepärane päev",
+          "doctor_visit": "Valmistu arstivisiidiks",
+          "doctor_visit_desc": "Loo struktureeritud kokkuvõte",
           "review_week": "Vaata see nädal üle",
           "review_week_desc": "Mis läks hästi, mis vajab tähelepanu",
           "adjust_plan": "Kohanda hooldusplaani",
-          "adjust_plan_desc": "Optimeeri selle põhjal, mis töötab"
+          "adjust_plan_desc": "Optimeeri vastavalt sellele, mis toimib"
         },
         "learn": {
           "title": "Õpi",
-          "subtitle": "Teemajuhised {{name}} jaoks",
+          "subtitle": "Teemajuhendid {{name}} jaoks",
           "daily_routines": "Igapäevased rutiinid",
-          "communication": "Suhtlus",
-          "behaviors": "Käitumised",
+          "communication": "Suhtlemine",
+          "behaviors": "Käitumine",
           "activities": "Tegevused",
           "nutrition": "Toitumine",
           "safety": "Ohutus",
           "sleep": "Uni ja öö"
         },
         "askAnything": {
-          "title": "Küsi ükskõik mida",
-          "placeholder": "Mis sind {{name}} hooldamise juures muret teeb?"
+          "title": "Küsi kõike",
+          "placeholder": "Mis on teie mõtetes {{name}} hooldamise kohta?"
         }
       }
     },
     "family": {
-      "title": "{{patientName}} hooldustiim",
+      "title": "{{patientName}} hooldusmeeskond",
       "inviteMember": "Kutsu pereliige",
       "primaryCaregiver": "Peamine hooldaja",
       "familyMember": "Pereliige",
       "careCode": "Hoolduskood",
-      "careCodeHelp": "Patsiendirakenduse sidumiseks jaga seda koodi",
+      "careCodeHelp": "Jagage seda koodi, et siduda hooldatava rakendus",
       "regenerateCode": "Genereeri kood uuesti",
-      "regenerateWarning": "See katkestab kõik seotud patsiendiseadmed. Nad vajavad uut koodi.",
+      "regenerateWarning": "See ühendab lahti kõik seotud hooldatava seadmed. Nad vajavad uut koodi.",
       "journal": "Hoolduspäevik",
-      "addNote": "Lisa märge",
+      "addNote": "Lisa märkus",
       "observation": "Vaatlus",
-      "note": "Märge",
-      "milestone": "Tähis",
+      "note": "Märkus",
+      "milestone": "Märkimisväärne sündmus",
       "inviteEmail": "E-posti aadress",
       "inviteName": "Nimi",
       "inviteRelationship": "Suhe",
-      "familyCircle": "Perekond",
+      "familyCircle": "Perekonnaring",
       "back": "Tagasi",
       "family": "Perekond",
       "careJournal": "Hoolduspäevik",
       "inviteFamilyMembers": "Kutsu pereliikmeid",
-      "shareCareCodeDesc": "Jaga oma hoolduskoodi, et teised pereliikmed saaksid liituda.",
+      "shareCareCodeDesc": "Jagage oma hoolduskoodi, et teised pereliikmed saaksid liituda.",
       "showCareCode": "Näita hoolduskoodi",
       "copy": "Kopeeri",
       "share": "Jaga",
@@ -302,31 +302,31 @@
       "familyMembers": "Pereliikmed ({{count}})",
       "you": "Sina",
       "primary": "Peamine",
-      "entryPlaceholder": "Lisa märge, vaatlus või tähis...",
+      "entryPlaceholder": "Lisa märkus, vaatlus või märkimisväärne sündmus...",
       "posting": "Postitamine...",
       "post": "Postita",
-      "noJournalEntries": "Päevikus pole veel ühtegi sissekannet.",
+      "noJournalEntries": "Päevikukirjeid veel pole.",
       "startDocumenting": "Alusta oma hooldusteekonna dokumenteerimist!",
       "yesterday": "Eile",
-      "failedToAddEntry": "Kirje lisamine ebaõnnestus. Palun proovige uuesti.",
-      "shareCareCodeMessage": "Liitu minu OurTurni hooldusringiga! Kasuta seda hoolduskoodi: {{code}}",
+      "failedToAddEntry": "Sissekande lisamine ebaõnnestus. Palun proovi uuesti.",
+      "shareCareCodeMessage": "Liitu minu OurTurn hooldusringiga! Kasuta seda hoolduskoodi: {{code}}",
       "deleteConfirmTitle": "Kustuta päevikukanne",
-      "deleteConfirmMessage": "Kas olete kindel, et soovite selle päevikukande kustutada? Seda ei saa tagasi võtta.",
+      "deleteConfirmMessage": "Kas oled kindel, et soovid selle päevikukande kustutada? Seda tegevust ei saa tagasi võtta.",
       "edited": "(muudetud)",
       "crisis": "Kriis",
       "canEditPlan": "Saab plaani muuta",
-      "receivesAlerts": "Saab teavitusi",
-      "caregiverLimitReached": "Olete jõudnud pereliikmete tasuta taseme piirini. Rohkemate lisamiseks uuendage."
+      "receivesAlerts": "Saab teateid",
+      "caregiverLimitReached": "Oled jõudnud tasuta paketi pereliikmete piirini. Uuenda paketti, et lisada rohkem."
     },
     "toolkit": {
       "pageTitle": "Hooldaja tööriistakomplekt",
-      "pageSubtitle": "Praktilised tööriistad ja tugi teie heaoluks",
-      "introMessage": "Tere, {{name}}! See on teie ruum kiireks leevenduseks, toeks ja enesehoolduseks.",
+      "pageSubtitle": "Praktilised tööriistad ja tugi sinu heaolu jaoks",
+      "introMessage": "Tere, {{name}}! See on sinu koht kiireks leevenduseks, toetuseks ja enesehooldusks.",
       "checkin": {
-        "title": "Kuidas sa end täna tunned?",
+        "title": "Kuidas sul täna läheb?",
         "energy": "Energia",
-        "energyLow": "Kurnatud",
-        "energyHigh": "Energiast pakatav",
+        "energyLow": "Väsinud",
+        "energyHigh": "Energiline",
         "stress": "Stress",
         "stressLow": "Rahulik",
         "stressHigh": "Ülekoormatud",
@@ -340,216 +340,216 @@
         "duration": "{{min}} min",
         "startExercise": "Alusta",
         "stepOf": "Samm {{current}} / {{total}}",
-        "complete": "Hästi tehtud! Harjutus on lõpetatud.",
+        "complete": "Tubli! Harjutus on lõpetatud.",
         "close": "Sulge",
         "pause": "Paus",
         "resume": "Jätka",
         "exercises": {
           "box-breathing": {
-            "name": "Kast Hingamine",
-            "step0": "Võtke mugav asend ja sulgege silmad",
-            "step1": "Hinga aeglaselt läbi nina sisse",
-            "step2": "Hoidke õrnalt hinge kinni",
-            "step3": "Hinga aeglaselt läbi suu välja",
-            "step4": "Hoidke enne järgmist hingetõmmet",
-            "step5": "Hinga aeglaselt läbi nina sisse",
-            "step6": "Hoidke õrnalt hinge kinni",
-            "step7": "Hinga aeglaselt läbi suu välja",
-            "step8": "Hoidke enne järgmist hingetõmmet",
-            "step9": "Hinga aeglaselt läbi nina sisse",
-            "step10": "Hoidke õrnalt hinge kinni",
-            "step11": "Hinga aeglaselt läbi suu välja",
-            "step12": "Hoidke enne järgmist hingetõmmet",
-            "step13": "Hinga aeglaselt läbi nina sisse",
-            "step14": "Hoidke õrnalt hinge kinni",
-            "step15": "Hinga aeglaselt läbi suu välja",
-            "step16": "Hoidke enne järgmist hingetõmmet",
-            "step17": "Hinga aeglaselt läbi nina sisse",
-            "step18": "Hoidke õrnalt hinge kinni",
-            "step19": "Hinga aeglaselt läbi suu välja",
-            "step20": "Hoidke enne järgmist hingetõmmet",
-            "step21": "Hinga aeglaselt läbi nina sisse",
-            "step22": "Hoidke õrnalt hinge kinni",
-            "step23": "Hinga aeglaselt läbi suu välja",
-            "step24": "Hästi tehtud. Võtke hetk, et märgata, kuidas te end tunnete."
+            "name": "Kastihingamine",
+            "step0": "Leia mugav asend ja sulge silmad",
+            "step1": "Hinga aeglaselt sisse läbi nina",
+            "step2": "Hoia hinge kinni õrnalt",
+            "step3": "Hinga aeglaselt välja läbi suu",
+            "step4": "Hoia enne järgmist hingetõmmet",
+            "step5": "Hinga aeglaselt sisse läbi nina",
+            "step6": "Hoia hinge kinni õrnalt",
+            "step7": "Hinga aeglaselt välja läbi suu",
+            "step8": "Hoia enne järgmist hingetõmmet",
+            "step9": "Hinga aeglaselt sisse läbi nina",
+            "step10": "Hoia hinge kinni õrnalt",
+            "step11": "Hinga aeglaselt välja läbi suu",
+            "step12": "Hoia enne järgmist hingetõmmet",
+            "step13": "Hinga aeglaselt sisse läbi nina",
+            "step14": "Hoia hinge kinni õrnalt",
+            "step15": "Hinga aeglaselt välja läbi suu",
+            "step16": "Hoia enne järgmist hingetõmmet",
+            "step17": "Hinga aeglaselt sisse läbi nina",
+            "step18": "Hoia hinge kinni õrnalt",
+            "step19": "Hinga aeglaselt välja läbi suu",
+            "step20": "Hoia enne järgmist hingetõmmet",
+            "step21": "Hinga aeglaselt sisse läbi nina",
+            "step22": "Hoia hinge kinni õrnalt",
+            "step23": "Hinga aeglaselt välja läbi suu",
+            "step24": "Tubli. Võta hetk, et märgata, kuidas sa end tunned."
           },
           "54321-grounding": {
-            "name": "5-4-3-2-1 maandamine",
+            "name": "5-4-3-2-1 Maandamine",
             "step0": "Hinga aeglaselt ja sügavalt sisse ning vaata ringi",
-            "step1": "Nimetage 5 asja, mida te praegu NÄETE",
-            "step2": "Nimetage 4 asja, mida te praegu KATSUTE",
-            "step3": "Nimetage 3 asja, mida te praegu KUULETE",
-            "step4": "Nimetage 2 asja, mida te praegu HAISTATE",
-            "step5": "Nimetage 1 asi, mida te praegu MAITSETE",
-            "step6": "Hinga veel kord sügavalt sisse. Sa oled siin ja sa oled turvaline."
+            "step1": "Nimeta 5 asja, mida sa praegu NÄED",
+            "step2": "Nimeta 4 asja, mida sa praegu KATSUD",
+            "step3": "Nimeta 3 asja, mida sa praegu KUULED",
+            "step4": "Nimeta 2 asja, mida sa praegu NUUSUTAD",
+            "step5": "Nimeta 1 asi, mida sa praegu MAITSED",
+            "step6": "Hinga veel kord sügavalt sisse. Sa oled siin ja sa oled turvaliselt."
           },
           "gratitude-moment": {
             "name": "Tänulikkuse hetk",
-            "step0": "Sulgege silmad ja hingake rahustavalt",
-            "step1": "Mõelge ühele inimesele, kelle eest olete tänulik ja miks",
-            "step2": "Mõelge ühele asjale, mis täna juhtus ja mis oli hea, isegi kui see oli väike",
-            "step3": "Mõelge ühele asjale enda juures, mida te hindate",
-            "step4": "Hoidke neid kolme asja oma meeles ja hingake sügavalt",
-            "step5": "Kandke seda tänulikkuse tunnet endaga kaasas."
+            "step0": "Sulge silmad ja hinga rahulikult sisse",
+            "step1": "Mõtle ühele inimesele, kelle eest oled tänulik, ja miks",
+            "step2": "Mõtle ühele heale asjale, mis täna juhtus, isegi kui see oli väike",
+            "step3": "Mõtle ühele asjale enda juures, mida sa hindad",
+            "step4": "Hoia neid kolme asja oma meeles ja hinga sügavalt",
+            "step5": "Kanna seda tänutunnet endaga kaasas."
           },
           "progressive-muscle-relaxation": {
-            "name": "Progressiivne lihaste lõdvestamine",
-            "step0": "Istuge või heitke mugavalt pikali. Sulgege silmad.",
-            "step1": "Pigistage mõlemad rusikad 5 sekundit tugevalt...",
-            "step2": "Vabastage ja tundke, kuidas pinge kaob",
-            "step3": "Pingutage õlgu – tõstke neid kõrvade poole...",
-            "step4": "Vabastage ja laske õlgadel langeda",
-            "step5": "Krimpsutage oma nägu tugevalt – otsmik, silmad, lõug...",
-            "step6": "Vabastage ja laske oma näol täielikult lõõgastuda",
-            "step7": "Pingutage oma kõhulihaseid...",
-            "step8": "Vabastage ja hingake kõhtu",
-            "step9": "Pigistage oma jalgu ja jalgu tugevalt...",
-            "step10": "Vabastage ja tundke, kuidas soojus teie jalgadesse voolab",
-            "step11": "Hingake sügavalt. Kogu teie keha on lõdvestunud.",
-            "step12": "Avage õrnalt silmad, kui olete valmis."
+            "name": "Progressiivne lihasrelaksatsioon",
+            "step0": "Istu või heida mugavalt pikali. Sulge silmad.",
+            "step1": "Pigista mõlemat rusikat tugevalt 5 sekundit...",
+            "step2": "Lõdvesta ja tunne, kuidas pinge kaob",
+            "step3": "Pinguta oma õlgu — tõsta need kõrvade poole...",
+            "step4": "Lõdvesta ja lase õlgadel langeda",
+            "step5": "Kortsuta oma nägu tugevalt — laup, silmad, lõug...",
+            "step6": "Lõdvesta ja lase oma näol täielikult lõõgastuda",
+            "step7": "Pinguta oma kõhulihaseid...",
+            "step8": "Lõdvesta ja hinga kõhtu",
+            "step9": "Pigista oma jalgu ja jalalabasid tugevalt...",
+            "step10": "Lõdvesta ja tunne, kuidas soojus voolab läbi jalgade",
+            "step11": "Hinga sügavalt. Kogu su keha on lõdvestunud.",
+            "step12": "Ava silmad õrnalt, kui oled valmis."
           },
           "mindful-break": {
             "name": "Teadveloleku paus",
-            "step0": "Peata see, mida sa teed. See hetk on sinu.",
-            "step1": "Sulge silmad ja hinga 3 korda aeglaselt ja sügavalt sisse",
-            "step2": "Pane tähele, kuidas su keha praegu tunneb – pole vaja midagi muuta",
-            "step3": "Kuula helisid enda ümber, lähedalt ja kaugelt",
-            "step4": "Tunne pinda enda all ja õhku oma nahal",
-            "step5": "Ütle vaikselt: \"Ma annan endast parima ja see on piisav.\"",
-            "step6": "Hinga veel üks kord sügavalt sisse",
-            "step7": "Ava õrnalt silmad. Sa oled värske."
+            "step0": "Peatage kõik, mida teete. See hetk on teie oma.",
+            "step1": "Sulgege silmad ja tehke 3 aeglast, sügavat hingetõmmet.",
+            "step2": "Pange tähele, kuidas teie keha praegu tunneb – midagi pole vaja muuta.",
+            "step3": "Kuulake helisid enda ümber, lähedalt ja kaugelt.",
+            "step4": "Tundke pinda enda all ja õhku oma nahal.",
+            "step5": "Öelge vaikselt: \"Ma annan endast parima ja sellest piisab.\"",
+            "step6": "Tehke veel üks sügav hingetõmme.",
+            "step7": "Avage õrnalt silmad. Olete värskendatud."
           },
           "breathing-478": {
-            "name": "4-7-8 Hingamine",
-            "step0": "Istu mugavalt ja lõdvesta õlad",
-            "step1": "Hinga vaikselt nina kaudu sisse 4 loenduse jooksul",
-            "step2": "Hoia hinge kinni 7 loenduse jooksul",
-            "step3": "Hinga täielikult suu kaudu välja 8 loenduse jooksul",
-            "step4": "Hinga vaikselt nina kaudu sisse 4 loenduse jooksul",
-            "step5": "Hoia hinge kinni 7 loenduse jooksul",
-            "step6": "Hinga täielikult suu kaudu välja 8 loenduse jooksul",
-            "step7": "Hinga vaikselt nina kaudu sisse 4 loenduse jooksul",
-            "step8": "Hoia hinge kinni 7 loenduse jooksul",
-            "step9": "Hinga täielikult suu kaudu välja 8 loenduse jooksul",
-            "step10": "Hinga vaikselt nina kaudu sisse 4 loenduse jooksul",
-            "step11": "Hoia hinge kinni 7 loenduse jooksul",
-            "step12": "Hinga täielikult suu kaudu välja 8 loenduse jooksul",
-            "step13": "Hinga vaikselt nina kaudu sisse 4 loenduse jooksul",
-            "step14": "Hoia hinge kinni 7 loenduse jooksul",
-            "step15": "Hinga täielikult suu kaudu välja 8 loenduse jooksul",
-            "step16": "Pane tähele, kui palju rahulikum su keha nüüd tunneb."
+            "name": "4-7-8 hingamine",
+            "step0": "Istuge mugavalt ja lõdvestage õlad.",
+            "step1": "Hingake vaikselt nina kaudu sisse 4 loenduse jooksul.",
+            "step2": "Hoidke hinge kinni 7 loenduse jooksul.",
+            "step3": "Hingake täielikult suu kaudu välja 8 loenduse jooksul.",
+            "step4": "Hingake vaikselt nina kaudu sisse 4 loenduse jooksul.",
+            "step5": "Hoidke hinge kinni 7 loenduse jooksul.",
+            "step6": "Hingake täielikult suu kaudu välja 8 loenduse jooksul.",
+            "step7": "Hingake vaikselt nina kaudu sisse 4 loenduse jooksul.",
+            "step8": "Hoidke hinge kinni 7 loenduse jooksul.",
+            "step9": "Hingake täielikult suu kaudu välja 8 loenduse jooksul.",
+            "step10": "Hingake vaikselt nina kaudu sisse 4 loenduse jooksul.",
+            "step11": "Hoidke hinge kinni 7 loenduse jooksul.",
+            "step12": "Hingake täielikult suu kaudu välja 8 loenduse jooksul.",
+            "step13": "Hingake vaikselt nina kaudu sisse 4 loenduse jooksul.",
+            "step14": "Hoidke hinge kinni 7 loenduse jooksul.",
+            "step15": "Hingake täielikult suu kaudu välja 8 loenduse jooksul.",
+            "step16": "Pange tähele, kui palju rahulikum teie keha nüüd tunneb."
           },
           "permission-slip": {
-            "name": "Luba",
-            "step0": "Hinga sügavalt sisse ja võta endale hetk",
-            "step1": "Ütle endale: \"Ma luban endale, et ma ei pea täna täiuslik olema\"",
-            "step2": "Ütle: \"Ma luban endale abi küsida\"",
-            "step3": "Ütle: \"Ma luban endale tunda seda, mida ma tunnen, ilma süütundeta\"",
-            "step4": "Ütle: \"Ma luban endale pausi teha\"",
-            "step5": "Ütle: \"Ma annan endast parima ja see on piisav\"",
-            "step6": "Hinga sügavalt sisse ja hoia neid sõnu lähedal",
-            "step7": "Sa väärid ka kaastunnet. Kanna seda endaga kaasas."
+            "name": "Luba endale",
+            "step0": "Hingake sügavalt sisse ja andke endale hetk.",
+            "step1": "Öelge endale: \"Ma annan endale loa mitte olla täiuslik täna.\"",
+            "step2": "Öelge: \"Ma annan endale loa abi küsida.\"",
+            "step3": "Öelge: \"Ma annan endale loa tunda seda, mida tunnen, ilma süütundeta.\"",
+            "step4": "Öelge: \"Ma annan endale loa pausi teha.\"",
+            "step5": "Öelge: \"Ma annan endast parima ja sellest piisab.\"",
+            "step6": "Hingake sügavalt sisse ja hoidke neid sõnu endaga kaasas.",
+            "step7": "Te väärite samuti kaastunnet. Kandke seda endaga kaasas."
           },
           "quick-walk": {
-            "name": "Kiire jalutuskäigu viip",
-            "step0": "Tõuse püsti ja siruta käed üle pea",
-            "step1": "Kõnni lähima akna või ukseni ja vaata välja",
-            "step2": "Võta 5 aeglast sammu ja tunne, kuidas iga jalg puudutab maad",
-            "step3": "Vaata üles – pane tähele taevast, lage või midagi enda kohal",
-            "step4": "Võta veel 5 aeglast, tahtlikku sammu",
-            "step5": "Raputa käsi ja käsivarsi lõdvalt mõne sekundi jooksul",
-            "step6": "Pöörita õlgu 3 korda tagasi",
-            "step7": "Sa liigutasid oma keha. See loeb. Tubli."
+            "name": "Kiire jalutuskäik",
+            "step0": "Tõuske püsti ja sirutage käed pea kohale.",
+            "step1": "Kõndige lähima akna või ukseni ja vaadake välja.",
+            "step2": "Tehke 5 aeglast sammu ja tundke, kuidas iga jalg maad puudutab.",
+            "step3": "Vaadake üles – pange tähele taevast, lage või midagi enda kohal.",
+            "step4": "Tehke veel 5 aeglast, teadlikku sammu.",
+            "step5": "Raputage käsi ja käsivarsi lõdvalt mõne sekundi jooksul.",
+            "step6": "Rullige õlgu 3 korda tahapoole.",
+            "step7": "Te liigutasite oma keha. See loeb. Tubli!"
           }
         }
       },
       "help": {
-        "title": "Küsi abi",
+        "title": "Küsige abi",
         "sendRequest": "Saada",
-        "customPlaceholder": "Kirjuta oma sõnum...",
-        "recentRequests": "Hiljutised päringud",
+        "customPlaceholder": "Sisestage oma sõnum...",
+        "recentRequests": "Hiljutised abipalved",
         "statusPending": "Ootel",
-        "statusAccepted": "Nõustutud",
-        "statusCompleted": "Valmis",
+        "statusAccepted": "Vastu võetud",
+        "statusCompleted": "Tehtud",
         "statusExpired": "Aegunud",
         "sent": "Abipalve saadetud!",
         "limitReached": "Saate saata kuni 5 abipalvet päevas.",
         "noRequests": "Hiljutisi abipalveid pole.",
         "accept": "Ma saan aidata",
-        "complete": "Märgi valmis",
-        "template_need_break": "Vajan puhkust",
-        "template_handle_meds": "Ravimitega seotud abi",
+        "complete": "Märgi tehtuks",
+        "template_need_break": "Vajan pausi",
+        "template_handle_meds": "Abi ravimitega",
         "template_need_visit": "Vajan külastust",
         "template_groceries": "Toidukaubad",
         "template_custom": "Kohandatud sõnum",
-        "message_need_break": "Mul oleks väga puhkust vaja. Kas keegi saaks natukeseks üle võtta?",
+        "message_need_break": "Ma tõesti vajaksin pausi. Kas keegi saaks korraks üle võtta?",
         "message_handle_meds": "Kas keegi saaks täna ravimitega aidata?",
-        "message_need_visit": "Oleks väga tore, kui keegi saaks täna külla tulla.",
-        "message_groceries": "Kas keegi saaks aidata toidukaupade ostmisel?"
+        "message_need_visit": "See tähendaks palju, kui keegi saaks täna külastada.",
+        "message_groceries": "Kas keegi saaks aidata toidukaupu tuua?"
       },
       "agent": {
-        "title": "Heaolukaaslane",
-        "disclaimer": "Ainult emotsionaalseks toeks. Mitte meditsiiniline nõuanne.",
-        "placeholder": "Kuidas sa end tunned?",
-        "greeting": "Mõtlen sinu peale...",
-        "rateLimited": "Hinga sügavalt – saad varsti uuesti vestelda.",
-        "errorMessage": "Ühendamine ei õnnestunud. Palun proovi uuesti.",
+        "title": "Heaolu kaaslane",
+        "disclaimer": "Ainult emotsionaalseks toeks. Ei ole meditsiiniline nõuanne.",
+        "placeholder": "Kuidas te end tunnete?",
+        "greeting": "Mõtlen teile...",
+        "rateLimited": "Hingake sügavalt sisse – saate varsti uuesti vestelda.",
+        "errorMessage": "Ühendust ei õnnestunud luua. Palun proovige uuesti.",
         "expand": "Laienda",
         "collapse": "Ahenda",
         "prompts": {
-          "overwhelmed": "Ma tunnen end praegu ülekoormatuna",
-          "calmDown": "Aita mul 2 minutiga rahuneda",
-          "needEnergy": "Ma vajan energiat, aga ei saa pausi teha",
-          "poorSleep": "Ma ei saanud eile öösel hästi magada",
-          "needMoment": "Ma vajan hetke ainult endale",
-          "uplifting": "Räägi mulle midagi ülendavat"
+          "overwhelmed": "Tunnen end praegu ülekoormatuna.",
+          "calmDown": "Aidake mul 2 minutiga rahuneda.",
+          "needEnergy": "Vajan energiat, kuid ei saa pausi teha.",
+          "poorSleep": "Ma ei saanud eile öösel hästi magada.",
+          "needMoment": "Vajan hetke ainult endale.",
+          "uplifting": "Öelge mulle midagi meeliülendavat."
         }
       },
       "goal": {
         "title": "Tänane eesmärk",
-        "placeholder": "Sea endale tänaseks eesmärk...",
-        "done": "Valmis!",
+        "placeholder": "Seadke tänane eesmärk...",
+        "done": "Tehtud!",
         "weekLabel": "See nädal",
         "suggest": "Soovita"
       },
       "burnout": {
-        "title": "Märkame, et sa võid vajada lisatuge",
-        "message": "Sinu hiljutised sissekananded näitavad kõrgemat stressitaset või madalat energiataset. See on täiesti arusaadav – hooldamine on raske."
+        "title": "Märkame, et võite vajada lisatuge.",
+        "message": "Teie hiljutised sisseregistreerimised näitavad suurenenud stressi või madalat energiataset. See on täiesti arusaadav – hooldamine on raske."
       },
       "support": {
-        "title": "Vajad tuge?",
-        "description": "Hooldamine on väljakutseid esitav. Abi küsimine on okei."
+        "title": "Vajate tuge?",
+        "description": "Hooldamine on väljakutse. Abi küsimine on täiesti normaalne."
       },
-      "footer": "Pea meeles: Sa ei saa valada tühjast tassitäiest. Sinu heaolu on ka oluline.",
+      "footer": "Pidage meeles: tühjast tassist ei saa valada. Teie heaolu on samuti oluline.",
       "weeklyStats": {
-        "title": "Nädala ülevaade",
-        "subtitle": "Sinu 7 päeva heaolu kokkuvõte",
+        "title": "Iganädalased ülevaated",
+        "subtitle": "Teie 7-päevane heaolu kokkuvõte",
         "avgEnergy": "Keskmine energia",
         "avgStress": "Keskmine stress",
         "avgSleep": "Keskmine uni",
-        "noData": "Igapäevaste ülevaadete täitmiseks vaata oma iganädalasi suundumusi.",
-        "generateDigest": "Genereeri AI kokkuvõte",
-        "generating": "Genereerimine...",
-        "behaviourSummary": "{{count}} käitumisjuhtumit on sel nädalal logitud"
+        "noData": "Iganädalaste trendide nägemiseks täitke igapäevased sisseregistreerimised.",
+        "generateDigest": "Loo tehisintellekti kokkuvõte",
+        "generating": "Loomisel...",
+        "behaviourSummary": "Sel nädalal logitud {{count}} käitumisjuhtumit"
       },
       "sos": {
         "title": "Mis praegu toimub?",
-        "subtitle": "Vali, millega vajad abi – me juhendame sind.",
+        "subtitle": "Valige, millega vajate abi – me juhendame teid.",
         "calmDown": "Mul on vaja rahuneda",
         "calmDownDesc": "Kiired hingamis- ja leevendusharjutused",
-        "behaviourNow": "Käitumine toimub praegu",
-        "behaviourNowDesc": "Logi juhtum ja saa juhiseid",
-        "callHelp": "Ma vajan hädaabi",
-        "callHelpDesc": "Võta ühendust hädaabiteenistuste või perega",
-        "needBreak": "Ma vajan kedagi, kes üle võtaks",
+        "behaviourNow": "Käitumine praegu",
+        "behaviourNowDesc": "Logige juhtum ja saate juhiseid",
+        "callHelp": "Vajan hädaabi",
+        "callHelpDesc": "Võtke ühendust hädaabiteenistuste või perega",
+        "needBreak": "Vajan kedagi, kes üle võtaks",
         "needBreakDesc": "Saada abipalve perele"
       },
       "behaviours": {
         "playbooks": {
           "title": "Käitumise käsiraamatud",
-          "subtitle": "Puuduta käitumist, et saada samm-sammult juhiseid",
-          "rightNow": "Kohe praegu",
-          "understandWhy": "Mõista, miks",
+          "subtitle": "Puudutage käitumist samm-sammult juhiste saamiseks",
+          "rightNow": "Praegu",
+          "understandWhy": "Mõista miks",
           "prevent": "Ennetamine",
           "whenToCallDoctor": "Millal arstile helistada"
         },
@@ -581,59 +581,59 @@
           "trigger_noise": "Müra",
           "trigger_loneliness": "Üksindus",
           "trigger_boredom": "Igavus",
-          "trigger_bathroom_need": "Vajadus tualeti järele",
+          "trigger_bathroom_need": "Vajadus tualetti minna",
           "trigger_frustration": "Frustratsioon",
           "trigger_fear": "Hirm",
-          "trigger_unknown": "Tundmatu",
+          "trigger_unknown": "Teadmata",
           "whatHappened": "Mis juhtus?",
-          "whatHappenedPlaceholder": "Kirjelda juhtumit...",
+          "whatHappenedPlaceholder": "Kirjeldage juhtumit...",
           "whatHelped": "Mis aitas? (valikuline)",
-          "whatHelpedPlaceholder": "Kirjelda, mis aitas olukorda rahustada...",
+          "whatHelpedPlaceholder": "Kirjeldage, mis aitas olukorda rahustada...",
           "save": "Salvesta juhtum",
-          "saved": "Juhtum on logitud"
+          "saved": "Juhtum logitud"
         },
         "timeline": {
           "title": "Juhtumite ajajoon",
           "all": "Kõik",
-          "noIncidents": "Ükski juhtum ei vasta praegusele filtrile."
+          "noIncidents": "Praegusele filtrile vastavaid juhtumeid ei leitud."
         }
       }
     },
     "reports": {
-      "title": "Arsti külastuse aruanne",
+      "title": "Arstivisiidi aruanne",
       "period": "Aruande periood",
       "lastDays": "Viimased {{days}} päeva",
-      "generate": "Genereeri aruanne",
+      "generate": "Loo aruanne",
       "include": "Kaasa aruandesse",
-      "moodTrends": "Meeolu suundumused ja ülevaate kokkuvõte",
-      "sleepPatterns": "Unemustrid",
-      "activityCompletion": "Tegevuste lõpetamise määrad",
+      "moodTrends": "Meeleolu trendid ja sisseregistreerimise kokkuvõte",
+      "sleepPatterns": "Uneharjumused",
+      "activityCompletion": "Tegevuste täitmise määrad",
       "medicationAdherence": "Ravimite võtmise järgimine",
       "journalNotes": "Märkimisväärsed hoolduspäeviku tähelepanekud",
       "locationPatterns": "Asukoha mustrid",
       "caregiverConcerns": "Hooldaja mured",
-      "customNotes": "Täiendavad märkmed arstile",
+      "customNotes": "Lisamärkused arstile",
       "print": "Prindi",
       "downloadPdf": "Laadi alla PDF",
       "emailDoctor": "Saada arstile e-kiri",
-      "disclaimer": "See kokkuvõte põhineb isehinnangulistel heaoluandmetel ja perekonna tähelepanekutel. See ei ole kliiniline hinnang.",
-      "webNote": "Täieliku aruandegeneraatori jaoks koos printimise ja PDF-i ekspordiga külasta OurTurn veebirakendust.",
+      "disclaimer": "See kokkuvõte põhineb ise teatatud heaoluandmetel ja pere tähelepanekutel. See ei ole kliiniline hinnang.",
+      "webNote": "Täieliku aruandegeneraatori, printimise ja PDF-eksportimise jaoks külastage OurTurni veebirakendust.",
       "openInWebApp": "Ava veebirakenduses",
       "previousReports": "Eelmised aruanded",
-      "generated": "Genereeritud {{date}}",
+      "generated": "Loodud {{date}}",
       "avgQuality": "keskmine kvaliteet",
-      "moodStruggling": "Võitleb",
+      "moodStruggling": "Raskustes",
       "moodLow": "Madal",
-      "moodOkay": "Okei",
+      "moodOkay": "Korras",
       "moodGood": "Hea",
       "moodGreat": "Suurepärane",
-      "careSummary": "OurTurn Hoolduse kokkuvõte",
+      "careSummary": "OurTurni hoolduskokkuvõte",
       "patient": "Patsient",
       "periodLabel": "Periood",
-      "checkinsRecorded": "Registreeritud ülevaateid",
+      "checkinsRecorded": "Sisseregistreerimised salvestatud",
       "averageMood": "Keskmine meeleolu",
       "averageSleepQuality": "Keskmine une kvaliteet",
-      "activityCompletionRate": "Tegevuste lõpetamine",
+      "activityCompletionRate": "Tegevuste täitmine",
       "medicationAdherenceRate": "Ravimite võtmise järgimine",
       "observations": "Tähelepanekud",
       "categoryMedication": "Ravimid",
@@ -644,68 +644,68 @@
       "categoryHealth": "Tervis"
     },
     "onboarding": {
-      "step1Title": "Sinust",
-      "step2Title": "Sinu lähedasest",
+      "step1Title": "Teist",
+      "step2Title": "Teie lähedasest",
       "step3Title": "Nende elulugu",
       "step4Title": "Igapäevane rutiin",
-      "step5Title": "Turvaseadistus",
-      "step6Title": "Sinu hoolduskood",
-      "next": "Järgmine",
+      "step5Title": "Ohutuse seadistamine",
+      "step6Title": "Teie hoolduskood",
+      "next": "Edasi",
       "back": "Tagasi",
       "finish": "Alusta",
-      "careCodeInstructions": "Installi OurTurn oma lähedase telefoni ja sisesta ühenduse loomiseks see kood.",
-      "quickSetup": "Kiirseadistus",
-      "yourName": "Sinu nimi",
-      "yourNameRequired": "Sinu nimi *",
-      "lovedOneNameRequired": "Sinu lähedase nimi *",
-      "relationship": "Teie suhe temaga",
+      "careCodeInstructions": "Installige OurTurn oma lähedase telefoni ja sisestage see kood ühenduse loomiseks.",
+      "quickSetup": "Kiire seadistamine",
+      "yourName": "Teie nimi",
+      "yourNameRequired": "Teie nimi *",
+      "lovedOneNameRequired": "Teie lähedase nimi *",
+      "relationship": "Sinu suhe temaga",
       "relationshipPlaceholder": "nt tütar, poeg, abikaasa",
-      "settingsHint": "Saate lisada rohkem üksikasju hiljem seadetes",
-      "fillRequired": "Palun täitke kõik kohustuslikud väljad",
+      "settingsHint": "Lisateavet saad hiljem seadetes lisada",
+      "fillRequired": "Palun täida kõik nõutud väljad",
       "setupFailed": "Seadistamine ebaõnnestus",
       "country": "Riik",
-      "theirName": "Tema eesnimi",
-      "dateOfBirth": "Sünnikuupäev",
+      "theirName": "Nende eesnimi",
+      "dateOfBirth": "Sünniaeg",
       "dementiaType": "Dementsuse tüüp (valikuline)",
-      "homeAddress": "Kodu aadress",
+      "homeAddress": "Koduadress",
       "medications": "Ravimid",
       "addMedication": "Lisa ravim",
-      "childhoodLocation": "Koht, kus ta üles kasvas",
+      "childhoodLocation": "Kus nad üles kasvasid",
       "career": "Karjäär / amet",
       "hobbies": "Hobid ja huvid",
       "favoriteMusic": "Lemmikmuusika / artistid",
       "favoriteFoods": "Lemmiktoidud",
       "importantPeople": "Olulised inimesed",
-      "keyEvents": "Peamised elusündmused",
-      "uploadPhotos": "Laadi üles perepilte",
-      "wakeTime": "Ärkamise aeg",
-      "sleepTime": "Magamamineku aeg",
-      "generatePlan": "Genereeri soovitatud plaan",
-      "emergencyContacts": "Hädaabi kontaktid",
-      "alertSettings": "Hoiatuste seaded",
+      "keyEvents": "Olulised elusündmused",
+      "uploadPhotos": "Laadi üles perefotosid",
+      "wakeTime": "Ärkamisaeg",
+      "sleepTime": "Uneaeg",
+      "generatePlan": "Loo pakutud plaan",
+      "emergencyContacts": "Hädaabikontaktid",
+      "alertSettings": "Märguannete seaded",
       "stepOf": "Samm {{current}} / {{total}}",
       "breakfastTime": "Hommikusöögi aeg",
       "lunchTime": "Lõunasöögi aeg",
       "dinnerTime": "Õhtusöögi aeg",
-      "typicalDay": "Tüüpilise päeva kirjeldus",
-      "typicalDayPlaceholder": "Kirjeldage tüüpilist päeva...",
-      "emergencyContactsHint": "Lisage hädaabi kontaktid, mis kuvatakse patsiendirakenduse vahekaardil Abi.",
+      "typicalDay": "Tavalise päeva kirjeldus",
+      "typicalDayPlaceholder": "Kirjelda tavalist päeva...",
+      "emergencyContactsHint": "Lisa hädaabikontaktid, mis kuvatakse patsiendirakenduse abi vahelehel.",
       "remove": "Eemalda",
       "addContact": "Lisa kontakt",
       "contactNameRequired": "Nimi *",
       "phoneRequired": "Telefoninumber *",
       "relationshipOptional": "Suhe (valikuline)",
       "addContactButton": "+ Lisa kontakt",
-      "emergencyContactWarning": "Soovitame lisada vähemalt ühe hädaabi kontakti.",
+      "emergencyContactWarning": "Soovitame lisada vähemalt ühe hädaabikontakti.",
       "allSet": "Kõik on valmis!",
-      "careCodeLabel": "HOOLDUSE KOOD",
+      "careCodeLabel": "HOOLDUSKOOD",
       "copied": "Kopeeritud!",
       "copyCode": "Kopeeri kood",
       "nextSteps": "Järgmised sammud:",
-      "nextStep1": "1. Installige OurTurn rakendus {{name}} telefoni",
-      "nextStep2": "2. Avage rakendus ja sisestage ülaltoodud hoolduskood",
-      "nextStep3": "3. See on kõik! {{name}} päevaplaan kuvatakse tema telefonis",
-      "homeAddressPlaceholder": "Pikk tn 123, Linn"
+      "nextStep1": "1. Paigalda OurTurn rakendus {{name}} telefoni",
+      "nextStep2": "2. Ava rakendus ja sisesta ülaltoodud hoolduskood",
+      "nextStep3": "3. Ja ongi kõik! {{name}} päevaplaan ilmub nende telefoni",
+      "homeAddressPlaceholder": "123 Peatänav, Linn"
     },
     "settings": {
       "title": "Seaded",
@@ -719,24 +719,24 @@
       "profile": "Profiil",
       "account": "Konto",
       "subscription": "Tellimus",
-      "notifications": "Teavitused",
+      "notifications": "Märguanded",
       "privacy": "Privaatsus ja andmed",
       "exportData": "Ekspordi minu andmed",
-      "exportNote": "Laadige alla koopia kõigist oma andmetest (GDPR õigus andmete ülekandmisele)",
-      "exportClipboard": "Teie andmed on kopeeritud lõikelauale. Saate need dokumenti või e-kirja kleepida.",
+      "exportNote": "Laadi alla koopia kõigist oma andmetest (GDPR õigus andmete ülekantavusele)",
+      "exportClipboard": "Teie andmed on kopeeritud lõikelauale. Saate need kleepida dokumenti või e-kirja.",
       "deleteAccount": "Kustuta konto",
-      "deleteWarning": "See kustutab jäädavalt kõik selle leibkonna andmed. Seda ei saa tagasi võtta.",
-      "deleteConfirmType": "Konto kustutamise kinnitamiseks sisestage KUSTUTA",
+      "deleteWarning": "See kustutab jäädavalt kõik andmed selle leibkonna kohta. Seda ei saa tagasi võtta.",
+      "deleteConfirmType": "Konto kustutamise kinnitamiseks sisesta DELETE",
       "confirmDelete": "Kinnita kustutamine",
       "language": "Keel",
-      "about": "Teave OurTurn kohta",
+      "about": "OurTurnist",
       "version": "Versioon",
       "notMedicalDevice": "OurTurn ei ole meditsiiniseade",
-      "dailySummary": "Päevane kokkuvõte",
-      "dailySummaryTime": "Päevase kokkuvõtte aeg",
-      "emailNotifications": "E-posti teavitused",
-      "pushNotifications": "Tõuketeavitused",
-      "safetyAlerts": "Turvahoiatused",
+      "dailySummary": "Päevakokkuvõte",
+      "dailySummaryTime": "Päevakokkuvõtte aeg",
+      "emailNotifications": "E-posti märguanded",
+      "pushNotifications": "Tõukemärguanded",
+      "safetyAlerts": "Ohutushoiatused",
       "signOut": "Logi välja",
       "saveProfile": "Salvesta profiil",
       "saved": "Salvestatud!",
@@ -744,98 +744,98 @@
       "changePassword": "Muuda parooli",
       "newPassword": "Uus parool",
       "confirmNewPassword": "Kinnita uus parool",
-      "passwordPlaceholder": "Vähemalt 8 tähemärki",
-      "passwordChanged": "Parool on edukalt muudetud!",
+      "passwordPlaceholder": "Vähemalt 8 märki",
+      "passwordChanged": "Parool edukalt muudetud!",
       "changingPassword": "Muutmine...",
       "copyCode": "Kopeeri kood",
       "codeCopied": "Kood kopeeritud!",
       "regenerateCode": "Genereeri kood uuesti",
       "regenerateWarning": "Vana kood lakkab töötamast. Kõik seotud patsiendiseadmed vajavad uut koodi.",
-      "dangerZone": "Ohtlik ala",
+      "dangerZone": "Ohutsoon",
       "relationship": "Suhe",
-      "deleteConfirm": "Konto kustutamise kinnitamiseks sisestage KUSTUTA",
-      "photoGallery": "Fotogalerii",
-      "photoGalleryDesc": "Laadige üles perepilte isikupärastatud meenutustegevuste jaoks",
+      "deleteConfirm": "Konto kustutamise kinnitamiseks sisesta DELETE",
+      "photoGallery": "Pildigalerii",
+      "photoGalleryDesc": "Laadi üles perefotosid isikupärastatud mälestustegevuste jaoks",
       "uploadPhotos": "Laadi üles fotosid",
       "uploading": "Üleslaadimine...",
       "deletePhoto": "Kustuta see foto?",
-      "maxPhotosReached": "Maksimaalselt on lubatud 20 fotot",
-      "photoUploadHint": "Kuni 20 fotot, igaüks kuni 5 MB",
-      "photoUploadFailed": "Foto üleslaadimine ebaõnnestus. Palun proovige uuesti.",
-      "photoDeleteFailed": "Foto kustutamine ebaõnnestus. Palun proovige uuesti.",
-      "noPhotosYet": "Ühtegi fotot pole veel üles laaditud",
-      "photosCount": "{{count}} / 20 fotost",
+      "maxPhotosReached": "Saavutatud on maksimaalselt 20 fotot",
+      "photoUploadHint": "Kuni 20 fotot, igaüks maksimaalselt 5MB",
+      "photoUploadFailed": "Foto üleslaadimine ebaõnnestus. Palun proovi uuesti.",
+      "photoDeleteFailed": "Foto kustutamine ebaõnnestus. Palun proovi uuesti.",
+      "noPhotosYet": "Fotosid pole veel üles laaditud",
+      "photosCount": "{{count}} fotot 20-st",
       "patientComplexity": "Patsiendirakenduse režiim",
-      "patientComplexityDesc": "Kohandage patsiendirakenduse liidest vastavalt oma lähedase vajadustele.",
+      "patientComplexityDesc": "Kohanda patsiendirakenduse liidest vastavalt oma lähedase vajadustele.",
       "complexity": {
         "full": "Täielik",
         "fullDesc": "Kõik funktsioonid on saadaval",
         "simplified": "Lihtsustatud",
         "simplifiedDesc": "Suurem tekst, vähem detaile",
-        "essential": "Põhiline",
-        "essentialDesc": "Minimaalne – ainult muusika ja abi kutsumine"
+        "essential": "Oluline",
+        "essentialDesc": "Minimaalne — ainult muusika ja abi kutsumine"
       },
-      "safetyEscalation": "Turvalisus ja eskaleerimine",
+      "safetyEscalation": "Ohutus ja eskaleerimine",
       "escalationTiming": "Eskaleerimise ajastus",
-      "escalationTimingDesc": "Kui kaua enne kinnitamata hoiatuste eskaleerimist",
-      "offlineThreshold": "Võrguühenduseta hoiatuse lävend",
-      "offlineThresholdDesc": "Hoiatus, kui seadet pole nii kaua nähtud",
+      "escalationTimingDesc": "Kui kaua enne kinnitamata märguannete eskaleerimist",
+      "offlineThreshold": "Võrguühenduseta märguande lävi",
+      "offlineThresholdDesc": "Märguanne, kui seadet pole nii kaua nähtud",
       "minutes": "minutit",
-      "respiteReminders": "Puhkuse meeldetuletused",
-      "respiteRemindersDesc": "Saate meeldetuletusi pauside tegemiseks",
-      "groupProfile": "Teie profiil",
+      "respiteReminders": "Puhkepausi meeldetuletused",
+      "respiteRemindersDesc": "Saate meeldetuletusi puhkepauside tegemiseks",
+      "groupProfile": "Sinu profiil",
       "groupAboutPatient": "Teave {{name}} kohta",
       "groupAboutPatientGeneric": "Teave teie lähedase kohta",
       "groupSharing": "Jagamine ja ühendus",
-      "groupSafety": "Turvalisus ja teavitused",
+      "groupSafety": "Ohutus ja märguanded",
       "groupAccount": "Konto",
-      "patientInformation": "Patsiendi info",
+      "patientInformation": "Lähedase andmed",
       "patientInformationDesc": "Põhiandmed teie lähedase kohta",
-      "patientName": "Patsiendi nimi",
-      "dateOfBirth": "Sünnikuupäev",
+      "patientName": "Lähedase nimi",
+      "dateOfBirth": "Sünniaeg",
       "dementiaType": "Dementsuse tüüp",
       "selectDementiaType": "Vali tüüp (valikuline)",
-      "homeAddress": "Kodune aadress",
-      "homeAddressPlaceholder": "Täielik kodune aadress",
+      "homeAddress": "Koduadress",
+      "homeAddressPlaceholder": "Täielik koduadress",
       "savingPatientInfo": "Salvestamine...",
-      "savePatientInfo": "Salvesta patsiendi info",
+      "savePatientInfo": "Salvesta lähedase andmed",
       "lifeStory": "Elulugu",
-      "lifeStoryDesc": "Need detailid aitavad isikupärastada igapäevaseid tegevusi ja meenutuste viipasid.",
-      "childhoodLocation": "Koht, kus nad üles kasvasid",
-      "career": "Karjäär / Amet",
+      "lifeStoryDesc": "Need andmed aitavad isikupärastada igapäevaseid tegevusi ja mälestuste meenutamist.",
+      "childhoodLocation": "Kus nad üles kasvasid",
+      "career": "Karjäär / Elukutse",
       "hobbies": "Hobid ja huvid",
       "hobbiesPlaceholder": "nt aiandus, maalimine, male",
-      "favoriteMusic": "Lemmikmuusika / Artistid",
-      "favoriteMusicPlaceholder": "nt Frank Sinatra, Beatles",
+      "favoriteMusic": "Lemmikmuusika / artistid",
+      "favoriteMusicPlaceholder": "nt Frank Sinatra, The Beatles",
       "favoriteFoods": "Lemmiktoidud",
       "favoriteFoodsPlaceholder": "nt õunakook, ahjukana",
       "importantPeople": "Olulised inimesed",
-      "importantPeoplePlaceholder": "nt John (vend), Mary (parim sõber)",
-      "keyEvents": "Peamised elusündmused",
-      "keyEventsPlaceholder": "nt Lõpetas 1965, Kolis Londonisse 1970",
+      "importantPeoplePlaceholder": "nt Jaan (vend), Mari (parim sõber)",
+      "keyEvents": "Olulised elusündmused",
+      "keyEventsPlaceholder": "nt Lõpetas kooli 1965, Kolis Londonisse 1970",
       "savingLifeStory": "Salvestamine...",
       "saveLifeStory": "Salvesta elulugu",
-      "dailySchedule": "Päevakava",
-      "dailyScheduleDesc": "Määra oma lähedase rutiini jaoks ärkveloleku ja uneajad.",
-      "wakeTime": "Ärkamise aeg",
+      "dailySchedule": "Igapäevane ajakava",
+      "dailyScheduleDesc": "Määrake oma lähedase rutiini ärkamis- ja uneajad.",
+      "wakeTime": "Ärkamisaeg",
       "sleepTime": "Une aeg",
       "savingSchedule": "Salvestamine...",
       "saveSchedule": "Salvesta ajakava",
-      "emergencyContacts": "Hädaabi kontaktid",
-      "emergencyContactsDesc": "Need kontaktid kuvatakse patsiendirakenduse vahekaardil Abi.",
+      "emergencyContacts": "Hädaabikontaktid",
+      "emergencyContactsDesc": "Need kontaktid kuvatakse lähedase rakenduse abikaardil.",
       "addContact": "Lisa kontakt",
       "contactName": "Kontakti nimi",
       "contactPhone": "Telefoninumber",
       "contactRelationship": "Suhe",
-      "contactRelationshipPlaceholder": "nt Tütar, naaber",
-      "noContactsYet": "Hädaabi kontakte pole veel lisatud.",
+      "contactRelationshipPlaceholder": "nt tütar, naaber",
+      "noContactsYet": "Hädaabikontakte pole veel lisatud.",
       "savingContacts": "Salvestamine...",
       "saveContacts": "Salvesta kontaktid",
       "removeContactConfirm": "Eemalda see kontakt?",
       "country": "Riik",
       "selectCountry": "Vali riik",
       "selectLanguage": "Vali keel",
-      "languageSaved": "Keel on uuendatud"
+      "languageSaved": "Keel uuendatud"
     },
     "auth": {
       "login": "Logi sisse",
@@ -843,8 +843,8 @@
       "email": "E-post",
       "password": "Parool",
       "forgotPassword": "Unustasid parooli?",
-      "noAccount": "Sul pole kontot?",
-      "hasAccount": "Sul on juba konto?",
+      "noAccount": "Pole veel kontot?",
+      "hasAccount": "On juba konto?",
       "continueWithGoogle": "Jätka Google'iga",
       "continueWithApple": "Jätka Apple'iga",
       "or": "või",
@@ -854,52 +854,52 @@
       "fillAllFields": "Palun täida kõik väljad",
       "passwordsNoMatch": "Paroolid ei ühti",
       "passwordTooShort": "Parool peab olema vähemalt 8 tähemärki pikk",
-      "checkEmail": "Konto kinnitamiseks kontrolli oma e-posti",
+      "checkEmail": "Palun kontrolli oma e-posti, et konto kinnitada",
       "enterEmailFirst": "Palun sisesta esmalt oma e-posti aadress.",
       "resetEmailSent": "Kontrolli oma e-posti",
-      "resetEmailSentDesc": "Oleme saatnud sinu e-posti aadressile parooli lähtestamise lingi.",
-      "welcomeBack": "Tere tagasi",
+      "resetEmailSentDesc": "Oleme saatnud parooli lähtestamise lingi teie e-posti aadressile.",
+      "welcomeBack": "Tere tulemast tagasi",
       "enterEmailAndPassword": "Palun sisesta e-post ja parool",
       "signingIn": "Sisselogimine",
       "orContinueWith": "Või jätka"
     },
     "nav": {
-      "family": "Perekond",
-      "toolkit": "Tööriistakast",
+      "family": "Perering",
+      "toolkit": "Tööriistakomplekt",
       "reports": "Aruanded",
       "settings": "Seaded",
       "crisis": "Kriisikeskus"
     },
     "crisis": {
       "title": "Kriisikeskus",
-      "subtitle": "Reaalajas kriisijuhtimine ja de-eskaleerimise tugi",
-      "eventLogged": "Kriisi sündmus on logitud",
-      "logEvent": "Logi kriisi sündmus",
+      "subtitle": "Reaalajas kriisihaldus ja deeskaleerimise tugi",
+      "eventLogged": "Kriisisündmus logitud",
+      "logEvent": "Logi kriisisündmus",
       "logPlaceholder": "Kirjelda, mis juhtus...",
       "status": {
-        "allClear": "Kõik on korras",
+        "allClear": "Kõik korras",
         "allClearDesc": "Aktiivseid hoiatusi pole",
         "activeAlerts": "Aktiivsed hoiatused",
-        "lastKnownLocation": "Viimati teadaolev asukoht",
+        "lastKnownLocation": "Viimane teadaolev asukoht",
         "viewOnMap": "Vaata kaardil",
-        "noLocationData": "Asukoha andmed puuduvad"
+        "noLocationData": "Asukohaandmed puuduvad"
       },
       "actions": {
-        "modeLabel": "Sinu olukord",
-        "withThem": "Ma olen nendega",
-        "remote": "Ma olen eemal",
-        "startDeEscalation": "Alusta de-eskaleerimist",
-        "startDeEscalationDesc": "Samm-sammult juhitud rahustav voog",
+        "modeLabel": "Teie olukord",
+        "withThem": "Olen nendega koos",
+        "remote": "Olen eemal",
+        "startDeEscalation": "Alusta deeskaleerimist",
+        "startDeEscalationDesc": "Samm-sammult juhitud rahustav protsess",
         "callEmergency": "Helista hädaabinumbrile",
-        "callEmergencyDesc": "Helista kohalikele hädaabiteenustele",
-        "alertFamily": "Teavita perekonda",
-        "alertFamilyDesc": "Saada tõukemärguanne kõikidele hooldajatele",
-        "alertFamilySent": "Perekonna liikmeid on teavitatud",
-        "alertFamilyFailed": "Perekonna teavitamine ebaõnnestus. Palun proovi uuesti.",
+        "callEmergencyDesc": "Helista kohalikele hädaabiteenistustele",
+        "alertFamily": "Teavita peret",
+        "alertFamilyDesc": "Saada tõuketeade kõikidele hooldajatele",
+        "alertFamilySent": "Pereliikmeid teavitatud",
+        "alertFamilyFailed": "Peret ei õnnestunud teavitada. Palun proovi uuesti.",
         "viewLocation": "Vaata asukohta",
         "viewLocationDesc": "Vaata {{name}} praegust asukohta kaardil",
         "contactPrimary": "Võta ühendust peamise hooldajaga",
-        "contactPrimaryDesc": "Võta ühendust peamise hooldajaga e-posti teel",
+        "contactPrimaryDesc": "Võta peamise hooldajaga ühendust e-posti teel",
         "logEvent": "Logi sündmus",
         "logEventDesc": "Salvesta see hetk kriisipäevikusse"
       },
@@ -910,15 +910,15 @@
         "thisHelped": "See aitas",
         "tryNext": "Proovi järgmist sammu",
         "skip": "Jäta vahele",
-        "completionTitle": "Hästi tehtud. Sa said sellega hoolikalt hakkama.",
-        "completionDesc": "Kas sa sooviksid salvestada märkmeid selle kohta, mis juhtus?",
-        "crisisNotesPlaceholder": "Mis juhtus? Mis aitas? Kas märgati mingeid vallandajaid...",
+        "completionTitle": "Tubli töö. Sa tegelesid sellega hoolikalt.",
+        "completionDesc": "Kas soovite juhtunu kohta märkmeid salvestada?",
+        "crisisNotesPlaceholder": "Mis juhtus? Mis aitas? Kas märkasite mingeid päästikuid...",
         "saveAndClose": "Salvesta ja sulge",
         "closeWithoutSaving": "Sulge salvestamata"
       },
       "history": {
-        "title": "Hiljutised kriisi sündmused",
-        "noEvents": "Viimase 30 päeva jooksul pole kriisi sündmusi olnud.",
+        "title": "Viimased kriisisündmused",
+        "noEvents": "Viimase 30 päeva jooksul pole kriisisündmusi toimunud.",
         "viewAllInJournal": "Vaata kõiki päevikus",
         "yesterday": "Eile",
         "daysAgo": "{{count}} päeva tagasi"
@@ -927,41 +927,41 @@
         "stayCalm": {
           "title": "Jää rahulikuks",
           "detail": "Hinga aeglaselt ja sügavalt sisse. Sinu rahulik energia aitab neil end turvaliselt tunda.",
-          "script": "Ma olen siin sinuga. Kõik on korras."
+          "script": "Ma olen siinsamas sinuga. Kõik on korras."
         },
         "validateFeelings": {
           "title": "Kinnita tundeid",
-          "detail": "Ütle: „Ma näen, et sa oled ärritunud. See peab olema väga raske.“ Ära vaidle ega paranda.",
-          "script": "Ma näen, et sa oled ärritunud. See peab olema väga raske."
+          "detail": "Öelge: 'Ma näen, et olete endast väljas. See peab olema tõesti raske.' Ärge vaielge ega parandage.",
+          "script": "Ma näen, et olete endast väljas. See peab olema tõesti raske."
         },
         "simplifyEnvironment": {
           "title": "Lihtsustage keskkonda",
-          "detail": "Kasutage lühikesi ja lihtsaid lauseid. Üks idee korraga. Vältige küsimusi, mis algavad sõnaga „miks“.",
+          "detail": "Kasutage lühikesi, lihtsaid lauseid. Üks mõte korraga. Vältige 'miks'-küsimuste esitamist.",
           "script": "Teeme asjad lihtsamaks. Üks asi korraga."
         },
         "redirectAttention": {
-          "title": "Juhtige tähelepanu mujale",
-          "detail": "Muutke õrnalt teemat. Soovitage tuttavat tegevust, laulu või jalutuskäiku.",
+          "title": "Suunake tähelepanu mujale",
+          "detail": "Muutke teemat õrnalt. Pakkuge välja tuttav tegevus, laul või jalutuskäik.",
           "script": "Kuidas oleks, kui prooviksime midagi muud? Teeme koos väikese jalutuskäigu."
         },
         "useGentleTouch": {
           "title": "Kasutage õrna puudutust",
-          "detail": "Kui see on okei, võib õrn käsi käsivarrel olla rahustav. Jälgige nende reaktsiooni.",
-          "script": "Kas on okei, kui ma su kätt hoian? Ma olen siin."
+          "detail": "Kui see on teretulnud, võib õrn käsi käel olla rahustav. Jälgige nende reaktsiooni.",
+          "script": "Kas on okei, kui ma hoian teie kätt? Ma olen siinsamas."
         },
         "giveSpace": {
           "title": "Andke ruumi",
-          "detail": "Kui miski ei tööta, tagage ohutus ja andke neile ruumi. On okei tagasi astuda.",
-          "script": "Ma olen kohe läheduses, kui sa mind vajad. Võta aega."
+          "detail": "Kui miski ei aita, tagage ohutus ja andke neile ruumi. On okei tagasi astuda.",
+          "script": "Ma olen kohe läheduses, kui mind vajate. Võtke aega."
         }
       },
       "helplines": "Abitelefonid",
-      "noHelplineAvailable": "Teie riigi jaoks ei leitud abitelefoni",
+      "noHelplineAvailable": "Teie riigi jaoks abitelefoni ei leitud",
       "call": "Helista",
       "email": "E-post",
       "website": "Veebisait",
-      "familyContacts": "Perekonna kontaktid",
-      "supportResources": "Tugiteenused",
+      "familyContacts": "Pereliikmete kontaktid",
+      "supportResources": "Tugimaterjalid",
       "scenarios": {
         "title": "Mis toimub?",
         "subtitle": "Puudutage olukorda, et saada samm-sammult juhiseid",
@@ -969,68 +969,68 @@
         "stepCountLabel": "{{count}} sammu",
         "backToSituations": "Tagasi olukordade juurde",
         "breathe": "Hingamisharjutus",
-        "callEmergency": "Helista hädaabinumbrile"
+        "callEmergency": "Helistage hädaabiteenistusse"
       },
       "patterns": {
-        "title": "Mustri ülevaade",
-        "noEvents": "Intsidentide logimine aja jooksul mustrite nägemiseks.",
-        "fewEvents": "{{count}} intsidenti logitud. Mustrite jaoks on vaja rohkem andmeid.",
-        "timePattern": "Enamik intsidente juhtub {{time}}.",
+        "title": "Mustrite ülevaade",
+        "noEvents": "Logige juhtumid, et näha mustreid aja jooksul.",
+        "fewEvents": "{{count}} juhtumit logitud. Mustrite nägemiseks on vaja rohkem andmeid.",
+        "timePattern": "Enamik juhtumeid toimub {{time}}.",
         "weekCount": "{{count}} sel nädalal."
       },
       "personalization": {
-        "label": "Mis {{name}} rahustab",
-        "empty": "Lisage {{name}} eluloos rahustavaid strateegiaid, et näha siin isikupärastatud näpunäiteid."
+        "label": "Mis rahustab {{name}}",
+        "empty": "Lisage rahustamisstrateegiad {{name}} eluloosse, et näha siin isikupärastatud näpunäiteid."
       },
       "scenarioData": {
         "stepsCount": "{{count}} sammu",
         "agitated": {
-          "label": "Ärevil / Ärritunud",
+          "label": "Ärev / endast väljas",
           "steps": [
             {
-              "title": "Kõigepealt sina",
-              "instruction": "Hinga enne midagi tegemist üks kord aeglaselt sisse. Sa ei saa kedagi rahustada, kui sa ise rahulik ei ole."
+              "title": "Kõigepealt teie",
+              "instruction": "Hingake üks kord aeglaselt sisse, enne kui midagi teete. Te ei saa kedagi rahustada, kui te ise rahulik ei ole."
             },
             {
-              "title": "Kiire kontroll – kas midagi füüsilist võib valesti olla?",
-              "instruction": "Valu, nälg, vajadus tualetti minna või infektsioon võivad kõik põhjustada ärritust.",
+              "title": "Kiire kontroll – kas midagi füüsilist võiks valesti olla?",
+              "instruction": "Valu, nälg, tualetivajadus või infektsioon võivad kõik põhjustada ärevust.",
               "checklist": [
                 "Valu või ebamugavustunne?",
-                "Nälg või janu?",
+                "Näljane või janune?",
                 "Vajab tualetti?",
                 "Hiljutine ravimite muutus?",
                 "Palavik või haiguse tunnused?"
               ]
             },
             {
-              "title": "Alanda temperatuuri",
-              "instruction": "Räägi aeglaselt ja pehmelt. Ära vaidle, paranda ega selgita. Kinnita, mida nad tunnevad.",
+              "title": "Vähendage pingeid",
+              "instruction": "Rääkige aeglaselt ja vaikselt. Ärge vaielge, parandage ega selgitage. Tunnustage nende tundeid.",
               "tips": [
-                "„Ma näen, et sa oled ärritunud. Ma olen siin.“",
+                "\"Ma näen, et olete endast väljas. Ma olen siin.\"",
                 "Vähendage müra – lülitage teler välja, sulgege aknad",
                 "Andke neile füüsilist ruumi, ärge tungige peale",
-                "Pakkuge tuttavat lohutusobjekti"
+                "Pakkuge tuttavat mugavusobjekti"
               ]
             },
             {
-              "title": "Juhtige ümber, ärge arutlege",
-              "instruction": "Muutke õrnalt teemat või keskkonda. Ärge püüdke neid loogiliselt sellest välja tuua.",
+              "title": "Suunake tähelepanu mujale, ärge põhjendage",
+              "instruction": "Muutke õrnalt teemat või keskkonda. Ärge proovige neid loogikaga sellest välja tuua.",
               "tips": [
-                "Soovitage jalutuskäiku või kolige teise ruumi",
-                "Pange peale muusika, mida nad armastavad",
-                "Pakkuge suupisteid või sooja jooki",
+                "Pakkuge jalutuskäiku või minge teise tuppa",
+                "Pange mängima muusika, mida nad armastavad",
+                "Pakkuge suupistet või sooja jooki",
                 "Vaadake koos fotosid"
               ]
             },
             {
-              "title": "Millal abi otsida",
-              "instruction": "Kui ärritus kestab kauem kui 30 minutit, kui neil on oht endale või teile haiget teha või kui see on äkiline uus käitumine – helistage hädaabinumbrile.",
-              "actionLabel": "Helista hädaabinumbrile"
+              "title": "Millal abi kutsuda",
+              "instruction": "Kui ärevus kestab üle 30 minuti, kui nad on ohus ennast või teid vigastada, või kui see on äkiline uus käitumine – helistage hädaabiteenistusse.",
+              "actionLabel": "Helistage hädaabiteenistusse"
             }
           ]
         },
         "wandering": {
-          "label": "Hulkuv / Kadunud",
+          "label": "Ekslemine / Kadunud",
           "steps": [
             {
               "title": "Kontrollige kõigepealt tavalisi kohti",
@@ -1038,54 +1038,54 @@
               "tips": [
                 "Kontrollige aeda, garaaži, lähedalasuvaid tänavaid",
                 "Küsige naabritelt, kas nad on neid näinud",
-                "Kontrollige kohti, kus nad varem regulaarselt käisid"
+                "Kontrollige kohti, kuhu nad varem regulaarselt käisid"
               ]
             },
             {
               "title": "Kasutage nende asukohta",
-              "instruction": "Kui asukoha jälgimine on seadistatud, kontrollige kohe nende praegust asukohta."
+              "instruction": "Kui asukoha jälgimine on seadistatud, kontrollige nende praegust asukohta kohe."
             },
             {
               "title": "Teavitage perekonda",
-              "instruction": "Andke kõigile kohe teada. Mida rohkem silmi otsib, seda parem."
+              "instruction": "Andke kõigile kohe teada. Rohkem silmi otsimas on parem."
             },
             {
-              "title": "Helistage politseisse, kui neid 15 minuti jooksul ei leita",
-              "instruction": "Ärge oodake. Dementsusega inimestel on suur vigastuste oht. Helistage hädaabinumbrile ja öelge neile, et inimesel on dementsus.",
-              "actionLabel": "Helista hädaabinumbrile"
+              "title": "Helistage politseisse, kui 15 minuti jooksul ei leita",
+              "instruction": "Ärge oodake. Dementsusega inimesed on kõrge vigastuste riskiga. Helistage hädaabiteenistusse ja öelge neile, et isikul on dementsus.",
+              "actionLabel": "Helistage hädaabiteenistusse"
             }
           ]
         },
         "refusing": {
-          "label": "Keeldumine hooldusest",
+          "label": "Hoolduse keeldumine",
           "steps": [
             {
-              "title": "Paus – see ei ole trots",
-              "instruction": "Keeldumine on peaaegu alati hirm, segadus või ebamugavustunne. Nad ei pruugi aru saada, mida sa küsid."
+              "title": "Peatuge – see ei ole vastuhakk",
+              "instruction": "Keeldumine on peaaegu alati hirm, segadus või ebamugavustunne. Nad ei pruugi aru saada, mida te küsite."
             },
             {
               "title": "Astuge tagasi ja proovige teisiti",
-              "instruction": "Ärge suruge peale. Tulge tagasi 15–20 minuti pärast ja lähenege nii, nagu see oleks esimene kord.",
+              "instruction": "Ärge suruge peale. Tulge tagasi 15–20 minuti pärast ja lähenege, nagu see oleks esimene kord.",
               "tips": [
                 "Muutke küsijat",
                 "Muutke keskkonda",
                 "Jagage ülesanne väiksemateks sammudeks",
-                "Pakkuge valikuid: „Vann või dušš?“"
+                "Pakkuge valikuid: \"Vann või dušš?\""
               ]
             },
             {
-              "title": "Pange see tundma end turvaliselt",
-              "instruction": "Selgitage iga sammu enne selle tegemist. Liikuge aeglaselt. Hoidke neid soojas.",
+              "title": "Muutke see turvaliseks",
+              "instruction": "Selgitage iga sammu enne, kui seda teete. Liikuge aeglaselt. Hoidke neid soojas.",
               "tips": [
                 "Hoiatage enne puudutamist",
-                "Kasutage rahulikku ja sooja tooni",
-                "Mängige ülesande ajal nende lemmikmuusikat",
+                "Kasutage rahulikku, sooja tooni",
+                "Pange ülesande ajal mängima nende lemmikmuusika",
                 "Hoidke rutiin järjepidev"
               ]
             },
             {
               "title": "Kas see on muster?",
-              "instruction": "Kui nad keelduvad pidevalt samast ülesandest, logige see. Võib olla mõni varjatud probleem – valu, hirm, tundlikkus. Arutage seda nende arstiga."
+              "instruction": "Kui nad järjepidevalt keelduvad samast ülesandest, logige see. Võib esineda põhiprobleem – valu, hirm, tundlikkus. Arutage seda nende arstiga."
             }
           ]
         },
@@ -1094,69 +1094,69 @@
           "steps": [
             {
               "title": "Ärge vaielge – see on nende jaoks reaalne",
-              "instruction": "Tunnistage, mida nad kogevad, ilma kinnitamata, et see on tõsi.",
+              "instruction": "Tunnustage seda, mida nad kogevad, kinnitamata, et see on tõsi.",
               "tips": [
-                "„See kõlab hirmutavalt. Ma olen siin sinuga.“",
-                "„Räägi mulle, mida sa näed.“",
-                "Ärge öelge „seal pole midagi“"
+                "\"See kõlab hirmutavalt. Ma olen teiega siin.\"",
+                "\"Rääkige mulle, mida te näete.\"",
+                "Ärge öelge \"seal pole midagi\""
               ]
             },
             {
               "title": "Kontrollige keskkonda",
-              "instruction": "Varjud, peegeldused, telerihelid ja segadus võivad vallandada valesti tõlgendamise.",
+              "instruction": "Varjud, peegeldused, teleri helid ja segadus võivad vallandada valesti tõlgendamise.",
               "checklist": [
                 "Varjud akendest või lampidest?",
-                "Teler või raadio taustal sees?",
-                "Peeglipeegeldused?",
+                "Teler või raadio taustal sisse lülitatud?",
+                "Peegelpildid?",
                 "Kehv valgustus?"
               ]
             },
             {
-              "title": "Juhtige õrnalt ümber",
+              "title": "Suunake õrnalt tähelepanu mujale",
               "instruction": "Suunake nende tähelepanu millelegi konkreetsele ja lohutavale.",
               "tips": [
-                "Minge hästi valgustatud ruumi",
-                "Pakkuge praktilist tegevust",
+                "Liikuge hästi valgustatud tuppa",
+                "Pakkuge käelist tegevust",
                 "Minge koos lühikesele jalutuskäigule",
                 "Tehke koos tass teed"
               ]
             },
             {
-              "title": "Millal arstile helistada",
-              "instruction": "Kui hallutsinatsioonid on uued, sagedased või põhjustavad äärmist stressi. Äkiline algus võib viidata infektsioonile, ravimite kõrvaltoimetele või deliiriumile."
+              "title": "Millal arsti kutsuda",
+              "instruction": "Kui hallutsinatsioonid on uued, sagedased või põhjustavad äärmist stressi. Äkiline algus võib viidata infektsioonile, ravimite kõrvalmõjudele või deliiriumile."
             }
           ]
         },
         "sundowning": {
-          "label": "Päikeseloojangu sündroom",
+          "label": "Õhtune rahutus",
           "steps": [
             {
-              "title": "Mustri äratundmine",
-              "instruction": "Päikeseloojangusündroom algab tavaliselt hilisel pärastlõunal. See on äärmiselt tavaline ja midagi, mida nad ei saa kontrollida."
+              "title": "Tunnusta mustrit",
+              "instruction": "Õhtune segadus (sundowning) algab tavaliselt hilisel pärastlõunal. See on äärmiselt tavaline ja midagi, mida nad ise kontrollida ei saa."
             },
             {
               "title": "Kohanda keskkonda kohe",
-              "instruction": "Vähenda kõiki stiimuleid ja loo ohutussignaalid.",
+              "instruction": "Vähenda igasugust stimulatsiooni ja loo turvasignaale.",
               "tips": [
                 "Lülita soojad tuled sisse enne pimedaks minemist",
-                "Tõmba kardinad ette, et vähendada varje",
-                "Lülita teler välja või keera heli vaiksemaks",
-                "Vähenda inimeste arvu ruumis"
+                "Sule kardinad varjude vähendamiseks",
+                "Lülita teler välja või vähenda helitugevust",
+                "Vähenda inimeste arvu toas"
               ]
             },
             {
               "title": "Paku rahustavaid tegevusi",
-              "instruction": "Õrnad, korduvad ja tuttavad tegevused toimivad kõige paremini.",
+              "instruction": "Parimad on õrnad, korduvad ja tuttavad tegevused.",
               "tips": [
                 "Õrn kätemassaaž kreemiga",
                 "Pehme, tuttav muusika",
                 "Rätikute voltimine või esemete sorteerimine",
-                "Koos fotoalbumi vaatamine"
+                "Koos fotoalbumi sirvimine"
               ]
             },
             {
               "title": "Enneta seda homme",
-              "instruction": "Logi episood koos ajastuse üksikasjadega. Mustrid aitavad kohandada ajakavasid – rohkem hommikust tegevust, vähem kofeiini pärastlõunal."
+              "instruction": "Märgi üles episoodi toimumise aeg. Mustrid aitavad ajakavasid kohandada – rohkem hommikust tegevust, vähem pärastlõunast kofeiini."
             }
           ]
         },
@@ -1164,31 +1164,31 @@
           "label": "Kukkumine / Füüsiline hädaolukord",
           "steps": [
             {
-              "title": "Ära liiguta neid",
-              "instruction": "Kui nad pole just otseses ohus, ära proovi neid tõsta ega liigutada.",
+              "title": "Ära neid liiguta",
+              "instruction": "Kui nad just otseses ohus pole, ära proovi neid tõsta ega liigutada.",
               "tips": [
-                "Laske end nende tasemele",
+                "Mine nende tasandile",
                 "Rahusta neid: \"Ma olen siin, sa oled turvaliselt\"",
-                "Kontrolli nähtavaid vigastusi"
+                "Kontrolli nähtavate vigastuste olemasolu"
               ]
             },
             {
               "title": "Kas nad saavad püsti?",
-              "instruction": "Kui ilmseid vigastusi pole, aita neil aeglaselt etappide kaupa püsti tõusta.",
+              "instruction": "Kui nähtavaid vigastusi pole, aita neil aeglaselt ja järk-järgult püsti tõusta.",
               "checklist": [
-                "Kas nad on erksad ja reageerivad?",
-                "Kas neil on ilmseid vigastusi või valu?",
+                "Kas nad on ärkvel ja reageerivad?",
+                "Kas on nähtavaid vigastusi või valu?",
                 "Kas nad saavad kõiki jäsemeid liigutada?",
-                "Kas nad lõid oma pea ära?"
+                "Kas nad lõid pead?"
               ]
             },
             {
-              "title": "Helista abi saamiseks, kui...",
-              "instruction": "Peavigastus, ei saa püsti, tugev valu, segasus on tavalisest hullem või verejooks, mis ei peatu."
+              "title": "Kutsu abi, kui...",
+              "instruction": "Peavigastus, ei saa püsti, tugev valu, tavapärasest hullem segadus või verejooks, mis ei peatu."
             },
             {
               "title": "Pärast kukkumist",
-              "instruction": "Logi see sündmus ja maini seda nende arstile. Korduvad kukkumised võivad viidata ravimiprobleemidele või haiguse süvenemisele."
+              "instruction": "Märgi see sündmus üles ja maini seda nende arstile. Korduvad kukkumised võivad viidata ravimitega seotud probleemidele või seisundi süvenemisele."
             }
           ]
         },
@@ -1196,40 +1196,40 @@
           "label": "Korduvad küsimused",
           "steps": [
             {
-              "title": "Hinga – see on haigus, mitte nemad",
-              "instruction": "Nad tõesti ei mäleta, et küsisid. Sinu frustratsioon on arusaadav, kuid selle näitamine muudab nad ärevamaks."
+              "title": "Hinga – see on seisund, mitte nemad",
+              "instruction": "Nad tõesti ei mäleta, et nad küsisid. Sinu frustratsioon on õigustatud, kuid selle näitamine muudab nad ärevamaks."
             },
             {
               "title": "Mida nad tegelikult küsivad?",
-              "instruction": "Pinnaküsimus on harva tegelik küsimus. \"Mis kell on õhtusöök?\" võib tähendada \"Ma olen näljane.\"",
+              "instruction": "Pealiskaudne küsimus on harva tegelik küsimus. \"Mis kell on õhtusöök?\" võib tähendada \"Ma olen näljane.\"",
               "checklist": [
                 "Kas nad on millegi pärast ärevil?",
-                "Kas neil võib olla kõht tühi, janu või igav?",
+                "Kas nad võivad olla näljased, janused või igavleda?",
                 "Kas on tulemas sündmus, mis tekitab muret?"
               ]
             },
             {
               "title": "Vasta tundele",
-              "instruction": "Vasta küsimuse taga olevale emotsioonile, mitte sõnasõnalistele sõnadele.",
+              "instruction": "Vasta küsimuse taga olevale emotsioonile, mitte sõnasõnalistele küsimustele.",
               "tips": [
                 "Kirjuta vastus nähtavale tahvlile",
-                "Anna iga kord lihtne, rahustav vastus",
+                "Anna iga kord lihtne ja rahustav vastus",
                 "Suuna pärast vastamist praktilisele tegevusele",
-                "Kasuta visuaalseid ajakavasid, et vähendada ebakindlust"
+                "Kasuta visuaalseid ajakavasid ebakindluse vähendamiseks"
               ]
             },
             {
               "title": "Kaitse oma heaolu",
-              "instruction": "Vajadusel vaheta teise hooldajaga. Kasuta õrna muusikaga kõrvaklappe, kui vajad vaimset puhkust."
+              "instruction": "Võimalusel vaheta teise hooldajaga. Kasuta kõrvaklappe õrna muusikaga, kui vajad vaimset pausi."
             }
           ]
         },
         "aggression": {
-          "label": "Agressiivsus",
+          "label": "Agressioon",
           "steps": [
             {
-              "title": "Sinu ohutus on esmatähtis",
-              "instruction": "Kui tunned end füüsiliselt ohutult, astu kohe tagasi. Ära proovi neid kinni hoida.",
+              "title": "Sinu turvalisus on esikohal",
+              "instruction": "Kui tunned end füüsiliselt ebaturvaliselt, astu kohe tagasi. Ära proovi neid kinni hoida.",
               "tips": [
                 "Aseta end väljapääsu lähedale",
                 "Eemalda ohtlikud esemed käeulatusest",
@@ -1238,14 +1238,14 @@
               ]
             },
             {
-              "title": "Keskendu",
-              "instruction": "Agressiivsus käivitab sinuski võitle-või-põgene reaktsiooni. Võta hetk, et hingata."
+              "title": "Maanda end",
+              "instruction": "Agressioon käivitab ka sinus võitle-või-põgene reaktsiooni. Võta hetk ja hinga sügavalt sisse."
             },
             {
-              "title": "Mis selle käivitas?",
-              "instruction": "Agressiivsus on peaaegu alati reaktsioon – valu, hirm, frustratsioon, sensoorne ülekoormus.",
+              "title": "Mis seda esile kutsus?",
+              "instruction": "Agressioon on peaaegu alati reaktsioon – valu, hirm, frustratsioon, sensoorne ülekoormus.",
               "checklist": [
-                "Kas neil paluti midagi teha?",
+                "Kas neilt paluti midagi teha?",
                 "Kas neil oli valu?",
                 "Kas keskkond oli lärmakas või kaootiline?",
                 "Kas nad tundsid end nurka surutuna?"
@@ -1253,93 +1253,93 @@
             },
             {
               "title": "Anna ruumi ja aega",
-              "instruction": "Tagane. Lõpeta käivitav tegevus. Tule tagasi 15–20 minuti pärast, nagu midagi poleks juhtunud.",
+              "instruction": "Tagane. Lõpeta käivitav tegevus. Tule tagasi 15–20 minuti pärast, justkui poleks midagi juhtunud.",
               "tips": [
-                "Lahku ruumist, kui see on ohutu",
+                "Lahku toast, kui see on ohutu",
                 "Eemalda käivitaja",
                 "Ära võta seda isiklikult",
-                "Lähene aeglaselt tagasi tulles"
+                "Lähene tagasi tulles aeglaselt"
               ]
             },
             {
-              "title": "Kui see on hädaolukord",
-              "instruction": "Kui neil on relv, kui keegi on vigastatud või kui agressiivsus ei vaibu – helista hädaabinumbrile."
+              "title": "Kui tegemist on hädaolukorraga",
+              "instruction": "Kui neil on relv, kui keegi on vigastatud või kui agressioon ei vaibu – helista hädaabiteenistusele."
             }
           ]
         },
         "sleep_disruption": {
-          "label": "Unehäired",
+          "label": "Une häired",
           "steps": [
             {
               "title": "Hoia keskkond turvalisena",
-              "instruction": "Kui nad on öösel ärkvel ja ringi liikumas, on sinu esimene prioriteet ohutus.",
+              "instruction": "Kui nad on öösel ärkvel ja ringi liiguvad, on sinu esmane prioriteet turvalisus.",
               "tips": [
-                "Lülita sisse madalad öövalgustid",
-                "Eemalda komistusohud",
-                "Lukusta välisuksed, kui on muret ringi rändamise pärast",
+                "Lülita sisse nõrgad öötuled",
+                "Eemalda komistamisohud",
+                "Lukusta välisuksed, kui ekslemine on mureks",
                 "\"On öö, kõik on turvaline\""
               ]
             },
             {
-              "title": "Mis nad üles äratas?",
-              "instruction": "Öine ärkamine võib olla põhjustatud valust, vajadusest tualetti minna, ravimite ajastamisest või näljast.",
+              "title": "Mis neid äratas?",
+              "instruction": "Öist ärkamist võivad põhjustada valu, tualetivajadus, ravimite ajastus või nälg.",
               "checklist": [
-                "Kas neil on vaja tualetti minna?",
+                "Kas nad vajavad tualetti?",
                 "Kas neil on valu?",
-                "Kas müra või valgus äratas nad üles?",
-                "Kas neil on kõht tühi või janu?"
+                "Kas müra või valgus äratas neid?",
+                "Kas nad on näljased või janused?"
               ]
             },
             {
-              "title": "Juhenda neid õrnalt tagasi",
-              "instruction": "Ära vaidle selle üle, mis kell on. Suuna nad rahustavate vihjetega tagasi voodisse.",
+              "title": "Juhi nad õrnalt tagasi",
+              "instruction": "Ära vaidle kellaaja üle. Suuna nad rahustavate vihjetega tagasi voodisse.",
               "tips": [
                 "Paku sooja, kofeiinivaba jooki",
                 "Kasuta rahulikku, vaikset häält",
-                "Pane pehme, tuttav muusika peale",
+                "Pane mängima pehme, tuttav muusika",
                 "Istu nendega, kuni nad rahunevad"
               ]
             },
             {
               "title": "Paranda homset ööd",
-              "instruction": "Rohkem päevast tegevust, mitte kofeiini pärastlõunal, järjepidev uneaeg, piira uinakuid 30 minutiga."
+              "instruction": "Rohkem päevast tegevust, kofeiini vältimine pärast lõunat, järjepidev une-eelse rutiin, uinakute piiramine 30 minutile."
             }
           ]
         },
         "shadowing": {
-          "label": "Varjuna järgnemine",
+          "label": "Varjutamine",
           "steps": [
             {
               "title": "Tunnista oma frustratsiooni",
-              "instruction": "Kõikjal järgnemine on kurnav. Need tunded on arusaadavad. Hinga."
+              "instruction": "Kõikjal jälgimine on kurnav. Need tunded on õigustatud. Hinga sügavalt sisse."
             },
             {
-              "title": "Miks nad sulle järgnevad?",
-              "instruction": "Varjuna järgnemine on tingitud ärevusest ja mahajätmise hirmust. Sinu läheduses olemine on nende ainus ohutuse allikas.",
+              "title": "Miks nad sind jälgivad?",
+              "instruction": "Varjutamine on tingitud ärevusest ja hirmust mahajäetuse ees. Sinu lähedus on nende ainus turvalisuse allikas.",
               "checklist": [
-                "Kas hiljuti on toimunud rutiini muutus?",
+                "Kas rutiinis on hiljuti toimunud muudatusi?",
                 "Kas nad on võõras keskkonnas?",
-                "Kas sa oled hiljuti eemal olnud?",
+                "Kas oled hiljuti ära olnud?",
                 "Kas nad tunnevad end halvasti?"
               ]
             },
             {
               "title": "Vähenda nende ärevust",
-              "instruction": "Aita neil end turvaliselt tunda, ilma et sa peaksid igal hetkel füüsiliselt kohal olema.",
+              "instruction": "Aita neil tunda end turvaliselt, ilma et peaksid igal hetkel füüsiliselt kohal olema.",
               "tips": [
                 "Anna neile \"töö\" sinu lähedal",
-                "Jäta neile isiklik ese lohutusankruks",
-                "\"Ma olen lihtsalt köögis, ma tulen kohe tagasi\"",
+                "Jäta neile isiklik ese lohutuseks",
+                "\"Ma olen lihtsalt köögis, tulen kohe tagasi\"",
                 "Proovi tuttavat telerit või muusikat kaaslasena"
               ]
             },
             {
-              "title": "Planeeri endale pause",
-              "instruction": "Paluge kellelgi nendega istuda, kui sa võtad 20 minutit. Isegi 10 minutit üksi aitab.",
+              "title": "Loo endale puhkepause",
+              "instruction": "Paluge kellelgi nendega istuda, samal ajal kui te võtate 20 minutit. Isegi 10 minutit üksi aitab.",
               "tips": [
-                "Ära oota, kuni sa oled kurnatud",
-                "On okei vannitoa uks õrnalt sulgeda",
-                "Kaalu tugigruppi",
+                "Ära oota, kuni oled täiesti kurnatud",
+                "On okei õrnalt vannitoa uks sulgeda",
+                "Kaalu tugirühma",
                 "See käitumine väheneb sageli stabiilse rutiiniga"
               ]
             }
@@ -1359,17 +1359,17 @@
     "taskReminder": "{{patientName}}, on aeg: {{taskTitle}}",
     "taskCompleted": "{{patientName}} lõpetas: {{taskTitle}}",
     "checkinReceived": "{{patientName}} lõpetas tänase sisseregistreerimise",
-    "leftSafeZone": "{{patientName}} on lahkunud {{zoneName}}",
-    "inactivity": "{{patientName}} ei ole {{hours}} tunni jooksul liikumist tuvastatud",
-    "nightMovement": "{{patientName}} liigub väljaspool kell {{time}}",
-    "takeMeHome": "{{patientName}} puudutas nuppu „Viige mind koju” asukohast {{location}}",
-    "eveningSummary": "{{patientName}} päev: {{completed}}/{{total}} ülesannet tehtud. Tuju: {{mood}}"
+    "leftSafeZone": "{{patientName}} on lahkunud tsoonist {{zoneName}}",
+    "inactivity": "Liikumist ei tuvastatud {{patientName}} poolt {{hours}} tunni jooksul",
+    "nightMovement": "{{patientName}} liigub väljas kell {{time}}",
+    "takeMeHome": "{{patientName}} puudutas 'Vii mind koju' asukohast {{location}}",
+    "eveningSummary": "{{patientName}} päev: {{completed}}/{{total}} ülesannet tehtud. Meeleolu: {{mood}}"
   },
   "subscription": {
     "free": "Tasuta",
     "plus": "OurTurn Plus",
     "upgradeTitle": "Ava OurTurn Plus",
-    "upgradeFeature": "See funktsioon nõuab OurTurn Plus",
+    "upgradeFeature": "See funktsioon nõuab OurTurn Plus'i",
     "monthly": "{{price}}/kuu",
     "annual": "{{price}}/aasta",
     "annualSavings": "Säästa {{percent}}%",
@@ -1378,15 +1378,15 @@
     "manage": "Halda tellimust",
     "features": {
       "unlimitedTasks": "Piiramatu arv ülesandeid päevas",
-      "aiCoach": "Täielik AI-hooldusjuhendaja",
-      "brainActivities": "AI-ga loodud aju tervise tegevused",
+      "aiCoach": "Täielik AI hooldusjuhendaja",
+      "brainActivities": "AI-genereeritud aju heaolu tegevused",
       "safeZones": "Turvatsoonid ja asukohateavitused",
       "multiCaregiver": "Kuni 5 pereliiget",
-      "journal": "Shared Care Journal",
-      "insights": "AI pattern insights",
-      "reports": "Doctor visit reports",
-      "toolkit": "Caregiver toolkit & wellness",
-      "priority": "Priority support"
+      "journal": "Jagatud hoolduspäevik",
+      "insights": "AI mustrite ülevaated",
+      "reports": "Aruanded arstivisiitide kohta",
+      "toolkit": "Hooldaja tööriistakomplekt ja heaolu",
+      "priority": "Prioriteetne tugi"
     }
   }
 }

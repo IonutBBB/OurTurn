@@ -4,103 +4,103 @@
     "save": "Sábháil",
     "cancel": "Cealaigh",
     "delete": "Scrios",
-    "edit": "Cuir in eagar",
+    "edit": "Cuir in Eagar",
     "done": "Déanta",
     "skip": "Scipeáil don lá inniu",
-    "loading": "Ag lódáil...",
-    "error": "Tharla fadhb éigin. Bain triail as arís.",
-    "errorTitle": "Tharla fadhb éigin",
+    "loading": "Á lódáil...",
+    "error": "Chuaigh rud éigin mícheart. Bain triail eile as, le do thoil.",
+    "errorTitle": "Chuaigh rud éigin mícheart",
     "errorDefault": "Tharla earráid gan choinne.",
-    "tryAgain": "Bain triail as arís",
-    "logOut": "Logáil amach",
+    "tryAgain": "Bain triail eile as",
+    "logOut": "Logáil Amach",
     "offline": "Tá tú as líne — déanfar do shonraí a shioncronú nuair a bheidh tú ceangailte",
-    "synced": "Arna shioncronú",
+    "synced": "Sioncronaithe",
     "viewMore": "Féach níos mó",
-    "back": "Ar ais",
-    "next": "Ar aghaidh",
+    "back": "Ar Ais",
+    "next": "Ar Aghaidh",
     "confirm": "Deimhnigh",
     "yes": "Tá",
     "no": "Níl",
-    "you": "Tusa",
+    "you": "Tú",
     "unknown": "Anaithnid",
-    "saving": "Ag sábháil...",
-    "primary": "Bunscoile"
+    "saving": "Á shábháil...",
+    "primary": "Príomhúil"
   },
   "categories": {
-    "medication": "Cógas",
+    "medication": "Cógais",
     "nutrition": "Béilí & Cothú",
     "physical": "Gníomhaíocht Fhisiciúil",
-    "cognitive": "Folláine Inchinn",
-    "social": "Sóisialta & Ceangal",
+    "cognitive": "Folláine Inchinne",
+    "social": "Sóisialta & Nasc",
     "health": "Seiceáil Sláinte"
   },
   "caregiverApp": {
     "dashboard": {
-      "greeting": "{{timeOfDay}} mhaith, {{name}}",
+      "greeting": "Dea-{{timeOfDay}}, {{name}}",
       "statusGood": "Tá lá {{patientName}} ag dul go maith",
-      "statusConcern": "B’fhéidir go mbeidh aird ag teastáil ó {{patientName}}",
-      "todaysStatus": "Stádas an lae inniu",
-      "tasksCompleted": "{{completed}} de {{total}} tascanna déanta",
-      "dailyCheckin": "Seiceáil Isteach Laethúil",
-      "noCheckinYet": "Níor cuireadh aon seiceáil isteach isteach go fóill inniu",
+      "statusConcern": "B'fhéidir go mbeidh aird ag teastáil ó {{patientName}}",
+      "todaysStatus": "Stádas an Lae Inniu",
+      "tasksCompleted": "{{completed}} de {{total}} tasc déanta",
+      "dailyCheckin": "Seiceáil Laethúil Isteach",
+      "noCheckinYet": "Níl aon seiceáil isteach curtha isteach fós inniu",
       "location": "Suíomh",
       "atHome": "Tá {{name}} sa bhaile",
-      "lastUpdate": "Nuashonrú deireanach: {{time}}",
+      "lastUpdate": "Nuashonraithe go deireanach: {{time}}",
       "aiInsights": "Léargais",
       "quickActions": "Gníomhartha Tapa",
-      "callPatient": "Glaoigh ar {{name}}",
+      "callPatient": "Cuir glaoch ar {{name}}",
       "tasksCompletedLabel": "tascanna críochnaithe",
       "careCode": "Cód Cúraim",
       "careCodeHint": "Roinn chun aip an othair a nascadh",
-      "careCodeNotAvailable": "Cód ar fáil",
+      "careCodeNotAvailable": "Níl an cód ar fáil",
       "morningActivityPattern": "Patrún Gníomhaíochta Maidine",
       "insightText": "Críochnaíonn {{name}} níos mó tascanna ar laethanta a bhfuil siúlóidí maidine sceidealta.",
-      "noJournalEntries": "Níl aon iontrálacha dialainne ann go fóill",
+      "noJournalEntries": "Níl aon iontrálacha dialainne fós",
       "unknown": "Anaithnid",
       "moodStruggling": "Ag streachailt",
       "moodLow": "Íseal",
       "moodOkay": "Ceart go leor",
       "moodGood": "Maith",
-      "moodGreat": "Iontach",
-      "sleepPoor": "Dona",
-      "sleepFair": "Cóir",
+      "moodGreat": "Ar fheabhas",
+      "sleepPoor": "Droch",
+      "sleepFair": "Measartha",
       "sleepWell": "Go maith",
-      "mood": "Giúmar",
+      "mood": "Meon",
       "sleep": "Codladh",
-      "minutesAgo": "{{count}} nóim i gcéin",
-      "hoursAgo": "{{count}} uair an chloig i gcéin",
-      "daysAgo": "{{count}} lá i gcéin",
+      "minutesAgo": "{{count}} nóiméad ó shin",
+      "hoursAgo": "{{count}} uair an chloig ó shin",
+      "daysAgo": "{{count}} lá ó shin",
       "deviceStatus": "Stádas Gléis",
-      "deviceOnline": "Ar líne",
-      "deviceOffline": "As líne",
-      "lastSeenAt": "Feictear deireanach: {{time}}",
-      "lastSeenNever": "Níor ceanglaíodh riamh",
-      "engagementSummary": "Rannpháirtíocht an lae inniu",
+      "deviceOnline": "Ar Líne",
+      "deviceOffline": "As Líne",
+      "lastSeenAt": "Feicthe go deireanach: {{time}}",
+      "lastSeenNever": "Níor nascadh riamh",
+      "engagementSummary": "Rannpháirtíocht an Lae Inniu",
       "alertsToday": "Foláirimh inniu",
       "checkedIn": "Seiceáilte isteach",
-      "notCheckedIn": "Níor seiceáladh isteach",
+      "notCheckedIn": "Gan seiceáil isteach",
       "brainActivity": "Gníomhaíocht inchinne"
     },
     "carePlan": {
       "title": "Plean Laethúil {{name}}",
-      "addTask": "Cuir Tasc leis",
-      "aiSuggest": "Tascanna Molta AI",
-      "hintLabel": "Treoracha (feicfidh {{name}} é seo)",
-      "hintPlaceholder": "E.g., Tá do chuid pills sa bhosca piollairí ar an gcuntar cistine",
-      "recurrence": "Déantar arís",
+      "addTask": "Cuir Tasc Leis",
+      "aiSuggest": "Mol Tascanna le AI",
+      "hintLabel": "Treoracha (Feicfidh {{name}} é seo)",
+      "hintPlaceholder": "M.sh., Tá do phiollaí sa bhosca piollaí ar an gcuntar cistine",
+      "recurrence": "Athdhéanann",
       "daily": "Gach lá",
-      "specificDays": "Laethanta sonracha",
+      "specificDays": "Laethanta Sonracha",
       "oneTime": "Uair amháin",
       "copyDay": "Cóipeáil chuig laethanta eile",
       "saved": "Sábháilte",
-      "noTasks": "Níl aon tascanna ann go fóill. Cuir do chéad tasc leis chun tosú.",
+      "noTasks": "Níl aon tascanna fós. Cuir do chéad tasc leis chun tús a chur leis.",
       "category": "Catagóir",
       "taskTitle": "Teideal an tasc",
       "time": "Am",
-      "deleteConfirm": "An bhfuil tú cinnte gur mhaith leat an tasc seo a scriosadh?",
-      "noMoreSuggestions": "Níl aon mholtaí eile ar fáil.",
+      "deleteConfirm": "An bhfuil tú cinnte gur mian leat an tasc seo a scriosadh?",
+      "noMoreSuggestions": "Níl níos mó moltaí ar fáil.",
       "copyFromTo": "Cóipeáil tascanna ó {{day}} go:",
-      "copyCount": "Déanfar {{taskCount}} tasc a chóipeáil go {{dayCount}} lá",
+      "copyCount": "Déanfar {{taskCount}} tasc a chóipeáil chuig {{dayCount}} lá",
       "days": {
         "mon": "Luan",
         "tue": "Máirt",
@@ -110,75 +110,75 @@
         "sat": "Sath",
         "sun": "Domh"
       },
-      "taskPhoto": "Grianghraf den Tasc (roghnach)",
+      "taskPhoto": "Grianghraf Tasc (roghnach)",
       "uploadPhoto": "Uaslódáil Grianghraf",
       "removePhoto": "Bain Grianghraf",
       "medicationItems": "Cógais sa ghrúpa seo",
       "medicationItemsHint": "Grúpáil suas le 3 chógas a thógtar ag an am céanna",
-      "addMedication": "Cuir Cógas leis",
+      "addMedication": "Cuir Cógas Leis",
       "medName": "Ainm an chógais",
-      "medNamePlaceholder": "e.g. Donepezil",
+      "medNamePlaceholder": "m.sh. Donepezil",
       "medDosage": "Dáileog nó treoir",
-      "medDosagePlaceholder": "e.g. táibléad 10mg",
+      "medDosagePlaceholder": "m.sh. táibléad 10mg",
       "medPhotoLabel": "Grianghraf",
       "medItemLabel": "Cógas {{number}}",
       "removeMedication": "Bain",
       "maxMedications": "Uasmhéid 3 chógas in aghaidh an ghrúpa",
-      "uploadingPhoto": "Ag uaslódáil...",
+      "uploadingPhoto": "Á uaslódáil...",
       "evidenceBased": "Bunaithe ar fhianaise"
     },
     "location": {
       "title": "Suíomh & Sábháilteacht",
       "currentLocation": "Suíomh Reatha",
       "safeZones": "Criosanna Sábháilte",
-      "addSafeZone": "Cuir Crios Sábháilte leis",
+      "addSafeZone": "Cuir Crios Sábháilte Leis",
       "editSafeZone": "Cuir Crios Sábháilte in Eagar",
       "alerts": "Socruithe Foláirimh",
       "leaveZoneAlert": "Cuir in iúl nuair a fhágann {{name}} crios sábháilte",
-      "inactivityAlert": "Cuir in iúl nuair nach bhfuil aon ghluaiseacht ann le haghaidh",
-      "nightAlert": "Cuir in iúl nuair a bhíonn sé lasmuigh tar éis",
-      "takeMeHomeAlert": "Cuir in iúl nuair a sconnaíonn {{name}} ar 'Tóg Abhaile Mé'",
+      "inactivityAlert": "Cuir in iúl nuair nach bhfuil aon ghluaiseacht ar feadh",
+      "nightAlert": "Cuir in iúl nuair a bhíonn sé amuigh tar éis",
+      "takeMeHomeAlert": "Cuir in iúl nuair a thapálann {{name}} 'Tóg Abhaile Mé'",
       "locationHistory": "Stair Suímh",
-      "takeMeHomeTapped": "Sconnaigh {{name}} ar 'Tóg Abhaile Mé'",
+      "takeMeHomeTapped": "Thapáil {{name}} 'Tóg Abhaile Mé'",
       "hours": "uaireanta",
       "zoneName": "Ainm an chreasa",
       "zoneRadius": "Ga (méadair)",
       "unknownLocation": "Suíomh anaithnid",
-      "completeOnboarding": "Comhlánaigh an próiseas tosaithe ar dtús, le do thoil.",
-      "unacknowledgedAlerts": "{{count}} Foláireamh Neamhaitheanta",
-      "unacknowledgedAlertsPlural": "{{count}} Foláirimh Neamhaitheanta",
+      "completeOnboarding": "Comhlánaigh an próiseas ar bord ar dtús, le do thoil.",
+      "unacknowledgedAlerts": "{{count}} Foláireamh Neamh-aitheanta",
+      "unacknowledgedAlertsPlural": "{{count}} Foláirimh Neamh-aitheanta",
       "acknowledge": "Admhaigh",
       "patientLocation": "Suíomh {{name}}",
       "updated": "Nuashonraithe: {{time}}",
-      "noLocationData": "Níl aon sonraí suímh ann go fóill",
+      "noLocationData": "Níl aon sonraí suímh fós",
       "live": "Beo",
-      "add": "+ Cuir leis",
-      "noSafeZonesYet": "Níl aon chriosanna sábháilte cumraithe go fóill.\nCuir criosanna leis chun foláirimh a fháil nuair a fhágann {{name}}.",
-      "radiusMeters": "ga {{radius}}m",
-      "recentAlerts24h": "Foláirimh Déanacha (24h)",
-      "noRecentAlerts": "Níl aon foláirimh le 24 uair an chloig anuas. Tá gach rud go breá!",
+      "add": "+ Cuir Leis",
+      "noSafeZonesYet": "Níl aon chriosanna sábháilte cumraithe fós.\nCuir criosanna leis chun foláirimh a fháil nuair a fhágann {{name}}.",
+      "radiusMeters": "Ga {{radius}}m",
+      "recentAlerts24h": "Foláirimh Le Déanaí (24h)",
+      "noRecentAlerts": "Níl aon fholáirimh le 24 uair an chloig anuas. Tá gach rud go maith!",
       "deleteSafeZone": "Scrios Crios Sábháilte",
-      "deleteSafeZoneConfirm": "An bhfuil tú cinnte gur mhaith leat \"{{name}}\" a scriosadh?",
+      "deleteSafeZoneConfirm": "An bhfuil tú cinnte gur mian leat \"{{name}}\" a scriosadh?",
       "failedToSaveSafeZone": "Theip ar an gcrios sábháilte a shábháil",
       "failedToDeleteSafeZone": "Theip ar an gcrios sábháilte a scriosadh",
-      "fillAllFields": "Líon isteach na réimsí go léir le do thoil",
+      "fillAllFields": "Líon isteach gach réimse, le do thoil",
       "name": "Ainm",
-      "nameExample": "e.g., Baile, Oifig an Dochtúra",
+      "nameExample": "m.sh., Baile, Oifig an Dochtúra",
       "latitude": "Domhanleithead",
       "longitude": "Domhanfhad",
-      "radiusHint": "Moltar: 100-500 méadar do ghnáthláithreacha",
-      "mapView": "Amharc ar an Léarscáil",
-      "mapRequiresBuild": "Teastaíonn tógáil forbartha ó léarscáileanna.\nBain úsáid as Tógáil EAS chun léarscáileanna a chumasú.",
+      "radiusHint": "Molta: 100-500 méadar le haghaidh gnáthláithreacha",
+      "mapView": "Amharc Léarscáile",
+      "mapRequiresBuild": "Éilíonn léarscáileanna tógáil forbartha.\nÚsáid EAS Build chun léarscáileanna a chumasú.",
       "home": "Baile",
-      "patient": "Othar",
-      "alertTypeLeftSafeZone": "Crios Sábháilte Fágtha",
+      "patient": "An Duine atá á Chúram",
+      "alertTypeLeftSafeZone": "D'fhág an Crios Sábháilte",
       "alertTypeInactive": "Neamhghníomhach",
       "alertTypeNightMovement": "Gluaiseacht Oíche",
-      "alertTypeTakeMeHomeTapped": "Beir Mé Abhaile Tapáilte",
+      "alertTypeTakeMeHomeTapped": "Brúdh 'Tóg Abhaile Mé'",
       "alertTypeSosTriggered": "SOS Spreagtha",
-      "invalidLatitude": "Cuir isteach domhanleithead bailí le do thoil (-90 go 90)",
-      "invalidLongitude": "Cuir isteach domhanfhad bailí le do thoil (-180 go 180)",
-      "invalidRadius": "Cuir isteach luach ga dearfach le do thoil"
+      "invalidLatitude": "Cuir isteach domhanleithead bailí, le do thoil (-90 go 90)",
+      "invalidLongitude": "Cuir isteach domhanfhad bailí, le do thoil (-180 go 180)",
+      "invalidRadius": "Cuir isteach luach ga dearfach, le do thoil"
     },
     "coach": {
       "title": "Cóitseálaí Cúraim AI",
@@ -192,67 +192,67 @@
         "subtitle": "Treoracha, ailt, agus tacaíocht áitiúil chun cabhrú leat ar do thuras cúraim",
         "linkLabel": "Acmhainní & Treoracha"
       },
-      "intro": "Cuir ceist ar bith orm faoi chúram a thabhairt do {{name}}. Tá a fhios agam a ngnáthamh, a roghanna agus na cleachtais is fearr i gcoitinne.",
+      "intro": "Fiafraigh díom rud ar bith faoi chúram {{name}}. Tá a ngnáthamh, a roghanna, agus na dea-chleachtais ghinearálta ar eolas agam.",
       "placeholder": "Clóscríobh do cheist...",
-      "disclaimer": "Tá mé anseo chun tacú leat, ní chun comhairle leighis a chur in áit. I gcás imní sláinte, téigh i gcomhairle le do dhochtúir i gcónaí.",
-      "disclaimerShort": "Ní sholáthraíonn Care Coach ach treoir ghinearálta. Téigh i gcomhairle le gairmithe cúraim sláinte i gcónaí le haghaidh comhairle leighis.",
+      "disclaimer": "Táim anseo chun tacú leat, ní chun comhairle leighis a chur in ionad. Maidir le hábhair imní sláinte, téigh i gcomhairle le do dhochtúir i gcónaí.",
+      "disclaimerShort": "Ní sholáthraíonn an Cóitseálaí Cúraim ach treoir ghinearálta. Téigh i gcomhairle le gairmithe cúram sláinte i gcónaí le haghaidh comhairle leighis.",
       "suggestedTopics": "Ábhair mholta",
       "addToCarePlan": "Cuir le plean cúraim",
       "addToDoctorNotes": "Cuir le nótaí an dochtúra",
       "newConversation": "Comhrá nua",
       "newChat": "Comhrá Nua",
-      "careCoach": "Care Coach",
-      "completeOnboarding": "Críochnaigh an próiseas tosaithe ar dtús le do thoil.",
-      "greeting": "Dia duit {{name}}!",
-      "greetingIntro": "Tá mé anseo chun cabhrú leat aire a thabhairt do {{patientName}}. Cuir ceist ar bith orm faoi chúram laethúil, gníomhaíochtaí, nó bainistiú cásanna dúshlánacha.",
-      "tryAsking": "Bain triail as ceist a chur:",
-      "askAbout": "Cuir ceist faoi chúram a thabhairt do {{name}}...",
+      "careCoach": "Cóitseálaí Cúraim",
+      "completeOnboarding": "Comhlánaigh an túsphróiseas ar dtús, le do thoil.",
+      "greeting": "Dia duit, {{name}}!",
+      "greetingIntro": "Táim anseo chun cabhrú leat aire a thabhairt do {{patientName}}. Fiafraigh díom rud ar bith faoi chúram laethúil, gníomhaíochtaí, nó conas déileáil le cásanna dúshlánacha.",
+      "tryAsking": "Bain triail as a fhiafraí:",
+      "askAbout": "Fiafraigh faoi chúram {{name}}...",
       "send": "Seol",
       "signingIn": "Ag síniú isteach",
-      "taskAddedSuccess": "Tasc curtha leis an bplean cúraim!",
-      "taskAddedError": "Theip ar an tasc a chur leis. Bain triail as arís le do thoil.",
-      "noteAddedSuccess": "Nóta sábháilte don chuairt dochtúra!",
-      "noteAddedError": "Theip ar an nóta a shábháil. Bain triail as arís le do thoil.",
+      "taskAddedSuccess": "Tasc curtha le plean cúraim!",
+      "taskAddedError": "Theip ar an tasc a chur leis. Bain triail eile as, le do thoil.",
+      "noteAddedSuccess": "Nóta sábháilte le haghaidh cuairt an dochtúra!",
+      "noteAddedError": "Theip ar an nóta a shábháil. Bain triail eile as, le do thoil.",
       "addToCarePlanButton": "Cuir le Plean Cúraim",
       "saveForDoctorVisit": "Sábháil le haghaidh Cuairt an Dochtúra",
-      "success": "Rath",
+      "success": "Éirigh go Geal",
       "suggestions": {
-        "sundowning": "Conas a láimhseálann mé luí na gréine?",
-        "rainyDays": "Cad iad na gníomhaíochtaí a oibríonn do laethanta fliucha?",
-        "siblings": "Cabhraigh liom labhairt le mo dheartháireacha agus deirfiúracha faoi chúram a roinnt",
+        "sundowning": "Conas a dhéileálaim le meath na gréine?",
+        "rainyDays": "Cé na gníomhaíochtaí a oibríonn do laethanta na báistí?",
+        "siblings": "Cabhraigh liom labhairt le mo dheartháireacha/deirfiúracha faoi chúram a roinnt",
         "refusesFood": "Diúltaíonn {{name}} ithe. Cabhair.",
-        "repetitive": "Conas a láimhseálann mé ceisteanna athchleachtacha?"
+        "repetitive": "Conas a dhéileálaim le ceisteanna athfhillteacha?"
       },
       "hub": {
-        "backToHub": "Ar ais go dtí an Cóitseálaí",
+        "backToHub": "Ar ais chuig an gCóitseálaí",
         "insight": {
-          "title": "Duit",
+          "title": "Duitse",
           "discuss": "Pléigh",
           "fallback": "Seiceáil isteach ar lá {{name}} chun léargais phearsantaithe a fháil"
         },
         "rightNow": {
-          "title": "Faoi Láthair",
-          "subtitle": "Cabhair ar an bpointe boise",
+          "title": "Anseo Anois",
+          "subtitle": "Cabhair láithreach",
           "refusing_food": "Ag diúltú bia",
-          "refusing_medication": "Ní ghlacfaidh sé cógas",
+          "refusing_medication": "Ní ghlacfaidh sé/sí cógais",
           "agitated": "Corraithe",
-          "not_recognizing": "Ní aithníonn sé mé",
+          "not_recognizing": "Ní aithníonn sé/sí mé",
           "repetitive_questions": "An cheist chéanna arís",
-          "sundowning": "Luí na gréine",
+          "sundowning": "Meath na gréine",
           "wants_to_leave": "Ag iarraidh imeacht",
-          "caregiver_overwhelmed": "Tá mé ag cailleadh foighne"
+          "caregiver_overwhelmed": "Táim ag cailleadh foighne"
         },
         "planPrepare": {
           "title": "Pleanáil & Ullmhaigh",
           "subtitle": "Sreafaí oibre treoraithe",
-          "plan_tomorrow": "Pleanáil amárach",
-          "plan_tomorrow_desc": "Cruthaigh lá iontach le chéile",
-          "doctor_visit": "Ullmhaigh le haghaidh cuairt dochtúra",
+          "plan_tomorrow": "Pleanáil don amárach",
+          "plan_tomorrow_desc": "Tóg lá iontach le chéile",
+          "doctor_visit": "Ullmhaigh le haghaidh cuairt an dochtúra",
           "doctor_visit_desc": "Gineadh achoimre struchtúrtha",
           "review_week": "Athbhreithnigh an tseachtain seo",
-          "review_week_desc": "Cad a chuaigh go maith, cad a dteastaíonn aird air",
+          "review_week_desc": "Cad a d'éirigh go maith, cad a theastaíonn aird air",
           "adjust_plan": "Coigeartaigh an plean cúraim",
-          "adjust_plan_desc": "Déan barr feabhais bunaithe ar a bhfuil ag obair"
+          "adjust_plan_desc": "Déan an plean a bharrfheabhsú bunaithe ar a bhfuil ag obair"
         },
         "learn": {
           "title": "Foghlaim",
@@ -266,10 +266,27 @@
           "sleep": "Codladh & Oíche"
         },
         "askAnything": {
-          "title": "Cuir Ceist ar Bith",
-          "placeholder": "Cad atá ar d'intinn faoi chúram a thabhairt do {{name}}?"
+          "title": "Fiafraigh Rud ar Bith",
+          "placeholder": "Cad atá ar d'intinn faoi chúram {{name}}?"
         }
-      }
+      },
+      "situationPrompts": {
+        "refusing_food": "Tá {{name}} ag diúltú ithe faoi láthair. Cad ba cheart dom a dhéanamh?",
+        "refusing_medication": "Ní ghlacfaidh {{name}} a gcógas. Teastaíonn cabhair uaim anois.",
+        "agitated": "Tá {{name}} an-chorraithe faoi láthair. Conas is féidir liom cabhrú le rudaí a mhaolú?",
+        "not_recognizing": "Ní aithníonn {{name}} mé faoi láthair. Tá sé an-deacair. Cad a dhéanaim?",
+        "repetitive_questions": "Tá {{name}} ag cur na ceiste céanna arís agus arís eile. Conas a dhéileálaim leis seo go foighneach?",
+        "sundowning": "Is tráthnóna é agus tá {{name}} ag éirí an-neamhshuaimhneach agus mearbhall. Cabhraigh liom le meath na gréine.",
+        "wants_to_leave": "Tá {{name}} ag iarraidh an teach a fhágáil agus tá sé/sí ag áitiú dul áit éigin. Cad a dhéanaim?",
+        "caregiver_overwhelmed": "Táim ag mothú go bhfuil mé faoi léigear agus ag cailleadh foighne faoi láthair. Teastaíonn tacaíocht uaim."
+      },
+      "workflowPrompts": {
+        "plan_tomorrow": "Déanaimis lá maith a phleanáil do {{name}} amárach. Cad a mholann tú bunaithe ar a bhfuil ag obair?",
+        "doctor_visit": "Tá cuairt dochtúra agam ag teacht suas do {{name}}. An féidir leat cabhrú liom achoimre a ullmhú ar conas a bhí rudaí ag dul?",
+        "review_week": "Déanaimis athbhreithniú ar conas a chuaigh an tseachtain seo do {{name}}. Cé na patrúin a fheiceann tú?",
+        "adjust_plan": "Ba mhaith liom athbhreithniú a dhéanamh ar phlean cúraim {{name}} agus féachaint cad ba cheart dúinn a athrú bunaithe ar conas atá rudaí ag dul."
+      },
+      "insightDiscussPrompt": "Chonaic mé an léargas seo: \"{{insight}}\". An féidir leat níos mó a insint dom faoi cad a chiallaíonn sé seo agus cad ba cheart dom a dhéanamh?"
     },
     "family": {
       "title": "Foireann Cúraim {{patientName}}",
@@ -277,14 +294,14 @@
       "primaryCaregiver": "Príomhchúramóir",
       "familyMember": "Ball teaghlaigh",
       "careCode": "Cód Cúraim",
-      "careCodeHelp": "Roinn an cód seo chun an aip othair a phéireáil",
+      "careCodeHelp": "Roinn an cód seo chun an aip othar a phéireáil",
       "regenerateCode": "Athghin Cód",
-      "regenerateWarning": "Déanfaidh sé seo gach feiste othair péireáilte a dhícheangal. Beidh an cód nua ag teastáil uathu.",
+      "regenerateWarning": "Dícheanglóidh sé seo gach gléas othar péireáilte. Beidh an cód nua ag teastáil uathu.",
       "journal": "Dialann Cúraim",
       "addNote": "Cuir nóta leis",
       "observation": "Breathnóireacht",
       "note": "Nóta",
-      "milestone": "Cloc mhíle",
+      "milestone": "Cloch Mhíle",
       "inviteEmail": "Seoladh ríomhphoist",
       "inviteName": "Ainm",
       "inviteRelationship": "Caidreamh",
@@ -292,47 +309,47 @@
       "back": "Ar ais",
       "family": "Teaghlach",
       "careJournal": "Dialann Cúraim",
-      "inviteFamilyMembers": "Tabhair cuireadh do Bhall Teaghlaigh",
-      "shareCareCodeDesc": "Roinn do Chód Cúraim chun ligean do bhaill teaghlaigh eile páirt a ghlacadh.",
+      "inviteFamilyMembers": "Tabhair cuireadh do Bhaill Teaghlaigh",
+      "shareCareCodeDesc": "Roinn do Chód Cúraim chun ligean do bhaill teaghlaigh eile a bheith páirteach.",
       "showCareCode": "Taispeáin Cód Cúraim",
       "copy": "Cóipeáil",
       "share": "Roinn",
       "copied": "Cóipeáilte!",
-      "codeCopiedToClipboard": "Cód Cúraim cóipeáilte chuig an gearrthaisce",
+      "codeCopiedToClipboard": "Cód Cúraim cóipeáilte chuig an ngearrthaisce",
       "familyMembers": "Baill Teaghlaigh ({{count}})",
-      "you": "Tusa",
-      "primary": "Bunscoile",
-      "entryPlaceholder": "Cuir nóta, breathnóireacht nó cloch mhíle leis...",
+      "you": "Tú",
+      "primary": "Príomhúil",
+      "entryPlaceholder": "Cuir nóta, breathnóireacht, nó cloch mhíle leis...",
       "posting": "Ag postáil...",
-      "post": "Post",
-      "noJournalEntries": "Níl aon iontrálacha dialainne ann go fóill.",
-      "startDocumenting": "Tosaigh ag doiciméadú d’aistear cúraim!",
+      "post": "Postáil",
+      "noJournalEntries": "Níl aon iontrálacha dialainne fós.",
+      "startDocumenting": "Tosaigh ag doiciméadú do thuras cúraim!",
       "yesterday": "Inné",
-      "failedToAddEntry": "Theip ar iontráil a chur leis. Bain triail eile as.",
-      "shareCareCodeMessage": "Glac páirt i mo chiorcal cúraim OurTurn! Bain úsáid as an gCód Cúraim seo: {{code}}",
-      "deleteConfirmTitle": "Iontráil Irisleabhair a Scriosadh",
-      "deleteConfirmMessage": "An bhfuil tú cinnte gur mhaith leat an iontráil irisleabhair seo a scriosadh? Ní féidir é seo a chealú.",
+      "failedToAddEntry": "Theip ar an iontráil a chur leis. Bain triail eile as le do thoil.",
+      "shareCareCodeMessage": "Bí páirteach i mo chiorcal cúraim OurTurn! Úsáid an Cód Cúraim seo: {{code}}",
+      "deleteConfirmTitle": "Scrios Iontráil Dialainne",
+      "deleteConfirmMessage": "An bhfuil tú cinnte gur mian leat an iontráil dialainne seo a scriosadh? Ní féidir é seo a chealú.",
       "edited": "(curtha in eagar)",
       "crisis": "Géarchéim",
       "canEditPlan": "Is féidir plean a chur in eagar",
-      "receivesAlerts": "Faigheann sé fógraí",
-      "caregiverLimitReached": "Tá teorainn na sraithe saor in aisce bainte amach agat do bhaill teaghlaigh. Uasghrádaigh chun tuilleadh a chur leis."
+      "receivesAlerts": "Faigheann foláirimh",
+      "caregiverLimitReached": "Tá teorainn an chiseal saor in aisce sroichte agat do bhaill teaghlaigh. Uasghrádaigh chun níos mó a chur leis."
     },
     "toolkit": {
-      "pageTitle": "Foireann Uirlisí an Chúramóra",
+      "pageTitle": "Trealamh Cúraim don Chúramóir",
       "pageSubtitle": "Uirlisí praiticiúla agus tacaíocht do do fholláine",
-      "introMessage": "Dia duit {{name}}! Seo é d’áit le haghaidh faoiseamh tapa, tacaíochta agus féinchúraim.",
+      "introMessage": "Dia duit {{name}}! Seo do spás le haghaidh faoisimh thapa, tacaíochta, agus féinchúraim.",
       "checkin": {
         "title": "Conas atá tú inniu?",
         "energy": "Fuinneamh",
-        "energyLow": "Traochta",
-        "energyHigh": "Fuinnmhiúil",
+        "energyLow": "Ídithe",
+        "energyHigh": "Fuinniúil",
         "stress": "Strus",
-        "stressLow": "Socair",
-        "stressHigh": "Ró-ualach",
+        "stressLow": "Suaimhneach",
+        "stressHigh": "Thar a bheith buartha",
         "sleep": "Cáilíocht Codlata",
         "sleepLow": "Uafásach",
-        "sleepHigh": "Ar fheabhas"
+        "sleepHigh": "Go hiontach"
       },
       "relief": {
         "title": "Stáisiún Faoisimh Thapa",
@@ -340,83 +357,83 @@
         "duration": "{{min}} nóim",
         "startExercise": "Tosaigh",
         "stepOf": "Céim {{current}} de {{total}}",
-        "complete": "Go hiontach! Tá an cleachtadh críochnaithe.",
+        "complete": "Maith thú! Cleachtadh críochnaithe.",
         "close": "Dún",
         "pause": "Sos",
-        "resume": "Lean ar aghaidh",
+        "resume": "Atosaigh",
         "exercises": {
           "box-breathing": {
             "name": "Análú Bosca",
             "step0": "Bí compordach agus dún do shúile",
             "step1": "Análaigh isteach go mall trí do shrón",
-            "step2": "Coinnigh d’anáil go réidh",
+            "step2": "Coinnigh d'anáil go réidh",
             "step3": "Análaigh amach go mall trí do bhéal",
-            "step4": "Coinnigh sula n-análann tú arís",
+            "step4": "Coinnigh sula dtógann tú an chéad anáil eile",
             "step5": "Análaigh isteach go mall trí do shrón",
-            "step6": "Coinnigh d’anáil go réidh",
+            "step6": "Coinnigh d'anáil go réidh",
             "step7": "Análaigh amach go mall trí do bhéal",
-            "step8": "Coinnigh sula n-análann tú arís",
+            "step8": "Coinnigh sula dtógann tú an chéad anáil eile",
             "step9": "Análaigh isteach go mall trí do shrón",
-            "step10": "Coinnigh d’anáil go réidh",
+            "step10": "Coinnigh d'anáil go réidh",
             "step11": "Análaigh amach go mall trí do bhéal",
-            "step12": "Coinnigh sula n-análann tú arís",
+            "step12": "Coinnigh sula dtógann tú an chéad anáil eile",
             "step13": "Análaigh isteach go mall trí do shrón",
-            "step14": "Coinnigh d’anáil go réidh",
+            "step14": "Coinnigh d'anáil go réidh",
             "step15": "Análaigh amach go mall trí do bhéal",
-            "step16": "Coinnigh sula n-análann tú arís",
+            "step16": "Coinnigh sula dtógann tú an chéad anáil eile",
             "step17": "Análaigh isteach go mall trí do shrón",
-            "step18": "Coinnigh d’anáil go réidh",
+            "step18": "Coinnigh d'anáil go réidh",
             "step19": "Análaigh amach go mall trí do bhéal",
-            "step20": "Coinnigh sula n-análann tú arís",
+            "step20": "Coinnigh sula dtógann tú an chéad anáil eile",
             "step21": "Análaigh isteach go mall trí do shrón",
-            "step22": "Coinnigh d’anáil go réidh",
+            "step22": "Coinnigh d'anáil go réidh",
             "step23": "Análaigh amach go mall trí do bhéal",
-            "step24": "Go hiontach. Tóg nóiméad le tabhairt faoi deara conas a bhraitheann tú."
+            "step24": "Maith thú. Tóg nóiméad chun a thabhairt faoi deara conas a bhraitheann tú."
           },
           "54321-grounding": {
-            "name": "Bunú 5-4-3-2-1",
-            "step0": "Glac anáil mhall dhomhain agus féach thart ort",
-            "step1": "Ainmnigh 5 rud is féidir leat a FHEICEÁIL faoi láthair",
-            "step2": "Ainmnigh 4 rud is féidir leat a BHRAIT faoi láthair",
-            "step3": "Ainmnigh 3 rud is féidir leat a CHLOISTEÁIL faoi láthair",
-            "step4": "Ainmnigh 2 rud is féidir leat a BHRATH faoi láthair",
-            "step5": "Ainmnigh 1 rud is féidir leat a BLAISEADH faoi láthair",
-            "step6": "Glac anáil dhomhain eile. Tá tú anseo, agus tá tú sábháilte."
+            "name": "5-4-3-2-1 Bunú",
+            "step0": "Tóg anáil mhall, dhomhain agus féach timpeall ort",
+            "step1": "Ainmnigh 5 rud is féidir leat A FHEICEÁIL anois",
+            "step2": "Ainmnigh 4 rud is féidir leat TEAGMHÁIL leo anois",
+            "step3": "Ainmnigh 3 rud is féidir leat A CHLOISTEÁIL anois",
+            "step4": "Ainmnigh 2 rud is féidir leat A BHOILADH anois",
+            "step5": "Ainmnigh 1 rud is féidir leat A BHLASÚ anois",
+            "step6": "Tóg anáil dhomhain eile. Tá tú anseo, agus tá tú slán."
           },
           "gratitude-moment": {
             "name": "Nóiméad Buíochais",
-            "step0": "Dún do shúile agus glac anáil shuaimhneach",
-            "step1": "Smaoinigh ar dhuine amháin a bhfuil tú buíoch as agus cén fáth",
+            "step0": "Dún do shúile agus tóg anáil shuaimhneach",
+            "step1": "Smaoinigh ar dhuine amháin a bhfuil tú buíoch dó agus cén fáth",
             "step2": "Smaoinigh ar rud amháin a tharla inniu a bhí go maith, fiú má bhí sé beag",
             "step3": "Smaoinigh ar rud amháin fút féin a bhfuil meas agat air",
-            "step4": "Coinnigh na trí rud sin i d’intinn agus análú go domhain",
-            "step5": "Bíodh an mothúchán buíochais seo agat leat."
+            "step4": "Coinnigh na trí rud sin i d'intinn agus análú go domhain",
+            "step5": "Iompair an mothú buíochais seo leat."
           },
           "progressive-muscle-relaxation": {
-            "name": "Scíthe Forásach Matán",
+            "name": "Scíthú Forchéimneach Matán",
             "step0": "Suigh nó luigh síos go compordach. Dún do shúile.",
-            "step1": "Brúigh an dá dhorn go docht ar feadh 5 soicind...",
-            "step2": "Scaoil agus mothaigh an teannas ag leá ar shiúl",
-            "step3": "Déan do ghuaillí a theannadh — ardaigh iad i dtreo do chluasa...",
-            "step4": "Scaoil agus lig do do ghuaillí titim",
-            "step5": "Déan d’aghaidh a chrapadh go docht — forehead, súile, gialla...",
-            "step6": "Scaoil agus lig d’aghaidh scíth a ligean go hiomlán",
-            "step7": "Déan matáin do bholg a theannadh...",
-            "step8": "Scaoil agus análú isteach i do bholg",
-            "step9": "Brúigh do chosa agus do chosa go docht...",
-            "step10": "Scaoil agus mothaigh an teas ag sileadh trí do chosa",
-            "step11": "Análú go domhain. Tá do chorp ar fad ar a suaimhneas.",
-            "step12": "Oscail do shúile go réidh nuair atá tú réidh."
+            "step1": "Brúigh do dhá dhorn go daingean ar feadh 5 soicind...",
+            "step2": "Scaoil amach agus mothaigh an teannas ag imeacht",
+            "step3": "Teann do ghuaillí — ardaigh iad i dtreo do chluasa...",
+            "step4": "Scaoil amach agus lig do ghuaillí titim",
+            "step5": "Crap d'aghaidh go daingean — d'éadan, do shúile, do ghiall...",
+            "step6": "Scaoil amach agus lig do d'aghaidh scíth a ligean go hiomlán",
+            "step7": "Teann do matáin boilg...",
+            "step8": "Scaoil amach agus análaigh isteach i do bholg",
+            "step9": "Brúigh do chosa agus do chosa go daingean...",
+            "step10": "Scaoil amach agus mothaigh an teas ag sreabhadh trí do chosa",
+            "step11": "Análaigh go domhain. Tá do chorp ar fad suaimhneach.",
+            "step12": "Oscail do shúile go réidh nuair a bhíonn tú réidh."
           },
           "mindful-break": {
             "name": "Sos Aireach",
-            "step0": "Sos ar aon rud atá á dhéanamh agat. Is leatsa an nóiméad seo.",
-            "step1": "Dún do shúile agus glac 3 anáil mhall, dhomhain",
-            "step2": "Tabhair faoi deara conas a bhraitheann do chorp faoi láthair — ní gá aon rud a athrú",
-            "step3": "Éist leis na fuaimeanna timpeall ort, gar agus i bhfad",
-            "step4": "Braith an dromchla fút agus an t-aer ar do chraiceann",
-            "step5": "Abair go ciúin: \"Táim ag déanamh mo dhíchill, agus is leor é sin.\"",
-            "step6": "Glac anáil dhomhain eile",
+            "step0": "Cuir ar sos cibé rud atá á dhéanamh agat. Is leatsa an nóiméad seo.",
+            "step1": "Dún do shúile agus tóg 3 anáil mhall, dhomhain",
+            "step2": "Tabhair faoi deara conas a mhothaíonn do chorp anois — ní gá aon rud a athrú",
+            "step3": "Éist leis na fuaimeanna mórthimpeall ort, gar agus i bhfad",
+            "step4": "Mothaigh an dromchla fút agus an t-aer ar do chraiceann",
+            "step5": "Abair go ciúin: \"Táim ag déanamh mo dhíchill, agus is leor sin.\"",
+            "step6": "Tóg anáil dhomhain amháin eile",
             "step7": "Oscail do shúile go réidh. Tá tú athnuachan."
           },
           "breathing-478": {
@@ -424,42 +441,42 @@
             "step0": "Suigh go compordach agus scaoil do ghuaillí",
             "step1": "Análaigh isteach go ciúin trí do shrón ar feadh 4 chomhaireamh",
             "step2": "Coinnigh d'anáil ar feadh 7 gcomhaireamh",
-            "step3": "Exhale go hiomlán trí do bhéal ar feadh 8 gcomhaireamh",
+            "step3": "Análaigh amach go hiomlán trí do bhéal ar feadh 8 gcomhaireamh",
             "step4": "Análaigh isteach go ciúin trí do shrón ar feadh 4 chomhaireamh",
             "step5": "Coinnigh d'anáil ar feadh 7 gcomhaireamh",
-            "step6": "Exhale go hiomlán trí do bhéal ar feadh 8 gcomhaireamh",
+            "step6": "Análaigh amach go hiomlán trí do bhéal ar feadh 8 gcomhaireamh",
             "step7": "Análaigh isteach go ciúin trí do shrón ar feadh 4 chomhaireamh",
             "step8": "Coinnigh d'anáil ar feadh 7 gcomhaireamh",
-            "step9": "Exhale go hiomlán trí do bhéal ar feadh 8 gcomhaireamh",
+            "step9": "Análaigh amach go hiomlán trí do bhéal ar feadh 8 gcomhaireamh",
             "step10": "Análaigh isteach go ciúin trí do shrón ar feadh 4 chomhaireamh",
             "step11": "Coinnigh d'anáil ar feadh 7 gcomhaireamh",
-            "step12": "Exhale go hiomlán trí do bhéal ar feadh 8 gcomhaireamh",
+            "step12": "Análaigh amach go hiomlán trí do bhéal ar feadh 8 gcomhaireamh",
             "step13": "Análaigh isteach go ciúin trí do shrón ar feadh 4 chomhaireamh",
             "step14": "Coinnigh d'anáil ar feadh 7 gcomhaireamh",
-            "step15": "Exhale go hiomlán trí do bhéal ar feadh 8 gcomhaireamh",
-            "step16": "Tabhair faoi deara cé chomh socair a bhraitheann do chorp anois."
+            "step15": "Análaigh amach go hiomlán trí do bhéal ar feadh 8 gcomhaireamh",
+            "step16": "Tabhair faoi deara cé chomh suaimhní is atá do chorp anois."
           },
           "permission-slip": {
-            "name": "Duillín Cead",
-            "step0": "Glac anáil dhomhain agus tabhair nóiméad duit féin",
+            "name": "Ceadúnas",
+            "step0": "Tóg anáil dhomhain agus tabhair nóiméad duit féin",
             "step1": "Abair leat féin: \"Tugaim cead dom féin gan a bheith foirfe inniu\"",
             "step2": "Abair: \"Tugaim cead dom féin cabhair a iarraidh\"",
-            "step3": "Abair: \"Tugaim cead dom féin an rud a bhraitheann mé a bhraitheann gan chiontacht\"",
+            "step3": "Abair: \"Tugaim cead dom féin mothúcháin a mhothú gan chiontacht\"",
             "step4": "Abair: \"Tugaim cead dom féin sos a ghlacadh\"",
-            "step5": "Abair: \"Táim ag déanamh mo dhíchill, agus is leor é sin\"",
-            "step6": "Glac anáil dhomhain agus coinnigh na focail seo gar",
-            "step7": "Tá trua agat freisin. Déan é seo leat."
+            "step5": "Abair: \"Táim ag déanamh mo dhíchill, agus is leor sin\"",
+            "step6": "Tóg anáil dhomhain agus coinnigh na focail seo gar duit",
+            "step7": "Tá trua tuillte agat freisin. Iompair é seo leat."
           },
           "quick-walk": {
-            "name": "Leid Siúlóide Gasta",
+            "name": "Leide Siúlóide Tapa",
             "step0": "Seas suas agus sín do lámha os cionn do chinn",
-            "step1": "Siúil go dtí an fhuinneog nó an doras is gaire agus féach taobh amuigh",
-            "step2": "Tóg 5 chéim mhall agus braith gach cos ag baint leis an talamh",
+            "step1": "Siúil go dtí an fhuinneog nó an doras is gaire agus féach amach",
+            "step2": "Tóg 5 chéim mhall agus mothaigh gach cos ag baint an talaimh",
             "step3": "Féach suas — tabhair faoi deara an spéir, an tsíleáil, nó rud éigin os do chionn",
-            "step4": "Tóg 5 chéim mhall, d'aon ghnó eile",
-            "step5": "Croith do lámha agus do lámha go scaoilte ar feadh cúpla soicind",
-            "step6": "Rolladh do ghuaillí ar ais 3 huaire",
-            "step7": "Bhog tú do chorp. Áirítear sin. Go n-éirí leat."
+            "step4": "Tóg 5 chéim mhall, intinneacha eile",
+            "step5": "Croith do lámha agus do ghéaga go scaoilte ar feadh cúpla soicind",
+            "step6": "Rollaigh do ghuaillí ar ais 3 huaire",
+            "step7": "Bhog tú do chorp. Tá tábhacht leis sin. Maith thú."
           }
         }
       },
@@ -467,95 +484,95 @@
         "title": "Iarr Cabhair",
         "sendRequest": "Seol",
         "customPlaceholder": "Clóscríobh do theachtaireacht...",
-        "recentRequests": "Iarratais Déanaí",
-        "statusPending": "Ar feitheamh",
+        "recentRequests": "Iarratais Le Déanaí",
+        "statusPending": "Ar Feitheamh",
         "statusAccepted": "Glactha",
         "statusCompleted": "Déanta",
-        "statusExpired": "Imithe in éag",
+        "statusExpired": "Éagtha",
         "sent": "Iarratas cabhrach seolta!",
         "limitReached": "Is féidir leat suas le 5 iarratas cabhrach a sheoladh in aghaidh an lae.",
         "noRequests": "Níl aon iarratais cabhrach le déanaí.",
         "accept": "Is féidir liom cabhrú",
-        "complete": "Marcáil mar dhéanta",
-        "template_need_break": "Teastaíonn sos uaim",
+        "complete": "Marcáil déanta",
+        "template_need_break": "Teastaíonn sos",
         "template_handle_meds": "Cabhair le cógais",
-        "template_need_visit": "Teastaíonn cuairt uaim",
+        "template_need_visit": "Teastaíonn cuairt",
         "template_groceries": "Grósaera",
         "template_custom": "Teachtaireacht saincheaptha",
-        "message_need_break": "D’fhéadfainn sos a úsáid i ndáiríre. An bhféadfadh duine éigin teacht i seilbh na háite ar feadh tamaill?",
-        "message_handle_meds": "An féidir le duine cabhrú le cógais inniu?",
-        "message_need_visit": "Chiallódh sé go leor dá bhféadfadh duine cuairt a thabhairt inniu.",
-        "message_groceries": "An bhféadfadh duine cabhrú le grósaera a phiocadh suas?"
+        "message_need_break": "D'fhéadfainn sos a úsáid go mór. An bhféadfadh duine éigin teacht i gcomharbas ar feadh tamaill?",
+        "message_handle_meds": "An féidir le duine éigin cabhrú le cógais inniu?",
+        "message_need_visit": "Bheadh an-chiall leis dá bhféadfadh duine éigin cuairt a thabhairt inniu.",
+        "message_groceries": "An bhféadfadh duine éigin cabhrú le grósaera a bhailiú?"
       },
       "agent": {
-        "title": "Compánach Folláine",
-        "disclaimer": "Le haghaidh tacaíochta mothúchánach amháin. Ní comhairle leighis é.",
-        "placeholder": "Conas a bhraitheann tú?",
+        "title": "Comhluadar Folláine",
+        "disclaimer": "Le haghaidh tacaíochta mothúchánaí amháin. Ní comhairle leighis é seo.",
+        "placeholder": "Conas atá tú ag mothú?",
         "greeting": "Ag smaoineamh ort...",
-        "rateLimited": "Glac sos — is féidir leat comhrá a dhéanamh arís go luath.",
-        "errorMessage": "Níorbh fhéidir ceangal a dhéanamh. Bain triail eile as le do thoil.",
+        "rateLimited": "Glac sos beag — is féidir leat comhrá a dhéanamh arís go luath.",
+        "errorMessage": "Níorbh fhéidir nascadh. Bain triail eile as, le do thoil.",
         "expand": "Leathnaigh",
-        "collapse": "Titim",
+        "collapse": "Laghdú",
         "prompts": {
-          "overwhelmed": "Táim ró-mhór faoi láthair",
-          "calmDown": "Cabhraigh liom mo scíth a ligean i 2 nóiméad",
+          "overwhelmed": "Tá mé ag mothú faoi léigear faoi láthair",
+          "calmDown": "Cabhraigh liom suaimhniú i 2 nóiméad",
           "needEnergy": "Teastaíonn fuinneamh uaim ach ní féidir liom sos a ghlacadh",
-          "poorSleep": "Ní raibh mé in ann codladh go maith aréir",
-          "needMoment": "Teastaíonn nóiméad uaim díreach dom féin",
+          "poorSleep": "Níor chodail mé go maith aréir",
+          "needMoment": "Teastaíonn nóiméad uaim dom féin amháin",
           "uplifting": "Inis dom rud éigin spreagúil"
         }
       },
       "goal": {
-        "title": "Sprioc an Lae",
+        "title": "Sprioc an Lae Inniu",
         "placeholder": "Socraigh sprioc don lá inniu...",
         "done": "Déanta!",
         "weekLabel": "An tseachtain seo",
         "suggest": "Mol"
       },
       "burnout": {
-        "title": "Tugaimid faoi deara go mb’fhéidir go mbeadh tacaíocht bhreise uait",
-        "message": "Léiríonn do sheiceálacha le déanaí strus ardaithe nó fuinneamh íseal. Tá sé sin intuigthe go hiomlán — tá cúramóireacht deacair."
+        "title": "Tugaimid faoi deara go mb'fhéidir go bhfuil tacaíocht bhreise uait",
+        "message": "Léiríonn do sheiceálacha le déanaí strus ardaithe nó fuinneamh íseal. Tá sé sin intuigthe go hiomlán — tá cúram deacair."
       },
       "support": {
         "title": "An bhfuil Tacaíocht uait?",
-        "description": "Tá cúramóireacht dúshlánach. Tá sé ceart go leor cabhair a iarraidh."
+        "description": "Tá cúram dúshlánach. Tá sé ceart go leor cabhair a iarraidh."
       },
-      "footer": "Cuimhnigh: Ní féidir leat doirt ó chupán folamh. Is cuma le do fholláine freisin.",
+      "footer": "Cuimhnigh: Ní féidir leat doirteadh ó chupán folamh. Tá do fholláine tábhachtach freisin.",
       "weeklyStats": {
         "title": "Léargais Sheachtainiúla",
-        "subtitle": "Achoimre ar fholláine do 7 lá",
+        "subtitle": "Do achoimre folláine 7 lá",
         "avgEnergy": "Meánfhuinneamh",
         "avgStress": "Meánstrus",
         "avgSleep": "Meánchodladh",
-        "noData": "Déan seiceálacha laethúla chun do threochtaí seachtainiúla a fheiceáil.",
-        "generateDigest": "Achoimre AI a Ghiniúint",
-        "generating": "Ag giniúint...",
-        "behaviourSummary": "{{count}} eachtra iompraíochta logáilte an tseachtain seo"
+        "noData": "Comhlánaigh seiceálacha laethúla chun do threochtaí seachtainiúla a fheiceáil.",
+        "generateDigest": "Cruthaigh Achoimre AI",
+        "generating": "Á Chruthú...",
+        "behaviourSummary": "{{count}} teagmhas iompraíochta logáilte an tseachtain seo"
       },
       "sos": {
         "title": "Cad atá ag tarlú faoi láthair?",
-        "subtitle": "Roghnaigh leis an rud a bhfuil cabhair uait leis — cuirfimid treoir ar fáil duit.",
-        "calmDown": "Caithfidh mé mo shuaimhneas a choinneáil",
+        "subtitle": "Roghnaigh an rud a bhfuil cabhair uait leis — treoróimid thú.",
+        "calmDown": "Teastaíonn uaim suaimhniú",
         "calmDownDesc": "Cleachtaí tapa análaithe & faoisimh",
-        "behaviourNow": "Iompraíocht ag tarlú faoi láthair",
-        "behaviourNowDesc": "Eachtra a logáil agus treoir a fháil",
-        "callHelp": "Tá cabhair éigeandála uaim",
-        "callHelpDesc": "Téigh i dteagmháil leis na seirbhísí éigeandála nó leis an teaghlach",
-        "needBreak": "Tá duine éigin uaim chun an cúram a ghlacadh ar láimh",
-        "needBreakDesc": "Iarratas cabhrach a sheoladh chuig an teaghlach"
+        "behaviourNow": "Iompar ag tarlú faoi láthair",
+        "behaviourNowDesc": "Logáil teagmhas agus faigh treoir",
+        "callHelp": "Teastaíonn cabhair éigeandála uaim",
+        "callHelpDesc": "Déan teagmháil le seirbhísí éigeandála nó le do theaghlach",
+        "needBreak": "Teastaíonn uaim go nglacfadh duine éigin an cúram",
+        "needBreakDesc": "Seol iarratas cabhrach chuig an teaghlach"
       },
       "behaviours": {
         "playbooks": {
-          "title": "Leabhair Iompraíochta",
-          "subtitle": "Beartaigh ar iompraíocht le haghaidh treoir céim ar chéim",
+          "title": "Leabhair Imeartha Iompraíochta",
+          "subtitle": "Beartaigh ar iompar le haghaidh treorach céim ar chéim",
           "rightNow": "Faoi Láthair",
-          "understandWhy": "Tuiscint a Fháil ar an bhFáth",
+          "understandWhy": "Tuig Cén Fáth",
           "prevent": "Cosc",
-          "whenToCallDoctor": "Cathain ar Chóir Dul i dTeagmháil leis an Dochtúir"
+          "whenToCallDoctor": "Cathain is Ceart Glaoch ar an Dochtúir"
         },
         "logger": {
-          "title": "Eachtra a Logáil",
-          "logIncident": "Eachtra a Logáil",
+          "title": "Logáil Teagmhas",
+          "logIncident": "Logáil Teagmhas",
           "typeLabel": "Cineál iompraíochta",
           "selectType": "Roghnaigh cineál...",
           "severity": "Déine",
@@ -568,73 +585,73 @@
           "night": "Oíche",
           "duration": "Fad (nóiméad)",
           "durationPlaceholder": "Cá fhad a mhair sé?",
-          "triggers": "Truicearáin féideartha",
+          "triggers": "Truicearáin fhéideartha",
           "trigger_pain": "Pian",
           "trigger_hunger": "Ocras",
           "trigger_thirst": "Tart",
           "trigger_fatigue": "Tuirse",
-          "trigger_overstimulation": "Róspreagadh",
+          "trigger_overstimulation": "Ró-spreagadh",
           "trigger_unfamiliar_environment": "Áit neamhchoitianta",
           "trigger_unfamiliar_person": "Duine neamhchoitianta",
-          "trigger_routine_change": "Athrú ar an ngnáthamh",
-          "trigger_medication": "Cógas",
+          "trigger_routine_change": "Athrú gnáthaimh",
+          "trigger_medication": "Cógais",
           "trigger_noise": "Torann",
           "trigger_loneliness": "Uaigneas",
-          "trigger_boredom": "Leadrán",
+          "trigger_boredom": "Leamh",
           "trigger_bathroom_need": "Riachtanas seomra folctha",
           "trigger_frustration": "Frustrachas",
           "trigger_fear": "Eagla",
           "trigger_unknown": "Anaithnid",
           "whatHappened": "Cad a tharla?",
-          "whatHappenedPlaceholder": "Déan cur síos ar an eachtra...",
+          "whatHappenedPlaceholder": "Déan cur síos ar an teagmhas...",
           "whatHelped": "Cad a chabhraigh? (roghnach)",
-          "whatHelpedPlaceholder": "Déan cur síos ar an rud a chabhraigh leis an suaimhneas a chur ar ais...",
-          "save": "Eachtra a Shábháil",
-          "saved": "Eachtra logáilte"
+          "whatHelpedPlaceholder": "Déan cur síos ar an rud a chabhraigh le rudaí a mhaolú...",
+          "save": "Sábháil Teagmhas",
+          "saved": "Teagmhas logáilte"
         },
         "timeline": {
-          "title": "Amlíne na nEachtraí",
-          "all": "Gach",
-          "noIncidents": "Ní mheaitseálann aon eachtraí leis an scagaire reatha."
+          "title": "Amlíne Teagmhais",
+          "all": "Uile",
+          "noIncidents": "Ní mheaitseálann aon teagmhais an scagaire reatha."
         }
       }
     },
     "reports": {
-      "title": "Tuarascáil ar Chuairt an Dochtúra",
-      "period": "Tréimhse na tuarascála",
-      "lastDays": "{{days}} lá deireanacha",
-      "generate": "Tuarascáil a Ghiniúint",
-      "include": "Cuir sa tuarascáil",
-      "moodTrends": "Treoirlínte meoin agus achoimre seiceála isteach",
+      "title": "Tuarascáil Cuairte Dochtúra",
+      "period": "Tréimhse tuarascála",
+      "lastDays": "Na {{days}} lá deireanacha",
+      "generate": "Cruthaigh Tuarascáil",
+      "include": "Cuir san tuarascáil",
+      "moodTrends": "Treochtaí giúmar agus achoimre seiceála isteach",
       "sleepPatterns": "Patrúin codlata",
-      "activityCompletion": "Rátaí críochnaithe gníomhaíochta",
-      "medicationAdherence": "Cloí le cógas",
-      "journalNotes": "Breathnuithe suntasacha ar an dialann cúraim",
+      "activityCompletion": "Rátaí comhlánaithe gníomhaíochta",
+      "medicationAdherence": "Comhlíonadh cógais",
+      "journalNotes": "Breathnuithe suntasacha dialann cúraim",
       "locationPatterns": "Patrúin suímh",
       "caregiverConcerns": "Imní an chúramóra",
       "customNotes": "Nótaí breise don dochtúir",
       "print": "Priontáil",
-      "downloadPdf": "PDF a Íoslódáil",
-      "emailDoctor": "Seol ríomhphost chuig an dochtúir",
-      "disclaimer": "Tá an achoimre seo bunaithe ar shonraí folláine féintuairiscithe agus breathnuithe an teaghlaigh. Ní measúnú cliniciúil é.",
-      "webNote": "Chun an tógálaí tuarascála iomlán a fháil le heaspórtáil priontála agus PDF, tabhair cuairt ar aip gréasáin OurTurn.",
-      "openInWebApp": "Oscail san Aip Ghréasáin",
+      "downloadPdf": "Íoslódáil PDF",
+      "emailDoctor": "Ríomhphost chuig an dochtúir",
+      "disclaimer": "Tá an achoimre seo bunaithe ar shonraí folláine féintuairiscithe agus ar bhreathnuithe teaghlaigh. Ní measúnú cliniciúil é.",
+      "webNote": "Le haghaidh an tógálaí tuarascála iomláin le priontáil agus easpórtáil PDF, tabhair cuairt ar an aip gréasáin OurTurn.",
+      "openInWebApp": "Oscail san Aip Gréasáin",
       "previousReports": "Tuarascálacha Roimhe Seo",
-      "generated": "Ginte {{date}}",
+      "generated": "Cruthaithe {{date}}",
       "avgQuality": "meánchaighdeán",
       "moodStruggling": "Ag streachailt",
       "moodLow": "Íseal",
       "moodOkay": "Ceart go leor",
       "moodGood": "Maith",
       "moodGreat": "Ar fheabhas",
-      "careSummary": "Achoimre Chúraim OurTurn",
+      "careSummary": "Achoimre Cúraim OurTurn",
       "patient": "Othar",
       "periodLabel": "Tréimhse",
       "checkinsRecorded": "Seiceálacha isteach taifeadta",
-      "averageMood": "Meánmheon",
+      "averageMood": "Meánmhian",
       "averageSleepQuality": "Meánchaighdeán codlata",
-      "activityCompletionRate": "Críochnú gníomhaíochta",
-      "medicationAdherenceRate": "Cloí le cógas",
+      "activityCompletionRate": "Ráta críochnaithe gníomhaíochta",
+      "medicationAdherenceRate": "Cloí le cógais",
       "observations": "Breathnuithe",
       "categoryMedication": "Cógais",
       "categoryMeals": "Béilí",
@@ -644,24 +661,24 @@
       "categoryHealth": "Sláinte"
     },
     "onboarding": {
-      "step1Title": "Fútsa",
-      "step2Title": "Faoi do Dhuine Grá",
-      "step3Title": "Scéal a Saoil",
+      "step1Title": "Maidir Leat",
+      "step2Title": "Maidir le Do Dhuine Grá",
+      "step3Title": "Scéal a Saoil/Shaoil",
       "step4Title": "Gnáthamh Laethúil",
       "step5Title": "Socrú Sábháilteachta",
       "step6Title": "Do Chód Cúraim",
       "next": "Ar Aghaidh",
       "back": "Ar Ais",
-      "finish": "Cuir Tús leis",
+      "finish": "Tosaigh",
       "careCodeInstructions": "Suiteáil OurTurn ar ghuthán do dhuine gaoil agus cuir isteach an cód seo chun nascadh.",
       "quickSetup": "Socrú Tapa",
       "yourName": "D'ainm",
       "yourNameRequired": "D'ainm *",
       "lovedOneNameRequired": "Ainm do dhuine gaoil *",
-      "relationship": "Do chaidreamh leat leo",
+      "relationship": "Do chaidreamh leo",
       "relationshipPlaceholder": "m.sh., iníon, mac, céile",
-      "settingsHint": "Is féidir leat tuilleadh sonraí a chur leis níos déanaí i Socruithe",
-      "fillRequired": "Líon isteach na réimsí riachtanacha go léir le do thoil",
+      "settingsHint": "Is féidir leat tuilleadh sonraí a chur leis níos déanaí sna Socruithe",
+      "fillRequired": "Líon isteach gach réimse riachtanach, le do thoil",
       "setupFailed": "Theip ar an socrú a chríochnú",
       "country": "Tír",
       "theirName": "A gcéad ainm",
@@ -670,18 +687,18 @@
       "homeAddress": "Seoladh baile",
       "medications": "Cógais",
       "addMedication": "Cuir cógas leis",
-      "childhoodLocation": "Áit ar fhás siad aníos",
+      "childhoodLocation": "An áit ar fhás siad aníos",
       "career": "Gairm / slí bheatha",
       "hobbies": "Caitheamh aimsire agus spéiseanna",
-      "favoriteMusic": "Ceol / ealaíontóirí is fearr leat",
-      "favoriteFoods": "Bia is fearr leat",
+      "favoriteMusic": "Ceol / ealaíontóirí is fearr leo",
+      "favoriteFoods": "Bia is fearr leo",
       "importantPeople": "Daoine tábhachtacha",
       "keyEvents": "Príomhimeachtaí saoil",
       "uploadPhotos": "Uaslódáil grianghraif teaghlaigh",
-      "wakeTime": "Am múscail",
+      "wakeTime": "Am dúiseachta",
       "sleepTime": "Am codlata",
-      "generatePlan": "Plean molta a ghiniúint",
-      "emergencyContacts": "Teagmhálacha éigeandála",
+      "generatePlan": "Gineadh plean molta",
+      "emergencyContacts": "Teagmhálaithe éigeandála",
       "alertSettings": "Socruithe foláirimh",
       "stepOf": "Céim {{current}} de {{total}}",
       "breakfastTime": "Am bricfeasta",
@@ -689,30 +706,30 @@
       "dinnerTime": "Am dinnéir",
       "typicalDay": "Cur síos ar ghnáthlá",
       "typicalDayPlaceholder": "Déan cur síos ar ghnáthlá...",
-      "emergencyContactsHint": "Cuir teagmhálacha éigeandála leis a bheidh le feiceáil sa chluaisín Cabhair in aip an othair.",
+      "emergencyContactsHint": "Cuir teagmhálaithe éigeandála leis a bheidh le feiceáil sa chluaisín Cabhair san aip othair.",
       "remove": "Bain",
-      "addContact": "Cuir Teagmháil leis",
+      "addContact": "Cuir Teagmhálaí Leis",
       "contactNameRequired": "Ainm *",
       "phoneRequired": "Uimhir theileafóin *",
       "relationshipOptional": "Caidreamh (roghnach)",
-      "addContactButton": "+ Cuir Teagmháil leis",
+      "addContactButton": "+ Cuir Teagmhálaí Leis",
       "emergencyContactWarning": "Molaimid teagmhálaí éigeandála amháin ar a laghad a chur leis.",
       "allSet": "Tá tú réidh!",
       "careCodeLabel": "CÓD CÚRAIM",
-      "copied": "Cóipeáilte!",
-      "copyCode": "Cóipeáil an Cód",
+      "copied": "Cóipeáladh!",
+      "copyCode": "Cóipeáil Cód",
       "nextSteps": "Na chéad chéimeanna eile:",
       "nextStep1": "1. Suiteáil OurTurn ar ghuthán {{name}}",
       "nextStep2": "2. Oscail an aip agus cuir isteach an Cód Cúraim thuas",
-      "nextStep3": "3. Sin é! Beidh plean laethúil {{name}} le feiceáil ar a nguthán",
-      "homeAddressPlaceholder": "123 Sráid na Príomhchathrach, Cathair"
+      "nextStep3": "3. Sin é! Beidh plean laethúil {{name}} le feiceáil ar a ghuthán/a guthán",
+      "homeAddressPlaceholder": "123 Príomhshráid, Cathair"
     },
     "settings": {
       "title": "Socruithe",
       "appearance": "Dealramh",
       "theme": {
         "label": "Téama",
-        "light": "Solas",
+        "light": "Éadrom",
         "dark": "Dorcha",
         "system": "Córas"
       },
@@ -720,12 +737,12 @@
       "account": "Cuntas",
       "subscription": "Síntiús",
       "notifications": "Fógraí",
-      "privacy": "Príobháideacht & Sonraí",
+      "privacy": "Príobháideachas & Sonraí",
       "exportData": "Easpórtáil Mo Shonraí",
-      "exportNote": "Íoslódáil cóip de do shonraí go léir (ceart GDPR chun iniomparthachta)",
-      "exportClipboard": "Tá do shonraí cóipeáilte chuig an ngearrthaisce. Is féidir leat é a ghreamú isteach i ndoiciméad nó i ríomhphost.",
+      "exportNote": "Íoslódáil cóip de do chuid sonraí go léir (ceart GDPR chun iniomparthachta)",
+      "exportClipboard": "Cóipeáladh do chuid sonraí chuig an ngearrthaisce. Is féidir leat iad a ghreamú isteach i ndoiciméad nó i ríomhphost.",
       "deleteAccount": "Scrios Cuntas",
-      "deleteWarning": "Scriosfaidh sé seo go buan na sonraí go léir don teaghlach seo. Ní féidir é seo a chealú.",
+      "deleteWarning": "Scriosfar go buan gach sonraí don teaghlach seo. Ní féidir é seo a chealú.",
       "deleteConfirmType": "Clóscríobh DELETE chun scriosadh cuntais a dhearbhú",
       "confirmDelete": "Deimhnigh Scriosadh",
       "language": "Teanga",
@@ -733,100 +750,100 @@
       "version": "Leagan",
       "notMedicalDevice": "Ní feiste leighis é OurTurn",
       "dailySummary": "Achoimre Laethúil",
-      "dailySummaryTime": "Am achoimre laethúil",
+      "dailySummaryTime": "Am achoimre laethúla",
       "emailNotifications": "Fógraí ríomhphoist",
       "pushNotifications": "Fógraí brú",
       "safetyAlerts": "Foláirimh sábháilteachta",
       "signOut": "Sínigh amach",
       "saveProfile": "Sábháil Próifíl",
       "saved": "Sábháilte!",
-      "saving": "Ag sábháil...",
+      "saving": "Á shábháil...",
       "changePassword": "Athraigh Pasfhocal",
       "newPassword": "Pasfhocal Nua",
       "confirmNewPassword": "Deimhnigh Pasfhocal Nua",
       "passwordPlaceholder": "8 gcarachtar ar a laghad",
-      "passwordChanged": "D'éirigh leis an bhfocal faire a athrú!",
-      "changingPassword": "Ag athrú...",
-      "copyCode": "Cóipeáil an Cód",
-      "codeCopied": "Cód cóipeáilte!",
+      "passwordChanged": "Athraíodh an pasfhocal go rathúil!",
+      "changingPassword": "Á athrú...",
+      "copyCode": "Cóipeáil Cód",
+      "codeCopied": "Cóipeáladh an cód!",
       "regenerateCode": "Athghin Cód",
       "regenerateWarning": "Stopfaidh an sean-chód ag obair. Beidh an cód nua ag teastáil ó gach feiste othair péireáilte.",
       "dangerZone": "Crios Contúirte",
       "relationship": "Caidreamh",
       "deleteConfirm": "Clóscríobh DELETE chun scriosadh cuntais a dhearbhú",
       "photoGallery": "Gailearaí Grianghraf",
-      "photoGalleryDesc": "Uaslódáil grianghraif teaghlaigh le haghaidh gníomhaíochtaí cuimhne pearsantaithe",
+      "photoGalleryDesc": "Uaslódáil grianghraif teaghlaigh le haghaidh gníomhaíochtaí cuimhneacháin pearsantaithe",
       "uploadPhotos": "Uaslódáil Grianghraif",
-      "uploading": "Ag uaslódáil...",
+      "uploading": "Á uaslódáil...",
       "deletePhoto": "Scrios an grianghraf seo?",
-      "maxPhotosReached": "Uasmhéid de 20 grianghraf bainte amach",
-      "photoUploadHint": "Suas le 20 grianghraf, 5MB ar a mhéad an ceann",
-      "photoUploadFailed": "Theip ar an ngrianghraf a uaslódáil. Bain triail eile as le do thoil.",
-      "photoDeleteFailed": "Theip ar an ngrianghraf a scriosadh. Bain triail eile as le do thoil.",
+      "maxPhotosReached": "Uasmhéid 20 grianghraf sroichte",
+      "photoUploadHint": "Suas le 20 grianghraf, 5MB an ceann ar a mhéad",
+      "photoUploadFailed": "Theip ar an ngrianghraf a uaslódáil. Bain triail eile as, le do thoil.",
+      "photoDeleteFailed": "Theip ar an ngrianghraf a scriosadh. Bain triail eile as, le do thoil.",
       "noPhotosYet": "Níl aon ghrianghraif uaslódáilte fós",
       "photosCount": "{{count}} de 20 grianghraf",
-      "patientComplexity": "Mód Aipe Othar",
-      "patientComplexityDesc": "Coigeartaigh comhéadan aip an othair bunaithe ar riachtanais do ghaoil.",
+      "patientComplexity": "Mód Aip an Duine Grá",
+      "patientComplexityDesc": "Coigeartaigh comhéadan aip an duine ghrá bunaithe ar a riachtanais.",
       "complexity": {
         "full": "Iomlán",
         "fullDesc": "Gach gné ar fáil",
         "simplified": "Simplithe",
         "simplifiedDesc": "Téacs níos mó, níos lú sonraí",
         "essential": "Riachtanach",
-        "essentialDesc": "Íosta — ach ceol agus cabhair ghlaoch"
+        "essentialDesc": "Íosta — ceol agus glaoch cabhrach amháin"
       },
-      "safetyEscalation": "Sábháilteacht & Méadú",
-      "escalationTiming": "Am méadaithe",
-      "escalationTimingDesc": "Cá fhad sula méadaítear foláirimh neamhaitheanta",
+      "safetyEscalation": "Sábháilteacht & Ardú",
+      "escalationTiming": "Am ardaithe",
+      "escalationTimingDesc": "Cá fhad sula n-ardaítear foláirimh neamh-aitheanta",
       "offlineThreshold": "Tairseach foláirimh as líne",
-      "offlineThresholdDesc": "Foláireamh nuair nach bhfacthas an gléas chomh fada seo",
+      "offlineThresholdDesc": "Foláireamh nuair nach bhfeictear an gléas ar feadh an ama seo",
       "minutes": "nóiméad",
       "respiteReminders": "Meabhrúcháin Sos",
       "respiteRemindersDesc": "Faigh meabhrúcháin chun sosanna a ghlacadh",
       "groupProfile": "Do Phróifíl",
       "groupAboutPatient": "Maidir le {{name}}",
-      "groupAboutPatientGeneric": "Maidir le Do Ghaol",
-      "groupSharing": "Comhroinnt & Ceangal",
+      "groupAboutPatientGeneric": "Maidir le Do Dhuine Grá",
+      "groupSharing": "Roinnt & Nascadh",
       "groupSafety": "Sábháilteacht & Fógraí",
       "groupAccount": "Cuntas",
-      "patientInformation": "Faisnéis Othar",
-      "patientInformationDesc": "Sonraí bunúsacha faoi do dhuine muinteartha",
-      "patientName": "Ainm an Othair",
+      "patientInformation": "Faisnéis faoin Duine Grá",
+      "patientInformationDesc": "Sonraí bunúsacha faoi do dhuine grá",
+      "patientName": "Ainm an Duine Grá",
       "dateOfBirth": "Dáta Breithe",
-      "dementiaType": "Cineál na néaltrachta",
+      "dementiaType": "Cineál Dementiae",
       "selectDementiaType": "Roghnaigh cineál (roghnach)",
       "homeAddress": "Seoladh Baile",
-      "homeAddressPlaceholder": "Seoladh iomlán baile",
+      "homeAddressPlaceholder": "Seoladh baile iomlán",
       "savingPatientInfo": "Ag sábháil...",
-      "savePatientInfo": "Sábháil Faisnéis Othar",
-      "lifeStory": "Scéal na Beatha",
-      "lifeStoryDesc": "Cuidíonn na sonraí seo le gníomhaíochtaí laethúla agus leideanna cuimhne a phearsantú.",
-      "childhoodLocation": "Áit ar tógadh iad",
+      "savePatientInfo": "Sábháil Faisnéis an Duine Grá",
+      "lifeStory": "Scéal Saoil",
+      "lifeStoryDesc": "Cuidíonn na sonraí seo le gníomhaíochtaí laethúla agus le leideanna cuimhní cinn a phearsantú.",
+      "childhoodLocation": "Cár fhás siad aníos",
       "career": "Gairm / Slí Bheatha",
-      "hobbies": "Caitheamh aimsire & Spéis",
-      "hobbiesPlaceholder": "m.sh., garraíodóireacht, péinteáil, fichille",
-      "favoriteMusic": "Ceol / Ealaíontóirí is Ansa",
+      "hobbies": "Caitheamh Aimsire & Suimeanna",
+      "hobbiesPlaceholder": "m.sh., garraíodóireacht, péintéireacht, fichille",
+      "favoriteMusic": "Ceol / Ealaíontóirí is Fearr Leo",
       "favoriteMusicPlaceholder": "m.sh., Frank Sinatra, Beatles",
-      "favoriteFoods": "Bia is Ansa",
+      "favoriteFoods": "Bia is Fearr Leo",
       "favoriteFoodsPlaceholder": "m.sh., pióg úll, sicín rósta",
       "importantPeople": "Daoine Tábhachtacha",
-      "importantPeoplePlaceholder": "m.sh., John (deartháir), Mary (cara is fearr)",
+      "importantPeoplePlaceholder": "m.sh., Seán (deartháir), Máire (cara is fearr)",
       "keyEvents": "Príomhimeachtaí Saoil",
-      "keyEventsPlaceholder": "m.sh., Céim amach 1965, Aistrigh go Londain 1970",
+      "keyEventsPlaceholder": "m.sh., Céimnithe 1965, Bogtha go Londain 1970",
       "savingLifeStory": "Ag sábháil...",
-      "saveLifeStory": "Sábháil Scéal na Beatha",
+      "saveLifeStory": "Sábháil Scéal Saoil",
       "dailySchedule": "Sceideal Laethúil",
-      "dailyScheduleDesc": "Socraigh amanna múscailte agus codlata do ghnáthamh do dhuine muinteartha.",
-      "wakeTime": "Am Múscailte",
+      "dailyScheduleDesc": "Socraigh amanna dúiseachta agus codlata do ghnáthamh do dhuine ghrá.",
+      "wakeTime": "Am Dúiseachta",
       "sleepTime": "Am Codlata",
       "savingSchedule": "Ag sábháil...",
       "saveSchedule": "Sábháil Sceideal",
       "emergencyContacts": "Teagmhálaithe Éigeandála",
-      "emergencyContactsDesc": "Tá na teagmhálaithe seo le feiceáil i gcluaisín Cabhair aip an othair.",
-      "addContact": "Cuir Teagmhálaí leis",
-      "contactName": "Ainm Teagmhálaí",
-      "contactPhone": "Uimhir Theileafóin",
-      "contactRelationship": "Caidreamh",
+      "emergencyContactsDesc": "Tá na teagmhálaithe seo le feiceáil i gcluaisín Cabhrach aip an duine ghrá.",
+      "addContact": "Cuir Teagmhálaí Leis",
+      "contactName": "Ainm an Teagmhálaí",
+      "contactPhone": "Uimhir Fón",
+      "contactRelationship": "Gaol",
       "contactRelationshipPlaceholder": "m.sh., Iníon, comharsa",
       "noContactsYet": "Níl aon teagmhálaithe éigeandála curtha leis fós.",
       "savingContacts": "Ag sábháil...",
@@ -842,145 +859,145 @@
       "signup": "Cláraigh",
       "email": "Ríomhphost",
       "password": "Pasfhocal",
-      "forgotPassword": "Dearmad ar phasfhocal?",
-      "noAccount": "Níl cuntas agat?",
+      "forgotPassword": "An ndearna tú dearmad ar do phasfhocal?",
+      "noAccount": "Nach bhfuil cuntas agat?",
       "hasAccount": "An bhfuil cuntas agat cheana féin?",
       "continueWithGoogle": "Lean ar aghaidh le Google",
       "continueWithApple": "Lean ar aghaidh le Apple",
       "or": "nó",
       "confirmPassword": "Deimhnigh pasfhocal",
       "createAccount": "Cruthaigh Cuntas",
-      "getStarted": "Faigh Tús",
-      "fillAllFields": "Líon isteach gach réimse le do thoil",
+      "getStarted": "Tosaigh",
+      "fillAllFields": "Líon isteach gach réimse, le do thoil",
       "passwordsNoMatch": "Ní hionann na pasfhocail",
-      "passwordTooShort": "Caithfidh an pasfhocal a bheith 8 gcarachtar ar a laghad",
+      "passwordTooShort": "Ní mór go mbeadh 8 gcarachtar ar a laghad sa phasfhocal",
       "checkEmail": "Seiceáil do ríomhphost le do thoil chun do chuntas a dhearbhú",
-      "enterEmailFirst": "Cuir isteach do sheoladh ríomhphoist ar dtús le do thoil.",
+      "enterEmailFirst": "Cuir isteach do sheoladh ríomhphoist ar dtús, le do thoil.",
       "resetEmailSent": "Seiceáil do ríomhphost",
       "resetEmailSentDesc": "Tá nasc athshocraithe pasfhocail seolta againn chuig do sheoladh ríomhphoist.",
       "welcomeBack": "Fáilte ar ais",
-      "enterEmailAndPassword": "Cuir isteach ríomhphost agus pasfhocal le do thoil",
-      "signingIn": "Ag síniú isteach",
+      "enterEmailAndPassword": "Cuir isteach ríomhphost agus pasfhocal, le do thoil",
+      "signingIn": "Ag logáil isteach",
       "orContinueWith": "Nó lean ar aghaidh le"
     },
     "nav": {
-      "family": "Ciorcal na Teaghlaigh",
-      "toolkit": "Foireann Uirlisí",
+      "family": "Ciorcal Teaghlaigh",
+      "toolkit": "Trealamh Uirlisí",
       "reports": "Tuarascálacha",
       "settings": "Socruithe",
       "crisis": "Mol Géarchéime"
     },
     "crisis": {
       "title": "Mol Géarchéime",
-      "subtitle": "Bainistíocht géarchéime fíor-ama agus tacaíocht dí-ghéaraithe",
+      "subtitle": "Bainistíocht géarchéime fíor-ama agus tacaíocht dí-ardaithe",
       "eventLogged": "Imeacht géarchéime logáilte",
       "logEvent": "Logáil Imeacht Géarchéime",
       "logPlaceholder": "Déan cur síos ar a tharla...",
       "status": {
-        "allClear": "Gach Rud Glan",
-        "allClearDesc": "Níl aon foláirimh ghníomhacha ann",
+        "allClear": "Gach Glan",
+        "allClearDesc": "Gan aon fholáirimh ghníomhacha",
         "activeAlerts": "Foláirimh Ghníomhacha",
-        "lastKnownLocation": "An áit dheireanach ar eolas",
+        "lastKnownLocation": "Suíomh deireanach ar eolas",
         "viewOnMap": "Féach ar an léarscáil",
         "noLocationData": "Níl aon sonraí suímh ar fáil"
       },
       "actions": {
-        "modeLabel": "Do staid",
-        "withThem": "Tá mé leo",
-        "remote": "Tá mé i bhfad uathu",
-        "startDeEscalation": "Tosaigh Dí-ghéarú",
-        "startDeEscalationDesc": "Sreabhadh socair treoraithe céim ar chéim",
-        "callEmergency": "Glaoigh ar an Éigeandáil",
-        "callEmergencyDesc": "Glaoigh ar na seirbhísí éigeandála áitiúla",
-        "alertFamily": "Cuir Teaghlach ar an Eolas",
+        "modeLabel": "Do chás",
+        "withThem": "Táim leo",
+        "remote": "Táim i bhfad i gcéin",
+        "startDeEscalation": "Tosaigh Dí-ardú",
+        "startDeEscalationDesc": "Sreabhadh treoraithe ciúnais céim ar chéim",
+        "callEmergency": "Glaoigh ar Éigeandáil",
+        "callEmergencyDesc": "Glaoigh ar sheirbhísí éigeandála áitiúla",
+        "alertFamily": "Tabhair Foláireamh don Teaghlach",
         "alertFamilyDesc": "Seol fógra brú chuig gach cúramóir",
-        "alertFamilySent": "Fógraíodh do bhaill teaghlaigh",
-        "alertFamilyFailed": "Theip ar an teaghlach a chur ar an eolas. Bain triail eile as le do thoil.",
+        "alertFamilySent": "Fógraíodh baill teaghlaigh",
+        "alertFamilyFailed": "Theip ar an teaghlach a chur ar an eolas. Bain triail eile as, le do thoil.",
         "viewLocation": "Féach ar an Suíomh",
-        "viewLocationDesc": "Féach suíomh reatha {{name}} ar an léarscáil",
-        "contactPrimary": "Déan Teagmháil leis an bPríomhchúramóir",
-        "contactPrimaryDesc": "Sroich an príomhchúramóir trí ríomhphost",
+        "viewLocationDesc": "Féach ar shuíomh reatha {{name}} ar an léarscáil",
+        "contactPrimary": "Déan teagmháil leis an bPríomhchúramóir",
+        "contactPrimaryDesc": "Déan teagmháil leis an bpríomhchúramóir trí ríomhphost",
         "logEvent": "Logáil Imeacht",
-        "logEventDesc": "Taifead an nóiméad seo san iris ghéarchéime"
+        "logEventDesc": "Taifead an nóiméad seo sa dialann géarchéime"
       },
       "wizard": {
-        "breathingTitle": "Tosaímid le hanáil socair",
-        "breathingInstruction": "Análaigh isteach go mall... coinnigh... análú amach...",
+        "breathingTitle": "Tosaímid le hanáil suaimhneach",
+        "breathingInstruction": "Análaigh isteach go mall... coinnigh... análigh amach...",
         "stepOf": "Céim {{current}} de {{total}}",
-        "thisHelped": "Chuidigh sé seo",
+        "thisHelped": "Chabhraigh sé seo",
         "tryNext": "Bain triail as an chéad chéim eile",
-        "skip": "Scip",
-        "completionTitle": "Go maith. Láimhsigh tú é sin go cúramach.",
-        "completionDesc": "Ar mhaith leat aon nótaí a thaifeadadh faoi na rudaí a tharla?",
-        "crisisNotesPlaceholder": "Cad a tharla? Cad a chabhraigh? Aon truicear a tugadh faoi deara...",
+        "skip": "Scipeáil",
+        "completionTitle": "Maith thú. Láimhseáil tú é sin le cúram.",
+        "completionDesc": "Ar mhaith leat aon nótaí a thaifeadadh faoi cad a tharla?",
+        "crisisNotesPlaceholder": "Cad a tharla? Cad a chabhraigh? Aon spreagthóirí a tugadh faoi deara...",
         "saveAndClose": "Sábháil & Dún",
         "closeWithoutSaving": "Dún gan sábháil"
       },
       "history": {
         "title": "Imeachtaí Géarchéime Le Déanaí",
-        "noEvents": "Níl aon imeachtaí géarchéime ann le 30 lá anuas.",
-        "viewAllInJournal": "Féach ar fad san Iris",
+        "noEvents": "Níl aon imeachtaí géarchéime le 30 lá anuas.",
+        "viewAllInJournal": "Féach ar gach ceann sa Dialann",
         "yesterday": "Inné",
         "daysAgo": "{{count}} lá ó shin"
       },
       "steps": {
         "stayCalm": {
           "title": "Fan Socair",
-          "detail": "Glac anáil mhall dhomhain. Cabhróidh d'fhuinneamh socair leo mothú sábháilte.",
-          "script": "Tá mé anseo leat. Tá gach rud ceart go leor."
+          "detail": "Tóg anáil mhall, dhomhain. Cabhróidh do fhuinneamh suaimhneach leo mothú slán.",
+          "script": "Táim anseo leat. Tá gach rud ceart go leor."
         },
         "validateFeelings": {
           "title": "Bailíochtaigh Mothúcháin",
-          "detail": "Abair 'Tuigim go bhfuil tú trína chéile. Caithfidh sé sin a bheith an-deacair.' Ná bí ag argóint ná ag ceartú.",
-          "script": "Tuigim go bhfuil tú trína chéile. Caithfidh sé sin a bheith an-deacair."
+          "detail": "Abair 'Feicim go bhfuil tú trína chéile. Caithfidh go bhfuil sé sin an-deacair.' Ná bí ag argóint ná ag ceartú.",
+          "script": "Feicim go bhfuil tú trína chéile. Caithfidh go bhfuil sé sin an-deacair."
         },
         "simplifyEnvironment": {
           "title": "Simpligh an Timpeallacht",
-          "detail": "Bain úsáid as abairtí gearra simplí. Smaoineamh amháin ag an am. Seachain ceisteanna 'cén fáth' a chur.",
+          "detail": "Úsáid abairtí gearra, simplí. Aon smaoineamh amháin ag an am. Seachain ceisteanna 'cén fáth' a chur.",
           "script": "Déanaimis rudaí níos simplí. Rud amháin ag an am."
         },
         "redirectAttention": {
-          "title": "Atreoraigh an Aird",
-          "detail": "Athraigh an topaic go réidh. Mol gníomhaíocht, amhrán nó siúlóid a bhfuil cur amach agat orthu.",
-          "script": "Cad faoi rud éigin difriúil a thriail? Téimis ag siúl beag le chéile."
+          "title": "Atreoraigh Aird",
+          "detail": "Athraigh an t-ábhar go réidh. Mol gníomhaíocht, amhrán, nó siúlóid eolach.",
+          "script": "Cad faoi rud éigin difriúil a thriail? Déanaimis siúlóid bheag le chéile."
         },
         "useGentleTouch": {
-          "title": "Bain Úsáid as Teagmháil Mhín",
-          "detail": "Má tá fáilte roimhe, is féidir le lámh mhín ar an lámh a bheith dearfach. Breathnaigh ar a bhfreagra.",
-          "script": "An bhfuil sé ceart go leor má choinním do lámh? Tá mé ceart anseo."
+          "title": "Úsáid Teagmháil Mhín",
+          "detail": "Má tá fáilte roimhe, is féidir le lámh mhín ar an lámh a bheith suaimhneach. Féach ar a bhfreagra.",
+          "script": "An bhfuil sé ceart go leor má choinním do lámh? Táim anseo."
         },
         "giveSpace": {
           "title": "Tabhair Spás",
           "detail": "Mura n-oibríonn aon rud, cinntigh sábháilteacht agus tabhair spás dóibh. Tá sé ceart go leor céim siar a ghlacadh.",
-          "script": "Beidh mé ceart in aice láimhe má theastaíonn tú uaim. Tóg do chuid ama."
+          "script": "Beidh mé in aice láimhe má tá tú ag teastáil uaim. Tóg do chuid ama."
         }
       },
-      "helplines": "Línte Chabhrach",
-      "noHelplineAvailable": "Ní bhfuarthas aon líne chabhrach do do thír",
+      "helplines": "Línte Cabhrach",
+      "noHelplineAvailable": "Níor aimsíodh aon líne cabhrach do do thír",
       "call": "Glaoigh",
       "email": "Ríomhphost",
       "website": "Suíomh Gréasáin",
-      "familyContacts": "Teagmhálacha Teaghlaigh",
+      "familyContacts": "Teagmhálaithe Teaghlaigh",
       "supportResources": "Acmhainní Tacaíochta",
       "scenarios": {
         "title": "Cad atá ag tarlú?",
-        "subtitle": "Beartaigh ar chás le haghaidh treoir céim ar chéim",
+        "subtitle": "Beartaigh ar chás le haghaidh treorach céim ar chéim",
         "urgent": "Práinneach",
         "stepCountLabel": "{{count}} céim",
         "backToSituations": "Ar ais chuig cásanna",
         "breathe": "Cleachtadh análaithe",
-        "callEmergency": "Glaoigh ar na Seirbhísí Éigeandála"
+        "callEmergency": "Glaoigh ar Sheirbhísí Éigeandála"
       },
       "patterns": {
         "title": "Léargas ar Phátrúin",
-        "noEvents": "Logáil isteach eachtraí chun patrúin a fheiceáil le himeacht ama.",
-        "fewEvents": "Logáilte {{count}} eachtra. Teastaíonn níos mó sonraí le haghaidh patrúin.",
-        "timePattern": "Tarlaíonn an chuid is mó d’eachtraí sa {{time}}.",
+        "noEvents": "Logáil teagmhais chun patrúin a fheiceáil le himeacht ama.",
+        "fewEvents": "Logáladh {{count}} teagmhas. Tá níos mó sonraí ag teastáil le haghaidh patrúin.",
+        "timePattern": "Tarlaíonn an chuid is mó de na teagmhais sa {{time}}.",
         "weekCount": "{{count}} an tseachtain seo."
       },
       "personalization": {
-        "label": "Cad a chuireann {{name}} ar a suaimhneas",
-        "empty": "Cuir straitéisí suaimhnis le beathaisnéis {{name}} chun leideanna pearsantaithe a fheiceáil anseo."
+        "label": "Cad a chuireann suaimhneas ar {{name}}",
+        "empty": "Cuir straitéisí suaimhneacha le beathaisnéis {{name}} chun leideanna pearsantaithe a fheiceáil anseo."
       },
       "scenarioData": {
         "stepsCount": "{{count}} céim",
@@ -988,175 +1005,175 @@
           "label": "Corraithe / Trína Chéile",
           "steps": [
             {
-              "title": "Tusa ar dtús",
-              "instruction": "Glac anáil mall amháin sula ndéanann tú aon rud. Ní féidir leat duine a chur ar a suaimhneas mura bhfuil tú féin socair."
+              "title": "Tú féin ar dtús",
+              "instruction": "Tóg anáil mhall amháin sula ndéanann tú aon rud. Ní féidir leat duine a shuaimhniú mura bhfuil tú féin socair."
             },
             {
-              "title": "Seiceáil tapa – an bhféadfadh rud éigin fisiceach a bheith mícheart?",
-              "instruction": "Is féidir le pian, ocras, an gá le dul go dtí an seomra folctha, nó ionfhabhtú a bheith ina gcúis le corraíl.",
+              "title": "Seiceáil tapa — an bhféadfadh rud éigin fisiciúil a bheith mícheart?",
+              "instruction": "Is féidir le pian, ocras, an gá leis an seomra folctha, nó ionfhabhtú corraíl a chruthú.",
               "checklist": [
                 "Pian nó míchompord?",
                 "Ocras nó tart?",
-                "An bhfuil gá leis an seomra folctha?",
-                "Athrú le déanaí ar chógas?",
+                "An bhfuil an seomra folctha ag teastáil?",
+                "Athrú cógais le déanaí?",
                 "Fiabhras nó comharthaí breoiteachta?"
               ]
             },
             {
               "title": "Ísligh an teocht",
-              "instruction": "Labhair go mall agus go bog. Ná bí ag argóint, ag ceartú nó ag míniú. Dearbhaigh an rud atá á mhothú acu.",
+              "instruction": "Labhair go mall agus go bog. Ná bí ag argóint, ag ceartú, nó ag míniú. Bailíochtaigh an rud atá siad ag mothú.",
               "tips": [
-                "\"Tuigim go bhfuil tú trína chéile. Tá mé anseo.\"",
-                "Laghdaigh torann – múch an teilifís, dún fuinneoga",
-                "Tabhair spás fisiciúil dóibh, ná déan slua",
-                "Tairg réad compordach eolach"
+                "\"Feicim go bhfuil tú trína chéile. Táim anseo.\"",
+                "Laghdú torainn — múch an teilifís, dún fuinneoga",
+                "Tabhair spás fisiciúil dóibh, ná bí ag brú orthu",
+                "Tairg réad compoird eolach"
               ]
             },
             {
               "title": "Atreoraigh, ná réasúnaigh",
-              "instruction": "Athraigh an topaic nó an timpeallacht go réidh. Ná déan iarracht iad a loighciú amach as.",
+              "instruction": "Athraigh an t-ábhar nó an timpeallacht go réidh. Ná déan iarracht iad a chur amach as le loighic.",
               "tips": [
                 "Mol siúlóid nó bog go seomra eile",
-                "Cuir ceol ar siúl a bhfuil grá acu dó",
-                "Tairg sneaic nó deoch te",
+                "Cuir ceol a bhfuil grá acu dó",
+                "Tairg sneaiceanna nó deoch the",
                 "Féach ar ghrianghraif le chéile"
               ]
             },
             {
-              "title": "Cathain a gheobhaidh tú cabhair",
-              "instruction": "Má mhaireann corraíl níos mó ná 30 nóiméad, má tá siad i mbaol iad féin nó tú a ghortú, nó más iompar nua tobann é seo – glaoigh ar na seirbhísí éigeandála.",
-              "actionLabel": "Glaoigh ar na Seirbhísí Éigeandála"
+              "title": "Cathain is ceart cabhair a fháil",
+              "instruction": "Má mhaireann an corraíl níos mó ná 30 nóiméad, má tá siad i mbaol iad féin nó tú a ghortú, nó má tá sé seo ina iompar nua tobann — glaoigh ar sheirbhísí éigeandála.",
+              "actionLabel": "Glaoigh ar Sheirbhísí Éigeandála"
             }
           ]
         },
         "wandering": {
-          "label": "Fánaíocht / Ar Iarraidh",
+          "label": "Ag Fánaíocht / Ar Iarraidh",
           "steps": [
             {
               "title": "Seiceáil na gnátháiteanna ar dtús",
-              "instruction": "Téann an chuid is mó de dhaoine le néaltrú chuig áiteanna eolacha – iarionad oibre, teach óige, teach comharsan.",
+              "instruction": "Téann an chuid is mó de dhaoine le néaltrú chuig áiteanna eolacha — iar-ionad oibre, teach óige, teach comharsan.",
               "tips": [
-                "Seiceáil an gairdín, an garáiste, na sráideanna in aice láimhe",
+                "Seiceáil an gairdín, an gharáiste, sráideanna in aice láimhe",
                 "Fiafraigh de chomharsana an bhfaca siad iad",
-                "Seiceáil áiteanna a ndeachaigh siad go rialta"
+                "Seiceáil áiteanna a mbíodh siad ag dul go rialta"
               ]
             },
             {
-              "title": "Bain úsáid as a suíomh",
+              "title": "Úsáid a suíomh",
               "instruction": "Má tá rianú suímh socraithe, seiceáil a suíomh reatha anois."
             },
             {
-              "title": "Cuir an teaghlach ar an eolas",
-              "instruction": "Cuir gach duine ar an eolas láithreach. Is fearr níos mó súl ag cuardach."
+              "title": "Tabhair foláireamh don teaghlach",
+              "instruction": "Cuir in iúl do gach duine láithreach. Is fearr níos mó súl ag cuardach."
             },
             {
-              "title": "Glaoigh ar na póilíní mura bhfaightear iad laistigh de 15 nóiméad",
-              "instruction": "Ná fan. Tá daoine le néaltrú i mbaol ard díobhála. Glaoigh ar na seirbhísí éigeandála agus inis dóibh go bhfuil néaltrú ar an duine.",
-              "actionLabel": "Glaoigh ar na Seirbhísí Éigeandála"
+              "title": "Glaoigh ar na póilíní mura bhfaightear laistigh de 15 nóiméad",
+              "instruction": "Ná fan. Tá daoine le néaltrú i mbaol ard gortaithe. Glaoigh ar sheirbhísí éigeandála agus inis dóibh go bhfuil néaltrú ar an duine.",
+              "actionLabel": "Glaoigh ar Sheirbhísí Éigeandála"
             }
           ]
         },
         "refusing": {
-          "label": "Diúltú do Chúram",
+          "label": "Ag Diúltú Cúraim",
           "steps": [
             {
-              "title": "Sos – ní hé seo dídhílseacht",
-              "instruction": "Is beagnach i gcónaí eagla, mearbhall nó míchompord is cúis le diúltú. B’fhéidir nach dtuigeann siad cad atá á iarraidh agat."
+              "title": "Sos — ní easumhlaíocht é seo",
+              "instruction": "Is minic gur eagla, mearbhall, nó míchompord is cúis le diúltú. B'fhéidir nach dtuigeann siad cad atá tú ag iarraidh."
             },
             {
               "title": "Céim siar agus bain triail as ar bhealach difriúil",
-              "instruction": "Ná brú. Tar ar ais i gceann 15–20 nóiméad agus déan cur chuige amhail is gurb é an chéad uair é.",
+              "instruction": "Ná brúigh. Tar ar ais i 15–20 nóiméad agus déan cur chuige amhail is gurb é an chéad uair é.",
               "tips": [
-                "Athraigh cé atá ag fiafraí",
+                "Athraigh cé atá ag iarraidh",
                 "Athraigh an timpeallacht",
-                "Roinn an tasc ina chéimeanna níos lú",
-                "Tairg roghanna: \"Folcadán nó cithfholcadh?\""
+                "Roinn an tasc i gcéimeanna níos lú",
+                "Tairg roghanna: \"Folcadán nó cith?\""
               ]
             },
             {
-              "title": "Cuir air go mbraitheann sé sábháilte",
+              "title": "Déan é a mhothú slán",
               "instruction": "Mínigh gach céim sula ndéanann tú é. Bog go mall. Coinnigh te iad.",
               "tips": [
-                "Tabhair rabhadh sula ndéanann tú teagmháil",
-                "Bain úsáid as ton socair te",
-                "Seinn a gcuid ceoil is fearr leat le linn an tasc",
+                "Tabhair rabhadh sula dteagmháil tú",
+                "Úsáid ton socair, te",
+                "Seinn an ceol is fearr leo le linn an tasc",
                 "Coinnigh an gnáthamh comhsheasmhach"
               ]
             },
             {
               "title": "An patrún é seo?",
-              "instruction": "Má dhiúltaíonn siad go seasta don tasc céanna, logáil isteach é. D’fhéadfadh fadhb bhunúsach a bheith ann – pian, eagla, íogaireacht. Pléigh lena ndochtúir."
+              "instruction": "Má dhiúltaíonn siad an tasc céanna go comhsheasmhach, logáil é. D'fhéadfadh fadhb bhunúsach a bheith ann — pian, eagla, íogaireacht. Pléigh lena ndochtúir."
             }
           ]
         },
         "hallucinations": {
-          "label": "Rudaí a Fheiceáil / a Chloisteáil",
+          "label": "Rudaí a fheiceáil / a chloisteáil",
           "steps": [
             {
-              "title": "Ná bí ag argóint – tá sé fíor dóibh",
-              "instruction": "Admhaigh an rud atá á fháil acu gan a dhearbhú go bhfuil sé fíor.",
+              "title": "Ná bí ag argóint — is fíor dóibh é",
+              "instruction": "Admhaigh an rud atá siad ag fulaingt gan a dhearbhú go bhfuil sé fíor.",
               "tips": [
-                "\"Fuaimeann sé sin scanrúil. Tá mé anseo leat.\"",
-                "\"Inis dom cad atá á fheiceáil agat.\"",
-                "Ná habair \"níl aon rud ann\""
+                "\"Is scanrúil an rud é sin. Táim anseo leat.\"",
+                "\"Inis dom cad atá tú ag feiceáil.\"",
+                "Ná habair \"níl aon rud ansin\""
               ]
             },
             {
               "title": "Seiceáil an timpeallacht",
-              "instruction": "Is féidir le scáthanna, machnaimh, fuaimeanna teilifíse agus tranglam míléamh a spreagadh.",
+              "instruction": "Is féidir le scáthanna, frithchaitheamh, fuaimeanna teilifíse, agus tranglam míthuiscint a spreagadh.",
               "checklist": [
                 "Scáthanna ó fhuinneoga nó lampaí?",
-                "An bhfuil teilifís nó raidió ar siúl sa chúlra?",
-                "Machnaimh scátháin?",
-                "Soilsiú bocht?"
+                "Teilifís nó raidió ar siúl sa chúlra?",
+                "Frithchaitheamh scátháin?",
+                "Droch-shoilsiú?"
               ]
             },
             {
               "title": "Atreoraigh go réidh",
-              "instruction": "Aistrigh a n-aird ar rud éigin nithiúil agus compordach.",
+              "instruction": "Aistrigh a n-aird chuig rud éigin nithiúil agus suaimhneach.",
               "tips": [
                 "Bog go seomra dea-shoilsithe",
                 "Tairg gníomhaíocht phraiticiúil",
-                "Téigh ag siúlóid ghearr le chéile",
+                "Téigh ag siúlán gairid le chéile",
                 "Déan cupán tae le chéile"
               ]
             },
             {
-              "title": "Cathain a ghlaoifidh tú ar an dochtúir",
-              "instruction": "Má tá siabhránachtaí nua, minic nó má tá siad ina gcúis le anacair mhór. Is féidir le tosú tobann ionfhabhtú, fo-iarsmaí cógais nó mearbhall a léiriú."
+              "title": "Cathain is ceart glaoch ar an dochtúir",
+              "instruction": "Má tá na siabhráin nua, minic, nó má tá siad ag cruthú anacair mhór. Is féidir le tosú tobann ionfhabhtú, fo-iarsmaí cógais, nó mearbhall a léiriú."
             }
           ]
         },
         "sundowning": {
-          "label": "Luí na Gréine",
+          "label": "Mearbhall Tráthnóna",
           "steps": [
             {
               "title": "Aithin an patrún",
-              "instruction": "De ghnáth, tosaíonn luí na gréine tráthnóna déanach. Tá sé seo an-choitianta agus ní rud é ar féidir leo smacht a bheith acu air."
+              "instruction": "De ghnáth, tosaíonn mearbhall tráthnóna go déanach san iarnóin. Tá sé seo an-choitianta agus ní rud é is féidir leo a rialú."
             },
             {
               "title": "Coigeartaigh an timpeallacht anois",
               "instruction": "Laghdaigh gach spreagadh agus cruthaigh comharthaí sábháilteachta.",
               "tips": [
-                "Cas air soilse te sula n-éiríonn sé dorcha",
+                "Cas ar soilse teo sula n-éiríonn sé dorcha",
                 "Dún cuirtíní chun scáthanna a laghdú",
-                "Múch nó ísle toirt na teilifíse",
+                "Múch nó ísligh an toirt teilifíse",
                 "Laghdaigh líon na ndaoine sa seomra"
               ]
             },
             {
               "title": "Tairg gníomhaíochtaí suaimhneacha",
-              "instruction": "Oibríonn gníomhaíochtaí séimhe, athchleachtacha, eolacha is fearr.",
+              "instruction": "Is fearr a oibríonn gníomhaíochtaí mín, athchleachtach, eolach.",
               "tips": [
-                "Suathaireacht láimhe séimh le lóis",
+                "Suathaireacht láimhe mín le lóis",
                 "Ceol bog, eolach",
                 "Tuáillí a fhilleadh nó rudaí a shórtáil",
-                "Breathnú trí albam grianghraf le chéile"
+                "Ag féachaint trí albam grianghraf le chéile"
               ]
             },
             {
               "title": "Cosc a chur air amárach",
-              "instruction": "Logáil an eipeasóid le sonraí ama. Cuidíonn patrúin le sceidil a choigeartú — níos mó gníomhaíochta ar maidin, níos lú caiféin san iarnóin."
+              "instruction": "Logáil an eachtra le sonraí ama. Cuidíonn patrúin le sceidil a choigeartú — níos mó gníomhaíochta ar maidin, níos lú caiféin san iarnóin."
             }
           ]
         },
@@ -1167,28 +1184,28 @@
               "title": "Ná bog iad",
               "instruction": "Mura bhfuil siad i mbaol láithreach, ná déan iarracht iad a ardú nó a bhogadh.",
               "tips": [
-                "Faigh síos go dtí a leibhéal",
-                "Dearbhaigh iad: \"Tá mé anseo, tá tú sábháilte\"",
-                "Seiceáil le haghaidh díobhála infheicthe"
+                "Téigh síos go dtí a leibhéal",
+                "Cuir ar a suaimhneas iad: \"Táim anseo, tá tú slán\"",
+                "Seiceáil le haghaidh gortú infheicthe"
               ]
             },
             {
               "title": "An féidir leo éirí?",
-              "instruction": "Mura bhfuil aon díobháil shoiléir ann, cabhraigh leo éirí go mall i gcéimeanna.",
+              "instruction": "Mura bhfuil gortú soiléir ann, cabhraigh leo éirí go mall i gcéimeanna.",
               "checklist": [
-                "An bhfuil siad ar an airdeall agus sofhreagrach?",
-                "Aon díobháil nó pian shoiléir?",
+                "An bhfuil siad airdeallach agus freagrúil?",
+                "Aon ghortú nó pian soiléir?",
                 "An féidir leo gach géag a bhogadh?",
-                "Ar bhuail siad a gcinn?"
+                "Ar bhuail siad a gceann?"
               ]
             },
             {
               "title": "Glaoigh ar chabhair má...",
-              "instruction": "Gortú cinn, ní féidir leo éirí, pian throm, mearbhall níos measa ná mar is gnách, nó fuiliú nach stopfaidh."
+              "instruction": "Gortú cinn, ní féidir leo éirí, pian mór, mearbhall níos measa ná mar is gnách, nó fuiliú nach stopfaidh."
             },
             {
               "title": "Tar éis na titime",
-              "instruction": "Logáil an ócáid seo agus luaigh é lena ndochtúir. Is féidir le titim arís agus arís eile fadhbanna cógas nó dul chun cinn galair a léiriú."
+              "instruction": "Logáil an eachtra seo agus luaigh é lena ndochtúir. Is féidir le titimí arís agus arís eile fadhbanna cógais nó dul chun cinn galair a léiriú."
             }
           ]
         },
@@ -1196,95 +1213,95 @@
           "label": "Ceisteanna Athchleachtacha",
           "steps": [
             {
-              "title": "Anáil — is é seo an galar, ní iad",
-              "instruction": "Ní cuimhin leo i ndáiríre a bheith ag cur na ceiste. Tá do frustrachas bailí, ach má thaispeánann tú é, bíonn siad níos imníoch."
+              "title": "Tóg anáil — is é seo an galar, ní iad",
+              "instruction": "Ní cuimhin leo go fírinneach gur chuir siad ceist. Tá do frustrachas bailí, ach má léiríonn tú é, déanann sé níos imníche iad."
             },
             {
-              "title": "Cad atá á iarraidh acu i ndáiríre?",
-              "instruction": "Is annamh a bhíonn an cheist dromchla mar an cheist cheart. D’fhéadfadh \"Cén t-am a bhfuil an dinnéar?\" a chiallaíonn \"Tá ocras orm.\"",
+              "title": "Cad atá siad ag iarraidh a fhiafraí i ndáiríre?",
+              "instruction": "Is annamh an cheist dromchla an fíorcheist. D'fhéadfadh \"Cén t-am é an dinnéar?\" a chiallaíonn \"Tá ocras orm.\"",
               "checklist": [
                 "An bhfuil imní orthu faoi rud éigin?",
-                "An bhféadfadh ocras, tart nó leamh a bheith orthu?",
-                "An bhfuil ócáid atá le teacht ag cruthú imní?"
+                "An bhféadfadh ocras, tart, nó leadrán a bheith orthu?",
+                "An bhfuil imeacht ag teacht a bhfuil imní ag baint leis?"
               ]
             },
             {
               "title": "Freagair an mothúchán",
-              "instruction": "Freagair an mothúchán taobh thiar den cheist seachas na focail litriúla.",
+              "instruction": "Freagair an mothúchán atá taobh thiar den cheist seachas na focail litriúla.",
               "tips": [
                 "Scríobh an freagra ar chlár bán infheicthe",
-                "Tabhair freagra simplí dearfach gach uair",
+                "Tabhair freagra simplí, suaimhneach gach uair",
                 "Atreoraigh chuig gníomhaíocht phraiticiúil tar éis freagra a thabhairt",
                 "Úsáid sceidil amhairc chun neamhchinnteacht a laghdú"
               ]
             },
             {
-              "title": "Cosain do fholláine féin",
-              "instruction": "Clibeáil amach le cúramóir eile más féidir. Úsáid cluasáin le ceol séimh nuair a bhíonn sos meabhrach uait."
+              "title": "Cosain do shláinte féin",
+              "instruction": "Malartaigh le cúramóir eile más féidir. Úsáid cluasáin le ceol mín nuair a bhíonn sos meabhrach uait."
             }
           ]
         },
         "aggression": {
-          "label": " ionsaitheacht",
+          "label": "Ionsaíocht",
           "steps": [
             {
               "title": "Tagann do shábháilteacht ar dtús",
-              "instruction": "Má bhraitheann tú go bhfuil tú i mbaol fisiciúil, tarraing siar láithreach. Ná déan iarracht iad a shrianadh.",
+              "instruction": "Má bhraitheann tú go bhfuil tú neamhshábháilte go fisiciúil, tarraing siar láithreach. Ná déan iarracht iad a shrianadh.",
               "tips": [
-                "Cuir tú féin in aice le bealach amach",
-                "Bain rudaí contúirteacha as teacht",
+                "Cuir tú féin gar do bhealach amach",
+                "Bain rudaí contúirteacha as a dteacht",
                 "Coinnigh do ghuth íseal agus socair",
                 "Ná déan gluaiseachtaí tobanna"
               ]
             },
             {
-              "title": "Cuir tú féin ar an talamh",
-              "instruction": "Spreagann ionsaitheacht troid nó eitilt ionat féin freisin. Tóg nóiméad amháin chun análú."
+              "title": "Déan tú féin a bhunú",
+              "instruction": "Spreagann ionsaíocht freagairt troda nó teitheadh ionat freisin. Tóg nóiméad amháin chun anáil a ghlacadh."
             },
             {
               "title": "Cad a spreag é seo?",
-              "instruction": "Is beagnach i gcónaí imoibriú é ionsaitheacht — pian, eagla, frustrachas, ró-ualach céadfach.",
+              "instruction": "Is imoibriú beagnach i gcónaí í an ionsaíocht — pian, eagla, frustrachas, ró-ualach céadfach.",
               "checklist": [
-                "An iarradh orthu rud éigin a dhéanamh?",
+                "An raibh siad á iarraidh rud éigin a dhéanamh?",
                 "An raibh pian orthu?",
                 "An raibh an timpeallacht torannach nó chaotic?",
-                "Ar bhraith siad faoi choirnéal?"
+                "An raibh siad ag mothú i gcruachás?"
               ]
             },
             {
               "title": "Tabhair spás agus am",
-              "instruction": "Tarraing siar. Stop an ghníomhaíocht spreagtha. Tar ar ais i 15–20 nóiméad amhail is nár tharla aon rud.",
+              "instruction": "Tarraing siar. Stop an ghníomhaíocht spreagtha. Fill ar ais i 15–20 nóiméad amhail is nach raibh aon rud tarlaithe.",
               "tips": [
                 "Fág an seomra má tá sé sábháilte",
-                "Bain an truicear",
-                "Ná glac go pearsanta é",
-                "Druid go mall agus tú ag filleadh"
+                "Bain an spreagadh",
+                "Ná tóg go pearsanta é",
+                "Tar chuige go mall nuair a fhilleann tú"
               ]
             },
             {
               "title": "Nuair is éigeandáil é seo",
-              "instruction": "Má tá arm acu, má tá duine gortaithe, nó mura n-imíonn an ionsaitheacht — glaoigh ar na seirbhísí éigeandála."
+              "instruction": "Má tá arm acu, má tá duine gortaithe, nó mura dtagann laghdú ar an ionsaíocht — glaoigh ar na seirbhísí éigeandála."
             }
           ]
         },
         "sleep_disruption": {
-          "label": "Cur isteach ar Chodladh",
+          "label": "Cur isteach ar an gCodladh",
           "steps": [
             {
               "title": "Coinnigh an timpeallacht sábháilte",
-              "instruction": "Má tá siad ina ndúiseacht agus ag bogadh timpeall san oíche, is é an tsábháilteacht an chéad tosaíocht atá agat.",
+              "instruction": "Má tá siad ina ndúiseacht agus ag bogadh thart san oíche, is í an tsábháilteacht do phríomhthosaíocht.",
               "tips": [
-                "Cas ar íseal-soilse oíche",
-                "Guaiseacha turais shoiléire",
-                "Glasáil doirse seachtracha má tá imní ort faoi fánaíocht",
-                "\"Tá sé in am codlata, tá gach rud sábháilte\""
+                "Cas ar soilse oíche ísle",
+                "Glan contúirtí tuislithe",
+                "Glasáil doirse seachtracha má tá imní faoi fánaíocht",
+                "\"Is oíche é, tá gach rud sábháilte\""
               ]
             },
             {
               "title": "Cad a dhúisigh iad?",
-              "instruction": "Is féidir le pian, dul go dtí an seomra folctha, am cógais, nó ocras a bheith ina gcúis le dúiseacht oíche.",
+              "instruction": "Is féidir le dúiseacht san oíche a bheith mar thoradh ar phian, gá leis an seomra folctha, amú cógais, nó ocras.",
               "checklist": [
-                "An bhfuil siad ag teastáil ón seomra folctha?",
+                "An bhfuil an seomra folctha ag teastáil uathu?",
                 "An bhfuil pian orthu?",
                 "Ar dhúisigh torann nó solas iad?",
                 "An bhfuil ocras nó tart orthu?"
@@ -1292,17 +1309,17 @@
             },
             {
               "title": "Treoraigh ar ais go réidh iad",
-              "instruction": "Ná bí ag argóint faoi cén t-am é. Atreoraigh ar ais go dtí an leaba iad le leideanna suaimhneacha.",
+              "instruction": "Ná bí ag argóint faoi cén t-am é. Atreoraigh ar ais chuig an leaba iad le comharthaí suaimhneacha.",
               "tips": [
-                "Tairg deoch te saor ó chaiféin",
-                "Úsáid guth socair ciúin",
-                "Cuir ceol bog eolach air",
+                "Tairg deoch te, saor ó chaiféin",
+                "Úsáid guth socair, ciúin",
+                "Cas ar cheol bog, eolach",
                 "Suigh leo go dtí go socraíonn siad"
               ]
             },
             {
-              "title": "Feabhas a chur ar an oíche amárach",
-              "instruction": "Níos mó gníomhaíochta i rith an lae, gan aon chaiféin tar éis meán lae, gnáthamh comhsheasmhach am codlata, teorainn a chur le napanna go 30 nóiméad."
+              "title": "Feabhsaigh an oíche amárach",
+              "instruction": "Níos mó gníomhaíochta i rith an lae, gan caiféin tar éis meán lae, gnáthamh codlata comhsheasmhach, teorainn a chur le suanliosanna go 30 nóiméad."
             }
           ]
         },
@@ -1311,15 +1328,15 @@
           "steps": [
             {
               "title": "Admhaigh do frustrachas",
-              "instruction": "Tá sé tuirsiúil a bheith á leanúint i ngach áit. Tá na mothúcháin sin bailí. Glac anáil."
+              "instruction": "Tá sé íditheach a bheith á leanúint i ngach áit. Tá na mothúcháin sin bailí. Tóg anáil."
             },
             {
-              "title": "Cén fáth a bhfuil siad á leanúint agat?",
-              "instruction": "Tá scáthú á thiomáint ag imní agus eagla go dtréigfear iad. Is é a bheith in aice leat an t-aon fhoinse sábháilteachta atá acu.",
+              "title": "Cén fáth a bhfuil siad á leanúint tú?",
+              "instruction": "Is é imní agus eagla an tréigean a spreagann scáthú. Is é a bheith gar duit an t-aon fhoinse sábháilteachta atá acu.",
               "checklist": [
-                "An raibh athrú gnáthaimh le déanaí?",
+                "An raibh athrú ar an ngnáthamh le déanaí?",
                 "An bhfuil siad i dtimpeallacht neamhchoitianta?",
-                "An raibh tú ar shiúl le déanaí?",
+                "An raibh tú as láthair le déanaí?",
                 "An bhfuil siad ag mothú tinn?"
               ]
             },
@@ -1327,20 +1344,20 @@
               "title": "Laghdaigh a n-imní",
               "instruction": "Cabhraigh leo mothú slán gan a bheith i láthair go fisiciúil gach nóiméad.",
               "tips": [
-                "Tabhair \"post\" dóibh in aice leat",
-                "Fág mír phearsanta leo mar ancaire chompord",
-                "\"Tá mé díreach sa chistin, beidh mé ar ais\"",
+                "Tabhair \"post\" dóibh gar don áit a bhfuil tú",
+                "Fág earra pearsanta leo mar ancaire compoird",
+                "\"Níl mé ach sa chistin, beidh mé ar ais láithreach\"",
                 "Bain triail as teilifís nó ceol eolach mar chompánach"
               ]
             },
             {
-              "title": "Tóg sosanna duit féin",
-              "instruction": "Iarr ar dhuine suí leo agus tú ag glacadh 20 nóiméad. Cuidíonn fiú 10 nóiméad ina n-aonar.",
+              "title": "Cuir sosanna isteach duit féin",
+              "instruction": "Iarr ar dhuine éigin suí leo agus tú ag tógáil 20 nóiméad. Cuidíonn fiú 10 nóiméad ina n-aonar.",
               "tips": [
-                "Ná fan go dtí go mbeidh tú ídithe",
-                "Tá sé ceart go leor an doras seomra folctha a dhúnadh go réidh",
+                "Ná fan go dtí go bhfuil tú ídithe",
+                "Tá sé ceart an doras seomra folctha a dhúnadh go réidh",
                 "Smaoinigh ar ghrúpa tacaíochta",
-                "Is minic a laghdaíonn an t-iompar seo le gnáthamh cobhsaí"
+                "Is minic a laghdaíonn an iompar seo le gnáthamh cobhsaí"
               ]
             }
           ]
@@ -1348,45 +1365,45 @@
       }
     },
     "tabs": {
-      "dashboard": "Painéal na nIonstraimí",
+      "dashboard": "Painéal",
       "plan": "Plean",
       "location": "Suíomh",
       "coach": "Cóitseálaí",
-      "more": "Níos mó"
+      "more": "Tuilleadh"
     }
   },
   "notifications": {
-    "taskReminder": "{{patientName}}, tá sé in am: {{taskTitle}}",
-    "taskCompleted": "{{patientName}} críochnaithe: {{taskTitle}}",
-    "checkinReceived": "{{patientName}} críochnaithe seiceáil isteach an lae inniu",
-    "leftSafeZone": "D’fhág {{patientName}} {{zoneName}}",
-    "inactivity": "Níor aimsíodh aon ghluaiseacht ó {{patientName}} i {{hours}} uair an chloig",
+    "taskReminder": "{{patientName}}, tá sé in am do: {{taskTitle}}",
+    "taskCompleted": "Tá {{patientName}} críochnaithe: {{taskTitle}}",
+    "checkinReceived": "Tá seiceáil isteach an lae inniu críochnaithe ag {{patientName}}",
+    "leftSafeZone": "Tá {{patientName}} fágtha as {{zoneName}}",
+    "inactivity": "Níor braitheadh aon ghluaiseacht ó {{patientName}} le {{hours}} uair an chloig",
     "nightMovement": "Tá {{patientName}} ag bogadh lasmuigh ag {{time}}",
-    "takeMeHome": "Thapaigh {{patientName}} 'Tóg Mé Abhaile' ó {{location}}",
-    "eveningSummary": "Lá {{patientName}}: {{completed}}/{{total}} tascanna déanta. Giúmar: {{mood}}"
+    "takeMeHome": "Thapaigh {{patientName}} 'Tóg Abhaile Mé' ó {{location}}",
+    "eveningSummary": "Lá {{patientName}}: {{completed}}/{{total}} tasc déanta. Giúmar: {{mood}}"
   },
   "subscription": {
-    "free": "Saor",
+    "free": "Saor in Aisce",
     "plus": "OurTurn Plus",
     "upgradeTitle": "Díghlasáil OurTurn Plus",
-    "upgradeFeature": "Teastaíonn OurTurn Plus ón ngné seo",
+    "upgradeFeature": "Éilíonn an ghné seo OurTurn Plus",
     "monthly": "{{price}}/mí",
     "annual": "{{price}}/bliain",
     "annualSavings": "Sábháil {{percent}}%",
     "subscribe": "Liostáil",
-    "restore": "Ceannaigh Arís",
+    "restore": "Athchóirigh Ceannachán",
     "manage": "Bainistigh Síntiús",
     "features": {
       "unlimitedTasks": "Tascanna neamhtheoranta in aghaidh an lae",
       "aiCoach": "Cóitseálaí Cúraim AI Iomlán",
-      "brainActivities": "Gníomhaíochtaí folláine inchinne a ghintear le AI",
+      "brainActivities": "Gníomhaíochtaí folláine inchinne ginte ag AI",
       "safeZones": "Criosanna sábháilte & foláirimh suímh",
       "multiCaregiver": "Suas le 5 bhall teaghlaigh",
-      "journal": "Shared Care Journal",
-      "insights": "AI pattern insights",
-      "reports": "Doctor visit reports",
-      "toolkit": "Caregiver toolkit & wellness",
-      "priority": "Priority support"
+      "journal": "Dialann Cúraim Roinnte",
+      "insights": "Léargais patrún AI",
+      "reports": "Tuarascálacha cuairte dochtúra",
+      "toolkit": "Trealamh cúramóra & folláine",
+      "priority": "Tacaíocht tosaíochta"
     }
   }
 }

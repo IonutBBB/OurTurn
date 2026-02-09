@@ -29,7 +29,7 @@ export function HelpRequestFlow({
   teamMembers,
   autoOpenBreak = false,
 }: HelpRequestFlowProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { showToast } = useToast();
   const supabase = createBrowserClient();
 
@@ -44,10 +44,9 @@ export function HelpRequestFlow({
   // Auto-set message if auto-opening break
   useEffect(() => {
     if (autoOpenBreak) {
-      const tpl = HELP_REQUEST_TEMPLATES.find((t) => t.key === 'need_break');
-      if (tpl) setCustomMessage(tpl.message);
+      setCustomMessage(t('caregiverApp.toolkit.help.message_need_break'));
     }
-  }, [autoOpenBreak]);
+  }, [autoOpenBreak, t]);
 
   const sendRequest = async (message: string, templateKey?: string) => {
     setIsSending(true);
@@ -82,13 +81,13 @@ export function HelpRequestFlow({
     }
   };
 
-  const handleTemplateClick = (key: string, message: string) => {
+  const handleTemplateClick = (key: string) => {
     if (key === 'custom') {
       setSelectedTemplate('custom');
       setCustomMessage('');
     } else {
       setSelectedTemplate(key);
-      setCustomMessage(message);
+      setCustomMessage(t(`caregiverApp.toolkit.help.message_${key}`));
     }
   };
 
@@ -150,7 +149,7 @@ export function HelpRequestFlow({
         {HELP_REQUEST_TEMPLATES.map((tpl) => (
           <button
             key={tpl.key}
-            onClick={() => handleTemplateClick(tpl.key, tpl.message)}
+            onClick={() => handleTemplateClick(tpl.key)}
             disabled={isSending}
             className={`px-3 py-2 text-sm rounded-full border transition-colors disabled:opacity-50 ${
               selectedTemplate === tpl.key
@@ -158,7 +157,7 @@ export function HelpRequestFlow({
                 : 'border-brand-200 dark:border-brand-800 bg-surface-elevated/50 text-text-secondary hover:bg-brand-100 dark:hover:bg-brand-900/40'
             }`}
           >
-            {tpl.label}
+            {t(`caregiverApp.toolkit.help.template_${tpl.key}`)}
           </button>
         ))}
       </div>
@@ -227,7 +226,7 @@ export function HelpRequestFlow({
                 <div className="flex-1 min-w-0">
                   <p className="text-sm text-text-primary truncate">{req.message}</p>
                   <p className="text-xs text-text-muted mt-0.5">
-                    {new Date(req.created_at).toLocaleDateString('en-US', {
+                    {new Date(req.created_at).toLocaleDateString(i18n.language, {
                       month: 'short',
                       day: 'numeric',
                       hour: 'numeric',

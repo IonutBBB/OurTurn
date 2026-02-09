@@ -17,6 +17,7 @@ import {
 import * as ImagePicker from 'expo-image-picker';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
+import i18n from '../../src/i18n';
 import { supabase } from '@ourturn/supabase';
 import { useAuthStore } from '../../src/stores/auth-store';
 import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS, SPACING } from '../../src/theme';
@@ -353,7 +354,7 @@ export default function PlanScreen() {
       const response = await fetch(`${apiBaseUrl}/api/ai/suggest-tasks`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ householdId: household.id, count: 3 }),
+        body: JSON.stringify({ householdId: household.id, count: 3, locale: i18n.language }),
       });
 
       if (!response.ok) throw new Error('Failed to fetch suggestions');

@@ -200,5 +200,11 @@
       "respite": "Omaishoitovapaa",
       "financial": "Taloudellinen tuki"
     }
+  },
+  "whoIsupport": {
+    "sectionTitle": "WHO:n iSupport-ohjelma",
+    "sectionSubtitle": "Kattava, näyttöön perustuva omaishoitajien koulutusohjelma, jonka on kehittänyt Maailman terveysjärjestö (WHO) — Yhdistyneiden kansakuntien kansainvälisestä kansanterveydestä vastaava järjestö.",
+    "whoExplanation": "WHO = Maailman terveysjärjestö (Yhdistyneet kansakunnat)",
+    "badge": "Näyttöön perustuva koulutus"
   }
 }

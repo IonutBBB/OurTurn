@@ -7,15 +7,15 @@
     "edit": "Redaguoti",
     "done": "Atlikta",
     "skip": "Praleisti šiandien",
-    "loading": "Įkeliama...",
-    "error": "Įvyko klaida. Bandykite dar kartą.",
-    "errorTitle": "Įvyko klaida",
+    "loading": "Kraunama...",
+    "error": "Kažkas nutiko ne taip. Bandykite dar kartą.",
+    "errorTitle": "Kažkas nutiko ne taip",
     "errorDefault": "Įvyko netikėta klaida.",
     "tryAgain": "Bandyti dar kartą",
     "logOut": "Atsijungti",
-    "offline": "Jūs esate neprisijungę – jūsų duomenys bus sinchronizuoti, kai prisijungsite",
+    "offline": "Esate neprisijungę – jūsų duomenys bus sinchronizuoti prisijungus",
     "synced": "Sinchronizuota",
-    "viewMore": "Žiūrėti daugiau",
+    "viewMore": "Peržiūrėti daugiau",
     "back": "Atgal",
     "next": "Kitas",
     "confirm": "Patvirtinti",
@@ -23,26 +23,26 @@
     "no": "Ne",
     "you": "Jūs",
     "unknown": "Nežinoma",
-    "saving": "Išsaugoma...",
+    "saving": "Saugoma...",
     "primary": "Pagrindinis"
   },
   "categories": {
     "medication": "Vaistai",
-    "nutrition": "Maistas ir mityba",
+    "nutrition": "Maitinimas ir mityba",
     "physical": "Fizinis aktyvumas",
-    "cognitive": "Smegenų sveikata",
-    "social": "Socialiniai ryšiai ir bendravimas",
-    "health": "Sveikatos patikrinimas"
+    "cognitive": "Smegenų gerovė",
+    "social": "Socialinė veikla ir ryšiai",
+    "health": "Sveikatos patikra"
   },
   "caregiverApp": {
     "dashboard": {
       "greeting": "Labas {{timeOfDay}}, {{name}}",
-      "statusGood": "{{patientName}} diena klostosi gerai",
-      "statusConcern": "{{patientName}} gali prireikti šiek tiek dėmesio",
-      "todaysStatus": "Šiandienos būklė",
+      "statusGood": "{{patientName}} diena sekasi gerai",
+      "statusConcern": "{{patientName}} gali prireikti dėmesio",
+      "todaysStatus": "Šiandienos būsena",
       "tasksCompleted": "Atlikta {{completed}} iš {{total}} užduočių",
-      "dailyCheckin": "Dienos patikrinimas",
-      "noCheckinYet": "Šiandien dar nepateikta jokių patikrinimų",
+      "dailyCheckin": "Kasdienis patikrinimas",
+      "noCheckinYet": "Šiandien dar nepateiktas patikrinimas",
       "location": "Vieta",
       "atHome": "{{name}} yra namuose",
       "lastUpdate": "Paskutinį kartą atnaujinta: {{time}}",
@@ -51,77 +51,77 @@
       "callPatient": "Paskambinti {{name}}",
       "tasksCompletedLabel": "atliktos užduotys",
       "careCode": "Priežiūros kodas",
-      "careCodeHint": "Bendrinkite, kad prijungtumėte paciento programėlę",
+      "careCodeHint": "Pasidalinkite, kad prijungtumėte paciento programėlę",
       "careCodeNotAvailable": "Kodas nepasiekiamas",
-      "morningActivityPattern": "Ryto veiklos modelis",
-      "insightText": "{{name}} atlieka daugiau užduočių tomis dienomis, kai suplanuoti rytiniai pasivaikščiojimai.",
-      "noJournalEntries": "Kol kas nėra jokių žurnalo įrašų",
+      "morningActivityPattern": "Ryto aktyvumo modelis",
+      "insightText": "{{name}} atlieka daugiau užduočių tomis dienomis, kai suplanuoti ryto pasivaikščiojimai.",
+      "noJournalEntries": "Dar nėra žurnalo įrašų",
       "unknown": "Nežinoma",
-      "moodStruggling": "Sunkiai",
-      "moodLow": "Žema",
+      "moodStruggling": "Sunkiai sekasi",
+      "moodLow": "Prasta",
       "moodOkay": "Gerai",
       "moodGood": "Gera",
       "moodGreat": "Puiki",
       "sleepPoor": "Prastas",
-      "sleepFair": "Vidutinis",
+      "sleepFair": "Vidutiniškas",
       "sleepWell": "Geras",
       "mood": "Nuotaika",
       "sleep": "Miegas",
-      "minutesAgo": "Prieš {{count}}m",
-      "hoursAgo": "Prieš {{count}}val.",
-      "daysAgo": "Prieš {{count}}d.",
+      "minutesAgo": "prieš {{count}} min.",
+      "hoursAgo": "prieš {{count}} val.",
+      "daysAgo": "prieš {{count}} d.",
       "deviceStatus": "Įrenginio būsena",
       "deviceOnline": "Prisijungęs",
       "deviceOffline": "Neprisijungęs",
       "lastSeenAt": "Paskutinį kartą matytas: {{time}}",
       "lastSeenNever": "Niekada neprisijungė",
       "engagementSummary": "Šiandienos įsitraukimas",
-      "alertsToday": "Įspėjimai šiandien",
-      "checkedIn": "Prisiregistravo",
-      "notCheckedIn": "Neprisiregistravo",
-      "brainActivity": "Smegenų veikla"
+      "alertsToday": "Šiandienos įspėjimai",
+      "checkedIn": "Patikrinta",
+      "notCheckedIn": "Nepatikrinta",
+      "brainActivity": "Smegenų aktyvumas"
     },
     "carePlan": {
       "title": "{{name}} dienos planas",
       "addTask": "Pridėti užduotį",
-      "aiSuggest": "AI pasiūlytos užduotys",
+      "aiSuggest": "AI siūlo užduotis",
       "hintLabel": "Instrukcijos ({{name}} tai matys)",
-      "hintPlaceholder": "Pvz., Jūsų tabletės yra virtuvės stalčiuje esančioje tablečių dėžutėje",
+      "hintPlaceholder": "Pvz., Jūsų tabletės yra virtuvės stalviršio vaistų dėžutėje",
       "recurrence": "Kartojasi",
       "daily": "Kiekvieną dieną",
       "specificDays": "Konkrečiomis dienomis",
       "oneTime": "Vieną kartą",
       "copyDay": "Kopijuoti į kitas dienas",
       "saved": "Išsaugota",
-      "noTasks": "Kol kas nėra jokių užduočių. Pridėkite pirmąją užduotį, kad pradėtumėte.",
+      "noTasks": "Dar nėra užduočių. Pridėkite pirmąją užduotį, kad pradėtumėte.",
       "category": "Kategorija",
       "taskTitle": "Užduoties pavadinimas",
       "time": "Laikas",
       "deleteConfirm": "Ištrinti šią užduotį?",
       "noMoreSuggestions": "Daugiau pasiūlymų nėra.",
       "copyFromTo": "Kopijuoti užduotis iš {{day}} į:",
-      "copyCount": "{{taskCount}} užduotys bus nukopijuotos į {{dayCount}} dieną (-as)",
+      "copyCount": "{{taskCount}} užduočių bus nukopijuota į {{dayCount}} dieną (-as)",
       "days": {
-        "mon": "Pr",
-        "tue": "An",
-        "wed": "Tr",
-        "thu": "Kt",
-        "fri": "Pn",
-        "sat": "Še",
-        "sun": "Sk"
+        "mon": "Pirm",
+        "tue": "Antr",
+        "wed": "Treč",
+        "thu": "Ketv",
+        "fri": "Penkt",
+        "sat": "Šešt",
+        "sun": "Sekm"
       },
-      "taskPhoto": "Užduoties nuotrauka (nebūtina)",
+      "taskPhoto": "Užduoties nuotrauka (neprivaloma)",
       "uploadPhoto": "Įkelti nuotrauką",
       "removePhoto": "Pašalinti nuotrauką",
       "medicationItems": "Vaistai šioje grupėje",
       "medicationItemsHint": "Sugrupuokite iki 3 vaistų, vartojamų tuo pačiu metu",
       "addMedication": "Pridėti vaistą",
       "medName": "Vaisto pavadinimas",
-      "medNamePlaceholder": "pvz., Donepezilis",
-      "medDosage": "Dozė arba instrukcija",
+      "medNamePlaceholder": "pvz., Donepezilas",
+      "medDosage": "Dozavimas arba instrukcija",
       "medDosagePlaceholder": "pvz., 10 mg tabletė",
       "medPhotoLabel": "Nuotrauka",
-      "medItemLabel": "{{number}} vaistas",
+      "medItemLabel": "Vaistas {{number}}",
       "removeMedication": "Pašalinti",
       "maxMedications": "Daugiausia 3 vaistai vienoje grupėje",
       "uploadingPhoto": "Įkeliama...",
@@ -137,76 +137,76 @@
       "leaveZoneAlert": "Pranešti, kai {{name}} palieka saugią zoną",
       "inactivityAlert": "Pranešti, kai nėra judėjimo",
       "nightAlert": "Pranešti, kai lauke po",
-      "takeMeHomeAlert": "Pranešti, kai {{name}} paliečia „Nuvežk mane namo“",
+      "takeMeHomeAlert": "Pranešti, kai {{name}} paspaudžia 'Grįžti namo'",
       "locationHistory": "Vietos istorija",
-      "takeMeHomeTapped": "{{name}} palietė „Nuvežk mane namo“",
+      "takeMeHomeTapped": "{{name}} paspaudė 'Grįžti namo'",
       "hours": "valandos",
       "zoneName": "Zonos pavadinimas",
-      "zoneRadius": "Spindulys (metrais)",
+      "zoneRadius": "Spindulys (metrai)",
       "unknownLocation": "Nežinoma vieta",
-      "completeOnboarding": "Pirmiausia užbaikite įvedimą.",
-      "unacknowledgedAlerts": "{{count}} Nepripažintas įspėjimas",
-      "unacknowledgedAlertsPlural": "{{count}} Nepripažinti įspėjimai",
+      "completeOnboarding": "Pirmiausia užbaikite prisijungimo procesą.",
+      "unacknowledgedAlerts": "{{count}} nepatvirtintas įspėjimas",
+      "unacknowledgedAlertsPlural": "{{count}} nepatvirtinti įspėjimai",
       "acknowledge": "Patvirtinti",
       "patientLocation": "{{name}} vieta",
       "updated": "Atnaujinta: {{time}}",
-      "noLocationData": "Kol kas nėra jokių vietos duomenų",
+      "noLocationData": "Dar nėra vietos duomenų",
       "live": "Tiesiogiai",
       "add": "+ Pridėti",
-      "noSafeZonesYet": "Kol kas nesukonfigūruota jokių saugių zonų.\nPridėkite zonų, kad gautumėte įspėjimus, kai {{name}} išeina.",
+      "noSafeZonesYet": "Dar nėra sukonfigūruotų saugių zonų.\nPridėkite zonas, kad gautumėte įspėjimus, kai {{name}} išeina.",
       "radiusMeters": "{{radius}}m spindulys",
       "recentAlerts24h": "Naujausi įspėjimai (24 val.)",
-      "noRecentAlerts": "Per pastarąsias 24 valandas įspėjimų nebuvo. Viskas gerai!",
+      "noRecentAlerts": "Per pastarąsias 24 valandas nebuvo jokių įspėjimų. Viskas gerai!",
       "deleteSafeZone": "Ištrinti saugią zoną",
       "deleteSafeZoneConfirm": "Ar tikrai norite ištrinti „{{name}}“?",
       "failedToSaveSafeZone": "Nepavyko išsaugoti saugios zonos",
       "failedToDeleteSafeZone": "Nepavyko ištrinti saugios zonos",
       "fillAllFields": "Prašome užpildyti visus laukus",
       "name": "Pavadinimas",
-      "nameExample": "pvz., Namai, gydytojo kabinetas",
+      "nameExample": "pvz., Namai, Gydytojo kabinetas",
       "latitude": "Platuma",
       "longitude": "Ilguma",
-      "radiusHint": "Rekomenduojama: 100–500 metrų įprastoms vietoms",
-      "mapView": "Žemėlapio vaizdas",
-      "mapRequiresBuild": "Žemėlapiams reikalingas kūrimo versija.\nNorėdami įjungti žemėlapius, naudokite EAS Build.",
+      "radiusHint": "Rekomenduojama: 100-500 metrų įprastoms vietoms",
+      "mapView": "Žemėlapio rodinys",
+      "mapRequiresBuild": "Žemėlapiams reikalingas kūrimo versijos paketas.\nNaudokite EAS Build, kad įjungtumėte žemėlapius.",
       "home": "Namai",
       "patient": "Pacientas",
-      "alertTypeLeftSafeZone": "Išėjo iš saugios zonos",
+      "alertTypeLeftSafeZone": "Paliko saugią zoną",
       "alertTypeInactive": "Neaktyvus",
-      "alertTypeNightMovement": "Judėjimas naktį",
-      "alertTypeTakeMeHomeTapped": "Paspaudė „Nunešk mane namo“",
-      "alertTypeSosTriggered": "Suaktyvintas SOS",
-      "invalidLatitude": "Įveskite tinkamą platumą (nuo -90 iki 90)",
-      "invalidLongitude": "Įveskite tinkamą ilgumą (nuo -180 iki 180)",
+      "alertTypeNightMovement": "Naktinis judėjimas",
+      "alertTypeTakeMeHomeTapped": "Paspausta „Parvesk mane namo“",
+      "alertTypeSosTriggered": "SOS suveikė",
+      "invalidLatitude": "Įveskite galiojančią platumą (-90 iki 90)",
+      "invalidLongitude": "Įveskite galiojančią ilgumą (-180 iki 180)",
       "invalidRadius": "Įveskite teigiamą spindulio reikšmę"
     },
     "coach": {
-      "title": "AI Priežiūros Treneris",
+      "title": "AI globos asistentas",
       "tabs": {
         "chat": "Pokalbis",
         "behaviours": "Elgesys",
-        "resources": "Šaltiniai"
+        "resources": "Ištekliai"
       },
       "resources": {
-        "title": "Šaltiniai",
-        "subtitle": "Vadovai, straipsniai ir vietinė pagalba, padėsianti jums jūsų priežiūros kelionėje",
-        "linkLabel": "Šaltiniai ir vadovai"
+        "title": "Ištekliai",
+        "subtitle": "Vadovai, straipsniai ir vietinė pagalba, padėsianti jums globos kelionėje",
+        "linkLabel": "Ištekliai ir vadovai"
       },
-      "intro": "Klauskite manęs bet ko apie rūpinimąsi {{name}}. Aš žinau jų rutiną, pageidavimus ir bendrą geriausią praktiką.",
+      "intro": "Klauskite manęs bet ko apie {{name}} priežiūrą. Žinau jų rutiną, pageidavimus ir bendrą geriausią praktiką.",
       "placeholder": "Įveskite savo klausimą...",
-      "disclaimer": "Esu čia, kad jus palaikyčiau, o ne pakeisčiau medicinos patarimus. Dėl sveikatos problemų visada kreipkitės į gydytoją.",
-      "disclaimerShort": "Priežiūros treneris teikia tik bendras rekomendacijas. Visada kreipkitės į sveikatos priežiūros specialistus dėl medicinos patarimų.",
+      "disclaimer": "Esu čia, kad jus palaikyčiau, o ne pakeisčiau medicinines konsultacijas. Dėl sveikatos problemų visada pasitarkite su savo gydytoju.",
+      "disclaimerShort": "Globos asistentas teikia tik bendras gaires. Dėl medicininių patarimų visada kreipkitės į sveikatos priežiūros specialistus.",
       "suggestedTopics": "Siūlomos temos",
       "addToCarePlan": "Pridėti prie priežiūros plano",
-      "addToDoctorNotes": "Pridėti prie gydytojo pastabų",
+      "addToDoctorNotes": "Pridėti prie gydytojo užrašų",
       "newConversation": "Naujas pokalbis",
       "newChat": "Naujas pokalbis",
-      "careCoach": "Priežiūros Treneris",
-      "completeOnboarding": "Pirmiausia užbaikite įvedimą.",
+      "careCoach": "Globos asistentas",
+      "completeOnboarding": "Pirmiausia užbaikite prisijungimą.",
       "greeting": "Sveiki, {{name}}!",
-      "greetingIntro": "Esu čia, kad padėčiau jums rūpintis {{patientName}}. Klauskite manęs bet ko apie kasdienę priežiūrą, veiklą ar sudėtingų situacijų valdymą.",
+      "greetingIntro": "Esu čia, kad padėčiau jums rūpintis {{patientName}}. Klauskite manęs bet ko apie kasdienę priežiūrą, veiklas ar sudėtingų situacijų valdymą.",
       "tryAsking": "Pabandykite paklausti:",
-      "askAbout": "Klauskite apie rūpinimąsi {{name}}...",
+      "askAbout": "Klauskite apie {{name}} priežiūrą...",
       "send": "Siųsti",
       "signingIn": "Prisijungiama",
       "taskAddedSuccess": "Užduotis pridėta prie priežiūros plano!",
@@ -215,76 +215,76 @@
       "noteAddedError": "Nepavyko išsaugoti pastabos. Bandykite dar kartą.",
       "addToCarePlanButton": "Pridėti prie priežiūros plano",
       "saveForDoctorVisit": "Išsaugoti gydytojo vizitui",
-      "success": "Sėkmė",
+      "success": "Pavyko",
       "suggestions": {
-        "sundowning": "Kaip man elgtis su saulėlydžio sindromu?",
-        "rainyDays": "Kokios veiklos tinka lietingoms dienoms?",
-        "siblings": "Padėkite man pasikalbėti su savo broliais ir seserimis apie priežiūros pasidalijimą",
+        "sundowning": "Kaip elgtis su saulėlydžio sindromu?",
+        "rainyDays": "Kokios veiklos tinka lietingomis dienomis?",
+        "siblings": "Padėkite man pasikalbėti su broliais ir seserimis apie priežiūros dalijimąsi",
         "refusesFood": "{{name}} atsisako valgyti. Padėkite.",
-        "repetitive": "Kaip man elgtis su pasikartojančiais klausimais?"
+        "repetitive": "Kaip elgtis su pasikartojančiais klausimais?"
       },
       "hub": {
-        "backToHub": "Atgal į trenerį",
+        "backToHub": "Grįžti į asistentą",
         "insight": {
           "title": "Jums",
           "discuss": "Aptarti",
-          "fallback": "Patikrinkite {{name}} dieną, kad gautumėte asmeninių įžvalgų"
+          "fallback": "Pasidomėkite {{name}} diena, kad gautumėte asmeninių įžvalgų"
         },
         "rightNow": {
           "title": "Dabar",
-          "subtitle": "Pagalba šiuo metu",
-          "refusing_food": "Atsisako valgyti",
-          "refusing_medication": "Neima vaistų",
+          "subtitle": "Pagalba šią akimirką",
+          "refusing_food": "Atsisako maisto",
+          "refusing_medication": "Nevartoja vaistų",
           "agitated": "Susijaudinęs",
-          "not_recognizing": "Manęs neatpažįsta",
-          "repetitive_questions": "Tas pats klausimas vėl",
+          "not_recognizing": "Nepripažįsta manęs",
+          "repetitive_questions": "Vėl tas pats klausimas",
           "sundowning": "Saulėlydžio sindromas",
           "wants_to_leave": "Nori išeiti",
-          "caregiver_overwhelmed": "Netenku kantrybės"
+          "caregiver_overwhelmed": "Prarandu kantrybę"
         },
         "planPrepare": {
-          "title": "Planuoti ir pasiruošti",
-          "subtitle": "Valdomi darbo eigos",
-          "plan_tomorrow": "Suplanuokite rytojų",
-          "plan_tomorrow_desc": "Sukurkite puikią dieną kartu",
-          "doctor_visit": "Pasiruoškite gydytojo vizitui",
-          "doctor_visit_desc": "Sugeneruokite struktūrizuotą santrauką",
-          "review_week": "Peržiūrėkite šią savaitę",
+          "title": "Planuoti ir ruoštis",
+          "subtitle": "Valdomi procesai",
+          "plan_tomorrow": "Planuoti rytojų",
+          "plan_tomorrow_desc": "Kartu sukurkite puikią dieną",
+          "doctor_visit": "Pasiruošti vizitui pas gydytoją",
+          "doctor_visit_desc": "Sugeneruoti struktūrizuotą santrauką",
+          "review_week": "Peržiūrėti šią savaitę",
           "review_week_desc": "Kas pavyko, kam reikia dėmesio",
-          "adjust_plan": "Pakoreguokite priežiūros planą",
-          "adjust_plan_desc": "Optimizuokite pagal tai, kas veikia"
+          "adjust_plan": "Koreguoti priežiūros planą",
+          "adjust_plan_desc": "Optimizuoti pagal tai, kas veikia"
         },
         "learn": {
-          "title": "Mokykitės",
-          "subtitle": "Teminiai vadovai {{name}}",
+          "title": "Mokytis",
+          "subtitle": "Teminės gairės {{name}}",
           "daily_routines": "Kasdienė rutina",
           "communication": "Bendravimas",
           "behaviors": "Elgesys",
-          "activities": "Veikla",
+          "activities": "Veiklos",
           "nutrition": "Mityba",
-          "safety": "Saugumas",
+          "safety": "Sauga",
           "sleep": "Miegas ir naktis"
         },
         "askAnything": {
           "title": "Klauskite bet ko",
-          "placeholder": "Kas jums rūpi rūpinantis {{name}}?"
+          "placeholder": "Kas jums rūpi dėl {{name}} priežiūros?"
         }
       }
     },
     "family": {
-      "title": "{{patientName}} priežiūros komanda",
+      "title": "{{patientName}} globos komanda",
       "inviteMember": "Pakviesti šeimos narį",
       "primaryCaregiver": "Pagrindinis globėjas",
       "familyMember": "Šeimos narys",
       "careCode": "Priežiūros kodas",
-      "careCodeHelp": "Bendrinkite šį kodą, kad susietumėte paciento programėlę",
-      "regenerateCode": "Atnaujinti kodą",
+      "careCodeHelp": "Pasidalykite šiuo kodu, kad susietumėte paciento programėlę",
+      "regenerateCode": "Sugeneruoti kodą iš naujo",
       "regenerateWarning": "Tai atjungs visus susietus paciento įrenginius. Jiems reikės naujo kodo.",
       "journal": "Priežiūros žurnalas",
       "addNote": "Pridėti pastabą",
-      "observation": "Pastebėjimas",
+      "observation": "Stebėjimas",
       "note": "Pastaba",
-      "milestone": "Etapas",
+      "milestone": "Svarbus įvykis",
       "inviteEmail": "El. pašto adresas",
       "inviteName": "Vardas",
       "inviteRelationship": "Ryšys",
@@ -293,35 +293,35 @@
       "family": "Šeima",
       "careJournal": "Priežiūros žurnalas",
       "inviteFamilyMembers": "Pakviesti šeimos narius",
-      "shareCareCodeDesc": "Bendrinkite savo priežiūros kodą, kad kiti šeimos nariai galėtų prisijungti.",
+      "shareCareCodeDesc": "Pasidalykite savo priežiūros kodu, kad kiti šeimos nariai galėtų prisijungti.",
       "showCareCode": "Rodyti priežiūros kodą",
       "copy": "Kopijuoti",
-      "share": "Bendrinti",
+      "share": "Dalintis",
       "copied": "Nukopijuota!",
       "codeCopiedToClipboard": "Priežiūros kodas nukopijuotas į iškarpinę",
       "familyMembers": "Šeimos nariai ({{count}})",
       "you": "Jūs",
       "primary": "Pagrindinis",
-      "entryPlaceholder": "Pridėkite pastabą, pastebėjimą ar etapą...",
-      "posting": "Skelbiama...",
-      "post": "Skelbti",
-      "noJournalEntries": "Žurnalo įrašų dar nėra.",
-      "startDocumenting": "Pradėkite dokumentuoti savo priežiūros kelionę!",
+      "entryPlaceholder": "Pridėti pastabą, stebėjimą ar svarbų įvykį...",
+      "posting": "Skeliama...",
+      "post": "Paskelbti",
+      "noJournalEntries": "Kol kas nėra žurnalo įrašų.",
+      "startDocumenting": "Pradėkite dokumentuoti savo globos kelionę!",
       "yesterday": "Vakar",
-      "failedToAddEntry": "Nepavyko įtraukti įrašo. Bandykite dar kartą.",
-      "shareCareCodeMessage": "Prisijunkite prie mano OurTurn priežiūros rato! Naudokite šį priežiūros kodą: {{code}}",
+      "failedToAddEntry": "Nepavyko pridėti įrašo. Bandykite dar kartą.",
+      "shareCareCodeMessage": "Prisijunkite prie mano OurTurn globos rato! Naudokite šį globos kodą: {{code}}",
       "deleteConfirmTitle": "Ištrinti žurnalo įrašą",
-      "deleteConfirmMessage": "Ar tikrai norite ištrinti šį žurnalo įrašą? To nebus galima atšaukti.",
+      "deleteConfirmMessage": "Ar tikrai norite ištrinti šį žurnalo įrašą? Šio veiksmo negalima anuliuoti.",
       "edited": "(redaguota)",
       "crisis": "Krizė",
       "canEditPlan": "Gali redaguoti planą",
       "receivesAlerts": "Gauna įspėjimus",
-      "caregiverLimitReached": "Pasiekėte nemokamo lygio šeimos narių limitą. Atnaujinkite, kad pridėtumėte daugiau."
+      "caregiverLimitReached": "Pasiekėte nemokamos pakopos šeimos narių limitą. Atnaujinkite planą, kad galėtumėte pridėti daugiau."
     },
     "toolkit": {
       "pageTitle": "Globėjo įrankių rinkinys",
       "pageSubtitle": "Praktiniai įrankiai ir parama jūsų gerovei",
-      "introMessage": "Sveiki, {{name}}! Tai jūsų erdvė greitam palengvėjimui, paramai ir savęs priežiūrai.",
+      "introMessage": "Sveiki, {{name}}! Tai jūsų erdvė greitam palengvėjimui, palaikymui ir savirūpai.",
       "checkin": {
         "title": "Kaip jaučiatės šiandien?",
         "energy": "Energija",
@@ -329,9 +329,9 @@
         "energyHigh": "Energingas",
         "stress": "Stresas",
         "stressLow": "Ramus",
-        "stressHigh": "Perkrautas",
+        "stressHigh": "Prislėgtas",
         "sleep": "Miego kokybė",
-        "sleepLow": "Siaubinga",
+        "sleepLow": "Baisi",
         "sleepHigh": "Puiki"
       },
       "relief": {
@@ -339,134 +339,134 @@
         "recommended": "Rekomenduojama",
         "duration": "{{min}} min",
         "startExercise": "Pradėti",
-        "stepOf": "{{current}} žingsnis iš {{total}}",
-        "complete": "Puikiai padaryta! Pratimas baigtas.",
+        "stepOf": "Žingsnis {{current}} iš {{total}}",
+        "complete": "Puikiai atlikta! Pratimas baigtas.",
         "close": "Uždaryti",
         "pause": "Pauzė",
         "resume": "Tęsti",
         "exercises": {
           "box-breathing": {
-            "name": "Kvėpavimas dėžute",
-            "step0": "Atsipalaiduokite ir užmerkite akis",
-            "step1": "Lėtai įkvėpkite per nosį",
+            "name": "Kvadratinis kvėpavimas",
+            "step0": "Patogiai įsitaisykite ir užmerkite akis",
+            "step1": "Lėtai įkvėpkite pro nosį",
             "step2": "Švelniai sulaikykite kvėpavimą",
-            "step3": "Lėtai iškvėpkite per burną",
-            "step4": "Palaikykite prieš kitą įkvėpimą",
-            "step5": "Lėtai įkvėpkite per nosį",
+            "step3": "Lėtai iškvėpkite pro burną",
+            "step4": "Sulaikykite prieš kitą įkvėpimą",
+            "step5": "Lėtai įkvėpkite pro nosį",
             "step6": "Švelniai sulaikykite kvėpavimą",
-            "step7": "Lėtai iškvėpkite per burną",
-            "step8": "Palaikykite prieš kitą įkvėpimą",
-            "step9": "Lėtai įkvėpkite per nosį",
+            "step7": "Lėtai iškvėpkite pro burną",
+            "step8": "Sulaikykite prieš kitą įkvėpimą",
+            "step9": "Lėtai įkvėpkite pro nosį",
             "step10": "Švelniai sulaikykite kvėpavimą",
-            "step11": "Lėtai iškvėpkite per burną",
-            "step12": "Palaikykite prieš kitą įkvėpimą",
-            "step13": "Lėtai įkvėpkite per nosį",
+            "step11": "Lėtai iškvėpkite pro burną",
+            "step12": "Sulaikykite prieš kitą įkvėpimą",
+            "step13": "Lėtai įkvėpkite pro nosį",
             "step14": "Švelniai sulaikykite kvėpavimą",
-            "step15": "Lėtai iškvėpkite per burną",
-            "step16": "Palaikykite prieš kitą įkvėpimą",
-            "step17": "Lėtai įkvėpkite per nosį",
+            "step15": "Lėtai iškvėpkite pro burną",
+            "step16": "Sulaikykite prieš kitą įkvėpimą",
+            "step17": "Lėtai įkvėpkite pro nosį",
             "step18": "Švelniai sulaikykite kvėpavimą",
-            "step19": "Lėtai iškvėpkite per burną",
-            "step20": "Palaikykite prieš kitą įkvėpimą",
-            "step21": "Lėtai įkvėpkite per nosį",
+            "step19": "Lėtai iškvėpkite pro burną",
+            "step20": "Sulaikykite prieš kitą įkvėpimą",
+            "step21": "Lėtai įkvėpkite pro nosį",
             "step22": "Švelniai sulaikykite kvėpavimą",
-            "step23": "Lėtai iškvėpkite per burną",
-            "step24": "Puikiai padaryta. Skirkite akimirką pastebėti, kaip jaučiatės."
+            "step23": "Lėtai iškvėpkite pro burną",
+            "step24": "Puikiai atlikta. Skirkite akimirką pajusti, kaip jaučiatės."
           },
           "54321-grounding": {
             "name": "5-4-3-2-1 Įsižeminimas",
-            "step0": "Lėtai, giliai įkvėpkite ir apsižvalgykite",
-            "step1": "Įvardykite 5 dalykus, kuriuos galite MATYTI dabar",
-            "step2": "Įvardykite 4 dalykus, kuriuos galite PALIESTI dabar",
-            "step3": "Įvardykite 3 dalykus, kuriuos galite GIRDĖTI dabar",
-            "step4": "Įvardykite 2 dalykus, kuriuos galite UŽUOSTI dabar",
-            "step5": "Įvardykite 1 dalyką, kurį galite PARAGAUTI dabar",
+            "step0": "Lėtai, giliai įkvėpkite ir apsižvalgykite aplink",
+            "step1": "Įvardykite 5 dalykus, kuriuos dabar matote",
+            "step2": "Įvardykite 4 dalykus, kuriuos dabar galite paliesti",
+            "step3": "Įvardykite 3 dalykus, kuriuos dabar girdite",
+            "step4": "Įvardykite 2 dalykus, kuriuos dabar užuodžiate",
+            "step5": "Įvardykite 1 dalyką, kurį dabar jaučiate skoniu",
             "step6": "Dar kartą giliai įkvėpkite. Jūs esate čia ir esate saugūs."
           },
           "gratitude-moment": {
-            "name": "Padėkos akimirka",
+            "name": "Dėkingumo akimirka",
             "step0": "Užmerkite akis ir ramiai įkvėpkite",
             "step1": "Pagalvokite apie vieną žmogų, už kurį esate dėkingi, ir kodėl",
-            "step2": "Pagalvokite apie vieną dalyką, kuris šiandien įvyko gero, net jei ir mažo",
+            "step2": "Pagalvokite apie vieną gerą dalyką, kuris šiandien nutiko, net jei jis ir mažas",
             "step3": "Pagalvokite apie vieną dalyką savyje, kurį vertinate",
-            "step4": "Palaikykite tuos tris dalykus savo mintyse ir giliai kvėpuokite",
+            "step4": "Laikykite šiuos tris dalykus savo mintyse ir giliai kvėpuokite",
             "step5": "Nešiokitės šį dėkingumo jausmą su savimi."
           },
           "progressive-muscle-relaxation": {
-            "name": "Progresyvus raumenų atpalaidavimas",
+            "name": "Progresyvi raumenų relaksacija",
             "step0": "Patogiai atsisėskite arba atsigulkite. Užmerkite akis.",
-            "step1": "Stipriai suspauskite abu kumščius 5 sekundes...",
-            "step2": "Atleiskite ir pajuskite, kaip įtampa išnyksta",
+            "step1": "Stipriai sugniaužkite abu kumščius 5 sekundėms...",
+            "step2": "Atleiskite ir pajuskite, kaip įtampa ištirpsta",
             "step3": "Įtempkite pečius – pakelkite juos link ausų...",
-            "step4": "Atleiskite ir leiskite pečiams nukristi",
+            "step4": "Atleiskite ir leiskite pečiams nusileisti",
             "step5": "Stipriai suraukite veidą – kaktą, akis, žandikaulį...",
             "step6": "Atleiskite ir leiskite veidui visiškai atsipalaiduoti",
             "step7": "Įtempkite pilvo raumenis...",
-            "step8": "Atleiskite ir įkvėpkite į pilvą",
-            "step9": "Stipriai suspauskite kojas ir pėdas...",
+            "step8": "Atleiskite ir kvėpuokite į pilvą",
+            "step9": "Stipriai sugniaužkite kojas ir pėdas...",
             "step10": "Atleiskite ir pajuskite, kaip šiluma teka per jūsų kojas",
-            "step11": "Giliai kvėpuokite. Visas jūsų kūnas yra atsipalaidavęs.",
-            "step12": "Švelniai atverkite akis, kai būsite pasiruošę."
+            "step11": "Giliai kvėpuokite. Jūsų visas kūnas atsipalaidavęs.",
+            "step12": "Švelniai atmerkite akis, kai būsite pasiruošę."
           },
           "mindful-break": {
-            "name": "Sąmoninga pertrauka",
+            "name": "Sąmoninga pertraukėlė",
             "step0": "Sustabdykite viską, ką darote. Ši akimirka yra jūsų.",
-            "step1": "Užmerkite akis ir giliai įkvėpkite 3 kartus",
-            "step2": "Atkreipkite dėmesį, kaip jaučiasi jūsų kūnas dabar – nieko nereikia keisti",
-            "step3": "Įsiklausykite į aplinkinius garsus, esančius arti ir toli",
-            "step4": "Pajuskite paviršių po savimi ir orą ant odos",
-            "step5": "Tyliai pasakykite: „Aš darau viską, kas įmanoma, ir to pakanka.“",
-            "step6": "Dar kartą giliai įkvėpkite",
+            "step1": "Užmerkite akis ir tris kartus lėtai, giliai įkvėpkite.",
+            "step2": "Atkreipkite dėmesį, kaip jaučiasi jūsų kūnas šiuo metu – nieko nereikia keisti.",
+            "step3": "Klausykitės aplinkos garsų, artimų ir tolimų.",
+            "step4": "Pajuskite paviršių po savimi ir orą ant odos.",
+            "step5": "Tyliai pasakykite: „Aš darau viską, ką galiu, ir to pakanka.“",
+            "step6": "Dar kartą giliai įkvėpkite.",
             "step7": "Švelniai atmerkite akis. Jūs esate atsigavę."
           },
           "breathing-478": {
-            "name": "Kvėpavimas 4-7-8",
-            "step0": "Patogiai atsisėskite ir atpalaiduokite pečius",
-            "step1": "Tyliai įkvėpkite per nosį 4 skaičiavimus",
-            "step2": "Sulaikykite kvėpavimą 7 skaičiavimus",
-            "step3": "Visiškai iškvėpkite per burną 8 skaičiavimus",
-            "step4": "Tyliai įkvėpkite per nosį 4 skaičiavimus",
-            "step5": "Sulaikykite kvėpavimą 7 skaičiavimus",
-            "step6": "Visiškai iškvėpkite per burną 8 skaičiavimus",
-            "step7": "Tyliai įkvėpkite per nosį 4 skaičiavimus",
-            "step8": "Sulaikykite kvėpavimą 7 skaičiavimus",
-            "step9": "Visiškai iškvėpkite per burną 8 skaičiavimus",
-            "step10": "Tyliai įkvėpkite per nosį 4 skaičiavimus",
-            "step11": "Sulaikykite kvėpavimą 7 skaičiavimus",
-            "step12": "Visiškai iškvėpkite per burną 8 skaičiavimus",
-            "step13": "Tyliai įkvėpkite per nosį 4 skaičiavimus",
-            "step14": "Sulaikykite kvėpavimą 7 skaičiavimus",
-            "step15": "Visiškai iškvėpkite per burną 8 skaičiavimus",
-            "step16": "Atkreipkite dėmesį, kaip ramesnis jaučiasi jūsų kūnas dabar."
+            "name": "4-7-8 Kvėpavimas",
+            "step0": "Patogiai atsisėskite ir atpalaiduokite pečius.",
+            "step1": "Tyliai įkvėpkite pro nosį skaičiuodami iki 4.",
+            "step2": "Sulaikykite kvėpavimą skaičiuodami iki 7.",
+            "step3": "Visiškai iškvėpkite pro burną skaičiuodami iki 8.",
+            "step4": "Tyliai įkvėpkite pro nosį skaičiuodami iki 4.",
+            "step5": "Sulaikykite kvėpavimą skaičiuodami iki 7.",
+            "step6": "Visiškai iškvėpkite pro burną skaičiuodami iki 8.",
+            "step7": "Tyliai įkvėpkite pro nosį skaičiuodami iki 4.",
+            "step8": "Sulaikykite kvėpavimą skaičiuodami iki 7.",
+            "step9": "Visiškai iškvėpkite pro burną skaičiuodami iki 8.",
+            "step10": "Tyliai įkvėpkite pro nosį skaičiuodami iki 4.",
+            "step11": "Sulaikykite kvėpavimą skaičiuodami iki 7.",
+            "step12": "Visiškai iškvėpkite pro burną skaičiuodami iki 8.",
+            "step13": "Tyliai įkvėpkite pro nosį skaičiuodami iki 4.",
+            "step14": "Sulaikykite kvėpavimą skaičiuodami iki 7.",
+            "step15": "Visiškai iškvėpkite pro burną skaičiuodami iki 8.",
+            "step16": "Atkreipkite dėmesį, kaip ramiau jaučiasi jūsų kūnas dabar."
           },
           "permission-slip": {
             "name": "Leidimas sau",
-            "step0": "Giliai įkvėpkite ir skirkite sau akimirką",
-            "step1": "Pasakykite sau: „Aš leidžiu sau nebūti tobulam šiandien“",
-            "step2": "Pasakykite: „Aš leidžiu sau paprašyti pagalbos“",
-            "step3": "Pasakykite: „Aš leidžiu sau jausti tai, ką jaučiu, be kaltės“",
-            "step4": "Pasakykite: „Aš leidžiu sau padaryti pertrauką“",
-            "step5": "Pasakykite: „Aš darau viską, kas įmanoma, ir to pakanka“",
-            "step6": "Giliai įkvėpkite ir laikykite šiuos žodžius arti savęs",
-            "step7": "Jūs taip pat nusipelnėte atjautos. Neškitės tai su savimi."
+            "step0": "Giliai įkvėpkite ir skirkite sau akimirką.",
+            "step1": "Pasakykite sau: „Aš leidžiu sau šiandien nebūti tobulam.“",
+            "step2": "Pasakykite: „Aš leidžiu sau prašyti pagalbos.“",
+            "step3": "Pasakykite: „Aš leidžiu sau jausti tai, ką jaučiu, be kaltės.“",
+            "step4": "Pasakykite: „Aš leidžiu sau padaryti pertrauką.“",
+            "step5": "Pasakykite: „Aš darau viską, ką galiu, ir to pakanka.“",
+            "step6": "Giliai įkvėpkite ir laikykite šiuos žodžius arti savęs.",
+            "step7": "Jūs taip pat nusipelnėte užuojautos. Nešiokitės tai su savimi."
           },
           "quick-walk": {
-            "name": "Greito pasivaikščiojimo raginimas",
-            "step0": "Atsistokite ir ištieskite rankas virš galvos",
-            "step1": "Nueikite prie artimiausio lango ar durų ir pažiūrėkite į lauką",
-            "step2": "Ženkite 5 lėtus žingsnius ir pajuskite, kaip kiekviena pėda paliečia žemę",
-            "step3": "Pažiūrėkite aukštyn – atkreipkite dėmesį į dangų, lubas ar ką nors virš jūsų",
-            "step4": "Ženkite dar 5 lėtus, apgalvotus žingsnius",
-            "step5": "Kelias sekundes laisvai pakratykite rankas ir rankų pirštus",
-            "step6": "3 kartus atsukite pečius atgal",
-            "step7": "Jūs pajudinote savo kūną. Tai svarbu. Puikiai padaryta."
+            "name": "Trumpo pasivaikščiojimo priminimas",
+            "step0": "Atsistokite ir ištieskite rankas virš galvos.",
+            "step1": "Prieikite prie artimiausio lango ar durų ir pažvelkite į lauką.",
+            "step2": "Ženkite 5 lėtus žingsnius ir pajuskite, kaip kiekviena pėda liečia žemę.",
+            "step3": "Pažvelkite aukštyn – atkreipkite dėmesį į dangų, lubas ar ką nors virš savęs.",
+            "step4": "Ženkite dar 5 lėtus, sąmoningus žingsnius.",
+            "step5": "Laisvai pakratykite rankas kelias sekundes.",
+            "step6": "Atloškite pečius atgal 3 kartus.",
+            "step7": "Jūs pajudinote savo kūną. Tai svarbu. Puikiai padirbėta."
           }
         }
       },
       "help": {
-        "title": "Paprašykite pagalbos",
+        "title": "Paprašyti pagalbos",
         "sendRequest": "Siųsti",
-        "customPlaceholder": "Įveskite savo pranešimą...",
+        "customPlaceholder": "Įveskite savo žinutę...",
         "recentRequests": "Paskutiniai prašymai",
         "statusPending": "Laukiama",
         "statusAccepted": "Priimta",
@@ -481,26 +481,26 @@
         "template_handle_meds": "Pagalba su vaistais",
         "template_need_visit": "Reikia aplankyti",
         "template_groceries": "Maisto produktai",
-        "template_custom": "Individualus pranešimas",
-        "message_need_break": "Man tikrai reikia pertraukos. Ar kas nors galėtų mane pavaduoti kurį laiką?",
-        "message_handle_meds": "Ar kas nors gali padėti su vaistais šiandien?",
-        "message_need_visit": "Man labai daug reikštų, jei kas nors galėtų šiandien aplankyti.",
+        "template_custom": "Individuali žinutė",
+        "message_need_break": "Man tikrai praverstų pertrauka. Gal kas nors galėtų trumpam perimti?",
+        "message_handle_meds": "Ar kas nors galėtų padėti su vaistais šiandien?",
+        "message_need_visit": "Būtų labai malonu, jei kas nors galėtų šiandien aplankyti.",
         "message_groceries": "Ar kas nors galėtų padėti nupirkti maisto produktų?"
       },
       "agent": {
-        "title": "Savijautos palydovas",
-        "disclaimer": "Tik emocinei paramai. Tai nėra medicininis patarimas.",
+        "title": "Geros savijautos palydovas",
+        "disclaimer": "Tik emocinei paramai. Ne medicininė konsultacija.",
         "placeholder": "Kaip jaučiatės?",
         "greeting": "Galvoju apie jus...",
-        "rateLimited": "Atsipūskite – netrukus vėl galėsite bendrauti.",
+        "rateLimited": "Atsikvėpkite – netrukus vėl galėsite bendrauti.",
         "errorMessage": "Nepavyko prisijungti. Bandykite dar kartą.",
-        "expand": "Išplėsti",
+        "expand": "Išskleisti",
         "collapse": "Sutraukti",
         "prompts": {
           "overwhelmed": "Šiuo metu jaučiuosi priblokštas",
           "calmDown": "Padėkite man nusiraminti per 2 minutes",
           "needEnergy": "Man reikia energijos, bet negaliu padaryti pertraukos",
-          "poorSleep": "Praėjusią naktį blogai miegojau",
+          "poorSleep": "Praėjusią naktį prastai miegojau",
           "needMoment": "Man reikia akimirkos tik sau",
           "uplifting": "Pasakykite man ką nors pakylėjančio"
         }
@@ -514,198 +514,198 @@
       },
       "burnout": {
         "title": "Pastebime, kad jums gali prireikti papildomos paramos",
-        "message": "Jūsų paskutiniai patikrinimai rodo padidėjusį stresą arba mažą energiją. Tai visiškai suprantama – slauga yra sunkus darbas."
+        "message": "Jūsų paskutiniai patikrinimai rodo padidėjusį stresą arba mažą energijos lygį. Tai visiškai suprantama – slauga yra sunki."
       },
       "support": {
         "title": "Reikia paramos?",
-        "description": "Slauga yra sudėtinga. Tai normalu prašyti pagalbos."
+        "description": "Slauga yra sudėtinga. Prašyti pagalbos yra normalu."
       },
-      "footer": "Atminkite: negalite pilti iš tuščio puodelio. Jūsų gerovė taip pat svarbi.",
+      "footer": "Atminkite: iš tuščio puodelio nepripildysite. Jūsų gerovė taip pat svarbi.",
       "weeklyStats": {
         "title": "Savaitės įžvalgos",
-        "subtitle": "Jūsų 7 dienų savijautos santrauka",
+        "subtitle": "Jūsų 7 dienų gerovės apžvalga",
         "avgEnergy": "Vid. energija",
         "avgStress": "Vid. stresas",
         "avgSleep": "Vid. miegas",
-        "noData": "Užpildykite kasdienius patikrinimus, kad pamatytumėte savo savaitės tendencijas.",
-        "generateDigest": "Generuoti AI santrauką",
+        "noData": "Pildykite kasdienius patikrinimus, kad matytumėte savaitės tendencijas.",
+        "generateDigest": "Generuoti AI apžvalgą",
         "generating": "Generuojama...",
-        "behaviourSummary": "Šią savaitę užregistruota {{count}} elgesio incidentų"
+        "behaviourSummary": "Šią savaitę užfiksuota {{count}} elgesio incidentų"
       },
       "sos": {
         "title": "Kas vyksta dabar?",
-        "subtitle": "Pasirinkite, kokios pagalbos jums reikia – mes jums padėsime.",
+        "subtitle": "Pasirinkite, su kuo jums reikia pagalbos – mes jums padėsime.",
         "calmDown": "Man reikia nusiraminti",
-        "calmDownDesc": "Greiti kvėpavimo ir palengvėjimo pratimai",
-        "behaviourNow": "Elgesys vyksta dabar",
-        "behaviourNowDesc": "Užregistruokite incidentą ir gaukite patarimų",
+        "calmDownDesc": "Greiti kvėpavimo ir palengvinimo pratimai",
+        "behaviourNow": "Dabar vykstantis elgesys",
+        "behaviourNowDesc": "Užfiksuokite incidentą ir gaukite patarimų",
         "callHelp": "Man reikia skubios pagalbos",
         "callHelpDesc": "Susisiekite su pagalbos tarnybomis arba šeima",
-        "needBreak": "Man reikia, kad kažkas perimtų",
-        "needBreakDesc": "Nusiųskite pagalbos prašymą šeimai"
+        "needBreak": "Man reikia, kad kas nors perimtų",
+        "needBreakDesc": "Siųskite pagalbos prašymą šeimai"
       },
       "behaviours": {
         "playbooks": {
-          "title": "Elgesio vadovai",
-          "subtitle": "Palieskite elgesį, kad gautumėte nuoseklias instrukcijas",
+          "title": "Elgesio gairės",
+          "subtitle": "Palieskite elgesį, kad gautumėte nuoseklias gaires",
           "rightNow": "Dabar",
-          "understandWhy": "Suprasti, kodėl",
+          "understandWhy": "Suprasti kodėl",
           "prevent": "Prevencija",
-          "whenToCallDoctor": "Kada skambinti gydytojui"
+          "whenToCallDoctor": "Kada kreiptis į gydytoją"
         },
         "logger": {
-          "title": "Registruoti incidentą",
-          "logIncident": "Registruoti incidentą",
+          "title": "Užfiksuoti incidentą",
+          "logIncident": "Užfiksuoti incidentą",
           "typeLabel": "Elgesio tipas",
           "selectType": "Pasirinkite tipą...",
           "severity": "Sunkumas",
           "mild": "Lengvas",
           "severe": "Sunkus",
-          "timeOfDay": "Paros metas",
+          "timeOfDay": "Paros laikas",
           "morning": "Rytas",
           "afternoon": "Popietė",
           "evening": "Vakaras",
           "night": "Naktis",
           "duration": "Trukmė (minutėmis)",
-          "durationPlaceholder": "Kiek tai truko?",
-          "triggers": "Galimi trigeriai",
+          "durationPlaceholder": "Kiek laiko tai truko?",
+          "triggers": "Galimi sukėlėjai",
           "trigger_pain": "Skausmas",
           "trigger_hunger": "Alkis",
           "trigger_thirst": "Troškulys",
           "trigger_fatigue": "Nuovargis",
-          "trigger_overstimulation": "Per didelis stimuliavimas",
+          "trigger_overstimulation": "Per didelė stimuliacija",
           "trigger_unfamiliar_environment": "Nepažįstama vieta",
-          "trigger_unfamiliar_person": "Nepažįstamas žmogus",
-          "trigger_routine_change": "Rutinos pakeitimas",
+          "trigger_unfamiliar_person": "Nepažįstamas asmuo",
+          "trigger_routine_change": "Rutinos pokyčiai",
           "trigger_medication": "Vaistai",
           "trigger_noise": "Triukšmas",
-          "trigger_loneliness": "Vienišumas",
+          "trigger_loneliness": "Vienatvė",
           "trigger_boredom": "Nuobodulys",
           "trigger_bathroom_need": "Reikia į tualetą",
-          "trigger_frustration": "Nusivylimas",
+          "trigger_frustration": "Frustracija",
           "trigger_fear": "Baimė",
           "trigger_unknown": "Nežinoma",
-          "whatHappened": "Kas atsitiko?",
+          "whatHappened": "Kas nutiko?",
           "whatHappenedPlaceholder": "Apibūdinkite incidentą...",
-          "whatHelped": "Kas padėjo? (nebūtina)",
+          "whatHelped": "Kas padėjo? (neprivaloma)",
           "whatHelpedPlaceholder": "Apibūdinkite, kas padėjo nuraminti situaciją...",
           "save": "Išsaugoti incidentą",
-          "saved": "Incidentas užregistruotas"
+          "saved": "Incidentas užfiksuotas"
         },
         "timeline": {
           "title": "Incidentų laiko juosta",
           "all": "Visi",
-          "noIncidents": "Jokie incidentai neatitinka dabartinio filtro."
+          "noIncidents": "Nėra incidentų, atitinkančių dabartinį filtrą."
         }
       }
     },
     "reports": {
-      "title": "Apsilankymo pas gydytoją ataskaita",
+      "title": "Gydytojo vizito ataskaita",
       "period": "Ataskaitos laikotarpis",
       "lastDays": "Paskutinės {{days}} dienos",
       "generate": "Generuoti ataskaitą",
       "include": "Įtraukti į ataskaitą",
-      "moodTrends": "Nuotaikos tendencijos ir patikrinimo santrauka",
-      "sleepPatterns": "Miego režimas",
+      "moodTrends": "Nuotaikos tendencijos ir patikrinimų apžvalga",
+      "sleepPatterns": "Miego įpročiai",
       "activityCompletion": "Veiklos užbaigimo rodikliai",
       "medicationAdherence": "Vaistų vartojimo laikymasis",
-      "journalNotes": "Svarbios priežiūros žurnalo pastabos",
-      "locationPatterns": "Vietos modeliai",
-      "caregiverConcerns": "Globėjo rūpesčiai",
-      "customNotes": "Papildomos pastabos gydytojui",
+      "journalNotes": "Svarbūs priežiūros žurnalo pastebėjimai",
+      "locationPatterns": "Vietos judėjimo įpročiai",
+      "caregiverConcerns": "Slaugytojo rūpesčiai",
+      "customNotes": "Papildomi užrašai gydytojui",
       "print": "Spausdinti",
       "downloadPdf": "Atsisiųsti PDF",
       "emailDoctor": "Siųsti el. paštu gydytojui",
-      "disclaimer": "Ši santrauka pagrįsta savarankiškai pateiktais savijautos duomenimis ir šeimos stebėjimais. Tai nėra klinikinis įvertinimas.",
-      "webNote": "Norėdami gauti visą ataskaitų kūrimo priemonę su spausdinimo ir PDF eksportavimo funkcijomis, apsilankykite OurTurn žiniatinklio programėlėje.",
+      "disclaimer": "Ši apžvalga paremta savarankiškai pateiktais gerovės duomenimis ir šeimos pastebėjimais. Tai nėra klinikinis vertinimas.",
+      "webNote": "Norėdami naudotis visa ataskaitų kūrimo priemone su spausdinimo ir PDF eksportavimo funkcijomis, apsilankykite OurTurn žiniatinklio programėlėje.",
       "openInWebApp": "Atidaryti žiniatinklio programėlėje",
       "previousReports": "Ankstesnės ataskaitos",
       "generated": "Sugeneruota {{date}}",
       "avgQuality": "vid. kokybė",
-      "moodStruggling": "Kovojanti",
+      "moodStruggling": "Sunkiai sekasi",
       "moodLow": "Žema",
       "moodOkay": "Gerai",
       "moodGood": "Gera",
       "moodGreat": "Puiki",
-      "careSummary": "OurTurn priežiūros santrauka",
+      "careSummary": "OurTurn priežiūros apžvalga",
       "patient": "Pacientas",
       "periodLabel": "Laikotarpis",
-      "checkinsRecorded": "Užregistruoti patikrinimai",
+      "checkinsRecorded": "Patikrinimų įrašyta",
       "averageMood": "Vidutinė nuotaika",
       "averageSleepQuality": "Vidutinė miego kokybė",
       "activityCompletionRate": "Veiklos užbaigimas",
       "medicationAdherenceRate": "Vaistų vartojimo laikymasis",
-      "observations": "Pastabos",
+      "observations": "Pastebėjimai",
       "categoryMedication": "Vaistai",
-      "categoryMeals": "Valgiai",
+      "categoryMeals": "Maitinimas",
       "categoryPhysical": "Fizinis",
-      "categoryCognitive": "Pažintinis",
+      "categoryCognitive": "Kognityvinis",
       "categorySocial": "Socialinis",
       "categoryHealth": "Sveikata"
     },
     "onboarding": {
-      "step1Title": "Apie jus",
-      "step2Title": "Apie jūsų artimąjį",
+      "step1Title": "Apie Jus",
+      "step2Title": "Apie Jūsų artimąjį",
       "step3Title": "Jų gyvenimo istorija",
-      "step4Title": "Dienos rutina",
-      "step5Title": "Saugos nustatymas",
+      "step4Title": "Kasdienė rutina",
+      "step5Title": "Saugumo nustatymai",
       "step6Title": "Jūsų priežiūros kodas",
       "next": "Kitas",
       "back": "Atgal",
       "finish": "Pradėti",
-      "careCodeInstructions": "Įdiekite OurTurn savo artimojo telefone ir įveskite šį kodą, kad prisijungtumėte.",
-      "quickSetup": "Greitas nustatymas",
+      "careCodeInstructions": "Įdiekite OurTurn į savo artimojo telefoną ir įveskite šį kodą, kad prisijungtumėte.",
+      "quickSetup": "Greita sąranka",
       "yourName": "Jūsų vardas",
       "yourNameRequired": "Jūsų vardas *",
       "lovedOneNameRequired": "Jūsų artimojo vardas *",
       "relationship": "Jūsų ryšys su jais",
       "relationshipPlaceholder": "pvz., dukra, sūnus, sutuoktinis",
-      "settingsHint": "Daugiau informacijos galite pridėti vėliau, skiltyje „Nustatymai“",
+      "settingsHint": "Daugiau detalių galėsite pridėti vėliau Nustatymuose",
       "fillRequired": "Prašome užpildyti visus privalomus laukus",
-      "setupFailed": "Nepavyko užbaigti sąrankos",
+      "setupFailed": "Nepavyko užbaigti nustatymų",
       "country": "Šalis",
       "theirName": "Jų vardas",
       "dateOfBirth": "Gimimo data",
-      "dementiaType": "Demencijos tipas (nebūtina)",
+      "dementiaType": "Demenčijos tipas (neprivaloma)",
       "homeAddress": "Namų adresas",
       "medications": "Vaistai",
       "addMedication": "Pridėti vaistą",
       "childhoodLocation": "Kur jie užaugo",
-      "career": "Karjera / užsiėmimas",
+      "career": "Karjera / profesija",
       "hobbies": "Pomėgiai ir interesai",
-      "favoriteMusic": "Mėgstamiausia muzika / atlikėjai",
-      "favoriteFoods": "Mėgstamiausias maistas",
+      "favoriteMusic": "Mėgstama muzika / atlikėjai",
+      "favoriteFoods": "Mėgstami patiekalai",
       "importantPeople": "Svarbūs žmonės",
       "keyEvents": "Svarbiausi gyvenimo įvykiai",
       "uploadPhotos": "Įkelti šeimos nuotraukas",
-      "wakeTime": "Prabudimo laikas",
+      "wakeTime": "Kėlimosi laikas",
       "sleepTime": "Miego laikas",
-      "generatePlan": "Sugeneruoti siūlomą planą",
-      "emergencyContacts": "Avariniai kontaktai",
+      "generatePlan": "Generuoti siūlomą planą",
+      "emergencyContacts": "Skubios pagalbos kontaktai",
       "alertSettings": "Įspėjimų nustatymai",
       "stepOf": "{{current}} žingsnis iš {{total}}",
       "breakfastTime": "Pusryčių laikas",
       "lunchTime": "Pietų laikas",
       "dinnerTime": "Vakarienės laikas",
-      "typicalDay": "Įprasto dienos aprašymas",
-      "typicalDayPlaceholder": "Aprašykite įprastą dieną...",
-      "emergencyContactsHint": "Pridėkite avarinius kontaktus, kurie bus rodomi paciento programėlės skirtuke „Pagalba“.",
+      "typicalDay": "Įprastos dienos aprašymas",
+      "typicalDayPlaceholder": "Apibūdinkite įprastą dieną...",
+      "emergencyContactsHint": "Pridėkite skubios pagalbos kontaktus, kurie bus matomi paciento programėlės skiltyje „Pagalba“.",
       "remove": "Pašalinti",
       "addContact": "Pridėti kontaktą",
       "contactNameRequired": "Vardas *",
       "phoneRequired": "Telefono numeris *",
-      "relationshipOptional": "Ryšys (nebūtina)",
+      "relationshipOptional": "Ryšys (neprivaloma)",
       "addContactButton": "+ Pridėti kontaktą",
-      "emergencyContactWarning": "Rekomenduojame pridėti bent vieną avarinį kontaktą.",
+      "emergencyContactWarning": "Rekomenduojame pridėti bent vieną skubios pagalbos kontaktą.",
       "allSet": "Viskas paruošta!",
       "careCodeLabel": "PRIEŽIŪROS KODAS",
       "copied": "Nukopijuota!",
       "copyCode": "Kopijuoti kodą",
       "nextSteps": "Kiti žingsniai:",
       "nextStep1": "1. Įdiekite OurTurn į {{name}} telefoną",
-      "nextStep2": "2. Atidarykite programėlę ir įveskite priežiūros kodą, esantį aukščiau",
-      "nextStep3": "3. Viskas! {{name}} dienos planas bus rodomas jų telefone",
-      "homeAddressPlaceholder": "Gedimino pr. 1, Vilnius"
+      "nextStep2": "2. Atidarykite programėlę ir įveskite aukščiau nurodytą Priežiūros kodą",
+      "nextStep3": "3. Štai ir viskas! {{name}} dienos planas atsiras jų telefone",
+      "homeAddressPlaceholder": "Gatvė 123, Miestas"
     },
     "settings": {
       "title": "Nustatymai",
@@ -714,7 +714,7 @@
         "label": "Tema",
         "light": "Šviesi",
         "dark": "Tamsi",
-        "system": "Sistema"
+        "system": "Sistemos"
       },
       "profile": "Profilis",
       "account": "Paskyra",
@@ -722,25 +722,25 @@
       "notifications": "Pranešimai",
       "privacy": "Privatumas ir duomenys",
       "exportData": "Eksportuoti mano duomenis",
-      "exportNote": "Atsisiųskite visų savo duomenų kopiją (BDAR teisė į perkeliamumą)",
-      "exportClipboard": "Jūsų duomenys buvo nukopijuoti į iškarpinę. Galite įklijuoti juos į dokumentą arba el. laišką.",
+      "exportNote": "Atsisiųskite visų savo duomenų kopiją (BDAR teisė į duomenų perkeliamumą)",
+      "exportClipboard": "Jūsų duomenys nukopijuoti į iškarpinę. Galite juos įklijuoti į dokumentą ar el. laišką.",
       "deleteAccount": "Ištrinti paskyrą",
-      "deleteWarning": "Tai visam laikui ištrins visus šio namų ūkio duomenis. To nebus galima atšaukti.",
+      "deleteWarning": "Tai visam laikui ištrins visus šio namų ūkio duomenis. Šio veiksmo negalima anuliuoti.",
       "deleteConfirmType": "Įveskite DELETE, kad patvirtintumėte paskyros ištrynimą",
       "confirmDelete": "Patvirtinti ištrynimą",
       "language": "Kalba",
       "about": "Apie OurTurn",
       "version": "Versija",
-      "notMedicalDevice": "OurTurn nėra medicinos prietaisas",
+      "notMedicalDevice": "OurTurn nėra medicininis prietaisas",
       "dailySummary": "Dienos suvestinė",
       "dailySummaryTime": "Dienos suvestinės laikas",
-      "emailNotifications": "Pranešimai el. paštu",
+      "emailNotifications": "El. pašto pranešimai",
       "pushNotifications": "Tiesioginiai pranešimai",
-      "safetyAlerts": "Įspėjimai apie saugumą",
+      "safetyAlerts": "Saugumo įspėjimai",
       "signOut": "Atsijungti",
       "saveProfile": "Išsaugoti profilį",
       "saved": "Išsaugota!",
-      "saving": "Išsaugoma...",
+      "saving": "Saugoma...",
       "changePassword": "Pakeisti slaptažodį",
       "newPassword": "Naujas slaptažodis",
       "confirmNewPassword": "Patvirtinti naują slaptažodį",
@@ -749,18 +749,18 @@
       "changingPassword": "Keičiama...",
       "copyCode": "Kopijuoti kodą",
       "codeCopied": "Kodas nukopijuotas!",
-      "regenerateCode": "Atnaujinti kodą",
-      "regenerateWarning": "Senas kodas nustos veikti. Visiems susietiems paciento įrenginiams reikės naujo kodo.",
+      "regenerateCode": "Sugeneruoti kodą iš naujo",
+      "regenerateWarning": "Senas kodas nustos veikti. Visiems suporuotiems paciento įrenginiams reikės naujo kodo.",
       "dangerZone": "Pavojinga zona",
       "relationship": "Ryšys",
       "deleteConfirm": "Įveskite DELETE, kad patvirtintumėte paskyros ištrynimą",
       "photoGallery": "Nuotraukų galerija",
-      "photoGalleryDesc": "Įkelkite šeimos nuotraukas, kad suasmenintumėte prisiminimų veiklą",
+      "photoGalleryDesc": "Įkelkite šeimos nuotraukas asmeninėms prisiminimų veiklos užduotims",
       "uploadPhotos": "Įkelti nuotraukas",
       "uploading": "Įkeliama...",
       "deletePhoto": "Ištrinti šią nuotrauką?",
-      "maxPhotosReached": "Pasiektas maksimalus nuotraukų skaičius (20)",
-      "photoUploadHint": "Iki 20 nuotraukų, maksimalus dydis 5 MB kiekvienai",
+      "maxPhotosReached": "Pasiektas maksimalus 20 nuotraukų skaičius",
+      "photoUploadHint": "Iki 20 nuotraukų, kiekviena ne didesnė nei 5 MB",
       "photoUploadFailed": "Nepavyko įkelti nuotraukos. Bandykite dar kartą.",
       "photoDeleteFailed": "Nepavyko ištrinti nuotraukos. Bandykite dar kartą.",
       "noPhotosYet": "Nuotraukų dar neįkelta",
@@ -769,67 +769,67 @@
       "patientComplexityDesc": "Koreguokite paciento programėlės sąsają pagal savo artimojo poreikius.",
       "complexity": {
         "full": "Pilnas",
-        "fullDesc": "Visos funkcijos pasiekiamos",
+        "fullDesc": "Visos funkcijos prieinamos",
         "simplified": "Supaprastintas",
         "simplifiedDesc": "Didesnis tekstas, mažiau detalių",
         "essential": "Esminis",
-        "essentialDesc": "Minimalus – tik muzika ir skambučio pagalba"
+        "essentialDesc": "Minimalus – tik muzika ir pagalbos skambutis"
       },
-      "safetyEscalation": "Saugumas ir eskalavimas",
+      "safetyEscalation": "Sauga ir eskalavimas",
       "escalationTiming": "Eskalavimo laikas",
-      "escalationTimingDesc": "Kiek laiko praeis, kol bus eskaluojami nepatvirtinti įspėjimai",
-      "offlineThreshold": "Įspėjimo apie atsijungimą riba",
-      "offlineThresholdDesc": "Įspėjimas, kai įrenginys nematomas tiek laiko",
+      "escalationTimingDesc": "Kiek laiko iki nepatvirtintų įspėjimų eskalavimo",
+      "offlineThreshold": "Neprisijungimo įspėjimo riba",
+      "offlineThresholdDesc": "Įspėti, kai įrenginys nematomas tiek laiko",
       "minutes": "minutės",
-      "respiteReminders": "Atsipalaidavimo priminimai",
-      "respiteRemindersDesc": "Gaukite priminimus, kad darytumėte pertraukas",
+      "respiteReminders": "Atokvėpio priminimai",
+      "respiteRemindersDesc": "Gaukite priminimus daryti pertraukas",
       "groupProfile": "Jūsų profilis",
       "groupAboutPatient": "Apie {{name}}",
-      "groupAboutPatientGeneric": "Apie jūsų mylimą žmogų",
-      "groupSharing": "Bendrinimas ir ryšys",
-      "groupSafety": "Saugumas ir pranešimai",
+      "groupAboutPatientGeneric": "Apie Jūsų artimąjį",
+      "groupSharing": "Dalijimasis ir ryšys",
+      "groupSafety": "Sauga ir pranešimai",
       "groupAccount": "Paskyra",
-      "patientInformation": "Paciento informacija",
+      "patientInformation": "Informacija apie artimąjį",
       "patientInformationDesc": "Pagrindinė informacija apie jūsų artimąjį",
-      "patientName": "Paciento vardas",
+      "patientName": "Artimojo vardas",
       "dateOfBirth": "Gimimo data",
       "dementiaType": "Demencijos tipas",
-      "selectDementiaType": "Pasirinkite tipą (nebūtina)",
+      "selectDementiaType": "Pasirinkite tipą (neprivaloma)",
       "homeAddress": "Namų adresas",
-      "homeAddressPlaceholder": "Pilnas namų adresas",
-      "savingPatientInfo": "Įrašoma...",
-      "savePatientInfo": "Išsaugoti paciento informaciją",
+      "homeAddressPlaceholder": "Visas namų adresas",
+      "savingPatientInfo": "Saugoma...",
+      "savePatientInfo": "Išsaugoti informaciją apie artimąjį",
       "lifeStory": "Gyvenimo istorija",
-      "lifeStoryDesc": "Ši informacija padeda suasmeninti kasdienes veiklas ir prisiminimų raginimus.",
-      "childhoodLocation": "Kur jie užaugo",
+      "lifeStoryDesc": "Ši informacija padeda suasmeninti kasdienes veiklas ir prisiminimų skatinimą.",
+      "childhoodLocation": "Kur užaugo",
       "career": "Karjera / Profesija",
       "hobbies": "Pomėgiai ir interesai",
       "hobbiesPlaceholder": "pvz., sodininkystė, tapyba, šachmatai",
       "favoriteMusic": "Mėgstamiausia muzika / atlikėjai",
-      "favoriteMusicPlaceholder": "pvz., Frank Sinatra, Beatles",
-      "favoriteFoods": "Mėgstamiausias maistas",
+      "favoriteMusicPlaceholder": "pvz., Frank Sinatra, The Beatles",
+      "favoriteFoods": "Mėgstamiausi patiekalai",
       "favoriteFoodsPlaceholder": "pvz., obuolių pyragas, kepta vištiena",
       "importantPeople": "Svarbūs žmonės",
-      "importantPeoplePlaceholder": "pvz., Jonas (brolis), Mary (geriausia draugė)",
+      "importantPeoplePlaceholder": "pvz., Jonas (brolis), Marija (geriausia draugė)",
       "keyEvents": "Svarbiausi gyvenimo įvykiai",
-      "keyEventsPlaceholder": "pvz., Baigė 1965 m., persikėlė į Londoną 1970 m.",
-      "savingLifeStory": "Įrašoma...",
+      "keyEventsPlaceholder": "pvz., Baigė mokyklą 1965 m., Persikėlė į Londoną 1970 m.",
+      "savingLifeStory": "Saugoma...",
       "saveLifeStory": "Išsaugoti gyvenimo istoriją",
       "dailySchedule": "Dienos tvarkaraštis",
       "dailyScheduleDesc": "Nustatykite savo artimojo pabudimo ir miego laiką.",
       "wakeTime": "Pabudimo laikas",
       "sleepTime": "Miego laikas",
-      "savingSchedule": "Įrašoma...",
+      "savingSchedule": "Saugoma...",
       "saveSchedule": "Išsaugoti tvarkaraštį",
-      "emergencyContacts": "Avariniai kontaktai",
-      "emergencyContactsDesc": "Šie kontaktai rodomi paciento programėlės skirtuke „Pagalba“.",
+      "emergencyContacts": "Skubios pagalbos kontaktai",
+      "emergencyContactsDesc": "Šie kontaktai rodomi artimojo programėlės pagalbos skiltyje.",
       "addContact": "Pridėti kontaktą",
       "contactName": "Kontakto vardas",
       "contactPhone": "Telefono numeris",
       "contactRelationship": "Ryšys",
       "contactRelationshipPlaceholder": "pvz., Dukra, kaimynas",
-      "noContactsYet": "Avarinių kontaktų dar nepridėta.",
-      "savingContacts": "Įrašoma...",
+      "noContactsYet": "Kol kas nepridėta jokių skubios pagalbos kontaktų.",
+      "savingContacts": "Saugoma...",
       "saveContacts": "Išsaugoti kontaktus",
       "removeContactConfirm": "Pašalinti šį kontaktą?",
       "country": "Šalis",
@@ -851,112 +851,112 @@
       "confirmPassword": "Patvirtinti slaptažodį",
       "createAccount": "Sukurti paskyrą",
       "getStarted": "Pradėti",
-      "fillAllFields": "Užpildykite visus laukus",
+      "fillAllFields": "Prašome užpildyti visus laukus",
       "passwordsNoMatch": "Slaptažodžiai nesutampa",
-      "passwordTooShort": "Slaptažodis turi būti bent 8 simbolių",
-      "checkEmail": "Patikrinkite savo el. paštą, kad patvirtintumėte paskyrą",
+      "passwordTooShort": "Slaptažodis turi būti bent 8 simbolių ilgio",
+      "checkEmail": "Prašome patikrinti el. paštą, kad patvirtintumėte paskyrą",
       "enterEmailFirst": "Pirmiausia įveskite savo el. pašto adresą.",
-      "resetEmailSent": "Patikrinkite savo el. paštą",
-      "resetEmailSentDesc": "Išsiuntėme slaptažodžio atstatymo nuorodą į jūsų el. pašto adresą.",
+      "resetEmailSent": "Patikrinkite el. paštą",
+      "resetEmailSentDesc": "Išsiuntėme slaptažodžio atkūrimo nuorodą į jūsų el. pašto adresą.",
       "welcomeBack": "Sveiki sugrįžę",
-      "enterEmailAndPassword": "Įveskite el. paštą ir slaptažodį",
-      "signingIn": "Prisijungiama",
-      "orContinueWith": "Arba tęskite su"
+      "enterEmailAndPassword": "Prašome įvesti el. paštą ir slaptažodį",
+      "signingIn": "Jungiamasi",
+      "orContinueWith": "Arba tęsti su"
     },
     "nav": {
       "family": "Šeimos ratas",
       "toolkit": "Įrankių rinkinys",
       "reports": "Ataskaitos",
       "settings": "Nustatymai",
-      "crisis": "Krizės centras"
+      "crisis": "Krizių centras"
     },
     "crisis": {
-      "title": "Krizės centras",
-      "subtitle": "Realaus laiko krizių valdymas ir deeskalavimo palaikymas",
-      "eventLogged": "Krizės įvykis užregistruotas",
-      "logEvent": "Registruoti krizės įvykį",
-      "logPlaceholder": "Aprašykite, kas nutiko...",
+      "title": "Krizių centras",
+      "subtitle": "Realaus laiko krizių valdymas ir deeskalacijos palaikymas",
+      "eventLogged": "Krizinis įvykis užregistruotas",
+      "logEvent": "Registruoti krizinį įvykį",
+      "logPlaceholder": "Apibūdinkite, kas nutiko...",
       "status": {
         "allClear": "Viskas gerai",
-        "allClearDesc": "Aktyvių įspėjimų nėra",
-        "activeAlerts": "Aktyvūs įspėjimai",
+        "allClearDesc": "Nėra aktyvių perspėjimų",
+        "activeAlerts": "Aktyvūs perspėjimai",
         "lastKnownLocation": "Paskutinė žinoma vieta",
         "viewOnMap": "Žiūrėti žemėlapyje",
         "noLocationData": "Nėra vietos duomenų"
       },
       "actions": {
         "modeLabel": "Jūsų situacija",
-        "withThem": "Aš su jais",
-        "remote": "Aš esu nuotoliniu būdu",
-        "startDeEscalation": "Pradėti deeskalavimą",
-        "startDeEscalationDesc": "Žingsnis po žingsnio vedamas raminimo srautas",
+        "withThem": "Esu su jais",
+        "remote": "Esu nuotoliu",
+        "startDeEscalation": "Pradėti deeskalaciją",
+        "startDeEscalationDesc": "Žingsnis po žingsnio vedamas raminimo procesas",
         "callEmergency": "Skambinti pagalbos tarnyboms",
         "callEmergencyDesc": "Skambinti vietinėms pagalbos tarnyboms",
         "alertFamily": "Įspėti šeimą",
-        "alertFamilyDesc": "Siųsti tiesioginį pranešimą visiems globėjams",
+        "alertFamilyDesc": "Siųsti tiesioginį pranešimą visiems slaugytojams",
         "alertFamilySent": "Šeimos nariai informuoti",
-        "alertFamilyFailed": "Nepavyko informuoti šeimos. Bandykite dar kartą.",
-        "viewLocation": "Žiūrėti vietą",
+        "alertFamilyFailed": "Nepavyko pranešti šeimai. Bandykite dar kartą.",
+        "viewLocation": "Peržiūrėti vietą",
         "viewLocationDesc": "Žiūrėti {{name}} dabartinę vietą žemėlapyje",
-        "contactPrimary": "Susisiekti su pagrindiniu globėju",
-        "contactPrimaryDesc": "Susisiekti su pagrindiniu globėju el. paštu",
+        "contactPrimary": "Susisiekti su pagrindiniu slaugytoju",
+        "contactPrimaryDesc": "Susisiekti su pagrindiniu slaugytoju el. paštu",
         "logEvent": "Registruoti įvykį",
-        "logEventDesc": "Įrašyti šią akimirką į krizės žurnalą"
+        "logEventDesc": "Užfiksuoti šį momentą krizių žurnale"
       },
       "wizard": {
-        "breathingTitle": "Pradėkime nuo raminančio kvėpavimo",
+        "breathingTitle": "Pradėkime nuo raminamojo įkvėpimo",
         "breathingInstruction": "Lėtai įkvėpkite... sulaikykite... iškvėpkite...",
-        "stepOf": "{{current}} žingsnis iš {{total}}",
+        "stepOf": "Žingsnis {{current}} iš {{total}}",
         "thisHelped": "Tai padėjo",
-        "tryNext": "Išbandykite kitą žingsnį",
+        "tryNext": "Išbandyti kitą žingsnį",
         "skip": "Praleisti",
-        "completionTitle": "Puikiai padaryta. Jūs pasirūpinote tuo rūpestingai.",
-        "completionDesc": "Ar norėtumėte įrašyti pastabas apie tai, kas nutiko?",
-        "crisisNotesPlaceholder": "Kas nutiko? Kas padėjo? Ar pastebėjote kokių nors paleidiklių...",
+        "completionTitle": "Puikiai atlikta. Jūs tai tvarkėte rūpestingai.",
+        "completionDesc": "Ar norėtumėte užrašyti pastabų apie tai, kas nutiko?",
+        "crisisNotesPlaceholder": "Kas nutiko? Kas padėjo? Ar pastebėjote kokių nors veiksnių...",
         "saveAndClose": "Išsaugoti ir uždaryti",
-        "closeWithoutSaving": "Uždaryti neįrašant"
+        "closeWithoutSaving": "Uždaryti neišsaugojus"
       },
       "history": {
-        "title": "Naujausi krizės įvykiai",
-        "noEvents": "Per pastarąsias 30 dienų nebuvo jokių krizės įvykių.",
+        "title": "Naujausi kriziniai įvykiai",
+        "noEvents": "Per pastarąsias 30 dienų nebuvo krizinių įvykių.",
         "viewAllInJournal": "Peržiūrėti visus žurnale",
         "yesterday": "Vakar",
-        "daysAgo": "Prieš {{count}}d"
+        "daysAgo": "Prieš {{count}} d."
       },
       "steps": {
         "stayCalm": {
           "title": "Išlikite ramūs",
           "detail": "Lėtai ir giliai įkvėpkite. Jūsų rami energija padės jiems jaustis saugiai.",
-          "script": "Aš esu čia su tavimi. Viskas gerai."
+          "script": "Aš esu čia su jumis. Viskas gerai."
         },
         "validateFeelings": {
           "title": "Patvirtinkite jausmus",
-          "detail": "Sakykite: „Matau, kad esate nusiminęs. Tai tikrai turi būti sunku.“ Nesiginčykite ir netaisykite.",
-          "script": "Matau, kad esate nusiminęs. Tai tikrai turi būti sunku."
+          "detail": "Sakykite: 'Matau, kad esate nusiminęs. Tai turi būti labai sunku.' Nesiginčykite ir nekoreguokite.",
+          "script": "Matau, kad esate nusiminęs. Tai turi būti labai sunku."
         },
         "simplifyEnvironment": {
           "title": "Supaprastinkite aplinką",
-          "detail": "Naudokite trumpus, paprastus sakinius. Viena mintis vienu metu. Venkite klausimų, prasidedančių „kodėl“.",
-          "script": "Padarykime viską paprasčiau. Vienas dalykas vienu metu."
+          "detail": "Naudokite trumpus, paprastus sakinius. Vieną mintį vienu metu. Venkite klausimų 'kodėl'.",
+          "script": "Padarykime viską paprasčiau. Vieną dalyką vienu metu."
         },
         "redirectAttention": {
           "title": "Nukreipkite dėmesį",
           "detail": "Švelniai pakeiskite temą. Pasiūlykite pažįstamą veiklą, dainą ar pasivaikščiojimą.",
-          "script": "Ką manote apie tai, kad pabandytume ką nors kita? Eime kartu pasivaikščioti."
+          "script": "Kaip manote, gal pabandytume ką nors kita? Eime kartu pasivaikščioti."
         },
         "useGentleTouch": {
           "title": "Naudokite švelnų prisilietimą",
           "detail": "Jei priimtina, švelnus prisilietimas prie rankos gali nuraminti. Stebėkite jų reakciją.",
-          "script": "Ar galiu palaikyti jūsų ranką? Aš esu čia."
+          "script": "Ar galiu palaikyti jūsų ranką? Aš esu čia pat."
         },
         "giveSpace": {
           "title": "Suteikite erdvės",
-          "detail": "Jei niekas nepadeda, užtikrinkite saugumą ir suteikite jiems erdvės. Normalu atsitraukti.",
-          "script": "Būsiu netoliese, jei manęs prireiks. Neskubėkite."
+          "detail": "Jei niekas nepadeda, užtikrinkite saugumą ir suteikite jiems erdvės. Galima atsitraukti.",
+          "script": "Būsiu šalia, jei manęs prireiks. Neskubėkite."
         }
       },
       "helplines": "Pagalbos linijos",
-      "noHelplineAvailable": "Pagalbos linijos jūsų šaliai nerasta",
+      "noHelplineAvailable": "Jūsų šaliai pagalbos linija nerasta",
       "call": "Skambinti",
       "email": "El. paštas",
       "website": "Svetainė",
@@ -964,23 +964,23 @@
       "supportResources": "Pagalbos ištekliai",
       "scenarios": {
         "title": "Kas vyksta?",
-        "subtitle": "Palieskite situaciją, kad gautumėte nuoseklias instrukcijas",
+        "subtitle": "Pasirinkite situaciją, kad gautumėte nuoseklias gaires",
         "urgent": "Skubu",
         "stepCountLabel": "{{count}} žingsniai",
-        "backToSituations": "Atgal į situacijas",
+        "backToSituations": "Grįžti į situacijas",
         "breathe": "Kvėpavimo pratimas",
-        "callEmergency": "Skambinkite pagalbos tarnyboms"
+        "callEmergency": "Skambinti pagalbos tarnyboms"
       },
       "patterns": {
-        "title": "Modelio įžvalga",
-        "noEvents": "Registruokite incidentus, kad pamatytumėte modelius laikui bėgant.",
-        "fewEvents": "Užregistruota {{count}} incidentų. Norint nustatyti modelius, reikia daugiau duomenų.",
-        "timePattern": "Daugiausia incidentų įvyksta {{time}}.",
+        "title": "Elgesio modelių įžvalga",
+        "noEvents": "Registruokite incidentus, kad matytumėte elgesio modelius laikui bėgant.",
+        "fewEvents": "Užregistruoti {{count}} incidentai. Reikia daugiau duomenų elgesio modeliams nustatyti.",
+        "timePattern": "Dauguma incidentų įvyksta {{time}}.",
         "weekCount": "{{count}} šią savaitę."
       },
       "personalization": {
         "label": "Kas ramina {{name}}",
-        "empty": "Pridėkite raminimo strategijas {{name}} biografijoje, kad pamatytumėte suasmenintus patarimus čia."
+        "empty": "Pridėkite raminimo strategijų {{name}} biografijoje, kad čia matytumėte suasmenintus patarimus."
       },
       "scenarioData": {
         "stepsCount": "{{count}} žingsniai",
@@ -989,11 +989,11 @@
           "steps": [
             {
               "title": "Pirmiausia jūs",
-              "instruction": "Prieš ką nors darydami, giliai įkvėpkite. Negalite nuraminti žmogaus, jei pats nesate ramus."
+              "instruction": "Prieš ką nors darydami, lėtai įkvėpkite. Negalite nuraminti kito, jei pats nesate ramus."
             },
             {
-              "title": "Greita patikra – ar negali būti kažkas fiziškai negerai?",
-              "instruction": "Skausmas, alkis, poreikis į tualetą arba infekcija gali sukelti susijaudinimą.",
+              "title": "Greitas patikrinimas – ar gali būti kažkas fiziškai negerai?",
+              "instruction": "Skausmas, alkis, poreikis į tualetą ar infekcija gali sukelti susijaudinimą.",
               "checklist": [
                 "Skausmas ar diskomfortas?",
                 "Alkanas ar ištroškęs?",
@@ -1003,88 +1003,88 @@
               ]
             },
             {
-              "title": "Sumažinkite temperatūrą",
-              "instruction": "Kalbėkite lėtai ir tyliai. Nesiginčykite, netaisykite ir neaiškinkite. Patvirtinkite, ką jie jaučia.",
+              "title": "Sumažinkite įtampą",
+              "instruction": "Kalbėkite lėtai ir švelniai. Nesiginčykite, nekoreguokite ir neaiškinkite. Patvirtinkite, ką jie jaučia.",
               "tips": [
-                "„Matau, kad esate nusiminęs. Aš čia.“",
+                "\"Matau, kad esate nusiminęs. Aš esu čia.\"",
                 "Sumažinkite triukšmą – išjunkite televizorių, uždarykite langus",
-                "Suteikite jiems fizinės erdvės, nesigrūskite",
-                "Pasiūlykite pažįstamą komforto objektą"
+                "Suteikite jiems fizinės erdvės, nespauskite",
+                "Pasiūlykite pažįstamą komforto daiktą"
               ]
             },
             {
-              "title": "Nukreipkite, neargumentuokite",
-              "instruction": "Švelniai pakeiskite temą ar aplinką. Nebandykite jų išlogikuoti.",
+              "title": "Nukreipkite, nebandykite įtikinti",
+              "instruction": "Švelniai pakeiskite temą ar aplinką. Nebandykite jų įtikinti logiškai.",
               "tips": [
                 "Pasiūlykite pasivaikščioti arba pereiti į kitą kambarį",
-                "Įjunkite muziką, kurią jie mėgsta",
+                "Įjunkite mėgstamą muziką",
                 "Pasiūlykite užkandį ar šiltą gėrimą",
-                "Žiūrėkite nuotraukas kartu"
+                "Kartu peržiūrėkite nuotraukas"
               ]
             },
             {
               "title": "Kada kreiptis pagalbos",
-              "instruction": "Jei susijaudinimas trunka ilgiau nei 30 minučių, jei jiems gresia pavojus susižaloti save ar jus, arba jei tai yra staigus naujas elgesys – skambinkite pagalbos tarnyboms.",
-              "actionLabel": "Skambinkite pagalbos tarnyboms"
+              "instruction": "Jei susijaudinimas trunka ilgiau nei 30 minučių, jei jiems gresia pavojus pakenkti sau ar jums, arba jei tai yra staigus naujas elgesys – skambinkite pagalbos tarnyboms.",
+              "actionLabel": "Skambinti pagalbos tarnyboms"
             }
           ]
         },
         "wandering": {
-          "label": "Klaidžiojimas / Dingęs",
+          "label": "Klaidžiojimas / Dingimas",
           "steps": [
             {
               "title": "Pirmiausia patikrinkite įprastas vietas",
-              "instruction": "Dauguma žmonių, sergančių demencija, eina į pažįstamas vietas – buvusią darbo vietą, vaikystės namus, kaimyno namus.",
+              "instruction": "Dauguma žmonių, sergančių demencija, eina į pažįstamas vietas – buvusią darbovietę, vaikystės namus, kaimyno namus.",
               "tips": [
                 "Patikrinkite sodą, garažą, netoliese esančias gatves",
-                "Paklauskite kaimynų, ar jie jų nematė",
-                "Patikrinkite vietas, į kurias jie anksčiau reguliariai eidavo"
+                "Paklauskite kaimynų, ar jie matė",
+                "Patikrinkite vietas, kur jie reguliariai lankydavosi"
               ]
             },
             {
-              "title": "Naudokite jų vietą",
-              "instruction": "Jei nustatytas vietos nustatymas, patikrinkite jų dabartinę padėtį dabar."
+              "title": "Naudokite jų buvimo vietą",
+              "instruction": "Jei nustatytas vietos sekimas, patikrinkite jų dabartinę padėtį dabar."
             },
             {
               "title": "Įspėkite šeimą",
-              "instruction": "Nedelsdami praneškite visiems. Daugiau ieškančių akių yra geriau."
+              "instruction": "Nedelsdami praneškite visiems. Kuo daugiau ieškančių akių, tuo geriau."
             },
             {
               "title": "Skambinkite policijai, jei nerandate per 15 minučių",
-              "instruction": "Nelaukite. Žmonėms, sergantiems demencija, gresia didelis susižalojimo pavojus. Skambinkite pagalbos tarnyboms ir pasakykite, kad asmuo serga demencija.",
-              "actionLabel": "Skambinkite pagalbos tarnyboms"
+              "instruction": "Nelaukite. Žmonėms, sergantiems demencija, gresia didelis sužalojimo pavojus. Skambinkite pagalbos tarnyboms ir pasakykite, kad asmuo serga demencija.",
+              "actionLabel": "Skambinti pagalbos tarnyboms"
             }
           ]
         },
         "refusing": {
-          "label": "Atsisakymas rūpintis",
+          "label": "Atsisakymas priimti pagalbą",
           "steps": [
             {
-              "title": "Pauzė – tai nėra nepaisymas",
-              "instruction": "Atsisakymas beveik visada yra baimė, sumišimas ar diskomfortas. Jie gali nesuprasti, ko klausiate."
+              "title": "Pauzė – tai nėra nepaklusnumas",
+              "instruction": "Atsisakymas beveik visada yra baimė, sumišimas ar diskomfortas. Jie gali nesuprasti, ko prašote."
             },
             {
-              "title": "Atsitraukite ir bandykite kitaip",
-              "instruction": "Nestumkite. Grįžkite po 15–20 minučių ir prieikite taip, tarsi tai būtų pirmas kartas.",
+              "title": "Atsitraukite ir pabandykite kitaip",
+              "instruction": "Nespauskite. Grįžkite po 15–20 minučių ir kreipkitės taip, tarsi tai būtų pirmas kartas.",
               "tips": [
                 "Pakeiskite, kas klausia",
                 "Pakeiskite aplinką",
-                "Suskirstykite užduotį į mažesnius žingsnius",
-                "Pasiūlykite pasirinkimą: „Vonios ar dušas?“"
+                "Užduotį suskaidykite į mažesnius žingsnius",
+                "Pasiūlykite pasirinkimus: \"Vonia ar dušas?\""
               ]
             },
             {
-              "title": "Padarykite, kad jaustumėtės saugiai",
-              "instruction": "Paaiškinkite kiekvieną žingsnį prieš tai darydami. Judėkite lėtai. Laikykite juos šiltai.",
+              "title": "Sukurkite saugumo jausmą",
+              "instruction": "Paaiškinkite kiekvieną žingsnį prieš jį atlikdami. Judėkite lėtai. Laikykite juos šiltai.",
               "tips": [
                 "Įspėkite prieš liesdami",
                 "Naudokite ramų, šiltą toną",
-                "Atlikdami užduotį leiskite jų mėgstamą muziką",
+                "Atlikdami užduotį, įjunkite jų mėgstamą muziką",
                 "Laikykitės nuoseklios rutinos"
               ]
             },
             {
-              "title": "Ar tai modelis?",
+              "title": "Ar tai pasikartojantis elgesys?",
               "instruction": "Jei jie nuolat atsisako tos pačios užduoties, užregistruokite tai. Gali būti pagrindinė problema – skausmas, baimė, jautrumas. Aptarkite tai su jų gydytoju."
             }
           ]
@@ -1093,12 +1093,12 @@
           "label": "Matymas / Girdėjimas dalykų",
           "steps": [
             {
-              "title": "Nesiginčykite – jiems tai tikra",
+              "title": "Nesiginčykite – jiems tai yra tikra",
               "instruction": "Pripažinkite, ką jie patiria, nepatvirtindami, kad tai tiesa.",
               "tips": [
-                "„Tai skamba baisiai. Aš esu čia su jumis.“",
-                "„Papasakokite, ką matote.“",
-                "Nesakykite „ten nieko nėra“"
+                "\"Tai skamba baisiai. Aš esu čia su jumis.\"",
+                "\"Pasakykite man, ką matote.\"",
+                "Nesakykite \"nieko ten nėra\""
               ]
             },
             {
@@ -1106,89 +1106,89 @@
               "instruction": "Šešėliai, atspindžiai, televizoriaus garsai ir netvarka gali sukelti klaidingą interpretaciją.",
               "checklist": [
                 "Šešėliai nuo langų ar lempų?",
-                "Televizorius ar radijas įjungtas fone?",
-                "Veidrodžių atspindžiai?",
+                "Televizorius ar radijas veikia fone?",
+                "Veidrodžio atspindžiai?",
                 "Prastas apšvietimas?"
               ]
             },
             {
               "title": "Švelniai nukreipkite",
-              "instruction": "Nukreipkite jų dėmesį į ką nors konkretaus ir paguodžiančio.",
+              "instruction": "Nukreipkite jų dėmesį į kažką konkretaus ir raminančio.",
               "tips": [
                 "Pereikite į gerai apšviestą kambarį",
                 "Pasiūlykite praktinę veiklą",
-                "Eikite kartu trumpam pasivaikščioti",
-                "Kartu išgerkite puodelį arbatos"
+                "Eikite trumpam pasivaikščioti kartu",
+                "Kartu pasigaminkite arbatos puodelį"
               ]
             },
             {
               "title": "Kada skambinti gydytojui",
-              "instruction": "Jei haliucinacijos yra naujos, dažnos arba sukelia didelį stresą. Staigus atsiradimas gali rodyti infekciją, vaistų šalutinį poveikį arba deliriumą."
+              "instruction": "Jei haliucinacijos yra naujos, dažnos arba sukelia didelį nerimą. Staigus atsiradimas gali reikšti infekciją, vaistų šalutinį poveikį ar delyrą."
             }
           ]
         },
         "sundowning": {
-          "label": "Saulėlydis",
+          "label": "Vakarinis nerimas",
           "steps": [
             {
               "title": "Atpažinkite modelį",
-              "instruction": "Saulėlydžio sindromas paprastai prasideda vėlyvą popietę. Tai labai dažnas reiškinys ir jie negali jo kontroliuoti."
+              "instruction": "Vakarinis nerimas (sundowning) paprastai prasideda vėlyvą popietę. Tai yra labai dažna ir jie to negali kontroliuoti."
             },
             {
-              "title": "Dabar pakoreguokite aplinką",
-              "instruction": "Sumažinkite visą stimuliavimą ir sukurkite saugos signalus.",
+              "title": "Dabar pritaikykite aplinką",
+              "instruction": "Sumažinkite visus dirgiklius ir sukurkite saugumo signalus.",
               "tips": [
                 "Įjunkite šiltas šviesas prieš sutemstant",
                 "Užtraukite užuolaidas, kad sumažintumėte šešėlius",
-                "Išjunkite arba sumažinkite televizoriaus garsą",
+                "Išjunkite arba sumažinkite televizoriaus garsumą",
                 "Sumažinkite žmonių skaičių kambaryje"
               ]
             },
             {
-              "title": "Pasiūlykite raminančių užsiėmimų",
-              "instruction": "Švelnūs, pasikartojantys, pažįstami užsiėmimai veikia geriausiai.",
+              "title": "Pasiūlykite raminančios veiklos",
+              "instruction": "Geriausiai tinka švelnios, pasikartojančios, pažįstamos veiklos.",
               "tips": [
                 "Švelnus rankų masažas su losjonu",
                 "Švelni, pažįstama muzika",
-                "Rankšluosčių lankstymas arba daiktų rūšiavimas",
-                "Kartu peržiūrėti nuotraukų albumą"
+                "Rankšluosčių lankstymas ar daiktų rūšiavimas",
+                "Kartu vartyti nuotraukų albumą"
               ]
             },
             {
-              "title": "Užkirskite kelią rytoj",
-              "instruction": "Užregistruokite epizodą su laiko detalėmis. Modeliai padeda koreguoti tvarkaraščius – daugiau veiklos ryte, mažiau kofeino po pietų."
+              "title": "Užkirskite tam kelią rytoj",
+              "instruction": "Užfiksuokite epizodą su laiko detalėmis. Modeliai padeda koreguoti tvarkaraščius – daugiau ryto veiklos, mažiau kofeino po pietų."
             }
           ]
         },
         "fall": {
-          "label": "Nukritimas / Fizinė pagalba",
+          "label": "Kritimas / Fizinė nelaimė",
           "steps": [
             {
               "title": "Nejudinkite jų",
-              "instruction": "Jei jiems negresia tiesioginis pavojus, nebandykite jų pakelti ar pajudinti.",
+              "instruction": "Nebent jiems gresia tiesioginis pavojus, nebandykite jų pakelti ar perkelti.",
               "tips": [
-                "Atsisėskite į jų lygį",
-                "Nuraminkite juos: „Aš čia, tu saugus“",
+                "Nusileiskite iki jų lygio",
+                "Nuraminkite juos: „Aš čia, jūs saugūs“",
                 "Patikrinkite, ar nėra matomų sužalojimų"
               ]
             },
             {
               "title": "Ar jie gali atsikelti?",
-              "instruction": "Jei nėra akivaizdžių sužalojimų, padėkite jiems lėtai atsikelti etapais.",
+              "instruction": "Jei nėra akivaizdžių sužalojimų, padėkite jiems atsikelti lėtai, etapais.",
               "checklist": [
                 "Ar jie budrūs ir reaguoja?",
-                "Ar yra akivaizdžių sužalojimų ar skausmų?",
-                "Ar jie gali pajudinti visas galūnes?",
+                "Ar yra akivaizdžių sužalojimų ar skausmo?",
+                "Ar jie gali judinti visas galūnes?",
                 "Ar jie susitrenkė galvą?"
               ]
             },
             {
-              "title": "Kreipkitės pagalbos, jei...",
-              "instruction": "Galvos trauma, negali atsikelti, stiprus skausmas, sumišimas didesnis nei įprastai arba kraujavimas, kuris nesustoja."
+              "title": "Kviečiate pagalbą, jei...",
+              "instruction": "Galvos trauma, negali atsikelti, stiprus skausmas, didesnis sumišimas nei įprastai arba kraujavimas, kuris nesustoja."
             },
             {
               "title": "Po kritimo",
-              "instruction": "Užregistruokite šį įvykį ir pasakykite apie tai savo gydytojui. Pasikartojantys kritimai gali rodyti vaistų problemas arba ligos progresavimą."
+              "instruction": "Užfiksuokite šį įvykį ir paminėkite jį jų gydytojui. Pasikartojantys kritimai gali rodyti vaistų problemas arba ligos progresavimą."
             }
           ]
         },
@@ -1196,31 +1196,31 @@
           "label": "Pasikartojantys klausimai",
           "steps": [
             {
-              "title": "Įkvėpkite – tai liga, o ne jie",
-              "instruction": "Jie nuoširdžiai neprisimena, kad klausė. Jūsų nusivylimas yra pagrįstas, bet jo rodymas verčia juos labiau nerimauti."
+              "title": "Kvėpuokite – tai liga, o ne jie",
+              "instruction": "Jie nuoširdžiai neprisimena, kad klausė. Jūsų nusivylimas yra pagrįstas, tačiau jo rodymas juos dar labiau neramina."
             },
             {
               "title": "Ko jie iš tikrųjų klausia?",
-              "instruction": "Paviršutiniškas klausimas retai būna tikrasis klausimas. „Kada vakarienė?“ gali reikšti „Aš alkanas“.",
+              "instruction": "Paviršinis klausimas retai yra tikrasis klausimas. „Kada vakarienė?“ gali reikšti „Aš alkanas.“",
               "checklist": [
-                "Ar jie dėl kažko nerimauja?",
-                "Ar jie gali būti alkani, ištroškę ar jiems nuobodu?",
-                "Ar yra artėjantis įvykis, keliantis nerimą?"
+                "Ar jie dėl ko nors nerimauja?",
+                "Ar jie gali būti alkani, ištroškę ar nuobodžiauti?",
+                "Ar artėja įvykis, keliantis nerimą?"
               ]
             },
             {
               "title": "Reaguokite į jausmą",
-              "instruction": "Atsakykite į emociją, slypinčią už klausimo, o ne į tiesioginius žodžius.",
+              "instruction": "Atsakykite į emociją, slypinčią už klausimo, o ne į pažodinius žodžius.",
               "tips": [
-                "Užrašykite atsakymą ant matomos lentos",
+                "Parašykite atsakymą ant matomos lentos",
                 "Kiekvieną kartą pateikite paprastą, raminantį atsakymą",
-                "Atsakę nukreipkite į praktinę veiklą",
-                "Naudokite vaizdinius tvarkaraščius, kad sumažintumėte netikrumą"
+                "Po atsakymo nukreipkite į praktinę veiklą",
+                "Naudokite vizualinius tvarkaraščius, kad sumažintumėte netikrumą"
               ]
             },
             {
-              "title": "Saugokite savo gerovę",
-              "instruction": "Jei įmanoma, pasikeiskite su kitu globėju. Kai jums reikia psichinės pertraukos, naudokite ausines su švelnia muzika."
+              "title": "Apsaugokite savo gerovę",
+              "instruction": "Jei įmanoma, pasikeiskite su kitu slaugytoju. Naudokite ausines su švelnia muzika, kai jums reikia pertraukos."
             }
           ]
         },
@@ -1228,24 +1228,24 @@
           "label": "Agresija",
           "steps": [
             {
-              "title": "Jūsų saugumas yra svarbiausias",
-              "instruction": "Jei jaučiatės fiziškai nesaugūs, nedelsdami atsitraukite. Nebandykite jų sulaikyti.",
+              "title": "Jūsų saugumas yra svarbiausia",
+              "instruction": "Jei jaučiatės fiziškai nesaugūs, nedelsdami atsitraukite. Nebandykite jų suvaržyti.",
               "tips": [
-                "Atsistokite šalia išėjimo",
+                "Pasistatykite save prie išėjimo",
                 "Pašalinkite pavojingus daiktus iš pasiekiamumo",
-                "Kalbėkite žemu ir ramiu balsu",
+                "Kalbėkite tyliai ir ramiai",
                 "Nedarykite staigių judesių"
               ]
             },
             {
-              "title": "Įsitvirtinkite",
-              "instruction": "Agresija sukelia kovos arba bėgimo reakciją ir jumyse. Skirkite akimirką įkvėpti."
+              "title": "Nurimkite",
+              "instruction": "Agresija sukelia kovos arba pabėgimo reakciją ir jumyse. Skirkite akimirką įkvėpti."
             },
             {
               "title": "Kas tai sukėlė?",
-              "instruction": "Agresija beveik visada yra reakcija – skausmas, baimė, nusivylimas, jutiminis perkrovimas.",
+              "instruction": "Agresija beveik visada yra reakcija – skausmas, baimė, nusivylimas, jutimų perkrova.",
               "checklist": [
-                "Ar jų buvo paprašyta ką nors padaryti?",
+                "Ar jų buvo prašoma ką nors daryti?",
                 "Ar jiems skaudėjo?",
                 "Ar aplinka buvo triukšminga ar chaotiška?",
                 "Ar jie jautėsi įsprausti į kampą?"
@@ -1253,17 +1253,17 @@
             },
             {
               "title": "Suteikite erdvės ir laiko",
-              "instruction": "Atsitraukite. Sustabdykite veiklą, kuri sukelia agresiją. Grįžkite po 15–20 minučių, tarsi nieko nebūtų atsitikę.",
+              "instruction": "Atsitraukite. Sustabdykite dirginančią veiklą. Grįžkite po 15–20 minučių, tarsi nieko nebūtų nutikę.",
               "tips": [
                 "Išeikite iš kambario, jei saugu",
-                "Pašalinkite priežastį",
+                "Pašalinkite dirgiklį",
                 "Nepriimkite to asmeniškai",
                 "Grįždami artėkite lėtai"
               ]
             },
             {
-              "title": "Kada tai yra kritinė situacija",
-              "instruction": "Jei jie turi ginklą, jei kas nors sužeistas arba jei agresija nesiliauja – iškvieskite pagalbos tarnybas."
+              "title": "Kai tai yra avarinė situacija",
+              "instruction": "Jei jie turi ginklą, jei kas nors sužeistas arba jei agresija neslūgsta – kvieskite pagalbos tarnybas."
             }
           ]
         },
@@ -1271,18 +1271,18 @@
           "label": "Miego sutrikimas",
           "steps": [
             {
-              "title": "Užtikrinkite aplinkos saugumą",
-              "instruction": "Jei jie naktį pabunda ir juda, jūsų prioritetas yra saugumas.",
+              "title": "Užtikrinkite saugią aplinką",
+              "instruction": "Jei jie naktį budi ir juda, jūsų pagrindinis prioritetas yra saugumas.",
               "tips": [
-                "Įjunkite silpnas naktines lemputes",
-                "Pašalinkite kliūtis",
-                "Užrakinkite išorines duris, jei nerimaujate dėl klaidžiojimo",
+                "Įjunkite silpnas naktines šviesas",
+                "Pašalinkite kliūtis, dėl kurių galima suklupti",
+                "Užrakinkite lauko duris, jei nerimaujate dėl klaidžiojimo",
                 "„Dabar naktis, viskas saugu“"
               ]
             },
             {
               "title": "Kas juos pažadino?",
-              "instruction": "Pabudimą naktį gali sukelti skausmas, poreikis į tualetą, vaistų vartojimo laikas arba alkis.",
+              "instruction": "Naktinis pabudimas gali būti sukeltas skausmo, poreikio eiti į tualetą, vaistų vartojimo laiko ar alkio.",
               "checklist": [
                 "Ar jiems reikia į tualetą?",
                 "Ar jiems skauda?",
@@ -1292,36 +1292,30 @@
             },
             {
               "title": "Švelniai nukreipkite juos atgal",
-              "instruction": "Nesiginčykite dėl to, kiek dabar valandų. Nukreipkite juos atgal į lovą raminančiais ženklais.",
+              "instruction": "Nesiginčykite dėl to, kiek valandų. Nukreipkite juos atgal į lovą raminančiais signalais.",
               "tips": [
-                "Pasiūlykite šilto, be kofeino gėrimo",
-                "Kalbėkite ramiu, tyliu balsu",
-                "Paleiskite švelnią, pažįstamą muziką",
-                "Sėdėkite su jais, kol jie nusiramins"
+                "Pasiūlykite šilto gėrimo be kofeino",
+                "Kalbėkite ramiai, tyliu balsu",
+                "Įjunkite švelnią, pažįstamą muziką",
+                "Pasėdėkite su jais, kol jie nusiramins"
               ]
             },
             {
               "title": "Pagerinkite rytojaus naktį",
-              "instruction": "Daugiau veiklos dienos metu, jokio kofeino po pietų, nuosekli miego rutina, apribokite pogulius iki 30 minučių."
+              "instruction": "Daugiau dienos veiklos, jokio kofeino po pietų, nuosekli miego rutina, apribokite miegą iki 30 minučių."
             }
           ]
         },
         "shadowing": {
-          "label": "Šešėliavimas",
+          "label": "Sekiojimas",
           "steps": [
             {
               "title": "Pripažinkite savo nusivylimą",
-              "instruction": "Būti sekamam visur yra varginantis dalykas. Tie jausmai yra pagrįsti. Įkvėpkite.",
-              "checklist": [
-                "Ar neseniai pasikeitė rutina?",
-                "Ar jie yra nepažįstamoje aplinkoje?",
-                "Ar neseniai buvote išvykę?",
-                "Ar jie jaučiasi blogai?"
-              ]
+              "instruction": "Būti visur sekiojamam yra išsekina. Šie jausmai yra pagrįsti. Įkvėpkite."
             },
             {
               "title": "Kodėl jie jus seka?",
-              "instruction": "Šešėliavimą skatina nerimas ir baimė būti apleistam. Būti šalia jūsų yra vienintelis jų saugumo šaltinis.",
+              "instruction": "Sekiojimą lemia nerimas ir baimė būti paliktam. Buvimas šalia jūsų yra vienintelis jų saugumo šaltinis.",
               "checklist": [
                 "Ar neseniai pasikeitė rutina?",
                 "Ar jie yra nepažįstamoje aplinkoje?",
@@ -1331,22 +1325,22 @@
             },
             {
               "title": "Sumažinkite jų nerimą",
-              "instruction": "Padėkite jiems jaustis saugiai, nebūnant fiziškai šalia kiekvieną akimirką.",
+              "instruction": "Padėkite jiems jaustis saugiai, nebūdami fiziškai šalia kiekvieną akimirką.",
               "tips": [
-                "Duokite jiems „darbą“ šalia jūsų",
+                "Duokite jiems „darbą“ netoli ten, kur esate",
                 "Palikite jiems asmeninį daiktą kaip paguodos inkarą",
                 "„Aš tik virtuvėje, tuoj grįšiu“",
-                "Išbandykite pažįstamą televizorių ar muziką kaip kompanioną"
+                "Pabandykite įjungti pažįstamą televizorių ar muziką kaip palydovą"
               ]
             },
             {
-              "title": "Įtraukite pertraukas sau",
-              "instruction": "Paprašykite, kad kas nors pasėdėtų su jais, kol jūs pailsėsite 20 minučių. Net 10 minučių vienumo padeda.",
+              "title": "Numatykite pertraukas sau",
+              "instruction": "Paprašykite, kad kas nors pasėdėtų su jais, kol jūs skirsite sau 20 minučių. Net 10 minučių vienumoje padeda.",
               "tips": [
                 "Nelaukite, kol išseksite",
-                "Galima švelniai uždaryti vonios duris",
+                "Gerai švelniai uždaryti vonios duris",
                 "Apsvarstykite paramos grupę",
-                "Šis elgesys dažnai sumažėja esant stabiliai rutinai"
+                "Šis elgesys dažnai sumažėja, kai nusistovi stabili rutina"
               ]
             }
           ]
@@ -1354,25 +1348,25 @@
       }
     },
     "tabs": {
-      "dashboard": "Informacijos suvestinė",
-      "plan": "Planas",
+      "dashboard": "Pagrindinis",
+      "plan": "Planuoti",
       "location": "Vieta",
-      "coach": "Treneris",
+      "coach": "Patarėjas",
       "more": "Daugiau"
     }
   },
   "notifications": {
     "taskReminder": "{{patientName}}, laikas: {{taskTitle}}",
     "taskCompleted": "{{patientName}} atliko: {{taskTitle}}",
-    "checkinReceived": "{{patientName}} atliko šiandienos patikrinimą",
-    "leftSafeZone": "{{patientName}} išvyko iš {{zoneName}}",
-    "inactivity": "Nuo {{patientName}} neaptikta jokio judėjimo per {{hours}} valandas",
+    "checkinReceived": "{{patientName}} atliko šiandienos patikrą",
+    "leftSafeZone": "{{patientName}} paliko {{zoneName}}",
+    "inactivity": "Nėra judesio iš {{patientName}} per {{hours}} valandas",
     "nightMovement": "{{patientName}} juda lauke {{time}}",
-    "takeMeHome": "{{patientName}} palietė „Parvežkite mane namo“ iš {{location}}",
-    "eveningSummary": "{{patientName}} diena: atlikta {{completed}}/{{total}} užduočių. Nuotaika: {{mood}}"
+    "takeMeHome": "{{patientName}} paspaudė „Parsiveskite mane namo“ iš {{location}}",
+    "eveningSummary": "{{patientName}} diena: atlikta {{completed}} iš {{total}} užduočių. Nuotaika: {{mood}}"
   },
   "subscription": {
-    "free": "Nemokama",
+    "free": "Nemokamai",
     "plus": "OurTurn Plus",
     "upgradeTitle": "Atrakinkite OurTurn Plus",
     "upgradeFeature": "Šiai funkcijai reikalingas OurTurn Plus",
@@ -1380,19 +1374,19 @@
     "annual": "{{price}}/metus",
     "annualSavings": "Sutaupykite {{percent}}%",
     "subscribe": "Prenumeruoti",
-    "restore": "Atkurti pirkinį",
+    "restore": "Atkurti pirkimą",
     "manage": "Tvarkyti prenumeratą",
     "features": {
       "unlimitedTasks": "Neribotas užduočių skaičius per dieną",
-      "aiCoach": "Pilnas AI priežiūros treneris",
-      "brainActivities": "AI sugeneruota smegenų sveikatingumo veikla",
-      "safeZones": "Saugios zonos ir įspėjimai apie vietą",
+      "aiCoach": "Visas AI priežiūros patarėjas",
+      "brainActivities": "AI sugeneruotos smegenų gerovės veiklos",
+      "safeZones": "Saugios zonos ir vietos įspėjimai",
       "multiCaregiver": "Iki 5 šeimos narių",
-      "journal": "Shared Care Journal",
-      "insights": "AI pattern insights",
-      "reports": "Doctor visit reports",
-      "toolkit": "Caregiver toolkit & wellness",
-      "priority": "Priority support"
+      "journal": "Bendras priežiūros žurnalas",
+      "insights": "DI elgesio modelių įžvalgos",
+      "reports": "Ataskaitos gydytojo vizitams",
+      "toolkit": "Globėjo įrankių rinkinys ir gerovė",
+      "priority": "Prioritetinė pagalba"
     }
   }
 }

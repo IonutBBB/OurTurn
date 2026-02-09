@@ -200,5 +200,11 @@
       "respite": "Îngrijire de răgaz",
       "financial": "Sprijin financiar"
     }
+  },
+  "whoIsupport": {
+    "sectionTitle": "Programul WHO iSupport",
+    "sectionSubtitle": "Un program cuprinzător de formare a îngrijitorilor, bazat pe dovezi, dezvoltat de Organizația Mondială a Sănătății (OMS) — agenția Națiunilor Unite responsabilă de sănătatea publică internațională.",
+    "whoExplanation": "OMS = Organizația Mondială a Sănătății (Națiunile Unite)",
+    "badge": "Formare bazată pe dovezi"
   }
 }

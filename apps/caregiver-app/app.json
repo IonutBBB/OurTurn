@@ -27,7 +27,7 @@
         "backgroundColor": "#B85A2F"
       },
       "package": "com.ourturn.caregiver",
-      "edgeToEdgeEnabled": true,
+      "edgeToEdgeEnabled": false,
       "predictiveBackGestureEnabled": false,
       "permissions": [
         "RECEIVE_BOOT_COMPLETED",

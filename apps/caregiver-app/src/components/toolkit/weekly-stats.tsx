@@ -7,6 +7,7 @@ import {
   Alert,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import i18n from '../../i18n';
 import type { CaregiverWellbeingLog } from '@ourturn/shared';
 import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS } from '../../theme';
 
@@ -58,6 +59,8 @@ export function WeeklyStats({ recentLogs, apiBaseUrl }: WeeklyStatsProps) {
     try {
       const res = await fetch(`${apiBaseUrl}/api/ai/toolkit-insights`, {
         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ locale: i18n.language }),
       });
 
       if (res.status === 429) {

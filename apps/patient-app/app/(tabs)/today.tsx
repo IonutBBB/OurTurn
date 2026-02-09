@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   View,
   Text,
@@ -12,7 +12,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
-import { getProgressLabel } from '@ourturn/shared';
+import { getProgressLabel, getCategoryIcon } from '@ourturn/shared';
 import { useAuthStore } from '../../src/stores/auth-store';
 import TaskCard, { type TaskStatus } from '../../src/components/task-card';
 import {
@@ -22,11 +22,13 @@ import {
   getBackgroundGradient,
   getDayOfWeek,
   formatDateForDb,
-  formatFullDate,
+  formatCurrentTime,
+  getDayOfWeekLong,
   getYesterdayDateForDb,
   timeToMinutes,
   getCurrentTimeInMinutes,
   isTaskOverdue,
+  formatTimeDisplay,
 } from '../../src/utils/time-of-day';
 import {
   cacheTasks,
@@ -41,7 +43,7 @@ import {
   completeTask,
   supabase,
 } from '@ourturn/supabase';
-import type { CarePlanTask, TaskCompletion, BrainActivity } from '@ourturn/shared';
+import type { CarePlanTask, TaskCompletion } from '@ourturn/shared';
 import { useComplexity } from '../../src/hooks/use-complexity';
 import { COLORS, FONTS, RADIUS, SHADOWS, GRADIENT_TEXT_COLOR } from '../../src/theme';
 import { scheduleAllTaskReminders } from '../../src/services/notifications';
@@ -59,8 +61,9 @@ export default function TodayScreen() {
   const [isOffline, setIsOffline] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasCheckedIn, setHasCheckedIn] = useState(true); // Assume true initially
-  const [brainActivity, setBrainActivity] = useState<BrainActivity | null>(null);
   const [yesterdayCompletedCount, setYesterdayCompletedCount] = useState<number | null>(null);
+  const [currentTime, setCurrentTime] = useState(formatCurrentTime(i18n.language));
+  const clockRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const timeOfDay = getTimeOfDay();
   const greeting = getGreetingKey(timeOfDay);
@@ -142,16 +145,6 @@ export default function TodayScreen() {
 
       setHasCheckedIn(!!checkin);
 
-      // Fetch today's brain activity
-      const { data: activityData } = await supabase
-        .from('brain_activities')
-        .select('*')
-        .eq('household_id', householdId)
-        .eq('date', today)
-        .single();
-
-      setBrainActivity(activityData && !activityData.completed ? activityData : null);
-
       // Fetch yesterday's completed count (non-blocking)
       try {
         const yesterdayDate = getYesterdayDateForDb();
@@ -187,6 +180,16 @@ export default function TodayScreen() {
     };
     loadData();
   }, [fetchData]);
+
+  // Live clock — update every minute
+  useEffect(() => {
+    clockRef.current = setInterval(() => {
+      setCurrentTime(formatCurrentTime(i18n.language));
+    }, 60000);
+    return () => {
+      if (clockRef.current) clearInterval(clockRef.current);
+    };
+  }, [i18n.language]);
 
   // Realtime subscription for care plan changes
   useEffect(() => {
@@ -284,6 +287,13 @@ export default function TodayScreen() {
     (a, b) => timeToMinutes(a.time) - timeToMinutes(b.time)
   );
 
+  // Find next uncompleted task for "Coming Up Next" card
+  const nextTask = sortedTasks.find((task) => {
+    const comp = completions.find((c) => c.task_id === task.id);
+    if (comp?.completed || comp?.skipped) return false;
+    return timeToMinutes(task.time) >= getCurrentTimeInMinutes() - 30;
+  });
+
   // Loading state
   if (isLoading) {
     return (
@@ -321,17 +331,25 @@ export default function TodayScreen() {
             </View>
           )}
 
-          {/* Greeting */}
+          {/* Enhanced Orientation Header */}
           <View style={styles.greetingContainer}>
             <Text
-              style={[styles.greeting, isSimplified && styles.greetingSimplified, { color: gradientTextColor }]}
+              style={[styles.dayOfWeekText, { color: gradientTextColor }]}
               accessibilityRole="header"
+            >
+              {getDayOfWeekLong(new Date(), i18n.language)}
+            </Text>
+            <Text style={[styles.dateText, { color: gradientTextColor }]}>
+              {new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long' }).format(new Date())}
+            </Text>
+            <Text style={[styles.clockText, { color: gradientTextColor }]}>
+              {currentTime}
+            </Text>
+            <Text
+              style={[styles.greeting, isSimplified && styles.greetingSimplified, { color: gradientTextColor }]}
               accessibilityLabel={t(greeting, { name: patient?.name || '' })}
             >
               {t(greeting, { name: patient?.name || '' })} {emoji}
-            </Text>
-            <Text style={[styles.dateText, { color: gradientTextColor }]}>
-              {formatFullDate(new Date(), i18n.language)}
             </Text>
             {yesterdayCompletedCount != null && yesterdayCompletedCount > 0 && (
               <Text style={[styles.yesterdayText, { color: gradientTextColor }]}>
@@ -397,25 +415,36 @@ export default function TodayScreen() {
             </TouchableOpacity>
           )}
 
-          {/* Brain Activity Card */}
-          {brainActivity && (
-            <TouchableOpacity
-              style={styles.activityCard}
-              onPress={() => router.push('/activity')}
-              activeOpacity={0.8}
-              accessibilityRole="button"
-              accessibilityLabel={`${t('patientApp.activity.title')}. ${t('patientApp.todaysPlan.tapToStart')}`}
-              accessibilityHint={t('patientApp.todaysPlan.opensActivity')}
-            >
-              <View style={styles.checkinContent} importantForAccessibility="no-hide-descendants">
-                <Text style={styles.checkinEmoji}>🧩</Text>
-                <View style={styles.checkinTextContainer}>
-                  <Text style={styles.checkinTitle}>{t('patientApp.activity.title')}</Text>
-                  <Text style={styles.checkinSubtitle}>{t('patientApp.todaysPlan.tapToStart')}</Text>
+          {/* Coming Up Next card */}
+          {nextTask && (
+            <View style={styles.comingUpCard}>
+              <Text style={styles.comingUpLabel}>{t('patientApp.todaysPlan.comingUp')}</Text>
+              <View style={styles.comingUpContent}>
+                <Text style={styles.comingUpIcon}>{getCategoryIcon(nextTask.category)}</Text>
+                <View style={styles.comingUpTextContainer}>
+                  <Text style={styles.comingUpTitle} numberOfLines={1}>{nextTask.title}</Text>
+                  <Text style={styles.comingUpTime}>🕐 {formatTimeDisplay(nextTask.time, i18n.language)}</Text>
                 </View>
               </View>
-            </TouchableOpacity>
+            </View>
           )}
+
+          {/* Activities tab link */}
+          <TouchableOpacity
+            style={styles.activitiesLinkCard}
+            onPress={() => router.push('/(tabs)/activities')}
+            activeOpacity={0.8}
+            accessibilityRole="button"
+            accessibilityLabel={t('patientApp.todaysPlan.activitiesWaiting')}
+          >
+            <View style={styles.checkinContent} importantForAccessibility="no-hide-descendants">
+              <Text style={styles.checkinEmoji}>🎨</Text>
+              <View style={styles.checkinTextContainer}>
+                <Text style={styles.checkinTitle}>{t('patientApp.tabs.activities')}</Text>
+                <Text style={styles.checkinSubtitle}>{t('patientApp.todaysPlan.activitiesWaiting')}</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
 
           {/* Error state */}
           {error && (
@@ -494,21 +523,36 @@ const styles = StyleSheet.create({
   greetingContainer: {
     marginBottom: 28,
   },
-  greeting: {
+  dayOfWeekText: {
+    fontSize: 36,
+    fontFamily: FONTS.display,
+    color: COLORS.textPrimary,
+    lineHeight: 44,
+    letterSpacing: -0.5,
+  },
+  clockText: {
     fontSize: 32,
     fontFamily: FONTS.display,
     color: COLORS.textPrimary,
+    marginTop: 4,
     lineHeight: 40,
-    letterSpacing: -0.5,
+  },
+  greeting: {
+    fontSize: 28,
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textPrimary,
+    lineHeight: 36,
+    letterSpacing: -0.3,
+    marginTop: 12,
   },
   greetingSimplified: {
-    fontSize: 38,
-    lineHeight: 48,
+    fontSize: 32,
+    lineHeight: 40,
   },
   dateText: {
     fontSize: 28,
     fontFamily: FONTS.bodySemiBold,
-    marginTop: 6,
+    marginTop: 4,
     lineHeight: 36,
   },
   yesterdayText: {
@@ -594,18 +638,52 @@ const styles = StyleSheet.create({
     shadowRadius: 12,
     elevation: 4,
   },
-  activityCard: {
-    backgroundColor: COLORS.cognitiveBg,
+  comingUpCard: {
+    backgroundColor: COLORS.card,
+    borderRadius: RADIUS['2xl'],
+    padding: 20,
+    marginBottom: 20,
+    borderWidth: 2,
+    borderColor: COLORS.brand200,
+    ...SHADOWS.md,
+  },
+  comingUpLabel: {
+    fontSize: 20,
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.brand600,
+    marginBottom: 12,
+  },
+  comingUpContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  comingUpIcon: {
+    fontSize: 36,
+    marginRight: 14,
+  },
+  comingUpTextContainer: {
+    flex: 1,
+  },
+  comingUpTitle: {
+    fontSize: 22,
+    fontFamily: FONTS.bodyBold,
+    color: COLORS.textPrimary,
+    letterSpacing: -0.3,
+  },
+  comingUpTime: {
+    fontSize: 20,
+    fontFamily: FONTS.bodyMedium,
+    color: COLORS.textSecondary,
+    marginTop: 4,
+  },
+  activitiesLinkCard: {
+    backgroundColor: COLORS.nutritionBg,
     borderRadius: RADIUS['2xl'],
     padding: 24,
     marginBottom: 20,
     borderWidth: 2,
-    borderColor: COLORS.cognitive,
-    shadowColor: COLORS.cognitive,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.15,
-    shadowRadius: 12,
-    elevation: 4,
+    borderColor: COLORS.nutrition,
+    ...SHADOWS.sm,
   },
   checkinContent: {
     flexDirection: 'row',

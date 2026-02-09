@@ -200,5 +200,11 @@
       "respite": "Atelpas aprūpe",
       "financial": "Finansiāls atbalsts"
     }
+  },
+  "whoIsupport": {
+    "sectionTitle": "PVO iSupport programma",
+    "sectionSubtitle": "Visaptveroša, uz pierādījumiem balstīta aprūpētāju apmācību programma, ko izstrādājusi Pasaules Veselības organizācija (PVO) — Apvienoto Nāciju Organizācijas aģentūra, kas atbild par starptautisko sabiedrības veselību.",
+    "whoExplanation": "PVO = Pasaules Veselības organizācija (Apvienoto Nāciju Organizācija)",
+    "badge": "Uz pierādījumiem balstīta apmācība"
   }
 }

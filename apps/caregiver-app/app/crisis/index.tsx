@@ -138,16 +138,22 @@ export default function CrisisScreen() {
         setAlerts((alertsResult.data || []) as LocationAlert[]);
 
         // Map journal entries with author names
+        // PostgREST may return caregivers as object (one-to-one) or array depending on schema
         const entries: CrisisEntry[] = (journalResult.data || []).map(
-          (entry: { id: string; content: string; created_at: string; author_id: string; caregivers: { name: string } | null }) => ({
-            id: entry.id,
-            content: entry.content,
-            created_at: entry.created_at,
-            author_name:
-              entry.author_id === caregiver.id
-                ? t('common.you')
-                : entry.caregivers?.name || t('common.unknown'),
-          })
+          (entry: any) => {
+            const cg = Array.isArray(entry.caregivers)
+              ? entry.caregivers[0]
+              : entry.caregivers;
+            return {
+              id: entry.id,
+              content: entry.content,
+              created_at: entry.created_at,
+              author_name:
+                entry.author_id === caregiver.id
+                  ? t('common.you')
+                  : cg?.name || t('common.unknown'),
+            };
+          }
         );
         setCrisisEntries(entries);
 
