@@ -232,7 +232,12 @@ ${JSON.stringify(chunk, null, 2)}`;
         },
       });
 
-      const text = result.response.text().trim();
+      let text = result.response.text().trim();
+      // Fix invalid JSON escapes produced by Gemini.
+      // Valid JSON escapes: \" \\ \/ \b \f \n \r \t \uXXXX
+      // Gemini sometimes outputs \' \x \a \e \0 etc. — strip the bad backslash.
+      text = text.replace(/\\x([0-9a-fA-F]{2})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+      text = text.replace(/\\(?!["\\/bfnrtu])/g, '');
       const parsed = JSON.parse(text);
 
       // Validate key structure
