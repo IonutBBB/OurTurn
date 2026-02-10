@@ -3,38 +3,13 @@ import { initReactI18next } from 'react-i18next';
 import { getLocales } from 'expo-localization';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LANGUAGE_CODES } from '@ourturn/shared';
+import { fetchAndCacheLocale, loadCachedLocale } from '@ourturn/shared/utils/locale-loader';
 
 // Import English as bundled fallback
 import en from '../locales/en.json';
 
-// Dynamic language map — React Native bundles all at build time,
-// but only the active language is loaded into memory.
-const localeMap: Record<string, () => Record<string, unknown>> = {
-  de: () => require('../locales/de.json'),
-  fr: () => require('../locales/fr.json'),
-  es: () => require('../locales/es.json'),
-  it: () => require('../locales/it.json'),
-  pt: () => require('../locales/pt.json'),
-  nl: () => require('../locales/nl.json'),
-  pl: () => require('../locales/pl.json'),
-  ro: () => require('../locales/ro.json'),
-  el: () => require('../locales/el.json'),
-  cs: () => require('../locales/cs.json'),
-  hu: () => require('../locales/hu.json'),
-  sv: () => require('../locales/sv.json'),
-  da: () => require('../locales/da.json'),
-  fi: () => require('../locales/fi.json'),
-  bg: () => require('../locales/bg.json'),
-  hr: () => require('../locales/hr.json'),
-  sk: () => require('../locales/sk.json'),
-  sl: () => require('../locales/sl.json'),
-  lt: () => require('../locales/lt.json'),
-  lv: () => require('../locales/lv.json'),
-  et: () => require('../locales/et.json'),
-  ga: () => require('../locales/ga.json'),
-  mt: () => require('../locales/mt.json'),
-};
-
+const SUPABASE_URL = process.env.EXPO_PUBLIC_SUPABASE_URL || '';
+const APP_NAME = 'patient-app';
 const LANGUAGE_STORAGE_KEY = 'ourturn-language-override';
 
 // Get device locale (e.g., 'en-US' -> 'en')
@@ -46,16 +21,23 @@ const initialLanguage = LANGUAGE_CODES.includes(deviceLanguage as any)
   ? deviceLanguage
   : 'en';
 
-function loadLanguageResources(lang: string) {
+/**
+ * Load language resources from cache, then fetch latest from Supabase Storage.
+ * English is always bundled — this only handles non-English languages.
+ */
+async function loadLanguageResources(lang: string): Promise<void> {
   if (lang === 'en') return;
-  const loader = localeMap[lang];
-  if (loader) {
-    try {
-      const resources = loader();
-      i18n.addResourceBundle(lang, 'translation', resources, true, true);
-    } catch {
-      // Translation file not yet generated — fall back to English
-    }
+
+  // First, try loading from cache for instant display
+  const cached = await loadCachedLocale(APP_NAME, lang);
+  if (cached) {
+    i18n.addResourceBundle(lang, 'translation', cached, true, true);
+  }
+
+  // Then fetch latest from Supabase Storage (updates cache if successful)
+  const fresh = await fetchAndCacheLocale(SUPABASE_URL, APP_NAME, lang);
+  if (fresh) {
+    i18n.addResourceBundle(lang, 'translation', fresh, true, true);
   }
 }
 
@@ -89,7 +71,7 @@ export default i18n;
  * If `persist` is true (default), saves the override to AsyncStorage.
  */
 export const changeLanguage = async (lang: string, persist = true) => {
-  loadLanguageResources(lang);
+  await loadLanguageResources(lang);
   await i18n.changeLanguage(lang);
   if (persist) {
     await AsyncStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
