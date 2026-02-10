@@ -764,7 +764,9 @@ body::before {
   .btn-secondary,
   .progress-bar,
   .skeleton,
-  .page-enter {
+  .page-enter,
+  .text-gradient-animated,
+  .faq-answer {
     animation: none !important;
     transition: none !important;
   }
@@ -830,4 +832,107 @@ body::before {
   outline: 2px solid var(--brand-600);
   outline-offset: 4px;
   border-radius: 4px;
+}
+
+/* ============================================================
+   Landing Page Utilities
+   ============================================================ */
+
+/* Animated gradient text */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.text-gradient-animated {
+  background: linear-gradient(135deg, var(--brand-700) 0%, var(--brand-500) 33%, var(--brand-400) 66%, var(--brand-700) 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 4s ease-in-out infinite;
+}
+
+/* Step connector — dashed vertical line between how-it-works steps */
+.step-connector {
+  border-left: 2px dashed var(--brand-200);
+}
+
+/* Phone frame for device mockups */
+.phone-frame {
+  border-radius: 32px;
+  border: 8px solid var(--text-primary);
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  background: var(--surface-card-solid);
+  position: relative;
+}
+
+.phone-frame::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--text-primary);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+/* Browser frame for device mockups */
+.browser-frame {
+  border-radius: 12px;
+  border: 2px solid var(--surface-border);
+  overflow: hidden;
+  background: var(--surface-card-solid);
+}
+
+.browser-frame-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: var(--surface-background);
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.browser-frame-toolbar::before {
+  content: '';
+  display: flex;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #F87171;
+  box-shadow: 18px 0 0 #FBBF24, 36px 0 0 #34D399;
+}
+
+/* FAQ answer — smooth grid expand/collapse */
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease-out;
+}
+
+.faq-answer > div {
+  overflow: hidden;
+}
+
+.faq-open .faq-answer {
+  grid-template-rows: 1fr;
+}
+
+/* Consistent landing section padding */
+.landing-section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 1024px) {
+  .landing-section {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
 }
