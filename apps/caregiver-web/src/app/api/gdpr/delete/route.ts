@@ -94,7 +94,18 @@ export async function DELETE(request: NextRequest) {
       const { error: authError } = await serviceClient.auth.admin.deleteUser(user.id);
       if (authError) {
         // Data is deleted but auth record remains — log for manual cleanup
-        log.error('Failed to delete auth user after data deletion');
+        log.error('Failed to delete auth user after data deletion', { userId: user.id });
+        return NextResponse.json({
+          partialFailure: true,
+          message: 'Your data has been deleted, but we could not fully remove your login credentials. Please contact support@ourturn.app for manual cleanup.',
+          deletedItems: {
+            household: true,
+            patient: true,
+            caregiver: true,
+            allHouseholdData: true,
+            authRecord: false,
+          },
+        }, { status: 207 });
       }
 
       return NextResponse.json({
@@ -135,7 +146,17 @@ export async function DELETE(request: NextRequest) {
       // Delete auth user
       const { error: authError } = await serviceClient.auth.admin.deleteUser(user.id);
       if (authError) {
-        log.error('Failed to delete auth user after data deletion');
+        log.error('Failed to delete auth user after data deletion', { userId: user.id });
+        return NextResponse.json({
+          partialFailure: true,
+          message: 'Your data has been removed from the household, but we could not fully remove your login credentials. Please contact support@ourturn.app for manual cleanup.',
+          deletedItems: {
+            caregiver: true,
+            conversations: true,
+            wellbeingLogs: true,
+            authRecord: false,
+          },
+        }, { status: 207 });
       }
 
       return NextResponse.json({

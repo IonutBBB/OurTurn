@@ -118,7 +118,7 @@ export default function EmergencyContactsSection({ patient }: EmergencyContactsS
             value={newContact.phone}
             onChange={(e) => setNewContact({ ...newContact, phone: e.target.value })}
             className="input-warm w-full"
-            placeholder="+1 555 123 4567"
+            placeholder={t('caregiverApp.settings.contactPhonePlaceholder')}
           />
         </div>
         <div>

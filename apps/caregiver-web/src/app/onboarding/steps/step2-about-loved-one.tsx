@@ -34,7 +34,7 @@ export function Step2AboutLovedOne({ data, updateData }: Props) {
           onChange={(e) => updateData({ patientName: e.target.value })}
           required
           className="input-warm w-full"
-          placeholder="First name"
+          placeholder={t('caregiverApp.onboarding.firstNamePlaceholder')}
         />
       </div>
 
@@ -62,7 +62,7 @@ export function Step2AboutLovedOne({ data, updateData }: Props) {
           onChange={(e) => updateData({ dementiaType: e.target.value })}
           className="input-warm w-full"
         >
-          <option value="">Select type (optional)</option>
+          <option value="">{t('caregiverApp.onboarding.selectDementiaType')}</option>
           {dementiaTypes.map((type) => (
             <option key={type} value={type}>
               {t(`caregiverApp.onboarding.dementiaTypes.${type}`)}
@@ -82,10 +82,10 @@ export function Step2AboutLovedOne({ data, updateData }: Props) {
           onChange={(e) => updateData({ homeAddress: e.target.value })}
           required
           className="input-warm w-full"
-          placeholder="Full home address"
+          placeholder={t('caregiverApp.onboarding.homeAddressPlaceholder')}
         />
         <p className="mt-1 text-sm text-text-muted">
-          Used for the &quot;Take Me Home&quot; feature in the patient app
+          {t('caregiverApp.onboarding.homeAddressHint')}
         </p>
       </div>
     </div>

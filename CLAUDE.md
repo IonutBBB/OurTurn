@@ -96,8 +96,7 @@ The full product specification is at `docs/MVP_PLAN.md`. Reference specific sect
 7. **Voice notes upload to Supabase Storage** — transcribed by Whisper via Edge Function.
 8. **AI responses must be streamed** — use server-sent events for Care Coach.
 9. **Cross-platform subscription sync** — RevenueCat (mobile) + Stripe (web) both write to `households.subscription_status`.
-10. **After any feature change or i18n string update, re-run translations** — run `npx tsx scripts/translate-locales.ts` to sync all 23 languages via Gemini. Supports `--app`, `--lang`, and `--missing-only` flags. English locale files are the source of truth; all other languages are auto-generated.
-11. **Web ↔ Mobile feature parity** — When building or changing a feature on caregiver-web, always check if the same feature/change applies to caregiver-app (and vice versa). If applicable, implement it on both platforms in the same session. The three caregiver surfaces (web, mobile app) should stay in sync. This also applies to patient-app if a feature has a caregiver-facing counterpart.
+10. **Web ↔ Mobile feature parity** — When building or changing a feature on caregiver-web, always check if the same feature/change applies to caregiver-app (and vice versa). If applicable, implement it on both platforms in the same session. The three caregiver surfaces (web, mobile app) should stay in sync. This also applies to patient-app if a feature has a caregiver-facing counterpart.
 
 ## Current Build Status
 

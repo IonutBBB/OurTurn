@@ -89,7 +89,7 @@ export function ExercisePlayer({ exercise, onComplete, onClose }: ExercisePlayer
       onClick={onClose}
       role="dialog"
       aria-modal="true"
-      aria-label={exercise.name}
+      aria-label={t(`caregiverApp.toolkit.relief.exercises.${exercise.id}.name`, exercise.name)}
     >
       <div
         className="bg-surface-card rounded-3xl shadow-xl max-w-lg w-full mx-4 p-8 text-center"
@@ -98,7 +98,7 @@ export function ExercisePlayer({ exercise, onComplete, onClose }: ExercisePlayer
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-lg font-display font-bold text-text-primary">
-            {exercise.icon} {exercise.name}
+            {exercise.icon} {t(`caregiverApp.toolkit.relief.exercises.${exercise.id}.name`, exercise.name)}
           </h3>
           <button
             onClick={onClose}
@@ -198,7 +198,7 @@ export function ExercisePlayer({ exercise, onComplete, onClose }: ExercisePlayer
 
             {/* Instruction */}
             <p className="text-lg text-text-primary font-medium leading-relaxed mb-6 min-h-[3.5rem]">
-              {step.instruction}
+              {t(`caregiverApp.toolkit.relief.exercises.${exercise.id}.step${currentStep}`, step.instruction)}
             </p>
 
             {/* Controls */}

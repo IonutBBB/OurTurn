@@ -78,7 +78,7 @@ export function PlaybookDetailView({ playbook, onClose, onLogIncident }: Playboo
           <div className="flex items-center gap-3">
             <span className="text-3xl">{playbook.emoji}</span>
             <div>
-              <h2 className="text-lg font-display font-bold text-text-primary">{playbook.title}</h2>
+              <h2 className="text-lg font-display font-bold text-text-primary">{t(`caregiverApp.toolkit.behaviours.types.${playbook.behaviour_type}`, playbook.title)}</h2>
               <p className="text-sm text-text-secondary">{playbook.description}</p>
             </div>
           </div>

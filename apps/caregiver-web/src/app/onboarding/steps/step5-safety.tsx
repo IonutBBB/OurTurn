@@ -35,7 +35,7 @@ export function Step5Safety({ data, updateData }: Props) {
   return (
     <div className="space-y-6">
       <p className="text-text-secondary text-sm mb-4">
-        Add emergency contacts that will appear in the patient app&apos;s Help tab.
+        {t('caregiverApp.onboarding.safetyIntro')}
       </p>
 
       {/* Existing contacts */}
@@ -57,7 +57,7 @@ export function Step5Safety({ data, updateData }: Props) {
                 onClick={() => removeContact(index)}
                 className="text-status-danger hover:opacity-80 text-sm"
               >
-                Remove
+                {t('caregiverApp.onboarding.removeContact')}
               </button>
             </div>
           ))}
@@ -80,7 +80,7 @@ export function Step5Safety({ data, updateData }: Props) {
             value={newContact.name}
             onChange={(e) => setNewContact({ ...newContact, name: e.target.value })}
             className="input-warm w-full"
-            placeholder="Name"
+            placeholder={t('caregiverApp.onboarding.contactNamePlaceholder')}
           />
         </div>
 
@@ -94,7 +94,7 @@ export function Step5Safety({ data, updateData }: Props) {
             value={newContact.phone}
             onChange={(e) => setNewContact({ ...newContact, phone: e.target.value })}
             className="input-warm w-full"
-            placeholder="+1 555 123 4567"
+            placeholder={t('caregiverApp.onboarding.contactPhonePlaceholder')}
           />
         </div>
 
@@ -108,7 +108,7 @@ export function Step5Safety({ data, updateData }: Props) {
             value={newContact.relationship}
             onChange={(e) => setNewContact({ ...newContact, relationship: e.target.value })}
             className="input-warm w-full"
-            placeholder="Daughter, neighbor, doctor..."
+            placeholder={t('caregiverApp.onboarding.contactRelationshipPlaceholder')}
           />
         </div>
 
@@ -124,7 +124,7 @@ export function Step5Safety({ data, updateData }: Props) {
 
       {data.emergencyContacts.length === 0 && (
         <p className="text-sm text-status-amber bg-status-amber-bg p-3 rounded-2xl">
-          We recommend adding at least one emergency contact.
+          {t('caregiverApp.onboarding.recommendAddContact')}
         </p>
       )}
     </div>

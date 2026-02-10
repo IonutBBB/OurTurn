@@ -134,8 +134,14 @@ export default function CrisisClient({
             patientName={patientName}
             country={country}
             incidents={behaviourIncidents}
+            householdId={householdId}
+            caregiverId={caregiverId}
+            patientId={patientId}
             onSelectWith={handleSelectWith}
             onSelectRemote={handleSelectRemote}
+            onEventLogged={() => {
+              showToast(t('caregiverApp.crisis.logger.saved'), 'success');
+            }}
           />
         );
 

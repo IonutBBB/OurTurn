@@ -371,9 +371,7 @@ export default function LocationClient({
           <p className="text-text-muted mb-2">
             {t('caregiverApp.location.mapsApiMissing')}
           </p>
-          <p className="text-sm text-text-muted">
-            Add <code className="card-inset px-1 rounded">NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> to your environment variables.
-          </p>
+          <p className="text-sm text-text-muted" dangerouslySetInnerHTML={{ __html: t('caregiverApp.location.mapsApiInstructions') }} />
         </div>
       </div>
     );

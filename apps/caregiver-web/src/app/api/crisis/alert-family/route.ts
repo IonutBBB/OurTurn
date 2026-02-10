@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient as createServerClient } from '@/lib/supabase/server';
+import { createLogger } from '@/lib/logger';
 
+const log = createLogger('crisis/alert-family');
 const EXPO_PUSH_URL = 'https://exp.host/--/api/v2/push/send';
 
 export async function POST(request: NextRequest) {
@@ -94,8 +96,8 @@ export async function POST(request: NextRequest) {
     });
 
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Expo push error:', errorText);
+      await response.text();
+      log.error('Expo push notification delivery failed');
       return NextResponse.json(
         { error: 'Failed to send notifications' },
         { status: 502 }
@@ -104,7 +106,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ success: true, notified: tokens.length });
   } catch (error) {
-    console.error('Alert family error:', error);
+    log.error('Alert family failed', { error: error instanceof Error ? error.message : 'Unknown' });
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

@@ -5,6 +5,7 @@ import { rateLimit } from '@/lib/rate-limit';
 import { createLogger } from '@/lib/logger';
 import { postProcess, logSafetyEvent, SafetyLevel } from '@/lib/ai-safety';
 import { getLanguageInstruction } from '@/lib/ai-language';
+import { LANGUAGE_CODES } from '@ourturn/shared/constants/languages';
 
 const log = createLogger('ai/behaviour-insights');
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY || '');
@@ -25,6 +26,14 @@ export async function POST(request: NextRequest) {
     }
 
     const { householdId, locale } = await request.json();
+
+    if (!householdId) {
+      return NextResponse.json({ error: 'householdId is required' }, { status: 400 });
+    }
+
+    if (locale && !(LANGUAGE_CODES as readonly string[]).includes(locale)) {
+      return NextResponse.json({ error: 'Unsupported locale.' }, { status: 400 });
+    }
 
     const { data: caregiver } = await supabase
       .from('caregivers')
@@ -79,7 +88,7 @@ Return ONLY a valid JSON array:
 [{"title": "...", "insight": "...", "suggestion": "..."}]
 No markdown, no explanation.${getLanguageInstruction(locale)}`;
 
-    const model = genAI.getGenerativeModel({ model: 'gemini-3-flash-preview' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
     const result = await model.generateContent(prompt);
     const text = result.response.text();
 

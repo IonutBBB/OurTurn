@@ -8,8 +8,8 @@
     "done": "Valmis",
     "skip": "Ohita tältä päivältä",
     "loading": "Ladataan...",
-    "error": "Jokin meni pieleen. Yritä uudelleen.",
-    "errorTitle": "Jokin meni pieleen",
+    "error": "Jokin meni vikaan. Yritä uudelleen.",
+    "errorTitle": "Jokin meni vikaan",
     "errorDefault": "Odottamaton virhe tapahtui.",
     "tryAgain": "Yritä uudelleen",
     "logOut": "Kirjaudu ulos",
@@ -36,11 +36,11 @@
   },
   "caregiverApp": {
     "dashboard": {
-      "greeting": "Hyvää {{timeOfDay}}, {{name}}",
+      "greeting": "Hyvää {{timeOfDay}}ta, {{name}}",
       "statusGood": "{{patientName}}n päivä sujuu hyvin",
       "statusConcern": "{{patientName}} saattaa tarvita huomiota",
       "todaysStatus": "Tämän päivän tila",
-      "tasksCompleted": "{{completed}} / {{total}} tehtävää tehty",
+      "tasksCompleted": "{{completed}}/{{total}} tehtävää tehty",
       "dailyCheckin": "Päivittäinen sisäänkirjautuminen",
       "noCheckinYet": "Ei sisäänkirjautumista vielä tänään",
       "location": "Sijainti",
@@ -54,29 +54,29 @@
       "careCodeHint": "Jaa yhdistääksesi potilassovelluksen",
       "careCodeNotAvailable": "Koodi ei saatavilla",
       "morningActivityPattern": "Aamutoiminnan kaava",
-      "insightText": "{{name}} suorittaa enemmän tehtäviä päivinä, joille on suunniteltu aamukävelyitä.",
+      "insightText": "{{name}} suorittaa enemmän tehtäviä päivinä, joina aamukävely on suunniteltu.",
       "noJournalEntries": "Ei päiväkirjamerkintöjä vielä",
       "unknown": "Tuntematon",
       "moodStruggling": "Kamppailee",
       "moodLow": "Alhainen",
-      "moodOkay": "Hyvä",
+      "moodOkay": "Ok",
       "moodGood": "Hyvä",
       "moodGreat": "Erinomainen",
       "sleepPoor": "Huono",
       "sleepFair": "Kohtalainen",
-      "sleepWell": "Hyvin",
+      "sleepWell": "Hyvä",
       "mood": "Mieliala",
       "sleep": "Uni",
       "minutesAgo": "{{count}} min sitten",
       "hoursAgo": "{{count}} t sitten",
       "daysAgo": "{{count}} pv sitten",
       "deviceStatus": "Laitteen tila",
-      "deviceOnline": "Yhteydessä",
-      "deviceOffline": "Ei yhteyttä",
+      "deviceOnline": "Online",
+      "deviceOffline": "Offline",
       "lastSeenAt": "Viimeksi nähty: {{time}}",
       "lastSeenNever": "Ei koskaan yhdistetty",
       "engagementSummary": "Tämän päivän aktiivisuus",
-      "alertsToday": "Hälytykset tänään",
+      "alertsToday": "Hälytyksiä tänään",
       "checkedIn": "Sisäänkirjautunut",
       "notCheckedIn": "Ei sisäänkirjautunut",
       "brainActivity": "Aivojen aktiivisuus"
@@ -86,7 +86,7 @@
       "addTask": "Lisää tehtävä",
       "aiSuggest": "Tekoäly ehdottaa tehtäviä",
       "hintLabel": "Ohjeet ({{name}} näkee tämän)",
-      "hintPlaceholder": "Esim. Pillerisi ovat keittiön pöydällä pillerirasiassa",
+      "hintPlaceholder": "Esim. Pillerisi ovat keittiön tason pillerirasiassa",
       "recurrence": "Toistuu",
       "daily": "Joka päivä",
       "specificDays": "Tietyt päivät",
@@ -95,11 +95,11 @@
       "saved": "Tallennettu",
       "noTasks": "Ei tehtäviä vielä. Lisää ensimmäinen tehtävä aloittaaksesi.",
       "category": "Kategoria",
-      "taskTitle": "Tehtävän nimi",
+      "taskTitle": "Tehtävän otsikko",
       "time": "Aika",
-      "deleteConfirm": "Poistetaanko tämä tehtävä?",
+      "deleteConfirm": "Poista tämä tehtävä?",
       "noMoreSuggestions": "Ei enempää ehdotuksia saatavilla.",
-      "copyFromTo": "Kopioi tehtävät päivältä {{day}} kohteeseen:",
+      "copyFromTo": "Kopioi tehtäviä päivältä {{day}} kohteeseen:",
       "copyCount": "{{taskCount}} tehtävää kopioidaan {{dayCount}} päivälle",
       "days": {
         "mon": "Ma",
@@ -125,7 +125,7 @@
       "removeMedication": "Poista",
       "maxMedications": "Enintään 3 lääkettä per ryhmä",
       "uploadingPhoto": "Ladataan...",
-      "evidenceBased": "Evidenssiperusteinen"
+      "evidenceBased": "Todisteisiin perustuva"
     },
     "location": {
       "title": "Sijainti ja turvallisuus",
@@ -151,17 +151,17 @@
       "patientLocation": "{{name}}n sijainti",
       "updated": "Päivitetty: {{time}}",
       "noLocationData": "Ei sijaintitietoja vielä",
-      "live": "Reaaliaikainen",
+      "live": "Live",
       "add": "+ Lisää",
       "noSafeZonesYet": "Turva-alueita ei ole vielä määritetty.\nLisää alueita saadaksesi hälytyksiä, kun {{name}} poistuu.",
       "radiusMeters": "{{radius}}m säde",
       "recentAlerts24h": "Viimeisimmät hälytykset (24h)",
-      "noRecentAlerts": "Ei hälytyksiä viimeisen 24 tunnin aikana. Kaikki on hyvin!",
+      "noRecentAlerts": "Ei hälytyksiä viimeisen 24 tunnin aikana. Kaikki hyvin!",
       "deleteSafeZone": "Poista turva-alue",
       "deleteSafeZoneConfirm": "Haluatko varmasti poistaa alueen \"{{name}}\"?",
       "failedToSaveSafeZone": "Turva-alueen tallentaminen epäonnistui",
       "failedToDeleteSafeZone": "Turva-alueen poistaminen epäonnistui",
-      "fillAllFields": "Täytä kaikki kentät",
+      "fillAllFields": "Täytäthän kaikki kentät",
       "name": "Nimi",
       "nameExample": "esim. Koti, Lääkärin vastaanotto",
       "latitude": "Leveysaste",
@@ -171,17 +171,17 @@
       "mapRequiresBuild": "Kartat vaativat kehitysversion.\nKäytä EAS Buildia karttojen käyttöönottoon.",
       "home": "Koti",
       "patient": "Potilas",
-      "alertTypeLeftSafeZone": "Poistui turva-alueelta",
-      "alertTypeInactive": "Ei aktiivinen",
+      "alertTypeLeftSafeZone": "Poistui turvavyöhykkeeltä",
+      "alertTypeInactive": "Passiivinen",
       "alertTypeNightMovement": "Yöliike",
       "alertTypeTakeMeHomeTapped": "Vie minut kotiin -painiketta painettu",
-      "alertTypeSosTriggered": "SOS laukaistu",
+      "alertTypeSosTriggered": "SOS aktivoitu",
       "invalidLatitude": "Anna kelvollinen leveysaste (-90 - 90)",
       "invalidLongitude": "Anna kelvollinen pituusaste (-180 - 180)",
       "invalidRadius": "Anna positiivinen säteen arvo"
     },
     "coach": {
-      "title": "Tekoälyhoitovalmentaja",
+      "title": "Tekoälyhoitokumppani",
       "tabs": {
         "chat": "Keskustelu",
         "behaviours": "Käyttäytyminen",
@@ -189,24 +189,24 @@
       },
       "resources": {
         "title": "Resurssit",
-        "subtitle": "Oppaat, artikkelit ja paikallinen tuki auttamaan sinua hoitomatkallasi",
+        "subtitle": "Oppaat, artikkelit ja paikallinen tuki auttavat sinua hoitomatkallasi",
         "linkLabel": "Resurssit ja oppaat"
       },
-      "intro": "Kysy minulta mitä tahansa {{name}}n hoitamisesta. Tunnen heidän rutiininsa, mieltymyksensä ja yleiset parhaat käytännöt.",
+      "intro": "Kysy minulta mitä tahansa {{name}}-nimisen henkilön hoitamisesta. Tunnen hänen rutiininsa, mieltymyksensä ja yleiset parhaat käytännöt.",
       "placeholder": "Kirjoita kysymyksesi...",
-      "disclaimer": "Olen täällä tukemassa sinua, en korvaamassa lääketieteellistä neuvontaa. Terveysongelmissa ota aina yhteyttä lääkäriin.",
-      "disclaimerShort": "Hoitovalmentaja antaa vain yleistä ohjausta. Kysy aina terveydenhuollon ammattilaisilta lääketieteellistä neuvontaa.",
+      "disclaimer": "Olen täällä tukemassa sinua, en korvaamassa lääketieteellisiä neuvoja. Terveysasioissa ota aina yhteyttä lääkäriisi.",
+      "disclaimerShort": "Hoitokumppani antaa vain yleistä ohjausta. Kysy aina terveydenhuollon ammattilaisilta lääketieteellisiä neuvoja.",
       "suggestedTopics": "Ehdotetut aiheet",
       "addToCarePlan": "Lisää hoitosuunnitelmaan",
       "addToDoctorNotes": "Lisää lääkärin muistiinpanoihin",
       "newConversation": "Uusi keskustelu",
       "newChat": "Uusi keskustelu",
-      "careCoach": "Hoitovalmentaja",
-      "completeOnboarding": "Suorita perehdytys ensin loppuun.",
+      "careCoach": "Hoitokumppani",
+      "completeOnboarding": "Suorita ensin perehdytys loppuun.",
       "greeting": "Hei {{name}}!",
-      "greetingIntro": "Olen täällä auttamassa sinua hoitamaan {{patientName}}ia. Kysy minulta mitä tahansa päivittäisestä hoidosta, aktiviteeteista tai haastavien tilanteiden hallinnasta.",
+      "greetingIntro": "Olen täällä auttamassa sinua {{patientName}}-nimisen henkilön hoitamisessa. Kysy minulta mitä tahansa päivittäisestä hoidosta, aktiviteeteista tai haastavien tilanteiden hallinnasta.",
       "tryAsking": "Kokeile kysyä:",
-      "askAbout": "Kysy {{name}}n hoitamisesta...",
+      "askAbout": "Kysy {{name}}-nimisen henkilön hoitamisesta...",
       "send": "Lähetä",
       "signingIn": "Kirjaudutaan sisään",
       "taskAddedSuccess": "Tehtävä lisätty hoitosuunnitelmaan!",
@@ -217,28 +217,30 @@
       "saveForDoctorVisit": "Tallenna lääkärikäyntiä varten",
       "success": "Onnistui",
       "suggestions": {
-        "sundowning": "Miten käsittelen ilta-ahdistusta?",
+        "stayEngaged": "Miten voin auttaa {{name}}-nimistä henkilöä pysymään aktiivisena päivän aikana?",
+        "sundowning": "Miten käsittelen ilta-ahdistusta (sundowning)?",
+        "agitated": "{{name}} vaikuttaa levottomalta iltaisin. Mitä voin tehdä?",
         "rainyDays": "Mitä aktiviteetteja sateisina päivinä voi tehdä?",
         "siblings": "Auta minua puhumaan sisarusteni kanssa hoidon jakamisesta",
         "refusesFood": "{{name}} kieltäytyy syömästä. Apua.",
         "repetitive": "Miten käsittelen toistuvia kysymyksiä?"
       },
       "hub": {
-        "backToHub": "Takaisin valmentajaan",
+        "backToHub": "Takaisin hoitokumppaniin",
         "insight": {
           "title": "Sinulle",
           "discuss": "Keskustele",
-          "fallback": "Tarkista {{name}}n päivä saadaksesi henkilökohtaisia oivalluksia"
+          "fallback": "Tarkista {{name}}-nimisen henkilön päivä saadaksesi henkilökohtaisia oivalluksia"
         },
         "rightNow": {
           "title": "Juuri nyt",
           "subtitle": "Apua hetkessä",
-          "refusing_food": "Kieltäytyy ruoasta",
+          "refusing_food": "Kieltäytyy syömästä",
           "refusing_medication": "Ei ota lääkkeitä",
-          "agitated": "Kiihtynyt",
+          "agitated": "Levoton",
           "not_recognizing": "Ei tunnista minua",
           "repetitive_questions": "Sama kysymys uudelleen",
-          "sundowning": "Ilta-ahdistus",
+          "sundowning": "Ilta-ahdistus (sundowning)",
           "wants_to_leave": "Haluaa lähteä",
           "caregiver_overwhelmed": "Olen menettämässä kärsivällisyyteni"
         },
@@ -249,27 +251,44 @@
           "plan_tomorrow_desc": "Rakentakaa yhdessä hieno päivä",
           "doctor_visit": "Valmistaudu lääkärikäyntiin",
           "doctor_visit_desc": "Luo jäsennelty yhteenveto",
-          "review_week": "Arvioi tämä viikko",
+          "review_week": "Käy läpi tämä viikko",
           "review_week_desc": "Mikä meni hyvin, mikä vaatii huomiota",
           "adjust_plan": "Muokkaa hoitosuunnitelmaa",
           "adjust_plan_desc": "Optimoi sen perusteella, mikä toimii"
         },
         "learn": {
           "title": "Opi",
-          "subtitle": "Aiheoppaat {{name}}lle",
+          "subtitle": "Aiheoppaat {{name}}-nimiselle henkilölle",
           "daily_routines": "Päivittäiset rutiinit",
-          "communication": "Viestintä",
+          "communication": "Kommunikaatio",
           "behaviors": "Käyttäytyminen",
           "activities": "Aktiviteetit",
-          "nutrition": "Ravitsemus",
+          "nutrition": "Ravinto",
           "safety": "Turvallisuus",
           "sleep": "Uni ja yö"
         },
         "askAnything": {
           "title": "Kysy mitä vain",
-          "placeholder": "Mitä mielessäsi on {{name}}n hoitamisesta?"
+          "placeholder": "Mitä mielessäsi on {{name}}-nimisen henkilön hoitamisesta?"
         }
-      }
+      },
+      "situationPrompts": {
+        "refusing_food": "{{name}} kieltäytyy syömästä juuri nyt. Mitä minun pitäisi tehdä?",
+        "refusing_medication": "{{name}} ei ota lääkkeitään. Tarvitsen apua heti.",
+        "agitated": "{{name}} on hyvin levoton juuri nyt. Miten voin auttaa rauhoittamaan tilannetta?",
+        "not_recognizing": "{{name}} ei tunnista minua juuri nyt. Se on todella vaikeaa. Mitä teen?",
+        "repetitive_questions": "{{name}} kysyy samaa kysymystä uudelleen ja uudelleen. Miten käsittelen tätä kärsivällisesti?",
+        "sundowning": "On ilta ja {{name}} on todella levoton ja sekava. Auta minua ilta-ahdistuksen kanssa.",
+        "wants_to_leave": "{{name}} haluaa lähteä kotoa ja vaatii päästä jonnekin. Mitä teen?",
+        "caregiver_overwhelmed": "Tunnen itseni ylikuormittuneeksi ja menetän kärsivällisyyteni juuri nyt. Tarvitsen tukea."
+      },
+      "workflowPrompts": {
+        "plan_tomorrow": "Suunnitellaan hyvä päivä {{name}}-nimiselle henkilölle huomenna. Mitä ehdotat sen perusteella, mikä on toiminut?",
+        "doctor_visit": "Minulla on lääkärikäynti tulossa {{name}}-nimisen henkilön kanssa. Voitko auttaa minua valmistelemaan yhteenvedon siitä, miten asiat ovat menneet?",
+        "review_week": "Käydään läpi, miten tämä viikko meni {{name}}-nimiselle henkilölle. Mitä kaavoja näet?",
+        "adjust_plan": "Haluaisin tarkistaa {{name}}-nimisen henkilön hoitosuunnitelman ja katsoa, mitä meidän pitäisi muuttaa sen perusteella, miten asiat sujuvat."
+      },
+      "insightDiscussPrompt": "Näin tämän oivalluksen: \"{{insight}}\". Voitko kertoa minulle lisää, mitä tämä tarkoittaa ja mitä minun pitäisi tehdä?"
     },
     "family": {
       "title": "{{patientName}}n hoitotiimi",
@@ -277,14 +296,14 @@
       "primaryCaregiver": "Ensisijainen hoitaja",
       "familyMember": "Perheenjäsen",
       "careCode": "Hoitokoodi",
-      "careCodeHelp": "Jaa tämä koodi potilassovelluksen parittamiseksi",
-      "regenerateCode": "Luo koodi uudelleen",
-      "regenerateWarning": "Tämä katkaisee yhteyden kaikkiin paritettuihin potilaslaitteisiin. He tarvitsevat uuden koodin.",
+      "careCodeHelp": "Jaa tämä koodi yhdistääksesi potilassovelluksen",
+      "regenerateCode": "Luo uusi koodi",
+      "regenerateWarning": "Tämä irrottaa kaikki yhdistetyt potilaslaitteet. He tarvitsevat uuden koodin.",
       "journal": "Hoitopäiväkirja",
       "addNote": "Lisää muistiinpano",
       "observation": "Havainto",
       "note": "Muistiinpano",
-      "milestone": "Virstanpylväs",
+      "milestone": "Välitavoite",
       "inviteEmail": "Sähköpostiosoite",
       "inviteName": "Nimi",
       "inviteRelationship": "Suhde",
@@ -302,10 +321,10 @@
       "familyMembers": "Perheenjäsenet ({{count}})",
       "you": "Sinä",
       "primary": "Ensisijainen",
-      "entryPlaceholder": "Lisää muistiinpano, havainto tai virstanpylväs...",
-      "posting": "Lähetetään...",
-      "post": "Lähetä",
-      "noJournalEntries": "Ei päiväkirjamerkintöjä vielä.",
+      "entryPlaceholder": "Lisää muistiinpano, havainto tai välitavoite...",
+      "posting": "Julkaistaan...",
+      "post": "Julkaise",
+      "noJournalEntries": "Ei vielä päiväkirjamerkintöjä.",
       "startDocumenting": "Aloita hoitomatkasi dokumentointi!",
       "yesterday": "Eilen",
       "failedToAddEntry": "Merkinnän lisääminen epäonnistui. Yritä uudelleen.",
@@ -329,9 +348,9 @@
         "energyHigh": "Energinen",
         "stress": "Stressi",
         "stressLow": "Rauhallinen",
-        "stressHigh": "Kuormittunut",
+        "stressHigh": "Ylikuormittunut",
         "sleep": "Unen laatu",
-        "sleepLow": "Huono",
+        "sleepLow": "Kamala",
         "sleepHigh": "Erinomainen"
       },
       "relief": {
@@ -340,125 +359,125 @@
         "duration": "{{min}} min",
         "startExercise": "Aloita",
         "stepOf": "Vaihe {{current}} / {{total}}",
-        "complete": "Hienoa! Harjoitus suoritettu.",
+        "complete": "Hyvin tehty! Harjoitus suoritettu.",
         "close": "Sulje",
         "pause": "Tauko",
         "resume": "Jatka",
         "exercises": {
           "box-breathing": {
-            "name": "Laatikkohönkäily",
+            "name": "Laatikkohengitys",
             "step0": "Asetu mukavasti ja sulje silmäsi",
-            "step1": "Hengitä sisään hitaasti nenän kautta",
+            "step1": "Hengitä sisään hitaasti nenäsi kautta",
             "step2": "Pidätä hengitystäsi kevyesti",
-            "step3": "Hengitä ulos hitaasti suun kautta",
+            "step3": "Hengitä ulos hitaasti suusi kautta",
             "step4": "Pidätä ennen seuraavaa hengitystä",
-            "step5": "Hengitä sisään hitaasti nenän kautta",
+            "step5": "Hengitä sisään hitaasti nenäsi kautta",
             "step6": "Pidätä hengitystäsi kevyesti",
-            "step7": "Hengitä ulos hitaasti suun kautta",
+            "step7": "Hengitä ulos hitaasti suusi kautta",
             "step8": "Pidätä ennen seuraavaa hengitystä",
-            "step9": "Hengitä sisään hitaasti nenän kautta",
+            "step9": "Hengitä sisään hitaasti nenäsi kautta",
             "step10": "Pidätä hengitystäsi kevyesti",
-            "step11": "Hengitä ulos hitaasti suun kautta",
+            "step11": "Hengitä ulos hitaasti suusi kautta",
             "step12": "Pidätä ennen seuraavaa hengitystä",
-            "step13": "Hengitä sisään hitaasti nenän kautta",
+            "step13": "Hengitä sisään hitaasti nenäsi kautta",
             "step14": "Pidätä hengitystäsi kevyesti",
-            "step15": "Hengitä ulos hitaasti suun kautta",
+            "step15": "Hengitä ulos hitaasti suusi kautta",
             "step16": "Pidätä ennen seuraavaa hengitystä",
-            "step17": "Hengitä sisään hitaasti nenän kautta",
+            "step17": "Hengitä sisään hitaasti nenäsi kautta",
             "step18": "Pidätä hengitystäsi kevyesti",
-            "step19": "Hengitä ulos hitaasti suun kautta",
+            "step19": "Hengitä ulos hitaasti suusi kautta",
             "step20": "Pidätä ennen seuraavaa hengitystä",
-            "step21": "Hengitä sisään hitaasti nenän kautta",
+            "step21": "Hengitä sisään hitaasti nenäsi kautta",
             "step22": "Pidätä hengitystäsi kevyesti",
-            "step23": "Hengitä ulos hitaasti suun kautta",
-            "step24": "Hienoa. Ota hetki ja huomaa, miltä sinusta tuntuu."
+            "step23": "Hengitä ulos hitaasti suusi kautta",
+            "step24": "Hyvin tehty. Ota hetki ja huomaa, miltä sinusta tuntuu."
           },
           "54321-grounding": {
             "name": "5-4-3-2-1 Maadoitus",
             "step0": "Hengitä hitaasti, syvään ja katso ympärillesi",
-            "step1": "Nimeä 5 asiaa, jotka näet juuri nyt",
-            "step2": "Nimeä 4 asiaa, joita voit koskettaa juuri nyt",
-            "step3": "Nimeä 3 asiaa, jotka kuulet juuri nyt",
-            "step4": "Nimeä 2 asiaa, jotka haistat juuri nyt",
-            "step5": "Nimeä 1 asia, jonka maistat juuri nyt",
-            "step6": "Hengitä syvään uudelleen. Olet tässä, ja olet turvassa."
+            "step1": "Nimeä 5 asiaa, jotka voit NÄHDÄ juuri nyt",
+            "step2": "Nimeä 4 asiaa, joita voit KOSKETTAA juuri nyt",
+            "step3": "Nimeä 3 asiaa, jotka voit KUULLA juuri nyt",
+            "step4": "Nimeä 2 asiaa, jotka voit HAISTAA juuri nyt",
+            "step5": "Nimeä 1 asia, jonka voit MAISTAA juuri nyt",
+            "step6": "Hengitä uudelleen syvään. Olet täällä, ja olet turvassa."
           },
           "gratitude-moment": {
             "name": "Kiitollisuuden hetki",
-            "step0": "Sulje silmäsi ja hengitä rauhoittavasti",
-            "step1": "Ajattele yhtä ihmistä, josta olet kiitollinen, ja miksi",
+            "step0": "Sulje silmäsi ja ota rauhoittava hengenveto",
+            "step1": "Ajattele yhtä ihmistä, josta olet kiitollinen ja miksi",
             "step2": "Ajattele yhtä asiaa, joka tapahtui tänään ja oli hyvä, vaikka pienikin",
             "step3": "Ajattele yhtä asiaa itsessäsi, jota arvostat",
-            "step4": "Pidä nämä kolme asiaa mielessäsi ja hengitä syvään",
-            "step5": "Kannattele tätä kiitollisuuden tunnetta mukanasi."
+            "step4": "Pidä nuo kolme asiaa mielessäsi ja hengitä syvään",
+            "step5": "Kannata tätä kiitollisuuden tunnetta mukanasi."
           },
           "progressive-muscle-relaxation": {
             "name": "Progressiivinen lihasrentoutus",
             "step0": "Istu tai asetu mukavasti. Sulje silmäsi.",
-            "step1": "Purista molemmat nyrkit tiukasti 5 sekunnin ajan...",
+            "step1": "Purista molempia nyrkkejä tiukasti 5 sekunnin ajan...",
             "step2": "Vapauta ja tunne jännityksen sulavan pois",
             "step3": "Jännitä hartiasi – nosta ne kohti korviasi...",
             "step4": "Vapauta ja anna hartioidesi laskeutua",
-            "step5": "Kurtista kasvosi tiukasti – otsa, silmät, leuka...",
+            "step5": "Rypistä kasvosi tiukasti – otsa, silmät, leuka...",
             "step6": "Vapauta ja anna kasvojesi rentoutua täysin",
             "step7": "Jännitä vatsalihaksesi...",
             "step8": "Vapauta ja hengitä vatsaasi",
-            "step9": "Purista jalkasi ja jalkateräsi tiukasti...",
-            "step10": "Vapauta ja tunne lämmön virtaavan jalkojesi läpi",
+            "step9": "Purista jalkojasi ja jalkateriäsi tiukasti...",
+            "step10": "Vapauta ja tunne lämmön virtaavan jalkoihisi",
             "step11": "Hengitä syvään. Koko kehosi on rento.",
             "step12": "Avaa silmäsi varovasti, kun olet valmis."
           },
           "mindful-break": {
             "name": "Tietoinen tauko",
-            "step0": "Pysähdy hetkeksi. Tämä hetki on sinun.",
-            "step1": "Sulje silmäsi ja hengitä 3 kertaa hitaasti ja syvään.",
-            "step2": "Huomaa, miltä kehossasi tuntuu juuri nyt – mitään ei tarvitse muuttaa.",
-            "step3": "Kuuntele ympärilläsi olevia ääniä, läheltä ja kaukaa.",
-            "step4": "Tunne alusta allasi ja ilma ihollesi.",
-            "step5": "Sano hiljaa mielessäsi: \"Teen parhaani, ja se riittää.\"",
-            "step6": "Hengitä vielä kerran syvään.",
+            "step0": "Keskeytä kaikki, mitä teet. Tämä hetki on sinun.",
+            "step1": "Sulje silmäsi ja ota 3 hidasta, syvää hengitystä",
+            "step2": "Huomaa, miltä kehosi tuntuu juuri nyt – mitään ei tarvitse muuttaa",
+            "step3": "Kuuntele ympärilläsi olevia ääniä, läheltä ja kaukaa",
+            "step4": "Tunne alustasi ja ilman ihollesi",
+            "step5": "Sano hiljaa: \"Teen parhaani, ja se riittää.\"",
+            "step6": "Ota vielä yksi syvä hengitys",
             "step7": "Avaa silmäsi varovasti. Olet virkistynyt."
           },
           "breathing-478": {
             "name": "4-7-8 Hengitys",
-            "step0": "Istu mukavasti ja rentouta hartiasi.",
-            "step1": "Hengitä sisään hiljaa nenän kautta 4 laskun ajan.",
-            "step2": "Pidätä hengitystäsi 7 laskun ajan.",
-            "step3": "Hengitä ulos kokonaan suun kautta 8 laskun ajan.",
-            "step4": "Hengitä sisään hiljaa nenän kautta 4 laskun ajan.",
-            "step5": "Pidätä hengitystäsi 7 laskun ajan.",
-            "step6": "Hengitä ulos kokonaan suun kautta 8 laskun ajan.",
-            "step7": "Hengitä sisään hiljaa nenän kautta 4 laskun ajan.",
-            "step8": "Pidätä hengitystäsi 7 laskun ajan.",
-            "step9": "Hengitä ulos kokonaan suun kautta 8 laskun ajan.",
-            "step10": "Hengitä sisään hiljaa nenän kautta 4 laskun ajan.",
-            "step11": "Pidätä hengitystäsi 7 laskun ajan.",
-            "step12": "Hengitä ulos kokonaan suun kautta 8 laskun ajan.",
-            "step13": "Hengitä sisään hiljaa nenän kautta 4 laskun ajan.",
-            "step14": "Pidätä hengitystäsi 7 laskun ajan.",
-            "step15": "Hengitä ulos kokonaan suun kautta 8 laskun ajan.",
-            "step16": "Huomaa, kuinka paljon rauhallisemmalta kehossasi tuntuu nyt."
+            "step0": "Istu mukavasti ja rentouta hartiasi",
+            "step1": "Hengitä sisään hiljaa nenän kautta 4 laskun ajan",
+            "step2": "Pidätä hengitystäsi 7 laskun ajan",
+            "step3": "Hengitä ulos kokonaan suun kautta 8 laskun ajan",
+            "step4": "Hengitä sisään hiljaa nenän kautta 4 laskun ajan",
+            "step5": "Pidätä hengitystäsi 7 laskun ajan",
+            "step6": "Hengitä ulos kokonaan suun kautta 8 laskun ajan",
+            "step7": "Hengitä sisään hiljaa nenän kautta 4 laskun ajan",
+            "step8": "Pidätä hengitystäsi 7 laskun ajan",
+            "step9": "Hengitä ulos kokonaan suun kautta 8 laskun ajan",
+            "step10": "Hengitä sisään hiljaa nenän kautta 4 laskun ajan",
+            "step11": "Pidätä hengitystäsi 7 laskun ajan",
+            "step12": "Hengitä ulos kokonaan suun kautta 8 laskun ajan",
+            "step13": "Hengitä sisään hiljaa nenän kautta 4 laskun ajan",
+            "step14": "Pidätä hengitystäsi 7 laskun ajan",
+            "step15": "Hengitä ulos kokonaan suun kautta 8 laskun ajan",
+            "step16": "Huomaa, kuinka paljon rauhallisemmalta kehosi tuntuu nyt."
           },
           "permission-slip": {
-            "name": "Lupa itsellesi",
-            "step0": "Hengitä syvään ja anna itsellesi hetki.",
-            "step1": "Sano itsellesi: \"Annan itselleni luvan olla epätäydellinen tänään.\"",
-            "step2": "Sano: \"Annan itselleni luvan pyytää apua.\"",
-            "step3": "Sano: \"Annan itselleni luvan tuntea mitä tunnen ilman syyllisyyttä.\"",
-            "step4": "Sano: \"Annan itselleni luvan pitää tauon.\"",
-            "step5": "Sano: \"Teen parhaani, ja se riittää.\"",
-            "step6": "Hengitä syvään ja pidä nämä sanat lähelläsi.",
-            "step7": "Sinäkin ansaitset myötätuntoa. Pidä tämä mielessäsi."
+            "name": "Lupa itselle",
+            "step0": "Hengitä syvään ja anna itsellesi hetki",
+            "step1": "Sano itsellesi: \"Annan itselleni luvan olla epätäydellinen tänään\"",
+            "step2": "Sano: \"Annan itselleni luvan pyytää apua\"",
+            "step3": "Sano: \"Annan itselleni luvan tuntea mitä tunnen ilman syyllisyyttä\"",
+            "step4": "Sano: \"Annan itselleni luvan pitää tauon\"",
+            "step5": "Sano: \"Teen parhaani, ja se riittää\"",
+            "step6": "Hengitä syvään ja pidä nämä sanat lähelläsi",
+            "step7": "Sinäkin ansaitset myötätuntoa. Kannata tätä mukanasi."
           },
           "quick-walk": {
-            "name": "Pikainen kävelyhetki",
-            "step0": "Nouse seisomaan ja venyttele käsiäsi pään yläpuolelle.",
-            "step1": "Kävele lähimmälle ikkunalle tai ovelle ja katso ulos.",
-            "step2": "Ota 5 hidasta askelta ja tunne jokaisen jalan kosketus maahan.",
-            "step3": "Katso ylös – huomaa taivas, katto tai jotain yläpuolellasi.",
-            "step4": "Ota vielä 5 hidasta, tietoista askelta.",
-            "step5": "Ravistele käsiäsi ja käsivarsiasi löysästi muutaman sekunnin ajan.",
-            "step6": "Pyörittele hartioitasi taaksepäin 3 kertaa.",
+            "name": "Lyhyt kävelyhetki",
+            "step0": "Nouse ylös ja venytä kätesi pään yläpuolelle",
+            "step1": "Kävele lähimmälle ikkunalle tai ovelle ja katso ulos",
+            "step2": "Ota 5 hidasta askelta ja tunne jokaisen jalan kosketus maahan",
+            "step3": "Katso ylös – huomaa taivas, katto tai jotain yläpuolellasi",
+            "step4": "Ota vielä 5 hidasta, tietoista askelta",
+            "step5": "Ravista käsiäsi ja käsivarsiasi löysästi muutaman sekunnin ajan",
+            "step6": "Pyöritä hartioitasi taaksepäin 3 kertaa",
             "step7": "Liikutit kehoasi. Se on tärkeää. Hyvin tehty."
           }
         }
@@ -483,26 +502,26 @@
         "template_groceries": "Ruokaostokset",
         "template_custom": "Oma viesti",
         "message_need_break": "Tarvitsisin todella tauon. Voisiko joku ottaa vastuun hetkeksi?",
-        "message_handle_meds": "Voisiko joku auttaa lääkityksen kanssa tänään?",
+        "message_handle_meds": "Voiko joku auttaa lääkityksen kanssa tänään?",
         "message_need_visit": "Merkitsisi paljon, jos joku voisi vierailla tänään.",
         "message_groceries": "Voisiko joku auttaa ruokaostosten kanssa?"
       },
       "agent": {
         "title": "Hyvinvoinnin kumppani",
-        "disclaimer": "Vain emotionaaliseen tukeen. Ei lääketieteellistä neuvontaa.",
-        "placeholder": "Miltä sinusta tuntuu?",
+        "disclaimer": "Vain henkiseen tukeen. Ei lääketieteellisiä neuvoja.",
+        "placeholder": "Mitä kuuluu?",
         "greeting": "Ajattelen sinua...",
-        "rateLimited": "Hengähdä hetki – voit keskustella taas pian.",
-        "errorMessage": "Yhteyttä ei voitu muodostaa. Yritä uudelleen.",
+        "rateLimited": "Hengähdä hetki – voit jutella taas pian.",
+        "errorMessage": "Yhteyttä ei saatu. Yritä uudelleen.",
         "expand": "Laajenna",
-        "collapse": "Pienennä",
+        "collapse": "Kutista",
         "prompts": {
-          "overwhelmed": "Tunnen oloni ylikuormittuneeksi juuri nyt.",
-          "calmDown": "Auta minua rauhoittumaan 2 minuutissa.",
-          "needEnergy": "Tarvitsen energiaa, mutta en voi pitää taukoa.",
-          "poorSleep": "En nukkunut hyvin viime yönä.",
-          "needMoment": "Tarvitsen hetken vain itselleni.",
-          "uplifting": "Kerro minulle jotain kohottavaa."
+          "overwhelmed": "Tunnen itseni ylikuormittuneeksi juuri nyt",
+          "calmDown": "Auta minua rauhoittumaan 2 minuutissa",
+          "needEnergy": "Tarvitsen energiaa, mutta en voi pitää taukoa",
+          "poorSleep": "En saanut nukuttua hyvin viime yönä",
+          "needMoment": "Tarvitsen hetken vain itselleni",
+          "uplifting": "Kerro jotain piristävää"
         }
       },
       "goal": {
@@ -510,17 +529,17 @@
         "placeholder": "Aseta tavoite tälle päivälle...",
         "done": "Valmis!",
         "weekLabel": "Tällä viikolla",
-        "suggest": "Ehdota"
+        "suggest": "Ehdotus"
       },
       "burnout": {
         "title": "Huomaamme, että saatat tarvita lisätukea",
-        "message": "Viimeaikaiset tarkistuksesi osoittavat kohonnutta stressiä tai alhaista energiatasoa. Se on täysin ymmärrettävää – hoitaminen on raskasta."
+        "message": "Viimeaikaiset tarkistuksesi osoittavat kohonnutta stressiä tai alhaista energiatasoa. Se on täysin ymmärrettävää – hoitaminen on vaativaa."
       },
       "support": {
         "title": "Tarvitsetko tukea?",
         "description": "Hoitaminen on haastavaa. On täysin sallittua pyytää apua."
       },
-      "footer": "Muista: Tyhjästä kupista ei voi kaataa. Sinun hyvinvointisi on myös tärkeää.",
+      "footer": "Muista: Et voi antaa tyhjästä kupista. Myös sinun hyvinvointisi on tärkeää.",
       "weeklyStats": {
         "title": "Viikoittaiset oivallukset",
         "subtitle": "7 päivän hyvinvointiyhteenvetosi",
@@ -530,14 +549,14 @@
         "noData": "Täytä päivittäiset tarkistukset nähdäksesi viikoittaiset trendisi.",
         "generateDigest": "Luo tekoälykooste",
         "generating": "Luodaan...",
-        "behaviourSummary": "Tällä viikolla kirjattu {{count}} käytösepisodia"
+        "behaviourSummary": "{{count}} käyttäytymistapahtumaa kirjattu tällä viikolla"
       },
       "sos": {
         "title": "Mitä tapahtuu juuri nyt?",
         "subtitle": "Valitse, mihin tarvitset apua – me opastamme sinua.",
-        "calmDown": "Minun on rauhoituttava",
+        "calmDown": "Minun täytyy rauhoittua",
         "calmDownDesc": "Nopeita hengitys- ja helpotusharjoituksia",
-        "behaviourNow": "Käytösepisodi meneillään",
+        "behaviourNow": "Käyttäytyminen juuri nyt",
         "behaviourNowDesc": "Kirjaa tapahtuma ja saat ohjeita",
         "callHelp": "Tarvitsen hätäapua",
         "callHelpDesc": "Ota yhteyttä hätäpalveluihin tai perheeseen",
@@ -546,8 +565,8 @@
       },
       "behaviours": {
         "playbooks": {
-          "title": "Käytösoppaat",
-          "subtitle": "Napauta käytöstä saadaksesi vaiheittaiset ohjeet",
+          "title": "Käyttäytymisen toimintaohjeet",
+          "subtitle": "Napauta käyttäytymistä saadaksesi vaiheittaiset ohjeet",
           "rightNow": "Juuri nyt",
           "understandWhy": "Ymmärrä syy",
           "prevent": "Ennaltaehkäisy",
@@ -556,7 +575,7 @@
         "logger": {
           "title": "Kirjaa tapahtuma",
           "logIncident": "Kirjaa tapahtuma",
-          "typeLabel": "Käytöksen tyyppi",
+          "typeLabel": "Käyttäytymisen tyyppi",
           "selectType": "Valitse tyyppi...",
           "severity": "Vakavuus",
           "mild": "Lievä",
@@ -581,7 +600,7 @@
           "trigger_noise": "Melu",
           "trigger_loneliness": "Yksinäisyys",
           "trigger_boredom": "Ikävystyminen",
-          "trigger_bathroom_need": "WC-tarve",
+          "trigger_bathroom_need": "Vessahätä",
           "trigger_frustration": "Turhautuminen",
           "trigger_fear": "Pelko",
           "trigger_unknown": "Tuntematon",
@@ -606,34 +625,34 @@
       "generate": "Luo raportti",
       "include": "Sisällytä raporttiin",
       "moodTrends": "Mielialatrendit ja tarkistusten yhteenveto",
-      "sleepPatterns": "Unirytmit",
-      "activityCompletion": "Toimintojen suoritusasteet",
+      "sleepPatterns": "Unetottumukset",
+      "activityCompletion": "Aktiviteettien suoritusasteet",
       "medicationAdherence": "Lääkityksen noudattaminen",
-      "journalNotes": "Merkittäviä hoitopäiväkirjan havaintoja",
-      "locationPatterns": "Sijaintimallit",
+      "journalNotes": "Merkittävät hoitopäiväkirjan havainnot",
+      "locationPatterns": "Sijaintitottumukset",
       "caregiverConcerns": "Hoitajan huolenaiheet",
       "customNotes": "Lisähuomioita lääkärille",
       "print": "Tulosta",
       "downloadPdf": "Lataa PDF",
-      "emailDoctor": "Lähetä sähköpostilla lääkärille",
-      "disclaimer": "Tämä yhteenveto perustuu itse ilmoitettuihin hyvinvointitietoihin ja perheen havaintoihin. Se ei ole kliininen arviointi.",
-      "webNote": "Koko raportin luomiseen tulostus- ja PDF-vientiominaisuuksilla, siirry OurTurn-verkkosovellukseen.",
+      "emailDoctor": "Lähetä sähköposti lääkärille",
+      "disclaimer": "Tämä yhteenveto perustuu itse ilmoitettuihin hyvinvointitietoihin ja perheen havaintoihin. Se ei ole kliininen arvio.",
+      "webNote": "Täydellisen raportinluojan, tulostus- ja PDF-viennin kanssa löydät OurTurn-verkkosovelluksesta.",
       "openInWebApp": "Avaa verkkosovelluksessa",
       "previousReports": "Edelliset raportit",
       "generated": "Luotu {{date}}",
       "avgQuality": "keskim. laatu",
       "moodStruggling": "Kamppailee",
       "moodLow": "Alhainen",
-      "moodOkay": "Ok",
-      "moodGood": "Hyvä",
+      "moodOkay": "Hyvä",
+      "moodGood": "Oikein hyvä",
       "moodGreat": "Erinomainen",
       "careSummary": "OurTurn Hoitoyhteenveto",
-      "patient": "Potilas",
-      "periodLabel": "Jakso",
-      "checkinsRecorded": "Tarkistuksia kirjattu",
+      "patient": "Hoidettava",
+      "periodLabel": "Ajanjakso",
+      "checkinsRecorded": "Kirjauksia tehty",
       "averageMood": "Keskimääräinen mieliala",
       "averageSleepQuality": "Keskimääräinen unenlaatu",
-      "activityCompletionRate": "Toimintojen suoritus",
+      "activityCompletionRate": "Aktiviteettien suoritusaste",
       "medicationAdherenceRate": "Lääkityksen noudattaminen",
       "observations": "Havainnot",
       "categoryMedication": "Lääkitys",
@@ -658,25 +677,25 @@
       "yourName": "Nimesi",
       "yourNameRequired": "Nimesi *",
       "lovedOneNameRequired": "Läheisesi nimi *",
-      "relationship": "Suhde heihin",
+      "relationship": "Suhde läheiseesi",
       "relationshipPlaceholder": "esim. tytär, poika, puoliso",
-      "settingsHint": "Voit lisätä tietoja myöhemmin Asetuksista",
+      "settingsHint": "Voit lisätä tietoja myöhemmin asetuksista",
       "fillRequired": "Täytä kaikki pakolliset kentät",
-      "setupFailed": "Asennus epäonnistui",
+      "setupFailed": "Asetusten määritys epäonnistui",
       "country": "Maa",
-      "theirName": "Etunimi",
+      "theirName": "Heidän etunimensä",
       "dateOfBirth": "Syntymäaika",
       "dementiaType": "Dementian tyyppi (valinnainen)",
       "homeAddress": "Kotiosoite",
       "medications": "Lääkitykset",
-      "addMedication": "Lisää lääkitys",
+      "addMedication": "Lisää lääke",
       "childhoodLocation": "Missä he kasvoivat",
       "career": "Ura / ammatti",
       "hobbies": "Harrastukset ja kiinnostuksen kohteet",
       "favoriteMusic": "Suosikkimusiikki / artistit",
       "favoriteFoods": "Suosikkiruoat",
-      "importantPeople": "Tärkeät ihmiset",
-      "keyEvents": "Tärkeimmät elämäntapahtumat",
+      "importantPeople": "Tärkeitä ihmisiä",
+      "keyEvents": "Tärkeitä elämäntapahtumia",
       "uploadPhotos": "Lataa perhekuvia",
       "wakeTime": "Heräämisaika",
       "sleepTime": "Nukkumaanmenoaika",
@@ -688,8 +707,8 @@
       "lunchTime": "Lounasaika",
       "dinnerTime": "Illallisaika",
       "typicalDay": "Tyypillisen päivän kuvaus",
-      "typicalDayPlaceholder": "Kuvaile tyypillistä päivää...",
-      "emergencyContactsHint": "Lisää hätäyhteystiedot, jotka näkyvät potilassovelluksen Ohje-välilehdellä.",
+      "typicalDayPlaceholder": "Kuvaile tyypillinen päivä...",
+      "emergencyContactsHint": "Lisää hätäyhteystiedot, jotka näkyvät hoidettavan sovelluksen Ohje-välilehdellä.",
       "remove": "Poista",
       "addContact": "Lisää yhteystieto",
       "contactNameRequired": "Nimi *",
@@ -722,14 +741,14 @@
       "notifications": "Ilmoitukset",
       "privacy": "Tietosuoja ja data",
       "exportData": "Vie tietoni",
-      "exportNote": "Lataa kopio kaikista tiedoistasi (GDPR-oikeus tietojen siirrettävyyteen)",
+      "exportNote": "Lataa kopio kaikista tiedoistasi (GDPR:n oikeus siirrettävyyteen)",
       "exportClipboard": "Tietosi on kopioitu leikepöydälle. Voit liittää ne asiakirjaan tai sähköpostiin.",
       "deleteAccount": "Poista tili",
-      "deleteWarning": "Tämä poistaa pysyvästi kaikki tämän kotitalouden tiedot. Tätä ei voi kumota.",
-      "deleteConfirmType": "Vahvista tilin poistaminen kirjoittamalla POISTA",
+      "deleteWarning": "Tämä poistaa pysyvästi kaikki tämän kotitalouden tiedot. Toimintoa ei voi kumota.",
+      "deleteConfirmType": "Kirjoita POISTA vahvistaaksesi tilin poistamisen",
       "confirmDelete": "Vahvista poisto",
       "language": "Kieli",
-      "about": "Tietoja OurTurnista",
+      "about": "Tietoa OurTurnista",
       "version": "Versio",
       "notMedicalDevice": "OurTurn ei ole lääkinnällinen laite",
       "dailySummary": "Päivittäinen yhteenveto",
@@ -750,23 +769,23 @@
       "copyCode": "Kopioi koodi",
       "codeCopied": "Koodi kopioitu!",
       "regenerateCode": "Luo uusi koodi",
-      "regenerateWarning": "Vanha koodi lakkaa toimimasta. Kaikki paritetut potilaslaitteet tarvitsevat uuden koodin.",
+      "regenerateWarning": "Vanha koodi lakkaa toimimasta. Kaikki paritetut hoidettavan laitteet tarvitsevat uuden koodin.",
       "dangerZone": "Vaaravyöhyke",
       "relationship": "Suhde",
-      "deleteConfirm": "Vahvista tilin poistaminen kirjoittamalla POISTA",
+      "deleteConfirm": "Kirjoita POISTA vahvistaaksesi tilin poistamisen",
       "photoGallery": "Kuvagalleria",
       "photoGalleryDesc": "Lataa perhekuvia henkilökohtaisia muistelutoimintoja varten",
       "uploadPhotos": "Lataa kuvia",
       "uploading": "Ladataan...",
       "deletePhoto": "Poistetaanko tämä kuva?",
       "maxPhotosReached": "Enimmäismäärä 20 kuvaa saavutettu",
-      "photoUploadHint": "Enintään 20 kuvaa, max 5 Mt/kuva",
-      "photoUploadFailed": "Kuvan lataus epäonnistui. Yritä uudelleen.",
-      "photoDeleteFailed": "Kuvan poisto epäonnistui. Yritä uudelleen.",
-      "noPhotosYet": "Ei kuvia ladattu vielä",
+      "photoUploadHint": "Enintään 20 kuvaa, kukin enintään 5 Mt",
+      "photoUploadFailed": "Kuvan lataaminen epäonnistui. Yritäthän uudelleen.",
+      "photoDeleteFailed": "Kuvan poistaminen epäonnistui. Yritäthän uudelleen.",
+      "noPhotosYet": "Ei kuvia ole vielä ladattu",
       "photosCount": "{{count}} / 20 kuvaa",
-      "patientComplexity": "Potilassovelluksen tila",
-      "patientComplexityDesc": "Säädä potilassovelluksen käyttöliittymää rakkaasi tarpeiden mukaan.",
+      "patientComplexity": "Omaisen sovellustila",
+      "patientComplexityDesc": "Säädä omaisen sovelluksen käyttöliittymää rakkaasi tarpeiden mukaan.",
       "complexity": {
         "full": "Täysi",
         "fullDesc": "Kaikki ominaisuudet käytettävissä",
@@ -778,29 +797,29 @@
       "safetyEscalation": "Turvallisuus ja eskalaatio",
       "escalationTiming": "Eskalaation ajoitus",
       "escalationTimingDesc": "Kuinka kauan ennen kuittaamattomien hälytysten eskaloitumista",
-      "offlineThreshold": "Offline-hälytyskynnys",
-      "offlineThresholdDesc": "Hälytä, kun laitetta ei ole nähty tähän aikaan",
+      "offlineThreshold": "Offline-hälytyksen kynnys",
+      "offlineThresholdDesc": "Hälytä, kun laitetta ei ole nähty näin pitkään",
       "minutes": "minuuttia",
       "respiteReminders": "Taukomuistutukset",
       "respiteRemindersDesc": "Saat muistutuksia pitää taukoja",
-      "groupProfile": "Oma profiili",
-      "groupAboutPatient": "Tietoja {{name}}sta",
+      "groupProfile": "Profiilisi",
+      "groupAboutPatient": "Tietoja {{name}}",
       "groupAboutPatientGeneric": "Tietoja rakkaastasi",
       "groupSharing": "Jakaminen ja yhteys",
       "groupSafety": "Turvallisuus ja ilmoitukset",
       "groupAccount": "Tili",
-      "patientInformation": "Tietoa läheisestä",
-      "patientInformationDesc": "Perustiedot läheisestäsi",
-      "patientName": "Läheisen nimi",
+      "patientInformation": "Omaisen tiedot",
+      "patientInformationDesc": "Perustiedot rakkaastasi",
+      "patientName": "Omaisen nimi",
       "dateOfBirth": "Syntymäaika",
-      "dementiaType": "Muistisairauden tyyppi",
+      "dementiaType": "Dementian tyyppi",
       "selectDementiaType": "Valitse tyyppi (valinnainen)",
       "homeAddress": "Kotiosoite",
       "homeAddressPlaceholder": "Koko kotiosoite",
       "savingPatientInfo": "Tallennetaan...",
-      "savePatientInfo": "Tallenna läheisen tiedot",
+      "savePatientInfo": "Tallenna omaisen tiedot",
       "lifeStory": "Elämäntarina",
-      "lifeStoryDesc": "Nämä tiedot auttavat räätälöimään päivittäisiä aktiviteetteja ja muistelutuokioita.",
+      "lifeStoryDesc": "Nämä tiedot auttavat mukauttamaan päivittäisiä toimintoja ja muistelun kehotteita.",
       "childhoodLocation": "Missä he kasvoivat",
       "career": "Ura / Ammatti",
       "hobbies": "Harrastukset ja kiinnostuksen kohteet",
@@ -809,20 +828,20 @@
       "favoriteMusicPlaceholder": "esim. Frank Sinatra, Beatles",
       "favoriteFoods": "Suosikkiruoat",
       "favoriteFoodsPlaceholder": "esim. omenapiirakka, paahdettu kana",
-      "importantPeople": "Tärkeät ihmiset",
+      "importantPeople": "Tärkeitä ihmisiä",
       "importantPeoplePlaceholder": "esim. Juhani (veli), Maija (paras ystävä)",
-      "keyEvents": "Tärkeät elämäntapahtumat",
+      "keyEvents": "Tärkeimmät elämäntapahtumat",
       "keyEventsPlaceholder": "esim. Valmistui 1965, Muutti Lontooseen 1970",
       "savingLifeStory": "Tallennetaan...",
       "saveLifeStory": "Tallenna elämäntarina",
       "dailySchedule": "Päivittäinen aikataulu",
-      "dailyScheduleDesc": "Aseta läheisesi heräämis- ja nukkuma-ajat rutiinia varten.",
+      "dailyScheduleDesc": "Aseta rakkaasi heräämis- ja nukkumaanmenoajat rutiinia varten.",
       "wakeTime": "Heräämisaika",
       "sleepTime": "Nukkumaanmenoaika",
       "savingSchedule": "Tallennetaan...",
       "saveSchedule": "Tallenna aikataulu",
       "emergencyContacts": "Hätäyhteystiedot",
-      "emergencyContactsDesc": "Nämä yhteystiedot näkyvät läheisen sovelluksen Ohje-välilehdellä.",
+      "emergencyContactsDesc": "Nämä yhteystiedot näkyvät omaisen sovelluksen Ohje-välilehdellä.",
       "addContact": "Lisää yhteystieto",
       "contactName": "Yhteyshenkilön nimi",
       "contactPhone": "Puhelinnumero",
@@ -855,11 +874,11 @@
       "passwordsNoMatch": "Salasanat eivät täsmää",
       "passwordTooShort": "Salasanan on oltava vähintään 8 merkkiä pitkä",
       "checkEmail": "Tarkista sähköpostisi vahvistaaksesi tilisi",
-      "enterEmailFirst": "Syötä ensin sähköpostiosoitteesi.",
+      "enterEmailFirst": "Anna ensin sähköpostiosoitteesi.",
       "resetEmailSent": "Tarkista sähköpostisi",
       "resetEmailSentDesc": "Olemme lähettäneet salasanan nollauslinkin sähköpostiosoitteeseesi.",
       "welcomeBack": "Tervetuloa takaisin",
-      "enterEmailAndPassword": "Syötä sähköposti ja salasana",
+      "enterEmailAndPassword": "Anna sähköposti ja salasana",
       "signingIn": "Kirjaudutaan sisään",
       "orContinueWith": "Tai jatka"
     },
@@ -872,24 +891,24 @@
     },
     "crisis": {
       "title": "Kriisikeskus",
-      "subtitle": "Reaaliaikainen kriisinhallinta ja rauhoittelutuki",
+      "subtitle": "Reaaliaikainen kriisinhallinta ja tilanteen rauhoittamisen tuki",
       "eventLogged": "Kriisitapahtuma kirjattu",
       "logEvent": "Kirjaa kriisitapahtuma",
       "logPlaceholder": "Kuvaile, mitä tapahtui...",
       "status": {
-        "allClear": "Tilanne selvä",
+        "allClear": "Kaikki kunnossa",
         "allClearDesc": "Ei aktiivisia hälytyksiä",
         "activeAlerts": "Aktiiviset hälytykset",
         "lastKnownLocation": "Viimeisin tunnettu sijainti",
-        "viewOnMap": "Katso kartalta",
+        "viewOnMap": "Näytä kartalla",
         "noLocationData": "Sijaintitietoja ei saatavilla"
       },
       "actions": {
         "modeLabel": "Tilanteesi",
         "withThem": "Olen heidän kanssaan",
         "remote": "Olen etänä",
-        "startDeEscalation": "Aloita rauhoittelu",
-        "startDeEscalationDesc": "Vaiheittainen ohjattu rauhoitteluvirta",
+        "startDeEscalation": "Aloita tilanteen rauhoittaminen",
+        "startDeEscalationDesc": "Vaiheittainen ohjattu rauhoittumisprosessi",
         "callEmergency": "Soita hätänumeroon",
         "callEmergencyDesc": "Soita paikallisiin hätäpalveluihin",
         "alertFamily": "Hälytä perhe",
@@ -897,7 +916,7 @@
         "alertFamilySent": "Perheenjäsenille ilmoitettu",
         "alertFamilyFailed": "Perheen ilmoittaminen epäonnistui. Yritä uudelleen.",
         "viewLocation": "Näytä sijainti",
-        "viewLocationDesc": "Katso {{name}}-nimisen henkilön nykyinen sijainti kartalta",
+        "viewLocationDesc": "Katso {{name}}-nimisen henkilön nykyinen sijainti kartalla",
         "contactPrimary": "Ota yhteyttä ensisijaiseen hoitajaan",
         "contactPrimaryDesc": "Ota yhteyttä ensisijaiseen hoitajaan sähköpostitse",
         "logEvent": "Kirjaa tapahtuma",
@@ -921,13 +940,13 @@
         "noEvents": "Ei kriisitapahtumia viimeisten 30 päivän aikana.",
         "viewAllInJournal": "Näytä kaikki päiväkirjassa",
         "yesterday": "Eilen",
-        "daysAgo": "{{count}} pv sitten"
+        "daysAgo": "{{count}} päivää sitten"
       },
       "steps": {
         "stayCalm": {
           "title": "Pysy rauhallisena",
           "detail": "Hengitä hitaasti ja syvään. Rauhallinen energiasi auttaa heitä tuntemaan olonsa turvalliseksi.",
-          "script": "Olen tässä kanssasi. Kaikki on hyvin."
+          "script": "Olen tässä vierelläsi. Kaikki on hyvin."
         },
         "validateFeelings": {
           "title": "Vahvista tunteet",
@@ -936,27 +955,27 @@
         },
         "simplifyEnvironment": {
           "title": "Yksinkertaista ympäristöä",
-          "detail": "Käytä lyhyitä, yksinkertaisia lauseita. Yksi ajatus kerrallaan. Vältä 'miksi'-kysymysten esittämistä.",
+          "detail": "Käytä lyhyitä, yksinkertaisia lauseita. Yksi ajatus kerrallaan. Vältä 'miksi'-kysymyksiä.",
           "script": "Tehdään asioista yksinkertaisempia. Yksi asia kerrallaan."
         },
         "redirectAttention": {
           "title": "Ohjaa huomio muualle",
           "detail": "Vaihda aihetta lempeästi. Ehdota tuttua toimintaa, laulua tai kävelyä.",
-          "script": "Mitä jos kokeilisimme jotain muuta? Mennään yhdessä pienelle kävelylle."
+          "script": "Mitä jos kokeilisimme jotain muuta? Mennään pienelle kävelylle yhdessä."
         },
         "useGentleTouch": {
           "title": "Käytä lempeää kosketusta",
-          "detail": "Jos se tuntuu hyvältä, lempeä käsi käsivarrella voi olla rauhoittava. Tarkkaile heidän reaktiotaan.",
-          "script": "Saanko pitää kädestäsi? Olen tässä vierelläsi."
+          "detail": "Jos se on mieluisaa, lempeä käsi käsivarrella voi olla rauhoittava. Tarkkaile heidän reaktiotaan.",
+          "script": "Saanko pitää kädestäsi? Olen tässä."
         },
         "giveSpace": {
           "title": "Anna tilaa",
           "detail": "Jos mikään ei auta, varmista turvallisuus ja anna heille tilaa. On hyvä ottaa askel taaksepäin.",
-          "script": "Olen aivan lähellä, jos tarvitset minua. Ota rauhallisesti."
+          "script": "Olen aivan lähellä, jos tarvitset minua. Ota oma aikasi."
         }
       },
-      "helplines": "Apupuhelimet",
-      "noHelplineAvailable": "Maallesi ei löytynyt apupuhelinta",
+      "helplines": "Apulinjat",
+      "noHelplineAvailable": "Maallesi ei löytynyt apulinjaa",
       "call": "Soita",
       "email": "Sähköposti",
       "website": "Verkkosivusto",
@@ -969,23 +988,23 @@
         "stepCountLabel": "{{count}} vaihetta",
         "backToSituations": "Takaisin tilanteisiin",
         "breathe": "Hengitysharjoitus",
-        "callEmergency": "Soita hätäkeskukseen"
+        "callEmergency": "Soita hätänumeroon"
       },
       "patterns": {
-        "title": "Tapahtumien kulku",
-        "noEvents": "Kirjaa tapahtumia nähdäksesi niiden kulun ajan mittaan.",
-        "fewEvents": "{{count}} tapahtumaa kirjattu. Lisää tietoja tarvitaan mallien tunnistamiseen.",
+        "title": "Kuviotieto",
+        "noEvents": "Kirjaa tapahtumat nähdäksesi kuviot ajan mittaan.",
+        "fewEvents": "{{count}} tapahtumaa kirjattu. Tarvitaan lisää tietoa kuvioiden näkemiseksi.",
         "timePattern": "Useimmat tapahtumat sattuvat {{time}}.",
         "weekCount": "{{count}} tällä viikolla."
       },
       "personalization": {
-        "label": "Mikä rauhoittaa {{name}}",
-        "empty": "Lisää rauhoittavia strategioita {{name}}n elämäkertaan nähdäksesi henkilökohtaisia vinkkejä täällä."
+        "label": "Mikä rauhoittaa {{name}}-nimistä henkilöä",
+        "empty": "Lisää rauhoittavia strategioita {{name}}-nimisen henkilön elämäkertaan nähdäksesi henkilökohtaisia vinkkejä täällä."
       },
       "scenarioData": {
         "stepsCount": "{{count}} vaihetta",
         "agitated": {
-          "label": "Kiihtynyt / Järkyttynyt",
+          "label": "Levoton / Järkyttynyt",
           "steps": [
             {
               "title": "Sinä ensin",
@@ -993,7 +1012,7 @@
             },
             {
               "title": "Pikainen tarkistus – voisiko jokin fyysinen olla vialla?",
-              "instruction": "Kipu, nälkä, vessahätä tai infektio voivat kaikki aiheuttaa kiihtymystä.",
+              "instruction": "Kipu, nälkä, vessahätä tai infektio voivat kaikki aiheuttaa levottomuutta.",
               "checklist": [
                 "Kipua tai epämukavuutta?",
                 "Nälkä tai jano?",
@@ -1003,29 +1022,29 @@
               ]
             },
             {
-              "title": "Laske jännitystä",
-              "instruction": "Puhu hitaasti ja pehmeästi. Älä väittele, korjaa tai selitä. Vahvista heidän tunteitaan.",
+              "title": "Rauhoita tilannetta",
+              "instruction": "Puhu hitaasti ja pehmeästi. Älä väittele, korjaa tai selitä. Vahvista heidän tunteensa.",
               "tips": [
                 "\"Näen, että olet järkyttynyt. Olen tässä.\"",
                 "Vähennä melua – sammuta televisio, sulje ikkunat",
                 "Anna heille fyysistä tilaa, älä ahdista",
-                "Tarjoa tuttu lohduttava esine"
+                "Tarjoa tuttu lohdutusesine"
               ]
             },
             {
-              "title": "Ohjaa huomio muualle, älä järkeile",
-              "instruction": "Vaihda aihetta tai ympäristöä lempeästi. Älä yritä järkeillä heitä pois tilanteesta.",
+              "title": "Ohjaa huomio, älä järkeile",
+              "instruction": "Vaihda aihetta tai ympäristöä lempeästi. Älä yritä järkeillä heitä ulos tilanteesta.",
               "tips": [
-                "Ehdottaa kävelyä tai siirtymistä toiseen huoneeseen",
+                "Ehdota kävelyä tai siirtymistä toiseen huoneeseen",
                 "Laita soimaan heidän rakastamaansa musiikkia",
-                "Tarjoa välipalaa tai lämmintä juomaa",
-                "Katselkaa valokuvia yhdessä"
+                "Tarjoa pientä purtavaa tai lämmin juoma",
+                "Katsokaa valokuvia yhdessä"
               ]
             },
             {
               "title": "Milloin hakea apua",
-              "instruction": "Jos kiihtymys kestää yli 30 minuuttia, jos he ovat vaarassa vahingoittaa itseään tai sinua, tai jos tämä on äkillistä uutta käyttäytymistä – soita hätäkeskukseen.",
-              "actionLabel": "Soita hätäkeskukseen"
+              "instruction": "Jos levottomuus kestää yli 30 minuuttia, jos he ovat vaarassa vahingoittaa itseään tai sinua, tai jos tämä on äkillinen uusi käytös – soita hätänumeroon.",
+              "actionLabel": "Soita hätänumeroon"
             }
           ]
         },
@@ -1034,7 +1053,7 @@
           "steps": [
             {
               "title": "Tarkista ensin tutut paikat",
-              "instruction": "Useimmat muistisairaat menevät tuttuihin paikkoihin – entiseen työpaikkaan, lapsuudenkotiin, naapurin taloon.",
+              "instruction": "Useimmat dementiasta kärsivät ihmiset menevät tuttuihin paikkoihin – entiseen työpaikkaan, lapsuudenkotiin, naapurin taloon.",
               "tips": [
                 "Tarkista puutarha, autotalli, lähikadut",
                 "Kysy naapureilta, ovatko he nähneet heitä",
@@ -1047,45 +1066,45 @@
             },
             {
               "title": "Ilmoita perheelle",
-              "instruction": "Ilmoita kaikille välittömästi. Useammat silmät etsimässä on parempi."
+              "instruction": "Ilmoita kaikille välittömästi. Mitä useampi etsii, sitä parempi."
             },
             {
               "title": "Soita poliisille, jos ei löydy 15 minuutissa",
-              "instruction": "Älä odota. Muistisairailla on suuri loukkaantumisriski. Soita hätäkeskukseen ja kerro, että henkilöllä on muistisairaus.",
-              "actionLabel": "Soita hätäkeskukseen"
+              "instruction": "Älä odota. Dementiasta kärsivät ihmiset ovat suuressa loukkaantumisriskissä. Soita hätänumeroon ja kerro, että henkilöllä on dementia.",
+              "actionLabel": "Soita hätänumeroon"
             }
           ]
         },
         "refusing": {
-          "label": "Hoitoon kieltäytyminen",
+          "label": "Hoito kieltäytyminen",
           "steps": [
             {
               "title": "Pysähdy – tämä ei ole uhmaa",
-              "instruction": "Kieltäytyminen johtuu lähes aina pelosta, hämmennyksestä tai epämukavuudesta. He eivät ehkä ymmärrä, mitä pyydät."
+              "instruction": "Kieltäytymisen taustalla on lähes aina pelko, hämmennys tai epämukavuus. He eivät ehkä ymmärrä, mitä pyydät."
             },
             {
-              "title": "Peruuta ja yritä eri tavalla",
-              "instruction": "Älä painosta. Palaa 15–20 minuutin kuluttua ja lähesty asiaa ikään kuin se olisi ensimmäinen kerta.",
+              "title": "Ota askel taaksepäin ja kokeile toisin",
+              "instruction": "Älä painosta. Palaa 15–20 minuutin kuluttua ja lähesty asiaa kuin se olisi ensimmäinen kerta.",
               "tips": [
-                "Vaihda kysyjää",
+                "Vaihda pyytäjää",
                 "Vaihda ympäristöä",
                 "Jaa tehtävä pienempiin osiin",
                 "Tarjoa vaihtoehtoja: \"Kylpy vai suihku?\""
               ]
             },
             {
-              "title": "Tee siitä turvallisen tuntuista",
+              "title": "Tee tilanteesta turvallinen",
               "instruction": "Selitä jokainen vaihe ennen kuin teet sen. Liiku hitaasti. Pidä heidät lämpimänä.",
               "tips": [
                 "Varoita ennen kosketusta",
                 "Käytä rauhallista, lämmintä ääntä",
                 "Soita heidän lempimusiikkiaan tehtävän aikana",
-                "Pidä rutiini johdonmukaisena"
+                "Pidä rutiinit johdonmukaisina"
               ]
             },
             {
               "title": "Onko tämä toistuvaa?",
-              "instruction": "Jos he johdonmukaisesti kieltäytyvät samasta tehtävästä, kirjaa se ylös. Taustalla voi olla jokin ongelma – kipu, pelko, herkkyys. Keskustele heidän lääkärinsä kanssa."
+              "instruction": "Jos he kieltäytyvät jatkuvasti samasta tehtävästä, kirjaa se ylös. Taustalla voi olla jokin syy – kipu, pelko, herkkyys. Keskustele asiasta heidän lääkärinsä kanssa."
             }
           ]
         },
@@ -1094,69 +1113,69 @@
           "steps": [
             {
               "title": "Älä väittele – se on heille todellista",
-              "instruction": "Tunnusta heidän kokemuksensa vahvistamatta sen totuutta.",
+              "instruction": "Tunnusta heidän kokemuksensa vahvistamatta sen olevan totta.",
               "tips": [
                 "\"Kuulostaa pelottavalta. Olen tässä kanssasi.\"",
-                "\"Kerro minulle, mitä näet.\"",
+                "\"Kerro, mitä näet.\"",
                 "Älä sano \"siellä ei ole mitään\""
               ]
             },
             {
               "title": "Tarkista ympäristö",
-              "instruction": "Varjot, heijastukset, television äänet ja sotku voivat laukaista väärintulkintoja.",
+              "instruction": "Varjot, heijastukset, television äänet ja sotku voivat aiheuttaa virhetulkintoja.",
               "checklist": [
                 "Varjoja ikkunoista tai lampuista?",
                 "Televisio tai radio päällä taustalla?",
-                "Peilistä heijastuksia?",
+                "Peilikuvia?",
                 "Huono valaistus?"
               ]
             },
             {
-              "title": "Ohjaa huomio lempeästi muualle",
-              "instruction": "Siirrä heidän huomionsa johonkin konkreettiseen ja lohduttavaan.",
+              "title": "Ohjaa huomio lempeästi",
+              "instruction": "Siirrä heidän huomionsa johonkin konkreettiseen ja lohdulliseen.",
               "tips": [
                 "Siirry hyvin valaistuun huoneeseen",
                 "Tarjoa käsillä tekemistä",
                 "Menkää lyhyelle kävelylle yhdessä",
-                "Tehkää kuppi teetä yhdessä"
+                "Tehkää kupillinen teetä yhdessä"
               ]
             },
             {
               "title": "Milloin soittaa lääkärille",
-              "instruction": "Jos hallusinaatiot ovat uusia, toistuvia tai aiheuttavat äärimmäistä ahdistusta. Äkillinen alkaminen voi viitata infektioon, lääkityksen sivuvaikutuksiin tai deliriumiin."
+              "instruction": "Jos aistiharhat ovat uusia, toistuvia tai aiheuttavat äärimmäistä ahdistusta. Äkillinen alkaminen voi viitata infektioon, lääkityksen sivuvaikutuksiin tai sekavuustilaan."
             }
           ]
         },
         "sundowning": {
-          "label": "Auringonlasku-oireyhtymä",
+          "label": "Auringonlaskuoireyhtymä",
           "steps": [
             {
-              "title": "Tunnista kaava",
-              "instruction": "Auringonlaskun aikaan ilmenevä levottomuus alkaa tyypillisesti myöhään iltapäivällä. Tämä on erittäin yleistä, eikä henkilö voi sitä hallita."
+              "title": "Tunnista kuvio",
+              "instruction": "Auringonlaskuoireyhtymä alkaa tyypillisesti myöhään iltapäivällä. Tämä on erittäin yleistä, eivätkä he voi hallita sitä."
             },
             {
               "title": "Säädä ympäristöä nyt",
               "instruction": "Vähennä kaikkea stimulaatiota ja luo turvallisuussignaaleja.",
               "tips": [
-                "Sytytä lämpimät valot ennen pimeää",
+                "Sytytä lämpimät valot ennen pimeän tuloa",
                 "Sulje verhot vähentääksesi varjoja",
-                "Sammuta televisio tai alenna sen äänenvoimakkuutta",
+                "Sammuta televisio tai hiljennä sen ääni",
                 "Vähennä huoneessa olevien ihmisten määrää"
               ]
             },
             {
               "title": "Tarjoa rauhoittavia aktiviteetteja",
-              "instruction": "Hellävaraiset, toistuvat ja tutut aktiviteetit toimivat parhaiten.",
+              "instruction": "Lempeät, toistuvat, tutut aktiviteetit toimivat parhaiten.",
               "tips": [
-                "Hellävarainen käsihieronta voiteella",
+                "Lempeä käsihieronta voiteella",
                 "Rauhallista, tuttua musiikkia",
-                "Pyyhkeiden viikkaaminen tai esineiden lajittelu",
-                "Valokuva-albumin selaaminen yhdessä"
+                "Pyyhkeiden viikkaamista tai esineiden lajittelua",
+                "Valokuva-albumin katselua yhdessä"
               ]
             },
             {
               "title": "Estä se huomenna",
-              "instruction": "Kirjaa tapahtuma ylös ajoitustietojen kanssa. Kaavat auttavat säätämään aikatauluja – enemmän aamutoimintaa, vähemmän kofeiinia iltapäivällä."
+              "instruction": "Kirjaa tapahtuma ylös kellonaikatietoineen. Kuviot auttavat säätämään aikatauluja – enemmän aamutoimintaa, vähemmän kofeiinia iltapäivällä."
             }
           ]
         },
@@ -1164,31 +1183,31 @@
           "label": "Kaatuminen / Fyysinen hätätilanne",
           "steps": [
             {
-              "title": "Älä liikuta häntä",
-              "instruction": "Ellei hän ole välittömässä vaarassa, älä yritä nostaa tai siirtää häntä.",
+              "title": "Älä liikuta heitä",
+              "instruction": "Ellei heillä ole välitöntä vaaraa, älä yritä nostaa tai liikuttaa heitä.",
               "tips": [
-                "Mene hänen tasolleen",
-                "Rauhoita häntä: \"Olen tässä, olet turvassa\"",
+                "Mene heidän tasolleen",
+                "Rauhoita heitä: \"Olen tässä, olet turvassa\"",
                 "Tarkista näkyvät vammat"
               ]
             },
             {
-              "title": "Pääseekö hän ylös?",
-              "instruction": "Jos ei ole ilmeistä vammaa, auta häntä nousemaan hitaasti vaiheittain.",
+              "title": "Pystyvätkö he nousemaan?",
+              "instruction": "Jos ei ole ilmeistä vammaa, auta heitä nousemaan hitaasti vaiheittain.",
               "checklist": [
-                "Onko hän valpas ja reagoiva?",
-                "Onko ilmeistä vammaa tai kipua?",
-                "Pystyykö hän liikuttamaan kaikkia raajojaan?",
-                "Löikö hän päänsä?"
+                "Ovatko he valppaana ja reagoivat?",
+                "Onko ilmeisiä vammoja tai kipua?",
+                "Pystyvätkö he liikuttamaan kaikkia raajojaan?",
+                "Löivätkö he päänsä?"
               ]
             },
             {
-              "title": "Soita apua jos...",
-              "instruction": "Päävamma, ei pääse ylös, kova kipu, tavallista pahempi sekavuus tai vuoto, joka ei lakkaa."
+              "title": "Soita apua, jos...",
+              "instruction": "Päävamma, eivät pysty nousemaan, kova kipu, tavallista pahempi sekavuus tai vuoto, joka ei lakkaa."
             },
             {
               "title": "Kaatumisen jälkeen",
-              "instruction": "Kirjaa tämä tapahtuma ja mainitse siitä hänen lääkärilleen. Toistuvat kaatumiset voivat viitata lääkitysongelmiin tai sairauden etenemiseen."
+              "instruction": "Kirjaa tämä tapahtuma ja mainitse siitä heidän lääkärilleen. Toistuvat kaatumiset voivat viitata lääkitysongelmiin tai sairauden etenemiseen."
             }
           ]
         },
@@ -1196,16 +1215,16 @@
           "label": "Toistuvat kysymykset",
           "steps": [
             {
-              "title": "Hengitä – tämä on sairaus, ei hän itse",
+              "title": "Hengitä – tämä on sairaus, ei heidän vikansa",
               "instruction": "He eivät aidosti muista kysyneensä. Turhautumisesi on ymmärrettävää, mutta sen näyttäminen tekee heistä ahdistuneempia."
             },
             {
               "title": "Mitä he todella kysyvät?",
-              "instruction": "Pintakysymys on harvoin todellinen kysymys. \"Milloin on illallinen?\" saattaa tarkoittaa \"Olen nälkäinen.\"",
+              "instruction": "Pintakysymys on harvoin todellinen kysymys. \"Milloin on illallinen?\" voi tarkoittaa \"Olen nälkäinen.\"",
               "checklist": [
                 "Ovatko he ahdistuneita jostain?",
-                "Voisivatko he olla nälkäisiä, janoisia tai kyllästyneitä?",
-                "Onko jokin tuleva tapahtuma aiheuttamassa huolta?"
+                "Voisivatko he olla nälkäisiä, janoisia tai tylsistyneitä?",
+                "Onko tulossa jokin tapahtuma, joka aiheuttaa huolta?"
               ]
             },
             {
@@ -1214,13 +1233,13 @@
               "tips": [
                 "Kirjoita vastaus näkyvälle valkotaululle",
                 "Anna yksinkertainen, rauhoittava vastaus joka kerta",
-                "Ohjaa käytännön toimintaan vastaamisen jälkeen",
+                "Ohjaa käsillä tekemiseen vastaamisen jälkeen",
                 "Käytä visuaalisia aikatauluja epävarmuuden vähentämiseksi"
               ]
             },
             {
-              "title": "Suojele omaa hyvinvointiasi",
-              "instruction": "Vaihda vuoroa toisen hoitajan kanssa, jos mahdollista. Käytä kuulokkeita rauhoittavan musiikin kanssa, kun tarvitset henkisen tauon."
+              "title": "Suojaa omaa hyvinvointiasi",
+              "instruction": "Vaihda vuoroa toisen hoitajan kanssa, jos mahdollista. Käytä kuulokkeita ja rauhallista musiikkia, kun tarvitset henkisen tauon."
             }
           ]
         },
@@ -1229,7 +1248,7 @@
           "steps": [
             {
               "title": "Oma turvallisuutesi ensin",
-              "instruction": "Jos tunnet olosi fyysisesti uhatuksi, peräänny välittömästi. Älä yritä hillitä häntä.",
+              "instruction": "Jos tunnet olosi fyysisesti turvattomaksi, peräänny välittömästi. Älä yritä hillitä heitä.",
               "tips": [
                 "Asetu lähelle uloskäyntiä",
                 "Poista vaaralliset esineet ulottuvilta",
@@ -1239,16 +1258,16 @@
             },
             {
               "title": "Maadoita itsesi",
-              "instruction": "Aggressio laukaisee myös sinussa taistele tai pakene -reaktion. Ota hetki ja hengitä."
+              "instruction": "Aggressio laukaisee taistele tai pakene -reaktion myös sinussa. Ota hetki aikaa hengittää."
             },
             {
-              "title": "Mikä laukaisi tämän?",
-              "instruction": "Aggressio on lähes aina reaktio – kipuun, pelkoon, turhautumiseen, aistien ylikuormitukseen.",
+              "title": "Mikä tämän laukaisi?",
+              "instruction": "Aggressio on lähes aina reaktio – kipuun, pelkoon, turhautumiseen, aistiylikuormitukseen.",
               "checklist": [
-                "Pyydettiinkö häntä tekemään jotain?",
-                "Oliko hänellä kipuja?",
+                "Pyydettiinkö heitä tekemään jotain?",
+                "Oliko heillä kipua?",
                 "Oliko ympäristö meluisa tai kaoottinen?",
-                "Tunsiko hän itsensä ahdistetuksi?"
+                "Tunsivatko he itsensä ahdistetuiksi?"
               ]
             },
             {
@@ -1262,8 +1281,8 @@
               ]
             },
             {
-              "title": "Kun kyseessä on hätätilanne",
-              "instruction": "Jos hänellä on ase, jos joku on loukkaantunut tai jos aggressio ei laannu – soita hätäpalveluun."
+              "title": "Milloin tämä on hätätilanne",
+              "instruction": "Jos heillä on ase, jos joku on loukkaantunut tai jos aggressio ei laannu – soita hätäpalveluun."
             }
           ]
         },
@@ -1272,37 +1291,37 @@
           "steps": [
             {
               "title": "Pidä ympäristö turvallisena",
-              "instruction": "Jos hän on hereillä ja liikkuu yöllä, ensisijainen tavoitteesi on turvallisuus.",
+              "instruction": "Jos he ovat hereillä ja liikkuvat yöllä, ensisijainen tavoitteesi on turvallisuus.",
               "tips": [
-                "Sytytä matalat yövalot",
+                "Sytytä himmeät yövalot",
                 "Poista kompastumisvaarat",
-                "Lukitse ulko-ovet, jos vaeltelu on huolenaihe",
+                "Lukitse ulko-ovet, jos harhailu on huolenaihe",
                 "\"On yö, kaikki on turvassa\""
               ]
             },
             {
-              "title": "Mikä herätti hänet?",
-              "instruction": "Yöheräämisen syynä voi olla kipu, vessatarve, lääkityksen ajoitus tai nälkä.",
+              "title": "Mikä heidät herätti?",
+              "instruction": "Yöllinen herääminen voi johtua kivusta, vessatarpeesta, lääkityksen ajoituksesta tai nälästä.",
               "checklist": [
-                "Tarvitseeko hän vessaan?",
-                "Onko hänellä kipuja?",
-                "Herättikö melu tai valo hänet?",
-                "Onko hän nälkäinen tai janoinen?"
+                "Tarvitsevatko he vessaan?",
+                "Onko heillä kipua?",
+                "Herättikö jokin ääni tai valo heidät?",
+                "Ovatko he nälkäisiä tai janoisia?"
               ]
             },
             {
-              "title": "Ohjaa hänet takaisin hellävaraisesti",
-              "instruction": "Älä kiistele kellonajasta. Ohjaa hänet takaisin sänkyyn rauhoittavilla vihjeillä.",
+              "title": "Ohjaa heidät takaisin lempeästi",
+              "instruction": "Älä väittele kellonajasta. Ohjaa heidät takaisin sänkyyn rauhoittavilla vihjeillä.",
               "tips": [
                 "Tarjoa lämmin, kofeiiniton juoma",
                 "Käytä rauhallista, hiljaista ääntä",
                 "Laita soimaan pehmeää, tuttua musiikkia",
-                "Istua hänen kanssaan, kunnes hän rauhoittuu"
+                "Istu heidän kanssaan, kunnes he rauhoittuvat"
               ]
             },
             {
               "title": "Paranna huomista yötä",
-              "instruction": "Enemmän päiväsaikaan aktiivisuutta, ei kofeiinia puolenpäivän jälkeen, johdonmukainen nukkumaanmenorutiini, rajoita päiväunet 30 minuuttiin."
+              "instruction": "Lisää päiväsaikaista aktiivisuutta, ei kofeiinia puolenpäivän jälkeen, johdonmukainen iltarutiini, rajoita päiväunet 30 minuuttiin."
             }
           ]
         },
@@ -1311,13 +1330,13 @@
           "steps": [
             {
               "title": "Tunnusta turhautumisesi",
-              "instruction": "Jatkuva seuraaminen on uuvuttavaa. Nämä tunteet ovat oikeutettuja. Hengitä syvään."
+              "instruction": "Seurattavana oleminen kaikkialle on uuvuttavaa. Nämä tunteet ovat päteviä. Hengitä syvään."
             },
             {
               "title": "Miksi he seuraavat sinua?",
               "instruction": "Varjostaminen johtuu ahdistuksesta ja hylkäämisen pelosta. Lähelläsi oleminen on heidän ainoa turvallisuuden lähde.",
               "checklist": [
-                "Onko rutiineissa ollut äskettäin muutoksia?",
+                "Onko rutiineissa tapahtunut äskettäin muutoksia?",
                 "Ovatko he vieraassa ympäristössä?",
                 "Oletko ollut poissa äskettäin?",
                 "Voivatko he huonosti?"
@@ -1328,17 +1347,17 @@
               "instruction": "Auta heitä tuntemaan olonsa turvalliseksi olematta fyysisesti läsnä joka hetki.",
               "tips": [
                 "Anna heille \"tehtävä\" lähellä sitä, missä olet",
-                "Jätä heille henkilökohtainen esine turvana",
+                "Jätä heille henkilökohtainen esine lohdun ankkuriksi",
                 "\"Olen vain keittiössä, tulen heti takaisin\"",
-                "Kokeile tuttua televisiota tai musiikkia seurana"
+                "Kokeile tuttua televisiota tai musiikkia seuraksi"
               ]
             },
             {
               "title": "Varaa itsellesi taukoja",
-              "instruction": "Pyydä jotakuta istumaan heidän kanssaan, kun otat 20 minuuttia. Jopa 10 minuuttia yksin auttaa.",
+              "instruction": "Pyydä jotakuta istumaan heidän kanssaan, kun otat 20 minuuttia. Jo 10 minuuttia yksin auttaa.",
               "tips": [
                 "Älä odota, kunnes olet uupunut",
-                "On okei sulkea kylpyhuoneen ovi hellävaraisesti",
+                "On okei sulkea kylpyhuoneen ovi varovasti",
                 "Harkitse tukiryhmää",
                 "Tämä käytös usein vähenee vakaan rutiinin myötä"
               ]
@@ -1363,7 +1382,7 @@
     "inactivity": "Ei liikettä havaittu kohteesta {{patientName}} {{hours}} tuntiin",
     "nightMovement": "{{patientName}} liikkuu ulkona klo {{time}}",
     "takeMeHome": "{{patientName}} napautti 'Vie minut kotiin' sijainnista {{location}}",
-    "eveningSummary": "{{patientName}}'n päivä: {{completed}}/{{total}} tehtävää suoritettu. Mieliala: {{mood}}"
+    "eveningSummary": "{{patientName}}'n päivä: {{completed}}/{{total}} tehtävää tehty. Mieliala: {{mood}}"
   },
   "subscription": {
     "free": "Ilmainen",
@@ -1383,10 +1402,10 @@
       "safeZones": "Turva-alueet ja sijaintihälytykset",
       "multiCaregiver": "Jopa 5 perheenjäsentä",
       "journal": "Jaettu hoitopäiväkirja",
-      "insights": "Tekoälyyn perustuvat käyttäytymismallien oivallukset",
-      "reports": "Lääkärikäyntien raportit",
+      "insights": "Tekoälyn tuottamat käyttäytymismallien oivallukset",
+      "reports": "Lääkärikäyntiraportit",
       "toolkit": "Hoitajan työkalupakki ja hyvinvointi",
-      "priority": "Priorisoitu tuki"
+      "priority": "Prioriteettituki"
     }
   }
 }

@@ -57,7 +57,7 @@ export function HelpRequest({ caregiverId, householdId, initialRequests }: HelpR
       // Verify session exists before writing
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) {
-        console.error('[HelpRequest] No auth session — user may need to re-login');
+        // No auth session — user may need to re-login
         showToast(t('common.error'), 'error');
         return;
       }
@@ -74,7 +74,7 @@ export function HelpRequest({ caregiverId, householdId, initialRequests }: HelpR
         .single();
 
       if (error) {
-        console.error('[HelpRequest] Insert failed:', error.message, '| code:', error.code, '| details:', error.details);
+        // Insert failed — error details in Supabase logs
         throw error;
       }
 

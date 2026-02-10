@@ -24,7 +24,8 @@
     "you": "You",
     "unknown": "Unknown",
     "saving": "Saving...",
-    "primary": "Primary"
+    "primary": "Primary",
+    "caregiver": "Caregiver"
   },
   "categories": {
     "medication": "Medication",
@@ -724,7 +725,14 @@
       "nextStep1": "1. Install OurTurn on {{name}}'s phone",
       "nextStep2": "2. Open the app and enter the Care Code above",
       "nextStep3": "3. That's it! {{name}}'s daily plan will appear on their phone",
-      "homeAddressPlaceholder": "123 Main St, City"
+      "homeAddressPlaceholder": "123 Main St, City",
+      "defaultTasks": {
+        "morningMedication": "Morning medication",
+        "breakfast": "Breakfast",
+        "lunch": "Lunch",
+        "dinner": "Dinner",
+        "eveningMedication": "Evening medication"
+      }
     },
     "settings": {
       "title": "Settings",

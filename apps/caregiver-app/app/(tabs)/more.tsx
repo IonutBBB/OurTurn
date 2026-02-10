@@ -37,7 +37,7 @@ export default function MoreScreen() {
             </Text>
           </View>
           <View>
-            <Text style={styles.userName}>{caregiver?.name || 'Caregiver'}</Text>
+            <Text style={styles.userName}>{caregiver?.name || t('common.caregiver')}</Text>
             <Text style={styles.userEmail}>{caregiver?.email || ''}</Text>
           </View>
         </View>

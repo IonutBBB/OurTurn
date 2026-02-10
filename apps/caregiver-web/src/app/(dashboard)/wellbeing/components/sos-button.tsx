@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { SosModal } from './sos-modal';
 
 interface SosButtonProps {
@@ -10,6 +11,7 @@ interface SosButtonProps {
 }
 
 export function SosButton({ caregiverId, householdId, patientId }: SosButtonProps) {
+  const { t } = useTranslation();
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -17,7 +19,7 @@ export function SosButton({ caregiverId, householdId, patientId }: SosButtonProp
       <button
         onClick={() => setShowModal(true)}
         className="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full bg-status-danger text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-status-danger/30"
-        aria-label="SOS - Get immediate help"
+        aria-label={t('caregiverApp.toolkit.sosAriaLabel')}
       >
         <span className="text-xl font-bold">SOS</span>
       </button>

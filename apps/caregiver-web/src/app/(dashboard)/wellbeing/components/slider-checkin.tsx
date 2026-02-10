@@ -59,7 +59,7 @@ export function SliderCheckin({ caregiverId, initialLog, recentLogs = [], onLogU
       // Verify session exists before writing
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) {
-        console.error('[SliderCheckin] No auth session — user may need to re-login');
+        // No auth session — user may need to re-login
         showToast(t('common.error'), 'error');
         return;
       }
@@ -78,7 +78,7 @@ export function SliderCheckin({ caregiverId, initialLog, recentLogs = [], onLogU
         .upsert(payload, { onConflict: 'caregiver_id,date' });
 
       if (error) {
-        console.error('[SliderCheckin] Upsert failed:', error.message, '| code:', error.code, '| details:', error.details);
+        // Upsert failed — error details in Supabase logs
         throw error;
       }
 

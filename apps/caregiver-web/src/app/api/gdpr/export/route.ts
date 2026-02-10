@@ -187,11 +187,11 @@ export async function GET(request: NextRequest) {
             device_tokens: '[REDACTED - Device tokens not exported for security]',
           }
         : null,
-      caregivers: (caregiversResult.data || []).map((c) => ({
-        ...c,
-        // Don't export other caregivers' IDs for privacy
-        id: c.id === user.id ? c.id : '[REDACTED]',
-      })),
+      caregivers: (caregiversResult.data || []).map((c) =>
+        c.id === user.id
+          ? c
+          : { id: '[REDACTED]', relationship: c.relationship }
+      ),
       carePlan: {
         tasks: tasksResult.data || [],
         completions: completionsResult.data || [],

@@ -12,9 +12,9 @@ const PATIENT_ID = 'b2c3d4e5-f6a7-8901-bcde-f12345678901';
 const CARE_CODE = '123456';
 
 export async function POST() {
-  // Only allow in development
-  if (process.env.NODE_ENV === 'production') {
-    return NextResponse.json({ error: 'Not available in production' }, { status: 403 });
+  // Only allow in development with explicit opt-in
+  if (process.env.NODE_ENV === 'production' || !process.env.ENABLE_DEV_SEED) {
+    return new NextResponse(null, { status: 404 });
   }
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -166,8 +166,8 @@ export async function POST() {
 }
 
 export async function GET() {
-  if (process.env.NODE_ENV === 'production') {
-    return NextResponse.json({ error: 'Not available in production' }, { status: 403 });
+  if (process.env.NODE_ENV === 'production' || !process.env.ENABLE_DEV_SEED) {
+    return new NextResponse(null, { status: 404 });
   }
 
   return NextResponse.json({
@@ -175,7 +175,8 @@ export async function GET() {
     instructions: [
       '1. Get your service role key from Supabase Dashboard > Settings > API',
       '2. Add SUPABASE_SERVICE_ROLE_KEY=your-key to your .env file',
-      '3. POST to this endpoint to seed mock data',
+      '3. Set ENABLE_DEV_SEED=1 in your .env file',
+      '4. POST to this endpoint to seed mock data',
     ]
   });
 }

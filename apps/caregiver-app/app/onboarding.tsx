@@ -179,11 +179,11 @@ export default function OnboardingScreen() {
 
         // Create default tasks based on routine
         const defaultTasks = [
-          { time: data.wakeTime, category: 'health', title: 'Morning medication' },
-          { time: data.breakfastTime, category: 'nutrition', title: 'Breakfast' },
-          { time: data.lunchTime, category: 'nutrition', title: 'Lunch' },
-          { time: data.dinnerTime, category: 'nutrition', title: 'Dinner' },
-          { time: data.sleepTime, category: 'medication', title: 'Evening medication' },
+          { time: data.wakeTime, category: 'health', title: t('caregiverApp.onboarding.defaultTasks.morningMedication') },
+          { time: data.breakfastTime, category: 'nutrition', title: t('caregiverApp.onboarding.defaultTasks.breakfast') },
+          { time: data.lunchTime, category: 'nutrition', title: t('caregiverApp.onboarding.defaultTasks.lunch') },
+          { time: data.dinnerTime, category: 'nutrition', title: t('caregiverApp.onboarding.defaultTasks.dinner') },
+          { time: data.sleepTime, category: 'medication', title: t('caregiverApp.onboarding.defaultTasks.eveningMedication') },
         ];
 
         for (const task of defaultTasks) {

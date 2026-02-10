@@ -17,8 +17,9 @@ export default function OpenChatInput({
   const { t } = useTranslation();
   const [input, setInput] = useState('');
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && input.trim()) {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey && input.trim()) {
+      e.preventDefault();
       onSubmit(input.trim());
       setInput('');
     }
@@ -36,14 +37,14 @@ export default function OpenChatInput({
       <div className="mb-3">
         <h2 className="section-label">{t('caregiverApp.coach.hub.askAnything.title')}</h2>
       </div>
-      <div className="flex gap-3 items-center">
-        <input
-          type="text"
+      <div className="flex gap-3 items-end">
+        <textarea
+          rows={3}
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder={t('caregiverApp.coach.hub.askAnything.placeholder', { name: patientName })}
-          className="input-warm flex-1"
+          className="input-warm flex-1 resize-none"
           disabled={disabled}
         />
         <button

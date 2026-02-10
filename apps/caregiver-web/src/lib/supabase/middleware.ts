@@ -36,6 +36,7 @@ export async function updateSession(request: NextRequest) {
 
   // Define public routes that don't require authentication
   const publicRoutes = [
+    '/',
     '/login',
     '/signup',
     '/forgot-password',
@@ -52,7 +53,7 @@ export async function updateSession(request: NextRequest) {
   );
 
   // If user is not logged in and trying to access protected route, redirect to login
-  if (!user && !isPublicRoute && request.nextUrl.pathname !== '/') {
+  if (!user && !isPublicRoute) {
     const url = request.nextUrl.clone();
     url.pathname = '/login';
     return NextResponse.redirect(url);

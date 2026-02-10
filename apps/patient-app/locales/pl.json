@@ -27,39 +27,39 @@
   "patientApp": {
     "todaysPlan": {
       "title": "Plan na dziś",
-      "progress": "{{completed}} z {{total}} zadań wykonanych dziś",
-      "noPlan": "Brak zaplanowanych zadań na dziś. Twoja rodzina wszystko przygotowuje!",
+      "progress": "{{completed}} z {{total}} aktywności wykonanych dziś",
+      "noPlan": "Brak zaplanowanych aktywności na dziś. Twoja rodzina wszystko przygotowuje!",
       "overdue": "Zaległe",
       "upcoming": "Nadchodzące",
       "nowBadge": "TERAZ",
       "doneAt": "Wykonano o {{time}}",
       "greatMorning": "Dobre postępy dziś rano",
-      "keepGoing": "Wszystko idzie zgodnie z planem",
+      "keepGoing": "Dobrze idzie",
       "allDone": "Wszystko wykonane na dziś",
-      "yesterdayCompleted_one": "Wczoraj wykonałeś {{count}} zadanie",
-      "yesterdayCompleted_other": "Wczoraj wykonałeś {{count}} zadań",
+      "yesterdayCompleted_one": "Wczoraj ukończono {{count}} aktywność",
+      "yesterdayCompleted_other": "Wczoraj ukończono {{count}} aktywności",
       "tapToStart": "Dotknij, aby rozpocząć aktywność umysłową",
       "opensActivity": "Otwiera dzisiejszą aktywność dla dobrej kondycji umysłu",
       "comingUp": "Następne w kolejce",
-      "activitiesWaiting": "Zadania czekają na Ciebie"
+      "activitiesWaiting": "Aktywności czekają na Ciebie"
     },
     "help": {
       "title": "Potrzebuję pomocy",
       "callSomeone": "Zadzwoń do kogoś",
       "getHomeSafely": "Wróć bezpiecznie do domu",
       "takeMeHome": "Zabierz mnie do domu",
-      "takeMeHomeDesc": "Dotknij, aby uzyskać wskazówki dojazdu do domu",
+      "takeMeHomeDesc": "Dotknij, aby uzyskać wskazówki dojścia do domu",
       "emergency": "Nagły wypadek",
       "confirmEmergency": "Czy na pewno chcesz zadzwonić na numer alarmowy?",
-      "iNeedHelpSend": "Wyślij wiadomość do rodziny z Twoją lokalizacją",
-      "confirmHelp": "Czy na pewno chcesz powiadomić rodzinę?",
+      "iNeedHelpSend": "Wyślij wiadomość do rodziny ze swoją lokalizacją",
+      "confirmHelp": "Czy na pewno chcesz zaalarmować swoją rodzinę?",
       "helpSent": "Twoja rodzina została powiadomiona. Pomoc jest w drodze.",
-      "sendingAlert": "Wysyłanie powiadomienia..."
+      "sendingAlert": "Wysyłanie alertu..."
     },
     "sos": {
       "button": "SOS",
       "label": "SOS",
-      "holdHint": "Przytrzymaj przez 2 sekundy, aby wysłać powiadomienie do rodziny",
+      "holdHint": "Przytrzymaj przez 2 sekundy, aby wysłać alert do rodziny",
       "helpOnTheWay": "Pomoc jest w drodze",
       "familyNotified": "Twoja rodzina została powiadomiona",
       "callCaregiver": "Zadzwoń do {{name}}",
@@ -69,7 +69,7 @@
       "yes": "Tak",
       "no": "Nie",
       "locationTracking": {
-        "title": "Udostępnić Twoją lokalizację?",
+        "title": "Udostępnić swoją lokalizację?",
         "description": "Aby Twoja rodzina mogła pomóc Ci bezpiecznie wrócić do domu"
       },
       "dataCollection": {
@@ -78,7 +78,7 @@
       },
       "pushNotifications": {
         "title": "Otrzymywać przypomnienia?",
-        "description": "Pomocne wskazówki dotyczące posiłków i aktywności"
+        "description": "Pomocne przypomnienia o posiłkach i aktywnościach"
       },
       "dataSharing": {
         "title": "Udostępnić rodzinie?",
@@ -103,7 +103,7 @@
       "moodGood": "Dobrze",
       "moodOkay": "W porządku",
       "moodBad": "Nie najlepiej",
-      "sleepQuestion": "Czy dobrze Ci się spało?",
+      "sleepQuestion": "Czy dobrze spałeś?",
       "sleepGood": "Tak",
       "sleepOkay": "Tak sobie",
       "sleepBad": "Raczej nie",
@@ -124,7 +124,7 @@
     "activity": {
       "title": "Dzisiejsza aktywność",
       "noActivity": "Brak aktywności na dziś",
-      "comeBackLater": "Sprawdź jutro, aby znaleźć nową aktywność!",
+      "comeBackLater": "Sprawdź jutro, aby zobaczyć nową aktywność!",
       "tapToSpeak": "Dotknij, aby mówić",
       "tapToStop": "Dotknij, aby zatrzymać nagrywanie",
       "typeInstead": "Wpisz swoją odpowiedź zamiast mówić",
@@ -146,9 +146,9 @@
         "description": "Wspominaj szczęśliwe chwile",
         "eventPrompt": "Opowiedz mi o tym wspomnieniu: {{text}}",
         "personPrompt": "Opowiedz mi o {{name}}, Twoim/Twojej {{relationship}}",
-        "childhoodPrompt": "Jak wyglądało dorastanie w {{text}}?",
+        "childhoodPrompt": "Jak to było dorastać w {{text}}?",
         "careerPrompt": "Opowiedz mi o swoim czasie pracy jako {{text}}",
-        "hobbyPrompt": "Co lubisz w {{text}}?",
+        "hobbyPrompt": "Co Ci się podoba w {{text}}?",
         "photoPrompt": "Co przypomina Ci to zdjęcie?",
         "followUp": "Cóż za wspaniałe wspomnienie! Dziękujemy za podzielenie się nim.",
         "noPrompts": "Twoja rodzina dodaje dla Ciebie wspomnienia"
@@ -164,9 +164,9 @@
       "move": {
         "title": "Ruszaj się",
         "description": "Delikatne ćwiczenia, aby poczuć się dobrze",
-        "prompt1": "Wyciągnij ręce wysoko w górę, a następnie powoli je opuść. Powtórz 5 razy.",
+        "prompt1": "Wyciągnij ramiona wysoko, a następnie powoli je opuść. Powtórz 5 razy.",
         "prompt2": "Wstań i usiądź powoli, 5 razy. Trzymaj się krzesła dla wsparcia.",
-        "prompt3": "Przekręć ramiona 5 razy do przodu, a następnie 5 razy do tyłu.",
+        "prompt3": "Przetocz ramiona do przodu 5 razy, a następnie do tyłu 5 razy.",
         "prompt4": "Maszeruj w miejscu przez 30 sekund. Podnoś kolana tak wysoko, jak jest to wygodne.",
         "prompt5": "Delikatnie obróć głowę w lewo, potem w prawo, a następnie spójrz w górę i w dół. Powtórz 3 razy.",
         "iDidIt": "Udało mi się!",
@@ -179,7 +179,7 @@
         "prompt2": "Gdybyś mógł/mogła pomalować niebo na dowolny kolor, jaki byś wybrał/wybrała i dlaczego?",
         "prompt3": "Opisz posiłek, który uwielbiasz. Jak pachnie? Jak smakuje?",
         "prompt4": "Opowiedz historię o szczęśliwym dniu, który pamiętasz.",
-        "followUp": "Jak kreatywnie! Dziękujemy za podzielenie się."
+        "followUp": "Jak twórczo! Dziękujemy za podzielenie się."
       },
       "completed": "Ukończono",
       "todaysActivities": "Dzisiejsze aktywności",
@@ -189,7 +189,7 @@
       "language": "Język",
       "numbers": "Liczby",
       "executive": "Planowanie",
-      "visual": "Wizualne",
+      "visual": "Wzrok",
       "sound": "Dźwięk",
       "physical": "Fizyczne",
       "creative": "Kreatywność",
@@ -198,9 +198,9 @@
     "stim": {
       "common": {
         "letsPlay": "Zagrajmy!",
-        "imDone": "Skończyłem/am!",
+        "imDone": "Skończyłem/Skończyłam!",
         "wellDone": "Świetnie!",
-        "greatJob": "Świetna robota!",
+        "greatJob": "Wspaniała robota!",
         "tryAnother": "Spróbuj czegoś innego",
         "allDoneToday": "Na dziś to wszystko!",
         "thankYouSharing": "Dziękujemy za podzielenie się swoimi myślami!",
@@ -275,8 +275,8 @@
         }
       },
       "oddWordOut": {
-        "title": "Wyraz niepasujący",
-        "description": "Znajdź słowo, które nie pasuje",
+        "title": "Które słowo nie pasuje?",
+        "description": "Znajdź słowo, które nie pasuje do pozostałych",
         "instruction": "Które słowo nie pasuje do pozostałych?",
         "niceAttempt": "Dobra próba! Oto odpowiedź.",
         "items": {
@@ -363,7 +363,7 @@
           "paper": "Papier",
           "circle": "Koło",
           "square": "Kwadrat",
-          "happy": "Szczęśliwy",
+          "happy": "Szczęście",
           "triangle": "Trójkąt",
           "breakfast": "Śniadanie",
           "lunch": "Obiad",
@@ -413,46 +413,46 @@
           "tulip": "Tulipan"
         },
         "explain": {
-          "fruitNotFurniture": "Jabłko i banan to owoce — krzesło to mebel.",
-          "animalsNotFurniture": "Kot i pies to zwierzęta — stół to mebel.",
-          "colorsNotTool": "Czerwony i niebieski to kolory — młotek to narzędzie.",
-          "flowersNotClothing": "Róża i stokrotka to kwiaty — but to część garderoby.",
-          "drinksNotStationery": "Mleko i sok to napoje — ołówek to artykuł piśmienniczy.",
-          "vehiclesNotCutlery": "Samochód i autobus to pojazdy — łyżka to sztućce.",
-          "clothingNotAnimal": "Czapka i rękawiczka to części garderoby — ryba to zwierzę.",
-          "bakedNotObject": "Chleb i ciasto to wypieki — zegar to przedmiot.",
-          "instrumentsNotBedding": "Pianino i gitara to instrumenty — poduszka to pościel.",
-          "skyNotKitchen": "Słońce i księżyc są na niebie — czajnik jest w kuchni.",
-          "clothingNotLight": "Koszula i spodnie to części garderoby — lampa daje światło.",
-          "foodNotVehicle": "Jajko i ser to jedzenie — rower to pojazd.",
-          "cutleryNotAnimal": "Widelec i nóż to sztućce — królik to zwierzę.",
-          "bodyNotHouse": "Ręka i stopa to części ciała — okno to część domu.",
-          "seasonsNotObject": "Wiosna i jesień to pory roku — filiżanka to przedmiot.",
-          "animalsNotObject": "Koń i krowa to zwierzęta — parasol to przedmiot.",
-          "jobsNotFood": "Lekarz i nauczyciel to zawody — marchewka to jedzenie.",
-          "waterNotFurniture": "Rzeka i jezioro to woda — kanapa to mebel.",
-          "royaltyNotFood": "Król i królowa to członkowie rodziny królewskiej — ziemniak to jedzenie.",
-          "sportsNotTool": "Piłka nożna i tenis to sporty — drabina to narzędzie.",
-          "fruitNotVeg": "Jabłko, banan i pomarańcza to owoce — marchewka to warzywo.",
-          "birdsNotFish": "Orzeł, rudzik i wróbel to ptaki — łosoś to ryba.",
-          "instrumentsNotArt": "Skrzypce, trąbka i bęben to instrumenty — obraz to sztuka.",
-          "citiesNotDay": "Londyn, Paryż i Rzym to miasta — wtorek to dzień tygodnia.",
-          "treesNotFurniture": "Dąb, sosna i brzoza to drzewa — biurko to mebel.",
-          "fabricsNotPaper": "Bawełna, wełna i jedwab to tkaniny — papier nie jest tkaniną.",
-          "shapesNotFeeling": "Koło, kwadrat i trójkąt to kształty — szczęście to uczucie.",
-          "mealsNotActivity": "Śniadanie, obiad i kolacja to posiłki — sen to czynność.",
-          "monthsNotDay": "Styczeń, marzec i czerwiec to miesiące — piątek to dzień tygodnia.",
-          "exerciseNotReading": "Pływanie, bieganie i jazda na rowerze to ćwiczenia — czytanie nie jest ćwiczeniem.",
-          "metalsNotWood": "Złoto, srebro i brąz to metale — drewno nie jest metalem.",
-          "toolsNotPlant": "Młotek, piła i wiertarka to narzędzia — kwiat to roślina.",
-          "bodyNotObject": "Kciuk, Łokieć i Kolano to części ciała — Ołówek to przedmiot.",
-          "weatherNotFood": "Deszcz, Śnieg i Wiatr to pogoda — Chleb to jedzenie.",
-          "currencyNotMeasure": "Dolar, Funt i Euro to waluty — Metr to jednostka miary.",
-          "planetsNotDay": "Mars, Wenus i Jowisz to planety — Poniedziałek to dzień tygodnia.",
-          "jobsNotObject": "Pielęgniarka, Pilot i Nauczyciel to zawody — Ołówek to przedmiot.",
-          "foodNotFurniture": "Zupa, Sałatka i Kanapka to jedzenie — Krzesło to mebel.",
-          "faceNotShoe": "Oko, Ucho i Nos są na twarzy — But to obuwie.",
-          "animalsNotFlower": "Tygrys, Lew i Niedźwiedź to zwierzęta — Tulipan to kwiat."
+          "fruitNotFurniture": "Jabłko i Banan to owoce — Krzesło to mebel.",
+          "animalsNotFurniture": "Kot i Pies to zwierzęta — Stół to mebel.",
+          "colorsNotTool": "Czerwony i Niebieski to kolory — Młotek to narzędzie.",
+          "flowersNotClothing": "Róża i Stokrotka to kwiaty — But to część garderoby.",
+          "drinksNotStationery": "Mleko i Sok to napoje — Ołówek to artykuł piśmienniczy.",
+          "vehiclesNotCutlery": "Samochód i Autobus to pojazdy — Łyżka to sztućce.",
+          "clothingNotAnimal": "Czapka i Rękawiczka to części garderoby — Ryba to zwierzę.",
+          "bakedNotObject": "Chleb i Ciasto to wypieki — Zegar to przedmiot.",
+          "instrumentsNotBedding": "Pianino i Gitara to instrumenty — Poduszka to pościel.",
+          "skyNotKitchen": "Słońce i Księżyc są na niebie — Czajnik jest w kuchni.",
+          "clothingNotLight": "Koszula i Spodnie to części garderoby — Lampa daje światło.",
+          "foodNotVehicle": "Jajko i Ser to jedzenie — Rower to pojazd.",
+          "cutleryNotAnimal": "Widelec i Nóż to sztućce — Królik to zwierzę.",
+          "bodyNotHouse": "Ręka i Stopa to części ciała — Okno to część domu.",
+          "seasonsNotObject": "Wiosna i Jesień to pory roku — Filiżanka to przedmiot.",
+          "animalsNotObject": "Koń i Krowa to zwierzęta — Parasol to przedmiot.",
+          "jobsNotFood": "Lekarz i Nauczyciel to zawody — Marchewka to jedzenie.",
+          "waterNotFurniture": "Rzeka i Jezioro to woda — Kanapa to mebel.",
+          "royaltyNotFood": "Król i Królowa to członkowie rodziny królewskiej — Ziemniak to jedzenie.",
+          "sportsNotTool": "Piłka nożna i Tenis to sporty — Drabina to narzędzie.",
+          "fruitNotVeg": "Jabłko, Banan i Pomarańcza to owoce — Marchewka to warzywo.",
+          "birdsNotFish": "Orzeł, Rudzik i Wróbel to ptaki — Łosoś to ryba.",
+          "instrumentsNotArt": "Skrzypce, Trąbka i Bęben to instrumenty — Obraz to sztuka.",
+          "citiesNotDay": "Londyn, Paryż i Rzym to miasta — Wtorek to dzień tygodnia.",
+          "treesNotFurniture": "Dąb, Sosna i Brzoza to drzewa — Biurko to mebel.",
+          "fabricsNotPaper": "Bawełna, Wełna i Jedwab to tkaniny — Papier nie.",
+          "shapesNotFeeling": "Koło, Kwadrat i Trójkąt to kształty — Szczęście to uczucie.",
+          "mealsNotActivity": "Śniadanie, Obiad i Kolacja to posiłki — Sen to czynność.",
+          "monthsNotDay": "Styczeń, Marzec i Czerwiec to miesiące — Piątek to dzień tygodnia.",
+          "exerciseNotReading": "Pływanie, Bieganie i Jazda na rowerze to ćwiczenia — Czytanie nie.",
+          "metalsNotWood": "Złoto, Srebro i Brąz to metale — Drewno nie.",
+          "toolsNotPlant": "Młotek, Piła i Wiertarka to narzędzia — Kwiat to roślina.",
+          "bodyNotObject": "Kciuk, łokieć i kolano to części ciała — ołówek to przedmiot.",
+          "weatherNotFood": "Deszcz, śnieg i wiatr to zjawiska pogodowe — chleb to jedzenie.",
+          "currencyNotMeasure": "Dolar, funt i euro to waluty — metr to jednostka miary.",
+          "planetsNotDay": "Mars, Wenus i Jowisz to planety — poniedziałek to dzień tygodnia.",
+          "jobsNotObject": "Pielęgniarka, pilot i nauczyciel to zawody — ołówek to przedmiot.",
+          "foodNotFurniture": "Zupa, sałatka i kanapka to jedzenie — krzesło to mebel.",
+          "faceNotShoe": "Oko, ucho i nos są na twarzy — but to obuwie.",
+          "animalsNotFlower": "Tygrys, lew i niedźwiedź to zwierzęta — tulipan to kwiat."
         }
       },
       "priceGuessing": {
@@ -460,7 +460,7 @@
         "description": "Zgadnij, ile kosztują codzienne przedmioty",
         "howMuch": "Ile to kosztuje?",
         "makeGuess": "Zgaduję",
-        "youGuessed": "Zgadłeś/Zgadłaś {{price}}",
+        "youGuessed": "Zgadłeś {{price}}",
         "actualPrice": "Rzeczywista cena",
         "veryClose": "Bardzo blisko! Świetne zgadywanie!",
         "goodTry": "Dobra próba! Ceny bywają podchwytliwe.",
@@ -497,7 +497,7 @@
           "monthlyElectric": "Miesięczny rachunek za prąd",
           "pairShoes": "Para butów",
           "bookNovel": "Powieść w miękkiej oprawie",
-          "umbrellaGood": "Dobry parasol",
+          "umbrellaGood": "Dobra parasolka",
           "taxiRide5km": "Przejazd taksówką na 5 km",
           "museumEntry": "Bilet wstępu do muzeum",
           "swimPoolEntry": "Bilet wstępu na basen",
@@ -521,16 +521,16 @@
           "gardenShed": "Altana ogrodowa",
           "weekHoliday": "Tygodniowe wakacje",
           "doubleBed": "Podwójne łóżko",
-          "lawnmower": "Kosiarka",
+          "lawnmower": "Kosiarka do trawy",
           "dishwasher": "Zmywarka",
-          "coffeeEspresso": "Ekspres do kawy (espresso)",
+          "coffeeEspresso": "Ekspres do kawy",
           "electricKettle": "Czajnik elektryczny"
         }
       },
       "sorting": {
         "title": "Sortowanie",
         "description": "Posortuj przedmioty do odpowiednich grup",
-        "instruction": "Posortuj te przedmioty do dwóch grup!",
+        "instruction": "Posortuj te przedmioty na dwie grupy!",
         "tapItem": "Dotknij przedmiotu, a następnie dotknij grupy",
         "tapCategory": "Teraz dotknij grupy, aby posortować",
         "categories": {
@@ -557,7 +557,7 @@
         },
         "items": {
           "apple": "Jabłko",
-          "carrot": "Marchew",
+          "carrot": "Marchewka",
           "banana": "Banan",
           "potato": "Ziemniak",
           "grape": "Winogrona",
@@ -631,7 +631,7 @@
           "sendLetter": "Wysyłanie listu",
           "plantFlower": "Sadzenie kwiatka",
           "goShopping": "Robienie zakupów",
-          "makePhoneCall": "Wykonywanie połączenia telefonicznego",
+          "makePhoneCall": "Wykonanie telefonu",
           "brushTeeth": "Mycie zębów",
           "feedPet": "Karmienie zwierzęcia",
           "bakeCake": "Pieczenie ciasta",
@@ -656,7 +656,7 @@
           "eatBreakfast": "Zjedz śniadanie",
           "turnOnTap": "Odkręć kran",
           "addSoap": "Dodaj mydło",
-          "rubHands": "Potrzyj dłonie",
+          "rubHands": "Potrzyj ręce",
           "rinseHands": "Opłucz ręce",
           "getBread": "Weź chleb",
           "putInToaster": "Włóż chleb do tostera",
@@ -666,7 +666,7 @@
           "putInEnvelope": "Włóż go do koperty",
           "addStamp": "Naklej znaczek",
           "postLetter": "Wyślij list",
-          "digHole": "Wykop dołek",
+          "digHole": "Wykop dziurę",
           "placeSeed": "Umieść nasionko",
           "coverSoil": "Przykryj ziemią",
           "waterPlant": "Podlej roślinę",
@@ -677,8 +677,8 @@
           "pickUpPhone": "Podnieś słuchawkę",
           "dialNumber": "Wybierz numer",
           "waitForAnswer": "Poczekaj na odpowiedź",
-          "sayHello": "Powiedz 'halo'",
-          "getToothbrush": "Weź swoją szczoteczkę do zębów",
+          "sayHello": "Powiedz cześć",
+          "getToothbrush": "Weź szczoteczkę do zębów",
           "addToothpaste": "Dodaj pastę do zębów",
           "brushTeeth": "Umyj zęby",
           "rinseAndSpit": "Opłucz usta i wypluj",
@@ -691,11 +691,11 @@
           "pourInTin": "Wlej do formy",
           "bakeInOven": "Piecz w piekarniku",
           "letCool": "Pozwól ostygnąć",
-          "sortClothes": "Posegreguj ubrania",
+          "sortClothes": "Posortuj ubrania",
           "loadMachine": "Włóż do pralki",
           "addDetergent": "Dodaj detergent",
-          "startWash": "Włącz pranie",
-          "hangToDry": "Powieś do wysuszenia",
+          "startWash": "Uruchom pranie",
+          "hangToDry": "Powieś do wyschnięcia",
           "layTablecloth": "Rozłóż obrus",
           "putOutPlates": "Rozłóż talerze",
           "addCutlery": "Dodaj sztućce",
@@ -715,7 +715,7 @@
           "getStepladder": "Weź drabinę",
           "removeOldBulb": "Wykręć starą żarówkę",
           "screwNewBulb": "Wkręć nową żarówkę",
-          "turnOnSwitch": "Włącz światło",
+          "turnOnSwitch": "Włącz przełącznik",
           "crackEggs": "Rozbij jajka",
           "whiskEggs": "Roztrzep jajka",
           "heatPan": "Rozgrzej patelnię",
@@ -734,21 +734,21 @@
           "chooseGift": "Wybierz prezent",
           "cutPaper": "Wytnij papier do pakowania",
           "wrapGift": "Zapakuj prezent",
-          "tapeEdges": "Sklej krawędzie",
+          "tapeEdges": "Zaklej krawędzie",
           "addRibbon": "Dodaj wstążkę"
         }
       },
       "pairMatching": {
-        "title": "Łączenie w pary",
+        "title": "Dopasowywanie par",
         "description": "Znajdź pasujące pary kart",
         "instruction": "Dotknij kart, aby znaleźć pasujące pary!",
         "pairsFound": "Znaleziono {{found}} z {{total}} par"
       },
       "soundId": {
         "title": "Rozpoznawanie dźwięków",
-        "description": "Czy zgadniesz, co wydaje ten dźwięk?",
+        "description": "Czy potrafisz zgadnąć, co wydaje ten dźwięk?",
         "whatMakesThisSound": "Co wydaje ten dźwięk?",
-        "goodGuess": "Świetny strzał! Oto odpowiedź.",
+        "goodGuess": "Dobry strzał! Oto odpowiedź.",
         "sounds": {
           "woof": "Hau! Hau!",
           "meow": "Miau! Miau!",
@@ -757,17 +757,17 @@
           "whistleKettle": "Fiuuu! (dźwięk gwizdka)",
           "cockadoodledoo": "Kukuryku!",
           "dingDong": "Ding dong!",
-          "moo": "Muuu!",
+          "moo": "Muuuu!",
           "splashSplash": "Kap kap, kap kap",
           "choochoo": "Czu czu!",
           "tweetTweet": "Ćwir ćwir!",
           "neenaw": "Nii-naa! Nii-naa!",
           "baaaBaaa": "Beeee! Beeee!",
-          "whoosh": "Szuuu!",
+          "whoosh": "Wiuuu!",
           "ribbit": "Kum kum! Kum kum!",
           "crunchCrunch": "Chrup! Chrup!",
           "clangClang": "Brzdęk! Brzdęk! Brzdęk!",
-          "buzzBuzz": "Bzz! Bzz!",
+          "buzzBuzz": "Bzzzz! Bzzzz!",
           "oinkOink": "Chrum! Chrum!",
           "hootHoot": "Hu hu! Hu hu!"
         },
@@ -827,26 +827,26 @@
         "typeThoughts": "Co o tym myślisz?",
         "facts": {
           "haitiIndependence": "Haiti stało się pierwszym krajem, który zniósł niewolnictwo i ogłosił niepodległość.",
-          "mlkBorn": "Martin Luther King Jr. urodził się w Atlancie, w stanie Georgia.",
+          "mlkBorn": "Martin Luther King Jr. urodził się w Atlancie w stanie Georgia.",
           "columbiaShuttle": "Prom kosmiczny Columbia rozpadł się podczas powrotu do atmosfery.",
           "bellTelephone": "Alexander Graham Bell opatentował telefon.",
           "womensDay": "Obchodzono pierwszy Międzynarodowy Dzień Kobiet.",
-          "stPatrick": "Zmarł Święty Patryk, patron Irlandii.",
+          "stPatrick": "Święty Patryk, patron Irlandii, zmarł.",
           "appleFounded": "Steve Jobs i Steve Wozniak założyli firmę Apple Computer.",
-          "titanicSank": "Titanic zatonął po uderzeniu w górę lodową.",
-          "greatExhibition": "W Londynie, w Kryształowym Pałacu, otwarto Wielką Wystawę.",
+          "titanicSank": "Titanic zatonął po zderzeniu z górą lodową.",
+          "greatExhibition": "Wystawa Światowa została otwarta w Crystal Palace w Londynie.",
           "veDay": "Dzień Zwycięstwa w Europie — koniec II wojny światowej w Europie.",
           "queenCoronation": "Królowa Elżbieta II została koronowana w Opactwie Westminsterskim.",
           "dDay": "D-Day — siły alianckie wylądowały na plażach Normandii.",
           "usIndependence": "Stany Zjednoczone ogłosiły niepodległość.",
           "moonLanding": "Neil Armstrong jako pierwszy człowiek stanął na Księżycu.",
           "worldWideWeb": "World Wide Web został udostępniony publicznie.",
-          "woodstock": "W Nowym Jorku rozpoczął się festiwal muzyczny Woodstock.",
+          "woodstock": "Festiwal muzyczny Woodstock rozpoczął się w Nowym Jorku.",
           "wwiiStart": "II wojna światowa rozpoczęła się, gdy Niemcy zaatakowały Polskę.",
-          "firstRailway": "W Anglii otwarto pierwszą na świecie publiczną linię kolejową.",
+          "firstRailway": "Pierwsza na świecie publiczna linia kolejowa została otwarta w Anglii.",
           "disneyWorld": "Walt Disney World otworzył swoje podwoje na Florydzie.",
-          "reformation": "Marcin Luter opublikował swoje 95 tez, rozpoczynając Reformację.",
-          "berlinWall": "Mur Berliński upadł, ponownie jednocząc Niemcy Wschodnie i Zachodnie.",
+          "reformation": "Marcin Luter wywiesił swoje 95 tez, rozpoczynając Reformację.",
+          "berlinWall": "Mur Berliński upadł, ponownie łącząc Niemcy Wschodnie i Zachodnie.",
           "armistice": "I wojna światowa zakończyła się podpisaniem rozejmu.",
           "rosaParks": "Rosa Parks odmówiła ustąpienia miejsca w autobusie w Alabamie.",
           "williamCrowned": "Wilhelm Zdobywca został koronowany na króla Anglii.",
@@ -859,13 +859,13 @@
           "bastilleDay": "Szturm na Bastylię zapoczątkował Rewolucję Francuską.",
           "galileoTelescope": "Galileusz po raz pierwszy zademonstrował swój teleskop.",
           "faradayBorn": "Urodził się Michael Faraday, pionier elektryczności.",
-          "soundBarrier": "Chuck Yeager jako pierwszy człowiek przekroczył barierę dźwięku.",
+          "soundBarrier": "Chuck Yeager jako pierwszy przekroczył barierę dźwięku.",
           "jfkAssassination": "Prezydent John F. Kennedy został zamordowany w Dallas.",
           "wrightBrothers": "Bracia Wright dokonali pierwszego lotu silnikowego."
         },
         "followUp": {
           "whatDoYouThink": "Co o tym myślisz?",
-          "whereWereYou": "Gdzie byłeś/byłaś, kiedy to się wydarzyło?",
+          "whereWereYou": "Gdzie byłeś/byłaś, gdy to się wydarzyło?",
           "firstMemory": "Jakie jest Twoje pierwsze wspomnienie związane z używaniem tego?",
           "howDoYouCelebrate": "Jak świętujesz ten dzień?",
           "firstComputer": "Pamiętasz swój pierwszy komputer?",
@@ -873,12 +873,12 @@
           "whatDoYouRemember": "Co pamiętasz z tamtych czasów?",
           "favouriteExhibition": "Czy byłeś/byłaś kiedyś na dużej wystawie?",
           "favouriteMusic": "Jaka była Twoja ulubiona muzyka z tamtej epoki?",
-          "firstInternet": "Pamiętasz swój pierwszy raz, kiedy używałeś/używałaś internetu?",
+          "firstInternet": "Pamiętasz swój pierwszy raz, kiedy korzystałeś/korzystałaś z internetu?",
           "firstJob": "Jaka była Twoja pierwsza praca?",
           "natureMemory": "Jakie jest Twoje ulubione wspomnienie związane z naturą?",
-          "adventure": "Jaka była Twoja największa przygoda?",
+          "adventure": "Jaka była największa przygoda, jaką przeżyłeś/przeżyłaś?",
           "beenToFrance": "Czy byłeś/byłaś kiedyś we Francji?",
-          "starMemory": "Czy kiedykolwiek patrzyłeś/patrzyłaś w gwiazdy?",
+          "starMemory": "Czy kiedykolwiek patrzyłeś/patrzyłaś na gwiazdy?",
           "scienceMemory": "Czy interesowałeś/interesowałaś się nauką w szkole?",
           "flyingMemory": "Pamiętasz swój pierwszy raz w samolocie?",
           "christmasMemory": "Jakie jest Twoje ulubione wspomnienie świąteczne?",
@@ -887,7 +887,7 @@
       },
       "art": {
         "title": "Rozmowa o sztuce",
-        "description": "Obejrzyj dzieło sztuki i podziel się swoimi myślami",
+        "description": "Obejrzyj sztukę i podziel się swoimi myślami",
         "typeThoughts": "Podziel się swoimi myślami...",
         "nextQuestion": "Następne pytanie",
         "questionOf": "Pytanie {{current}} z {{total}}",
@@ -904,7 +904,7 @@
           "beachMemory": "Czy to przypomina Ci wycieczkę nad morze?",
           "walkInNature": "Czy lubisz spacery na łonie natury?",
           "everDanced": "Czy kiedykolwiek tańczyłeś/tańczyłaś?",
-          "favouriteCafe": "Czy masz ulubioną kawiarnię?",
+          "favouriteCafe": "Czy masz swoją ulubioną kawiarnię?",
           "countrysideMemory": "Czy to przypomina Ci wieś?",
           "rainyDayMemory": "Co lubisz robić w deszczowy dzień?",
           "whatIsHappening": "Co Twoim zdaniem się dzieje?",
@@ -913,7 +913,7 @@
           "sunriseOrSunset": "Wolisz wschód czy zachód słońca?",
           "wouldYouLiveThere": "Czy chciałbyś/chciałabyś tam mieszkać?",
           "winterMemory": "Jakie jest Twoje ulubione zimowe wspomnienie?",
-          "favouriteGarden": "Czy masz ulubiony ogród?"
+          "favouriteGarden": "Czy masz swój ulubiony ogród?"
         },
         "works": {
           "starryNight": {
@@ -924,7 +924,7 @@
           "waterLilies": {
             "title": "Nenufary",
             "artist": "Claude Monet",
-            "description": "Spokojny staw z pływającymi nenufarami i odbiciami wierzb."
+            "description": "Spokojny staw z pływającymi liliami wodnymi i odbiciami wierzb."
           },
           "sunflowers": {
             "title": "Słoneczniki",
@@ -944,12 +944,12 @@
           "greatWave": {
             "title": "Wielka fala",
             "artist": "Katsushika Hokusai",
-            "description": "Ogromna fala z białą pianą zwijającą się nad małymi łodziami, w tle góra Fudżi."
+            "description": "Ogromna fala z białą pianą, która zawija się nad małymi łodziami, a w tle góra Fudżi."
           },
           "monaLisa": {
             "title": "Mona Lisa",
             "artist": "Leonardo da Vinci",
-            "description": "Kobieta z tajemniczym uśmiechem siedząca na tle odległego krajobrazu."
+            "description": "Kobieta z tajemniczym uśmiechem, siedząca na tle odległego krajobrazu."
           },
           "poppy": {
             "title": "Pole maków",
@@ -989,7 +989,7 @@
           "persistence": {
             "title": "Trwałość pamięci",
             "artist": "Salvador Dalí",
-            "description": "Topniejące zegary rozłożone na przedmiotach w onirycznym pustynnym krajobrazie."
+            "description": "Topniejące zegary zwisające z przedmiotów w onirycznym pustynnym krajobrazie."
           },
           "luncheon": {
             "title": "Śniadanie wioślarzy",
@@ -997,7 +997,7 @@
             "description": "Przyjaciele jedzący lunch na słonecznym balkonie z widokiem na rzekę."
           },
           "boating": {
-            "title": "Żeglowanie",
+            "title": "Łódka",
             "artist": "Édouard Manet",
             "description": "Mężczyzna i kobieta w małej żaglówce na jasnoniebieskiej wodzie."
           },
@@ -1020,10 +1020,10 @@
       },
       "trueOrFalse": {
         "title": "Prawda czy fałsz",
-        "description": "Czy to zdanie jest prawdziwe, czy fałszywe?",
+        "description": "Czy to stwierdzenie jest prawdziwe, czy fałszywe?",
         "true": "Prawda",
         "false": "Fałsz",
-        "niceGuess": "Świetny strzał! Oto odpowiedź.",
+        "niceGuess": "Dobra próba! Oto odpowiedź.",
         "itsTrue": "To prawda!",
         "itsFalse": "Właściwie, to fałsz!",
         "statements": {
@@ -1055,7 +1055,7 @@
           "diamondHardest": "Diament jest najtwardszym naturalnym materiałem.",
           "tomatoVegetable": "Pomidor to warzywo.",
           "nileAfrica": "Nil to rzeka w Afryce.",
-          "australiaContinent": "Australia to zarówno kraj, jak i kontynent.",
+          "australiaContinent": "Australia jest zarówno krajem, jak i kontynentem.",
           "veniceBuiltWater": "Wenecja to miasto zbudowane na wodzie.",
           "honeyNeverExpires": "Miód nigdy się nie psuje.",
           "goldfishMemory3s": "Złote rybki mają 3-sekundową pamięć.",
@@ -1065,7 +1065,7 @@
           "bambooFastGrowing": "Bambus to najszybciej rosnąca roślina.",
           "coinTossWeighted": "Rzut monetą zawsze wypada na orła.",
           "bearsSleepWinter": "Niedźwiedzie przesypiają zimę.",
-          "eiffelTowerLondon": "Wieża Eiffla znajduje się w Londynie.",
+          "eiffelTowerLondon": "Wieża Eiffla jest w Londynie.",
           "chocolateFromBeans": "Czekolada jest wytwarzana z ziaren kakaowca."
         },
         "explanations": {
@@ -1092,9 +1092,9 @@
           "greatWallChina": "To najdłuższy mur, jaki kiedykolwiek zbudowano!",
           "lightningSoundFirst": "Najpierw widzimy błyskawicę, ponieważ światło podróżuje szybciej niż dźwięk.",
           "olympicsEvery4Years": "Letnie Igrzyska Olimpijskie odbywają się co cztery lata.",
-          "saharaLargestDesert": "Sahara rozciąga się na większości obszaru Afryki Północnej.",
+          "saharaLargestDesert": "Sahara rozciąga się przez większą część Afryki Północnej.",
           "spidersAreInsects": "Pająki to pajęczaki — mają 8 nóg, nie 6!",
-          "diamondHardest": "Diament to najtwardsza znana naturalna substancja.",
+          "diamondHardest": "Diament jest najtwardszą znaną substancją naturalną.",
           "tomatoVegetable": "Pomidor to właściwie owoc!",
           "nileAfrica": "Nil przepływa przez północno-wschodnią Afrykę.",
           "australiaContinent": "Australia to zarówno kraj, jak i najmniejszy kontynent.",
@@ -1113,9 +1113,9 @@
       }
     },
     "careCode": {
-      "welcome": "Witaj w OurTurn",
+      "welcome": "Witamy w OurTurn",
       "enterCode": "Wprowadź swój Kod Opieki",
-      "helperText": "Twój członek rodziny poda Ci ten kod.",
+      "helperText": "Członek Twojej rodziny poda Ci ten kod.",
       "connect": "Połącz",
       "invalidCode": "Sprawdź swój kod i spróbuj ponownie.",
       "connecting": "Łączenie...",
@@ -1142,13 +1142,13 @@
     }
   },
   "a11y": {
-    "doubleTapToComplete": "Dotknij dwukrotnie, aby oznaczyć jako wykonane",
+    "doubleTapToComplete": "Dwukrotnie dotknij, aby oznaczyć jako wykonane",
     "callContact": "Zadzwoń do {{name}}",
-    "emergencyCallConfirmHint": "Potwierdzenie pojawi się przed nawiązaniem połączenia",
+    "emergencyCallConfirmHint": "Przed połączeniem pojawi się potwierdzenie",
     "takeMeHomeHint": "Otwiera nawigację do Twojego adresu domowego",
     "gettingLocation": "Pobieranie Twojej lokalizacji",
     "removesVoiceRecording": "Usuwa Twoje nagranie głosowe",
-    "submittingCheckin": "Wysyłanie Twojego meldowania"
+    "submittingCheckin": "Wysyłanie Twojego meldunku"
   },
   "locationTracking": {
     "backgroundNotificationTitle": "OurTurn dba o Twoje bezpieczeństwo",
@@ -1156,6 +1156,6 @@
   },
   "notifications": {
     "taskReminder": "{{patientName}}, czas na: {{taskTitle}}",
-    "checkinPrompt": "Czas na Twoje codzienne meldowanie!"
+    "checkinPrompt": "Czas na Twój codzienny meldunek!"
   }
 }

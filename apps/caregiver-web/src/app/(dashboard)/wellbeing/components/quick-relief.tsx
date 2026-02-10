@@ -62,7 +62,9 @@ export function QuickRelief({ stress, energy, sleep, onExerciseComplete }: Quick
                   </span>
                 )}
                 <span className="text-2xl mb-2">{exercise.icon}</span>
-                <span className="text-sm font-semibold text-text-primary">{exercise.name}</span>
+                <span className="text-sm font-semibold text-text-primary">
+                  {t(`caregiverApp.toolkit.relief.exercises.${exercise.id}.name`, exercise.name)}
+                </span>
                 <span className="text-xs text-text-muted mt-1">
                   {t('caregiverApp.toolkit.relief.duration', { min: exercise.duration_minutes })}
                 </span>

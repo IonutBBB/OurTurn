@@ -19,13 +19,13 @@ import {
 } from '@ourturn/shared/utils/task-suggestion-validator';
 import type { TaskCategory } from '@ourturn/shared/types/care-plan';
 import { getLanguageInstruction } from '@/lib/ai-language';
-import { SUPPORTED_LANGUAGES } from '@ourturn/shared/constants/languages';
+import { SUPPORTED_LANGUAGES, LANGUAGE_CODES } from '@ourturn/shared/constants/languages';
 
 const log = createLogger('ai/suggest-tasks');
 
 const GOOGLE_AI_API_KEY = process.env.GOOGLE_AI_API_KEY;
 const GEMINI_API_URL =
-  'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent';
+  'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
 
 interface SuggestedTask {
   category: string;
@@ -58,6 +58,21 @@ export async function POST(request: NextRequest) {
 
     if (!householdId) {
       return NextResponse.json({ error: 'Household ID is required' }, { status: 400 });
+    }
+
+    // Input validation
+    if (typeof count !== 'number' || count < 1 || count > 20) {
+      return NextResponse.json(
+        { error: 'count must be a number between 1 and 20.' },
+        { status: 400 }
+      );
+    }
+
+    if (locale && !(LANGUAGE_CODES as readonly string[]).includes(locale)) {
+      return NextResponse.json(
+        { error: 'Unsupported locale.' },
+        { status: 400 }
+      );
     }
 
     // Rate limit: 10 suggestion requests per hour per household

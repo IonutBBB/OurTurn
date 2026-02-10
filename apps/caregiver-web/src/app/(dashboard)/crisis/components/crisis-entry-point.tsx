@@ -4,21 +4,30 @@ import { useTranslation } from 'react-i18next';
 import { getPrimaryEmergencyNumber } from '@ourturn/shared/constants/emergency-numbers';
 import type { BehaviourIncident } from '@ourturn/shared';
 import { PatternInsight } from './pattern-insight';
+import { QuickCrisisLogger } from './quick-crisis-logger';
 
 interface CrisisEntryPointProps {
   patientName: string;
   country: string;
   incidents: BehaviourIncident[];
+  householdId: string;
+  caregiverId: string;
+  patientId: string;
   onSelectWith: () => void;
   onSelectRemote: () => void;
+  onEventLogged: () => void;
 }
 
 export function CrisisEntryPoint({
   patientName,
   country,
   incidents,
+  householdId,
+  caregiverId,
+  patientId,
   onSelectWith,
   onSelectRemote,
+  onEventLogged,
 }: CrisisEntryPointProps) {
   const { t } = useTranslation();
   const emergencyNumber = getPrimaryEmergencyNumber(country);
@@ -78,7 +87,13 @@ export function CrisisEntryPoint({
         {t('caregiverApp.crisis.callEmergency')} — {emergencyNumber}
       </button>
 
-      {/* Pattern insight */}
+      {/* Quick log + Pattern insight */}
+      <QuickCrisisLogger
+        householdId={householdId}
+        caregiverId={caregiverId}
+        patientId={patientId}
+        onSaved={onEventLogged}
+      />
       <PatternInsight incidents={incidents} />
     </div>
   );

@@ -5,10 +5,42 @@ import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 import { SignJWT, jwtVerify } from 'https://deno.land/x/jose@v4.14.4/index.ts';
 
+const ALLOWED_ORIGIN = Deno.env.get('ALLOWED_ORIGIN') || '*';
+
 const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Origin': ALLOWED_ORIGIN,
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
+
+// Brute-force protection: in-memory IP attempt tracker
+const MAX_ATTEMPTS = 10;
+const WINDOW_MS = 15 * 60 * 1000; // 15 minutes
+const attemptMap = new Map<string, { count: number; firstAttempt: number }>();
+
+function checkBruteForce(ip: string): boolean {
+  const now = Date.now();
+  const record = attemptMap.get(ip);
+  if (!record || now - record.firstAttempt > WINDOW_MS) {
+    return true; // allowed
+  }
+  return record.count < MAX_ATTEMPTS;
+}
+
+function recordFailedAttempt(ip: string) {
+  const now = Date.now();
+  const record = attemptMap.get(ip);
+  if (!record || now - record.firstAttempt > WINDOW_MS) {
+    attemptMap.set(ip, { count: 1, firstAttempt: now });
+  } else {
+    record.count++;
+  }
+  // Cleanup old entries periodically (every 100 entries)
+  if (attemptMap.size > 100) {
+    for (const [key, val] of attemptMap) {
+      if (now - val.firstAttempt > WINDOW_MS) attemptMap.delete(key);
+    }
+  }
+}
 
 // JWT secret for signing patient tokens (use Supabase JWT secret)
 const JWT_SECRET = new TextEncoder().encode(
@@ -37,6 +69,21 @@ serve(async (req) => {
   }
 
   try {
+    // Brute-force rate limiting by IP
+    const clientIp = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+    if (!checkBruteForce(clientIp)) {
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: 'Too many attempts. Please try again later.',
+        } as ValidateResponse),
+        {
+          status: 429,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        }
+      );
+    }
+
     const supabase = createClient(
       Deno.env.get('SUPABASE_URL')!,
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
@@ -66,7 +113,7 @@ serve(async (req) => {
       .single();
 
     if (householdError || !household) {
-      console.log('Care code not found:', code);
+      recordFailedAttempt(clientIp);
       return new Response(
         JSON.stringify({
           success: false,

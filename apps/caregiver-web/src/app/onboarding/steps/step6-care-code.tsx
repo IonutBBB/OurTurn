@@ -35,7 +35,7 @@ export function Step6CareCode({ data }: Props) {
 
       <div>
         <h3 className="text-xl font-semibold font-display text-text-primary mb-2">
-          You&apos;re all set!
+          {t('caregiverApp.onboarding.allSet')}
         </h3>
         <p className="text-text-secondary">
           {t('caregiverApp.onboarding.careCodeInstructions')}
@@ -45,7 +45,7 @@ export function Step6CareCode({ data }: Props) {
       {/* Care Code display */}
       <div className="bg-brand-50 dark:bg-brand-900/30 border-2 border-brand-200 dark:border-brand-700 rounded-[20px] p-8">
         <p className="text-sm font-medium text-brand-700 dark:text-brand-300 mb-2 uppercase tracking-wide">
-          Care Code
+          {t('caregiverApp.onboarding.careCodeLabel')}
         </p>
         <p className="text-5xl font-mono font-bold text-brand-700 dark:text-brand-300 tracking-[0.2em]">
           {formattedCode}
@@ -61,7 +61,7 @@ export function Step6CareCode({ data }: Props) {
         {copied ? (
           <>
             <span className="text-status-success">✓</span>
-            <span className="text-status-success">Copied!</span>
+            <span className="text-status-success">{t('caregiverApp.onboarding.copied')}</span>
           </>
         ) : (
           <>
@@ -73,19 +73,19 @@ export function Step6CareCode({ data }: Props) {
 
       {/* Instructions */}
       <div className="text-left bg-surface-background rounded-2xl p-4 space-y-3">
-        <h4 className="font-medium font-display text-text-primary">Next steps:</h4>
+        <h4 className="font-medium font-display text-text-primary">{t('caregiverApp.onboarding.nextSteps')}</h4>
         <ol className="space-y-2 text-sm text-text-secondary">
           <li className="flex gap-2">
             <span className="font-semibold text-brand-600">1.</span>
-            Install OurTurn on {data.patientName}&apos;s phone (iOS or Android)
+            {t('caregiverApp.onboarding.nextStep1', { name: data.patientName })}
           </li>
           <li className="flex gap-2">
             <span className="font-semibold text-brand-600">2.</span>
-            Open the app and enter the Care Code above
+            {t('caregiverApp.onboarding.nextStep2')}
           </li>
           <li className="flex gap-2">
             <span className="font-semibold text-brand-600">3.</span>
-            That&apos;s it! {data.patientName}&apos;s daily plan will appear on their phone
+            {t('caregiverApp.onboarding.nextStep3', { name: data.patientName })}
           </li>
         </ol>
       </div>

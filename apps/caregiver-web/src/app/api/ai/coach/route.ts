@@ -13,6 +13,7 @@ import {
   BLOCKED_RESPONSE_FALLBACK,
 } from '@/lib/ai-safety';
 import { getLanguageInstruction } from '@/lib/ai-language';
+import { LANGUAGE_CODES } from '@ourturn/shared/constants/languages';
 
 const log = createLogger('ai/coach');
 
@@ -132,6 +133,7 @@ COMMUNICATION STYLE:
 - Short paragraphs (3-4 sentences max per paragraph)
 - Use simple language - avoid medical jargon
 - Be culturally sensitive
+- NEVER repeat yourself — each sentence must add new information. Do not restate what you already said in different words.
 
 SPECIAL RESPONSE FORMATS:
 When suggesting a care plan change, include this format in your response:
@@ -329,6 +331,28 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Input validation
+    if (typeof message !== 'string' || message.length > 5000) {
+      return NextResponse.json(
+        { error: 'Message must be a string of 5000 characters or fewer.' },
+        { status: 400 }
+      );
+    }
+
+    if (conversationContext && (typeof conversationContext !== 'string' || conversationContext.length > 2000)) {
+      return NextResponse.json(
+        { error: 'conversationContext must be 2000 characters or fewer.' },
+        { status: 400 }
+      );
+    }
+
+    if (locale && !(LANGUAGE_CODES as readonly string[]).includes(locale)) {
+      return NextResponse.json(
+        { error: 'Unsupported locale.' },
+        { status: 400 }
+      );
+    }
+
     // Rate limit: 20 messages per hour per household
     const rl = rateLimit(`ai-coach:${householdId}`, { limit: 20, windowSeconds: 3600 });
     if (!rl.allowed) {
@@ -426,61 +450,37 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Access denied' }, { status: 403 });
     }
 
-    // Get patient data
-    const { data: patient } = await supabase
-      .from('patients')
-      .select('*')
-      .eq('household_id', householdId)
-      .single();
-
-    // Get recent check-ins (last 7 days)
+    // Fetch all context data in parallel
     const sevenDaysAgo = new Date();
     sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
-    const { data: checkins } = await supabase
-      .from('daily_checkins')
-      .select('*')
-      .eq('household_id', householdId)
-      .gte('date', sevenDaysAgo.toISOString().split('T')[0])
-      .order('date', { ascending: false });
 
-    // Get care plan tasks
-    const { data: carePlan } = await supabase
-      .from('care_plan_tasks')
-      .select('*')
-      .eq('household_id', householdId)
-      .eq('active', true)
-      .order('time', { ascending: true });
+    const [
+      { data: patient },
+      { data: checkins },
+      { data: carePlan },
+      { data: journalEntries },
+      { data: weeklyInsight },
+      conversationResult,
+    ] = await Promise.all([
+      supabase.from('patients').select('*').eq('household_id', householdId).single(),
+      supabase.from('daily_checkins').select('*').eq('household_id', householdId)
+        .gte('date', sevenDaysAgo.toISOString().split('T')[0]).order('date', { ascending: false }),
+      supabase.from('care_plan_tasks').select('*').eq('household_id', householdId)
+        .eq('active', true).order('time', { ascending: true }),
+      supabase.from('care_journal_entries').select('*').eq('household_id', householdId)
+        .order('created_at', { ascending: false }).limit(5),
+      supabase.from('weekly_insights').select('*').eq('household_id', householdId)
+        .order('week_end', { ascending: false }).limit(1).single(),
+      conversationId
+        ? supabase.from('ai_conversations').select('*').eq('id', conversationId).single()
+        : Promise.resolve({ data: null }),
+    ]);
 
-    // Get recent journal entries
-    const { data: journalEntries } = await supabase
-      .from('care_journal_entries')
-      .select('*')
-      .eq('household_id', householdId)
-      .order('created_at', { ascending: false })
-      .limit(5);
-
-    // Get completion rates for enriched context
+    // Completion rates depend on carePlan result
     const completionRates = await getCompletionRates(supabase, householdId, carePlan || []);
 
-    // Get latest weekly insight
-    const { data: weeklyInsight } = await supabase
-      .from('weekly_insights')
-      .select('*')
-      .eq('household_id', householdId)
-      .order('week_end', { ascending: false })
-      .limit(1)
-      .single();
-
     // Get or create conversation
-    let conversation: any;
-    if (conversationId) {
-      const { data } = await supabase
-        .from('ai_conversations')
-        .select('*')
-        .eq('id', conversationId)
-        .single();
-      conversation = data;
-    }
+    let conversation: any = conversationResult.data;
 
     if (!conversation) {
       const { data, error: insertError } = await supabase
@@ -533,7 +533,7 @@ export async function POST(request: NextRequest) {
 
     // Initialize Gemini model
     const model = genAI.getGenerativeModel({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-2.5-flash',
       systemInstruction: systemPrompt,
     });
 
@@ -547,8 +547,10 @@ export async function POST(request: NextRequest) {
     const chat = model.startChat({
       history,
       generationConfig: {
-        maxOutputTokens: 1024,
+        maxOutputTokens: 4096,
         temperature: 0.7,
+        topP: 0.9,
+        topK: 40,
       },
     });
 
@@ -562,21 +564,16 @@ export async function POST(request: NextRequest) {
 
         try {
           for await (const chunk of result.stream) {
-            const chunkText = chunk.text();
-
-            // Guard against cumulative chunks: some Gemini SDK versions
-            // return all text so far instead of just the new delta.
-            // Detect by checking if the chunk starts with our accumulated text.
-            let delta: string;
-            if (fullResponse.length > 0 && chunkText.startsWith(fullResponse)) {
-              delta = chunkText.slice(fullResponse.length);
-              fullResponse = chunkText;
-            } else {
-              delta = chunkText;
-              fullResponse += delta;
-            }
+            // Extract delta text directly from candidate parts to avoid
+            // SDK cumulative-text bugs. Each streaming chunk should contain
+            // only the new content in its candidate parts.
+            const parts = chunk.candidates?.[0]?.content?.parts;
+            const delta = parts
+              ? parts.map((p: any) => p.text || '').join('')
+              : chunk.text();
 
             if (delta) {
+              fullResponse += delta;
               controller.enqueue(
                 new TextEncoder().encode(`data: ${JSON.stringify({ text: delta })}\n\n`)
               );

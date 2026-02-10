@@ -66,11 +66,11 @@ export default function OnboardingPage() {
 
   const STORAGE_KEY = 'ourturn_onboarding';
 
-  // Restore from localStorage on mount
+  // Restore from sessionStorage on mount
   const getInitialData = (): OnboardingData => {
     if (typeof window !== 'undefined') {
       try {
-        const saved = localStorage.getItem(STORAGE_KEY);
+        const saved = sessionStorage.getItem(STORAGE_KEY);
         if (saved) {
           const parsed = JSON.parse(saved);
           return { ...defaultData, ...parsed.data };
@@ -85,7 +85,7 @@ export default function OnboardingPage() {
   const getInitialStep = (): number => {
     if (typeof window !== 'undefined') {
       try {
-        const saved = localStorage.getItem(STORAGE_KEY);
+        const saved = sessionStorage.getItem(STORAGE_KEY);
         if (saved) {
           const parsed = JSON.parse(saved);
           return parsed.step || 1;
@@ -131,12 +131,12 @@ export default function OnboardingPage() {
 
   const [data, setData] = useState<OnboardingData>(getInitialData);
 
-  // Save to localStorage whenever data or step changes
+  // Save to sessionStorage whenever data or step changes (sensitive data cleared when tab closes)
   const updateData = (updates: Partial<OnboardingData>) => {
     setData((prev) => {
       const next = { ...prev, ...updates };
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({ data: next, step: currentStep }));
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ data: next, step: currentStep }));
       } catch {
         // Ignore storage errors
       }
@@ -214,11 +214,11 @@ export default function OnboardingPage() {
 
         // Create default tasks based on routine
         const defaultTasks = [
-          { time: data.wakeTime, category: 'health', title: 'Morning medication' },
-          { time: data.breakfastTime, category: 'nutrition', title: 'Breakfast' },
-          { time: data.lunchTime, category: 'nutrition', title: 'Lunch' },
-          { time: data.dinnerTime, category: 'nutrition', title: 'Dinner' },
-          { time: data.sleepTime, category: 'medication', title: 'Evening medication' },
+          { time: data.wakeTime, category: 'health', title: t('caregiverApp.onboarding.defaultTasks.morningMedication') },
+          { time: data.breakfastTime, category: 'nutrition', title: t('caregiverApp.onboarding.defaultTasks.breakfast') },
+          { time: data.lunchTime, category: 'nutrition', title: t('caregiverApp.onboarding.defaultTasks.lunch') },
+          { time: data.dinnerTime, category: 'nutrition', title: t('caregiverApp.onboarding.defaultTasks.dinner') },
+          { time: data.sleepTime, category: 'medication', title: t('caregiverApp.onboarding.defaultTasks.eveningMedication') },
         ];
 
         for (const task of defaultTasks) {
@@ -241,7 +241,7 @@ export default function OnboardingPage() {
         setCurrentStep(6);
       } catch (err: any) {
         const errorMessage = err?.message || err?.error_description || JSON.stringify(err);
-        setError(`Failed to create account: ${errorMessage}`);
+        setError(t('caregiverApp.onboarding.createAccountFailed', { error: errorMessage }));
       } finally {
         setLoading(false);
       }
@@ -251,7 +251,7 @@ export default function OnboardingPage() {
     setCurrentStep((prev) => {
       const next = Math.min(prev + 1, TOTAL_STEPS);
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({ data, step: next }));
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ data, step: next }));
       } catch { /* ignore */ }
       return next;
     });
@@ -261,7 +261,7 @@ export default function OnboardingPage() {
     setCurrentStep((prev) => {
       const next = Math.max(prev - 1, 1);
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({ data, step: next }));
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ data, step: next }));
       } catch { /* ignore */ }
       return next;
     });
@@ -270,7 +270,7 @@ export default function OnboardingPage() {
   const handleFinish = () => {
     // Clear saved onboarding data
     try {
-      localStorage.removeItem(STORAGE_KEY);
+      sessionStorage.removeItem(STORAGE_KEY);
     } catch { /* ignore */ }
     router.push('/dashboard');
     router.refresh();
@@ -315,7 +315,7 @@ export default function OnboardingPage() {
             <span className="text-white text-lg font-bold font-display">M</span>
           </div>
           <p className="text-text-muted">
-            Step {currentStep} of {TOTAL_STEPS}
+            {t('caregiverApp.onboarding.stepOf', { current: currentStep, total: TOTAL_STEPS })}
           </p>
         </div>
 

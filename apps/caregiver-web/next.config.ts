@@ -31,7 +31,10 @@ const nextConfig: NextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
+              // unsafe-inline: required by Next.js for inline scripts + Stripe.js
+              // unsafe-eval: required by Google Maps JavaScript SDK (Function constructor)
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com https://js.stripe.com",
+              // unsafe-inline: required for Tailwind's runtime style injection + Google Fonts
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "img-src 'self' data: blob: https://*.supabase.co https://maps.googleapis.com https://maps.gstatic.com",
               "font-src 'self' https://fonts.gstatic.com",

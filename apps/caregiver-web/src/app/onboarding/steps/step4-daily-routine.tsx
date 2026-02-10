@@ -14,7 +14,7 @@ export function Step4DailyRoutine({ data, updateData }: Props) {
   return (
     <div className="space-y-6">
       <p className="text-text-secondary text-sm mb-4">
-        We&apos;ll use this to create a suggested daily plan. You can customize it later.
+        {t('caregiverApp.onboarding.dailyRoutineIntro')}
       </p>
 
       <div className="grid grid-cols-2 gap-4">
@@ -102,7 +102,7 @@ export function Step4DailyRoutine({ data, updateData }: Props) {
           onChange={(e) => updateData({ typicalDay: e.target.value })}
           rows={4}
           className="input-warm w-full"
-          placeholder="Describe any routines, activities, or preferences that should be part of the daily plan..."
+          placeholder={t('caregiverApp.onboarding.typicalDayPlaceholder')}
         />
       </div>
     </div>

@@ -92,7 +92,7 @@ export default function ForgotPasswordPage() {
                   required
                   autoComplete="email"
                   className="input-warm w-full"
-                  placeholder="you@example.com"
+                  placeholder={t('caregiverApp.auth.emailPlaceholder')}
                 />
               </div>
 

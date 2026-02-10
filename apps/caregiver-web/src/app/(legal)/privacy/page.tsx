@@ -1,179 +1,169 @@
-import Link from 'next/link';
+'use client';
 
-export const metadata = {
-  title: 'Privacy Policy | OurTurn',
-  description: 'OurTurn privacy policy - how we collect, use, and protect your data.',
-};
+import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
 export default function PrivacyPolicyPage() {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen bg-surface-background">
       {/* Header */}
       <header className="bg-surface-card border-b border-surface-border">
         <div className="max-w-4xl mx-auto px-4 py-6">
           <Link href="/" className="text-2xl font-bold font-display text-brand-600">
-            OurTurn
+            {t('common.appName')}
           </Link>
         </div>
       </header>
 
       {/* Content */}
       <main className="max-w-4xl mx-auto px-4 py-12">
-        <h1 className="text-3xl font-bold font-display text-text-primary mb-2">Privacy Policy</h1>
-        <p className="text-text-muted mb-8">Last updated: February 2026</p>
+        <h1 className="text-3xl font-bold font-display text-text-primary mb-2">{t('caregiverApp.legal.privacy.title')}</h1>
+        <p className="text-text-muted mb-8">{t('caregiverApp.legal.privacy.lastUpdated')}</p>
 
         <div className="prose prose-gray max-w-none">
           <section className="mb-8">
-            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">1. Introduction</h2>
+            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">{t('caregiverApp.legal.privacy.s1Title')}</h2>
             <p className="text-text-secondary mb-4">
-              OurTurn (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy.
-              This Privacy Policy explains how we collect, use, disclose, and safeguard your
-              information when you use our mobile applications and web services (collectively,
-              the &quot;Service&quot;).
+              {t('caregiverApp.legal.privacy.s1p1')}
             </p>
             <p className="text-text-secondary mb-4">
-              OurTurn is a wellness and daily living support tool for families. It is NOT a
-              medical device and does not provide medical advice, diagnosis, or treatment.
+              {t('caregiverApp.legal.privacy.s1p2')}
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">2. Information We Collect</h2>
+            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">{t('caregiverApp.legal.privacy.s2Title')}</h2>
 
-            <h3 className="text-lg font-medium font-display text-text-primary mb-3">2.1 Information You Provide</h3>
+            <h3 className="text-lg font-medium font-display text-text-primary mb-3">{t('caregiverApp.legal.privacy.s2_1Title')}</h3>
             <ul className="list-disc pl-6 text-text-secondary mb-4 space-y-2">
-              <li><strong>Account Information:</strong> Email address, name, password (encrypted)</li>
-              <li><strong>Care Profile:</strong> Information about your loved one including name, date of birth, home address, emergency contacts, and biographical details you choose to share</li>
-              <li><strong>Care Plan Data:</strong> Daily tasks, schedules, and instructions you create</li>
-              <li><strong>Check-in Data:</strong> Mood ratings, sleep quality ratings, and voice notes</li>
-              <li><strong>Journal Entries:</strong> Notes and observations you record</li>
-              <li><strong>Voice Recordings:</strong> Audio recordings made through the app (transcribed and stored)</li>
+              <li><strong>{t('caregiverApp.legal.privacy.s2_1_account')}</strong></li>
+              <li><strong>{t('caregiverApp.legal.privacy.s2_1_careProfile')}</strong></li>
+              <li><strong>{t('caregiverApp.legal.privacy.s2_1_carePlan')}</strong></li>
+              <li><strong>{t('caregiverApp.legal.privacy.s2_1_checkin')}</strong></li>
+              <li><strong>{t('caregiverApp.legal.privacy.s2_1_journal')}</strong></li>
+              <li><strong>{t('caregiverApp.legal.privacy.s2_1_voice')}</strong></li>
             </ul>
 
-            <h3 className="text-lg font-medium font-display text-text-primary mb-3">2.2 Information Collected Automatically</h3>
+            <h3 className="text-lg font-medium font-display text-text-primary mb-3">{t('caregiverApp.legal.privacy.s2_2Title')}</h3>
             <ul className="list-disc pl-6 text-text-secondary mb-4 space-y-2">
-              <li><strong>Location Data:</strong> GPS location when using location features (with explicit consent)</li>
-              <li><strong>Device Information:</strong> Device type, operating system, app version</li>
-              <li><strong>Usage Data:</strong> Features used, timestamps, app interactions</li>
-              <li><strong>Push Notification Tokens:</strong> For delivering notifications to your devices</li>
+              <li><strong>{t('caregiverApp.legal.privacy.s2_2_location')}</strong></li>
+              <li><strong>{t('caregiverApp.legal.privacy.s2_2_device')}</strong></li>
+              <li><strong>{t('caregiverApp.legal.privacy.s2_2_usage')}</strong></li>
+              <li><strong>{t('caregiverApp.legal.privacy.s2_2_push')}</strong></li>
             </ul>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">3. How We Use Your Information</h2>
-            <p className="text-text-secondary mb-4">We use your information to:</p>
+            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">{t('caregiverApp.legal.privacy.s3Title')}</h2>
+            <p className="text-text-secondary mb-4">{t('caregiverApp.legal.privacy.s3Intro')}</p>
             <ul className="list-disc pl-6 text-text-secondary mb-4 space-y-2">
-              <li>Provide and maintain the Service</li>
-              <li>Sync data between family members in your care circle</li>
-              <li>Send task reminders and safety alerts</li>
-              <li>Generate AI-powered care suggestions (processed securely)</li>
-              <li>Improve our services and develop new features</li>
-              <li>Communicate with you about your account and updates</li>
-              <li>Ensure the security of our Service</li>
+              <li>{t('caregiverApp.legal.privacy.s3_provide')}</li>
+              <li>{t('caregiverApp.legal.privacy.s3_sync')}</li>
+              <li>{t('caregiverApp.legal.privacy.s3_reminders')}</li>
+              <li>{t('caregiverApp.legal.privacy.s3_ai')}</li>
+              <li>{t('caregiverApp.legal.privacy.s3_improve')}</li>
+              <li>{t('caregiverApp.legal.privacy.s3_communicate')}</li>
+              <li>{t('caregiverApp.legal.privacy.s3_security')}</li>
             </ul>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">4. Data Sharing and Disclosure</h2>
+            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">{t('caregiverApp.legal.privacy.s4Title')}</h2>
             <p className="text-text-secondary mb-4">
-              <strong>We do not sell your personal data.</strong> We may share information:
+              <strong>{t('caregiverApp.legal.privacy.s4Intro')}</strong>
             </p>
             <ul className="list-disc pl-6 text-text-secondary mb-4 space-y-2">
-              <li><strong>Within your Care Circle:</strong> Family members you invite can see shared care data</li>
-              <li><strong>Service Providers:</strong> We use trusted third parties for hosting (Supabase), email (Resend), AI processing (Google), and payments (Stripe, RevenueCat)</li>
-              <li><strong>Legal Requirements:</strong> When required by law or to protect rights and safety</li>
+              <li><strong>{t('caregiverApp.legal.privacy.s4_careCircle')}</strong></li>
+              <li><strong>{t('caregiverApp.legal.privacy.s4_providers')}</strong></li>
+              <li><strong>{t('caregiverApp.legal.privacy.s4_legal')}</strong></li>
             </ul>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">5. Data Storage and Security</h2>
+            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">{t('caregiverApp.legal.privacy.s5Title')}</h2>
             <ul className="list-disc pl-6 text-text-secondary mb-4 space-y-2">
-              <li>Data is stored on secure servers in the European Union (GDPR-compliant)</li>
-              <li>All data is encrypted at rest and in transit</li>
-              <li>We implement industry-standard security measures</li>
-              <li>Voice notes are stored with encryption</li>
-              <li>Location data is retained for 30 days, then automatically deleted</li>
+              <li>{t('caregiverApp.legal.privacy.s5_euStorage')}</li>
+              <li>{t('caregiverApp.legal.privacy.s5_encrypted')}</li>
+              <li>{t('caregiverApp.legal.privacy.s5_security')}</li>
+              <li>{t('caregiverApp.legal.privacy.s5_voiceEncrypted')}</li>
+              <li>{t('caregiverApp.legal.privacy.s5_locationRetention')}</li>
             </ul>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">6. Your Rights (GDPR)</h2>
-            <p className="text-text-secondary mb-4">You have the right to:</p>
+            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">{t('caregiverApp.legal.privacy.s6Title')}</h2>
+            <p className="text-text-secondary mb-4">{t('caregiverApp.legal.privacy.s6Intro')}</p>
             <ul className="list-disc pl-6 text-text-secondary mb-4 space-y-2">
-              <li><strong>Access:</strong> Request a copy of your personal data</li>
-              <li><strong>Rectification:</strong> Correct inaccurate or incomplete data</li>
-              <li><strong>Erasure:</strong> Request deletion of your data (&quot;right to be forgotten&quot;)</li>
-              <li><strong>Data Portability:</strong> Export your data in a machine-readable format</li>
-              <li><strong>Restriction:</strong> Limit how we process your data</li>
-              <li><strong>Objection:</strong> Object to certain types of processing</li>
-              <li><strong>Withdraw Consent:</strong> Withdraw consent at any time</li>
+              <li><strong>{t('caregiverApp.legal.privacy.s6_access')}</strong></li>
+              <li><strong>{t('caregiverApp.legal.privacy.s6_rectification')}</strong></li>
+              <li><strong>{t('caregiverApp.legal.privacy.s6_erasure')}</strong></li>
+              <li><strong>{t('caregiverApp.legal.privacy.s6_portability')}</strong></li>
+              <li><strong>{t('caregiverApp.legal.privacy.s6_restriction')}</strong></li>
+              <li><strong>{t('caregiverApp.legal.privacy.s6_objection')}</strong></li>
+              <li><strong>{t('caregiverApp.legal.privacy.s6_withdraw')}</strong></li>
             </ul>
             <p className="text-text-secondary mb-4">
-              To exercise these rights, go to Settings &gt; Privacy &amp; Data in the app, or contact us at privacy@ourturn.com.
+              {t('caregiverApp.legal.privacy.s6Contact')}
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">7. Location Data</h2>
+            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">{t('caregiverApp.legal.privacy.s7Title')}</h2>
             <p className="text-text-secondary mb-4">
-              Location tracking is optional and requires explicit consent. You can:
+              {t('caregiverApp.legal.privacy.s7Intro')}
             </p>
             <ul className="list-disc pl-6 text-text-secondary mb-4 space-y-2">
-              <li>Enable or disable location features at any time</li>
-              <li>Choose which family members can see location</li>
-              <li>Set up safe zones that trigger notifications</li>
+              <li>{t('caregiverApp.legal.privacy.s7_toggle')}</li>
+              <li>{t('caregiverApp.legal.privacy.s7_family')}</li>
+              <li>{t('caregiverApp.legal.privacy.s7_zones')}</li>
             </ul>
             <p className="text-text-secondary mb-4">
-              Location data older than 30 days is automatically deleted.
+              {t('caregiverApp.legal.privacy.s7Retention')}
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">8. Children&apos;s Privacy</h2>
+            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">{t('caregiverApp.legal.privacy.s8Title')}</h2>
             <p className="text-text-secondary mb-4">
-              OurTurn is not intended for children under 18. We do not knowingly collect
-              information from children. If you believe a child has provided us with personal
-              information, please contact us.
+              {t('caregiverApp.legal.privacy.s8p1')}
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">9. Data Retention</h2>
+            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">{t('caregiverApp.legal.privacy.s9Title')}</h2>
             <ul className="list-disc pl-6 text-text-secondary mb-4 space-y-2">
-              <li>Account data: Retained until you delete your account</li>
-              <li>Care plan data: Retained until you delete your account</li>
-              <li>Check-in history: Retained for 2 years or until account deletion</li>
-              <li>Location data: Automatically deleted after 30 days</li>
-              <li>Voice recordings: Retained until you delete them or your account</li>
+              <li>{t('caregiverApp.legal.privacy.s9_account')}</li>
+              <li>{t('caregiverApp.legal.privacy.s9_carePlan')}</li>
+              <li>{t('caregiverApp.legal.privacy.s9_checkin')}</li>
+              <li>{t('caregiverApp.legal.privacy.s9_location')}</li>
+              <li>{t('caregiverApp.legal.privacy.s9_voice')}</li>
             </ul>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">10. International Transfers</h2>
+            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">{t('caregiverApp.legal.privacy.s10Title')}</h2>
             <p className="text-text-secondary mb-4">
-              Your data is primarily stored in the EU. When we use service providers outside
-              the EU, we ensure appropriate safeguards are in place (Standard Contractual Clauses
-              or equivalent).
+              {t('caregiverApp.legal.privacy.s10p1')}
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">11. Changes to This Policy</h2>
+            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">{t('caregiverApp.legal.privacy.s11Title')}</h2>
             <p className="text-text-secondary mb-4">
-              We may update this Privacy Policy from time to time. We will notify you of
-              significant changes via email or in-app notification. Continued use of the
-              Service after changes constitutes acceptance of the updated policy.
+              {t('caregiverApp.legal.privacy.s11p1')}
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">12. Contact Us</h2>
+            <h2 className="text-xl font-semibold font-display text-text-primary mb-4">{t('caregiverApp.legal.privacy.s12Title')}</h2>
             <p className="text-text-secondary mb-4">
-              For privacy-related questions or to exercise your rights:
+              {t('caregiverApp.legal.privacy.s12Intro')}
             </p>
             <ul className="list-none text-text-secondary space-y-1">
-              <li>Email: privacy@ourturn.com</li>
-              <li>Address: Bucharest, Romania</li>
+              <li>{t('caregiverApp.legal.privacy.s12Email')}</li>
+              <li>{t('caregiverApp.legal.privacy.s12Address')}</li>
             </ul>
           </section>
         </div>
@@ -182,10 +172,10 @@ export default function PrivacyPolicyPage() {
         <div className="mt-12 pt-8 border-t border-surface-border">
           <div className="flex gap-6 text-sm text-text-muted">
             <Link href="/terms" className="hover:text-brand-600">
-              Terms of Service
+              {t('caregiverApp.legal.termsOfService')}
             </Link>
             <Link href="/" className="hover:text-brand-600">
-              Back to Home
+              {t('caregiverApp.legal.backToHome')}
             </Link>
           </div>
         </div>

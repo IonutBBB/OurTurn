@@ -24,7 +24,7 @@ export default async function ToolkitLayout({
       <div className="page-enter space-y-6">
         <div>
           <h1 className="heading-display text-2xl">
-            Caregiver <span className="heading-accent">Toolkit</span>
+            {t.toolkit.pageTitle}
           </h1>
           <p className="text-text-secondary text-sm mt-1">{t.toolkit.pageSubtitle}</p>
         </div>
@@ -55,7 +55,7 @@ export default async function ToolkitLayout({
     <div className="page-enter space-y-6">
       <div>
         <h1 className="heading-display text-2xl">
-          Caregiver <span className="heading-accent">Toolkit</span>
+          {t.toolkit.pageTitle}
         </h1>
         <p className="text-text-secondary text-sm mt-1">{t.toolkit.pageSubtitle}</p>
       </div>

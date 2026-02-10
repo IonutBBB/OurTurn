@@ -7,12 +7,13 @@ import { rateLimit } from '@/lib/rate-limit';
 import { createLogger } from '@/lib/logger';
 import { postProcess, logSafetyEvent, SafetyLevel } from '@/lib/ai-safety';
 import { getLanguageInstruction } from '@/lib/ai-language';
+import { LANGUAGE_CODES } from '@ourturn/shared/constants/languages';
 
 const log = createLogger('ai/toolkit-insights');
 
 const GOOGLE_AI_API_KEY = process.env.GOOGLE_AI_API_KEY;
 const GEMINI_API_URL =
-  'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent';
+  'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
 
 interface InsightCard {
   category: 'pattern' | 'correlation' | 'suggestion';
@@ -29,6 +30,10 @@ export async function POST(request: NextRequest) {
       const body = await request.json();
       locale = body?.locale;
     } catch { /* empty body is fine */ }
+
+    if (locale && !(LANGUAGE_CODES as readonly string[]).includes(locale)) {
+      return NextResponse.json({ error: 'Unsupported locale.' }, { status: 400 });
+    }
     const supabase = await createServerClient();
 
     const {

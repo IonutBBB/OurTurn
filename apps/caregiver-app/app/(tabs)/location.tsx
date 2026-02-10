@@ -316,15 +316,14 @@ export default function LocationScreen() {
   const MapPlaceholder = ({ region, children }: { region: any; children?: React.ReactNode }) => (
     <View style={[styles.map, styles.mapPlaceholder]}>
       <Text style={styles.mapPlaceholderIcon}>🗺️</Text>
-      <Text style={styles.mapPlaceholderTitle}>Map View</Text>
+      <Text style={styles.mapPlaceholderTitle}>{t('caregiverApp.location.mapView')}</Text>
       {region && (
         <Text style={styles.mapPlaceholderCoords}>
           {region.latitude.toFixed(4)}, {region.longitude.toFixed(4)}
         </Text>
       )}
       <Text style={styles.mapPlaceholderHint}>
-        Maps require a development build.{'\n'}
-        Use EAS Build to enable maps.
+        {t('caregiverApp.location.mapRequiresBuild')}
       </Text>
     </View>
   );
@@ -345,7 +344,7 @@ export default function LocationScreen() {
         <View style={styles.content}>
           <Text style={styles.title}>{t('caregiverApp.location.title')}</Text>
           <View style={styles.emptyCard}>
-            <Text style={styles.emptyText}>Please complete onboarding first.</Text>
+            <Text style={styles.emptyText}>{t('caregiverApp.location.completeOnboarding')}</Text>
           </View>
         </View>
       </SafeAreaView>
@@ -373,8 +372,7 @@ export default function LocationScreen() {
             <View style={styles.alertHeader}>
               <Text style={styles.alertIcon}>🚨</Text>
               <Text style={styles.alertTitle}>
-                {unacknowledgedAlerts.length} Unacknowledged Alert
-                {unacknowledgedAlerts.length > 1 ? 's' : ''}
+                {t(unacknowledgedAlerts.length > 1 ? 'caregiverApp.location.unacknowledgedAlertsPlural' : 'caregiverApp.location.unacknowledgedAlerts', { count: unacknowledgedAlerts.length })}
               </Text>
             </View>
             {unacknowledgedAlerts.slice(0, 2).map((alert) => (
@@ -396,7 +394,7 @@ export default function LocationScreen() {
                   onPress={() => handleAcknowledgeAlert(alert.id)}
                   style={styles.ackButton}
                 >
-                  <Text style={styles.ackButtonText}>Acknowledge</Text>
+                  <Text style={styles.ackButtonText}>{t('caregiverApp.location.acknowledge')}</Text>
                 </TouchableOpacity>
               </View>
             ))}
@@ -408,20 +406,20 @@ export default function LocationScreen() {
           <View style={styles.mapHeader}>
             <View>
               <Text style={styles.mapTitle}>
-                {patient?.name || 'Patient'}&apos;s Location
+                {t('caregiverApp.location.patientLocation', { name: patient?.name || t('caregiverApp.location.patient') })}
               </Text>
               {latestLocation ? (
                 <Text style={styles.mapSubtitle}>
-                  Updated: {formatDateTime(latestLocation.timestamp)}
+                  {t('caregiverApp.location.updated', { time: formatDateTime(latestLocation.timestamp) })}
                 </Text>
               ) : (
-                <Text style={styles.mapSubtitle}>No location data yet</Text>
+                <Text style={styles.mapSubtitle}>{t('caregiverApp.location.noLocationData')}</Text>
               )}
             </View>
             {latestLocation && (
               <View style={styles.liveIndicator}>
                 <View style={styles.liveDot} />
-                <Text style={styles.liveText}>Live</Text>
+                <Text style={styles.liveText}>{t('caregiverApp.location.live')}</Text>
               </View>
             )}
           </View>
@@ -441,7 +439,7 @@ export default function LocationScreen() {
                       latitude: latestLocation.latitude,
                       longitude: latestLocation.longitude,
                     }}
-                    title={`${patient?.name || 'Patient'}'s location`}
+                    title={t('caregiverApp.location.patientLocation', { name: patient?.name || t('caregiverApp.location.patient') })}
                     description={latestLocation.location_label}
                     pinColor={colors.brand600}
                   />
@@ -454,7 +452,7 @@ export default function LocationScreen() {
                       latitude: patient.home_latitude,
                       longitude: patient.home_longitude,
                     }}
-                    title="Home"
+                    title={t('caregiverApp.location.home')}
                   >
                     <View style={styles.homeMarker}>
                       <Text style={styles.homeMarkerEmoji}>🏠</Text>
@@ -486,18 +484,17 @@ export default function LocationScreen() {
         {/* Safe Zones */}
         <View style={styles.card}>
           <View style={styles.cardHeader}>
-            <Text style={styles.cardTitle}>Safe Zones</Text>
+            <Text style={styles.cardTitle}>{t('caregiverApp.location.safeZones')}</Text>
             <TouchableOpacity
               onPress={handleOpenAddModal}
               style={styles.addButton}
             >
-              <Text style={styles.addButtonText}>+ Add</Text>
+              <Text style={styles.addButtonText}>{t('caregiverApp.location.add')}</Text>
             </TouchableOpacity>
           </View>
           {safeZones.length === 0 ? (
             <Text style={styles.emptyZoneText}>
-              No safe zones configured yet.{'\n'}
-              Add zones to get alerts when {patient?.name || 'patient'} leaves.
+              {t('caregiverApp.location.noSafeZonesYet', { name: patient?.name || t('caregiverApp.location.patient') })}
             </Text>
           ) : (
             <View style={styles.zonesList}>
@@ -506,7 +503,7 @@ export default function LocationScreen() {
                   <View>
                     <Text style={styles.zoneName}>{zone.name}</Text>
                     <Text style={styles.zoneRadius}>
-                      {zone.radius_meters}m radius
+                      {t('caregiverApp.location.radiusMeters', { radius: zone.radius_meters })}
                     </Text>
                   </View>
                   <View style={styles.zoneActions}>
@@ -531,10 +528,10 @@ export default function LocationScreen() {
 
         {/* Recent Alerts */}
         <View style={styles.card}>
-          <Text style={styles.cardTitle}>Recent Alerts (24h)</Text>
+          <Text style={styles.cardTitle}>{t('caregiverApp.location.recentAlerts24h')}</Text>
           {recentAlerts.length === 0 ? (
             <Text style={styles.emptyAlertText}>
-              No alerts in the last 24 hours. All is well!
+              {t('caregiverApp.location.noRecentAlerts')}
             </Text>
           ) : (
             <View style={styles.alertsList}>
@@ -577,23 +574,23 @@ export default function LocationScreen() {
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>
-              {editingZone ? 'Edit Safe Zone' : 'Add Safe Zone'}
+              {editingZone ? t('caregiverApp.location.editSafeZone') : t('caregiverApp.location.addSafeZone')}
             </Text>
 
             <View style={styles.inputGroup}>
-              <Text style={styles.inputLabel}>Name</Text>
+              <Text style={styles.inputLabel}>{t('caregiverApp.location.name')}</Text>
               <TextInput
                 style={styles.input}
                 value={zoneName}
                 onChangeText={setZoneName}
-                placeholder="e.g., Home, Doctor's Office"
+                placeholder={t('caregiverApp.location.nameExample')}
                 placeholderTextColor={colors.textMuted}
               />
             </View>
 
             <View style={styles.inputRow}>
               <View style={styles.inputHalf}>
-                <Text style={styles.inputLabel}>Latitude</Text>
+                <Text style={styles.inputLabel}>{t('caregiverApp.location.latitude')}</Text>
                 <TextInput
                   style={styles.input}
                   value={zoneLatitude}
@@ -604,7 +601,7 @@ export default function LocationScreen() {
                 />
               </View>
               <View style={styles.inputHalf}>
-                <Text style={styles.inputLabel}>Longitude</Text>
+                <Text style={styles.inputLabel}>{t('caregiverApp.location.longitude')}</Text>
                 <TextInput
                   style={styles.input}
                   value={zoneLongitude}
@@ -617,7 +614,7 @@ export default function LocationScreen() {
             </View>
 
             <View style={styles.inputGroup}>
-              <Text style={styles.inputLabel}>Radius (meters)</Text>
+              <Text style={styles.inputLabel}>{t('caregiverApp.location.zoneRadius')}</Text>
               <TextInput
                 style={styles.input}
                 value={zoneRadius}
@@ -627,7 +624,7 @@ export default function LocationScreen() {
                 keyboardType="number-pad"
               />
               <Text style={styles.inputHint}>
-                Recommended: 100-500 meters for typical locations
+                {t('caregiverApp.location.radiusHint')}
               </Text>
             </View>
 
@@ -636,7 +633,7 @@ export default function LocationScreen() {
                 onPress={() => setIsModalOpen(false)}
                 style={styles.cancelButton}
               >
-                <Text style={styles.cancelButtonText}>Cancel</Text>
+                <Text style={styles.cancelButtonText}>{t('common.cancel')}</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={handleSaveSafeZone}
@@ -646,7 +643,7 @@ export default function LocationScreen() {
                 {isSaving ? (
                   <ActivityIndicator color={colors.textInverse} size="small" />
                 ) : (
-                  <Text style={styles.saveButtonText}>Save</Text>
+                  <Text style={styles.saveButtonText}>{t('common.save')}</Text>
                 )}
               </TouchableOpacity>
             </View>

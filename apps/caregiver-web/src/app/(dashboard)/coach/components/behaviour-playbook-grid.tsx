@@ -29,7 +29,7 @@ export function PlaybookGrid({ playbooks, onSelect }: PlaybookGridProps) {
           >
             <span className="text-2xl mb-2">{playbook.emoji}</span>
             <span className="text-sm font-semibold text-text-primary leading-tight">
-              {playbook.title}
+              {t(`caregiverApp.toolkit.behaviours.types.${playbook.behaviour_type}`, playbook.title)}
             </span>
           </button>
         ))}

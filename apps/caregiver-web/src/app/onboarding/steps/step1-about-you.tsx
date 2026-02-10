@@ -53,7 +53,7 @@ export function Step1AboutYou({ data, updateData }: Props) {
           onChange={(e) => updateData({ caregiverName: e.target.value })}
           required
           className="input-warm w-full"
-          placeholder="Your name"
+          placeholder={t('caregiverApp.onboarding.namePlaceholder')}
         />
       </div>
 
@@ -88,7 +88,7 @@ export function Step1AboutYou({ data, updateData }: Props) {
           required
           className="input-warm w-full"
         >
-          <option value="">Select country</option>
+          <option value="">{t('caregiverApp.onboarding.selectCountry')}</option>
           {countries.map((country) => (
             <option key={country.code} value={country.code}>
               {country.name}

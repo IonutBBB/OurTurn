@@ -14,7 +14,7 @@ export function Step3LifeStory({ data, updateData }: Props) {
   return (
     <div className="space-y-6">
       <p className="text-text-secondary text-sm mb-4">
-        This helps us personalize brain wellness activities and reminiscence prompts. All fields are optional.
+        {t('caregiverApp.onboarding.lifeStoryIntro')}
       </p>
 
       <div>
@@ -27,7 +27,7 @@ export function Step3LifeStory({ data, updateData }: Props) {
           value={data.childhoodLocation}
           onChange={(e) => updateData({ childhoodLocation: e.target.value })}
           className="input-warm w-full"
-          placeholder="City, country"
+          placeholder={t('caregiverApp.onboarding.childhoodLocationPlaceholder')}
         />
       </div>
 
@@ -41,7 +41,7 @@ export function Step3LifeStory({ data, updateData }: Props) {
           value={data.career}
           onChange={(e) => updateData({ career: e.target.value })}
           className="input-warm w-full"
-          placeholder="Teacher, nurse, engineer..."
+          placeholder={t('caregiverApp.onboarding.careerPlaceholder')}
         />
       </div>
 
@@ -55,7 +55,7 @@ export function Step3LifeStory({ data, updateData }: Props) {
           value={data.hobbies}
           onChange={(e) => updateData({ hobbies: e.target.value })}
           className="input-warm w-full"
-          placeholder="Gardening, reading, cooking..."
+          placeholder={t('caregiverApp.onboarding.hobbiesPlaceholder')}
         />
       </div>
 
@@ -69,7 +69,7 @@ export function Step3LifeStory({ data, updateData }: Props) {
           value={data.favoriteMusic}
           onChange={(e) => updateData({ favoriteMusic: e.target.value })}
           className="input-warm w-full"
-          placeholder="Frank Sinatra, classical, folk..."
+          placeholder={t('caregiverApp.onboarding.favoriteMusicPlaceholder')}
         />
       </div>
 
@@ -83,7 +83,7 @@ export function Step3LifeStory({ data, updateData }: Props) {
           value={data.favoriteFoods}
           onChange={(e) => updateData({ favoriteFoods: e.target.value })}
           className="input-warm w-full"
-          placeholder="Chocolate cake, pasta, soup..."
+          placeholder={t('caregiverApp.onboarding.favoriteFoodsPlaceholder')}
         />
       </div>
 
@@ -97,7 +97,7 @@ export function Step3LifeStory({ data, updateData }: Props) {
           onChange={(e) => updateData({ importantPeople: e.target.value })}
           rows={2}
           className="input-warm w-full"
-          placeholder="Spouse John, daughter Maria, best friend Anna..."
+          placeholder={t('caregiverApp.onboarding.importantPeoplePlaceholder')}
         />
       </div>
 
@@ -111,7 +111,7 @@ export function Step3LifeStory({ data, updateData }: Props) {
           onChange={(e) => updateData({ keyEvents: e.target.value })}
           rows={2}
           className="input-warm w-full"
-          placeholder="Wedding in 1970, moved to London in 1985..."
+          placeholder={t('caregiverApp.onboarding.keyEventsPlaceholder')}
         />
       </div>
     </div>
