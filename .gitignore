@@ -36,6 +36,12 @@ coverage/
 supabase/.temp/
 supabase/.branches/
 
+# Vercel
+.vercel/
+
+# Google Play service account keys
+google-services*.json
+
 # Misc
 *.log
 *.tsbuildinfo

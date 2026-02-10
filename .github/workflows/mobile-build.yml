@@ -1,0 +1,130 @@
+name: Mobile Build & Submit
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "apps/patient-app/**"
+      - "apps/caregiver-app/**"
+      - "packages/shared/**"
+      - "packages/supabase/**"
+  workflow_dispatch:
+    inputs:
+      app:
+        description: "App to build"
+        required: true
+        type: choice
+        options:
+          - patient-app
+          - caregiver-app
+          - both
+      platform:
+        description: "Platform"
+        required: true
+        type: choice
+        options:
+          - all
+          - ios
+          - android
+      profile:
+        description: "Build profile"
+        required: true
+        type: choice
+        options:
+          - production
+          - preview
+
+concurrency:
+  group: mobile-build
+  cancel-in-progress: false
+
+jobs:
+  detect-changes:
+    name: Detect changed apps
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    outputs:
+      patient: ${{ steps.changes.outputs.patient }}
+      caregiver: ${{ steps.changes.outputs.caregiver }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - id: changes
+        run: |
+          if git diff HEAD^ HEAD --quiet -- apps/patient-app/ packages/shared/ packages/supabase/ 2>/dev/null; then
+            echo "patient=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "patient=true" >> "$GITHUB_OUTPUT"
+          fi
+          if git diff HEAD^ HEAD --quiet -- apps/caregiver-app/ packages/shared/ packages/supabase/ 2>/dev/null; then
+            echo "caregiver=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "caregiver=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  build-patient:
+    name: Build patient-app
+    runs-on: ubuntu-latest
+    if: >
+      (github.event_name == 'push' && needs.detect-changes.outputs.patient == 'true') ||
+      (github.event_name == 'workflow_dispatch' && (inputs.app == 'patient-app' || inputs.app == 'both'))
+    needs: [detect-changes]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: apps/patient-app/package-lock.json
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+      - run: npm ci
+        working-directory: apps/patient-app
+      - name: Build
+        working-directory: apps/patient-app
+        run: |
+          PLATFORM="${{ inputs.platform || 'all' }}"
+          PROFILE="${{ inputs.profile || 'production' }}"
+          eas build --platform "$PLATFORM" --profile "$PROFILE" --non-interactive
+      - name: Submit
+        if: inputs.profile == 'production' || github.event_name == 'push'
+        working-directory: apps/patient-app
+        run: |
+          PLATFORM="${{ inputs.platform || 'all' }}"
+          eas submit --platform "$PLATFORM" --profile production --non-interactive --latest
+
+  build-caregiver:
+    name: Build caregiver-app
+    runs-on: ubuntu-latest
+    if: >
+      (github.event_name == 'push' && needs.detect-changes.outputs.caregiver == 'true') ||
+      (github.event_name == 'workflow_dispatch' && (inputs.app == 'caregiver-app' || inputs.app == 'both'))
+    needs: [detect-changes]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: apps/caregiver-app/package-lock.json
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+      - run: npm ci
+        working-directory: apps/caregiver-app
+      - name: Build
+        working-directory: apps/caregiver-app
+        run: |
+          PLATFORM="${{ inputs.platform || 'all' }}"
+          PROFILE="${{ inputs.profile || 'production' }}"
+          eas build --platform "$PLATFORM" --profile "$PROFILE" --non-interactive
+      - name: Submit
+        if: inputs.profile == 'production' || github.event_name == 'push'
+        working-directory: apps/caregiver-app
+        run: |
+          PLATFORM="${{ inputs.platform || 'all' }}"
+          eas submit --platform "$PLATFORM" --profile production --non-interactive --latest

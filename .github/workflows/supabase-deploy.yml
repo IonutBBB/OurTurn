@@ -1,0 +1,74 @@
+name: Deploy Supabase
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "supabase/migrations/**"
+      - "supabase/functions/**"
+
+concurrency:
+  group: supabase-deploy
+  cancel-in-progress: false
+
+jobs:
+  detect-changes:
+    name: Detect changes
+    runs-on: ubuntu-latest
+    outputs:
+      migrations: ${{ steps.changes.outputs.migrations }}
+      functions: ${{ steps.changes.outputs.functions }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - id: changes
+        run: |
+          if git diff HEAD^ HEAD --quiet -- supabase/migrations/ 2>/dev/null; then
+            echo "migrations=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "migrations=true" >> "$GITHUB_OUTPUT"
+          fi
+          if git diff HEAD^ HEAD --quiet -- supabase/functions/ 2>/dev/null; then
+            echo "functions=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "functions=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  deploy-migrations:
+    name: Deploy migrations
+    needs: detect-changes
+    if: needs.detect-changes.outputs.migrations == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - run: supabase link --project-ref ${{ secrets.SUPABASE_PROJECT_REF }}
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      - run: supabase db push
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+
+  deploy-functions:
+    name: Deploy Edge Functions
+    needs: [detect-changes, deploy-migrations]
+    if: always() && needs.detect-changes.outputs.functions == 'true' && needs.deploy-migrations.result != 'failure'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - run: supabase link --project-ref ${{ secrets.SUPABASE_PROJECT_REF }}
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      - run: supabase functions deploy --all
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      - name: Deploy validate-care-code without JWT verification
+        run: supabase functions deploy validate-care-code --no-verify-jwt
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
