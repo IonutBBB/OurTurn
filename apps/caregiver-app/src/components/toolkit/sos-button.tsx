@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   Modal,
 } from 'react-native';
-import { router } from 'expo-router';
+import { router, type Href } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import * as Haptics from 'expo-haptics';
 import { createThemedStyles, FONTS, RADIUS, SHADOWS } from '../../theme';
@@ -56,7 +56,7 @@ export function SosButton({ householdId }: SosButtonProps) {
     }
 
     if (option.route) {
-      router.push(option.route as any);
+      router.push(option.route as Href);
     }
   };
 

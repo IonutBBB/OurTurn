@@ -290,7 +290,7 @@ export default function OnboardingScreen() {
         style={styles.input}
         value={value}
         onChangeText={(v) => updateData({ [field]: v })}
-        placeholder="HH:MM"
+        placeholder={t('common.placeholders.timeFormat')}
         placeholderTextColor={colors.textMuted}
         keyboardType="numbers-and-punctuation"
       />
@@ -344,7 +344,7 @@ export default function OnboardingScreen() {
                 style={styles.input}
                 value={data.dateOfBirth}
                 onChangeText={(v) => updateData({ dateOfBirth: v })}
-                placeholder="YYYY-MM-DD"
+                placeholder={t('common.placeholders.dateFormat')}
                 placeholderTextColor={colors.textMuted}
               />
             </View>

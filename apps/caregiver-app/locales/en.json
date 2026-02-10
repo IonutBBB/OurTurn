@@ -25,7 +25,12 @@
     "unknown": "Unknown",
     "saving": "Saving...",
     "primary": "Primary",
-    "caregiver": "Caregiver"
+    "caregiver": "Caregiver",
+    "placeholders": {
+      "timeFormat": "HH:MM",
+      "dateFormat": "YYYY-MM-DD",
+      "deleteConfirmation": "DELETE"
+    }
   },
   "categories": {
     "medication": "Medication",
@@ -845,7 +850,9 @@
       "dailySchedule": "Daily Schedule",
       "dailyScheduleDesc": "Set wake and sleep times for your loved one's routine.",
       "wakeTime": "Wake Time",
+      "wakeTimePlaceholder": "07:00",
       "sleepTime": "Sleep Time",
+      "sleepTimePlaceholder": "21:00",
       "savingSchedule": "Saving...",
       "saveSchedule": "Save Schedule",
       "emergencyContacts": "Emergency Contacts",

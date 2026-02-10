@@ -1,5 +1,5 @@
 import { supabase } from '@ourturn/supabase';
-import type { Caregiver, Household, Patient } from '@ourturn/shared';
+import type { Caregiver, Household, Patient, PatientBiography } from '@ourturn/shared';
 
 export interface Message {
   role: 'user' | 'assistant';
@@ -92,9 +92,9 @@ function buildSystemPrompt(
 ABOUT THE PERSON YOU'RE HELPING CARE FOR:
 Name: ${patientName}
 ${patient?.biography ? `
-Interests: ${(patient.biography as any).hobbies || 'Not specified'}
-Career: ${(patient.biography as any).career || 'Not specified'}
-Favorite music: ${(patient.biography as any).favorite_music || 'Not specified'}
+Interests: ${(patient.biography as PatientBiography).hobbies?.join(', ') || 'Not specified'}
+Career: ${(patient.biography as PatientBiography).career || 'Not specified'}
+Favorite music: ${(patient.biography as PatientBiography).favorite_music?.join(', ') || 'Not specified'}
 ` : ''}
 
 ABOUT THE CAREGIVER:

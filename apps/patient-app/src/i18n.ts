@@ -17,7 +17,7 @@ const locales = getLocales();
 const deviceLanguage = locales[0]?.languageCode || 'en';
 
 // Determine initial language from device locale
-const initialLanguage = LANGUAGE_CODES.includes(deviceLanguage as any)
+const initialLanguage = (LANGUAGE_CODES as readonly string[]).includes(deviceLanguage)
   ? deviceLanguage
   : 'en';
 
@@ -86,13 +86,13 @@ export const initLanguageFromHousehold = async (householdLanguage?: string | nul
   try {
     // 1. Check for manual override
     const override = await AsyncStorage.getItem(LANGUAGE_STORAGE_KEY);
-    if (override && LANGUAGE_CODES.includes(override as any)) {
+    if (override && (LANGUAGE_CODES as readonly string[]).includes(override)) {
       await changeLanguage(override, false);
       return;
     }
 
     // 2. Use household language
-    if (householdLanguage && LANGUAGE_CODES.includes(householdLanguage as any)) {
+    if (householdLanguage && (LANGUAGE_CODES as readonly string[]).includes(householdLanguage)) {
       await changeLanguage(householdLanguage, false);
       return;
     }

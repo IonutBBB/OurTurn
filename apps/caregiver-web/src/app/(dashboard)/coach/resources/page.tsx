@@ -14,7 +14,7 @@ export default async function ResourcesPage() {
 
   if (!caregiver) return null;
 
-  const rawHouseholds = caregiver.households as any;
+  const rawHouseholds = caregiver.households as { country: string } | { country: string }[] | null;
   const household = Array.isArray(rawHouseholds) ? rawHouseholds[0] : rawHouseholds;
   const countryRaw: string | null = household?.country ?? null;
 

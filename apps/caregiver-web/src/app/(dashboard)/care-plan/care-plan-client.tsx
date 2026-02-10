@@ -1190,7 +1190,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
                       <div className="flex items-center gap-2">
                         <span className="text-text-primary">{task.title}</span>
                         {hasPhoto && (
-                          <span className="text-text-muted text-xs" title="Has photo">
+                          <span className="text-text-muted text-xs" title={t('carePlan.hasPhoto')}>
                             📷
                           </span>
                         )}

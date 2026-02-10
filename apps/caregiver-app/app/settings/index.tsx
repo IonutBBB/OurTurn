@@ -819,7 +819,7 @@ export default function SettingsScreen() {
                     style={styles.textInput}
                     value={dateOfBirth}
                     onChangeText={setDateOfBirth}
-                    placeholder="YYYY-MM-DD"
+                    placeholder={t('common.placeholders.dateFormat')}
                     placeholderTextColor={colors.textMuted}
                   />
                 </View>
@@ -972,7 +972,7 @@ export default function SettingsScreen() {
                       style={styles.textInput}
                       value={wakeTime}
                       onChangeText={setWakeTime}
-                      placeholder="07:00"
+                      placeholder={t('caregiverApp.settings.wakeTimePlaceholder')}
                       placeholderTextColor={colors.textMuted}
                     />
                   </View>
@@ -982,7 +982,7 @@ export default function SettingsScreen() {
                       style={styles.textInput}
                       value={sleepTime}
                       onChangeText={setSleepTime}
-                      placeholder="21:00"
+                      placeholder={t('caregiverApp.settings.sleepTimePlaceholder')}
                       placeholderTextColor={colors.textMuted}
                     />
                   </View>
@@ -1493,7 +1493,7 @@ export default function SettingsScreen() {
               style={styles.modalInput}
               value={deleteConfirmText}
               onChangeText={setDeleteConfirmText}
-              placeholder="DELETE"
+              placeholder={t('common.placeholders.deleteConfirmation')}
               placeholderTextColor={colors.textMuted}
               autoCapitalize="characters"
             />

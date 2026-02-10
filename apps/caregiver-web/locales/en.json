@@ -229,6 +229,7 @@
       "instructions": "Instructions",
       "actions": "Actions",
       "syncNote": "Changes sync instantly to {{name}}'s app",
+      "hasPhoto": "Has photo",
       "taskPhoto": "Task Photo (optional)",
       "uploadPhoto": "Upload Photo",
       "removePhoto": "Remove Photo",
@@ -424,7 +425,10 @@
       "viewAll": "View all entries",
       "deleteConfirmTitle": "Delete Journal Entry",
       "deleteConfirmMessage": "Are you sure you want to delete this journal entry? This cannot be undone.",
-      "edited": "(edited)"
+      "edited": "(edited)",
+      "copyToClipboard": "Copy to clipboard",
+      "canEditPlan": "Can edit care plan",
+      "receivesAlerts": "Receives alerts"
     },
     "toolkit": {
       "pageTitle": "Caregiver Toolkit",

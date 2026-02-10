@@ -80,7 +80,7 @@ export default async function FamilyPage({
   // Transform journal entries to include author name
   const transformedEntries = (journalEntries || []).map((entry) => ({
     ...entry,
-    author_name: (entry.caregivers as any)?.name || 'Unknown',
+    author_name: (entry.caregivers as { name: string } | null)?.name || 'Unknown',
     caregivers: undefined,
   }));
 

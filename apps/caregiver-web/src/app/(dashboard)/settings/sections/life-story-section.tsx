@@ -20,7 +20,7 @@ function parseImportantPeople(value: unknown): { name: string; relationship: str
   if (Array.isArray(value)) {
     return value.map((item) => {
       if (typeof item === 'object' && item !== null && 'name' in item) {
-        return { name: String(item.name), relationship: String((item as any).relationship || '') };
+        return { name: String(item.name), relationship: String((item as { name: unknown; relationship?: unknown }).relationship || '') };
       }
       return { name: String(item), relationship: '' };
     });
@@ -39,7 +39,7 @@ function parseKeyEvents(value: unknown): { description: string; year?: number }[
   if (Array.isArray(value)) {
     return value.map((item) => {
       if (typeof item === 'object' && item !== null && 'description' in item) {
-        return { description: String(item.description), year: (item as any).year };
+        return { description: String(item.description), year: (item as { description: unknown; year?: number }).year };
       }
       return { description: String(item) };
     });

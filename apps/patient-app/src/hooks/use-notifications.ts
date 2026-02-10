@@ -9,9 +9,13 @@ import {
 } from '../services/notifications';
 import type { CarePlanTask } from '@ourturn/shared';
 
+interface TaskWithCompletion extends CarePlanTask {
+  completion?: { completed: boolean };
+}
+
 interface UseNotificationsOptions {
   householdId?: string | null;
-  tasks?: CarePlanTask[];
+  tasks?: TaskWithCompletion[];
   patientName?: string;
 }
 
@@ -82,7 +86,7 @@ export function useNotifications({
     if (isInitialized && notificationState.permission === 'granted' && tasks.length > 0) {
       // Filter out completed tasks if completions are available
       const uncompletedTasks = tasks.filter(
-        (task) => !(task as any).completion?.completed
+        (task) => !task.completion?.completed
       );
       scheduleAllTaskReminders(uncompletedTasks, patientName);
     }
@@ -92,7 +96,7 @@ export function useNotifications({
   const refreshReminders = useCallback(async () => {
     if (notificationState.permission === 'granted' && tasks.length > 0) {
       const uncompletedTasks = tasks.filter(
-        (task) => !(task as any).completion?.completed
+        (task) => !task.completion?.completed
       );
       await scheduleAllTaskReminders(uncompletedTasks, patientName);
     }

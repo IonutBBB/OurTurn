@@ -18,7 +18,7 @@ const locales = getLocales();
 const deviceLanguage = locales[0]?.languageCode || 'en';
 
 // Determine initial language
-const initialLanguage = LANGUAGE_CODES.includes(deviceLanguage as any)
+const initialLanguage = (LANGUAGE_CODES as readonly string[]).includes(deviceLanguage)
   ? deviceLanguage
   : 'en';
 
@@ -98,7 +98,7 @@ export const changeLanguage = async (lang: string) => {
 export const initLanguageFromStorage = async () => {
   try {
     const stored = await AsyncStorage.getItem(LANGUAGE_STORAGE_KEY);
-    if (stored && LANGUAGE_CODES.includes(stored as any)) {
+    if (stored && (LANGUAGE_CODES as readonly string[]).includes(stored)) {
       await changeLanguage(stored);
     }
   } catch {

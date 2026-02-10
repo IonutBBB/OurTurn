@@ -116,9 +116,9 @@ export default function FamilyClient({
             if (data) {
               const entry = {
                 ...data,
-                author_name: (data.caregivers as any)?.name || 'Unknown',
+                author_name: (data.caregivers as { name: string } | null)?.name || 'Unknown',
               };
-              delete (entry as any).caregivers;
+              delete (entry as Record<string, unknown>).caregivers;
               setJournalEntries((prev) => {
                 if (prev.some((e) => e.id === entry.id)) return prev;
                 return [entry, ...prev];
@@ -167,9 +167,9 @@ export default function FamilyClient({
       if (data) {
         const entry = {
           ...data,
-          author_name: (data.caregivers as any)?.name || 'Unknown',
+          author_name: (data.caregivers as { name: string } | null)?.name || 'Unknown',
         };
-        delete (entry as any).caregivers;
+        delete (entry as Record<string, unknown>).caregivers;
         setJournalEntries((prev) => [entry, ...prev]);
       }
 
@@ -317,7 +317,7 @@ export default function FamilyClient({
                   <button
                     onClick={copyToClipboard}
                     className="p-2 text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300"
-                    title="Copy to clipboard"
+                    title={t('family.copyToClipboard')}
                   >
                     <svg
                       className="w-5 h-5"
@@ -374,10 +374,10 @@ export default function FamilyClient({
                   <div className="text-right">
                     <div className="flex items-center gap-2 text-xs text-text-muted">
                       {caregiver.permissions?.can_edit_plan && (
-                        <span title="Can edit care plan">📝</span>
+                        <span title={t('family.canEditPlan')}>📝</span>
                       )}
                       {caregiver.permissions?.receives_alerts && (
-                        <span title="Receives alerts">🔔</span>
+                        <span title={t('family.receivesAlerts')}>🔔</span>
                       )}
                     </div>
                   </div>

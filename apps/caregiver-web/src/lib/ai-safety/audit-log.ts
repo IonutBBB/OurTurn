@@ -7,6 +7,7 @@
  */
 
 import { createLogger } from '@/lib/logger';
+import type { SupabaseClient } from '@supabase/supabase-js';
 import type { SafetyLevel } from './classifier';
 
 const log = createLogger('ai-safety/audit');
@@ -30,9 +31,8 @@ export interface SafetyAuditEntry {
  * Log a safety event to the Supabase ai_safety_audit_log table.
  * Falls back to local logger if DB write fails.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function logSafetyEvent(
-  supabase: any,
+  supabase: SupabaseClient | null,
   entry: SafetyAuditEntry,
 ): Promise<void> {
   // Always log locally for immediate observability

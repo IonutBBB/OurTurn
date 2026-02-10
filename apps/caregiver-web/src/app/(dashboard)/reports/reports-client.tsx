@@ -101,7 +101,7 @@ export default function ReportsClient({
 
       (tasks || []).forEach(task => {
         const taskCompletions = (completions || []).filter(
-          c => (c.care_plan_tasks as any)?.category === task.category
+          c => (c.care_plan_tasks as { category: string; title: string } | null)?.category === task.category
         ).length;
         categoryCounts[task.category].total += daysInPeriod;
         categoryCounts[task.category].completed += taskCompletions;
@@ -115,7 +115,7 @@ export default function ReportsClient({
       // Medication adherence
       const medTasks = (tasks || []).filter(t => t.category === 'medication');
       const medCompletions = (completions || []).filter(
-        c => (c.care_plan_tasks as any)?.category === 'medication'
+        c => (c.care_plan_tasks as { category: string; title: string } | null)?.category === 'medication'
       ).length;
       const expectedMedCompletions = medTasks.length * daysInPeriod;
       const medAdherence = expectedMedCompletions > 0
