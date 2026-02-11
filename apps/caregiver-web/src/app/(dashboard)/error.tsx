@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function DashboardError({
   error,
@@ -9,6 +10,8 @@ export default function DashboardError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  const { t } = useTranslation();
+
   useEffect(() => {
     console.error('Dashboard error:', error);
   }, [error]);
@@ -17,16 +20,16 @@ export default function DashboardError({
     <div className="card-paper p-8 text-center my-8">
       <span className="text-4xl mb-4 block">⚠️</span>
       <h2 className="text-lg font-display font-bold text-text-primary mb-2">
-        Something went wrong
+        {t('common.somethingWentWrong')}
       </h2>
       <p className="text-sm text-text-muted mb-4">
-        {error.message || 'An unexpected error occurred loading this page.'}
+        {error.message || t('common.unexpectedErrorPage')}
       </p>
       <button
         onClick={reset}
         className="btn-primary px-4 py-2"
       >
-        Try again
+        {t('common.tryAgain')}
       </button>
     </div>
   );

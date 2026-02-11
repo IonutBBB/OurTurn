@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function OnboardingError({
   error,
@@ -9,6 +10,8 @@ export default function OnboardingError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  const { t } = useTranslation();
+
   useEffect(() => {
     if (process.env.NODE_ENV !== 'production') {
       console.error('Onboarding error:', error);
@@ -22,17 +25,17 @@ export default function OnboardingError({
           <span className="text-4xl">⚠️</span>
         </div>
         <h1 className="text-2xl font-bold font-display text-text-primary mb-3">
-          Something went wrong
+          {t('common.somethingWentWrong')}
         </h1>
         <p className="text-text-secondary mb-8">
-          An error occurred during onboarding. Your progress has been saved — please try again.
+          {t('common.onboardingError')}
         </p>
         <div className="flex gap-3 justify-center">
           <button onClick={reset} className="btn-primary">
-            Try again
+            {t('common.tryAgain')}
           </button>
           <a href="/dashboard" className="px-4 py-2 border border-surface-border rounded-2xl text-text-secondary hover:bg-brand-50 dark:hover:bg-surface-elevated transition-colors">
-            Go to Dashboard
+            {t('common.goToDashboard')}
           </a>
         </div>
       </div>

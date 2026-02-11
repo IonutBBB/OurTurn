@@ -43,7 +43,14 @@
     "unknown": "Unknown",
     "minutesAgo": "{{count}}m ago",
     "hoursAgo": "{{count}}h ago",
-    "daysAgo": "{{count}}d ago"
+    "daysAgo": "{{count}}d ago",
+    "pageNotFound": "Page not found",
+    "pageNotFoundDesc": "The page you\u2019re looking for doesn\u2019t exist or has been moved.",
+    "goToDashboard": "Go to Dashboard",
+    "home": "Home",
+    "onboardingError": "An error occurred during onboarding. Your progress has been saved \u2014 please try again.",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "categories": {
     "medication": "Medication",
@@ -1531,6 +1538,7 @@
       },
 
       "problem": {
+        "dailyReality": "The daily reality",
         "sectionTitle": "The challenge",
         "title": "Caring for a loved one shouldn\u2019t feel this hard",
         "item1Title": "Scattered routines",
@@ -1561,6 +1569,11 @@
       "featureHomeLongDesc": "One large, friendly button on your loved one\u2019s phone gives them step-by-step walking directions home. When they tap it, you receive an instant notification so you know they\u2019re on their way.",
       "featureFamilyLongDesc": "Invite siblings, partners, and other helpers to your Family Circle. Everyone shares a care journal, sees the daily plan, and gets coordinated updates \u2014 no more group chat confusion.",
       "featureWellbeingLongDesc": "You matter just as much. Track your own mood, set self-care reminders, and access curated wellbeing resources. OurTurn gently checks in with you and helps you find balance in your caregiving journey.",
+
+      "chatMockup": {
+        "userMessage": "What activity today?",
+        "aiResponse": "How about a photo album activity?"
+      },
 
       "twoApps": {
         "title": "Two apps. One family. Connected.",

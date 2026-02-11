@@ -43,7 +43,14 @@
     "unknown": "Unknown",
     "minutesAgo": "{{count}}m ago",
     "hoursAgo": "{{count}}h ago",
-    "daysAgo": "{{count}}d ago"
+    "daysAgo": "{{count}}d ago",
+    "pageNotFound": "Page not found",
+    "pageNotFoundDesc": "The page you\u2019re looking for doesn\u2019t exist or has been moved.",
+    "goToDashboard": "Go to Dashboard",
+    "home": "Home",
+    "onboardingError": "An error occurred during onboarding. Your progress has been saved \u2014 please try again.",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "categories": {
     "medication": "Medication",

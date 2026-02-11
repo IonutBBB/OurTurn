@@ -109,7 +109,7 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
           <div className="flex-1 min-w-0">
             <p className="text-sm font-semibold text-text-primary truncate">{userName}</p>
             <p className="text-xs text-text-muted truncate group-hover:text-brand-600 transition-colors">
-              Settings
+              {t('caregiverApp.nav.settings')}
             </p>
           </div>
           <svg
@@ -126,7 +126,7 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
           onClick={handleSignOut}
           className="w-full mt-1 px-3 py-1.5 text-xs text-status-danger hover:bg-status-danger-bg rounded-xl transition-colors text-left focus:outline-none focus:ring-2 focus:ring-status-danger focus:ring-offset-2"
         >
-          Sign out
+          {t('caregiverApp.settings.signOut')}
         </button>
       </div>
     </>
@@ -138,7 +138,7 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
       <button
         className="lg:hidden fixed top-4 left-4 z-[60] p-2 rounded-xl bg-surface-card border border-surface-border shadow-sm"
         onClick={() => setMobileOpen(!mobileOpen)}
-        aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+        aria-label={mobileOpen ? t('common.closeMenu') : t('common.openMenu')}
       >
         {mobileOpen ? (
           <svg className="w-6 h-6 text-text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">

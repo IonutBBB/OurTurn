@@ -31,7 +31,7 @@ export function ProblemSolution() {
           {/* Problems */}
           <div className="space-y-6">
             <h3 className="text-sm font-semibold uppercase tracking-widest text-text-muted mb-4">
-              The daily reality
+              {t('problem.dailyReality')}
             </h3>
             {PROBLEMS.map((item, i) => (
               <div key={i} className="flex gap-4 p-4 rounded-2xl bg-status-danger-bg/40 dark:bg-status-danger-bg/10">

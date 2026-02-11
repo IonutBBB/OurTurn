@@ -86,10 +86,10 @@ function FeatureMockup({ type, color }: { type: string; color: string }) {
         <div className={base}>
           <div className="space-y-3">
             <div className="chat-bubble-user text-xs max-w-[70%] ml-auto">
-              What activity today?
+              {t('chatMockup.userMessage')}
             </div>
             <div className="chat-bubble-assistant text-xs max-w-[80%]">
-              How about a photo album activity?
+              {t('chatMockup.aiResponse')}
             </div>
           </div>
         </div>
