@@ -1,5 +1,40 @@
 // AI types
 
+// AI Safety Audit Log
+export type SafetyLevel = 'green' | 'yellow' | 'orange' | 'red';
+
+export interface AISafetyAuditLog {
+  id: string;
+  created_at: string;
+  session_id: string;
+  user_id: string;
+  user_role: 'patient' | 'caregiver';
+  safety_level: SafetyLevel;
+  trigger_category: string | null;
+  ai_model_called: boolean;
+  response_approved: boolean;
+  post_process_violations: unknown[];
+  disclaimer_included: boolean;
+  professional_referral_included: boolean;
+  escalated_to_crisis: boolean;
+  response_time_ms: number;
+}
+
+export interface AISafetyAuditLogInsert {
+  session_id: string;
+  user_id: string;
+  user_role: 'patient' | 'caregiver';
+  safety_level: SafetyLevel;
+  trigger_category?: string;
+  ai_model_called?: boolean;
+  response_approved?: boolean;
+  post_process_violations?: unknown[];
+  disclaimer_included?: boolean;
+  professional_referral_included?: boolean;
+  escalated_to_crisis?: boolean;
+  response_time_ms?: number;
+}
+
 export type AIMessageRole = 'user' | 'assistant' | 'system';
 
 export type ConversationType = 'situation' | 'workflow' | 'topic' | 'open';

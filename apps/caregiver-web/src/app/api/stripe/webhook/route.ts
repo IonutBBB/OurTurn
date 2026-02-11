@@ -48,8 +48,8 @@ export async function POST(request: NextRequest) {
 
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
   if (!webhookSecret) {
-    log.error('STRIPE_WEBHOOK_SECRET not configured — ignoring webhook');
-    return NextResponse.json({ received: true });
+    log.error('STRIPE_WEBHOOK_SECRET not configured');
+    return NextResponse.json({ error: 'Webhook not configured' }, { status: 500 });
   }
 
   let event: Stripe.Event;

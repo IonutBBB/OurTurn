@@ -3,6 +3,9 @@
 import { useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Markdown from 'react-markdown';
+import { createLogger } from '@/lib/logger';
+
+const log = createLogger('coach/chat-messages');
 
 interface CarePlanSuggestion {
   action: 'add' | 'update';
@@ -36,7 +39,7 @@ export function parseAIResponse(content: string): {
     try {
       carePlanSuggestions.push(JSON.parse(match[1].trim()));
     } catch (e) {
-      console.warn('Failed to parse care plan suggestion:', e);
+      log.warn('Failed to parse care plan suggestion');
     }
   }
 
@@ -45,7 +48,7 @@ export function parseAIResponse(content: string): {
     try {
       doctorNotes.push(JSON.parse(match[1].trim()));
     } catch (e) {
-      console.warn('Failed to parse doctor note:', e);
+      log.warn('Failed to parse doctor note');
     }
   }
 

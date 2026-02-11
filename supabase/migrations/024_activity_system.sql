@@ -110,7 +110,7 @@ CREATE POLICY "caregiver_read_activity_sessions"
   ON activity_sessions FOR SELECT TO authenticated
   USING (
     household_id IN (
-      SELECT household_id FROM caregivers WHERE user_id = auth.uid()
+      SELECT household_id FROM caregivers WHERE id = auth.uid()
     )
   );
 
@@ -118,7 +118,7 @@ CREATE POLICY "caregiver_read_activity_difficulty"
   ON activity_difficulty FOR SELECT TO authenticated
   USING (
     household_id IN (
-      SELECT household_id FROM caregivers WHERE user_id = auth.uid()
+      SELECT household_id FROM caregivers WHERE id = auth.uid()
     )
   );
 
@@ -126,6 +126,6 @@ CREATE POLICY "caregiver_read_activity_content_cache"
   ON activity_content_cache FOR SELECT TO authenticated
   USING (
     household_id IN (
-      SELECT household_id FROM caregivers WHERE user_id = auth.uid()
+      SELECT household_id FROM caregivers WHERE id = auth.uid()
     )
   );

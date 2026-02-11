@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function Error({
   error,
@@ -9,6 +10,8 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  const { t } = useTranslation();
+
   useEffect(() => {
     if (process.env.NODE_ENV !== 'production') {
       console.error('App error:', error);
@@ -22,13 +25,13 @@ export default function Error({
           <span className="text-4xl">⚠️</span>
         </div>
         <h1 className="text-2xl font-bold font-display text-text-primary mb-3">
-          Something went wrong
+          {t('common.somethingWentWrong')}
         </h1>
         <p className="text-text-secondary mb-8">
-          An unexpected error occurred. Please try again or contact support if the problem persists.
+          {t('common.unexpectedError')}
         </p>
         <button onClick={reset} className="btn-primary">
-          Try again
+          {t('common.tryAgain')}
         </button>
       </div>
     </div>
