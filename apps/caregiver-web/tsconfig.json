@@ -36,5 +36,5 @@
     "../../packages/shared/**/*.ts",
     "../../packages/supabase/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "../../packages/shared/utils/locale-loader.ts"]
 }
