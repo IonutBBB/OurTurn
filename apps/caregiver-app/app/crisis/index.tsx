@@ -37,7 +37,7 @@ interface CrisisEntry {
 }
 
 const CRISIS_MODE_KEY = 'crisis-mode';
-const API_BASE_URL = process.env.EXPO_PUBLIC_WEB_URL || '';
+const API_BASE_URL = process.env.EXPO_PUBLIC_API_BASE_URL || '';
 
 export default function CrisisScreen() {
   const { t } = useTranslation();

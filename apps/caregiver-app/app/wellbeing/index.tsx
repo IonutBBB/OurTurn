@@ -26,7 +26,7 @@ import { DailyGoal } from '../../src/components/toolkit/daily-goal';
 import { WeeklyStats } from '../../src/components/toolkit/weekly-stats';
 import { SosButton } from '../../src/components/toolkit/sos-button';
 
-const API_BASE_URL = process.env.EXPO_PUBLIC_WEB_URL || '';
+const API_BASE_URL = process.env.EXPO_PUBLIC_API_BASE_URL || '';
 
 export default function ToolkitScreen() {
   const { t } = useTranslation();

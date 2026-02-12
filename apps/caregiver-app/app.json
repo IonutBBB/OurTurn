@@ -8,7 +8,13 @@
     "icon": "./assets/icon.png",
     "scheme": "ourturn-caregiver",
     "userInterfaceStyle": "light",
+    "owner": "EXPO_ACCOUNT_OWNER",
     "newArchEnabled": true,
+    "extra": {
+      "eas": {
+        "projectId": "EXPO_PROJECT_ID"
+      }
+    },
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",

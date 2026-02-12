@@ -1,0 +1,20 @@
+# Other apps (not needed for caregiver-app builds)
+../../apps/patient-app/
+../../apps/caregiver-web/
+
+# Documentation and scripts
+../../docs/
+../../scripts/
+
+# Supabase CLI directory (migrations not needed at build time)
+../../supabase/
+
+# Expo cache
+.expo/
+
+# Test files
+**/__tests__/
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
