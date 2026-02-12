@@ -42,14 +42,14 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
         <Link
           href="/dashboard"
           className="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2 rounded-lg"
-          aria-label="OurTurn - Go to dashboard"
+          aria-label="OurTurn Care - Go to dashboard"
           onClick={() => setMobileOpen(false)}
         >
           <div className="group-hover:scale-105 transition-transform">
             <Logo className="w-9 h-9 shadow-sm group-hover:shadow-md transition-shadow rounded-xl" />
           </div>
           <span className="text-lg font-display font-bold text-brand-700 dark:text-brand-600">
-            OurTurn
+            OurTurn Care
           </span>
         </Link>
       </div>

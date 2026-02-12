@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "OurTurn",
+    "appName": "OurTurn Care",
     "save": "Save",
     "cancel": "Cancel",
     "delete": "Delete",
@@ -688,7 +688,7 @@
       }
     },
     "careCode": {
-      "welcome": "Welcome to OurTurn",
+      "welcome": "Welcome to OurTurn Care",
       "enterCode": "Enter your Care Code",
       "helperText": "Your family member will give you this code.",
       "connect": "Connect",

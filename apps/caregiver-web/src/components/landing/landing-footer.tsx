@@ -14,7 +14,7 @@ export function LandingFooter() {
             <div className="flex items-center gap-2.5">
               <Logo className="w-8 h-8" />
               <span className="text-lg font-display font-bold text-brand-700 dark:text-brand-600">
-                OurTurn
+                OurTurn Care
               </span>
             </div>
             <p className="text-sm text-text-secondary leading-relaxed">

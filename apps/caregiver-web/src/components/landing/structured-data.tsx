@@ -8,17 +8,17 @@ export function StructuredData() {
   const organization = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'OurTurn',
+    name: 'OurTurn Care',
     url: baseUrl,
     logo: `${baseUrl}/icon-512.png`,
     description:
-      'OurTurn helps families organize daily routines, coordinate care, and stay connected.',
+      'OurTurn Care helps families organize daily routines, coordinate care, and stay connected.',
   };
 
   const webApp = {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
-    name: 'OurTurn',
+    name: 'OurTurn Care',
     url: baseUrl,
     applicationCategory: 'HealthApplication',
     operatingSystem: 'Web, iOS, Android',

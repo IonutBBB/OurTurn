@@ -24,8 +24,8 @@ export function sendEmergencySMS(options: EmergencySMSOptions): void {
     : '';
 
   const body = hasLocation
-    ? `SOS from OurTurn: ${name} needs help. Location: ${mapsLink}`
-    : `SOS from OurTurn: ${name} needs help. Location unavailable.`;
+    ? `SOS from OurTurn Care: ${name} needs help. Location: ${mapsLink}`
+    : `SOS from OurTurn Care: ${name} needs help. Location unavailable.`;
 
   // Try to send to first emergency contact, fallback to emergency number
   let phoneNumber = '';

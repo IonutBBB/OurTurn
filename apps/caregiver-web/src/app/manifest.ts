@@ -2,8 +2,8 @@ import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'OurTurn',
-    short_name: 'OurTurn',
+    name: 'OurTurn Care',
+    short_name: 'OurTurn Care',
     description: 'Daily care coordination for families living with dementia',
     start_url: '/',
     display: 'standalone',

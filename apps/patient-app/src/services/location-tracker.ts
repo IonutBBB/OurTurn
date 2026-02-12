@@ -76,7 +76,7 @@ export async function startLocationTracking(): Promise<void> {
     timeInterval: 300_000, // 5 minutes
     showsBackgroundLocationIndicator: true, // iOS blue bar
     foregroundService: {
-      notificationTitle: 'OurTurn is keeping you safe',
+      notificationTitle: 'OurTurn Care is keeping you safe',
       notificationBody: 'Your family can see you are okay',
       notificationColor: '#B85A2F',
     },

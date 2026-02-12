@@ -210,7 +210,7 @@ export async function GET(request: NextRequest) {
       weeklyInsights: insightsResult.data || [],
       metadata: {
         version: '1.0',
-        format: 'OurTurn GDPR Export',
+        format: 'OurTurn Care GDPR Export',
         dataRetentionNote:
           'Location data older than 30 days is automatically deleted per our privacy policy.',
       },

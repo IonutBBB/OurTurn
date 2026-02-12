@@ -9,6 +9,6 @@ test.describe('Navigation', () => {
   test('displays OurTurn branding on load', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
-    await expect(page.getByText('Welcome to OurTurn')).toBeVisible({ timeout: 15000 });
+    await expect(page.getByText('Welcome to OurTurn Care')).toBeVisible({ timeout: 15000 });
   });
 });

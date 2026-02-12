@@ -5,38 +5,31 @@ export function Logo({ className = "w-9 h-9" }: { className?: string }) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
-      aria-label="OurTurn logo"
+      aria-label="OurTurn Care logo"
     >
       {/* Cream background */}
       <circle cx="50" cy="50" r="50" fill="#FFF8F0" />
 
-      {/* Circular ring - two colored arcs */}
-
-      {/* Left half - terracotta */}
+      {/* Terracotta arc (upper-left) */}
       <path
-        d="M 50 25
-           A 25 25 0 1 0 50 75
-           A 25 25 0 1 0 50 25"
+        d="M 60 22 A 28 28 0 0 0 22 54"
         stroke="#D97757"
-        strokeWidth="8"
+        strokeWidth="10"
         strokeLinecap="round"
         fill="none"
-        strokeDasharray="78.5 78.5"
-        strokeDashoffset="0"
       />
 
-      {/* Right half - gold */}
+      {/* Gold arc (lower-right) */}
       <path
-        d="M 50 25
-           A 25 25 0 1 0 50 75
-           A 25 25 0 1 0 50 25"
+        d="M 40 78 A 28 28 0 0 0 78 46"
         stroke="#E8B86D"
-        strokeWidth="8"
+        strokeWidth="10"
         strokeLinecap="round"
         fill="none"
-        strokeDasharray="78.5 78.5"
-        strokeDashoffset="-78.5"
       />
+
+      {/* Center dot */}
+      <circle cx="50" cy="50" r="4" fill="#3D2615" />
     </svg>
   );
 }

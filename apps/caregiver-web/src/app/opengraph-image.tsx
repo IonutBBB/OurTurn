@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'OurTurn — Daily care for families living with dementia';
+export const alt = 'OurTurn Care — Daily care for families living with dementia';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -94,7 +94,7 @@ export default async function OGImage() {
             lineHeight: 1.1,
           }}
         >
-          OurTurn
+          OurTurn Care
         </div>
 
         {/* Tagline */}

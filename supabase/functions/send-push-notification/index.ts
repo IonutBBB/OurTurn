@@ -194,7 +194,7 @@ function buildNotificationContent(
 
     default:
       return {
-        title: 'OurTurn Alert',
+        title: 'OurTurn Care Alert',
         body: `An alert was triggered for ${patientName}.`,
       };
   }

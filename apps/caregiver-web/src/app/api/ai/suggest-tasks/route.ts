@@ -182,7 +182,7 @@ export async function POST(request: NextRequest) {
     })();
 
     // Build the evidence-based prompt
-    const prompt = `You are an evidence-based care task generator for the OurTurn daily care platform.
+    const prompt = `You are an evidence-based care task generator for the OurTurn Care daily care platform.
 ${targetLanguageName ? `\n**OUTPUT LANGUAGE: ${targetLanguageName.toUpperCase()}**\nYou MUST write ALL "title" and "hint_text" values in ${targetLanguageName}. This is mandatory — do NOT write them in English.\n` : ''}
 CRITICAL RULES:
 1. You must ONLY suggest tasks derived from the provided intervention library below. Never invent new interventions.

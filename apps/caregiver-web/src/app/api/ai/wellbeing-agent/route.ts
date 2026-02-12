@@ -34,7 +34,7 @@ function buildSystemPrompt(
   const stress = checkin.stress ?? 'unknown';
   const sleep = checkin.sleep ?? 'unknown';
 
-  return `You are the OurTurn Wellbeing Companion for ${caregiverName}, who is a family caregiver for someone living with dementia.
+  return `You are the OurTurn Care Wellbeing Companion for ${caregiverName}, who is a family caregiver for someone living with dementia.
 
 TODAY'S CHECK-IN:
 - Energy: ${energy}/5 (1=exhausted, 5=energized)

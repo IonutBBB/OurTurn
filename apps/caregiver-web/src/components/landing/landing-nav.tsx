@@ -38,7 +38,7 @@ export function LandingNav() {
           <Link href="/" className="flex items-center gap-2.5">
             <Logo className="w-9 h-9" />
             <span className="text-xl font-display font-bold text-brand-700 dark:text-brand-600">
-              OurTurn
+              OurTurn Care
             </span>
           </Link>
 

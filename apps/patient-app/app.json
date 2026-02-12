@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "OurTurn",
+    "name": "OurTurn Care",
     "slug": "ourturn-patient",
     "version": "1.0.0-beta.1",
     "sdkVersion": "54.0.0",
@@ -24,8 +24,8 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.ourturn.patient",
       "infoPlist": {
-        "NSLocationWhenInUseUsageDescription": "OurTurn needs your location to help you navigate home safely.",
-        "NSLocationAlwaysAndWhenInUseUsageDescription": "OurTurn uses your location in the background so your family knows you are safe.",
+        "NSLocationWhenInUseUsageDescription": "OurTurn Care needs your location to help you navigate home safely.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "OurTurn Care uses your location in the background so your family knows you are safe.",
         "UIBackgroundModes": [
           "remote-notification",
           "location"
@@ -63,8 +63,8 @@
       [
         "expo-location",
         {
-          "locationWhenInUsePermission": "OurTurn needs your location to help you navigate home safely.",
-          "locationAlwaysAndWhenInUsePermission": "OurTurn uses your location in the background so your family knows you are safe.",
+          "locationWhenInUsePermission": "OurTurn Care needs your location to help you navigate home safely.",
+          "locationAlwaysAndWhenInUsePermission": "OurTurn Care uses your location in the background so your family knows you are safe.",
           "isAndroidBackgroundLocationEnabled": true,
           "isAndroidForegroundServiceEnabled": true
         }
@@ -82,7 +82,7 @@
       [
         "expo-audio",
         {
-          "microphonePermission": "OurTurn needs your microphone to record voice notes for your daily check-in."
+          "microphonePermission": "OurTurn Care needs your microphone to record voice notes for your daily check-in."
         }
       ]
     ]

@@ -16,7 +16,7 @@ const corsHeaders = {
 
 const EXPO_PUSH_URL = 'https://exp.host/--/api/v2/push/send';
 const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
-const FROM_EMAIL = 'OurTurn <alerts@ourturn.app>';
+const FROM_EMAIL = 'OurTurn Care <alerts@ourturn.app>';
 
 interface AlertEscalation {
   id: string;
@@ -376,7 +376,7 @@ function buildEscalationEmail(
         </p>
         <hr style="border: none; border-top: 1px solid #E7E5E4; margin: 24px 0;">
         <p style="font-size: 12px; color: #A8A29E;">
-          This is an automated escalation alert from OurTurn.
+          This is an automated escalation alert from OurTurn Care.
           ${level === 1 ? ' You are receiving this because you are listed as an emergency contact.' : ''}
         </p>
       </div>
