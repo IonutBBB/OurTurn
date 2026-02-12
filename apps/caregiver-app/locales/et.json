@@ -24,7 +24,13 @@
     "you": "Sina",
     "unknown": "Teadmata",
     "saving": "Salvestan...",
-    "primary": "Peamine"
+    "primary": "Peamine",
+    "caregiver": "Hooldaja",
+    "placeholders": {
+      "timeFormat": "HH:MM",
+      "dateFormat": "YYYY-MM-DD",
+      "deleteConfirmation": "KUSTUTA"
+    }
   },
   "categories": {
     "medication": "Ravimid",
@@ -724,7 +730,14 @@
       "nextStep1": "1. Paigalda OurTurn {{name}} telefoni",
       "nextStep2": "2. Ava rakendus ja sisesta ülaltoodud hoolduskood",
       "nextStep3": "3. Valmis! {{name}} igapäevane plaan ilmub nende telefoni",
-      "homeAddressPlaceholder": "123 Peatänav, Linn"
+      "homeAddressPlaceholder": "123 Peatänav, Linn",
+      "defaultTasks": {
+        "morningMedication": "Hommikused ravimid",
+        "breakfast": "Hommikusöök",
+        "lunch": "Lõunasöök",
+        "dinner": "Õhtusöök",
+        "eveningMedication": "Õhtused ravimid"
+      }
     },
     "settings": {
       "title": "Seaded",
@@ -854,7 +867,9 @@
       "country": "Riik",
       "selectCountry": "Vali riik",
       "selectLanguage": "Vali keel",
-      "languageSaved": "Keel uuendatud"
+      "languageSaved": "Keel uuendatud",
+      "wakeTimePlaceholder": "07:00",
+      "sleepTimePlaceholder": "21:00"
     },
     "auth": {
       "login": "Logi sisse",

@@ -243,7 +243,8 @@
       "medItemLabel": "Medikament {{number}}",
       "removeMedication": "Entfernen",
       "maxMedications": "Maximal 3 Medikamente pro Gruppe",
-      "uploadingPhoto": "Wird hochgeladen..."
+      "uploadingPhoto": "Wird hochgeladen...",
+      "hasPhoto": "Hat Foto"
     },
     "location": {
       "title": "Standort & Sicherheit",
@@ -424,7 +425,10 @@
       "viewAll": "Alle Einträge anzeigen",
       "deleteConfirmTitle": "Tagebucheintrag löschen",
       "deleteConfirmMessage": "Sind Sie sicher, dass Sie diesen Tagebucheintrag löschen möchten? Dies kann nicht rückgängig gemacht werden.",
-      "edited": "(bearbeitet)"
+      "edited": "(bearbeitet)",
+      "copyToClipboard": "In die Zwischenablage kopieren",
+      "canEditPlan": "Kann den Pflegeplan bearbeiten",
+      "receivesAlerts": "Erhält Benachrichtigungen"
     },
     "toolkit": {
       "pageTitle": "Pflege-Toolkit",
@@ -1502,7 +1506,131 @@
       "trialNote": "14 Tage kostenlos. Keine Kreditkarte erforderlich.",
       "disclaimer": "OurTurn ist eine Wellness-App, kein medizinisches Gerät.",
       "privacy": "Datenschutz",
-      "terms": "Nutzungsbedingungen"
+      "terms": "Nutzungsbedingungen",
+      "nav": {
+        "howItWorks": "So funktioniert's",
+        "features": "Funktionen",
+        "pricing": "Preise",
+        "faq": "FAQ",
+        "menu": "Menü",
+        "close": "Schließen"
+      },
+      "stats": {
+        "familiesCount": "2.500+",
+        "familiesLabel": "Unterstützte Familien",
+        "tasksCount": "180.000+",
+        "tasksLabel": "Tägliche Aufgaben erledigt",
+        "countriesCount": "12",
+        "countriesLabel": "Länder",
+        "ratingCount": "4,9",
+        "ratingLabel": "App Store Bewertung"
+      },
+      "problem": {
+        "sectionTitle": "Die Herausforderung",
+        "title": "Die Pflege eines geliebten Menschen sollte sich nicht so schwer anfühlen",
+        "item1Title": "Verstreute Routinen",
+        "item1Desc": "Medikamentenzeiten, Mahlzeiten und Aktivitäten existieren in Ihrem Kopf, auf Notizzetteln oder gar nicht.",
+        "item2Title": "Ständige Sorge",
+        "item2Desc": "Wenn Sie nicht da sind, wissen Sie nicht, ob sie sicher sind, ob sie gegessen haben oder ob sie Hilfe brauchen.",
+        "item3Title": "Missverständnisse in der Familie",
+        "item3Desc": "Geschwister, Partner und Helfer sind sich über den Tagesplan uneinig.",
+        "item4Title": "Pflegende Erschöpfung",
+        "item4Desc": "Sie jonglieren mit allem und vergessen, auf sich selbst zu achten."
+      },
+      "solution": {
+        "title": "OurTurn bringt alles zusammen",
+        "item1Title": "Ein klarer Tagesplan",
+        "item1Desc": "Jede Aufgabe, Erinnerung und Aktivität in einer einfachen Zeitleiste, der Ihr geliebter Mensch folgen kann.",
+        "item2Title": "Sorgenfreiheit, überall",
+        "item2Desc": "Echtzeit-Updates, Standortfreigabe und sanfte Benachrichtigungen, damit Sie wissen, dass es ihnen gut geht.",
+        "item3Title": "Alle auf dem gleichen Stand",
+        "item3Desc": "Gemeinsames Pflegetagebuch, koordinierte Zeitpläne und Familien-Updates an einem Ort.",
+        "item4Title": "Auch Unterstützung für Sie",
+        "item4Desc": "Stimmungsverfolgung, Erinnerungen zur Selbstfürsorge und ein KI-Coach, der versteht, was Sie durchmachen."
+      },
+      "featureCarePlanLongDesc": "Erstellen Sie einen personalisierten Tagesplan mit Medikamentenerinnerungen, Mahlzeiten, Aktivitäten und Terminen. Ihr geliebter Mensch sieht eine ruhige, einfache Zeitleiste auf seinem eigenen Gerät – und hakt Aufgaben mit einem einzigen Tippen ab. Sie sehen den Fortschritt in Echtzeit von überall aus.",
+      "featureLocationLongDesc": "Sehen Sie auf einer Live-Karte, wo sich Ihr geliebter Mensch befindet. Richten Sie sichere Zonen rund um das Zuhause, die örtlichen Geschäfte oder das Haus eines Freundes ein. Wenn sie eine sichere Zone verlassen, erhalten Sie eine sanfte Benachrichtigung – keine Panik, nur Information.",
+      "featureCoachLongDesc": "Stellen Sie Fragen, erhalten Sie Ideen für Aktivitäten und personalisierte Vorschläge zur täglichen Pflege. Ihr KI-Coach lernt die Routine Ihrer Familie kennen und bietet unterstützende Anleitung – wie ein sachkundiger Freund, der rund um die Uhr verfügbar ist.",
+      "featureHomeLongDesc": "Ein großer, freundlicher Knopf auf dem Telefon Ihres geliebten Menschen gibt ihm Schritt-für-Schritt-Wegbeschreibungen nach Hause. Wenn sie darauf tippen, erhalten Sie eine sofortige Benachrichtigung, damit Sie wissen, dass sie unterwegs sind.",
+      "featureFamilyLongDesc": "Laden Sie Geschwister, Partner und andere Helfer in Ihren Familienkreis ein. Alle teilen sich ein Pflegetagebuch, sehen den Tagesplan und erhalten koordinierte Updates – keine Verwirrung mehr im Gruppenchat.",
+      "featureWellbeingLongDesc": "Sie sind genauso wichtig. Verfolgen Sie Ihre eigene Stimmung, stellen Sie Erinnerungen zur Selbstfürsorge ein und greifen Sie auf kuratierte Wohlfühlressourcen zu. OurTurn fragt sanft nach Ihnen und hilft Ihnen, das Gleichgewicht in Ihrer Pflegereise zu finden.",
+      "twoApps": {
+        "title": "Zwei Apps. Eine Familie. Verbunden.",
+        "subtitle": "Ein ruhiges, einfaches Erlebnis für Ihren geliebten Menschen. Eine leistungsstarke Kommandozentrale für Sie.",
+        "patientLabel": "Für Ihren geliebten Menschen",
+        "patientDesc": "Großer Text, einfache Aufgaben, Ein-Tipp-Erledigung. Entwickelt für Klarheit und Ruhe.",
+        "caregiverLabel": "Für Sie, die pflegende Person",
+        "caregiverDesc": "Vollständiges Dashboard, KI-Coaching, Standortverfolgung, Familienkoordination – alles an einem Ort."
+      },
+      "testimonials": {
+        "title": "Familien wie Ihre",
+        "subtitle": "Hören Sie von Pflegenden, die einen besseren Weg gefunden haben, den Alltag zu bewältigen.",
+        "quote1": "OurTurn hat uns unsere Abende zurückgegeben. Mama folgt ihrem Tagesplan, und ich kann endlich entspannen, weil ich weiß, dass es ihr gut geht.",
+        "name1": "Sarah M.",
+        "relation1": "Pflegt ihre Mutter",
+        "quote2": "Der KI-Coach ist wie ein Freund, der wirklich versteht. Er hat mir geholfen, Aktivitäten zu finden, die Papa wirklich genießt.",
+        "name2": "James K.",
+        "relation2": "Pflegt seinen Vater",
+        "quote3": "Meine Schwester und ich haben uns früher über Papas Pflege gestritten. Jetzt sind wir beide in der App, auf dem gleichen Stand und arbeiten zusammen.",
+        "name3": "Priya R.",
+        "relation3": "Pflegt ihren Vater mit ihrer Schwester"
+      },
+      "pricing": {
+        "title": "Einfache, ehrliche Preise",
+        "subtitle": "Kostenlos starten. Upgraden, wenn Sie bereit sind.",
+        "freeTitle": "Kostenlos",
+        "freePrice": "0 €",
+        "freePriceNote": "für immer",
+        "plusTitle": "OurTurn Plus",
+        "plusPrice": "9,99 €",
+        "plusPriceNote": "pro Monat",
+        "plusBadge": "Empfohlen",
+        "trialNotice": "14 Tage kostenlos. Keine Kreditkarte erforderlich.",
+        "freeFeat1": "Täglicher Pflegeplan (bis zu 5 Aufgaben)",
+        "freeFeat2": "Grundlegende Check-ins",
+        "freeFeat3": "1 Familienmitglied",
+        "freeFeat4": "„Nach Hause bringen“-Knopf",
+        "plusFeat1": "Unbegrenzte tägliche Aufgaben",
+        "plusFeat2": "KI-Pflege-Coach",
+        "plusFeat3": "Standortverfolgung & sichere Zonen",
+        "plusFeat4": "Unbegrenzter Familienkreis",
+        "plusFeat5": "Tools für das Wohlbefinden der pflegenden Person",
+        "plusFeat6": "Berichte über Arztbesuche",
+        "plusFeat7": "Priorisierter Support"
+      },
+      "faq": {
+        "title": "Fragen & Antworten",
+        "subtitle": "Alles, was Sie wissen müssen, bevor Sie starten.",
+        "q1": "Was ist OurTurn?",
+        "a1": "OurTurn ist eine App zur Familienpflegekoordination, die Ihnen hilft, tägliche Routinen für einen geliebten Menschen mit Demenz zu organisieren. Sie umfasst zwei verbundene Apps – eine einfache für Ihren geliebten Menschen und eine leistungsstarke für Sie.",
+        "q2": "Ist OurTurn eine medizinische App?",
+        "a2": "Nein. OurTurn ist eine App zur Unterstützung des Wohlbefindens und des täglichen Lebens. Sie hilft Familien, Routinen zu organisieren und in Verbindung zu bleiben, ist aber kein medizinisches Gerät und diagnostiziert, behandelt oder überwacht keine Erkrankungen. Konsultieren Sie bei medizinischen Anliegen immer Ihren Arzt oder Ihre Ärztin.",
+        "q3": "Wie funktioniert der Pflege-Code?",
+        "a3": "Wenn Sie Ihr Konto erstellen, generiert OurTurn einen einzigartigen 6-stelligen Pflege-Code. Ihr geliebter Mensch gibt diesen Code einmal auf seinem Gerät ein – keine Passwörter, keine Konten, keine Verwirrung. Die beiden Apps bleiben automatisch verbunden.",
+        "q4": "Muss mein geliebter Mensch ein Konto erstellen?",
+        "a4": "Nein. Ihr geliebter Mensch gibt den Pflege-Code nur einmal ein. Es gibt keine Registrierung, keine E-Mail, kein Passwort, das man sich merken müsste. Die App ist so einfach wie möglich gestaltet.",
+        "q5": "Können andere Familienmitglieder beitreten?",
+        "a5": "Ja! Mit OurTurn Plus können Sie unbegrenzt viele Familienmitglieder zu Ihrem Familienkreis einladen. Jeder kann den Tagesplan einsehen, Notizen im Tagebuch teilen und Updates erhalten.",
+        "q6": "Wie funktioniert die Standortfreigabe?",
+        "a6": "Mit Zustimmung Ihres geliebten Menschen nutzt OurTurn den Standort seines Telefons, um Ihnen auf einer Karte anzuzeigen, wo er sich befindet. Sie können sichere Zonen einrichten und erhalten sanfte Benachrichtigungen, wenn er einen bekannten Bereich verlässt.",
+        "q7": "Was ist der KI-Pflege-Coach?",
+        "a7": "Der KI-Pflege-Coach ist ein unterstützender Chat-Assistent, der Ihnen bei Ideen zur täglichen Pflege, Aktivitätsvorschlägen und allgemeiner Orientierung hilft. Es ist, als hätten Sie jederzeit einen sachkundigen Freund zur Verfügung – aber er ist kein Arzt und ermutigt Sie immer, bei medizinischen Fragen Fachkräfte im Gesundheitswesen zu konsultieren.",
+        "q8": "Sind die Daten meiner Familie sicher?",
+        "a8": "Ja. Wir nehmen den Datenschutz sehr ernst. Ihre Daten werden verschlüsselt, sicher gespeichert und niemals an Dritte verkauft. Sie können Ihre Daten jederzeit von der Einstellungsseite exportieren oder löschen. Unsere Datenschutzrichtlinie enthält weitere Details.",
+        "q9": "Kann ich OurTurn ausprobieren, bevor ich bezahle?",
+        "a9": "Absolut. OurTurn Plus beinhaltet eine kostenlose 14-tägige Testphase – keine Kreditkarte erforderlich. Der kostenlose Plan ist auch dauerhaft mit Kernfunktionen verfügbar.",
+        "q10": "Auf welchen Geräten funktioniert OurTurn?",
+        "a10": "Die Betreuer-App funktioniert in Webbrowsern, auf iPhones und Android-Telefonen. Die App für Ihren geliebten Menschen funktioniert auf iPhones und Android-Telefonen."
+      },
+      "footer": {
+        "product": "Produkt",
+        "company": "Unternehmen",
+        "connect": "Verbinden",
+        "tagline": "Tägliche Unterstützung für Familien, die mit Demenz leben.",
+        "copyright": "© 2025 OurTurn. Alle Rechte vorbehalten.",
+        "disclaimer": "OurTurn ist ein Tool zur Koordination der Familienpflege. Es ist kein medizinisches Gerät und ist nicht dazu bestimmt, Krankheiten zu diagnostizieren, zu behandeln, zu heilen oder zu verhindern.",
+        "madeWith": "Mit Fürsorge gemacht für Betreuende überall."
+      }
     }
   },
   "notifications": {

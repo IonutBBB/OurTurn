@@ -24,7 +24,13 @@
     "you": "Vous",
     "unknown": "Inconnu",
     "saving": "Enregistrement...",
-    "primary": "Principal"
+    "primary": "Principal",
+    "caregiver": "Aidant",
+    "placeholders": {
+      "timeFormat": "HH:MM",
+      "dateFormat": "YYYY-MM-DD",
+      "deleteConfirmation": "SUPPRIMER"
+    }
   },
   "categories": {
     "medication": "Médicaments",
@@ -724,7 +730,14 @@
       "nextStep1": "1. Installez OurTurn sur le téléphone de {{name}}",
       "nextStep2": "2. Ouvrez l'application et entrez le code de soin ci-dessus",
       "nextStep3": "3. C'est tout ! Le plan quotidien de {{name}} apparaîtra sur son téléphone",
-      "homeAddressPlaceholder": "123 Rue Principale, Ville"
+      "homeAddressPlaceholder": "123 Rue Principale, Ville",
+      "defaultTasks": {
+        "morningMedication": "Médicaments du matin",
+        "breakfast": "Petit-déjeuner",
+        "lunch": "Déjeuner",
+        "dinner": "Dîner",
+        "eveningMedication": "Médicaments du soir"
+      }
     },
     "settings": {
       "title": "Réglages",
@@ -854,7 +867,9 @@
       "country": "Pays",
       "selectCountry": "Sélectionner le pays",
       "selectLanguage": "Sélectionner la langue",
-      "languageSaved": "Langue mise à jour"
+      "languageSaved": "Langue mise à jour",
+      "wakeTimePlaceholder": "07:00",
+      "sleepTimePlaceholder": "21:00"
     },
     "auth": {
       "login": "Se connecter",

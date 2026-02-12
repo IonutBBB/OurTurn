@@ -27,6 +27,38 @@ export const SUPPORTED_LANGUAGES = [
   { code: 'mt', name: 'Maltese', nativeName: 'Malti' },
 ] as const;
 
+// The 27 actual EU member states (ISO 3166-1 alpha-2)
+// Used for DMA-compliant payment routing (Stripe in EU, RevenueCat elsewhere)
+export const EU_MEMBER_CODES = new Set([
+  'AT', // Austria
+  'BE', // Belgium
+  'BG', // Bulgaria
+  'HR', // Croatia
+  'CY', // Cyprus
+  'CZ', // Czech Republic
+  'DK', // Denmark
+  'EE', // Estonia
+  'FI', // Finland
+  'FR', // France
+  'DE', // Germany
+  'GR', // Greece
+  'HU', // Hungary
+  'IE', // Ireland
+  'IT', // Italy
+  'LV', // Latvia
+  'LT', // Lithuania
+  'LU', // Luxembourg
+  'MT', // Malta
+  'NL', // Netherlands
+  'PL', // Poland
+  'PT', // Portugal
+  'RO', // Romania
+  'SK', // Slovakia
+  'SI', // Slovenia
+  'ES', // Spain
+  'SE', // Sweden
+]);
+
 export const LANGUAGE_CODES = SUPPORTED_LANGUAGES.map(l => l.code);
 export type LanguageCode = (typeof SUPPORTED_LANGUAGES)[number]['code'];
 

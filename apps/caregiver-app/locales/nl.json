@@ -24,7 +24,13 @@
     "you": "U",
     "unknown": "Onbekend",
     "saving": "Opslaan...",
-    "primary": "Primair"
+    "primary": "Primair",
+    "caregiver": "Zorgverlener",
+    "placeholders": {
+      "timeFormat": "HH:MM",
+      "dateFormat": "JJJJ-MM-DD",
+      "deleteConfirmation": "VERWIJDEREN"
+    }
   },
   "categories": {
     "medication": "Medicatie",
@@ -221,7 +227,9 @@
         "rainyDays": "Welke activiteiten werken op regenachtige dagen?",
         "siblings": "Help me met mijn broers en zussen te praten over het delen van de zorg",
         "refusesFood": "{{name}} weigert te eten. Help.",
-        "repetitive": "Hoe ga ik om met repetitieve vragen?"
+        "repetitive": "Hoe ga ik om met repetitieve vragen?",
+        "stayEngaged": "Hoe kan ik {{name}} helpen betrokken te blijven gedurende de dag?",
+        "agitated": "{{name}} lijkt 's avonds onrustig. Wat kan ik doen?"
       },
       "hub": {
         "backToHub": "Terug naar Coach",
@@ -269,7 +277,24 @@
           "title": "Vraag Alles",
           "placeholder": "Wat houdt u bezig over de zorg voor {{name}}?"
         }
-      }
+      },
+      "situationPrompts": {
+        "refusing_food": "{{name}} weigert nu te eten. Wat moet ik doen?",
+        "refusing_medication": "{{name}} wil de medicatie niet innemen. Ik heb nu hulp nodig.",
+        "agitated": "{{name}} is nu erg onrustig. Hoe help ik de rust terug te brengen?",
+        "not_recognizing": "{{name}} herkent me nu niet. Dat is erg moeilijk. Wat moet ik doen?",
+        "repetitive_questions": "{{name}} blijft steeds dezelfde vraag stellen. Hoe ga ik hier geduldig mee om?",
+        "sundowning": "Het is avond en {{name}} wordt erg onrustig en verward. Help me met de avondonrust.",
+        "wants_to_leave": "{{name}} wil het huis verlaten en staat erop ergens heen te gaan. Wat moet ik doen?",
+        "caregiver_overwhelmed": "Ik voel me nu overweldigd en verlies mijn geduld. Ik heb steun nodig."
+      },
+      "workflowPrompts": {
+        "plan_tomorrow": "Laten we morgen een fijne dag plannen voor {{name}}. Wat stelt u voor, gebaseerd op wat goed werkt?",
+        "doctor_visit": "Ik heb binnenkort een doktersbezoek voor {{name}}. Kunt u me helpen een samenvatting voor te bereiden van hoe het is gegaan?",
+        "review_week": "Laten we eens kijken hoe deze week is verlopen voor {{name}}. Welke patronen ziet u?",
+        "adjust_plan": "Ik wil graag het zorgplan van {{name}} bekijken en zien wat we moeten aanpassen op basis van hoe het nu gaat."
+      },
+      "insightDiscussPrompt": "Ik zag dit inzicht: \"{{insight}}\". Kunt u me meer vertellen over wat dit betekent en wat ik moet doen?"
     },
     "family": {
       "title": "Zorgteam van {{patientName}}",
@@ -705,7 +730,14 @@
       "nextStep1": "1. Installeer OurTurn op de telefoon van {{name}}",
       "nextStep2": "2. Open de app en voer de bovenstaande Zorgcode in",
       "nextStep3": "3. Dat is alles! Het dagelijkse plan van {{name}} verschijnt op hun telefoon",
-      "homeAddressPlaceholder": "Hoofdstraat 123, Stad"
+      "homeAddressPlaceholder": "Hoofdstraat 123, Stad",
+      "defaultTasks": {
+        "morningMedication": "Ochtendmedicatie",
+        "breakfast": "Ontbijt",
+        "lunch": "Lunch",
+        "dinner": "Avondeten",
+        "eveningMedication": "Avondmedicatie"
+      }
     },
     "settings": {
       "title": "Instellingen",
@@ -835,7 +867,9 @@
       "country": "Land",
       "selectCountry": "Kies land",
       "selectLanguage": "Kies taal",
-      "languageSaved": "Taal bijgewerkt"
+      "languageSaved": "Taal bijgewerkt",
+      "wakeTimePlaceholder": "07:00",
+      "sleepTimePlaceholder": "21:00"
     },
     "auth": {
       "login": "Inloggen",

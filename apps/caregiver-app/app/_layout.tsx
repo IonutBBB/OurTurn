@@ -22,6 +22,7 @@ import { ThemeContext, useResolveTheme, useColors, useResolvedTheme } from '../s
 
 // Initialize i18n
 import '../src/i18n';
+import { initLanguageFromStorage } from '../src/i18n';
 import { validateEnv } from '../src/utils/validate-env';
 
 validateEnv();
@@ -75,6 +76,7 @@ export default function RootLayout() {
   useEffect(() => {
     initialize();
     initTheme();
+    initLanguageFromStorage();
     // Hide Android navigation bar so it doesn't cover tab buttons
     if (Platform.OS === 'android') {
       NavigationBar.setVisibilityAsync('hidden');

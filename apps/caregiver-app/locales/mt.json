@@ -24,7 +24,13 @@
     "you": "Int",
     "unknown": "Mhux magħruf",
     "saving": "Qed jissejvja...",
-    "primary": "Primarju"
+    "primary": "Primarju",
+    "caregiver": "Min jieħu ħsieb",
+    "placeholders": {
+      "timeFormat": "HH:MM",
+      "dateFormat": "YYYY-MM-DD",
+      "deleteConfirmation": "ĦASSAR"
+    }
   },
   "categories": {
     "medication": "Mediċina",
@@ -724,7 +730,14 @@
       "nextStep1": "1. Installa OurTurn fuq it-telefon ta' {{name}}",
       "nextStep2": "2. Iftaħ l-app u daħħal il-Kodiċi tal-Kura t'hawn fuq",
       "nextStep3": "3. Dak hu! Il-pjan ta' kuljum ta' {{name}} se jidher fuq it-telefon tagħhom",
-      "homeAddressPlaceholder": "123 Triq Prinċipali, Belt"
+      "homeAddressPlaceholder": "123 Triq Prinċipali, Belt",
+      "defaultTasks": {
+        "morningMedication": "Medikazzjoni ta' filgħodu",
+        "breakfast": "Kolazzjon",
+        "lunch": "Ikla ta' nofsinhar",
+        "dinner": "Pranzu",
+        "eveningMedication": "Medikazzjoni ta' filgħaxija"
+      }
     },
     "settings": {
       "title": "Settings",
@@ -854,7 +867,9 @@
       "country": "Pajjiż",
       "selectCountry": "Agħżel pajjiż",
       "selectLanguage": "Agħżel lingwa",
-      "languageSaved": "Lingwa aġġornata"
+      "languageSaved": "Lingwa aġġornata",
+      "wakeTimePlaceholder": "07:00",
+      "sleepTimePlaceholder": "21:00"
     },
     "auth": {
       "login": "Idħol",

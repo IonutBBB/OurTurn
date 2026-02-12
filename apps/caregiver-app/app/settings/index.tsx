@@ -26,6 +26,7 @@ import { ThemeToggle } from '../../src/components/theme-toggle';
 import type { EmergencyContact, PatientBiography } from '@ourturn/shared';
 import { SUPPORTED_LANGUAGES } from '@ourturn/shared';
 import { changeLanguage, getCurrentLanguage } from '../../src/i18n';
+import { useSubscription } from '../../src/hooks/use-subscription';
 
 export default function SettingsScreen() {
   const { t } = useTranslation();
@@ -80,6 +81,14 @@ export default function SettingsScreen() {
   // Care code
   const [codeCopied, setCodeCopied] = useState(false);
   const [isRegenerating, setIsRegenerating] = useState(false);
+
+  // Subscription (EU-aware)
+  const subscription = useSubscription(household ? {
+    id: household.id,
+    country: household.country,
+    subscription_status: household.subscription_status,
+    subscription_platform: household.subscription_platform,
+  } : null);
 
   // GDPR
   const [isExporting, setIsExporting] = useState(false);
@@ -1410,12 +1419,99 @@ export default function SettingsScreen() {
               <Text style={styles.rowLabel}>{t('caregiverApp.settings.subscription')}</Text>
               <View style={styles.badge}>
                 <Text style={styles.badgeText}>
-                  {household?.subscription_status === 'plus'
+                  {subscription.isPlus
                     ? t('subscription.plus')
                     : t('subscription.free')}
                 </Text>
               </View>
             </View>
+
+            {subscription.error ? (
+              <Text style={styles.subscriptionError}>{subscription.error}</Text>
+            ) : null}
+
+            {subscription.isLoading ? (
+              <View style={styles.subscriptionAction}>
+                <ActivityIndicator color={colors.brand600} size="small" />
+                <Text style={styles.subscriptionActivating}>
+                  {t('subscription.activating')}
+                </Text>
+              </View>
+            ) : subscription.isPlus ? (
+              /* Plus users: manage subscription */
+              household?.subscription_platform === 'web' ? (
+                <TouchableOpacity
+                  style={styles.subscriptionButton}
+                  onPress={() => household?.id && subscription.manageSubscription(household.id)}
+                  activeOpacity={0.7}
+                >
+                  <Text style={styles.subscriptionButtonText}>
+                    {t('subscription.manage')}
+                  </Text>
+                </TouchableOpacity>
+              ) : (
+                <Text style={styles.subscriptionNote}>
+                  {t('subscription.manageViaStore')}
+                </Text>
+              )
+            ) : (
+              /* Free users: upgrade */
+              <View>
+                {subscription.isEUUser ? (
+                  <TouchableOpacity
+                    style={styles.subscriptionButton}
+                    onPress={async () => {
+                      if (!household?.id) return;
+                      const success = await subscription.purchaseViaStripe(household.id);
+                      if (success) await loadCaregiverData();
+                    }}
+                    activeOpacity={0.7}
+                  >
+                    <Text style={styles.subscriptionButtonText}>
+                      {t('subscription.upgrade')}
+                    </Text>
+                  </TouchableOpacity>
+                ) : (
+                  <View>
+                    {subscription.offerings?.availablePackages?.[0] ? (
+                      <TouchableOpacity
+                        style={styles.subscriptionButton}
+                        onPress={async () => {
+                          if (!household?.id || !subscription.offerings?.availablePackages?.[0]) return;
+                          const success = await subscription.purchase(
+                            subscription.offerings.availablePackages[0],
+                            household.id
+                          );
+                          if (success) await loadCaregiverData();
+                        }}
+                        activeOpacity={0.7}
+                      >
+                        <Text style={styles.subscriptionButtonText}>
+                          {t('subscription.upgrade')}
+                        </Text>
+                      </TouchableOpacity>
+                    ) : (
+                      <Text style={styles.subscriptionNote}>
+                        {t('subscription.noOfferings')}
+                      </Text>
+                    )}
+                    <TouchableOpacity
+                      style={styles.subscriptionRestoreButton}
+                      onPress={async () => {
+                        if (!household?.id) return;
+                        const restored = await subscription.restore(household.id);
+                        if (restored) await loadCaregiverData();
+                      }}
+                      activeOpacity={0.7}
+                    >
+                      <Text style={styles.subscriptionRestoreText}>
+                        {t('subscription.restore')}
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                )}
+              </View>
+            )}
           </View>
         </View>
 
@@ -1867,6 +1963,56 @@ const useStyles = createThemedStyles((colors) => ({
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
     color: colors.brand700,
+  },
+
+  // Subscription
+  subscriptionButton: {
+    backgroundColor: colors.brand600,
+    borderRadius: RADIUS.lg,
+    paddingVertical: 12,
+    alignItems: 'center',
+    marginTop: 16,
+  },
+  subscriptionButtonText: {
+    fontSize: 15,
+    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
+    color: colors.textInverse,
+  },
+  subscriptionRestoreButton: {
+    alignItems: 'center',
+    marginTop: 12,
+    paddingVertical: 8,
+  },
+  subscriptionRestoreText: {
+    fontSize: 14,
+    fontFamily: FONTS.body,
+    color: colors.brand600,
+  },
+  subscriptionNote: {
+    fontSize: 13,
+    fontFamily: FONTS.body,
+    color: colors.textMuted,
+    marginTop: 12,
+    textAlign: 'center',
+  },
+  subscriptionError: {
+    fontSize: 13,
+    fontFamily: FONTS.body,
+    color: colors.danger,
+    marginTop: 8,
+  },
+  subscriptionAction: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 16,
+    gap: 8,
+  },
+  subscriptionActivating: {
+    fontSize: 14,
+    fontFamily: FONTS.body,
+    color: colors.textMuted,
   },
 
   // Care code

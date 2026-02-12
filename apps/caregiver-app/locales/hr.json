@@ -24,7 +24,13 @@
     "you": "Vi",
     "unknown": "Nepoznato",
     "saving": "Spremanje...",
-    "primary": "Primarno"
+    "primary": "Primarno",
+    "caregiver": "Skrbnik",
+    "placeholders": {
+      "timeFormat": "HH:MM",
+      "dateFormat": "YYYY-MM-DD",
+      "deleteConfirmation": "IZBRIŠI"
+    }
   },
   "categories": {
     "medication": "Lijekovi",
@@ -221,7 +227,9 @@
         "rainyDays": "Koje aktivnosti su dobre za kišne dane?",
         "siblings": "Pomozite mi razgovarati s braćom i sestrama o podjeli skrbi",
         "refusesFood": "{{name}} odbija jesti. Pomozite.",
-        "repetitive": "Kako se nositi s ponavljajućim pitanjima?"
+        "repetitive": "Kako se nositi s ponavljajućim pitanjima?",
+        "stayEngaged": "Kako mogu pomoći {{name}} da ostane angažiran/a tijekom dana?",
+        "agitated": "{{name}} se čini uznemiren/a navečer. Što mogu učiniti?"
       },
       "hub": {
         "backToHub": "Natrag na Pomoćnika",
@@ -269,7 +277,24 @@
           "title": "Pitajte bilo što",
           "placeholder": "Što vas muči u vezi skrbi za {{name}}?"
         }
-      }
+      },
+      "situationPrompts": {
+        "refusing_food": "{{name}} odbija jesti upravo sada. Što trebam učiniti?",
+        "refusing_medication": "{{name}} ne želi uzeti lijekove. Trebam pomoć odmah.",
+        "agitated": "{{name}} je vrlo uznemiren/a upravo sada. Kako mogu pomoći smiriti situaciju?",
+        "not_recognizing": "{{name}} me ne prepoznaje upravo sada. Jako je teško. Što da učinim?",
+        "repetitive_questions": "{{name}} stalno postavlja isto pitanje iznova. Kako da se strpljivo nosim s tim?",
+        "sundowning": "Večer je i {{name}} postaje jako nemiran/na i zbunjen/a. Pomozite mi s večernjom uznemirenošću.",
+        "wants_to_leave": "{{name}} želi napustiti kuću i inzistira da negdje ide. Što da učinim?",
+        "caregiver_overwhelmed": "Osjećam se preopterećeno i gubim strpljenje upravo sada. Trebam podršku."
+      },
+      "workflowPrompts": {
+        "plan_tomorrow": "Planirajmo dobar dan za {{name}} sutra. Što predlažete na temelju onoga što je dosad funkcioniralo?",
+        "doctor_visit": "Imam zakazan posjet liječniku za {{name}}. Možete li mi pomoći pripremiti sažetak kako su stvari tekle?",
+        "review_week": "Pogledajmo kako je ovaj tjedan prošao za {{name}}. Koje obrasce primjećujete?",
+        "adjust_plan": "Želio/željela bih pregledati plan skrbi za {{name}} i vidjeti što bismo trebali promijeniti na temelju toga kako stvari idu."
+      },
+      "insightDiscussPrompt": "Vidjela/vidio sam ovaj uvid: \"{{insight}}\". Možete li mi reći više o tome što to znači i što bih trebao/trebala učiniti?"
     },
     "family": {
       "title": "Tim za skrb {{patientName}}",
@@ -705,7 +730,14 @@
       "nextStep1": "1. Instalirajte OurTurn na telefon osobe {{name}}",
       "nextStep2": "2. Otvorite aplikaciju i unesite gore navedeni Kod za skrb",
       "nextStep3": "3. To je to! Dnevni plan osobe {{name}} pojavit će se na njihovom telefonu",
-      "homeAddressPlaceholder": "Ulica Glavna 123, Grad"
+      "homeAddressPlaceholder": "Ulica Glavna 123, Grad",
+      "defaultTasks": {
+        "morningMedication": "Jutarnji lijekovi",
+        "breakfast": "Doručak",
+        "lunch": "Ručak",
+        "dinner": "Večera",
+        "eveningMedication": "Večernji lijekovi"
+      }
     },
     "settings": {
       "title": "Postavke",
@@ -835,7 +867,9 @@
       "country": "Država",
       "selectCountry": "Odaberite državu",
       "selectLanguage": "Odaberite jezik",
-      "languageSaved": "Jezik ažuriran"
+      "languageSaved": "Jezik ažuriran",
+      "wakeTimePlaceholder": "07:00",
+      "sleepTimePlaceholder": "21:00"
     },
     "auth": {
       "login": "Prijava",

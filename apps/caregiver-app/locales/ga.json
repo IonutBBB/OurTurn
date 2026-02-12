@@ -24,7 +24,13 @@
     "you": "Tú",
     "unknown": "Anaithnid",
     "saving": "Á shábháil...",
-    "primary": "Príomhúil"
+    "primary": "Príomhúil",
+    "caregiver": "Cúramóir",
+    "placeholders": {
+      "timeFormat": "HH:MM",
+      "dateFormat": "YYYY-MM-DD",
+      "deleteConfirmation": "SCRÍOS"
+    }
   },
   "categories": {
     "medication": "Cógais",
@@ -221,7 +227,9 @@
         "rainyDays": "Cé na gníomhaíochtaí a oibríonn do laethanta na báistí?",
         "siblings": "Cabhraigh liom labhairt le mo dheartháireacha/deirfiúracha faoi chúram a roinnt",
         "refusesFood": "Diúltaíonn {{name}} ithe. Cabhair.",
-        "repetitive": "Conas a dhéileálaim le ceisteanna athfhillteacha?"
+        "repetitive": "Conas a dhéileálaim le ceisteanna athfhillteacha?",
+        "stayEngaged": "Conas is féidir liom cabhrú le {{name}} fanacht gafa i rith an lae?",
+        "agitated": "Tá cuma corraithe ar {{name}} tráthnóna. Cad is féidir liom a dhéanamh?"
       },
       "hub": {
         "backToHub": "Ar ais chuig an gCóitseálaí",
@@ -722,7 +730,14 @@
       "nextStep1": "1. Suiteáil OurTurn ar ghuthán {{name}}",
       "nextStep2": "2. Oscail an aip agus cuir isteach an Cód Cúraim thuas",
       "nextStep3": "3. Sin é! Beidh plean laethúil {{name}} le feiceáil ar a ghuthán/a guthán",
-      "homeAddressPlaceholder": "123 Príomhshráid, Cathair"
+      "homeAddressPlaceholder": "123 Príomhshráid, Cathair",
+      "defaultTasks": {
+        "morningMedication": "Cógais maidine",
+        "breakfast": "Bricfeasta",
+        "lunch": "Lón",
+        "dinner": "Dinnéar",
+        "eveningMedication": "Cógais tráthnóna"
+      }
     },
     "settings": {
       "title": "Socruithe",
@@ -852,7 +867,9 @@
       "country": "Tír",
       "selectCountry": "Roghnaigh tír",
       "selectLanguage": "Roghnaigh teanga",
-      "languageSaved": "Teanga nuashonraithe"
+      "languageSaved": "Teanga nuashonraithe",
+      "wakeTimePlaceholder": "07:00",
+      "sleepTimePlaceholder": "21:00"
     },
     "auth": {
       "login": "Logáil isteach",

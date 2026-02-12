@@ -24,7 +24,13 @@
     "you": "Vy",
     "unknown": "Neznáme",
     "saving": "Ukladá sa...",
-    "primary": "Hlavný"
+    "primary": "Hlavný",
+    "caregiver": "Opatrovník",
+    "placeholders": {
+      "timeFormat": "HH:MM",
+      "dateFormat": "YYYY-MM-DD",
+      "deleteConfirmation": "VYMAZAŤ"
+    }
   },
   "categories": {
     "medication": "Lieky",
@@ -221,7 +227,9 @@
         "rainyDays": "Aké aktivity sú vhodné na daždivé dni?",
         "siblings": "Pomôžte mi hovoriť so súrodencami o zdieľaní starostlivosti",
         "refusesFood": "{{name}} odmieta jesť. Pomoc.",
-        "repetitive": "Ako zvládnuť opakujúce sa otázky?"
+        "repetitive": "Ako zvládnuť opakujúce sa otázky?",
+        "stayEngaged": "Ako môžem pomôcť {{name}} zostať aktívnym/aktívnou počas dňa?",
+        "agitated": "{{name}} sa zdá byť večer rozrušený/rozrušená. Čo môžem urobiť?"
       },
       "hub": {
         "backToHub": "Späť k Asistentovi",
@@ -269,7 +277,24 @@
           "title": "Opýtajte sa čokoľvek",
           "placeholder": "Čo vás trápi v súvislosti so starostlivosťou o {{name}}?"
         }
-      }
+      },
+      "situationPrompts": {
+        "refusing_food": "{{name}} teraz odmieta jesť. Čo mám robiť?",
+        "refusing_medication": "{{name}} si nechce vziať lieky. Potrebujem pomoc hneď teraz.",
+        "agitated": "{{name}} je teraz veľmi rozrušený/rozrušená. Ako môžem pomôcť upokojť situáciu?",
+        "not_recognizing": "{{name}} ma teraz nespoznáva. Je to naozaj ťažké. Čo mám robiť?",
+        "repetitive_questions": "{{name}} sa stále dookola pýta tú istú otázku. Ako to zvládnuť trpezlivo?",
+        "sundowning": "Je večer a {{name}} je veľmi nepokojný/nepokojná a zmätený/zmätená. Pomôžte mi s večerným nepokojom.",
+        "wants_to_leave": "{{name}} chce odísť z domu a trvá na tom, že niekam pôjde. Čo mám robiť?",
+        "caregiver_overwhelmed": "Cítim sa preťažený/preťažená a strácam trpezlivosť. Potrebujem podporu."
+      },
+      "workflowPrompts": {
+        "plan_tomorrow": "Naplánujme {{name}} na zajtra pekný deň. Čo navrhujete na základe toho, čo doteraz fungovalo?",
+        "doctor_visit": "Blíži sa návšteva lekára pre {{name}}. Môžete mi pomôcť pripraviť zhrnutie, ako sa veci vyvíjali?",
+        "review_week": "Pozrime sa, ako sa tento týždeň darilo {{name}}. Aké vzorce vidíte?",
+        "adjust_plan": "Rád/rada by som prehodnotil/prehodnotila plán starostlivosti pre {{name}} a zistila, čo by sme mali zmeniť na základe aktuálneho stavu."
+      },
+      "insightDiscussPrompt": "Videl/videla som tento poznatok: „{{insight}}“. Môžete mi povedať viac o tom, čo to znamená a čo by som mal/mala robiť?"
     },
     "family": {
       "title": "Tím starostlivosti o {{patientName}}",
@@ -705,7 +730,14 @@
       "nextStep1": "1. Nainštalujte OurTurn do telefónu {{name}}",
       "nextStep2": "2. Otvorte aplikáciu a zadajte vyššie uvedený Kód starostlivosti",
       "nextStep3": "3. Hotovo! Denný plán {{name}} sa zobrazí v ich telefóne",
-      "homeAddressPlaceholder": "Hlavná ul. 123, Mesto"
+      "homeAddressPlaceholder": "Hlavná ul. 123, Mesto",
+      "defaultTasks": {
+        "morningMedication": "Ranné lieky",
+        "breakfast": "Raňajky",
+        "lunch": "Obed",
+        "dinner": "Večera",
+        "eveningMedication": "Večerné lieky"
+      }
     },
     "settings": {
       "title": "Nastavenia",
@@ -835,7 +867,9 @@
       "country": "Krajina",
       "selectCountry": "Vyberte krajinu",
       "selectLanguage": "Vyberte jazyk",
-      "languageSaved": "Jazyk bol aktualizovaný"
+      "languageSaved": "Jazyk bol aktualizovaný",
+      "wakeTimePlaceholder": "07:00",
+      "sleepTimePlaceholder": "21:00"
     },
     "auth": {
       "login": "Prihlásiť sa",

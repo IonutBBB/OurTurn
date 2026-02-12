@@ -24,7 +24,13 @@
     "you": "Вие",
     "unknown": "Неизвестно",
     "saving": "Запазване...",
-    "primary": "Основен"
+    "primary": "Основен",
+    "caregiver": "Полагащ грижи",
+    "placeholders": {
+      "timeFormat": "HH:MM",
+      "dateFormat": "YYYY-MM-DD",
+      "deleteConfirmation": "ИЗТРИЙ"
+    }
   },
   "categories": {
     "medication": "Лекарства",
@@ -724,7 +730,14 @@
       "nextStep1": "1. Инсталирайте OurTurn на телефона на {{name}}",
       "nextStep2": "2. Отворете приложението и въведете кода за грижа по-горе",
       "nextStep3": "3. Това е! Ежедневният план на {{name}} ще се появи на техния телефон",
-      "homeAddressPlaceholder": "123 Главна улица, Град"
+      "homeAddressPlaceholder": "123 Главна улица, Град",
+      "defaultTasks": {
+        "morningMedication": "Сутрешни лекарства",
+        "breakfast": "Закуска",
+        "lunch": "Обяд",
+        "dinner": "Вечеря",
+        "eveningMedication": "Вечерни лекарства"
+      }
     },
     "settings": {
       "title": "Настройки",
@@ -854,7 +867,9 @@
       "country": "Държава",
       "selectCountry": "Изберете държава",
       "selectLanguage": "Изберете език",
-      "languageSaved": "Езикът е актуализиран"
+      "languageSaved": "Езикът е актуализиран",
+      "wakeTimePlaceholder": "07:00",
+      "sleepTimePlaceholder": "21:00"
     },
     "auth": {
       "login": "Вход",

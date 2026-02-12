@@ -24,7 +24,13 @@
     "you": "Du",
     "unknown": "Okänd",
     "saving": "Sparar...",
-    "primary": "Primär"
+    "primary": "Primär",
+    "caregiver": "Vårdgivare",
+    "placeholders": {
+      "timeFormat": "HH:MM",
+      "dateFormat": "YYYY-MM-DD",
+      "deleteConfirmation": "RADERA"
+    }
   },
   "categories": {
     "medication": "Medicinering",
@@ -221,7 +227,9 @@
         "rainyDays": "Vilka aktiviteter fungerar för regniga dagar?",
         "siblings": "Hjälp mig att prata med mina syskon om att dela på omsorgen",
         "refusesFood": "{{name}} vägrar att äta. Hjälp.",
-        "repetitive": "Hur hanterar jag repetitiva frågor?"
+        "repetitive": "Hur hanterar jag repetitiva frågor?",
+        "stayEngaged": "Hur kan jag hjälpa {{name}} att hålla sig engagerad under dagen?",
+        "agitated": "{{name}} verkar orolig på kvällarna. Vad kan jag göra?"
       },
       "hub": {
         "backToHub": "Tillbaka till Coachen",
@@ -269,7 +277,24 @@
           "title": "Fråga vad som helst",
           "placeholder": "Vad funderar du på angående omsorgen om {{name}}?"
         }
-      }
+      },
+      "situationPrompts": {
+        "refusing_food": "{{name}} vägrar att äta just nu. Vad ska jag göra?",
+        "refusing_medication": "{{name}} vill inte ta sin medicin. Jag behöver hjälp nu.",
+        "agitated": "{{name}} är väldigt orolig just nu. Hur kan jag hjälpa till att lugna ner situationen?",
+        "not_recognizing": "{{name}} känner inte igen mig just nu. Det är verkligen svårt. Vad gör jag?",
+        "repetitive_questions": "{{name}} ställer samma fråga om och om igen. Hur hanterar jag detta tålmodigt?",
+        "sundowning": "Det är kväll och {{name}} blir väldigt rastlös och förvirrad. Hjälp mig med kvällsoro.",
+        "wants_to_leave": "{{name}} vill lämna huset och insisterar på att åka någonstans. Vad gör jag?",
+        "caregiver_overwhelmed": "Jag känner mig överväldigad och tappar tålamodet just nu. Jag behöver stöd."
+      },
+      "workflowPrompts": {
+        "plan_tomorrow": "Låt oss planera en bra dag för {{name}} imorgon. Vad föreslår du baserat på vad som har fungerat?",
+        "doctor_visit": "Jag har ett läkarbesök inbokat för {{name}}. Kan du hjälpa mig att förbereda en sammanfattning av hur det har gått?",
+        "review_week": "Låt oss se över hur veckan har gått för {{name}}. Vilka mönster ser du?",
+        "adjust_plan": "Jag skulle vilja se över {{name}}s vårdplan och se vad vi bör ändra baserat på hur det går."
+      },
+      "insightDiscussPrompt": "Jag såg denna insikt: \"{{insight}}\". Kan du berätta mer om vad detta betyder och vad jag bör göra?"
     },
     "family": {
       "title": "{{patientName}}s vårdteam",
@@ -705,7 +730,14 @@
       "nextStep1": "1. Installera OurTurn på {{name}}s telefon",
       "nextStep2": "2. Öppna appen och ange Vård-koden ovan",
       "nextStep3": "3. Klart! {{name}}s dagliga plan kommer att visas på deras telefon",
-      "homeAddressPlaceholder": "123 Huvudgatan, Stad"
+      "homeAddressPlaceholder": "123 Huvudgatan, Stad",
+      "defaultTasks": {
+        "morningMedication": "Morgonmedicin",
+        "breakfast": "Frukost",
+        "lunch": "Lunch",
+        "dinner": "Middag",
+        "eveningMedication": "Kvällsmedicin"
+      }
     },
     "settings": {
       "title": "Inställningar",
@@ -835,7 +867,9 @@
       "country": "Land",
       "selectCountry": "Välj land",
       "selectLanguage": "Välj språk",
-      "languageSaved": "Språk uppdaterat"
+      "languageSaved": "Språk uppdaterat",
+      "wakeTimePlaceholder": "07:00",
+      "sleepTimePlaceholder": "21:00"
     },
     "auth": {
       "login": "Logga in",

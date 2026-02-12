@@ -24,7 +24,13 @@
     "you": "Jūs",
     "unknown": "Nezināms",
     "saving": "Saglabā...",
-    "primary": "Primārais"
+    "primary": "Primārais",
+    "caregiver": "Aprūpētājs",
+    "placeholders": {
+      "timeFormat": "HH:MM",
+      "dateFormat": "YYYY-MM-DD",
+      "deleteConfirmation": "DZĒST"
+    }
   },
   "categories": {
     "medication": "Medikamenti",
@@ -221,7 +227,9 @@
         "rainyDays": "Kādas aktivitātes ir piemērotas lietainām dienām?",
         "siblings": "Palīdziet man runāt ar brāļiem un māsām par aprūpes dalīšanu",
         "refusesFood": "{{name}} atsakās ēst. Palīdziet.",
-        "repetitive": "Kā rīkoties ar atkārtotiem jautājumiem?"
+        "repetitive": "Kā rīkoties ar atkārtotiem jautājumiem?",
+        "stayEngaged": "Kā es varu palīdzēt {{name}} saglabāt aktivitāti dienas laikā?",
+        "agitated": "{{name}} vakaros šķiet satraukts/a. Ko es varu darīt?"
       },
       "hub": {
         "backToHub": "Atpakaļ pie padomnieka",
@@ -269,7 +277,24 @@
           "title": "Jautājiet jebko",
           "placeholder": "Kas jums ir prātā par {{name}} aprūpi?"
         }
-      }
+      },
+      "situationPrompts": {
+        "refusing_food": "{{name}} šobrīd atsakās ēst. Ko man darīt?",
+        "refusing_medication": "{{name}} nevēlas lietot zāles. Man ir nepieciešama palīdzība tūlīt.",
+        "agitated": "{{name}} šobrīd ir ļoti satraukts/a. Kā es varu palīdzēt nomierināt situāciju?",
+        "not_recognizing": "{{name}} mani šobrīd neatpazīst. Tas ir ļoti grūti. Ko man darīt?",
+        "repetitive_questions": "{{name}} atkal un atkal uzdod vienu un to pašu jautājumu. Kā es varu ar to tikt galā pacietīgi?",
+        "sundowning": "Ir vakars, un {{name}} kļūst ļoti nemierīgs/a un apjucis/usi. Palīdziet man ar vakara nemieru.",
+        "wants_to_leave": "{{name}} vēlas pamest māju un uzstāj, ka jādodas kaut kur. Ko man darīt?",
+        "caregiver_overwhelmed": "Es šobrīd jūtos pārslogots/a un zaudēju pacietību. Man ir nepieciešams atbalsts."
+      },
+      "workflowPrompts": {
+        "plan_tomorrow": "Plānosim labu dienu {{name}} rītdienai. Ko jūs ieteiktu, pamatojoties uz to, kas ir strādājis?",
+        "doctor_visit": "Man ir gaidāma vizīte pie ārsta ar {{name}}. Vai varat palīdzēt sagatavot kopsavilkumu par to, kā ir veicies?",
+        "review_week": "Apskatīsim, kā šī nedēļa pagāja {{name}}. Kādas tendences jūs redzat?",
+        "adjust_plan": "Es vēlētos pārskatīt {{name}} aprūpes plānu un redzēt, ko mums vajadzētu mainīt, pamatojoties uz pašreizējo situāciju."
+      },
+      "insightDiscussPrompt": "Es redzēju šo ieskatu: \"{{insight}}\". Vai varat man pastāstīt vairāk par to, ko tas nozīmē un ko man vajadzētu darīt?"
     },
     "family": {
       "title": "{{patientName}} aprūpes komanda",
@@ -705,7 +730,14 @@
       "nextStep1": "1. Instalējiet OurTurn {{name}} tālrunī",
       "nextStep2": "2. Atveriet lietotni un ievadiet iepriekš minēto Aprūpes kodu",
       "nextStep3": "3. Tas ir viss! {{name}} dienas plāns parādīsies viņa/viņas tālrunī",
-      "homeAddressPlaceholder": "Galvenā iela 123, Pilsēta"
+      "homeAddressPlaceholder": "Galvenā iela 123, Pilsēta",
+      "defaultTasks": {
+        "morningMedication": "Rīta zāles",
+        "breakfast": "Brokastis",
+        "lunch": "Pusdienas",
+        "dinner": "Vakariņas",
+        "eveningMedication": "Vakara zāles"
+      }
     },
     "settings": {
       "title": "Iestatījumi",
@@ -835,7 +867,9 @@
       "country": "Valsts",
       "selectCountry": "Izvēlēties valsti",
       "selectLanguage": "Izvēlēties valodu",
-      "languageSaved": "Valoda atjaunināta"
+      "languageSaved": "Valoda atjaunināta",
+      "wakeTimePlaceholder": "07:00",
+      "sleepTimePlaceholder": "21:00"
     },
     "auth": {
       "login": "Pieteikties",

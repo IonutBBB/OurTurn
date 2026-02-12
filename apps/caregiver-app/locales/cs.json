@@ -24,7 +24,13 @@
     "you": "Vy",
     "unknown": "Neznámé",
     "saving": "Ukládání...",
-    "primary": "Hlavní"
+    "primary": "Hlavní",
+    "caregiver": "Pečovatel",
+    "placeholders": {
+      "timeFormat": "HH:MM",
+      "dateFormat": "YYYY-MM-DD",
+      "deleteConfirmation": "SMAZAT"
+    }
   },
   "categories": {
     "medication": "Léky",
@@ -724,7 +730,14 @@
       "nextStep1": "1. Nainstalujte OurTurn do telefonu {{name}}",
       "nextStep2": "2. Otevřete aplikaci a zadejte výše uvedený kód péče",
       "nextStep3": "3. To je vše! Denní plán {{name}} se objeví v jejich telefonu",
-      "homeAddressPlaceholder": "Hlavní ulice 123, Město"
+      "homeAddressPlaceholder": "Hlavní ulice 123, Město",
+      "defaultTasks": {
+        "morningMedication": "Ranní léky",
+        "breakfast": "Snídaně",
+        "lunch": "Oběd",
+        "dinner": "Večeře",
+        "eveningMedication": "Večerní léky"
+      }
     },
     "settings": {
       "title": "Nastavení",
@@ -854,7 +867,9 @@
       "country": "Země",
       "selectCountry": "Vyberte zemi",
       "selectLanguage": "Vyberte jazyk",
-      "languageSaved": "Jazyk aktualizován"
+      "languageSaved": "Jazyk aktualizován",
+      "wakeTimePlaceholder": "07:00",
+      "sleepTimePlaceholder": "21:00"
     },
     "auth": {
       "login": "Přihlásit se",

@@ -7,6 +7,8 @@
  *   npx tsx scripts/translate-locales.ts --lang de                # all apps, one language
  *   npx tsx scripts/translate-locales.ts --app patient-app --lang de  # one app, one language
  *   npx tsx scripts/translate-locales.ts --missing-only           # only generate missing files
+ *   npx tsx scripts/translate-locales.ts --update                  # only translate NEW keys in existing files
+ *   npx tsx scripts/translate-locales.ts --update --app caregiver-web --lang de  # update one file
  *
  * Requires GOOGLE_AI_API_KEY env variable (or .env.local in caregiver-web).
  */
@@ -98,6 +100,7 @@ function getArg(flag: string): string | undefined {
 const filterApp = getArg('--app');
 const filterLang = getArg('--lang');
 const missingOnly = args.includes('--missing-only');
+const updateOnly = args.includes('--update');
 
 // ── Gemini setup ────────────────────────────────────────────────────
 
@@ -311,6 +314,85 @@ async function translateFile(
   }
 }
 
+/**
+ * Incremental update: only translate keys present in English but missing
+ * from the existing translation file. Also removes stale keys no longer
+ * in the English source.
+ * Returns the number of new keys translated (0 = file already up to date).
+ */
+async function updateFile(
+  englishPath: string,
+  outputPath: string,
+  lang: string,
+  langName: string,
+): Promise<number> {
+  const englishJson = JSON.parse(fs.readFileSync(englishPath, 'utf-8'));
+  const englishFlat = flattenObject(englishJson);
+  const englishKeys = new Set(Object.keys(englishFlat));
+
+  // Read existing translation (or empty if file doesn't exist)
+  let existingFlat: Record<string, unknown> = {};
+  if (fs.existsSync(outputPath)) {
+    const existingJson = JSON.parse(fs.readFileSync(outputPath, 'utf-8'));
+    existingFlat = flattenObject(existingJson);
+  }
+
+  // Find missing keys (in English but not in translation)
+  const missingFlat: Record<string, unknown> = {};
+  for (const key of englishKeys) {
+    if (!(key in existingFlat)) {
+      missingFlat[key] = englishFlat[key];
+    }
+  }
+
+  const missingCount = Object.keys(missingFlat).length;
+  if (missingCount === 0) {
+    // Still clean up stale keys
+    let changed = false;
+    for (const key of Object.keys(existingFlat)) {
+      if (!englishKeys.has(key)) {
+        delete existingFlat[key];
+        changed = true;
+      }
+    }
+    if (changed) {
+      const result = unflattenObject(existingFlat);
+      fs.writeFileSync(outputPath, JSON.stringify(result, null, 2) + '\n', 'utf-8');
+      console.log(`  🧹 Removed stale keys (0 new translations needed)`);
+    }
+    return 0;
+  }
+
+  // Translate only the missing keys
+  const chunks = chunkFlatObject(missingFlat);
+  console.log(`  Translating ${missingCount} new keys in ${chunks.length} chunk(s)...`);
+
+  let translatedFlat: Record<string, unknown> = {};
+  for (let i = 0; i < chunks.length; i++) {
+    const chunk = chunks[i];
+    const keyCount = Object.keys(chunk).length;
+    console.log(`    Chunk ${i + 1}/${chunks.length}: ${keyCount} strings...`);
+    const translated = await translateChunk(chunk, lang, langName);
+    translatedFlat = { ...translatedFlat, ...translated };
+
+    if (i < chunks.length - 1) {
+      await new Promise(r => setTimeout(r, 1000));
+    }
+  }
+
+  // Merge: existing translations + new translations, then remove stale keys
+  const mergedFlat = { ...existingFlat, ...translatedFlat };
+  for (const key of Object.keys(mergedFlat)) {
+    if (!englishKeys.has(key)) {
+      delete mergedFlat[key];
+    }
+  }
+
+  const result = unflattenObject(mergedFlat);
+  fs.writeFileSync(outputPath, JSON.stringify(result, null, 2) + '\n', 'utf-8');
+  return missingCount;
+}
+
 // ── Main ────────────────────────────────────────────────────────────
 
 async function main() {
@@ -328,6 +410,7 @@ async function main() {
   }
 
   let totalFiles = 0;
+  let totalNewKeys = 0;
   let skipped = 0;
 
   for (const app of apps) {
@@ -341,6 +424,13 @@ async function main() {
 
       // Ensure output directory exists
       fs.mkdirSync(source.outputDir, { recursive: true });
+
+      // Always sync the English public copy for caregiver-web
+      if (app.name === 'caregiver-web' && source.filePattern('en') === 'en.json') {
+        const publicEnPath = path.join(source.outputDir, 'en.json');
+        fs.copyFileSync(source.englishPath, publicEnPath);
+        console.log(`\n  📋 Synced public en.json (${path.basename(source.englishPath)} -> public/locales/en.json)`);
+      }
 
       const sourceBasename = path.basename(source.englishPath);
       console.log(`\n  📄 Source: ${sourceBasename}`);
@@ -356,9 +446,23 @@ async function main() {
         console.log(`\n  🌐 ${LANGUAGE_NAMES[lang]} (${lang}) -> ${path.basename(outputPath)}`);
 
         try {
-          await translateFile(source.englishPath, outputPath, lang, LANGUAGE_NAMES[lang]);
-          totalFiles++;
-          console.log(`  ✅ Done`);
+          if (updateOnly && fs.existsSync(outputPath)) {
+            // Incremental mode: only translate new keys
+            const newKeys = await updateFile(source.englishPath, outputPath, lang, LANGUAGE_NAMES[lang]);
+            if (newKeys === 0) {
+              console.log(`  ✅ Already up to date`);
+              skipped++;
+            } else {
+              totalNewKeys += newKeys;
+              totalFiles++;
+              console.log(`  ✅ Added ${newKeys} new translations`);
+            }
+          } else {
+            // Full translation mode
+            await translateFile(source.englishPath, outputPath, lang, LANGUAGE_NAMES[lang]);
+            totalFiles++;
+            console.log(`  ✅ Done`);
+          }
 
           // Copy to additional destinations if configured
           if (source.copyTo) {
@@ -366,7 +470,7 @@ async function main() {
               fs.mkdirSync(target.outputDir, { recursive: true });
               const copyPath = path.join(target.outputDir, target.filePattern(lang));
               fs.copyFileSync(outputPath, copyPath);
-              totalFiles++;
+              if (!updateOnly || totalNewKeys > 0) totalFiles++;
               console.log(`  📋 Copied -> ${path.basename(copyPath)}`);
             }
           }
@@ -381,7 +485,11 @@ async function main() {
     }
   }
 
-  console.log(`\n🏁 Complete! ${totalFiles} files translated${skipped ? `, ${skipped} skipped (already exist)` : ''}.`);
+  if (updateOnly) {
+    console.log(`\n🏁 Complete! ${totalFiles} files updated with ${totalNewKeys} new translations${skipped ? `, ${skipped} already up to date` : ''}.`);
+  } else {
+    console.log(`\n🏁 Complete! ${totalFiles} files translated${skipped ? `, ${skipped} skipped (already exist)` : ''}.`);
+  }
 }
 
 main().catch((err) => {

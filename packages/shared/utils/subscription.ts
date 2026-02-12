@@ -1,6 +1,7 @@
 // Subscription feature gating utilities
 
 import type { Household, SubscriptionStatus } from '../types/household';
+import { EU_MEMBER_CODES } from '../constants/languages';
 
 export const FREE_LIMITS = {
   maxTasks: 20,
@@ -95,4 +96,13 @@ export function hasReachedAIMessageLimit(
   }
 
   return currentMessageCount >= FREE_LIMITS.aiMessages;
+}
+
+/**
+ * Check if a country code belongs to an EU member state.
+ * Used for DMA-compliant payment routing (Stripe in EU, RevenueCat elsewhere).
+ */
+export function isEUCountry(countryCode: string | null | undefined): boolean {
+  if (!countryCode) return false;
+  return EU_MEMBER_CODES.has(countryCode.toUpperCase());
 }

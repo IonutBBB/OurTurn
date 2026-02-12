@@ -24,7 +24,13 @@
     "you": "Sinä",
     "unknown": "Tuntematon",
     "saving": "Tallennetaan...",
-    "primary": "Ensisijainen"
+    "primary": "Ensisijainen",
+    "caregiver": "Hoitaja",
+    "placeholders": {
+      "timeFormat": "HH:MM",
+      "dateFormat": "VVVV-KK-PP",
+      "deleteConfirmation": "POISTA"
+    }
   },
   "categories": {
     "medication": "Lääkitys",
@@ -724,7 +730,14 @@
       "nextStep1": "1. Asenna OurTurn {{name}}n puhelimeen",
       "nextStep2": "2. Avaa sovellus ja syötä yllä oleva hoitokoodi",
       "nextStep3": "3. Siinä kaikki! {{name}}n päivittäinen suunnitelma ilmestyy heidän puhelimeensa",
-      "homeAddressPlaceholder": "Esim. Keskuskatu 1, Helsinki"
+      "homeAddressPlaceholder": "Esim. Keskuskatu 1, Helsinki",
+      "defaultTasks": {
+        "morningMedication": "Aamulääkitys",
+        "breakfast": "Aamiainen",
+        "lunch": "Lounas",
+        "dinner": "Illallinen",
+        "eveningMedication": "Iltalääkitys"
+      }
     },
     "settings": {
       "title": "Asetukset",
@@ -854,7 +867,9 @@
       "country": "Maa",
       "selectCountry": "Valitse maa",
       "selectLanguage": "Valitse kieli",
-      "languageSaved": "Kieli päivitetty"
+      "languageSaved": "Kieli päivitetty",
+      "wakeTimePlaceholder": "07:00",
+      "sleepTimePlaceholder": "21:00"
     },
     "auth": {
       "login": "Kirjaudu sisään",

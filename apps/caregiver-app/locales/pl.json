@@ -24,7 +24,13 @@
     "you": "Ty",
     "unknown": "Nieznany",
     "saving": "Zapisywanie...",
-    "primary": "Główny"
+    "primary": "Główny",
+    "caregiver": "Opiekun",
+    "placeholders": {
+      "timeFormat": "HH:MM",
+      "dateFormat": "YYYY-MM-DD",
+      "deleteConfirmation": "USUŃ"
+    }
   },
   "categories": {
     "medication": "Leki",
@@ -221,7 +227,9 @@
         "rainyDays": "Jakie aktywności sprawdzą się w deszczowe dni?",
         "siblings": "Pomóż mi porozmawiać z rodzeństwem o dzieleniu się opieką",
         "refusesFood": "{{name}} odmawia jedzenia. Pomocy.",
-        "repetitive": "Jak radzić sobie z powtarzającymi się pytaniami?"
+        "repetitive": "Jak radzić sobie z powtarzającymi się pytaniami?",
+        "stayEngaged": "Jak mogę pomóc {{name}} pozostać aktywnym/aktywną w ciągu dnia?",
+        "agitated": "{{name}} wydaje się być zdenerwowany/zdenerwowana wieczorami. Co mogę zrobić?"
       },
       "hub": {
         "backToHub": "Wróć do Asystenta",
@@ -269,7 +277,24 @@
           "title": "Zapytaj o Cokolwiek",
           "placeholder": "Co Cię nurtuje w związku z opieką nad {{name}}?"
         }
-      }
+      },
+      "situationPrompts": {
+        "refusing_food": "{{name}} odmawia jedzenia w tej chwili. Co powinienem/powinnam zrobić?",
+        "refusing_medication": "{{name}} nie chce przyjąć leków. Potrzebuję pomocy natychmiast.",
+        "agitated": "{{name}} jest teraz bardzo zdenerwowany/zdenerwowana. Jak mogę pomóc uspokoić sytuację?",
+        "not_recognizing": "{{name}} nie rozpoznaje mnie w tej chwili. To jest naprawdę trudne. Co mam zrobić?",
+        "repetitive_questions": "{{name}} wciąż zadaje to samo pytanie. Jak mogę sobie z tym poradzić cierpliwie?",
+        "sundowning": "Jest wieczór i {{name}} staje się bardzo niespokojny/niespokojna i zdezorientowany/zdezorientowana. Pomóż mi poradzić sobie z wieczornym niepokojem.",
+        "wants_to_leave": "{{name}} chce wyjść z domu i nalega, żeby gdzieś iść. Co mam zrobić?",
+        "caregiver_overwhelmed": "Czuję się przytłoczony/przytłoczona i tracę cierpliwość. Potrzebuję wsparcia."
+      },
+      "workflowPrompts": {
+        "plan_tomorrow": "Zaplanujmy dobry dzień dla {{name}} na jutro. Co sugerujesz, biorąc pod uwagę to, co działało?",
+        "doctor_visit": "Zbliża się wizyta u lekarza dla {{name}}. Czy możesz pomóc mi przygotować podsumowanie tego, jak się sprawy mają?",
+        "review_week": "Przejrzyjmy, jak minął ten tydzień dla {{name}}. Jakie wzorce dostrzegasz?",
+        "adjust_plan": "Chciałbym/Chciałabym przejrzeć plan opieki dla {{name}} i zobaczyć, co powinniśmy zmienić, biorąc pod uwagę obecną sytuację."
+      },
+      "insightDiscussPrompt": "Zobaczyłem/Zobaczyłam tę wskazówkę: \"{{insight}}\". Czy możesz mi powiedzieć więcej o tym, co to oznacza i co powinienem/powinnam zrobić?"
     },
     "family": {
       "title": "Zespół Opiekuńczy {{patientName}}",
@@ -705,7 +730,14 @@
       "nextStep1": "1. Zainstaluj OurTurn na telefonie {{name}}",
       "nextStep2": "2. Otwórz aplikację i wprowadź powyższy Kod Opieki",
       "nextStep3": "3. To wszystko! Dzienny plan {{name}} pojawi się na jego/jej telefonie",
-      "homeAddressPlaceholder": "np. ul. Główna 123, Miasto"
+      "homeAddressPlaceholder": "np. ul. Główna 123, Miasto",
+      "defaultTasks": {
+        "morningMedication": "Leki poranne",
+        "breakfast": "Śniadanie",
+        "lunch": "Obiad",
+        "dinner": "Kolacja",
+        "eveningMedication": "Leki wieczorne"
+      }
     },
     "settings": {
       "title": "Ustawienia",
@@ -835,7 +867,9 @@
       "country": "Kraj",
       "selectCountry": "Wybierz kraj",
       "selectLanguage": "Wybierz język",
-      "languageSaved": "Język zaktualizowany"
+      "languageSaved": "Język zaktualizowany",
+      "wakeTimePlaceholder": "07:00",
+      "sleepTimePlaceholder": "21:00"
     },
     "auth": {
       "login": "Zaloguj się",

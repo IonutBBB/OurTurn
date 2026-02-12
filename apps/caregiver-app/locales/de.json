@@ -24,7 +24,13 @@
     "you": "Sie",
     "unknown": "Unbekannt",
     "saving": "Wird gespeichert...",
-    "primary": "Primär"
+    "primary": "Primär",
+    "caregiver": "Pflegeperson",
+    "placeholders": {
+      "timeFormat": "HH:MM",
+      "dateFormat": "JJJJ-MM-TT",
+      "deleteConfirmation": "LÖSCHEN"
+    }
   },
   "categories": {
     "medication": "Medikamente",
@@ -724,7 +730,14 @@
       "nextStep1": "1. Installieren Sie OurTurn auf {{name}}s Telefon",
       "nextStep2": "2. Öffnen Sie die App und geben Sie den obigen Pflegecode ein",
       "nextStep3": "3. Das war's! {{name}}s Tagesplan wird auf ihrem/seinem Telefon angezeigt",
-      "homeAddressPlaceholder": "Musterstraße 123, Stadt"
+      "homeAddressPlaceholder": "Musterstraße 123, Stadt",
+      "defaultTasks": {
+        "morningMedication": "Morgenmedikation",
+        "breakfast": "Frühstück",
+        "lunch": "Mittagessen",
+        "dinner": "Abendessen",
+        "eveningMedication": "Abendmedikation"
+      }
     },
     "settings": {
       "title": "Einstellungen",
@@ -854,7 +867,9 @@
       "country": "Land",
       "selectCountry": "Land auswählen",
       "selectLanguage": "Sprache auswählen",
-      "languageSaved": "Sprache aktualisiert"
+      "languageSaved": "Sprache aktualisiert",
+      "wakeTimePlaceholder": "07:00",
+      "sleepTimePlaceholder": "21:00"
     },
     "auth": {
       "login": "Anmelden",

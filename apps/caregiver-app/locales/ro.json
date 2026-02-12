@@ -24,7 +24,13 @@
     "you": "Tu",
     "unknown": "Necunoscut",
     "saving": "Se salvează...",
-    "primary": "Principal"
+    "primary": "Principal",
+    "caregiver": "Îngrijitor",
+    "placeholders": {
+      "timeFormat": "HH:MM",
+      "dateFormat": "YYYY-MM-DD",
+      "deleteConfirmation": "ȘTERGE"
+    }
   },
   "categories": {
     "medication": "Medicație",
@@ -724,7 +730,14 @@
       "nextStep1": "1. Instalați OurTurn pe telefonul lui/ei {{name}}",
       "nextStep2": "2. Deschideți aplicația și introduceți Codul de îngrijire de mai sus",
       "nextStep3": "3. Asta e tot! Planul zilnic al lui/ei {{name}} va apărea pe telefonul lor",
-      "homeAddressPlaceholder": "Str. Principală 123, Oraș"
+      "homeAddressPlaceholder": "Str. Principală 123, Oraș",
+      "defaultTasks": {
+        "morningMedication": "Medicamentele de dimineață",
+        "breakfast": "Micul dejun",
+        "lunch": "Prânzul",
+        "dinner": "Cina",
+        "eveningMedication": "Medicamentele de seară"
+      }
     },
     "settings": {
       "title": "Setări",
@@ -854,7 +867,9 @@
       "country": "Țara",
       "selectCountry": "Selectați țara",
       "selectLanguage": "Selectați limba",
-      "languageSaved": "Limba a fost actualizată"
+      "languageSaved": "Limba a fost actualizată",
+      "wakeTimePlaceholder": "07:00",
+      "sleepTimePlaceholder": "21:00"
     },
     "auth": {
       "login": "Autentificare",

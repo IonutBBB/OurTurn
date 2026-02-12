@@ -24,7 +24,13 @@
     "you": "Ön",
     "unknown": "Ismeretlen",
     "saving": "Mentés...",
-    "primary": "Elsődleges"
+    "primary": "Elsődleges",
+    "caregiver": "Gondozó",
+    "placeholders": {
+      "timeFormat": "HH:MM",
+      "dateFormat": "YYYY-MM-DD",
+      "deleteConfirmation": "TÖRLÉS"
+    }
   },
   "categories": {
     "medication": "Gyógyszerelés",
@@ -221,7 +227,9 @@
         "rainyDays": "Milyen tevékenységek alkalmasak esős napokra?",
         "siblings": "Segítsen beszélni testvéreimmel a gondozás megosztásáról",
         "refusesFood": "{{name}} nem hajlandó enni. Segítség.",
-        "repetitive": "Hogyan kezeljem az ismétlődő kérdéseket?"
+        "repetitive": "Hogyan kezeljem az ismétlődő kérdéseket?",
+        "stayEngaged": "Hogyan segíthetek {{name}}-nek, hogy aktív maradjon a nap folyamán?",
+        "agitated": "{{name}} nyugtalannak tűnik esténként. Mit tehetek?"
       },
       "hub": {
         "backToHub": "Vissza a Segítőhöz",
@@ -269,7 +277,24 @@
           "title": "Kérdezzen bármit",
           "placeholder": "Mi foglalkoztatja {{name}} gondozásával kapcsolatban?"
         }
-      }
+      },
+      "situationPrompts": {
+        "refusing_food": "{{name}} most nem hajlandó enni. Mit tegyek?",
+        "refusing_medication": "{{name}} nem veszi be a gyógyszerét. Most azonnal segítségre van szükségem.",
+        "agitated": "{{name}} most nagyon nyugtalan. Hogyan segíthetek megnyugtatni a helyzetet?",
+        "not_recognizing": "{{name}} most nem ismer fel. Ez nagyon nehéz. Mit tegyek?",
+        "repetitive_questions": "{{name}} újra és újra ugyanazt a kérdést teszi fel. Hogyan kezeljem ezt türelmesen?",
+        "sundowning": "Este van, és {{name}} nagyon nyugtalan és zavart. Segítsen nekem kezelni ezt az esti nyugtalanságot.",
+        "wants_to_leave": "{{name}} el akarja hagyni a házat, és ragaszkodik hozzá, hogy elmenjen valahova. Mit tegyek?",
+        "caregiver_overwhelmed": "Most túlterheltnek érzem magam, és kezdem elveszíteni a türelmemet. Támogatásra van szükségem."
+      },
+      "workflowPrompts": {
+        "plan_tomorrow": "Tervezzünk egy jó napot {{name}}-nek holnapra. Mit javasol, figyelembe véve, mi működött eddig?",
+        "doctor_visit": "Közeleg egy orvosi látogatás {{name}} számára. Segítene nekem összefoglalni, hogyan alakultak a dolgok?",
+        "review_week": "Nézzük át, hogyan telt ez a hét {{name}} számára. Milyen mintázatokat lát?",
+        "adjust_plan": "Szeretném átnézni {{name}} gondozási tervét, és megnézni, mit kellene változtatnunk az eddigiek alapján."
+      },
+      "insightDiscussPrompt": "Láttam ezt a felismerést: „{{insight}}”. Tudna nekem többet mondani arról, mit jelent ez, és mit tegyek?"
     },
     "family": {
       "title": "{{patientName}} gondozói csapata",
@@ -705,7 +730,14 @@
       "nextStep1": "1. Telepítse az OurTurn alkalmazást {{name}} telefonjára",
       "nextStep2": "2. Nyissa meg az alkalmazást, és írja be a fenti Gondozási Kódot",
       "nextStep3": "3. Ennyi! {{name}} napi terve megjelenik a telefonján",
-      "homeAddressPlaceholder": "123 Fő utca, Város"
+      "homeAddressPlaceholder": "123 Fő utca, Város",
+      "defaultTasks": {
+        "morningMedication": "Reggeli gyógyszer",
+        "breakfast": "Reggeli",
+        "lunch": "Ebéd",
+        "dinner": "Vacsora",
+        "eveningMedication": "Esti gyógyszer"
+      }
     },
     "settings": {
       "title": "Beállítások",
@@ -835,7 +867,9 @@
       "country": "Ország",
       "selectCountry": "Ország kiválasztása",
       "selectLanguage": "Nyelv kiválasztása",
-      "languageSaved": "Nyelv frissítve"
+      "languageSaved": "Nyelv frissítve",
+      "wakeTimePlaceholder": "07:00",
+      "sleepTimePlaceholder": "21:00"
     },
     "auth": {
       "login": "Bejelentkezés",

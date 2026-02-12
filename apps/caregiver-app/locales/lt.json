@@ -24,7 +24,13 @@
     "you": "Jūs",
     "unknown": "Nežinoma",
     "saving": "Saugoma...",
-    "primary": "Pagrindinis"
+    "primary": "Pagrindinis",
+    "caregiver": "Globėjas",
+    "placeholders": {
+      "timeFormat": "HH:MM",
+      "dateFormat": "YYYY-MM-DD",
+      "deleteConfirmation": "IŠTRINTI"
+    }
   },
   "categories": {
     "medication": "Vaistai",
@@ -221,7 +227,9 @@
         "rainyDays": "Kokios veiklos tinka lietingomis dienomis?",
         "siblings": "Padėkite man pasikalbėti su broliais ir seserimis apie priežiūros dalijimąsi",
         "refusesFood": "{{name}} atsisako valgyti. Padėkite.",
-        "repetitive": "Kaip elgtis su pasikartojančiais klausimais?"
+        "repetitive": "Kaip elgtis su pasikartojančiais klausimais?",
+        "stayEngaged": "Kaip galiu padėti {{name}} išlikti įsitraukusiam (-iai) dienos metu?",
+        "agitated": "{{name}} vakarais atrodo neramus (-i). Ką galiu daryti?"
       },
       "hub": {
         "backToHub": "Grįžti į asistentą",
@@ -269,7 +277,24 @@
           "title": "Klauskite bet ko",
           "placeholder": "Kas jums rūpi dėl {{name}} priežiūros?"
         }
-      }
+      },
+      "situationPrompts": {
+        "refusing_food": "{{name}} dabar atsisako valgyti. Ką turėčiau daryti?",
+        "refusing_medication": "{{name}} negeria vaistų. Man reikia pagalbos dabar.",
+        "agitated": "{{name}} dabar labai neramus (-i). Kaip galiu padėti nuraminti situaciją?",
+        "not_recognizing": "{{name}} dabar manęs neatpažįsta. Tai tikrai sunku. Ką man daryti?",
+        "repetitive_questions": "{{name}} vis klausia to paties klausimo. Kaip man su tuo kantriai elgtis?",
+        "sundowning": "Jau vakaras ir {{name}} darosi labai neramus (-i) ir sutrikęs (-usi). Padėkite man susidoroti su vakaro nerimu.",
+        "wants_to_leave": "{{name}} nori išeiti iš namų ir primygtinai reikalauja kažkur eiti. Ką man daryti?",
+        "caregiver_overwhelmed": "Dabar jaučiuosi priblokštas (-a) ir prarandu kantrybę. Man reikia palaikymo."
+      },
+      "workflowPrompts": {
+        "plan_tomorrow": "Suplanuokime gerą dieną {{name}} rytoj. Ką siūlote, atsižvelgiant į tai, kas veikė anksčiau?",
+        "doctor_visit": "Artėja {{name}} vizitas pas gydytoją. Ar galite padėti man paruošti apžvalgą, kaip sekėsi?",
+        "review_week": "Apžvelkime, kaip ši savaitė praėjo {{name}}. Kokius modelius matote?",
+        "adjust_plan": "Norėčiau peržiūrėti {{name}} priežiūros planą ir pamatyti, ką turėtume pakeisti, atsižvelgiant į tai, kaip sekasi."
+      },
+      "insightDiscussPrompt": "Mačiau šią įžvalgą: „{{insight}}“. Ar galite papasakoti daugiau, ką tai reiškia ir ką turėčiau daryti?"
     },
     "family": {
       "title": "{{patientName}} globos komanda",
@@ -705,7 +730,14 @@
       "nextStep1": "1. Įdiekite OurTurn į {{name}} telefoną",
       "nextStep2": "2. Atidarykite programėlę ir įveskite aukščiau nurodytą Priežiūros kodą",
       "nextStep3": "3. Štai ir viskas! {{name}} dienos planas atsiras jų telefone",
-      "homeAddressPlaceholder": "Gatvė 123, Miestas"
+      "homeAddressPlaceholder": "Gatvė 123, Miestas",
+      "defaultTasks": {
+        "morningMedication": "Ryto vaistai",
+        "breakfast": "Pusryčiai",
+        "lunch": "Pietūs",
+        "dinner": "Vakarienė",
+        "eveningMedication": "Vakaro vaistai"
+      }
     },
     "settings": {
       "title": "Nustatymai",
@@ -835,7 +867,9 @@
       "country": "Šalis",
       "selectCountry": "Pasirinkite šalį",
       "selectLanguage": "Pasirinkite kalbą",
-      "languageSaved": "Kalba atnaujinta"
+      "languageSaved": "Kalba atnaujinta",
+      "wakeTimePlaceholder": "07:00",
+      "sleepTimePlaceholder": "21:00"
     },
     "auth": {
       "login": "Prisijungti",

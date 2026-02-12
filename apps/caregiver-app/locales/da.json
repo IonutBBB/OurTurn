@@ -24,7 +24,13 @@
     "you": "Dig",
     "unknown": "Ukendt",
     "saving": "Gemmer...",
-    "primary": "Primær"
+    "primary": "Primær",
+    "caregiver": "Pårørende",
+    "placeholders": {
+      "timeFormat": "HH:MM",
+      "dateFormat": "YYYY-MM-DD",
+      "deleteConfirmation": "SLET"
+    }
   },
   "categories": {
     "medication": "Medicin",
@@ -724,7 +730,14 @@
       "nextStep1": "1. Installer OurTurn på {{name}}'s telefon",
       "nextStep2": "2. Åbn appen og indtast plejekoden ovenfor",
       "nextStep3": "3. Det var det! {{name}}'s daglige plan vil vises på deres telefon",
-      "homeAddressPlaceholder": "123 Hovedgade, By"
+      "homeAddressPlaceholder": "123 Hovedgade, By",
+      "defaultTasks": {
+        "morningMedication": "Morgenmedicin",
+        "breakfast": "Morgenmad",
+        "lunch": "Frokost",
+        "dinner": "Aftensmad",
+        "eveningMedication": "Aftenmedicin"
+      }
     },
     "settings": {
       "title": "Indstillinger",
@@ -854,7 +867,9 @@
       "country": "Land",
       "selectCountry": "Vælg land",
       "selectLanguage": "Vælg sprog",
-      "languageSaved": "Sprog opdateret"
+      "languageSaved": "Sprog opdateret",
+      "wakeTimePlaceholder": "07:00",
+      "sleepTimePlaceholder": "21:00"
     },
     "auth": {
       "login": "Log ind",
