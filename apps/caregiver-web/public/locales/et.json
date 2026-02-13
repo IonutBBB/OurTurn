@@ -43,7 +43,22 @@
     "unknown": "Tundmatu",
     "minutesAgo": "{{count}}m tagasi",
     "hoursAgo": "{{count}}h tagasi",
-    "daysAgo": "{{count}}p tagasi"
+    "daysAgo": "{{count}}p tagasi",
+    "home": "Avaleht",
+    "signOut": "Logi välja",
+    "openMenu": "Ava menüü",
+    "closeMenu": "Sulge menüü",
+    "settings": "Seaded",
+    "themeSystem": "Süsteem",
+    "themeDark": "Tume",
+    "themeLight": "Hele",
+    "themeCurrentLabel": "Praegune teema: {{theme}}. Klõpsake muutmiseks.",
+    "pageNotFound": "Lehte ei leitud",
+    "pageNotFoundDesc": "Otsitavat lehte ei ole olemas või see on teisaldatud.",
+    "goToDashboard": "Mine juhtpaneelile",
+    "mainContent": "Põhisisu",
+    "mainNavigation": "Peamine navigeerimine",
+    "goToDashboardLabel": "OurTurn Care - Mine juhtpaneelile"
   },
   "categories": {
     "medication": "Ravimid",
@@ -244,7 +259,15 @@
       "removeMedication": "Eemalda",
       "maxMedications": "Maksimaalselt 3 ravimit grupi kohta",
       "uploadingPhoto": "Üleslaadimine...",
-      "hasPhoto": "On foto"
+      "hasPhoto": "On foto",
+      "allDays": "Kõik",
+      "dayMon": "Esm",
+      "dayTue": "Tei",
+      "dayWed": "Kol",
+      "dayThu": "Nel",
+      "dayFri": "Ree",
+      "daySat": "Lau",
+      "daySun": "Püh"
     },
     "location": {
       "title": "Asukoht ja ohutus",
@@ -301,7 +324,8 @@
       "mapsApiInstructions": "Lisage oma keskkonnamuutujatele <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code>.",
       "saveFailed": "Turvatsooni salvestamine ebaõnnestus. Proovige uuesti.",
       "deleteSafeZoneConfirm": "Kas olete kindel, et soovite selle turvatsooni kustutada?",
-      "deleteFailed": "Turvatsooni kustutamine ebaõnnestus. Proovige uuesti."
+      "deleteFailed": "Turvatsooni kustutamine ebaõnnestus. Proovige uuesti.",
+      "pageTitle": "Asukoht ja ohutus"
     },
     "coach": {
       "title": "AI hooldusnõustaja",
@@ -389,7 +413,24 @@
           "title": "Küsi kõike",
           "placeholder": "Mis sul {{name}} eest hoolitsemise kohta meeles mõlgub?"
         }
-      }
+      },
+      "situationPrompts": {
+        "refusing_food": "{{name}} is refusing to eat. What should I do right now?",
+        "refusing_medication": "{{name}} won't take their medication. How can I help them?",
+        "agitated": "{{name}} is agitated and upset right now. How should I respond?",
+        "not_recognizing": "{{name}} doesn't seem to recognize me. What should I do?",
+        "repetitive_questions": "{{name}} keeps asking the same question over and over. How do I handle this?",
+        "sundowning": "{{name}} is showing signs of sundowning. What can I do to help?",
+        "wants_to_leave": "{{name}} wants to leave the house. How should I handle this safely?",
+        "caregiver_overwhelmed": "I'm feeling overwhelmed and losing patience with caregiving. I need help."
+      },
+      "workflowPrompts": {
+        "plan_tomorrow": "Help me plan tomorrow's care routine for {{name}}.",
+        "doctor_visit": "Help me prepare for {{name}}'s upcoming doctor visit.",
+        "review_week": "Let's review how this week went with {{name}}'s care.",
+        "adjust_plan": "Help me adjust {{name}}'s care plan based on what's been working."
+      },
+      "insightDiscussPrompt": "I'd like to discuss this insight about my caregiving: {{insight}}"
     },
     "family": {
       "title": "{{patientName}} hooldusmeeskond",
@@ -1293,6 +1334,18 @@
       "quickLog": {
         "button": "Logi kriisihetk",
         "title": "Logi kriisihetk"
+      },
+      "scenarioLabels": {
+        "agitated": "Agitated / Upset",
+        "wandering": "Wandering / Missing",
+        "refusing": "Refusing Care",
+        "hallucinations": "Seeing / Hearing Things",
+        "sundowning": "Sundowning / Evening Anxiety",
+        "fall": "Fall / Physical Emergency",
+        "repetitive_questions": "Repetitive Questions",
+        "sleep_disruption": "Sleep Disruption",
+        "aggression": "Aggression",
+        "shadowing": "Shadowing"
       }
     },
     "legal": {

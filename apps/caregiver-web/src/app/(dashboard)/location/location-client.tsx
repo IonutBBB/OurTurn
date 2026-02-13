@@ -39,11 +39,10 @@ const ALERT_TYPE_ICONS: Record<LocationAlertType, string> = {
 // Default center (London) if no location available
 const DEFAULT_CENTER = { lat: 51.5074, lng: -0.1278 };
 
-function formatTime(timestamp: string): string {
-  return new Date(timestamp).toLocaleTimeString('en-US', {
+function formatTime(timestamp: string, locale: string = 'en'): string {
+  return new Date(timestamp).toLocaleTimeString(locale, {
     hour: 'numeric',
     minute: '2-digit',
-    hour12: true,
   });
 }
 
@@ -217,7 +216,7 @@ export default function LocationClient({
   recentAlerts: initialAlerts,
   caregiverId,
 }: LocationClientProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { showToast } = useToast();
   const supabase = createBrowserClient();
   const [safeZones, setSafeZones] = useState<SafeZone[]>(initialSafeZones);
@@ -487,7 +486,7 @@ export default function LocationClient({
                     key={loc.id}
                     position={{ lat: loc.latitude, lng: loc.longitude }}
                     onClick={() => setSelectedHistoryPoint(loc)}
-                    title={formatTime(loc.timestamp)}
+                    title={formatTime(loc.timestamp, i18n.language)}
                     opacity={selectedHistoryPoint?.id === loc.id ? 1 : 0.5}
                   />
                 ))}
@@ -628,7 +627,7 @@ export default function LocationClient({
                         onClick={() => setSelectedHistoryPoint(loc)}
                       >
                         <span className="text-xs text-text-muted w-16">
-                          {formatTime(loc.timestamp)}
+                          {formatTime(loc.timestamp, i18n.language)}
                         </span>
                         <div className="flex-1">
                           <p className="text-sm text-text-primary">

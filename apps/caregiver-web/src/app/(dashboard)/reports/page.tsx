@@ -1,6 +1,6 @@
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import ReportsClient from './reports-client';
-import en from '../../../../locales/en.json';
+import { getServerTranslations } from '@/lib/server-i18n';
 
 export default async function ReportsPage() {
   const supabase = await createServerClient();
@@ -23,14 +23,15 @@ export default async function ReportsPage() {
   const household = caregiver?.households;
   const patient = Array.isArray(household?.patients) ? household?.patients?.[0] : household?.patients;
 
-  const t = en.caregiverApp;
+  const translations = await getServerTranslations(household?.language);
+  const t = translations.caregiverApp;
 
   if (!caregiver || !household || !patient) {
     return (
       <div className="page-enter space-y-6">
         <div>
           <h1 className="heading-display text-2xl">
-            Doctor <span className="heading-accent">Reports</span>
+            <span className="heading-accent">{t.reports.pageTitle}</span>
           </h1>
           <p className="text-text-secondary text-sm mt-1">{t.reports.pageSubtitleGeneric}</p>
         </div>
@@ -62,7 +63,7 @@ export default async function ReportsPage() {
     <div className="page-enter space-y-6">
       <div>
         <h1 className="heading-display text-2xl">
-          Doctor <span className="heading-accent">Reports</span>
+          <span className="heading-accent">{t.reports.pageTitle}</span>
         </h1>
         <p className="text-text-secondary text-sm mt-1">{t.reports.pageSubtitle.replace('{{name}}', patient.name)}</p>
       </div>

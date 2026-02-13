@@ -540,7 +540,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
                     : 'bg-surface-card dark:bg-surface-elevated text-text-secondary border-surface-border hover:border-brand-300'
                 }`}
               >
-                {day === 'All' ? t('caregiverApp.carePlan.allDays') : day}
+                {day === 'All' ? t('caregiverApp.carePlan.allDays') : t(`caregiverApp.carePlan.day${day}`)}
                 <span className={`text-xs ${isSelected ? 'text-white/80' : 'text-text-muted'}`}>
                   ({count})
                 </span>
@@ -1081,7 +1081,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
                           : 'bg-surface-card dark:bg-surface-elevated text-text-secondary border-surface-border hover:border-brand-300'
                       }`}
                     >
-                      {day}
+                      {t(`caregiverApp.carePlan.day${day}`)}
                     </button>
                   ))}
                 </div>
@@ -1108,7 +1108,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
                           : 'bg-surface-card dark:bg-surface-elevated text-text-secondary border-surface-border hover:border-brand-300'
                       }`}
                     >
-                      {day}
+                      {t(`caregiverApp.carePlan.day${day}`)}
                     </button>
                   ))}
                 </div>

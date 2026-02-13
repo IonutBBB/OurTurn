@@ -1,6 +1,6 @@
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import SettingsClient from './settings-client';
-import en from '../../../../locales/en.json';
+import { getServerTranslations } from '@/lib/server-i18n';
 import type { Patient } from '@ourturn/shared';
 
 export const dynamic = 'force-dynamic';
@@ -41,7 +41,8 @@ export default async function SettingsPage() {
     }
   }
 
-  const t = en.caregiverApp;
+  const translations = await getServerTranslations(household?.language);
+  const t = translations.caregiverApp;
 
   if (!caregiver || !household) {
     return (

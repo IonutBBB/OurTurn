@@ -43,7 +43,22 @@
     "unknown": "Άγνωστο",
     "minutesAgo": "{{count}}λ πριν",
     "hoursAgo": "{{count}}ώ πριν",
-    "daysAgo": "{{count}}μ πριν"
+    "daysAgo": "{{count}}μ πριν",
+    "home": "Αρχική",
+    "signOut": "Αποσύνδεση",
+    "openMenu": "Άνοιγμα μενού",
+    "closeMenu": "Κλείσιμο μενού",
+    "settings": "Ρυθμίσεις",
+    "themeSystem": "Σύστημα",
+    "themeDark": "Σκοτεινό",
+    "themeLight": "Φωτεινό",
+    "themeCurrentLabel": "Τρέχον θέμα: {{theme}}. Κάντε κλικ για αλλαγή.",
+    "pageNotFound": "Η σελίδα δεν βρέθηκε",
+    "pageNotFoundDesc": "Η σελίδα που αναζητάτε δεν υπάρχει ή έχει μετακινηθεί.",
+    "goToDashboard": "Μετάβαση στον πίνακα",
+    "mainContent": "Κύριο περιεχόμενο",
+    "mainNavigation": "Κύρια πλοήγηση",
+    "goToDashboardLabel": "OurTurn Care - Μετάβαση στον πίνακα"
   },
   "categories": {
     "medication": "Φαρμακευτική αγωγή",
@@ -244,7 +259,15 @@
       "removeMedication": "Αφαίρεση",
       "maxMedications": "Μέγιστο 3 φάρμακα ανά ομάδα",
       "uploadingPhoto": "Μεταφόρτωση...",
-      "hasPhoto": "Έχει φωτογραφία"
+      "hasPhoto": "Έχει φωτογραφία",
+      "allDays": "Όλες",
+      "dayMon": "Δευ",
+      "dayTue": "Τρί",
+      "dayWed": "Τετ",
+      "dayThu": "Πέμ",
+      "dayFri": "Παρ",
+      "daySat": "Σάβ",
+      "daySun": "Κυρ"
     },
     "location": {
       "title": "Τοποθεσία & Ασφάλεια",
@@ -301,7 +324,8 @@
       "mapsApiInstructions": "Προσθέστε το <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> στις μεταβλητές περιβάλλοντος.",
       "saveFailed": "Αποτυχία αποθήκευσης ασφαλούς ζώνης. Προσπαθήστε ξανά.",
       "deleteSafeZoneConfirm": "Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτήν την ασφαλή ζώνη;",
-      "deleteFailed": "Αποτυχία διαγραφής ασφαλούς ζώνης. Προσπαθήστε ξανά."
+      "deleteFailed": "Αποτυχία διαγραφής ασφαλούς ζώνης. Προσπαθήστε ξανά.",
+      "pageTitle": "Τοποθεσία & Ασφάλεια"
     },
     "coach": {
       "title": "AI Care Coach",
@@ -389,7 +413,24 @@
           "title": "Ρωτήστε Οτιδήποτε",
           "placeholder": "Τι σας απασχολεί σχετικά με τη φροντίδα του/της {{name}};"
         }
-      }
+      },
+      "situationPrompts": {
+        "refusing_food": "{{name}} is refusing to eat. What should I do right now?",
+        "refusing_medication": "{{name}} won't take their medication. How can I help them?",
+        "agitated": "{{name}} is agitated and upset right now. How should I respond?",
+        "not_recognizing": "{{name}} doesn't seem to recognize me. What should I do?",
+        "repetitive_questions": "{{name}} keeps asking the same question over and over. How do I handle this?",
+        "sundowning": "{{name}} is showing signs of sundowning. What can I do to help?",
+        "wants_to_leave": "{{name}} wants to leave the house. How should I handle this safely?",
+        "caregiver_overwhelmed": "I'm feeling overwhelmed and losing patience with caregiving. I need help."
+      },
+      "workflowPrompts": {
+        "plan_tomorrow": "Help me plan tomorrow's care routine for {{name}}.",
+        "doctor_visit": "Help me prepare for {{name}}'s upcoming doctor visit.",
+        "review_week": "Let's review how this week went with {{name}}'s care.",
+        "adjust_plan": "Help me adjust {{name}}'s care plan based on what's been working."
+      },
+      "insightDiscussPrompt": "I'd like to discuss this insight about my caregiving: {{insight}}"
     },
     "family": {
       "title": "Η Ομάδα Φροντίδας του/της {{patientName}}",
@@ -1293,6 +1334,18 @@
       "quickLog": {
         "button": "Καταγράψτε μια στιγμή κρίσης",
         "title": "Καταγράψτε μια στιγμή κρίσης"
+      },
+      "scenarioLabels": {
+        "agitated": "Ανήσυχος / Αναστατωμένος",
+        "wandering": "Περιπλάνηση / Αγνοούμενος",
+        "refusing": "Αρνείται φροντίδα",
+        "hallucinations": "Βλέπει / Ακούει πράγματα",
+        "sundowning": "Σύνδρομο δύσης",
+        "fall": "Πτώση / Σωματικό επείγον",
+        "repetitive_questions": "Επαναλαμβανόμενες ερωτήσεις",
+        "sleep_disruption": "Διαταραχή ύπνου",
+        "aggression": "Επιθετικότητα",
+        "shadowing": "Συνεχής ακολούθηση"
       }
     },
     "legal": {

@@ -191,8 +191,7 @@ export default function CrisisClient({
       {/* Header */}
       <div>
         <h1 className="heading-display text-2xl">
-          {t('caregiverApp.crisis.title').split(' ')[0]}{' '}
-          <span className="heading-accent">{t('caregiverApp.crisis.title').split(' ').slice(1).join(' ')}</span>
+          <span className="heading-accent">{t('caregiverApp.crisis.pageTitle')}</span>
         </h1>
         <p className="text-text-secondary text-sm mt-1">{t('caregiverApp.crisis.subtitle')}</p>
       </div>
@@ -216,7 +215,6 @@ export default function CrisisClient({
         {/* Right column (1/3) */}
         <div className="space-y-6">
           <SupportResources
-            country={country}
             familyCaregivers={familyCaregivers}
           />
         </div>

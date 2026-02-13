@@ -1,10 +1,9 @@
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import CrisisClient from './crisis-client';
-import en from '../../../../locales/en.json';
+import { getServerTranslations } from '@/lib/server-i18n';
 
 export default async function CrisisPage() {
   const supabase = await createServerClient();
-  const t = en.caregiverApp;
 
   const { data: { user } } = await supabase.auth.getUser();
 
@@ -23,12 +22,15 @@ export default async function CrisisPage() {
   const household = caregiver?.households;
   const patient = Array.isArray(household?.patients) ? household?.patients?.[0] : household?.patients;
 
+  const translations = await getServerTranslations(household?.language);
+  const t = translations.caregiverApp;
+
   if (!household || !patient) {
     return (
       <div className="page-enter space-y-6">
         <div>
           <h1 className="heading-display text-2xl">
-            Crisis <span className="heading-accent">Hub</span>
+            <span className="heading-accent">{t.crisis.pageTitle}</span>
           </h1>
           <p className="text-text-secondary text-sm mt-1">{t.crisis.pageSubtitle}</p>
         </div>

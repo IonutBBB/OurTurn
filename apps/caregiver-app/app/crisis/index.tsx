@@ -472,7 +472,6 @@ export default function CrisisScreen() {
 
         {/* Support Resources */}
         <SupportResources
-          country={country}
           familyCaregivers={familyCaregivers}
         />
 

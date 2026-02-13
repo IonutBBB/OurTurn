@@ -1,6 +1,6 @@
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import FamilyClient from './family-client';
-import en from '../../../../locales/en.json';
+import { getServerTranslations } from '@/lib/server-i18n';
 
 export default async function FamilyPage({
   searchParams,
@@ -19,7 +19,8 @@ export default async function FamilyPage({
       *,
       households (
         id,
-        care_code
+        care_code,
+        language
       )
     `)
     .eq('id', user?.id)
@@ -27,14 +28,15 @@ export default async function FamilyPage({
 
   const household = caregiver?.households;
 
-  const t = en.caregiverApp;
+  const translations = await getServerTranslations(household?.language);
+  const t = translations.caregiverApp;
 
   if (!caregiver || !household) {
     return (
       <div className="page-enter space-y-6">
         <div>
           <h1 className="heading-display text-2xl">
-            Family <span className="heading-accent">Circle</span>
+            <span className="heading-accent">{t.family.pageTitle}</span>
           </h1>
           <p className="text-text-secondary text-sm mt-1">{t.family.pageSubtitle}</p>
         </div>
@@ -88,7 +90,7 @@ export default async function FamilyPage({
     <div className="page-enter space-y-6">
       <div>
         <h1 className="heading-display text-2xl">
-          Family <span className="heading-accent">Circle</span>
+          <span className="heading-accent">{t.family.pageTitle}</span>
         </h1>
         <p className="text-text-secondary text-sm mt-1">{t.family.pageSubtitle}</p>
       </div>

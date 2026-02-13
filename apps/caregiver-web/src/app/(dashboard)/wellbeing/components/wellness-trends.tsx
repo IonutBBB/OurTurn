@@ -30,7 +30,7 @@ const CHART_CONFIG = [
 ] as const;
 
 export function WellnessTrends({ trend }: WellnessTrendsProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const hasData = trend.some((p) => p.energy != null || p.stress != null || p.sleep != null);
 
@@ -49,7 +49,7 @@ export function WellnessTrends({ trend }: WellnessTrendsProps) {
 
   const formatDate = (dateStr: string) => {
     const d = new Date(dateStr);
-    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    return d.toLocaleDateString(i18n.language, { month: 'short', day: 'numeric' });
   };
 
   return (

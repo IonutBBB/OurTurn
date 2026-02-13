@@ -564,13 +564,22 @@ export async function POST(request: NextRequest) {
 
         try {
           for await (const chunk of result.stream) {
-            // Extract delta text directly from candidate parts to avoid
-            // SDK cumulative-text bugs. Each streaming chunk should contain
-            // only the new content in its candidate parts.
+            // Gemini 2.5 Flash sends cumulative text in each chunk's parts,
+            // not just the delta. We compute the real delta ourselves.
             const parts = chunk.candidates?.[0]?.content?.parts;
-            const delta = parts
+            const chunkText = parts
               ? parts.map((p: any) => p.text || '').join('')
-              : chunk.text();
+              : '';
+
+            if (!chunkText) continue;
+
+            // Detect cumulative vs delta: if chunk starts with what we have, it's cumulative
+            let delta: string;
+            if (chunkText.length >= fullResponse.length && chunkText.startsWith(fullResponse)) {
+              delta = chunkText.slice(fullResponse.length);
+            } else {
+              delta = chunkText;
+            }
 
             if (delta) {
               fullResponse += delta;

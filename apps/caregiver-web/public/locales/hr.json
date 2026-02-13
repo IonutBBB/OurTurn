@@ -43,7 +43,22 @@
     "unknown": "Nepoznato",
     "minutesAgo": "prije {{count}}m",
     "hoursAgo": "prije {{count}}h",
-    "daysAgo": "prije {{count}}d"
+    "daysAgo": "prije {{count}}d",
+    "home": "Početna",
+    "signOut": "Odjava",
+    "openMenu": "Otvori izbornik",
+    "closeMenu": "Zatvori izbornik",
+    "settings": "Postavke",
+    "themeSystem": "Sustav",
+    "themeDark": "Tamno",
+    "themeLight": "Svijetlo",
+    "themeCurrentLabel": "Trenutna tema: {{theme}}. Kliknite za promjenu.",
+    "pageNotFound": "Stranica nije pronađena",
+    "pageNotFoundDesc": "Stranica koju tražite ne postoji ili je premještena.",
+    "goToDashboard": "Idi na nadzornu ploču",
+    "mainContent": "Glavni sadržaj",
+    "mainNavigation": "Glavna navigacija",
+    "goToDashboardLabel": "OurTurn Care - Idi na nadzornu ploču"
   },
   "categories": {
     "medication": "Lijekovi",
@@ -244,7 +259,15 @@
       "removeMedication": "Ukloni",
       "maxMedications": "Maksimalno 3 lijeka po grupi",
       "uploadingPhoto": "Učitavanje...",
-      "hasPhoto": "Ima fotografiju"
+      "hasPhoto": "Ima fotografiju",
+      "allDays": "Svi",
+      "dayMon": "Pon",
+      "dayTue": "Uto",
+      "dayWed": "Sri",
+      "dayThu": "Čet",
+      "dayFri": "Pet",
+      "daySat": "Sub",
+      "daySun": "Ned"
     },
     "location": {
       "title": "Lokacija i sigurnost",
@@ -301,7 +324,8 @@
       "mapsApiInstructions": "Dodajte <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> u svoje varijable okruženja.",
       "saveFailed": "Spremanje sigurne zone nije uspjelo. Pokušajte ponovo.",
       "deleteSafeZoneConfirm": "Jeste li sigurni da želite izbrisati ovu sigurnu zonu?",
-      "deleteFailed": "Brisanje sigurne zone nije uspjelo. Pokušajte ponovo."
+      "deleteFailed": "Brisanje sigurne zone nije uspjelo. Pokušajte ponovo.",
+      "pageTitle": "Lokacija i sigurnost"
     },
     "coach": {
       "title": "AI Trener za skrb",
@@ -389,7 +413,24 @@
           "title": "Pitajte bilo što",
           "placeholder": "Što vas zanima u vezi sa skrbi za {{name}}?"
         }
-      }
+      },
+      "situationPrompts": {
+        "refusing_food": "{{name}} is refusing to eat. What should I do right now?",
+        "refusing_medication": "{{name}} won't take their medication. How can I help them?",
+        "agitated": "{{name}} is agitated and upset right now. How should I respond?",
+        "not_recognizing": "{{name}} doesn't seem to recognize me. What should I do?",
+        "repetitive_questions": "{{name}} keeps asking the same question over and over. How do I handle this?",
+        "sundowning": "{{name}} is showing signs of sundowning. What can I do to help?",
+        "wants_to_leave": "{{name}} wants to leave the house. How should I handle this safely?",
+        "caregiver_overwhelmed": "I'm feeling overwhelmed and losing patience with caregiving. I need help."
+      },
+      "workflowPrompts": {
+        "plan_tomorrow": "Help me plan tomorrow's care routine for {{name}}.",
+        "doctor_visit": "Help me prepare for {{name}}'s upcoming doctor visit.",
+        "review_week": "Let's review how this week went with {{name}}'s care.",
+        "adjust_plan": "Help me adjust {{name}}'s care plan based on what's been working."
+      },
+      "insightDiscussPrompt": "I'd like to discuss this insight about my caregiving: {{insight}}"
     },
     "family": {
       "title": "Tim za skrb za {{patientName}}",
@@ -1293,6 +1334,18 @@
       "quickLog": {
         "button": "Zabilježite krizni trenutak",
         "title": "Zabilježite krizni trenutak"
+      },
+      "scenarioLabels": {
+        "agitated": "Agitated / Upset",
+        "wandering": "Wandering / Missing",
+        "refusing": "Refusing Care",
+        "hallucinations": "Seeing / Hearing Things",
+        "sundowning": "Sundowning / Evening Anxiety",
+        "fall": "Fall / Physical Emergency",
+        "repetitive_questions": "Repetitive Questions",
+        "sleep_disruption": "Sleep Disruption",
+        "aggression": "Aggression",
+        "shadowing": "Shadowing"
       }
     },
     "legal": {

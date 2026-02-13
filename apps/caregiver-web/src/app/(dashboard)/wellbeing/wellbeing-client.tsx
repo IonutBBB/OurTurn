@@ -37,7 +37,7 @@ export default function WellbeingClient({
   recentLogs,
   burnoutAlerts: initialBurnoutAlerts,
 }: WellbeingClientProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { showToast } = useToast();
   const supabase = createBrowserClient();
   const [todayLog, setTodayLog] = useState<CaregiverWellbeingLog | null>(initialLog || null);
@@ -388,8 +388,8 @@ export default function WellbeingClient({
                 {recentLogs.slice(0, 7).map((log) => {
                   const moodInfo = log.mood ? CAREGIVER_MOOD_LABELS[log.mood] : null;
                   const date = new Date(log.date);
-                  const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
-                  const dateStr = date.toLocaleDateString('en-US', {
+                  const dayName = date.toLocaleDateString(i18n.language, { weekday: 'short' });
+                  const dateStr = date.toLocaleDateString(i18n.language, {
                     month: 'short',
                     day: 'numeric',
                   });

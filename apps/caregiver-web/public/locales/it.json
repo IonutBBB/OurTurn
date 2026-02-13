@@ -43,7 +43,22 @@
     "unknown": "Sconosciuto",
     "minutesAgo": "{{count}}m fa",
     "hoursAgo": "{{count}}h fa",
-    "daysAgo": "{{count}}g fa"
+    "daysAgo": "{{count}}g fa",
+    "home": "Home",
+    "signOut": "Esci",
+    "openMenu": "Apri menu",
+    "closeMenu": "Chiudi menu",
+    "settings": "Impostazioni",
+    "themeSystem": "Sistema",
+    "themeDark": "Scuro",
+    "themeLight": "Chiaro",
+    "themeCurrentLabel": "Tema attuale: {{theme}}. Clicca per cambiare.",
+    "pageNotFound": "Pagina non trovata",
+    "pageNotFoundDesc": "La pagina che cerchi non esiste o è stata spostata.",
+    "goToDashboard": "Vai alla dashboard",
+    "mainContent": "Contenuto principale",
+    "mainNavigation": "Navigazione principale",
+    "goToDashboardLabel": "OurTurn Care - Vai alla dashboard"
   },
   "categories": {
     "medication": "Farmaci",
@@ -244,7 +259,15 @@
       "removeMedication": "Rimuovi",
       "maxMedications": "Massimo 3 farmaci per gruppo",
       "uploadingPhoto": "Caricamento in corso...",
-      "hasPhoto": "Ha una foto"
+      "hasPhoto": "Ha una foto",
+      "allDays": "Tutti",
+      "dayMon": "Lun",
+      "dayTue": "Mar",
+      "dayWed": "Mer",
+      "dayThu": "Gio",
+      "dayFri": "Ven",
+      "daySat": "Sab",
+      "daySun": "Dom"
     },
     "location": {
       "title": "Posizione e Sicurezza",
@@ -301,7 +324,8 @@
       "mapsApiInstructions": "Aggiungi <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> alle tue variabili d'ambiente.",
       "saveFailed": "Salvataggio della zona sicura fallito. Riprova.",
       "deleteSafeZoneConfirm": "Sei sicuro di voler eliminare questa zona sicura?",
-      "deleteFailed": "Eliminazione della zona sicura fallita. Riprova."
+      "deleteFailed": "Eliminazione della zona sicura fallita. Riprova.",
+      "pageTitle": "Posizione e Sicurezza"
     },
     "coach": {
       "title": "Coach AI per l'assistenza",
@@ -389,7 +413,24 @@
           "title": "Chiedi Qualsiasi Cosa",
           "placeholder": "Cosa ti preoccupa riguardo alla cura di {{name}}?"
         }
-      }
+      },
+      "situationPrompts": {
+        "refusing_food": "{{name}} is refusing to eat. What should I do right now?",
+        "refusing_medication": "{{name}} won't take their medication. How can I help them?",
+        "agitated": "{{name}} is agitated and upset right now. How should I respond?",
+        "not_recognizing": "{{name}} doesn't seem to recognize me. What should I do?",
+        "repetitive_questions": "{{name}} keeps asking the same question over and over. How do I handle this?",
+        "sundowning": "{{name}} is showing signs of sundowning. What can I do to help?",
+        "wants_to_leave": "{{name}} wants to leave the house. How should I handle this safely?",
+        "caregiver_overwhelmed": "I'm feeling overwhelmed and losing patience with caregiving. I need help."
+      },
+      "workflowPrompts": {
+        "plan_tomorrow": "Help me plan tomorrow's care routine for {{name}}.",
+        "doctor_visit": "Help me prepare for {{name}}'s upcoming doctor visit.",
+        "review_week": "Let's review how this week went with {{name}}'s care.",
+        "adjust_plan": "Help me adjust {{name}}'s care plan based on what's been working."
+      },
+      "insightDiscussPrompt": "I'd like to discuss this insight about my caregiving: {{insight}}"
     },
     "family": {
       "title": "Il Team di Cura di {{patientName}}",
@@ -1293,6 +1334,18 @@
       "quickLog": {
         "button": "Registra un momento di crisi",
         "title": "Registra un momento di crisi"
+      },
+      "scenarioLabels": {
+        "agitated": "Agitato / Turbato",
+        "wandering": "Vagabondaggio / Scomparso",
+        "refusing": "Rifiuta le cure",
+        "hallucinations": "Vede / Sente cose",
+        "sundowning": "Sindrome del tramonto",
+        "fall": "Caduta / Emergenza fisica",
+        "repetitive_questions": "Domande ripetitive",
+        "sleep_disruption": "Disturbo del sonno",
+        "aggression": "Aggressività",
+        "shadowing": "Segue ovunque"
       }
     },
     "legal": {

@@ -43,7 +43,22 @@
     "unknown": "Unknown",
     "minutesAgo": "{{count}}m ago",
     "hoursAgo": "{{count}}h ago",
-    "daysAgo": "{{count}}d ago"
+    "daysAgo": "{{count}}d ago",
+    "home": "Home",
+    "signOut": "Sign out",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "settings": "Settings",
+    "themeSystem": "System",
+    "themeDark": "Dark",
+    "themeLight": "Light",
+    "themeCurrentLabel": "Current theme: {{theme}}. Click to change.",
+    "pageNotFound": "Page not found",
+    "pageNotFoundDesc": "The page you're looking for doesn't exist or has been moved.",
+    "goToDashboard": "Go to Dashboard",
+    "mainContent": "Main content",
+    "mainNavigation": "Main navigation",
+    "goToDashboardLabel": "OurTurn Care - Go to dashboard"
   },
   "categories": {
     "medication": "Medication",
@@ -210,6 +225,14 @@
       "hintPlaceholder": "E.g., Your pills are in the kitchen counter pill box",
       "taskPlaceholder": "e.g., Morning medication",
       "recurrence": "Repeats",
+      "allDays": "All",
+      "dayMon": "Mon",
+      "dayTue": "Tue",
+      "dayWed": "Wed",
+      "dayThu": "Thu",
+      "dayFri": "Fri",
+      "daySat": "Sat",
+      "daySun": "Sun",
       "daily": "Every day",
       "specificDays": "Specific days",
       "oneTime": "One time",
@@ -248,6 +271,7 @@
     },
     "location": {
       "title": "Location & Safety",
+      "pageTitle": "Location & Safety",
       "pageSubtitle": "Track location and manage safe zones for peace of mind",
       "setupDesc": "Set up your care profile to enable location tracking and safety features.",
       "completeSetupFirst": "Complete Setup First",
@@ -389,7 +413,24 @@
           "title": "Ask Anything",
           "placeholder": "What's on your mind about caring for {{name}}?"
         }
-      }
+      },
+      "situationPrompts": {
+        "refusing_food": "{{name}} is refusing to eat. What should I do right now?",
+        "refusing_medication": "{{name}} won't take their medication. How can I help them?",
+        "agitated": "{{name}} is agitated and upset right now. How should I respond?",
+        "not_recognizing": "{{name}} doesn't seem to recognize me. What should I do?",
+        "repetitive_questions": "{{name}} keeps asking the same question over and over. How do I handle this?",
+        "sundowning": "{{name}} is showing signs of sundowning. What can I do to help?",
+        "wants_to_leave": "{{name}} wants to leave the house. How should I handle this safely?",
+        "caregiver_overwhelmed": "I'm feeling overwhelmed and losing patience with caregiving. I need help."
+      },
+      "workflowPrompts": {
+        "plan_tomorrow": "Help me plan tomorrow's care routine for {{name}}.",
+        "doctor_visit": "Help me prepare for {{name}}'s upcoming doctor visit.",
+        "review_week": "Let's review how this week went with {{name}}'s care.",
+        "adjust_plan": "Help me adjust {{name}}'s care plan based on what's been working."
+      },
+      "insightDiscussPrompt": "I'd like to discuss this insight about my caregiving: {{insight}}"
     },
     "family": {
       "title": "{{patientName}}'s Care Team",
@@ -1234,6 +1275,18 @@
       "scenarioGrid": {
         "title": "What's happening?",
         "urgent": "URGENT"
+      },
+      "scenarioLabels": {
+        "agitated": "Agitated / Upset",
+        "wandering": "Wandering / Missing",
+        "refusing": "Refusing Care",
+        "hallucinations": "Seeing / Hearing Things",
+        "sundowning": "Sundowning / Evening Anxiety",
+        "fall": "Fall / Physical Emergency",
+        "repetitive_questions": "Repetitive Questions",
+        "sleep_disruption": "Sleep Disruption",
+        "aggression": "Aggression",
+        "shadowing": "Shadowing"
       },
       "remote": {
         "noLocation": "Location not available",

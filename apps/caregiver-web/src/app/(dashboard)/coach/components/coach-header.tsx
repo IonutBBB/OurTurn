@@ -12,7 +12,7 @@ export function CoachHeader({ patientName }: CoachHeaderProps) {
   return (
     <div>
       <h1 className="heading-display text-2xl">
-        Care <span className="heading-accent">Coach</span>
+        <span className="heading-accent">{t('caregiverApp.coach.pageTitle')}</span>
       </h1>
       <p className="text-text-secondary text-sm mt-1">
         {patientName

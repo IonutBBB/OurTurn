@@ -43,7 +43,22 @@
     "unknown": "Ismeretlen",
     "minutesAgo": "{{count}} perce",
     "hoursAgo": "{{count}} órája",
-    "daysAgo": "{{count}} napja"
+    "daysAgo": "{{count}} napja",
+    "home": "Kezdőlap",
+    "signOut": "Kijelentkezés",
+    "openMenu": "Menü megnyitása",
+    "closeMenu": "Menü bezárása",
+    "settings": "Beállítások",
+    "themeSystem": "Rendszer",
+    "themeDark": "Sötét",
+    "themeLight": "Világos",
+    "themeCurrentLabel": "Jelenlegi téma: {{theme}}. Kattintson a módosításhoz.",
+    "pageNotFound": "Az oldal nem található",
+    "pageNotFoundDesc": "A keresett oldal nem létezik vagy áthelyezték.",
+    "goToDashboard": "Irányítópulthoz",
+    "mainContent": "Fő tartalom",
+    "mainNavigation": "Fő navigáció",
+    "goToDashboardLabel": "OurTurn Care - Irányítópulthoz"
   },
   "categories": {
     "medication": "Gyógyszer",
@@ -244,7 +259,15 @@
       "removeMedication": "Eltávolítás",
       "maxMedications": "Maximum 3 gyógyszer csoportonként",
       "uploadingPhoto": "Feltöltés...",
-      "hasPhoto": "Van fotója"
+      "hasPhoto": "Van fotója",
+      "allDays": "Összes",
+      "dayMon": "Hé",
+      "dayTue": "Ke",
+      "dayWed": "Sze",
+      "dayThu": "Csü",
+      "dayFri": "Pé",
+      "daySat": "Szo",
+      "daySun": "Va"
     },
     "location": {
       "title": "Hely és biztonság",
@@ -301,7 +324,8 @@
       "mapsApiInstructions": "Adja hozzá a <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> kulcsot a környezeti változókhoz.",
       "saveFailed": "A biztonságos zóna mentése sikertelen. Kérjük, próbálja újra.",
       "deleteSafeZoneConfirm": "Biztosan törli ezt a biztonságos zónát?",
-      "deleteFailed": "A biztonságos zóna törlése sikertelen. Kérjük, próbálja újra."
+      "deleteFailed": "A biztonságos zóna törlése sikertelen. Kérjük, próbálja újra.",
+      "pageTitle": "Hely és biztonság"
     },
     "coach": {
       "title": "AI Gondozási Tanácsadó",
@@ -389,7 +413,24 @@
           "title": "Kérdezz bármit",
           "placeholder": "Mi jár a fejében {{name}} gondozásával kapcsolatban?"
         }
-      }
+      },
+      "situationPrompts": {
+        "refusing_food": "{{name}} is refusing to eat. What should I do right now?",
+        "refusing_medication": "{{name}} won't take their medication. How can I help them?",
+        "agitated": "{{name}} is agitated and upset right now. How should I respond?",
+        "not_recognizing": "{{name}} doesn't seem to recognize me. What should I do?",
+        "repetitive_questions": "{{name}} keeps asking the same question over and over. How do I handle this?",
+        "sundowning": "{{name}} is showing signs of sundowning. What can I do to help?",
+        "wants_to_leave": "{{name}} wants to leave the house. How should I handle this safely?",
+        "caregiver_overwhelmed": "I'm feeling overwhelmed and losing patience with caregiving. I need help."
+      },
+      "workflowPrompts": {
+        "plan_tomorrow": "Help me plan tomorrow's care routine for {{name}}.",
+        "doctor_visit": "Help me prepare for {{name}}'s upcoming doctor visit.",
+        "review_week": "Let's review how this week went with {{name}}'s care.",
+        "adjust_plan": "Help me adjust {{name}}'s care plan based on what's been working."
+      },
+      "insightDiscussPrompt": "I'd like to discuss this insight about my caregiving: {{insight}}"
     },
     "family": {
       "title": "{{patientName}} gondozó csapata",
@@ -1293,6 +1334,18 @@
       "quickLog": {
         "button": "Válsághelyzet rögzítése",
         "title": "Válsághelyzet rögzítése"
+      },
+      "scenarioLabels": {
+        "agitated": "Agitated / Upset",
+        "wandering": "Wandering / Missing",
+        "refusing": "Refusing Care",
+        "hallucinations": "Seeing / Hearing Things",
+        "sundowning": "Sundowning / Evening Anxiety",
+        "fall": "Fall / Physical Emergency",
+        "repetitive_questions": "Repetitive Questions",
+        "sleep_disruption": "Sleep Disruption",
+        "aggression": "Aggression",
+        "shadowing": "Shadowing"
       }
     },
     "legal": {

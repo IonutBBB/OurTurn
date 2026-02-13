@@ -1,6 +1,6 @@
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import { CarePlanClient } from './care-plan-client';
-import en from '../../../../locales/en.json';
+import { getServerTranslations } from '@/lib/server-i18n';
 
 export default async function CarePlanPage() {
   const supabase = await createServerClient();
@@ -23,14 +23,15 @@ export default async function CarePlanPage() {
   const household = caregiver?.households;
   const patient = Array.isArray(household?.patients) ? household?.patients?.[0] : household?.patients;
 
-  const t = en.caregiverApp;
+  const translations = await getServerTranslations(household?.language);
+  const t = translations.caregiverApp;
 
   if (!household || !patient) {
     return (
       <div className="page-enter space-y-6">
         <div>
           <h1 className="heading-display text-2xl">
-            Care <span className="heading-accent">Plan</span>
+            <span className="heading-accent">{t.carePlan.pageTitle}</span>
           </h1>
           <p className="text-text-secondary text-sm mt-1">{t.carePlan.pageSubtitleGeneric}</p>
         </div>
@@ -62,7 +63,7 @@ export default async function CarePlanPage() {
     <div className="page-enter space-y-6">
       <div>
         <h1 className="heading-display text-2xl">
-          Care <span className="heading-accent">Plan</span>
+          <span className="heading-accent">{t.carePlan.pageTitle}</span>
         </h1>
         <p className="text-text-secondary text-sm mt-1">{t.carePlan.pageSubtitle.replace('{{name}}', patient.name)}</p>
       </div>

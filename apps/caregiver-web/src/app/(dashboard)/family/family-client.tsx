@@ -45,7 +45,7 @@ export default function FamilyClient({
   subscriptionStatus,
   initialTab = 'family',
 }: FamilyClientProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { showToast } = useToast();
   const supabase = createBrowserClient();
   const [caregivers, setCaregivers] = useState<Caregiver[]>(initialCaregivers);
@@ -248,13 +248,13 @@ export default function FamilyClient({
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
     if (diffDays === 0) {
-      return date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+      return date.toLocaleTimeString(i18n.language, { hour: 'numeric', minute: '2-digit' });
     } else if (diffDays === 1) {
       return t('common.yesterday');
     } else if (diffDays < 7) {
-      return date.toLocaleDateString('en-US', { weekday: 'long' });
+      return date.toLocaleDateString(i18n.language, { weekday: 'long' });
     } else {
-      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      return date.toLocaleDateString(i18n.language, { month: 'short', day: 'numeric' });
     }
   };
 

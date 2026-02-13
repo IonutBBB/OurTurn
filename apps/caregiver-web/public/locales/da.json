@@ -43,7 +43,22 @@
     "unknown": "Ukendt",
     "minutesAgo": "{{count}}m siden",
     "hoursAgo": "{{count}}t siden",
-    "daysAgo": "{{count}}d siden"
+    "daysAgo": "{{count}}d siden",
+    "home": "Hjem",
+    "signOut": "Log ud",
+    "openMenu": "Åbn menu",
+    "closeMenu": "Luk menu",
+    "settings": "Indstillinger",
+    "themeSystem": "System",
+    "themeDark": "Mørkt",
+    "themeLight": "Lyst",
+    "themeCurrentLabel": "Nuværende tema: {{theme}}. Klik for at ændre.",
+    "pageNotFound": "Side ikke fundet",
+    "pageNotFoundDesc": "Siden du leder efter findes ikke eller er blevet flyttet.",
+    "goToDashboard": "Gå til dashboard",
+    "mainContent": "Hovedindhold",
+    "mainNavigation": "Hovednavigation",
+    "goToDashboardLabel": "OurTurn Care - Gå til dashboard"
   },
   "categories": {
     "medication": "Medicin",
@@ -244,7 +259,15 @@
       "removeMedication": "Fjern",
       "maxMedications": "Maksimum 3 typer medicin pr. gruppe",
       "uploadingPhoto": "Uploader...",
-      "hasPhoto": "Har foto"
+      "hasPhoto": "Har foto",
+      "allDays": "Alle",
+      "dayMon": "Man",
+      "dayTue": "Tir",
+      "dayWed": "Ons",
+      "dayThu": "Tor",
+      "dayFri": "Fre",
+      "daySat": "Lør",
+      "daySun": "Søn"
     },
     "location": {
       "title": "Lokation og sikkerhed",
@@ -301,7 +324,8 @@
       "mapsApiInstructions": "Tilføj <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> til dine miljøvariabler.",
       "saveFailed": "Kunne ikke gemme sikker zone. Prøv igen.",
       "deleteSafeZoneConfirm": "Er du sikker på, at du vil slette denne sikre zone?",
-      "deleteFailed": "Kunne ikke slette sikker zone. Prøv igen."
+      "deleteFailed": "Kunne ikke slette sikker zone. Prøv igen.",
+      "pageTitle": "Lokation og sikkerhed"
     },
     "coach": {
       "title": "AI-plejevejleder",
@@ -389,7 +413,24 @@
           "title": "Spørg om hvad som helst",
           "placeholder": "Hvad tænker du på vedrørende pleje af {{name}}?"
         }
-      }
+      },
+      "situationPrompts": {
+        "refusing_food": "{{name}} is refusing to eat. What should I do right now?",
+        "refusing_medication": "{{name}} won't take their medication. How can I help them?",
+        "agitated": "{{name}} is agitated and upset right now. How should I respond?",
+        "not_recognizing": "{{name}} doesn't seem to recognize me. What should I do?",
+        "repetitive_questions": "{{name}} keeps asking the same question over and over. How do I handle this?",
+        "sundowning": "{{name}} is showing signs of sundowning. What can I do to help?",
+        "wants_to_leave": "{{name}} wants to leave the house. How should I handle this safely?",
+        "caregiver_overwhelmed": "I'm feeling overwhelmed and losing patience with caregiving. I need help."
+      },
+      "workflowPrompts": {
+        "plan_tomorrow": "Help me plan tomorrow's care routine for {{name}}.",
+        "doctor_visit": "Help me prepare for {{name}}'s upcoming doctor visit.",
+        "review_week": "Let's review how this week went with {{name}}'s care.",
+        "adjust_plan": "Help me adjust {{name}}'s care plan based on what's been working."
+      },
+      "insightDiscussPrompt": "I'd like to discuss this insight about my caregiving: {{insight}}"
     },
     "family": {
       "title": "{{patientName}}s plejeteam",
@@ -1293,6 +1334,18 @@
       "quickLog": {
         "button": "Log et kriseøjeblik",
         "title": "Log et kriseøjeblik"
+      },
+      "scenarioLabels": {
+        "agitated": "Agitated / Upset",
+        "wandering": "Wandering / Missing",
+        "refusing": "Refusing Care",
+        "hallucinations": "Seeing / Hearing Things",
+        "sundowning": "Sundowning / Evening Anxiety",
+        "fall": "Fall / Physical Emergency",
+        "repetitive_questions": "Repetitive Questions",
+        "sleep_disruption": "Sleep Disruption",
+        "aggression": "Aggression",
+        "shadowing": "Shadowing"
       }
     },
     "legal": {

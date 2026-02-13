@@ -20,7 +20,7 @@ export default function ReportsClient({
   patientDateOfBirth,
   initialReports,
 }: ReportsClientProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const supabase = createBrowserClient();
   const [reports, setReports] = useState<DoctorVisitReport[]>(initialReports);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -259,7 +259,7 @@ export default function ReportsClient({
   }, [t]);
 
   const formatDate = (dateStr: string) => {
-    return new Date(dateStr).toLocaleDateString('en-US', {
+    return new Date(dateStr).toLocaleDateString(i18n.language, {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
@@ -491,7 +491,7 @@ export default function ReportsClient({
                   </p>
                   <p className="text-xs text-text-muted mt-2">
                     {t('caregiverApp.reports.generatedOnFull', {
-                      date: new Date().toLocaleDateString('en-US', {
+                      date: new Date().toLocaleDateString(i18n.language, {
                         year: 'numeric',
                         month: 'long',
                         day: 'numeric',

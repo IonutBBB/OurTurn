@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { createClient as createServerClient } from '@/lib/supabase/server';
 import { DashboardRealtime, JournalCard } from './dashboard-client';
-import en from '../../../../locales/en.json';
+import { getServerTranslations } from '@/lib/server-i18n';
 
 function DashboardSkeleton() {
   return (
@@ -56,7 +56,8 @@ async function DashboardContent() {
   const household = caregiver?.households;
   const patient = Array.isArray(household?.patients) ? household?.patients?.[0] : household?.patients;
 
-  const t = en.caregiverApp;
+  const translations = await getServerTranslations(household?.language);
+  const t = translations.caregiverApp;
 
   const today = new Date();
   const timeOfDay = today.getHours() < 12 ? 'morning' : today.getHours() < 18 ? 'afternoon' : 'evening';
@@ -147,7 +148,7 @@ async function DashboardContent() {
         </div>
         <div className="hidden sm:flex flex-col items-end gap-1">
           <p className="text-sm text-text-muted">
-            {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
+            {new Date().toLocaleDateString(household?.language || 'en', { weekday: 'long', month: 'long', day: 'numeric' })}
           </p>
           {household?.id && (
             <DashboardRealtime
@@ -277,7 +278,7 @@ async function DashboardContent() {
               </p>
               <p className="text-xs text-text-muted mt-1">
                 {lastSeenAt
-                  ? t.dashboard.lastSeenAt.replace('{{time}}', lastSeenAt.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }))
+                  ? t.dashboard.lastSeenAt.replace('{{time}}', lastSeenAt.toLocaleTimeString(household?.language || 'en', { hour: 'numeric', minute: '2-digit' }))
                   : t.dashboard.lastSeenNever}
               </p>
             </div>

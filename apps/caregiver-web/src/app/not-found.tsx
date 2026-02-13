@@ -1,6 +1,11 @@
+'use client';
+
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
 export default function NotFound() {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen bg-surface-background flex items-center justify-center p-4">
       <div className="text-center max-w-md">
@@ -8,17 +13,17 @@ export default function NotFound() {
           <span className="text-4xl">🔍</span>
         </div>
         <h1 className="text-3xl font-bold font-display text-text-primary mb-3">
-          Page not found
+          {t('common.pageNotFound')}
         </h1>
         <p className="text-text-secondary mb-8">
-          The page you&apos;re looking for doesn&apos;t exist or has been moved.
+          {t('common.pageNotFoundDesc')}
         </p>
         <div className="flex gap-3 justify-center">
           <Link href="/dashboard" className="btn-primary">
-            Go to Dashboard
+            {t('common.goToDashboard')}
           </Link>
           <Link href="/" className="btn-secondary">
-            Home
+            {t('common.home')}
           </Link>
         </div>
       </div>

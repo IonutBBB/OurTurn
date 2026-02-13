@@ -1,9 +1,11 @@
 'use client';
 
+import { useTranslation } from 'react-i18next';
 import { useTheme } from './theme-provider';
 
 export function ThemeToggle() {
   const { theme, setTheme, resolvedTheme } = useTheme();
+  const { t } = useTranslation();
 
   const cycleTheme = () => {
     if (theme === 'light') {
@@ -38,16 +40,16 @@ export function ThemeToggle() {
   };
 
   const getLabel = () => {
-    if (theme === 'system') return 'System';
-    if (theme === 'dark') return 'Dark';
-    return 'Light';
+    if (theme === 'system') return t('common.themeSystem');
+    if (theme === 'dark') return t('common.themeDark');
+    return t('common.themeLight');
   };
 
   return (
     <button
       onClick={cycleTheme}
       className="flex items-center gap-2 w-full px-3 py-2 rounded-xl text-sm text-text-secondary hover:bg-brand-50 dark:hover:bg-brand-50/10 hover:text-text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2"
-      aria-label={`Current theme: ${getLabel()}. Click to change.`}
+      aria-label={t('common.themeCurrentLabel', { theme: getLabel() })}
     >
       {getIcon()}
       <span>{getLabel()}</span>

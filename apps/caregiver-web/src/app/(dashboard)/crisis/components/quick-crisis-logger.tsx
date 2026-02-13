@@ -113,7 +113,7 @@ export function QuickCrisisLogger({
             }`}
           >
             <span>{s.emoji}</span>
-            <span className="truncate">{s.label}</span>
+            <span className="truncate">{t(`caregiverApp.crisis.scenarioLabels.${s.id}`)}</span>
           </button>
         ))}
       </div>

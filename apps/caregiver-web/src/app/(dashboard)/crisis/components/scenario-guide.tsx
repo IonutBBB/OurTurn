@@ -59,7 +59,7 @@ export function ScenarioGuide({
           <span className="text-3xl">{scenario.emoji}</span>
           <div>
             <h2 className="text-xl font-display font-bold text-text-primary">
-              {scenario.label}
+              {t(`caregiverApp.crisis.scenarioLabels.${scenario.id}`)}
             </h2>
             <p className="text-sm text-text-secondary">
               {scenario.stepCountDescription}

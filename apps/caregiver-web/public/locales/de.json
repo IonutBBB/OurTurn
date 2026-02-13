@@ -43,7 +43,22 @@
     "unknown": "Unbekannt",
     "minutesAgo": "vor {{count}} Min.",
     "hoursAgo": "vor {{count}} Std.",
-    "daysAgo": "vor {{count}} Tg."
+    "daysAgo": "vor {{count}} Tg.",
+    "home": "Startseite",
+    "signOut": "Abmelden",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
+    "settings": "Einstellungen",
+    "themeSystem": "System",
+    "themeDark": "Dunkel",
+    "themeLight": "Hell",
+    "themeCurrentLabel": "Aktuelles Thema: {{theme}}. Klicken zum Ändern.",
+    "pageNotFound": "Seite nicht gefunden",
+    "pageNotFoundDesc": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+    "goToDashboard": "Zum Dashboard",
+    "mainContent": "Hauptinhalt",
+    "mainNavigation": "Hauptnavigation",
+    "goToDashboardLabel": "OurTurn Care - Zum Dashboard"
   },
   "categories": {
     "medication": "Medikamente",
@@ -244,7 +259,15 @@
       "removeMedication": "Entfernen",
       "maxMedications": "Maximal 3 Medikamente pro Gruppe",
       "uploadingPhoto": "Wird hochgeladen...",
-      "hasPhoto": "Hat Foto"
+      "hasPhoto": "Hat Foto",
+      "allDays": "Alle",
+      "dayMon": "Mo",
+      "dayTue": "Di",
+      "dayWed": "Mi",
+      "dayThu": "Do",
+      "dayFri": "Fr",
+      "daySat": "Sa",
+      "daySun": "So"
     },
     "location": {
       "title": "Standort & Sicherheit",
@@ -301,7 +324,8 @@
       "mapsApiInstructions": "Fügen Sie <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> zu Ihren Umgebungsvariablen hinzu.",
       "saveFailed": "Sicherheitszone konnte nicht gespeichert werden. Bitte versuchen Sie es erneut.",
       "deleteSafeZoneConfirm": "Sind Sie sicher, dass Sie diese Sicherheitszone löschen möchten?",
-      "deleteFailed": "Sicherheitszone konnte nicht gelöscht werden. Bitte versuchen Sie es erneut."
+      "deleteFailed": "Sicherheitszone konnte nicht gelöscht werden. Bitte versuchen Sie es erneut.",
+      "pageTitle": "Standort & Sicherheit"
     },
     "coach": {
       "title": "KI-Pflegecoach",
@@ -389,7 +413,24 @@
           "title": "Alles fragen",
           "placeholder": "Was beschäftigt Sie bezüglich der Pflege von {{name}}?"
         }
-      }
+      },
+      "situationPrompts": {
+        "refusing_food": "{{name}} weigert sich zu essen. Was soll ich jetzt tun?",
+        "refusing_medication": "{{name}} will die Medikamente nicht nehmen. Wie kann ich helfen?",
+        "agitated": "{{name}} ist aufgeregt und aufgebracht. Wie soll ich reagieren?",
+        "not_recognizing": "{{name}} scheint mich nicht zu erkennen. Was soll ich tun?",
+        "repetitive_questions": "{{name}} stellt immer wieder dieselbe Frage. Wie gehe ich damit um?",
+        "sundowning": "{{name}} zeigt Anzeichen von Sundowning. Was kann ich tun?",
+        "wants_to_leave": "{{name}} möchte das Haus verlassen. Wie gehe ich sicher damit um?",
+        "caregiver_overwhelmed": "Ich fühle mich überfordert und verliere die Geduld bei der Pflege. Ich brauche Hilfe."
+      },
+      "workflowPrompts": {
+        "plan_tomorrow": "Hilf mir, den morgigen Pflegeplan für {{name}} zu erstellen.",
+        "doctor_visit": "Hilf mir, den Arztbesuch von {{name}} vorzubereiten.",
+        "review_week": "Lass uns die Woche mit {{name}}s Pflege durchgehen.",
+        "adjust_plan": "Hilf mir, {{name}}s Pflegeplan anzupassen."
+      },
+      "insightDiscussPrompt": "Ich möchte diese Erkenntnis über meine Pflege besprechen: {{insight}}"
     },
     "family": {
       "title": "Das Pflegeteam von {{patientName}}",
@@ -1293,7 +1334,19 @@
       "email": "E-Mail",
       "website": "Webseite",
       "visitWebsite": "Webseite besuchen",
-      "callNow": "Jetzt anrufen"
+      "callNow": "Jetzt anrufen",
+      "scenarioLabels": {
+        "agitated": "Aufgeregt / Aufgebracht",
+        "wandering": "Weglaufen / Vermisst",
+        "refusing": "Verweigert Pflege",
+        "hallucinations": "Sieht / Hört Dinge",
+        "sundowning": "Abenddämmerungssyndrom",
+        "fall": "Sturz / Körperlicher Notfall",
+        "repetitive_questions": "Wiederholende Fragen",
+        "sleep_disruption": "Schlafstörung",
+        "aggression": "Aggression",
+        "shadowing": "Ständiges Folgen"
+      }
     },
     "legal": {
       "privacy": {

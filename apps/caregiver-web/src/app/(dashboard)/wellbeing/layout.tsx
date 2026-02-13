@@ -1,5 +1,5 @@
 import { createClient as createServerClient } from '@/lib/supabase/server';
-import en from '../../../../locales/en.json';
+import { getServerTranslations } from '@/lib/server-i18n';
 import { ToolkitTabs } from './components/toolkit-tabs';
 import { SosButton } from './components/sos-button';
 
@@ -9,7 +9,6 @@ export default async function ToolkitLayout({
   children: React.ReactNode;
 }) {
   const supabase = await createServerClient();
-  const t = en.caregiverApp;
 
   const { data: { user } } = await supabase.auth.getUser();
 
@@ -18,6 +17,9 @@ export default async function ToolkitLayout({
     .select('id, name, household_id')
     .eq('id', user?.id)
     .single();
+
+  const translations = await getServerTranslations(caregiver?.household_id ? (await supabase.from('households').select('language').eq('id', caregiver.household_id).single()).data?.language : null);
+  const t = translations.caregiverApp;
 
   if (!caregiver) {
     return (

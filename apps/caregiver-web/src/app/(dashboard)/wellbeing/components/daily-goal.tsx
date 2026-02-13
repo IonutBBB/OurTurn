@@ -12,7 +12,7 @@ interface DailyGoalProps {
 }
 
 export function DailyGoal({ caregiverId, initialLog, recentLogs }: DailyGoalProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const supabase = createBrowserClient();
   const today = new Date().toISOString().split('T')[0];
 
@@ -30,7 +30,7 @@ export function DailyGoal({ caregiverId, initialLog, recentLogs }: DailyGoalProp
     const log = recentLogs.find((l) => l.date === dateStr);
     return {
       date: dateStr,
-      day: d.toLocaleDateString('en-US', { weekday: 'narrow' }),
+      day: d.toLocaleDateString(i18n.language, { weekday: 'narrow' }),
       hasGoal: !!log?.daily_goal,
       completed: !!log?.goal_completed,
     };

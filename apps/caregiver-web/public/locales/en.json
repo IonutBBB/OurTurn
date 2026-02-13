@@ -145,7 +145,7 @@
       "shareToConnect": "Share to connect patient app",
       "careJournal": "Care Journal",
       "viewAll": "View all",
-      "viewAllArrow": "View all \u2192",
+      "viewAllArrow": "View all →",
       "addQuickNote": "Add a quick note...",
       "noJournalEntries": "No journal entries yet",
       "aiInsights": "AI Insights",
@@ -157,7 +157,7 @@
       "callPatient": "Call {{name}}",
       "recentJournal": "Recent Journal Entries",
       "waitingForConnection": "Waiting for {{name}} to connect the patient app. Share the Care Code: {{code}}",
-      "liveTasks": "Live \u00b7 {{completed}}/{{total}} tasks",
+      "liveTasks": "Live · {{completed}}/{{total}} tasks",
       "addButton": "Add",
       "moodStruggling": "Struggling",
       "moodLow": "Low",
@@ -301,7 +301,8 @@
       "mapsApiInstructions": "Add <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> to your environment variables.",
       "saveFailed": "Failed to save safe zone. Please try again.",
       "deleteSafeZoneConfirm": "Are you sure you want to delete this safe zone?",
-      "deleteFailed": "Failed to delete safe zone. Please try again."
+      "deleteFailed": "Failed to delete safe zone. Please try again.",
+      "pageTitle": "Location & Safety"
     },
     "coach": {
       "title": "AI Care Coach",
@@ -316,7 +317,7 @@
       "setupDesc": "Set up your care profile to get personalized AI coaching tailored to your situation.",
       "intro": "Ask me anything about caring for {{name}}. I know their routine, preferences, and general best practices.",
       "hiName": "Hi {{name}}!",
-      "introDesc": "I'm your Care Coach. Ask me anything about caring for {{name}} \u2014 daily routines, challenging moments, or activity ideas.",
+      "introDesc": "I'm your Care Coach. Ask me anything about caring for {{name}} — daily routines, challenging moments, or activity ideas.",
       "tryAsking": "Try asking",
       "placeholder": "Type your question...",
       "askAboutPlaceholder": "Ask about caring for {{name}}...",
@@ -857,7 +858,6 @@
       "customNotes": "Additional notes for the doctor",
       "print": "Print",
       "downloadPdf": "Download PDF",
-      "downloadPdf": "Download PDF",
       "emailDoctor": "Email to doctor",
       "disclaimer": "This summary is based on self-reported wellness data and family observations. It is not a clinical assessment.",
       "reportTitle": "OurTurn Care Summary",
@@ -1107,7 +1107,6 @@
       "respiteRemindersDesc": "Get gentle reminders to take breaks and practice self-care",
       "country": "Country",
       "selectCountry": "Select country",
-      "language": "Language",
       "selectLanguage": "Select language",
       "languageSaved": "Language updated",
       "patientInformation": "Patient Information",
@@ -1225,7 +1224,7 @@
       },
       "entry": {
         "title": "Something's wrong?",
-        "subtitle": "First \u2014 where are you right now?",
+        "subtitle": "First — where are you right now?",
         "withThem": "I'm with {{name}}",
         "withThemDesc": "Step-by-step help for what's happening",
         "notThere": "I'm not there",
@@ -1265,7 +1264,7 @@
       },
       "personalization": {
         "label": "WHAT WORKS FOR {{name}}",
-        "empty": "No calming strategies recorded yet. Add them in Care Plan \u2192 Preferences to see personalized tips here."
+        "empty": "No calming strategies recorded yet. Add them in Care Plan → Preferences to see personalized tips here."
       },
       "patterns": {
         "title": "Pattern Insight",
@@ -1295,7 +1294,19 @@
       "email": "Email",
       "website": "Website",
       "visitWebsite": "Visit website",
-      "callNow": "Call now"
+      "callNow": "Call now",
+      "scenarioLabels": {
+        "agitated": "Agitated / Upset",
+        "wandering": "Wandering / Missing",
+        "refusing": "Refusing Care",
+        "hallucinations": "Seeing / Hearing Things",
+        "sundowning": "Sundowning / Evening Anxiety",
+        "fall": "Fall / Physical Emergency",
+        "repetitive_questions": "Repetitive Questions",
+        "sleep_disruption": "Sleep Disruption",
+        "aggression": "Aggression",
+        "shadowing": "Shadowing"
+      }
     },
     "legal": {
       "privacy": {
@@ -1480,21 +1491,21 @@
       "threeStepsPrefix": "Set up in",
       "threeStepsAccent": "three gentle steps",
       "step1Title": "Tell us about your family",
-      "step1Desc": "Share your loved one\u2019s routine, interests, and what makes them smile. We\u2019ll use this to create a personalized care plan.",
+      "step1Desc": "Share your loved one’s routine, interests, and what makes them smile. We’ll use this to create a personalized care plan.",
       "step2Title": "Share the Care Code",
-      "step2Desc": "Give the 6-digit code to your loved one\u2019s device. They tap it in once \u2014 no passwords, no accounts, no confusion.",
+      "step2Desc": "Give the 6-digit code to your loved one’s device. They tap it in once — no passwords, no accounts, no confusion.",
       "step3Title": "Care together, apart",
-      "step3Desc": "Your loved one follows their simple daily plan. You get real-time updates, alerts, and AI coaching \u2014 wherever you are.",
+      "step3Desc": "Your loved one follows their simple daily plan. You get real-time updates, alerts, and AI coaching — wherever you are.",
       "featuresLabel": "Everything your family needs",
       "featuresTitle": "Built with",
       "featuresTitleAccent": "care",
       "featuresTitleSuffix": "for caregivers",
       "featureCarePlanTitle": "Daily Care Plan",
-      "featureCarePlanDesc": "A simple, visual daily schedule. Medication, meals, activities \u2014 your loved one just follows along.",
+      "featureCarePlanDesc": "A simple, visual daily schedule. Medication, meals, activities — your loved one just follows along.",
       "featureLocationTitle": "Location & Safety",
       "featureLocationDesc": "Know where they are. Set safe zones. Get gentle alerts if something seems off.",
       "featureCoachTitle": "AI Care Coach",
-      "featureCoachDesc": "Personalized guidance, activity ideas, and answers to your questions \u2014 any time of day.",
+      "featureCoachDesc": "Personalized guidance, activity ideas, and answers to your questions — any time of day.",
       "featureHomeTitle": "Take Me Home",
       "featureHomeDesc": "One button gives your loved one walking directions home. You get notified instantly.",
       "featureFamilyTitle": "Family Circle",
@@ -1509,7 +1520,6 @@
       "disclaimer": "OurTurn is a wellness app, not a medical device.",
       "privacy": "Privacy",
       "terms": "Terms",
-
       "nav": {
         "howItWorks": "How It Works",
         "features": "Features",
@@ -1518,7 +1528,6 @@
         "menu": "Menu",
         "close": "Close"
       },
-
       "stats": {
         "familiesCount": "2,500+",
         "familiesLabel": "Families supported",
@@ -1529,70 +1538,64 @@
         "ratingCount": "4.9",
         "ratingLabel": "App Store rating"
       },
-
       "problem": {
         "sectionTitle": "The challenge",
-        "title": "Caring for a loved one shouldn\u2019t feel this hard",
+        "title": "Caring for a loved one shouldn’t feel this hard",
         "item1Title": "Scattered routines",
         "item1Desc": "Medication times, meals, and activities live in your head, on sticky notes, or nowhere at all.",
         "item2Title": "Constant worry",
-        "item2Desc": "When you\u2019re not there, you don\u2019t know if they\u2019re safe, if they\u2019ve eaten, or if they need help.",
+        "item2Desc": "When you’re not there, you don’t know if they’re safe, if they’ve eaten, or if they need help.",
         "item3Title": "Family miscommunication",
         "item3Desc": "Siblings, partners, and helpers are all on different pages about the daily plan.",
         "item4Title": "Caregiver burnout",
-        "item4Desc": "You\u2019re juggling everything and forgetting to take care of yourself."
+        "item4Desc": "You’re juggling everything and forgetting to take care of yourself."
       },
-
       "solution": {
         "title": "OurTurn brings it all together",
         "item1Title": "One clear daily plan",
         "item1Desc": "Every task, reminder, and activity in one simple timeline your loved one can follow.",
         "item2Title": "Peace of mind, anywhere",
-        "item2Desc": "Real-time updates, location sharing, and gentle alerts so you know they\u2019re okay.",
+        "item2Desc": "Real-time updates, location sharing, and gentle alerts so you know they’re okay.",
         "item3Title": "Everyone on the same page",
         "item3Desc": "Shared care journal, coordinated schedules, and family updates in one place.",
         "item4Title": "Support for you too",
-        "item4Desc": "Mood tracking, self-care reminders, and an AI coach who understands what you\u2019re going through."
+        "item4Desc": "Mood tracking, self-care reminders, and an AI coach who understands what you’re going through."
       },
-
-      "featureCarePlanLongDesc": "Build a personalized daily schedule with medication reminders, meals, activities, and appointments. Your loved one sees a calm, simple timeline on their own device \u2014 and checks off tasks with a single tap. You see real-time progress from anywhere.",
-      "featureLocationLongDesc": "See where your loved one is on a live map. Set up safe zones around home, the local shops, or a friend\u2019s house. If they leave a safe zone, you get a gentle notification \u2014 no panic, just awareness.",
-      "featureCoachLongDesc": "Ask questions, get activity ideas, and receive personalized daily care suggestions. Your AI coach learns your family\u2019s routine and provides supportive guidance \u2014 like having a knowledgeable friend available around the clock.",
-      "featureHomeLongDesc": "One large, friendly button on your loved one\u2019s phone gives them step-by-step walking directions home. When they tap it, you receive an instant notification so you know they\u2019re on their way.",
-      "featureFamilyLongDesc": "Invite siblings, partners, and other helpers to your Family Circle. Everyone shares a care journal, sees the daily plan, and gets coordinated updates \u2014 no more group chat confusion.",
+      "featureCarePlanLongDesc": "Build a personalized daily schedule with medication reminders, meals, activities, and appointments. Your loved one sees a calm, simple timeline on their own device — and checks off tasks with a single tap. You see real-time progress from anywhere.",
+      "featureLocationLongDesc": "See where your loved one is on a live map. Set up safe zones around home, the local shops, or a friend’s house. If they leave a safe zone, you get a gentle notification — no panic, just awareness.",
+      "featureCoachLongDesc": "Ask questions, get activity ideas, and receive personalized daily care suggestions. Your AI coach learns your family’s routine and provides supportive guidance — like having a knowledgeable friend available around the clock.",
+      "featureHomeLongDesc": "One large, friendly button on your loved one’s phone gives them step-by-step walking directions home. When they tap it, you receive an instant notification so you know they’re on their way.",
+      "featureFamilyLongDesc": "Invite siblings, partners, and other helpers to your Family Circle. Everyone shares a care journal, sees the daily plan, and gets coordinated updates — no more group chat confusion.",
       "featureWellbeingLongDesc": "You matter just as much. Track your own mood, set self-care reminders, and access curated wellbeing resources. OurTurn gently checks in with you and helps you find balance in your caregiving journey.",
-
       "twoApps": {
         "title": "Two apps. One family. Connected.",
         "subtitle": "A calm, simple experience for your loved one. A powerful command centre for you.",
         "patientLabel": "For your loved one",
         "patientDesc": "Large text, simple tasks, one-tap completion. Designed for clarity and calm.",
         "caregiverLabel": "For you, the caregiver",
-        "caregiverDesc": "Full dashboard, AI coaching, location tracking, family coordination \u2014 everything in one place."
+        "caregiverDesc": "Full dashboard, AI coaching, location tracking, family coordination — everything in one place."
       },
-
       "testimonials": {
         "title": "Families like yours",
         "subtitle": "Hear from caregivers who found a better way to manage daily life.",
-        "quote1": "OurTurn gave us our evenings back. Mum follows her daily plan and I can finally relax knowing she\u2019s okay.",
+        "quote1": "OurTurn gave us our evenings back. Mum follows her daily plan and I can finally relax knowing she’s okay.",
         "name1": "Sarah M.",
         "relation1": "Caring for her mother",
         "quote2": "The AI coach is like having a friend who truly understands. It helped me find activities Dad actually enjoys.",
         "name2": "James K.",
         "relation2": "Caring for his father",
-        "quote3": "My sister and I used to argue about Dad\u2019s care. Now we\u2019re both in the app, on the same page, working together.",
+        "quote3": "My sister and I used to argue about Dad’s care. Now we’re both in the app, on the same page, working together.",
         "name3": "Priya R.",
         "relation3": "Caring for her father with her sister"
       },
-
       "pricing": {
         "title": "Simple, honest pricing",
-        "subtitle": "Start free. Upgrade when you\u2019re ready.",
+        "subtitle": "Start free. Upgrade when you’re ready.",
         "freeTitle": "Free",
-        "freePrice": "\u00a30",
+        "freePrice": "£0",
         "freePriceNote": "forever",
         "plusTitle": "OurTurn Plus",
-        "plusPrice": "\u00a39.99",
+        "plusPrice": "£9.99",
         "plusPriceNote": "per month",
         "plusBadge": "Recommended",
         "trialNotice": "Free for 14 days. No credit card needed.",
@@ -1608,38 +1611,36 @@
         "plusFeat6": "Doctor visit reports",
         "plusFeat7": "Priority support"
       },
-
       "faq": {
         "title": "Questions & answers",
         "subtitle": "Everything you need to know before getting started.",
         "q1": "What is OurTurn?",
-        "a1": "OurTurn is a family care coordination app that helps you organise daily routines for a loved one living with dementia. It includes two connected apps \u2014 a simple one for your loved one and a powerful one for you.",
+        "a1": "OurTurn is a family care coordination app that helps you organise daily routines for a loved one living with dementia. It includes two connected apps — a simple one for your loved one and a powerful one for you.",
         "q2": "Is OurTurn a medical app?",
         "a2": "No. OurTurn is a wellness and daily living support app. It helps families organise routines and stay connected, but it is not a medical device and does not diagnose, treat, or monitor any condition. Always consult your healthcare provider for medical concerns.",
         "q3": "How does the Care Code work?",
-        "a3": "When you create your account, OurTurn generates a unique 6-digit Care Code. Your loved one enters this code once on their device \u2014 no passwords, no accounts, no confusion. The two apps stay connected automatically.",
+        "a3": "When you create your account, OurTurn generates a unique 6-digit Care Code. Your loved one enters this code once on their device — no passwords, no accounts, no confusion. The two apps stay connected automatically.",
         "q4": "Does my loved one need to create an account?",
-        "a4": "No. Your loved one just enters the Care Code once. There\u2019s no sign-up, no email, no password to remember. The app is designed to be as simple as possible.",
+        "a4": "No. Your loved one just enters the Care Code once. There’s no sign-up, no email, no password to remember. The app is designed to be as simple as possible.",
         "q5": "Can other family members join?",
         "a5": "Yes! With OurTurn Plus, you can invite unlimited family members to your Family Circle. Everyone can see the daily plan, share journal notes, and receive updates.",
         "q6": "How does location sharing work?",
-        "a6": "With your loved one\u2019s consent, OurTurn uses their phone\u2019s location to show you where they are on a map. You can set up safe zones and receive gentle notifications if they leave a familiar area.",
+        "a6": "With your loved one’s consent, OurTurn uses their phone’s location to show you where they are on a map. You can set up safe zones and receive gentle notifications if they leave a familiar area.",
         "q7": "What is the AI Care Coach?",
-        "a7": "The AI Care Coach is a supportive chat assistant that helps you with daily care ideas, activity suggestions, and general guidance. It\u2019s like having a knowledgeable friend available any time \u2014 but it\u2019s not a doctor and always encourages you to consult healthcare professionals for medical questions.",
-        "q8": "Is my family\u2019s data safe?",
+        "a7": "The AI Care Coach is a supportive chat assistant that helps you with daily care ideas, activity suggestions, and general guidance. It’s like having a knowledgeable friend available any time — but it’s not a doctor and always encourages you to consult healthcare professionals for medical questions.",
+        "q8": "Is my family’s data safe?",
         "a8": "Yes. We take privacy seriously. Your data is encrypted, stored securely, and never sold to third parties. You can export or delete your data at any time from the settings page. See our Privacy Policy for full details.",
         "q9": "Can I try OurTurn before paying?",
-        "a9": "Absolutely. OurTurn Plus comes with a free 14-day trial \u2014 no credit card required. The free plan is also available forever with core features.",
+        "a9": "Absolutely. OurTurn Plus comes with a free 14-day trial — no credit card required. The free plan is also available forever with core features.",
         "q10": "What devices does OurTurn work on?",
         "a10": "The caregiver app works on web browsers, iPhones, and Android phones. The app for your loved one works on iPhones and Android phones."
       },
-
       "footer": {
         "product": "Product",
         "company": "Company",
         "connect": "Connect",
         "tagline": "Daily care for families living with dementia.",
-        "copyright": "\u00a9 2025 OurTurn. All rights reserved.",
+        "copyright": "© 2025 OurTurn. All rights reserved.",
         "disclaimer": "OurTurn is a family care coordination tool. It is not a medical device and is not intended to diagnose, treat, cure, or prevent any disease.",
         "madeWith": "Made with care for caregivers everywhere."
       }

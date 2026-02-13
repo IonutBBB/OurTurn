@@ -59,7 +59,7 @@ export function ScenarioGrid({
               <span className="text-2xl">{scenario.emoji}</span>
               <div>
                 <p className="text-sm font-medium text-text-primary group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
-                  {scenario.label}
+                  {t(`caregiverApp.crisis.scenarioLabels.${scenario.id}`)}
                 </p>
                 <p className="text-xs text-text-secondary mt-0.5">
                   {scenario.stepCountDescription}

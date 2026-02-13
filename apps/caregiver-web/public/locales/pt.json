@@ -43,7 +43,22 @@
     "unknown": "Desconhecido",
     "minutesAgo": "{{count}}min atrás",
     "hoursAgo": "{{count}}h atrás",
-    "daysAgo": "{{count}}d atrás"
+    "daysAgo": "{{count}}d atrás",
+    "home": "Início",
+    "signOut": "Sair",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu",
+    "settings": "Configurações",
+    "themeSystem": "Sistema",
+    "themeDark": "Escuro",
+    "themeLight": "Claro",
+    "themeCurrentLabel": "Tema atual: {{theme}}. Clique para mudar.",
+    "pageNotFound": "Página não encontrada",
+    "pageNotFoundDesc": "A página que procura não existe ou foi movida.",
+    "goToDashboard": "Ir para o painel",
+    "mainContent": "Conteúdo principal",
+    "mainNavigation": "Navegação principal",
+    "goToDashboardLabel": "OurTurn Care - Ir para o painel"
   },
   "categories": {
     "medication": "Medicação",
@@ -244,7 +259,15 @@
       "removeMedication": "Remover",
       "maxMedications": "Máximo de 3 medicamentos por grupo",
       "uploadingPhoto": "Carregando...",
-      "hasPhoto": "Tem foto"
+      "hasPhoto": "Tem foto",
+      "allDays": "Todos",
+      "dayMon": "Seg",
+      "dayTue": "Ter",
+      "dayWed": "Qua",
+      "dayThu": "Qui",
+      "dayFri": "Sex",
+      "daySat": "Sáb",
+      "daySun": "Dom"
     },
     "location": {
       "title": "Localização e Segurança",
@@ -301,7 +324,8 @@
       "mapsApiInstructions": "Adicione <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> às suas variáveis de ambiente.",
       "saveFailed": "Falha ao salvar zona segura. Por favor, tente novamente.",
       "deleteSafeZoneConfirm": "Tem certeza de que deseja excluir esta zona segura?",
-      "deleteFailed": "Falha ao excluir zona segura. Por favor, tente novamente."
+      "deleteFailed": "Falha ao excluir zona segura. Por favor, tente novamente.",
+      "pageTitle": "Localização e Segurança"
     },
     "coach": {
       "title": "Treinador de Cuidado com IA",
@@ -389,7 +413,24 @@
           "title": "Pergunte Qualquer Coisa",
           "placeholder": "O que está a pensar sobre cuidar de {{name}}?"
         }
-      }
+      },
+      "situationPrompts": {
+        "refusing_food": "{{name}} is refusing to eat. What should I do right now?",
+        "refusing_medication": "{{name}} won't take their medication. How can I help them?",
+        "agitated": "{{name}} is agitated and upset right now. How should I respond?",
+        "not_recognizing": "{{name}} doesn't seem to recognize me. What should I do?",
+        "repetitive_questions": "{{name}} keeps asking the same question over and over. How do I handle this?",
+        "sundowning": "{{name}} is showing signs of sundowning. What can I do to help?",
+        "wants_to_leave": "{{name}} wants to leave the house. How should I handle this safely?",
+        "caregiver_overwhelmed": "I'm feeling overwhelmed and losing patience with caregiving. I need help."
+      },
+      "workflowPrompts": {
+        "plan_tomorrow": "Help me plan tomorrow's care routine for {{name}}.",
+        "doctor_visit": "Help me prepare for {{name}}'s upcoming doctor visit.",
+        "review_week": "Let's review how this week went with {{name}}'s care.",
+        "adjust_plan": "Help me adjust {{name}}'s care plan based on what's been working."
+      },
+      "insightDiscussPrompt": "I'd like to discuss this insight about my caregiving: {{insight}}"
     },
     "family": {
       "title": "Equipa de Cuidado de {{patientName}}",
@@ -1293,6 +1334,18 @@
       "quickLog": {
         "button": "Registrar um momento de crise",
         "title": "Registrar um momento de crise"
+      },
+      "scenarioLabels": {
+        "agitated": "Agitado / Perturbado",
+        "wandering": "Deambulação / Desaparecido",
+        "refusing": "Recusa cuidados",
+        "hallucinations": "Vê / Ouve coisas",
+        "sundowning": "Síndrome do pôr do sol",
+        "fall": "Queda / Emergência física",
+        "repetitive_questions": "Perguntas repetitivas",
+        "sleep_disruption": "Perturbação do sono",
+        "aggression": "Agressão",
+        "shadowing": "Segue constantemente"
       }
     },
     "legal": {

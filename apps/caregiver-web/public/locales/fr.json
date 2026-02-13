@@ -43,7 +43,22 @@
     "unknown": "Inconnu",
     "minutesAgo": "Il y a {{count}} min",
     "hoursAgo": "Il y a {{count}} h",
-    "daysAgo": "Il y a {{count}} j"
+    "daysAgo": "Il y a {{count}} j",
+    "home": "Accueil",
+    "signOut": "Déconnexion",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "settings": "Paramètres",
+    "themeSystem": "Système",
+    "themeDark": "Sombre",
+    "themeLight": "Clair",
+    "themeCurrentLabel": "Thème actuel : {{theme}}. Cliquez pour changer.",
+    "pageNotFound": "Page introuvable",
+    "pageNotFoundDesc": "La page que vous recherchez n'existe pas ou a été déplacée.",
+    "goToDashboard": "Aller au tableau de bord",
+    "mainContent": "Contenu principal",
+    "mainNavigation": "Navigation principale",
+    "goToDashboardLabel": "OurTurn Care - Aller au tableau de bord"
   },
   "categories": {
     "medication": "Médicaments",
@@ -244,7 +259,15 @@
       "removeMedication": "Supprimer",
       "maxMedications": "Maximum 3 médicaments par groupe",
       "uploadingPhoto": "Téléchargement en cours...",
-      "hasPhoto": "A une photo"
+      "hasPhoto": "A une photo",
+      "allDays": "Tous",
+      "dayMon": "Lun",
+      "dayTue": "Mar",
+      "dayWed": "Mer",
+      "dayThu": "Jeu",
+      "dayFri": "Ven",
+      "daySat": "Sam",
+      "daySun": "Dim"
     },
     "location": {
       "title": "Localisation et sécurité",
@@ -301,7 +324,8 @@
       "mapsApiInstructions": "Ajoutez <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> à vos variables d'environnement.",
       "saveFailed": "Échec de l'enregistrement de la zone de sécurité. Veuillez réessayer.",
       "deleteSafeZoneConfirm": "Êtes-vous sûr de vouloir supprimer cette zone de sécurité ?",
-      "deleteFailed": "Échec de la suppression de la zone de sécurité. Veuillez réessayer."
+      "deleteFailed": "Échec de la suppression de la zone de sécurité. Veuillez réessayer.",
+      "pageTitle": "Localisation et sécurité"
     },
     "coach": {
       "title": "Coach de soins IA",
@@ -389,7 +413,24 @@
           "title": "Posez n'importe quelle question",
           "placeholder": "Qu'avez-vous en tête concernant les soins de {{name}} ?"
         }
-      }
+      },
+      "situationPrompts": {
+        "refusing_food": "{{name}} refuse de manger. Que dois-je faire maintenant ?",
+        "refusing_medication": "{{name}} ne veut pas prendre ses médicaments. Comment puis-je l'aider ?",
+        "agitated": "{{name}} est agité(e) et contrarié(e). Comment dois-je réagir ?",
+        "not_recognizing": "{{name}} ne semble pas me reconnaître. Que dois-je faire ?",
+        "repetitive_questions": "{{name}} pose sans cesse la même question. Comment gérer cela ?",
+        "sundowning": "{{name}} montre des signes de confusion vespérale. Que puis-je faire ?",
+        "wants_to_leave": "{{name}} veut quitter la maison. Comment gérer cela en sécurité ?",
+        "caregiver_overwhelmed": "Je me sens submergé(e) et je perds patience. J'ai besoin d'aide."
+      },
+      "workflowPrompts": {
+        "plan_tomorrow": "Aide-moi à planifier la routine de soins de demain pour {{name}}.",
+        "doctor_visit": "Aide-moi à préparer la visite médicale de {{name}}.",
+        "review_week": "Faisons le bilan de la semaine de soins de {{name}}.",
+        "adjust_plan": "Aide-moi à ajuster le plan de soins de {{name}}."
+      },
+      "insightDiscussPrompt": "J'aimerais discuter de cette observation sur mes soins : {{insight}}"
     },
     "family": {
       "title": "Équipe de Soin de {{patientName}}",
@@ -1293,6 +1334,18 @@
       "quickLog": {
         "button": "Enregistrer un moment de crise",
         "title": "Enregistrer un moment de crise"
+      },
+      "scenarioLabels": {
+        "agitated": "Agité / Contrarié",
+        "wandering": "Errance / Disparu",
+        "refusing": "Refuse les soins",
+        "hallucinations": "Voit / Entend des choses",
+        "sundowning": "Confusion vespérale",
+        "fall": "Chute / Urgence physique",
+        "repetitive_questions": "Questions répétitives",
+        "sleep_disruption": "Trouble du sommeil",
+        "aggression": "Agressivité",
+        "shadowing": "Suit partout"
       }
     },
     "legal": {

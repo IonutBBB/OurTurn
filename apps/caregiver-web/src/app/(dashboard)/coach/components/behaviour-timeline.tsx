@@ -10,7 +10,7 @@ interface BehaviourTimelineProps {
 }
 
 export function BehaviourTimeline({ incidents }: BehaviourTimelineProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [filter, setFilter] = useState<BehaviourType | 'all'>('all');
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
@@ -20,7 +20,7 @@ export function BehaviourTimeline({ incidents }: BehaviourTimelineProps) {
 
   // Group by date
   const grouped = filtered.reduce<Record<string, BehaviourIncident[]>>((acc, incident) => {
-    const date = new Date(incident.logged_at).toLocaleDateString('en-US', {
+    const date = new Date(incident.logged_at).toLocaleDateString(i18n.language, {
       weekday: 'long',
       month: 'long',
       day: 'numeric',
@@ -80,7 +80,7 @@ export function BehaviourTimeline({ incidents }: BehaviourTimelineProps) {
                 : 'border-surface-border text-text-secondary hover:border-brand-300'
             }`}
           >
-            {bt.emoji} {bt.label}
+            {bt.emoji} {t(`caregiverApp.toolkit.behaviours.types.${bt.type}`)}
           </button>
         ))}
       </div>
@@ -99,7 +99,7 @@ export function BehaviourTimeline({ incidents }: BehaviourTimelineProps) {
                 {dayIncidents.map((incident) => {
                   const typeInfo = getTypeInfo(incident.behaviour_type);
                   const isExpanded = expandedId === incident.id;
-                  const time = new Date(incident.logged_at).toLocaleTimeString('en-US', {
+                  const time = new Date(incident.logged_at).toLocaleTimeString(i18n.language, {
                     hour: 'numeric',
                     minute: '2-digit',
                   });
@@ -113,7 +113,7 @@ export function BehaviourTimeline({ incidents }: BehaviourTimelineProps) {
                         <span className="text-lg">{typeInfo.emoji}</span>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
-                            <span className="text-sm font-medium text-text-primary">{typeInfo.label}</span>
+                            <span className="text-sm font-medium text-text-primary">{t(`caregiverApp.toolkit.behaviours.types.${incident.behaviour_type}`)}</span>
                             {severityDots(incident.severity)}
                           </div>
                           <p className="text-xs text-text-muted truncate">{incident.what_happened}</p>

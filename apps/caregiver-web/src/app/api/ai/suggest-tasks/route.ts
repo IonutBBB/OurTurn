@@ -239,15 +239,16 @@ Each task: { "intervention_id": "...", "category": "...", "title": "short title 
       body: JSON.stringify({
         contents: [{ parts: [{ text: prompt }] }],
         generationConfig: {
-          temperature: 0.8,
-          maxOutputTokens: 4096,
+          temperature: 0.7,
+          maxOutputTokens: 8192,
+          responseMimeType: 'application/json',
         },
       }),
     });
 
     if (!response.ok) {
       const error = await response.text();
-      log.error('Gemini API error');
+      log.error('Gemini API error', { status: response.status, error });
       return NextResponse.json(
         { error: 'Failed to generate suggestions' },
         { status: 500 }
@@ -255,17 +256,25 @@ Each task: { "intervention_id": "...", "category": "...", "title": "short title 
     }
 
     const result = await response.json();
-    const text = result.candidates?.[0]?.content?.parts?.[0]?.text || '';
+    const candidate = result.candidates?.[0];
+    const text = candidate?.content?.parts?.[0]?.text || '';
+    const finishReason = candidate?.finishReason;
+
+    // If Gemini didn't finish normally, log and fall back
+    if (finishReason && finishReason !== 'STOP' && finishReason !== 'MAX_TOKENS') {
+      log.warn('Gemini non-standard finish', { finishReason });
+    }
 
     // Parse JSON from response
     try {
-      const jsonMatch = text.match(/\[[\s\S]*\]/);
+      // Strip markdown code fences if present (```json ... ```)
+      const cleanText = text.replace(/```[\w]*\n?/g, '').trim();
+      const jsonMatch = cleanText.match(/\[[\s\S]*\]/);
       if (!jsonMatch) {
         throw new Error('No JSON array found in response');
       }
 
       const rawSuggestions = JSON.parse(jsonMatch[0]);
-
       // Validate against the intervention library
       const validatedTasks = validateAndFilterSuggestions(
         rawSuggestions.map((s: Record<string, unknown>) => ({
