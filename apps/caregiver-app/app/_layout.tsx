@@ -44,8 +44,8 @@ function RootLayoutInner() {
         <Stack.Screen name="(auth)" />
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="onboarding" />
-        <Stack.Screen name="settings" />
-        <Stack.Screen name="reports" />
+        <Stack.Screen name="settings" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="reports" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="behaviours" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="resources" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="coach-conversation" options={{ animation: 'slide_from_right' }} />

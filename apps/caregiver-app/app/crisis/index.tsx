@@ -394,8 +394,12 @@ export default function CrisisScreen() {
             calmingStrategies={
               patient?.calming_strategies || patient?.biography?.favorite_music
                 ? [
-                    ...(patient?.calming_strategies || []),
-                    ...(patient?.biography?.favorite_music ? patient.biography.favorite_music.map(m => `Music: ${m}`) : []),
+                    ...(Array.isArray(patient?.calming_strategies) ? patient.calming_strategies : []),
+                    ...(patient?.biography?.favorite_music
+                      ? Array.isArray(patient.biography.favorite_music)
+                        ? patient.biography.favorite_music.map((m: string) => `Music: ${m}`)
+                        : [`Music: ${patient.biography.favorite_music}`]
+                      : []),
                   ]
                 : null
             }
