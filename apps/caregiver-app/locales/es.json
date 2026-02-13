@@ -21,6 +21,7 @@
     "confirm": "Confirmar",
     "yes": "Sí",
     "no": "No",
+    "send": "Enviar",
     "you": "Tú",
     "unknown": "Desconocido",
     "saving": "Guardando...",
@@ -131,7 +132,10 @@
       "removeMedication": "Eliminar",
       "maxMedications": "Máximo 3 medicamentos por grupo",
       "uploadingPhoto": "Subiendo...",
-      "evidenceBased": "Basado en evidencia"
+      "evidenceBased": "Basado en evidencia",
+      "aiSuggestFocusOn": "Centrarse en:",
+      "aiSuggestRefresh": "Actualizar",
+      "allCategories": "Todas las categorías"
     },
     "location": {
       "title": "Ubicación y Seguridad",

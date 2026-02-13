@@ -21,6 +21,7 @@
     "confirm": "Kinnita",
     "yes": "Jah",
     "no": "Ei",
+    "send": "Saada",
     "you": "Sina",
     "unknown": "Teadmata",
     "saving": "Salvestan...",
@@ -131,7 +132,10 @@
       "removeMedication": "Eemalda",
       "maxMedications": "Maksimaalselt 3 ravimit rühma kohta",
       "uploadingPhoto": "Üleslaadimine...",
-      "evidenceBased": "Tõenduspõhine"
+      "evidenceBased": "Tõenduspõhine",
+      "aiSuggestFocusOn": "Keskendu:",
+      "aiSuggestRefresh": "Värskenda",
+      "allCategories": "Kõik kategooriad"
     },
     "location": {
       "title": "Asukoht ja ohutus",

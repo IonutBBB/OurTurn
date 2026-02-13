@@ -110,77 +110,125 @@ export function WellbeingAgent({ caregiverId, caregiverName, energy, stress, sle
     });
 
     try {
+      const geminiKey = process.env.EXPO_PUBLIC_GOOGLE_AI_API_KEY;
+      if (!geminiKey) throw new Error('Gemini API key not configured');
+
       const { energy: e, stress: s, sleep: sl } = checkinRef.current;
+
+      // Build system prompt
+      const energyVal = e ?? 'unknown';
+      const stressVal = s ?? 'unknown';
+      const sleepVal = sl ?? 'unknown';
+
+      let systemPrompt = `You are the OurTurn Care Wellbeing Companion for ${caregiverName}, who is a family caregiver for someone living with dementia.
+
+TODAY'S CHECK-IN:
+- Energy: ${energyVal}/5 (1=exhausted, 5=energized)
+- Stress: ${stressVal}/5 (1=calm, 5=overwhelmed)
+- Sleep quality: ${sleepVal}/5 (1=terrible, 5=great)
+
+WHO YOU ARE:
+You are like a wise, compassionate friend who deeply understands caregiving. You speak with warmth and honesty.
+
+HOW TO HELP:
+- LISTEN FIRST. Respond to what they actually said.
+- VALIDATE genuinely. Not robotic. More like "That sounds exhausting, and honestly, anyone in your shoes would feel the same."
+- OFFER REAL WISDOM when appropriate — insights about the caregiving journey.
+- When they ask for help, offer PRACTICAL SUPPORT: a specific technique, a perspective reframe, or permission to lower standards today.
+
+RESPONSE LENGTH: 3-6 sentences. Like a friend texting.
+
+ABSOLUTE RULES:
+1. NEVER discuss the patient's condition — redirect to "The Care Coach in the Coach tab is great for that."
+2. NEVER diagnose or use clinical terms
+3. NEVER recommend medication changes
+4. Use ${caregiverName}'s name occasionally, not every message
+5. Vary your responses — never repeat the same advice twice
+
+TONE: Warm, real, grounded. Like a late-night conversation with someone who gets it.`;
+
+      // Language instruction
+      const locale = i18n.language;
+      const langNames: Record<string, string> = {
+        ro: 'Romanian', de: 'German', fr: 'French', es: 'Spanish', it: 'Italian',
+        pt: 'Portuguese', nl: 'Dutch', pl: 'Polish', el: 'Greek', cs: 'Czech',
+        hu: 'Hungarian', sv: 'Swedish', da: 'Danish', fi: 'Finnish', bg: 'Bulgarian',
+        hr: 'Croatian', sk: 'Slovak', sl: 'Slovenian', lt: 'Lithuanian', lv: 'Latvian',
+        et: 'Estonian', ga: 'Irish', mt: 'Maltese',
+      };
+      const targetLang = locale !== 'en' ? langNames[locale] : null;
+      if (targetLang) {
+        systemPrompt += `\n\nIMPORTANT: You MUST respond entirely in ${targetLang}. All your text must be in ${targetLang}.`;
+      }
+
+      // Transform auto messages into natural language
+      let userMessage = text;
+      if (text === '[AUTO_GREETING]') {
+        const stressHigh = s != null && s >= 4;
+        const energyLow = e != null && e <= 2;
+        const sleepPoor = sl != null && sl <= 2;
+        const doingWell = !stressHigh && !energyLow && !sleepPoor;
+
+        if (stressHigh && sleepPoor) userMessage = `Hey. Rough day — I'm really stressed and barely slept.`;
+        else if (stressHigh && energyLow) userMessage = `I'm overwhelmed and I have nothing left in the tank today.`;
+        else if (stressHigh) userMessage = `I'm carrying a lot of stress today. Some days it just hits harder.`;
+        else if (energyLow && sleepPoor) userMessage = `I'm so tired. Didn't sleep and I still have to get through the whole day.`;
+        else if (energyLow) userMessage = `Running on empty today. Everything takes extra effort.`;
+        else if (sleepPoor) userMessage = `Didn't sleep well. I'm functional but my head feels foggy.`;
+        else if (doingWell) userMessage = `Hi. Actually having a decent day today, which feels rare.`;
+        else userMessage = `Hey, just checking in. It's been a mixed kind of day.`;
+      } else if (text === '[CHECKIN_UPDATED]') {
+        const stressHigh = s != null && s >= 4;
+        const energyLow = e != null && e <= 2;
+        if (stressHigh) userMessage = `Things are feeling heavier now. The stress is really building up.`;
+        else if (energyLow) userMessage = `I'm fading. The energy just isn't there anymore today.`;
+        else userMessage = `Things shifted a bit since we last talked. Feeling a little different.`;
+      }
+
+      // Build conversation history
       const history = messagesRef.current
         .filter(m => m.content.trim() !== '')
         .slice(-6)
-        .map(m => ({ role: m.role, content: m.content }));
+        .map(m => ({
+          role: m.role === 'assistant' ? 'model' : 'user',
+          parts: [{ text: m.content }],
+        }));
+      // Ensure history starts with user role (Gemini requirement)
+      const firstUserIdx = history.findIndex(m => m.role === 'user');
+      const cleanHistory = firstUserIdx >= 0 ? history.slice(firstUserIdx) : [];
 
-      const response = await fetch(`${apiBaseUrl}/api/ai/wellbeing-agent`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: text,
-          checkin: { energy: e ?? null, stress: s ?? null, sleep: sl ?? null },
-          history,
-          locale: i18n.language,
-        }),
-        signal: controller.signal,
-      });
+      // Add current message
+      cleanHistory.push({ role: 'user', parts: [{ text: userMessage }] });
 
-      if (response.status === 429) {
-        setError(t('caregiverApp.toolkit.agent.rateLimited'));
-        setMessages(prev => prev.filter(m => m.id !== assistantMsgId));
-        return;
-      }
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiKey}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            system_instruction: { parts: [{ text: systemPrompt }] },
+            contents: cleanHistory,
+            generationConfig: { temperature: 0.8, maxOutputTokens: 2048 },
+          }),
+          signal: controller.signal,
+        }
+      );
 
       if (!response.ok) throw new Error('Request failed');
 
-      const reader = response.body?.getReader();
-      const decoder = new TextDecoder();
-      if (!reader) throw new Error('No response body');
+      const result = await response.json();
+      const fullResponse = (result.candidates?.[0]?.content?.parts || [])
+        .map((p: { text?: string }) => p.text || '')
+        .join('');
 
-      let sseBuffer = '';
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        if (controller.signal.aborted) break;
+      if (!fullResponse) throw new Error('Empty response');
 
-        sseBuffer += decoder.decode(value, { stream: true });
-        const events = sseBuffer.split('\n\n');
-        sseBuffer = events.pop() || '';
-
-        for (const event of events) {
-          const lines = event.split('\n').filter(l => l.startsWith('data: '));
-          for (const line of lines) {
-            const data = line.slice(6);
-            try {
-              const parsed = JSON.parse(data);
-              if (parsed.error) {
-                setError(parsed.error);
-                break;
-              }
-              if (parsed.replace && parsed.text) {
-                setMessages(prev => prev.map(m =>
-                  m.id === assistantMsgId
-                    ? { ...m, content: parsed.text }
-                    : m
-                ));
-              } else if (parsed.text) {
-                setMessages(prev => prev.map(m =>
-                  m.id === assistantMsgId
-                    ? { ...m, content: m.content + parsed.text }
-                    : m
-                ));
-              }
-            } catch {
-              /* ignore partial chunks */
-            }
-          }
-        }
-      }
+      setMessages(prev => prev.map(m =>
+        m.id === assistantMsgId ? { ...m, content: fullResponse } : m
+      ));
     } catch (err) {
       if (controller.signal.aborted) return;
+      if (__DEV__) console.error('Wellbeing agent error:', err);
       setError(t('caregiverApp.toolkit.agent.errorMessage'));
       setMessages(prev => prev.filter(m => m.id !== assistantMsgId));
     } finally {
@@ -191,7 +239,7 @@ export function WellbeingAgent({ caregiverId, caregiverName, energy, stress, sle
         abortRef.current = null;
       }
     }
-  }, [t, apiBaseUrl]);
+  }, [t, caregiverName]);
 
   // Auto-greet once
   useEffect(() => {

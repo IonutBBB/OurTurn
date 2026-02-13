@@ -21,6 +21,7 @@
     "confirm": "Vahvista",
     "yes": "Kyllä",
     "no": "Ei",
+    "send": "Lähetä",
     "you": "Sinä",
     "unknown": "Tuntematon",
     "saving": "Tallennetaan...",
@@ -131,7 +132,10 @@
       "removeMedication": "Poista",
       "maxMedications": "Enintään 3 lääkettä per ryhmä",
       "uploadingPhoto": "Ladataan...",
-      "evidenceBased": "Todisteisiin perustuva"
+      "evidenceBased": "Todisteisiin perustuva",
+      "aiSuggestFocusOn": "Keskity:",
+      "aiSuggestRefresh": "Päivitä",
+      "allCategories": "Kaikki kategoriat"
     },
     "location": {
       "title": "Sijainti ja turvallisuus",

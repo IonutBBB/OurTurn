@@ -21,6 +21,7 @@
     "confirm": "Megerősítés",
     "yes": "Igen",
     "no": "Nem",
+    "send": "Küldés",
     "you": "Ön",
     "unknown": "Ismeretlen",
     "saving": "Mentés...",
@@ -131,7 +132,10 @@
       "removeMedication": "Eltávolítás",
       "maxMedications": "Maximum 3 gyógyszer csoportonként",
       "uploadingPhoto": "Feltöltés...",
-      "evidenceBased": "Bizonyítékokon alapuló"
+      "evidenceBased": "Bizonyítékokon alapuló",
+      "aiSuggestFocusOn": "Fókusz:",
+      "aiSuggestRefresh": "Frissítés",
+      "allCategories": "Összes kategória"
     },
     "location": {
       "title": "Helyszín és biztonság",

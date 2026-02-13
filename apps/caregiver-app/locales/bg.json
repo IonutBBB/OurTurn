@@ -21,6 +21,7 @@
     "confirm": "Потвърждаване",
     "yes": "Да",
     "no": "Не",
+    "send": "Изпрати",
     "you": "Вие",
     "unknown": "Неизвестно",
     "saving": "Запазване...",
@@ -131,7 +132,10 @@
       "removeMedication": "Премахване",
       "maxMedications": "Максимум 3 лекарства на група",
       "uploadingPhoto": "Качване...",
-      "evidenceBased": "Базирано на доказателства"
+      "evidenceBased": "Базирано на доказателства",
+      "aiSuggestFocusOn": "Фокус върху:",
+      "aiSuggestRefresh": "Обновяване",
+      "allCategories": "Всички категории"
     },
     "location": {
       "title": "Местоположение и безопасност",

@@ -21,6 +21,7 @@
     "confirm": "Confirm",
     "yes": "Yes",
     "no": "No",
+    "send": "Send",
     "you": "You",
     "unknown": "Unknown",
     "saving": "Saving...",
@@ -131,7 +132,10 @@
       "removeMedication": "Remove",
       "maxMedications": "Maximum 3 medications per group",
       "uploadingPhoto": "Uploading...",
-      "evidenceBased": "Evidence-based"
+      "evidenceBased": "Evidence-based",
+      "aiSuggestFocusOn": "Focus on:",
+      "aiSuggestRefresh": "Refresh",
+      "allCategories": "All Categories"
     },
     "location": {
       "title": "Location & Safety",

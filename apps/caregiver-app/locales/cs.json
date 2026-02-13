@@ -21,6 +21,7 @@
     "confirm": "Potvrdit",
     "yes": "Ano",
     "no": "Ne",
+    "send": "Odeslat",
     "you": "Vy",
     "unknown": "Neznámé",
     "saving": "Ukládání...",
@@ -131,7 +132,10 @@
       "removeMedication": "Odebrat",
       "maxMedications": "Maximálně 3 léky na skupinu",
       "uploadingPhoto": "Nahrávání...",
-      "evidenceBased": "Založeno na důkazech"
+      "evidenceBased": "Založeno na důkazech",
+      "aiSuggestFocusOn": "Zaměřit se na:",
+      "aiSuggestRefresh": "Obnovit",
+      "allCategories": "Všechny kategorie"
     },
     "location": {
       "title": "Poloha a bezpečnost",

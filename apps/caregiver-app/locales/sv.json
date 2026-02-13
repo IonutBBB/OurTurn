@@ -21,6 +21,7 @@
     "confirm": "Bekräfta",
     "yes": "Ja",
     "no": "Nej",
+    "send": "Skicka",
     "you": "Du",
     "unknown": "Okänd",
     "saving": "Sparar...",
@@ -131,7 +132,10 @@
       "removeMedication": "Ta bort",
       "maxMedications": "Maximalt 3 mediciner per grupp",
       "uploadingPhoto": "Laddar upp...",
-      "evidenceBased": "Evidensbaserad"
+      "evidenceBased": "Evidensbaserad",
+      "aiSuggestFocusOn": "Fokusera på:",
+      "aiSuggestRefresh": "Uppdatera",
+      "allCategories": "Alla kategorier"
     },
     "location": {
       "title": "Plats & Säkerhet",

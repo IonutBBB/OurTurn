@@ -85,6 +85,7 @@ export default function PlanScreen() {
   const [showSuggestModal, setShowSuggestModal] = useState(false);
   const [suggestedTasks, setSuggestedTasks] = useState<{ category: TaskCategory; title: string; hint_text: string; time: string; intervention_id?: string | null; evidence_source?: string | null }[]>([]);
   const [suggestLoading, setSuggestLoading] = useState(false);
+  const [suggestCategory, setSuggestCategory] = useState<string>('');
   const [addingSuggestion, setAddingSuggestion] = useState<string | null>(null);
 
   // Copy Day state
@@ -342,50 +343,102 @@ export default function PlanScreen() {
     );
   };
 
-  const handleGetSuggestions = useCallback(async () => {
-    if (!household?.id) return;
+  const handleGetSuggestions = useCallback(async (category?: string) => {
+    if (!household?.id || !patient) return;
     setSuggestLoading(true);
     setSuggestedTasks([]);
 
     try {
-      const apiBaseUrl = process.env.EXPO_PUBLIC_API_BASE_URL;
-      if (!apiBaseUrl) throw new Error('API not configured');
+      const geminiKey = process.env.EXPO_PUBLIC_GOOGLE_AI_API_KEY;
+      if (!geminiKey) throw new Error('Gemini API key not configured');
 
-      const response = await fetch(`${apiBaseUrl}/api/ai/suggest-tasks`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ householdId: household.id, count: 3, locale: i18n.language }),
-      });
+      // Get existing tasks to avoid duplicates
+      const existingTitles = tasks.map(t => `${t.time}: ${t.title} (${t.category})`).join('\n') || 'No existing tasks yet.';
 
-      if (!response.ok) throw new Error('Failed to fetch suggestions');
+      // Determine language
+      const locale = i18n.language;
+      const langNames: Record<string, string> = {
+        ro: 'Romanian', de: 'German', fr: 'French', es: 'Spanish', it: 'Italian',
+        pt: 'Portuguese', nl: 'Dutch', pl: 'Polish', el: 'Greek', cs: 'Czech',
+        hu: 'Hungarian', sv: 'Swedish', da: 'Danish', fi: 'Finnish', bg: 'Bulgarian',
+        hr: 'Croatian', sk: 'Slovak', sl: 'Slovenian', lt: 'Lithuanian', lv: 'Latvian',
+        et: 'Estonian', ga: 'Irish', mt: 'Maltese',
+      };
+      const targetLang = locale !== 'en' ? langNames[locale] || null : null;
 
-      const { suggestions } = await response.json();
-      setSuggestedTasks(suggestions || []);
-    } catch {
-      // Fallback to local suggestions if API fails
-      const existingCategories = new Set(tasks.map(t => t.category));
-      const fallback: { category: TaskCategory; title: string; hint_text: string; time: string }[] = [];
+      const categoryFocus = category
+        ? `Focus ONLY on the "${category}" category.`
+        : 'Include a variety of categories (physical, nutrition, cognitive, social, health).';
 
-      if (!existingCategories.has('physical')) {
-        fallback.push({ category: 'physical', title: 'Morning walk', hint_text: 'A gentle 15-minute walk around the neighbourhood', time: '09:00' });
+      const prompt = `You are a care task generator for a daily wellness app.
+${targetLang ? `\n**YOU MUST WRITE ALL "title" AND "hint_text" VALUES IN ${targetLang.toUpperCase()}. DO NOT USE ENGLISH FOR THESE FIELDS.**\n` : ''}
+Generate 6 personalized daily care task suggestions for ${patient.name}.
+${categoryFocus}
+
+RULES:
+- Task titles: max 6 words${targetLang ? ` in ${targetLang}` : ''}
+- hint_text: 2-3 warm, encouraging sentences${targetLang ? ` in ${targetLang}` : ''}
+- NEVER use terms: "dementia", "cognitive decline", "brain training", "Alzheimer's"
+- Frame everything as enjoyable activities
+- Space tasks between 08:00 and 21:00 with 1.5h gaps
+- Valid categories: medication, nutrition, physical, cognitive, social, health
+
+EXISTING PLAN (avoid duplicating):
+${existingTitles}
+
+Return ONLY a valid JSON array, no markdown.
+Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:MM", "recurrence": "daily" }${targetLang ? `\n\nCRITICAL: "title" and "hint_text" MUST be in ${targetLang}. NOT in English.` : ''}`;
+
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiKey}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }],
+            generationConfig: { temperature: 0.8, maxOutputTokens: 4096, responseMimeType: 'application/json' },
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        const errBody = await response.text();
+        if (__DEV__) console.error('Gemini API error:', response.status, errBody);
+        throw new Error(`Gemini ${response.status}`);
       }
-      if (!existingCategories.has('cognitive')) {
-        fallback.push({ category: 'cognitive', title: 'Word puzzle', hint_text: 'Complete a crossword or word search puzzle', time: '10:30' });
-      }
-      if (!existingCategories.has('social')) {
-        fallback.push({ category: 'social', title: 'Call a friend or family member', hint_text: 'Have a chat with someone you enjoy talking to', time: '14:00' });
-      }
-      if (fallback.length === 0) {
-        fallback.push(
-          { category: 'physical', title: 'Afternoon stretching', hint_text: 'Gentle chair exercises for 10 minutes', time: '15:00' },
-          { category: 'cognitive', title: 'Look through photo album', hint_text: 'Enjoy looking at familiar photos and memories', time: '16:00' },
-        );
-      }
-      setSuggestedTasks(fallback.slice(0, 3));
+
+      const result = await response.json();
+      const candidate = result.candidates?.[0];
+      if (__DEV__) console.log('Gemini finishReason:', candidate?.finishReason);
+
+      // Collect text from all parts
+      const allText = (candidate?.content?.parts || [])
+        .map((p: { text?: string }) => p.text || '')
+        .join('');
+      if (__DEV__) console.log('Gemini raw text (first 300):', allText.substring(0, 300));
+
+      // Strip markdown fences, thinking blocks, and any non-JSON wrapper
+      const cleanText = allText
+        .replace(/```[\w]*\n?/g, '')
+        .replace(/<think>[\s\S]*?<\/think>/gi, '')
+        .trim();
+      const jsonMatch = cleanText.match(/\[[\s\S]*\]/);
+      if (!jsonMatch) throw new Error('No JSON in response: ' + cleanText.substring(0, 200));
+
+      const parsed = JSON.parse(jsonMatch[0]);
+      const validCategories = ['medication', 'nutrition', 'physical', 'cognitive', 'social', 'health'];
+      const valid = parsed
+        .filter((s: Record<string, string>) => s.title && s.hint_text && s.category && validCategories.includes(s.category))
+        .slice(0, 6);
+
+      setSuggestedTasks(valid);
+    } catch (err) {
+      if (__DEV__) console.error('AI suggest-tasks failed:', err);
+      setSuggestedTasks([]);
     } finally {
       setSuggestLoading(false);
     }
-  }, [household?.id, tasks]);
+  }, [household?.id, patient, tasks]);
 
   const handleAddSuggestion = useCallback(async (suggestion: { category: TaskCategory; title: string; hint_text: string; time: string; intervention_id?: string | null; evidence_source?: string | null }) => {
     if (!household?.id) return;
@@ -502,7 +555,7 @@ export default function PlanScreen() {
             style={styles.actionButton}
             onPress={() => {
               setShowSuggestModal(true);
-              handleGetSuggestions();
+              handleGetSuggestions(suggestCategory);
             }}
             activeOpacity={0.7}
           >
@@ -953,6 +1006,63 @@ export default function PlanScreen() {
           <View style={styles.modalSheet}>
             <View style={styles.modalHandle} />
             <Text style={styles.modalTitle}>{t('caregiverApp.carePlan.aiSuggest')}</Text>
+
+            {/* Category filter + Refresh */}
+            <View style={styles.suggestFilterRow}>
+              <Text style={styles.suggestFilterLabel}>{t('caregiverApp.carePlan.aiSuggestFocusOn')}</Text>
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.suggestFilterChips}
+              >
+                <TouchableOpacity
+                  style={[
+                    styles.suggestFilterChip,
+                    suggestCategory === '' && styles.suggestFilterChipSelected,
+                  ]}
+                  onPress={() => setSuggestCategory('')}
+                  activeOpacity={0.7}
+                >
+                  <Text
+                    style={[
+                      styles.suggestFilterChipText,
+                      suggestCategory === '' && styles.suggestFilterChipTextSelected,
+                    ]}
+                  >
+                    {t('caregiverApp.carePlan.allCategories')}
+                  </Text>
+                </TouchableOpacity>
+                {CATEGORIES.map((cat) => (
+                  <TouchableOpacity
+                    key={cat.key}
+                    style={[
+                      styles.suggestFilterChip,
+                      suggestCategory === cat.key && { backgroundColor: cat.bg, borderColor: cat.color },
+                    ]}
+                    onPress={() => setSuggestCategory(cat.key)}
+                    activeOpacity={0.7}
+                  >
+                    <Text style={styles.suggestFilterChipIcon}>{cat.icon}</Text>
+                    <Text
+                      style={[
+                        styles.suggestFilterChipText,
+                        suggestCategory === cat.key && { color: cat.color },
+                      ]}
+                    >
+                      {t(`categories.${cat.key}`)}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
+              </ScrollView>
+              <TouchableOpacity
+                style={styles.suggestRefreshButton}
+                onPress={() => handleGetSuggestions(suggestCategory)}
+                disabled={suggestLoading}
+                activeOpacity={0.7}
+              >
+                <Text style={styles.suggestRefreshText}>{t('caregiverApp.carePlan.aiSuggestRefresh')}</Text>
+              </TouchableOpacity>
+            </View>
 
             {suggestLoading ? (
               <View style={styles.suggestLoading}>
@@ -1487,6 +1597,65 @@ const useStyles = createThemedStyles((colors) => ({
     fontSize: 14,
   },
   actionButtonText: {
+    fontSize: 13,
+    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
+    color: colors.brand700,
+  },
+
+  // AI Suggest modal — filter row
+  suggestFilterRow: {
+    marginBottom: 16,
+    gap: 8,
+  },
+  suggestFilterLabel: {
+    fontSize: 13,
+    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
+    color: colors.textSecondary,
+    marginBottom: 4,
+  },
+  suggestFilterChips: {
+    gap: 6,
+    paddingVertical: 2,
+  },
+  suggestFilterChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: RADIUS.full,
+    borderWidth: 1,
+    borderColor: colors.border,
+    gap: 4,
+  },
+  suggestFilterChipSelected: {
+    backgroundColor: colors.brand50,
+    borderColor: colors.brand600,
+  },
+  suggestFilterChipIcon: {
+    fontSize: 12,
+  },
+  suggestFilterChipText: {
+    fontSize: 12,
+    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
+    color: colors.textSecondary,
+  },
+  suggestFilterChipTextSelected: {
+    color: colors.brand700,
+  },
+  suggestRefreshButton: {
+    alignSelf: 'flex-start',
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderRadius: RADIUS.lg,
+    borderWidth: 1,
+    borderColor: colors.brand200,
+    backgroundColor: colors.brand50,
+    marginTop: 4,
+  },
+  suggestRefreshText: {
     fontSize: 13,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,

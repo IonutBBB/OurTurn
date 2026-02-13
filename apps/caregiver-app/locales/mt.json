@@ -21,6 +21,7 @@
     "confirm": "Ikkonferma",
     "yes": "Iva",
     "no": "Le",
+    "send": "Ibgħat",
     "you": "Int",
     "unknown": "Mhux magħruf",
     "saving": "Qed jissejvja...",
@@ -131,7 +132,10 @@
       "removeMedication": "Neħħi",
       "maxMedications": "Massimu 3 mediċini għal kull grupp",
       "uploadingPhoto": "Qed ittella'...",
-      "evidenceBased": "Ibbażat fuq evidenza"
+      "evidenceBased": "Ibbażat fuq evidenza",
+      "aiSuggestFocusOn": "Iffoka fuq:",
+      "aiSuggestRefresh": "Aġġorna",
+      "allCategories": "Il-kategoriji kollha"
     },
     "location": {
       "title": "Post u Sigurtà",

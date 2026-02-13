@@ -21,6 +21,7 @@
     "confirm": "Potwierdź",
     "yes": "Tak",
     "no": "Nie",
+    "send": "Wyślij",
     "you": "Ty",
     "unknown": "Nieznany",
     "saving": "Zapisywanie...",
@@ -131,7 +132,10 @@
       "removeMedication": "Usuń",
       "maxMedications": "Maksymalnie 3 leki na grupę",
       "uploadingPhoto": "Przesyłanie...",
-      "evidenceBased": "Oparte na dowodach"
+      "evidenceBased": "Oparte na dowodach",
+      "aiSuggestFocusOn": "Skupić się na:",
+      "aiSuggestRefresh": "Odśwież",
+      "allCategories": "Wszystkie kategorie"
     },
     "location": {
       "title": "Lokalizacja i bezpieczeństwo",

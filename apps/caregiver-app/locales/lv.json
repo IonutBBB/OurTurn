@@ -21,6 +21,7 @@
     "confirm": "Apstiprināt",
     "yes": "Jā",
     "no": "Nē",
+    "send": "Sūtīt",
     "you": "Jūs",
     "unknown": "Nezināms",
     "saving": "Saglabā...",
@@ -131,7 +132,10 @@
       "removeMedication": "Noņemt",
       "maxMedications": "Maksimāli 3 medikamenti vienā grupā",
       "uploadingPhoto": "Augšupielādē...",
-      "evidenceBased": "Uz pierādījumiem balstīts"
+      "evidenceBased": "Uz pierādījumiem balstīts",
+      "aiSuggestFocusOn": "Fokusēties uz:",
+      "aiSuggestRefresh": "Atjaunināt",
+      "allCategories": "Visas kategorijas"
     },
     "location": {
       "title": "Atrašanās vieta un drošība",

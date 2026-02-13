@@ -21,6 +21,7 @@
     "confirm": "Deimhnigh",
     "yes": "Tá",
     "no": "Níl",
+    "send": "Seol",
     "you": "Tú",
     "unknown": "Anaithnid",
     "saving": "Á shábháil...",
@@ -131,7 +132,10 @@
       "removeMedication": "Bain",
       "maxMedications": "Uasmhéid 3 chógas in aghaidh an ghrúpa",
       "uploadingPhoto": "Á uaslódáil...",
-      "evidenceBased": "Bunaithe ar fhianaise"
+      "evidenceBased": "Bunaithe ar fhianaise",
+      "aiSuggestFocusOn": "Dírithe ar:",
+      "aiSuggestRefresh": "Athnuaigh",
+      "allCategories": "Gach catagóir"
     },
     "location": {
       "title": "Suíomh & Sábháilteacht",

@@ -21,6 +21,7 @@
     "confirm": "Potrdi",
     "yes": "Da",
     "no": "Ne",
+    "send": "Pošlji",
     "you": "Vi",
     "unknown": "Neznano",
     "saving": "Shranjevanje...",
@@ -131,7 +132,10 @@
       "removeMedication": "Odstrani",
       "maxMedications": "Največ 3 zdravila na skupino",
       "uploadingPhoto": "Nalaganje...",
-      "evidenceBased": "Na podlagi dokazov"
+      "evidenceBased": "Na podlagi dokazov",
+      "aiSuggestFocusOn": "Osredotočite se na:",
+      "aiSuggestRefresh": "Osveži",
+      "allCategories": "Vse kategorije"
     },
     "location": {
       "title": "Lokacija in varnost",

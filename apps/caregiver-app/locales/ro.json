@@ -21,6 +21,7 @@
     "confirm": "Confirmă",
     "yes": "Da",
     "no": "Nu",
+    "send": "Trimite",
     "you": "Tu",
     "unknown": "Necunoscut",
     "saving": "Se salvează...",
@@ -131,7 +132,10 @@
       "removeMedication": "Elimină",
       "maxMedications": "Maxim 3 medicamente per grup",
       "uploadingPhoto": "Se încarcă...",
-      "evidenceBased": "Bazat pe dovezi"
+      "evidenceBased": "Bazat pe dovezi",
+      "aiSuggestFocusOn": "Concentrați-vă pe:",
+      "aiSuggestRefresh": "Reîmprospătați",
+      "allCategories": "Toate categoriile"
     },
     "location": {
       "title": "Locație și Siguranță",

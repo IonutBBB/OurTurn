@@ -21,6 +21,7 @@
     "confirm": "Επιβεβαίωση",
     "yes": "Ναι",
     "no": "Όχι",
+    "send": "Αποστολή",
     "you": "Εσείς",
     "unknown": "Άγνωστο",
     "saving": "Αποθήκευση...",
@@ -131,7 +132,10 @@
       "removeMedication": "Αφαίρεση",
       "maxMedications": "Μέγιστο 3 φάρμακα ανά ομάδα",
       "uploadingPhoto": "Ανέβασμα...",
-      "evidenceBased": "Βασισμένο σε αποδείξεις"
+      "evidenceBased": "Βασισμένο σε αποδείξεις",
+      "aiSuggestFocusOn": "Εστίαση σε:",
+      "aiSuggestRefresh": "Ανανέωση",
+      "allCategories": "Όλες οι κατηγορίες"
     },
     "location": {
       "title": "Τοποθεσία & Ασφάλεια",

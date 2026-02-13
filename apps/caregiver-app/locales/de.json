@@ -21,6 +21,7 @@
     "confirm": "Bestätigen",
     "yes": "Ja",
     "no": "Nein",
+    "send": "Senden",
     "you": "Sie",
     "unknown": "Unbekannt",
     "saving": "Wird gespeichert...",
@@ -131,7 +132,10 @@
       "removeMedication": "Entfernen",
       "maxMedications": "Maximal 3 Medikamente pro Gruppe",
       "uploadingPhoto": "Wird hochgeladen...",
-      "evidenceBased": "Evidenzbasiert"
+      "evidenceBased": "Evidenzbasiert",
+      "aiSuggestFocusOn": "Fokus auf:",
+      "aiSuggestRefresh": "Aktualisieren",
+      "allCategories": "Alle Kategorien"
     },
     "location": {
       "title": "Standort & Sicherheit",

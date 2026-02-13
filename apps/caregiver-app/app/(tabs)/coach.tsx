@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import {
   View,
   Text,
-  ScrollView,
   TouchableOpacity,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../../src/stores/auth-store';
@@ -99,10 +99,13 @@ export default function CoachScreen() {
         <Text style={styles.title}>{t('caregiverApp.coach.title')}</Text>
       </View>
 
-      <ScrollView
+      <KeyboardAwareScrollView
         style={styles.scrollView}
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
+        extraScrollHeight={120}
+        enableOnAndroid={true}
       >
         <ProactiveInsightCard
           insight={insight}
@@ -155,7 +158,7 @@ export default function CoachScreen() {
         <View style={styles.section}>
           <OpenChatInput patientName={patientName} onSubmit={handleOpenChat} />
         </View>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     </SafeAreaView>
   );
 }

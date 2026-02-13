@@ -21,6 +21,7 @@
     "confirm": "Conferma",
     "yes": "Sì",
     "no": "No",
+    "send": "Invia",
     "you": "Tu",
     "unknown": "Sconosciuto",
     "saving": "Salvataggio...",
@@ -131,7 +132,10 @@
       "removeMedication": "Rimuovi",
       "maxMedications": "Massimo 3 farmaci per gruppo",
       "uploadingPhoto": "Caricamento...",
-      "evidenceBased": "Basato su prove"
+      "evidenceBased": "Basato su prove",
+      "aiSuggestFocusOn": "Concentrarsi su:",
+      "aiSuggestRefresh": "Aggiorna",
+      "allCategories": "Tutte le categorie"
     },
     "location": {
       "title": "Posizione e Sicurezza",

@@ -21,6 +21,7 @@
     "confirm": "Patvirtinti",
     "yes": "Taip",
     "no": "Ne",
+    "send": "Siųsti",
     "you": "Jūs",
     "unknown": "Nežinoma",
     "saving": "Saugoma...",
@@ -131,7 +132,10 @@
       "removeMedication": "Pašalinti",
       "maxMedications": "Daugiausia 3 vaistai vienoje grupėje",
       "uploadingPhoto": "Įkeliama...",
-      "evidenceBased": "Įrodymais pagrįsta"
+      "evidenceBased": "Įrodymais pagrįsta",
+      "aiSuggestFocusOn": "Sutelkti dėmesį:",
+      "aiSuggestRefresh": "Atnaujinti",
+      "allCategories": "Visos kategorijos"
     },
     "location": {
       "title": "Vieta ir saugumas",

@@ -10,6 +10,7 @@ import { useLocalSupport } from '../../src/hooks/use-local-support';
 import { JourneyProgressBar } from '../../src/components/resources/journey-progress-bar';
 import { JourneySection } from '../../src/components/resources/journey-section';
 import { JourneyStepDetail } from '../../src/components/resources/journey-step-detail';
+import { WhoIsupportSection } from '../../src/components/resources/who-isupport-section';
 import { ArticleSection } from '../../src/components/resources/article-section';
 import { ArticleDetail } from '../../src/components/resources/article-detail';
 import { LocalSupportSection } from '../../src/components/resources/local-support-section';
@@ -82,6 +83,9 @@ export default function ResourcesScreen() {
           progressMap={progressMap}
           onSelectStep={setSelectedStep}
         />
+
+        {/* WHO iSupport Featured Guide */}
+        <WhoIsupportSection onSelectArticle={setSelectedArticle} />
 
         {/* Knowledge Library */}
         <ArticleSection onSelectArticle={setSelectedArticle} />

@@ -21,6 +21,7 @@
     "confirm": "Bevestigen",
     "yes": "Ja",
     "no": "Nee",
+    "send": "Verstuur",
     "you": "U",
     "unknown": "Onbekend",
     "saving": "Opslaan...",
@@ -131,7 +132,10 @@
       "removeMedication": "Verwijderen",
       "maxMedications": "Maximaal 3 medicijnen per groep",
       "uploadingPhoto": "Uploaden...",
-      "evidenceBased": "Op bewijs gebaseerd"
+      "evidenceBased": "Op bewijs gebaseerd",
+      "aiSuggestFocusOn": "Focus op:",
+      "aiSuggestRefresh": "Vernieuwen",
+      "allCategories": "Alle categorieën"
     },
     "location": {
       "title": "Locatie & Veiligheid",

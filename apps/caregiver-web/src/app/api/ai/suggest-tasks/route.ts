@@ -4,13 +4,12 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient as createServerClient } from '@/lib/supabase/server';
+import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 import { rateLimit } from '@/lib/rate-limit';
 import { createLogger } from '@/lib/logger';
 import { postProcess, logSafetyEvent, SafetyLevel } from '@/lib/ai-safety';
 import {
   EVIDENCE_BASED_INTERVENTIONS,
-  buildLibrarySummaryForPrompt,
-  getInterventionById,
   getInterventionsByCategory,
 } from '@ourturn/shared/data/evidence-based-interventions';
 import {
@@ -18,7 +17,6 @@ import {
   enrichWithEvidence,
 } from '@ourturn/shared/utils/task-suggestion-validator';
 import type { TaskCategory } from '@ourturn/shared/types/care-plan';
-import { getLanguageInstruction } from '@/lib/ai-language';
 import { SUPPORTED_LANGUAGES, LANGUAGE_CODES } from '@ourturn/shared/constants/languages';
 
 const log = createLogger('ai/suggest-tasks');
@@ -42,12 +40,28 @@ const VALID_CATEGORIES: TaskCategory[] = ['medication', 'nutrition', 'physical',
 export async function POST(request: NextRequest) {
   try {
     const startTime = Date.now();
-    const supabase = await createServerClient();
+    // Support both cookie auth (web) and Bearer token auth (mobile)
+    const authHeader = request.headers.get('authorization');
+    let supabase;
+    let user;
 
-    // Check authentication
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
+    if (authHeader?.startsWith('Bearer ')) {
+      const token = authHeader.slice(7);
+      supabase = createSupabaseClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        { global: { headers: { Authorization: `Bearer ${token}` } } }
+      );
+      const { data: { user: tokenUser }, error: authError } = await supabase.auth.getUser(token);
+      if (authError) {
+        log.warn('Bearer auth failed', { error: authError.message });
+      }
+      user = tokenUser;
+    } else {
+      supabase = await createServerClient();
+      const { data } = await supabase.auth.getUser();
+      user = data.user;
+    }
 
     if (!user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -183,7 +197,7 @@ export async function POST(request: NextRequest) {
 
     // Build the evidence-based prompt
     const prompt = `You are an evidence-based care task generator for the OurTurn Care daily care platform.
-${targetLanguageName ? `\n**OUTPUT LANGUAGE: ${targetLanguageName.toUpperCase()}**\nYou MUST write ALL "title" and "hint_text" values in ${targetLanguageName}. This is mandatory — do NOT write them in English.\n` : ''}
+${targetLanguageName ? `\n**OUTPUT LANGUAGE: ${targetLanguageName.toUpperCase()}**\nYou MUST write ALL "title" and "hint_text" values in ${targetLanguageName}. This is mandatory — do NOT write them in English. The intervention library below is in English — you must TRANSLATE the names into ${targetLanguageName}.\n` : ''}
 CRITICAL RULES:
 1. You must ONLY suggest tasks derived from the provided intervention library below. Never invent new interventions.
 2. Every task you generate MUST include the intervention_id from the library.
@@ -239,9 +253,8 @@ Each task: { "intervention_id": "...", "category": "...", "title": "short title 
       body: JSON.stringify({
         contents: [{ parts: [{ text: prompt }] }],
         generationConfig: {
-          temperature: 0.7,
+          temperature: 0.8,
           maxOutputTokens: 8192,
-          responseMimeType: 'application/json',
         },
       }),
     });
@@ -352,7 +365,7 @@ Each task: { "intervention_id": "...", "category": "...", "title": "short title 
 
       return NextResponse.json({ suggestions: enrichedSuggestions });
     } catch (parseError) {
-      log.warn('Failed to parse AI response');
+      log.warn('Failed to parse AI response', { rawText: text.substring(0, 500) });
       return NextResponse.json({
         suggestions: getFallbackSuggestions(patient.name, category, count, recentInterventionIds),
       });

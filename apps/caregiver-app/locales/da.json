@@ -21,6 +21,7 @@
     "confirm": "Bekræft",
     "yes": "Ja",
     "no": "Nej",
+    "send": "Send",
     "you": "Dig",
     "unknown": "Ukendt",
     "saving": "Gemmer...",
@@ -131,7 +132,10 @@
       "removeMedication": "Fjern",
       "maxMedications": "Maksimalt 3 slags medicin pr. gruppe",
       "uploadingPhoto": "Uploader...",
-      "evidenceBased": "Evidensbaseret"
+      "evidenceBased": "Evidensbaseret",
+      "aiSuggestFocusOn": "Fokuser på:",
+      "aiSuggestRefresh": "Opdater",
+      "allCategories": "Alle kategorier"
     },
     "location": {
       "title": "Sted & Sikkerhed",

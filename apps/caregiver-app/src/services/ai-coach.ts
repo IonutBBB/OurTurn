@@ -92,9 +92,9 @@ function buildSystemPrompt(
 ABOUT THE PERSON YOU'RE HELPING CARE FOR:
 Name: ${patientName}
 ${patient?.biography ? `
-Interests: ${(patient.biography as PatientBiography).hobbies?.join(', ') || 'Not specified'}
+Interests: ${(patient.biography as PatientBiography).hobbies || 'Not specified'}
 Career: ${(patient.biography as PatientBiography).career || 'Not specified'}
-Favorite music: ${(patient.biography as PatientBiography).favorite_music?.join(', ') || 'Not specified'}
+Favorite music: ${(patient.biography as PatientBiography).favorite_music || 'Not specified'}
 ` : ''}
 
 ABOUT THE CAREGIVER:
@@ -239,7 +239,19 @@ export async function saveConversationMessages(
     .eq('id', conversationId);
 }
 
-// Send message to AI Coach API
+// Language name map for AI prompt
+const LANGUAGE_NAMES: Record<string, string> = {
+  ro: 'Romanian', de: 'German', fr: 'French', es: 'Spanish', it: 'Italian',
+  pt: 'Portuguese', nl: 'Dutch', pl: 'Polish', el: 'Greek', cs: 'Czech',
+  hu: 'Hungarian', sv: 'Swedish', da: 'Danish', fi: 'Finnish', bg: 'Bulgarian',
+  hr: 'Croatian', sk: 'Slovak', sl: 'Slovenian', lt: 'Lithuanian', lv: 'Latvian',
+  et: 'Estonian', ga: 'Irish', mt: 'Maltese',
+};
+
+const GEMINI_URL =
+  'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
+
+// Send message to AI Coach (calls Gemini directly)
 export async function sendMessageToCoach(
   message: string,
   conversationId: string | undefined,
@@ -251,71 +263,121 @@ export async function sendMessageToCoach(
   onReplace?: (text: string) => void,
   locale?: string
 ): Promise<void> {
-  const apiBaseUrl = process.env.EXPO_PUBLIC_API_BASE_URL;
-  if (!apiBaseUrl) {
-    throw new Error('EXPO_PUBLIC_API_BASE_URL is not configured');
+  const geminiKey = process.env.EXPO_PUBLIC_GOOGLE_AI_API_KEY;
+  if (!geminiKey) {
+    throw new Error('Gemini API key not configured');
   }
 
-  const response = await fetch(`${apiBaseUrl}/api/ai/coach`, {
+  // Fetch context + conversation in parallel
+  const [context, conversationResult] = await Promise.all([
+    fetchCoachContext(householdId),
+    conversationId
+      ? supabase.from('ai_conversations').select('*').eq('id', conversationId).single()
+      : Promise.resolve({ data: null }),
+  ]);
+
+  // Get patient + caregiver for system prompt
+  const [{ data: patient }, { data: caregiver }] = await Promise.all([
+    supabase.from('patients').select('*').eq('household_id', householdId).single(),
+    supabase.from('caregivers').select('*').eq('household_id', householdId).limit(1).single(),
+  ]);
+
+  // Get or create conversation
+  let conversation = conversationResult.data;
+  if (!conversation) {
+    const { data: userData } = await supabase.auth.getUser();
+    const { data: newConv } = await supabase
+      .from('ai_conversations')
+      .insert({
+        caregiver_id: userData.user?.id || caregiver?.id || '',
+        household_id: householdId,
+        messages: [],
+        conversation_type: conversationType || 'open',
+        conversation_context: conversationContext || null,
+      })
+      .select()
+      .single();
+    conversation = newConv;
+  }
+
+  if (conversation?.id) {
+    onConversationId(conversation.id);
+  }
+
+  // Build system prompt
+  const systemPrompt = buildSystemPrompt(
+    patient,
+    caregiver,
+    context.checkins,
+    context.carePlan,
+    context.journalEntries
+  );
+
+  // Language instruction
+  const targetLang = locale && locale !== 'en' ? LANGUAGE_NAMES[locale] : null;
+  const langInstruction = targetLang
+    ? `\n\nIMPORTANT: You MUST respond entirely in ${targetLang}. All your text must be in ${targetLang}.`
+    : '';
+
+  // Build conversation history (last 10 messages)
+  const previousMessages = ((conversation?.messages || []) as Message[]).slice(-10);
+  const history = previousMessages.map((msg) => ({
+    role: msg.role === 'assistant' ? 'model' : 'user',
+    parts: [{ text: msg.content }],
+  }));
+
+  // Add current user message
+  history.push({ role: 'user', parts: [{ text: message }] });
+
+  // Call Gemini API (non-streaming — RN fetch doesn't support ReadableStream)
+  const response = await fetch(`${GEMINI_URL}?key=${geminiKey}`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      message,
-      conversationId,
-      householdId,
-      conversationType: conversationType || 'open',
-      conversationContext: conversationContext || undefined,
-      locale: locale || undefined,
+      system_instruction: { parts: [{ text: systemPrompt + langInstruction }] },
+      contents: history,
+      generationConfig: {
+        temperature: 0.7,
+        maxOutputTokens: 4096,
+        topP: 0.9,
+        topK: 40,
+      },
     }),
   });
 
   if (!response.ok) {
+    const errBody = await response.text();
+    if (__DEV__) console.error('Gemini coach error:', response.status, errBody);
     throw new Error('Failed to send message');
   }
 
-  const reader = response.body?.getReader();
-  const decoder = new TextDecoder();
+  const result = await response.json();
+  const fullResponse = (result.candidates?.[0]?.content?.parts || [])
+    .map((p: { text?: string }) => p.text || '')
+    .join('');
 
-  if (!reader) {
-    throw new Error('No response body');
+  if (!fullResponse) {
+    throw new Error('Empty response from AI');
   }
 
-  let sseBuffer = '';
-  while (true) {
-    const { done, value } = await reader.read();
-    if (done) break;
+  // Deliver full response at once
+  onChunk(fullResponse);
 
-    sseBuffer += decoder.decode(value, { stream: true });
-    const events = sseBuffer.split('\n\n');
-    sseBuffer = events.pop() || '';
+  // Save messages to conversation
+  if (conversation?.id) {
+    const newMessages = [
+      ...previousMessages,
+      { role: 'user' as const, content: message },
+      { role: 'assistant' as const, content: fullResponse },
+    ];
 
-    for (const event of events) {
-      const lines = event.split('\n').filter((l) => l.startsWith('data: '));
-      for (const line of lines) {
-        const data = line.slice(6);
-        try {
-          const parsed = JSON.parse(data);
-
-          if (parsed.error) {
-            throw new Error(parsed.error);
-          }
-
-          if (parsed.conversationId) {
-            onConversationId(parsed.conversationId);
-          }
-
-          if (parsed.replace && parsed.text && onReplace) {
-            onReplace(parsed.text);
-          } else if (parsed.text) {
-            onChunk(parsed.text);
-          }
-        } catch (e) {
-          // Ignore parse errors for incomplete chunks
-        }
-      }
-    }
+    await supabase
+      .from('ai_conversations')
+      .update({
+        messages: newMessages,
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', conversation.id);
   }
 }
 
