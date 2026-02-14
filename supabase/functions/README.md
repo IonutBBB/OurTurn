@@ -82,7 +82,7 @@ SELECT cron.schedule(
 ```
 
 ### transcribe-voice-note
-Transcribes voice notes using OpenAI Whisper API.
+Transcribes voice notes using Google Gemini 2.5 Flash audio transcription.
 
 **Trigger:** Called after voice note upload
 
@@ -129,8 +129,7 @@ Set these in Supabase Dashboard → Settings → Edge Functions:
 | `SUPABASE_SERVICE_ROLE_KEY` | Service role key (never expose client-side) |
 | `SUPABASE_JWT_SECRET` | JWT secret for signing patient tokens |
 | `RESEND_API_KEY` | API key from resend.com |
-| `OPENAI_API_KEY` | OpenAI API key for Whisper transcription |
-| `GOOGLE_AI_API_KEY` | Google AI API key for Gemini |
+| `GOOGLE_AI_API_KEY` | Google AI API key for Gemini (AI + transcription) |
 
 ## Deployment
 
@@ -149,7 +148,6 @@ supabase functions deploy generate-weekly-insights
 
 # Set secrets
 supabase secrets set RESEND_API_KEY=re_xxxxx
-supabase secrets set OPENAI_API_KEY=sk-xxxxx
 supabase secrets set GOOGLE_AI_API_KEY=AIza_xxxxx
 ```
 

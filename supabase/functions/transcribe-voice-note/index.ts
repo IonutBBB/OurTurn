@@ -1,7 +1,8 @@
 // Transcribe Voice Note Edge Function
-// Uses OpenAI Whisper API to transcribe voice notes and updates the database
+// Uses Gemini 2.5 Flash to transcribe voice notes and updates the database
 
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
+import { encode as base64Encode } from 'https://deno.land/std@0.168.0/encoding/base64.ts';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
 const ALLOWED_ORIGIN = Deno.env.get('ALLOWED_ORIGIN') || (Deno.env.get('ENVIRONMENT') === 'production' ? 'https://app.ourturn.com' : '*');
@@ -11,8 +12,8 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-const OPENAI_API_KEY = Deno.env.get('OPENAI_API_KEY');
-const WHISPER_API_URL = 'https://api.openai.com/v1/audio/transcriptions';
+const GOOGLE_AI_API_KEY = Deno.env.get('GOOGLE_AI_API_KEY');
+const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
 
 interface TranscribeRequest {
   voiceNoteUrl: string;
@@ -28,8 +29,8 @@ serve(async (req) => {
   }
 
   try {
-    if (!OPENAI_API_KEY) {
-      throw new Error('OPENAI_API_KEY is not configured');
+    if (!GOOGLE_AI_API_KEY) {
+      throw new Error('GOOGLE_AI_API_KEY is not configured');
     }
 
     const supabase = createClient(
@@ -58,33 +59,40 @@ serve(async (req) => {
       throw new Error(`Failed to download audio: ${audioResponse.statusText}`);
     }
 
-    const audioBlob = await audioResponse.blob();
+    const audioBytes = new Uint8Array(await audioResponse.arrayBuffer());
+    const audioBase64 = base64Encode(audioBytes);
 
-    // Prepare form data for Whisper API
-    const formData = new FormData();
-    formData.append('file', audioBlob, 'voice_note.m4a');
-    formData.append('model', 'whisper-1');
-    formData.append('language', 'en'); // Can be dynamic based on household.language
-    formData.append('response_format', 'json');
-
-    // Call Whisper API
-    console.log('Calling Whisper API...');
-    const whisperResponse = await fetch(WHISPER_API_URL, {
+    // Call Gemini API with inline audio data
+    console.log('Calling Gemini API for transcription...');
+    const geminiResponse = await fetch(`${GEMINI_API_URL}?key=${GOOGLE_AI_API_KEY}`, {
       method: 'POST',
-      headers: {
-        Authorization: `Bearer ${OPENAI_API_KEY}`,
-      },
-      body: formData,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{
+          parts: [
+            { inlineData: { mimeType: 'audio/mp4', data: audioBase64 } },
+            { text: 'Transcribe this audio recording exactly. Return only the transcript text, nothing else.' },
+          ],
+        }],
+        generationConfig: {
+          temperature: 0,
+          maxOutputTokens: 1024,
+        },
+      }),
     });
 
-    if (!whisperResponse.ok) {
-      const errorText = await whisperResponse.text();
-      console.error('Whisper API error:', errorText);
-      throw new Error(`Whisper API error: ${whisperResponse.status}`);
+    if (!geminiResponse.ok) {
+      const errorText = await geminiResponse.text();
+      console.error('Gemini API error:', errorText);
+      throw new Error(`Gemini API error: ${geminiResponse.status}`);
     }
 
-    const result = await whisperResponse.json();
-    const transcript = result.text;
+    const result = await geminiResponse.json();
+    const transcript = result.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || '';
+
+    if (!transcript) {
+      throw new Error('Gemini returned empty transcript');
+    }
 
     console.log('Transcription complete:', transcript.substring(0, 100) + '...');
 

@@ -42,7 +42,7 @@ docs/                    → MVP plan, skills, prompts
 | Styling (mobile) | React Native StyleSheet |
 | Backend | Supabase (Postgres + Auth + Realtime + Storage + Edge Functions) |
 | AI / LLM | Google Gemini 2.5 Flash API |
-| Speech-to-text | OpenAI Whisper API |
+| Speech-to-text | Google Gemini 2.5 Flash (audio transcription) |
 | Maps display | Google Maps API (@vis.gl/react-google-maps for web, react-native-maps for mobile) |
 | Navigation home | Google Maps deep links (not in-app navigation) |
 | Location tracking | expo-location (background mode) |
@@ -85,6 +85,23 @@ The full product specification is at `docs/MVP_PLAN.md`. Reference specific sect
 - Use `async/await` (no raw `.then()` chains)
 - Error boundaries on every page/tab
 
+## Keeping Documentation Current
+
+When making changes that affect any of the following, update the corresponding docs in the same session:
+
+| Change type | Update these docs |
+|---|---|
+| New route/page/screen | `CLAUDE.md` build status |
+| New/changed AI feature | `docs/skills/ai-integration.md` |
+| New migration file | `docs/skills/supabase-patterns.md` (Edge Functions list, migration count) |
+| New Edge Function | `docs/skills/supabase-patterns.md` |
+| Changed design tokens/colors | `docs/skills/design-system.md` |
+| New i18n namespace or locale | `docs/skills/i18n-patterns.md` |
+| Patient app UX changes | `docs/skills/patient-app-ux.md` |
+| New user-facing language patterns | `docs/skills/regulatory-language.md` |
+
+This is a coding convention, not optional. Outdated docs cause bugs.
+
 ## Critical Constraints
 
 1. **Patient app must work OFFLINE** — cache today's plan and Help tab data locally. Queue writes for sync when online.
@@ -93,7 +110,7 @@ The full product specification is at `docs/MVP_PLAN.md`. Reference specific sect
 4. **Never use diagnostic/medical language in UI** — see `docs/skills/regulatory-language.md`.
 5. **Emergency numbers auto-detect by country** — see `packages/shared/constants/emergency-numbers.ts`.
 6. **Location tracking must be battery-efficient** — use significant location changes + geofencing, not continuous GPS.
-7. **Voice notes upload to Supabase Storage** — transcribed by Whisper via Edge Function.
+7. **Voice notes upload to Supabase Storage** — transcribed by Gemini via Edge Function.
 8. **AI responses must be streamed** — use server-sent events for Care Coach.
 9. **Cross-platform subscription sync** — RevenueCat (mobile) + Stripe (web) both write to `households.subscription_status`.
 10. **Web ↔ Mobile feature parity** — When building or changing a feature on caregiver-web, always check if the same feature/change applies to caregiver-app (and vice versa). If applicable, implement it on both platforms in the same session. The three caregiver surfaces (web, mobile app) should stay in sync. This also applies to patient-app if a feature has a caregiver-facing counterpart.
@@ -124,6 +141,7 @@ The full product specification is at `docs/MVP_PLAN.md`. Reference specific sect
 - [x] Daily check-in (mood + sleep + voice)
 - [x] Brain wellness activity
 - [x] Push notification reminders
+- [x] Expanded activity system (8+ engagement domains)
 
 ### Caregiver Web App
 - [x] Auth (login, signup, OAuth)
@@ -141,6 +159,10 @@ The full product specification is at `docs/MVP_PLAN.md`. Reference specific sect
 - [x] Doctor Visit Report generator
 - [x] Settings (account, subscription, Care Code)
 - [x] Email notifications (alerts + daily summary)
+- [x] Crisis Hub (de-escalation wizard, scenario cards)
+- [x] Behaviour Playbook
+- [x] Resources & Journey Guide
+- [x] Wellbeing Insights
 
 ### Caregiver Mobile App
 - [x] Auth (mirrors web)
@@ -157,7 +179,7 @@ The full product specification is at `docs/MVP_PLAN.md`. Reference specific sect
 - [x] Push notification system (Edge Functions + Expo)
 - [x] Email notification system (Edge Functions + Resend)
 - [x] Subscription system (Stripe for web + RevenueCat for mobile)
-- [x] Voice note pipeline (record → upload → transcribe via Whisper)
+- [x] Voice note pipeline (record → upload → transcribe via Gemini)
 - [x] AI activity generation (daily cron via Edge Function)
 - [x] AI weekly insights (weekly cron via Edge Function)
 - [x] Daily summary email (evening cron)

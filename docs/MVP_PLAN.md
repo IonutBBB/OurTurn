@@ -7,7 +7,7 @@
 
 ---
 
-## 1. WHAT MEMOGUARD IS (AND ISN'T)
+## 1. WHAT OURTURN IS (AND ISN'T)
 
 ### The One-Liner
 OurTurn is two apps that help families manage daily life with dementia — a radically simple app for the patient, and an AI-powered care dashboard for the family caregiver (mobile + web).
@@ -662,7 +662,7 @@ A unique web feature for preparing medical appointments:
 │  [Generate Report]                                           │
 │                                                              │
 │  ┌──────────────────────────────────────────────────────┐   │
-│  │  MEMOGUARD CARE SUMMARY — Maria Ionescu               │   │
+│  │  OURTURN CARE SUMMARY — Maria Ionescu                  │   │
 │  │  Period: January 3 – February 2, 2026                 │   │
 │  │                                                        │   │
 │  │  Overall Wellness: Stable with minor sleep concerns   │   │
@@ -686,7 +686,7 @@ A unique web feature for preparing medical appointments:
 Available on both caregiver mobile and web. Web provides the richest experience.
 
 **Technical approach:**
-- Backend: API calls to Claude or GPT-4 with carefully crafted system prompt
+- Backend: API calls to Google Gemini 2.5 Flash with carefully crafted system prompt
 - Context window includes: Patient profile, recent check-ins, care plan, caregiver history
 - RAG (Retrieval Augmented Generation) over curated caregiving knowledge base:
   - Alzheimer's association guidelines (international)
@@ -935,8 +935,8 @@ DOCTOR_VISIT_REPORT
 | **Caregiver Web App** | Next.js (React) | Fast, SEO-friendly marketing pages + app dashboard |
 | **Shared Logic** | Shared TypeScript package | Business logic, types, API calls shared across all 3 platforms |
 | **Backend** | Supabase | Postgres + Auth + Realtime + Storage + Edge Functions |
-| **AI / LLM** | Anthropic Claude API | Care Coach + activity generation + insights |
-| **Speech-to-Text** | Whisper API (OpenAI) or Deepgram | Voice notes and activity responses |
+| **AI / LLM** | Google Gemini 2.5 Flash API | Care Coach + activity generation + insights |
+| **Speech-to-Text** | Google Gemini 2.5 Flash (audio transcription) | Voice notes and activity responses |
 | **Push Notifications** | Expo Notifications + Supabase Edge Functions | Task reminders + safety alerts |
 | **Email Notifications** | Resend or SendGrid | Web caregiver alerts + daily summaries |
 | **Maps** | Google Maps API | Location display (web + mobile), safe zones |
@@ -984,8 +984,8 @@ DOCTOR_VISIT_REPORT
                          │
             ┌────────────▼────────────┐
             │    External APIs        │
-            │  • Claude API (AI)      │
-            │  • Whisper (speech)     │
+            │  • Gemini API (AI)      │
+            │  • Gemini (speech)      │
             │  • Resend (email)       │
             │  • RevenueCat (subs)    │
             │  • Stripe (web subs)    │
@@ -1206,7 +1206,7 @@ OurTurn launches globally — available in every country's App Store and on web 
 ```
 
 **Dynamic content localization:**
-- AI Coach: System prompt includes `language: {user_language}` — Claude responds in any language
+- AI Coach: System prompt includes `language: {user_language}` — Gemini responds in any language
 - Brain activities: Prompt includes cultural context — "Generate a reminiscence prompt appropriate for someone who grew up in {country}"
 - Support resources: JSON database of helplines/associations per country
 - Emergency numbers: Mapped per country code
@@ -1330,8 +1330,8 @@ OurTurn launches globally — available in every country's App Store and on web 
 - [ ] Background location processing
 - [ ] Push notification scheduling (task reminders + alerts)
 - [ ] Email notification sending (alerts + daily summaries)
-- [ ] AI API integration (Claude)
-- [ ] Speech-to-text for voice notes (Whisper)
+- [ ] AI API integration (Gemini)
+- [ ] Speech-to-text for voice notes (Gemini)
 - [ ] File storage (photos, voice notes)
 - [ ] Subscription billing (RevenueCat + Stripe sync)
 - [ ] GDPR-compliant data handling
@@ -1420,7 +1420,7 @@ OurTurn launches globally — available in every country's App Store and on web 
 - Real-time sync across all 3 platforms
 - Push notifications (patient reminders + caregiver safety alerts)
 - Email notifications for web caregivers
-- Voice note recording + Whisper transcription
+- Voice note recording + Gemini transcription
 - Background location tracking
 
 ### Weeks 9-12: AI & Polish
@@ -1594,3 +1594,38 @@ Patient taps "Take Me Home"
 tools can extend caregiver capabilities, reduce isolation, and
 preserve safety — buying precious time and peace of mind for
 families navigating one of life's most difficult journeys."*
+
+---
+
+## POST-MVP FEATURES (Implemented)
+
+The following features were built after the initial MVP was complete:
+
+### Crisis Hub
+De-escalation wizard with scenario cards for common crisis situations (refusing to eat, aggression, wandering, sundowning, etc.). Each scenario has step-by-step guided responses, personalization boxes for patient-specific calming strategies, and a breathing timer. Includes crisis logging and 30-day pattern analysis.
+- **Route:** `/crisis`
+- **Migration:** `019_crisis_hub_rebuild.sql`
+
+### Behaviour Playbook
+Structured playbook for tracking and managing challenging behaviours. Includes a behaviour incident logger, timeline view, and AI-powered pattern insights.
+- **Route:** `/coach/behaviours`
+
+### Resources & Journey Guide
+WHO iSupport-based educational content with journey progress tracking, a knowledge library of articles, and a local support directory filtered by country.
+- **Route:** `/resources`
+- **Migration:** `022_resources.sql`
+- **i18n:** Separate `resources` namespace (`resources-en.json`, ~119KB)
+
+### Wellbeing Insights
+Enhanced caregiver wellbeing system with slider-based mood/energy/stress check-ins, daily goals, quick-relief exercises, wellness trend charts, burnout detection, and a dedicated AI wellbeing agent.
+- **Route:** `/wellbeing` and `/wellbeing/insights`
+- **Migration:** `015_caregiver_toolkit.sql`, `017_toolkit_redesign.sql`
+
+### Expanded Activity System
+Replaced the original 5 activity types with 8+ evidence-based engagement activity domains (word association, matching pairs, sorting, sequencing, true/false, reminiscence, music, creative, and more). Activities are now generated with domain awareness and difficulty adaptation.
+- **Migration:** `024_activity_system.sql`
+
+### AI Safety Guardrails Pipeline
+10-file safety system at `apps/caregiver-web/src/lib/ai-safety/` that classifies all AI inputs on a RED/ORANGE/YELLOW/GREEN scale. RED triggers show static crisis responses with no AI call. All classifications are logged to `ai_safety_audit_log` (metadata only, no message content for GDPR compliance).
+- **Migration:** `021_ai_safety_audit_log.sql`
+- **All 5 AI routes integrated:** coach, wellbeing-agent, suggest-tasks, behaviour-insights, toolkit-insights

@@ -203,11 +203,29 @@ export function useRealtimeCompletions(householdId: string) {
 ## Edge Functions Pattern
 
 Edge Functions are Deno-based serverless functions. Use them for:
-- AI API calls (Claude, Whisper) — keep API keys server-side
+- AI API calls (Gemini) — keep API keys server-side
 - Push notification sending
 - Scheduled tasks (cron)
 - Care Code validation
 - Complex data aggregation (reports)
+
+### Complete Edge Functions List (13 functions)
+
+| Function | Purpose | Trigger |
+|---|---|---|
+| `aggregate-daily-metrics` | Compute daily summary metrics per household | Cron |
+| `check-device-connectivity` | Monitor patient device online/offline status | Cron |
+| `check-safe-zone-violation` | Evaluate location against safe zones | DB webhook |
+| `escalate-alerts` | Escalate unacknowledged alerts to secondary contacts | Cron |
+| `generate-daily-activities` | AI-generate personalized patient activities | Cron (3am UTC) |
+| `generate-weekly-insights` | AI-generate weekly care insights | Cron (Sunday midnight) |
+| `send-daily-summary` | Evening summary email to caregivers | Cron |
+| `send-help-request-notification` | Notify family when caregiver requests help | DB webhook |
+| `send-push-notification` | Generic push notification dispatcher | Called by other functions |
+| `send-safety-alert` | Push + email for safety events | DB webhook |
+| `send-task-reminders` | Patient task reminder push notifications | Cron |
+| `transcribe-voice-note` | Gemini 2.5 Flash speech-to-text for voice notes | DB webhook |
+| `validate-care-code` | Verify 6-digit code and issue patient JWT | API call |
 
 ### Edge Function Template
 
@@ -393,11 +411,14 @@ SUPABASE_ANON_KEY=eyJ...
 SUPABASE_SERVICE_ROLE_KEY=eyJ...  # Only in Edge Functions, NEVER in client apps
 
 # Additional
-ANTHROPIC_API_KEY=sk-ant-...      # Only in Edge Functions
-OPENAI_API_KEY=sk-...             # Only in Edge Functions (Whisper)
+GOOGLE_GENERATIVE_AI_API_KEY=...  # Only in Edge Functions + Next.js server
 RESEND_API_KEY=re_...             # Only in Edge Functions
 GOOGLE_MAPS_API_KEY=AIza...       # Client apps (restricted)
 EXPO_PUSH_TOKEN=...               # Edge Functions
 ```
 
-**CRITICAL: Never expose `SUPABASE_SERVICE_ROLE_KEY`, `ANTHROPIC_API_KEY`, or `OPENAI_API_KEY` in client-side code. These ONLY go in Edge Functions / server-side.**
+**CRITICAL: Never expose `SUPABASE_SERVICE_ROLE_KEY` or `GOOGLE_GENERATIVE_AI_API_KEY` in client-side code. These ONLY go in Edge Functions / server-side.**
+
+### Migration Count
+
+Migrations are numbered sequentially: `001_initial_schema.sql` through `028_subscription_plan.sql` (28 total). Always use the next available number when adding a new migration.

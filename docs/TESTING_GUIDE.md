@@ -21,7 +21,7 @@ OurTurn is a digital wellness platform for daily dementia home care, consisting 
 - **Accessibility (Caregiver Apps)**: 16px minimum font size, 44px+ touch targets, WCAG 2.1 AA
 - **Regulatory**: This is a **wellness app, NOT a medical device** -- no diagnostic/medical language in UI
 - **Safety**: Crisis hub, SOS, and "Take Me Home" must always be reachable and functional
-- **Localization**: 24 EU languages -- verify no untranslated strings or hardcoded text
+- **Localization**: 24 EU languages (mobile apps); English only (web) -- verify no untranslated strings or hardcoded text
 - **Offline**: Patient app must work offline (cached plan, queued writes)
 
 ---
@@ -1461,7 +1461,7 @@ claude --chrome "Run quick regression checklist against http://localhost:3000"
 | Styling (mobile) | React Native StyleSheet |
 | Backend | Supabase (Postgres + Auth + Realtime + Storage + Edge Functions) |
 | AI | Google Gemini 2.5 Flash |
-| Speech-to-text | OpenAI Whisper |
+| Speech-to-text | Google Gemini 2.5 Flash |
 | Maps | Google Maps (@vis.gl/react-google-maps web, react-native-maps mobile) |
 | Payments (mobile) | RevenueCat |
 | Payments (web) | Stripe Checkout |

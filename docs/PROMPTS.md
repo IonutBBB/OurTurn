@@ -1081,9 +1081,9 @@ Build the subscription system and do a final polish pass.
 2. VOICE NOTE PIPELINE:
    - Edge Function: supabase/functions/transcribe-voice-note/index.ts
    - Triggered by Supabase Storage webhook when file uploaded to voice-notes bucket
-   - Downloads audio, sends to OpenAI Whisper API for transcription
+   - Downloads audio, converts to base64, sends to Gemini 2.5 Flash for transcription
    - Saves transcript back to daily_checkins.voice_note_transcript or brain_activities.patient_response_text
-   - If OPENAI_API_KEY not set: skip transcription gracefully
+   - If GOOGLE_AI_API_KEY not set: skip transcription gracefully
 
 3. FINAL POLISH:
    - Run through ALL screens on all 3 platforms and verify:
