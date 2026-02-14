@@ -7,8 +7,9 @@ OurTurn launches globally. **Every user-facing string must be translatable from 
 ## Setup
 
 ### Library
-- Mobile apps: `i18next` + `react-i18next` + `expo-localization`
-- Web app: `next-intl` (or `i18next` + `react-i18next` for consistency)
+All 3 apps use the same i18n stack for consistency:
+- `i18next` + `react-i18next` + `i18next-http-backend` + `i18next-browser-languagedetector`
+- Mobile apps additionally use `expo-localization` for device locale detection
 
 ### File Structure
 
@@ -23,12 +24,12 @@ apps/patient-app/locales/
 apps/caregiver-app/locales/
   en.json
   de.json
-  ...
+  fr.json ... (24 EU languages)
+  resources-en.json        ← Separate namespace for Resources tab
 
 apps/caregiver-web/locales/
-  en.json
-  de.json
-  ...
+  en.json                  ← English only (other languages pending)
+  resources-en.json        ← Separate namespace for Resources tab (~119KB)
 ```
 
 ### JSON Structure
@@ -395,6 +396,26 @@ export const EMERGENCY_NUMBERS: Record<string, { primary: string; secondary?: st
 export function getEmergencyNumber(countryCode: string) {
   return EMERGENCY_NUMBERS[countryCode] || EMERGENCY_NUMBERS.default;
 }
+```
+
+## Localization Status
+
+| App | Languages | Status |
+|---|---|---|
+| Patient App | 24 EU languages | Full translation via locale files |
+| Caregiver Mobile | 24 EU languages | Full translation via locale files |
+| Caregiver Web | English only | Other languages pending |
+
+The mobile apps have full translations for 24 EU languages. The caregiver web app currently supports English only — additional languages will be added based on user demand.
+
+### Resources Namespace
+
+The Resources tab uses a separate i18n namespace (`resources`) with its own locale files (`resources-{lang}.json`) due to its large content volume (~119KB for English). Load it separately to avoid bloating the main bundle:
+
+```typescript
+// Load resources namespace on demand
+i18n.loadNamespaces('resources');
+const { t } = useTranslation('resources');
 ```
 
 ## Right-to-Left (RTL) Support

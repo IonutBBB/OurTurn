@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# OurTurn — Caregiver Web Dashboard
 
-## Getting Started
+Next.js 14+ web application for family caregivers. Full care management dashboard with AI-powered coaching, care plan building, location tracking, and doctor visit reports.
 
-First, run the development server:
+## Prerequisites
+
+- Node.js 18+
+- Supabase project with migrations applied
+- Environment variables (see below)
+
+## Environment Variables
+
+Create `.env.local` in this directory:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJ...
+SUPABASE_SERVICE_ROLE_KEY=eyJ...
+GOOGLE_AI_API_KEY=...
+GOOGLE_MAPS_API_KEY=AIza...
+STRIPE_SECRET_KEY=sk_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_...
+```
+
+## Run Locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# → http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Key Routes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Route | Feature |
+|---|---|
+| `/` | Landing page |
+| `/dashboard` | Real-time status overview |
+| `/care-plan` | Care plan builder (task CRUD, AI suggestions) |
+| `/location` | Map, safe zones, alerts |
+| `/coach` | AI Care Coach (streaming chat) |
+| `/coach/behaviours` | Behaviour Playbook |
+| `/resources` | Resources & Journey Guide |
+| `/family` | Family Circle + Care Journal |
+| `/wellbeing` | Caregiver Toolkit |
+| `/wellbeing/insights` | Wellbeing Insights |
+| `/crisis` | Crisis Hub (de-escalation wizard) |
+| `/reports` | Doctor Visit Reports |
+| `/settings` | Account, subscription, Care Code, GDPR |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Architecture
 
-## Learn More
+- **Framework:** Next.js 14+ with App Router
+- **Styling:** Tailwind CSS
+- **AI:** Google Gemini 2.5 Flash via 5 API routes in `src/app/api/ai/`
+- **Safety:** 10-file AI safety pipeline at `src/lib/ai-safety/`
+- **Auth:** Supabase Auth (email + OAuth)
+- **Payments:** Stripe Checkout + Customer Portal
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See the root `CLAUDE.md` and `docs/` for detailed documentation.

@@ -19,7 +19,7 @@ The patient app is used by people with **early-stage dementia** — aged 65-85, 
 - Minimum secondary text: 18px
 - Headings: 28-36px
 - Font weight: Regular (400) for body, Bold (700) for headings and key info
-- Font: System default (San Francisco on iOS, Roboto on Android) — familiar to users
+- Font: Nunito (custom Google Font loaded via expo-font) — rounded sans-serif chosen for warmth and readability
 - Line height: 1.6 minimum (generous spacing)
 - Letter spacing: Slightly increased (+0.5px) for readability
 - NEVER use italic text (harder to read for older adults)

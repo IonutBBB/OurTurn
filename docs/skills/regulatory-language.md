@@ -149,6 +149,31 @@ for medical advice."
 It is not a clinical measurement."
 ```
 
+## Implementation Reference — AI Safety Guardrails
+
+The regulatory language rules are enforced programmatically through the AI safety pipeline at `apps/caregiver-web/src/lib/ai-safety/` (10 files):
+
+| File | Purpose |
+|---|---|
+| `pipeline.ts` | Main orchestrator: preProcess → classify → AI call → postProcess → audit |
+| `classifier.ts` | Classifies input into RED / ORANGE / YELLOW / GREEN severity tiers |
+| `crisis-responses.ts` | Static responses for RED-tier inputs (no AI call made) |
+| `medication-blocklist.ts` | Blocks medication dosage/change requests |
+| `disclaimers.ts` | Appends appropriate disclaimers to AI responses |
+| `audit-log.ts` | Logs classification metadata to `ai_safety_audit_log` table |
+| `post-processor.ts` | Scans AI output for forbidden words before delivery |
+| `pre-processor.ts` | Sanitizes and validates user input |
+| `types.ts` | TypeScript types for the safety pipeline |
+| `index.ts` | Re-exports for clean imports |
+
+**Classification tiers:**
+- **RED** — Crisis/self-harm: static crisis response, NO AI call, emergency resources shown
+- **ORANGE** — Medical/medication: redirect to medical professional, add disclaimer
+- **YELLOW** — Emotional distress: AI responds with empathy + caregiver resources
+- **GREEN** — General care: standard AI response with evidence-based information
+
+**Audit logging:** All classifications are logged to `ai_safety_audit_log` (migration 021). Metadata only — no message content is stored (GDPR compliance). All 5 AI routes are integrated: coach, wellbeing-agent, suggest-tasks, behaviour-insights, toolkit-insights.
+
 ## Pre-Ship Checklist
 
 Run through this for EVERY feature, screen, notification, and AI prompt before shipping:
