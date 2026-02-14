@@ -3,7 +3,7 @@
  * Deterministic per day — same all day.
  */
 
-import type { ActivityDefinition, BrainActivity, AllActivityType } from '@ourturn/shared';
+import type { ActivityDefinition, BrainActivity } from '@ourturn/shared';
 import { pickDailyMultiple } from './daily-seed';
 import { getNewActivities, getActivityByType } from './activity-registry';
 
@@ -23,12 +23,12 @@ export function selectDailyActivities(options: SelectionOptions): ActivityDefini
     if (brainDef) result.push(brainDef);
   }
 
-  // 2. Pick from new stim activities — filter out biography-dependent if no bio
+  // 2. Pick from new engagement activities — filter out biography-dependent if no bio
   const candidates = getNewActivities().filter(
     (a) => !a.requiresBiography || hasBiography
   );
 
-  // Pick 3-4 from different domains (deterministic)
+  // Pick 3-4 from different categories (deterministic)
   const remaining = 4 - result.length;
   const picked = pickDailyMultiple(candidates, remaining);
 

@@ -28,12 +28,12 @@ import {
 import { selectDailyActivities } from '../../src/utils/daily-activity-selection';
 import {
   ACTIVITY_REGISTRY,
-  COGNITIVE_DOMAINS,
-  getActivitiesByDomain,
+  ACTIVITY_CATEGORIES,
+  getActivitiesByCategory,
 } from '../../src/utils/activity-registry';
 import { supabase } from '@ourturn/supabase';
 import { getCachedActivity, cacheActivity } from '../../src/utils/offline-cache';
-import type { BrainActivity, ActivityDefinition, CognitiveDomain } from '@ourturn/shared';
+import type { BrainActivity, ActivityDefinition } from '@ourturn/shared';
 import { COLORS, FONTS, GRADIENT_TEXT_COLOR } from '../../src/theme';
 
 const ACTIVITY_TYPE_ICONS: Record<string, string> = {
@@ -197,7 +197,7 @@ export default function ActivitiesScreen() {
             </Text>
           </View>
 
-          {/* ── Today's Activities ─────────────────────────── */}
+          {/* Today's Activities */}
           <Text style={styles.sectionTitle}>
             {t('patientApp.activities.todaysActivities')}
           </Text>
@@ -221,13 +221,13 @@ export default function ActivitiesScreen() {
             );
           })}
 
-          {/* ── Explore More ──────────────────────────────── */}
+          {/* Explore More — grouped by category */}
           <Text style={[styles.sectionTitle, styles.exploreTitle]}>
             {t('patientApp.activities.exploreMore')}
           </Text>
 
-          {COGNITIVE_DOMAINS.map(({ domain, emoji: domainEmoji, titleKey }) => {
-            const activities = getActivitiesByDomain(domain);
+          {ACTIVITY_CATEGORIES.map(({ category, emoji: catEmoji, titleKey }) => {
+            const activities = getActivitiesByCategory(category);
             // Filter out unavailable legacy activities
             const available = activities.filter((a) =>
               a.legacy ? isLegacyAvailable(a.type) : true
@@ -239,9 +239,9 @@ export default function ActivitiesScreen() {
             ).length;
 
             return (
-              <View key={domain}>
+              <View key={category}>
                 <DomainSectionHeader
-                  emoji={domainEmoji}
+                  emoji={catEmoji}
                   titleKey={titleKey}
                   completedCount={completedCount}
                   totalCount={available.length}
@@ -260,7 +260,6 @@ export default function ActivitiesScreen() {
                       backgroundColor={def.backgroundColor}
                       borderColor={def.borderColor}
                       completed={!!isCompleted}
-                      domainBadge={t(titleKey)}
                     />
                   );
                 })}

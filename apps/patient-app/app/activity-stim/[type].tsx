@@ -1,6 +1,6 @@
 /**
- * Dynamic activity player for all 10 brain stimulation activities.
- * Reads `type` from route params, renders the matching renderer.
+ * Dynamic activity player for all 15 engagement activities.
+ * No scoring, no difficulty — focused on enjoyment and engagement.
  */
 
 import { useState, useRef, useCallback } from 'react';
@@ -19,11 +19,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useAuthStore } from '../../src/stores/auth-store';
 import { getActivityByType } from '../../src/utils/activity-registry';
 import { useActivityContent } from '../../src/hooks/use-activity-content';
-import { useDifficulty } from '../../src/hooks/use-difficulty';
 import { RENDERER_MAP } from '../../src/components/activity-renderers';
 import { createActivitySession, completeActivitySession, skipActivitySession } from '@ourturn/supabase';
 import { formatDateForDb } from '../../src/utils/time-of-day';
-import { COLORS, FONTS, RADIUS } from '../../src/theme';
+import { COLORS, FONTS } from '../../src/theme';
 import type { StimActivityType } from '@ourturn/shared';
 
 export default function ActivityStimPlayer() {
@@ -34,8 +33,7 @@ export default function ActivityStimPlayer() {
   const activityType = type as StimActivityType;
 
   const definition = getActivityByType(activityType);
-  const { difficulty, recordCompletion } = useDifficulty(householdId, definition?.domain ?? 'language');
-  const { content, isLoading } = useActivityContent(activityType, difficulty, householdId);
+  const { content, isLoading } = useActivityContent(activityType, householdId);
 
   const sessionIdRef = useRef<string | null>(null);
   const startTimeRef = useRef<number>(Date.now());
@@ -48,15 +46,14 @@ export default function ActivityStimPlayer() {
       const row = await createActivitySession({
         household_id: householdId,
         activity_type: activityType,
-        cognitive_domain: definition.domain,
-        difficulty_level: difficulty,
+        cognitive_domain: definition.category,
         date: formatDateForDb(),
       });
       sessionIdRef.current = row.id;
     } catch {
       // Offline — session will be tracked via AsyncStorage only
     }
-  }, [householdId, activityType, definition, difficulty]);
+  }, [householdId, activityType, definition]);
 
   // Create session once content is loaded
   if (!isLoading && !sessionIdRef.current && householdId) {
@@ -64,10 +61,7 @@ export default function ActivityStimPlayer() {
   }
 
   const handleComplete = useCallback(
-    async (
-      scoreData: Record<string, unknown>,
-      responseData: Record<string, unknown>
-    ) => {
+    async (responseData?: Record<string, unknown>) => {
       const duration = Math.round((Date.now() - startTimeRef.current) / 1000);
       setCompleted(true);
 
@@ -75,27 +69,23 @@ export default function ActivityStimPlayer() {
       const today = formatDateForDb();
       await AsyncStorage.setItem(`activity_completed_${activityType}_${today}`, 'true');
 
-      // Update DB session
+      // Update DB session — no score_data
       if (sessionIdRef.current) {
         try {
-          await completeActivitySession(sessionIdRef.current, scoreData, responseData, duration);
+          await completeActivitySession(sessionIdRef.current, undefined, responseData, duration);
         } catch {
           // Offline
         }
       }
 
-      // Adjust difficulty
-      await recordCompletion(duration);
-
       // Celebrate and navigate back
       await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
       setTimeout(() => router.back(), 800);
     },
-    [activityType, recordCompletion]
+    [activityType]
   );
 
   const handleSkip = useCallback(async () => {
-    // Mark session as skipped
     if (sessionIdRef.current) {
       try {
         await skipActivitySession(sessionIdRef.current);
@@ -156,7 +146,6 @@ export default function ActivityStimPlayer() {
         {/* Renderer */}
         <Renderer
           content={content}
-          difficulty={difficulty}
           onComplete={handleComplete}
           onSkip={handleSkip}
           patientName={patient?.name ?? ''}

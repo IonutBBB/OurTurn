@@ -1,26 +1,33 @@
 // Brain stimulation activity system types
 
-export type CognitiveDomain =
-  | 'language'
-  | 'numbers'
-  | 'executive'
-  | 'visual'
-  | 'sound'
-  | 'physical'
-  | 'creative'
-  | 'current_affairs';
+export type ActivityCategory =
+  | 'art_beauty'
+  | 'music_sound'
+  | 'calm_wellness'
+  | 'memories_reflection'
+  | 'words_language'
+  | 'stories_facts'
+  | 'games';
+
+/** @deprecated Use ActivityCategory for UI grouping. Kept for DB backward compatibility. */
+export type CognitiveDomain = string;
 
 export type StimActivityType =
   | 'word_association'
-  | 'odd_word_out'
-  | 'price_guessing'
-  | 'sorting_categorizing'
-  | 'put_in_order'
-  | 'pair_matching'
-  | 'sound_identification'
+  | 'art_gallery'
+  | 'music_moments'
+  | 'sing_along'
+  | 'nature_sounds'
+  | 'guided_breathing'
   | 'this_day_in_history'
-  | 'art_discussion'
-  | 'true_or_false';
+  | 'memory_lane'
+  | 'daily_reflection'
+  | 'proverbs'
+  | 'fun_facts'
+  | 'gentle_quiz'
+  | 'animal_friends'
+  | 'story_time'
+  | 'photo_pairs';
 
 export type LegacyActivityType =
   | 'brain_activity'
@@ -37,14 +44,14 @@ export interface ActivitySession {
   id: string;
   household_id: string;
   activity_type: string;
-  cognitive_domain: CognitiveDomain;
-  difficulty_level: DifficultyLevel;
+  cognitive_domain: string;
+  difficulty_level: DifficultyLevel | null;
   date: string;
   started_at: string;
   completed_at: string | null;
   duration_seconds: number | null;
-  score_data: Record<string, unknown>;
-  response_data: Record<string, unknown>;
+  score_data: Record<string, unknown> | null;
+  response_data: Record<string, unknown> | null;
   skipped: boolean;
   created_at: string;
 }
@@ -52,7 +59,7 @@ export interface ActivitySession {
 export interface ActivitySessionInsert {
   household_id: string;
   activity_type: string;
-  cognitive_domain: CognitiveDomain;
+  cognitive_domain: string;
   difficulty_level?: DifficultyLevel;
   date?: string;
 }
@@ -60,7 +67,7 @@ export interface ActivitySessionInsert {
 export interface ActivityDifficulty {
   id: string;
   household_id: string;
-  cognitive_domain: CognitiveDomain;
+  cognitive_domain: string;
   current_level: DifficultyLevel;
   total_attempts: number;
   total_completions: number;
@@ -80,7 +87,7 @@ export interface ActivityContentCache {
 
 export interface ActivityDefinition {
   type: AllActivityType;
-  domain: CognitiveDomain;
+  category: ActivityCategory;
   emoji: string;
   titleKey: string;
   descriptionKey: string;

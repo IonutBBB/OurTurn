@@ -1,50 +1,38 @@
 /**
- * Content pipeline for brain stimulation activities.
- * Priority: Supabase AI cache → AsyncStorage → bundled fallback.
+ * Content pipeline for engagement activities.
+ * Priority: API fetch (with cache) → AsyncStorage cache → bundled fallback.
+ * No difficulty levels — all content is welcoming and failure-free.
  */
 
 import { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getCachedContent } from '@ourturn/supabase';
-import type { DifficultyLevel, StimActivityType } from '@ourturn/shared';
+import type { StimActivityType } from '@ourturn/shared';
 import { formatDateForDb } from '../utils/time-of-day';
 import { pickDaily } from '../utils/daily-seed';
-import {
-  WORD_ASSOCIATION_CONTENT,
-  ODD_WORD_OUT_CONTENT,
-  PRICE_GUESSING_CONTENT,
-  SORTING_CONTENT,
-  PUT_IN_ORDER_CONTENT,
-  PAIR_MATCHING_CONTENT,
-  SOUND_ID_CONTENT,
-  ART_DISCUSSION_CONTENT,
-  TRUE_OR_FALSE_CONTENT,
-  getHistoryFactForDate,
-} from '../data/bundled-activities';
+import { BUNDLED_CONTENT } from '../data/bundled-activities';
+import { fetchArtGalleryContent } from '../services/met-museum-api';
+import { fetchGentleQuizContent } from '../services/opentdb-api';
+import { fetchThisDayContent } from '../services/wikipedia-api';
+import { fetchAnimalContent } from '../services/pexels-api';
 
-type ContentSource = 'ai_cache' | 'local_cache' | 'bundled';
+type ContentSource = 'api' | 'local_cache' | 'bundled';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const BUNDLED_CONTENT_MAP: Record<StimActivityType, Record<DifficultyLevel, any[]>> = {
-  word_association: WORD_ASSOCIATION_CONTENT,
-  odd_word_out: ODD_WORD_OUT_CONTENT,
-  price_guessing: PRICE_GUESSING_CONTENT,
-  sorting_categorizing: SORTING_CONTENT,
-  put_in_order: PUT_IN_ORDER_CONTENT,
-  pair_matching: PAIR_MATCHING_CONTENT,
-  sound_identification: SOUND_ID_CONTENT,
-  this_day_in_history: { gentle: [], moderate: [], challenging: [] }, // special handling
-  art_discussion: ART_DISCUSSION_CONTENT,
-  true_or_false: TRUE_OR_FALSE_CONTENT,
-};
+const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
 
-function getLocalCacheKey(type: StimActivityType, date: string): string {
-  return `stim_content_${type}_${date}`;
+function getCacheKey(type: StimActivityType, date: string): string {
+  return `activity_content_${type}_${date}`;
 }
+
+/** Activities that can fetch from external APIs */
+const API_ACTIVITIES: Partial<Record<StimActivityType, () => Promise<unknown>>> = {
+  art_gallery: fetchArtGalleryContent,
+  gentle_quiz: fetchGentleQuizContent,
+  this_day_in_history: fetchThisDayContent,
+  animal_friends: fetchAnimalContent,
+};
 
 export function useActivityContent(
   activityType: StimActivityType,
-  difficulty: DifficultyLevel,
   householdId: string | null | undefined
 ) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -57,48 +45,51 @@ export function useActivityContent(
 
     async function loadContent() {
       const today = formatDateForDb();
+      const cacheKey = getCacheKey(activityType, today);
 
-      // 1. Try Supabase AI cache
-      if (householdId) {
+      // 1. Try AsyncStorage cache (from previous API fetch)
+      try {
+        const cached = await AsyncStorage.getItem(cacheKey);
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          if (parsed.timestamp && Date.now() - parsed.timestamp < CACHE_TTL_MS) {
+            if (!cancelled) {
+              setContent(parsed.data);
+              setSource('local_cache');
+              setIsLoading(false);
+            }
+            return;
+          }
+        }
+      } catch {
+        // Cache read failed, continue
+      }
+
+      // 2. Try API fetch for supported activities
+      const apiFetcher = API_ACTIVITIES[activityType];
+      if (apiFetcher) {
         try {
-          const cached = await getCachedContent(householdId, activityType, today);
-          if (cached && !cancelled) {
-            setContent(cached.content_json);
-            setSource('ai_cache');
+          const apiData = await apiFetcher();
+          if (apiData && !cancelled) {
+            setContent(apiData);
+            setSource('api');
             setIsLoading(false);
-            // Also save to AsyncStorage for offline
+            // Cache for offline
             await AsyncStorage.setItem(
-              getLocalCacheKey(activityType, today),
-              JSON.stringify(cached.content_json)
+              cacheKey,
+              JSON.stringify({ data: apiData, timestamp: Date.now() })
             );
             return;
           }
         } catch {
-          // Supabase unavailable, continue
+          // API failed, fall through to bundled
         }
-      }
-
-      // 2. Try AsyncStorage local cache
-      try {
-        const localStr = await AsyncStorage.getItem(getLocalCacheKey(activityType, today));
-        if (localStr && !cancelled) {
-          setContent(JSON.parse(localStr));
-          setSource('local_cache');
-          setIsLoading(false);
-          return;
-        }
-      } catch {
-        // AsyncStorage error, continue
       }
 
       // 3. Fall back to bundled content
       if (!cancelled) {
-        if (activityType === 'this_day_in_history') {
-          setContent(getHistoryFactForDate(new Date(), difficulty));
-        } else {
-          const pool = BUNDLED_CONTENT_MAP[activityType]?.[difficulty] ?? [];
-          setContent(pickDaily(pool));
-        }
+        const pool = BUNDLED_CONTENT[activityType] ?? [];
+        setContent(pickDaily(pool));
         setSource('bundled');
         setIsLoading(false);
       }
@@ -106,7 +97,7 @@ export function useActivityContent(
 
     loadContent();
     return () => { cancelled = true; };
-  }, [activityType, difficulty, householdId]);
+  }, [activityType, householdId]);
 
   return { content, isLoading, source };
 }
