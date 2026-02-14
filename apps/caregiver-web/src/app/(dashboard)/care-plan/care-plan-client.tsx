@@ -1199,12 +1199,12 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
                             📷
                           </span>
                         )}
-                        {task.patient_created && (
-                          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-brand-50 text-brand-600 border border-brand-200">
-                            {t('caregiverApp.carePlan.patientCreated', { name: patientName })}
-                          </span>
-                        )}
                       </div>
+                      {task.patient_created && (
+                        <div className="mt-1 text-xs text-brand-500">
+                          {t('caregiverApp.carePlan.patientCreated', { name: patientName })}
+                        </div>
+                      )}
                       {task.medication_items && task.medication_items.length > 0 && (
                         <div className="mt-1 text-xs text-text-muted">
                           {task.medication_items.map((m) => m.name).filter(Boolean).join(', ')}
