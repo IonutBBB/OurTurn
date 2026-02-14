@@ -301,20 +301,20 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontFamily: FONTS.display,
     color: COLORS.textPrimary,
-    letterSpacing: -0.5,
+    letterSpacing: 0,
   },
   subtitle: {
     fontSize: 22,
     fontFamily: FONTS.body,
     color: COLORS.textSecondary,
     marginTop: 6,
-    lineHeight: 30,
+    lineHeight: 38,
   },
   sectionTitle: {
     fontSize: 24,
     fontFamily: FONTS.bodySemiBold,
     color: COLORS.textPrimary,
-    marginBottom: 16,
+    marginBottom: 20,
   },
   exploreTitle: {
     marginTop: 32,

@@ -20,8 +20,8 @@ export const COLORS = {
 
   // Text
   textPrimary: '#2D1F14',
-  textSecondary: '#5C4A3A',
-  textMuted: '#9C8B7A',
+  textSecondary: '#4D3D2E',
+  textMuted: '#7A6B5D',
   textInverse: '#FFFDF8',
 
   // Status

@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
   },
   buttons: {
     width: '100%',
-    gap: 16,
+    gap: 20,
   },
   yesButton: {
     backgroundColor: COLORS.success,

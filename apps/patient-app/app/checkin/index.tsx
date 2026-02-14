@@ -313,7 +313,7 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
   optionsColumn: {
-    gap: 16,
+    gap: 20,
     width: '100%',
   },
   optionButtonWide: {

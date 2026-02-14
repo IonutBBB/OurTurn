@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   card: {
     borderRadius: RADIUS['2xl'],
     padding: 24,
-    marginBottom: 16,
+    marginBottom: 20,
     borderWidth: 2,
     minHeight: 120,
     ...SHADOWS.md,
@@ -133,14 +133,14 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontFamily: FONTS.bodyBold,
     color: COLORS.textPrimary,
-    letterSpacing: -0.3,
+    letterSpacing: 0.2,
   },
   description: {
     fontSize: 20,
     fontFamily: FONTS.body,
     color: COLORS.textSecondary,
     marginTop: 4,
-    lineHeight: 28,
+    lineHeight: 36,
   },
   textMuted: {
     color: COLORS.textMuted,

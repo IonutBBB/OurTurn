@@ -17,9 +17,11 @@ import {
   formatTimeForScreenReader,
   getTaskCompletionAnnouncement,
   TOUCH_TARGETS,
+  getSafeAnimationDuration,
 } from '@ourturn/shared';
 import type { CarePlanTask, TaskCompletion, MedicationItem } from '@ourturn/shared';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../theme';
+import { useReducedMotion } from '../hooks/use-reduced-motion';
 
 export type TaskStatus = 'upcoming' | 'now' | 'overdue' | 'completed' | 'skipped';
 
@@ -46,6 +48,7 @@ function formatCompletedTime(isoString: string): string {
 
 function TaskCard({ task, completion, status, onComplete, simplified = false }: TaskCardProps) {
   const { t } = useTranslation();
+  const reduceMotion = useReducedMotion();
   const [isLoading, setIsLoading] = useState(false);
   const [scaleAnim] = useState(new Animated.Value(1));
   const [checkmarkOpacity] = useState(new Animated.Value(0));
@@ -71,24 +74,24 @@ function TaskCard({ task, completion, status, onComplete, simplified = false }: 
     // Haptic feedback
     await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 
-    // Animate button press
+    // Animate button press (skip when reduced motion enabled)
     Animated.sequence([
       Animated.timing(scaleAnim, {
         toValue: 0.95,
-        duration: 100,
+        duration: getSafeAnimationDuration(100, reduceMotion),
         useNativeDriver: true,
       }),
       Animated.timing(scaleAnim, {
         toValue: 1,
-        duration: 100,
+        duration: getSafeAnimationDuration(100, reduceMotion),
         useNativeDriver: true,
       }),
     ]).start();
 
-    // Fade in checkmark
+    // Fade in checkmark (instant when reduced motion enabled)
     Animated.timing(checkmarkOpacity, {
       toValue: 1,
-      duration: 300,
+      duration: getSafeAnimationDuration(300, reduceMotion),
       useNativeDriver: true,
     }).start();
 
@@ -320,13 +323,13 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.bodyBold,
     color: COLORS.textPrimary,
     flex: 1,
-    letterSpacing: -0.3,
+    letterSpacing: 0.2,
   },
   hint: {
     fontSize: 20,
     color: COLORS.textSecondary,
     fontFamily: FONTS.body,
-    lineHeight: 30,
+    lineHeight: 36,
     marginBottom: 24,
     fontStyle: 'italic',
     backgroundColor: COLORS.background,

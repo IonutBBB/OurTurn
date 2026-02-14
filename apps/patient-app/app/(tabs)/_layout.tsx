@@ -156,18 +156,20 @@ const styles = StyleSheet.create({
     marginBottom: 3,
   },
   iconWrapFocused: {
-    backgroundColor: COLORS.brand100,
+    backgroundColor: COLORS.brand200,
     borderRadius: 16,
-    width: 60,
-    height: 40,
+    width: 72,
+    height: 44,
+    borderWidth: 2,
+    borderColor: COLORS.brand400,
   },
   tabEmoji: {
-    fontSize: 26,
+    fontSize: 28,
     textAlign: 'center',
-    lineHeight: 32,
+    lineHeight: 34,
   },
   tabEmojiActive: {
-    transform: [{ scale: 1.05 }],
+    transform: [{ scale: 1.15 }],
   },
   tabLabel: {
     fontSize: 20,
@@ -177,6 +179,6 @@ const styles = StyleSheet.create({
   },
   tabLabelActive: {
     color: COLORS.brand600,
-    fontFamily: FONTS.bodySemiBold,
+    fontFamily: FONTS.bodyBold,
   },
 });

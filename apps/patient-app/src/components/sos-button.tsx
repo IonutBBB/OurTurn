@@ -16,6 +16,7 @@ import { createLocationAlert } from '@ourturn/supabase';
 import { queueAlert } from '../utils/offline-cache';
 import { sendEmergencySMS } from '../utils/emergency-sms';
 import { COLORS } from '../theme';
+import { useReducedMotion } from '../hooks/use-reduced-motion';
 
 export function SOSButton() {
   const { t } = useTranslation();
@@ -23,10 +24,13 @@ export function SOSButton() {
   const { session, patient, household } = useAuthStore();
   const [isTriggering, setIsTriggering] = useState(false);
   const pulseAnim = useRef(new Animated.Value(1)).current;
+  const reduceMotion = useReducedMotion();
 
-  // Subtle pulse animation
-  const startPulse = () => {
-    Animated.loop(
+  // Subtle pulse animation (skip when reduced motion enabled)
+  useEffect(() => {
+    if (reduceMotion) return;
+
+    const pulse = Animated.loop(
       Animated.sequence([
         Animated.timing(pulseAnim, {
           toValue: 1.05,
@@ -39,13 +43,13 @@ export function SOSButton() {
           useNativeDriver: true,
         }),
       ])
-    ).start();
-  };
+    );
+    pulse.start();
 
-  // Start pulse on mount
-  useEffect(() => {
-    startPulse();
-  }, []);
+    return () => {
+      pulse.stop();
+    };
+  }, [reduceMotion]);
 
   const handleLongPress = async () => {
     if (isTriggering) return;

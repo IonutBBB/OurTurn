@@ -534,14 +534,14 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontFamily: FONTS.bodySemiBold,
     color: COLORS.textPrimary,
-    lineHeight: 30,
+    lineHeight: 36,
   },
   greeting: {
     fontSize: 28,
     fontFamily: FONTS.bodySemiBold,
     color: COLORS.textPrimary,
     lineHeight: 36,
-    letterSpacing: -0.3,
+    letterSpacing: 0,
     marginTop: 8,
   },
   greetingSimplified: {
@@ -552,7 +552,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontFamily: FONTS.body,
     marginTop: 4,
-    lineHeight: 30,
+    lineHeight: 36,
     opacity: 0.85,
   },
   progressContainer: {
@@ -612,7 +612,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     color: COLORS.textSecondary,
     paddingHorizontal: 32,
-    lineHeight: 32,
+    lineHeight: 38,
     fontFamily: FONTS.bodyMedium,
   },
   bottomPadding: {
@@ -702,7 +702,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontFamily: FONTS.bodyBold,
     color: COLORS.textPrimary,
-    letterSpacing: -0.3,
+    letterSpacing: 0.2,
   },
   comingUpTime: {
     fontSize: 20,
