@@ -1,6 +1,7 @@
 // Household types
 
-export type SubscriptionStatus = 'free' | 'plus' | 'cancelled';
+export type SubscriptionStatus = 'free' | 'plus' | 'cancelled' | 'past_due';
+export type SubscriptionPlan = 'monthly' | 'annual';
 export type SubscriptionPlatform = 'web' | 'ios' | 'android';
 
 export interface Household {
@@ -10,6 +11,7 @@ export interface Household {
   language: string;
   country: string | null;
   subscription_status: SubscriptionStatus;
+  subscription_plan: SubscriptionPlan | null;
   subscription_platform: SubscriptionPlatform | null;
   stripe_customer_id: string | null;
   escalation_minutes: number;
@@ -29,6 +31,7 @@ export interface HouseholdUpdate {
   language?: string;
   country?: string;
   subscription_status?: SubscriptionStatus;
+  subscription_plan?: SubscriptionPlan;
   subscription_platform?: SubscriptionPlatform;
   stripe_customer_id?: string;
   escalation_minutes?: number;

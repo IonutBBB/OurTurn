@@ -73,14 +73,16 @@ export async function POST(request: NextRequest) {
     case 'checkout.session.completed': {
       const session = event.data.object as Stripe.Checkout.Session;
       const householdId = session.metadata?.household_id;
+      const plan = session.metadata?.plan as 'monthly' | 'annual' | undefined;
 
       if (householdId) {
-        // Update household subscription status
+        // Update household subscription status and plan
         const { error } = await supabase
           .from('households')
           .update({
             subscription_status: 'plus',
             subscription_platform: 'web',
+            ...(plan && { subscription_plan: plan }),
           })
           .eq('id', householdId);
 

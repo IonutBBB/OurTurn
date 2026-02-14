@@ -65,6 +65,28 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Parse optional plan parameter (default to annual as recommended)
+    let plan: 'monthly' | 'annual' = 'annual';
+    try {
+      const body = await request.json();
+      if (body.plan === 'monthly' || body.plan === 'annual') {
+        plan = body.plan;
+      }
+    } catch {
+      // No body or invalid JSON — use default
+    }
+
+    const priceId = plan === 'annual'
+      ? process.env.STRIPE_ANNUAL_PRICE_ID
+      : process.env.STRIPE_PRICE_ID;
+
+    if (!priceId) {
+      return NextResponse.json(
+        { error: `Stripe price ID not configured for ${plan} plan` },
+        { status: 500 }
+      );
+    }
+
     const stripe = getStripe();
 
     // Get or create Stripe customer
@@ -99,7 +121,7 @@ export async function POST(request: NextRequest) {
       payment_method_types: ['card'],
       line_items: [
         {
-          price: process.env.STRIPE_PRICE_ID, // OurTurn Plus price ID
+          price: priceId,
           quantity: 1,
         },
       ],
@@ -108,11 +130,13 @@ export async function POST(request: NextRequest) {
       subscription_data: {
         metadata: {
           household_id: household.id,
+          plan,
         },
       },
       metadata: {
         household_id: household.id,
         caregiver_id: caregiver.id,
+        plan,
       },
     });
 

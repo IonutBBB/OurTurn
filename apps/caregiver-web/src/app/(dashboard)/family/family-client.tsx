@@ -10,6 +10,7 @@ import type {
 } from '@ourturn/shared';
 import { hasReachedCaregiverLimit } from '@ourturn/shared/utils/subscription';
 import { UpgradeBanner } from '@/components/upgrade-gate';
+import { ContextualTrialPrompt } from '@/components/contextual-trial-prompt';
 import { useToast } from '@/components/toast';
 
 interface FamilyClientProps {
@@ -287,9 +288,12 @@ export default function FamilyClient({
       {/* Family Tab */}
       {activeTab === 'family' && (
         <div className="space-y-6">
-          {/* Caregiver Limit Banner */}
+          {/* Caregiver Limit — Contextual Trial */}
           {caregiverLimitReached && (
-            <UpgradeBanner message={t('subscription.limits.caregiverLimitReached')} />
+            <ContextualTrialPrompt
+              feature="caregiver"
+              onStartTrial={() => window.location.href = '/settings?upgrade=caregiver'}
+            />
           )}
 
           {/* Care Code Banner */}

@@ -1647,20 +1647,24 @@
         "freePrice": "\u00a30",
         "freePriceNote": "forever",
         "plusTitle": "OurTurn Plus",
-        "plusPrice": "\u00a39.99",
-        "plusPriceNote": "per month",
-        "plusBadge": "Recommended",
+        "plusPriceMonthly": "\u00a39.99",
+        "plusPriceMonthlyNote": "per month",
+        "plusPriceAnnual": "\u00a379.99",
+        "plusPriceAnnualNote": "per year",
+        "plusAnnualSavings": "Save 33%",
+        "plusBadge": "Best value",
         "trialNotice": "Free for 14 days. No credit card needed.",
-        "freeFeat1": "Daily care plan (up to 5 tasks)",
-        "freeFeat2": "Basic check-ins",
+        "familyPlanNote": "One subscription covers your whole family",
+        "freeFeat1": "Daily care plan (up to 10 tasks)",
+        "freeFeat2": "Basic check-ins & 3 AI Coach messages/month",
         "freeFeat3": "1 family member",
-        "freeFeat4": "Take Me Home button",
+        "freeFeat4": "Take Me Home & emergency contacts",
         "plusFeat1": "Unlimited daily tasks",
-        "plusFeat2": "AI Care Coach",
+        "plusFeat2": "Unlimited AI Care Coach",
         "plusFeat3": "Location tracking & safe zones",
         "plusFeat4": "Unlimited Family Circle",
         "plusFeat5": "Caregiver wellbeing tools",
-        "plusFeat6": "Doctor visit reports",
+        "plusFeat6": "Doctor visit reports & AI insights",
         "plusFeat7": "Priority support"
       },
 
@@ -1684,7 +1688,7 @@
         "q8": "Is my family\u2019s data safe?",
         "a8": "Yes. We take privacy seriously. Your data is encrypted, stored securely, and never sold to third parties. You can export or delete your data at any time from the settings page. See our Privacy Policy for full details.",
         "q9": "Can I try OurTurn before paying?",
-        "a9": "Absolutely. OurTurn Plus comes with a free 14-day trial \u2014 no credit card required. The free plan is also available forever with core features.",
+        "a9": "Absolutely. The free plan is available forever with core features. When you\u2019re ready to try Plus, you\u2019ll get a free 14-day trial \u2014 no credit card required. One subscription covers your whole family.",
         "q10": "What devices does OurTurn work on?",
         "a10": "The caregiver app works on web browsers, iPhones, and Android phones. The app for your loved one works on iPhones and Android phones."
       },
@@ -1737,6 +1741,29 @@
       "taskLimitReached": "You've reached the free plan limit of {{max}} tasks. Upgrade to add unlimited tasks.",
       "aiMessageLimitReached": "You've used all {{max}} free AI Coach messages this month. Upgrade for unlimited conversations.",
       "caregiverLimitReached": "Free plan includes 1 caregiver. Upgrade to invite up to 5 family members."
+    },
+    "upgrade": "Upgrade to Plus",
+    "checkoutError": "Could not start checkout. Please try again.",
+    "activating": "Activating your subscription...",
+    "manageViaStore": "Manage your subscription in your device's app store settings",
+    "contextualTrial": {
+      "title": "Try OurTurn Plus free for 14 days",
+      "tasks": "Add unlimited tasks to your loved one's care plan — free for 14 days",
+      "caregiver": "Invite unlimited family members to your care circle — free for 14 days",
+      "aiCoach": "Unlock unlimited AI coaching conversations — free for 14 days",
+      "safeZones": "Keep your loved one safe with location tracking & safe zones — free for 14 days",
+      "reports": "Generate professional doctor visit reports — free for 14 days",
+      "journal": "Access the shared Care Journal — free for 14 days",
+      "insights": "Get AI-powered behavioural insights — free for 14 days",
+      "wellbeing": "Access caregiver wellbeing tools — free for 14 days",
+      "startTrial": "Start free trial",
+      "noCardRequired": "No credit card required",
+      "maybeLater": "Maybe later"
+    },
+    "planToggle": {
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "saveBadge": "Save {{percent}}%"
     }
   }
 }

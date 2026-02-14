@@ -1,12 +1,17 @@
 // Subscription feature gating utilities
 
-import type { Household, SubscriptionStatus } from '../types/household';
+import type { Household, SubscriptionPlan, SubscriptionStatus } from '../types/household';
 import { EU_MEMBER_CODES } from '../constants/languages';
 
+export const PRICING = {
+  monthly: { price: '£9.99', interval: 'month' },
+  annual: { price: '£79.99', interval: 'year', savingsPercent: 33 },
+} as const;
+
 export const FREE_LIMITS = {
-  maxTasks: 20,
+  maxTasks: 10,
   maxCaregivers: 1,
-  aiMessages: 5,
+  aiMessages: 3,
 } as const;
 
 type FeatureKey =
@@ -39,6 +44,13 @@ const PLUS_FEATURES: Set<FeatureKey> = new Set([
  */
 export function isFreeTier(household: Pick<Household, 'subscription_status'>): boolean {
   return household.subscription_status === 'free' || household.subscription_status === 'cancelled';
+}
+
+/**
+ * Check if a household has an active paid subscription (including past_due grace period)
+ */
+export function isPlusTier(household: Pick<Household, 'subscription_status'>): boolean {
+  return household.subscription_status === 'plus' || household.subscription_status === 'past_due';
 }
 
 /**

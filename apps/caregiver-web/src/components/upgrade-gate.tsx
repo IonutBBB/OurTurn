@@ -11,7 +11,7 @@ interface UpgradeGateProps {
 /**
  * Wraps a feature with a subscription upgrade prompt when the user is on the free tier.
  * If `isLocked` is false, renders children normally.
- * If `isLocked` is true, shows an overlay with upgrade messaging.
+ * If `isLocked` is true, shows an overlay with upgrade messaging and a free trial CTA.
  */
 export function UpgradeGate({ feature, children, isLocked }: UpgradeGateProps) {
   const { t } = useTranslation();
@@ -28,17 +28,20 @@ export function UpgradeGate({ feature, children, isLocked }: UpgradeGateProps) {
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="card-paper p-8 text-center max-w-md mx-4 shadow-xl">
           <div className="w-14 h-14 rounded-2xl bg-brand-100/60 dark:bg-brand-100/20 flex items-center justify-center mx-auto mb-4">
-            <span className="text-2xl">✨</span>
+            <span className="text-2xl">{'\u2728'}</span>
           </div>
           <h3 className="text-lg font-display font-bold text-text-primary mb-2">
-            {t('subscription.upgradeTitle')}
+            {t('subscription.contextualTrial.title')}
           </h3>
           <p className="text-sm text-text-secondary mb-5">
             {t('subscription.upgradeFeature')}
           </p>
-          <a href="/settings" className="btn-primary inline-flex items-center">
-            {t('subscription.subscribe')}
+          <a href={`/settings?upgrade=${feature}`} className="btn-primary inline-flex items-center">
+            {t('subscription.contextualTrial.startTrial')}
           </a>
+          <p className="text-[11px] text-text-muted mt-3">
+            {t('subscription.contextualTrial.noCardRequired')}
+          </p>
         </div>
       </div>
     </div>
@@ -54,11 +57,11 @@ export function UpgradeBanner({ message }: { message: string }) {
   return (
     <div className="card-paper border-brand-200 dark:border-brand-800 bg-brand-50/50 dark:bg-brand-900/20 p-4 flex items-center justify-between gap-4">
       <div className="flex items-center gap-3">
-        <span className="text-xl">✨</span>
+        <span className="text-xl">{'\u2728'}</span>
         <p className="text-sm text-text-secondary">{message}</p>
       </div>
       <a href="/settings" className="btn-primary text-sm whitespace-nowrap">
-        {t('subscription.subscribe')}
+        {t('subscription.contextualTrial.startTrial')}
       </a>
     </div>
   );

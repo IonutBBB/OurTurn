@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
 import { hasReachedAIMessageLimit, FREE_LIMITS } from '@ourturn/shared/utils/subscription';
 import { UpgradeBanner } from '@/components/upgrade-gate';
+import { ContextualTrialPrompt } from '@/components/contextual-trial-prompt';
 import type { ConversationType } from '@ourturn/shared/types/ai';
 import ChatMessages, { parseAIResponse } from './components/chat-messages';
 import ChatInput from './components/chat-input';
@@ -210,10 +211,13 @@ export default function CoachConversation({
         </div>
       )}
 
-      {/* Upgrade Banner */}
+      {/* Contextual Trial Prompt */}
       {messageLimitReached && (
         <div className="pt-3">
-          <UpgradeBanner message={t('subscription.limits.aiMessageLimitReached', { max: FREE_LIMITS.aiMessages })} />
+          <ContextualTrialPrompt
+            feature="aiCoach"
+            onStartTrial={() => window.location.href = '/settings?upgrade=aiCoach'}
+          />
         </div>
       )}
 

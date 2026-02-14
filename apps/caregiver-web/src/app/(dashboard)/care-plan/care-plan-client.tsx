@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
 import { hasReachedTaskLimit } from '@ourturn/shared/utils/subscription';
 import { UpgradeBanner } from '@/components/upgrade-gate';
+import { ContextualTrialPrompt } from '@/components/contextual-trial-prompt';
 import { FREE_LIMITS } from '@ourturn/shared/utils/subscription';
 import { useToast } from '@/components/toast';
 import i18n from '@/i18n';
@@ -518,7 +519,10 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
       </div>
 
       {taskLimitReached && (
-        <UpgradeBanner message={t('subscription.limits.taskLimitReached', { max: FREE_LIMITS.maxTasks })} />
+        <ContextualTrialPrompt
+          feature="tasks"
+          onStartTrial={() => window.location.href = '/settings?upgrade=tasks'}
+        />
       )}
 
       {/* Day Filter Tabs */}

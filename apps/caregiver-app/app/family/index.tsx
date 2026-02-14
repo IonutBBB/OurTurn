@@ -19,6 +19,7 @@ import { supabase } from '@ourturn/supabase';
 import { hasReachedCaregiverLimit } from '@ourturn/shared/utils/subscription';
 import type { Caregiver, CareJournalEntry, JournalEntryType } from '@ourturn/shared';
 import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS } from '../../src/theme';
+import { ContextualTrialPrompt } from '../../src/components/contextual-trial-prompt';
 
 export default function FamilyScreen() {
   const { t } = useTranslation();
@@ -373,13 +374,9 @@ export default function FamilyScreen() {
         {/* Family Tab */}
         {activeTab === 'family' && (
           <View style={styles.tabContent}>
-            {/* Caregiver Limit Banner (A9) */}
+            {/* Caregiver Limit — Contextual Trial */}
             {caregiverLimitReached && (
-              <View style={styles.limitBanner}>
-                <Text style={styles.limitBannerText}>
-                  {t('caregiverApp.family.caregiverLimitReached')}
-                </Text>
-              </View>
+              <ContextualTrialPrompt feature="caregiver" />
             )}
 
             {/* Care Code Banner */}

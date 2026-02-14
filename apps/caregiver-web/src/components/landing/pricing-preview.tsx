@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { landingT } from '@/lib/landing-t';
+import { PricingPlanToggle } from './pricing-plan-toggle';
 
 const t = (key: string) => landingT(`caregiverApp.landing.pricing.${key}`);
 
@@ -49,33 +50,24 @@ export function PricingPreview() {
             </Link>
           </div>
 
-          {/* Plus plan */}
-          <div className="card-paper p-8 space-y-6 ring-2 ring-brand-500 relative">
-            <span className="absolute -top-3 left-6 badge badge-brand text-xs">
-              {t('plusBadge')}
-            </span>
-            <div>
-              <h3 className="text-xl font-display font-bold text-text-primary">{t('plusTitle')}</h3>
-              <div className="flex items-baseline gap-1 mt-2">
-                <span className="text-4xl font-display font-bold text-gradient-warm">{t('plusPrice')}</span>
-                <span className="text-sm text-text-muted">{t('plusPriceNote')}</span>
-              </div>
-            </div>
-            <ul className="space-y-3">
-              {PLUS_FEATURES.map((key) => (
-                <li key={key} className="flex items-center gap-3 text-sm text-text-secondary">
-                  <CheckIcon className="text-status-success" />
-                  {t(key)}
-                </li>
-              ))}
-            </ul>
-            <Link
-              href="/signup"
-              className="btn-primary text-sm w-full py-3 text-center block"
-            >
-              {landingT('caregiverApp.landing.startFreeTrial')}
-            </Link>
-          </div>
+          {/* Plus plan with monthly/annual toggle */}
+          <PricingPlanToggle
+            labels={{
+              monthly: landingT('subscription.planToggle.monthly'),
+              annual: landingT('subscription.planToggle.annual'),
+              saveBadge: landingT('subscription.planToggle.saveBadge').replace('{{percent}}', '33'),
+              monthlyPrice: t('plusPriceMonthly'),
+              monthlyNote: t('plusPriceMonthlyNote'),
+              annualPrice: t('plusPriceAnnual'),
+              annualNote: t('plusPriceAnnualNote'),
+              annualSavings: t('plusAnnualSavings'),
+              familyPlanNote: t('familyPlanNote'),
+              startTrialLabel: landingT('caregiverApp.landing.startFreeTrial'),
+              plusBadge: t('plusBadge'),
+              plusTitle: t('plusTitle'),
+            }}
+            features={PLUS_FEATURES.map((key) => t(key))}
+          />
         </div>
 
         <p className="text-center text-sm text-text-muted mt-8">

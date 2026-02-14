@@ -72,6 +72,7 @@ export default function SettingsClient({
   const [isChangingPassword, setIsChangingPassword] = useState(false);
 
   // Subscription
+  const [selectedPlan, setSelectedPlan] = useState<'monthly' | 'annual'>('annual');
   const [isCreatingCheckout, setIsCreatingCheckout] = useState(false);
   const [isOpeningPortal, setIsOpeningPortal] = useState(false);
   const [subscriptionError, setSubscriptionError] = useState('');
@@ -401,6 +402,7 @@ export default function SettingsClient({
       const response = await fetch('/api/stripe/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ plan: selectedPlan }),
       });
 
       const data = await response.json();
@@ -951,17 +953,57 @@ export default function SettingsClient({
               </p>
             )}
             {household.subscription_status !== 'plus' && (
-              <div className="card-inset rounded-2xl p-4 mt-4">
-                <p className="font-medium text-brand-800 dark:text-brand-200 mb-2">{t('caregiverApp.settings.plusBenefitsTitle')}</p>
-                <ul className="text-sm text-brand-700 dark:text-brand-300 space-y-1">
-                  <li>&bull; {t('caregiverApp.settings.plusBenefitTasks')}</li>
-                  <li>&bull; {t('caregiverApp.settings.plusBenefitCoach')}</li>
-                  <li>&bull; {t('caregiverApp.settings.plusBenefitZones')}</li>
-                  <li>&bull; {t('caregiverApp.settings.plusBenefitFamily')}</li>
-                  <li>&bull; {t('caregiverApp.settings.plusBenefitReports')}</li>
-                  <li>&bull; {t('caregiverApp.settings.plusBenefitSupport')}</li>
-                </ul>
-              </div>
+              <>
+                {/* Plan toggle */}
+                <div className="flex items-center justify-center gap-2 mt-4 mb-3">
+                  <button
+                    onClick={() => setSelectedPlan('monthly')}
+                    className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
+                      selectedPlan === 'monthly'
+                        ? 'bg-brand-600 text-white'
+                        : 'bg-surface-background text-text-secondary hover:bg-brand-50'
+                    }`}
+                  >
+                    {t('subscription.planToggle.monthly')}
+                  </button>
+                  <button
+                    onClick={() => setSelectedPlan('annual')}
+                    className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
+                      selectedPlan === 'annual'
+                        ? 'bg-brand-600 text-white'
+                        : 'bg-surface-background text-text-secondary hover:bg-brand-50'
+                    }`}
+                  >
+                    {t('subscription.planToggle.annual')}
+                    <span className="ml-1.5 text-xs opacity-80">
+                      {t('subscription.planToggle.saveBadge', { percent: '33' })}
+                    </span>
+                  </button>
+                </div>
+                <p className="text-center text-lg font-display font-bold text-text-primary mb-1">
+                  {selectedPlan === 'annual' ? '£79.99/year' : '£9.99/month'}
+                </p>
+                {selectedPlan === 'annual' && (
+                  <p className="text-center text-xs text-status-success mb-3">
+                    {t('subscription.annualSavings', { percent: '33' })} — £6.67/month
+                  </p>
+                )}
+                <p className="text-center text-xs text-text-muted mb-4">
+                  {t('subscription.contextualTrial.noCardRequired')}
+                </p>
+
+                <div className="card-inset rounded-2xl p-4">
+                  <p className="font-medium text-brand-800 dark:text-brand-200 mb-2">{t('caregiverApp.settings.plusBenefitsTitle')}</p>
+                  <ul className="text-sm text-brand-700 dark:text-brand-300 space-y-1">
+                    <li>&bull; {t('caregiverApp.settings.plusBenefitTasks')}</li>
+                    <li>&bull; {t('caregiverApp.settings.plusBenefitCoach')}</li>
+                    <li>&bull; {t('caregiverApp.settings.plusBenefitZones')}</li>
+                    <li>&bull; {t('caregiverApp.settings.plusBenefitFamily')}</li>
+                    <li>&bull; {t('caregiverApp.settings.plusBenefitReports')}</li>
+                    <li>&bull; {t('caregiverApp.settings.plusBenefitSupport')}</li>
+                  </ul>
+                </div>
+              </>
             )}
           </div>
 
