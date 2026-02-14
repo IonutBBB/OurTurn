@@ -219,263 +219,6 @@
           "wanderlust": "Xewqa għall-ivvjaġġar"
         }
       },
-      "proverbs": {
-        "title": "Proverbs & Sayings",
-        "description": "Complete familiar phrases",
-        "instruction": "Can you finish this saying?",
-        "reveal": "Tap to reveal",
-        "youKnowIt": "You know this one!",
-        "items": {
-          "stitch": {
-            "first": "A stitch in time...",
-            "second": "...saves nine."
-          },
-          "bird": {
-            "first": "The early bird...",
-            "second": "...catches the worm."
-          },
-          "apple": {
-            "first": "An apple a day...",
-            "second": "...keeps the doctor away."
-          },
-          "actions": {
-            "first": "Actions speak louder...",
-            "second": "...than words."
-          },
-          "penny": {
-            "first": "A penny saved...",
-            "second": "...is a penny earned."
-          },
-          "rome": {
-            "first": "Rome wasn't built...",
-            "second": "...in a day."
-          },
-          "rolling": {
-            "first": "A rolling stone...",
-            "second": "...gathers no moss."
-          },
-          "twoBirds": {
-            "first": "Kill two birds...",
-            "second": "...with one stone."
-          },
-          "catAway": {
-            "first": "When the cat's away...",
-            "second": "...the mice will play."
-          },
-          "bestMedicine": {
-            "first": "Laughter is...",
-            "second": "...the best medicine."
-          },
-          "practice": {
-            "first": "Practice makes...",
-            "second": "...perfect."
-          },
-          "lookedPot": {
-            "first": "A watched pot...",
-            "second": "...never boils."
-          },
-          "silverLining": {
-            "first": "Every cloud has...",
-            "second": "...a silver lining."
-          },
-          "earlyBird": {
-            "first": "Early to bed, early to rise...",
-            "second": "...makes a man healthy, wealthy, and wise."
-          },
-          "tooManyCooks": {
-            "first": "Too many cooks...",
-            "second": "...spoil the broth."
-          },
-          "honesty": {
-            "first": "Honesty is...",
-            "second": "...the best policy."
-          },
-          "absence": {
-            "first": "Absence makes...",
-            "second": "...the heart grow fonder."
-          },
-          "leapLook": {
-            "first": "Look before...",
-            "second": "...you leap."
-          },
-          "glass": {
-            "first": "People in glass houses...",
-            "second": "...shouldn't throw stones."
-          },
-          "betterLateThan": {
-            "first": "Better late...",
-            "second": "...than never."
-          },
-          "barking": {
-            "first": "His bark is worse...",
-            "second": "...than his bite."
-          },
-          "beautyEye": {
-            "first": "Beauty is in the eye...",
-            "second": "...of the beholder."
-          },
-          "bloodThicker": {
-            "first": "Blood is thicker...",
-            "second": "...than water."
-          },
-          "moneyRoot": {
-            "first": "Money is the root...",
-            "second": "...of all evil."
-          },
-          "noNews": {
-            "first": "No news is...",
-            "second": "...good news."
-          },
-          "spiltMilk": {
-            "first": "Don't cry over...",
-            "second": "...spilt milk."
-          },
-          "curiosity": {
-            "first": "Curiosity killed...",
-            "second": "...the cat."
-          },
-          "birdInHand": {
-            "first": "A bird in the hand...",
-            "second": "...is worth two in the bush."
-          },
-          "glitters": {
-            "first": "All that glitters...",
-            "second": "...is not gold."
-          },
-          "mightierSword": {
-            "first": "The pen is mightier...",
-            "second": "...than the sword."
-          },
-          "wholeWorld": {
-            "first": "It takes all sorts...",
-            "second": "...to make a world."
-          },
-          "goodThings": {
-            "first": "Good things come...",
-            "second": "...to those who wait."
-          },
-          "bedRise": {
-            "first": "You've made your bed...",
-            "second": "...now lie in it."
-          },
-          "leopardSpots": {
-            "first": "A leopard can't change...",
-            "second": "...its spots."
-          },
-          "homeIs": {
-            "first": "Home is where...",
-            "second": "...the heart is."
-          },
-          "knowledge": {
-            "first": "A little knowledge...",
-            "second": "...is a dangerous thing."
-          },
-          "biteHand": {
-            "first": "Don't bite the hand...",
-            "second": "...that feeds you."
-          },
-          "twoHeads": {
-            "first": "Two heads are...",
-            "second": "...better than one."
-          },
-          "journeyBegins": {
-            "first": "A journey of a thousand miles...",
-            "second": "...begins with a single step."
-          },
-          "fortuneBrave": {
-            "first": "Fortune favours...",
-            "second": "...the brave."
-          }
-        }
-      },
-      "gentleQuiz": {
-        "title": "Gentle Quiz",
-        "description": "Fun questions with no wrong answers",
-        "correct": "That's right! Well done!",
-        "goodGuess": "Good guess! The answer is actually {{answer}}. Isn't that interesting?",
-        "q": {
-          "banana": "What colour is a banana?",
-          "moo": "What sound does a cow make?",
-          "bees": "What do bees make?",
-          "dogLegs": "How many legs does a dog have?",
-          "afterWinter": "What season comes after winter?",
-          "capitalFrance": "What is the capital of France?",
-          "umbrella": "What do you use to stay dry in the rain?",
-          "largestOcean": "What is the largest ocean in the world?",
-          "sky": "What colour is the sky on a clear day?",
-          "daysWeek": "How many days are in a week?"
-        },
-        "a": {
-          "yellow": "Yellow",
-          "blue": "Blue",
-          "red": "Red",
-          "green": "Green",
-          "cow": "Moo",
-          "dog": "Woof",
-          "cat": "Meow",
-          "bird": "Tweet",
-          "honey": "Honey",
-          "milk": "Milk",
-          "sugar": "Sugar",
-          "butter": "Butter",
-          "four": "Four",
-          "two": "Two",
-          "six": "Six",
-          "eight": "Eight",
-          "spring": "Spring",
-          "summer": "Summer",
-          "autumn": "Autumn",
-          "winter": "Winter",
-          "paris": "Paris",
-          "london": "London",
-          "rome": "Rome",
-          "berlin": "Berlin",
-          "stayingDry": "An umbrella",
-          "cooking": "Cooking",
-          "writing": "Writing",
-          "driving": "Driving",
-          "pacific": "Pacific Ocean",
-          "atlantic": "Atlantic Ocean",
-          "indian": "Indian Ocean",
-          "arctic": "Arctic Ocean",
-          "seven": "Seven",
-          "five": "Five"
-        }
-      },
-      "photoPairs": {
-        "title": "Photo Pairs",
-        "description": "Find matching pairs of pictures",
-        "pairsFound": "{{found}} of {{total}} pairs found",
-        "themes": {
-          "flowers": "Beautiful Flowers",
-          "animals": "Friendly Animals",
-          "food": "Tasty Treats",
-          "nature": "Nature",
-          "seasons": "Four Seasons"
-        },
-        "items": {
-          "rose": "Rose",
-          "sunflower": "Sunflower",
-          "tulip": "Tulip",
-          "blossom": "Blossom",
-          "cat": "Cat",
-          "dog": "Dog",
-          "rabbit": "Rabbit",
-          "bird": "Bird",
-          "apple": "Apple",
-          "cake": "Cake",
-          "bread": "Bread",
-          "cupcake": "Cupcake",
-          "tree": "Tree",
-          "rainbow": "Rainbow",
-          "star": "Star",
-          "sun": "Sun",
-          "spring": "Spring",
-          "summer": "Summer",
-          "autumn": "Autumn",
-          "winter": "Winter"
-        }
-      },
       "wordSearch": {
         "title": "Fittex il-Kliem",
         "description": "Sib kliem moħbija fil-gradilja",
@@ -579,6 +322,263 @@
         "yourTurn": "Issa int!",
         "sequenceLength": "Sekwenza: {{length}}",
         "greatMemory": "Memorja mill-aqwa!"
+      },
+      "proverbs": {
+        "title": "Proverbji u Qwiel",
+        "description": "Imla frażijiet familjari",
+        "instruction": "Tista' ttemm dan il-qawl?",
+        "reveal": "Tektek biex tikxef",
+        "youKnowIt": "Dan tafu!",
+        "items": {
+          "stitch": {
+            "first": "Ħjata fil-ħin...",
+            "second": "...tiffranka disa'."
+          },
+          "bird": {
+            "first": "L-għasfur bikri...",
+            "second": "...jaqbad id-dudu."
+          },
+          "apple": {
+            "first": "Tuffieħa kuljum...",
+            "second": "...tbiegħed lit-tabib."
+          },
+          "actions": {
+            "first": "L-azzjonijiet jitkellmu aktar qawwi...",
+            "second": "...mill-kliem."
+          },
+          "penny": {
+            "first": "Ċenteżmu ffrankat...",
+            "second": "...huwa ċenteżmu miksub."
+          },
+          "rome": {
+            "first": "Ruma ma nbnietx...",
+            "second": "...f'ġurnata waħda."
+          },
+          "rolling": {
+            "first": "Ġebla li tirrombla...",
+            "second": "...ma tiġborx ħażiż."
+          },
+          "twoBirds": {
+            "first": "Oqtol żewġ għasafar...",
+            "second": "...b'ġebla waħda."
+          },
+          "catAway": {
+            "first": "Meta l-qattus ikun 'il bogħod...",
+            "second": "...il-ġrieden jilagħbu."
+          },
+          "bestMedicine": {
+            "first": "Id-daħk huwa...",
+            "second": "...l-aħjar mediċina."
+          },
+          "practice": {
+            "first": "Il-prattika tagħmel...",
+            "second": "...perfett."
+          },
+          "lookedPot": {
+            "first": "Borma mħarsa...",
+            "second": "...qatt ma tgħalli."
+          },
+          "silverLining": {
+            "first": "Kull sħaba għandha...",
+            "second": "...tarf tal-fidda."
+          },
+          "earlyBird": {
+            "first": "Kmieni fis-sodda, kmieni tqum...",
+            "second": "...tagħmel raġel b'saħħtu, għani, u għaref."
+          },
+          "tooManyCooks": {
+            "first": "Wisq koki...",
+            "second": "...jħassru l-brodu."
+          },
+          "honesty": {
+            "first": "L-onestà hija...",
+            "second": "...l-aħjar politika."
+          },
+          "absence": {
+            "first": "L-assenza tagħmel...",
+            "second": "...il-qalb tħobb aktar."
+          },
+          "leapLook": {
+            "first": "Ħares qabel...",
+            "second": "...taqbeż."
+          },
+          "glass": {
+            "first": "Nies fi djar tal-ħġieġ...",
+            "second": "...m'għandhomx jarmu ġebel."
+          },
+          "betterLateThan": {
+            "first": "Aħjar tard...",
+            "second": "...milli qatt."
+          },
+          "barking": {
+            "first": "Il-qoxra tiegħu hija agħar...",
+            "second": "...minn gidmu."
+          },
+          "beautyEye": {
+            "first": "Is-sbuħija tinsab fl-għajn...",
+            "second": "...ta' min jaraha."
+          },
+          "bloodThicker": {
+            "first": "Id-demm huwa eħxen...",
+            "second": "...mill-ilma."
+          },
+          "moneyRoot": {
+            "first": "Il-flus huma l-għerq...",
+            "second": "...ta' kull ħażen."
+          },
+          "noNews": {
+            "first": "L-ebda aħbar hija...",
+            "second": "...aħbar tajba."
+          },
+          "spiltMilk": {
+            "first": "Tibkix fuq...",
+            "second": "...ħalib imxerred."
+          },
+          "curiosity": {
+            "first": "Il-kurżità qatlet...",
+            "second": "...il-qattus."
+          },
+          "birdInHand": {
+            "first": "Għasfur f'idejk...",
+            "second": "...jiswa tnejn fil-għollieq."
+          },
+          "glitters": {
+            "first": "Kull ma jleqq...",
+            "second": "...mhuwiex deheb."
+          },
+          "mightierSword": {
+            "first": "Il-pinna hija aktar qawwija...",
+            "second": "...mill-xabla."
+          },
+          "wholeWorld": {
+            "first": "Jeħtieġ kull xorta...",
+            "second": "...biex tagħmel dinja."
+          },
+          "goodThings": {
+            "first": "Affarijiet tajbin jiġu...",
+            "second": "...għal dawk li jistennew."
+          },
+          "bedRise": {
+            "first": "Għamilt is-sodda tiegħek...",
+            "second": "...issa imtedd fiha."
+          },
+          "leopardSpots": {
+            "first": "Leopard ma jistax ibiddel...",
+            "second": "...it-tikek tiegħu."
+          },
+          "homeIs": {
+            "first": "Id-dar hija fejn...",
+            "second": "...hemm il-qalb."
+          },
+          "knowledge": {
+            "first": "Ftit għarfien...",
+            "second": "...huwa ħaġa perikoluża."
+          },
+          "biteHand": {
+            "first": "Tigdidx l-id...",
+            "second": "...li titmagħkom."
+          },
+          "twoHeads": {
+            "first": "Żewġ irjus huma...",
+            "second": "...aħjar minn wieħed."
+          },
+          "journeyBegins": {
+            "first": "Vjaġġ ta' elf mil...",
+            "second": "...jibda b'pass wieħed."
+          },
+          "fortuneBrave": {
+            "first": "Il-fortuna tiffavorixxi...",
+            "second": "...lill-kuraġġużi."
+          }
+        }
+      },
+      "gentleQuiz": {
+        "title": "Kwizz Ħafif",
+        "description": "Mistoqsijiet divertenti mingħajr tweġibiet żbaljati",
+        "correct": "Hekk hu! Prosit!",
+        "goodGuess": "Suppożizzjoni tajba! It-tweġiba fil-fatt hija {{answer}}. Mhux interessanti?",
+        "q": {
+          "banana": "X'kulur hija banana?",
+          "moo": "X'ħoss tagħmel baqra?",
+          "bees": "X'jagħmlu n-naħal?",
+          "dogLegs": "Kemm għandu saqajn kelb?",
+          "afterWinter": "Liema staġun jiġi wara x-xitwa?",
+          "capitalFrance": "X'inhi l-kapitali ta' Franza?",
+          "umbrella": "X'tuża biex tibqa' niexef fix-xita?",
+          "largestOcean": "X'inhu l-akbar oċean fid-dinja?",
+          "sky": "X'kulur huwa s-sema f'ġurnata sabiħa?",
+          "daysWeek": "Kemm hemm ġranet f'ġimgħa?"
+        },
+        "a": {
+          "yellow": "Isfar",
+          "blue": "Blu",
+          "red": "Aħmar",
+          "green": "Aħdar",
+          "cow": "Muu",
+          "dog": "Woof",
+          "cat": "Meow",
+          "bird": "Tweet",
+          "honey": "Għasel",
+          "milk": "Ħalib",
+          "sugar": "Zokkor",
+          "butter": "Butir",
+          "four": "Erbgħa",
+          "two": "Tnejn",
+          "six": "Sitta",
+          "eight": "Tmienja",
+          "spring": "Rebbiegħa",
+          "summer": "Sajf",
+          "autumn": "Ħarifa",
+          "winter": "Xitwa",
+          "paris": "Pariġi",
+          "london": "Londra",
+          "rome": "Ruma",
+          "berlin": "Berlin",
+          "stayingDry": "Umbrellun",
+          "cooking": "Tisjir",
+          "writing": "Kitba",
+          "driving": "Sewqan",
+          "pacific": "Oċean Paċifiku",
+          "atlantic": "Oċean Atlantiku",
+          "indian": "Oċean Indjan",
+          "arctic": "Oċean Artiku",
+          "seven": "Seba'",
+          "five": "Ħamsa"
+        }
+      },
+      "photoPairs": {
+        "title": "Pari ta' Ritratti",
+        "description": "Sib pari ta' ritratti li jaqblu",
+        "pairsFound": "{{found}} minn {{total}} pari misjuba",
+        "themes": {
+          "flowers": "Fjuri Sbieħ",
+          "animals": "Annimali Ħbiberija",
+          "food": "Ħelwa Tajba",
+          "nature": "Natura",
+          "seasons": "Erba' Staġuni"
+        },
+        "items": {
+          "rose": "Warda",
+          "sunflower": "Ġirasol",
+          "tulip": "Tulipan",
+          "blossom": "Fjura",
+          "cat": "Qattus",
+          "dog": "Kelb",
+          "rabbit": "Fenek",
+          "bird": "Għasfur",
+          "apple": "Tuffieħa",
+          "cake": "Kejk",
+          "bread": "Ħobż",
+          "cupcake": "Cupcake",
+          "tree": "Siġra",
+          "rainbow": "Qawsalla",
+          "star": "Stilla",
+          "sun": "Xemx",
+          "spring": "Rebbiegħa",
+          "summer": "Sajf",
+          "autumn": "Ħarifa",
+          "winter": "Xitwa"
+        }
       }
     },
     "careCode": {

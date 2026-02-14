@@ -219,263 +219,6 @@
           "wanderlust": "Želja za putovanjem"
         }
       },
-      "proverbs": {
-        "title": "Proverbs & Sayings",
-        "description": "Complete familiar phrases",
-        "instruction": "Can you finish this saying?",
-        "reveal": "Tap to reveal",
-        "youKnowIt": "You know this one!",
-        "items": {
-          "stitch": {
-            "first": "A stitch in time...",
-            "second": "...saves nine."
-          },
-          "bird": {
-            "first": "The early bird...",
-            "second": "...catches the worm."
-          },
-          "apple": {
-            "first": "An apple a day...",
-            "second": "...keeps the doctor away."
-          },
-          "actions": {
-            "first": "Actions speak louder...",
-            "second": "...than words."
-          },
-          "penny": {
-            "first": "A penny saved...",
-            "second": "...is a penny earned."
-          },
-          "rome": {
-            "first": "Rome wasn't built...",
-            "second": "...in a day."
-          },
-          "rolling": {
-            "first": "A rolling stone...",
-            "second": "...gathers no moss."
-          },
-          "twoBirds": {
-            "first": "Kill two birds...",
-            "second": "...with one stone."
-          },
-          "catAway": {
-            "first": "When the cat's away...",
-            "second": "...the mice will play."
-          },
-          "bestMedicine": {
-            "first": "Laughter is...",
-            "second": "...the best medicine."
-          },
-          "practice": {
-            "first": "Practice makes...",
-            "second": "...perfect."
-          },
-          "lookedPot": {
-            "first": "A watched pot...",
-            "second": "...never boils."
-          },
-          "silverLining": {
-            "first": "Every cloud has...",
-            "second": "...a silver lining."
-          },
-          "earlyBird": {
-            "first": "Early to bed, early to rise...",
-            "second": "...makes a man healthy, wealthy, and wise."
-          },
-          "tooManyCooks": {
-            "first": "Too many cooks...",
-            "second": "...spoil the broth."
-          },
-          "honesty": {
-            "first": "Honesty is...",
-            "second": "...the best policy."
-          },
-          "absence": {
-            "first": "Absence makes...",
-            "second": "...the heart grow fonder."
-          },
-          "leapLook": {
-            "first": "Look before...",
-            "second": "...you leap."
-          },
-          "glass": {
-            "first": "People in glass houses...",
-            "second": "...shouldn't throw stones."
-          },
-          "betterLateThan": {
-            "first": "Better late...",
-            "second": "...than never."
-          },
-          "barking": {
-            "first": "His bark is worse...",
-            "second": "...than his bite."
-          },
-          "beautyEye": {
-            "first": "Beauty is in the eye...",
-            "second": "...of the beholder."
-          },
-          "bloodThicker": {
-            "first": "Blood is thicker...",
-            "second": "...than water."
-          },
-          "moneyRoot": {
-            "first": "Money is the root...",
-            "second": "...of all evil."
-          },
-          "noNews": {
-            "first": "No news is...",
-            "second": "...good news."
-          },
-          "spiltMilk": {
-            "first": "Don't cry over...",
-            "second": "...spilt milk."
-          },
-          "curiosity": {
-            "first": "Curiosity killed...",
-            "second": "...the cat."
-          },
-          "birdInHand": {
-            "first": "A bird in the hand...",
-            "second": "...is worth two in the bush."
-          },
-          "glitters": {
-            "first": "All that glitters...",
-            "second": "...is not gold."
-          },
-          "mightierSword": {
-            "first": "The pen is mightier...",
-            "second": "...than the sword."
-          },
-          "wholeWorld": {
-            "first": "It takes all sorts...",
-            "second": "...to make a world."
-          },
-          "goodThings": {
-            "first": "Good things come...",
-            "second": "...to those who wait."
-          },
-          "bedRise": {
-            "first": "You've made your bed...",
-            "second": "...now lie in it."
-          },
-          "leopardSpots": {
-            "first": "A leopard can't change...",
-            "second": "...its spots."
-          },
-          "homeIs": {
-            "first": "Home is where...",
-            "second": "...the heart is."
-          },
-          "knowledge": {
-            "first": "A little knowledge...",
-            "second": "...is a dangerous thing."
-          },
-          "biteHand": {
-            "first": "Don't bite the hand...",
-            "second": "...that feeds you."
-          },
-          "twoHeads": {
-            "first": "Two heads are...",
-            "second": "...better than one."
-          },
-          "journeyBegins": {
-            "first": "A journey of a thousand miles...",
-            "second": "...begins with a single step."
-          },
-          "fortuneBrave": {
-            "first": "Fortune favours...",
-            "second": "...the brave."
-          }
-        }
-      },
-      "gentleQuiz": {
-        "title": "Gentle Quiz",
-        "description": "Fun questions with no wrong answers",
-        "correct": "That's right! Well done!",
-        "goodGuess": "Good guess! The answer is actually {{answer}}. Isn't that interesting?",
-        "q": {
-          "banana": "What colour is a banana?",
-          "moo": "What sound does a cow make?",
-          "bees": "What do bees make?",
-          "dogLegs": "How many legs does a dog have?",
-          "afterWinter": "What season comes after winter?",
-          "capitalFrance": "What is the capital of France?",
-          "umbrella": "What do you use to stay dry in the rain?",
-          "largestOcean": "What is the largest ocean in the world?",
-          "sky": "What colour is the sky on a clear day?",
-          "daysWeek": "How many days are in a week?"
-        },
-        "a": {
-          "yellow": "Yellow",
-          "blue": "Blue",
-          "red": "Red",
-          "green": "Green",
-          "cow": "Moo",
-          "dog": "Woof",
-          "cat": "Meow",
-          "bird": "Tweet",
-          "honey": "Honey",
-          "milk": "Milk",
-          "sugar": "Sugar",
-          "butter": "Butter",
-          "four": "Four",
-          "two": "Two",
-          "six": "Six",
-          "eight": "Eight",
-          "spring": "Spring",
-          "summer": "Summer",
-          "autumn": "Autumn",
-          "winter": "Winter",
-          "paris": "Paris",
-          "london": "London",
-          "rome": "Rome",
-          "berlin": "Berlin",
-          "stayingDry": "An umbrella",
-          "cooking": "Cooking",
-          "writing": "Writing",
-          "driving": "Driving",
-          "pacific": "Pacific Ocean",
-          "atlantic": "Atlantic Ocean",
-          "indian": "Indian Ocean",
-          "arctic": "Arctic Ocean",
-          "seven": "Seven",
-          "five": "Five"
-        }
-      },
-      "photoPairs": {
-        "title": "Photo Pairs",
-        "description": "Find matching pairs of pictures",
-        "pairsFound": "{{found}} of {{total}} pairs found",
-        "themes": {
-          "flowers": "Beautiful Flowers",
-          "animals": "Friendly Animals",
-          "food": "Tasty Treats",
-          "nature": "Nature",
-          "seasons": "Four Seasons"
-        },
-        "items": {
-          "rose": "Rose",
-          "sunflower": "Sunflower",
-          "tulip": "Tulip",
-          "blossom": "Blossom",
-          "cat": "Cat",
-          "dog": "Dog",
-          "rabbit": "Rabbit",
-          "bird": "Bird",
-          "apple": "Apple",
-          "cake": "Cake",
-          "bread": "Bread",
-          "cupcake": "Cupcake",
-          "tree": "Tree",
-          "rainbow": "Rainbow",
-          "star": "Star",
-          "sun": "Sun",
-          "spring": "Spring",
-          "summer": "Summer",
-          "autumn": "Autumn",
-          "winter": "Winter"
-        }
-      },
       "wordSearch": {
         "title": "Traženje riječi",
         "description": "Pronađite skrivene riječi u mreži",
@@ -579,6 +322,263 @@
         "yourTurn": "Vaš red!",
         "sequenceLength": "Slijed: {{length}}",
         "greatMemory": "Sjajno pamćenje!"
+      },
+      "proverbs": {
+        "title": "Poslovice i izreke",
+        "description": "Dovršite poznate fraze",
+        "instruction": "Možete li dovršiti ovu izreku?",
+        "reveal": "Dodirnite za otkrivanje",
+        "youKnowIt": "Ovu znate!",
+        "items": {
+          "stitch": {
+            "first": "Šav na vrijeme...",
+            "second": "...štedi devet."
+          },
+          "bird": {
+            "first": "Tko rano rani...",
+            "second": "...dvije sreće grabi."
+          },
+          "apple": {
+            "first": "Jedna jabuka na dan...",
+            "second": "...tjera doktora van."
+          },
+          "actions": {
+            "first": "Djela govore glasnije...",
+            "second": "...od riječi."
+          },
+          "penny": {
+            "first": "Ušteđen novčić...",
+            "second": "...je zarađen novčić."
+          },
+          "rome": {
+            "first": "Rim nije izgrađen...",
+            "second": "...u jednom danu."
+          },
+          "rolling": {
+            "first": "Kamen koji se kotrlja...",
+            "second": "...ne skuplja mahovinu."
+          },
+          "twoBirds": {
+            "first": "Ubiti dvije muhe...",
+            "second": "...jednim udarcem."
+          },
+          "catAway": {
+            "first": "Kad mačke nema...",
+            "second": "...miševi kolo vode."
+          },
+          "bestMedicine": {
+            "first": "Smijeh je...",
+            "second": "...najbolji lijek."
+          },
+          "practice": {
+            "first": "Vježba čini...",
+            "second": "...majstora."
+          },
+          "lookedPot": {
+            "first": "Gledan lonac...",
+            "second": "...nikad ne zakuha."
+          },
+          "silverLining": {
+            "first": "Svaki oblak ima...",
+            "second": "...srebrnu podstavu."
+          },
+          "earlyBird": {
+            "first": "Rano u krevet, rano ustati...",
+            "second": "...čini čovjeka zdravim, bogatim i mudrim."
+          },
+          "tooManyCooks": {
+            "first": "Previše kuhara...",
+            "second": "...pokvari juhu."
+          },
+          "honesty": {
+            "first": "Iskrenost je...",
+            "second": "...najbolja politika."
+          },
+          "absence": {
+            "first": "Odsutnost čini...",
+            "second": "...srce dražim."
+          },
+          "leapLook": {
+            "first": "Gledaj prije...",
+            "second": "...nego skočiš."
+          },
+          "glass": {
+            "first": "Ljudi u staklenim kućama...",
+            "second": "...ne bi trebali bacati kamenje."
+          },
+          "betterLateThan": {
+            "first": "Bolje ikad...",
+            "second": "...nego nikad."
+          },
+          "barking": {
+            "first": "Njegov lavež je gori...",
+            "second": "...od ugriza."
+          },
+          "beautyEye": {
+            "first": "Ljepota je u oku...",
+            "second": "...promatrača."
+          },
+          "bloodThicker": {
+            "first": "Krv nije...",
+            "second": "...voda."
+          },
+          "moneyRoot": {
+            "first": "Novac je korijen...",
+            "second": "...svakog zla."
+          },
+          "noNews": {
+            "first": "Nema vijesti...",
+            "second": "...dobre vijesti."
+          },
+          "spiltMilk": {
+            "first": "Ne plači nad...",
+            "second": "...prolivenim mlijekom."
+          },
+          "curiosity": {
+            "first": "Znatiželja je ubila...",
+            "second": "...mačku."
+          },
+          "birdInHand": {
+            "first": "Bolje vrabac u ruci...",
+            "second": "...nego golub na grani."
+          },
+          "glitters": {
+            "first": "Nije zlato sve...",
+            "second": "...što sja."
+          },
+          "mightierSword": {
+            "first": "Pero je jače...",
+            "second": "...od mača."
+          },
+          "wholeWorld": {
+            "first": "Potrebni su svi tipovi...",
+            "second": "...da bi svijet funkcionirao."
+          },
+          "goodThings": {
+            "first": "Dobre stvari dolaze...",
+            "second": "...onima koji čekaju."
+          },
+          "bedRise": {
+            "first": "Sam si si skuhao...",
+            "second": "...sad to i pojedi."
+          },
+          "leopardSpots": {
+            "first": "Vuk dlaku mijenja...",
+            "second": "...ali ćud nikada."
+          },
+          "homeIs": {
+            "first": "Dom je tamo gdje...",
+            "second": "...je srce."
+          },
+          "knowledge": {
+            "first": "Malo znanja...",
+            "second": "...je opasna stvar."
+          },
+          "biteHand": {
+            "first": "Ne grizi ruku...",
+            "second": "...koja te hrani."
+          },
+          "twoHeads": {
+            "first": "Dvije glave su...",
+            "second": "...bolje od jedne."
+          },
+          "journeyBegins": {
+            "first": "Putovanje od tisuću milja...",
+            "second": "...počinje jednim korakom."
+          },
+          "fortuneBrave": {
+            "first": "Sreća prati...",
+            "second": "...hrabre."
+          }
+        }
+      },
+      "gentleQuiz": {
+        "title": "Nježni kviz",
+        "description": "Zabavna pitanja bez pogrešnih odgovora",
+        "correct": "Tako je! Bravo!",
+        "goodGuess": "Dobar pokušaj! Odgovor je zapravo {{answer}}. Nije li to zanimljivo?",
+        "q": {
+          "banana": "Koje je boje banana?",
+          "moo": "Kakav zvuk proizvodi krava?",
+          "bees": "Što pčele prave?",
+          "dogLegs": "Koliko nogu ima pas?",
+          "afterWinter": "Koje godišnje doba dolazi nakon zime?",
+          "capitalFrance": "Koji je glavni grad Francuske?",
+          "umbrella": "Što koristite da ostanete suhi na kiši?",
+          "largestOcean": "Koji je najveći ocean na svijetu?",
+          "sky": "Koje je boje nebo za vedrog dana?",
+          "daysWeek": "Koliko dana ima u tjednu?"
+        },
+        "a": {
+          "yellow": "Žuta",
+          "blue": "Plava",
+          "red": "Crvena",
+          "green": "Zelena",
+          "cow": "Muu",
+          "dog": "Vau",
+          "cat": "Mjau",
+          "bird": "Ćiju-ćiju",
+          "honey": "Med",
+          "milk": "Mlijeko",
+          "sugar": "Šećer",
+          "butter": "Maslac",
+          "four": "Četiri",
+          "two": "Dva",
+          "six": "Šest",
+          "eight": "Osam",
+          "spring": "Proljeće",
+          "summer": "Ljeto",
+          "autumn": "Jesen",
+          "winter": "Zima",
+          "paris": "Pariz",
+          "london": "London",
+          "rome": "Rim",
+          "berlin": "Berlin",
+          "stayingDry": "Kišobran",
+          "cooking": "Kuhanje",
+          "writing": "Pisanje",
+          "driving": "Vožnja",
+          "pacific": "Tihi ocean",
+          "atlantic": "Atlantski ocean",
+          "indian": "Indijski ocean",
+          "arctic": "Arktički ocean",
+          "seven": "Sedam",
+          "five": "Pet"
+        }
+      },
+      "photoPairs": {
+        "title": "Parovi slika",
+        "description": "Pronađite odgovarajuće parove slika",
+        "pairsFound": "{{found}} od {{total}} pronađenih parova",
+        "themes": {
+          "flowers": "Prekrasno cvijeće",
+          "animals": "Prijateljske životinje",
+          "food": "Ukusne poslastice",
+          "nature": "Priroda",
+          "seasons": "Četiri godišnja doba"
+        },
+        "items": {
+          "rose": "Ruža",
+          "sunflower": "Suncokret",
+          "tulip": "Tulipan",
+          "blossom": "Cvijet",
+          "cat": "Mačka",
+          "dog": "Pas",
+          "rabbit": "Zec",
+          "bird": "Ptica",
+          "apple": "Jabuka",
+          "cake": "Kolač",
+          "bread": "Kruh",
+          "cupcake": "Cupcake",
+          "tree": "Drvo",
+          "rainbow": "Duga",
+          "star": "Zvijezda",
+          "sun": "Sunce",
+          "spring": "Proljeće",
+          "summer": "Ljeto",
+          "autumn": "Jesen",
+          "winter": "Zima"
+        }
       }
     },
     "careCode": {

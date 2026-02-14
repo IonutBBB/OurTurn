@@ -219,263 +219,6 @@
           "wanderlust": "Reislust"
         }
       },
-      "proverbs": {
-        "title": "Proverbs & Sayings",
-        "description": "Complete familiar phrases",
-        "instruction": "Can you finish this saying?",
-        "reveal": "Tap to reveal",
-        "youKnowIt": "You know this one!",
-        "items": {
-          "stitch": {
-            "first": "A stitch in time...",
-            "second": "...saves nine."
-          },
-          "bird": {
-            "first": "The early bird...",
-            "second": "...catches the worm."
-          },
-          "apple": {
-            "first": "An apple a day...",
-            "second": "...keeps the doctor away."
-          },
-          "actions": {
-            "first": "Actions speak louder...",
-            "second": "...than words."
-          },
-          "penny": {
-            "first": "A penny saved...",
-            "second": "...is a penny earned."
-          },
-          "rome": {
-            "first": "Rome wasn't built...",
-            "second": "...in a day."
-          },
-          "rolling": {
-            "first": "A rolling stone...",
-            "second": "...gathers no moss."
-          },
-          "twoBirds": {
-            "first": "Kill two birds...",
-            "second": "...with one stone."
-          },
-          "catAway": {
-            "first": "When the cat's away...",
-            "second": "...the mice will play."
-          },
-          "bestMedicine": {
-            "first": "Laughter is...",
-            "second": "...the best medicine."
-          },
-          "practice": {
-            "first": "Practice makes...",
-            "second": "...perfect."
-          },
-          "lookedPot": {
-            "first": "A watched pot...",
-            "second": "...never boils."
-          },
-          "silverLining": {
-            "first": "Every cloud has...",
-            "second": "...a silver lining."
-          },
-          "earlyBird": {
-            "first": "Early to bed, early to rise...",
-            "second": "...makes a man healthy, wealthy, and wise."
-          },
-          "tooManyCooks": {
-            "first": "Too many cooks...",
-            "second": "...spoil the broth."
-          },
-          "honesty": {
-            "first": "Honesty is...",
-            "second": "...the best policy."
-          },
-          "absence": {
-            "first": "Absence makes...",
-            "second": "...the heart grow fonder."
-          },
-          "leapLook": {
-            "first": "Look before...",
-            "second": "...you leap."
-          },
-          "glass": {
-            "first": "People in glass houses...",
-            "second": "...shouldn't throw stones."
-          },
-          "betterLateThan": {
-            "first": "Better late...",
-            "second": "...than never."
-          },
-          "barking": {
-            "first": "His bark is worse...",
-            "second": "...than his bite."
-          },
-          "beautyEye": {
-            "first": "Beauty is in the eye...",
-            "second": "...of the beholder."
-          },
-          "bloodThicker": {
-            "first": "Blood is thicker...",
-            "second": "...than water."
-          },
-          "moneyRoot": {
-            "first": "Money is the root...",
-            "second": "...of all evil."
-          },
-          "noNews": {
-            "first": "No news is...",
-            "second": "...good news."
-          },
-          "spiltMilk": {
-            "first": "Don't cry over...",
-            "second": "...spilt milk."
-          },
-          "curiosity": {
-            "first": "Curiosity killed...",
-            "second": "...the cat."
-          },
-          "birdInHand": {
-            "first": "A bird in the hand...",
-            "second": "...is worth two in the bush."
-          },
-          "glitters": {
-            "first": "All that glitters...",
-            "second": "...is not gold."
-          },
-          "mightierSword": {
-            "first": "The pen is mightier...",
-            "second": "...than the sword."
-          },
-          "wholeWorld": {
-            "first": "It takes all sorts...",
-            "second": "...to make a world."
-          },
-          "goodThings": {
-            "first": "Good things come...",
-            "second": "...to those who wait."
-          },
-          "bedRise": {
-            "first": "You've made your bed...",
-            "second": "...now lie in it."
-          },
-          "leopardSpots": {
-            "first": "A leopard can't change...",
-            "second": "...its spots."
-          },
-          "homeIs": {
-            "first": "Home is where...",
-            "second": "...the heart is."
-          },
-          "knowledge": {
-            "first": "A little knowledge...",
-            "second": "...is a dangerous thing."
-          },
-          "biteHand": {
-            "first": "Don't bite the hand...",
-            "second": "...that feeds you."
-          },
-          "twoHeads": {
-            "first": "Two heads are...",
-            "second": "...better than one."
-          },
-          "journeyBegins": {
-            "first": "A journey of a thousand miles...",
-            "second": "...begins with a single step."
-          },
-          "fortuneBrave": {
-            "first": "Fortune favours...",
-            "second": "...the brave."
-          }
-        }
-      },
-      "gentleQuiz": {
-        "title": "Gentle Quiz",
-        "description": "Fun questions with no wrong answers",
-        "correct": "That's right! Well done!",
-        "goodGuess": "Good guess! The answer is actually {{answer}}. Isn't that interesting?",
-        "q": {
-          "banana": "What colour is a banana?",
-          "moo": "What sound does a cow make?",
-          "bees": "What do bees make?",
-          "dogLegs": "How many legs does a dog have?",
-          "afterWinter": "What season comes after winter?",
-          "capitalFrance": "What is the capital of France?",
-          "umbrella": "What do you use to stay dry in the rain?",
-          "largestOcean": "What is the largest ocean in the world?",
-          "sky": "What colour is the sky on a clear day?",
-          "daysWeek": "How many days are in a week?"
-        },
-        "a": {
-          "yellow": "Yellow",
-          "blue": "Blue",
-          "red": "Red",
-          "green": "Green",
-          "cow": "Moo",
-          "dog": "Woof",
-          "cat": "Meow",
-          "bird": "Tweet",
-          "honey": "Honey",
-          "milk": "Milk",
-          "sugar": "Sugar",
-          "butter": "Butter",
-          "four": "Four",
-          "two": "Two",
-          "six": "Six",
-          "eight": "Eight",
-          "spring": "Spring",
-          "summer": "Summer",
-          "autumn": "Autumn",
-          "winter": "Winter",
-          "paris": "Paris",
-          "london": "London",
-          "rome": "Rome",
-          "berlin": "Berlin",
-          "stayingDry": "An umbrella",
-          "cooking": "Cooking",
-          "writing": "Writing",
-          "driving": "Driving",
-          "pacific": "Pacific Ocean",
-          "atlantic": "Atlantic Ocean",
-          "indian": "Indian Ocean",
-          "arctic": "Arctic Ocean",
-          "seven": "Seven",
-          "five": "Five"
-        }
-      },
-      "photoPairs": {
-        "title": "Photo Pairs",
-        "description": "Find matching pairs of pictures",
-        "pairsFound": "{{found}} of {{total}} pairs found",
-        "themes": {
-          "flowers": "Beautiful Flowers",
-          "animals": "Friendly Animals",
-          "food": "Tasty Treats",
-          "nature": "Nature",
-          "seasons": "Four Seasons"
-        },
-        "items": {
-          "rose": "Rose",
-          "sunflower": "Sunflower",
-          "tulip": "Tulip",
-          "blossom": "Blossom",
-          "cat": "Cat",
-          "dog": "Dog",
-          "rabbit": "Rabbit",
-          "bird": "Bird",
-          "apple": "Apple",
-          "cake": "Cake",
-          "bread": "Bread",
-          "cupcake": "Cupcake",
-          "tree": "Tree",
-          "rainbow": "Rainbow",
-          "star": "Star",
-          "sun": "Sun",
-          "spring": "Spring",
-          "summer": "Summer",
-          "autumn": "Autumn",
-          "winter": "Winter"
-        }
-      },
       "wordSearch": {
         "title": "Woordzoeker",
         "description": "Vind verborgen woorden in het rooster",
@@ -579,6 +322,263 @@
         "yourTurn": "Uw beurt!",
         "sequenceLength": "Reeks: {{length}}",
         "greatMemory": "Wat een goed geheugen!"
+      },
+      "proverbs": {
+        "title": "Spreekwoorden & Gezegden",
+        "description": "Maak bekende uitdrukkingen af",
+        "instruction": "Kunt u dit gezegde afmaken?",
+        "reveal": "Tik om te onthullen",
+        "youKnowIt": "Deze kent u vast!",
+        "items": {
+          "stitch": {
+            "first": "Een steek op tijd...",
+            "second": "...bespaart er negen."
+          },
+          "bird": {
+            "first": "De vroege vogel...",
+            "second": "...vangt de worm."
+          },
+          "apple": {
+            "first": "Een appel per dag...",
+            "second": "...houdt de dokter weg."
+          },
+          "actions": {
+            "first": "Daden spreken luider...",
+            "second": "...dan woorden."
+          },
+          "penny": {
+            "first": "Een cent gespaard...",
+            "second": "...is een cent verdiend."
+          },
+          "rome": {
+            "first": "Rome is niet gebouwd...",
+            "second": "...in één dag."
+          },
+          "rolling": {
+            "first": "Een rollende steen...",
+            "second": "...verzamelt geen mos."
+          },
+          "twoBirds": {
+            "first": "Twee vliegen...",
+            "second": "...in één klap."
+          },
+          "catAway": {
+            "first": "Als de kat van huis is...",
+            "second": "...dansen de muizen op tafel."
+          },
+          "bestMedicine": {
+            "first": "Lachen is...",
+            "second": "...het beste medicijn."
+          },
+          "practice": {
+            "first": "Oefening baart...",
+            "second": "...kunst."
+          },
+          "lookedPot": {
+            "first": "Een bekeken pot...",
+            "second": "...kookt nooit."
+          },
+          "silverLining": {
+            "first": "Elk nadeel heeft...",
+            "second": "...zijn voordeel."
+          },
+          "earlyBird": {
+            "first": "Vroeg naar bed, vroeg opstaan...",
+            "second": "...maakt een mens gezond, rijk en wijs."
+          },
+          "tooManyCooks": {
+            "first": "Te veel koks...",
+            "second": "...bederven de brij."
+          },
+          "honesty": {
+            "first": "Eerlijkheid is...",
+            "second": "...de beste politiek."
+          },
+          "absence": {
+            "first": "Afwezigheid doet...",
+            "second": "...het hart verlangen."
+          },
+          "leapLook": {
+            "first": "Kijk uit...",
+            "second": "...voordat je springt."
+          },
+          "glass": {
+            "first": "Mensen in glazen huizen...",
+            "second": "...moeten geen stenen gooien."
+          },
+          "betterLateThan": {
+            "first": "Beter laat...",
+            "second": "...dan nooit."
+          },
+          "barking": {
+            "first": "Zijn blaf is erger...",
+            "second": "...dan zijn beet."
+          },
+          "beautyEye": {
+            "first": "Schoonheid ligt in het oog...",
+            "second": "...van de toeschouwer."
+          },
+          "bloodThicker": {
+            "first": "Bloed is dikker...",
+            "second": "...dan water."
+          },
+          "moneyRoot": {
+            "first": "Geld is de wortel...",
+            "second": "...van al het kwaad."
+          },
+          "noNews": {
+            "first": "Geen nieuws is...",
+            "second": "...goed nieuws."
+          },
+          "spiltMilk": {
+            "first": "Huil niet om...",
+            "second": "...gemorste melk."
+          },
+          "curiosity": {
+            "first": "Nieuwsgierigheid doodde...",
+            "second": "...de kat."
+          },
+          "birdInHand": {
+            "first": "Een vogel in de hand...",
+            "second": "...is beter dan tien in de lucht."
+          },
+          "glitters": {
+            "first": "Alles wat blinkt...",
+            "second": "...is geen goud."
+          },
+          "mightierSword": {
+            "first": "De pen is machtiger...",
+            "second": "...dan het zwaard."
+          },
+          "wholeWorld": {
+            "first": "Er zijn allerlei mensen...",
+            "second": "...om een wereld te maken."
+          },
+          "goodThings": {
+            "first": "Goede dingen komen...",
+            "second": "...naar degenen die wachten."
+          },
+          "bedRise": {
+            "first": "Je hebt je bed opgemaakt...",
+            "second": "...nu moet je erin liggen."
+          },
+          "leopardSpots": {
+            "first": "Een luipaard kan zijn...",
+            "second": "...vlekken niet veranderen."
+          },
+          "homeIs": {
+            "first": "Thuis is waar...",
+            "second": "...het hart is."
+          },
+          "knowledge": {
+            "first": "Een beetje kennis...",
+            "second": "...is een gevaarlijk ding."
+          },
+          "biteHand": {
+            "first": "Bijt niet de hand...",
+            "second": "...die je voedt."
+          },
+          "twoHeads": {
+            "first": "Twee hoofden zijn...",
+            "second": "...beter dan één."
+          },
+          "journeyBegins": {
+            "first": "Een reis van duizend mijl...",
+            "second": "...begint met één enkele stap."
+          },
+          "fortuneBrave": {
+            "first": "Het geluk bevoordeelt...",
+            "second": "...de dapperen."
+          }
+        }
+      },
+      "gentleQuiz": {
+        "title": "Vriendelijke Quiz",
+        "description": "Leuke vragen zonder foute antwoorden",
+        "correct": "Dat klopt! Goed gedaan!",
+        "goodGuess": "Goed geraden! Het antwoord is eigenlijk {{answer}}. Is dat niet interessant?",
+        "q": {
+          "banana": "Welke kleur heeft een banaan?",
+          "moo": "Welk geluid maakt een koe?",
+          "bees": "Wat maken bijen?",
+          "dogLegs": "Hoeveel poten heeft een hond?",
+          "afterWinter": "Welk seizoen komt na de winter?",
+          "capitalFrance": "Wat is de hoofdstad van Frankrijk?",
+          "umbrella": "Wat gebruikt u om droog te blijven in de regen?",
+          "largestOcean": "Wat is de grootste oceaan ter wereld?",
+          "sky": "Welke kleur heeft de lucht op een heldere dag?",
+          "daysWeek": "Hoeveel dagen zitten er in een week?"
+        },
+        "a": {
+          "yellow": "Geel",
+          "blue": "Blauw",
+          "red": "Rood",
+          "green": "Groen",
+          "cow": "Boe",
+          "dog": "Woef",
+          "cat": "Miauw",
+          "bird": "Tsjilp",
+          "honey": "Honing",
+          "milk": "Melk",
+          "sugar": "Suiker",
+          "butter": "Boter",
+          "four": "Vier",
+          "two": "Twee",
+          "six": "Zes",
+          "eight": "Acht",
+          "spring": "Lente",
+          "summer": "Zomer",
+          "autumn": "Herfst",
+          "winter": "Winter",
+          "paris": "Parijs",
+          "london": "Londen",
+          "rome": "Rome",
+          "berlin": "Berlijn",
+          "stayingDry": "Een paraplu",
+          "cooking": "Koken",
+          "writing": "Schrijven",
+          "driving": "Rijden",
+          "pacific": "Grote Oceaan",
+          "atlantic": "Atlantische Oceaan",
+          "indian": "Indische Oceaan",
+          "arctic": "Noordelijke IJszee",
+          "seven": "Zeven",
+          "five": "Vijf"
+        }
+      },
+      "photoPairs": {
+        "title": "Fotoparen",
+        "description": "Vind bijpassende paren van afbeeldingen",
+        "pairsFound": "{{found}} van de {{total}} paren gevonden",
+        "themes": {
+          "flowers": "Mooie Bloemen",
+          "animals": "Vriendelijke Dieren",
+          "food": "Lekkere Traktaties",
+          "nature": "Natuur",
+          "seasons": "Vier Seizoenen"
+        },
+        "items": {
+          "rose": "Roos",
+          "sunflower": "Zonnebloem",
+          "tulip": "Tulp",
+          "blossom": "Bloesem",
+          "cat": "Kat",
+          "dog": "Hond",
+          "rabbit": "Konijn",
+          "bird": "Vogel",
+          "apple": "Appel",
+          "cake": "Taart",
+          "bread": "Brood",
+          "cupcake": "Cupcake",
+          "tree": "Boom",
+          "rainbow": "Regenboog",
+          "star": "Ster",
+          "sun": "Zon",
+          "spring": "Lente",
+          "summer": "Zomer",
+          "autumn": "Herfst",
+          "winter": "Winter"
+        }
       }
     },
     "careCode": {

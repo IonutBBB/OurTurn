@@ -219,263 +219,6 @@
           "wanderlust": "Dor de ducă"
         }
       },
-      "proverbs": {
-        "title": "Proverbs & Sayings",
-        "description": "Complete familiar phrases",
-        "instruction": "Can you finish this saying?",
-        "reveal": "Tap to reveal",
-        "youKnowIt": "You know this one!",
-        "items": {
-          "stitch": {
-            "first": "A stitch in time...",
-            "second": "...saves nine."
-          },
-          "bird": {
-            "first": "The early bird...",
-            "second": "...catches the worm."
-          },
-          "apple": {
-            "first": "An apple a day...",
-            "second": "...keeps the doctor away."
-          },
-          "actions": {
-            "first": "Actions speak louder...",
-            "second": "...than words."
-          },
-          "penny": {
-            "first": "A penny saved...",
-            "second": "...is a penny earned."
-          },
-          "rome": {
-            "first": "Rome wasn't built...",
-            "second": "...in a day."
-          },
-          "rolling": {
-            "first": "A rolling stone...",
-            "second": "...gathers no moss."
-          },
-          "twoBirds": {
-            "first": "Kill two birds...",
-            "second": "...with one stone."
-          },
-          "catAway": {
-            "first": "When the cat's away...",
-            "second": "...the mice will play."
-          },
-          "bestMedicine": {
-            "first": "Laughter is...",
-            "second": "...the best medicine."
-          },
-          "practice": {
-            "first": "Practice makes...",
-            "second": "...perfect."
-          },
-          "lookedPot": {
-            "first": "A watched pot...",
-            "second": "...never boils."
-          },
-          "silverLining": {
-            "first": "Every cloud has...",
-            "second": "...a silver lining."
-          },
-          "earlyBird": {
-            "first": "Early to bed, early to rise...",
-            "second": "...makes a man healthy, wealthy, and wise."
-          },
-          "tooManyCooks": {
-            "first": "Too many cooks...",
-            "second": "...spoil the broth."
-          },
-          "honesty": {
-            "first": "Honesty is...",
-            "second": "...the best policy."
-          },
-          "absence": {
-            "first": "Absence makes...",
-            "second": "...the heart grow fonder."
-          },
-          "leapLook": {
-            "first": "Look before...",
-            "second": "...you leap."
-          },
-          "glass": {
-            "first": "People in glass houses...",
-            "second": "...shouldn't throw stones."
-          },
-          "betterLateThan": {
-            "first": "Better late...",
-            "second": "...than never."
-          },
-          "barking": {
-            "first": "His bark is worse...",
-            "second": "...than his bite."
-          },
-          "beautyEye": {
-            "first": "Beauty is in the eye...",
-            "second": "...of the beholder."
-          },
-          "bloodThicker": {
-            "first": "Blood is thicker...",
-            "second": "...than water."
-          },
-          "moneyRoot": {
-            "first": "Money is the root...",
-            "second": "...of all evil."
-          },
-          "noNews": {
-            "first": "No news is...",
-            "second": "...good news."
-          },
-          "spiltMilk": {
-            "first": "Don't cry over...",
-            "second": "...spilt milk."
-          },
-          "curiosity": {
-            "first": "Curiosity killed...",
-            "second": "...the cat."
-          },
-          "birdInHand": {
-            "first": "A bird in the hand...",
-            "second": "...is worth two in the bush."
-          },
-          "glitters": {
-            "first": "All that glitters...",
-            "second": "...is not gold."
-          },
-          "mightierSword": {
-            "first": "The pen is mightier...",
-            "second": "...than the sword."
-          },
-          "wholeWorld": {
-            "first": "It takes all sorts...",
-            "second": "...to make a world."
-          },
-          "goodThings": {
-            "first": "Good things come...",
-            "second": "...to those who wait."
-          },
-          "bedRise": {
-            "first": "You've made your bed...",
-            "second": "...now lie in it."
-          },
-          "leopardSpots": {
-            "first": "A leopard can't change...",
-            "second": "...its spots."
-          },
-          "homeIs": {
-            "first": "Home is where...",
-            "second": "...the heart is."
-          },
-          "knowledge": {
-            "first": "A little knowledge...",
-            "second": "...is a dangerous thing."
-          },
-          "biteHand": {
-            "first": "Don't bite the hand...",
-            "second": "...that feeds you."
-          },
-          "twoHeads": {
-            "first": "Two heads are...",
-            "second": "...better than one."
-          },
-          "journeyBegins": {
-            "first": "A journey of a thousand miles...",
-            "second": "...begins with a single step."
-          },
-          "fortuneBrave": {
-            "first": "Fortune favours...",
-            "second": "...the brave."
-          }
-        }
-      },
-      "gentleQuiz": {
-        "title": "Gentle Quiz",
-        "description": "Fun questions with no wrong answers",
-        "correct": "That's right! Well done!",
-        "goodGuess": "Good guess! The answer is actually {{answer}}. Isn't that interesting?",
-        "q": {
-          "banana": "What colour is a banana?",
-          "moo": "What sound does a cow make?",
-          "bees": "What do bees make?",
-          "dogLegs": "How many legs does a dog have?",
-          "afterWinter": "What season comes after winter?",
-          "capitalFrance": "What is the capital of France?",
-          "umbrella": "What do you use to stay dry in the rain?",
-          "largestOcean": "What is the largest ocean in the world?",
-          "sky": "What colour is the sky on a clear day?",
-          "daysWeek": "How many days are in a week?"
-        },
-        "a": {
-          "yellow": "Yellow",
-          "blue": "Blue",
-          "red": "Red",
-          "green": "Green",
-          "cow": "Moo",
-          "dog": "Woof",
-          "cat": "Meow",
-          "bird": "Tweet",
-          "honey": "Honey",
-          "milk": "Milk",
-          "sugar": "Sugar",
-          "butter": "Butter",
-          "four": "Four",
-          "two": "Two",
-          "six": "Six",
-          "eight": "Eight",
-          "spring": "Spring",
-          "summer": "Summer",
-          "autumn": "Autumn",
-          "winter": "Winter",
-          "paris": "Paris",
-          "london": "London",
-          "rome": "Rome",
-          "berlin": "Berlin",
-          "stayingDry": "An umbrella",
-          "cooking": "Cooking",
-          "writing": "Writing",
-          "driving": "Driving",
-          "pacific": "Pacific Ocean",
-          "atlantic": "Atlantic Ocean",
-          "indian": "Indian Ocean",
-          "arctic": "Arctic Ocean",
-          "seven": "Seven",
-          "five": "Five"
-        }
-      },
-      "photoPairs": {
-        "title": "Photo Pairs",
-        "description": "Find matching pairs of pictures",
-        "pairsFound": "{{found}} of {{total}} pairs found",
-        "themes": {
-          "flowers": "Beautiful Flowers",
-          "animals": "Friendly Animals",
-          "food": "Tasty Treats",
-          "nature": "Nature",
-          "seasons": "Four Seasons"
-        },
-        "items": {
-          "rose": "Rose",
-          "sunflower": "Sunflower",
-          "tulip": "Tulip",
-          "blossom": "Blossom",
-          "cat": "Cat",
-          "dog": "Dog",
-          "rabbit": "Rabbit",
-          "bird": "Bird",
-          "apple": "Apple",
-          "cake": "Cake",
-          "bread": "Bread",
-          "cupcake": "Cupcake",
-          "tree": "Tree",
-          "rainbow": "Rainbow",
-          "star": "Star",
-          "sun": "Sun",
-          "spring": "Spring",
-          "summer": "Summer",
-          "autumn": "Autumn",
-          "winter": "Winter"
-        }
-      },
       "wordSearch": {
         "title": "Caută cuvinte",
         "description": "Găsește cuvintele ascunse în grilă",
@@ -579,6 +322,263 @@
         "yourTurn": "Rândul tău!",
         "sequenceLength": "Secvență: {{length}}",
         "greatMemory": "Memorie excelentă!"
+      },
+      "proverbs": {
+        "title": "Proverbe și Zicători",
+        "description": "Completați fraze familiare",
+        "instruction": "Puteți completa această zicală?",
+        "reveal": "Atingeți pentru a dezvălui",
+        "youKnowIt": "O știți pe aceasta!",
+        "items": {
+          "stitch": {
+            "first": "O cusătură la timp...",
+            "second": "...salvează nouă."
+          },
+          "bird": {
+            "first": "Pasărea matinală...",
+            "second": "...prinde viermele."
+          },
+          "apple": {
+            "first": "Un măr pe zi...",
+            "second": "...ține doctorul departe."
+          },
+          "actions": {
+            "first": "Faptele vorbesc mai tare...",
+            "second": "...decât vorbele."
+          },
+          "penny": {
+            "first": "Un bănuț economisit...",
+            "second": "...este un bănuț câștigat."
+          },
+          "rome": {
+            "first": "Roma nu a fost construită...",
+            "second": "...într-o zi."
+          },
+          "rolling": {
+            "first": "O piatră care se rostogolește...",
+            "second": "...nu prinde mușchi."
+          },
+          "twoBirds": {
+            "first": "Omorâți doi iepuri...",
+            "second": "...dintr-o lovitură."
+          },
+          "catAway": {
+            "first": "Când pisica nu-i acasă...",
+            "second": "...șoarecii joacă pe masă."
+          },
+          "bestMedicine": {
+            "first": "Râsul este...",
+            "second": "...cel mai bun medicament."
+          },
+          "practice": {
+            "first": "Exercițiul face...",
+            "second": "...perfecțiunea."
+          },
+          "lookedPot": {
+            "first": "O oală supravegheată...",
+            "second": "...nu fierbe niciodată."
+          },
+          "silverLining": {
+            "first": "Fiecare nor are...",
+            "second": "...o margine de argint."
+          },
+          "earlyBird": {
+            "first": "Devreme la culcare, devreme la sculare...",
+            "second": "...te face sănătos, bogat și înțelept."
+          },
+          "tooManyCooks": {
+            "first": "Prea mulți bucătari...",
+            "second": "...strică ciorba."
+          },
+          "honesty": {
+            "first": "Onestitatea este...",
+            "second": "...cea mai bună politică."
+          },
+          "absence": {
+            "first": "Absența face...",
+            "second": "...inima să crească mai dragă."
+          },
+          "leapLook": {
+            "first": "Privește înainte...",
+            "second": "...să sari."
+          },
+          "glass": {
+            "first": "Oamenii din case de sticlă...",
+            "second": "...nu ar trebui să arunce cu pietre."
+          },
+          "betterLateThan": {
+            "first": "Mai bine mai târziu...",
+            "second": "...decât niciodată."
+          },
+          "barking": {
+            "first": "Lătratul lui este mai rău...",
+            "second": "...decât mușcătura."
+          },
+          "beautyEye": {
+            "first": "Frumusețea este în ochii...",
+            "second": "...privitorului."
+          },
+          "bloodThicker": {
+            "first": "Sângele este mai gros...",
+            "second": "...decât apa."
+          },
+          "moneyRoot": {
+            "first": "Banii sunt rădăcina...",
+            "second": "...tuturor relelor."
+          },
+          "noNews": {
+            "first": "Nicio veste este...",
+            "second": "...o veste bună."
+          },
+          "spiltMilk": {
+            "first": "Nu plânge pentru...",
+            "second": "...laptele vărsat."
+          },
+          "curiosity": {
+            "first": "Curiozitatea a ucis...",
+            "second": "...pisica."
+          },
+          "birdInHand": {
+            "first": "O pasăre în mână...",
+            "second": "...e mai bună decât două pe gard."
+          },
+          "glitters": {
+            "first": "Tot ce sclipește...",
+            "second": "...nu e aur."
+          },
+          "mightierSword": {
+            "first": "Pana este mai puternică...",
+            "second": "...decât sabia."
+          },
+          "wholeWorld": {
+            "first": "E nevoie de toate felurile...",
+            "second": "...pentru a face o lume."
+          },
+          "goodThings": {
+            "first": "Lucrurile bune vin...",
+            "second": "...la cei care așteaptă."
+          },
+          "bedRise": {
+            "first": "Ți-ai făcut patul...",
+            "second": "...acum culcă-te în el."
+          },
+          "leopardSpots": {
+            "first": "Un leopard nu-și poate schimba...",
+            "second": "...petele."
+          },
+          "homeIs": {
+            "first": "Acasă este acolo unde...",
+            "second": "...este inima."
+          },
+          "knowledge": {
+            "first": "Puțină cunoaștere...",
+            "second": "...este un lucru periculos."
+          },
+          "biteHand": {
+            "first": "Nu mușca mâna...",
+            "second": "...care te hrănește."
+          },
+          "twoHeads": {
+            "first": "Două capete sunt...",
+            "second": "...mai bune decât unul."
+          },
+          "journeyBegins": {
+            "first": "O călătorie de o mie de mile...",
+            "second": "...începe cu un singur pas."
+          },
+          "fortuneBrave": {
+            "first": "Norocul îi favorizează...",
+            "second": "...pe cei curajoși."
+          }
+        }
+      },
+      "gentleQuiz": {
+        "title": "Test blând",
+        "description": "Întrebări distractive fără răspunsuri greșite",
+        "correct": "Așa este! Foarte bine!",
+        "goodGuess": "O ghicitoare bună! Răspunsul este de fapt {{answer}}. Nu-i așa că e interesant?",
+        "q": {
+          "banana": "Ce culoare are o banană?",
+          "moo": "Ce sunet scoate o vacă?",
+          "bees": "Ce fac albinele?",
+          "dogLegs": "Câte picioare are un câine?",
+          "afterWinter": "Ce anotimp vine după iarnă?",
+          "capitalFrance": "Care este capitala Franței?",
+          "umbrella": "Ce folosiți pentru a rămâne uscat pe ploaie?",
+          "largestOcean": "Care este cel mai mare ocean din lume?",
+          "sky": "Ce culoare are cerul într-o zi senină?",
+          "daysWeek": "Câte zile sunt într-o săptămână?"
+        },
+        "a": {
+          "yellow": "Galben",
+          "blue": "Albastru",
+          "red": "Roșu",
+          "green": "Verde",
+          "cow": "Muu",
+          "dog": "Ham",
+          "cat": "Miau",
+          "bird": "Ciripit",
+          "honey": "Miere",
+          "milk": "Lapte",
+          "sugar": "Zahăr",
+          "butter": "Unt",
+          "four": "Patru",
+          "two": "Doi",
+          "six": "Șase",
+          "eight": "Opt",
+          "spring": "Primăvară",
+          "summer": "Vară",
+          "autumn": "Toamnă",
+          "winter": "Iarnă",
+          "paris": "Paris",
+          "london": "Londra",
+          "rome": "Roma",
+          "berlin": "Berlin",
+          "stayingDry": "O umbrelă",
+          "cooking": "Gătit",
+          "writing": "Scris",
+          "driving": "Condus",
+          "pacific": "Oceanul Pacific",
+          "atlantic": "Oceanul Atlantic",
+          "indian": "Oceanul Indian",
+          "arctic": "Oceanul Arctic",
+          "seven": "Șapte",
+          "five": "Cinci"
+        }
+      },
+      "photoPairs": {
+        "title": "Perechi de fotografii",
+        "description": "Găsiți perechile de imagini potrivite",
+        "pairsFound": "{{found}} din {{total}} perechi găsite",
+        "themes": {
+          "flowers": "Flori frumoase",
+          "animals": "Animale prietenoase",
+          "food": "Gustări delicioase",
+          "nature": "Natură",
+          "seasons": "Patru anotimpuri"
+        },
+        "items": {
+          "rose": "Trandafir",
+          "sunflower": "Floarea-soarelui",
+          "tulip": "Lalea",
+          "blossom": "Floare",
+          "cat": "Pisică",
+          "dog": "Câine",
+          "rabbit": "Iepure",
+          "bird": "Pasăre",
+          "apple": "Măr",
+          "cake": "Tort",
+          "bread": "Pâine",
+          "cupcake": "Brioșă",
+          "tree": "Copac",
+          "rainbow": "Curcubeu",
+          "star": "Stea",
+          "sun": "Soare",
+          "spring": "Primăvară",
+          "summer": "Vară",
+          "autumn": "Toamnă",
+          "winter": "Iarnă"
+        }
       }
     },
     "careCode": {

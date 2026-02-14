@@ -219,263 +219,6 @@
           "wanderlust": "Klajonių aistra"
         }
       },
-      "proverbs": {
-        "title": "Proverbs & Sayings",
-        "description": "Complete familiar phrases",
-        "instruction": "Can you finish this saying?",
-        "reveal": "Tap to reveal",
-        "youKnowIt": "You know this one!",
-        "items": {
-          "stitch": {
-            "first": "A stitch in time...",
-            "second": "...saves nine."
-          },
-          "bird": {
-            "first": "The early bird...",
-            "second": "...catches the worm."
-          },
-          "apple": {
-            "first": "An apple a day...",
-            "second": "...keeps the doctor away."
-          },
-          "actions": {
-            "first": "Actions speak louder...",
-            "second": "...than words."
-          },
-          "penny": {
-            "first": "A penny saved...",
-            "second": "...is a penny earned."
-          },
-          "rome": {
-            "first": "Rome wasn't built...",
-            "second": "...in a day."
-          },
-          "rolling": {
-            "first": "A rolling stone...",
-            "second": "...gathers no moss."
-          },
-          "twoBirds": {
-            "first": "Kill two birds...",
-            "second": "...with one stone."
-          },
-          "catAway": {
-            "first": "When the cat's away...",
-            "second": "...the mice will play."
-          },
-          "bestMedicine": {
-            "first": "Laughter is...",
-            "second": "...the best medicine."
-          },
-          "practice": {
-            "first": "Practice makes...",
-            "second": "...perfect."
-          },
-          "lookedPot": {
-            "first": "A watched pot...",
-            "second": "...never boils."
-          },
-          "silverLining": {
-            "first": "Every cloud has...",
-            "second": "...a silver lining."
-          },
-          "earlyBird": {
-            "first": "Early to bed, early to rise...",
-            "second": "...makes a man healthy, wealthy, and wise."
-          },
-          "tooManyCooks": {
-            "first": "Too many cooks...",
-            "second": "...spoil the broth."
-          },
-          "honesty": {
-            "first": "Honesty is...",
-            "second": "...the best policy."
-          },
-          "absence": {
-            "first": "Absence makes...",
-            "second": "...the heart grow fonder."
-          },
-          "leapLook": {
-            "first": "Look before...",
-            "second": "...you leap."
-          },
-          "glass": {
-            "first": "People in glass houses...",
-            "second": "...shouldn't throw stones."
-          },
-          "betterLateThan": {
-            "first": "Better late...",
-            "second": "...than never."
-          },
-          "barking": {
-            "first": "His bark is worse...",
-            "second": "...than his bite."
-          },
-          "beautyEye": {
-            "first": "Beauty is in the eye...",
-            "second": "...of the beholder."
-          },
-          "bloodThicker": {
-            "first": "Blood is thicker...",
-            "second": "...than water."
-          },
-          "moneyRoot": {
-            "first": "Money is the root...",
-            "second": "...of all evil."
-          },
-          "noNews": {
-            "first": "No news is...",
-            "second": "...good news."
-          },
-          "spiltMilk": {
-            "first": "Don't cry over...",
-            "second": "...spilt milk."
-          },
-          "curiosity": {
-            "first": "Curiosity killed...",
-            "second": "...the cat."
-          },
-          "birdInHand": {
-            "first": "A bird in the hand...",
-            "second": "...is worth two in the bush."
-          },
-          "glitters": {
-            "first": "All that glitters...",
-            "second": "...is not gold."
-          },
-          "mightierSword": {
-            "first": "The pen is mightier...",
-            "second": "...than the sword."
-          },
-          "wholeWorld": {
-            "first": "It takes all sorts...",
-            "second": "...to make a world."
-          },
-          "goodThings": {
-            "first": "Good things come...",
-            "second": "...to those who wait."
-          },
-          "bedRise": {
-            "first": "You've made your bed...",
-            "second": "...now lie in it."
-          },
-          "leopardSpots": {
-            "first": "A leopard can't change...",
-            "second": "...its spots."
-          },
-          "homeIs": {
-            "first": "Home is where...",
-            "second": "...the heart is."
-          },
-          "knowledge": {
-            "first": "A little knowledge...",
-            "second": "...is a dangerous thing."
-          },
-          "biteHand": {
-            "first": "Don't bite the hand...",
-            "second": "...that feeds you."
-          },
-          "twoHeads": {
-            "first": "Two heads are...",
-            "second": "...better than one."
-          },
-          "journeyBegins": {
-            "first": "A journey of a thousand miles...",
-            "second": "...begins with a single step."
-          },
-          "fortuneBrave": {
-            "first": "Fortune favours...",
-            "second": "...the brave."
-          }
-        }
-      },
-      "gentleQuiz": {
-        "title": "Gentle Quiz",
-        "description": "Fun questions with no wrong answers",
-        "correct": "That's right! Well done!",
-        "goodGuess": "Good guess! The answer is actually {{answer}}. Isn't that interesting?",
-        "q": {
-          "banana": "What colour is a banana?",
-          "moo": "What sound does a cow make?",
-          "bees": "What do bees make?",
-          "dogLegs": "How many legs does a dog have?",
-          "afterWinter": "What season comes after winter?",
-          "capitalFrance": "What is the capital of France?",
-          "umbrella": "What do you use to stay dry in the rain?",
-          "largestOcean": "What is the largest ocean in the world?",
-          "sky": "What colour is the sky on a clear day?",
-          "daysWeek": "How many days are in a week?"
-        },
-        "a": {
-          "yellow": "Yellow",
-          "blue": "Blue",
-          "red": "Red",
-          "green": "Green",
-          "cow": "Moo",
-          "dog": "Woof",
-          "cat": "Meow",
-          "bird": "Tweet",
-          "honey": "Honey",
-          "milk": "Milk",
-          "sugar": "Sugar",
-          "butter": "Butter",
-          "four": "Four",
-          "two": "Two",
-          "six": "Six",
-          "eight": "Eight",
-          "spring": "Spring",
-          "summer": "Summer",
-          "autumn": "Autumn",
-          "winter": "Winter",
-          "paris": "Paris",
-          "london": "London",
-          "rome": "Rome",
-          "berlin": "Berlin",
-          "stayingDry": "An umbrella",
-          "cooking": "Cooking",
-          "writing": "Writing",
-          "driving": "Driving",
-          "pacific": "Pacific Ocean",
-          "atlantic": "Atlantic Ocean",
-          "indian": "Indian Ocean",
-          "arctic": "Arctic Ocean",
-          "seven": "Seven",
-          "five": "Five"
-        }
-      },
-      "photoPairs": {
-        "title": "Photo Pairs",
-        "description": "Find matching pairs of pictures",
-        "pairsFound": "{{found}} of {{total}} pairs found",
-        "themes": {
-          "flowers": "Beautiful Flowers",
-          "animals": "Friendly Animals",
-          "food": "Tasty Treats",
-          "nature": "Nature",
-          "seasons": "Four Seasons"
-        },
-        "items": {
-          "rose": "Rose",
-          "sunflower": "Sunflower",
-          "tulip": "Tulip",
-          "blossom": "Blossom",
-          "cat": "Cat",
-          "dog": "Dog",
-          "rabbit": "Rabbit",
-          "bird": "Bird",
-          "apple": "Apple",
-          "cake": "Cake",
-          "bread": "Bread",
-          "cupcake": "Cupcake",
-          "tree": "Tree",
-          "rainbow": "Rainbow",
-          "star": "Star",
-          "sun": "Sun",
-          "spring": "Spring",
-          "summer": "Summer",
-          "autumn": "Autumn",
-          "winter": "Winter"
-        }
-      },
       "wordSearch": {
         "title": "Žodžių paieška",
         "description": "Raskite tinklelyje paslėptus žodžius",
@@ -579,6 +322,263 @@
         "yourTurn": "Jūsų eilė!",
         "sequenceLength": "Seka: {{length}}",
         "greatMemory": "Puiki atmintis!"
+      },
+      "proverbs": {
+        "title": "Patarimai ir posakiai",
+        "description": "Užbaikite žinomas frazes",
+        "instruction": "Ar galite užbaigti šį posakį?",
+        "reveal": "Palieskite, kad atskleistumėte",
+        "youKnowIt": "Jūs tai žinote!",
+        "items": {
+          "stitch": {
+            "first": "Siūlė laiku...",
+            "second": "...devynis išgelbsti."
+          },
+          "bird": {
+            "first": "Ankstyvas paukštis...",
+            "second": "...gaudo kirminą."
+          },
+          "apple": {
+            "first": "Obuolys per dieną...",
+            "second": "...gydytoją nuveja."
+          },
+          "actions": {
+            "first": "Darbai kalba garsiau...",
+            "second": "...nei žodžiai."
+          },
+          "penny": {
+            "first": "Sutaupytas centas...",
+            "second": "...yra uždirbtas centas."
+          },
+          "rome": {
+            "first": "Roma nebuvo pastatyta...",
+            "second": "...per dieną."
+          },
+          "rolling": {
+            "first": "Riedantis akmuo...",
+            "second": "...samanų nerinko."
+          },
+          "twoBirds": {
+            "first": "Nušauti du paukščius...",
+            "second": "...vienu akmeniu."
+          },
+          "catAway": {
+            "first": "Kai katės nėra...",
+            "second": "...pelės šoks."
+          },
+          "bestMedicine": {
+            "first": "Juokas yra...",
+            "second": "...geriausias vaistas."
+          },
+          "practice": {
+            "first": "Praktika daro...",
+            "second": "...tobulu."
+          },
+          "lookedPot": {
+            "first": "Stebimas puodas...",
+            "second": "...niekada neužverda."
+          },
+          "silverLining": {
+            "first": "Kiekvienas debesis turi...",
+            "second": "...sidabrinį apvadą."
+          },
+          "earlyBird": {
+            "first": "Anksti gulti, anksti keltis...",
+            "second": "...daro žmogų sveiką, turtingą ir išmintingą."
+          },
+          "tooManyCooks": {
+            "first": "Per daug virėjų...",
+            "second": "...sugadina sriubą."
+          },
+          "honesty": {
+            "first": "Sąžiningumas yra...",
+            "second": "...geriausia politika."
+          },
+          "absence": {
+            "first": "Nebuvimas daro...",
+            "second": "...širdį labiau mylinčią."
+          },
+          "leapLook": {
+            "first": "Pažiūrėkite prieš...",
+            "second": "...šokdami."
+          },
+          "glass": {
+            "first": "Žmonės stikliniuose namuose...",
+            "second": "...neturėtų mėtyti akmenų."
+          },
+          "betterLateThan": {
+            "first": "Geriau vėliau...",
+            "second": "...nei niekada."
+          },
+          "barking": {
+            "first": "Jo lojimas yra blogesnis...",
+            "second": "...nei jo įkandimas."
+          },
+          "beautyEye": {
+            "first": "Grožis yra akyse...",
+            "second": "...žiūrinčiojo."
+          },
+          "bloodThicker": {
+            "first": "Kraujas tirštesnis...",
+            "second": "...nei vanduo."
+          },
+          "moneyRoot": {
+            "first": "Pinigai yra šaknis...",
+            "second": "...viso blogio."
+          },
+          "noNews": {
+            "first": "Jokių naujienų yra...",
+            "second": "...geros naujienos."
+          },
+          "spiltMilk": {
+            "first": "Neverk dėl...",
+            "second": "...išlieto pieno."
+          },
+          "curiosity": {
+            "first": "Smalsumas užmušė...",
+            "second": "...katę."
+          },
+          "birdInHand": {
+            "first": "Paukštis rankoje...",
+            "second": "...vertas dviejų krūme."
+          },
+          "glitters": {
+            "first": "Viskas, kas blizga...",
+            "second": "...nėra auksas."
+          },
+          "mightierSword": {
+            "first": "Plunksna galingesnė...",
+            "second": "...už kardą."
+          },
+          "wholeWorld": {
+            "first": "Reikia visokių...",
+            "second": "...kad sukurtum pasaulį."
+          },
+          "goodThings": {
+            "first": "Geri dalykai ateina...",
+            "second": "...tiems, kurie laukia."
+          },
+          "bedRise": {
+            "first": "Pasiklojote lovą...",
+            "second": "...dabar joje gulėkite."
+          },
+          "leopardSpots": {
+            "first": "Leopardas negali pakeisti...",
+            "second": "...savo dėmių."
+          },
+          "homeIs": {
+            "first": "Namai yra ten, kur...",
+            "second": "...širdis."
+          },
+          "knowledge": {
+            "first": "Truputis žinių...",
+            "second": "...yra pavojingas dalykas."
+          },
+          "biteHand": {
+            "first": "Nekąskite rankos...",
+            "second": "...kuri jus maitina."
+          },
+          "twoHeads": {
+            "first": "Dvi galvos yra...",
+            "second": "...geriau nei viena."
+          },
+          "journeyBegins": {
+            "first": "Tūkstančio mylių kelionė...",
+            "second": "...prasideda vienu žingsniu."
+          },
+          "fortuneBrave": {
+            "first": "Fortūna palanki...",
+            "second": "...drąsiems."
+          }
+        }
+      },
+      "gentleQuiz": {
+        "title": "Švelnusis viktorina",
+        "description": "Smagūs klausimai be neteisingų atsakymų",
+        "correct": "Teisingai! Puikiai padirbėjote!",
+        "goodGuess": "Geras spėjimas! Atsakymas iš tikrųjų yra {{answer}}. Argi neįdomu?",
+        "q": {
+          "banana": "Kokios spalvos yra bananas?",
+          "moo": "Kokį garsą skleidžia karvė?",
+          "bees": "Ką gamina bitės?",
+          "dogLegs": "Kiek kojų turi šuo?",
+          "afterWinter": "Koks metų laikas ateina po žiemos?",
+          "capitalFrance": "Kokia yra Prancūzijos sostinė?",
+          "umbrella": "Ką naudojate, kad išliktumėte sausi per lietų?",
+          "largestOcean": "Koks yra didžiausias vandenynas pasaulyje?",
+          "sky": "Kokios spalvos yra dangus giedrą dieną?",
+          "daysWeek": "Kiek dienų yra savaitėje?"
+        },
+        "a": {
+          "yellow": "Geltona",
+          "blue": "Mėlyna",
+          "red": "Raudona",
+          "green": "Žalia",
+          "cow": "Mū",
+          "dog": "Au",
+          "cat": "Miau",
+          "bird": "Čiulba",
+          "honey": "Medus",
+          "milk": "Pienas",
+          "sugar": "Cukrus",
+          "butter": "Sviestas",
+          "four": "Keturi",
+          "two": "Du",
+          "six": "Šeši",
+          "eight": "Aštuoni",
+          "spring": "Pavasaris",
+          "summer": "Vasara",
+          "autumn": "Ruduo",
+          "winter": "Žiema",
+          "paris": "Paryžius",
+          "london": "Londonas",
+          "rome": "Roma",
+          "berlin": "Berlynas",
+          "stayingDry": "Skėtis",
+          "cooking": "Gaminimas",
+          "writing": "Rašymas",
+          "driving": "Vairavimas",
+          "pacific": "Ramusis vandenynas",
+          "atlantic": "Atlanto vandenynas",
+          "indian": "Indijos vandenynas",
+          "arctic": "Arkties vandenynas",
+          "seven": "Septyni",
+          "five": "Penki"
+        }
+      },
+      "photoPairs": {
+        "title": "Nuotraukų poros",
+        "description": "Raskite atitinkančias paveikslėlių poras",
+        "pairsFound": "Rasta {{found}} iš {{total}} porų",
+        "themes": {
+          "flowers": "Gražios gėlės",
+          "animals": "Draugiški gyvūnai",
+          "food": "Skanūs skanėstai",
+          "nature": "Gamta",
+          "seasons": "Keturi metų laikai"
+        },
+        "items": {
+          "rose": "Rožė",
+          "sunflower": "Saulėgrąža",
+          "tulip": "Tulpė",
+          "blossom": "Žiedas",
+          "cat": "Katė",
+          "dog": "Šuo",
+          "rabbit": "Triušis",
+          "bird": "Paukštis",
+          "apple": "Obuolys",
+          "cake": "Tortas",
+          "bread": "Duona",
+          "cupcake": "Keksiukas",
+          "tree": "Medis",
+          "rainbow": "Vaivorykštė",
+          "star": "Žvaigždė",
+          "sun": "Saulė",
+          "spring": "Pavasaris",
+          "summer": "Vasara",
+          "autumn": "Ruduo",
+          "winter": "Žiema"
+        }
       }
     },
     "careCode": {

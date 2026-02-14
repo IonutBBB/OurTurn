@@ -219,263 +219,6 @@
           "wanderlust": "Επιθυμία για ταξίδια"
         }
       },
-      "proverbs": {
-        "title": "Proverbs & Sayings",
-        "description": "Complete familiar phrases",
-        "instruction": "Can you finish this saying?",
-        "reveal": "Tap to reveal",
-        "youKnowIt": "You know this one!",
-        "items": {
-          "stitch": {
-            "first": "A stitch in time...",
-            "second": "...saves nine."
-          },
-          "bird": {
-            "first": "The early bird...",
-            "second": "...catches the worm."
-          },
-          "apple": {
-            "first": "An apple a day...",
-            "second": "...keeps the doctor away."
-          },
-          "actions": {
-            "first": "Actions speak louder...",
-            "second": "...than words."
-          },
-          "penny": {
-            "first": "A penny saved...",
-            "second": "...is a penny earned."
-          },
-          "rome": {
-            "first": "Rome wasn't built...",
-            "second": "...in a day."
-          },
-          "rolling": {
-            "first": "A rolling stone...",
-            "second": "...gathers no moss."
-          },
-          "twoBirds": {
-            "first": "Kill two birds...",
-            "second": "...with one stone."
-          },
-          "catAway": {
-            "first": "When the cat's away...",
-            "second": "...the mice will play."
-          },
-          "bestMedicine": {
-            "first": "Laughter is...",
-            "second": "...the best medicine."
-          },
-          "practice": {
-            "first": "Practice makes...",
-            "second": "...perfect."
-          },
-          "lookedPot": {
-            "first": "A watched pot...",
-            "second": "...never boils."
-          },
-          "silverLining": {
-            "first": "Every cloud has...",
-            "second": "...a silver lining."
-          },
-          "earlyBird": {
-            "first": "Early to bed, early to rise...",
-            "second": "...makes a man healthy, wealthy, and wise."
-          },
-          "tooManyCooks": {
-            "first": "Too many cooks...",
-            "second": "...spoil the broth."
-          },
-          "honesty": {
-            "first": "Honesty is...",
-            "second": "...the best policy."
-          },
-          "absence": {
-            "first": "Absence makes...",
-            "second": "...the heart grow fonder."
-          },
-          "leapLook": {
-            "first": "Look before...",
-            "second": "...you leap."
-          },
-          "glass": {
-            "first": "People in glass houses...",
-            "second": "...shouldn't throw stones."
-          },
-          "betterLateThan": {
-            "first": "Better late...",
-            "second": "...than never."
-          },
-          "barking": {
-            "first": "His bark is worse...",
-            "second": "...than his bite."
-          },
-          "beautyEye": {
-            "first": "Beauty is in the eye...",
-            "second": "...of the beholder."
-          },
-          "bloodThicker": {
-            "first": "Blood is thicker...",
-            "second": "...than water."
-          },
-          "moneyRoot": {
-            "first": "Money is the root...",
-            "second": "...of all evil."
-          },
-          "noNews": {
-            "first": "No news is...",
-            "second": "...good news."
-          },
-          "spiltMilk": {
-            "first": "Don't cry over...",
-            "second": "...spilt milk."
-          },
-          "curiosity": {
-            "first": "Curiosity killed...",
-            "second": "...the cat."
-          },
-          "birdInHand": {
-            "first": "A bird in the hand...",
-            "second": "...is worth two in the bush."
-          },
-          "glitters": {
-            "first": "All that glitters...",
-            "second": "...is not gold."
-          },
-          "mightierSword": {
-            "first": "The pen is mightier...",
-            "second": "...than the sword."
-          },
-          "wholeWorld": {
-            "first": "It takes all sorts...",
-            "second": "...to make a world."
-          },
-          "goodThings": {
-            "first": "Good things come...",
-            "second": "...to those who wait."
-          },
-          "bedRise": {
-            "first": "You've made your bed...",
-            "second": "...now lie in it."
-          },
-          "leopardSpots": {
-            "first": "A leopard can't change...",
-            "second": "...its spots."
-          },
-          "homeIs": {
-            "first": "Home is where...",
-            "second": "...the heart is."
-          },
-          "knowledge": {
-            "first": "A little knowledge...",
-            "second": "...is a dangerous thing."
-          },
-          "biteHand": {
-            "first": "Don't bite the hand...",
-            "second": "...that feeds you."
-          },
-          "twoHeads": {
-            "first": "Two heads are...",
-            "second": "...better than one."
-          },
-          "journeyBegins": {
-            "first": "A journey of a thousand miles...",
-            "second": "...begins with a single step."
-          },
-          "fortuneBrave": {
-            "first": "Fortune favours...",
-            "second": "...the brave."
-          }
-        }
-      },
-      "gentleQuiz": {
-        "title": "Gentle Quiz",
-        "description": "Fun questions with no wrong answers",
-        "correct": "That's right! Well done!",
-        "goodGuess": "Good guess! The answer is actually {{answer}}. Isn't that interesting?",
-        "q": {
-          "banana": "What colour is a banana?",
-          "moo": "What sound does a cow make?",
-          "bees": "What do bees make?",
-          "dogLegs": "How many legs does a dog have?",
-          "afterWinter": "What season comes after winter?",
-          "capitalFrance": "What is the capital of France?",
-          "umbrella": "What do you use to stay dry in the rain?",
-          "largestOcean": "What is the largest ocean in the world?",
-          "sky": "What colour is the sky on a clear day?",
-          "daysWeek": "How many days are in a week?"
-        },
-        "a": {
-          "yellow": "Yellow",
-          "blue": "Blue",
-          "red": "Red",
-          "green": "Green",
-          "cow": "Moo",
-          "dog": "Woof",
-          "cat": "Meow",
-          "bird": "Tweet",
-          "honey": "Honey",
-          "milk": "Milk",
-          "sugar": "Sugar",
-          "butter": "Butter",
-          "four": "Four",
-          "two": "Two",
-          "six": "Six",
-          "eight": "Eight",
-          "spring": "Spring",
-          "summer": "Summer",
-          "autumn": "Autumn",
-          "winter": "Winter",
-          "paris": "Paris",
-          "london": "London",
-          "rome": "Rome",
-          "berlin": "Berlin",
-          "stayingDry": "An umbrella",
-          "cooking": "Cooking",
-          "writing": "Writing",
-          "driving": "Driving",
-          "pacific": "Pacific Ocean",
-          "atlantic": "Atlantic Ocean",
-          "indian": "Indian Ocean",
-          "arctic": "Arctic Ocean",
-          "seven": "Seven",
-          "five": "Five"
-        }
-      },
-      "photoPairs": {
-        "title": "Photo Pairs",
-        "description": "Find matching pairs of pictures",
-        "pairsFound": "{{found}} of {{total}} pairs found",
-        "themes": {
-          "flowers": "Beautiful Flowers",
-          "animals": "Friendly Animals",
-          "food": "Tasty Treats",
-          "nature": "Nature",
-          "seasons": "Four Seasons"
-        },
-        "items": {
-          "rose": "Rose",
-          "sunflower": "Sunflower",
-          "tulip": "Tulip",
-          "blossom": "Blossom",
-          "cat": "Cat",
-          "dog": "Dog",
-          "rabbit": "Rabbit",
-          "bird": "Bird",
-          "apple": "Apple",
-          "cake": "Cake",
-          "bread": "Bread",
-          "cupcake": "Cupcake",
-          "tree": "Tree",
-          "rainbow": "Rainbow",
-          "star": "Star",
-          "sun": "Sun",
-          "spring": "Spring",
-          "summer": "Summer",
-          "autumn": "Autumn",
-          "winter": "Winter"
-        }
-      },
       "wordSearch": {
         "title": "Αναζήτηση λέξεων",
         "description": "Βρείτε τις κρυμμένες λέξεις στο πλέγμα",
@@ -579,6 +322,263 @@
         "yourTurn": "Η σειρά σας!",
         "sequenceLength": "Ακολουθία: {{length}}",
         "greatMemory": "Εξαιρετική μνήμη!"
+      },
+      "proverbs": {
+        "title": "Παροιμίες & Ρήσεις",
+        "description": "Ολοκληρώστε γνωστές φράσεις",
+        "instruction": "Μπορείτε να ολοκληρώσετε αυτή τη ρήση;",
+        "reveal": "Πατήστε για αποκάλυψη",
+        "youKnowIt": "Αυτό το ξέρετε!",
+        "items": {
+          "stitch": {
+            "first": "Μια ραφή στην ώρα της...",
+            "second": "...γλιτώνει εννέα."
+          },
+          "bird": {
+            "first": "Το πρωινό πουλί...",
+            "second": "...πιάνει το σκουλήκι."
+          },
+          "apple": {
+            "first": "Ένα μήλο την ημέρα...",
+            "second": "...τον γιατρό τον κάνει πέρα."
+          },
+          "actions": {
+            "first": "Οι πράξεις μιλούν πιο δυνατά...",
+            "second": "...από τα λόγια."
+          },
+          "penny": {
+            "first": "Μια δεκάρα που σώθηκε...",
+            "second": "...είναι μια δεκάρα που κερδήθηκε."
+          },
+          "rome": {
+            "first": "Η Ρώμη δεν χτίστηκε...",
+            "second": "...σε μια μέρα."
+          },
+          "rolling": {
+            "first": "Μια κυλιόμενη πέτρα...",
+            "second": "...δεν μαζεύει βρύα."
+          },
+          "twoBirds": {
+            "first": "Σκοτώστε δύο πουλιά...",
+            "second": "...με μια πέτρα."
+          },
+          "catAway": {
+            "first": "Όταν λείπει η γάτα...",
+            "second": "...χορεύουν τα ποντίκια."
+          },
+          "bestMedicine": {
+            "first": "Το γέλιο είναι...",
+            "second": "...το καλύτερο φάρμακο."
+          },
+          "practice": {
+            "first": "Η εξάσκηση κάνει...",
+            "second": "...τον δάσκαλο."
+          },
+          "lookedPot": {
+            "first": "Μια κατσαρόλα που την κοιτάς...",
+            "second": "...ποτέ δεν βράζει."
+          },
+          "silverLining": {
+            "first": "Κάθε σύννεφο έχει...",
+            "second": "...μια ασημένια επένδυση."
+          },
+          "earlyBird": {
+            "first": "Νωρίς για ύπνο, νωρίς για ξύπνημα...",
+            "second": "...κάνει τον άνθρωπο υγιή, πλούσιο και σοφό."
+          },
+          "tooManyCooks": {
+            "first": "Πολλοί μάγειρες...",
+            "second": "...χαλούν τη σούπα."
+          },
+          "honesty": {
+            "first": "Η ειλικρίνεια είναι...",
+            "second": "...η καλύτερη πολιτική."
+          },
+          "absence": {
+            "first": "Η απουσία κάνει...",
+            "second": "...την καρδιά να αγαπά περισσότερο."
+          },
+          "leapLook": {
+            "first": "Κοιτάξτε πριν...",
+            "second": "...πηδήξετε."
+          },
+          "glass": {
+            "first": "Οι άνθρωποι σε γυάλινα σπίτια...",
+            "second": "...δεν πρέπει να πετούν πέτρες."
+          },
+          "betterLateThan": {
+            "first": "Καλύτερα αργά...",
+            "second": "...παρά ποτέ."
+          },
+          "barking": {
+            "first": "Το γάβγισμά του είναι χειρότερο...",
+            "second": "...από το δάγκωμά του."
+          },
+          "beautyEye": {
+            "first": "Η ομορφιά είναι στο μάτι...",
+            "second": "...του παρατηρητή."
+          },
+          "bloodThicker": {
+            "first": "Το αίμα είναι πιο παχύ...",
+            "second": "...από το νερό."
+          },
+          "moneyRoot": {
+            "first": "Το χρήμα είναι η ρίζα...",
+            "second": "...όλου του κακού."
+          },
+          "noNews": {
+            "first": "Καμία είδηση είναι...",
+            "second": "...καλή είδηση."
+          },
+          "spiltMilk": {
+            "first": "Μην κλαις για...",
+            "second": "...χυμένο γάλα."
+          },
+          "curiosity": {
+            "first": "Η περιέργεια σκότωσε...",
+            "second": "...τη γάτα."
+          },
+          "birdInHand": {
+            "first": "Ένα πουλί στο χέρι...",
+            "second": "...αξίζει δύο στο θάμνο."
+          },
+          "glitters": {
+            "first": "Όλα όσα λάμπουν...",
+            "second": "...δεν είναι χρυσός."
+          },
+          "mightierSword": {
+            "first": "Η πένα είναι πιο δυνατή...",
+            "second": "...από το σπαθί."
+          },
+          "wholeWorld": {
+            "first": "Χρειάζονται όλα τα είδη...",
+            "second": "...για να φτιάξουν έναν κόσμο."
+          },
+          "goodThings": {
+            "first": "Τα καλά πράγματα έρχονται...",
+            "second": "...σε αυτούς που περιμένουν."
+          },
+          "bedRise": {
+            "first": "Έχετε στρώσει το κρεβάτι σας...",
+            "second": "...τώρα ξαπλώστε σε αυτό."
+          },
+          "leopardSpots": {
+            "first": "Μια λεοπάρδαλη δεν μπορεί να αλλάξει...",
+            "second": "...τις κηλίδες της."
+          },
+          "homeIs": {
+            "first": "Το σπίτι είναι εκεί που...",
+            "second": "...είναι η καρδιά."
+          },
+          "knowledge": {
+            "first": "Λίγη γνώση...",
+            "second": "...είναι επικίνδυνο πράγμα."
+          },
+          "biteHand": {
+            "first": "Μην δαγκώνετε το χέρι...",
+            "second": "...που σας ταΐζει."
+          },
+          "twoHeads": {
+            "first": "Δύο κεφάλια είναι...",
+            "second": "...καλύτερα από ένα."
+          },
+          "journeyBegins": {
+            "first": "Ένα ταξίδι χιλίων μιλίων...",
+            "second": "...ξεκινά με ένα μόνο βήμα."
+          },
+          "fortuneBrave": {
+            "first": "Η τύχη ευνοεί...",
+            "second": "...τους γενναίους."
+          }
+        }
+      },
+      "gentleQuiz": {
+        "title": "Εύκολο Κουίζ",
+        "description": "Διασκεδαστικές ερωτήσεις χωρίς λάθος απαντήσεις",
+        "correct": "Σωστά! Μπράβο!",
+        "goodGuess": "Καλή προσπάθεια! Η απάντηση είναι στην πραγματικότητα {{answer}}. Δεν είναι ενδιαφέρον;",
+        "q": {
+          "banana": "Τι χρώμα είναι μια μπανάνα;",
+          "moo": "Τι ήχο κάνει μια αγελάδα;",
+          "bees": "Τι φτιάχνουν οι μέλισσες;",
+          "dogLegs": "Πόσα πόδια έχει ένας σκύλος;",
+          "afterWinter": "Ποια εποχή έρχεται μετά τον χειμώνα;",
+          "capitalFrance": "Ποια είναι η πρωτεύουσα της Γαλλίας;",
+          "umbrella": "Τι χρησιμοποιείτε για να μείνετε στεγνοί στη βροχή;",
+          "largestOcean": "Ποιος είναι ο μεγαλύτερος ωκεανός στον κόσμο;",
+          "sky": "Τι χρώμα έχει ο ουρανός μια καθαρή μέρα;",
+          "daysWeek": "Πόσες μέρες έχει μια εβδομάδα;"
+        },
+        "a": {
+          "yellow": "Κίτρινο",
+          "blue": "Μπλε",
+          "red": "Κόκκινο",
+          "green": "Πράσινο",
+          "cow": "Μου",
+          "dog": "Γαβ",
+          "cat": "Νιάου",
+          "bird": "Τσιτ",
+          "honey": "Μέλι",
+          "milk": "Γάλα",
+          "sugar": "Ζάχαρη",
+          "butter": "Βούτυρο",
+          "four": "Τέσσερα",
+          "two": "Δύο",
+          "six": "Έξι",
+          "eight": "Οκτώ",
+          "spring": "Άνοιξη",
+          "summer": "Καλοκαίρι",
+          "autumn": "Φθινόπωρο",
+          "winter": "Χειμώνας",
+          "paris": "Παρίσι",
+          "london": "Λονδίνο",
+          "rome": "Ρώμη",
+          "berlin": "Βερολίνο",
+          "stayingDry": "Μια ομπρέλα",
+          "cooking": "Μαγείρεμα",
+          "writing": "Γράψιμο",
+          "driving": "Οδήγηση",
+          "pacific": "Ειρηνικός Ωκεανός",
+          "atlantic": "Ατλαντικός Ωκεανός",
+          "indian": "Ινδικός Ωκεανός",
+          "arctic": "Αρκτικός Ωκεανός",
+          "seven": "Επτά",
+          "five": "Πέντε"
+        }
+      },
+      "photoPairs": {
+        "title": "Ζεύγη Φωτογραφιών",
+        "description": "Βρείτε τα ταιριαστά ζεύγη εικόνων",
+        "pairsFound": "{{found}} από {{total}} ζεύγη βρέθηκαν",
+        "themes": {
+          "flowers": "Όμορφα Λουλούδια",
+          "animals": "Φιλικά Ζώα",
+          "food": "Νόστιμες Λιχουδιές",
+          "nature": "Φύση",
+          "seasons": "Τέσσερις Εποχές"
+        },
+        "items": {
+          "rose": "Τριαντάφυλλο",
+          "sunflower": "Ηλιοτρόπιο",
+          "tulip": "Τουλίπα",
+          "blossom": "Άνθος",
+          "cat": "Γάτα",
+          "dog": "Σκύλος",
+          "rabbit": "Κουνέλι",
+          "bird": "Πουλί",
+          "apple": "Μήλο",
+          "cake": "Τούρτα",
+          "bread": "Ψωμί",
+          "cupcake": "Καπκέικ",
+          "tree": "Δέντρο",
+          "rainbow": "Ουράνιο Τόξο",
+          "star": "Αστέρι",
+          "sun": "Ήλιος",
+          "spring": "Άνοιξη",
+          "summer": "Καλοκαίρι",
+          "autumn": "Φθινόπωρο",
+          "winter": "Χειμώνας"
+        }
       }
     },
     "careCode": {

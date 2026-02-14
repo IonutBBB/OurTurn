@@ -219,263 +219,6 @@
           "wanderlust": "Rännukihk"
         }
       },
-      "proverbs": {
-        "title": "Proverbs & Sayings",
-        "description": "Complete familiar phrases",
-        "instruction": "Can you finish this saying?",
-        "reveal": "Tap to reveal",
-        "youKnowIt": "You know this one!",
-        "items": {
-          "stitch": {
-            "first": "A stitch in time...",
-            "second": "...saves nine."
-          },
-          "bird": {
-            "first": "The early bird...",
-            "second": "...catches the worm."
-          },
-          "apple": {
-            "first": "An apple a day...",
-            "second": "...keeps the doctor away."
-          },
-          "actions": {
-            "first": "Actions speak louder...",
-            "second": "...than words."
-          },
-          "penny": {
-            "first": "A penny saved...",
-            "second": "...is a penny earned."
-          },
-          "rome": {
-            "first": "Rome wasn't built...",
-            "second": "...in a day."
-          },
-          "rolling": {
-            "first": "A rolling stone...",
-            "second": "...gathers no moss."
-          },
-          "twoBirds": {
-            "first": "Kill two birds...",
-            "second": "...with one stone."
-          },
-          "catAway": {
-            "first": "When the cat's away...",
-            "second": "...the mice will play."
-          },
-          "bestMedicine": {
-            "first": "Laughter is...",
-            "second": "...the best medicine."
-          },
-          "practice": {
-            "first": "Practice makes...",
-            "second": "...perfect."
-          },
-          "lookedPot": {
-            "first": "A watched pot...",
-            "second": "...never boils."
-          },
-          "silverLining": {
-            "first": "Every cloud has...",
-            "second": "...a silver lining."
-          },
-          "earlyBird": {
-            "first": "Early to bed, early to rise...",
-            "second": "...makes a man healthy, wealthy, and wise."
-          },
-          "tooManyCooks": {
-            "first": "Too many cooks...",
-            "second": "...spoil the broth."
-          },
-          "honesty": {
-            "first": "Honesty is...",
-            "second": "...the best policy."
-          },
-          "absence": {
-            "first": "Absence makes...",
-            "second": "...the heart grow fonder."
-          },
-          "leapLook": {
-            "first": "Look before...",
-            "second": "...you leap."
-          },
-          "glass": {
-            "first": "People in glass houses...",
-            "second": "...shouldn't throw stones."
-          },
-          "betterLateThan": {
-            "first": "Better late...",
-            "second": "...than never."
-          },
-          "barking": {
-            "first": "His bark is worse...",
-            "second": "...than his bite."
-          },
-          "beautyEye": {
-            "first": "Beauty is in the eye...",
-            "second": "...of the beholder."
-          },
-          "bloodThicker": {
-            "first": "Blood is thicker...",
-            "second": "...than water."
-          },
-          "moneyRoot": {
-            "first": "Money is the root...",
-            "second": "...of all evil."
-          },
-          "noNews": {
-            "first": "No news is...",
-            "second": "...good news."
-          },
-          "spiltMilk": {
-            "first": "Don't cry over...",
-            "second": "...spilt milk."
-          },
-          "curiosity": {
-            "first": "Curiosity killed...",
-            "second": "...the cat."
-          },
-          "birdInHand": {
-            "first": "A bird in the hand...",
-            "second": "...is worth two in the bush."
-          },
-          "glitters": {
-            "first": "All that glitters...",
-            "second": "...is not gold."
-          },
-          "mightierSword": {
-            "first": "The pen is mightier...",
-            "second": "...than the sword."
-          },
-          "wholeWorld": {
-            "first": "It takes all sorts...",
-            "second": "...to make a world."
-          },
-          "goodThings": {
-            "first": "Good things come...",
-            "second": "...to those who wait."
-          },
-          "bedRise": {
-            "first": "You've made your bed...",
-            "second": "...now lie in it."
-          },
-          "leopardSpots": {
-            "first": "A leopard can't change...",
-            "second": "...its spots."
-          },
-          "homeIs": {
-            "first": "Home is where...",
-            "second": "...the heart is."
-          },
-          "knowledge": {
-            "first": "A little knowledge...",
-            "second": "...is a dangerous thing."
-          },
-          "biteHand": {
-            "first": "Don't bite the hand...",
-            "second": "...that feeds you."
-          },
-          "twoHeads": {
-            "first": "Two heads are...",
-            "second": "...better than one."
-          },
-          "journeyBegins": {
-            "first": "A journey of a thousand miles...",
-            "second": "...begins with a single step."
-          },
-          "fortuneBrave": {
-            "first": "Fortune favours...",
-            "second": "...the brave."
-          }
-        }
-      },
-      "gentleQuiz": {
-        "title": "Gentle Quiz",
-        "description": "Fun questions with no wrong answers",
-        "correct": "That's right! Well done!",
-        "goodGuess": "Good guess! The answer is actually {{answer}}. Isn't that interesting?",
-        "q": {
-          "banana": "What colour is a banana?",
-          "moo": "What sound does a cow make?",
-          "bees": "What do bees make?",
-          "dogLegs": "How many legs does a dog have?",
-          "afterWinter": "What season comes after winter?",
-          "capitalFrance": "What is the capital of France?",
-          "umbrella": "What do you use to stay dry in the rain?",
-          "largestOcean": "What is the largest ocean in the world?",
-          "sky": "What colour is the sky on a clear day?",
-          "daysWeek": "How many days are in a week?"
-        },
-        "a": {
-          "yellow": "Yellow",
-          "blue": "Blue",
-          "red": "Red",
-          "green": "Green",
-          "cow": "Moo",
-          "dog": "Woof",
-          "cat": "Meow",
-          "bird": "Tweet",
-          "honey": "Honey",
-          "milk": "Milk",
-          "sugar": "Sugar",
-          "butter": "Butter",
-          "four": "Four",
-          "two": "Two",
-          "six": "Six",
-          "eight": "Eight",
-          "spring": "Spring",
-          "summer": "Summer",
-          "autumn": "Autumn",
-          "winter": "Winter",
-          "paris": "Paris",
-          "london": "London",
-          "rome": "Rome",
-          "berlin": "Berlin",
-          "stayingDry": "An umbrella",
-          "cooking": "Cooking",
-          "writing": "Writing",
-          "driving": "Driving",
-          "pacific": "Pacific Ocean",
-          "atlantic": "Atlantic Ocean",
-          "indian": "Indian Ocean",
-          "arctic": "Arctic Ocean",
-          "seven": "Seven",
-          "five": "Five"
-        }
-      },
-      "photoPairs": {
-        "title": "Photo Pairs",
-        "description": "Find matching pairs of pictures",
-        "pairsFound": "{{found}} of {{total}} pairs found",
-        "themes": {
-          "flowers": "Beautiful Flowers",
-          "animals": "Friendly Animals",
-          "food": "Tasty Treats",
-          "nature": "Nature",
-          "seasons": "Four Seasons"
-        },
-        "items": {
-          "rose": "Rose",
-          "sunflower": "Sunflower",
-          "tulip": "Tulip",
-          "blossom": "Blossom",
-          "cat": "Cat",
-          "dog": "Dog",
-          "rabbit": "Rabbit",
-          "bird": "Bird",
-          "apple": "Apple",
-          "cake": "Cake",
-          "bread": "Bread",
-          "cupcake": "Cupcake",
-          "tree": "Tree",
-          "rainbow": "Rainbow",
-          "star": "Star",
-          "sun": "Sun",
-          "spring": "Spring",
-          "summer": "Summer",
-          "autumn": "Autumn",
-          "winter": "Winter"
-        }
-      },
       "wordSearch": {
         "title": "Sõnaotsing",
         "description": "Leia ruudustikust peidetud sõnad",
@@ -579,6 +322,263 @@
         "yourTurn": "Nüüd teie kord!",
         "sequenceLength": "Jada: {{length}}",
         "greatMemory": "Suurepärane mälu!"
+      },
+      "proverbs": {
+        "title": "Vanad tarkused ja ütlused",
+        "description": "Lõpetage tuttavad fraasid",
+        "instruction": "Kas oskate selle ütluse lõpetada?",
+        "reveal": "Puudutage, et näha vastust",
+        "youKnowIt": "Te teate seda!",
+        "items": {
+          "stitch": {
+            "first": "Õmblus õigel ajal...",
+            "second": "...säästab üheksa."
+          },
+          "bird": {
+            "first": "Varajane lind...",
+            "second": "...püüab ussi."
+          },
+          "apple": {
+            "first": "Üks õun päevas...",
+            "second": "...hoiab arsti eemal."
+          },
+          "actions": {
+            "first": "Teod räägivad valjemini...",
+            "second": "...kui sõnad."
+          },
+          "penny": {
+            "first": "Säästetud sent...",
+            "second": "...on teenitud sent."
+          },
+          "rome": {
+            "first": "Roomat ei ehitatud...",
+            "second": "...ühe päevaga."
+          },
+          "rolling": {
+            "first": "Veerev kivi...",
+            "second": "...ei korja sammalt."
+          },
+          "twoBirds": {
+            "first": "Tapa kaks kärbest...",
+            "second": "...ühe hoobiga."
+          },
+          "catAway": {
+            "first": "Kui kassi pole kodus...",
+            "second": "...siis hiired mängivad."
+          },
+          "bestMedicine": {
+            "first": "Naer on...",
+            "second": "...parim ravim."
+          },
+          "practice": {
+            "first": "Harjutamine teeb...",
+            "second": "...meistriks."
+          },
+          "lookedPot": {
+            "first": "Valvatud pott...",
+            "second": "...ei kee kunagi."
+          },
+          "silverLining": {
+            "first": "Igal pilvel on...",
+            "second": "...hõbedane ääris."
+          },
+          "earlyBird": {
+            "first": "Vara voodi, vara üles...",
+            "second": "...teeb mehest terve, rikka ja targa."
+          },
+          "tooManyCooks": {
+            "first": "Liiga palju kokkasid...",
+            "second": "...rikub supi."
+          },
+          "honesty": {
+            "first": "Ausus on...",
+            "second": "...parim poliitika."
+          },
+          "absence": {
+            "first": "Eemalolek paneb...",
+            "second": "...südame igatsema."
+          },
+          "leapLook": {
+            "first": "Vaata enne...",
+            "second": "...kui hüppad."
+          },
+          "glass": {
+            "first": "Inimesed klaasmajades...",
+            "second": "...ei tohiks kive loopida."
+          },
+          "betterLateThan": {
+            "first": "Parem hilja...",
+            "second": "...kui mitte kunagi."
+          },
+          "barking": {
+            "first": "Tema haukumine on hullem...",
+            "second": "...kui tema hammustus."
+          },
+          "beautyEye": {
+            "first": "Ilu on vaataja...",
+            "second": "...silmades."
+          },
+          "bloodThicker": {
+            "first": "Veri on paksem...",
+            "second": "...kui vesi."
+          },
+          "moneyRoot": {
+            "first": "Raha on juur...",
+            "second": "...kõigele kurjale."
+          },
+          "noNews": {
+            "first": "Halb uudis on...",
+            "second": "...hea uudis."
+          },
+          "spiltMilk": {
+            "first": "Ära nuta...",
+            "second": "...mahapudenenud piima pärast."
+          },
+          "curiosity": {
+            "first": "Uudishimu tappis...",
+            "second": "...kassi."
+          },
+          "birdInHand": {
+            "first": "Lind käes...",
+            "second": "...on väärt kahte põõsas."
+          },
+          "glitters": {
+            "first": "Kõik, mis hiilgab...",
+            "second": "...ei ole kuld."
+          },
+          "mightierSword": {
+            "first": "Sulg on võimsam...",
+            "second": "...kui mõõk."
+          },
+          "wholeWorld": {
+            "first": "On vaja igasuguseid...",
+            "second": "...et maailm oleks."
+          },
+          "goodThings": {
+            "first": "Head asjad tulevad...",
+            "second": "...neile, kes ootavad."
+          },
+          "bedRise": {
+            "first": "Olete oma voodi teinud...",
+            "second": "...nüüd lamage selles."
+          },
+          "leopardSpots": {
+            "first": "Leopard ei saa muuta...",
+            "second": "...oma laike."
+          },
+          "homeIs": {
+            "first": "Kodu on seal...",
+            "second": "...kus süda on."
+          },
+          "knowledge": {
+            "first": "Väike teadmine...",
+            "second": "...on ohtlik asi."
+          },
+          "biteHand": {
+            "first": "Ära hammusta kätt...",
+            "second": "...mis sind toidab."
+          },
+          "twoHeads": {
+            "first": "Kaks pead on...",
+            "second": "...parem kui üks."
+          },
+          "journeyBegins": {
+            "first": "Tuhande miili teekond...",
+            "second": "...algab esimesest sammust."
+          },
+          "fortuneBrave": {
+            "first": "Õnn soosib...",
+            "second": "...julgeid."
+          }
+        }
+      },
+      "gentleQuiz": {
+        "title": "Leebe viktoriin",
+        "description": "Lõbusad küsimused ilma valede vastusteta",
+        "correct": "Just nii! Tubli töö!",
+        "goodGuess": "Hea pakkumine! Õige vastus on tegelikult {{answer}}. Kas pole huvitav?",
+        "q": {
+          "banana": "Mis värvi on banaan?",
+          "moo": "Mis häält teeb lehm?",
+          "bees": "Mida mesilased teevad?",
+          "dogLegs": "Mitu jalga on koeral?",
+          "afterWinter": "Mis aastaaeg tuleb pärast talve?",
+          "capitalFrance": "Mis on Prantsusmaa pealinn?",
+          "umbrella": "Mida te kasutate vihmas kuivana püsimiseks?",
+          "largestOcean": "Mis on maailma suurim ookean?",
+          "sky": "Mis värvi on taevas selgel päeval?",
+          "daysWeek": "Mitu päeva on nädalas?"
+        },
+        "a": {
+          "yellow": "Kollane",
+          "blue": "Sinine",
+          "red": "Punane",
+          "green": "Roheline",
+          "cow": "Ammuu",
+          "dog": "Auh",
+          "cat": "Mjäu",
+          "bird": "Tiit",
+          "honey": "Mesi",
+          "milk": "Piim",
+          "sugar": "Suhkur",
+          "butter": "Või",
+          "four": "Neli",
+          "two": "Kaks",
+          "six": "Kuus",
+          "eight": "Kaheksa",
+          "spring": "Kevad",
+          "summer": "Suvi",
+          "autumn": "Sügis",
+          "winter": "Talv",
+          "paris": "Pariis",
+          "london": "London",
+          "rome": "Rooma",
+          "berlin": "Berliin",
+          "stayingDry": "Vihmavari",
+          "cooking": "Kokkamine",
+          "writing": "Kirjutamine",
+          "driving": "Autojuhtimine",
+          "pacific": "Vaikne ookean",
+          "atlantic": "Atlandi ookean",
+          "indian": "India ookean",
+          "arctic": "Põhja-Jäämeri",
+          "seven": "Seitse",
+          "five": "Viis"
+        }
+      },
+      "photoPairs": {
+        "title": "Pildipaarid",
+        "description": "Leia sobivad pildipaarid",
+        "pairsFound": "{{found}} {{total}}-st paarist leitud",
+        "themes": {
+          "flowers": "Kaunid lilled",
+          "animals": "Sõbralikud loomad",
+          "food": "Maitsvad hõrgutised",
+          "nature": "Loodus",
+          "seasons": "Neli aastaaega"
+        },
+        "items": {
+          "rose": "Roos",
+          "sunflower": "Päevalill",
+          "tulip": "Tulp",
+          "blossom": "Õis",
+          "cat": "Kass",
+          "dog": "Koer",
+          "rabbit": "Küülik",
+          "bird": "Lind",
+          "apple": "Õun",
+          "cake": "Kook",
+          "bread": "Leib",
+          "cupcake": "Muffin",
+          "tree": "Puu",
+          "rainbow": "Vikerkaar",
+          "star": "Täht",
+          "sun": "Päike",
+          "spring": "Kevad",
+          "summer": "Suvi",
+          "autumn": "Sügis",
+          "winter": "Talv"
+        }
       }
     },
     "careCode": {

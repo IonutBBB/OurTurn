@@ -219,263 +219,6 @@
           "wanderlust": "Fánaíocht"
         }
       },
-      "proverbs": {
-        "title": "Proverbs & Sayings",
-        "description": "Complete familiar phrases",
-        "instruction": "Can you finish this saying?",
-        "reveal": "Tap to reveal",
-        "youKnowIt": "You know this one!",
-        "items": {
-          "stitch": {
-            "first": "A stitch in time...",
-            "second": "...saves nine."
-          },
-          "bird": {
-            "first": "The early bird...",
-            "second": "...catches the worm."
-          },
-          "apple": {
-            "first": "An apple a day...",
-            "second": "...keeps the doctor away."
-          },
-          "actions": {
-            "first": "Actions speak louder...",
-            "second": "...than words."
-          },
-          "penny": {
-            "first": "A penny saved...",
-            "second": "...is a penny earned."
-          },
-          "rome": {
-            "first": "Rome wasn't built...",
-            "second": "...in a day."
-          },
-          "rolling": {
-            "first": "A rolling stone...",
-            "second": "...gathers no moss."
-          },
-          "twoBirds": {
-            "first": "Kill two birds...",
-            "second": "...with one stone."
-          },
-          "catAway": {
-            "first": "When the cat's away...",
-            "second": "...the mice will play."
-          },
-          "bestMedicine": {
-            "first": "Laughter is...",
-            "second": "...the best medicine."
-          },
-          "practice": {
-            "first": "Practice makes...",
-            "second": "...perfect."
-          },
-          "lookedPot": {
-            "first": "A watched pot...",
-            "second": "...never boils."
-          },
-          "silverLining": {
-            "first": "Every cloud has...",
-            "second": "...a silver lining."
-          },
-          "earlyBird": {
-            "first": "Early to bed, early to rise...",
-            "second": "...makes a man healthy, wealthy, and wise."
-          },
-          "tooManyCooks": {
-            "first": "Too many cooks...",
-            "second": "...spoil the broth."
-          },
-          "honesty": {
-            "first": "Honesty is...",
-            "second": "...the best policy."
-          },
-          "absence": {
-            "first": "Absence makes...",
-            "second": "...the heart grow fonder."
-          },
-          "leapLook": {
-            "first": "Look before...",
-            "second": "...you leap."
-          },
-          "glass": {
-            "first": "People in glass houses...",
-            "second": "...shouldn't throw stones."
-          },
-          "betterLateThan": {
-            "first": "Better late...",
-            "second": "...than never."
-          },
-          "barking": {
-            "first": "His bark is worse...",
-            "second": "...than his bite."
-          },
-          "beautyEye": {
-            "first": "Beauty is in the eye...",
-            "second": "...of the beholder."
-          },
-          "bloodThicker": {
-            "first": "Blood is thicker...",
-            "second": "...than water."
-          },
-          "moneyRoot": {
-            "first": "Money is the root...",
-            "second": "...of all evil."
-          },
-          "noNews": {
-            "first": "No news is...",
-            "second": "...good news."
-          },
-          "spiltMilk": {
-            "first": "Don't cry over...",
-            "second": "...spilt milk."
-          },
-          "curiosity": {
-            "first": "Curiosity killed...",
-            "second": "...the cat."
-          },
-          "birdInHand": {
-            "first": "A bird in the hand...",
-            "second": "...is worth two in the bush."
-          },
-          "glitters": {
-            "first": "All that glitters...",
-            "second": "...is not gold."
-          },
-          "mightierSword": {
-            "first": "The pen is mightier...",
-            "second": "...than the sword."
-          },
-          "wholeWorld": {
-            "first": "It takes all sorts...",
-            "second": "...to make a world."
-          },
-          "goodThings": {
-            "first": "Good things come...",
-            "second": "...to those who wait."
-          },
-          "bedRise": {
-            "first": "You've made your bed...",
-            "second": "...now lie in it."
-          },
-          "leopardSpots": {
-            "first": "A leopard can't change...",
-            "second": "...its spots."
-          },
-          "homeIs": {
-            "first": "Home is where...",
-            "second": "...the heart is."
-          },
-          "knowledge": {
-            "first": "A little knowledge...",
-            "second": "...is a dangerous thing."
-          },
-          "biteHand": {
-            "first": "Don't bite the hand...",
-            "second": "...that feeds you."
-          },
-          "twoHeads": {
-            "first": "Two heads are...",
-            "second": "...better than one."
-          },
-          "journeyBegins": {
-            "first": "A journey of a thousand miles...",
-            "second": "...begins with a single step."
-          },
-          "fortuneBrave": {
-            "first": "Fortune favours...",
-            "second": "...the brave."
-          }
-        }
-      },
-      "gentleQuiz": {
-        "title": "Gentle Quiz",
-        "description": "Fun questions with no wrong answers",
-        "correct": "That's right! Well done!",
-        "goodGuess": "Good guess! The answer is actually {{answer}}. Isn't that interesting?",
-        "q": {
-          "banana": "What colour is a banana?",
-          "moo": "What sound does a cow make?",
-          "bees": "What do bees make?",
-          "dogLegs": "How many legs does a dog have?",
-          "afterWinter": "What season comes after winter?",
-          "capitalFrance": "What is the capital of France?",
-          "umbrella": "What do you use to stay dry in the rain?",
-          "largestOcean": "What is the largest ocean in the world?",
-          "sky": "What colour is the sky on a clear day?",
-          "daysWeek": "How many days are in a week?"
-        },
-        "a": {
-          "yellow": "Yellow",
-          "blue": "Blue",
-          "red": "Red",
-          "green": "Green",
-          "cow": "Moo",
-          "dog": "Woof",
-          "cat": "Meow",
-          "bird": "Tweet",
-          "honey": "Honey",
-          "milk": "Milk",
-          "sugar": "Sugar",
-          "butter": "Butter",
-          "four": "Four",
-          "two": "Two",
-          "six": "Six",
-          "eight": "Eight",
-          "spring": "Spring",
-          "summer": "Summer",
-          "autumn": "Autumn",
-          "winter": "Winter",
-          "paris": "Paris",
-          "london": "London",
-          "rome": "Rome",
-          "berlin": "Berlin",
-          "stayingDry": "An umbrella",
-          "cooking": "Cooking",
-          "writing": "Writing",
-          "driving": "Driving",
-          "pacific": "Pacific Ocean",
-          "atlantic": "Atlantic Ocean",
-          "indian": "Indian Ocean",
-          "arctic": "Arctic Ocean",
-          "seven": "Seven",
-          "five": "Five"
-        }
-      },
-      "photoPairs": {
-        "title": "Photo Pairs",
-        "description": "Find matching pairs of pictures",
-        "pairsFound": "{{found}} of {{total}} pairs found",
-        "themes": {
-          "flowers": "Beautiful Flowers",
-          "animals": "Friendly Animals",
-          "food": "Tasty Treats",
-          "nature": "Nature",
-          "seasons": "Four Seasons"
-        },
-        "items": {
-          "rose": "Rose",
-          "sunflower": "Sunflower",
-          "tulip": "Tulip",
-          "blossom": "Blossom",
-          "cat": "Cat",
-          "dog": "Dog",
-          "rabbit": "Rabbit",
-          "bird": "Bird",
-          "apple": "Apple",
-          "cake": "Cake",
-          "bread": "Bread",
-          "cupcake": "Cupcake",
-          "tree": "Tree",
-          "rainbow": "Rainbow",
-          "star": "Star",
-          "sun": "Sun",
-          "spring": "Spring",
-          "summer": "Summer",
-          "autumn": "Autumn",
-          "winter": "Winter"
-        }
-      },
       "wordSearch": {
         "title": "Cuardach Focal",
         "description": "Aimsigh focail i bhfolach sa ghreille",
@@ -579,6 +322,263 @@
         "yourTurn": "Do sheal!",
         "sequenceLength": "Seicheamh: {{length}}",
         "greatMemory": "Cuimhne iontach!"
+      },
+      "proverbs": {
+        "title": "Seanfhocail & Nathanna",
+        "description": "Comhlánaigh frásaí coitianta",
+        "instruction": "An féidir leat an seanfhocal seo a chríochnú?",
+        "reveal": "Beartaigh chun a nochtadh",
+        "youKnowIt": "Tá aithne agat air seo!",
+        "items": {
+          "stitch": {
+            "first": "Stiall in am...",
+            "second": "...sábhálann naoi."
+          },
+          "bird": {
+            "first": "An t-éan luath...",
+            "second": "...beireann sé ar an bhéim."
+          },
+          "apple": {
+            "first": "Úll sa lá...",
+            "second": "...coinníonn sé an dochtúir ar shiúl."
+          },
+          "actions": {
+            "first": "Labhraíonn gníomhartha níos airde...",
+            "second": "...ná focail."
+          },
+          "penny": {
+            "first": "Pingin sábháilte...",
+            "second": "...is pingin tuillte."
+          },
+          "rome": {
+            "first": "Níor tógadh an Róimh...",
+            "second": "...i lá amháin."
+          },
+          "rolling": {
+            "first": "Cloch reatha...",
+            "second": "...ní bhailíonn sí caonach."
+          },
+          "twoBirds": {
+            "first": "Maraigh dhá éan...",
+            "second": "...le haon chloch amháin."
+          },
+          "catAway": {
+            "first": "Nuair a bhíonn an cat as láthair...",
+            "second": "...imreoidh na lucha."
+          },
+          "bestMedicine": {
+            "first": "Is é gáire...",
+            "second": "...an leigheas is fearr."
+          },
+          "practice": {
+            "first": "Déanann cleachtadh...",
+            "second": "...foirfe."
+          },
+          "lookedPot": {
+            "first": "Pota faire...",
+            "second": "...ní fhiuchann sé riamh."
+          },
+          "silverLining": {
+            "first": "Tá líne airgid ag gach scamall...",
+            "second": "...líne airgid."
+          },
+          "earlyBird": {
+            "first": "Go luath a chodladh, go luath a éirí...",
+            "second": "...déanann sé fear sláintiúil, saibhir, agus críonna."
+          },
+          "tooManyCooks": {
+            "first": "An iomarca cócaire...",
+            "second": "...millfidh siad an anraith."
+          },
+          "honesty": {
+            "first": "Is í an macántacht...",
+            "second": "...an beartas is fearr."
+          },
+          "absence": {
+            "first": "Déanann neamhláithreacht...",
+            "second": "...an croí níos geanaí."
+          },
+          "leapLook": {
+            "first": "Féach sula...",
+            "second": "...léimeann tú."
+          },
+          "glass": {
+            "first": "Daoine i dtithe gloine...",
+            "second": "...níor chóir dóibh clocha a chaitheamh."
+          },
+          "betterLateThan": {
+            "first": "Níos fearr déanach...",
+            "second": "...ná riamh."
+          },
+          "barking": {
+            "first": "Tá a choirt níos measa...",
+            "second": "...ná a ghreim."
+          },
+          "beautyEye": {
+            "first": "Tá an áilleacht i súil...",
+            "second": "...an té a fheiceann."
+          },
+          "bloodThicker": {
+            "first": "Tá fuil níos tiubha...",
+            "second": "...ná uisce."
+          },
+          "moneyRoot": {
+            "first": "Is é airgead fréamh...",
+            "second": "...gach olc."
+          },
+          "noNews": {
+            "first": "Gan nuacht is...",
+            "second": "...dea-nuacht."
+          },
+          "spiltMilk": {
+            "first": "Ná caoin thar...",
+            "second": "...bainne doirte."
+          },
+          "curiosity": {
+            "first": "Mharaigh fiosracht...",
+            "second": "...an cat."
+          },
+          "birdInHand": {
+            "first": "Éan sa lámh...",
+            "second": "...is fiú dhá cheann sa tor."
+          },
+          "glitters": {
+            "first": "Gach a lonraíonn...",
+            "second": "...ní hionann é agus ór."
+          },
+          "mightierSword": {
+            "first": "Tá an peann níos cumhachtaí...",
+            "second": "...ná an claíomh."
+          },
+          "wholeWorld": {
+            "first": "Tógann sé gach cineál...",
+            "second": "...chun domhan a dhéanamh."
+          },
+          "goodThings": {
+            "first": "Tagann rudaí maithe...",
+            "second": "...chuig iad siúd a fhanann."
+          },
+          "bedRise": {
+            "first": "Tá do leaba déanta agat...",
+            "second": "...anois luigh inti."
+          },
+          "leopardSpots": {
+            "first": "Ní féidir le liopard a athrú...",
+            "second": "...a spotaí."
+          },
+          "homeIs": {
+            "first": "Is é an baile an áit a bhfuil...",
+            "second": "...an croí."
+          },
+          "knowledge": {
+            "first": "Beagán eolais...",
+            "second": "...is rud contúirteach é."
+          },
+          "biteHand": {
+            "first": "Ná greim an lámh...",
+            "second": "...a bheathaíonn tú."
+          },
+          "twoHeads": {
+            "first": "Tá dhá cheann...",
+            "second": "...níos fearr ná ceann amháin."
+          },
+          "journeyBegins": {
+            "first": "Tosaíonn turas míle míle...",
+            "second": "...le céim amháin."
+          },
+          "fortuneBrave": {
+            "first": "Is fearr an t-ádh le...",
+            "second": "...na cróga."
+          }
+        }
+      },
+      "gentleQuiz": {
+        "title": "Tráth na gCeist Éadrom",
+        "description": "Ceisteanna spraíúla gan freagraí míchearta",
+        "correct": "Sin é! Maith thú!",
+        "goodGuess": "Buille faoi thuairim maith! Is é {{answer}} an freagra i ndáiríre. Nach suimiúil é sin?",
+        "q": {
+          "banana": "Cén dath atá ar bhanana?",
+          "moo": "Cén fhuaim a dhéanann bó?",
+          "bees": "Cad a dhéanann beacha?",
+          "dogLegs": "Cé mhéad cos atá ag madra?",
+          "afterWinter": "Cén séasúr a thagann i ndiaidh an gheimhridh?",
+          "capitalFrance": "Cad é príomhchathair na Fraince?",
+          "umbrella": "Cad a úsáideann tú chun fanacht tirim sa bháisteach?",
+          "largestOcean": "Cad é an t-aigéan is mó ar domhan?",
+          "sky": "Cén dath atá ar an spéir ar lá geal?",
+          "daysWeek": "Cé mhéad lá atá i seachtain?"
+        },
+        "a": {
+          "yellow": "Buí",
+          "blue": "Gorm",
+          "red": "Dearg",
+          "green": "Glas",
+          "cow": "Mú",
+          "dog": "Vúf",
+          "cat": "Míáú",
+          "bird": "Fíof",
+          "honey": "Mil",
+          "milk": "Bainne",
+          "sugar": "Siúcra",
+          "butter": "Im",
+          "four": "Ceathair",
+          "two": "Dhá",
+          "six": "Sé",
+          "eight": "Ocht",
+          "spring": "Earrach",
+          "summer": "Samhradh",
+          "autumn": "Fómhar",
+          "winter": "An Geimhreadh",
+          "paris": "Páras",
+          "london": "Londain",
+          "rome": "An Róimh",
+          "berlin": "Beirlín",
+          "stayingDry": "Scáth fearthainne",
+          "cooking": "Cócaireacht",
+          "writing": "Scríbhneoireacht",
+          "driving": "Tiomáint",
+          "pacific": "An tAigéan Ciúin",
+          "atlantic": "An tAigéan Atlantach",
+          "indian": "An tAigéan Indiach",
+          "arctic": "An tAigéan Artach",
+          "seven": "Seacht",
+          "five": "Cúig"
+        }
+      },
+      "photoPairs": {
+        "title": "Péirí Grianghraf",
+        "description": "Faigh péirí comhfhreagracha de phictiúir",
+        "pairsFound": "{{found}} as {{total}} péirí aimsithe",
+        "themes": {
+          "flowers": "Bláthanna Áille",
+          "animals": "Ainmhithe Cairdiúla",
+          "food": "Milisáin Bhlasta",
+          "nature": "Nádúr",
+          "seasons": "Ceithre Shéasúr"
+        },
+        "items": {
+          "rose": "Rós",
+          "sunflower": "Lus na Gréine",
+          "tulip": "Tiúilip",
+          "blossom": "Bláth",
+          "cat": "Cat",
+          "dog": "Madra",
+          "rabbit": "Coinín",
+          "bird": "Éan",
+          "apple": "Úll",
+          "cake": "Cáca",
+          "bread": "Arán",
+          "cupcake": "Cáca beag",
+          "tree": "Crann",
+          "rainbow": "Bogha báistí",
+          "star": "Réalta",
+          "sun": "Grian",
+          "spring": "An tEarrach",
+          "summer": "An Samhradh",
+          "autumn": "An Fómhar",
+          "winter": "An Geimhreadh"
+        }
       }
     },
     "careCode": {
