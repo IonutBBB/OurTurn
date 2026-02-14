@@ -223,6 +223,16 @@
       "hintPlaceholder": "Bijv. Uw pillen bevinden zich in de pillendoos op het aanrecht in de keuken",
       "taskPlaceholder": "bijv. Ochtendmedicatie",
       "recurrence": "Herhaalt",
+      "allDays": "Alle",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
       "daily": "Elke dag",
       "specificDays": "Specifieke dagen",
       "oneTime": "Eenmalig",
@@ -242,6 +252,8 @@
       "instructions": "Instructies",
       "actions": "Acties",
       "syncNote": "Wijzigingen worden direct gesynchroniseerd met de app van {{name}}",
+      "patientCreated": "Added by {{name}}",
+      "hasPhoto": "Heeft foto",
       "taskPhoto": "Taakfoto (optioneel)",
       "uploadPhoto": "Foto uploaden",
       "removePhoto": "Foto verwijderen",
@@ -256,29 +268,11 @@
       "medItemLabel": "Medicatie {{number}}",
       "removeMedication": "Verwijderen",
       "maxMedications": "Maximaal 3 medicijnen per groep",
-      "uploadingPhoto": "Uploaden...",
-      "hasPhoto": "Heeft foto",
-      "allDays": "Alle",
-      "dayMon": "Ma",
-      "dayTue": "Di",
-      "dayWed": "Wo",
-      "dayThu": "Do",
-      "dayFri": "Vr",
-      "daySat": "Za",
-      "daySun": "Zo",
-      "days": {
-        "mon": "Mon",
-        "tue": "Tue",
-        "wed": "Wed",
-        "thu": "Thu",
-        "fri": "Fri",
-        "sat": "Sat",
-        "sun": "Sun"
-      },
-      "patientCreated": "Added by {{name}}"
+      "uploadingPhoto": "Uploaden..."
     },
     "location": {
       "title": "Locatie & Veiligheid",
+      "pageTitle": "Locatie & Veiligheid",
       "pageSubtitle": "Volg de locatie en beheer veilige zones voor gemoedsrust",
       "setupDesc": "Stel uw zorgprofiel in om locatiebepaling en veiligheidsfuncties in te schakelen.",
       "completeSetupFirst": "Voltooi eerst de installatie",
@@ -332,8 +326,7 @@
       "mapsApiInstructions": "Voeg <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> toe aan uw omgevingsvariabelen.",
       "saveFailed": "Het opslaan van de veilige zone is mislukt. Probeer het opnieuw.",
       "deleteSafeZoneConfirm": "Weet u zeker dat u deze veilige zone wilt verwijderen?",
-      "deleteFailed": "Het verwijderen van de veilige zone is mislukt. Probeer het opnieuw.",
-      "pageTitle": "Locatie & Veiligheid"
+      "deleteFailed": "Het verwijderen van de veilige zone is mislukt. Probeer het opnieuw."
     },
     "coach": {
       "title": "AI Zorgcoach",
@@ -751,6 +744,18 @@
         "disclaimer": "OurTurn is geen crisisdienst. Als iemand in direct gevaar is, bel dan de hulpdiensten."
       },
       "behaviours": {
+        "types": {
+          "aggression": "Agressie & Slaan",
+          "agitation": "Agitatie & Rusteloosheid",
+          "fall": "Val of Letsel",
+          "hallucinations": "Hallucinaties",
+          "refusing_care": "Zorg weigeren",
+          "repetitive_questions": "Herhalende vragen",
+          "shadowing": "Volgen & Vastklampen",
+          "sleep_disruption": "Slaapverstoring",
+          "sundowning": "Avondverwardheid",
+          "wandering": "Dwalen & Weglopen"
+        },
         "playbooks": {
           "title": "Gedraag je Playbooks",
           "subtitle": "Tik op een gedrag voor stapsgewijze begeleiding over wat je nu moet doen.",
@@ -809,18 +814,6 @@
           "analyse": "Patronen analyseren",
           "analysing": "Analyseren...",
           "notEnoughData": "Registreer nog een paar incidenten om patroonanalyse te ontgrendelen. Na 5+ incidenten zullen trends in timing, triggers en strategieën naar voren komen."
-        },
-        "types": {
-          "aggression": "Agressie & Slaan",
-          "agitation": "Agitatie & Rusteloosheid",
-          "fall": "Val of Letsel",
-          "hallucinations": "Hallucinaties",
-          "refusing_care": "Zorg weigeren",
-          "repetitive_questions": "Herhalende vragen",
-          "shadowing": "Volgen & Vastklampen",
-          "sleep_disruption": "Slaapverstoring",
-          "sundowning": "Avondverwardheid",
-          "wandering": "Dwalen & Weglopen"
         }
       },
       "network": {
@@ -964,25 +957,6 @@
       "optional": "optioneel",
       "required": "vereist",
       "selectRelationship": "Selecteer relatie",
-      "relationships": {
-        "mother": "Moeder",
-        "father": "Vader",
-        "spouse": "Echtgenoot/Echtgenote",
-        "grandmother": "Grootmoeder",
-        "grandfather": "Grootvader",
-        "sibling": "Broer/Zus",
-        "friend": "Vriend/Vriendin",
-        "other": "Anders"
-      },
-      "dementiaTypes": {
-        "alzheimers": "Alzheimer",
-        "vascular": "Vasculair",
-        "lewyBody": "Lewy Body",
-        "frontotemporal": "Frontotemporaal",
-        "mixed": "Gemengd",
-        "other": "Anders",
-        "notSure": "Weet ik niet zeker / zeg ik liever niet"
-      },
       "selectCountry": "Selecteer land",
       "namePlaceholder": "Uw naam",
       "firstNamePlaceholder": "Voornaam",
@@ -1020,6 +994,25 @@
         "lunch": "Lunch",
         "dinner": "Diner",
         "eveningMedication": "Avondmedicatie"
+      },
+      "relationships": {
+        "mother": "Moeder",
+        "father": "Vader",
+        "spouse": "Echtgenoot/Echtgenote",
+        "grandmother": "Grootmoeder",
+        "grandfather": "Grootvader",
+        "sibling": "Broer/Zus",
+        "friend": "Vriend/Vriendin",
+        "other": "Anders"
+      },
+      "dementiaTypes": {
+        "alzheimers": "Alzheimer",
+        "vascular": "Vasculair",
+        "lewyBody": "Lewy Body",
+        "frontotemporal": "Frontotemporaal",
+        "mixed": "Gemengd",
+        "other": "Anders",
+        "notSure": "Weet ik niet zeker / zeg ik liever niet"
       }
     },
     "settings": {
@@ -1195,13 +1188,13 @@
       "addContact": "Contactpersoon toevoegen",
       "contactName": "Naam contactpersoon",
       "contactPhone": "Telefoonnummer",
+      "contactPhonePlaceholder": "+1 555 123 4567",
       "contactRelationship": "Relatie",
       "contactRelationshipPlaceholder": "bijv. Dochter, buur, dokter",
       "noContactsYet": "Nog geen contactpersonen voor noodgevallen toegevoegd. We raden aan er minstens één toe te voegen.",
       "savingContacts": "Opslaan...",
       "saveContacts": "Contactpersonen opslaan",
-      "removeContactConfirm": "Deze contactpersoon voor noodgevallen verwijderen?",
-      "contactPhonePlaceholder": "+1 555 123 4567"
+      "removeContactConfirm": "Deze contactpersoon voor noodgevallen verwijderen?"
     },
     "auth": {
       "login": "Inloggen",
@@ -1282,6 +1275,18 @@
         "title": "Wat gebeurt er?",
         "urgent": "URGENT"
       },
+      "scenarioLabels": {
+        "agitated": "Geagiteerd / Van streek",
+        "wandering": "Dwalen / Vermist",
+        "refusing": "Weigert zorg",
+        "hallucinations": "Ziet / Hoort dingen",
+        "sundowning": "Avondverwarring",
+        "fall": "Val / Fysieke noodgeval",
+        "repetitive_questions": "Herhalende vragen",
+        "sleep_disruption": "Slaapstoornis",
+        "aggression": "Agressie",
+        "shadowing": "Constant volgen"
+      },
       "remote": {
         "noLocation": "Locatie niet beschikbaar",
         "switchPrompt": "Moet je iemand begeleiden die WEL bij {{name}} is?",
@@ -1321,6 +1326,10 @@
         "timePattern": "Afleveringen vinden meestal plaats in de {{time}}.",
         "weekCount": "{{count}} gebeurtenissen deze week."
       },
+      "quickLog": {
+        "button": "Log een crisismoment",
+        "title": "Log een crisismoment"
+      },
       "logger": {
         "title": "Log deze aflevering",
         "subtitle": "Snelle notities helpen patronen te ontdekken.",
@@ -1338,23 +1347,7 @@
       "email": "E-mail",
       "website": "Website",
       "visitWebsite": "Bezoek website",
-      "callNow": "Bel nu",
-      "quickLog": {
-        "button": "Log een crisismoment",
-        "title": "Log een crisismoment"
-      },
-      "scenarioLabels": {
-        "agitated": "Geagiteerd / Van streek",
-        "wandering": "Dwalen / Vermist",
-        "refusing": "Weigert zorg",
-        "hallucinations": "Ziet / Hoort dingen",
-        "sundowning": "Avondverwarring",
-        "fall": "Val / Fysieke noodgeval",
-        "repetitive_questions": "Herhalende vragen",
-        "sleep_disruption": "Slaapstoornis",
-        "aggression": "Agressie",
-        "shadowing": "Constant volgen"
-      }
+      "callNow": "Bel nu"
     },
     "legal": {
       "privacy": {
@@ -1643,10 +1636,14 @@
         "freePrice": "£0",
         "freePriceNote": "voor altijd",
         "plusTitle": "OurTurn Plus",
-        "plusPrice": "£9.99",
-        "plusPriceNote": "per maand",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "per month",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "per year",
+        "plusAnnualSavings": "Save 33%",
         "plusBadge": "Aanbevolen",
         "trialNotice": "14 dagen gratis. Geen creditcard nodig.",
+        "familyPlanNote": "One subscription covers your whole family",
         "freeFeat1": "Dagelijks zorgplan (maximaal 5 taken)",
         "freeFeat2": "Basis check-ins",
         "freeFeat3": "1 familielid",
@@ -1657,13 +1654,7 @@
         "plusFeat4": "Onbeperkte Familiecirkel",
         "plusFeat5": "Welzijnstools voor mantelzorgers",
         "plusFeat6": "Doktersbezoekrapporten",
-        "plusFeat7": "Prioriteitssupport",
-        "plusPriceMonthly": "£9.99",
-        "plusPriceMonthlyNote": "per month",
-        "plusPriceAnnual": "£79.99",
-        "plusPriceAnnualNote": "per year",
-        "plusAnnualSavings": "Save 33%",
-        "familyPlanNote": "One subscription covers your whole family"
+        "plusFeat7": "Prioriteitssupport"
       },
       "faq": {
         "title": "Vragen & antwoorden",

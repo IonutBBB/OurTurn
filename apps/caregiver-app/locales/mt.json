@@ -27,6 +27,8 @@
     "saving": "Qed jissejvja...",
     "primary": "Primarju",
     "caregiver": "Min jieħu ħsieb",
+    "someone": "Someone",
+    "yourLovedOne": "your loved one",
     "placeholders": {
       "timeFormat": "HH:MM",
       "dateFormat": "YYYY-MM-DD",
@@ -98,6 +100,7 @@
       "daily": "Kuljum",
       "specificDays": "Ġranet speċifiċi",
       "oneTime": "Darba",
+      "oneTimeDate": "Date",
       "copyDay": "Ikkopja għal ġranet oħra",
       "saved": "Issejvjat",
       "noTasks": "Għad m'hemmx kompiti. Żid l-ewwel kompitu tiegħek biex tibda.",
@@ -105,6 +108,7 @@
       "taskTitle": "Titlu tal-kompitu",
       "time": "Ħin",
       "deleteConfirm": "Ħassar dan il-kompitu?",
+      "patientCreated": "Added by {{name}}",
       "noMoreSuggestions": "M'hemmx aktar suġġerimenti disponibbli.",
       "copyFromTo": "Ikkopja kompiti minn {{day}} għal:",
       "copyCount": "{{taskCount}} kompiti se jiġu kkupjati għal {{dayCount}} jum/ġranet",
@@ -854,7 +858,9 @@
       "dailySchedule": "Skeda ta' Kuljum",
       "dailyScheduleDesc": "Issettja l-ħinijiet tal-qawmien u l-irqad għar-rutina tal-persuna maħbuba tiegħek.",
       "wakeTime": "Ħin tal-Qawmien",
+      "wakeTimePlaceholder": "07:00",
       "sleepTime": "Ħin tal-Irqad",
+      "sleepTimePlaceholder": "21:00",
       "savingSchedule": "Qed issalva...",
       "saveSchedule": "Salva l-Iskeda",
       "emergencyContacts": "Kuntatti ta' Emerġenza",
@@ -871,9 +877,7 @@
       "country": "Pajjiż",
       "selectCountry": "Agħżel pajjiż",
       "selectLanguage": "Agħżel lingwa",
-      "languageSaved": "Lingwa aġġornata",
-      "wakeTimePlaceholder": "07:00",
-      "sleepTimePlaceholder": "21:00"
+      "languageSaved": "Lingwa aġġornata"
     },
     "auth": {
       "login": "Idħol",
@@ -934,6 +938,8 @@
         "alertFamilyDesc": "Ibgħat notifika push lill-caregivers kollha",
         "alertFamilySent": "Membri tal-familja notifikati",
         "alertFamilyFailed": "Ma rnexxilx jinnotifika lill-familja. Jekk jogħġbok erġa' pprova.",
+        "crisisAlertTitle": "Crisis Alert",
+        "crisisAlertBody": "{{caregiverName}} needs help with {{patientName}}. Please check in.",
         "viewLocation": "Ara l-Post",
         "viewLocationDesc": "Ara l-post attwali ta' {{name}} fuq il-mappa",
         "contactPrimary": "Ikkuntattja lill-Caregiver Primarju",
@@ -1414,6 +1420,11 @@
     "subscribe": "Abbona",
     "restore": "Irrestawra x-Xiri",
     "manage": "Immaniġġja l-Abbonament",
+    "upgrade": "Upgrade to Plus",
+    "noOfferings": "Subscription plans are not available right now",
+    "checkoutError": "Could not start checkout. Please try again.",
+    "activating": "Activating your subscription...",
+    "manageViaStore": "Manage your subscription in your device's app store settings",
     "features": {
       "unlimitedTasks": "Kompiti illimitati kuljum",
       "aiCoach": "Kowċ tal-Kura AI Sħiħ",
@@ -1425,6 +1436,30 @@
       "reports": "Rapporti ta' żjarat tat-tabib",
       "toolkit": "Għodda u benessri tal-persuna li tieħu ħsieb",
       "priority": "Appoġġ prijoritarju"
+    },
+    "limits": {
+      "taskLimitReached": "You've reached the free plan limit of {{max}} tasks. Upgrade to add unlimited tasks.",
+      "aiMessageLimitReached": "You've used all {{max}} free AI Coach messages this month. Upgrade for unlimited conversations.",
+      "caregiverLimitReached": "Free plan includes 1 caregiver. Upgrade to invite up to 5 family members."
+    },
+    "contextualTrial": {
+      "title": "Try OurTurn Plus free for 14 days",
+      "tasks": "Add unlimited tasks to your loved one's care plan — free for 14 days",
+      "caregiver": "Invite unlimited family members to your care circle — free for 14 days",
+      "aiCoach": "Unlock unlimited AI coaching conversations — free for 14 days",
+      "safeZones": "Keep your loved one safe with location tracking & safe zones — free for 14 days",
+      "reports": "Generate professional doctor visit reports — free for 14 days",
+      "journal": "Access the shared Care Journal — free for 14 days",
+      "insights": "Get AI-powered behavioural insights — free for 14 days",
+      "wellbeing": "Access caregiver wellbeing tools — free for 14 days",
+      "startTrial": "Start free trial",
+      "noCardRequired": "No credit card required",
+      "maybeLater": "Maybe later"
+    },
+    "planToggle": {
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "saveBadge": "Save {{percent}}%"
     }
   }
 }

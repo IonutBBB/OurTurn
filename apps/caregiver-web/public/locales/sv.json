@@ -223,6 +223,16 @@
       "hintPlaceholder": "T.ex. Dina piller finns i pillret på köksbänken",
       "taskPlaceholder": "t.ex. Morgonmedicinering",
       "recurrence": "Upprepas",
+      "allDays": "Alla",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
       "daily": "Varje dag",
       "specificDays": "Specifika dagar",
       "oneTime": "En gång",
@@ -242,6 +252,8 @@
       "instructions": "Instruktioner",
       "actions": "Åtgärder",
       "syncNote": "Ändringar synkroniseras direkt till {{name}}s app",
+      "patientCreated": "Added by {{name}}",
+      "hasPhoto": "Har foto",
       "taskPhoto": "Uppgiftsfoto (valfritt)",
       "uploadPhoto": "Ladda upp foto",
       "removePhoto": "Ta bort foto",
@@ -256,29 +268,11 @@
       "medItemLabel": "Läkemedel {{number}}",
       "removeMedication": "Ta bort",
       "maxMedications": "Maximalt 3 läkemedel per grupp",
-      "uploadingPhoto": "Laddar upp...",
-      "hasPhoto": "Har foto",
-      "allDays": "Alla",
-      "dayMon": "Mån",
-      "dayTue": "Tis",
-      "dayWed": "Ons",
-      "dayThu": "Tor",
-      "dayFri": "Fre",
-      "daySat": "Lör",
-      "daySun": "Sön",
-      "days": {
-        "mon": "Mon",
-        "tue": "Tue",
-        "wed": "Wed",
-        "thu": "Thu",
-        "fri": "Fri",
-        "sat": "Sat",
-        "sun": "Sun"
-      },
-      "patientCreated": "Added by {{name}}"
+      "uploadingPhoto": "Laddar upp..."
     },
     "location": {
       "title": "Plats & Säkerhet",
+      "pageTitle": "Plats & Säkerhet",
       "pageSubtitle": "Spåra plats och hantera säkra zoner för sinnesfrid",
       "setupDesc": "Konfigurera din vårdprofil för att aktivera platsspårning och säkerhetsfunktioner.",
       "completeSetupFirst": "Slutför konfigurationen först",
@@ -332,8 +326,7 @@
       "mapsApiInstructions": "Lägg till <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> till dina miljövariabler.",
       "saveFailed": "Det gick inte att spara säker zon. Försök igen.",
       "deleteSafeZoneConfirm": "Är du säker på att du vill ta bort den här säkra zonen?",
-      "deleteFailed": "Det gick inte att ta bort säker zon. Försök igen.",
-      "pageTitle": "Plats & Säkerhet"
+      "deleteFailed": "Det gick inte att ta bort säker zon. Försök igen."
     },
     "coach": {
       "title": "AI Vårdcoach",
@@ -751,6 +744,18 @@
         "disclaimer": "OurTurn är inte en kristjänst. Om någon är i omedelbar fara, ring larmtjänsten."
       },
       "behaviours": {
+        "types": {
+          "aggression": "Aggression & Slag",
+          "agitation": "Agitation & Rastlöshet",
+          "fall": "Fall eller Skada",
+          "hallucinations": "Hallucinationer",
+          "refusing_care": "Vägrar vård",
+          "repetitive_questions": "Upprepande frågor",
+          "shadowing": "Skuggning & Klängighet",
+          "sleep_disruption": "Sömnstörningar",
+          "sundowning": "Kvällsoro",
+          "wandering": "Vandring & Utgångssökande"
+        },
         "playbooks": {
           "title": "Beteende Handböcker",
           "subtitle": "Tryck på ett beteende för steg-för-steg-vägledning om vad du ska göra just nu.",
@@ -809,18 +814,6 @@
           "analyse": "Analysera mönster",
           "analysing": "Analyserar...",
           "notEnoughData": "Logga några fler händelser för att låsa upp mönsteranalysen. Efter 5+ händelser kommer trender i tidpunkt, utlösare och strategier att framträda."
-        },
-        "types": {
-          "aggression": "Aggression & Slag",
-          "agitation": "Agitation & Rastlöshet",
-          "fall": "Fall eller Skada",
-          "hallucinations": "Hallucinationer",
-          "refusing_care": "Vägrar vård",
-          "repetitive_questions": "Upprepande frågor",
-          "shadowing": "Skuggning & Klängighet",
-          "sleep_disruption": "Sömnstörningar",
-          "sundowning": "Kvällsoro",
-          "wandering": "Vandring & Utgångssökande"
         }
       },
       "network": {
@@ -964,25 +957,6 @@
       "optional": "valfritt",
       "required": "obligatorisk",
       "selectRelationship": "Välj relation",
-      "relationships": {
-        "mother": "Mor",
-        "father": "Far",
-        "spouse": "Make/Maka",
-        "grandmother": "Farmor/Mormor",
-        "grandfather": "Farfar/Morfar",
-        "sibling": "Syskon",
-        "friend": "Vän",
-        "other": "Annan"
-      },
-      "dementiaTypes": {
-        "alzheimers": "Alzheimers",
-        "vascular": "Vaskulär",
-        "lewyBody": "Lewy Body",
-        "frontotemporal": "Frontotemporal",
-        "mixed": "Blandad",
-        "other": "Annan",
-        "notSure": "Osäker / vill inte svara"
-      },
       "selectCountry": "Välj land",
       "namePlaceholder": "Ditt namn",
       "firstNamePlaceholder": "Förnamn",
@@ -1020,6 +994,25 @@
         "lunch": "Lunch",
         "dinner": "Middag",
         "eveningMedication": "Kvällsmedicin"
+      },
+      "relationships": {
+        "mother": "Mor",
+        "father": "Far",
+        "spouse": "Make/Maka",
+        "grandmother": "Farmor/Mormor",
+        "grandfather": "Farfar/Morfar",
+        "sibling": "Syskon",
+        "friend": "Vän",
+        "other": "Annan"
+      },
+      "dementiaTypes": {
+        "alzheimers": "Alzheimers",
+        "vascular": "Vaskulär",
+        "lewyBody": "Lewy Body",
+        "frontotemporal": "Frontotemporal",
+        "mixed": "Blandad",
+        "other": "Annan",
+        "notSure": "Osäker / vill inte svara"
       }
     },
     "settings": {
@@ -1195,13 +1188,13 @@
       "addContact": "Lägg till kontakt",
       "contactName": "Kontaktens namn",
       "contactPhone": "Telefonnummer",
+      "contactPhonePlaceholder": "+1 555 123 4567",
       "contactRelationship": "Relation",
       "contactRelationshipPlaceholder": "t.ex. Dotter, granne, läkare",
       "noContactsYet": "Inga nödkontakter har lagts till ännu. Vi rekommenderar att du lägger till minst en.",
       "savingContacts": "Sparar...",
       "saveContacts": "Spara kontakter",
-      "removeContactConfirm": "Ta bort denna nödkontakt?",
-      "contactPhonePlaceholder": "+1 555 123 4567"
+      "removeContactConfirm": "Ta bort denna nödkontakt?"
     },
     "auth": {
       "login": "Logga in",
@@ -1282,6 +1275,18 @@
         "title": "Vad händer?",
         "urgent": "AKUT"
       },
+      "scenarioLabels": {
+        "agitated": "Agitated / Upset",
+        "wandering": "Wandering / Missing",
+        "refusing": "Refusing Care",
+        "hallucinations": "Seeing / Hearing Things",
+        "sundowning": "Sundowning / Evening Anxiety",
+        "fall": "Fall / Physical Emergency",
+        "repetitive_questions": "Repetitive Questions",
+        "sleep_disruption": "Sleep Disruption",
+        "aggression": "Aggression",
+        "shadowing": "Shadowing"
+      },
       "remote": {
         "noLocation": "Platsen är inte tillgänglig",
         "switchPrompt": "Behöver du vägleda någon som ÄR med {{name}}?",
@@ -1321,6 +1326,10 @@
         "timePattern": "Episoder tenderar att inträffa på {{time}}.",
         "weekCount": "{{count}} händelser denna vecka."
       },
+      "quickLog": {
+        "button": "Logga ett krisögonblick",
+        "title": "Logga ett krisögonblick"
+      },
       "logger": {
         "title": "Logga denna episod",
         "subtitle": "Snabba anteckningar hjälper till att upptäcka mönster.",
@@ -1338,23 +1347,7 @@
       "email": "E-posta",
       "website": "Webbsida",
       "visitWebsite": "Besök webbsida",
-      "callNow": "Ring nu",
-      "quickLog": {
-        "button": "Logga ett krisögonblick",
-        "title": "Logga ett krisögonblick"
-      },
-      "scenarioLabels": {
-        "agitated": "Agitated / Upset",
-        "wandering": "Wandering / Missing",
-        "refusing": "Refusing Care",
-        "hallucinations": "Seeing / Hearing Things",
-        "sundowning": "Sundowning / Evening Anxiety",
-        "fall": "Fall / Physical Emergency",
-        "repetitive_questions": "Repetitive Questions",
-        "sleep_disruption": "Sleep Disruption",
-        "aggression": "Aggression",
-        "shadowing": "Shadowing"
-      }
+      "callNow": "Ring nu"
     },
     "legal": {
       "privacy": {
@@ -1643,10 +1636,14 @@
         "freePrice": "£0",
         "freePriceNote": "för alltid",
         "plusTitle": "OurTurn Plus",
-        "plusPrice": "£9.99",
-        "plusPriceNote": "per månad",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "per month",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "per year",
+        "plusAnnualSavings": "Save 33%",
         "plusBadge": "Rekommenderas",
         "trialNotice": "Gratis i 14 dagar. Inget kreditkort behövs.",
+        "familyPlanNote": "One subscription covers your whole family",
         "freeFeat1": "Daglig vårdplan (upp till 5 uppgifter)",
         "freeFeat2": "Grundläggande incheckningar",
         "freeFeat3": "1 familjemedlem",
@@ -1657,13 +1654,7 @@
         "plusFeat4": "Obegränsad familjekrets",
         "plusFeat5": "Verktyg för vårdgivares välbefinnande",
         "plusFeat6": "Rapporter från läkarbesök",
-        "plusFeat7": "Prioriterad support",
-        "plusPriceMonthly": "£9.99",
-        "plusPriceMonthlyNote": "per month",
-        "plusPriceAnnual": "£79.99",
-        "plusPriceAnnualNote": "per year",
-        "plusAnnualSavings": "Save 33%",
-        "familyPlanNote": "One subscription covers your whole family"
+        "plusFeat7": "Prioriterad support"
       },
       "faq": {
         "title": "Frågor & svar",

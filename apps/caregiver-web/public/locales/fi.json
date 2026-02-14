@@ -223,6 +223,16 @@
       "hintPlaceholder": "Esim. Pillereitäsi on keittiön tiskipöydän pillerirasiassa",
       "taskPlaceholder": "esim. Aamu lääkitys",
       "recurrence": "Toistuu",
+      "allDays": "Kaikki",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
       "daily": "Joka päivä",
       "specificDays": "Tietyt päivät",
       "oneTime": "Yksi kerta",
@@ -242,6 +252,8 @@
       "instructions": "Ohjeet",
       "actions": "Toiminnot",
       "syncNote": "Muutokset synkronoidaan välittömästi {{name}}n sovellukseen",
+      "patientCreated": "Added by {{name}}",
+      "hasPhoto": "On valokuva",
       "taskPhoto": "Tehtävän valokuva (valinnainen)",
       "uploadPhoto": "Lataa valokuva",
       "removePhoto": "Poista valokuva",
@@ -256,29 +268,11 @@
       "medItemLabel": "Lääke {{number}}",
       "removeMedication": "Poista",
       "maxMedications": "Enintään 3 lääkettä per ryhmä",
-      "uploadingPhoto": "Ladataan...",
-      "hasPhoto": "On valokuva",
-      "allDays": "Kaikki",
-      "dayMon": "Ma",
-      "dayTue": "Ti",
-      "dayWed": "Ke",
-      "dayThu": "To",
-      "dayFri": "Pe",
-      "daySat": "La",
-      "daySun": "Su",
-      "days": {
-        "mon": "Mon",
-        "tue": "Tue",
-        "wed": "Wed",
-        "thu": "Thu",
-        "fri": "Fri",
-        "sat": "Sat",
-        "sun": "Sun"
-      },
-      "patientCreated": "Added by {{name}}"
+      "uploadingPhoto": "Ladataan..."
     },
     "location": {
       "title": "Sijainti ja turvallisuus",
+      "pageTitle": "Sijainti ja turvallisuus",
       "pageSubtitle": "Seuraa sijaintia ja hallitse turva-alueita mielenrauhan takaamiseksi",
       "setupDesc": "Määritä hoitoprofiilisi mahdollistaaksesi sijainnin seurannan ja turvallisuusominaisuudet.",
       "completeSetupFirst": "Viimeistele määritys ensin",
@@ -332,8 +326,7 @@
       "mapsApiInstructions": "Lisää <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> ympäristömuuttujiisi.",
       "saveFailed": "Turva-alueen tallentaminen epäonnistui. Yritä uudelleen.",
       "deleteSafeZoneConfirm": "Haluatko varmasti poistaa tämän turva-alueen?",
-      "deleteFailed": "Turva-alueen poistaminen epäonnistui. Yritä uudelleen.",
-      "pageTitle": "Sijainti ja turvallisuus"
+      "deleteFailed": "Turva-alueen poistaminen epäonnistui. Yritä uudelleen."
     },
     "coach": {
       "title": "AI-hoitovalmentaja",
@@ -751,6 +744,18 @@
         "disclaimer": "OurTurn ei ole kriisipalvelu. Jos joku on välittömässä vaarassa, soita hätänumeroon."
       },
       "behaviours": {
+        "types": {
+          "aggression": "Aggressio ja lyöminen",
+          "agitation": "Kiihtymys ja levottomuus",
+          "fall": "Kaatuminen tai loukkaantuminen",
+          "hallucinations": "Harha-aistimukset",
+          "refusing_care": "Hoidosta kieltäytyminen",
+          "repetitive_questions": "Toistuvat kysymykset",
+          "shadowing": "Varjostaminen ja takertuminen",
+          "sleep_disruption": "Unihäiriöt",
+          "sundowning": "Auringonlaskuoireyhtymä",
+          "wandering": "Harhailu ja poistumisen yrittäminen"
+        },
         "playbooks": {
           "title": "Käyttäytymisen käsikirjat",
           "subtitle": "Napauta käyttäytymistä saadaksesi vaiheittaiset ohjeet siitä, mitä tehdä juuri nyt.",
@@ -809,18 +814,6 @@
           "analyse": "Analysoi malleja",
           "analysing": "Analysoidaan...",
           "notEnoughData": "Kirjaa muutama tapaus lisää avataksesi mallianalyysin. Yli 5 tapauksen jälkeen alkaa ilmetä suuntauksia ajoituksessa, laukaisijoissa ja strategioissa."
-        },
-        "types": {
-          "aggression": "Aggressio ja lyöminen",
-          "agitation": "Kiihtymys ja levottomuus",
-          "fall": "Kaatuminen tai loukkaantuminen",
-          "hallucinations": "Harha-aistimukset",
-          "refusing_care": "Hoidosta kieltäytyminen",
-          "repetitive_questions": "Toistuvat kysymykset",
-          "shadowing": "Varjostaminen ja takertuminen",
-          "sleep_disruption": "Unihäiriöt",
-          "sundowning": "Auringonlaskuoireyhtymä",
-          "wandering": "Harhailu ja poistumisen yrittäminen"
         }
       },
       "network": {
@@ -964,25 +957,6 @@
       "optional": "valinnainen",
       "required": "pakollinen",
       "selectRelationship": "Valitse suhde",
-      "relationships": {
-        "mother": "Äiti",
-        "father": "Isä",
-        "spouse": "Puoliso",
-        "grandmother": "Isoäiti",
-        "grandfather": "Isoisä",
-        "sibling": "Sisar",
-        "friend": "Ystävä",
-        "other": "Muu"
-      },
-      "dementiaTypes": {
-        "alzheimers": "Alzheimerin tauti",
-        "vascular": "Vaskulaarinen dementia",
-        "lewyBody": "Lewyn kappale -tauti",
-        "frontotemporal": "Otsalohkodementia",
-        "mixed": "Sekoittunut",
-        "other": "Muu",
-        "notSure": "En ole varma / en halua sanoa"
-      },
       "selectCountry": "Valitse maa",
       "namePlaceholder": "Nimesi",
       "firstNamePlaceholder": "Etunimi",
@@ -1020,6 +994,25 @@
         "lunch": "Lounas",
         "dinner": "Illallinen",
         "eveningMedication": "Iltalääkitys"
+      },
+      "relationships": {
+        "mother": "Äiti",
+        "father": "Isä",
+        "spouse": "Puoliso",
+        "grandmother": "Isoäiti",
+        "grandfather": "Isoisä",
+        "sibling": "Sisar",
+        "friend": "Ystävä",
+        "other": "Muu"
+      },
+      "dementiaTypes": {
+        "alzheimers": "Alzheimerin tauti",
+        "vascular": "Vaskulaarinen dementia",
+        "lewyBody": "Lewyn kappale -tauti",
+        "frontotemporal": "Otsalohkodementia",
+        "mixed": "Sekoittunut",
+        "other": "Muu",
+        "notSure": "En ole varma / en halua sanoa"
       }
     },
     "settings": {
@@ -1195,13 +1188,13 @@
       "addContact": "Lisää yhteystieto",
       "contactName": "Yhteyshenkilön nimi",
       "contactPhone": "Puhelinnumero",
+      "contactPhonePlaceholder": "+1 555 123 4567",
       "contactRelationship": "Suhde",
       "contactRelationshipPlaceholder": "esim. Tytär, naapuri, lääkäri",
       "noContactsYet": "Hätäyhteystietoja ei ole vielä lisätty. Suosittelemme lisäämään vähintään yhden.",
       "savingContacts": "Tallennetaan...",
       "saveContacts": "Tallenna yhteystiedot",
-      "removeContactConfirm": "Poistetaanko tämä hätäyhteystieto?",
-      "contactPhonePlaceholder": "+1 555 123 4567"
+      "removeContactConfirm": "Poistetaanko tämä hätäyhteystieto?"
     },
     "auth": {
       "login": "Kirjaudu sisään",
@@ -1282,6 +1275,18 @@
         "title": "Mitä tapahtuu?",
         "urgent": "KIIREELLINEN"
       },
+      "scenarioLabels": {
+        "agitated": "Agitated / Upset",
+        "wandering": "Wandering / Missing",
+        "refusing": "Refusing Care",
+        "hallucinations": "Seeing / Hearing Things",
+        "sundowning": "Sundowning / Evening Anxiety",
+        "fall": "Fall / Physical Emergency",
+        "repetitive_questions": "Repetitive Questions",
+        "sleep_disruption": "Sleep Disruption",
+        "aggression": "Aggression",
+        "shadowing": "Shadowing"
+      },
       "remote": {
         "noLocation": "Sijainti ei ole käytettävissä",
         "switchPrompt": "Tarvitsetko ohjeita jollekin, joka ON {{name}}in kanssa?",
@@ -1321,6 +1326,10 @@
         "timePattern": "Jaksot tapahtuvat yleensä {{time}}.",
         "weekCount": "{{count}} tapahtumaa tällä viikolla."
       },
+      "quickLog": {
+        "button": "Kirjaa kriisihetki",
+        "title": "Kirjaa kriisihetki"
+      },
       "logger": {
         "title": "Kirjaa tämä jakso",
         "subtitle": "Pikaiset muistiinpanot auttavat havaitsemaan malleja.",
@@ -1338,23 +1347,7 @@
       "email": "Sähköposti",
       "website": "Verkkosivusto",
       "visitWebsite": "Vieraile verkkosivustolla",
-      "callNow": "Soita nyt",
-      "quickLog": {
-        "button": "Kirjaa kriisihetki",
-        "title": "Kirjaa kriisihetki"
-      },
-      "scenarioLabels": {
-        "agitated": "Agitated / Upset",
-        "wandering": "Wandering / Missing",
-        "refusing": "Refusing Care",
-        "hallucinations": "Seeing / Hearing Things",
-        "sundowning": "Sundowning / Evening Anxiety",
-        "fall": "Fall / Physical Emergency",
-        "repetitive_questions": "Repetitive Questions",
-        "sleep_disruption": "Sleep Disruption",
-        "aggression": "Aggression",
-        "shadowing": "Shadowing"
-      }
+      "callNow": "Soita nyt"
     },
     "legal": {
       "privacy": {
@@ -1643,10 +1636,14 @@
         "freePrice": "£0",
         "freePriceNote": "ikuisesti",
         "plusTitle": "OurTurn Plus",
-        "plusPrice": "£9.99",
-        "plusPriceNote": "kuukaudessa",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "per month",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "per year",
+        "plusAnnualSavings": "Save 33%",
         "plusBadge": "Suositeltu",
         "trialNotice": "Ilmainen 14 päivää. Luottokorttia ei tarvita.",
+        "familyPlanNote": "One subscription covers your whole family",
         "freeFeat1": "Päivittäinen hoitosuunnitelma (enintään 5 tehtävää)",
         "freeFeat2": "Perustarkistukset",
         "freeFeat3": "1 perheenjäsen",
@@ -1657,13 +1654,7 @@
         "plusFeat4": "Rajoittamaton perhepiiri",
         "plusFeat5": "Hoitajan hyvinvointityökalut",
         "plusFeat6": "Lääkärikäyntiraportit",
-        "plusFeat7": "Priorisoitu tuki",
-        "plusPriceMonthly": "£9.99",
-        "plusPriceMonthlyNote": "per month",
-        "plusPriceAnnual": "£79.99",
-        "plusPriceAnnualNote": "per year",
-        "plusAnnualSavings": "Save 33%",
-        "familyPlanNote": "One subscription covers your whole family"
+        "plusFeat7": "Priorisoitu tuki"
       },
       "faq": {
         "title": "Kysymyksiä ja vastauksia",

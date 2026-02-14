@@ -223,6 +223,16 @@
       "hintPlaceholder": "Z.B. Ihre Pillen befinden sich in der Pillendose auf der Küchenzeile",
       "taskPlaceholder": "z.B. Morgenmedikation",
       "recurrence": "Wiederholt sich",
+      "allDays": "Alle",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
       "daily": "Jeden Tag",
       "specificDays": "Bestimmte Tage",
       "oneTime": "Einmalig",
@@ -242,6 +252,8 @@
       "instructions": "Anweisungen",
       "actions": "Aktionen",
       "syncNote": "Änderungen werden sofort mit der App von {{name}} synchronisiert",
+      "patientCreated": "Added by {{name}}",
+      "hasPhoto": "Hat Foto",
       "taskPhoto": "Aufgabenfoto (optional)",
       "uploadPhoto": "Foto hochladen",
       "removePhoto": "Foto entfernen",
@@ -256,29 +268,11 @@
       "medItemLabel": "Medikament {{number}}",
       "removeMedication": "Entfernen",
       "maxMedications": "Maximal 3 Medikamente pro Gruppe",
-      "uploadingPhoto": "Wird hochgeladen...",
-      "hasPhoto": "Hat Foto",
-      "allDays": "Alle",
-      "dayMon": "Mo",
-      "dayTue": "Di",
-      "dayWed": "Mi",
-      "dayThu": "Do",
-      "dayFri": "Fr",
-      "daySat": "Sa",
-      "daySun": "So",
-      "days": {
-        "mon": "Mon",
-        "tue": "Tue",
-        "wed": "Wed",
-        "thu": "Thu",
-        "fri": "Fri",
-        "sat": "Sat",
-        "sun": "Sun"
-      },
-      "patientCreated": "Added by {{name}}"
+      "uploadingPhoto": "Wird hochgeladen..."
     },
     "location": {
       "title": "Standort & Sicherheit",
+      "pageTitle": "Standort & Sicherheit",
       "pageSubtitle": "Standort verfolgen und Sicherheitszonen verwalten für mehr Ruhe",
       "setupDesc": "Richten Sie Ihr Pflegeprofil ein, um die Standortverfolgung und Sicherheitsfunktionen zu aktivieren.",
       "completeSetupFirst": "Zuerst die Einrichtung abschließen",
@@ -332,8 +326,7 @@
       "mapsApiInstructions": "Fügen Sie <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> zu Ihren Umgebungsvariablen hinzu.",
       "saveFailed": "Sicherheitszone konnte nicht gespeichert werden. Bitte versuchen Sie es erneut.",
       "deleteSafeZoneConfirm": "Sind Sie sicher, dass Sie diese Sicherheitszone löschen möchten?",
-      "deleteFailed": "Sicherheitszone konnte nicht gelöscht werden. Bitte versuchen Sie es erneut.",
-      "pageTitle": "Standort & Sicherheit"
+      "deleteFailed": "Sicherheitszone konnte nicht gelöscht werden. Bitte versuchen Sie es erneut."
     },
     "coach": {
       "title": "KI-Pflegecoach",
@@ -1282,6 +1275,18 @@
         "title": "Was passiert gerade?",
         "urgent": "DRINGEND"
       },
+      "scenarioLabels": {
+        "agitated": "Aufgeregt / Aufgebracht",
+        "wandering": "Weglaufen / Vermisst",
+        "refusing": "Verweigert Pflege",
+        "hallucinations": "Sieht / Hört Dinge",
+        "sundowning": "Abenddämmerungssyndrom",
+        "fall": "Sturz / Körperlicher Notfall",
+        "repetitive_questions": "Wiederholende Fragen",
+        "sleep_disruption": "Schlafstörung",
+        "aggression": "Aggression",
+        "shadowing": "Ständiges Folgen"
+      },
       "remote": {
         "noLocation": "Standort nicht verfügbar",
         "switchPrompt": "Müssen Sie jemanden anleiten, der bei {{name}} IST?",
@@ -1342,19 +1347,7 @@
       "email": "E-Mail",
       "website": "Webseite",
       "visitWebsite": "Webseite besuchen",
-      "callNow": "Jetzt anrufen",
-      "scenarioLabels": {
-        "agitated": "Aufgeregt / Aufgebracht",
-        "wandering": "Weglaufen / Vermisst",
-        "refusing": "Verweigert Pflege",
-        "hallucinations": "Sieht / Hört Dinge",
-        "sundowning": "Abenddämmerungssyndrom",
-        "fall": "Sturz / Körperlicher Notfall",
-        "repetitive_questions": "Wiederholende Fragen",
-        "sleep_disruption": "Schlafstörung",
-        "aggression": "Aggression",
-        "shadowing": "Ständiges Folgen"
-      }
+      "callNow": "Jetzt anrufen"
     },
     "legal": {
       "privacy": {
@@ -1643,10 +1636,14 @@
         "freePrice": "0 €",
         "freePriceNote": "für immer",
         "plusTitle": "OurTurn Plus",
-        "plusPrice": "9,99 €",
-        "plusPriceNote": "pro Monat",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "per month",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "per year",
+        "plusAnnualSavings": "Save 33%",
         "plusBadge": "Empfohlen",
         "trialNotice": "14 Tage kostenlos. Keine Kreditkarte erforderlich.",
+        "familyPlanNote": "One subscription covers your whole family",
         "freeFeat1": "Täglicher Pflegeplan (bis zu 5 Aufgaben)",
         "freeFeat2": "Grundlegende Check-ins",
         "freeFeat3": "1 Familienmitglied",
@@ -1657,13 +1654,7 @@
         "plusFeat4": "Unbegrenzter Familienkreis",
         "plusFeat5": "Tools für das Wohlbefinden der pflegenden Person",
         "plusFeat6": "Berichte über Arztbesuche",
-        "plusFeat7": "Priorisierter Support",
-        "plusPriceMonthly": "£9.99",
-        "plusPriceMonthlyNote": "per month",
-        "plusPriceAnnual": "£79.99",
-        "plusPriceAnnualNote": "per year",
-        "plusAnnualSavings": "Save 33%",
-        "familyPlanNote": "One subscription covers your whole family"
+        "plusFeat7": "Priorisierter Support"
       },
       "faq": {
         "title": "Fragen & Antworten",

@@ -223,6 +223,16 @@
       "hintPlaceholder": "Np. Twoje leki są w pudełku na blacie kuchennym",
       "taskPlaceholder": "Np. Poranne leki",
       "recurrence": "Powtarza się",
+      "allDays": "Wszystkie",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
       "daily": "Codziennie",
       "specificDays": "Konkretne dni",
       "oneTime": "Jeden raz",
@@ -242,6 +252,8 @@
       "instructions": "Instrukcje",
       "actions": "Akcje",
       "syncNote": "Zmiany są natychmiast synchronizowane z aplikacją {{name}}",
+      "patientCreated": "Added by {{name}}",
+      "hasPhoto": "Ma zdjęcie",
       "taskPhoto": "Zdjęcie zadania (opcjonalne)",
       "uploadPhoto": "Prześlij zdjęcie",
       "removePhoto": "Usuń zdjęcie",
@@ -256,29 +268,11 @@
       "medItemLabel": "Lek {{number}}",
       "removeMedication": "Usuń",
       "maxMedications": "Maksymalnie 3 leki w grupie",
-      "uploadingPhoto": "Przesyłanie...",
-      "hasPhoto": "Ma zdjęcie",
-      "allDays": "Wszystkie",
-      "dayMon": "Pon",
-      "dayTue": "Wt",
-      "dayWed": "Śr",
-      "dayThu": "Czw",
-      "dayFri": "Pt",
-      "daySat": "Sob",
-      "daySun": "Ndz",
-      "days": {
-        "mon": "Mon",
-        "tue": "Tue",
-        "wed": "Wed",
-        "thu": "Thu",
-        "fri": "Fri",
-        "sat": "Sat",
-        "sun": "Sun"
-      },
-      "patientCreated": "Added by {{name}}"
+      "uploadingPhoto": "Przesyłanie..."
     },
     "location": {
       "title": "Lokalizacja i bezpieczeństwo",
+      "pageTitle": "Lokalizacja i bezpieczeństwo",
       "pageSubtitle": "Śledź lokalizację i zarządzaj bezpiecznymi strefami dla spokoju ducha",
       "setupDesc": "Skonfiguruj swój profil opieki, aby włączyć śledzenie lokalizacji i funkcje bezpieczeństwa.",
       "completeSetupFirst": "Najpierw zakończ konfigurację",
@@ -332,8 +326,7 @@
       "mapsApiInstructions": "Dodaj <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> do zmiennych środowiskowych.",
       "saveFailed": "Nie udało się zapisać bezpiecznej strefy. Spróbuj ponownie.",
       "deleteSafeZoneConfirm": "Czy na pewno chcesz usunąć tę bezpieczną strefę?",
-      "deleteFailed": "Nie udało się usunąć bezpiecznej strefy. Spróbuj ponownie.",
-      "pageTitle": "Lokalizacja i bezpieczeństwo"
+      "deleteFailed": "Nie udało się usunąć bezpiecznej strefy. Spróbuj ponownie."
     },
     "coach": {
       "title": "Trener Opieki AI",
@@ -751,6 +744,18 @@
         "disclaimer": "OurTurn nie jest usługą kryzysową. Jeśli ktoś jest w bezpośrednim niebezpieczeństwie, wezwij służby ratunkowe."
       },
       "behaviours": {
+        "types": {
+          "aggression": "Agresja i uderzanie",
+          "agitation": "Pobudzenie i niepokój",
+          "fall": "Upadek lub uraz",
+          "hallucinations": "Halucynacje",
+          "refusing_care": "Odmowa opieki",
+          "repetitive_questions": "Powtarzające się pytania",
+          "shadowing": "Podążanie i przylgnięcie",
+          "sleep_disruption": "Zaburzenia snu",
+          "sundowning": "Zespół zmierzchowy",
+          "wandering": "Wędrowanie i poszukiwanie wyjścia"
+        },
         "playbooks": {
           "title": "Scenariusze Zachowań",
           "subtitle": "Dotknij zachowania, aby uzyskać szczegółowe wskazówki, co robić w tej chwili.",
@@ -809,18 +814,6 @@
           "analyse": "Analizuj wzorce",
           "analysing": "Analizowanie...",
           "notEnoughData": "Zarejestruj jeszcze kilka zdarzeń, aby odblokować analizę wzorców. Po 5+ zdarzeniach pojawią się trendy w czasie, wyzwalaczach i strategiach."
-        },
-        "types": {
-          "aggression": "Agresja i uderzanie",
-          "agitation": "Pobudzenie i niepokój",
-          "fall": "Upadek lub uraz",
-          "hallucinations": "Halucynacje",
-          "refusing_care": "Odmowa opieki",
-          "repetitive_questions": "Powtarzające się pytania",
-          "shadowing": "Podążanie i przylgnięcie",
-          "sleep_disruption": "Zaburzenia snu",
-          "sundowning": "Zespół zmierzchowy",
-          "wandering": "Wędrowanie i poszukiwanie wyjścia"
         }
       },
       "network": {
@@ -964,25 +957,6 @@
       "optional": "opcjonalne",
       "required": "wymagane",
       "selectRelationship": "Wybierz pokrewieństwo",
-      "relationships": {
-        "mother": "Matka",
-        "father": "Ojciec",
-        "spouse": "Współmałżonek",
-        "grandmother": "Babcia",
-        "grandfather": "Dziadek",
-        "sibling": "Rodzeństwo",
-        "friend": "Przyjaciel",
-        "other": "Inne"
-      },
-      "dementiaTypes": {
-        "alzheimers": "Alzheimer",
-        "vascular": "Naczyniowa",
-        "lewyBody": "Ciałka Lewy'ego",
-        "frontotemporal": "Czołowo-skroniowa",
-        "mixed": "Mieszana",
-        "other": "Inne",
-        "notSure": "Nie jestem pewien / wolę nie mówić"
-      },
       "selectCountry": "Wybierz kraj",
       "namePlaceholder": "Twoje imię",
       "firstNamePlaceholder": "Imię",
@@ -1020,6 +994,25 @@
         "lunch": "Obiad",
         "dinner": "Kolacja",
         "eveningMedication": "Leki wieczorne"
+      },
+      "relationships": {
+        "mother": "Matka",
+        "father": "Ojciec",
+        "spouse": "Współmałżonek",
+        "grandmother": "Babcia",
+        "grandfather": "Dziadek",
+        "sibling": "Rodzeństwo",
+        "friend": "Przyjaciel",
+        "other": "Inne"
+      },
+      "dementiaTypes": {
+        "alzheimers": "Alzheimer",
+        "vascular": "Naczyniowa",
+        "lewyBody": "Ciałka Lewy'ego",
+        "frontotemporal": "Czołowo-skroniowa",
+        "mixed": "Mieszana",
+        "other": "Inne",
+        "notSure": "Nie jestem pewien / wolę nie mówić"
       }
     },
     "settings": {
@@ -1195,13 +1188,13 @@
       "addContact": "Dodaj kontakt",
       "contactName": "Imię kontaktu",
       "contactPhone": "Numer telefonu",
+      "contactPhonePlaceholder": "+1 555 123 4567",
       "contactRelationship": "Pokrewieństwo",
       "contactRelationshipPlaceholder": "np. Córka, sąsiad, lekarz",
       "noContactsYet": "Nie dodano jeszcze żadnych kontaktów alarmowych. Zalecamy dodanie co najmniej jednego.",
       "savingContacts": "Zapisywanie...",
       "saveContacts": "Zapisz kontakty",
-      "removeContactConfirm": "Usunąć ten kontakt alarmowy?",
-      "contactPhonePlaceholder": "+1 555 123 4567"
+      "removeContactConfirm": "Usunąć ten kontakt alarmowy?"
     },
     "auth": {
       "login": "Zaloguj się",
@@ -1282,6 +1275,18 @@
         "title": "Co się dzieje?",
         "urgent": "PILNE"
       },
+      "scenarioLabels": {
+        "agitated": "Pobudzony / Zdenerwowany",
+        "wandering": "Błądzenie / Zaginiony",
+        "refusing": "Odmawia opieki",
+        "hallucinations": "Widzi / Słyszy rzeczy",
+        "sundowning": "Zespół zachodzącego słońca",
+        "fall": "Upadek / Nagły wypadek",
+        "repetitive_questions": "Powtarzające się pytania",
+        "sleep_disruption": "Zaburzenia snu",
+        "aggression": "Agresja",
+        "shadowing": "Ciągłe podążanie"
+      },
       "remote": {
         "noLocation": "Lokalizacja niedostępna",
         "switchPrompt": "Potrzebujesz wskazówek dla kogoś, kto JEST z {{name}}?",
@@ -1321,6 +1326,10 @@
         "timePattern": "Epizody mają tendencję do występowania w {{time}}.",
         "weekCount": "{{count}} zdarzeń w tym tygodniu."
       },
+      "quickLog": {
+        "button": "Zapisz moment kryzysowy",
+        "title": "Zapisz moment kryzysowy"
+      },
       "logger": {
         "title": "Zarejestruj ten epizod",
         "subtitle": "Krótkie notatki pomagają dostrzec wzorce.",
@@ -1338,23 +1347,7 @@
       "email": "Email",
       "website": "Strona internetowa",
       "visitWebsite": "Odwiedź stronę internetową",
-      "callNow": "Zadzwoń teraz",
-      "quickLog": {
-        "button": "Zapisz moment kryzysowy",
-        "title": "Zapisz moment kryzysowy"
-      },
-      "scenarioLabels": {
-        "agitated": "Pobudzony / Zdenerwowany",
-        "wandering": "Błądzenie / Zaginiony",
-        "refusing": "Odmawia opieki",
-        "hallucinations": "Widzi / Słyszy rzeczy",
-        "sundowning": "Zespół zachodzącego słońca",
-        "fall": "Upadek / Nagły wypadek",
-        "repetitive_questions": "Powtarzające się pytania",
-        "sleep_disruption": "Zaburzenia snu",
-        "aggression": "Agresja",
-        "shadowing": "Ciągłe podążanie"
-      }
+      "callNow": "Zadzwoń teraz"
     },
     "legal": {
       "privacy": {
@@ -1643,10 +1636,14 @@
         "freePrice": "0 zł",
         "freePriceNote": "na zawsze",
         "plusTitle": "OurTurn Plus",
-        "plusPrice": "49,99 zł",
-        "plusPriceNote": "miesięcznie",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "per month",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "per year",
+        "plusAnnualSavings": "Save 33%",
         "plusBadge": "Rekomendowany",
         "trialNotice": "Bezpłatnie przez 14 dni. Karta kredytowa nie jest wymagana.",
+        "familyPlanNote": "One subscription covers your whole family",
         "freeFeat1": "Dzienny plan opieki (do 5 zadań)",
         "freeFeat2": "Podstawowe meldowanie się",
         "freeFeat3": "1 członek rodziny",
@@ -1657,13 +1654,7 @@
         "plusFeat4": "Nieograniczone Kręgi Rodzinne",
         "plusFeat5": "Narzędzia dla dobrego samopoczucia opiekuna",
         "plusFeat6": "Raporty z wizyt u lekarza",
-        "plusFeat7": "Priorytetowe wsparcie",
-        "plusPriceMonthly": "£9.99",
-        "plusPriceMonthlyNote": "per month",
-        "plusPriceAnnual": "£79.99",
-        "plusPriceAnnualNote": "per year",
-        "plusAnnualSavings": "Save 33%",
-        "familyPlanNote": "One subscription covers your whole family"
+        "plusFeat7": "Priorytetowe wsparcie"
       },
       "faq": {
         "title": "Pytania i odpowiedzi",

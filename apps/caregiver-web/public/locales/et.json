@@ -223,6 +223,16 @@
       "hintPlaceholder": "Nt Teie tabletid on köögilaua tabletikarbis",
       "taskPlaceholder": "nt Hommikune ravim",
       "recurrence": "Kordub",
+      "allDays": "Kõik",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
       "daily": "Iga päev",
       "specificDays": "Kindlad päevad",
       "oneTime": "Üks kord",
@@ -242,6 +252,8 @@
       "instructions": "Juhised",
       "actions": "Tegevused",
       "syncNote": "Muudatused sünkroonitakse kohe {{name}} rakendusega",
+      "patientCreated": "Added by {{name}}",
+      "hasPhoto": "On foto",
       "taskPhoto": "Ülesande foto (valikuline)",
       "uploadPhoto": "Laadi foto üles",
       "removePhoto": "Eemalda foto",
@@ -256,29 +268,11 @@
       "medItemLabel": "Ravim {{number}}",
       "removeMedication": "Eemalda",
       "maxMedications": "Maksimaalselt 3 ravimit grupi kohta",
-      "uploadingPhoto": "Üleslaadimine...",
-      "hasPhoto": "On foto",
-      "allDays": "Kõik",
-      "dayMon": "Esm",
-      "dayTue": "Tei",
-      "dayWed": "Kol",
-      "dayThu": "Nel",
-      "dayFri": "Ree",
-      "daySat": "Lau",
-      "daySun": "Püh",
-      "days": {
-        "mon": "Mon",
-        "tue": "Tue",
-        "wed": "Wed",
-        "thu": "Thu",
-        "fri": "Fri",
-        "sat": "Sat",
-        "sun": "Sun"
-      },
-      "patientCreated": "Added by {{name}}"
+      "uploadingPhoto": "Üleslaadimine..."
     },
     "location": {
       "title": "Asukoht ja ohutus",
+      "pageTitle": "Asukoht ja ohutus",
       "pageSubtitle": "Jälgige asukohta ja hallake turvatsoone, et tagada meelerahu",
       "setupDesc": "Asukoha jälgimise ja ohutusfunktsioonide lubamiseks seadistage oma hooldusprofiil.",
       "completeSetupFirst": "Esmalt lõpeta seadistamine",
@@ -332,8 +326,7 @@
       "mapsApiInstructions": "Lisage oma keskkonnamuutujatele <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code>.",
       "saveFailed": "Turvatsooni salvestamine ebaõnnestus. Proovige uuesti.",
       "deleteSafeZoneConfirm": "Kas olete kindel, et soovite selle turvatsooni kustutada?",
-      "deleteFailed": "Turvatsooni kustutamine ebaõnnestus. Proovige uuesti.",
-      "pageTitle": "Asukoht ja ohutus"
+      "deleteFailed": "Turvatsooni kustutamine ebaõnnestus. Proovige uuesti."
     },
     "coach": {
       "title": "AI hooldusnõustaja",
@@ -751,6 +744,18 @@
         "disclaimer": "OurTurn ei ole kriisiteenus. Kui keegi on otseses ohus, helista hädaabinumbril."
       },
       "behaviours": {
+        "types": {
+          "aggression": "Agressioon ja löömine",
+          "agitation": "Ärevus ja rahutus",
+          "fall": "Kukkumine või vigastus",
+          "hallucinations": "Hallutsinatsioonid",
+          "refusing_care": "Hoolduse keeldumine",
+          "repetitive_questions": "Korduvad küsimused",
+          "shadowing": "Varjutamine ja klammerdumine",
+          "sleep_disruption": "Une häired",
+          "sundowning": "Õhtune segadus",
+          "wandering": "Ekslemine ja väljapääsu otsimine"
+        },
         "playbooks": {
           "title": "Käitumise käsiraamatud",
           "subtitle": "Puuduta käitumist, et saada samm-sammult juhiseid, mida kohe teha.",
@@ -809,18 +814,6 @@
           "analyse": "Analüüsi mustreid",
           "analysing": "Analüüsimine...",
           "notEnoughData": "Logige mustrite analüüsi avamiseks veel mõned juhtumid. Pärast 5+ juhtumit ilmnevad suundumused ajastuse, käivitajate ja strateegiate osas."
-        },
-        "types": {
-          "aggression": "Agressioon ja löömine",
-          "agitation": "Ärevus ja rahutus",
-          "fall": "Kukkumine või vigastus",
-          "hallucinations": "Hallutsinatsioonid",
-          "refusing_care": "Hoolduse keeldumine",
-          "repetitive_questions": "Korduvad küsimused",
-          "shadowing": "Varjutamine ja klammerdumine",
-          "sleep_disruption": "Une häired",
-          "sundowning": "Õhtune segadus",
-          "wandering": "Ekslemine ja väljapääsu otsimine"
         }
       },
       "network": {
@@ -964,25 +957,6 @@
       "optional": "valikuline",
       "required": "nõutud",
       "selectRelationship": "Vali suhe",
-      "relationships": {
-        "mother": "Ema",
-        "father": "Isa",
-        "spouse": "Abikaasa",
-        "grandmother": "Vanaema",
-        "grandfather": "Vanaisa",
-        "sibling": "Õde/vend",
-        "friend": "Sõber",
-        "other": "Muu"
-      },
-      "dementiaTypes": {
-        "alzheimers": "Alzheimeri tõbi",
-        "vascular": "Vaskulaarne dementsus",
-        "lewyBody": "Lewy keha dementsus",
-        "frontotemporal": "Frontotemporaalne dementsus",
-        "mixed": "Segatüüpi",
-        "other": "Muu",
-        "notSure": "Ei ole kindel / ei soovi öelda"
-      },
       "selectCountry": "Valige riik",
       "namePlaceholder": "Teie nimi",
       "firstNamePlaceholder": "Eesnimi",
@@ -1020,6 +994,25 @@
         "lunch": "Lõunasöök",
         "dinner": "Õhtusöök",
         "eveningMedication": "Õhtused ravimid"
+      },
+      "relationships": {
+        "mother": "Ema",
+        "father": "Isa",
+        "spouse": "Abikaasa",
+        "grandmother": "Vanaema",
+        "grandfather": "Vanaisa",
+        "sibling": "Õde/vend",
+        "friend": "Sõber",
+        "other": "Muu"
+      },
+      "dementiaTypes": {
+        "alzheimers": "Alzheimeri tõbi",
+        "vascular": "Vaskulaarne dementsus",
+        "lewyBody": "Lewy keha dementsus",
+        "frontotemporal": "Frontotemporaalne dementsus",
+        "mixed": "Segatüüpi",
+        "other": "Muu",
+        "notSure": "Ei ole kindel / ei soovi öelda"
       }
     },
     "settings": {
@@ -1195,13 +1188,13 @@
       "addContact": "Lisa kontakt",
       "contactName": "Kontakti nimi",
       "contactPhone": "Telefoninumber",
+      "contactPhonePlaceholder": "+1 555 123 4567",
       "contactRelationship": "Suhe",
       "contactRelationshipPlaceholder": "nt Tütar, naaber, arst",
       "noContactsYet": "Ühtegi hädaabikontakti pole veel lisatud. Soovitame lisada vähemalt ühe.",
       "savingContacts": "Salvestamine...",
       "saveContacts": "Salvesta kontaktid",
-      "removeContactConfirm": "Eemalda see hädaabikontakt?",
-      "contactPhonePlaceholder": "+1 555 123 4567"
+      "removeContactConfirm": "Eemalda see hädaabikontakt?"
     },
     "auth": {
       "login": "Logi sisse",
@@ -1282,6 +1275,18 @@
         "title": "Mis toimub?",
         "urgent": "KIIRABI"
       },
+      "scenarioLabels": {
+        "agitated": "Agitated / Upset",
+        "wandering": "Wandering / Missing",
+        "refusing": "Refusing Care",
+        "hallucinations": "Seeing / Hearing Things",
+        "sundowning": "Sundowning / Evening Anxiety",
+        "fall": "Fall / Physical Emergency",
+        "repetitive_questions": "Repetitive Questions",
+        "sleep_disruption": "Sleep Disruption",
+        "aggression": "Aggression",
+        "shadowing": "Shadowing"
+      },
       "remote": {
         "noLocation": "Asukoht pole saadaval",
         "switchPrompt": "Kas on vaja juhendada kedagi, KES on koos {{name}}?",
@@ -1321,6 +1326,10 @@
         "timePattern": "Episoodid kipuvad juhtuma {{time}}.",
         "weekCount": "{{count}} sündmust sel nädalal."
       },
+      "quickLog": {
+        "button": "Logi kriisihetk",
+        "title": "Logi kriisihetk"
+      },
       "logger": {
         "title": "Logi see episood",
         "subtitle": "Kiired märkmed aitavad mustreid tuvastada.",
@@ -1338,23 +1347,7 @@
       "email": "E-post",
       "website": "Veebisait",
       "visitWebsite": "Külasta veebisaiti",
-      "callNow": "Helista kohe",
-      "quickLog": {
-        "button": "Logi kriisihetk",
-        "title": "Logi kriisihetk"
-      },
-      "scenarioLabels": {
-        "agitated": "Agitated / Upset",
-        "wandering": "Wandering / Missing",
-        "refusing": "Refusing Care",
-        "hallucinations": "Seeing / Hearing Things",
-        "sundowning": "Sundowning / Evening Anxiety",
-        "fall": "Fall / Physical Emergency",
-        "repetitive_questions": "Repetitive Questions",
-        "sleep_disruption": "Sleep Disruption",
-        "aggression": "Aggression",
-        "shadowing": "Shadowing"
-      }
+      "callNow": "Helista kohe"
     },
     "legal": {
       "privacy": {
@@ -1643,10 +1636,14 @@
         "freePrice": "£0",
         "freePriceNote": "igavesti",
         "plusTitle": "OurTurn Plus",
-        "plusPrice": "£9.99",
-        "plusPriceNote": "kuus",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "per month",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "per year",
+        "plusAnnualSavings": "Save 33%",
         "plusBadge": "Soovitatav",
         "trialNotice": "Tasuta 14 päeva. Krediitkaarti pole vaja.",
+        "familyPlanNote": "One subscription covers your whole family",
         "freeFeat1": "Igapäevane hooldusplaan (kuni 5 ülesannet)",
         "freeFeat2": "Põhilised sisseregistreerimised",
         "freeFeat3": "1 pereliige",
@@ -1657,13 +1654,7 @@
         "plusFeat4": "Piiramatu perekonnaring",
         "plusFeat5": "Hooldaja heaolu tööriistad",
         "plusFeat6": "Arstivisiitide aruanded",
-        "plusFeat7": "Prioriteetne tugi",
-        "plusPriceMonthly": "£9.99",
-        "plusPriceMonthlyNote": "per month",
-        "plusPriceAnnual": "£79.99",
-        "plusPriceAnnualNote": "per year",
-        "plusAnnualSavings": "Save 33%",
-        "familyPlanNote": "One subscription covers your whole family"
+        "plusFeat7": "Prioriteetne tugi"
       },
       "faq": {
         "title": "Küsimused ja vastused",

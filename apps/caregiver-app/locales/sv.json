@@ -27,6 +27,8 @@
     "saving": "Sparar...",
     "primary": "Primär",
     "caregiver": "Vårdgivare",
+    "someone": "Someone",
+    "yourLovedOne": "your loved one",
     "placeholders": {
       "timeFormat": "HH:MM",
       "dateFormat": "YYYY-MM-DD",
@@ -98,6 +100,7 @@
       "daily": "Varje dag",
       "specificDays": "Specifika dagar",
       "oneTime": "En gång",
+      "oneTimeDate": "Date",
       "copyDay": "Kopiera till andra dagar",
       "saved": "Sparad",
       "noTasks": "Inga uppgifter ännu. Lägg till din första uppgift för att komma igång.",
@@ -105,6 +108,7 @@
       "taskTitle": "Uppgiftstitel",
       "time": "Tid",
       "deleteConfirm": "Ta bort denna uppgift?",
+      "patientCreated": "Added by {{name}}",
       "noMoreSuggestions": "Inga fler förslag tillgängliga.",
       "copyFromTo": "Kopiera uppgifter från {{day}} till:",
       "copyCount": "{{taskCount}} uppgifter kommer att kopieras till {{dayCount}} dag(ar)",
@@ -227,13 +231,13 @@
       "saveForDoctorVisit": "Spara för läkarbesök",
       "success": "Lyckades",
       "suggestions": {
+        "stayEngaged": "Hur kan jag hjälpa {{name}} att hålla sig engagerad under dagen?",
         "sundowning": "Hur hanterar jag kvällsoro?",
+        "agitated": "{{name}} verkar orolig på kvällarna. Vad kan jag göra?",
         "rainyDays": "Vilka aktiviteter fungerar för regniga dagar?",
         "siblings": "Hjälp mig att prata med mina syskon om att dela på omsorgen",
         "refusesFood": "{{name}} vägrar att äta. Hjälp.",
-        "repetitive": "Hur hanterar jag repetitiva frågor?",
-        "stayEngaged": "Hur kan jag hjälpa {{name}} att hålla sig engagerad under dagen?",
-        "agitated": "{{name}} verkar orolig på kvällarna. Vad kan jag göra?"
+        "repetitive": "Hur hanterar jag repetitiva frågor?"
       },
       "hub": {
         "backToHub": "Tillbaka till Coachen",
@@ -854,7 +858,9 @@
       "dailySchedule": "Dagligt schema",
       "dailyScheduleDesc": "Ställ in tider för uppvaknande och sömn för din närståendes rutin.",
       "wakeTime": "Vakentid",
+      "wakeTimePlaceholder": "07:00",
       "sleepTime": "Sömntid",
+      "sleepTimePlaceholder": "21:00",
       "savingSchedule": "Sparar...",
       "saveSchedule": "Spara schema",
       "emergencyContacts": "Nödkontakter",
@@ -871,9 +877,7 @@
       "country": "Land",
       "selectCountry": "Välj land",
       "selectLanguage": "Välj språk",
-      "languageSaved": "Språk uppdaterat",
-      "wakeTimePlaceholder": "07:00",
-      "sleepTimePlaceholder": "21:00"
+      "languageSaved": "Språk uppdaterat"
     },
     "auth": {
       "login": "Logga in",
@@ -934,6 +938,8 @@
         "alertFamilyDesc": "Skicka push-meddelande till alla vårdgivare",
         "alertFamilySent": "Familjemedlemmar meddelade",
         "alertFamilyFailed": "Misslyckades med att meddela familjen. Vänligen försök igen.",
+        "crisisAlertTitle": "Crisis Alert",
+        "crisisAlertBody": "{{caregiverName}} needs help with {{patientName}}. Please check in.",
         "viewLocation": "Visa plats",
         "viewLocationDesc": "Se {{name}}s nuvarande plats på kartan",
         "contactPrimary": "Kontakta primär vårdgivare",
@@ -1414,6 +1420,11 @@
     "subscribe": "Prenumerera",
     "restore": "Återställ köp",
     "manage": "Hantera prenumeration",
+    "upgrade": "Upgrade to Plus",
+    "noOfferings": "Subscription plans are not available right now",
+    "checkoutError": "Could not start checkout. Please try again.",
+    "activating": "Activating your subscription...",
+    "manageViaStore": "Manage your subscription in your device's app store settings",
     "features": {
       "unlimitedTasks": "Obegränsat antal uppgifter per dag",
       "aiCoach": "Fullständig AI-vårdcoach",
@@ -1425,6 +1436,30 @@
       "reports": "Rapporter för läkarbesök",
       "toolkit": "Verktygslåda och välmående för vårdgivare",
       "priority": "Prioriterad support"
+    },
+    "limits": {
+      "taskLimitReached": "You've reached the free plan limit of {{max}} tasks. Upgrade to add unlimited tasks.",
+      "aiMessageLimitReached": "You've used all {{max}} free AI Coach messages this month. Upgrade for unlimited conversations.",
+      "caregiverLimitReached": "Free plan includes 1 caregiver. Upgrade to invite up to 5 family members."
+    },
+    "contextualTrial": {
+      "title": "Try OurTurn Plus free for 14 days",
+      "tasks": "Add unlimited tasks to your loved one's care plan — free for 14 days",
+      "caregiver": "Invite unlimited family members to your care circle — free for 14 days",
+      "aiCoach": "Unlock unlimited AI coaching conversations — free for 14 days",
+      "safeZones": "Keep your loved one safe with location tracking & safe zones — free for 14 days",
+      "reports": "Generate professional doctor visit reports — free for 14 days",
+      "journal": "Access the shared Care Journal — free for 14 days",
+      "insights": "Get AI-powered behavioural insights — free for 14 days",
+      "wellbeing": "Access caregiver wellbeing tools — free for 14 days",
+      "startTrial": "Start free trial",
+      "noCardRequired": "No credit card required",
+      "maybeLater": "Maybe later"
+    },
+    "planToggle": {
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "saveBadge": "Save {{percent}}%"
     }
   }
 }

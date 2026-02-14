@@ -122,18 +122,18 @@
       "opensCheckin": "Åbner den daglige indtjekningsskærm"
     },
     "activities": {
-      "title": "Aktiviteter",
-      "subtitle": "Vælg noget hyggeligt at lave",
+      "title": "Tankespil",
+      "subtitle": "Hold hjernen aktiv og hav det sjovt",
       "completed": "Fuldført",
-      "todaysActivities": "Dagens aktiviteter",
+      "todaysActivities": "Dagens spil",
       "exploreMore": "Udforsk mere"
     },
     "categories": {
-      "wordsLanguage": "Words & Language",
-      "memoryAttention": "Memory & Attention",
-      "logicReasoning": "Logic & Reasoning",
-      "knowledge": "Knowledge",
-      "numbers": "Numbers"
+      "wordsLanguage": "Ord & Sprog",
+      "memoryAttention": "Hukommelse & Opmærksomhed",
+      "logicReasoning": "Logik & Tænkning",
+      "knowledge": "Viden",
+      "numbers": "Tal"
     },
     "stim": {
       "common": {
@@ -145,11 +145,11 @@
         "allDoneToday": "Færdig for i dag!",
         "thankYouSharing": "Tak fordi du delte dine tanker!",
         "interesting": "Interessant!",
-        "correct": "That's right!",
-        "tryAgain": "Have another go!",
-        "hint": "Hint",
-        "round": "Round {{current}} of {{total}}",
-        "nextRound": "Next round"
+        "correct": "Det er rigtigt!",
+        "tryAgain": "Prøv en gang til!",
+        "hint": "Tip",
+        "round": "Runde {{current}} af {{total}}",
+        "nextRound": "Næste runde"
       },
       "wordAssociation": {
         "title": "Ordsammensætning",

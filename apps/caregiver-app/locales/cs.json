@@ -27,6 +27,8 @@
     "saving": "Ukládání...",
     "primary": "Hlavní",
     "caregiver": "Pečovatel",
+    "someone": "Someone",
+    "yourLovedOne": "your loved one",
     "placeholders": {
       "timeFormat": "HH:MM",
       "dateFormat": "YYYY-MM-DD",
@@ -98,6 +100,7 @@
       "daily": "Každý den",
       "specificDays": "Konkrétní dny",
       "oneTime": "Jednorázově",
+      "oneTimeDate": "Date",
       "copyDay": "Kopírovat do jiných dnů",
       "saved": "Uloženo",
       "noTasks": "Zatím žádné úkoly. Přidejte svůj první úkol, abyste mohli začít.",
@@ -105,6 +108,7 @@
       "taskTitle": "Název úkolu",
       "time": "Čas",
       "deleteConfirm": "Smazat tento úkol?",
+      "patientCreated": "Added by {{name}}",
       "noMoreSuggestions": "Žádné další návrhy nejsou k dispozici.",
       "copyFromTo": "Kopírovat úkoly z {{day}} do:",
       "copyCount": "{{taskCount}} úkolů bude zkopírováno do {{dayCount}} dne/dnů",
@@ -854,7 +858,9 @@
       "dailySchedule": "Denní rozvrh",
       "dailyScheduleDesc": "Nastavte časy probuzení a spánku pro denní rutinu vašeho blízkého.",
       "wakeTime": "Čas probuzení",
+      "wakeTimePlaceholder": "07:00",
       "sleepTime": "Čas spánku",
+      "sleepTimePlaceholder": "21:00",
       "savingSchedule": "Ukládám...",
       "saveSchedule": "Uložit rozvrh",
       "emergencyContacts": "Nouzové kontakty",
@@ -871,9 +877,7 @@
       "country": "Země",
       "selectCountry": "Vyberte zemi",
       "selectLanguage": "Vyberte jazyk",
-      "languageSaved": "Jazyk aktualizován",
-      "wakeTimePlaceholder": "07:00",
-      "sleepTimePlaceholder": "21:00"
+      "languageSaved": "Jazyk aktualizován"
     },
     "auth": {
       "login": "Přihlásit se",
@@ -934,6 +938,8 @@
         "alertFamilyDesc": "Odeslat push oznámení všem pečovatelům",
         "alertFamilySent": "Členové rodiny byli upozorněni",
         "alertFamilyFailed": "Nepodařilo se upozornit rodinu. Zkuste to prosím znovu.",
+        "crisisAlertTitle": "Crisis Alert",
+        "crisisAlertBody": "{{caregiverName}} needs help with {{patientName}}. Please check in.",
         "viewLocation": "Zobrazit polohu",
         "viewLocationDesc": "Zobrazit aktuální polohu {{name}} na mapě",
         "contactPrimary": "Kontaktovat primárního pečovatele",
@@ -1414,6 +1420,11 @@
     "subscribe": "Předplatit",
     "restore": "Obnovit nákup",
     "manage": "Spravovat předplatné",
+    "upgrade": "Upgrade to Plus",
+    "noOfferings": "Subscription plans are not available right now",
+    "checkoutError": "Could not start checkout. Please try again.",
+    "activating": "Activating your subscription...",
+    "manageViaStore": "Manage your subscription in your device's app store settings",
     "features": {
       "unlimitedTasks": "Neomezený počet úkolů denně",
       "aiCoach": "Plný AI pečovatelský kouč",
@@ -1425,6 +1436,30 @@
       "reports": "Zprávy pro návštěvy lékaře",
       "toolkit": "Sada nástrojů pro pečovatele a pohodu",
       "priority": "Prioritní podpora"
+    },
+    "limits": {
+      "taskLimitReached": "You've reached the free plan limit of {{max}} tasks. Upgrade to add unlimited tasks.",
+      "aiMessageLimitReached": "You've used all {{max}} free AI Coach messages this month. Upgrade for unlimited conversations.",
+      "caregiverLimitReached": "Free plan includes 1 caregiver. Upgrade to invite up to 5 family members."
+    },
+    "contextualTrial": {
+      "title": "Try OurTurn Plus free for 14 days",
+      "tasks": "Add unlimited tasks to your loved one's care plan — free for 14 days",
+      "caregiver": "Invite unlimited family members to your care circle — free for 14 days",
+      "aiCoach": "Unlock unlimited AI coaching conversations — free for 14 days",
+      "safeZones": "Keep your loved one safe with location tracking & safe zones — free for 14 days",
+      "reports": "Generate professional doctor visit reports — free for 14 days",
+      "journal": "Access the shared Care Journal — free for 14 days",
+      "insights": "Get AI-powered behavioural insights — free for 14 days",
+      "wellbeing": "Access caregiver wellbeing tools — free for 14 days",
+      "startTrial": "Start free trial",
+      "noCardRequired": "No credit card required",
+      "maybeLater": "Maybe later"
+    },
+    "planToggle": {
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "saveBadge": "Save {{percent}}%"
     }
   }
 }

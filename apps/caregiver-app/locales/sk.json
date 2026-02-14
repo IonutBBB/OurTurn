@@ -27,6 +27,8 @@
     "saving": "Ukladá sa...",
     "primary": "Hlavný",
     "caregiver": "Opatrovník",
+    "someone": "Someone",
+    "yourLovedOne": "your loved one",
     "placeholders": {
       "timeFormat": "HH:MM",
       "dateFormat": "YYYY-MM-DD",
@@ -98,6 +100,7 @@
       "daily": "Každý deň",
       "specificDays": "Konkrétne dni",
       "oneTime": "Jednorazovo",
+      "oneTimeDate": "Date",
       "copyDay": "Kopírovať do iných dní",
       "saved": "Uložené",
       "noTasks": "Zatiaľ žiadne úlohy. Pridajte svoju prvú úlohu, aby ste začali.",
@@ -105,6 +108,7 @@
       "taskTitle": "Názov úlohy",
       "time": "Čas",
       "deleteConfirm": "Vymazať túto úlohu?",
+      "patientCreated": "Added by {{name}}",
       "noMoreSuggestions": "Žiadne ďalšie návrhy nie sú k dispozícii.",
       "copyFromTo": "Kopírovať úlohy z {{day}} do:",
       "copyCount": "{{taskCount}} úloh bude skopírovaných do {{dayCount}} dňa (dní)",
@@ -227,13 +231,13 @@
       "saveForDoctorVisit": "Uložiť pre návštevu lekára",
       "success": "Úspech",
       "suggestions": {
+        "stayEngaged": "Ako môžem pomôcť {{name}} zostať aktívnym/aktívnou počas dňa?",
         "sundowning": "Ako zvládnuť večerný nepokoj?",
+        "agitated": "{{name}} sa zdá byť večer rozrušený/rozrušená. Čo môžem urobiť?",
         "rainyDays": "Aké aktivity sú vhodné na daždivé dni?",
         "siblings": "Pomôžte mi hovoriť so súrodencami o zdieľaní starostlivosti",
         "refusesFood": "{{name}} odmieta jesť. Pomoc.",
-        "repetitive": "Ako zvládnuť opakujúce sa otázky?",
-        "stayEngaged": "Ako môžem pomôcť {{name}} zostať aktívnym/aktívnou počas dňa?",
-        "agitated": "{{name}} sa zdá byť večer rozrušený/rozrušená. Čo môžem urobiť?"
+        "repetitive": "Ako zvládnuť opakujúce sa otázky?"
       },
       "hub": {
         "backToHub": "Späť k Asistentovi",
@@ -854,7 +858,9 @@
       "dailySchedule": "Denný rozvrh",
       "dailyScheduleDesc": "Nastavte časy budenia a spánku pre rutinu vašej blízkej osoby.",
       "wakeTime": "Čas budenia",
+      "wakeTimePlaceholder": "07:00",
       "sleepTime": "Čas spánku",
+      "sleepTimePlaceholder": "21:00",
       "savingSchedule": "Ukladá sa...",
       "saveSchedule": "Uložiť rozvrh",
       "emergencyContacts": "Núdzové kontakty",
@@ -871,9 +877,7 @@
       "country": "Krajina",
       "selectCountry": "Vyberte krajinu",
       "selectLanguage": "Vyberte jazyk",
-      "languageSaved": "Jazyk bol aktualizovaný",
-      "wakeTimePlaceholder": "07:00",
-      "sleepTimePlaceholder": "21:00"
+      "languageSaved": "Jazyk bol aktualizovaný"
     },
     "auth": {
       "login": "Prihlásiť sa",
@@ -934,6 +938,8 @@
         "alertFamilyDesc": "Poslať push notifikáciu všetkým opatrovateľom",
         "alertFamilySent": "Členovia rodiny boli upozornení",
         "alertFamilyFailed": "Nepodarilo sa upozorniť rodinu. Skúste to prosím znova.",
+        "crisisAlertTitle": "Crisis Alert",
+        "crisisAlertBody": "{{caregiverName}} needs help with {{patientName}}. Please check in.",
         "viewLocation": "Zobraziť polohu",
         "viewLocationDesc": "Pozrite si aktuálnu polohu {{name}} na mape",
         "contactPrimary": "Kontaktovať hlavného opatrovateľa",
@@ -1414,6 +1420,11 @@
     "subscribe": "Predplatiť",
     "restore": "Obnoviť nákup",
     "manage": "Spravovať predplatné",
+    "upgrade": "Upgrade to Plus",
+    "noOfferings": "Subscription plans are not available right now",
+    "checkoutError": "Could not start checkout. Please try again.",
+    "activating": "Activating your subscription...",
+    "manageViaStore": "Manage your subscription in your device's app store settings",
     "features": {
       "unlimitedTasks": "Neobmedzený počet úloh denne",
       "aiCoach": "Plnohodnotný AI opatrovateľský kouč",
@@ -1425,6 +1436,30 @@
       "reports": "Správy z návštev lekára",
       "toolkit": "Súbor nástrojov pre opatrovateľov a pohoda",
       "priority": "Prioritná podpora"
+    },
+    "limits": {
+      "taskLimitReached": "You've reached the free plan limit of {{max}} tasks. Upgrade to add unlimited tasks.",
+      "aiMessageLimitReached": "You've used all {{max}} free AI Coach messages this month. Upgrade for unlimited conversations.",
+      "caregiverLimitReached": "Free plan includes 1 caregiver. Upgrade to invite up to 5 family members."
+    },
+    "contextualTrial": {
+      "title": "Try OurTurn Plus free for 14 days",
+      "tasks": "Add unlimited tasks to your loved one's care plan — free for 14 days",
+      "caregiver": "Invite unlimited family members to your care circle — free for 14 days",
+      "aiCoach": "Unlock unlimited AI coaching conversations — free for 14 days",
+      "safeZones": "Keep your loved one safe with location tracking & safe zones — free for 14 days",
+      "reports": "Generate professional doctor visit reports — free for 14 days",
+      "journal": "Access the shared Care Journal — free for 14 days",
+      "insights": "Get AI-powered behavioural insights — free for 14 days",
+      "wellbeing": "Access caregiver wellbeing tools — free for 14 days",
+      "startTrial": "Start free trial",
+      "noCardRequired": "No credit card required",
+      "maybeLater": "Maybe later"
+    },
+    "planToggle": {
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "saveBadge": "Save {{percent}}%"
     }
   }
 }

@@ -27,6 +27,8 @@
     "saving": "Shranjevanje...",
     "primary": "Primarno",
     "caregiver": "Skrbnik",
+    "someone": "Someone",
+    "yourLovedOne": "your loved one",
     "placeholders": {
       "timeFormat": "HH:MM",
       "dateFormat": "YYYY-MM-DD",
@@ -98,6 +100,7 @@
       "daily": "Vsak dan",
       "specificDays": "Določeni dnevi",
       "oneTime": "Enkrat",
+      "oneTimeDate": "Date",
       "copyDay": "Kopiraj na druge dni",
       "saved": "Shranjeno",
       "noTasks": "Še ni nalog. Dodajte svojo prvo nalogo za začetek.",
@@ -105,6 +108,7 @@
       "taskTitle": "Naslov naloge",
       "time": "Čas",
       "deleteConfirm": "Izbrišem to nalogo?",
+      "patientCreated": "Added by {{name}}",
       "noMoreSuggestions": "Ni več razpoložljivih predlogov.",
       "copyFromTo": "Kopiraj naloge iz {{day}} na:",
       "copyCount": "{{taskCount}} nalog bo kopiranih na {{dayCount}} dan/dni",
@@ -227,13 +231,13 @@
       "saveForDoctorVisit": "Shrani za obisk zdravnika",
       "success": "Uspeh",
       "suggestions": {
+        "stayEngaged": "Kako lahko pomagam {{name}}, da ostane vključen/a čez dan?",
         "sundowning": "Kako naj ravnam z večerno nemirnostjo?",
+        "agitated": "{{name}} se zdi vznemirjen/a zvečer. Kaj lahko storim?",
         "rainyDays": "Katere aktivnosti so primerne za deževne dni?",
         "siblings": "Pomagajte mi govoriti s sorojenci o delitvi nege",
         "refusesFood": "{{name}} noče jesti. Pomagajte.",
-        "repetitive": "Kako naj ravnam s ponavljajočimi se vprašanji?",
-        "stayEngaged": "Kako lahko pomagam {{name}}, da ostane vključen/a čez dan?",
-        "agitated": "{{name}} se zdi vznemirjen/a zvečer. Kaj lahko storim?"
+        "repetitive": "Kako naj ravnam s ponavljajočimi se vprašanji?"
       },
       "hub": {
         "backToHub": "Nazaj k Pomočniku",
@@ -854,7 +858,9 @@
       "dailySchedule": "Dnevni urnik",
       "dailyScheduleDesc": "Nastavite čas bujenja in spanja za rutino vašega bližnjega.",
       "wakeTime": "Čas bujenja",
+      "wakeTimePlaceholder": "07:00",
       "sleepTime": "Čas spanja",
+      "sleepTimePlaceholder": "21:00",
       "savingSchedule": "Shranjevanje...",
       "saveSchedule": "Shrani urnik",
       "emergencyContacts": "Stiki za nujne primere",
@@ -871,9 +877,7 @@
       "country": "Država",
       "selectCountry": "Izberite državo",
       "selectLanguage": "Izberite jezik",
-      "languageSaved": "Jezik posodobljen",
-      "wakeTimePlaceholder": "07:00",
-      "sleepTimePlaceholder": "21:00"
+      "languageSaved": "Jezik posodobljen"
     },
     "auth": {
       "login": "Prijava",
@@ -934,6 +938,8 @@
         "alertFamilyDesc": "Pošlji potisno obvestilo vsem skrbnikom",
         "alertFamilySent": "Družinski člani obveščeni",
         "alertFamilyFailed": "Družine ni bilo mogoče obvestiti. Prosimo, poskusite znova.",
+        "crisisAlertTitle": "Crisis Alert",
+        "crisisAlertBody": "{{caregiverName}} needs help with {{patientName}}. Please check in.",
         "viewLocation": "Poglej lokacijo",
         "viewLocationDesc": "Poglejte trenutno lokacijo {{name}} na zemljevidu",
         "contactPrimary": "Kontaktiraj glavnega skrbnika",
@@ -1414,6 +1420,11 @@
     "subscribe": "Naročite se",
     "restore": "Obnovi nakup",
     "manage": "Upravljaj naročnino",
+    "upgrade": "Upgrade to Plus",
+    "noOfferings": "Subscription plans are not available right now",
+    "checkoutError": "Could not start checkout. Please try again.",
+    "activating": "Activating your subscription...",
+    "manageViaStore": "Manage your subscription in your device's app store settings",
     "features": {
       "unlimitedTasks": "Neomejeno število nalog na dan",
       "aiCoach": "Popoln AI Trener za nego",
@@ -1425,6 +1436,30 @@
       "reports": "Poročila za obisk zdravnika",
       "toolkit": "Komplet orodij za oskrbovalce in dobro počutje",
       "priority": "Prednostna podpora"
+    },
+    "limits": {
+      "taskLimitReached": "You've reached the free plan limit of {{max}} tasks. Upgrade to add unlimited tasks.",
+      "aiMessageLimitReached": "You've used all {{max}} free AI Coach messages this month. Upgrade for unlimited conversations.",
+      "caregiverLimitReached": "Free plan includes 1 caregiver. Upgrade to invite up to 5 family members."
+    },
+    "contextualTrial": {
+      "title": "Try OurTurn Plus free for 14 days",
+      "tasks": "Add unlimited tasks to your loved one's care plan — free for 14 days",
+      "caregiver": "Invite unlimited family members to your care circle — free for 14 days",
+      "aiCoach": "Unlock unlimited AI coaching conversations — free for 14 days",
+      "safeZones": "Keep your loved one safe with location tracking & safe zones — free for 14 days",
+      "reports": "Generate professional doctor visit reports — free for 14 days",
+      "journal": "Access the shared Care Journal — free for 14 days",
+      "insights": "Get AI-powered behavioural insights — free for 14 days",
+      "wellbeing": "Access caregiver wellbeing tools — free for 14 days",
+      "startTrial": "Start free trial",
+      "noCardRequired": "No credit card required",
+      "maybeLater": "Maybe later"
+    },
+    "planToggle": {
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "saveBadge": "Save {{percent}}%"
     }
   }
 }

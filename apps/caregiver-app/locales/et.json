@@ -27,6 +27,8 @@
     "saving": "Salvestan...",
     "primary": "Peamine",
     "caregiver": "Hooldaja",
+    "someone": "Someone",
+    "yourLovedOne": "your loved one",
     "placeholders": {
       "timeFormat": "HH:MM",
       "dateFormat": "YYYY-MM-DD",
@@ -98,6 +100,7 @@
       "daily": "Iga päev",
       "specificDays": "Kindlatel päevadel",
       "oneTime": "Ühekordne",
+      "oneTimeDate": "Date",
       "copyDay": "Kopeeri teistele päevadele",
       "saved": "Salvestatud",
       "noTasks": "Ülesandeid veel pole. Alustamiseks lisa oma esimene ülesanne.",
@@ -105,6 +108,7 @@
       "taskTitle": "Ülesande pealkiri",
       "time": "Aeg",
       "deleteConfirm": "Kustutada see ülesanne?",
+      "patientCreated": "Added by {{name}}",
       "noMoreSuggestions": "Rohkem soovitusi pole saadaval.",
       "copyFromTo": "Kopeeri ülesanded päevast {{day}} järgmistele:",
       "copyCount": "{{taskCount}} ülesannet kopeeritakse {{dayCount}} päevale",
@@ -854,7 +858,9 @@
       "dailySchedule": "Igapäevane ajakava",
       "dailyScheduleDesc": "Määrake oma lähedase ärkamis- ja uneajad rutiini jaoks.",
       "wakeTime": "Ärkamisaeg",
+      "wakeTimePlaceholder": "07:00",
       "sleepTime": "Une aeg",
+      "sleepTimePlaceholder": "21:00",
       "savingSchedule": "Salvestamine...",
       "saveSchedule": "Salvesta ajakava",
       "emergencyContacts": "Hädaabikontaktid",
@@ -871,9 +877,7 @@
       "country": "Riik",
       "selectCountry": "Vali riik",
       "selectLanguage": "Vali keel",
-      "languageSaved": "Keel uuendatud",
-      "wakeTimePlaceholder": "07:00",
-      "sleepTimePlaceholder": "21:00"
+      "languageSaved": "Keel uuendatud"
     },
     "auth": {
       "login": "Logi sisse",
@@ -934,6 +938,8 @@
         "alertFamilyDesc": "Saada tõuketeavitus kõigile hooldajatele",
         "alertFamilySent": "Pereliikmeid teavitatud",
         "alertFamilyFailed": "Peret ei õnnestunud teavitada. Palun proovige uuesti.",
+        "crisisAlertTitle": "Crisis Alert",
+        "crisisAlertBody": "{{caregiverName}} needs help with {{patientName}}. Please check in.",
         "viewLocation": "Vaata asukohta",
         "viewLocationDesc": "Vaata {{name}} praegust asukohta kaardil",
         "contactPrimary": "Võta ühendust peamise hooldajaga",
@@ -1414,6 +1420,11 @@
     "subscribe": "Telli",
     "restore": "Taasta ost",
     "manage": "Halda tellimust",
+    "upgrade": "Upgrade to Plus",
+    "noOfferings": "Subscription plans are not available right now",
+    "checkoutError": "Could not start checkout. Please try again.",
+    "activating": "Activating your subscription...",
+    "manageViaStore": "Manage your subscription in your device's app store settings",
     "features": {
       "unlimitedTasks": "Piiramatu arv ülesandeid päevas",
       "aiCoach": "Täielik tehisintellekti hooldusnõustaja",
@@ -1425,6 +1436,30 @@
       "reports": "Arstivisiitide aruanded",
       "toolkit": "Hooldaja tööriistakomplekt ja heaolu",
       "priority": "Prioriteetne tugi"
+    },
+    "limits": {
+      "taskLimitReached": "You've reached the free plan limit of {{max}} tasks. Upgrade to add unlimited tasks.",
+      "aiMessageLimitReached": "You've used all {{max}} free AI Coach messages this month. Upgrade for unlimited conversations.",
+      "caregiverLimitReached": "Free plan includes 1 caregiver. Upgrade to invite up to 5 family members."
+    },
+    "contextualTrial": {
+      "title": "Try OurTurn Plus free for 14 days",
+      "tasks": "Add unlimited tasks to your loved one's care plan — free for 14 days",
+      "caregiver": "Invite unlimited family members to your care circle — free for 14 days",
+      "aiCoach": "Unlock unlimited AI coaching conversations — free for 14 days",
+      "safeZones": "Keep your loved one safe with location tracking & safe zones — free for 14 days",
+      "reports": "Generate professional doctor visit reports — free for 14 days",
+      "journal": "Access the shared Care Journal — free for 14 days",
+      "insights": "Get AI-powered behavioural insights — free for 14 days",
+      "wellbeing": "Access caregiver wellbeing tools — free for 14 days",
+      "startTrial": "Start free trial",
+      "noCardRequired": "No credit card required",
+      "maybeLater": "Maybe later"
+    },
+    "planToggle": {
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "saveBadge": "Save {{percent}}%"
     }
   }
 }

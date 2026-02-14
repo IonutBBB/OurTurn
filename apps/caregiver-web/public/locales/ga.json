@@ -223,6 +223,16 @@
       "hintPlaceholder": "E.g., Tá do chuid pills sa bhosca piollairí ar an gcuntar sa chistin",
       "taskPlaceholder": "e.g., Cógais ar maidin",
       "recurrence": "Athdhéanann",
+      "allDays": "Gach",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
       "daily": "Gach lá",
       "specificDays": "Laethanta sonracha",
       "oneTime": "Uair amháin",
@@ -242,6 +252,8 @@
       "instructions": "Treoracha",
       "actions": "Gníomhartha",
       "syncNote": "Déantar athruithe a shioncronú láithreach chuig aip {{name}}",
+      "patientCreated": "Added by {{name}}",
+      "hasPhoto": "Tá grianghraf ann",
       "taskPhoto": "Grianghraf den Tasc (roghnach)",
       "uploadPhoto": "Uaslódáil Grianghraf",
       "removePhoto": "Bain Grianghraf",
@@ -256,29 +268,11 @@
       "medItemLabel": "Cógas {{number}}",
       "removeMedication": "Bain",
       "maxMedications": "Uasmhéid 3 chógas in aghaidh an ghrúpa",
-      "uploadingPhoto": "Ag uaslódáil...",
-      "hasPhoto": "Tá grianghraf ann",
-      "allDays": "Gach",
-      "dayMon": "Lua",
-      "dayTue": "Mái",
-      "dayWed": "Céa",
-      "dayThu": "Déa",
-      "dayFri": "Aoi",
-      "daySat": "Sat",
-      "daySun": "Dom",
-      "days": {
-        "mon": "Mon",
-        "tue": "Tue",
-        "wed": "Wed",
-        "thu": "Thu",
-        "fri": "Fri",
-        "sat": "Sat",
-        "sun": "Sun"
-      },
-      "patientCreated": "Added by {{name}}"
+      "uploadingPhoto": "Ag uaslódáil..."
     },
     "location": {
       "title": "Suíomh & Sábháilteacht",
+      "pageTitle": "Suíomh & Sábháilteacht",
       "pageSubtitle": "Rianaigh suíomh agus bainistigh criosanna sábháilte ar mhaithe le suaimhneas intinne",
       "setupDesc": "Socraigh do phróifíl cúraim chun rianú suímh agus gnéithe sábháilteachta a chumasú.",
       "completeSetupFirst": "Socraigh Ar dtús",
@@ -332,8 +326,7 @@
       "mapsApiInstructions": "Cuir <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> le do athróga timpeallachta.",
       "saveFailed": "Theip ar chrios sábháilte a shábháil. Bain triail as arís.",
       "deleteSafeZoneConfirm": "An bhfuil tú cinnte gur mhaith leat an crios sábháilte seo a scriosadh?",
-      "deleteFailed": "Theip ar chrios sábháilte a scriosadh. Bain triail as arís.",
-      "pageTitle": "Suíomh & Sábháilteacht"
+      "deleteFailed": "Theip ar chrios sábháilte a scriosadh. Bain triail as arís."
     },
     "coach": {
       "title": "Cóitseálaí Cúraim AI",
@@ -751,6 +744,18 @@
         "disclaimer": "Ní seirbhís géarchéime é OurTurn. Má tá duine i mbaol láithreach, glaoigh ar na seirbhísí éigeandála."
       },
       "behaviours": {
+        "types": {
+          "aggression": "Ionsaí & Buailtí",
+          "agitation": "Corraíl & Míshuaimhneas",
+          "fall": "Titim nó Gortú",
+          "hallucinations": "Siabhránachtaí",
+          "refusing_care": "Cúram a Dhiúltú",
+          "repetitive_questions": "Ceisteanna Athfhillteacha",
+          "shadowing": "Scáthú & Greim",
+          "sleep_disruption": "Cur isteach ar Chodladh",
+          "sundowning": "Dul faoi na Gréine",
+          "wandering": "Fánaíocht & Cuardach Scoir"
+        },
         "playbooks": {
           "title": "Leabhair Imeartha Iompraíochta",
           "subtitle": "Tapáil iompraíocht le haghaidh treorach céim ar chéim maidir le cad ba cheart a dhéanamh faoi láthair.",
@@ -809,18 +814,6 @@
           "analyse": "Déan Pátrúin a Anailísiú",
           "analysing": "Ag déanamh anailíse...",
           "notEnoughData": "Logáil cúpla eachtra eile chun anailís a dhéanamh ar phátrúin. Tar éis 5+ eachtra, tiocfaidh treochtaí chun cinn in am, truicear agus straitéisí."
-        },
-        "types": {
-          "aggression": "Ionsaí & Buailtí",
-          "agitation": "Corraíl & Míshuaimhneas",
-          "fall": "Titim nó Gortú",
-          "hallucinations": "Siabhránachtaí",
-          "refusing_care": "Cúram a Dhiúltú",
-          "repetitive_questions": "Ceisteanna Athfhillteacha",
-          "shadowing": "Scáthú & Greim",
-          "sleep_disruption": "Cur isteach ar Chodladh",
-          "sundowning": "Dul faoi na Gréine",
-          "wandering": "Fánaíocht & Cuardach Scoir"
         }
       },
       "network": {
@@ -964,25 +957,6 @@
       "optional": "roghnach",
       "required": "riachtanach",
       "selectRelationship": "Roghnaigh caidreamh",
-      "relationships": {
-        "mother": "Máthair",
-        "father": "Athair",
-        "spouse": "Céile",
-        "grandmother": "Seanmháthair",
-        "grandfather": "Seanathair",
-        "sibling": "Deartháir/Deirfiúr",
-        "friend": "Cara",
-        "other": "Eile"
-      },
-      "dementiaTypes": {
-        "alzheimers": "Alzheimer's",
-        "vascular": "Soithíoch",
-        "lewyBody": "Corpáin Lewy",
-        "frontotemporal": "Tosaighamaíoch",
-        "mixed": "Measctha",
-        "other": "Eile",
-        "notSure": "Níl mé cinnte / is fearr liom gan a rá"
-      },
       "selectCountry": "Roghnaigh tír",
       "namePlaceholder": "D'ainm",
       "firstNamePlaceholder": "Céadainm",
@@ -1020,6 +994,25 @@
         "lunch": "Lón",
         "dinner": "Dinnéar",
         "eveningMedication": "Cógais tráthnóna"
+      },
+      "relationships": {
+        "mother": "Máthair",
+        "father": "Athair",
+        "spouse": "Céile",
+        "grandmother": "Seanmháthair",
+        "grandfather": "Seanathair",
+        "sibling": "Deartháir/Deirfiúr",
+        "friend": "Cara",
+        "other": "Eile"
+      },
+      "dementiaTypes": {
+        "alzheimers": "Alzheimer's",
+        "vascular": "Soithíoch",
+        "lewyBody": "Corpáin Lewy",
+        "frontotemporal": "Tosaighamaíoch",
+        "mixed": "Measctha",
+        "other": "Eile",
+        "notSure": "Níl mé cinnte / is fearr liom gan a rá"
       }
     },
     "settings": {
@@ -1195,13 +1188,13 @@
       "addContact": "Cuir Teagmháil leis",
       "contactName": "Ainm Teagmhála",
       "contactPhone": "Uimhir Fón",
+      "contactPhonePlaceholder": "+1 555 123 4567",
       "contactRelationship": "Caidreamh",
       "contactRelationshipPlaceholder": "m.sh., Iníon, comharsa, dochtúir",
       "noContactsYet": "Níl aon teagmhálacha éigeandála curtha leis fós. Molaimid duit ceann amháin ar a laghad a chur leis.",
       "savingContacts": "Ag sábháil...",
       "saveContacts": "Sábháil Teagmhálacha",
-      "removeContactConfirm": "An bhfuil tú ag iarraidh an teagmháil éigeandála seo a bhaint?",
-      "contactPhonePlaceholder": "+1 555 123 4567"
+      "removeContactConfirm": "An bhfuil tú ag iarraidh an teagmháil éigeandála seo a bhaint?"
     },
     "auth": {
       "login": "Logáil isteach",
@@ -1282,6 +1275,18 @@
         "title": "Cad atá ag tarlú?",
         "urgent": "PRÁINNEACH"
       },
+      "scenarioLabels": {
+        "agitated": "Agitated / Upset",
+        "wandering": "Wandering / Missing",
+        "refusing": "Refusing Care",
+        "hallucinations": "Seeing / Hearing Things",
+        "sundowning": "Sundowning / Evening Anxiety",
+        "fall": "Fall / Physical Emergency",
+        "repetitive_questions": "Repetitive Questions",
+        "sleep_disruption": "Sleep Disruption",
+        "aggression": "Aggression",
+        "shadowing": "Shadowing"
+      },
       "remote": {
         "noLocation": "Suíomh nach bhfuil ar fáil",
         "switchPrompt": "Ar gá duit duine a threorú atá LE {{name}}?",
@@ -1321,6 +1326,10 @@
         "timePattern": "Is gnách go dtarlóidh eipeasóid sa {{time}}.",
         "weekCount": "{{count}} imeacht an tseachtain seo."
       },
+      "quickLog": {
+        "button": "Logáil nóiméad géarchéime",
+        "title": "Logáil nóiméad géarchéime"
+      },
       "logger": {
         "title": "Logáil an eipeasóid seo",
         "subtitle": "Cuidíonn nótaí tapa le patrúin a aithint.",
@@ -1338,23 +1347,7 @@
       "email": "Ríomhphost",
       "website": "Suíomh Gréasáin",
       "visitWebsite": "Tabhair cuairt ar an suíomh gréasáin",
-      "callNow": "Glaoigh anois",
-      "quickLog": {
-        "button": "Logáil nóiméad géarchéime",
-        "title": "Logáil nóiméad géarchéime"
-      },
-      "scenarioLabels": {
-        "agitated": "Agitated / Upset",
-        "wandering": "Wandering / Missing",
-        "refusing": "Refusing Care",
-        "hallucinations": "Seeing / Hearing Things",
-        "sundowning": "Sundowning / Evening Anxiety",
-        "fall": "Fall / Physical Emergency",
-        "repetitive_questions": "Repetitive Questions",
-        "sleep_disruption": "Sleep Disruption",
-        "aggression": "Aggression",
-        "shadowing": "Shadowing"
-      }
+      "callNow": "Glaoigh anois"
     },
     "legal": {
       "privacy": {
@@ -1643,10 +1636,14 @@
         "freePrice": "£0",
         "freePriceNote": "go deo",
         "plusTitle": "OurTurn Plus",
-        "plusPrice": "£9.99",
-        "plusPriceNote": "in aghaidh na míosa",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "per month",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "per year",
+        "plusAnnualSavings": "Save 33%",
         "plusBadge": "Molta",
         "trialNotice": "Saor in aisce ar feadh 14 lá. Níl cárta creidmheasa ag teastáil.",
+        "familyPlanNote": "One subscription covers your whole family",
         "freeFeat1": "Plean cúraim laethúil (suas le 5 thasc)",
         "freeFeat2": "Seiceálacha bunúsacha",
         "freeFeat3": "1 bhall teaghlaigh",
@@ -1657,13 +1654,7 @@
         "plusFeat4": "Ciorcal Teaghlaigh Gan Teorainn",
         "plusFeat5": "Uirlisí folláine cúramóra",
         "plusFeat6": "Tuarascálacha cuairte dochtúra",
-        "plusFeat7": "Tacaíocht tosaíochta",
-        "plusPriceMonthly": "£9.99",
-        "plusPriceMonthlyNote": "per month",
-        "plusPriceAnnual": "£79.99",
-        "plusPriceAnnualNote": "per year",
-        "plusAnnualSavings": "Save 33%",
-        "familyPlanNote": "One subscription covers your whole family"
+        "plusFeat7": "Tacaíocht tosaíochta"
       },
       "faq": {
         "title": "Ceisteanna & freagraí",

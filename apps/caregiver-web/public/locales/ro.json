@@ -223,6 +223,16 @@
       "hintPlaceholder": "Ex: Pastilele dumneavoastră sunt în cutia de pastile de pe blatul din bucătărie",
       "taskPlaceholder": "ex: Medicația de dimineață",
       "recurrence": "Se repetă",
+      "allDays": "Toate",
+      "days": {
+        "mon": "Lun",
+        "tue": "Mar",
+        "wed": "Mie",
+        "thu": "Joi",
+        "fri": "Vin",
+        "sat": "Sâm",
+        "sun": "Dum"
+      },
       "daily": "În fiecare zi",
       "specificDays": "Zile specifice",
       "oneTime": "O singură dată",
@@ -242,6 +252,8 @@
       "instructions": "Instrucțiuni",
       "actions": "Acțiuni",
       "syncNote": "Modificările se sincronizează instantaneu cu aplicația lui {{name}}",
+      "patientCreated": "Adăugat de {{name}}",
+      "hasPhoto": "Are fotografie",
       "taskPhoto": "Fotografie sarcină (opțional)",
       "uploadPhoto": "Încărcați fotografie",
       "removePhoto": "Eliminați fotografia",
@@ -256,29 +268,11 @@
       "medItemLabel": "Medicament {{number}}",
       "removeMedication": "Eliminați",
       "maxMedications": "Maxim 3 medicamente per grup",
-      "uploadingPhoto": "Se încarcă...",
-      "hasPhoto": "Are fotografie",
-      "allDays": "Toate",
-      "dayMon": "Lun",
-      "dayTue": "Mar",
-      "dayWed": "Mie",
-      "dayThu": "Joi",
-      "dayFri": "Vin",
-      "daySat": "Sâm",
-      "daySun": "Dum",
-      "days": {
-        "mon": "Lun",
-        "tue": "Mar",
-        "wed": "Mie",
-        "thu": "Joi",
-        "fri": "Vin",
-        "sat": "Sâm",
-        "sun": "Dum"
-      },
-      "patientCreated": "Adăugat de {{name}}"
+      "uploadingPhoto": "Se încarcă..."
     },
     "location": {
       "title": "Locație și Siguranță",
+      "pageTitle": "Locație și Siguranță",
       "pageSubtitle": "Urmăriți locația și gestionați zonele sigure pentru liniștea dumneavoastră",
       "setupDesc": "Configurați-vă profilul de îngrijire pentru a activa urmărirea locației și funcțiile de siguranță.",
       "completeSetupFirst": "Finalizați mai întâi configurarea",
@@ -332,8 +326,7 @@
       "mapsApiInstructions": "Adăugați NEXT_PUBLIC_GOOGLE_MAPS_API_KEY la variabilele dumneavoastră de mediu.",
       "saveFailed": "Nu s-a putut salva zona sigură. Vă rugăm să încercați din nou.",
       "deleteSafeZoneConfirm": "Sigur doriți să ștergeți această zonă sigură?",
-      "deleteFailed": "Nu s-a putut șterge zona sigură. Vă rugăm să încercați din nou.",
-      "pageTitle": "Locație și Siguranță"
+      "deleteFailed": "Nu s-a putut șterge zona sigură. Vă rugăm să încercați din nou."
     },
     "coach": {
       "title": "Antrenor de îngrijire AI",
@@ -751,6 +744,18 @@
         "disclaimer": "OurTurn nu este un serviciu de criză. Dacă cineva este în pericol imediat, sună la serviciile de urgență."
       },
       "behaviours": {
+        "types": {
+          "aggression": "Agresivitate și lovire",
+          "agitation": "Agitație și neliniște",
+          "fall": "Cădere sau rănire",
+          "hallucinations": "Halucinații",
+          "refusing_care": "Refuzul îngrijirii",
+          "repetitive_questions": "Întrebări repetitive",
+          "shadowing": "Urmărire și agățare",
+          "sleep_disruption": "Tulburări de somn",
+          "sundowning": "Sindromul de amurg",
+          "wandering": "Rătăcire și căutarea ieșirii"
+        },
         "playbooks": {
           "title": "Ghiduri de Comportament",
           "subtitle": "Atinge un comportament pentru ghidare pas cu pas despre ce să faci chiar acum.",
@@ -809,18 +814,6 @@
           "analyse": "Analizează Tiparele",
           "analysing": "Se analizează...",
           "notEnoughData": "Înregistrează încă câteva incidente pentru a debloca analiza tiparelor. După peste 5 incidente, vor apărea tendințe în ceea ce privește momentul, declanșatorii și strategiile."
-        },
-        "types": {
-          "aggression": "Agresivitate și lovire",
-          "agitation": "Agitație și neliniște",
-          "fall": "Cădere sau rănire",
-          "hallucinations": "Halucinații",
-          "refusing_care": "Refuzul îngrijirii",
-          "repetitive_questions": "Întrebări repetitive",
-          "shadowing": "Urmărire și agățare",
-          "sleep_disruption": "Tulburări de somn",
-          "sundowning": "Sindromul de amurg",
-          "wandering": "Rătăcire și căutarea ieșirii"
         }
       },
       "network": {
@@ -964,25 +957,6 @@
       "optional": "opțional",
       "required": "obligatoriu",
       "selectRelationship": "Selectează relația",
-      "relationships": {
-        "mother": "Mamă",
-        "father": "Tată",
-        "spouse": "Soț/Soție",
-        "grandmother": "Bunică",
-        "grandfather": "Bunic",
-        "sibling": "Frate/Soră",
-        "friend": "Prieten/ă",
-        "other": "Altul/Alta"
-      },
-      "dementiaTypes": {
-        "alzheimers": "Alzheimer",
-        "vascular": "Vasculară",
-        "lewyBody": "Corpi Lewy",
-        "frontotemporal": "Frontotemporală",
-        "mixed": "Mixtă",
-        "other": "Alta",
-        "notSure": "Nu sunt sigur/ă / prefer să nu spun"
-      },
       "selectCountry": "Selectați țara",
       "namePlaceholder": "Numele dumneavoastră",
       "firstNamePlaceholder": "Prenume",
@@ -1020,6 +994,25 @@
         "lunch": "Prânz",
         "dinner": "Cină",
         "eveningMedication": "Medicația de seară"
+      },
+      "relationships": {
+        "mother": "Mamă",
+        "father": "Tată",
+        "spouse": "Soț/Soție",
+        "grandmother": "Bunică",
+        "grandfather": "Bunic",
+        "sibling": "Frate/Soră",
+        "friend": "Prieten/ă",
+        "other": "Altul/Alta"
+      },
+      "dementiaTypes": {
+        "alzheimers": "Alzheimer",
+        "vascular": "Vasculară",
+        "lewyBody": "Corpi Lewy",
+        "frontotemporal": "Frontotemporală",
+        "mixed": "Mixtă",
+        "other": "Alta",
+        "notSure": "Nu sunt sigur/ă / prefer să nu spun"
       }
     },
     "settings": {
@@ -1195,13 +1188,13 @@
       "addContact": "Adaugă contact",
       "contactName": "Nume contact",
       "contactPhone": "Număr de telefon",
+      "contactPhonePlaceholder": "+1 555 123 4567",
       "contactRelationship": "Relație",
       "contactRelationshipPlaceholder": "ex: Fiică, vecin, medic",
       "noContactsYet": "Nu au fost adăugate contacte de urgență. Recomandăm adăugarea a cel puțin unuia.",
       "savingContacts": "Se salvează...",
       "saveContacts": "Salvează contactele",
-      "removeContactConfirm": "Elimini acest contact de urgență?",
-      "contactPhonePlaceholder": "+1 555 123 4567"
+      "removeContactConfirm": "Elimini acest contact de urgență?"
     },
     "auth": {
       "login": "Autentificare",
@@ -1282,6 +1275,18 @@
         "title": "Ce se întâmplă?",
         "urgent": "URGENT"
       },
+      "scenarioLabels": {
+        "agitated": "Agitat / Supărat",
+        "wandering": "Rătăcire / Dispărut",
+        "refusing": "Refuză îngrijirea",
+        "hallucinations": "Vede / Aude lucruri",
+        "sundowning": "Confuzie de seară",
+        "fall": "Cădere / Urgență fizică",
+        "repetitive_questions": "Întrebări repetitive",
+        "sleep_disruption": "Tulburări de somn",
+        "aggression": "Agresivitate",
+        "shadowing": "Urmărire constantă"
+      },
       "remote": {
         "noLocation": "Locația nu este disponibilă",
         "switchPrompt": "Trebuie să ghidezi pe cineva care ESTE cu {{name}}?",
@@ -1321,6 +1326,10 @@
         "timePattern": "Episoadele tind să apară în {{time}}.",
         "weekCount": "{{count}} evenimente săptămâna aceasta."
       },
+      "quickLog": {
+        "button": "Înregistrați un moment de criză",
+        "title": "Înregistrați un moment de criză"
+      },
       "logger": {
         "title": "Înregistrați acest episod",
         "subtitle": "Notele rapide ajută la identificarea tiparelor.",
@@ -1338,23 +1347,7 @@
       "email": "E-mail",
       "website": "Site web",
       "visitWebsite": "Vizitați site-ul web",
-      "callNow": "Apelați acum",
-      "quickLog": {
-        "button": "Înregistrați un moment de criză",
-        "title": "Înregistrați un moment de criză"
-      },
-      "scenarioLabels": {
-        "agitated": "Agitat / Supărat",
-        "wandering": "Rătăcire / Dispărut",
-        "refusing": "Refuză îngrijirea",
-        "hallucinations": "Vede / Aude lucruri",
-        "sundowning": "Confuzie de seară",
-        "fall": "Cădere / Urgență fizică",
-        "repetitive_questions": "Întrebări repetitive",
-        "sleep_disruption": "Tulburări de somn",
-        "aggression": "Agresivitate",
-        "shadowing": "Urmărire constantă"
-      }
+      "callNow": "Apelați acum"
     },
     "legal": {
       "privacy": {
@@ -1643,10 +1636,14 @@
         "freePrice": "£0",
         "freePriceNote": "pentru totdeauna",
         "plusTitle": "OurTurn Plus",
-        "plusPrice": "£9.99",
-        "plusPriceNote": "pe lună",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "pe lună",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "pe an",
+        "plusAnnualSavings": "Economisiți 33%",
         "plusBadge": "Recomandat",
         "trialNotice": "Gratuit timp de 14 zile. Nu este necesar un card de credit.",
+        "familyPlanNote": "Un singur abonament acoperă întreaga familie",
         "freeFeat1": "Plan de îngrijire zilnică (până la 5 sarcini)",
         "freeFeat2": "Verificări de bază",
         "freeFeat3": "1 membru al familiei",
@@ -1657,13 +1654,7 @@
         "plusFeat4": "Cerc familial nelimitat",
         "plusFeat5": "Instrumente pentru bunăstarea îngrijitorului",
         "plusFeat6": "Rapoarte vizite la medic",
-        "plusFeat7": "Suport prioritar",
-        "plusPriceMonthly": "£9.99",
-        "plusPriceMonthlyNote": "pe lună",
-        "plusPriceAnnual": "£79.99",
-        "plusPriceAnnualNote": "pe an",
-        "plusAnnualSavings": "Economisiți 33%",
-        "familyPlanNote": "Un singur abonament acoperă întreaga familie"
+        "plusFeat7": "Suport prioritar"
       },
       "faq": {
         "title": "Întrebări și răspunsuri",

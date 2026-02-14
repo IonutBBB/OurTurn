@@ -27,6 +27,8 @@
     "saving": "Αποθήκευση...",
     "primary": "Πρωτεύον",
     "caregiver": "Φροντιστής/τρια",
+    "someone": "Someone",
+    "yourLovedOne": "your loved one",
     "placeholders": {
       "timeFormat": "HH:MM",
       "dateFormat": "YYYY-MM-DD",
@@ -98,6 +100,7 @@
       "daily": "Κάθε μέρα",
       "specificDays": "Συγκεκριμένες ημέρες",
       "oneTime": "Μία φορά",
+      "oneTimeDate": "Date",
       "copyDay": "Αντιγραφή σε άλλες ημέρες",
       "saved": "Αποθηκεύτηκε",
       "noTasks": "Δεν υπάρχουν ακόμα εργασίες. Προσθέστε την πρώτη σας εργασία για να ξεκινήσετε.",
@@ -105,6 +108,7 @@
       "taskTitle": "Τίτλος εργασίας",
       "time": "Ώρα",
       "deleteConfirm": "Διαγραφή αυτής της εργασίας;",
+      "patientCreated": "Added by {{name}}",
       "noMoreSuggestions": "Δεν υπάρχουν άλλες διαθέσιμες προτάσεις.",
       "copyFromTo": "Αντιγραφή εργασιών από {{day}} σε:",
       "copyCount": "{{taskCount}} εργασίες θα αντιγραφούν σε {{dayCount}} ημέρα(ες)",
@@ -227,13 +231,13 @@
       "saveForDoctorVisit": "Αποθήκευση για Επίσκεψη στον Γιατρό",
       "success": "Επιτυχία",
       "suggestions": {
+        "stayEngaged": "Πώς μπορώ να βοηθήσω τον/την {{name}} να παραμείνει δραστήριος/α κατά τη διάρκεια της ημέρας;",
         "sundowning": "Πώς διαχειρίζομαι το σύνδρομο του ήλιου (sundowning);",
+        "agitated": "Ο/Η {{name}} φαίνεται ανήσυχος/η τα βράδια. Τι μπορώ να κάνω;",
         "rainyDays": "Ποιες δραστηριότητες είναι κατάλληλες για βροχερές μέρες;",
         "siblings": "Βοηθήστε με να μιλήσω στα αδέρφια μου για την κατανομή της φροντίδας",
         "refusesFood": "Ο/Η {{name}} αρνείται να φάει. Βοήθεια.",
-        "repetitive": "Πώς διαχειρίζομαι τις επαναλαμβανόμενες ερωτήσεις;",
-        "stayEngaged": "Πώς μπορώ να βοηθήσω τον/την {{name}} να παραμείνει δραστήριος/α κατά τη διάρκεια της ημέρας;",
-        "agitated": "Ο/Η {{name}} φαίνεται ανήσυχος/η τα βράδια. Τι μπορώ να κάνω;"
+        "repetitive": "Πώς διαχειρίζομαι τις επαναλαμβανόμενες ερωτήσεις;"
       },
       "hub": {
         "backToHub": "Επιστροφή στον Σύμβουλο",
@@ -854,7 +858,9 @@
       "dailySchedule": "Καθημερινό Πρόγραμμα",
       "dailyScheduleDesc": "Ορίστε ώρες αφύπνισης και ύπνου για την καθημερινή ρουτίνα του αγαπημένου σας προσώπου.",
       "wakeTime": "Ώρα Αφύπνισης",
+      "wakeTimePlaceholder": "07:00",
       "sleepTime": "Ώρα Ύπνου",
+      "sleepTimePlaceholder": "21:00",
       "savingSchedule": "Αποθήκευση...",
       "saveSchedule": "Αποθήκευση Προγράμματος",
       "emergencyContacts": "Επαφές Έκτακτης Ανάγκης",
@@ -871,9 +877,7 @@
       "country": "Χώρα",
       "selectCountry": "Επιλέξτε χώρα",
       "selectLanguage": "Επιλέξτε γλώσσα",
-      "languageSaved": "Η γλώσσα ενημερώθηκε",
-      "wakeTimePlaceholder": "07:00",
-      "sleepTimePlaceholder": "21:00"
+      "languageSaved": "Η γλώσσα ενημερώθηκε"
     },
     "auth": {
       "login": "Σύνδεση",
@@ -934,6 +938,8 @@
         "alertFamilyDesc": "Στείλτε ειδοποίηση push σε όλους τους φροντιστές",
         "alertFamilySent": "Τα μέλη της οικογένειας ειδοποιήθηκαν",
         "alertFamilyFailed": "Αποτυχία ειδοποίησης οικογένειας. Παρακαλούμε δοκιμάστε ξανά.",
+        "crisisAlertTitle": "Crisis Alert",
+        "crisisAlertBody": "{{caregiverName}} needs help with {{patientName}}. Please check in.",
         "viewLocation": "Προβολή Τοποθεσίας",
         "viewLocationDesc": "Δείτε την τρέχουσα τοποθεσία του/της {{name}} στον χάρτη",
         "contactPrimary": "Επικοινωνία με τον Πρωτεύοντα Φροντιστή",
@@ -1414,6 +1420,11 @@
     "subscribe": "Εγγραφή",
     "restore": "Επαναφορά Αγοράς",
     "manage": "Διαχείριση Συνδρομής",
+    "upgrade": "Upgrade to Plus",
+    "noOfferings": "Subscription plans are not available right now",
+    "checkoutError": "Could not start checkout. Please try again.",
+    "activating": "Activating your subscription...",
+    "manageViaStore": "Manage your subscription in your device's app store settings",
     "features": {
       "unlimitedTasks": "Απεριόριστες εργασίες ανά ημέρα",
       "aiCoach": "Πλήρης Σύμβουλος Φροντίδας με Τεχνητή Νοημοσύνη",
@@ -1425,6 +1436,30 @@
       "reports": "Αναφορές επισκέψεων σε γιατρό",
       "toolkit": "Εργαλειοθήκη φροντιστή & ευεξία",
       "priority": "Προτεραιότητα στην υποστήριξη"
+    },
+    "limits": {
+      "taskLimitReached": "You've reached the free plan limit of {{max}} tasks. Upgrade to add unlimited tasks.",
+      "aiMessageLimitReached": "You've used all {{max}} free AI Coach messages this month. Upgrade for unlimited conversations.",
+      "caregiverLimitReached": "Free plan includes 1 caregiver. Upgrade to invite up to 5 family members."
+    },
+    "contextualTrial": {
+      "title": "Try OurTurn Plus free for 14 days",
+      "tasks": "Add unlimited tasks to your loved one's care plan — free for 14 days",
+      "caregiver": "Invite unlimited family members to your care circle — free for 14 days",
+      "aiCoach": "Unlock unlimited AI coaching conversations — free for 14 days",
+      "safeZones": "Keep your loved one safe with location tracking & safe zones — free for 14 days",
+      "reports": "Generate professional doctor visit reports — free for 14 days",
+      "journal": "Access the shared Care Journal — free for 14 days",
+      "insights": "Get AI-powered behavioural insights — free for 14 days",
+      "wellbeing": "Access caregiver wellbeing tools — free for 14 days",
+      "startTrial": "Start free trial",
+      "noCardRequired": "No credit card required",
+      "maybeLater": "Maybe later"
+    },
+    "planToggle": {
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "saveBadge": "Save {{percent}}%"
     }
   }
 }

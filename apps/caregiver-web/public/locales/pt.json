@@ -223,6 +223,16 @@
       "hintPlaceholder": "Ex: Seus remédios estão na caixa de comprimidos da bancada da cozinha",
       "taskPlaceholder": "Ex: Medicação da manhã",
       "recurrence": "Repete",
+      "allDays": "Todos",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
       "daily": "Todos os dias",
       "specificDays": "Dias específicos",
       "oneTime": "Uma vez",
@@ -242,6 +252,8 @@
       "instructions": "Instruções",
       "actions": "Ações",
       "syncNote": "As alterações sincronizam instantaneamente com o aplicativo de {{name}}",
+      "patientCreated": "Added by {{name}}",
+      "hasPhoto": "Tem foto",
       "taskPhoto": "Foto da Tarefa (opcional)",
       "uploadPhoto": "Carregar Foto",
       "removePhoto": "Remover Foto",
@@ -256,29 +268,11 @@
       "medItemLabel": "Medicamento {{number}}",
       "removeMedication": "Remover",
       "maxMedications": "Máximo de 3 medicamentos por grupo",
-      "uploadingPhoto": "Carregando...",
-      "hasPhoto": "Tem foto",
-      "allDays": "Todos",
-      "dayMon": "Seg",
-      "dayTue": "Ter",
-      "dayWed": "Qua",
-      "dayThu": "Qui",
-      "dayFri": "Sex",
-      "daySat": "Sáb",
-      "daySun": "Dom",
-      "days": {
-        "mon": "Mon",
-        "tue": "Tue",
-        "wed": "Wed",
-        "thu": "Thu",
-        "fri": "Fri",
-        "sat": "Sat",
-        "sun": "Sun"
-      },
-      "patientCreated": "Added by {{name}}"
+      "uploadingPhoto": "Carregando..."
     },
     "location": {
       "title": "Localização e Segurança",
+      "pageTitle": "Localização e Segurança",
       "pageSubtitle": "Rastreie a localização e gerencie zonas seguras para sua tranquilidade",
       "setupDesc": "Configure seu perfil de cuidado para ativar o rastreamento de localização e recursos de segurança.",
       "completeSetupFirst": "Conclua a Configuração Primeiro",
@@ -332,8 +326,7 @@
       "mapsApiInstructions": "Adicione <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> às suas variáveis de ambiente.",
       "saveFailed": "Falha ao salvar zona segura. Por favor, tente novamente.",
       "deleteSafeZoneConfirm": "Tem certeza de que deseja excluir esta zona segura?",
-      "deleteFailed": "Falha ao excluir zona segura. Por favor, tente novamente.",
-      "pageTitle": "Localização e Segurança"
+      "deleteFailed": "Falha ao excluir zona segura. Por favor, tente novamente."
     },
     "coach": {
       "title": "Treinador de Cuidado com IA",
@@ -964,25 +957,6 @@
       "optional": "opcional",
       "required": "obrigatório",
       "selectRelationship": "Selecionar relação",
-      "relationships": {
-        "mother": "Mãe",
-        "father": "Pai",
-        "spouse": "Cônjuge",
-        "grandmother": "Avó",
-        "grandfather": "Avô",
-        "sibling": "Irmão(ã)",
-        "friend": "Amigo(a)",
-        "other": "Outro"
-      },
-      "dementiaTypes": {
-        "alzheimers": "Alzheimer",
-        "vascular": "Vascular",
-        "lewyBody": "Corpos de Lewy",
-        "frontotemporal": "Frontotemporal",
-        "mixed": "Mista",
-        "other": "Outra",
-        "notSure": "Não tenho certeza / prefiro não dizer"
-      },
       "selectCountry": "Selecione o país",
       "namePlaceholder": "Seu nome",
       "firstNamePlaceholder": "Primeiro nome",
@@ -1020,6 +994,25 @@
         "lunch": "Almoço",
         "dinner": "Jantar",
         "eveningMedication": "Medicação da noite"
+      },
+      "relationships": {
+        "mother": "Mãe",
+        "father": "Pai",
+        "spouse": "Cônjuge",
+        "grandmother": "Avó",
+        "grandfather": "Avô",
+        "sibling": "Irmão(ã)",
+        "friend": "Amigo(a)",
+        "other": "Outro"
+      },
+      "dementiaTypes": {
+        "alzheimers": "Alzheimer",
+        "vascular": "Vascular",
+        "lewyBody": "Corpos de Lewy",
+        "frontotemporal": "Frontotemporal",
+        "mixed": "Mista",
+        "other": "Outra",
+        "notSure": "Não tenho certeza / prefiro não dizer"
       }
     },
     "settings": {
@@ -1195,13 +1188,13 @@
       "addContact": "Adicionar Contacto",
       "contactName": "Nome do Contacto",
       "contactPhone": "Número de Telefone",
+      "contactPhonePlaceholder": "+1 555 123 4567",
       "contactRelationship": "Relação",
       "contactRelationshipPlaceholder": "ex: Filha, vizinho, médico",
       "noContactsYet": "Ainda não foram adicionados contactos de emergência. Recomendamos adicionar pelo menos um.",
       "savingContacts": "A guardar...",
       "saveContacts": "Guardar Contactos",
-      "removeContactConfirm": "Remover este contacto de emergência?",
-      "contactPhonePlaceholder": "+1 555 123 4567"
+      "removeContactConfirm": "Remover este contacto de emergência?"
     },
     "auth": {
       "login": "Iniciar sessão",
@@ -1282,6 +1275,18 @@
         "title": "O que está a acontecer?",
         "urgent": "URGENTE"
       },
+      "scenarioLabels": {
+        "agitated": "Agitado / Perturbado",
+        "wandering": "Deambulação / Desaparecido",
+        "refusing": "Recusa cuidados",
+        "hallucinations": "Vê / Ouve coisas",
+        "sundowning": "Síndrome do pôr do sol",
+        "fall": "Queda / Emergência física",
+        "repetitive_questions": "Perguntas repetitivas",
+        "sleep_disruption": "Perturbação do sono",
+        "aggression": "Agressão",
+        "shadowing": "Segue constantemente"
+      },
       "remote": {
         "noLocation": "Localização não disponível",
         "switchPrompt": "Precisa de guiar alguém que ESTÁ com {{name}}?",
@@ -1321,6 +1326,10 @@
         "timePattern": "Os episódios tendem a acontecer na {{time}}.",
         "weekCount": "{{count}} eventos esta semana."
       },
+      "quickLog": {
+        "button": "Registrar um momento de crise",
+        "title": "Registrar um momento de crise"
+      },
       "logger": {
         "title": "Registar este episódio",
         "subtitle": "Notas rápidas ajudam a identificar padrões.",
@@ -1338,23 +1347,7 @@
       "email": "Email",
       "website": "Website",
       "visitWebsite": "Visitar website",
-      "callNow": "Ligar agora",
-      "quickLog": {
-        "button": "Registrar um momento de crise",
-        "title": "Registrar um momento de crise"
-      },
-      "scenarioLabels": {
-        "agitated": "Agitado / Perturbado",
-        "wandering": "Deambulação / Desaparecido",
-        "refusing": "Recusa cuidados",
-        "hallucinations": "Vê / Ouve coisas",
-        "sundowning": "Síndrome do pôr do sol",
-        "fall": "Queda / Emergência física",
-        "repetitive_questions": "Perguntas repetitivas",
-        "sleep_disruption": "Perturbação do sono",
-        "aggression": "Agressão",
-        "shadowing": "Segue constantemente"
-      }
+      "callNow": "Ligar agora"
     },
     "legal": {
       "privacy": {
@@ -1643,10 +1636,14 @@
         "freePrice": "£0",
         "freePriceNote": "para sempre",
         "plusTitle": "OurTurn Plus",
-        "plusPrice": "£9.99",
-        "plusPriceNote": "por mês",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "per month",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "per year",
+        "plusAnnualSavings": "Save 33%",
         "plusBadge": "Recomendado",
         "trialNotice": "Gratuito por 14 dias. Não é necessário cartão de crédito.",
+        "familyPlanNote": "One subscription covers your whole family",
         "freeFeat1": "Plano de cuidados diários (até 5 tarefas)",
         "freeFeat2": "Registos básicos",
         "freeFeat3": "1 membro da família",
@@ -1657,13 +1654,7 @@
         "plusFeat4": "Círculo Familiar Ilimitado",
         "plusFeat5": "Ferramentas de bem-estar para cuidadores",
         "plusFeat6": "Relatórios de visitas médicas",
-        "plusFeat7": "Suporte prioritário",
-        "plusPriceMonthly": "£9.99",
-        "plusPriceMonthlyNote": "per month",
-        "plusPriceAnnual": "£79.99",
-        "plusPriceAnnualNote": "per year",
-        "plusAnnualSavings": "Save 33%",
-        "familyPlanNote": "One subscription covers your whole family"
+        "plusFeat7": "Suporte prioritário"
       },
       "faq": {
         "title": "Perguntas e respostas",

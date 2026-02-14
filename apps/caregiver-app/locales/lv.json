@@ -27,6 +27,8 @@
     "saving": "Saglabā...",
     "primary": "Primārais",
     "caregiver": "Aprūpētājs",
+    "someone": "Someone",
+    "yourLovedOne": "your loved one",
     "placeholders": {
       "timeFormat": "HH:MM",
       "dateFormat": "YYYY-MM-DD",
@@ -98,6 +100,7 @@
       "daily": "Katru dienu",
       "specificDays": "Konkrētas dienas",
       "oneTime": "Vienreizējs",
+      "oneTimeDate": "Date",
       "copyDay": "Kopēt uz citām dienām",
       "saved": "Saglabāts",
       "noTasks": "Vēl nav uzdevumu. Pievienojiet savu pirmo uzdevumu, lai sāktu.",
@@ -105,6 +108,7 @@
       "taskTitle": "Uzdevuma nosaukums",
       "time": "Laiks",
       "deleteConfirm": "Dzēst šo uzdevumu?",
+      "patientCreated": "Added by {{name}}",
       "noMoreSuggestions": "Vairs nav pieejami ieteikumi.",
       "copyFromTo": "Kopēt uzdevumus no {{day}} uz:",
       "copyCount": "{{taskCount}} uzdevumi tiks nokopēti uz {{dayCount}} dienām",
@@ -227,13 +231,13 @@
       "saveForDoctorVisit": "Saglabāt ārsta apmeklējumam",
       "success": "Veiksmīgi",
       "suggestions": {
+        "stayEngaged": "Kā es varu palīdzēt {{name}} saglabāt aktivitāti dienas laikā?",
         "sundowning": "Kā rīkoties ar saulrieta sindromu?",
+        "agitated": "{{name}} vakaros šķiet satraukts/a. Ko es varu darīt?",
         "rainyDays": "Kādas aktivitātes ir piemērotas lietainām dienām?",
         "siblings": "Palīdziet man runāt ar brāļiem un māsām par aprūpes dalīšanu",
         "refusesFood": "{{name}} atsakās ēst. Palīdziet.",
-        "repetitive": "Kā rīkoties ar atkārtotiem jautājumiem?",
-        "stayEngaged": "Kā es varu palīdzēt {{name}} saglabāt aktivitāti dienas laikā?",
-        "agitated": "{{name}} vakaros šķiet satraukts/a. Ko es varu darīt?"
+        "repetitive": "Kā rīkoties ar atkārtotiem jautājumiem?"
       },
       "hub": {
         "backToHub": "Atpakaļ pie padomnieka",
@@ -854,7 +858,9 @@
       "dailySchedule": "Dienas grafiks",
       "dailyScheduleDesc": "Iestatiet mīļotā cilvēka pamošanās un gulētiešanas laikus.",
       "wakeTime": "Pamošanās laiks",
+      "wakeTimePlaceholder": "07:00",
       "sleepTime": "Gulētiešanas laiks",
+      "sleepTimePlaceholder": "21:00",
       "savingSchedule": "Saglabā...",
       "saveSchedule": "Saglabāt grafiku",
       "emergencyContacts": "Avārijas kontakti",
@@ -871,9 +877,7 @@
       "country": "Valsts",
       "selectCountry": "Izvēlēties valsti",
       "selectLanguage": "Izvēlēties valodu",
-      "languageSaved": "Valoda atjaunināta",
-      "wakeTimePlaceholder": "07:00",
-      "sleepTimePlaceholder": "21:00"
+      "languageSaved": "Valoda atjaunināta"
     },
     "auth": {
       "login": "Pieteikties",
@@ -934,6 +938,8 @@
         "alertFamilyDesc": "Nosūtīt paziņojumu visiem aprūpētājiem",
         "alertFamilySent": "Ģimenes locekļi informēti",
         "alertFamilyFailed": "Neizdevās paziņot ģimenei. Lūdzu, mēģiniet vēlreiz.",
+        "crisisAlertTitle": "Crisis Alert",
+        "crisisAlertBody": "{{caregiverName}} needs help with {{patientName}}. Please check in.",
         "viewLocation": "Skatīt atrašanās vietu",
         "viewLocationDesc": "Skatīt {{name}} pašreizējo atrašanās vietu kartē",
         "contactPrimary": "Sazināties ar primāro aprūpētāju",
@@ -1414,6 +1420,11 @@
     "subscribe": "Abonēt",
     "restore": "Atjaunot pirkumu",
     "manage": "Pārvaldīt abonementu",
+    "upgrade": "Upgrade to Plus",
+    "noOfferings": "Subscription plans are not available right now",
+    "checkoutError": "Could not start checkout. Please try again.",
+    "activating": "Activating your subscription...",
+    "manageViaStore": "Manage your subscription in your device's app store settings",
     "features": {
       "unlimitedTasks": "Neierobežots uzdevumu skaits dienā",
       "aiCoach": "Pilns AI aprūpes treneris",
@@ -1425,6 +1436,30 @@
       "reports": "Ziņojumi par ārsta apmeklējumiem",
       "toolkit": "Aprūpētāja rīku komplekts un labsajūta",
       "priority": "Prioritārs atbalsts"
+    },
+    "limits": {
+      "taskLimitReached": "You've reached the free plan limit of {{max}} tasks. Upgrade to add unlimited tasks.",
+      "aiMessageLimitReached": "You've used all {{max}} free AI Coach messages this month. Upgrade for unlimited conversations.",
+      "caregiverLimitReached": "Free plan includes 1 caregiver. Upgrade to invite up to 5 family members."
+    },
+    "contextualTrial": {
+      "title": "Try OurTurn Plus free for 14 days",
+      "tasks": "Add unlimited tasks to your loved one's care plan — free for 14 days",
+      "caregiver": "Invite unlimited family members to your care circle — free for 14 days",
+      "aiCoach": "Unlock unlimited AI coaching conversations — free for 14 days",
+      "safeZones": "Keep your loved one safe with location tracking & safe zones — free for 14 days",
+      "reports": "Generate professional doctor visit reports — free for 14 days",
+      "journal": "Access the shared Care Journal — free for 14 days",
+      "insights": "Get AI-powered behavioural insights — free for 14 days",
+      "wellbeing": "Access caregiver wellbeing tools — free for 14 days",
+      "startTrial": "Start free trial",
+      "noCardRequired": "No credit card required",
+      "maybeLater": "Maybe later"
+    },
+    "planToggle": {
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "saveBadge": "Save {{percent}}%"
     }
   }
 }

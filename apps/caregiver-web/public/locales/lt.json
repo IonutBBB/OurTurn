@@ -223,6 +223,16 @@
       "hintPlaceholder": "Pvz., Jūsų tabletės yra virtuvės stalviršio dėžutėje",
       "taskPlaceholder": "pvz., rytiniai vaistai",
       "recurrence": "Kartojasi",
+      "allDays": "Visos",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
       "daily": "Kiekvieną dieną",
       "specificDays": "Konkrečios dienos",
       "oneTime": "Vieną kartą",
@@ -242,6 +252,8 @@
       "instructions": "Instrukcijos",
       "actions": "Veiksmai",
       "syncNote": "Pakeitimai iškart sinchronizuojami su {{name}} programėle",
+      "patientCreated": "Added by {{name}}",
+      "hasPhoto": "Turi nuotrauką",
       "taskPhoto": "Užduoties nuotrauka (nebūtina)",
       "uploadPhoto": "Įkelti nuotrauką",
       "removePhoto": "Pašalinti nuotrauką",
@@ -256,29 +268,11 @@
       "medItemLabel": "Vaistas {{number}}",
       "removeMedication": "Pašalinti",
       "maxMedications": "Daugiausia 3 vaistai vienoje grupėje",
-      "uploadingPhoto": "Įkeliama...",
-      "hasPhoto": "Turi nuotrauką",
-      "allDays": "Visos",
-      "dayMon": "Pir",
-      "dayTue": "Ant",
-      "dayWed": "Tre",
-      "dayThu": "Ket",
-      "dayFri": "Pen",
-      "daySat": "Šeš",
-      "daySun": "Sek",
-      "days": {
-        "mon": "Mon",
-        "tue": "Tue",
-        "wed": "Wed",
-        "thu": "Thu",
-        "fri": "Fri",
-        "sat": "Sat",
-        "sun": "Sun"
-      },
-      "patientCreated": "Added by {{name}}"
+      "uploadingPhoto": "Įkeliama..."
     },
     "location": {
       "title": "Vieta ir saugumas",
+      "pageTitle": "Vieta ir saugumas",
       "pageSubtitle": "Stebėkite vietą ir valdykite saugias zonas, kad jaustumėtės ramūs",
       "setupDesc": "Nustatykite savo priežiūros profilį, kad įgalintumėte vietos stebėjimo ir saugos funkcijas.",
       "completeSetupFirst": "Pirmiausia užbaikite nustatymą",
@@ -332,8 +326,7 @@
       "mapsApiInstructions": "Pridėkite <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> prie savo aplinkos kintamųjų.",
       "saveFailed": "Nepavyko išsaugoti saugios zonos. Bandykite dar kartą.",
       "deleteSafeZoneConfirm": "Ar tikrai norite ištrinti šią saugią zoną?",
-      "deleteFailed": "Nepavyko ištrinti saugios zonos. Bandykite dar kartą.",
-      "pageTitle": "Vieta ir saugumas"
+      "deleteFailed": "Nepavyko ištrinti saugios zonos. Bandykite dar kartą."
     },
     "coach": {
       "title": "AI priežiūros treneris",
@@ -751,6 +744,18 @@
         "disclaimer": "OurTurn nėra krizės tarnyba. Jei kažkam gresia tiesioginis pavojus, skambinkite pagalbos tarnyboms."
       },
       "behaviours": {
+        "types": {
+          "aggression": "Agresija ir mušimas",
+          "agitation": "Sujaudinimas ir neramumas",
+          "fall": "Kritimas ar sužalojimas",
+          "hallucinations": "Haliucinacijos",
+          "refusing_care": "Rūpinimosi atsisakymas",
+          "repetitive_questions": "Pasikartojantys klausimai",
+          "shadowing": "Sekiojimas ir prisirišimas",
+          "sleep_disruption": "Miego sutrikimai",
+          "sundowning": "Vakaro sumišimas",
+          "wandering": "Klaidžiojimas ir bandymai išeiti"
+        },
         "playbooks": {
           "title": "Elgesio žinynai",
           "subtitle": "Palieskite elgesį, kad gautumėte nuoseklias instrukcijas, ką daryti dabar.",
@@ -809,18 +814,6 @@
           "analyse": "Analizuoti modelius",
           "analysing": "Analizuojama...",
           "notEnoughData": "Užregistruokite dar kelis įvykius, kad atrakintumėte modelių analizę. Po 5+ įvykių atsiras laiko, priežasčių ir strategijų tendencijos."
-        },
-        "types": {
-          "aggression": "Agresija ir mušimas",
-          "agitation": "Sujaudinimas ir neramumas",
-          "fall": "Kritimas ar sužalojimas",
-          "hallucinations": "Haliucinacijos",
-          "refusing_care": "Rūpinimosi atsisakymas",
-          "repetitive_questions": "Pasikartojantys klausimai",
-          "shadowing": "Sekiojimas ir prisirišimas",
-          "sleep_disruption": "Miego sutrikimai",
-          "sundowning": "Vakaro sumišimas",
-          "wandering": "Klaidžiojimas ir bandymai išeiti"
         }
       },
       "network": {
@@ -964,25 +957,6 @@
       "optional": "nebūtina",
       "required": "privaloma",
       "selectRelationship": "Pasirinkite ryšį",
-      "relationships": {
-        "mother": "Motina",
-        "father": "Tėvas",
-        "spouse": "Sutuoktinis",
-        "grandmother": "Močiutė",
-        "grandfather": "Senelis",
-        "sibling": "Brolis ar sesuo",
-        "friend": "Draugas",
-        "other": "Kita"
-      },
-      "dementiaTypes": {
-        "alzheimers": "Alzheimerio liga",
-        "vascular": "Kraujagyslinė",
-        "lewyBody": "Lewy kūneliai",
-        "frontotemporal": "Frontotemporalinė",
-        "mixed": "Mišri",
-        "other": "Kita",
-        "notSure": "Nežinau / nenoriu atsakyti"
-      },
       "selectCountry": "Pasirinkite šalį",
       "namePlaceholder": "Jūsų vardas",
       "firstNamePlaceholder": "Vardas",
@@ -1020,6 +994,25 @@
         "lunch": "Pietūs",
         "dinner": "Vakarienė",
         "eveningMedication": "Vakaro vaistai"
+      },
+      "relationships": {
+        "mother": "Motina",
+        "father": "Tėvas",
+        "spouse": "Sutuoktinis",
+        "grandmother": "Močiutė",
+        "grandfather": "Senelis",
+        "sibling": "Brolis ar sesuo",
+        "friend": "Draugas",
+        "other": "Kita"
+      },
+      "dementiaTypes": {
+        "alzheimers": "Alzheimerio liga",
+        "vascular": "Kraujagyslinė",
+        "lewyBody": "Lewy kūneliai",
+        "frontotemporal": "Frontotemporalinė",
+        "mixed": "Mišri",
+        "other": "Kita",
+        "notSure": "Nežinau / nenoriu atsakyti"
       }
     },
     "settings": {
@@ -1195,13 +1188,13 @@
       "addContact": "Pridėti kontaktą",
       "contactName": "Kontakto vardas",
       "contactPhone": "Telefono numeris",
+      "contactPhonePlaceholder": "+1 555 123 4567",
       "contactRelationship": "Ryšys",
       "contactRelationshipPlaceholder": "pvz., Dukra, kaimynas, gydytojas",
       "noContactsYet": "Dar nepridėta avarinių kontaktų. Rekomenduojame pridėti bent vieną.",
       "savingContacts": "Įrašoma...",
       "saveContacts": "Išsaugoti kontaktus",
-      "removeContactConfirm": "Pašalinti šį avarinį kontaktą?",
-      "contactPhonePlaceholder": "+1 555 123 4567"
+      "removeContactConfirm": "Pašalinti šį avarinį kontaktą?"
     },
     "auth": {
       "login": "Prisijungti",
@@ -1282,6 +1275,18 @@
         "title": "Kas vyksta?",
         "urgent": "SKUBUS"
       },
+      "scenarioLabels": {
+        "agitated": "Agitated / Upset",
+        "wandering": "Wandering / Missing",
+        "refusing": "Refusing Care",
+        "hallucinations": "Seeing / Hearing Things",
+        "sundowning": "Sundowning / Evening Anxiety",
+        "fall": "Fall / Physical Emergency",
+        "repetitive_questions": "Repetitive Questions",
+        "sleep_disruption": "Sleep Disruption",
+        "aggression": "Aggression",
+        "shadowing": "Shadowing"
+      },
       "remote": {
         "noLocation": "Vieta nepasiekiama",
         "switchPrompt": "Reikia patarti žmogui, kuris YRA su {{name}}?",
@@ -1321,6 +1326,10 @@
         "timePattern": "Epizodai dažniausiai įvyksta {{time}}.",
         "weekCount": "{{count}} įvykių šią savaitę."
       },
+      "quickLog": {
+        "button": "Užfiksuoti krizės momentą",
+        "title": "Užfiksuoti krizės momentą"
+      },
       "logger": {
         "title": "Registruoti šį epizodą",
         "subtitle": "Greitos pastabos padeda pastebėti modelius.",
@@ -1338,23 +1347,7 @@
       "email": "El. paštas",
       "website": "Svetainė",
       "visitWebsite": "Apsilankyti svetainėje",
-      "callNow": "Skambinti dabar",
-      "quickLog": {
-        "button": "Užfiksuoti krizės momentą",
-        "title": "Užfiksuoti krizės momentą"
-      },
-      "scenarioLabels": {
-        "agitated": "Agitated / Upset",
-        "wandering": "Wandering / Missing",
-        "refusing": "Refusing Care",
-        "hallucinations": "Seeing / Hearing Things",
-        "sundowning": "Sundowning / Evening Anxiety",
-        "fall": "Fall / Physical Emergency",
-        "repetitive_questions": "Repetitive Questions",
-        "sleep_disruption": "Sleep Disruption",
-        "aggression": "Aggression",
-        "shadowing": "Shadowing"
-      }
+      "callNow": "Skambinti dabar"
     },
     "legal": {
       "privacy": {
@@ -1643,10 +1636,14 @@
         "freePrice": "£0",
         "freePriceNote": "visam laikui",
         "plusTitle": "OurTurn Plus",
-        "plusPrice": "£9.99",
-        "plusPriceNote": "per mėnesį",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "per month",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "per year",
+        "plusAnnualSavings": "Save 33%",
         "plusBadge": "Rekomenduojama",
         "trialNotice": "Nemokamai 14 dienų. Kredito kortelės nereikia.",
+        "familyPlanNote": "One subscription covers your whole family",
         "freeFeat1": "Kasdienės priežiūros planas (iki 5 užduočių)",
         "freeFeat2": "Pagrindiniai patikrinimai",
         "freeFeat3": "1 šeimos narys",
@@ -1657,13 +1654,7 @@
         "plusFeat4": "Neribotas šeimos ratas",
         "plusFeat5": "Slaugytojo gerovės įrankiai",
         "plusFeat6": "Gydytojo apsilankymų ataskaitos",
-        "plusFeat7": "Prioritetinė pagalba",
-        "plusPriceMonthly": "£9.99",
-        "plusPriceMonthlyNote": "per month",
-        "plusPriceAnnual": "£79.99",
-        "plusPriceAnnualNote": "per year",
-        "plusAnnualSavings": "Save 33%",
-        "familyPlanNote": "One subscription covers your whole family"
+        "plusFeat7": "Prioritetinė pagalba"
       },
       "faq": {
         "title": "Klausimai ir atsakymai",

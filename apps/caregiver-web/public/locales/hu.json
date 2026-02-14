@@ -223,6 +223,16 @@
       "hintPlaceholder": "Pl. A gyógyszerei a konyhapulton lévő gyógyszeres dobozban vannak",
       "taskPlaceholder": "pl. Reggeli gyógyszer",
       "recurrence": "Ismétlődés",
+      "allDays": "Összes",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
       "daily": "Minden nap",
       "specificDays": "Konkrét napok",
       "oneTime": "Egyszeri",
@@ -242,6 +252,8 @@
       "instructions": "Útmutatások",
       "actions": "Műveletek",
       "syncNote": "A változások azonnal szinkronizálódnak {{name}} alkalmazásába",
+      "patientCreated": "Added by {{name}}",
+      "hasPhoto": "Van fotója",
       "taskPhoto": "Feladat fotó (opcionális)",
       "uploadPhoto": "Fotó feltöltése",
       "removePhoto": "Fotó eltávolítása",
@@ -256,29 +268,11 @@
       "medItemLabel": "{{number}}. gyógyszer",
       "removeMedication": "Eltávolítás",
       "maxMedications": "Maximum 3 gyógyszer csoportonként",
-      "uploadingPhoto": "Feltöltés...",
-      "hasPhoto": "Van fotója",
-      "allDays": "Összes",
-      "dayMon": "Hé",
-      "dayTue": "Ke",
-      "dayWed": "Sze",
-      "dayThu": "Csü",
-      "dayFri": "Pé",
-      "daySat": "Szo",
-      "daySun": "Va",
-      "days": {
-        "mon": "Mon",
-        "tue": "Tue",
-        "wed": "Wed",
-        "thu": "Thu",
-        "fri": "Fri",
-        "sat": "Sat",
-        "sun": "Sun"
-      },
-      "patientCreated": "Added by {{name}}"
+      "uploadingPhoto": "Feltöltés..."
     },
     "location": {
       "title": "Hely és biztonság",
+      "pageTitle": "Hely és biztonság",
       "pageSubtitle": "Kövesse nyomon a helyet, és kezelje a biztonságos zónákat a nyugalom érdekében",
       "setupDesc": "Állítsa be a gondozási profilját a helykövetés és a biztonsági funkciók engedélyezéséhez.",
       "completeSetupFirst": "Először fejezze be a beállítást",
@@ -332,8 +326,7 @@
       "mapsApiInstructions": "Adja hozzá a <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> kulcsot a környezeti változókhoz.",
       "saveFailed": "A biztonságos zóna mentése sikertelen. Kérjük, próbálja újra.",
       "deleteSafeZoneConfirm": "Biztosan törli ezt a biztonságos zónát?",
-      "deleteFailed": "A biztonságos zóna törlése sikertelen. Kérjük, próbálja újra.",
-      "pageTitle": "Hely és biztonság"
+      "deleteFailed": "A biztonságos zóna törlése sikertelen. Kérjük, próbálja újra."
     },
     "coach": {
       "title": "AI Gondozási Tanácsadó",
@@ -751,6 +744,18 @@
         "disclaimer": "Az OurTurn nem válságszolgálat. Ha valaki közvetlen veszélyben van, hívja a segélyszolgálatokat."
       },
       "behaviours": {
+        "types": {
+          "aggression": "Agresszió és ütés",
+          "agitation": "Izgatottság és nyugtalanság",
+          "fall": "Esés vagy sérülés",
+          "hallucinations": "Hallucinációk",
+          "refusing_care": "Ellátás elutasítása",
+          "repetitive_questions": "Ismétlődő kérdések",
+          "shadowing": "Követés és ragaszkodás",
+          "sleep_disruption": "Alvászavar",
+          "sundowning": "Szürkületi szindróma",
+          "wandering": "Bolygás és kijáratkeresés"
+        },
         "playbooks": {
           "title": "Viselkedési forgatókönyvek",
           "subtitle": "Érintsen meg egy viselkedést a lépésről lépésre történő útmutatásért, hogy mit kell tennie most.",
@@ -809,18 +814,6 @@
           "analyse": "Mintázatok elemzése",
           "analysing": "Elemzés...",
           "notEnoughData": "Naplózz még néhány eseményt a mintázatok elemzésének feloldásához. 5+ esemény után megjelennek az időzítés, a kiváltó okok és a stratégiák trendjei."
-        },
-        "types": {
-          "aggression": "Agresszió és ütés",
-          "agitation": "Izgatottság és nyugtalanság",
-          "fall": "Esés vagy sérülés",
-          "hallucinations": "Hallucinációk",
-          "refusing_care": "Ellátás elutasítása",
-          "repetitive_questions": "Ismétlődő kérdések",
-          "shadowing": "Követés és ragaszkodás",
-          "sleep_disruption": "Alvászavar",
-          "sundowning": "Szürkületi szindróma",
-          "wandering": "Bolygás és kijáratkeresés"
         }
       },
       "network": {
@@ -964,25 +957,6 @@
       "optional": "opcionális",
       "required": "kötelező",
       "selectRelationship": "Válassza ki a kapcsolatot",
-      "relationships": {
-        "mother": "Édesanya",
-        "father": "Édesapa",
-        "spouse": "Házastárs",
-        "grandmother": "Nagymama",
-        "grandfather": "Nagypapa",
-        "sibling": "Testvér",
-        "friend": "Barát",
-        "other": "Egyéb"
-      },
-      "dementiaTypes": {
-        "alzheimers": "Alzheimer-kór",
-        "vascular": "Vaszkuláris demencia",
-        "lewyBody": "Lewy-testes demencia",
-        "frontotemporal": "Frontotemporális demencia",
-        "mixed": "Kevert",
-        "other": "Egyéb",
-        "notSure": "Nem biztos / nem szeretném megadni"
-      },
       "selectCountry": "Ország kiválasztása",
       "namePlaceholder": "Az Ön neve",
       "firstNamePlaceholder": "Keresztnév",
@@ -1020,6 +994,25 @@
         "lunch": "Ebéd",
         "dinner": "Vacsora",
         "eveningMedication": "Esti gyógyszer"
+      },
+      "relationships": {
+        "mother": "Édesanya",
+        "father": "Édesapa",
+        "spouse": "Házastárs",
+        "grandmother": "Nagymama",
+        "grandfather": "Nagypapa",
+        "sibling": "Testvér",
+        "friend": "Barát",
+        "other": "Egyéb"
+      },
+      "dementiaTypes": {
+        "alzheimers": "Alzheimer-kór",
+        "vascular": "Vaszkuláris demencia",
+        "lewyBody": "Lewy-testes demencia",
+        "frontotemporal": "Frontotemporális demencia",
+        "mixed": "Kevert",
+        "other": "Egyéb",
+        "notSure": "Nem biztos / nem szeretném megadni"
       }
     },
     "settings": {
@@ -1195,13 +1188,13 @@
       "addContact": "Kapcsolat hozzáadása",
       "contactName": "Kapcsolat neve",
       "contactPhone": "Telefonszám",
+      "contactPhonePlaceholder": "+1 555 123 4567",
       "contactRelationship": "Kapcsolat",
       "contactRelationshipPlaceholder": "pl. Lánya, szomszéd, orvos",
       "noContactsYet": "Még nincsenek hozzáadva sürgősségi kapcsolatok. Javasoljuk, hogy legalább egyet adjon hozzá.",
       "savingContacts": "Mentés...",
       "saveContacts": "Kapcsolatok mentése",
-      "removeContactConfirm": "Eltávolítja ezt a sürgősségi kapcsolatot?",
-      "contactPhonePlaceholder": "+1 555 123 4567"
+      "removeContactConfirm": "Eltávolítja ezt a sürgősségi kapcsolatot?"
     },
     "auth": {
       "login": "Bejelentkezés",
@@ -1282,6 +1275,18 @@
         "title": "Mi történik?",
         "urgent": "SÜRGŐS"
       },
+      "scenarioLabels": {
+        "agitated": "Agitated / Upset",
+        "wandering": "Wandering / Missing",
+        "refusing": "Refusing Care",
+        "hallucinations": "Seeing / Hearing Things",
+        "sundowning": "Sundowning / Evening Anxiety",
+        "fall": "Fall / Physical Emergency",
+        "repetitive_questions": "Repetitive Questions",
+        "sleep_disruption": "Sleep Disruption",
+        "aggression": "Aggression",
+        "shadowing": "Shadowing"
+      },
       "remote": {
         "noLocation": "A helyszín nem elérhető",
         "switchPrompt": "Segítségre van szükséged valakinek, aki {{name}} mellett VAN?",
@@ -1321,6 +1326,10 @@
         "timePattern": "Az epizódok általában {{time}} időpontban fordulnak elő.",
         "weekCount": "{{count}} esemény ezen a héten."
       },
+      "quickLog": {
+        "button": "Válsághelyzet rögzítése",
+        "title": "Válsághelyzet rögzítése"
+      },
       "logger": {
         "title": "Naplózd ezt az epizódot",
         "subtitle": "A gyors jegyzetek segítenek felismerni a mintákat.",
@@ -1338,23 +1347,7 @@
       "email": "E-mail",
       "website": "Weboldal",
       "visitWebsite": "Weboldal megtekintése",
-      "callNow": "Hívás most",
-      "quickLog": {
-        "button": "Válsághelyzet rögzítése",
-        "title": "Válsághelyzet rögzítése"
-      },
-      "scenarioLabels": {
-        "agitated": "Agitated / Upset",
-        "wandering": "Wandering / Missing",
-        "refusing": "Refusing Care",
-        "hallucinations": "Seeing / Hearing Things",
-        "sundowning": "Sundowning / Evening Anxiety",
-        "fall": "Fall / Physical Emergency",
-        "repetitive_questions": "Repetitive Questions",
-        "sleep_disruption": "Sleep Disruption",
-        "aggression": "Aggression",
-        "shadowing": "Shadowing"
-      }
+      "callNow": "Hívás most"
     },
     "legal": {
       "privacy": {
@@ -1643,10 +1636,14 @@
         "freePrice": "£0",
         "freePriceNote": "örökre",
         "plusTitle": "OurTurn Plus",
-        "plusPrice": "£9.99",
-        "plusPriceNote": "havonta",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "per month",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "per year",
+        "plusAnnualSavings": "Save 33%",
         "plusBadge": "Ajánlott",
         "trialNotice": "14 napig ingyenes. Bankkártya nem szükséges.",
+        "familyPlanNote": "One subscription covers your whole family",
         "freeFeat1": "Napi gondozási terv (legfeljebb 5 feladat)",
         "freeFeat2": "Alapvető bejelentkezések",
         "freeFeat3": "1 családtag",
@@ -1657,13 +1654,7 @@
         "plusFeat4": "Korlátlan Családi Kör",
         "plusFeat5": "Gondozói jólléti eszközök",
         "plusFeat6": "Orvosi látogatási jelentések",
-        "plusFeat7": "Prioritásos támogatás",
-        "plusPriceMonthly": "£9.99",
-        "plusPriceMonthlyNote": "per month",
-        "plusPriceAnnual": "£79.99",
-        "plusPriceAnnualNote": "per year",
-        "plusAnnualSavings": "Save 33%",
-        "familyPlanNote": "One subscription covers your whole family"
+        "plusFeat7": "Prioritásos támogatás"
       },
       "faq": {
         "title": "Kérdések és válaszok",

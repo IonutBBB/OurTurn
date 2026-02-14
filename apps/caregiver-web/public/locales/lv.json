@@ -223,6 +223,16 @@
       "hintPlaceholder": "Piem., Jūsu zāles ir virtuves letes zāļu kastītē",
       "taskPlaceholder": "piem., Rīta zāles",
       "recurrence": "Atkārtojas",
+      "allDays": "Visas",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
       "daily": "Katru dienu",
       "specificDays": "Konkrētās dienās",
       "oneTime": "Vienreiz",
@@ -242,6 +252,8 @@
       "instructions": "Instrukcijas",
       "actions": "Darbības",
       "syncNote": "Izmaiņas tiek nekavējoties sinhronizētas ar {{name}} lietotni",
+      "patientCreated": "Added by {{name}}",
+      "hasPhoto": "Ir foto",
       "taskPhoto": "Uzdevuma fotoattēls (pēc izvēles)",
       "uploadPhoto": "Augšupielādēt fotoattēlu",
       "removePhoto": "Noņemt fotoattēlu",
@@ -256,29 +268,11 @@
       "medItemLabel": "Zāles {{number}}",
       "removeMedication": "Noņemt",
       "maxMedications": "Maksimums 3 zāles vienā grupā",
-      "uploadingPhoto": "Augšupielādē...",
-      "hasPhoto": "Ir foto",
-      "allDays": "Visas",
-      "dayMon": "Pir",
-      "dayTue": "Otr",
-      "dayWed": "Tre",
-      "dayThu": "Cet",
-      "dayFri": "Pie",
-      "daySat": "Ses",
-      "daySun": "Svē",
-      "days": {
-        "mon": "Mon",
-        "tue": "Tue",
-        "wed": "Wed",
-        "thu": "Thu",
-        "fri": "Fri",
-        "sat": "Sat",
-        "sun": "Sun"
-      },
-      "patientCreated": "Added by {{name}}"
+      "uploadingPhoto": "Augšupielādē..."
     },
     "location": {
       "title": "Atrašanās vieta un drošība",
+      "pageTitle": "Atrašanās vieta un drošība",
       "pageSubtitle": "Izsekojiet atrašanās vietu un pārvaldiet drošas zonas, lai nodrošinātu sirdsmieru",
       "setupDesc": "Izveidojiet savu aprūpes profilu, lai iespējotu atrašanās vietas izsekošanu un drošības funkcijas.",
       "completeSetupFirst": "Vispirms pabeidziet iestatīšanu",
@@ -332,8 +326,7 @@
       "mapsApiInstructions": "Pievienojiet <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> saviem vides mainīgajiem.",
       "saveFailed": "Neizdevās saglabāt drošu zonu. Lūdzu, mēģiniet vēlreiz.",
       "deleteSafeZoneConfirm": "Vai tiešām vēlaties dzēst šo drošo zonu?",
-      "deleteFailed": "Neizdevās dzēst drošu zonu. Lūdzu, mēģiniet vēlreiz.",
-      "pageTitle": "Atrašanās vieta un drošība"
+      "deleteFailed": "Neizdevās dzēst drošu zonu. Lūdzu, mēģiniet vēlreiz."
     },
     "coach": {
       "title": "AI aprūpes konsultants",
@@ -751,6 +744,18 @@
         "disclaimer": "OurTurn nav krīzes dienests. Ja kāds ir tiešās briesmās, zvaniet neatliekamās palīdzības dienestiem."
       },
       "behaviours": {
+        "types": {
+          "aggression": "Agresija un sišana",
+          "agitation": "Uzbudinājums un nemiers",
+          "fall": "Kritiens vai savainojums",
+          "hallucinations": "Halucinācijas",
+          "refusing_care": "Aprūpes atteikums",
+          "repetitive_questions": "Atkārtoti jautājumi",
+          "shadowing": "Sekošana un pieķeršanās",
+          "sleep_disruption": "Miega traucējumi",
+          "sundowning": "Vakara apjukums",
+          "wandering": "Klaiņošana un izejas meklēšana"
+        },
         "playbooks": {
           "title": "Uzvedības rokasgrāmatas",
           "subtitle": "Pieskarieties uzvedībai, lai iegūtu soli pa solim norādījumus par to, ko darīt tieši tagad.",
@@ -809,18 +814,6 @@
           "analyse": "Analizēt modeļus",
           "analysing": "Analizē...",
           "notEnoughData": "Reģistrējiet vēl dažus incidentus, lai atbloķētu modeļu analīzi. Pēc 5+ incidentiem parādīsies tendences laika, ierosinātāju un stratēģiju ziņā."
-        },
-        "types": {
-          "aggression": "Agresija un sišana",
-          "agitation": "Uzbudinājums un nemiers",
-          "fall": "Kritiens vai savainojums",
-          "hallucinations": "Halucinācijas",
-          "refusing_care": "Aprūpes atteikums",
-          "repetitive_questions": "Atkārtoti jautājumi",
-          "shadowing": "Sekošana un pieķeršanās",
-          "sleep_disruption": "Miega traucējumi",
-          "sundowning": "Vakara apjukums",
-          "wandering": "Klaiņošana un izejas meklēšana"
         }
       },
       "network": {
@@ -964,25 +957,6 @@
       "optional": "pēc izvēles",
       "required": "obligāts",
       "selectRelationship": "Izvēlieties attiecības",
-      "relationships": {
-        "mother": "Māte",
-        "father": "Tēvs",
-        "spouse": "Laulātais",
-        "grandmother": "Vecmāmiņa",
-        "grandfather": "Vecvectēvs",
-        "sibling": "Brālis/māsa",
-        "friend": "Draugs",
-        "other": "Cits"
-      },
-      "dementiaTypes": {
-        "alzheimers": "Alcheimera slimība",
-        "vascular": "Asinsvadu",
-        "lewyBody": "Levija ķermenīši",
-        "frontotemporal": "Frontotemporāla",
-        "mixed": "Jaukta",
-        "other": "Cits",
-        "notSure": "Neesmu pārliecināts / vēlos neizpaust"
-      },
       "selectCountry": "Izvēlieties valsti",
       "namePlaceholder": "Jūsu vārds",
       "firstNamePlaceholder": "Vārds",
@@ -1020,6 +994,25 @@
         "lunch": "Pusdienas",
         "dinner": "Vakariņas",
         "eveningMedication": "Vakara medikamenti"
+      },
+      "relationships": {
+        "mother": "Māte",
+        "father": "Tēvs",
+        "spouse": "Laulātais",
+        "grandmother": "Vecmāmiņa",
+        "grandfather": "Vecvectēvs",
+        "sibling": "Brālis/māsa",
+        "friend": "Draugs",
+        "other": "Cits"
+      },
+      "dementiaTypes": {
+        "alzheimers": "Alcheimera slimība",
+        "vascular": "Asinsvadu",
+        "lewyBody": "Levija ķermenīši",
+        "frontotemporal": "Frontotemporāla",
+        "mixed": "Jaukta",
+        "other": "Cits",
+        "notSure": "Neesmu pārliecināts / vēlos neizpaust"
       }
     },
     "settings": {
@@ -1195,13 +1188,13 @@
       "addContact": "Pievienot kontaktu",
       "contactName": "Kontakta vārds",
       "contactPhone": "Tālruņa numurs",
+      "contactPhonePlaceholder": "+1 555 123 4567",
       "contactRelationship": "Attiecības",
       "contactRelationshipPlaceholder": "piem., Meita, kaimiņš, ārsts",
       "noContactsYet": "Vēl nav pievienoti neatliekamās palīdzības kontakti. Iesakām pievienot vismaz vienu.",
       "savingContacts": "Saglabā...",
       "saveContacts": "Saglabāt kontaktus",
-      "removeContactConfirm": "Noņemt šo neatliekamās palīdzības kontaktu?",
-      "contactPhonePlaceholder": "+1 555 123 4567"
+      "removeContactConfirm": "Noņemt šo neatliekamās palīdzības kontaktu?"
     },
     "auth": {
       "login": "Pieteikties",
@@ -1282,6 +1275,18 @@
         "title": "Kas notiek?",
         "urgent": "STEIDZAMI"
       },
+      "scenarioLabels": {
+        "agitated": "Agitated / Upset",
+        "wandering": "Wandering / Missing",
+        "refusing": "Refusing Care",
+        "hallucinations": "Seeing / Hearing Things",
+        "sundowning": "Sundowning / Evening Anxiety",
+        "fall": "Fall / Physical Emergency",
+        "repetitive_questions": "Repetitive Questions",
+        "sleep_disruption": "Sleep Disruption",
+        "aggression": "Aggression",
+        "shadowing": "Shadowing"
+      },
       "remote": {
         "noLocation": "Atrašanās vieta nav pieejama",
         "switchPrompt": "Vai nepieciešams vadīt kādu, kas IR kopā ar {{name}}?",
@@ -1321,6 +1326,10 @@
         "timePattern": "Gadījumi parasti notiek {{time}}.",
         "weekCount": "{{count}} notikumi šonedēļ."
       },
+      "quickLog": {
+        "button": "Reģistrēt krīzes brīdi",
+        "title": "Reģistrēt krīzes brīdi"
+      },
       "logger": {
         "title": "Reģistrēt šo gadījumu",
         "subtitle": "Īsas piezīmes palīdz pamanīt modeļus.",
@@ -1338,23 +1347,7 @@
       "email": "E-pasts",
       "website": "Vietne",
       "visitWebsite": "Apmeklēt vietni",
-      "callNow": "Zvanīt tagad",
-      "quickLog": {
-        "button": "Reģistrēt krīzes brīdi",
-        "title": "Reģistrēt krīzes brīdi"
-      },
-      "scenarioLabels": {
-        "agitated": "Agitated / Upset",
-        "wandering": "Wandering / Missing",
-        "refusing": "Refusing Care",
-        "hallucinations": "Seeing / Hearing Things",
-        "sundowning": "Sundowning / Evening Anxiety",
-        "fall": "Fall / Physical Emergency",
-        "repetitive_questions": "Repetitive Questions",
-        "sleep_disruption": "Sleep Disruption",
-        "aggression": "Aggression",
-        "shadowing": "Shadowing"
-      }
+      "callNow": "Zvanīt tagad"
     },
     "legal": {
       "privacy": {
@@ -1643,10 +1636,14 @@
         "freePrice": "£0",
         "freePriceNote": "uz visiem laikiem",
         "plusTitle": "OurTurn Plus",
-        "plusPrice": "£9.99",
-        "plusPriceNote": "mēnesī",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "per month",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "per year",
+        "plusAnnualSavings": "Save 33%",
         "plusBadge": "Ieteicams",
         "trialNotice": "Bezmaksas 14 dienas. Nav nepieciešama kredītkarte.",
+        "familyPlanNote": "One subscription covers your whole family",
         "freeFeat1": "Dienas aprūpes plāns (līdz 5 uzdevumiem)",
         "freeFeat2": "Pamata pārbaudes",
         "freeFeat3": "1 ģimenes loceklis",
@@ -1657,13 +1654,7 @@
         "plusFeat4": "Neierobežots ģimenes loks",
         "plusFeat5": "Aprūpētāja labsajūtas rīki",
         "plusFeat6": "Ārsta apmeklējumu atskaites",
-        "plusFeat7": "Prioritārais atbalsts",
-        "plusPriceMonthly": "£9.99",
-        "plusPriceMonthlyNote": "per month",
-        "plusPriceAnnual": "£79.99",
-        "plusPriceAnnualNote": "per year",
-        "plusAnnualSavings": "Save 33%",
-        "familyPlanNote": "One subscription covers your whole family"
+        "plusFeat7": "Prioritārais atbalsts"
       },
       "faq": {
         "title": "Jautājumi un atbildes",

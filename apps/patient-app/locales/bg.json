@@ -122,18 +122,18 @@
       "opensCheckin": "Отваря екрана за ежедневна регистрация"
     },
     "activities": {
-      "title": "Дейности",
-      "subtitle": "Изберете нещо приятно за правене",
+      "title": "Умствени игри",
+      "subtitle": "Поддържайте ума си активен и се забавлявайте",
       "completed": "Завършени",
-      "todaysActivities": "Днешни дейности",
-      "exploreMore": "Разгледайте още"
+      "todaysActivities": "Днешните игри",
+      "exploreMore": "Открийте още"
     },
     "categories": {
-      "wordsLanguage": "Words & Language",
-      "memoryAttention": "Memory & Attention",
-      "logicReasoning": "Logic & Reasoning",
-      "knowledge": "Knowledge",
-      "numbers": "Numbers"
+      "wordsLanguage": "Думи и език",
+      "memoryAttention": "Памет и внимание",
+      "logicReasoning": "Логика и разсъждение",
+      "knowledge": "Знания",
+      "numbers": "Числа"
     },
     "stim": {
       "common": {
@@ -145,11 +145,11 @@
         "allDoneToday": "Всичко е готово за днес!",
         "thankYouSharing": "Благодарим Ви, че споделихте мислите си!",
         "interesting": "Интересно!",
-        "correct": "That's right!",
-        "tryAgain": "Have another go!",
-        "hint": "Hint",
-        "round": "Round {{current}} of {{total}}",
-        "nextRound": "Next round"
+        "correct": "Точно така!",
+        "tryAgain": "Опитайте отново!",
+        "hint": "Подсказка",
+        "round": "Рунд {{current}} от {{total}}",
+        "nextRound": "Следващ рунд"
       },
       "wordAssociation": {
         "title": "Асоциации на думи",

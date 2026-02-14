@@ -27,6 +27,8 @@
     "saving": "Á shábháil...",
     "primary": "Príomhúil",
     "caregiver": "Cúramóir",
+    "someone": "Someone",
+    "yourLovedOne": "your loved one",
     "placeholders": {
       "timeFormat": "HH:MM",
       "dateFormat": "YYYY-MM-DD",
@@ -98,6 +100,7 @@
       "daily": "Gach lá",
       "specificDays": "Laethanta Sonracha",
       "oneTime": "Uair amháin",
+      "oneTimeDate": "Date",
       "copyDay": "Cóipeáil chuig laethanta eile",
       "saved": "Sábháilte",
       "noTasks": "Níl aon tascanna fós. Cuir do chéad tasc leis chun tús a chur leis.",
@@ -105,6 +108,7 @@
       "taskTitle": "Teideal an tasc",
       "time": "Am",
       "deleteConfirm": "An bhfuil tú cinnte gur mian leat an tasc seo a scriosadh?",
+      "patientCreated": "Added by {{name}}",
       "noMoreSuggestions": "Níl níos mó moltaí ar fáil.",
       "copyFromTo": "Cóipeáil tascanna ó {{day}} go:",
       "copyCount": "Déanfar {{taskCount}} tasc a chóipeáil chuig {{dayCount}} lá",
@@ -227,13 +231,13 @@
       "saveForDoctorVisit": "Sábháil le haghaidh Cuairt an Dochtúra",
       "success": "Éirigh go Geal",
       "suggestions": {
+        "stayEngaged": "Conas is féidir liom cabhrú le {{name}} fanacht gafa i rith an lae?",
         "sundowning": "Conas a dhéileálaim le meath na gréine?",
+        "agitated": "Tá cuma corraithe ar {{name}} tráthnóna. Cad is féidir liom a dhéanamh?",
         "rainyDays": "Cé na gníomhaíochtaí a oibríonn do laethanta na báistí?",
         "siblings": "Cabhraigh liom labhairt le mo dheartháireacha/deirfiúracha faoi chúram a roinnt",
         "refusesFood": "Diúltaíonn {{name}} ithe. Cabhair.",
-        "repetitive": "Conas a dhéileálaim le ceisteanna athfhillteacha?",
-        "stayEngaged": "Conas is féidir liom cabhrú le {{name}} fanacht gafa i rith an lae?",
-        "agitated": "Tá cuma corraithe ar {{name}} tráthnóna. Cad is féidir liom a dhéanamh?"
+        "repetitive": "Conas a dhéileálaim le ceisteanna athfhillteacha?"
       },
       "hub": {
         "backToHub": "Ar ais chuig an gCóitseálaí",
@@ -854,7 +858,9 @@
       "dailySchedule": "Sceideal Laethúil",
       "dailyScheduleDesc": "Socraigh amanna dúiseachta agus codlata do ghnáthamh do dhuine ghrá.",
       "wakeTime": "Am Dúiseachta",
+      "wakeTimePlaceholder": "07:00",
       "sleepTime": "Am Codlata",
+      "sleepTimePlaceholder": "21:00",
       "savingSchedule": "Ag sábháil...",
       "saveSchedule": "Sábháil Sceideal",
       "emergencyContacts": "Teagmhálaithe Éigeandála",
@@ -871,9 +877,7 @@
       "country": "Tír",
       "selectCountry": "Roghnaigh tír",
       "selectLanguage": "Roghnaigh teanga",
-      "languageSaved": "Teanga nuashonraithe",
-      "wakeTimePlaceholder": "07:00",
-      "sleepTimePlaceholder": "21:00"
+      "languageSaved": "Teanga nuashonraithe"
     },
     "auth": {
       "login": "Logáil isteach",
@@ -934,6 +938,8 @@
         "alertFamilyDesc": "Seol fógra brú chuig gach cúramóir",
         "alertFamilySent": "Fógraíodh baill teaghlaigh",
         "alertFamilyFailed": "Theip ar an teaghlach a chur ar an eolas. Bain triail eile as, le do thoil.",
+        "crisisAlertTitle": "Crisis Alert",
+        "crisisAlertBody": "{{caregiverName}} needs help with {{patientName}}. Please check in.",
         "viewLocation": "Féach ar an Suíomh",
         "viewLocationDesc": "Féach ar shuíomh reatha {{name}} ar an léarscáil",
         "contactPrimary": "Déan teagmháil leis an bPríomhchúramóir",
@@ -1414,6 +1420,11 @@
     "subscribe": "Liostáil",
     "restore": "Athchóirigh Ceannachán",
     "manage": "Bainistigh Síntiús",
+    "upgrade": "Upgrade to Plus",
+    "noOfferings": "Subscription plans are not available right now",
+    "checkoutError": "Could not start checkout. Please try again.",
+    "activating": "Activating your subscription...",
+    "manageViaStore": "Manage your subscription in your device's app store settings",
     "features": {
       "unlimitedTasks": "Tascanna neamhtheoranta in aghaidh an lae",
       "aiCoach": "Cóitseálaí Cúraim AI Iomlán",
@@ -1425,6 +1436,30 @@
       "reports": "Tuarascálacha cuairte dochtúra",
       "toolkit": "Trealamh cúramóra & folláine",
       "priority": "Tacaíocht tosaíochta"
+    },
+    "limits": {
+      "taskLimitReached": "You've reached the free plan limit of {{max}} tasks. Upgrade to add unlimited tasks.",
+      "aiMessageLimitReached": "You've used all {{max}} free AI Coach messages this month. Upgrade for unlimited conversations.",
+      "caregiverLimitReached": "Free plan includes 1 caregiver. Upgrade to invite up to 5 family members."
+    },
+    "contextualTrial": {
+      "title": "Try OurTurn Plus free for 14 days",
+      "tasks": "Add unlimited tasks to your loved one's care plan — free for 14 days",
+      "caregiver": "Invite unlimited family members to your care circle — free for 14 days",
+      "aiCoach": "Unlock unlimited AI coaching conversations — free for 14 days",
+      "safeZones": "Keep your loved one safe with location tracking & safe zones — free for 14 days",
+      "reports": "Generate professional doctor visit reports — free for 14 days",
+      "journal": "Access the shared Care Journal — free for 14 days",
+      "insights": "Get AI-powered behavioural insights — free for 14 days",
+      "wellbeing": "Access caregiver wellbeing tools — free for 14 days",
+      "startTrial": "Start free trial",
+      "noCardRequired": "No credit card required",
+      "maybeLater": "Maybe later"
+    },
+    "planToggle": {
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "saveBadge": "Save {{percent}}%"
     }
   }
 }

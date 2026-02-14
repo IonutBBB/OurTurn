@@ -223,6 +223,16 @@
       "hintPlaceholder": "Napr. Vaše lieky sú v dávkovači na kuchynskej linke",
       "taskPlaceholder": "napr. Ranné lieky",
       "recurrence": "Opakuje sa",
+      "allDays": "Všetky",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
       "daily": "Každý deň",
       "specificDays": "Konkrétne dni",
       "oneTime": "Jedenkrát",
@@ -242,6 +252,8 @@
       "instructions": "Inštrukcie",
       "actions": "Akcie",
       "syncNote": "Zmeny sa okamžite synchronizujú s aplikáciou osoby {{name}}",
+      "patientCreated": "Added by {{name}}",
+      "hasPhoto": "Má fotografiu",
       "taskPhoto": "Fotografia úlohy (voliteľné)",
       "uploadPhoto": "Nahrať fotografiu",
       "removePhoto": "Odstrániť fotografiu",
@@ -256,29 +268,11 @@
       "medItemLabel": "Liek {{number}}",
       "removeMedication": "Odstrániť",
       "maxMedications": "Maximálne 3 lieky na skupinu",
-      "uploadingPhoto": "Nahráva sa...",
-      "hasPhoto": "Má fotografiu",
-      "allDays": "Všetky",
-      "dayMon": "Po",
-      "dayTue": "Ut",
-      "dayWed": "St",
-      "dayThu": "Št",
-      "dayFri": "Pi",
-      "daySat": "So",
-      "daySun": "Ne",
-      "days": {
-        "mon": "Mon",
-        "tue": "Tue",
-        "wed": "Wed",
-        "thu": "Thu",
-        "fri": "Fri",
-        "sat": "Sat",
-        "sun": "Sun"
-      },
-      "patientCreated": "Added by {{name}}"
+      "uploadingPhoto": "Nahráva sa..."
     },
     "location": {
       "title": "Poloha a bezpečnosť",
+      "pageTitle": "Poloha a bezpečnosť",
       "pageSubtitle": "Sledujte polohu a spravujte bezpečné zóny pre pokoj v duši",
       "setupDesc": "Nastavte si svoj profil starostlivosti, aby ste povolili sledovanie polohy a bezpečnostné funkcie.",
       "completeSetupFirst": "Najprv dokončite nastavenie",
@@ -332,8 +326,7 @@
       "mapsApiInstructions": "Pridajte <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> do premenných prostredia.",
       "saveFailed": "Nepodarilo sa uložiť bezpečnú zónu. Skúste to znova.",
       "deleteSafeZoneConfirm": "Naozaj chcete odstrániť túto bezpečnú zónu?",
-      "deleteFailed": "Nepodarilo sa odstrániť bezpečnú zónu. Skúste to znova.",
-      "pageTitle": "Poloha a bezpečnosť"
+      "deleteFailed": "Nepodarilo sa odstrániť bezpečnú zónu. Skúste to znova."
     },
     "coach": {
       "title": "AI tréner starostlivosti",
@@ -751,6 +744,18 @@
         "disclaimer": "OurTurn nie je krízová služba. Ak je niekto v bezprostrednom nebezpečenstve, zavolajte záchranné služby."
       },
       "behaviours": {
+        "types": {
+          "aggression": "Agresia a udieranie",
+          "agitation": "Rozrušenie a nepokoj",
+          "fall": "Pád alebo zranenie",
+          "hallucinations": "Halucinácie",
+          "refusing_care": "Odmietanie starostlivosti",
+          "repetitive_questions": "Opakujúce sa otázky",
+          "shadowing": "Sledovanie a lipnutie",
+          "sleep_disruption": "Narušenie spánku",
+          "sundowning": "Večerný nepokoj",
+          "wandering": "Blúdenie a hľadanie východu"
+        },
         "playbooks": {
           "title": "Príručky správania",
           "subtitle": "Klepnutím na správanie získate podrobné pokyny, čo robiť práve teraz.",
@@ -809,18 +814,6 @@
           "analyse": "Analyzovať vzory",
           "analysing": "Analyzuje sa...",
           "notEnoughData": "Zaznamenajte niekoľko ďalších incidentov, aby ste odomkli analýzu vzorov. Po 5+ incidentoch sa objavia trendy v načasovaní, spúšťačoch a stratégiách."
-        },
-        "types": {
-          "aggression": "Agresia a udieranie",
-          "agitation": "Rozrušenie a nepokoj",
-          "fall": "Pád alebo zranenie",
-          "hallucinations": "Halucinácie",
-          "refusing_care": "Odmietanie starostlivosti",
-          "repetitive_questions": "Opakujúce sa otázky",
-          "shadowing": "Sledovanie a lipnutie",
-          "sleep_disruption": "Narušenie spánku",
-          "sundowning": "Večerný nepokoj",
-          "wandering": "Blúdenie a hľadanie východu"
         }
       },
       "network": {
@@ -964,25 +957,6 @@
       "optional": "voliteľné",
       "required": "povinné",
       "selectRelationship": "Vyberte vzťah",
-      "relationships": {
-        "mother": "Matka",
-        "father": "Otec",
-        "spouse": "Manžel/ka",
-        "grandmother": "Babička",
-        "grandfather": "Dedko",
-        "sibling": "Súrodenec",
-        "friend": "Priateľ",
-        "other": "Iné"
-      },
-      "dementiaTypes": {
-        "alzheimers": "Alzheimerova choroba",
-        "vascular": "Vaskulárna demencia",
-        "lewyBody": "Lewyho teliesková demencia",
-        "frontotemporal": "Frontotemporálna demencia",
-        "mixed": "Zmiešaná demencia",
-        "other": "Iné",
-        "notSure": "Nie som si istý/á / Nechcem uviesť"
-      },
       "selectCountry": "Vyberte krajinu",
       "namePlaceholder": "Vaše meno",
       "firstNamePlaceholder": "Meno",
@@ -1020,6 +994,25 @@
         "lunch": "Obed",
         "dinner": "Večera",
         "eveningMedication": "Večerné lieky"
+      },
+      "relationships": {
+        "mother": "Matka",
+        "father": "Otec",
+        "spouse": "Manžel/ka",
+        "grandmother": "Babička",
+        "grandfather": "Dedko",
+        "sibling": "Súrodenec",
+        "friend": "Priateľ",
+        "other": "Iné"
+      },
+      "dementiaTypes": {
+        "alzheimers": "Alzheimerova choroba",
+        "vascular": "Vaskulárna demencia",
+        "lewyBody": "Lewyho teliesková demencia",
+        "frontotemporal": "Frontotemporálna demencia",
+        "mixed": "Zmiešaná demencia",
+        "other": "Iné",
+        "notSure": "Nie som si istý/á / Nechcem uviesť"
       }
     },
     "settings": {
@@ -1195,13 +1188,13 @@
       "addContact": "Pridať kontakt",
       "contactName": "Meno kontaktu",
       "contactPhone": "Telefónne číslo",
+      "contactPhonePlaceholder": "+1 555 123 4567",
       "contactRelationship": "Vzťah",
       "contactRelationshipPlaceholder": "napr. Dcéra, sused, lekár",
       "noContactsYet": "Zatiaľ neboli pridané žiadne núdzové kontakty. Odporúčame pridať aspoň jeden.",
       "savingContacts": "Ukladá sa...",
       "saveContacts": "Uložiť kontakty",
-      "removeContactConfirm": "Odstrániť tento núdzový kontakt?",
-      "contactPhonePlaceholder": "+1 555 123 4567"
+      "removeContactConfirm": "Odstrániť tento núdzový kontakt?"
     },
     "auth": {
       "login": "Prihlásiť sa",
@@ -1282,6 +1275,18 @@
         "title": "Čo sa deje?",
         "urgent": "NÚDZOVÉ"
       },
+      "scenarioLabels": {
+        "agitated": "Agitated / Upset",
+        "wandering": "Wandering / Missing",
+        "refusing": "Refusing Care",
+        "hallucinations": "Seeing / Hearing Things",
+        "sundowning": "Sundowning / Evening Anxiety",
+        "fall": "Fall / Physical Emergency",
+        "repetitive_questions": "Repetitive Questions",
+        "sleep_disruption": "Sleep Disruption",
+        "aggression": "Aggression",
+        "shadowing": "Shadowing"
+      },
       "remote": {
         "noLocation": "Poloha nie je k dispozícii",
         "switchPrompt": "Potrebujete poradiť niekomu, kto je s {{name}}?",
@@ -1321,6 +1326,10 @@
         "timePattern": "Epizódy sa zvyčajne dejú v {{time}}.",
         "weekCount": "{{count}} udalostí tento týždeň."
       },
+      "quickLog": {
+        "button": "Zaznamenať krízový moment",
+        "title": "Zaznamenať krízový moment"
+      },
       "logger": {
         "title": "Zaznamenať túto epizódu",
         "subtitle": "Rýchle poznámky pomáhajú odhaliť vzory.",
@@ -1338,23 +1347,7 @@
       "email": "E-mail",
       "website": "Webová stránka",
       "visitWebsite": "Navštíviť webovú stránku",
-      "callNow": "Zavolať teraz",
-      "quickLog": {
-        "button": "Zaznamenať krízový moment",
-        "title": "Zaznamenať krízový moment"
-      },
-      "scenarioLabels": {
-        "agitated": "Agitated / Upset",
-        "wandering": "Wandering / Missing",
-        "refusing": "Refusing Care",
-        "hallucinations": "Seeing / Hearing Things",
-        "sundowning": "Sundowning / Evening Anxiety",
-        "fall": "Fall / Physical Emergency",
-        "repetitive_questions": "Repetitive Questions",
-        "sleep_disruption": "Sleep Disruption",
-        "aggression": "Aggression",
-        "shadowing": "Shadowing"
-      }
+      "callNow": "Zavolať teraz"
     },
     "legal": {
       "privacy": {
@@ -1643,10 +1636,14 @@
         "freePrice": "0 £",
         "freePriceNote": "navždy",
         "plusTitle": "OurTurn Plus",
-        "plusPrice": "9,99 £",
-        "plusPriceNote": "mesačne",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "per month",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "per year",
+        "plusAnnualSavings": "Save 33%",
         "plusBadge": "Odporúčané",
         "trialNotice": "Zadarmo na 14 dní. Nie je potrebná kreditná karta.",
+        "familyPlanNote": "One subscription covers your whole family",
         "freeFeat1": "Denný plán starostlivosti (až 5 úloh)",
         "freeFeat2": "Základné kontroly",
         "freeFeat3": "1 člen rodiny",
@@ -1657,13 +1654,7 @@
         "plusFeat4": "Neobmedzený rodinný kruh",
         "plusFeat5": "Nástroje pre pohodu opatrovateľa",
         "plusFeat6": "Správy z návštev lekára",
-        "plusFeat7": "Prioritná podpora",
-        "plusPriceMonthly": "£9.99",
-        "plusPriceMonthlyNote": "per month",
-        "plusPriceAnnual": "£79.99",
-        "plusPriceAnnualNote": "per year",
-        "plusAnnualSavings": "Save 33%",
-        "familyPlanNote": "One subscription covers your whole family"
+        "plusFeat7": "Prioritná podpora"
       },
       "faq": {
         "title": "Otázky a odpovede",

@@ -27,6 +27,8 @@
     "saving": "Mentés...",
     "primary": "Elsődleges",
     "caregiver": "Gondozó",
+    "someone": "Someone",
+    "yourLovedOne": "your loved one",
     "placeholders": {
       "timeFormat": "HH:MM",
       "dateFormat": "YYYY-MM-DD",
@@ -98,6 +100,7 @@
       "daily": "Minden nap",
       "specificDays": "Meghatározott napokon",
       "oneTime": "Egyszeri",
+      "oneTimeDate": "Date",
       "copyDay": "Másolás más napokra",
       "saved": "Mentve",
       "noTasks": "Még nincsenek feladatok. Adja hozzá az első feladatot a kezdéshez.",
@@ -105,6 +108,7 @@
       "taskTitle": "Feladat címe",
       "time": "Idő",
       "deleteConfirm": "Törli ezt a feladatot?",
+      "patientCreated": "Added by {{name}}",
       "noMoreSuggestions": "Nincs több javaslat.",
       "copyFromTo": "Feladatok másolása innen: {{day}} ide:",
       "copyCount": "{{taskCount}} feladat másolódik {{dayCount}} napra",
@@ -227,13 +231,13 @@
       "saveForDoctorVisit": "Mentés orvosi látogatáshoz",
       "success": "Siker",
       "suggestions": {
+        "stayEngaged": "Hogyan segíthetek {{name}}-nek, hogy aktív maradjon a nap folyamán?",
         "sundowning": "Hogyan kezeljem az esti nyugtalanságot?",
+        "agitated": "{{name}} nyugtalannak tűnik esténként. Mit tehetek?",
         "rainyDays": "Milyen tevékenységek alkalmasak esős napokra?",
         "siblings": "Segítsen beszélni testvéreimmel a gondozás megosztásáról",
         "refusesFood": "{{name}} nem hajlandó enni. Segítség.",
-        "repetitive": "Hogyan kezeljem az ismétlődő kérdéseket?",
-        "stayEngaged": "Hogyan segíthetek {{name}}-nek, hogy aktív maradjon a nap folyamán?",
-        "agitated": "{{name}} nyugtalannak tűnik esténként. Mit tehetek?"
+        "repetitive": "Hogyan kezeljem az ismétlődő kérdéseket?"
       },
       "hub": {
         "backToHub": "Vissza a Segítőhöz",
@@ -854,7 +858,9 @@
       "dailySchedule": "Napi rutin",
       "dailyScheduleDesc": "Állítsa be szerettének ébredési és alvási idejét a napi rutinjához.",
       "wakeTime": "Ébredési idő",
+      "wakeTimePlaceholder": "07:00",
       "sleepTime": "Alvási idő",
+      "sleepTimePlaceholder": "21:00",
       "savingSchedule": "Mentés...",
       "saveSchedule": "Rutin mentése",
       "emergencyContacts": "Vészhelyzeti kapcsolattartók",
@@ -871,9 +877,7 @@
       "country": "Ország",
       "selectCountry": "Ország kiválasztása",
       "selectLanguage": "Nyelv kiválasztása",
-      "languageSaved": "Nyelv frissítve",
-      "wakeTimePlaceholder": "07:00",
-      "sleepTimePlaceholder": "21:00"
+      "languageSaved": "Nyelv frissítve"
     },
     "auth": {
       "login": "Bejelentkezés",
@@ -934,6 +938,8 @@
         "alertFamilyDesc": "Push értesítés küldése minden gondozónak",
         "alertFamilySent": "Családtagok értesítve",
         "alertFamilyFailed": "Nem sikerült értesíteni a családot. Kérjük, próbálja újra.",
+        "crisisAlertTitle": "Crisis Alert",
+        "crisisAlertBody": "{{caregiverName}} needs help with {{patientName}}. Please check in.",
         "viewLocation": "Helyzet megtekintése",
         "viewLocationDesc": "Lásd {{name}} aktuális helyzetét a térképen",
         "contactPrimary": "Elsődleges gondozó értesítése",
@@ -1414,6 +1420,11 @@
     "subscribe": "Feliratkozás",
     "restore": "Vásárlás visszaállítása",
     "manage": "Előfizetés kezelése",
+    "upgrade": "Upgrade to Plus",
+    "noOfferings": "Subscription plans are not available right now",
+    "checkoutError": "Could not start checkout. Please try again.",
+    "activating": "Activating your subscription...",
+    "manageViaStore": "Manage your subscription in your device's app store settings",
     "features": {
       "unlimitedTasks": "Korlátlan számú feladat naponta",
       "aiCoach": "Teljes AI Gondozói Coach",
@@ -1425,6 +1436,30 @@
       "reports": "Orvosi látogatás összefoglalók",
       "toolkit": "Gondozói eszköztár és jóllét",
       "priority": "Prioritásos támogatás"
+    },
+    "limits": {
+      "taskLimitReached": "You've reached the free plan limit of {{max}} tasks. Upgrade to add unlimited tasks.",
+      "aiMessageLimitReached": "You've used all {{max}} free AI Coach messages this month. Upgrade for unlimited conversations.",
+      "caregiverLimitReached": "Free plan includes 1 caregiver. Upgrade to invite up to 5 family members."
+    },
+    "contextualTrial": {
+      "title": "Try OurTurn Plus free for 14 days",
+      "tasks": "Add unlimited tasks to your loved one's care plan — free for 14 days",
+      "caregiver": "Invite unlimited family members to your care circle — free for 14 days",
+      "aiCoach": "Unlock unlimited AI coaching conversations — free for 14 days",
+      "safeZones": "Keep your loved one safe with location tracking & safe zones — free for 14 days",
+      "reports": "Generate professional doctor visit reports — free for 14 days",
+      "journal": "Access the shared Care Journal — free for 14 days",
+      "insights": "Get AI-powered behavioural insights — free for 14 days",
+      "wellbeing": "Access caregiver wellbeing tools — free for 14 days",
+      "startTrial": "Start free trial",
+      "noCardRequired": "No credit card required",
+      "maybeLater": "Maybe later"
+    },
+    "planToggle": {
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "saveBadge": "Save {{percent}}%"
     }
   }
 }

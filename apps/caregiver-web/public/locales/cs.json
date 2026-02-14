@@ -223,6 +223,16 @@
       "hintPlaceholder": "Např. Vaše léky jsou v krabičce na léky na kuchyňské lince",
       "taskPlaceholder": "např. Ranní léky",
       "recurrence": "Opakuje se",
+      "allDays": "Vše",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
       "daily": "Každý den",
       "specificDays": "Konkrétní dny",
       "oneTime": "Jednorázově",
@@ -242,6 +252,8 @@
       "instructions": "Instrukce",
       "actions": "Akce",
       "syncNote": "Změny se okamžitě synchronizují do aplikace osoby {{name}}",
+      "patientCreated": "Added by {{name}}",
+      "hasPhoto": "Má fotografii",
       "taskPhoto": "Fotografie úkolu (volitelné)",
       "uploadPhoto": "Nahrát fotografii",
       "removePhoto": "Odstranit fotografii",
@@ -256,29 +268,11 @@
       "medItemLabel": "Lék {{number}}",
       "removeMedication": "Odstranit",
       "maxMedications": "Maximálně 3 léky na skupinu",
-      "uploadingPhoto": "Nahrávání...",
-      "hasPhoto": "Má fotografii",
-      "allDays": "Vše",
-      "dayMon": "Po",
-      "dayTue": "Út",
-      "dayWed": "St",
-      "dayThu": "Čt",
-      "dayFri": "Pá",
-      "daySat": "So",
-      "daySun": "Ne",
-      "days": {
-        "mon": "Mon",
-        "tue": "Tue",
-        "wed": "Wed",
-        "thu": "Thu",
-        "fri": "Fri",
-        "sat": "Sat",
-        "sun": "Sun"
-      },
-      "patientCreated": "Added by {{name}}"
+      "uploadingPhoto": "Nahrávání..."
     },
     "location": {
       "title": "Poloha a bezpečnost",
+      "pageTitle": "Poloha a bezpečnost",
       "pageSubtitle": "Sledujte polohu a spravujte bezpečné zóny pro klid v duši",
       "setupDesc": "Nastavte si svůj profil péče, abyste povolili sledování polohy a bezpečnostní funkce.",
       "completeSetupFirst": "Nejprve dokončete nastavení",
@@ -332,8 +326,7 @@
       "mapsApiInstructions": "Přidejte <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> do svých proměnných prostředí.",
       "saveFailed": "Nepodařilo se uložit bezpečnou zónu. Zkuste to prosím znovu.",
       "deleteSafeZoneConfirm": "Opravdu chcete smazat tuto bezpečnou zónu?",
-      "deleteFailed": "Nepodařilo se smazat bezpečnou zónu. Zkuste to prosím znovu.",
-      "pageTitle": "Poloha a bezpečnost"
+      "deleteFailed": "Nepodařilo se smazat bezpečnou zónu. Zkuste to prosím znovu."
     },
     "coach": {
       "title": "AI Care Coach",
@@ -751,6 +744,18 @@
         "disclaimer": "OurTurn není krizová služba. Pokud je někdo v bezprostředním nebezpečí, volejte záchrannou službu."
       },
       "behaviours": {
+        "types": {
+          "aggression": "Agrese a bití",
+          "agitation": "Neklid a rozrušení",
+          "fall": "Pád nebo zranění",
+          "hallucinations": "Halucinace",
+          "refusing_care": "Odmítání péče",
+          "repetitive_questions": "Opakující se otázky",
+          "shadowing": "Stínování a lpění",
+          "sleep_disruption": "Narušení spánku",
+          "sundowning": "Sundowning (večerní neklid)",
+          "wandering": "Bloudění a hledání východu"
+        },
         "playbooks": {
           "title": "Příručky chování",
           "subtitle": "Klepněte na chování a získejte podrobné pokyny, co dělat právě teď.",
@@ -809,18 +814,6 @@
           "analyse": "Analyzovat vzorce",
           "analysing": "Analyzuje se...",
           "notEnoughData": "Zaznamenejte několik dalších incidentů pro odemčení analýzy vzorců. Po 5 a více incidentech se začnou objevovat trendy v načasování, spouštěčích a strategiích."
-        },
-        "types": {
-          "aggression": "Agrese a bití",
-          "agitation": "Neklid a rozrušení",
-          "fall": "Pád nebo zranění",
-          "hallucinations": "Halucinace",
-          "refusing_care": "Odmítání péče",
-          "repetitive_questions": "Opakující se otázky",
-          "shadowing": "Stínování a lpění",
-          "sleep_disruption": "Narušení spánku",
-          "sundowning": "Sundowning (večerní neklid)",
-          "wandering": "Bloudění a hledání východu"
         }
       },
       "network": {
@@ -964,25 +957,6 @@
       "optional": "volitelné",
       "required": "povinné",
       "selectRelationship": "Vyberte vztah",
-      "relationships": {
-        "mother": "Matka",
-        "father": "Otec",
-        "spouse": "Manžel/ka",
-        "grandmother": "Babička",
-        "grandfather": "Dědeček",
-        "sibling": "Sourozenec",
-        "friend": "Přítel",
-        "other": "Jiný"
-      },
-      "dementiaTypes": {
-        "alzheimers": "Alzheimerova choroba",
-        "vascular": "Vaskulární demence",
-        "lewyBody": "Lewyho tělíska",
-        "frontotemporal": "Frontotemporální demence",
-        "mixed": "Smíšená",
-        "other": "Jiný",
-        "notSure": "Nejsem si jistý/á / nechci říct"
-      },
       "selectCountry": "Vyberte zemi",
       "namePlaceholder": "Vaše jméno",
       "firstNamePlaceholder": "Křestní jméno",
@@ -1020,6 +994,25 @@
         "lunch": "Oběd",
         "dinner": "Večeře",
         "eveningMedication": "Večerní léky"
+      },
+      "relationships": {
+        "mother": "Matka",
+        "father": "Otec",
+        "spouse": "Manžel/ka",
+        "grandmother": "Babička",
+        "grandfather": "Dědeček",
+        "sibling": "Sourozenec",
+        "friend": "Přítel",
+        "other": "Jiný"
+      },
+      "dementiaTypes": {
+        "alzheimers": "Alzheimerova choroba",
+        "vascular": "Vaskulární demence",
+        "lewyBody": "Lewyho tělíska",
+        "frontotemporal": "Frontotemporální demence",
+        "mixed": "Smíšená",
+        "other": "Jiný",
+        "notSure": "Nejsem si jistý/á / nechci říct"
       }
     },
     "settings": {
@@ -1195,13 +1188,13 @@
       "addContact": "Přidat kontakt",
       "contactName": "Jméno kontaktu",
       "contactPhone": "Telefonní číslo",
+      "contactPhonePlaceholder": "+1 555 123 4567",
       "contactRelationship": "Vztah",
       "contactRelationshipPlaceholder": "např. Dcera, soused, lékař",
       "noContactsYet": "Zatím nebyly přidány žádné nouzové kontakty. Doporučujeme přidat alespoň jeden.",
       "savingContacts": "Ukládám...",
       "saveContacts": "Uložit kontakty",
-      "removeContactConfirm": "Odstranit tento nouzový kontakt?",
-      "contactPhonePlaceholder": "+1 555 123 4567"
+      "removeContactConfirm": "Odstranit tento nouzový kontakt?"
     },
     "auth": {
       "login": "Přihlásit se",
@@ -1282,6 +1275,18 @@
         "title": "Co se děje?",
         "urgent": "NALÉHAVÉ"
       },
+      "scenarioLabels": {
+        "agitated": "Agitated / Upset",
+        "wandering": "Wandering / Missing",
+        "refusing": "Refusing Care",
+        "hallucinations": "Seeing / Hearing Things",
+        "sundowning": "Sundowning / Evening Anxiety",
+        "fall": "Fall / Physical Emergency",
+        "repetitive_questions": "Repetitive Questions",
+        "sleep_disruption": "Sleep Disruption",
+        "aggression": "Aggression",
+        "shadowing": "Shadowing"
+      },
       "remote": {
         "noLocation": "Poloha není k dispozici",
         "switchPrompt": "Potřebujete vést někoho, kdo JE s {{name}}?",
@@ -1321,6 +1326,10 @@
         "timePattern": "Epizody se obvykle stávají v {{time}}.",
         "weekCount": "{{count}} událostí tento týden."
       },
+      "quickLog": {
+        "button": "Zaznamenat krizový okamžik",
+        "title": "Zaznamenat krizový okamžik"
+      },
       "logger": {
         "title": "Zaznamenat tuto epizodu",
         "subtitle": "Rychlé poznámky pomáhají odhalit vzorce.",
@@ -1338,23 +1347,7 @@
       "email": "E-mail",
       "website": "Webové stránky",
       "visitWebsite": "Navštívit webové stránky",
-      "callNow": "Volat nyní",
-      "quickLog": {
-        "button": "Zaznamenat krizový okamžik",
-        "title": "Zaznamenat krizový okamžik"
-      },
-      "scenarioLabels": {
-        "agitated": "Agitated / Upset",
-        "wandering": "Wandering / Missing",
-        "refusing": "Refusing Care",
-        "hallucinations": "Seeing / Hearing Things",
-        "sundowning": "Sundowning / Evening Anxiety",
-        "fall": "Fall / Physical Emergency",
-        "repetitive_questions": "Repetitive Questions",
-        "sleep_disruption": "Sleep Disruption",
-        "aggression": "Aggression",
-        "shadowing": "Shadowing"
-      }
+      "callNow": "Volat nyní"
     },
     "legal": {
       "privacy": {
@@ -1643,10 +1636,14 @@
         "freePrice": "£0",
         "freePriceNote": "navždy",
         "plusTitle": "OurTurn Plus",
-        "plusPrice": "£9.99",
-        "plusPriceNote": "měsíčně",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "per month",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "per year",
+        "plusAnnualSavings": "Save 33%",
         "plusBadge": "Doporučeno",
         "trialNotice": "Zdarma na 14 dní. Není potřeba platební karta.",
+        "familyPlanNote": "One subscription covers your whole family",
         "freeFeat1": "Denní plán péče (až 5 úkolů)",
         "freeFeat2": "Základní kontroly",
         "freeFeat3": "1 člen rodiny",
@@ -1657,13 +1654,7 @@
         "plusFeat4": "Neomezený Rodinný kruh",
         "plusFeat5": "Nástroje pro pohodu pečovatele",
         "plusFeat6": "Zprávy z návštěv lékaře",
-        "plusFeat7": "Prioritní podpora",
-        "plusPriceMonthly": "£9.99",
-        "plusPriceMonthlyNote": "per month",
-        "plusPriceAnnual": "£79.99",
-        "plusPriceAnnualNote": "per year",
-        "plusAnnualSavings": "Save 33%",
-        "familyPlanNote": "One subscription covers your whole family"
+        "plusFeat7": "Prioritní podpora"
       },
       "faq": {
         "title": "Otázky a odpovědi",

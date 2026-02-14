@@ -223,6 +223,16 @@
       "hintPlaceholder": "Eż., Il-pilloli tiegħek jinsabu fil-kaxxa tal-pilloli fuq il-bank tal-kċina",
       "taskPlaceholder": "eż., Medikazzjoni ta' filgħodu",
       "recurrence": "Jirrepeti",
+      "allDays": "Kollha",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
       "daily": "Kull jum",
       "specificDays": "Ġranet speċifiċi",
       "oneTime": "Darba waħda",
@@ -242,6 +252,8 @@
       "instructions": "Istruzzjonijiet",
       "actions": "Azzjonijiet",
       "syncNote": "Il-bidliet jissinkronizzaw istantanjament mal-app ta' {{name}}",
+      "patientCreated": "Added by {{name}}",
+      "hasPhoto": "Għandu ritratt",
       "taskPhoto": "Ritratt tal-Kompitu (mhux obbligatorju)",
       "uploadPhoto": "Ittella' Ritratt",
       "removePhoto": "Neħħi Ritratt",
@@ -256,29 +268,11 @@
       "medItemLabel": "Medikazzjoni {{number}}",
       "removeMedication": "Neħħi",
       "maxMedications": "Massimu ta' 3 medikazzjonijiet għal kull grupp",
-      "uploadingPhoto": "Qed ittella'...",
-      "hasPhoto": "Għandu ritratt",
-      "allDays": "Kollha",
-      "dayMon": "Tne",
-      "dayTue": "Tli",
-      "dayWed": "Erb",
-      "dayThu": "Ħam",
-      "dayFri": "Ġim",
-      "daySat": "Sib",
-      "daySun": "Ħad",
-      "days": {
-        "mon": "Mon",
-        "tue": "Tue",
-        "wed": "Wed",
-        "thu": "Thu",
-        "fri": "Fri",
-        "sat": "Sat",
-        "sun": "Sun"
-      },
-      "patientCreated": "Added by {{name}}"
+      "uploadingPhoto": "Qed ittella'..."
     },
     "location": {
       "title": "Post u Sigurtà",
+      "pageTitle": "Post u Sigurtà",
       "pageSubtitle": "Isegwi l-post u mmaniġġja ż-żoni sikuri għall-paċi tal-moħħ",
       "setupDesc": "Ikkonfigura l-profil tal-kura tiegħek biex tippermetti t-traċċar tal-post u l-karatteristiċi tas-sigurtà.",
       "completeSetupFirst": "Imla l-Konfigurazzjoni L-Ewwel",
@@ -332,8 +326,7 @@
       "mapsApiInstructions": "Żid <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> mal-varjabbli tal-ambjent tiegħek.",
       "saveFailed": "Issejvjar taż-żona sikura fallew. Jekk jogħġbok erġa' pprova.",
       "deleteSafeZoneConfirm": "Żgur li trid tħassar din iż-żona sikura?",
-      "deleteFailed": "Tħassir taż-żona sikura fallew. Jekk jogħġbok erġa' pprova.",
-      "pageTitle": "Post u Sigurtà"
+      "deleteFailed": "Tħassir taż-żona sikura fallew. Jekk jogħġbok erġa' pprova."
     },
     "coach": {
       "title": "Kowċ tal-Kura tal-AI",
@@ -751,6 +744,18 @@
         "disclaimer": "OurTurn mhuwiex servizz ta' kriżi. Jekk xi ħadd jinsab f'periklu immedjat, ċempel lis-servizzi ta' emerġenza."
       },
       "behaviours": {
+        "types": {
+          "aggression": "Aggressjoni u Daqqiet",
+          "agitation": "Aġitazzjoni u Nuqqas ta' Serħan",
+          "fall": "Waqgħa jew Korriment",
+          "hallucinations": "Alluċinazzjonijiet",
+          "refusing_care": "Tirrifjuta l-Kura",
+          "repetitive_questions": "Mistoqsijiet Ripetittivi",
+          "shadowing": "Dell u Twaħħil",
+          "sleep_disruption": "Tfixkil fl-Irqad",
+          "sundowning": "Sundowning",
+          "wandering": "Irdigħ u Tfittxija ta' Ħruġ"
+        },
         "playbooks": {
           "title": "Kotba ta' Azzjoni ta' Mġiba",
           "subtitle": "Tektek imġiba għal gwida pass pass dwar x'għandek tagħmel bħalissa.",
@@ -809,18 +814,6 @@
           "analyse": "Analizza x-Xejriet",
           "analysing": "Qed jiġi analizzat...",
           "notEnoughData": "Irreġistra ftit inċidenti oħra biex tiftaħ l-analiżi tax-xejriet. Wara 5+ inċidenti, se joħorġu xejriet fil-ħin, l-kawżi u l-istrateġiji."
-        },
-        "types": {
-          "aggression": "Aggressjoni u Daqqiet",
-          "agitation": "Aġitazzjoni u Nuqqas ta' Serħan",
-          "fall": "Waqgħa jew Korriment",
-          "hallucinations": "Alluċinazzjonijiet",
-          "refusing_care": "Tirrifjuta l-Kura",
-          "repetitive_questions": "Mistoqsijiet Ripetittivi",
-          "shadowing": "Dell u Twaħħil",
-          "sleep_disruption": "Tfixkil fl-Irqad",
-          "sundowning": "Sundowning",
-          "wandering": "Irdigħ u Tfittxija ta' Ħruġ"
         }
       },
       "network": {
@@ -964,25 +957,6 @@
       "optional": "mhux obbligatorju",
       "required": "meħtieġ",
       "selectRelationship": "Agħżel relazzjoni",
-      "relationships": {
-        "mother": "Omm",
-        "father": "Missier",
-        "spouse": "Konjuġi",
-        "grandmother": "Nanna",
-        "grandfather": "Nannu",
-        "sibling": "Aħwa",
-        "friend": "Ħabib",
-        "other": "Oħrajn"
-      },
-      "dementiaTypes": {
-        "alzheimers": "Alzheimer's",
-        "vascular": "Vaskulari",
-        "lewyBody": "Lewy Body",
-        "frontotemporal": "Frontotemporali",
-        "mixed": "Imħallat",
-        "other": "Oħrajn",
-        "notSure": "Mhux ċert / nippreferi ma ngħidx"
-      },
       "selectCountry": "Agħżel pajjiż",
       "namePlaceholder": "Ismek",
       "firstNamePlaceholder": "Isem",
@@ -1020,6 +994,25 @@
         "lunch": "Ikla",
         "dinner": "Pranzu",
         "eveningMedication": "Mediċina ta' filgħaxija"
+      },
+      "relationships": {
+        "mother": "Omm",
+        "father": "Missier",
+        "spouse": "Konjuġi",
+        "grandmother": "Nanna",
+        "grandfather": "Nannu",
+        "sibling": "Aħwa",
+        "friend": "Ħabib",
+        "other": "Oħrajn"
+      },
+      "dementiaTypes": {
+        "alzheimers": "Alzheimer's",
+        "vascular": "Vaskulari",
+        "lewyBody": "Lewy Body",
+        "frontotemporal": "Frontotemporali",
+        "mixed": "Imħallat",
+        "other": "Oħrajn",
+        "notSure": "Mhux ċert / nippreferi ma ngħidx"
       }
     },
     "settings": {
@@ -1195,13 +1188,13 @@
       "addContact": "Żid Kuntatt",
       "contactName": "Isem il-Kuntatt",
       "contactPhone": "Numru tat-Telefon",
+      "contactPhonePlaceholder": "+1 555 123 4567",
       "contactRelationship": "Relazzjoni",
       "contactRelationshipPlaceholder": "eż., Bint, ġar, tabib",
       "noContactsYet": "Għad ma żdied l-ebda kuntatt ta' emerġenza. Nirrakkomandaw li żżid mill-inqas wieħed.",
       "savingContacts": "Qed jiġi ssejvjat...",
       "saveContacts": "Issejvja l-Kuntatti",
-      "removeContactConfirm": "Neħħi dan il-kuntatt ta' emerġenza?",
-      "contactPhonePlaceholder": "+1 555 123 4567"
+      "removeContactConfirm": "Neħħi dan il-kuntatt ta' emerġenza?"
     },
     "auth": {
       "login": "Idħol",
@@ -1282,6 +1275,18 @@
         "title": "X'qed jiġri?",
         "urgent": "URĠENTI"
       },
+      "scenarioLabels": {
+        "agitated": "Agitated / Upset",
+        "wandering": "Wandering / Missing",
+        "refusing": "Refusing Care",
+        "hallucinations": "Seeing / Hearing Things",
+        "sundowning": "Sundowning / Evening Anxiety",
+        "fall": "Fall / Physical Emergency",
+        "repetitive_questions": "Repetitive Questions",
+        "sleep_disruption": "Sleep Disruption",
+        "aggression": "Aggression",
+        "shadowing": "Shadowing"
+      },
       "remote": {
         "noLocation": "Post mhux disponibbli",
         "switchPrompt": "Għandek bżonn tiggwida lil xi ħadd li HUWA ma' {{name}}?",
@@ -1321,6 +1326,10 @@
         "timePattern": "L-episodji għandhom it-tendenza li jseħħu fil-{{time}}.",
         "weekCount": "{{count}} avvenimenti din il-ġimgħa."
       },
+      "quickLog": {
+        "button": "Idħol mument ta' kriżi",
+        "title": "Idħol mument ta' kriżi"
+      },
       "logger": {
         "title": "Irreġistra dan l-episodju",
         "subtitle": "Noti ta' malajr jgħinu biex jinstabu mudelli.",
@@ -1338,23 +1347,7 @@
       "email": "Email",
       "website": "Sit elettroniku",
       "visitWebsite": "Żur is-sit elettroniku",
-      "callNow": "Ċempel issa",
-      "quickLog": {
-        "button": "Idħol mument ta' kriżi",
-        "title": "Idħol mument ta' kriżi"
-      },
-      "scenarioLabels": {
-        "agitated": "Agitated / Upset",
-        "wandering": "Wandering / Missing",
-        "refusing": "Refusing Care",
-        "hallucinations": "Seeing / Hearing Things",
-        "sundowning": "Sundowning / Evening Anxiety",
-        "fall": "Fall / Physical Emergency",
-        "repetitive_questions": "Repetitive Questions",
-        "sleep_disruption": "Sleep Disruption",
-        "aggression": "Aggression",
-        "shadowing": "Shadowing"
-      }
+      "callNow": "Ċempel issa"
     },
     "legal": {
       "privacy": {
@@ -1643,10 +1636,14 @@
         "freePrice": "£0",
         "freePriceNote": "għal dejjem",
         "plusTitle": "OurTurn Plus",
-        "plusPrice": "£9.99",
-        "plusPriceNote": "kull xahar",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "per month",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "per year",
+        "plusAnnualSavings": "Save 33%",
         "plusBadge": "Rakkomandat",
         "trialNotice": "B'xejn għal 14-il jum. Ebda karta ta' kreditu meħtieġa.",
+        "familyPlanNote": "One subscription covers your whole family",
         "freeFeat1": "Pjan ta' kura ta' kuljum (sa 5 kompiti)",
         "freeFeat2": "Check-ins bażiċi",
         "freeFeat3": "1 membru tal-familja",
@@ -1657,13 +1654,7 @@
         "plusFeat4": "Ċirku tal-Familja bla Limitu",
         "plusFeat5": "Għodod għall-benesseri tal-persuna li tieħu ħsieb",
         "plusFeat6": "Rapporti ta' żjarat tat-tabib",
-        "plusFeat7": "Appoġġ prijoritarju",
-        "plusPriceMonthly": "£9.99",
-        "plusPriceMonthlyNote": "per month",
-        "plusPriceAnnual": "£79.99",
-        "plusPriceAnnualNote": "per year",
-        "plusAnnualSavings": "Save 33%",
-        "familyPlanNote": "One subscription covers your whole family"
+        "plusFeat7": "Appoġġ prijoritarju"
       },
       "faq": {
         "title": "Mistoqsijiet u tweġibiet",

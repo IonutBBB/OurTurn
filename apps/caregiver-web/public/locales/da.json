@@ -223,6 +223,16 @@
       "hintPlaceholder": "F.eks. Dine piller er i pilleæsken på køkkenbordet",
       "taskPlaceholder": "f.eks. Morgenmedicin",
       "recurrence": "Gentages",
+      "allDays": "Alle",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
       "daily": "Hver dag",
       "specificDays": "Specifikke dage",
       "oneTime": "En gang",
@@ -242,6 +252,8 @@
       "instructions": "Instruktioner",
       "actions": "Handlinger",
       "syncNote": "Ændringer synkroniseres øjeblikkeligt til {{name}}s app",
+      "patientCreated": "Added by {{name}}",
+      "hasPhoto": "Har foto",
       "taskPhoto": "Opgavefoto (valgfrit)",
       "uploadPhoto": "Upload foto",
       "removePhoto": "Fjern foto",
@@ -256,29 +268,11 @@
       "medItemLabel": "Medicin {{number}}",
       "removeMedication": "Fjern",
       "maxMedications": "Maksimum 3 typer medicin pr. gruppe",
-      "uploadingPhoto": "Uploader...",
-      "hasPhoto": "Har foto",
-      "allDays": "Alle",
-      "dayMon": "Man",
-      "dayTue": "Tir",
-      "dayWed": "Ons",
-      "dayThu": "Tor",
-      "dayFri": "Fre",
-      "daySat": "Lør",
-      "daySun": "Søn",
-      "days": {
-        "mon": "Mon",
-        "tue": "Tue",
-        "wed": "Wed",
-        "thu": "Thu",
-        "fri": "Fri",
-        "sat": "Sat",
-        "sun": "Sun"
-      },
-      "patientCreated": "Added by {{name}}"
+      "uploadingPhoto": "Uploader..."
     },
     "location": {
       "title": "Lokation og sikkerhed",
+      "pageTitle": "Lokation og sikkerhed",
       "pageSubtitle": "Spor lokation og administrer sikre zoner for ro i sindet",
       "setupDesc": "Konfigurer din plejeprofil for at aktivere lokationssporing og sikkerhedsfunktioner.",
       "completeSetupFirst": "Gennemfør opsætning først",
@@ -332,8 +326,7 @@
       "mapsApiInstructions": "Tilføj <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> til dine miljøvariabler.",
       "saveFailed": "Kunne ikke gemme sikker zone. Prøv igen.",
       "deleteSafeZoneConfirm": "Er du sikker på, at du vil slette denne sikre zone?",
-      "deleteFailed": "Kunne ikke slette sikker zone. Prøv igen.",
-      "pageTitle": "Lokation og sikkerhed"
+      "deleteFailed": "Kunne ikke slette sikker zone. Prøv igen."
     },
     "coach": {
       "title": "AI-plejevejleder",
@@ -751,6 +744,18 @@
         "disclaimer": "OurTurn er ikke en krisetjeneste. Hvis nogen er i umiddelbar fare, skal du ringe til alarmcentralen."
       },
       "behaviours": {
+        "types": {
+          "aggression": "Aggression og slag",
+          "agitation": "Uro og rastløshed",
+          "fall": "Fald eller skade",
+          "hallucinations": "Hallucinationer",
+          "refusing_care": "Afvisning af pleje",
+          "repetitive_questions": "Gentagne spørgsmål",
+          "shadowing": "Skygge og klamren",
+          "sleep_disruption": "Søvnforstyrrelse",
+          "sundowning": "Aftensyndrom",
+          "wandering": "Vandren og udgangssøgning"
+        },
         "playbooks": {
           "title": "Adfærdsdrejebøger",
           "subtitle": "Tryk på en adfærd for trin-for-trin vejledning om, hvad du skal gøre lige nu.",
@@ -809,18 +814,6 @@
           "analyse": "Analyser mønstre",
           "analysing": "Analyserer...",
           "notEnoughData": "Log et par hændelser mere for at låse op for mønsteranalyse. Efter 5+ hændelser vil der fremkomme tendenser i timing, udløsere og strategier."
-        },
-        "types": {
-          "aggression": "Aggression og slag",
-          "agitation": "Uro og rastløshed",
-          "fall": "Fald eller skade",
-          "hallucinations": "Hallucinationer",
-          "refusing_care": "Afvisning af pleje",
-          "repetitive_questions": "Gentagne spørgsmål",
-          "shadowing": "Skygge og klamren",
-          "sleep_disruption": "Søvnforstyrrelse",
-          "sundowning": "Aftensyndrom",
-          "wandering": "Vandren og udgangssøgning"
         }
       },
       "network": {
@@ -964,25 +957,6 @@
       "optional": "valgfrit",
       "required": "kræves",
       "selectRelationship": "Vælg relation",
-      "relationships": {
-        "mother": "Mor",
-        "father": "Far",
-        "spouse": "Ægtefælle",
-        "grandmother": "Bedstemor",
-        "grandfather": "Bedstefar",
-        "sibling": "Søskende",
-        "friend": "Ven",
-        "other": "Andet"
-      },
-      "dementiaTypes": {
-        "alzheimers": "Alzheimers",
-        "vascular": "Vaskulær",
-        "lewyBody": "Lewy Body",
-        "frontotemporal": "Frontotemporal",
-        "mixed": "Blandet",
-        "other": "Andet",
-        "notSure": "Ikke sikker / foretrækker ikke at sige det"
-      },
       "selectCountry": "Vælg land",
       "namePlaceholder": "Dit navn",
       "firstNamePlaceholder": "Fornavn",
@@ -1020,6 +994,25 @@
         "lunch": "Frokost",
         "dinner": "Aftensmad",
         "eveningMedication": "Aftenmedicin"
+      },
+      "relationships": {
+        "mother": "Mor",
+        "father": "Far",
+        "spouse": "Ægtefælle",
+        "grandmother": "Bedstemor",
+        "grandfather": "Bedstefar",
+        "sibling": "Søskende",
+        "friend": "Ven",
+        "other": "Andet"
+      },
+      "dementiaTypes": {
+        "alzheimers": "Alzheimers",
+        "vascular": "Vaskulær",
+        "lewyBody": "Lewy Body",
+        "frontotemporal": "Frontotemporal",
+        "mixed": "Blandet",
+        "other": "Andet",
+        "notSure": "Ikke sikker / foretrækker ikke at sige det"
       }
     },
     "settings": {
@@ -1195,13 +1188,13 @@
       "addContact": "Tilføj kontakt",
       "contactName": "Kontaktnavn",
       "contactPhone": "Telefonnummer",
+      "contactPhonePlaceholder": "+1 555 123 4567",
       "contactRelationship": "Relation",
       "contactRelationshipPlaceholder": "f.eks. Datter, nabo, læge",
       "noContactsYet": "Ingen nødkontakter tilføjet endnu. Vi anbefaler at tilføje mindst en.",
       "savingContacts": "Gemmer...",
       "saveContacts": "Gem kontakter",
-      "removeContactConfirm": "Fjern denne nødkontakt?",
-      "contactPhonePlaceholder": "+1 555 123 4567"
+      "removeContactConfirm": "Fjern denne nødkontakt?"
     },
     "auth": {
       "login": "Log ind",
@@ -1282,6 +1275,18 @@
         "title": "Hvad sker der?",
         "urgent": "HASTER"
       },
+      "scenarioLabels": {
+        "agitated": "Agitated / Upset",
+        "wandering": "Wandering / Missing",
+        "refusing": "Refusing Care",
+        "hallucinations": "Seeing / Hearing Things",
+        "sundowning": "Sundowning / Evening Anxiety",
+        "fall": "Fall / Physical Emergency",
+        "repetitive_questions": "Repetitive Questions",
+        "sleep_disruption": "Sleep Disruption",
+        "aggression": "Aggression",
+        "shadowing": "Shadowing"
+      },
       "remote": {
         "noLocation": "Lokation ikke tilgængelig",
         "switchPrompt": "Har du brug for at guide en, der ER sammen med {{name}}?",
@@ -1321,6 +1326,10 @@
         "timePattern": "Episoder har tendens til at ske i {{time}}.",
         "weekCount": "{{count}} hændelser i denne uge."
       },
+      "quickLog": {
+        "button": "Log et kriseøjeblik",
+        "title": "Log et kriseøjeblik"
+      },
       "logger": {
         "title": "Log denne episode",
         "subtitle": "Hurtige noter hjælper med at spotte mønstre.",
@@ -1338,23 +1347,7 @@
       "email": "E-mail",
       "website": "Hjemmeside",
       "visitWebsite": "Besøg hjemmeside",
-      "callNow": "Ring nu",
-      "quickLog": {
-        "button": "Log et kriseøjeblik",
-        "title": "Log et kriseøjeblik"
-      },
-      "scenarioLabels": {
-        "agitated": "Agitated / Upset",
-        "wandering": "Wandering / Missing",
-        "refusing": "Refusing Care",
-        "hallucinations": "Seeing / Hearing Things",
-        "sundowning": "Sundowning / Evening Anxiety",
-        "fall": "Fall / Physical Emergency",
-        "repetitive_questions": "Repetitive Questions",
-        "sleep_disruption": "Sleep Disruption",
-        "aggression": "Aggression",
-        "shadowing": "Shadowing"
-      }
+      "callNow": "Ring nu"
     },
     "legal": {
       "privacy": {
@@ -1643,10 +1636,14 @@
         "freePrice": "£0",
         "freePriceNote": "for evigt",
         "plusTitle": "OurTurn Plus",
-        "plusPrice": "£9.99",
-        "plusPriceNote": "pr. måned",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "per month",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "per year",
+        "plusAnnualSavings": "Save 33%",
         "plusBadge": "Anbefales",
         "trialNotice": "Gratis i 14 dage. Intet kreditkort nødvendigt.",
+        "familyPlanNote": "One subscription covers your whole family",
         "freeFeat1": "Daglig plejeplan (op til 5 opgaver)",
         "freeFeat2": "Grundlæggende check-ins",
         "freeFeat3": "1 familiemedlem",
@@ -1657,13 +1654,7 @@
         "plusFeat4": "Ubegrænset Familie Cirkel",
         "plusFeat5": "Værktøjer til omsorgspersonens velvære",
         "plusFeat6": "Rapporter fra lægebesøg",
-        "plusFeat7": "Prioriteret support",
-        "plusPriceMonthly": "£9.99",
-        "plusPriceMonthlyNote": "per month",
-        "plusPriceAnnual": "£79.99",
-        "plusPriceAnnualNote": "per year",
-        "plusAnnualSavings": "Save 33%",
-        "familyPlanNote": "One subscription covers your whole family"
+        "plusFeat7": "Prioriteret support"
       },
       "faq": {
         "title": "Spørgsmål & svar",

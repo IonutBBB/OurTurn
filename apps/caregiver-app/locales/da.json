@@ -27,6 +27,8 @@
     "saving": "Gemmer...",
     "primary": "Primær",
     "caregiver": "Pårørende",
+    "someone": "Someone",
+    "yourLovedOne": "your loved one",
     "placeholders": {
       "timeFormat": "HH:MM",
       "dateFormat": "YYYY-MM-DD",
@@ -98,6 +100,7 @@
       "daily": "Hver dag",
       "specificDays": "Specifikke dage",
       "oneTime": "Én gang",
+      "oneTimeDate": "Date",
       "copyDay": "Kopier til andre dage",
       "saved": "Gemt",
       "noTasks": "Ingen opgaver endnu. Tilføj din første opgave for at komme i gang.",
@@ -105,6 +108,7 @@
       "taskTitle": "Opgavetitel",
       "time": "Tid",
       "deleteConfirm": "Slet denne opgave?",
+      "patientCreated": "Added by {{name}}",
       "noMoreSuggestions": "Ingen flere forslag tilgængelige.",
       "copyFromTo": "Kopier opgaver fra {{day}} til:",
       "copyCount": "{{taskCount}} opgaver vil blive kopieret til {{dayCount}} dag(e)",
@@ -854,7 +858,9 @@
       "dailySchedule": "Daglig tidsplan",
       "dailyScheduleDesc": "Indstil vågne- og sovetider for din kæres rutine.",
       "wakeTime": "Vågentid",
+      "wakeTimePlaceholder": "07:00",
       "sleepTime": "Søvntid",
+      "sleepTimePlaceholder": "21:00",
       "savingSchedule": "Gemmer...",
       "saveSchedule": "Gem tidsplan",
       "emergencyContacts": "Nødkontakter",
@@ -871,9 +877,7 @@
       "country": "Land",
       "selectCountry": "Vælg land",
       "selectLanguage": "Vælg sprog",
-      "languageSaved": "Sprog opdateret",
-      "wakeTimePlaceholder": "07:00",
-      "sleepTimePlaceholder": "21:00"
+      "languageSaved": "Sprog opdateret"
     },
     "auth": {
       "login": "Log ind",
@@ -934,6 +938,8 @@
         "alertFamilyDesc": "Send push-notifikation til alle pårørende",
         "alertFamilySent": "Familiemedlemmer er underrettet",
         "alertFamilyFailed": "Det lykkedes ikke at give besked til familien. Prøv venligst igen.",
+        "crisisAlertTitle": "Crisis Alert",
+        "crisisAlertBody": "{{caregiverName}} needs help with {{patientName}}. Please check in.",
         "viewLocation": "Se placering",
         "viewLocationDesc": "Se {{name}}'s aktuelle placering på kortet",
         "contactPrimary": "Kontakt primær omsorgsperson",
@@ -1414,6 +1420,11 @@
     "subscribe": "Abonner",
     "restore": "Gendan køb",
     "manage": "Administrer abonnement",
+    "upgrade": "Upgrade to Plus",
+    "noOfferings": "Subscription plans are not available right now",
+    "checkoutError": "Could not start checkout. Please try again.",
+    "activating": "Activating your subscription...",
+    "manageViaStore": "Manage your subscription in your device's app store settings",
     "features": {
       "unlimitedTasks": "Ubegrænset antal opgaver pr. dag",
       "aiCoach": "Fuld AI Pleje Coach",
@@ -1425,6 +1436,30 @@
       "reports": "Rapporter til lægebesøg",
       "toolkit": "Plejer-værktøjskasse & velvære",
       "priority": "Prioriteret support"
+    },
+    "limits": {
+      "taskLimitReached": "You've reached the free plan limit of {{max}} tasks. Upgrade to add unlimited tasks.",
+      "aiMessageLimitReached": "You've used all {{max}} free AI Coach messages this month. Upgrade for unlimited conversations.",
+      "caregiverLimitReached": "Free plan includes 1 caregiver. Upgrade to invite up to 5 family members."
+    },
+    "contextualTrial": {
+      "title": "Try OurTurn Plus free for 14 days",
+      "tasks": "Add unlimited tasks to your loved one's care plan — free for 14 days",
+      "caregiver": "Invite unlimited family members to your care circle — free for 14 days",
+      "aiCoach": "Unlock unlimited AI coaching conversations — free for 14 days",
+      "safeZones": "Keep your loved one safe with location tracking & safe zones — free for 14 days",
+      "reports": "Generate professional doctor visit reports — free for 14 days",
+      "journal": "Access the shared Care Journal — free for 14 days",
+      "insights": "Get AI-powered behavioural insights — free for 14 days",
+      "wellbeing": "Access caregiver wellbeing tools — free for 14 days",
+      "startTrial": "Start free trial",
+      "noCardRequired": "No credit card required",
+      "maybeLater": "Maybe later"
+    },
+    "planToggle": {
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "saveBadge": "Save {{percent}}%"
     }
   }
 }

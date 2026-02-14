@@ -223,6 +223,16 @@
       "hintPlaceholder": "Npr. Vaše tablete so v škatli za tablete na kuhinjskem pultu",
       "taskPlaceholder": "npr. Jutranja zdravila",
       "recurrence": "Se ponavlja",
+      "allDays": "Vse",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
       "daily": "Vsak dan",
       "specificDays": "Določeni dnevi",
       "oneTime": "Enkratno",
@@ -242,6 +252,8 @@
       "instructions": "Navodila",
       "actions": "Dejanja",
       "syncNote": "Spremembe se takoj sinhronizirajo z aplikacijo {{name}}",
+      "patientCreated": "Added by {{name}}",
+      "hasPhoto": "Ima fotografijo",
       "taskPhoto": "Fotografija naloge (izbirno)",
       "uploadPhoto": "Naloži fotografijo",
       "removePhoto": "Odstrani fotografijo",
@@ -256,29 +268,11 @@
       "medItemLabel": "Zdravilo {{number}}",
       "removeMedication": "Odstrani",
       "maxMedications": "Največ 3 zdravila na skupino",
-      "uploadingPhoto": "Nalaganje...",
-      "hasPhoto": "Ima fotografijo",
-      "allDays": "Vse",
-      "dayMon": "Pon",
-      "dayTue": "Tor",
-      "dayWed": "Sre",
-      "dayThu": "Čet",
-      "dayFri": "Pet",
-      "daySat": "Sob",
-      "daySun": "Ned",
-      "days": {
-        "mon": "Mon",
-        "tue": "Tue",
-        "wed": "Wed",
-        "thu": "Thu",
-        "fri": "Fri",
-        "sat": "Sat",
-        "sun": "Sun"
-      },
-      "patientCreated": "Added by {{name}}"
+      "uploadingPhoto": "Nalaganje..."
     },
     "location": {
       "title": "Lokacija in varnost",
+      "pageTitle": "Lokacija in varnost",
       "pageSubtitle": "Spremljajte lokacijo in upravljajte varne cone za brezskrbnost",
       "setupDesc": "Nastavite svoj profil oskrbe, da omogočite sledenje lokaciji in varnostne funkcije.",
       "completeSetupFirst": "Najprej dokončajte nastavitev",
@@ -332,8 +326,7 @@
       "mapsApiInstructions": "Dodajte <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> v svoje spremenljivke okolja.",
       "saveFailed": "Shranjevanje varne cone ni uspelo. Poskusite znova.",
       "deleteSafeZoneConfirm": "Ali ste prepričani, da želite izbrisati to varno cono?",
-      "deleteFailed": "Brisanje varne cone ni uspelo. Poskusite znova.",
-      "pageTitle": "Lokacija in varnost"
+      "deleteFailed": "Brisanje varne cone ni uspelo. Poskusite znova."
     },
     "coach": {
       "title": "OurTurn AI Pomočnik za oskrbo",
@@ -751,6 +744,18 @@
         "disclaimer": "OurTurn ni služba za krizne razmere. Če je nekdo v neposredni nevarnosti, pokličite službo za nujno pomoč."
       },
       "behaviours": {
+        "types": {
+          "aggression": "Agresija in udarjanje",
+          "agitation": "Vznemirjenost in nemir",
+          "fall": "Padec ali poškodba",
+          "hallucinations": "Halucinacije",
+          "refusing_care": "Zavrnitev oskrbe",
+          "repetitive_questions": "Ponavljajoča se vprašanja",
+          "shadowing": "Sledenje in oklepanje",
+          "sleep_disruption": "Motnje spanja",
+          "sundowning": "Sindrom sončnega zahoda",
+          "wandering": "Tavanje in iskanje izhoda"
+        },
         "playbooks": {
           "title": "Vedenjske igre",
           "subtitle": "Dotaknite se vedenja za navodila po korakih o tem, kaj storiti zdaj.",
@@ -809,18 +814,6 @@
           "analyse": "Analiziraj vzorce",
           "analysing": "Analiziranje...",
           "notEnoughData": "Zabeležite še nekaj dogodkov, da odklenete analizo vzorcev. Po 5+ dogodkih se bodo pojavili trendi v časovnem okviru, sprožilcih in strategijah."
-        },
-        "types": {
-          "aggression": "Agresija in udarjanje",
-          "agitation": "Vznemirjenost in nemir",
-          "fall": "Padec ali poškodba",
-          "hallucinations": "Halucinacije",
-          "refusing_care": "Zavrnitev oskrbe",
-          "repetitive_questions": "Ponavljajoča se vprašanja",
-          "shadowing": "Sledenje in oklepanje",
-          "sleep_disruption": "Motnje spanja",
-          "sundowning": "Sindrom sončnega zahoda",
-          "wandering": "Tavanje in iskanje izhoda"
         }
       },
       "network": {
@@ -964,25 +957,6 @@
       "optional": "izbirno",
       "required": "obvezno",
       "selectRelationship": "Izberite razmerje",
-      "relationships": {
-        "mother": "Mati",
-        "father": "Oče",
-        "spouse": "Zakonec",
-        "grandmother": "Babica",
-        "grandfather": "Dedek",
-        "sibling": "Brat/Sestra",
-        "friend": "Prijatelj",
-        "other": "Drugo"
-      },
-      "dementiaTypes": {
-        "alzheimers": "Alzheimerjeva bolezen",
-        "vascular": "Vaskularna demenca",
-        "lewyBody": "Lewyjeva telesca",
-        "frontotemporal": "Frontotemporalna demenca",
-        "mixed": "Mešana demenca",
-        "other": "Drugo",
-        "notSure": "Ne vem / ne želim povedati"
-      },
       "selectCountry": "Izberite državo",
       "namePlaceholder": "Vaše ime",
       "firstNamePlaceholder": "Ime",
@@ -1020,6 +994,25 @@
         "lunch": "Kosilo",
         "dinner": "Večerja",
         "eveningMedication": "Večerna zdravila"
+      },
+      "relationships": {
+        "mother": "Mati",
+        "father": "Oče",
+        "spouse": "Zakonec",
+        "grandmother": "Babica",
+        "grandfather": "Dedek",
+        "sibling": "Brat/Sestra",
+        "friend": "Prijatelj",
+        "other": "Drugo"
+      },
+      "dementiaTypes": {
+        "alzheimers": "Alzheimerjeva bolezen",
+        "vascular": "Vaskularna demenca",
+        "lewyBody": "Lewyjeva telesca",
+        "frontotemporal": "Frontotemporalna demenca",
+        "mixed": "Mešana demenca",
+        "other": "Drugo",
+        "notSure": "Ne vem / ne želim povedati"
       }
     },
     "settings": {
@@ -1195,13 +1188,13 @@
       "addContact": "Dodaj kontakt",
       "contactName": "Ime kontakta",
       "contactPhone": "Telefonska številka",
+      "contactPhonePlaceholder": "+1 555 123 4567",
       "contactRelationship": "Razmerje",
       "contactRelationshipPlaceholder": "npr. Hči, sosed, zdravnik",
       "noContactsYet": "Še ni dodanih kontaktov za nujne primere. Priporočamo, da dodate vsaj enega.",
       "savingContacts": "Shranjevanje...",
       "saveContacts": "Shrani kontakte",
-      "removeContactConfirm": "Odstrani ta kontakt za nujne primere?",
-      "contactPhonePlaceholder": "+1 555 123 4567"
+      "removeContactConfirm": "Odstrani ta kontakt za nujne primere?"
     },
     "auth": {
       "login": "Prijava",
@@ -1282,6 +1275,18 @@
         "title": "Kaj se dogaja?",
         "urgent": "NUJNO"
       },
+      "scenarioLabels": {
+        "agitated": "Agitated / Upset",
+        "wandering": "Wandering / Missing",
+        "refusing": "Refusing Care",
+        "hallucinations": "Seeing / Hearing Things",
+        "sundowning": "Sundowning / Evening Anxiety",
+        "fall": "Fall / Physical Emergency",
+        "repetitive_questions": "Repetitive Questions",
+        "sleep_disruption": "Sleep Disruption",
+        "aggression": "Aggression",
+        "shadowing": "Shadowing"
+      },
       "remote": {
         "noLocation": "Lokacija ni na voljo",
         "switchPrompt": "Potrebujete voditi nekoga, ki JE z {{name}}?",
@@ -1321,6 +1326,10 @@
         "timePattern": "Epizode se ponavadi dogajajo v {{time}}.",
         "weekCount": "{{count}} dogodkov ta teden."
       },
+      "quickLog": {
+        "button": "Zabeležite krizni trenutek",
+        "title": "Zabeležite krizni trenutek"
+      },
       "logger": {
         "title": "Zabeležite to epizodo",
         "subtitle": "Hitre opombe pomagajo prepoznati vzorce.",
@@ -1338,23 +1347,7 @@
       "email": "E-pošta",
       "website": "Spletna stran",
       "visitWebsite": "Obiščite spletno stran",
-      "callNow": "Pokliči zdaj",
-      "quickLog": {
-        "button": "Zabeležite krizni trenutek",
-        "title": "Zabeležite krizni trenutek"
-      },
-      "scenarioLabels": {
-        "agitated": "Agitated / Upset",
-        "wandering": "Wandering / Missing",
-        "refusing": "Refusing Care",
-        "hallucinations": "Seeing / Hearing Things",
-        "sundowning": "Sundowning / Evening Anxiety",
-        "fall": "Fall / Physical Emergency",
-        "repetitive_questions": "Repetitive Questions",
-        "sleep_disruption": "Sleep Disruption",
-        "aggression": "Aggression",
-        "shadowing": "Shadowing"
-      }
+      "callNow": "Pokliči zdaj"
     },
     "legal": {
       "privacy": {
@@ -1643,10 +1636,14 @@
         "freePrice": "£0",
         "freePriceNote": "za vedno",
         "plusTitle": "OurTurn Plus",
-        "plusPrice": "£9.99",
-        "plusPriceNote": "na mesec",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "per month",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "per year",
+        "plusAnnualSavings": "Save 33%",
         "plusBadge": "Priporočeno",
         "trialNotice": "Brezplačno 14 dni. Kreditna kartica ni potrebna.",
+        "familyPlanNote": "One subscription covers your whole family",
         "freeFeat1": "Dnevni načrt oskrbe (do 5 nalog)",
         "freeFeat2": "Osnovne prijave",
         "freeFeat3": "1 družinski član",
@@ -1657,13 +1654,7 @@
         "plusFeat4": "Neomejen družinski krog",
         "plusFeat5": "Orodja za dobro počutje negovalca",
         "plusFeat6": "Poročila o obiskih zdravnika",
-        "plusFeat7": "Prednostna podpora",
-        "plusPriceMonthly": "£9.99",
-        "plusPriceMonthlyNote": "per month",
-        "plusPriceAnnual": "£79.99",
-        "plusPriceAnnualNote": "per year",
-        "plusAnnualSavings": "Save 33%",
-        "familyPlanNote": "One subscription covers your whole family"
+        "plusFeat7": "Prednostna podpora"
       },
       "faq": {
         "title": "Vprašanja in odgovori",

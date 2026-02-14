@@ -223,6 +223,16 @@
       "hintPlaceholder": "Напр., Вашите хапчета са в кутията за хапчета на кухненския плот",
       "taskPlaceholder": "напр., Сутрешно лекарство",
       "recurrence": "Повтаря се",
+      "allDays": "Всички",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
       "daily": "Всеки ден",
       "specificDays": "Определени дни",
       "oneTime": "Еднократно",
@@ -242,6 +252,8 @@
       "instructions": "Инструкции",
       "actions": "Действия",
       "syncNote": "Промените се синхронизират незабавно с приложението на {{name}}",
+      "patientCreated": "Added by {{name}}",
+      "hasPhoto": "Има снимка",
       "taskPhoto": "Снимка на задачата (по избор)",
       "uploadPhoto": "Качване на снимка",
       "removePhoto": "Премахване на снимка",
@@ -256,29 +268,11 @@
       "medItemLabel": "Лекарство {{number}}",
       "removeMedication": "Премахване",
       "maxMedications": "Максимум 3 лекарства на група",
-      "uploadingPhoto": "Качване...",
-      "hasPhoto": "Има снимка",
-      "allDays": "Всички",
-      "dayMon": "Пон",
-      "dayTue": "Вто",
-      "dayWed": "Сря",
-      "dayThu": "Чет",
-      "dayFri": "Пет",
-      "daySat": "Съб",
-      "daySun": "Нед",
-      "days": {
-        "mon": "Mon",
-        "tue": "Tue",
-        "wed": "Wed",
-        "thu": "Thu",
-        "fri": "Fri",
-        "sat": "Sat",
-        "sun": "Sun"
-      },
-      "patientCreated": "Added by {{name}}"
+      "uploadingPhoto": "Качване..."
     },
     "location": {
       "title": "Местоположение и безопасност",
+      "pageTitle": "Местоположение и безопасност",
       "pageSubtitle": "Проследявайте местоположението и управлявайте безопасни зони за спокойствие",
       "setupDesc": "Настройте своя профил за грижи, за да активирате проследяването на местоположението и функциите за безопасност.",
       "completeSetupFirst": "Първо завършете настройката",
@@ -332,8 +326,7 @@
       "mapsApiInstructions": "Добавете <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> към вашите променливи на средата.",
       "saveFailed": "Неуспешно запазване на безопасна зона. Моля, опитайте отново.",
       "deleteSafeZoneConfirm": "Сигурни ли сте, че искате да изтриете тази безопасна зона?",
-      "deleteFailed": "Неуспешно изтриване на безопасна зона. Моля, опитайте отново.",
-      "pageTitle": "Местоположение и безопасност"
+      "deleteFailed": "Неуспешно изтриване на безопасна зона. Моля, опитайте отново."
     },
     "coach": {
       "title": "AI Care Coach",
@@ -751,6 +744,18 @@
         "disclaimer": "OurTurn не е кризисна услуга. Ако някой е в непосредствена опасност, обадете се на спешните служби."
       },
       "behaviours": {
+        "types": {
+          "aggression": "Агресия и удряне",
+          "agitation": "Възбуда и неспокойствие",
+          "fall": "Падане или нараняване",
+          "hallucinations": "Халюцинации",
+          "refusing_care": "Отказ от грижи",
+          "repetitive_questions": "Повтарящи се въпроси",
+          "shadowing": "Следване и прилепване",
+          "sleep_disruption": "Нарушения на съня",
+          "sundowning": "Сънсет синдром",
+          "wandering": "Скитане и търсене на изход"
+        },
         "playbooks": {
           "title": "Наръчници за поведение",
           "subtitle": "Докоснете поведение за поетапни указания какво да правите в момента.",
@@ -809,18 +814,6 @@
           "analyse": "Анализ на моделите",
           "analysing": "Анализиране...",
           "notEnoughData": "Запишете още няколко инцидента, за да отключите анализа на моделите. След 5+ инцидента ще се появят тенденции в графика, тригерите и стратегиите."
-        },
-        "types": {
-          "aggression": "Агресия и удряне",
-          "agitation": "Възбуда и неспокойствие",
-          "fall": "Падане или нараняване",
-          "hallucinations": "Халюцинации",
-          "refusing_care": "Отказ от грижи",
-          "repetitive_questions": "Повтарящи се въпроси",
-          "shadowing": "Следване и прилепване",
-          "sleep_disruption": "Нарушения на съня",
-          "sundowning": "Сънсет синдром",
-          "wandering": "Скитане и търсене на изход"
         }
       },
       "network": {
@@ -964,25 +957,6 @@
       "optional": "по избор",
       "required": "задължително",
       "selectRelationship": "Изберете връзка",
-      "relationships": {
-        "mother": "Майка",
-        "father": "Баща",
-        "spouse": "Съпруг/а",
-        "grandmother": "Баба",
-        "grandfather": "Дядо",
-        "sibling": "Брат/Сестра",
-        "friend": "Приятел",
-        "other": "Друг"
-      },
-      "dementiaTypes": {
-        "alzheimers": "Алцхаймер",
-        "vascular": "Съдова",
-        "lewyBody": "Телца на Леви",
-        "frontotemporal": "Фронтотемпорална",
-        "mixed": "Смесена",
-        "other": "Друга",
-        "notSure": "Не съм сигурен/а / предпочитам да не казвам"
-      },
       "selectCountry": "Изберете държава",
       "namePlaceholder": "Вашето име",
       "firstNamePlaceholder": "Първо име",
@@ -1020,6 +994,25 @@
         "lunch": "Обяд",
         "dinner": "Вечеря",
         "eveningMedication": "Вечерно лекарство"
+      },
+      "relationships": {
+        "mother": "Майка",
+        "father": "Баща",
+        "spouse": "Съпруг/а",
+        "grandmother": "Баба",
+        "grandfather": "Дядо",
+        "sibling": "Брат/Сестра",
+        "friend": "Приятел",
+        "other": "Друг"
+      },
+      "dementiaTypes": {
+        "alzheimers": "Алцхаймер",
+        "vascular": "Съдова",
+        "lewyBody": "Телца на Леви",
+        "frontotemporal": "Фронтотемпорална",
+        "mixed": "Смесена",
+        "other": "Друга",
+        "notSure": "Не съм сигурен/а / предпочитам да не казвам"
       }
     },
     "settings": {
@@ -1195,13 +1188,13 @@
       "addContact": "Добавяне на контакт",
       "contactName": "Име на контакт",
       "contactPhone": "Телефонен номер",
+      "contactPhonePlaceholder": "+1 555 123 4567",
       "contactRelationship": "Връзка",
       "contactRelationshipPlaceholder": "напр. Дъщеря, съсед, лекар",
       "noContactsYet": "Все още няма добавени спешни контакти. Препоръчваме да добавите поне един.",
       "savingContacts": "Запазване...",
       "saveContacts": "Запазване на контактите",
-      "removeContactConfirm": "Премахване на този спешен контакт?",
-      "contactPhonePlaceholder": "+1 555 123 4567"
+      "removeContactConfirm": "Премахване на този спешен контакт?"
     },
     "auth": {
       "login": "Вход",
@@ -1282,6 +1275,18 @@
         "title": "Какво се случва?",
         "urgent": "СПЕШНО"
       },
+      "scenarioLabels": {
+        "agitated": "Agitated / Upset",
+        "wandering": "Wandering / Missing",
+        "refusing": "Refusing Care",
+        "hallucinations": "Seeing / Hearing Things",
+        "sundowning": "Sundowning / Evening Anxiety",
+        "fall": "Fall / Physical Emergency",
+        "repetitive_questions": "Repetitive Questions",
+        "sleep_disruption": "Sleep Disruption",
+        "aggression": "Aggression",
+        "shadowing": "Shadowing"
+      },
       "remote": {
         "noLocation": "Местоположението не е налично",
         "switchPrompt": "Трябва ли да напътствате някой, който Е с {{name}}?",
@@ -1321,6 +1326,10 @@
         "timePattern": "Епизодите обикновено се случват в {{time}}.",
         "weekCount": "{{count}} събития тази седмица."
       },
+      "quickLog": {
+        "button": "Запишете кризисен момент",
+        "title": "Запишете кризисен момент"
+      },
       "logger": {
         "title": "Регистрирайте този епизод",
         "subtitle": "Бързите бележки помагат за откриване на модели.",
@@ -1338,23 +1347,7 @@
       "email": "Имейл",
       "website": "Уебсайт",
       "visitWebsite": "Посетете уебсайта",
-      "callNow": "Обадете се сега",
-      "quickLog": {
-        "button": "Запишете кризисен момент",
-        "title": "Запишете кризисен момент"
-      },
-      "scenarioLabels": {
-        "agitated": "Agitated / Upset",
-        "wandering": "Wandering / Missing",
-        "refusing": "Refusing Care",
-        "hallucinations": "Seeing / Hearing Things",
-        "sundowning": "Sundowning / Evening Anxiety",
-        "fall": "Fall / Physical Emergency",
-        "repetitive_questions": "Repetitive Questions",
-        "sleep_disruption": "Sleep Disruption",
-        "aggression": "Aggression",
-        "shadowing": "Shadowing"
-      }
+      "callNow": "Обадете се сега"
     },
     "legal": {
       "privacy": {
@@ -1643,10 +1636,14 @@
         "freePrice": "£0",
         "freePriceNote": "завинаги",
         "plusTitle": "OurTurn Plus",
-        "plusPrice": "£9.99",
-        "plusPriceNote": "на месец",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "per month",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "per year",
+        "plusAnnualSavings": "Save 33%",
         "plusBadge": "Препоръчително",
         "trialNotice": "Безплатно за 14 дни. Не е необходима кредитна карта.",
+        "familyPlanNote": "One subscription covers your whole family",
         "freeFeat1": "Дневен план за грижи (до 5 задачи)",
         "freeFeat2": "Основни проверки",
         "freeFeat3": "1 член на семейството",
@@ -1657,13 +1654,7 @@
         "plusFeat4": "Неограничен Семеен кръг",
         "plusFeat5": "Инструменти за благосъстояние на грижещия се",
         "plusFeat6": "Доклади от посещения при лекар",
-        "plusFeat7": "Приоритетна поддръжка",
-        "plusPriceMonthly": "£9.99",
-        "plusPriceMonthlyNote": "per month",
-        "plusPriceAnnual": "£79.99",
-        "plusPriceAnnualNote": "per year",
-        "plusAnnualSavings": "Save 33%",
-        "familyPlanNote": "One subscription covers your whole family"
+        "plusFeat7": "Приоритетна поддръжка"
       },
       "faq": {
         "title": "Въпроси и отговори",

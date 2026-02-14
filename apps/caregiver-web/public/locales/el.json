@@ -223,6 +223,16 @@
       "hintPlaceholder": "Π.χ., Τα χάπια σας βρίσκονται στο κουτί χαπιών στον πάγκο της κουζίνας",
       "taskPlaceholder": "π.χ., Πρωινή φαρμακευτική αγωγή",
       "recurrence": "Επαναλήψεις",
+      "allDays": "Όλες",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
       "daily": "Κάθε μέρα",
       "specificDays": "Συγκεκριμένες ημέρες",
       "oneTime": "Μια φορά",
@@ -242,6 +252,8 @@
       "instructions": "Οδηγίες",
       "actions": "Ενέργειες",
       "syncNote": "Οι αλλαγές συγχρονίζονται άμεσα στην εφαρμογή του/της {{name}}",
+      "patientCreated": "Added by {{name}}",
+      "hasPhoto": "Έχει φωτογραφία",
       "taskPhoto": "Φωτογραφία εργασίας (προαιρετικό)",
       "uploadPhoto": "Ανέβασμα φωτογραφίας",
       "removePhoto": "Αφαίρεση φωτογραφίας",
@@ -256,29 +268,11 @@
       "medItemLabel": "Φάρμακο {{number}}",
       "removeMedication": "Αφαίρεση",
       "maxMedications": "Μέγιστο 3 φάρμακα ανά ομάδα",
-      "uploadingPhoto": "Μεταφόρτωση...",
-      "hasPhoto": "Έχει φωτογραφία",
-      "allDays": "Όλες",
-      "dayMon": "Δευ",
-      "dayTue": "Τρί",
-      "dayWed": "Τετ",
-      "dayThu": "Πέμ",
-      "dayFri": "Παρ",
-      "daySat": "Σάβ",
-      "daySun": "Κυρ",
-      "days": {
-        "mon": "Mon",
-        "tue": "Tue",
-        "wed": "Wed",
-        "thu": "Thu",
-        "fri": "Fri",
-        "sat": "Sat",
-        "sun": "Sun"
-      },
-      "patientCreated": "Added by {{name}}"
+      "uploadingPhoto": "Μεταφόρτωση..."
     },
     "location": {
       "title": "Τοποθεσία & Ασφάλεια",
+      "pageTitle": "Τοποθεσία & Ασφάλεια",
       "pageSubtitle": "Παρακολουθήστε την τοποθεσία και διαχειριστείτε τις ασφαλείς ζώνες για ηρεμία",
       "setupDesc": "Ρυθμίστε το προφίλ φροντίδας σας για να ενεργοποιήσετε τη παρακολούθηση τοποθεσίας και τις λειτουργίες ασφαλείας.",
       "completeSetupFirst": "Ολοκληρώστε πρώτα τη ρύθμιση",
@@ -332,8 +326,7 @@
       "mapsApiInstructions": "Προσθέστε το <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> στις μεταβλητές περιβάλλοντος.",
       "saveFailed": "Αποτυχία αποθήκευσης ασφαλούς ζώνης. Προσπαθήστε ξανά.",
       "deleteSafeZoneConfirm": "Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτήν την ασφαλή ζώνη;",
-      "deleteFailed": "Αποτυχία διαγραφής ασφαλούς ζώνης. Προσπαθήστε ξανά.",
-      "pageTitle": "Τοποθεσία & Ασφάλεια"
+      "deleteFailed": "Αποτυχία διαγραφής ασφαλούς ζώνης. Προσπαθήστε ξανά."
     },
     "coach": {
       "title": "AI Care Coach",
@@ -751,6 +744,18 @@
         "disclaimer": "Το OurTurn δεν είναι υπηρεσία κρίσης. Εάν κάποιος βρίσκεται σε άμεσο κίνδυνο, καλέστε τις υπηρεσίες έκτακτης ανάγκης."
       },
       "behaviours": {
+        "types": {
+          "aggression": "Επιθετικότητα & Χτυπήματα",
+          "agitation": "Ανησυχία & Διέγερση",
+          "fall": "Πτώση ή Τραυματισμός",
+          "hallucinations": "Ψευδαισθήσεις",
+          "refusing_care": "Άρνηση Φροντίδας",
+          "repetitive_questions": "Επαναλαμβανόμενες Ερωτήσεις",
+          "shadowing": "Σκιάσεις & Προσκόλληση",
+          "sleep_disruption": "Διαταραχή Ύπνου",
+          "sundowning": "Σύνδρομο Ηλιοβασιλέματος",
+          "wandering": "Περιπλάνηση & Αναζήτηση Εξόδου"
+        },
         "playbooks": {
           "title": "Εγχειρίδια Συμπεριφοράς",
           "subtitle": "Πατήστε μια συμπεριφορά για βήμα προς βήμα καθοδήγηση σχετικά με το τι να κάνετε τώρα.",
@@ -809,18 +814,6 @@
           "analyse": "Ανάλυση μοτίβων",
           "analysing": "Ανάλυση...",
           "notEnoughData": "Καταγράψτε μερικά ακόμη περιστατικά για να ξεκλειδώσετε την ανάλυση μοτίβων. Μετά από 5+ περιστατικά, θα εμφανιστούν τάσεις στον χρόνο, τους παράγοντες και τις στρατηγικές."
-        },
-        "types": {
-          "aggression": "Επιθετικότητα & Χτυπήματα",
-          "agitation": "Ανησυχία & Διέγερση",
-          "fall": "Πτώση ή Τραυματισμός",
-          "hallucinations": "Ψευδαισθήσεις",
-          "refusing_care": "Άρνηση Φροντίδας",
-          "repetitive_questions": "Επαναλαμβανόμενες Ερωτήσεις",
-          "shadowing": "Σκιάσεις & Προσκόλληση",
-          "sleep_disruption": "Διαταραχή Ύπνου",
-          "sundowning": "Σύνδρομο Ηλιοβασιλέματος",
-          "wandering": "Περιπλάνηση & Αναζήτηση Εξόδου"
         }
       },
       "network": {
@@ -964,25 +957,6 @@
       "optional": "προαιρετικό",
       "required": "απαιτείται",
       "selectRelationship": "Επιλέξτε σχέση",
-      "relationships": {
-        "mother": "Μητέρα",
-        "father": "Πατέρας",
-        "spouse": "Σύζυγος",
-        "grandmother": "Γιαγιά",
-        "grandfather": "Παππούς",
-        "sibling": "Αδελφός/ή",
-        "friend": "Φίλος/η",
-        "other": "Άλλο"
-      },
-      "dementiaTypes": {
-        "alzheimers": "Alzheimer",
-        "vascular": "Αγγειακή",
-        "lewyBody": "Σωμάτια Lewy",
-        "frontotemporal": "Μετωποκροταφική",
-        "mixed": "Μικτή",
-        "other": "Άλλο",
-        "notSure": "Δεν είμαι σίγουρος/η / Προτιμώ να μην το πω"
-      },
       "selectCountry": "Επιλέξτε χώρα",
       "namePlaceholder": "Το όνομά σας",
       "firstNamePlaceholder": "Όνομα",
@@ -1020,6 +994,25 @@
         "lunch": "Μεσημεριανό",
         "dinner": "Βραδινό",
         "eveningMedication": "Βραδινή φαρμακευτική αγωγή"
+      },
+      "relationships": {
+        "mother": "Μητέρα",
+        "father": "Πατέρας",
+        "spouse": "Σύζυγος",
+        "grandmother": "Γιαγιά",
+        "grandfather": "Παππούς",
+        "sibling": "Αδελφός/ή",
+        "friend": "Φίλος/η",
+        "other": "Άλλο"
+      },
+      "dementiaTypes": {
+        "alzheimers": "Alzheimer",
+        "vascular": "Αγγειακή",
+        "lewyBody": "Σωμάτια Lewy",
+        "frontotemporal": "Μετωποκροταφική",
+        "mixed": "Μικτή",
+        "other": "Άλλο",
+        "notSure": "Δεν είμαι σίγουρος/η / Προτιμώ να μην το πω"
       }
     },
     "settings": {
@@ -1195,13 +1188,13 @@
       "addContact": "Προσθήκη Επαφής",
       "contactName": "Όνομα Επαφής",
       "contactPhone": "Αριθμός Τηλεφώνου",
+      "contactPhonePlaceholder": "+1 555 123 4567",
       "contactRelationship": "Σχέση",
       "contactRelationshipPlaceholder": "π.χ., Κόρη, γείτονας, γιατρός",
       "noContactsYet": "Δεν έχουν προστεθεί ακόμη επαφές έκτακτης ανάγκης. Συνιστούμε να προσθέσετε τουλάχιστον μία.",
       "savingContacts": "Αποθήκευση...",
       "saveContacts": "Αποθήκευση Επαφών",
-      "removeContactConfirm": "Κατάργηση αυτής της επαφής έκτακτης ανάγκης;",
-      "contactPhonePlaceholder": "+1 555 123 4567"
+      "removeContactConfirm": "Κατάργηση αυτής της επαφής έκτακτης ανάγκης;"
     },
     "auth": {
       "login": "Σύνδεση",
@@ -1282,6 +1275,18 @@
         "title": "Τι συμβαίνει;",
         "urgent": "ΕΠΕΙΓΟΝ"
       },
+      "scenarioLabels": {
+        "agitated": "Ανήσυχος / Αναστατωμένος",
+        "wandering": "Περιπλάνηση / Αγνοούμενος",
+        "refusing": "Αρνείται φροντίδα",
+        "hallucinations": "Βλέπει / Ακούει πράγματα",
+        "sundowning": "Σύνδρομο δύσης",
+        "fall": "Πτώση / Σωματικό επείγον",
+        "repetitive_questions": "Επαναλαμβανόμενες ερωτήσεις",
+        "sleep_disruption": "Διαταραχή ύπνου",
+        "aggression": "Επιθετικότητα",
+        "shadowing": "Συνεχής ακολούθηση"
+      },
       "remote": {
         "noLocation": "Η τοποθεσία δεν είναι διαθέσιμη",
         "switchPrompt": "Χρειάζεται να καθοδηγήσετε κάποιον που ΕΙΝΑΙ με τον/την {{name}};",
@@ -1321,6 +1326,10 @@
         "timePattern": "Τα επεισόδια τείνουν να συμβαίνουν {{time}}.",
         "weekCount": "{{count}} συμβάντα αυτή την εβδομάδα."
       },
+      "quickLog": {
+        "button": "Καταγράψτε μια στιγμή κρίσης",
+        "title": "Καταγράψτε μια στιγμή κρίσης"
+      },
       "logger": {
         "title": "Καταγράψτε αυτό το επεισόδιο",
         "subtitle": "Οι γρήγορες σημειώσεις βοηθούν στον εντοπισμό μοτίβων.",
@@ -1338,23 +1347,7 @@
       "email": "Email",
       "website": "Ιστότοπος",
       "visitWebsite": "Επισκεφθείτε τον ιστότοπο",
-      "callNow": "Καλέστε τώρα",
-      "quickLog": {
-        "button": "Καταγράψτε μια στιγμή κρίσης",
-        "title": "Καταγράψτε μια στιγμή κρίσης"
-      },
-      "scenarioLabels": {
-        "agitated": "Ανήσυχος / Αναστατωμένος",
-        "wandering": "Περιπλάνηση / Αγνοούμενος",
-        "refusing": "Αρνείται φροντίδα",
-        "hallucinations": "Βλέπει / Ακούει πράγματα",
-        "sundowning": "Σύνδρομο δύσης",
-        "fall": "Πτώση / Σωματικό επείγον",
-        "repetitive_questions": "Επαναλαμβανόμενες ερωτήσεις",
-        "sleep_disruption": "Διαταραχή ύπνου",
-        "aggression": "Επιθετικότητα",
-        "shadowing": "Συνεχής ακολούθηση"
-      }
+      "callNow": "Καλέστε τώρα"
     },
     "legal": {
       "privacy": {
@@ -1643,10 +1636,14 @@
         "freePrice": "£0",
         "freePriceNote": "για πάντα",
         "plusTitle": "OurTurn Plus",
-        "plusPrice": "£9.99",
-        "plusPriceNote": "ανά μήνα",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "per month",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "per year",
+        "plusAnnualSavings": "Save 33%",
         "plusBadge": "Συνιστάται",
         "trialNotice": "Δωρεάν για 14 ημέρες. Δεν απαιτείται πιστωτική κάρτα.",
+        "familyPlanNote": "One subscription covers your whole family",
         "freeFeat1": "Καθημερινό πρόγραμμα φροντίδας (έως 5 εργασίες)",
         "freeFeat2": "Βασικές ενημερώσεις",
         "freeFeat3": "1 μέλος οικογένειας",
@@ -1657,13 +1654,7 @@
         "plusFeat4": "Απεριόριστος Οικογενειακός Κύκλος",
         "plusFeat5": "Εργαλεία ευεξίας φροντιστή",
         "plusFeat6": "Αναφορές επίσκεψης γιατρού",
-        "plusFeat7": "Προτεραιότητα υποστήριξης",
-        "plusPriceMonthly": "£9.99",
-        "plusPriceMonthlyNote": "per month",
-        "plusPriceAnnual": "£79.99",
-        "plusPriceAnnualNote": "per year",
-        "plusAnnualSavings": "Save 33%",
-        "familyPlanNote": "One subscription covers your whole family"
+        "plusFeat7": "Προτεραιότητα υποστήριξης"
       },
       "faq": {
         "title": "Ερωτήσεις & απαντήσεις",

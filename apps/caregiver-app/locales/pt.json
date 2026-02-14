@@ -27,6 +27,8 @@
     "saving": "Salvando...",
     "primary": "Principal",
     "caregiver": "Pessoa Cuidadora",
+    "someone": "Someone",
+    "yourLovedOne": "your loved one",
     "placeholders": {
       "timeFormat": "HH:MM",
       "dateFormat": "YYYY-MM-DD",
@@ -98,6 +100,7 @@
       "daily": "Todos os dias",
       "specificDays": "Dias específicos",
       "oneTime": "Uma vez",
+      "oneTimeDate": "Date",
       "copyDay": "Copiar para outros dias",
       "saved": "Salvo",
       "noTasks": "Nenhuma tarefa ainda. Adicione sua primeira tarefa para começar.",
@@ -105,6 +108,7 @@
       "taskTitle": "Título da tarefa",
       "time": "Hora",
       "deleteConfirm": "Excluir esta tarefa?",
+      "patientCreated": "Added by {{name}}",
       "noMoreSuggestions": "Não há mais sugestões disponíveis.",
       "copyFromTo": "Copiar tarefas de {{day}} para:",
       "copyCount": "{{taskCount}} tarefas serão copiadas para {{dayCount}} dia(s)",
@@ -227,13 +231,13 @@
       "saveForDoctorVisit": "Salvar para Visita ao Médico",
       "success": "Sucesso",
       "suggestions": {
+        "stayEngaged": "Como posso ajudar {{name}} a se manter envolvido(a) durante o dia?",
         "sundowning": "Como lidar com o 'sundowning' (síndrome do pôr do sol)?",
+        "agitated": "{{name}} parece agitado(a) à noite. O que posso fazer?",
         "rainyDays": "Que atividades funcionam para dias chuvosos?",
         "siblings": "Ajude-me a conversar com meus irmãos sobre a partilha de cuidados",
         "refusesFood": "{{name}} se recusa a comer. Ajuda.",
-        "repetitive": "Como lidar com perguntas repetitivas?",
-        "stayEngaged": "Como posso ajudar {{name}} a se manter envolvido(a) durante o dia?",
-        "agitated": "{{name}} parece agitado(a) à noite. O que posso fazer?"
+        "repetitive": "Como lidar com perguntas repetitivas?"
       },
       "hub": {
         "backToHub": "Voltar ao Orientador",
@@ -854,7 +858,9 @@
       "dailySchedule": "Horário Diário",
       "dailyScheduleDesc": "Defina os horários de acordar e dormir para a rotina da sua pessoa amada.",
       "wakeTime": "Hora de Acordar",
+      "wakeTimePlaceholder": "07:00",
       "sleepTime": "Hora de Dormir",
+      "sleepTimePlaceholder": "21:00",
       "savingSchedule": "A guardar...",
       "saveSchedule": "Guardar Horário",
       "emergencyContacts": "Contactos de Emergência",
@@ -871,9 +877,7 @@
       "country": "País",
       "selectCountry": "Selecionar país",
       "selectLanguage": "Selecionar idioma",
-      "languageSaved": "Idioma atualizado",
-      "wakeTimePlaceholder": "07:00",
-      "sleepTimePlaceholder": "21:00"
+      "languageSaved": "Idioma atualizado"
     },
     "auth": {
       "login": "Iniciar sessão",
@@ -934,6 +938,8 @@
         "alertFamilyDesc": "Enviar notificação push a todos os cuidadores",
         "alertFamilySent": "Membros da família notificados",
         "alertFamilyFailed": "Falha ao notificar a família. Por favor, tente novamente.",
+        "crisisAlertTitle": "Crisis Alert",
+        "crisisAlertBody": "{{caregiverName}} needs help with {{patientName}}. Please check in.",
         "viewLocation": "Ver Localização",
         "viewLocationDesc": "Ver a localização atual de {{name}} no mapa",
         "contactPrimary": "Contactar Cuidador Principal",
@@ -1414,6 +1420,11 @@
     "subscribe": "Subscrever",
     "restore": "Restaurar Compra",
     "manage": "Gerir Subscrição",
+    "upgrade": "Upgrade to Plus",
+    "noOfferings": "Subscription plans are not available right now",
+    "checkoutError": "Could not start checkout. Please try again.",
+    "activating": "Activating your subscription...",
+    "manageViaStore": "Manage your subscription in your device's app store settings",
     "features": {
       "unlimitedTasks": "Tarefas ilimitadas por dia",
       "aiCoach": "Orientador de Cuidados com IA completo",
@@ -1425,6 +1436,30 @@
       "reports": "Relatórios para visitas médicas",
       "toolkit": "Kit de ferramentas e bem-estar para cuidadores",
       "priority": "Suporte prioritário"
+    },
+    "limits": {
+      "taskLimitReached": "You've reached the free plan limit of {{max}} tasks. Upgrade to add unlimited tasks.",
+      "aiMessageLimitReached": "You've used all {{max}} free AI Coach messages this month. Upgrade for unlimited conversations.",
+      "caregiverLimitReached": "Free plan includes 1 caregiver. Upgrade to invite up to 5 family members."
+    },
+    "contextualTrial": {
+      "title": "Try OurTurn Plus free for 14 days",
+      "tasks": "Add unlimited tasks to your loved one's care plan — free for 14 days",
+      "caregiver": "Invite unlimited family members to your care circle — free for 14 days",
+      "aiCoach": "Unlock unlimited AI coaching conversations — free for 14 days",
+      "safeZones": "Keep your loved one safe with location tracking & safe zones — free for 14 days",
+      "reports": "Generate professional doctor visit reports — free for 14 days",
+      "journal": "Access the shared Care Journal — free for 14 days",
+      "insights": "Get AI-powered behavioural insights — free for 14 days",
+      "wellbeing": "Access caregiver wellbeing tools — free for 14 days",
+      "startTrial": "Start free trial",
+      "noCardRequired": "No credit card required",
+      "maybeLater": "Maybe later"
+    },
+    "planToggle": {
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "saveBadge": "Save {{percent}}%"
     }
   }
 }

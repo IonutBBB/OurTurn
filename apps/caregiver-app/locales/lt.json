@@ -27,6 +27,8 @@
     "saving": "Saugoma...",
     "primary": "Pagrindinis",
     "caregiver": "Globėjas",
+    "someone": "Someone",
+    "yourLovedOne": "your loved one",
     "placeholders": {
       "timeFormat": "HH:MM",
       "dateFormat": "YYYY-MM-DD",
@@ -98,6 +100,7 @@
       "daily": "Kiekvieną dieną",
       "specificDays": "Konkrečiomis dienomis",
       "oneTime": "Vieną kartą",
+      "oneTimeDate": "Date",
       "copyDay": "Kopijuoti į kitas dienas",
       "saved": "Išsaugota",
       "noTasks": "Dar nėra užduočių. Pridėkite pirmąją užduotį, kad pradėtumėte.",
@@ -105,6 +108,7 @@
       "taskTitle": "Užduoties pavadinimas",
       "time": "Laikas",
       "deleteConfirm": "Ištrinti šią užduotį?",
+      "patientCreated": "Added by {{name}}",
       "noMoreSuggestions": "Daugiau pasiūlymų nėra.",
       "copyFromTo": "Kopijuoti užduotis iš {{day}} į:",
       "copyCount": "{{taskCount}} užduočių bus nukopijuota į {{dayCount}} dieną (-as)",
@@ -227,13 +231,13 @@
       "saveForDoctorVisit": "Išsaugoti gydytojo vizitui",
       "success": "Pavyko",
       "suggestions": {
+        "stayEngaged": "Kaip galiu padėti {{name}} išlikti įsitraukusiam (-iai) dienos metu?",
         "sundowning": "Kaip elgtis su saulėlydžio sindromu?",
+        "agitated": "{{name}} vakarais atrodo neramus (-i). Ką galiu daryti?",
         "rainyDays": "Kokios veiklos tinka lietingomis dienomis?",
         "siblings": "Padėkite man pasikalbėti su broliais ir seserimis apie priežiūros dalijimąsi",
         "refusesFood": "{{name}} atsisako valgyti. Padėkite.",
-        "repetitive": "Kaip elgtis su pasikartojančiais klausimais?",
-        "stayEngaged": "Kaip galiu padėti {{name}} išlikti įsitraukusiam (-iai) dienos metu?",
-        "agitated": "{{name}} vakarais atrodo neramus (-i). Ką galiu daryti?"
+        "repetitive": "Kaip elgtis su pasikartojančiais klausimais?"
       },
       "hub": {
         "backToHub": "Grįžti į asistentą",
@@ -854,7 +858,9 @@
       "dailySchedule": "Dienos tvarkaraštis",
       "dailyScheduleDesc": "Nustatykite savo artimojo pabudimo ir miego laiką.",
       "wakeTime": "Pabudimo laikas",
+      "wakeTimePlaceholder": "07:00",
       "sleepTime": "Miego laikas",
+      "sleepTimePlaceholder": "21:00",
       "savingSchedule": "Saugoma...",
       "saveSchedule": "Išsaugoti tvarkaraštį",
       "emergencyContacts": "Skubios pagalbos kontaktai",
@@ -871,9 +877,7 @@
       "country": "Šalis",
       "selectCountry": "Pasirinkite šalį",
       "selectLanguage": "Pasirinkite kalbą",
-      "languageSaved": "Kalba atnaujinta",
-      "wakeTimePlaceholder": "07:00",
-      "sleepTimePlaceholder": "21:00"
+      "languageSaved": "Kalba atnaujinta"
     },
     "auth": {
       "login": "Prisijungti",
@@ -934,6 +938,8 @@
         "alertFamilyDesc": "Siųsti tiesioginį pranešimą visiems slaugytojams",
         "alertFamilySent": "Šeimos nariai informuoti",
         "alertFamilyFailed": "Nepavyko pranešti šeimai. Bandykite dar kartą.",
+        "crisisAlertTitle": "Crisis Alert",
+        "crisisAlertBody": "{{caregiverName}} needs help with {{patientName}}. Please check in.",
         "viewLocation": "Peržiūrėti vietą",
         "viewLocationDesc": "Žiūrėti {{name}} dabartinę vietą žemėlapyje",
         "contactPrimary": "Susisiekti su pagrindiniu slaugytoju",
@@ -1414,6 +1420,11 @@
     "subscribe": "Prenumeruoti",
     "restore": "Atkurti pirkimą",
     "manage": "Tvarkyti prenumeratą",
+    "upgrade": "Upgrade to Plus",
+    "noOfferings": "Subscription plans are not available right now",
+    "checkoutError": "Could not start checkout. Please try again.",
+    "activating": "Activating your subscription...",
+    "manageViaStore": "Manage your subscription in your device's app store settings",
     "features": {
       "unlimitedTasks": "Neribotas užduočių skaičius per dieną",
       "aiCoach": "Visas AI priežiūros patarėjas",
@@ -1425,6 +1436,30 @@
       "reports": "Ataskaitos gydytojo vizitams",
       "toolkit": "Globėjo įrankių rinkinys ir gerovė",
       "priority": "Prioritetinė pagalba"
+    },
+    "limits": {
+      "taskLimitReached": "You've reached the free plan limit of {{max}} tasks. Upgrade to add unlimited tasks.",
+      "aiMessageLimitReached": "You've used all {{max}} free AI Coach messages this month. Upgrade for unlimited conversations.",
+      "caregiverLimitReached": "Free plan includes 1 caregiver. Upgrade to invite up to 5 family members."
+    },
+    "contextualTrial": {
+      "title": "Try OurTurn Plus free for 14 days",
+      "tasks": "Add unlimited tasks to your loved one's care plan — free for 14 days",
+      "caregiver": "Invite unlimited family members to your care circle — free for 14 days",
+      "aiCoach": "Unlock unlimited AI coaching conversations — free for 14 days",
+      "safeZones": "Keep your loved one safe with location tracking & safe zones — free for 14 days",
+      "reports": "Generate professional doctor visit reports — free for 14 days",
+      "journal": "Access the shared Care Journal — free for 14 days",
+      "insights": "Get AI-powered behavioural insights — free for 14 days",
+      "wellbeing": "Access caregiver wellbeing tools — free for 14 days",
+      "startTrial": "Start free trial",
+      "noCardRequired": "No credit card required",
+      "maybeLater": "Maybe later"
+    },
+    "planToggle": {
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "saveBadge": "Save {{percent}}%"
     }
   }
 }

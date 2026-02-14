@@ -27,6 +27,8 @@
     "saving": "Запазване...",
     "primary": "Основен",
     "caregiver": "Полагащ грижи",
+    "someone": "Someone",
+    "yourLovedOne": "your loved one",
     "placeholders": {
       "timeFormat": "HH:MM",
       "dateFormat": "YYYY-MM-DD",
@@ -98,6 +100,7 @@
       "daily": "Всеки ден",
       "specificDays": "Конкретни дни",
       "oneTime": "Еднократно",
+      "oneTimeDate": "Date",
       "copyDay": "Копиране за други дни",
       "saved": "Запазено",
       "noTasks": "Все още няма задачи. Добавете първата си задача, за да започнете.",
@@ -105,6 +108,7 @@
       "taskTitle": "Заглавие на задачата",
       "time": "Час",
       "deleteConfirm": "Изтриване на тази задача?",
+      "patientCreated": "Added by {{name}}",
       "noMoreSuggestions": "Няма повече налични предложения.",
       "copyFromTo": "Копиране на задачи от {{day}} за:",
       "copyCount": "{{taskCount}} задачи ще бъдат копирани за {{dayCount}} ден(дни)",
@@ -854,7 +858,9 @@
       "dailySchedule": "Дневен график",
       "dailyScheduleDesc": "Задайте часове за събуждане и лягане за рутината на Вашия любим човек.",
       "wakeTime": "Час за събуждане",
+      "wakeTimePlaceholder": "07:00",
       "sleepTime": "Час за лягане",
+      "sleepTimePlaceholder": "21:00",
       "savingSchedule": "Запазване...",
       "saveSchedule": "Запазване на графика",
       "emergencyContacts": "Спешни контакти",
@@ -871,9 +877,7 @@
       "country": "Държава",
       "selectCountry": "Изберете държава",
       "selectLanguage": "Изберете език",
-      "languageSaved": "Езикът е актуализиран",
-      "wakeTimePlaceholder": "07:00",
-      "sleepTimePlaceholder": "21:00"
+      "languageSaved": "Езикът е актуализиран"
     },
     "auth": {
       "login": "Вход",
@@ -934,6 +938,8 @@
         "alertFamilyDesc": "Изпратете push известие до всички грижещи се",
         "alertFamilySent": "Членовете на семейството са уведомени",
         "alertFamilyFailed": "Неуспешно уведомяване на семейството. Моля, опитайте отново.",
+        "crisisAlertTitle": "Crisis Alert",
+        "crisisAlertBody": "{{caregiverName}} needs help with {{patientName}}. Please check in.",
         "viewLocation": "Преглед на местоположението",
         "viewLocationDesc": "Вижте текущото местоположение на {{name}} на картата",
         "contactPrimary": "Свържете се с основния болногледач",
@@ -1414,6 +1420,11 @@
     "subscribe": "Абониране",
     "restore": "Възстановяване на покупка",
     "manage": "Управление на абонамента",
+    "upgrade": "Upgrade to Plus",
+    "noOfferings": "Subscription plans are not available right now",
+    "checkoutError": "Could not start checkout. Please try again.",
+    "activating": "Activating your subscription...",
+    "manageViaStore": "Manage your subscription in your device's app store settings",
     "features": {
       "unlimitedTasks": "Неограничен брой задачи на ден",
       "aiCoach": "Пълен AI Коуч за грижи",
@@ -1425,6 +1436,30 @@
       "reports": "Доклади за посещения при лекар",
       "toolkit": "Инструментариум и благополучие за болногледачи",
       "priority": "Приоритетна поддръжка"
+    },
+    "limits": {
+      "taskLimitReached": "You've reached the free plan limit of {{max}} tasks. Upgrade to add unlimited tasks.",
+      "aiMessageLimitReached": "You've used all {{max}} free AI Coach messages this month. Upgrade for unlimited conversations.",
+      "caregiverLimitReached": "Free plan includes 1 caregiver. Upgrade to invite up to 5 family members."
+    },
+    "contextualTrial": {
+      "title": "Try OurTurn Plus free for 14 days",
+      "tasks": "Add unlimited tasks to your loved one's care plan — free for 14 days",
+      "caregiver": "Invite unlimited family members to your care circle — free for 14 days",
+      "aiCoach": "Unlock unlimited AI coaching conversations — free for 14 days",
+      "safeZones": "Keep your loved one safe with location tracking & safe zones — free for 14 days",
+      "reports": "Generate professional doctor visit reports — free for 14 days",
+      "journal": "Access the shared Care Journal — free for 14 days",
+      "insights": "Get AI-powered behavioural insights — free for 14 days",
+      "wellbeing": "Access caregiver wellbeing tools — free for 14 days",
+      "startTrial": "Start free trial",
+      "noCardRequired": "No credit card required",
+      "maybeLater": "Maybe later"
+    },
+    "planToggle": {
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "saveBadge": "Save {{percent}}%"
     }
   }
 }

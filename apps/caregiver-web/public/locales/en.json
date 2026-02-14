@@ -223,6 +223,16 @@
       "hintPlaceholder": "E.g., Your pills are in the kitchen counter pill box",
       "taskPlaceholder": "e.g., Morning medication",
       "recurrence": "Repeats",
+      "allDays": "All",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
       "daily": "Every day",
       "specificDays": "Specific days",
       "oneTime": "One time",
@@ -242,6 +252,7 @@
       "instructions": "Instructions",
       "actions": "Actions",
       "syncNote": "Changes sync instantly to {{name}}'s app",
+      "patientCreated": "Added by {{name}}",
       "hasPhoto": "Has photo",
       "taskPhoto": "Task Photo (optional)",
       "uploadPhoto": "Upload Photo",
@@ -257,21 +268,11 @@
       "medItemLabel": "Medication {{number}}",
       "removeMedication": "Remove",
       "maxMedications": "Maximum 3 medications per group",
-      "uploadingPhoto": "Uploading...",
-      "allDays": "All",
-      "days": {
-        "mon": "Mon",
-        "tue": "Tue",
-        "wed": "Wed",
-        "thu": "Thu",
-        "fri": "Fri",
-        "sat": "Sat",
-        "sun": "Sun"
-      },
-      "patientCreated": "Added by {{name}}"
+      "uploadingPhoto": "Uploading..."
     },
     "location": {
       "title": "Location & Safety",
+      "pageTitle": "Location & Safety",
       "pageSubtitle": "Track location and manage safe zones for peace of mind",
       "setupDesc": "Set up your care profile to enable location tracking and safety features.",
       "completeSetupFirst": "Complete Setup First",
@@ -325,8 +326,7 @@
       "mapsApiInstructions": "Add <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> to your environment variables.",
       "saveFailed": "Failed to save safe zone. Please try again.",
       "deleteSafeZoneConfirm": "Are you sure you want to delete this safe zone?",
-      "deleteFailed": "Failed to delete safe zone. Please try again.",
-      "pageTitle": "Location & Safety"
+      "deleteFailed": "Failed to delete safe zone. Please try again."
     },
     "coach": {
       "title": "AI Care Coach",
@@ -1275,6 +1275,18 @@
         "title": "What's happening?",
         "urgent": "URGENT"
       },
+      "scenarioLabels": {
+        "agitated": "Agitated / Upset",
+        "wandering": "Wandering / Missing",
+        "refusing": "Refusing Care",
+        "hallucinations": "Seeing / Hearing Things",
+        "sundowning": "Sundowning / Evening Anxiety",
+        "fall": "Fall / Physical Emergency",
+        "repetitive_questions": "Repetitive Questions",
+        "sleep_disruption": "Sleep Disruption",
+        "aggression": "Aggression",
+        "shadowing": "Shadowing"
+      },
       "remote": {
         "noLocation": "Location not available",
         "switchPrompt": "Need to guide someone who IS with {{name}}?",
@@ -1335,19 +1347,7 @@
       "email": "Email",
       "website": "Website",
       "visitWebsite": "Visit website",
-      "callNow": "Call now",
-      "scenarioLabels": {
-        "agitated": "Agitated / Upset",
-        "wandering": "Wandering / Missing",
-        "refusing": "Refusing Care",
-        "hallucinations": "Seeing / Hearing Things",
-        "sundowning": "Sundowning / Evening Anxiety",
-        "fall": "Fall / Physical Emergency",
-        "repetitive_questions": "Repetitive Questions",
-        "sleep_disruption": "Sleep Disruption",
-        "aggression": "Aggression",
-        "shadowing": "Shadowing"
-      }
+      "callNow": "Call now"
     },
     "legal": {
       "privacy": {
@@ -1636,10 +1636,14 @@
         "freePrice": "£0",
         "freePriceNote": "forever",
         "plusTitle": "OurTurn Plus",
-        "plusPrice": "£9.99",
-        "plusPriceNote": "per month",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "per month",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "per year",
+        "plusAnnualSavings": "Save 33%",
         "plusBadge": "Recommended",
         "trialNotice": "Free for 14 days. No credit card needed.",
+        "familyPlanNote": "One subscription covers your whole family",
         "freeFeat1": "Daily care plan (up to 5 tasks)",
         "freeFeat2": "Basic check-ins",
         "freeFeat3": "1 family member",
@@ -1650,13 +1654,7 @@
         "plusFeat4": "Unlimited Family Circle",
         "plusFeat5": "Caregiver wellbeing tools",
         "plusFeat6": "Doctor visit reports",
-        "plusFeat7": "Priority support",
-        "plusPriceMonthly": "£9.99",
-        "plusPriceMonthlyNote": "per month",
-        "plusPriceAnnual": "£79.99",
-        "plusPriceAnnualNote": "per year",
-        "plusAnnualSavings": "Save 33%",
-        "familyPlanNote": "One subscription covers your whole family"
+        "plusFeat7": "Priority support"
       },
       "faq": {
         "title": "Questions & answers",

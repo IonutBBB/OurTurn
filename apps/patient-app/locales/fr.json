@@ -122,18 +122,18 @@
       "opensCheckin": "Ouvre l'écran du bilan quotidien"
     },
     "activities": {
-      "title": "Activités",
-      "subtitle": "Choisissez quelque chose d'agréable à faire",
+      "title": "Jeux d'esprit",
+      "subtitle": "Gardez votre esprit actif en vous amusant",
       "completed": "Terminé",
-      "todaysActivities": "Activités du jour",
-      "exploreMore": "Explorer plus"
+      "todaysActivities": "Jeux du jour",
+      "exploreMore": "Découvrir plus"
     },
     "categories": {
-      "wordsLanguage": "Words & Language",
-      "memoryAttention": "Memory & Attention",
-      "logicReasoning": "Logic & Reasoning",
-      "knowledge": "Knowledge",
-      "numbers": "Numbers"
+      "wordsLanguage": "Mots et langage",
+      "memoryAttention": "Mémoire et attention",
+      "logicReasoning": "Logique et réflexion",
+      "knowledge": "Culture générale",
+      "numbers": "Nombres"
     },
     "stim": {
       "common": {
@@ -145,11 +145,11 @@
         "allDoneToday": "Tout est fait pour aujourd'hui !",
         "thankYouSharing": "Merci d'avoir partagé vos pensées !",
         "interesting": "Intéressant !",
-        "correct": "That's right!",
-        "tryAgain": "Have another go!",
-        "hint": "Hint",
-        "round": "Round {{current}} of {{total}}",
-        "nextRound": "Next round"
+        "correct": "C'est exact !",
+        "tryAgain": "Réessayez !",
+        "hint": "Indice",
+        "round": "Manche {{current}} sur {{total}}",
+        "nextRound": "Manche suivante"
       },
       "wordAssociation": {
         "title": "Association de mots",
