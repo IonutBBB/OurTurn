@@ -121,78 +121,19 @@
       "tapToCheckin": "Tap to check in",
       "opensCheckin": "Opens the daily check-in screen"
     },
-    "activity": {
-      "title": "Today's Activity",
-      "noActivity": "No activity for today",
-      "comeBackLater": "Check back tomorrow for a new activity!",
-      "tapToSpeak": "Tap to speak",
-      "tapToStop": "Tap to stop recording",
-      "typeInstead": "Type your answer instead",
-      "typeHere": "Type your answer here...",
-      "speakInstead": "Speak instead",
-      "recordAgain": "Record again",
-      "skipForToday": "Skip for today",
-      "defaultFollowUp": "What a wonderful memory! Thank you for sharing.",
-      "listenToSong": "Listen to Song",
-      "photoMemory": "A memory from your life"
-    },
     "activities": {
-      "title": "Activities",
-      "subtitle": "Choose something enjoyable to do",
-      "todaysActivity": "Today's Activity",
-      "todaysActivityDesc": "A special activity chosen for you",
-      "remember": {
-        "title": "Remember",
-        "description": "Look back at happy memories",
-        "eventPrompt": "Tell me about this memory: {{text}}",
-        "personPrompt": "Tell me about {{name}}, your {{relationship}}",
-        "childhoodPrompt": "What was it like growing up in {{text}}?",
-        "careerPrompt": "Tell me about your time working as {{text}}",
-        "hobbyPrompt": "What do you enjoy about {{text}}?",
-        "photoPrompt": "What does this photo remind you of?",
-        "followUp": "What a wonderful memory! Thank you for sharing.",
-        "noPrompts": "Your family is adding memories for you"
-      },
-      "listen": {
-        "title": "Listen to Music",
-        "description": "Enjoy your favourite songs",
-        "openIn": "Search for this song",
-        "enjoyed": "Did you enjoy listening?",
-        "yesLoved": "Yes, I loved it!",
-        "followUp": "Music is wonderful! Thank you for listening."
-      },
-      "move": {
-        "title": "Move",
-        "description": "Gentle exercises to feel good",
-        "prompt1": "Stretch your arms up high, then slowly bring them down. Repeat 5 times.",
-        "prompt2": "Stand up and sit down slowly, 5 times. Hold the chair for support.",
-        "prompt3": "Roll your shoulders forwards 5 times, then backwards 5 times.",
-        "prompt4": "March on the spot for 30 seconds. Lift your knees as high as comfortable.",
-        "prompt5": "Gently turn your head left, then right, then look up and down. Repeat 3 times.",
-        "iDidIt": "I did it!",
-        "followUp": "Well done! Moving your body is wonderful for you."
-      },
-      "create": {
-        "title": "Create",
-        "description": "Express yourself creatively",
-        "prompt1": "Draw or describe your favourite place in the world.",
-        "prompt2": "If you could paint the sky any colour, what would you choose and why?",
-        "prompt3": "Describe a meal you love. What does it smell like? What does it taste like?",
-        "prompt4": "Tell a story about a happy day you remember.",
-        "followUp": "How creative! Thank you for sharing."
-      },
+      "title": "Mind Games",
+      "subtitle": "Keep your mind active and have fun",
       "completed": "Completed",
-      "todaysActivities": "Today's Activities",
+      "todaysActivities": "Today's Games",
       "exploreMore": "Explore More"
     },
     "categories": {
-      "artBeauty": "Art & Beauty",
-      "musicSound": "Music & Sound",
-      "calmWellness": "Calm & Wellness",
-      "memoriesReflection": "Memories & Reflection",
       "wordsLanguage": "Words & Language",
-      "storiesFacts": "Stories & Facts",
-      "games": "Games"
+      "memoryAttention": "Memory & Attention",
+      "logicReasoning": "Logic & Reasoning",
+      "knowledge": "Knowledge",
+      "numbers": "Numbers"
     },
     "stim": {
       "common": {
@@ -203,7 +144,12 @@
         "tryAnother": "Try another",
         "allDoneToday": "All done for today!",
         "thankYouSharing": "Thank you for sharing your thoughts!",
-        "interesting": "Interesting!"
+        "interesting": "Interesting!",
+        "correct": "That's right!",
+        "tryAgain": "Have another go!",
+        "hint": "Hint",
+        "round": "Round {{current}} of {{total}}",
+        "nextRound": "Next round"
       },
       "wordAssociation": {
         "title": "Word Association",
@@ -225,307 +171,6 @@
           "telescope": "Telescope", "nostalgia": "Nostalgia", "wisdom": "Wisdom", "expedition": "Expedition",
           "tapestry": "Tapestry", "constellation": "Constellation", "heritage": "Heritage", "harmony": "Harmony",
           "labyrinth": "Labyrinth", "renaissance": "Renaissance", "serenity": "Serenity", "wanderlust": "Wanderlust"
-        }
-      },
-      "artGallery": {
-        "title": "Art Gallery",
-        "description": "Browse beautiful masterpieces",
-        "nextReflection": "Next reflection",
-        "works": {
-          "starryNight": "A swirling night sky over a small village with a bright crescent moon and glowing stars.",
-          "waterLilies": "A peaceful pond with floating water lilies and reflections of willows.",
-          "sunflowers": "A vase of bright yellow sunflowers against a warm background.",
-          "girlPearl": "A young girl looking over her shoulder wearing a blue and gold turban and a pearl earring.",
-          "greatWave": "A massive wave with white foam curling over small boats, Mount Fuji in the background.",
-          "monaLisa": "A woman with a mysterious smile seated against a distant landscape.",
-          "poppyField": "A sunny meadow dotted with red poppies, figures walking through the grass.",
-          "balletClass": "Young ballet dancers practising in a bright studio with their teacher.",
-          "haystacks": "Golden haystacks in a field catching the light of the setting sun.",
-          "umbrellas": "A crowd of people with umbrellas on a rainy Parisian street.",
-          "japaneseBridge": "A curved green bridge over a lily pond surrounded by weeping willows.",
-          "irises": "A bed of purple irises with one white iris standing out among them.",
-          "luncheon": "Friends enjoying lunch on a sunny balcony overlooking a river.",
-          "impression": "A hazy harbour scene at dawn with a bright orange sun reflecting on water.",
-          "magpie": "A quiet winter scene with snow-covered fields and a magpie on a fence."
-        },
-        "reflections": {
-          "colours": "What colours do you notice?",
-          "remind": "Does this remind you of anything?",
-          "feel": "How does this make you feel?",
-          "notice": "What do you notice first?",
-          "story": "What story do you think this tells?"
-        }
-      },
-      "musicMoments": {
-        "title": "Music Moments",
-        "description": "Listen and share how music makes you feel",
-        "instruction": "Close your eyes and enjoy the music",
-        "pieces": {
-          "moonlight": {
-            "title": "Moonlight Sonata",
-            "composer": "Ludwig van Beethoven",
-            "era": "Classical Era"
-          },
-          "clair": {
-            "title": "Clair de Lune",
-            "composer": "Claude Debussy",
-            "era": "Impressionist"
-          },
-          "spring": {
-            "title": "Spring (The Four Seasons)",
-            "composer": "Antonio Vivaldi",
-            "era": "Baroque Era"
-          },
-          "canon": {
-            "title": "Canon in D",
-            "composer": "Johann Pachelbel",
-            "era": "Baroque Era"
-          },
-          "fur": {
-            "title": "Für Elise",
-            "composer": "Ludwig van Beethoven",
-            "era": "Classical Era"
-          }
-        },
-        "prompts": {
-          "closeEyes": "Close your eyes and listen...",
-          "thinkOf": "What does this music make you think of?",
-          "feelHappy": "Does this music make you feel happy?",
-          "feelCalm": "Does this music make you feel calm?"
-        }
-      },
-      "singAlong": {
-        "title": "Sing Along",
-        "description": "Enjoy familiar songs and sing along",
-        "instruction": "Read along and sing if you'd like!",
-        "nextLine": "Next line",
-        "songs": {
-          "amazingGrace": {
-            "title": "Amazing Grace",
-            "line1": "Amazing grace, how sweet the sound",
-            "line2": "That saved a wretch like me",
-            "line3": "I once was lost, but now am found",
-            "line4": "Was blind, but now I see"
-          },
-          "youAreMySunshine": {
-            "title": "You Are My Sunshine",
-            "line1": "You are my sunshine, my only sunshine",
-            "line2": "You make me happy when skies are grey",
-            "line3": "You'll never know dear, how much I love you",
-            "line4": "Please don't take my sunshine away"
-          },
-          "moonRiver": {
-            "title": "Moon River",
-            "line1": "Moon river, wider than a mile",
-            "line2": "I'm crossing you in style someday",
-            "line3": "Oh, dream maker, you heart breaker",
-            "line4": "Wherever you're going, I'm going your way"
-          },
-          "overTheRainbow": {
-            "title": "Over the Rainbow",
-            "line1": "Somewhere over the rainbow, way up high",
-            "line2": "There's a land that I heard of once in a lullaby",
-            "line3": "Somewhere over the rainbow, skies are blue",
-            "line4": "And the dreams that you dare to dream really do come true"
-          },
-          "whatAWonderfulWorld": {
-            "title": "What a Wonderful World",
-            "line1": "I see trees of green, red roses too",
-            "line2": "I see them bloom for me and you",
-            "line3": "And I think to myself",
-            "line4": "What a wonderful world"
-          }
-        }
-      },
-      "natureSounds": {
-        "title": "Nature Sounds",
-        "description": "Relax with calming nature scenes",
-        "listen": "Close your eyes and listen...",
-        "breathe": "Breathe slowly and relax...",
-        "scenes": {
-          "rain": {
-            "name": "Gentle Rain",
-            "description": "The soft patter of rain on a window, creating a cosy atmosphere."
-          },
-          "ocean": {
-            "name": "Ocean Waves",
-            "description": "Gentle waves rolling onto a sandy shore under a warm sun."
-          },
-          "birds": {
-            "name": "Morning Birdsong",
-            "description": "A chorus of birds singing in a sunlit garden at dawn."
-          },
-          "forest": {
-            "name": "Forest Walk",
-            "description": "Rustling leaves and gentle breezes in a peaceful woodland."
-          },
-          "fire": {
-            "name": "Crackling Fire",
-            "description": "A warm, crackling fireplace on a cosy winter evening."
-          },
-          "stream": {
-            "name": "Babbling Stream",
-            "description": "A clear stream flowing gently over smooth pebbles."
-          }
-        }
-      },
-      "guidedBreathing": {
-        "title": "Guided Breathing",
-        "description": "A calming breathing exercise",
-        "instruction": "Choose a length and follow along",
-        "minutes": "{{count}} minutes",
-        "begin": "Begin",
-        "breatheIn": "Breathe in...",
-        "hold": "Hold...",
-        "breatheOut": "Breathe out...",
-        "minutesLeft": "{{count}} minutes left"
-      },
-      "history": {
-        "title": "This Day in History",
-        "description": "Discover what happened on this day",
-        "onThisDay": "On this day in {{year}}...",
-        "nextEvent": "Next event",
-        "typeThoughts": "What do you think about this?",
-        "reflections": {
-          "think": "What do you think about this?",
-          "remember": "Do you remember when this happened?",
-          "doingIn": "What were you doing in those days?",
-          "heard": "Have you heard about this before?"
-        },
-        "facts": {
-          "haitiIndependence": "Haiti became the first country to abolish slavery and declare independence.",
-          "mlkBorn": "Martin Luther King Jr. was born in Atlanta, Georgia.",
-          "columbiaShuttle": "The Space Shuttle Columbia broke apart during re-entry.",
-          "bellTelephone": "Alexander Graham Bell patented the telephone.",
-          "womensDay": "The first International Women's Day was celebrated.",
-          "stPatrick": "Saint Patrick, patron saint of Ireland, passed away.",
-          "appleFounded": "Steve Jobs and Steve Wozniak founded Apple Computer.",
-          "titanicSank": "The Titanic sank after hitting an iceberg.",
-          "greatExhibition": "The Great Exhibition opened at the Crystal Palace in London.",
-          "veDay": "Victory in Europe Day — the end of World War II in Europe.",
-          "queenCoronation": "Queen Elizabeth II was crowned at Westminster Abbey.",
-          "dDay": "D-Day — Allied forces landed on the beaches of Normandy.",
-          "usIndependence": "The United States declared independence.",
-          "moonLanding": "Neil Armstrong became the first person to walk on the Moon.",
-          "worldWideWeb": "The World Wide Web was made available to the public.",
-          "woodstock": "The Woodstock music festival began in New York.",
-          "wwiiStart": "World War II began when Germany invaded Poland.",
-          "firstRailway": "The world's first public railway opened in England.",
-          "disneyWorld": "Walt Disney World opened its doors in Florida.",
-          "reformation": "Martin Luther posted his 95 Theses, starting the Reformation.",
-          "berlinWall": "The Berlin Wall fell, reuniting East and West Germany.",
-          "armistice": "World War I ended with the signing of the Armistice.",
-          "rosaParks": "Rosa Parks refused to give up her bus seat in Alabama.",
-          "williamCrowned": "William the Conqueror was crowned King of England.",
-          "fordWages": "Henry Ford announced a $5-per-day minimum wage for workers.",
-          "elizabethII": "Elizabeth II became Queen of the United Kingdom.",
-          "gandhiSaltMarch": "Mahatma Gandhi began the Salt March in India.",
-          "firstEarthDay": "The first Earth Day was celebrated worldwide.",
-          "everestClimbed": "Edmund Hillary and Tenzing Norgay reached the summit of Everest.",
-          "victoriaQueen": "Queen Victoria ascended to the British throne.",
-          "bastilleDay": "The storming of the Bastille began the French Revolution.",
-          "galileoTelescope": "Galileo first demonstrated his telescope.",
-          "faradayBorn": "Michael Faraday, pioneer of electricity, was born.",
-          "soundBarrier": "Chuck Yeager became the first person to break the sound barrier.",
-          "jfkAssassination": "President John F. Kennedy was assassinated in Dallas.",
-          "wrightBrothers": "The Wright Brothers made the first powered flight."
-        },
-        "followUp": {
-          "whatDoYouThink": "What do you think about this?",
-          "whereWereYou": "Where were you when this happened?",
-          "firstMemory": "What is your first memory of using one?",
-          "howDoYouCelebrate": "How do you celebrate this day?",
-          "firstComputer": "Do you remember your first computer?",
-          "whatDoYouKnow": "What do you know about this?",
-          "whatDoYouRemember": "What do you remember about this time?",
-          "favouriteExhibition": "Have you ever been to a big exhibition?",
-          "favouriteMusic": "What was your favourite music from that era?",
-          "firstInternet": "Do you remember your first time using the internet?",
-          "firstJob": "What was your first job?",
-          "natureMemory": "What is your favourite memory in nature?",
-          "adventure": "What is the biggest adventure you've had?",
-          "beenToFrance": "Have you ever been to France?",
-          "starMemory": "Have you ever looked at the stars?",
-          "scienceMemory": "Were you interested in science at school?",
-          "flyingMemory": "Do you remember your first time on a plane?",
-          "christmasMemory": "What is your favourite Christmas memory?",
-          "trainMemory": "What do you remember about train journeys?"
-        }
-      },
-      "memoryLane": {
-        "title": "Memory Lane",
-        "description": "Take a trip down memory lane",
-        "decades": {
-          "1950s": "The 1950s",
-          "1960s": "The 1960s",
-          "1970s": "The 1970s",
-          "1980s": "The 1980s"
-        },
-        "scenes": {
-          "kitchen50s": "A 1950s kitchen with a round-edged fridge, floral curtains, and a kettle whistling on the stove.",
-          "car50s": "A shiny car with chrome bumpers parked outside a corner shop on a quiet street.",
-          "school50s": "Children in a 1950s classroom with wooden desks, inkwells, and a chalkboard.",
-          "fashion60s": "Young people in colourful 1960s fashion walking along a high street.",
-          "shop60s": "A traditional corner shop with sweets in jars and a friendly shopkeeper.",
-          "tv60s": "A family gathered around a small black-and-white television set in the living room.",
-          "kitchen70s": "A 1970s kitchen with orange wallpaper, brown tiles, and a fondue set.",
-          "music70s": "A record player spinning vinyl with album covers spread out on the floor.",
-          "holiday70s": "A seaside holiday scene with deckchairs, an ice cream van, and children building sandcastles.",
-          "toys80s": "Popular 1980s toys — a Rubik's cube, a Space Hopper, and action figures.",
-          "street80s": "A 1980s high street with a video rental shop, an arcade, and neon signs.",
-          "sports80s": "A group of friends playing football in the park on a sunny afternoon."
-        },
-        "prompts": {
-          "familiar": "Does this look familiar?",
-          "memories": "What memories does this bring up?",
-          "tellUs": "Tell us about a time when..."
-        }
-      },
-      "dailyReflection": {
-        "title": "Daily Reflection",
-        "description": "Share a thought and feel good",
-        "placeholder": "Type your thoughts here...",
-        "share": "Share",
-        "prompts": {
-          "smile": "What made you smile today?",
-          "favouriteSeason": "What is your favourite season?",
-          "someoneYouLove": "Tell us about someone you love.",
-          "happyMemory": "What is a happy memory?",
-          "favouriteFood": "What is your favourite food?",
-          "favouritePlace": "What is your favourite place?",
-          "kindness": "What is the kindest thing someone has done for you?",
-          "grateful": "What are you grateful for today?",
-          "favouriteSong": "What is your favourite song?",
-          "proudOf": "What are you most proud of?",
-          "favouriteAnimal": "What is your favourite animal?",
-          "perfectDay": "What would your perfect day look like?",
-          "childhood": "What is your favourite childhood memory?",
-          "bestAdvice": "What is the best advice you've ever received?",
-          "holiday": "What is your favourite holiday memory?",
-          "weather": "What is your favourite type of weather?",
-          "favouriteColour": "What is your favourite colour?",
-          "hobby": "What hobby do you enjoy?",
-          "funnyMemory": "What is the funniest thing you remember?",
-          "favouriteFlower": "What is your favourite flower?",
-          "dream": "What is something you've always wanted to do?",
-          "friend": "Tell us about a special friend.",
-          "favouriteBook": "What is your favourite book or story?",
-          "sunrise": "Do you prefer sunrise or sunset?",
-          "thankful": "What are you thankful for?",
-          "celebration": "What is your favourite celebration?",
-          "talent": "What is something you're good at?",
-          "garden": "Do you enjoy being in a garden?",
-          "cooking": "What is your favourite thing to cook?",
-          "adventure": "What has been your greatest adventure?"
-        },
-        "affirmations": {
-          "wonderful": "That sounds wonderful! Thank you for sharing.",
-          "lovely": "What a lovely thought! Thank you.",
-          "beautiful": "That's a beautiful memory. Thank you for sharing.",
-          "delicious": "That sounds delicious! Thank you for sharing.",
-          "kind": "How kind! Thank you for sharing that.",
-          "wise": "That's very wise. Thank you for sharing.",
-          "funny": "That's a lovely memory! Thank you for sharing."
         }
       },
       "proverbs": {
@@ -575,43 +220,6 @@
           "twoHeads": { "first": "Two heads are...", "second": "...better than one." },
           "journeyBegins": { "first": "A journey of a thousand miles...", "second": "...begins with a single step." },
           "fortuneBrave": { "first": "Fortune favours...", "second": "...the brave." }
-        }
-      },
-      "funFacts": {
-        "title": "Fun Facts",
-        "description": "Discover fascinating things about the world",
-        "didYouKnow": "Did you know?",
-        "facts": {
-          "honey": "Honey never spoils. Archaeologists have found 3,000-year-old honey that was still perfectly edible!",
-          "octopus": "An octopus has three hearts and blue blood.",
-          "eiffel": "The Eiffel Tower grows about 15 cm taller in summer due to the heat expanding the iron.",
-          "bamboo": "Bamboo can grow up to 91 cm in a single day — that's almost a metre!",
-          "elephant": "Elephants are the only animals that can't jump.",
-          "venus": "A day on Venus is longer than a year on Venus.",
-          "butterfly": "Butterflies taste with their feet.",
-          "bananas": "Bananas are berries, but strawberries are not!",
-          "seahorse": "Seahorse fathers carry and give birth to their babies.",
-          "starfish": "Starfish don't have brains or blood.",
-          "giraffe": "A giraffe's tongue is about 50 cm long and is dark purple.",
-          "sunlight": "Sunlight takes about 8 minutes to travel from the Sun to Earth.",
-          "dolphins": "Dolphins sleep with one eye open.",
-          "moon": "The Moon is slowly moving away from Earth — about 3.8 cm per year.",
-          "koala": "Koalas sleep for up to 22 hours a day.",
-          "rainbows": "It's possible to see a full circle rainbow from an aeroplane.",
-          "chocolate": "The word 'chocolate' comes from the Aztec word 'xocolatl'.",
-          "hummingbird": "A hummingbird's heart beats over 1,200 times per minute.",
-          "waterEarth": "About 71% of the Earth's surface is covered in water.",
-          "penguins": "Penguins propose to their mates with a pebble.",
-          "trees": "There are more trees on Earth than stars in the Milky Way galaxy.",
-          "cows": "Cows have best friends and get stressed when they're separated.",
-          "tongue": "Everyone's tongue print is different, just like fingerprints.",
-          "greatWall": "The Great Wall of China is over 21,000 km long.",
-          "ants": "Ants can carry objects 50 times their own body weight.",
-          "flamingos": "Flamingos are pink because of the shrimp they eat.",
-          "saturn": "Saturn would float if you could find a bathtub big enough.",
-          "strawberry": "A strawberry isn't actually a berry — it's an 'accessory fruit'.",
-          "owls": "A group of owls is called a 'parliament'.",
-          "lightning": "Lightning strikes the Earth about 100 times every second."
         }
       },
       "gentleQuiz": {
@@ -668,110 +276,6 @@
           "five": "Five"
         }
       },
-      "animalFriends": {
-        "title": "Animal Friends",
-        "description": "Meet animals and learn fun facts",
-        "didYouKnow": "Did you know?",
-        "facts": {
-          "elephant": "Elephants can recognise themselves in a mirror — only a few animals can do this!",
-          "dolphin": "Dolphins give each other names and call out to each other.",
-          "owl": "Owls can turn their heads almost all the way around — up to 270 degrees!",
-          "penguin": "Penguins are excellent swimmers and can hold their breath for 20 minutes.",
-          "cat": "Cats spend about 70% of their lives sleeping. What a life!",
-          "dog": "Dogs can understand up to 250 words and can count to five.",
-          "butterfly": "Monarch butterflies travel thousands of miles during migration.",
-          "horse": "Horses can sleep both lying down and standing up.",
-          "rabbit": "Rabbits can see almost 360 degrees around them without turning their heads.",
-          "bee": "A single bee can visit up to 5,000 flowers in a single day.",
-          "turtle": "Sea turtles can live to be over 100 years old.",
-          "parrot": "Some parrots can live to be 80 years old and learn hundreds of words.",
-          "cow": "Cows have best friends and get stressed when they're apart.",
-          "koala": "Koalas sleep for up to 22 hours a day and eat eucalyptus leaves.",
-          "flamingo": "Flamingos can only eat with their heads upside down.",
-          "octopus": "An octopus has three hearts and blue blood.",
-          "giraffe": "A giraffe's tongue is about 50 cm long and is dark purple to prevent sunburn.",
-          "hedgehog": "Hedgehogs have about 5,000 to 7,000 spines on their backs.",
-          "sheep": "Sheep can recognise up to 50 other sheep by their faces.",
-          "goldfish": "Goldfish can remember things for months — not just 3 seconds!"
-        }
-      },
-      "storyTime": {
-        "title": "Story Time",
-        "description": "Enjoy short, uplifting stories",
-        "nextPage": "Next page",
-        "stories": {
-          "kindFarmer": {
-            "title": "The Kind Farmer",
-            "p1": "Once upon a time, there was a kind farmer named Thomas who lived on a small farm at the edge of a village. Every morning, he would walk through his fields, talking to his animals as if they were old friends.",
-            "p2": "One cold winter morning, Thomas found a lost baby lamb shivering by his gate. He wrapped it in his warmest blanket and carried it inside by the fire. He fed it warm milk and sang it a gentle song.",
-            "p3": "By spring, the little lamb had grown strong and healthy. It would follow Thomas everywhere, and the villagers would smile and wave. Thomas always said, 'A little kindness goes a long way.'",
-            "discussion": "What did you think of Thomas? Have you ever helped an animal?"
-          },
-          "lostKitten": {
-            "title": "The Lost Kitten",
-            "p1": "A little ginger kitten named Marmalade had wandered too far from home. She found herself in a big garden she didn't recognise, with tall flowers towering above her.",
-            "p2": "She mewed softly, and a friendly robin landed nearby. 'Follow me!' chirped the robin, hopping along the garden path. Marmalade followed, her tiny paws padding on the warm stones.",
-            "p3": "Soon, she could hear a familiar voice calling her name. It was her owner, Mrs. Henderson, standing at the garden gate with a saucer of cream. Marmalade ran to her, purring with happiness.",
-            "discussion": "Have you ever had a cat? What was your favourite pet?"
-          },
-          "magicGarden": {
-            "title": "The Magic Garden",
-            "p1": "In a quiet corner of the village, there was a garden that seemed to have a magic of its own. Flowers bloomed in every colour, and butterflies danced from blossom to blossom.",
-            "p2": "Old Mrs. Willoughby tended the garden with love and care. She knew every plant by name and would tell visitors stories about each one. 'This rose was planted the year my daughter was born,' she would say.",
-            "p3": "People came from far and wide to visit the garden. They would sit on the old wooden bench, close their eyes, and breathe in the sweet perfume. Everyone left feeling a little happier.",
-            "discussion": "Do you enjoy gardens? What is your favourite flower?"
-          },
-          "rainbowBridge": {
-            "title": "The Rainbow Bridge",
-            "p1": "After a great rainstorm, a magnificent rainbow appeared over the village. Little Emma pointed and said, 'I want to find where it ends!'",
-            "p2": "She walked through meadows of wildflowers, past the old mill, and along the brook. At every turn, the rainbow seemed just a little further away, but each step brought a new wonder.",
-            "p3": "When she finally sat down under an old oak tree, she realised the real treasure wasn't at the end of the rainbow — it was the beautiful journey she had taken to get there.",
-            "discussion": "What is the most beautiful thing you've seen in nature?"
-          },
-          "oldLighthouse": {
-            "title": "The Old Lighthouse",
-            "p1": "On a rocky cliff overlooking the sea stood an old lighthouse. Its keeper, Mr. Arthur, had tended its light for forty years, guiding ships safely through stormy nights.",
-            "p2": "Every evening, he would climb the spiral stairs, light the great lamp, and watch its beam sweep across the dark water. 'Someone out there needs this light tonight,' he would whisper.",
-            "p3": "When it was time for him to retire, the whole village threw him a celebration. A ship's captain stood and said, 'You saved my life once, Mr. Arthur. Your light brought me home.'",
-            "discussion": "Have you ever been to a lighthouse? What is your favourite seaside memory?"
-          },
-          "winterRobin": {
-            "title": "The Winter Robin",
-            "p1": "On a frosty December morning, a little robin with a bright red breast landed on Margaret's windowsill. She scattered some breadcrumbs, and the robin hopped closer.",
-            "p2": "Every morning that winter, the robin returned. Margaret would sit by the window with her cup of tea, and the robin would sing its cheerful song. They became the best of friends.",
-            "p3": "When spring arrived, the robin built a nest in Margaret's garden hedge. Soon, tiny chirps could be heard — baby robins! Margaret smiled, knowing her garden was full of new life.",
-            "discussion": "Do you enjoy watching birds? What birds visit your garden?"
-          },
-          "bakersSecret": {
-            "title": "The Baker's Secret",
-            "p1": "In the heart of the village, Mr. Bridges ran a little bakery. Every morning, the most wonderful smell of fresh bread drifted down the street, making everyone smile.",
-            "p2": "People often asked him the secret to his delicious bread. He would wink and say, 'I add a pinch of happiness to every loaf!' Nobody knew if he was joking or not.",
-            "p3": "One day, a little boy peeked into the kitchen and saw Mr. Bridges singing and dancing as he kneaded the dough. The boy giggled and said, 'I found the secret — it's joy!'",
-            "discussion": "What is your favourite thing from a bakery? Do you enjoy baking?"
-          },
-          "dancingLeaves": {
-            "title": "The Dancing Leaves",
-            "p1": "In autumn, the old park became a painting of gold, red, and orange. The leaves would swirl and dance in the breeze, as if performing a ballet just for the people below.",
-            "p2": "Grandfather and little Sophie walked through the park every Saturday. Sophie would try to catch the falling leaves, while Grandfather told her that each leaf carried a wish.",
-            "p3": "Sophie caught a beautiful golden leaf and made a wish. 'What did you wish for?' asked Grandfather. 'That we can walk here together forever,' she said, holding his hand tightly.",
-            "discussion": "What is your favourite memory of autumn? Do you enjoy walks?"
-          },
-          "friendlyPostman": {
-            "title": "The Friendly Postman",
-            "p1": "Everyone in the village knew Mr. Charlie the postman. Rain or shine, he delivered the post with a smile and always had time for a chat. His red bicycle was a cheerful sight on the lanes.",
-            "p2": "One day, he noticed that old Mrs. Jenkins hadn't collected her post in three days. Worried, he knocked on her door. She had caught a cold and couldn't get out of bed.",
-            "p3": "Mr. Charlie made her a cup of tea and called her daughter. From that day on, everyone agreed that Mr. Charlie didn't just deliver letters — he delivered kindness too.",
-            "discussion": "Do you remember a kind neighbour? What was your community like?"
-          },
-          "sunflowerField": {
-            "title": "The Sunflower Field",
-            "p1": "Behind the schoolhouse, there was a field of sunflowers that stretched as far as the eye could see. Each summer, they would turn their golden faces towards the sun.",
-            "p2": "The children loved to play hide-and-seek among the tall sunflowers. Teacher Mrs. Rose would tell them, 'Be like the sunflowers — always look towards the light!'",
-            "p3": "Years later, those children — now grandparents themselves — still smiled when they saw sunflowers. They remembered the golden field and Mrs. Rose's wise words.",
-            "discussion": "Do you like sunflowers? What is your favourite memory of summer?"
-          }
-        }
-      },
       "photoPairs": {
         "title": "Photo Pairs",
         "description": "Find matching pairs of pictures",
@@ -805,6 +309,110 @@
           "autumn": "Autumn",
           "winter": "Winter"
         }
+      },
+      "wordSearch": {
+        "title": "Word Search",
+        "description": "Find hidden words in the grid",
+        "instruction": "Tap the letters to spell each word",
+        "wordsToFind": "Words to find:",
+        "found": "Found!",
+        "wordsFound": "{{found}} of {{total}} words found",
+        "themes": {
+          "animals": "Animals",
+          "food": "Tasty Food",
+          "colours": "Colours",
+          "garden": "In the Garden",
+          "weather": "Weather",
+          "family": "Family",
+          "home": "Around the Home",
+          "clothes": "Clothes",
+          "body": "The Body",
+          "nature": "Nature",
+          "kitchen": "In the Kitchen",
+          "fruit": "Fruit",
+          "pets": "Pets",
+          "seaside": "At the Seaside",
+          "sport": "Sport",
+          "music": "Music",
+          "transport": "Transport",
+          "birds": "Birds",
+          "trees": "Trees",
+          "flowers": "Flowers"
+        }
+      },
+      "wordScramble": {
+        "title": "Word Scramble",
+        "description": "Unscramble letters to make words",
+        "instruction": "Tap the letters in the right order to spell the word",
+        "hintButton": "Show first letter",
+        "wordOf": "Word {{current}} of {{total}}",
+        "themes": {
+          "animals": "Animals",
+          "food": "Food",
+          "home": "Around the Home",
+          "nature": "Nature",
+          "colours": "Colours",
+          "body": "The Body",
+          "clothes": "Clothes",
+          "kitchen": "In the Kitchen",
+          "garden": "In the Garden",
+          "weather": "Weather",
+          "family": "Family",
+          "fruit": "Fruit",
+          "pets": "Pets",
+          "transport": "Transport",
+          "seaside": "At the Seaside",
+          "music": "Music",
+          "sport": "Sport",
+          "birds": "Birds",
+          "trees": "Trees",
+          "flowers": "Flowers"
+        }
+      },
+      "oddOneOut": {
+        "title": "Odd One Out",
+        "description": "Which one does not belong?",
+        "instruction": "Tap the one that doesn't fit with the others",
+        "correct": "That's right! Well spotted!",
+        "tryAgain": "Not quite — have another look!",
+        "explanation": "The odd one out is {{item}} because {{reason}}"
+      },
+      "numberPuzzles": {
+        "title": "Number Puzzles",
+        "description": "Fun with numbers and counting",
+        "instruction": "Choose the correct answer",
+        "questionOf": "Question {{current}} of {{total}}",
+        "correct": "That's right! Well done!",
+        "tryAgain": "Good try! The answer is {{answer}}."
+      },
+      "patternSequence": {
+        "title": "Pattern Sequence",
+        "description": "What comes next in the pattern?",
+        "instruction": "Look at the pattern and pick what comes next",
+        "whatsNext": "What comes next?"
+      },
+      "categorySort": {
+        "title": "Category Sort",
+        "description": "Sort items into the right groups",
+        "instruction": "Tap an item, then tap the group it belongs to",
+        "itemsLeft": "{{count}} items left to sort",
+        "allSorted": "All sorted! Well done!"
+      },
+      "spotDifference": {
+        "title": "Spot the Difference",
+        "description": "Find what's different between two pictures",
+        "instruction": "Compare the two pictures and tap the differences",
+        "differencesFound": "{{found}} of {{total}} differences found",
+        "scene": "Scene {{number}}"
+      },
+      "colorSequence": {
+        "title": "Colour Sequence",
+        "description": "Remember and repeat the colour pattern",
+        "instruction": "Watch the colours light up, then tap them in the same order",
+        "watch": "Watch carefully...",
+        "yourTurn": "Your turn!",
+        "sequenceLength": "Sequence: {{length}}",
+        "greatMemory": "Great memory!"
       }
     },
     "careCode": {
@@ -821,6 +429,46 @@
       "today": "My Day",
       "activities": "Activities",
       "help": "Help"
+    },
+    "addReminder": {
+      "cardTitle": "Add a reminder",
+      "cardSubtitle": "Tap to add something you want to remember",
+      "whatTitle": "What do you want to remember?",
+      "placeholder": "Type here...",
+      "next": "Next",
+      "whatType": "What type?",
+      "whatTime": "What time?",
+      "earlyMorning": "Early Morning",
+      "morning": "Morning",
+      "lateMorning": "Late Morning",
+      "afternoon": "Afternoon",
+      "lateAfternoon": "Late Afternoon",
+      "evening": "Evening",
+      "night": "Night",
+      "pickTime": "Pick a time",
+      "pickHour": "Pick the hour",
+      "pickMinute": "Pick the minutes",
+      "howOften": "How often?",
+      "justOnce": "Just once",
+      "everyDay": "Every day",
+      "someDays": "Some days",
+      "whichDays": "Which days?",
+      "done": "Done",
+      "whenDate": "When?",
+      "today": "Today",
+      "tomorrow": "Tomorrow",
+      "save": "Save",
+      "saving": "Saving...",
+      "saved": "Reminder saved!",
+      "savedMessage": "You'll see it on your plan",
+      "back": "Back",
+      "mon": "Mon",
+      "tue": "Tue",
+      "wed": "Wed",
+      "thu": "Thu",
+      "fri": "Fri",
+      "sat": "Sat",
+      "sun": "Sun"
     },
     "taskPhoto": {
       "taskPhoto": "Task Photo (optional)",

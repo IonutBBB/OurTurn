@@ -86,7 +86,7 @@
       "alertsToday": "Upozorenja danas",
       "checkedIn": "Prijavljen",
       "notCheckedIn": "Nije prijavljen",
-      "brainActivity": "Aktivnost mozga"
+      "mindGames": "Mind games"
     },
     "carePlan": {
       "title": "Dnevni plan za {{name}}",

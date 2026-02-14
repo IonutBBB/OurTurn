@@ -86,7 +86,7 @@
       "alertsToday": "Riasztások ma",
       "checkedIn": "Bejelentkezett",
       "notCheckedIn": "Nincs bejelentkezve",
-      "brainActivity": "Agyi aktivitás"
+      "mindGames": "Mind games"
     },
     "carePlan": {
       "title": "{{name}} napi terve",

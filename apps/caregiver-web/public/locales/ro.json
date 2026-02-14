@@ -192,9 +192,7 @@
       "tasksCompletedPercent": "{{percent}}% sarcini",
       "checkedIn": "Check-in efectuat",
       "notCheckedIn": "Check-in neefectuat",
-      "brainActivity": "Activitate cerebrală",
-      "brainActivityDone": "Finalizat",
-      "brainActivityPending": "În așteptare",
+      "mindGames": "Mind games",
       "alertsToday": "Alerte azi",
       "noAlertsToday": "Niciuna"
     },
@@ -267,7 +265,17 @@
       "dayThu": "Joi",
       "dayFri": "Vin",
       "daySat": "Sâm",
-      "daySun": "Dum"
+      "daySun": "Dum",
+      "days": {
+        "mon": "Lun",
+        "tue": "Mar",
+        "wed": "Mie",
+        "thu": "Joi",
+        "fri": "Vin",
+        "sat": "Sâm",
+        "sun": "Dum"
+      },
+      "patientCreated": "Adăugat de {{name}}"
     },
     "location": {
       "title": "Locație și Siguranță",
@@ -1649,7 +1657,13 @@
         "plusFeat4": "Cerc familial nelimitat",
         "plusFeat5": "Instrumente pentru bunăstarea îngrijitorului",
         "plusFeat6": "Rapoarte vizite la medic",
-        "plusFeat7": "Suport prioritar"
+        "plusFeat7": "Suport prioritar",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "pe lună",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "pe an",
+        "plusAnnualSavings": "Economisiți 33%",
+        "familyPlanNote": "Un singur abonament acoperă întreaga familie"
       },
       "faq": {
         "title": "Întrebări și răspunsuri",
@@ -1723,6 +1737,29 @@
       "taskLimitReached": "Ați atins limita planului gratuit de {{max}} sarcini. Faceți upgrade pentru a adăuga sarcini nelimitate.",
       "aiMessageLimitReached": "Ați folosit toate cele {{max}} mesaje gratuite de la Antrenorul AI luna aceasta. Faceți upgrade pentru conversații nelimitate.",
       "caregiverLimitReached": "Planul gratuit include 1 îngrijitor. Faceți upgrade pentru a invita până la 5 membri ai familiei."
+    },
+    "upgrade": "Treceți la Plus",
+    "checkoutError": "Nu s-a putut începe plata. Vă rugăm să încercați din nou.",
+    "activating": "Se activează abonamentul...",
+    "manageViaStore": "Gestionați abonamentul din setările magazinului de aplicații al dispozitivului",
+    "contextualTrial": {
+      "title": "Încercați OurTurn Plus gratuit timp de 14 zile",
+      "tasks": "Adăugați sarcini nelimitate în planul de îngrijire — gratuit 14 zile",
+      "caregiver": "Invitați membri nelimitați ai familiei în cercul de îngrijire — gratuit 14 zile",
+      "aiCoach": "Deblocați conversații nelimitate cu Antrenorul AI — gratuit 14 zile",
+      "safeZones": "Păstrați persoana dragă în siguranță cu urmărirea locației și zone sigure — gratuit 14 zile",
+      "reports": "Generați rapoarte profesionale pentru vizitele la medic — gratuit 14 zile",
+      "journal": "Accesați Jurnalul de Îngrijire partajat — gratuit 14 zile",
+      "insights": "Obțineți perspective comportamentale bazate pe AI — gratuit 14 zile",
+      "wellbeing": "Accesați instrumentele de bunăstare pentru îngrijitori — gratuit 14 zile",
+      "startTrial": "Începeți perioada de probă",
+      "noCardRequired": "Nu este necesar cardul de credit",
+      "maybeLater": "Poate mai târziu"
+    },
+    "planToggle": {
+      "monthly": "Lunar",
+      "annual": "Anual",
+      "saveBadge": "Economisiți {{percent}}%"
     }
   }
 }

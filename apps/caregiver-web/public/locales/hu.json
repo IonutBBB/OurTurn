@@ -192,9 +192,7 @@
       "tasksCompletedPercent": "Feladatok {{percent}}%-a",
       "checkedIn": "Bejelentkezett",
       "notCheckedIn": "Nincs bejelentkezve",
-      "brainActivity": "Agyi tevékenység",
-      "brainActivityDone": "Kész",
-      "brainActivityPending": "Függőben",
+      "mindGames": "Mind games",
       "alertsToday": "Mai riasztások",
       "noAlertsToday": "Nincs"
     },
@@ -267,7 +265,17 @@
       "dayThu": "Csü",
       "dayFri": "Pé",
       "daySat": "Szo",
-      "daySun": "Va"
+      "daySun": "Va",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
+      "patientCreated": "Added by {{name}}"
     },
     "location": {
       "title": "Hely és biztonság",
@@ -1649,7 +1657,13 @@
         "plusFeat4": "Korlátlan Családi Kör",
         "plusFeat5": "Gondozói jólléti eszközök",
         "plusFeat6": "Orvosi látogatási jelentések",
-        "plusFeat7": "Prioritásos támogatás"
+        "plusFeat7": "Prioritásos támogatás",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "per month",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "per year",
+        "plusAnnualSavings": "Save 33%",
+        "familyPlanNote": "One subscription covers your whole family"
       },
       "faq": {
         "title": "Kérdések és válaszok",
@@ -1723,6 +1737,29 @@
       "taskLimitReached": "You've reached the free plan limit of {{max}} tasks. Upgrade to add unlimited tasks.",
       "aiMessageLimitReached": "You've used all {{max}} free AI Coach messages this month. Upgrade for unlimited conversations.",
       "caregiverLimitReached": "Free plan includes 1 caregiver. Upgrade to invite up to 5 family members."
+    },
+    "upgrade": "Upgrade to Plus",
+    "checkoutError": "Could not start checkout. Please try again.",
+    "activating": "Activating your subscription...",
+    "manageViaStore": "Manage your subscription in your device's app store settings",
+    "contextualTrial": {
+      "title": "Try OurTurn Plus free for 14 days",
+      "tasks": "Add unlimited tasks to your loved one's care plan — free for 14 days",
+      "caregiver": "Invite unlimited family members to your care circle — free for 14 days",
+      "aiCoach": "Unlock unlimited AI coaching conversations — free for 14 days",
+      "safeZones": "Keep your loved one safe with location tracking & safe zones — free for 14 days",
+      "reports": "Generate professional doctor visit reports — free for 14 days",
+      "journal": "Access the shared Care Journal — free for 14 days",
+      "insights": "Get AI-powered behavioural insights — free for 14 days",
+      "wellbeing": "Access caregiver wellbeing tools — free for 14 days",
+      "startTrial": "Start free trial",
+      "noCardRequired": "No credit card required",
+      "maybeLater": "Maybe later"
+    },
+    "planToggle": {
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "saveBadge": "Save {{percent}}%"
     }
   }
 }

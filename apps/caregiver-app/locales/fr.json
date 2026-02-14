@@ -86,7 +86,7 @@
       "alertsToday": "Alertes aujourd'hui",
       "checkedIn": "Bilan effectué",
       "notCheckedIn": "Bilan non effectué",
-      "brainActivity": "Activité cérébrale"
+      "mindGames": "Mind games"
     },
     "carePlan": {
       "title": "Plan quotidien de {{name}}",

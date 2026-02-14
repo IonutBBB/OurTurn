@@ -192,9 +192,7 @@
       "tasksCompletedPercent": "{{percent}}% tasks",
       "checkedIn": "Checked in",
       "notCheckedIn": "Not checked in",
-      "brainActivity": "Brain activity",
-      "brainActivityDone": "Done",
-      "brainActivityPending": "Pending",
+      "mindGames": "Mind games",
       "alertsToday": "Alerts today",
       "noAlertsToday": "None"
     },
@@ -254,6 +252,7 @@
       "instructions": "Instructions",
       "actions": "Actions",
       "syncNote": "Changes sync instantly to {{name}}'s app",
+      "patientCreated": "Added by {{name}}",
       "hasPhoto": "Has photo",
       "taskPhoto": "Task Photo (optional)",
       "uploadPhoto": "Upload Photo",

@@ -33,6 +33,7 @@ export interface CarePlanTask {
   medication_items: MedicationItem[] | null;
   intervention_id: string | null;
   evidence_source: string | null;
+  patient_created: boolean;
   created_by: string | null;
   created_at: string;
   updated_at: string;
@@ -52,6 +53,7 @@ export interface CarePlanTaskInsert {
   medication_items?: MedicationItem[] | null;
   intervention_id?: string | null;
   evidence_source?: string | null;
+  patient_created?: boolean;
   created_by?: string;
 }
 
@@ -68,6 +70,7 @@ export interface CarePlanTaskUpdate {
   medication_items?: MedicationItem[] | null;
   intervention_id?: string | null;
   evidence_source?: string | null;
+  patient_created?: boolean;
 }
 
 export interface TaskCompletion {

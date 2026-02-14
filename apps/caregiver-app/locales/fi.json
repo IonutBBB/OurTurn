@@ -86,7 +86,7 @@
       "alertsToday": "Hälytyksiä tänään",
       "checkedIn": "Sisäänkirjautunut",
       "notCheckedIn": "Ei sisäänkirjautunut",
-      "brainActivity": "Aivojen aktiivisuus"
+      "mindGames": "Mind games"
     },
     "carePlan": {
       "title": "{{name}}n päivittäinen suunnitelma",

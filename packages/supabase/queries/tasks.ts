@@ -70,6 +70,7 @@ export async function createTask(
       one_time_date: task.one_time_date,
       photo_url: task.photo_url ?? null,
       medication_items: task.medication_items ?? null,
+      patient_created: task.patient_created ?? false,
       created_by: task.created_by,
     })
     .select()

@@ -1,42 +1,30 @@
-// Brain stimulation activity system types
+// Mind games activity system types
 
 export type ActivityCategory =
-  | 'art_beauty'
-  | 'music_sound'
-  | 'calm_wellness'
-  | 'memories_reflection'
   | 'words_language'
-  | 'stories_facts'
-  | 'games';
+  | 'memory_attention'
+  | 'logic_reasoning'
+  | 'knowledge'
+  | 'numbers';
 
-/** @deprecated Use ActivityCategory for UI grouping. Kept for DB backward compatibility. */
-export type CognitiveDomain = string;
+/** DB cognitive_domain CHECK constraint values */
+export type CognitiveDomain = 'language' | 'visual' | 'executive' | 'current_affairs' | 'numbers';
 
 export type StimActivityType =
   | 'word_association'
-  | 'art_gallery'
-  | 'music_moments'
-  | 'sing_along'
-  | 'nature_sounds'
-  | 'guided_breathing'
-  | 'this_day_in_history'
-  | 'memory_lane'
-  | 'daily_reflection'
   | 'proverbs'
-  | 'fun_facts'
+  | 'word_search'
+  | 'word_scramble'
+  | 'photo_pairs'
+  | 'color_sequence'
+  | 'spot_the_difference'
+  | 'odd_one_out'
+  | 'pattern_sequence'
+  | 'category_sort'
   | 'gentle_quiz'
-  | 'animal_friends'
-  | 'story_time'
-  | 'photo_pairs';
+  | 'number_puzzles';
 
-export type LegacyActivityType =
-  | 'brain_activity'
-  | 'remember'
-  | 'listen'
-  | 'move'
-  | 'create';
-
-export type AllActivityType = StimActivityType | LegacyActivityType;
+export type AllActivityType = StimActivityType;
 
 export type DifficultyLevel = 'gentle' | 'moderate' | 'challenging';
 
@@ -88,12 +76,12 @@ export interface ActivityContentCache {
 export interface ActivityDefinition {
   type: AllActivityType;
   category: ActivityCategory;
+  /** Maps to DB cognitive_domain CHECK constraint */
+  cognitiveDomain: CognitiveDomain;
   emoji: string;
   titleKey: string;
   descriptionKey: string;
   backgroundColor: string;
   borderColor: string;
   route: string;
-  legacy?: boolean;
-  requiresBiography?: boolean;
 }

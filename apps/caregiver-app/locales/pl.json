@@ -86,7 +86,7 @@
       "alertsToday": "Alerty na dziś",
       "checkedIn": "Zameldowano",
       "notCheckedIn": "Nie zameldowano",
-      "brainActivity": "Aktywność mózgu"
+      "mindGames": "Mind games"
     },
     "carePlan": {
       "title": "Plan dnia {{name}}",

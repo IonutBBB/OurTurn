@@ -11,6 +11,7 @@ const CACHE_KEYS = {
   PENDING_CHECKIN: 'pending_checkin',
   PENDING_ALERTS: 'pending_location_alerts',
   PENDING_LOCATION_LOGS: 'pending_location_logs',
+  PENDING_REMINDERS: 'pending_reminders',
 };
 
 // Types for pending operations
@@ -277,6 +278,49 @@ export async function getCachedStimContent(date: string, activityType: string): 
   } catch (error) {
     if (__DEV__) console.error('Failed to get cached stim content:', error);
     return null;
+  }
+}
+
+// Types for pending reminders
+export interface PendingReminder {
+  householdId: string;
+  category: string;
+  title: string;
+  time: string;
+  recurrence: string;
+  recurrenceDays: string[];
+  oneTimeDate?: string;
+}
+
+// Queue a patient-created reminder for later sync
+export async function queueReminder(reminder: PendingReminder): Promise<void> {
+  try {
+    const pendingStr = await AsyncStorage.getItem(CACHE_KEYS.PENDING_REMINDERS);
+    const pending: PendingReminder[] = pendingStr ? JSON.parse(pendingStr) : [];
+    pending.push(reminder);
+    await AsyncStorage.setItem(CACHE_KEYS.PENDING_REMINDERS, JSON.stringify(pending));
+  } catch (error) {
+    if (__DEV__) console.error('Failed to queue reminder:', error);
+  }
+}
+
+// Get all pending reminders
+export async function getPendingReminders(): Promise<PendingReminder[]> {
+  try {
+    const pendingStr = await AsyncStorage.getItem(CACHE_KEYS.PENDING_REMINDERS);
+    return pendingStr ? JSON.parse(pendingStr) : [];
+  } catch (error) {
+    if (__DEV__) console.error('Failed to get pending reminders:', error);
+    return [];
+  }
+}
+
+// Clear pending reminders
+export async function clearPendingReminders(): Promise<void> {
+  try {
+    await AsyncStorage.removeItem(CACHE_KEYS.PENDING_REMINDERS);
+  } catch (error) {
+    if (__DEV__) console.error('Failed to clear pending reminders:', error);
   }
 }
 

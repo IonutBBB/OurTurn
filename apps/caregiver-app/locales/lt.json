@@ -86,7 +86,7 @@
       "alertsToday": "Šiandienos įspėjimai",
       "checkedIn": "Patikrinta",
       "notCheckedIn": "Nepatikrinta",
-      "brainActivity": "Smegenų aktyvumas"
+      "mindGames": "Mind games"
     },
     "carePlan": {
       "title": "{{name}} dienos planas",

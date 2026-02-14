@@ -86,7 +86,7 @@
       "alertsToday": "Upozornenia dnes",
       "checkedIn": "Prihlásený",
       "notCheckedIn": "Neprihlásený",
-      "brainActivity": "Mozgová aktivita"
+      "mindGames": "Mind games"
     },
     "carePlan": {
       "title": "Denný plán pre {{name}}",

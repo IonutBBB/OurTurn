@@ -43,7 +43,22 @@
     "unknown": "Unknown",
     "minutesAgo": "{{count}}m ago",
     "hoursAgo": "{{count}}h ago",
-    "daysAgo": "{{count}}d ago"
+    "daysAgo": "{{count}}d ago",
+    "home": "Home",
+    "signOut": "Sign out",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "settings": "Settings",
+    "themeSystem": "System",
+    "themeDark": "Dark",
+    "themeLight": "Light",
+    "themeCurrentLabel": "Current theme: {{theme}}. Click to change.",
+    "pageNotFound": "Page not found",
+    "pageNotFoundDesc": "The page you're looking for doesn't exist or has been moved.",
+    "goToDashboard": "Go to Dashboard",
+    "mainContent": "Main content",
+    "mainNavigation": "Main navigation",
+    "goToDashboardLabel": "OurTurn Care - Go to dashboard"
   },
   "categories": {
     "medication": "Medication",
@@ -177,9 +192,7 @@
       "tasksCompletedPercent": "{{percent}}% tasks",
       "checkedIn": "Checked in",
       "notCheckedIn": "Not checked in",
-      "brainActivity": "Brain activity",
-      "brainActivityDone": "Done",
-      "brainActivityPending": "Pending",
+      "mindGames": "Mind games",
       "alertsToday": "Alerts today",
       "noAlertsToday": "None"
     },
@@ -244,7 +257,18 @@
       "medItemLabel": "Medication {{number}}",
       "removeMedication": "Remove",
       "maxMedications": "Maximum 3 medications per group",
-      "uploadingPhoto": "Uploading..."
+      "uploadingPhoto": "Uploading...",
+      "allDays": "All",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
+      "patientCreated": "Added by {{name}}"
     },
     "location": {
       "title": "Location & Safety",
@@ -390,7 +414,24 @@
           "title": "Ask Anything",
           "placeholder": "What's on your mind about caring for {{name}}?"
         }
-      }
+      },
+      "situationPrompts": {
+        "refusing_food": "{{name}} is refusing to eat. What should I do right now?",
+        "refusing_medication": "{{name}} won't take their medication. How can I help them?",
+        "agitated": "{{name}} is agitated and upset right now. How should I respond?",
+        "not_recognizing": "{{name}} doesn't seem to recognize me. What should I do?",
+        "repetitive_questions": "{{name}} keeps asking the same question over and over. How do I handle this?",
+        "sundowning": "{{name}} is showing signs of sundowning. What can I do to help?",
+        "wants_to_leave": "{{name}} wants to leave the house. How should I handle this safely?",
+        "caregiver_overwhelmed": "I'm feeling overwhelmed and losing patience with caregiving. I need help."
+      },
+      "workflowPrompts": {
+        "plan_tomorrow": "Help me plan tomorrow's care routine for {{name}}.",
+        "doctor_visit": "Help me prepare for {{name}}'s upcoming doctor visit.",
+        "review_week": "Let's review how this week went with {{name}}'s care.",
+        "adjust_plan": "Help me adjust {{name}}'s care plan based on what's been working."
+      },
+      "insightDiscussPrompt": "I'd like to discuss this insight about my caregiving: {{insight}}"
     },
     "family": {
       "title": "{{patientName}}'s Care Team",
@@ -1609,7 +1650,13 @@
         "plusFeat4": "Unlimited Family Circle",
         "plusFeat5": "Caregiver wellbeing tools",
         "plusFeat6": "Doctor visit reports",
-        "plusFeat7": "Priority support"
+        "plusFeat7": "Priority support",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "per month",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "per year",
+        "plusAnnualSavings": "Save 33%",
+        "familyPlanNote": "One subscription covers your whole family"
       },
       "faq": {
         "title": "Questions & answers",
@@ -1683,6 +1730,29 @@
       "taskLimitReached": "You've reached the free plan limit of {{max}} tasks. Upgrade to add unlimited tasks.",
       "aiMessageLimitReached": "You've used all {{max}} free AI Coach messages this month. Upgrade for unlimited conversations.",
       "caregiverLimitReached": "Free plan includes 1 caregiver. Upgrade to invite up to 5 family members."
+    },
+    "upgrade": "Upgrade to Plus",
+    "checkoutError": "Could not start checkout. Please try again.",
+    "activating": "Activating your subscription...",
+    "manageViaStore": "Manage your subscription in your device's app store settings",
+    "contextualTrial": {
+      "title": "Try OurTurn Plus free for 14 days",
+      "tasks": "Add unlimited tasks to your loved one's care plan — free for 14 days",
+      "caregiver": "Invite unlimited family members to your care circle — free for 14 days",
+      "aiCoach": "Unlock unlimited AI coaching conversations — free for 14 days",
+      "safeZones": "Keep your loved one safe with location tracking & safe zones — free for 14 days",
+      "reports": "Generate professional doctor visit reports — free for 14 days",
+      "journal": "Access the shared Care Journal — free for 14 days",
+      "insights": "Get AI-powered behavioural insights — free for 14 days",
+      "wellbeing": "Access caregiver wellbeing tools — free for 14 days",
+      "startTrial": "Start free trial",
+      "noCardRequired": "No credit card required",
+      "maybeLater": "Maybe later"
+    },
+    "planToggle": {
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "saveBadge": "Save {{percent}}%"
     }
   }
 }

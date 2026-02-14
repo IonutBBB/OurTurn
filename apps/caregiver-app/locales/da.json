@@ -86,7 +86,7 @@
       "alertsToday": "Advarsler i dag",
       "checkedIn": "Tjekket ind",
       "notCheckedIn": "Ikke tjekket ind",
-      "brainActivity": "Hjerneaktivitet"
+      "mindGames": "Mind games"
     },
     "carePlan": {
       "title": "{{name}}s daglige plan",

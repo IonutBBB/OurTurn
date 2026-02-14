@@ -86,7 +86,7 @@
       "alertsToday": "Meldingen vandaag",
       "checkedIn": "Ingecheckt",
       "notCheckedIn": "Niet ingecheckt",
-      "brainActivity": "Hersenactiviteit"
+      "mindGames": "Mind games"
     },
     "carePlan": {
       "title": "Dagplan van {{name}}",

@@ -141,7 +141,7 @@ This is a coding convention, not optional. Outdated docs cause bugs.
 - [x] Daily check-in (mood + sleep + voice)
 - [x] Brain wellness activity
 - [x] Push notification reminders
-- [x] Expanded activity system (8+ engagement domains)
+- [x] 12 evidence-based mind games across 5 cognitive categories
 
 ### Caregiver Web App
 - [x] Auth (login, signup, OAuth)

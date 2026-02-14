@@ -46,7 +46,7 @@ export default function ActivityStimPlayer() {
       const row = await createActivitySession({
         household_id: householdId,
         activity_type: activityType,
-        cognitive_domain: definition.category,
+        cognitive_domain: definition.cognitiveDomain,
         date: formatDateForDb(),
       });
       sessionIdRef.current = row.id;

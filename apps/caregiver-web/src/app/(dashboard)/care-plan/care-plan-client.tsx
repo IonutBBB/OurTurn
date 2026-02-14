@@ -26,6 +26,7 @@ interface Task {
   medication_items: MedicationItem[] | null;
   intervention_id: string | null;
   evidence_source: string | null;
+  patient_created?: boolean;
 }
 
 interface SuggestedTask {
@@ -1196,6 +1197,11 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
                         {hasPhoto && (
                           <span className="text-text-muted text-xs" title={t('carePlan.hasPhoto')}>
                             📷
+                          </span>
+                        )}
+                        {task.patient_created && (
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-brand-50 text-brand-600 border border-brand-200">
+                            {t('caregiverApp.carePlan.patientCreated', { name: patientName })}
                           </span>
                         )}
                       </div>

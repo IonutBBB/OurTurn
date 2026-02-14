@@ -89,6 +89,56 @@ export function DashboardRealtime({
   );
 }
 
+interface ActivitiesCounterProps {
+  householdId: string;
+  initialCount: number;
+}
+
+export function ActivitiesCounter({ householdId, initialCount }: ActivitiesCounterProps) {
+  const supabase = createBrowserClient();
+  const { t } = useTranslation();
+  const [count, setCount] = useState(initialCount);
+
+  useEffect(() => {
+    const channel = supabase
+      .channel('activities-realtime')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'activity_sessions',
+          filter: `household_id=eq.${householdId}`,
+        },
+        () => {
+          const today = new Date().toISOString().split('T')[0];
+          supabase
+            .from('activity_sessions')
+            .select('*', { count: 'exact', head: true })
+            .eq('household_id', householdId)
+            .eq('date', today)
+            .not('completed_at', 'is', null)
+            .eq('skipped', false)
+            .then(({ count: newCount }) => {
+              setCount(newCount || 0);
+            });
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [householdId, supabase]);
+
+  return (
+    <div className="card-inset p-3 text-center">
+      <p className="text-lg font-bold font-display text-brand-600">{count > 0 ? count : '—'}</p>
+      <p className="text-xs text-text-muted">{t('caregiverApp.dashboard.mindGames')}</p>
+    </div>
+  );
+}
+
 export function JournalCard({ householdId }: { householdId: string }) {
   const { t } = useTranslation();
   const { showToast } = useToast();

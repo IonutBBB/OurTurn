@@ -192,9 +192,7 @@
       "tasksCompletedPercent": "{{percent}}% задачи",
       "checkedIn": "Регистриран",
       "notCheckedIn": "Не е регистриран",
-      "brainActivity": "Дейност за ума",
-      "brainActivityDone": "Изпълнено",
-      "brainActivityPending": "Предстои",
+      "mindGames": "Mind games",
       "alertsToday": "Предупреждения днес",
       "noAlertsToday": "Няма"
     },
@@ -267,7 +265,17 @@
       "dayThu": "Чет",
       "dayFri": "Пет",
       "daySat": "Съб",
-      "daySun": "Нед"
+      "daySun": "Нед",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
+      "patientCreated": "Added by {{name}}"
     },
     "location": {
       "title": "Местоположение и безопасност",
@@ -1649,7 +1657,13 @@
         "plusFeat4": "Неограничен Семеен кръг",
         "plusFeat5": "Инструменти за благосъстояние на грижещия се",
         "plusFeat6": "Доклади от посещения при лекар",
-        "plusFeat7": "Приоритетна поддръжка"
+        "plusFeat7": "Приоритетна поддръжка",
+        "plusPriceMonthly": "£9.99",
+        "plusPriceMonthlyNote": "per month",
+        "plusPriceAnnual": "£79.99",
+        "plusPriceAnnualNote": "per year",
+        "plusAnnualSavings": "Save 33%",
+        "familyPlanNote": "One subscription covers your whole family"
       },
       "faq": {
         "title": "Въпроси и отговори",
@@ -1723,6 +1737,29 @@
       "taskLimitReached": "Достигнахте лимита на безплатния план от {{max}} задачи. Надстройте, за да добавите неограничен брой задачи.",
       "aiMessageLimitReached": "Използвахте всички {{max}} безплатни съобщения от AI Coach този месец. Надстройте за неограничени разговори.",
       "caregiverLimitReached": "Безплатният план включва 1 човек, полагащ грижи. Надстройте, за да поканите до 5 членове на семейството."
+    },
+    "upgrade": "Upgrade to Plus",
+    "checkoutError": "Could not start checkout. Please try again.",
+    "activating": "Activating your subscription...",
+    "manageViaStore": "Manage your subscription in your device's app store settings",
+    "contextualTrial": {
+      "title": "Try OurTurn Plus free for 14 days",
+      "tasks": "Add unlimited tasks to your loved one's care plan — free for 14 days",
+      "caregiver": "Invite unlimited family members to your care circle — free for 14 days",
+      "aiCoach": "Unlock unlimited AI coaching conversations — free for 14 days",
+      "safeZones": "Keep your loved one safe with location tracking & safe zones — free for 14 days",
+      "reports": "Generate professional doctor visit reports — free for 14 days",
+      "journal": "Access the shared Care Journal — free for 14 days",
+      "insights": "Get AI-powered behavioural insights — free for 14 days",
+      "wellbeing": "Access caregiver wellbeing tools — free for 14 days",
+      "startTrial": "Start free trial",
+      "noCardRequired": "No credit card required",
+      "maybeLater": "Maybe later"
+    },
+    "planToggle": {
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "saveBadge": "Save {{percent}}%"
     }
   }
 }

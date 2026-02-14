@@ -1,5 +1,5 @@
 /**
- * Content pipeline for engagement activities.
+ * Content pipeline for mind game activities.
  * Priority: API fetch (with cache) → AsyncStorage cache → bundled fallback.
  * No difficulty levels — all content is welcoming and failure-free.
  */
@@ -10,10 +10,7 @@ import type { StimActivityType } from '@ourturn/shared';
 import { formatDateForDb } from '../utils/time-of-day';
 import { pickDaily } from '../utils/daily-seed';
 import { BUNDLED_CONTENT } from '../data/bundled-activities';
-import { fetchArtGalleryContent } from '../services/met-museum-api';
 import { fetchGentleQuizContent } from '../services/opentdb-api';
-import { fetchThisDayContent } from '../services/wikipedia-api';
-import { fetchAnimalContent } from '../services/pexels-api';
 
 type ContentSource = 'api' | 'local_cache' | 'bundled';
 
@@ -25,10 +22,7 @@ function getCacheKey(type: StimActivityType, date: string): string {
 
 /** Activities that can fetch from external APIs */
 const API_ACTIVITIES: Partial<Record<StimActivityType, () => Promise<unknown>>> = {
-  art_gallery: fetchArtGalleryContent,
   gentle_quiz: fetchGentleQuizContent,
-  this_day_in_history: fetchThisDayContent,
-  animal_friends: fetchAnimalContent,
 };
 
 export function useActivityContent(

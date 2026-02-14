@@ -86,7 +86,7 @@
       "alertsToday": "Varningar idag",
       "checkedIn": "Incheckad",
       "notCheckedIn": "Inte incheckad",
-      "brainActivity": "Hjärnaktivitet"
+      "mindGames": "Mind games"
     },
     "carePlan": {
       "title": "{{name}}s dagliga plan",

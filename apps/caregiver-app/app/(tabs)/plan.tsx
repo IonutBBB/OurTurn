@@ -660,6 +660,13 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
                       <Text style={styles.taskTime}>{formatTime(task.time)}</Text>
                     </View>
                     <Text style={styles.taskTitle}>{task.title}</Text>
+                    {task.patient_created && (
+                      <View style={styles.patientBadge}>
+                        <Text style={styles.patientBadgeText}>
+                          {t('caregiverApp.carePlan.patientCreated', { name: patient?.name || '' })}
+                        </Text>
+                      </View>
+                    )}
                     {task.hint_text && (
                       <Text style={styles.taskHint} numberOfLines={2}>
                         {task.hint_text}
@@ -1375,6 +1382,21 @@ const useStyles = createThemedStyles((colors) => ({
     fontFamily: FONTS.bodySemiBold,
     color: colors.textPrimary,
     marginBottom: 4,
+  },
+  patientBadge: {
+    alignSelf: 'flex-start',
+    backgroundColor: colors.brand50,
+    borderWidth: 1,
+    borderColor: colors.brand200,
+    borderRadius: RADIUS.full,
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+    marginBottom: 4,
+  },
+  patientBadgeText: {
+    fontSize: 11,
+    fontFamily: FONTS.bodySemiBold,
+    color: colors.brand600,
   },
   taskHint: {
     fontSize: 14,

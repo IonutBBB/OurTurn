@@ -86,7 +86,7 @@
       "alertsToday": "Сигнали за днес",
       "checkedIn": "Проверен",
       "notCheckedIn": "Не е проверен",
-      "brainActivity": "Мозъчна активност"
+      "mindGames": "Mind games"
     },
     "carePlan": {
       "title": "Дневният план на {{name}}",

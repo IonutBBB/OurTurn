@@ -485,6 +485,30 @@ export default function TodayScreen() {
             );
           })}
 
+          {/* Add a Reminder card */}
+          <TouchableOpacity
+            style={styles.addReminderCard}
+            onPress={() => router.push('/add-reminder')}
+            activeOpacity={0.8}
+            accessibilityRole="button"
+            accessibilityLabel={t('patientApp.addReminder.cardTitle')}
+            accessibilityHint={t('patientApp.addReminder.cardSubtitle')}
+          >
+            <View style={styles.addReminderContent}>
+              <View style={styles.addReminderIcon}>
+                <Text style={styles.addReminderIconText}>{'+'}</Text>
+              </View>
+              <View style={styles.addReminderTextContainer}>
+                <Text style={styles.addReminderTitle}>
+                  {t('patientApp.addReminder.cardTitle')}
+                </Text>
+                <Text style={styles.addReminderSubtitle}>
+                  {t('patientApp.addReminder.cardSubtitle')}
+                </Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+
           {/* Bottom padding for tab bar */}
           <View style={styles.bottomPadding} />
         </ScrollView>
@@ -707,6 +731,49 @@ const styles = StyleSheet.create({
   comingUpTime: {
     fontSize: 20,
     fontFamily: FONTS.bodyMedium,
+    color: COLORS.textSecondary,
+    marginTop: 4,
+  },
+  addReminderCard: {
+    backgroundColor: COLORS.card,
+    borderRadius: RADIUS['2xl'],
+    padding: 20,
+    marginTop: 8,
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: COLORS.brand200,
+  },
+  addReminderContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  addReminderIcon: {
+    width: 52,
+    height: 52,
+    borderRadius: 26,
+    backgroundColor: COLORS.brand50,
+    borderWidth: 1,
+    borderColor: COLORS.brand200,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 16,
+  },
+  addReminderIconText: {
+    fontSize: 28,
+    fontFamily: FONTS.bodyBold,
+    color: COLORS.brand600,
+  },
+  addReminderTextContainer: {
+    flex: 1,
+  },
+  addReminderTitle: {
+    fontSize: 22,
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textPrimary,
+  },
+  addReminderSubtitle: {
+    fontSize: 20,
+    fontFamily: FONTS.body,
     color: COLORS.textSecondary,
     marginTop: 4,
   },

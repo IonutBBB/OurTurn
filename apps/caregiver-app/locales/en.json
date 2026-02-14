@@ -88,7 +88,7 @@
       "alertsToday": "Alerts today",
       "checkedIn": "Checked in",
       "notCheckedIn": "Not checked in",
-      "brainActivity": "Brain activity"
+      "mindGames": "Mind games"
     },
     "carePlan": {
       "title": "{{name}}'s Daily Plan",
@@ -108,6 +108,7 @@
       "taskTitle": "Task title",
       "time": "Time",
       "deleteConfirm": "Delete this task?",
+      "patientCreated": "Added by {{name}}",
       "noMoreSuggestions": "No more suggestions available.",
       "copyFromTo": "Copy tasks from {{day}} to:",
       "copyCount": "{{taskCount}} tasks will be copied to {{dayCount}} day(s)",

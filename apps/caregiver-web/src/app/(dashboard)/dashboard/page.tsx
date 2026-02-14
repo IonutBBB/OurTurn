@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { createClient as createServerClient } from '@/lib/supabase/server';
-import { DashboardRealtime, JournalCard } from './dashboard-client';
+import { DashboardRealtime, JournalCard, ActivitiesCounter } from './dashboard-client';
 import { getServerTranslations } from '@/lib/server-i18n';
 
 function DashboardSkeleton() {
@@ -124,25 +124,14 @@ async function DashboardContent() {
     .eq('household_id', household?.id)
     .gte('triggered_at', `${todayStr}T00:00:00`);
 
-  // Count completed activities today (legacy brain_activities + new stim activity_sessions)
-  const [{ data: brainActivity }, { count: stimCount }] = await Promise.all([
-    supabase
-      .from('brain_activities')
-      .select('id')
-      .eq('household_id', household?.id)
-      .eq('date', todayStr)
-      .eq('completed', true)
-      .limit(1),
-    supabase
-      .from('activity_sessions')
-      .select('*', { count: 'exact', head: true })
-      .eq('household_id', household?.id)
-      .eq('date', todayStr)
-      .not('completed_at', 'is', null)
-      .eq('skipped', false),
-  ]);
-
-  const activitiesCompleted = ((brainActivity?.length || 0) > 0 ? 1 : 0) + (stimCount || 0);
+  // Count completed mind games today
+  const { count: activitiesCompleted } = await supabase
+    .from('activity_sessions')
+    .select('*', { count: 'exact', head: true })
+    .eq('household_id', household?.id)
+    .eq('date', todayStr)
+    .not('completed_at', 'is', null)
+    .eq('skipped', false);
 
   const progressPercent = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
 
@@ -346,10 +335,12 @@ async function DashboardContent() {
                 <p className="text-lg font-bold font-display text-brand-600">{checkin ? '✅' : '—'}</p>
                 <p className="text-xs text-text-muted">{checkin ? t.dashboard.checkedIn : t.dashboard.notCheckedIn}</p>
               </div>
-              <div className="card-inset p-3 text-center">
-                <p className="text-lg font-bold font-display text-brand-600">{activitiesCompleted > 0 ? activitiesCompleted : '—'}</p>
-                <p className="text-xs text-text-muted">{t.dashboard.brainActivity}</p>
-              </div>
+              {household?.id && (
+                <ActivitiesCounter
+                  householdId={household.id}
+                  initialCount={activitiesCompleted || 0}
+                />
+              )}
               <div className="card-inset p-3 text-center">
                 <p className="text-lg font-bold font-display text-brand-600">{alertsToday || 0}</p>
                 <p className="text-xs text-text-muted">{t.dashboard.alertsToday}</p>

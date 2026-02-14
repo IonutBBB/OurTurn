@@ -86,7 +86,7 @@
       "alertsToday": "Ειδοποιήσεις σήμερα",
       "checkedIn": "Έχει ενημερωθεί",
       "notCheckedIn": "Δεν έχει ενημερωθεί",
-      "brainActivity": "Εγκεφαλική δραστηριότητα"
+      "mindGames": "Mind games"
     },
     "carePlan": {
       "title": "Καθημερινό Πρόγραμμα του/της {{name}}",

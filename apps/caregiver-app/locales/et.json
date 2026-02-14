@@ -86,7 +86,7 @@
       "alertsToday": "Tänased hoiatused",
       "checkedIn": "Sisse registreeritud",
       "notCheckedIn": "Pole sisse registreeritud",
-      "brainActivity": "Aju aktiivsus"
+      "mindGames": "Mind games"
     },
     "carePlan": {
       "title": "{{name}} igapäevane plaan",

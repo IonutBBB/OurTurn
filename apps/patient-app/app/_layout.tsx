@@ -24,9 +24,11 @@ import {
   clearPendingCheckin,
   getPendingLocationLogs,
   clearPendingLocationLogs,
+  getPendingReminders,
+  clearPendingReminders,
   cleanupOldCache,
 } from '../src/utils/offline-cache';
-import { completeTask, createLocationAlert, logLocation, supabase } from '@ourturn/supabase';
+import { completeTask, createTask, createLocationAlert, logLocation, supabase } from '@ourturn/supabase';
 import { startHeartbeat, stopHeartbeat } from '../src/services/heartbeat';
 import { startLocationTracking, stopLocationTracking } from '../src/services/location-tracker';
 import { COLORS } from '../src/theme';
@@ -97,6 +99,30 @@ async function syncOfflineData(householdId?: string | null) {
     }
     if (failed.length === 0) {
       await clearPendingLocationLogs();
+    }
+  }
+
+  // Sync pending reminders
+  const pendingReminders = await getPendingReminders();
+  if (pendingReminders.length > 0) {
+    const failed = [];
+    for (const reminder of pendingReminders) {
+      try {
+        await createTask(reminder.householdId, {
+          category: reminder.category as 'nutrition' | 'physical' | 'cognitive' | 'social' | 'health',
+          title: reminder.title,
+          time: reminder.time,
+          recurrence: reminder.recurrence as 'daily' | 'specific_days' | 'one_time',
+          recurrence_days: reminder.recurrenceDays as ('mon' | 'tue' | 'wed' | 'thu' | 'fri' | 'sat' | 'sun')[],
+          one_time_date: reminder.oneTimeDate,
+          patient_created: true,
+        });
+      } catch {
+        failed.push(reminder);
+      }
+    }
+    if (failed.length === 0) {
+      await clearPendingReminders();
     }
   }
 
@@ -317,6 +343,13 @@ export default function RootLayout() {
         />
         <Stack.Screen
           name="activity-stim/[type]"
+          options={{
+            presentation: 'modal',
+            animation: 'slide_from_bottom',
+          }}
+        />
+        <Stack.Screen
+          name="add-reminder"
           options={{
             presentation: 'modal',
             animation: 'slide_from_bottom',
