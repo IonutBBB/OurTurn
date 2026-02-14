@@ -178,7 +178,6 @@ export default function CrisisClient({
             householdId={householdId}
             caregiverId={caregiverId}
             patientId={patientId}
-            country={country}
             onBack={handleBackToScenarios}
             onAlertFamily={handleAlertFamily}
           />

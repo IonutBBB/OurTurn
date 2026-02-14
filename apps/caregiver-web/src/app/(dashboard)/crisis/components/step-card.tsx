@@ -45,9 +45,7 @@ interface StepCardProps {
   isOpen: boolean;
   onToggle: () => void;
   patientName: string;
-  country: string;
   onActionAlertFamily?: () => void;
-  onEmergencyCall?: () => void;
 }
 
 export function StepCard({
@@ -56,9 +54,7 @@ export function StepCard({
   isOpen,
   onToggle,
   patientName,
-  country,
   onActionAlertFamily,
-  onEmergencyCall,
 }: StepCardProps) {
   const { t } = useTranslation();
   const colors = STEP_TYPE_COLORS[step.type];
@@ -69,9 +65,7 @@ export function StepCard({
   };
 
   const handleAction = () => {
-    if (step.action === 'call_emergency') {
-      onEmergencyCall?.();
-    } else if (step.action === 'breathing') {
+    if (step.action === 'breathing') {
       // Breathing timer is inline
     }
     // "Open Location" and "Alert All Family Members" are handled via actionLabel
@@ -179,15 +173,11 @@ export function StepCard({
           )}
 
           {/* Action button */}
-          {step.actionLabel && step.action !== 'breathing' && (
+          {step.actionLabel && step.action !== 'breathing' && step.action !== 'call_emergency' && (
             <button
               type="button"
               onClick={handleAction}
-              className={`text-sm font-medium px-4 py-2 rounded-xl transition-colors ${
-                step.action === 'call_emergency'
-                  ? 'bg-status-danger text-white hover:bg-status-danger/90'
-                  : 'btn-primary'
-              }`}
+              className="text-sm font-medium px-4 py-2 rounded-xl transition-colors btn-primary"
             >
               {step.actionLabel} &rarr;
             </button>

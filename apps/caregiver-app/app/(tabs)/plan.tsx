@@ -76,6 +76,7 @@ export default function PlanScreen() {
   const [formTime, setFormTime] = useState('09:00');
   const [formRecurrence, setFormRecurrence] = useState<'daily' | 'specific_days' | 'one_time'>('daily');
   const [formDays, setFormDays] = useState<DayOfWeek[]>([]);
+  const [formOneTimeDate, setFormOneTimeDate] = useState<string>(new Date().toISOString().slice(0, 10));
   const [formPhotoUrl, setFormPhotoUrl] = useState<string | null>(null);
   const [formMedItems, setFormMedItems] = useState<MedicationItem[]>([]);
   const [isUploadingPhoto, setIsUploadingPhoto] = useState(false);
@@ -130,7 +131,7 @@ export default function PlanScreen() {
   const filteredTasks = tasks.filter((task) => {
     if (task.recurrence === 'daily') return true;
     if (task.recurrence === 'specific_days') {
-      return task.recurrence_days?.includes(selectedDay);
+      return task.recurrence_days?.some(d => d.toLowerCase() === selectedDay) ?? false;
     }
     if (task.recurrence === 'one_time') {
       // For one-time tasks, show them on the matching day of the week
@@ -207,6 +208,7 @@ export default function PlanScreen() {
     setFormTime('09:00');
     setFormRecurrence('daily');
     setFormDays([]);
+    setFormOneTimeDate(new Date().toISOString().slice(0, 10));
     setFormPhotoUrl(null);
     setFormMedItems([]);
     setEditingTask(null);
@@ -225,6 +227,7 @@ export default function PlanScreen() {
     setFormTime(task.time);
     setFormRecurrence(task.recurrence);
     setFormDays(task.recurrence_days || []);
+    setFormOneTimeDate(task.one_time_date || new Date().toISOString().slice(0, 10));
     setFormPhotoUrl(task.photo_url || null);
     setFormMedItems(task.medication_items || []);
     setShowModal(true);
@@ -239,6 +242,8 @@ export default function PlanScreen() {
         ? formMedItems.filter((m) => m.name.trim())
         : null;
 
+      const oneTimeDate = formRecurrence === 'one_time' ? formOneTimeDate : null;
+
       if (editingTask) {
         const { error } = await supabase
           .from('care_plan_tasks')
@@ -249,6 +254,7 @@ export default function PlanScreen() {
             time: formTime,
             recurrence: formRecurrence,
             recurrence_days: formRecurrence === 'specific_days' ? formDays : [],
+            one_time_date: oneTimeDate,
             photo_url: formPhotoUrl,
             medication_items: medItems,
           })
@@ -268,6 +274,7 @@ export default function PlanScreen() {
                     time: formTime,
                     recurrence: formRecurrence,
                     recurrence_days: formRecurrence === 'specific_days' ? formDays : [],
+                    one_time_date: oneTimeDate,
                     photo_url: formPhotoUrl,
                     medication_items: medItems,
                   }
@@ -286,6 +293,7 @@ export default function PlanScreen() {
             time: formTime,
             recurrence: formRecurrence,
             recurrence_days: formRecurrence === 'specific_days' ? formDays : [],
+            one_time_date: oneTimeDate,
             active: true,
             created_by: user?.id,
             photo_url: formPhotoUrl,
@@ -483,7 +491,7 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
       const sourceTasks = tasks.filter(task => {
         if (task.recurrence === 'daily') return true;
         if (task.recurrence === 'specific_days') {
-          return task.recurrence_days?.includes(selectedDay);
+          return task.recurrence_days?.some(d => d.toLowerCase() === selectedDay) ?? false;
         }
         return false;
       });
@@ -955,6 +963,21 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
                       </Text>
                     </TouchableOpacity>
                   ))}
+                </View>
+              )}
+
+              {/* Date picker for one-time tasks */}
+              {formRecurrence === 'one_time' && (
+                <View style={{ marginTop: 12 }}>
+                  <Text style={styles.fieldLabel}>{t('caregiverApp.carePlan.oneTimeDate')}</Text>
+                  <TextInput
+                    style={styles.textInput}
+                    value={formOneTimeDate}
+                    onChangeText={setFormOneTimeDate}
+                    placeholder="YYYY-MM-DD"
+                    placeholderTextColor={colors.textMuted}
+                    keyboardType="numbers-and-punctuation"
+                  />
                 </View>
               )}
 

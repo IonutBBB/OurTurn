@@ -177,9 +177,7 @@ export function QuickActions({
             </View>
             <Text style={styles.actionTitle}>{t(action.titleKey)}</Text>
             <Text style={styles.actionDesc}>
-              {action.descKey.includes('{{name}}')
-                ? t(action.descKey, { name: patientName })
-                : t(action.descKey)}
+              {t(action.descKey, { name: patientName })}
             </Text>
             {action.loading && (
               <ActivityIndicator

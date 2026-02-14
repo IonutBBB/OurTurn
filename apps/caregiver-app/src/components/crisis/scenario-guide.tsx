@@ -3,10 +3,8 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Linking,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { getPrimaryEmergencyNumber } from '@ourturn/shared/constants/emergency-numbers';
 import * as Haptics from 'expo-haptics';
 import { createThemedStyles, FONTS, RADIUS, SHADOWS } from '../../theme';
 import type { CrisisScenario, CrisisStep } from './scenarios-data';
@@ -15,7 +13,6 @@ interface ScenarioGuideProps {
   scenario: CrisisScenario;
   patientName: string;
   calmingStrategies: string[] | null;
-  country: string;
   onBack: () => void;
   onAlertFamily: () => void;
 }
@@ -31,22 +28,16 @@ export function ScenarioGuide({
   scenario,
   patientName,
   calmingStrategies,
-  country,
   onBack,
   onAlertFamily,
 }: ScenarioGuideProps) {
   const { t } = useTranslation();
   const styles = useStyles();
   const [expandedStep, setExpandedStep] = useState(0);
-  const emergencyNumber = getPrimaryEmergencyNumber(country);
 
   const handleToggleStep = (idx: number) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     setExpandedStep(expandedStep === idx ? -1 : idx);
-  };
-
-  const handleCallEmergency = () => {
-    Linking.openURL(`tel:${emergencyNumber}`);
   };
 
   return (
@@ -129,18 +120,6 @@ export function ScenarioGuide({
                   </View>
                 )}
 
-                {step.action === 'call_emergency' && (
-                  <TouchableOpacity
-                    style={styles.emergencyButton}
-                    onPress={handleCallEmergency}
-                    activeOpacity={0.7}
-                  >
-                    <Text style={styles.emergencyButtonText}>
-                      🚨 {t('caregiverApp.crisis.scenarios.callEmergency')} — {emergencyNumber}
-                    </Text>
-                  </TouchableOpacity>
-                )}
-
                 {step.type === 'do' && step.actionLabel?.includes('Alert') && (
                   <TouchableOpacity
                     style={styles.alertFamilyButton}
@@ -158,16 +137,6 @@ export function ScenarioGuide({
         );
       })}
 
-      {/* Bottom Emergency Button */}
-      <TouchableOpacity
-        style={styles.bottomEmergency}
-        onPress={handleCallEmergency}
-        activeOpacity={0.7}
-      >
-        <Text style={styles.bottomEmergencyText}>
-          🚨 {t('caregiverApp.crisis.scenarios.callEmergency')} — {emergencyNumber}
-        </Text>
-      </TouchableOpacity>
     </View>
   );
 }
@@ -333,19 +302,6 @@ const useStyles = createThemedStyles((colors) => ({
     color: colors.textPrimary,
     lineHeight: 20,
   },
-  emergencyButton: {
-    marginTop: 14,
-    backgroundColor: colors.danger,
-    borderRadius: RADIUS.lg,
-    paddingVertical: 12,
-    alignItems: 'center',
-  },
-  emergencyButtonText: {
-    fontSize: 15,
-    fontWeight: '600',
-    fontFamily: FONTS.bodySemiBold,
-    color: '#FFFFFF',
-  },
   alertFamilyButton: {
     marginTop: 10,
     backgroundColor: colors.brand600,
@@ -358,18 +314,5 @@ const useStyles = createThemedStyles((colors) => ({
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
     color: colors.textInverse,
-  },
-  bottomEmergency: {
-    backgroundColor: colors.danger,
-    borderRadius: RADIUS.xl,
-    paddingVertical: 14,
-    alignItems: 'center',
-    ...SHADOWS.sm,
-  },
-  bottomEmergencyText: {
-    fontSize: 16,
-    fontWeight: '700',
-    fontFamily: FONTS.bodySemiBold,
-    color: '#FFFFFF',
   },
 }));

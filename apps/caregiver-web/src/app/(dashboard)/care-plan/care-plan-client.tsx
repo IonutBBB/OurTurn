@@ -53,11 +53,11 @@ const CATEGORIES = [
   { key: 'health', icon: '❤️', color: 'bg-category-health-bg text-category-health' },
 ];
 
-const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const DAYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
-type DayFilter = 'All' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat' | 'Sun';
+type DayFilter = 'All' | 'mon' | 'tue' | 'wed' | 'thu' | 'fri' | 'sat' | 'sun';
 
-const DAY_INDEX_TO_ABBR: DayFilter[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const DAY_INDEX_TO_ABBR: DayFilter[] = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
 function getTodayAbbr(): DayFilter {
   return DAY_INDEX_TO_ABBR[new Date().getDay()];
@@ -83,7 +83,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
     : tasks.filter((task) => {
         if (task.recurrence === 'daily') return true;
         if (task.recurrence === 'specific_days') {
-          return task.recurrence_days?.includes(selectedDay);
+          return task.recurrence_days?.some(d => d.toLowerCase() === selectedDay) ?? false;
         }
         return false; // one_time tasks only on "All"
       });
@@ -93,7 +93,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
     return tasks.filter((task) => {
       if (task.recurrence === 'daily') return true;
       if (task.recurrence === 'specific_days') {
-        return task.recurrence_days?.includes(day);
+        return task.recurrence_days?.some(d => d.toLowerCase() === day) ?? false;
       }
       return false;
     }).length;
@@ -108,7 +108,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
 
   // Copy Day state
   const [showCopyModal, setShowCopyModal] = useState(false);
-  const [copySourceDay, setCopySourceDay] = useState('Mon');
+  const [copySourceDay, setCopySourceDay] = useState('mon');
   const [copyTargetDays, setCopyTargetDays] = useState<string[]>([]);
   const [copying, setCopying] = useState(false);
 
@@ -384,7 +384,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
       const sourceTasks = tasks.filter((task) => {
         if (task.recurrence === 'daily') return true;
         if (task.recurrence === 'specific_days') {
-          return task.recurrence_days?.includes(copySourceDay);
+          return task.recurrence_days?.some(d => d.toLowerCase() === copySourceDay) ?? false;
         }
         return false;
       });
@@ -540,7 +540,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
                     : 'bg-surface-card dark:bg-surface-elevated text-text-secondary border-surface-border hover:border-brand-300'
                 }`}
               >
-                {day === 'All' ? t('caregiverApp.carePlan.allDays') : t(`caregiverApp.carePlan.day${day}`)}
+                {day === 'All' ? t('caregiverApp.carePlan.allDays') : t(`caregiverApp.carePlan.days.${day}`)}
                 <span className={`text-xs ${isSelected ? 'text-white/80' : 'text-text-muted'}`}>
                   ({count})
                 </span>
@@ -1028,7 +1028,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
                           : 'bg-surface-card dark:bg-surface-elevated text-text-secondary border-surface-border hover:border-brand-300'
                       }`}
                     >
-                      {day}
+                      {t(`caregiverApp.carePlan.days.${day}`)}
                     </button>
                   ))}
                 </div>
@@ -1081,7 +1081,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
                           : 'bg-surface-card dark:bg-surface-elevated text-text-secondary border-surface-border hover:border-brand-300'
                       }`}
                     >
-                      {t(`caregiverApp.carePlan.day${day}`)}
+                      {t(`caregiverApp.carePlan.days.${day}`)}
                     </button>
                   ))}
                 </div>
@@ -1108,7 +1108,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
                           : 'bg-surface-card dark:bg-surface-elevated text-text-secondary border-surface-border hover:border-brand-300'
                       }`}
                     >
-                      {t(`caregiverApp.carePlan.day${day}`)}
+                      {t(`caregiverApp.carePlan.days.${day}`)}
                     </button>
                   ))}
                 </div>

@@ -1,8 +1,7 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getPrimaryEmergencyNumber } from '@ourturn/shared/constants/emergency-numbers';
 import type { CrisisScenario } from '../types';
 import { StepCard } from './step-card';
 import { PersonalizationBox } from './personalization-box';
@@ -15,7 +14,6 @@ interface ScenarioGuideProps {
   householdId: string;
   caregiverId: string;
   patientId: string;
-  country: string;
   onBack: () => void;
   onAlertFamily: () => void;
 }
@@ -27,17 +25,11 @@ export function ScenarioGuide({
   householdId,
   caregiverId,
   patientId,
-  country,
   onBack,
   onAlertFamily,
 }: ScenarioGuideProps) {
   const { t } = useTranslation();
   const [openStep, setOpenStep] = useState(0);
-  const emergencyNumber = getPrimaryEmergencyNumber(country);
-
-  const handleEmergencyCall = useCallback(() => {
-    window.open(`tel:${emergencyNumber}`, '_self');
-  }, [emergencyNumber]);
 
   return (
     <div className="space-y-4">
@@ -84,9 +76,7 @@ export function ScenarioGuide({
             isOpen={openStep === idx}
             onToggle={() => setOpenStep(openStep === idx ? -1 : idx)}
             patientName={patientName}
-            country={country}
             onActionAlertFamily={onAlertFamily}
-            onEmergencyCall={handleEmergencyCall}
           />
         ))}
       </div>
@@ -100,15 +90,6 @@ export function ScenarioGuide({
         onSaved={() => {}}
       />
 
-      {/* Emergency button */}
-      <button
-        type="button"
-        onClick={handleEmergencyCall}
-        className="w-full flex items-center justify-center gap-2 bg-status-danger text-white font-medium py-3 rounded-2xl hover:bg-status-danger/90 transition-colors"
-      >
-        <span>🚨</span>
-        {t('caregiverApp.crisis.callEmergency')} — {emergencyNumber}
-      </button>
     </div>
   );
 }

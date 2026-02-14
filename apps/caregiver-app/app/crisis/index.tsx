@@ -37,7 +37,7 @@ interface CrisisEntry {
 }
 
 const CRISIS_MODE_KEY = 'crisis-mode';
-const API_BASE_URL = process.env.EXPO_PUBLIC_API_BASE_URL || '';
+const EXPO_PUSH_URL = 'https://exp.host/--/api/v2/push/send';
 
 export default function CrisisScreen() {
   const { t } = useTranslation();
@@ -219,18 +219,62 @@ export default function CrisisScreen() {
     [caregiver?.id, t]
   );
 
-  // Alert family
+  // Alert family — send push notifications directly via Expo push API
   const handleAlertFamily = useCallback(async () => {
-    if (!household?.id) return;
+    if (!household?.id || !caregiver?.id) return;
     setIsAlertingFamily(true);
     try {
-      const res = await fetch(`${API_BASE_URL}/api/crisis/alert-family`, {
+      // Get other caregivers' device tokens
+      const { data: otherCaregivers } = await supabase
+        .from('caregivers')
+        .select('id, device_tokens')
+        .eq('household_id', household.id)
+        .neq('id', caregiver.id);
+
+      const tokens: string[] = [];
+      for (const cg of otherCaregivers || []) {
+        if (cg.device_tokens && Array.isArray(cg.device_tokens)) {
+          for (const dt of cg.device_tokens) {
+            if (dt.token) tokens.push(dt.token);
+          }
+        }
+      }
+
+      if (tokens.length === 0) {
+        Alert.alert('', t('caregiverApp.crisis.actions.alertFamilySent'));
+        return;
+      }
+
+      const caregiverName = caregiver.name || t('common.someone');
+      const patientName = patient?.name || t('common.yourLovedOne');
+
+      const messages = tokens.map((token) => ({
+        to: token,
+        title: t('caregiverApp.crisis.actions.crisisAlertTitle'),
+        body: t('caregiverApp.crisis.actions.crisisAlertBody', {
+          caregiverName,
+          patientName,
+        }),
+        sound: 'default' as const,
+        priority: 'high' as const,
+        channelId: 'safety-alerts',
+        data: {
+          type: 'crisis_alert',
+          householdId: household.id,
+          senderId: caregiver.id,
+        },
+      }));
+
+      const res = await fetch(EXPO_PUSH_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ householdId: household.id }),
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(messages),
       });
 
-      if (!res.ok) throw new Error('Failed');
+      if (!res.ok) throw new Error('Push delivery failed');
 
       Alert.alert('', t('caregiverApp.crisis.actions.alertFamilySent'));
     } catch {
@@ -241,7 +285,7 @@ export default function CrisisScreen() {
     } finally {
       setIsAlertingFamily(false);
     }
-  }, [household?.id, t]);
+  }, [household?.id, caregiver?.id, caregiver?.name, patient?.name, t]);
 
   // Wizard complete
   const handleWizardComplete = useCallback(
@@ -403,7 +447,6 @@ export default function CrisisScreen() {
                   ]
                 : null
             }
-            country={country}
             onBack={() => setSelectedScenarioId(null)}
             onAlertFamily={handleAlertFamily}
           />
