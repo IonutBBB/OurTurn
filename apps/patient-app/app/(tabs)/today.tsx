@@ -6,8 +6,10 @@ import {
   ScrollView,
   RefreshControl,
   ActivityIndicator,
+  TouchableOpacity,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
 import { getProgressLabel, getCategoryIcon } from '@ourturn/shared';
@@ -59,6 +61,7 @@ export default function TodayScreen() {
   const [isOffline, setIsOffline] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [yesterdayCompletedCount, setYesterdayCompletedCount] = useState<number | null>(null);
+  const [checkedInToday, setCheckedInToday] = useState<boolean | null>(null);
   const [currentTime, setCurrentTime] = useState(formatCurrentTime(i18n.language));
   const clockRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -131,6 +134,19 @@ export default function TodayScreen() {
         return !comp?.completed && !comp?.skipped;
       });
       scheduleAllTaskReminders(uncompletedTasks, patient?.name);
+
+      // Check if daily check-in is done (non-blocking)
+      try {
+        const { data: checkinData } = await supabase
+          .from('daily_checkins')
+          .select('id')
+          .eq('household_id', householdId)
+          .eq('date', today)
+          .single();
+        setCheckedInToday(!!checkinData);
+      } catch {
+        setCheckedInToday(false);
+      }
 
       // Fetch yesterday's completed count (non-blocking)
       try {
@@ -376,6 +392,53 @@ export default function TodayScreen() {
             </View>
           )}
 
+          {/* Daily Check-in card */}
+          {checkedInToday !== null && (
+            <TouchableOpacity
+              style={[
+                styles.checkinCard,
+                checkedInToday && styles.checkinCardDone,
+              ]}
+              onPress={() => router.push('/checkin')}
+              activeOpacity={0.8}
+              accessibilityRole="button"
+              accessibilityLabel={
+                checkedInToday
+                  ? t('patientApp.checkin.alreadyDone')
+                  : t('patientApp.checkin.tapToCheckin')
+              }
+              accessibilityHint={t('patientApp.checkin.opensCheckin')}
+            >
+              <View style={styles.checkinContent}>
+                <View
+                  style={[
+                    styles.checkinIcon,
+                    checkedInToday && styles.checkinIconDone,
+                  ]}
+                >
+                  <Text style={styles.checkinIconText}>
+                    {checkedInToday ? '✓' : '?'}
+                  </Text>
+                </View>
+                <View style={styles.checkinTextContainer}>
+                  <Text style={styles.checkinTitle}>
+                    {t('patientApp.checkin.moodQuestion')}
+                  </Text>
+                  <Text
+                    style={[
+                      styles.checkinSubtitle,
+                      checkedInToday && styles.checkinSubtitleDone,
+                    ]}
+                  >
+                    {checkedInToday
+                      ? t('patientApp.checkin.alreadyDone')
+                      : t('patientApp.checkin.tapToCheckin')}
+                  </Text>
+                </View>
+              </View>
+            </TouchableOpacity>
+          )}
+
           {/* Coming Up Next card */}
           {nextTask && (
             <View style={styles.comingUpCard}>
@@ -554,6 +617,60 @@ const styles = StyleSheet.create({
   },
   bottomPadding: {
     height: 120,
+  },
+  checkinCard: {
+    backgroundColor: COLORS.card,
+    borderRadius: RADIUS['2xl'],
+    padding: 20,
+    marginBottom: 20,
+    borderWidth: 2,
+    borderColor: COLORS.brand400,
+    ...SHADOWS.md,
+  },
+  checkinCardDone: {
+    borderColor: COLORS.success,
+    opacity: 0.7,
+  },
+  checkinContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  checkinIcon: {
+    width: 52,
+    height: 52,
+    borderRadius: 26,
+    backgroundColor: COLORS.brand50,
+    borderWidth: 2,
+    borderColor: COLORS.brand400,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 16,
+  },
+  checkinIconDone: {
+    backgroundColor: COLORS.successBg,
+    borderColor: COLORS.success,
+  },
+  checkinIconText: {
+    fontSize: 24,
+    fontFamily: FONTS.bodyBold,
+    color: COLORS.brand600,
+  },
+  checkinTextContainer: {
+    flex: 1,
+  },
+  checkinTitle: {
+    fontSize: 22,
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.textPrimary,
+  },
+  checkinSubtitle: {
+    fontSize: 20,
+    fontFamily: FONTS.body,
+    color: COLORS.brand600,
+    marginTop: 4,
+  },
+  checkinSubtitleDone: {
+    color: COLORS.success,
   },
   comingUpCard: {
     backgroundColor: COLORS.card,

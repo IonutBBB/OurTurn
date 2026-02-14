@@ -29,18 +29,14 @@ export default function TabsLayout() {
   const styles = useStyles();
   const colors = useColors();
 
-  // On Android, Expo Go may run edge-to-edge while reporting insets.bottom as 0,
-  // causing the system nav bar to cover tab buttons. Use 48dp minimum on Android.
-  const bottomPadding = Platform.OS === 'android'
-    ? Math.max(insets.bottom, 48)
-    : Math.max(insets.bottom, 6);
+  const bottomPadding = Math.max(insets.bottom, 4);
 
   return (
     <ErrorBoundary>
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarStyle: [styles.tabBar, { paddingBottom: bottomPadding, height: 72 + bottomPadding }],
+        tabBarStyle: [styles.tabBar, { paddingBottom: bottomPadding }],
         tabBarShowLabel: false,
       }}
     >

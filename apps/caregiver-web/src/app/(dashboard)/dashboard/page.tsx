@@ -81,18 +81,24 @@ async function DashboardContent() {
     .eq('date', todayStr)
     .single();
 
-  const moodMap: Record<number, { emoji: string; label: string }> = {
-    1: { emoji: '😟', label: t.dashboard.moodStruggling },
-    2: { emoji: '😕', label: t.dashboard.moodLow },
-    3: { emoji: '😐', label: t.dashboard.moodOkay },
-    4: { emoji: '😊', label: t.dashboard.moodGood },
-    5: { emoji: '😄', label: t.dashboard.moodGreat },
+  // 3-level scale matching patient app options: bad / okay / good
+  const scaleLevels = [
+    { color: '#B8463A', bg: '#FAF0EE' }, // bad
+    { color: '#C4882C', bg: '#FDF6EA' }, // okay
+    { color: '#4A7C59', bg: '#EFF5F0' }, // good
+  ];
+
+  // Map mood 1-5 → scale index 0-2 (bad/okay/good)
+  const moodToLevel: Record<number, number> = { 1: 0, 2: 0, 3: 1, 4: 2, 5: 2 };
+  const moodLabels: Record<number, string> = {
+    1: t.dashboard.moodStruggling, 2: t.dashboard.moodLow, 3: t.dashboard.moodOkay,
+    4: t.dashboard.moodGood, 5: t.dashboard.moodGreat,
   };
 
-  const sleepMap: Record<number, { emoji: string; label: string }> = {
-    1: { emoji: '😩', label: t.dashboard.sleepPoor },
-    2: { emoji: '🙂', label: t.dashboard.sleepFair },
-    3: { emoji: '😴', label: t.dashboard.sleepWell },
+  // Map sleep 1-3 → scale index 0-2
+  const sleepToLevel: Record<number, number> = { 1: 0, 2: 1, 3: 2 };
+  const sleepLabels: Record<number, string> = {
+    1: t.dashboard.sleepPoor, 2: t.dashboard.sleepFair, 3: t.dashboard.sleepWell,
   };
 
   // Fetch latest weekly insights
@@ -118,15 +124,25 @@ async function DashboardContent() {
     .eq('household_id', household?.id)
     .gte('triggered_at', `${todayStr}T00:00:00`);
 
-  // Check for brain activity completion today
-  const { data: brainActivity } = await supabase
-    .from('brain_activity_completions')
-    .select('id')
-    .eq('household_id', household?.id)
-    .eq('date', todayStr)
-    .limit(1);
+  // Count completed activities today (legacy brain_activities + new stim activity_sessions)
+  const [{ data: brainActivity }, { count: stimCount }] = await Promise.all([
+    supabase
+      .from('brain_activities')
+      .select('id')
+      .eq('household_id', household?.id)
+      .eq('date', todayStr)
+      .eq('completed', true)
+      .limit(1),
+    supabase
+      .from('activity_sessions')
+      .select('*', { count: 'exact', head: true })
+      .eq('household_id', household?.id)
+      .eq('date', todayStr)
+      .not('completed_at', 'is', null)
+      .eq('skipped', false),
+  ]);
 
-  const hasBrainActivity = (brainActivity?.length || 0) > 0;
+  const activitiesCompleted = ((brainActivity?.length || 0) > 0 ? 1 : 0) + (stimCount || 0);
 
   const progressPercent = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
 
@@ -214,21 +230,57 @@ async function DashboardContent() {
         <div className="lg:col-span-5 card-paper p-6 space-y-4 animate-fade-in-up stagger-2">
           <p className="section-label">{t.dashboard.dailyCheckin}</p>
           {checkin ? (
-            <div className="space-y-3">
-              <div className="grid grid-cols-2 gap-3">
-                <div className="card-inset p-4 text-center">
-                  <p className="text-3xl mb-1">{moodMap[checkin.mood]?.emoji || '—'}</p>
-                  <p className="text-xs font-medium text-text-muted uppercase tracking-wider">
-                    {moodMap[checkin.mood]?.label || t.dashboard.mood}
-                  </p>
-                </div>
-                <div className="card-inset p-4 text-center">
-                  <p className="text-3xl mb-1">{sleepMap[checkin.sleep_quality]?.emoji || '—'}</p>
-                  <p className="text-xs font-medium text-text-muted uppercase tracking-wider">
-                    {sleepMap[checkin.sleep_quality]?.label || t.dashboard.sleep}
-                  </p>
-                </div>
-              </div>
+            <div className="space-y-4">
+              {/* Mood scale */}
+              {(() => {
+                const level = moodToLevel[checkin.mood] ?? 1;
+                const { color } = scaleLevels[level];
+                return (
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <p className="text-xs font-medium text-text-muted uppercase tracking-wider">{t.dashboard.mood}</p>
+                      <p className="text-sm font-semibold" style={{ color }}>{moodLabels[checkin.mood]}</p>
+                    </div>
+                    <div className="flex gap-1.5">
+                      {scaleLevels.map((s, i) => (
+                        <div
+                          key={i}
+                          className="flex-1 h-2.5 rounded-full transition-all"
+                          style={{
+                            backgroundColor: i <= level ? color : 'var(--surface-border)',
+                            opacity: i <= level ? 1 : 0.4,
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                );
+              })()}
+              {/* Sleep scale */}
+              {(() => {
+                const level = sleepToLevel[checkin.sleep_quality] ?? 1;
+                const { color } = scaleLevels[level];
+                return (
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <p className="text-xs font-medium text-text-muted uppercase tracking-wider">{t.dashboard.sleep}</p>
+                      <p className="text-sm font-semibold" style={{ color }}>{sleepLabels[checkin.sleep_quality]}</p>
+                    </div>
+                    <div className="flex gap-1.5">
+                      {scaleLevels.map((s, i) => (
+                        <div
+                          key={i}
+                          className="flex-1 h-2.5 rounded-full transition-all"
+                          style={{
+                            backgroundColor: i <= level ? color : 'var(--surface-border)',
+                            opacity: i <= level ? 1 : 0.4,
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                );
+              })()}
               {checkin.voice_note_transcript && (
                 <div className="card-inset p-3">
                   <p className="text-sm text-text-secondary italic leading-relaxed">
@@ -239,7 +291,6 @@ async function DashboardContent() {
             </div>
           ) : (
             <div className="card-inset flex flex-col items-center justify-center py-8 text-center">
-              <span className="text-3xl mb-2 opacity-40">💭</span>
               <p className="text-sm text-text-muted">{t.dashboard.noCheckinYet}</p>
             </div>
           )}
@@ -296,7 +347,7 @@ async function DashboardContent() {
                 <p className="text-xs text-text-muted">{checkin ? t.dashboard.checkedIn : t.dashboard.notCheckedIn}</p>
               </div>
               <div className="card-inset p-3 text-center">
-                <p className="text-lg font-bold font-display text-brand-600">{hasBrainActivity ? '🧠' : '—'}</p>
+                <p className="text-lg font-bold font-display text-brand-600">{activitiesCompleted > 0 ? activitiesCompleted : '—'}</p>
                 <p className="text-xs text-text-muted">{t.dashboard.brainActivity}</p>
               </div>
               <div className="card-inset p-3 text-center">

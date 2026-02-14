@@ -28,7 +28,7 @@ export default function DashboardScreen() {
   const [journalNote, setJournalNote] = useState('');
   const [savingNote, setSavingNote] = useState(false);
   const [alertsToday, setAlertsToday] = useState(0);
-  const [hasBrainActivity, setHasBrainActivity] = useState(false);
+  const [activitiesCompleted, setActivitiesCompleted] = useState(0);
   const [loadError, setLoadError] = useState(false);
 
   const styles = useStyles();
@@ -84,15 +84,25 @@ export default function DashboardScreen() {
 
       setAlertsToday(count || 0);
 
-      // Check brain activity
-      const { data: brainData } = await supabase
-        .from('brain_activity_completions')
-        .select('id')
-        .eq('household_id', household.id)
-        .eq('date', today)
-        .limit(1);
+      // Count completed activities today (legacy brain_activities + new stim activity_sessions)
+      const [{ data: brainData }, { count: stimCount }] = await Promise.all([
+        supabase
+          .from('brain_activities')
+          .select('id')
+          .eq('household_id', household.id)
+          .eq('date', today)
+          .eq('completed', true)
+          .limit(1),
+        supabase
+          .from('activity_sessions')
+          .select('*', { count: 'exact', head: true })
+          .eq('household_id', household.id)
+          .eq('date', today)
+          .not('completed_at', 'is', null)
+          .eq('skipped', false),
+      ]);
 
-      setHasBrainActivity((brainData?.length || 0) > 0);
+      setActivitiesCompleted(((brainData?.length || 0) > 0 ? 1 : 0) + (stimCount || 0));
     } catch (error) {
       if (__DEV__) console.error('Failed to load dashboard data:', error);
       setLoadError(true);
@@ -110,18 +120,21 @@ export default function DashboardScreen() {
     setRefreshing(false);
   };
 
-  const moodMap: Record<number, { emoji: string; label: string }> = {
-    1: { emoji: '😟', label: t('caregiverApp.dashboard.moodStruggling') },
-    2: { emoji: '😕', label: t('caregiverApp.dashboard.moodLow') },
-    3: { emoji: '😐', label: t('caregiverApp.dashboard.moodOkay') },
-    4: { emoji: '😊', label: t('caregiverApp.dashboard.moodGood') },
-    5: { emoji: '😄', label: t('caregiverApp.dashboard.moodGreat') },
+  const scaleLevels = [
+    { color: '#B8463A' }, // bad
+    { color: '#C4882C' }, // okay
+    { color: '#4A7C59' }, // good
+  ];
+  const moodToLevel: Record<number, number> = { 1: 0, 2: 0, 3: 1, 4: 2, 5: 2 };
+  const moodLabels: Record<number, string> = {
+    1: t('caregiverApp.dashboard.moodStruggling'), 2: t('caregiverApp.dashboard.moodLow'),
+    3: t('caregiverApp.dashboard.moodOkay'), 4: t('caregiverApp.dashboard.moodGood'),
+    5: t('caregiverApp.dashboard.moodGreat'),
   };
-
-  const sleepMap: Record<number, { emoji: string; label: string }> = {
-    1: { emoji: '😩', label: t('caregiverApp.dashboard.sleepPoor') },
-    2: { emoji: '🙂', label: t('caregiverApp.dashboard.sleepFair') },
-    3: { emoji: '😴', label: t('caregiverApp.dashboard.sleepWell') },
+  const sleepToLevel: Record<number, number> = { 1: 0, 2: 1, 3: 2 };
+  const sleepLabels: Record<number, string> = {
+    1: t('caregiverApp.dashboard.sleepPoor'), 2: t('caregiverApp.dashboard.sleepFair'),
+    3: t('caregiverApp.dashboard.sleepWell'),
   };
 
   const handleAddJournalNote = useCallback(async () => {
@@ -268,19 +281,60 @@ export default function DashboardScreen() {
           >
             <Text style={styles.sectionLabel}>{t('caregiverApp.dashboard.dailyCheckin')}</Text>
             {checkin ? (
-              <View style={styles.checkinGrid}>
-                <View style={styles.checkinBox}>
-                  <Text style={styles.checkinEmoji}>{moodMap[checkin.mood]?.emoji || '—'}</Text>
-                  <Text style={styles.checkinBoxLabel}>{moodMap[checkin.mood]?.label || t('caregiverApp.dashboard.mood')}</Text>
+              <View style={styles.checkinScales}>
+                {/* Mood scale */}
+                <View style={styles.scaleRow}>
+                  <View style={styles.scaleHeader}>
+                    <Text style={styles.scaleLabel}>{t('caregiverApp.dashboard.mood')}</Text>
+                    <Text style={[styles.scaleValue, { color: scaleLevels[moodToLevel[checkin.mood] ?? 1].color }]}>
+                      {moodLabels[checkin.mood] || '—'}
+                    </Text>
+                  </View>
+                  <View style={styles.scaleBar}>
+                    {scaleLevels.map((s, i) => (
+                      <View
+                        key={i}
+                        style={[
+                          styles.scaleSegment,
+                          {
+                            backgroundColor: i <= (moodToLevel[checkin.mood] ?? 1)
+                              ? scaleLevels[moodToLevel[checkin.mood] ?? 1].color
+                              : colors.border,
+                            opacity: i <= (moodToLevel[checkin.mood] ?? 1) ? 1 : 0.4,
+                          },
+                        ]}
+                      />
+                    ))}
+                  </View>
                 </View>
-                <View style={styles.checkinBox}>
-                  <Text style={styles.checkinEmoji}>{sleepMap[checkin.sleep_quality]?.emoji || '—'}</Text>
-                  <Text style={styles.checkinBoxLabel}>{sleepMap[checkin.sleep_quality]?.label || t('caregiverApp.dashboard.sleep')}</Text>
+                {/* Sleep scale */}
+                <View style={styles.scaleRow}>
+                  <View style={styles.scaleHeader}>
+                    <Text style={styles.scaleLabel}>{t('caregiverApp.dashboard.sleep')}</Text>
+                    <Text style={[styles.scaleValue, { color: scaleLevels[sleepToLevel[checkin.sleep_quality] ?? 1].color }]}>
+                      {sleepLabels[checkin.sleep_quality] || '—'}
+                    </Text>
+                  </View>
+                  <View style={styles.scaleBar}>
+                    {scaleLevels.map((s, i) => (
+                      <View
+                        key={i}
+                        style={[
+                          styles.scaleSegment,
+                          {
+                            backgroundColor: i <= (sleepToLevel[checkin.sleep_quality] ?? 1)
+                              ? scaleLevels[sleepToLevel[checkin.sleep_quality] ?? 1].color
+                              : colors.border,
+                            opacity: i <= (sleepToLevel[checkin.sleep_quality] ?? 1) ? 1 : 0.4,
+                          },
+                        ]}
+                      />
+                    ))}
+                  </View>
                 </View>
               </View>
             ) : (
               <View style={styles.emptyState}>
-                <Text style={styles.emptyEmoji}>💭</Text>
                 <Text style={styles.emptyText}>{t('caregiverApp.dashboard.noCheckinYet')}</Text>
               </View>
             )}
@@ -347,7 +401,7 @@ export default function DashboardScreen() {
                 <Text style={styles.engagementLabel}>{checkin ? t('caregiverApp.dashboard.checkedIn') : t('caregiverApp.dashboard.notCheckedIn')}</Text>
               </View>
               <View style={styles.engagementBox}>
-                <Text style={styles.engagementValue}>{hasBrainActivity ? '🧠' : '—'}</Text>
+                <Text style={styles.engagementValue}>{activitiesCompleted > 0 ? activitiesCompleted : '—'}</Text>
                 <Text style={styles.engagementLabel}>{t('caregiverApp.dashboard.brainActivity')}</Text>
               </View>
               <View style={styles.engagementBox}>
@@ -610,41 +664,44 @@ const useStyles = createThemedStyles((colors) => ({
     borderRadius: 4,
   },
 
-  // Check-in
-  checkinGrid: {
+  // Check-in scales
+  checkinScales: {
+    gap: SPACING[4],
+  },
+  scaleRow: {
+    gap: SPACING[2],
+  },
+  scaleHeader: {
     flexDirection: 'row',
-    gap: SPACING[3],
-  },
-  checkinBox: {
-    flex: 1,
-    backgroundColor: colors.background,
-    borderRadius: RADIUS.lg,
-    padding: SPACING[4],
+    justifyContent: 'space-between',
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: colors.border,
   },
-  checkinEmoji: {
-    fontSize: 28,
-    marginBottom: 4,
-  },
-  checkinBoxLabel: {
+  scaleLabel: {
     fontSize: 11,
     fontFamily: FONTS.bodySemiBold,
     color: colors.textMuted,
     textTransform: 'uppercase',
     letterSpacing: 0.8,
   },
+  scaleValue: {
+    fontSize: 14,
+    fontFamily: FONTS.bodySemiBold,
+    fontWeight: '600',
+  },
+  scaleBar: {
+    flexDirection: 'row',
+    gap: 6,
+  },
+  scaleSegment: {
+    flex: 1,
+    height: 10,
+    borderRadius: 5,
+  },
 
   // Empty state
   emptyState: {
     alignItems: 'center',
     paddingVertical: SPACING[6],
-  },
-  emptyEmoji: {
-    fontSize: 28,
-    opacity: 0.4,
-    marginBottom: SPACING[2],
   },
   emptyText: {
     fontSize: 13,

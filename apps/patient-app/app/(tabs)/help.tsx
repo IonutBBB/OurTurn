@@ -100,14 +100,7 @@ export default function HelpScreen() {
         longitude: 0,
         triggeredAt: new Date().toISOString(),
       });
-      // SMS fallback
-      sendEmergencySMS({
-        patientName: patient?.name,
-        latitude: 0,
-        longitude: 0,
-        emergencyContacts,
-        countryCode,
-      });
+      // Still show confirmation — the alert is queued and will sync later
       router.push('/sos-confirmation');
     } finally {
       setIsSendingHelp(false);

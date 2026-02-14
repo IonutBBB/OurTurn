@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Tabs, useRouter } from 'expo-router';
-import { View, Text, StyleSheet, Platform } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../../src/stores/auth-store';
@@ -17,13 +17,10 @@ interface TabIconProps {
 function TabIcon({ emoji, label, focused }: TabIconProps) {
   return (
     <View style={styles.tabIconContainer}>
-      <Text style={[styles.tabEmoji, focused && styles.tabEmojiActive]}>{emoji}</Text>
-      <Text
-        style={[styles.tabLabel, focused && styles.tabLabelActive]}
-        numberOfLines={1}
-        adjustsFontSizeToFit
-        minimumFontScale={0.75}
-      >
+      <View style={[styles.iconWrap, focused && styles.iconWrapFocused]}>
+        <Text style={[styles.tabEmoji, focused && styles.tabEmojiActive]}>{emoji}</Text>
+      </View>
+      <Text style={[styles.tabLabel, focused && styles.tabLabelActive]} numberOfLines={1}>
         {label}
       </Text>
     </View>
@@ -76,11 +73,7 @@ export default function TabsLayout() {
   }, [isInitialized, isAuthenticated, session?.householdId, consentChecked, router]);
 
   const insets = useSafeAreaInsets();
-  // On Android, Expo Go may run edge-to-edge while reporting insets.bottom as 0,
-  // causing the system nav bar to cover tab buttons. Use 48dp minimum on Android.
-  const bottomPadding = Platform.OS === 'android'
-    ? Math.max(insets.bottom, 48)
-    : Math.max(insets.bottom, 12);
+  const bottomPadding = Math.max(insets.bottom, 4);
 
   return (
     <ErrorBoundary>
@@ -89,8 +82,6 @@ export default function TabsLayout() {
         headerShown: false,
         tabBarStyle: [styles.tabBar, { paddingBottom: bottomPadding }],
         tabBarShowLabel: false,
-        tabBarActiveTintColor: COLORS.brand600,
-        tabBarInactiveTintColor: COLORS.textMuted,
       }}
     >
       <Tabs.Screen
@@ -142,31 +133,50 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.card,
     borderTopWidth: 1,
     borderTopColor: COLORS.border,
-    paddingTop: 8,
-    height: undefined,
-    minHeight: 70,
+    paddingTop: 6,
+    elevation: 8,
+    shadowColor: '#2D1F14',
+    shadowOffset: { width: 0, height: -2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
   },
   tabIconContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 4,
-    paddingHorizontal: 4,
-    maxWidth: 110,
+    paddingVertical: 2,
+    minWidth: 90,
+    flex: 1,
+  },
+  iconWrap: {
+    width: 52,
+    height: 40,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 3,
+  },
+  iconWrapFocused: {
+    backgroundColor: COLORS.brand100,
+    borderRadius: 16,
+    width: 60,
+    height: 40,
   },
   tabEmoji: {
-    fontSize: 28,
-    marginBottom: 4,
+    fontSize: 26,
+    textAlign: 'center',
+    lineHeight: 32,
   },
   tabEmojiActive: {
-    transform: [{ scale: 1.1 }],
+    transform: [{ scale: 1.05 }],
   },
   tabLabel: {
     fontSize: 20,
-    fontFamily: FONTS.bodySemiBold,
     color: COLORS.textMuted,
+    fontFamily: FONTS.bodyMedium,
     textAlign: 'center',
   },
   tabLabelActive: {
     color: COLORS.brand600,
+    fontFamily: FONTS.bodySemiBold,
   },
 });
