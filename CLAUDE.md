@@ -141,7 +141,7 @@ This is a coding convention, not optional. Outdated docs cause bugs.
 - [x] Daily check-in (mood + sleep + voice)
 - [x] Brain wellness activity
 - [x] Push notification reminders
-- [x] 22 evidence-based mind games across 5 cognitive categories
+- [x] 24 evidence-based mind games across 7 cognitive categories (CST-aligned)
 
 ### Caregiver Web App
 - [x] Auth (login, signup, OAuth)
