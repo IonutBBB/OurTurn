@@ -823,6 +823,8 @@
       "minutes": "minuten",
       "respiteReminders": "Herinneringen voor rustmomenten",
       "respiteRemindersDesc": "Ontvang herinneringen om pauzes te nemen",
+      "activityUpdates": "Activity Updates",
+      "activityUpdatesDesc": "Get notified when a mind game is completed",
       "groupProfile": "Uw profiel",
       "groupAboutPatient": "Over {{name}}",
       "groupAboutPatientGeneric": "Over uw dierbare",

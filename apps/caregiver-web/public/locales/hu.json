@@ -1146,6 +1146,8 @@
       "minutes": "percek",
       "respiteReminders": "Szünet emlékeztetők",
       "respiteRemindersDesc": "Kapjon gyengéd emlékeztetőket a szünetek tartására és az öngondoskodásra",
+      "activityUpdates": "Activity Updates",
+      "activityUpdatesDesc": "Get notified when your loved one completes a mind game",
       "country": "Ország",
       "selectCountry": "Válasszon országot",
       "selectLanguage": "Válasszon nyelvet",

@@ -823,6 +823,8 @@
       "minutes": "минути",
       "respiteReminders": "Напомняния за почивка",
       "respiteRemindersDesc": "Получавайте напомняния да си взимате почивки",
+      "activityUpdates": "Activity Updates",
+      "activityUpdatesDesc": "Get notified when a mind game is completed",
       "groupProfile": "Вашият профил",
       "groupAboutPatient": "За {{name}}",
       "groupAboutPatientGeneric": "За Вашия любим човек",

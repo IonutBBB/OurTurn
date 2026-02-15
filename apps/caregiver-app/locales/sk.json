@@ -823,6 +823,8 @@
       "minutes": "minút",
       "respiteReminders": "Pripomienky oddychu",
       "respiteRemindersDesc": "Dostávajte pripomienky, aby ste si urobili prestávky",
+      "activityUpdates": "Activity Updates",
+      "activityUpdatesDesc": "Get notified when a mind game is completed",
       "groupProfile": "Váš profil",
       "groupAboutPatient": "O {{name}}",
       "groupAboutPatientGeneric": "O vašom blízkom",

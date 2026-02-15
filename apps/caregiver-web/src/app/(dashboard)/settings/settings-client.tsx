@@ -885,6 +885,25 @@ export default function SettingsClient({
                   </p>
                 </div>
               </label>
+              <label className="flex items-center gap-3">
+                <input
+                  type="checkbox"
+                  checked={notificationPrefs.activity_updates ?? true}
+                  onChange={(e) =>
+                    setNotificationPrefs((prev) => ({
+                      ...prev,
+                      activity_updates: e.target.checked,
+                    }))
+                  }
+                  className="w-5 h-5 rounded border-surface-border text-brand-600 focus:ring-brand-500"
+                />
+                <div>
+                  <span className="font-medium text-text-primary">{t('caregiverApp.settings.activityUpdates')}</span>
+                  <p className="text-sm text-text-muted">
+                    {t('caregiverApp.settings.activityUpdatesDesc')}
+                  </p>
+                </div>
+              </label>
               <div className="flex items-center gap-3 pt-2">
                 <button
                   onClick={handleSaveNotifications}

@@ -823,6 +823,8 @@
       "minutes": "minūtes",
       "respiteReminders": "Atpūtas atgādinājumi",
       "respiteRemindersDesc": "Saņemiet atgādinājumus par pārtraukumu veikšanu",
+      "activityUpdates": "Activity Updates",
+      "activityUpdatesDesc": "Get notified when a mind game is completed",
       "groupProfile": "Jūsu profils",
       "groupAboutPatient": "Par {{name}}",
       "groupAboutPatientGeneric": "Par jūsu mīļoto cilvēku",

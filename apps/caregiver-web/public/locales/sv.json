@@ -1146,6 +1146,8 @@
       "minutes": "minuter",
       "respiteReminders": "Påminnelser om avlastning",
       "respiteRemindersDesc": "Få vänliga påminnelser om att ta pauser och öva på egenvård",
+      "activityUpdates": "Activity Updates",
+      "activityUpdatesDesc": "Get notified when your loved one completes a mind game",
       "country": "Land",
       "selectCountry": "Välj land",
       "selectLanguage": "Välj språk",

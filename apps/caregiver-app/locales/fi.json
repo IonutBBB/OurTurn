@@ -823,6 +823,8 @@
       "minutes": "minuuttia",
       "respiteReminders": "Taukomuistutukset",
       "respiteRemindersDesc": "Saat muistutuksia pitää taukoja",
+      "activityUpdates": "Activity Updates",
+      "activityUpdatesDesc": "Get notified when a mind game is completed",
       "groupProfile": "Profiilisi",
       "groupAboutPatient": "Tietoja {{name}}",
       "groupAboutPatientGeneric": "Tietoja rakkaastasi",

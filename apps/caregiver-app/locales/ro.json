@@ -823,6 +823,8 @@
       "minutes": "minute",
       "respiteReminders": "Memento-uri pentru Pauze",
       "respiteRemindersDesc": "Primiți memento-uri pentru a lua pauze",
+      "activityUpdates": "Activity Updates",
+      "activityUpdatesDesc": "Get notified when a mind game is completed",
       "groupProfile": "Profilul Dumneavoastră",
       "groupAboutPatient": "Despre {{name}}",
       "groupAboutPatientGeneric": "Despre Persoana Iubită",

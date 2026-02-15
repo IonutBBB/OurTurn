@@ -823,6 +823,8 @@
       "minutes": "nóiméad",
       "respiteReminders": "Meabhrúcháin Sos",
       "respiteRemindersDesc": "Faigh meabhrúcháin chun sosanna a ghlacadh",
+      "activityUpdates": "Activity Updates",
+      "activityUpdatesDesc": "Get notified when a mind game is completed",
       "groupProfile": "Do Phróifíl",
       "groupAboutPatient": "Maidir le {{name}}",
       "groupAboutPatientGeneric": "Maidir le Do Dhuine Grá",

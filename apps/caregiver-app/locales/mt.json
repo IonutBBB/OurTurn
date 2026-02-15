@@ -823,6 +823,8 @@
       "minutes": "minuti",
       "respiteReminders": "Tfakkiriet għall-Mistrieħ",
       "respiteRemindersDesc": "Ikseb tfakkiriet biex tieħu pawżi",
+      "activityUpdates": "Activity Updates",
+      "activityUpdatesDesc": "Get notified when a mind game is completed",
       "groupProfile": "Il-Profil Tiegħek",
       "groupAboutPatient": "Dwar {{name}}",
       "groupAboutPatientGeneric": "Dwar il-Persuna Maħbuba Tiegħek",

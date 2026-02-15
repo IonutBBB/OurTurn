@@ -823,6 +823,8 @@
       "minutes": "perc",
       "respiteReminders": "Pihenő emlékeztetők",
       "respiteRemindersDesc": "Emlékeztetőket kap a szünetek tartására",
+      "activityUpdates": "Activity Updates",
+      "activityUpdatesDesc": "Get notified when a mind game is completed",
       "groupProfile": "Az Ön profilja",
       "groupAboutPatient": "{{name}}-ről",
       "groupAboutPatientGeneric": "Szeretteiről",

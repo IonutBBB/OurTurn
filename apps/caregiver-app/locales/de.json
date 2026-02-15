@@ -823,6 +823,8 @@
       "minutes": "Minuten",
       "respiteReminders": "Erinnerungen an Pausen",
       "respiteRemindersDesc": "Erhalten Sie Erinnerungen, um Pausen zu machen",
+      "activityUpdates": "Activity Updates",
+      "activityUpdatesDesc": "Get notified when a mind game is completed",
       "groupProfile": "Ihr Profil",
       "groupAboutPatient": "Über {{name}}",
       "groupAboutPatientGeneric": "Über Ihre geliebte Person",

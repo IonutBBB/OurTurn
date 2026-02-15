@@ -823,6 +823,8 @@
       "minutes": "minuta",
       "respiteReminders": "Podsjetnici za odmor",
       "respiteRemindersDesc": "Primajte podsjetnike za uzimanje pauza",
+      "activityUpdates": "Activity Updates",
+      "activityUpdatesDesc": "Get notified when a mind game is completed",
       "groupProfile": "Vaš profil",
       "groupAboutPatient": "O {{name}}",
       "groupAboutPatientGeneric": "O vašoj voljenoj osobi",

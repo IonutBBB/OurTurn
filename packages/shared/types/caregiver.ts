@@ -14,6 +14,7 @@ export interface NotificationPreferences {
   email_notifications: boolean;
   summary_time?: string;
   respite_reminders?: boolean;
+  activity_updates?: boolean;
 }
 
 export interface Caregiver {

@@ -823,6 +823,8 @@
       "minutes": "minutter",
       "respiteReminders": "Påmindelser om pauser",
       "respiteRemindersDesc": "Få påmindelser om at holde pauser",
+      "activityUpdates": "Activity Updates",
+      "activityUpdatesDesc": "Get notified when a mind game is completed",
       "groupProfile": "Din profil",
       "groupAboutPatient": "Om {{name}}",
       "groupAboutPatientGeneric": "Om din kære",

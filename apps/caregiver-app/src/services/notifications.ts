@@ -213,6 +213,14 @@ export async function initializeNotifications(
         lightColor: '#0D9488',
       });
 
+      // Activity updates channel
+      await Notifications.setNotificationChannelAsync('activity-updates', {
+        name: 'Activity Updates',
+        importance: Notifications.AndroidImportance.DEFAULT,
+        vibrationPattern: [0, 250, 250, 250],
+        lightColor: '#0D9488',
+      });
+
       // Default channel
       await Notifications.setNotificationChannelAsync('default', {
         name: 'General',

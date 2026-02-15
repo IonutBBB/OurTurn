@@ -823,6 +823,8 @@
       "minutes": "minutit",
       "respiteReminders": "Puhkepausi meeldetuletused",
       "respiteRemindersDesc": "Saate meeldetuletusi puhkepauside tegemiseks",
+      "activityUpdates": "Activity Updates",
+      "activityUpdatesDesc": "Get notified when a mind game is completed",
       "groupProfile": "Sinu profiil",
       "groupAboutPatient": "{{name}} kohta",
       "groupAboutPatientGeneric": "Teie lähedase kohta",

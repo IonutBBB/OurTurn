@@ -145,6 +145,7 @@ supabase functions deploy transcribe-voice-note
 supabase functions deploy generate-daily-activities
 supabase functions deploy send-task-reminders
 supabase functions deploy generate-weekly-insights
+supabase functions deploy notify-activity-completion
 
 # Set secrets
 supabase secrets set RESEND_API_KEY=re_xxxxx
@@ -178,6 +179,25 @@ curl -X POST http://localhost:54321/functions/v1/send-safety-alert \
 |---------|-------|-------|----------|
 | `send-safety-alert-email` | `location_alerts` | INSERT | `send-safety-alert` |
 | `send-push-notification` | `location_alerts` | INSERT | `send-push-notification` |
+| `notify-activity-completion` | `activity_sessions` | UPDATE | `notify-activity-completion` |
+
+### notify-activity-completion
+Sends push notifications to caregivers when a patient completes a mind game activity.
+
+**Trigger:** Database webhook on `activity_sessions` UPDATE
+
+**Setup:**
+1. Go to Supabase Dashboard → Database → Webhooks
+2. Create new webhook:
+   - Name: `notify-activity-completion`
+   - Table: `activity_sessions`
+   - Events: UPDATE
+   - HTTP Request:
+     - Method: POST
+     - URL: `https://<project-ref>.supabase.co/functions/v1/notify-activity-completion`
+     - Headers: `Authorization: Bearer <SUPABASE_SERVICE_ROLE_KEY>`
+
+**Note:** Only sends notifications when `completed_at` transitions from null to a value and `skipped` is false. Controlled by `activity_updates` preference in caregiver notification settings (default: enabled).
 
 ### send-task-reminders
 Sends push notification reminders to patient devices for upcoming tasks.

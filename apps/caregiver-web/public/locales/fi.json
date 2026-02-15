@@ -1146,6 +1146,8 @@
       "minutes": "minuuttia",
       "respiteReminders": "Lepohetkimuistutukset",
       "respiteRemindersDesc": "Saat lempeitä muistutuksia pitää taukoja ja huolehtia itsestäsi",
+      "activityUpdates": "Activity Updates",
+      "activityUpdatesDesc": "Get notified when your loved one completes a mind game",
       "country": "Maa",
       "selectCountry": "Valitse maa",
       "selectLanguage": "Valitse kieli",

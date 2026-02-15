@@ -68,6 +68,7 @@ export default function SettingsScreen() {
   const [dailySummary, setDailySummary] = useState(notifPrefs.daily_summary ?? true);
   const [emailNotifs, setEmailNotifs] = useState(notifPrefs.email_notifications ?? true);
   const [respiteReminders, setRespiteReminders] = useState(notifPrefs.respite_reminders ?? true);
+  const [activityUpdates, setActivityUpdates] = useState(notifPrefs.activity_updates ?? true);
   const [isSavingNotifs, setIsSavingNotifs] = useState(false);
   const [notifsSaved, setNotifsSaved] = useState(false);
 
@@ -495,6 +496,7 @@ export default function SettingsScreen() {
             daily_summary: dailySummary,
             email_notifications: emailNotifs,
             respite_reminders: respiteReminders,
+            activity_updates: activityUpdates,
           },
         })
         .eq('id', caregiver.id);
@@ -509,7 +511,7 @@ export default function SettingsScreen() {
     } finally {
       setIsSavingNotifs(false);
     }
-  }, [caregiver?.id, safetyAlerts, dailySummary, emailNotifs, respiteReminders]);
+  }, [caregiver?.id, safetyAlerts, dailySummary, emailNotifs, respiteReminders, activityUpdates]);
 
   const handleCopyCode = useCallback(async () => {
     if (!household?.care_code) return;
@@ -1335,6 +1337,18 @@ export default function SettingsScreen() {
                 onValueChange={setRespiteReminders}
                 trackColor={{ false: colors.border, true: colors.brand400 }}
                 thumbColor={respiteReminders ? colors.brand600 : colors.textMuted}
+              />
+            </View>
+            <View style={[styles.switchRow, styles.rowBorder]}>
+              <View style={styles.switchLabel}>
+                <Text style={styles.rowLabel}>{t('caregiverApp.settings.activityUpdates')}</Text>
+                <Text style={styles.fieldHint}>{t('caregiverApp.settings.activityUpdatesDesc')}</Text>
+              </View>
+              <Switch
+                value={activityUpdates}
+                onValueChange={setActivityUpdates}
+                trackColor={{ false: colors.border, true: colors.brand400 }}
+                thumbColor={activityUpdates ? colors.brand600 : colors.textMuted}
               />
             </View>
             <View style={styles.saveRow}>

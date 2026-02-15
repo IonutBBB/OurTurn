@@ -1146,6 +1146,8 @@
       "minutes": "minutter",
       "respiteReminders": "Pausereminders",
       "respiteRemindersDesc": "Få blide påmindelser om at tage pauser og praktisere selvomsorg",
+      "activityUpdates": "Activity Updates",
+      "activityUpdatesDesc": "Get notified when your loved one completes a mind game",
       "country": "Land",
       "selectCountry": "Vælg land",
       "selectLanguage": "Vælg sprog",

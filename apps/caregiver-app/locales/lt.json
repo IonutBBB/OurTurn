@@ -823,6 +823,8 @@
       "minutes": "minutės",
       "respiteReminders": "Atokvėpio priminimai",
       "respiteRemindersDesc": "Gaukite priminimus daryti pertraukas",
+      "activityUpdates": "Activity Updates",
+      "activityUpdatesDesc": "Get notified when a mind game is completed",
       "groupProfile": "Jūsų profilis",
       "groupAboutPatient": "Apie {{name}}",
       "groupAboutPatientGeneric": "Apie Jūsų artimąjį",

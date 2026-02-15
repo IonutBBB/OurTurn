@@ -823,6 +823,8 @@
       "minutes": "λεπτά",
       "respiteReminders": "Υπενθυμίσεις Ανάπαυσης",
       "respiteRemindersDesc": "Λάβετε υπενθυμίσεις για να κάνετε διαλείμματα",
+      "activityUpdates": "Activity Updates",
+      "activityUpdatesDesc": "Get notified when a mind game is completed",
       "groupProfile": "Το Προφίλ σας",
       "groupAboutPatient": "Σχετικά με τον/την {{name}}",
       "groupAboutPatientGeneric": "Σχετικά με το αγαπημένο σας πρόσωπο",
