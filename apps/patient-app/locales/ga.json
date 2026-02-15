@@ -579,6 +579,72 @@
           "autumn": "An Fómhar",
           "winter": "An Geimhreadh"
         }
+      },
+      "rhymeTime": {
+        "title": "Am Ríme",
+        "description": "Faigh an focal a dhéanann rím",
+        "instruction": "Cén focal a dhéanann rím leis an gceann atá taispeánta?",
+        "notQuite": "Iarracht mhaith! Is é {{answer}} an freagra."
+      },
+      "finishSentence": {
+        "title": "Críochnaigh an Abairt",
+        "description": "Roghnaigh an focal a chríochnaíonn an abairt",
+        "instruction": "Conas a chríochnaíonn an abairt seo?",
+        "notQuite": "Iarracht mhaith! Is é \"{{answer}}\" an freagra."
+      },
+      "whatChanged": {
+        "title": "Cad a D'athraigh?",
+        "description": "Aimsigh cén emoji a d'athraigh sa ghreille",
+        "memorise": "Féach go cúramach ar na emojis...",
+        "tapChanged": "Tá emoji amháin athraithe — tapáil air!",
+        "lookCarefully": "Cuimhnigh ar na emojis seo...",
+        "notQuite": "Níor éirigh go hiomlán — féach arís an chéad uair eile!"
+      },
+      "emojiCount": {
+        "title": "Comhaireamh Emoji",
+        "description": "Comhair na emojis sa ghreille",
+        "instruction": "Cé mhéad {{target}} {{label}} is féidir leat a chomhaireamh?",
+        "notQuite": "Gar! Tá {{count}} ann."
+      },
+      "whichGoesTogether": {
+        "title": "Céard a Théann Le Chéile?",
+        "description": "Meaitseáil míreanna a théann le chéile",
+        "instruction": "Cén ceann is fearr a théann leis an mír atá taispeánta?",
+        "notQuite": "Iarracht mhaith! Is é {{answer}} an freagra."
+      },
+      "whatComesNext": {
+        "title": "Cad a Thagann Ina Dhiaidh?",
+        "description": "Faigh amach an chéad chéim eile i seicheamh",
+        "instruction": "Cad a thagann go loighciúil ina dhiaidh?",
+        "whatsNext": "Cad a thagann ina dhiaidh?",
+        "notQuite": "Iarracht mhaith! Is é {{answer}} an freagra."
+      },
+      "pictureClues": {
+        "title": "Leideanna Pictiúr",
+        "description": "Buille faoi thuairim cad a léiríonn na leideanna emoji",
+        "instruction": "Cad a thugann na leideanna seo le tuiscint?",
+        "notQuite": "Iarracht mhaith! Is é {{answer}} an freagra."
+      },
+      "trueOrFalse": {
+        "title": "Fíor nó Bréagach",
+        "description": "Déan cinneadh an bhfuil ráiteas fíor nó bréagach",
+        "instruction": "An bhfuil an ráiteas seo fíor nó bréagach?",
+        "true": "Fíor",
+        "false": "Bréagach",
+        "notQuite": "Níor éirigh go hiomlán — is é {{answer}} an freagra."
+      },
+      "clockReading": {
+        "title": "Léamh Clog",
+        "description": "Léigh an t-am atá taispeánta ar an gclog",
+        "instruction": "Cén t-am a thaispeánann an clog seo?",
+        "notQuite": "Iarracht mhaith! Is é {{answer}} an t-am."
+      },
+      "coinCounting": {
+        "title": "Comhaireamh Boinn",
+        "description": "Suimigh na boinn chun an t-iomlán a fháil",
+        "instruction": "Féach ar na boinn thíos",
+        "howMuch": "Cé mhéad atá anseo ar fad?",
+        "notQuite": "Iarracht mhaith! Is é {{answer}} an t-iomlán."
       }
     },
     "careCode": {

@@ -579,6 +579,72 @@
           "autumn": "Jesen",
           "winter": "Zima"
         }
+      },
+      "rhymeTime": {
+        "title": "Čas za rime",
+        "description": "Poiščite besedo, ki se rima",
+        "instruction": "Katera beseda se rima s prikazano?",
+        "notQuite": "Dober poskus! Pravilen odgovor je {{answer}}."
+      },
+      "finishSentence": {
+        "title": "Dopolni stavek",
+        "description": "Izberite besedo, ki dopolni stavek",
+        "instruction": "Kako se konča ta stavek?",
+        "notQuite": "Dober poskus! Pravilen odgovor je \"{{answer}}\"."
+      },
+      "whatChanged": {
+        "title": "Kaj se je spremenilo?",
+        "description": "Ugotovite, kateri emoji se je spremenil v mreži",
+        "memorise": "Pozorno si oglejte emojije...",
+        "tapChanged": "En emoji se je spremenil — tapnite ga!",
+        "lookCarefully": "Zapomnite si te emojije...",
+        "notQuite": "Ne povsem — poglejte še enkrat naslednjič!"
+      },
+      "emojiCount": {
+        "title": "Štetje emojijev",
+        "description": "Preštejte emojije v mreži",
+        "instruction": "Koliko {{target}} {{label}} lahko preštejete?",
+        "notQuite": "Blizu! Pravilnih je {{count}}."
+      },
+      "whichGoesTogether": {
+        "title": "Kaj spada skupaj?",
+        "description": "Povežite predmete, ki spadajo skupaj",
+        "instruction": "Kateri predmet se najbolje ujema s prikazanim?",
+        "notQuite": "Dober poskus! Pravilen odgovor je {{answer}}."
+      },
+      "whatComesNext": {
+        "title": "Kaj sledi?",
+        "description": "Ugotovite naslednji korak v zaporedju",
+        "instruction": "Kaj logično sledi?",
+        "whatsNext": "Kaj sledi?",
+        "notQuite": "Dober poskus! Pravilen odgovor je {{answer}}."
+      },
+      "pictureClues": {
+        "title": "Slikovni namigi",
+        "description": "Uganite, kaj predstavljajo namigi z emojiji",
+        "instruction": "Kaj nakazujejo ti namigi?",
+        "notQuite": "Dober poskus! Pravilen odgovor je {{answer}}."
+      },
+      "trueOrFalse": {
+        "title": "Resnično ali napačno",
+        "description": "Odločite se, ali je izjava resnična ali napačna",
+        "instruction": "Je ta izjava resnična ali napačna?",
+        "true": "Resnično",
+        "false": "Napačno",
+        "notQuite": "Ne povsem — pravilen odgovor je {{answer}}."
+      },
+      "clockReading": {
+        "title": "Branje ure",
+        "description": "Preberite čas, prikazan na uri",
+        "instruction": "Kateri čas kaže ta ura?",
+        "notQuite": "Dober poskus! Pravilen čas je {{answer}}."
+      },
+      "coinCounting": {
+        "title": "Štetje kovancev",
+        "description": "Seštejte kovance, da dobite skupni znesek",
+        "instruction": "Poglejte spodnje kovance",
+        "howMuch": "Koliko je to skupaj?",
+        "notQuite": "Dober poskus! Skupni znesek je {{answer}}."
       }
     },
     "careCode": {

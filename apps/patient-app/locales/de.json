@@ -579,6 +579,72 @@
           "autumn": "Herbst",
           "winter": "Winter"
         }
+      },
+      "rhymeTime": {
+        "title": "Reimzeit",
+        "description": "Finde das Wort, das sich reimt",
+        "instruction": "Welches Wort reimt sich auf das gezeigte?",
+        "notQuite": "Gut versucht! Die Antwort ist {{answer}}."
+      },
+      "finishSentence": {
+        "title": "Satz beenden",
+        "description": "Wähle das Wort, das den Satz vervollständigt",
+        "instruction": "Wie endet dieser Satz?",
+        "notQuite": "Gut versucht! Die Antwort ist „{{answer}}“."
+      },
+      "whatChanged": {
+        "title": "Was hat sich geändert?",
+        "description": "Finde heraus, welches Emoji im Raster sich geändert hat",
+        "memorise": "Schau dir die Emojis genau an...",
+        "tapChanged": "Ein Emoji hat sich geändert – tippe es an!",
+        "lookCarefully": "Merke dir diese Emojis...",
+        "notQuite": "Nicht ganz – schau nächstes Mal genauer hin!"
+      },
+      "emojiCount": {
+        "title": "Emoji-Zählen",
+        "description": "Zähle die Emojis im Raster",
+        "instruction": "Wie viele {{target}} {{label}} kannst du zählen?",
+        "notQuite": "Fast! Es sind {{count}}."
+      },
+      "whichGoesTogether": {
+        "title": "Was passt zusammen?",
+        "description": "Ordne zusammengehörige Gegenstände zu",
+        "instruction": "Welches passt am besten zu dem gezeigten Gegenstand?",
+        "notQuite": "Gut versucht! Die Antwort ist {{answer}}."
+      },
+      "whatComesNext": {
+        "title": "Was kommt als Nächstes?",
+        "description": "Finde den nächsten Schritt in einer Reihenfolge heraus",
+        "instruction": "Was kommt logischerweise als Nächstes?",
+        "whatsNext": "Was kommt als Nächstes?",
+        "notQuite": "Gut versucht! Die Antwort ist {{answer}}."
+      },
+      "pictureClues": {
+        "title": "Bildhinweise",
+        "description": "Rate, was die Emoji-Hinweise darstellen",
+        "instruction": "Was deuten diese Hinweise an?",
+        "notQuite": "Gut versucht! Die Antwort ist {{answer}}."
+      },
+      "trueOrFalse": {
+        "title": "Wahr oder Falsch",
+        "description": "Entscheide, ob eine Aussage wahr oder falsch ist",
+        "instruction": "Ist diese Aussage wahr oder falsch?",
+        "true": "Wahr",
+        "false": "Falsch",
+        "notQuite": "Nicht ganz – die Antwort ist {{answer}}."
+      },
+      "clockReading": {
+        "title": "Uhrzeit ablesen",
+        "description": "Lies die auf der Uhr angezeigte Zeit ab",
+        "instruction": "Welche Uhrzeit zeigt diese Uhr an?",
+        "notQuite": "Gut versucht! Die Uhrzeit ist {{answer}}."
+      },
+      "coinCounting": {
+        "title": "Münzen zählen",
+        "description": "Zähle die Münzen zusammen, um die Gesamtsumme zu ermitteln",
+        "instruction": "Schau dir die Münzen unten an",
+        "howMuch": "Wie viel ist das insgesamt?",
+        "notQuite": "Gut versucht! Die Gesamtsumme ist {{answer}}."
       }
     },
     "careCode": {

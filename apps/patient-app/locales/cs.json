@@ -579,6 +579,72 @@
           "autumn": "Podzim",
           "winter": "Zima"
         }
+      },
+      "rhymeTime": {
+        "title": "Čas na rýmy",
+        "description": "Najděte slovo, které se rýmuje",
+        "instruction": "Které slovo se rýmuje s tím zobrazeným?",
+        "notQuite": "Dobrý pokus! Správná odpověď je {{answer}}."
+      },
+      "finishSentence": {
+        "title": "Doplňte větu",
+        "description": "Vyberte slovo, které doplňuje větu",
+        "instruction": "Jak končí tato věta?",
+        "notQuite": "Dobrý pokus! Správná odpověď je \"{{answer}}\"."
+      },
+      "whatChanged": {
+        "title": "Co se změnilo?",
+        "description": "Najděte, které emoji se změnilo v mřížce",
+        "memorise": "Podívejte se pozorně na emoji...",
+        "tapChanged": "Jedno emoji se změnilo — klepněte na něj!",
+        "lookCarefully": "Zapamatujte si tato emoji...",
+        "notQuite": "Téměř — příště se podívejte znovu!"
+      },
+      "emojiCount": {
+        "title": "Počet emoji",
+        "description": "Spočítejte emoji v mřížce",
+        "instruction": "Kolik {{target}} {{label}} dokážete spočítat?",
+        "notQuite": "Blízko! Je jich {{count}}."
+      },
+      "whichGoesTogether": {
+        "title": "Co k sobě patří?",
+        "description": "Spojte položky, které k sobě patří",
+        "instruction": "Která položka se nejlépe hodí k zobrazené?",
+        "notQuite": "Dobrý pokus! Správná odpověď je {{answer}}."
+      },
+      "whatComesNext": {
+        "title": "Co následuje?",
+        "description": "Určete další krok v posloupnosti",
+        "instruction": "Co logicky následuje?",
+        "whatsNext": "Co následuje?",
+        "notQuite": "Dobrý pokus! Správná odpověď je {{answer}}."
+      },
+      "pictureClues": {
+        "title": "Obrázkové nápovědy",
+        "description": "Hádejte, co představují emoji nápovědy",
+        "instruction": "Co naznačují tyto nápovědy?",
+        "notQuite": "Dobrý pokus! Správná odpověď je {{answer}}."
+      },
+      "trueOrFalse": {
+        "title": "Pravda nebo lež",
+        "description": "Rozhodněte, zda je tvrzení pravdivé nebo nepravdivé",
+        "instruction": "Je toto tvrzení pravdivé nebo nepravdivé?",
+        "true": "Pravda",
+        "false": "Lež",
+        "notQuite": "Téměř — správná odpověď je {{answer}}."
+      },
+      "clockReading": {
+        "title": "Čtení hodin",
+        "description": "Přečtěte čas zobrazený na hodinách",
+        "instruction": "Jaký čas ukazují tyto hodiny?",
+        "notQuite": "Dobrý pokus! Čas je {{answer}}."
+      },
+      "coinCounting": {
+        "title": "Počítání mincí",
+        "description": "Sečtěte mince a zjistěte celkovou částku",
+        "instruction": "Podívejte se na mince níže",
+        "howMuch": "Kolik je to dohromady?",
+        "notQuite": "Dobrý pokus! Celková částka je {{answer}}."
       }
     },
     "careCode": {

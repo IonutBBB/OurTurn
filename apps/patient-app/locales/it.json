@@ -579,6 +579,72 @@
           "autumn": "Autunno",
           "winter": "Inverno"
         }
+      },
+      "rhymeTime": {
+        "title": "L'Ora delle Rime",
+        "description": "Trova la parola che fa rima",
+        "instruction": "Quale parola fa rima con quella mostrata?",
+        "notQuite": "Ottimo tentativo! La risposta è {{answer}}."
+      },
+      "finishSentence": {
+        "title": "Completa la Frase",
+        "description": "Scegli la parola che completa la frase",
+        "instruction": "Come finisce questa frase?",
+        "notQuite": "Ottimo tentativo! La risposta è \"{{answer}}\"."
+      },
+      "whatChanged": {
+        "title": "Cosa è Cambiato?",
+        "description": "Individua quale emoji è cambiata nella griglia",
+        "memorise": "Guarda attentamente le emoji...",
+        "tapChanged": "Un'emoji è cambiata — toccala!",
+        "lookCarefully": "Ricorda queste emoji...",
+        "notQuite": "Non proprio — riprova la prossima volta!"
+      },
+      "emojiCount": {
+        "title": "Conta le Emoji",
+        "description": "Conta le emoji nella griglia",
+        "instruction": "Quante {{target}} {{label}} riesci a contare?",
+        "notQuite": "Quasi! Ce ne sono {{count}}."
+      },
+      "whichGoesTogether": {
+        "title": "Cosa va Insieme?",
+        "description": "Abbina gli elementi che vanno insieme",
+        "instruction": "Quale si abbina meglio all'elemento mostrato?",
+        "notQuite": "Ottimo tentativo! La risposta è {{answer}}."
+      },
+      "whatComesNext": {
+        "title": "Cosa Viene Dopo?",
+        "description": "Individua il passo successivo in una sequenza",
+        "instruction": "Cosa viene logicamente dopo?",
+        "whatsNext": "Cosa viene dopo?",
+        "notQuite": "Ottimo tentativo! La risposta è {{answer}}."
+      },
+      "pictureClues": {
+        "title": "Indizi Illustrati",
+        "description": "Indovina cosa rappresentano gli indizi emoji",
+        "instruction": "Cosa suggeriscono questi indizi?",
+        "notQuite": "Ottimo tentativo! La risposta è {{answer}}."
+      },
+      "trueOrFalse": {
+        "title": "Vero o Falso",
+        "description": "Decidi se un'affermazione è vera o falsa",
+        "instruction": "Questa affermazione è vera o falsa?",
+        "true": "Vero",
+        "false": "Falso",
+        "notQuite": "Non proprio — la risposta è {{answer}}."
+      },
+      "clockReading": {
+        "title": "Leggere l'Ora",
+        "description": "Leggi l'ora mostrata sull'orologio",
+        "instruction": "Che ora indica questo orologio?",
+        "notQuite": "Ottimo tentativo! L'ora è {{answer}}."
+      },
+      "coinCounting": {
+        "title": "Contare le Monete",
+        "description": "Somma le monete per trovare il totale",
+        "instruction": "Guarda le monete qui sotto",
+        "howMuch": "Quanto fa in totale?",
+        "notQuite": "Ottimo tentativo! Il totale è {{answer}}."
       }
     },
     "careCode": {

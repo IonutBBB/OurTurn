@@ -579,6 +579,72 @@
           "autumn": "Efterår",
           "winter": "Vinter"
         }
+      },
+      "rhymeTime": {
+        "title": "Rimtid",
+        "description": "Find ordet, der rimer",
+        "instruction": "Hvilket ord rimer på det viste?",
+        "notQuite": "Godt forsøg! Svaret er {{answer}}."
+      },
+      "finishSentence": {
+        "title": "Gør sætningen færdig",
+        "description": "Vælg ordet, der fuldender sætningen",
+        "instruction": "Hvordan slutter denne sætning?",
+        "notQuite": "Godt forsøg! Svaret er \"{{answer}}\"."
+      },
+      "whatChanged": {
+        "title": "Hvad har ændret sig?",
+        "description": "Find den emoji, der har ændret sig i gitteret",
+        "memorise": "Se godt på emojierne...",
+        "tapChanged": "Én emoji har ændret sig — tryk på den!",
+        "lookCarefully": "Husk disse emojis...",
+        "notQuite": "Ikke helt — prøv igen næste gang!"
+      },
+      "emojiCount": {
+        "title": "Emoji-tælling",
+        "description": "Tæl emojierne i gitteret",
+        "instruction": "Hvor mange {{target}} {{label}} kan du tælle?",
+        "notQuite": "Tæt på! Der er {{count}}."
+      },
+      "whichGoesTogether": {
+        "title": "Hvad passer sammen?",
+        "description": "Match ting, der passer sammen",
+        "instruction": "Hvilken passer bedst til det viste?",
+        "notQuite": "Godt forsøg! Svaret er {{answer}}."
+      },
+      "whatComesNext": {
+        "title": "Hvad kommer herefter?",
+        "description": "Find ud af næste trin i en rækkefølge",
+        "instruction": "Hvad kommer logisk set herefter?",
+        "whatsNext": "Hvad kommer herefter?",
+        "notQuite": "Godt forsøg! Svaret er {{answer}}."
+      },
+      "pictureClues": {
+        "title": "Billedledetråde",
+        "description": "Gæt, hvad emoji-ledetrådene repræsenterer",
+        "instruction": "Hvad antyder disse ledetråde?",
+        "notQuite": "Godt forsøg! Svaret er {{answer}}."
+      },
+      "trueOrFalse": {
+        "title": "Sandt eller Falsk",
+        "description": "Afgør om en udtalelse er sand eller falsk",
+        "instruction": "Er denne udtalelse sand eller falsk?",
+        "true": "Sandt",
+        "false": "Falsk",
+        "notQuite": "Ikke helt — svaret er {{answer}}."
+      },
+      "clockReading": {
+        "title": "Aflæs klokken",
+        "description": "Aflæs tiden vist på uret",
+        "instruction": "Hvilken tid viser dette ur?",
+        "notQuite": "Godt forsøg! Klokken er {{answer}}."
+      },
+      "coinCounting": {
+        "title": "Mønttælling",
+        "description": "Læg mønterne sammen for at finde totalen",
+        "instruction": "Se på mønterne nedenfor",
+        "howMuch": "Hvor meget er det i alt?",
+        "notQuite": "Godt forsøg! Totalen er {{answer}}."
       }
     },
     "careCode": {

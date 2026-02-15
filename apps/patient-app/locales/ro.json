@@ -579,6 +579,72 @@
           "autumn": "Toamnă",
           "winter": "Iarnă"
         }
+      },
+      "rhymeTime": {
+        "title": "Timpul Rimei",
+        "description": "Găsește cuvântul care rimează",
+        "instruction": "Care cuvânt rimează cu cel afișat?",
+        "notQuite": "O încercare bună! Răspunsul este {{answer}}."
+      },
+      "finishSentence": {
+        "title": "Completează Propoziția",
+        "description": "Alege cuvântul care completează propoziția",
+        "instruction": "Cum se termină această propoziție?",
+        "notQuite": "O încercare bună! Răspunsul este „{{answer}}”."
+      },
+      "whatChanged": {
+        "title": "Ce s-a Schimbat?",
+        "description": "Descoperă ce emoji s-a schimbat în grilă",
+        "memorise": "Privește cu atenție emoji-urile...",
+        "tapChanged": "Un emoji s-a schimbat — atinge-l!",
+        "lookCarefully": "Amintește-ți aceste emoji-uri...",
+        "notQuite": "Nu chiar — privește mai atent data viitoare!"
+      },
+      "emojiCount": {
+        "title": "Numără Emoji-urile",
+        "description": "Numără emoji-urile din grilă",
+        "instruction": "Câte {{target}} {{label}} poți număra?",
+        "notQuite": "Aproape! Sunt {{count}}."
+      },
+      "whichGoesTogether": {
+        "title": "Ce se Potrivește?",
+        "description": "Potrivește elementele care merg împreună",
+        "instruction": "Care se potrivește cel mai bine cu elementul afișat?",
+        "notQuite": "O încercare bună! Răspunsul este {{answer}}."
+      },
+      "whatComesNext": {
+        "title": "Ce Urmează?",
+        "description": "Descoperă pasul următor într-o secvență",
+        "instruction": "Ce urmează logic?",
+        "whatsNext": "Ce urmează?",
+        "notQuite": "O încercare bună! Răspunsul este {{answer}}."
+      },
+      "pictureClues": {
+        "title": "Indicii Vizuale",
+        "description": "Ghicește ce reprezintă indiciile emoji",
+        "instruction": "Ce sugerează aceste indicii?",
+        "notQuite": "O încercare bună! Răspunsul este {{answer}}."
+      },
+      "trueOrFalse": {
+        "title": "Adevărat sau Fals",
+        "description": "Decide dacă o afirmație este adevărată sau falsă",
+        "instruction": "Este această afirmație adevărată sau falsă?",
+        "true": "Adevărat",
+        "false": "Fals",
+        "notQuite": "Nu chiar — răspunsul este {{answer}}."
+      },
+      "clockReading": {
+        "title": "Citirea Ceasului",
+        "description": "Citește ora afișată pe ceas",
+        "instruction": "Ce oră arată acest ceas?",
+        "notQuite": "O încercare bună! Ora este {{answer}}."
+      },
+      "coinCounting": {
+        "title": "Număratul Monedelor",
+        "description": "Adună monedele pentru a găsi totalul",
+        "instruction": "Privește monedele de mai jos",
+        "howMuch": "Cât fac toate acestea la un loc?",
+        "notQuite": "O încercare bună! Totalul este {{answer}}."
       }
     },
     "careCode": {

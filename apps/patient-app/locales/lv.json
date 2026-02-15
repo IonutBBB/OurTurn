@@ -579,6 +579,72 @@
           "autumn": "Rudens",
           "winter": "Ziema"
         }
+      },
+      "rhymeTime": {
+        "title": "Atskaņu laiks",
+        "description": "Atrodiet vārdu, kas atskaņojas",
+        "instruction": "Kurš vārds atskaņojas ar parādīto?",
+        "notQuite": "Labs mēģinājums! Pareizā atbilde ir {{answer}}."
+      },
+      "finishSentence": {
+        "title": "Pabeidziet teikumu",
+        "description": "Izvēlieties vārdu, kas pabeidz teikumu",
+        "instruction": "Kā beidzas šis teikums?",
+        "notQuite": "Labs mēģinājums! Pareizā atbilde ir \"{{answer}}\"."
+      },
+      "whatChanged": {
+        "title": "Kas mainījās?",
+        "description": "Atrodiet, kurš emocijzīme mainījās režģī",
+        "memorise": "Uzmanīgi apskatiet emocijzīmes...",
+        "tapChanged": "Viena emocijzīme ir mainījusies — pieskarieties tai!",
+        "lookCarefully": "Atcerieties šīs emocijzīmes...",
+        "notQuite": "Ne gluži — nākamreiz apskatieties vēlreiz!"
+      },
+      "emojiCount": {
+        "title": "Emocijzīmju skaits",
+        "description": "Saskaitiet emocijzīmes režģī",
+        "instruction": "Cik {{target}} {{label}} varat saskaitīt?",
+        "notQuite": "Gandrīz! Ir {{count}}."
+      },
+      "whichGoesTogether": {
+        "title": "Kas sader kopā?",
+        "description": "Saskaņojiet priekšmetus, kas sader kopā",
+        "instruction": "Kurš vislabāk sader ar parādīto priekšmetu?",
+        "notQuite": "Labs mēģinājums! Pareizā atbilde ir {{answer}}."
+      },
+      "whatComesNext": {
+        "title": "Kas nāk tālāk?",
+        "description": "Noskaidrojiet nākamo soli secībā",
+        "instruction": "Kas loģiski nāk tālāk?",
+        "whatsNext": "Kas nāk tālāk?",
+        "notQuite": "Labs mēģinājums! Pareizā atbilde ir {{answer}}."
+      },
+      "pictureClues": {
+        "title": "Attēlu mājieni",
+        "description": "Uzminiet, ko attēlo emocijzīmju mājieni",
+        "instruction": "Ko liecina šie mājieni?",
+        "notQuite": "Labs mēģinājums! Pareizā atbilde ir {{answer}}."
+      },
+      "trueOrFalse": {
+        "title": "Patiess vai aplams",
+        "description": "Izlemiet, vai apgalvojums ir patiess vai aplams",
+        "instruction": "Vai šis apgalvojums ir patiess vai aplams?",
+        "true": "Patiess",
+        "false": "Aplams",
+        "notQuite": "Ne gluži — pareizā atbilde ir {{answer}}."
+      },
+      "clockReading": {
+        "title": "Pulksteņa rādījums",
+        "description": "Nolasiet pulkstenī redzamo laiku",
+        "instruction": "Cik pulkstenis rāda?",
+        "notQuite": "Labs mēģinājums! Laiks ir {{answer}}."
+      },
+      "coinCounting": {
+        "title": "Monētu skaitīšana",
+        "description": "Saskaitiet monētas, lai atrastu kopsummu",
+        "instruction": "Apskatiet zemāk redzamās monētas",
+        "howMuch": "Cik tas ir kopā?",
+        "notQuite": "Labs mēģinājums! Kopsumma ir {{answer}}."
       }
     },
     "careCode": {

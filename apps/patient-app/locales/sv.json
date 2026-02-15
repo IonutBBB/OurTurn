@@ -579,6 +579,72 @@
           "autumn": "Höst",
           "winter": "Vinter"
         }
+      },
+      "rhymeTime": {
+        "title": "Rimtid",
+        "description": "Hitta ordet som rimmar",
+        "instruction": "Vilket ord rimmar med det som visas?",
+        "notQuite": "Bra försök! Svaret är {{answer}}."
+      },
+      "finishSentence": {
+        "title": "Avsluta meningen",
+        "description": "Välj ordet som avslutar meningen",
+        "instruction": "Hur slutar den här meningen?",
+        "notQuite": "Bra försök! Svaret är \"{{answer}}\"."
+      },
+      "whatChanged": {
+        "title": "Vad har ändrats?",
+        "description": "Hitta vilken emoji som ändrats i rutnätet",
+        "memorise": "Titta noga på emojierna...",
+        "tapChanged": "En emoji har ändrats – tryck på den!",
+        "lookCarefully": "Kom ihåg dessa emojis...",
+        "notQuite": "Inte riktigt – titta igen nästa gång!"
+      },
+      "emojiCount": {
+        "title": "Antal emojis",
+        "description": "Räkna emojierna i rutnätet",
+        "instruction": "Hur många {{target}} {{label}} kan du räkna?",
+        "notQuite": "Nästan! Det finns {{count}}."
+      },
+      "whichGoesTogether": {
+        "title": "Vad hör ihop?",
+        "description": "Para ihop saker som hör ihop",
+        "instruction": "Vilken passar bäst ihop med det som visas?",
+        "notQuite": "Bra försök! Svaret är {{answer}}."
+      },
+      "whatComesNext": {
+        "title": "Vad kommer härnäst?",
+        "description": "Hitta nästa steg i en sekvens",
+        "instruction": "Vad kommer logiskt härnäst?",
+        "whatsNext": "Vad kommer härnäst?",
+        "notQuite": "Bra försök! Svaret är {{answer}}."
+      },
+      "pictureClues": {
+        "title": "Bildledtrådar",
+        "description": "Gissa vad emojiledtrådarna representerar",
+        "instruction": "Vad föreslår dessa ledtrådar?",
+        "notQuite": "Bra försök! Svaret är {{answer}}."
+      },
+      "trueOrFalse": {
+        "title": "Sant eller falskt",
+        "description": "Avgör om ett påstående är sant eller falskt",
+        "instruction": "Är detta påstående sant eller falskt?",
+        "true": "Sant",
+        "false": "Falskt",
+        "notQuite": "Inte riktigt – svaret är {{answer}}."
+      },
+      "clockReading": {
+        "title": "Klockläsning",
+        "description": "Läs av tiden som visas på klockan",
+        "instruction": "Vilken tid visar den här klockan?",
+        "notQuite": "Bra försök! Klockan är {{answer}}."
+      },
+      "coinCounting": {
+        "title": "Räkna mynt",
+        "description": "Räkna ihop mynten för att hitta totalsumman",
+        "instruction": "Titta på mynten nedan",
+        "howMuch": "Hur mycket är detta sammanlagt?",
+        "notQuite": "Bra försök! Totalsumman är {{answer}}."
       }
     },
     "careCode": {

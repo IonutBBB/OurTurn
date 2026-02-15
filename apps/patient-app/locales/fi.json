@@ -579,6 +579,72 @@
           "autumn": "Syksy",
           "winter": "Talvi"
         }
+      },
+      "rhymeTime": {
+        "title": "Riimileikki",
+        "description": "Etsi sana, joka rimmaa",
+        "instruction": "Mikä sana rimmaa näytetyn sanan kanssa?",
+        "notQuite": "Hyvä yritys! Oikea vastaus on {{answer}}."
+      },
+      "finishSentence": {
+        "title": "Täydennä lause",
+        "description": "Valitse sana, joka täydentää lauseen",
+        "instruction": "Miten tämä lause päättyy?",
+        "notQuite": "Hyvä yritys! Oikea vastaus on \"{{answer}}\"."
+      },
+      "whatChanged": {
+        "title": "Mikä muuttui?",
+        "description": "Huomaa, mikä emoji muuttui ruudukossa",
+        "memorise": "Katso emojit tarkasti...",
+        "tapChanged": "Yksi emoji on muuttunut – napauta sitä!",
+        "lookCarefully": "Muista nämä emojit...",
+        "notQuite": "Ei aivan – katso tarkemmin ensi kerralla!"
+      },
+      "emojiCount": {
+        "title": "Laske emojit",
+        "description": "Laske emojit ruudukosta",
+        "instruction": "Kuinka monta {{target}} {{label}} voit laskea?",
+        "notQuite": "Lähellä! Niitä on {{count}}."
+      },
+      "whichGoesTogether": {
+        "title": "Mitkä kuuluvat yhteen?",
+        "description": "Yhdistä toisiinsa sopivat asiat",
+        "instruction": "Mikä sopii parhaiten näytetyn asian kanssa?",
+        "notQuite": "Hyvä yritys! Oikea vastaus on {{answer}}."
+      },
+      "whatComesNext": {
+        "title": "Mikä tulee seuraavaksi?",
+        "description": "Selvitä seuraava askel sarjassa",
+        "instruction": "Mikä tulee loogisesti seuraavaksi?",
+        "whatsNext": "Mikä tulee seuraavaksi?",
+        "notQuite": "Hyvä yritys! Oikea vastaus on {{answer}}."
+      },
+      "pictureClues": {
+        "title": "Kuvavihjeet",
+        "description": "Arvaa, mitä emoji-vihjeet edustavat",
+        "instruction": "Mitä nämä vihjeet tarkoittavat?",
+        "notQuite": "Hyvä yritys! Oikea vastaus on {{answer}}."
+      },
+      "trueOrFalse": {
+        "title": "Totta vai tarua",
+        "description": "Päätä, onko väite totta vai epätotta",
+        "instruction": "Onko tämä väite totta vai epätotta?",
+        "true": "Totta",
+        "false": "Epätotta",
+        "notQuite": "Ei aivan – oikea vastaus on {{answer}}."
+      },
+      "clockReading": {
+        "title": "Kellon lukeminen",
+        "description": "Lue kellon näyttämä aika",
+        "instruction": "Mitä aikaa tämä kello näyttää?",
+        "notQuite": "Hyvä yritys! Aika on {{answer}}."
+      },
+      "coinCounting": {
+        "title": "Laske kolikot",
+        "description": "Laske kolikot yhteen löytääksesi kokonaissumman",
+        "instruction": "Katso alla olevia kolikoita",
+        "howMuch": "Kuinka paljon tämä on yhteensä?",
+        "notQuite": "Hyvä yritys! Kokonaissumma on {{answer}}."
       }
     },
     "careCode": {

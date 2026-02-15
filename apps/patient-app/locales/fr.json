@@ -579,6 +579,72 @@
           "autumn": "Automne",
           "winter": "Hiver"
         }
+      },
+      "rhymeTime": {
+        "title": "Le temps des rimes",
+        "description": "Trouvez le mot qui rime",
+        "instruction": "Quel mot rime avec celui qui est affiché ?",
+        "notQuite": "Bien essayé ! La réponse est {{answer}}."
+      },
+      "finishSentence": {
+        "title": "Terminez la phrase",
+        "description": "Choisissez le mot qui complète la phrase",
+        "instruction": "Comment se termine cette phrase ?",
+        "notQuite": "Bien essayé ! La réponse est \"{{answer}}\"."
+      },
+      "whatChanged": {
+        "title": "Qu'est-ce qui a changé ?",
+        "description": "Repérez l'emoji qui a changé dans la grille",
+        "memorise": "Observez attentivement les emojis...",
+        "tapChanged": "Un emoji a changé — touchez-le !",
+        "lookCarefully": "Souvenez-vous de ces emojis...",
+        "notQuite": "Pas tout à fait — regardez mieux la prochaine fois !"
+      },
+      "emojiCount": {
+        "title": "Compte d'emojis",
+        "description": "Comptez les emojis dans la grille",
+        "instruction": "Combien de {{target}} {{label}} pouvez-vous compter ?",
+        "notQuite": "Presque ! Il y en a {{count}}."
+      },
+      "whichGoesTogether": {
+        "title": "Qu'est-ce qui va ensemble ?",
+        "description": "Associez les éléments qui vont ensemble",
+        "instruction": "Lequel va le mieux avec l'élément affiché ?",
+        "notQuite": "Bien essayé ! La réponse est {{answer}}."
+      },
+      "whatComesNext": {
+        "title": "Qu'est-ce qui vient après ?",
+        "description": "Trouvez la prochaine étape d'une séquence",
+        "instruction": "Qu'est-ce qui vient logiquement après ?",
+        "whatsNext": "Qu'est-ce qui vient après ?",
+        "notQuite": "Bien essayé ! La réponse est {{answer}}."
+      },
+      "pictureClues": {
+        "title": "Indices en images",
+        "description": "Devinez ce que représentent les indices emojis",
+        "instruction": "Que suggèrent ces indices ?",
+        "notQuite": "Bien essayé ! La réponse est {{answer}}."
+      },
+      "trueOrFalse": {
+        "title": "Vrai ou Faux",
+        "description": "Décidez si une affirmation est vraie ou fausse",
+        "instruction": "Cette affirmation est-elle vraie ou fausse ?",
+        "true": "Vrai",
+        "false": "Faux",
+        "notQuite": "Pas tout à fait — la réponse est {{answer}}."
+      },
+      "clockReading": {
+        "title": "Lecture de l'heure",
+        "description": "Lisez l'heure affichée sur l'horloge",
+        "instruction": "Quelle heure indique cette horloge ?",
+        "notQuite": "Bien essayé ! Il est {{answer}}."
+      },
+      "coinCounting": {
+        "title": "Compte des pièces",
+        "description": "Additionnez les pièces pour trouver le total",
+        "instruction": "Regardez les pièces ci-dessous",
+        "howMuch": "Combien cela fait-il en tout ?",
+        "notQuite": "Bien essayé ! Le total est {{answer}}."
       }
     },
     "careCode": {

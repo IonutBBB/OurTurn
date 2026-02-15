@@ -413,6 +413,72 @@
         "yourTurn": "Your turn!",
         "sequenceLength": "Sequence: {{length}}",
         "greatMemory": "Great memory!"
+      },
+      "rhymeTime": {
+        "title": "Rhyme Time",
+        "description": "Find the word that rhymes",
+        "instruction": "Which word rhymes with the one shown?",
+        "notQuite": "Good try! The answer is {{answer}}."
+      },
+      "finishSentence": {
+        "title": "Finish the Sentence",
+        "description": "Pick the word that completes the sentence",
+        "instruction": "How does this sentence end?",
+        "notQuite": "Good try! The answer is \"{{answer}}\"."
+      },
+      "whatChanged": {
+        "title": "What Changed?",
+        "description": "Spot which emoji changed in the grid",
+        "memorise": "Look carefully at the emojis...",
+        "tapChanged": "One emoji has changed — tap it!",
+        "lookCarefully": "Remember these emojis...",
+        "notQuite": "Not quite — look again next time!"
+      },
+      "emojiCount": {
+        "title": "Emoji Count",
+        "description": "Count the emojis in the grid",
+        "instruction": "How many {{target}} {{label}} can you count?",
+        "notQuite": "Close! There are {{count}}."
+      },
+      "whichGoesTogether": {
+        "title": "Which Goes Together?",
+        "description": "Match items that go together",
+        "instruction": "Which one goes best with the item shown?",
+        "notQuite": "Good try! The answer is {{answer}}."
+      },
+      "whatComesNext": {
+        "title": "What Comes Next?",
+        "description": "Work out the next step in a sequence",
+        "instruction": "What logically comes next?",
+        "whatsNext": "What comes next?",
+        "notQuite": "Good try! The answer is {{answer}}."
+      },
+      "pictureClues": {
+        "title": "Picture Clues",
+        "description": "Guess what the emoji clues represent",
+        "instruction": "What do these clues suggest?",
+        "notQuite": "Good try! The answer is {{answer}}."
+      },
+      "trueOrFalse": {
+        "title": "True or False",
+        "description": "Decide if a statement is true or false",
+        "instruction": "Is this statement true or false?",
+        "true": "True",
+        "false": "False",
+        "notQuite": "Not quite — the answer is {{answer}}."
+      },
+      "clockReading": {
+        "title": "Clock Reading",
+        "description": "Read the time shown on the clock",
+        "instruction": "What time does this clock show?",
+        "notQuite": "Good try! The time is {{answer}}."
+      },
+      "coinCounting": {
+        "title": "Coin Counting",
+        "description": "Add up the coins to find the total",
+        "instruction": "Look at the coins below",
+        "howMuch": "How much is this altogether?",
+        "notQuite": "Good try! The total is {{answer}}."
       }
     },
     "careCode": {

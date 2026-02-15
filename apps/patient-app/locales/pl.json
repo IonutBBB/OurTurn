@@ -579,6 +579,72 @@
           "autumn": "Jesień",
           "winter": "Zima"
         }
+      },
+      "rhymeTime": {
+        "title": "Rymowanki",
+        "description": "Znajdź słowo, które się rymuje",
+        "instruction": "Które słowo rymuje się z tym pokazanym?",
+        "notQuite": "Dobra próba! Prawidłowa odpowiedź to {{answer}}."
+      },
+      "finishSentence": {
+        "title": "Dokończ zdanie",
+        "description": "Wybierz słowo, które uzupełnia zdanie",
+        "instruction": "Jak kończy się to zdanie?",
+        "notQuite": "Dobra próba! Prawidłowa odpowiedź to „{{answer}}”."
+      },
+      "whatChanged": {
+        "title": "Co się zmieniło?",
+        "description": "Znajdź, które emoji zmieniło się w siatce",
+        "memorise": "Przyjrzyj się uważnie emoji...",
+        "tapChanged": "Jedno emoji się zmieniło — dotknij je!",
+        "lookCarefully": "Zapamiętaj te emoji...",
+        "notQuite": "Prawie! Spróbuj ponownie następnym razem!"
+      },
+      "emojiCount": {
+        "title": "Liczenie emoji",
+        "description": "Policz emoji w siatce",
+        "instruction": "Ile {{target}} {{label}} potrafisz policzyć?",
+        "notQuite": "Blisko! Jest ich {{count}}."
+      },
+      "whichGoesTogether": {
+        "title": "Co do siebie pasuje?",
+        "description": "Dopasuj elementy, które do siebie pasują",
+        "instruction": "Który element najlepiej pasuje do pokazanego?",
+        "notQuite": "Dobra próba! Prawidłowa odpowiedź to {{answer}}."
+      },
+      "whatComesNext": {
+        "title": "Co będzie następne?",
+        "description": "Odkryj kolejny krok w sekwencji",
+        "instruction": "Co logicznie następuje dalej?",
+        "whatsNext": "Co będzie następne?",
+        "notQuite": "Dobra próba! Prawidłowa odpowiedź to {{answer}}."
+      },
+      "pictureClues": {
+        "title": "Wskazówki obrazkowe",
+        "description": "Zgadnij, co przedstawiają wskazówki emoji",
+        "instruction": "Co sugerują te wskazówki?",
+        "notQuite": "Dobra próba! Prawidłowa odpowiedź to {{answer}}."
+      },
+      "trueOrFalse": {
+        "title": "Prawda czy fałsz",
+        "description": "Zdecyduj, czy stwierdzenie jest prawdziwe, czy fałszywe",
+        "instruction": "Czy to stwierdzenie jest prawdziwe, czy fałszywe?",
+        "true": "Prawda",
+        "false": "Fałsz",
+        "notQuite": "Prawie! Odpowiedź to {{answer}}."
+      },
+      "clockReading": {
+        "title": "Odczytywanie godziny",
+        "description": "Odczytaj godzinę pokazaną na zegarze",
+        "instruction": "Którą godzinę wskazuje ten zegar?",
+        "notQuite": "Dobra próba! Godzina to {{answer}}."
+      },
+      "coinCounting": {
+        "title": "Liczenie monet",
+        "description": "Policz monety, aby poznać sumę",
+        "instruction": "Spójrz na monety poniżej",
+        "howMuch": "Ile to wszystko razem?",
+        "notQuite": "Dobra próba! Suma to {{answer}}."
       }
     },
     "careCode": {

@@ -579,6 +579,72 @@
           "autumn": "Ruduo",
           "winter": "Žiema"
         }
+      },
+      "rhymeTime": {
+        "title": "Rimavimo metas",
+        "description": "Raskite žodį, kuris rimuojasi",
+        "instruction": "Kuris žodis rimuojasi su parodytuoju?",
+        "notQuite": "Puikus bandymas! Atsakymas yra {{answer}}."
+      },
+      "finishSentence": {
+        "title": "Užbaikite sakinį",
+        "description": "Pasirinkite žodį, kuris užbaigia sakinį",
+        "instruction": "Kaip baigiasi šis sakinys?",
+        "notQuite": "Puikus bandymas! Atsakymas yra „{{answer}}“."
+      },
+      "whatChanged": {
+        "title": "Kas pasikeitė?",
+        "description": "Suraskite, kuris jaustukas pasikeitė tinklelyje",
+        "memorise": "Atidžiai pažiūrėkite į jaustukus...",
+        "tapChanged": "Vienas jaustukas pasikeitė – bakstelėkite jį!",
+        "lookCarefully": "Prisiminkite šiuos jaustukus...",
+        "notQuite": "Ne visai – kitą kartą pažiūrėkite dar kartą!"
+      },
+      "emojiCount": {
+        "title": "Jaustukų skaičius",
+        "description": "Suskaičiuokite jaustukus tinklelyje",
+        "instruction": "Kiek {{target}} {{label}} galite suskaičiuoti?",
+        "notQuite": "Beveik! Yra {{count}}."
+      },
+      "whichGoesTogether": {
+        "title": "Kas dera kartu?",
+        "description": "Suderinkite daiktus, kurie dera kartu",
+        "instruction": "Kuris geriausiai tinka prie parodyto daikto?",
+        "notQuite": "Puikus bandymas! Atsakymas yra {{answer}}."
+      },
+      "whatComesNext": {
+        "title": "Kas toliau?",
+        "description": "Išsiaiškinkite kitą žingsnį sekoje",
+        "instruction": "Kas logiškai seka toliau?",
+        "whatsNext": "Kas toliau?",
+        "notQuite": "Puikus bandymas! Atsakymas yra {{answer}}."
+      },
+      "pictureClues": {
+        "title": "Paveikslėlių užuominos",
+        "description": "Atspėkite, ką reiškia jaustukų užuominos",
+        "instruction": "Ką siūlo šios užuominos?",
+        "notQuite": "Puikus bandymas! Atsakymas yra {{answer}}."
+      },
+      "trueOrFalse": {
+        "title": "Tiesa ar melas",
+        "description": "Nuspręskite, ar teiginys yra teisingas, ar klaidingas",
+        "instruction": "Ar šis teiginys yra teisingas, ar klaidingas?",
+        "true": "Tiesa",
+        "false": "Melas",
+        "notQuite": "Ne visai – atsakymas yra {{answer}}."
+      },
+      "clockReading": {
+        "title": "Laiko skaitymas",
+        "description": "Perskaitykite laiką, rodomą laikrodyje",
+        "instruction": "Kokį laiką rodo šis laikrodis?",
+        "notQuite": "Puikus bandymas! Laikas yra {{answer}}."
+      },
+      "coinCounting": {
+        "title": "Monetų skaičiavimas",
+        "description": "Suskaičiuokite monetas, kad rastumėte bendrą sumą",
+        "instruction": "Pažiūrėkite į žemiau esančias monetas",
+        "howMuch": "Kiek tai yra iš viso?",
+        "notQuite": "Puikus bandymas! Bendra suma yra {{answer}}."
       }
     },
     "careCode": {

@@ -579,6 +579,72 @@
           "autumn": "Herfst",
           "winter": "Winter"
         }
+      },
+      "rhymeTime": {
+        "title": "Rijmtijd",
+        "description": "Vind het woord dat rijmt",
+        "instruction": "Welk woord rijmt op het getoonde woord?",
+        "notQuite": "Goed geprobeerd! Het antwoord is {{answer}}."
+      },
+      "finishSentence": {
+        "title": "Maak de zin af",
+        "description": "Kies het woord dat de zin afmaakt",
+        "instruction": "Hoe eindigt deze zin?",
+        "notQuite": "Goed geprobeerd! Het antwoord is \"{{answer}}\"."
+      },
+      "whatChanged": {
+        "title": "Wat is er veranderd?",
+        "description": "Ontdek welke emoji is veranderd in het raster",
+        "memorise": "Kijk goed naar de emoji's...",
+        "tapChanged": "Eén emoji is veranderd — tik erop!",
+        "lookCarefully": "Onthoud deze emoji's...",
+        "notQuite": "Niet helemaal — kijk de volgende keer nog eens goed!"
+      },
+      "emojiCount": {
+        "title": "Emoji Tellen",
+        "description": "Tel de emoji's in het raster",
+        "instruction": "Hoeveel {{target}} {{label}} kun je tellen?",
+        "notQuite": "Bijna! Het zijn er {{count}}."
+      },
+      "whichGoesTogether": {
+        "title": "Wat hoort bij elkaar?",
+        "description": "Combineer items die bij elkaar horen",
+        "instruction": "Welke past het beste bij het getoonde item?",
+        "notQuite": "Goed geprobeerd! Het antwoord is {{answer}}."
+      },
+      "whatComesNext": {
+        "title": "Wat komt hierna?",
+        "description": "Ontdek de volgende stap in een reeks",
+        "instruction": "Wat komt er logischerwijs hierna?",
+        "whatsNext": "Wat komt hierna?",
+        "notQuite": "Goed geprobeerd! Het antwoord is {{answer}}."
+      },
+      "pictureClues": {
+        "title": "Plaatjesaanwijzingen",
+        "description": "Raad wat de emoji-aanwijzingen voorstellen",
+        "instruction": "Wat suggereren deze aanwijzingen?",
+        "notQuite": "Goed geprobeerd! Het antwoord is {{answer}}."
+      },
+      "trueOrFalse": {
+        "title": "Waar of Onwaar",
+        "description": "Beslis of een bewering waar of onwaar is",
+        "instruction": "Is deze bewering waar of onwaar?",
+        "true": "Waar",
+        "false": "Onwaar",
+        "notQuite": "Niet helemaal — het antwoord is {{answer}}."
+      },
+      "clockReading": {
+        "title": "Kloklezen",
+        "description": "Lees de tijd af op de klok",
+        "instruction": "Welke tijd geeft deze klok aan?",
+        "notQuite": "Goed geprobeerd! De tijd is {{answer}}."
+      },
+      "coinCounting": {
+        "title": "Munten Tellen",
+        "description": "Tel de munten bij elkaar op om het totaal te vinden",
+        "instruction": "Kijk naar de munten hieronder",
+        "howMuch": "Hoeveel is dit bij elkaar?",
+        "notQuite": "Goed geprobeerd! Het totaal is {{answer}}."
       }
     },
     "careCode": {

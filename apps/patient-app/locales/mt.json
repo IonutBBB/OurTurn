@@ -579,6 +579,72 @@
           "autumn": "Ħarifa",
           "winter": "Xitwa"
         }
+      },
+      "rhymeTime": {
+        "title": "Ħin tar-Rimi",
+        "description": "Sib il-kelma li tirrima",
+        "instruction": "Liema kelma tirrima ma' dik murija?",
+        "notQuite": "Prosit tal-prova! It-tweġiba hija {{answer}}."
+      },
+      "finishSentence": {
+        "title": "Lesta s-Sentenza",
+        "description": "Agħżel il-kelma li tlestihom is-sentenza",
+        "instruction": "Kif tispiċċa din is-sentenza?",
+        "notQuite": "Prosit tal-prova! It-tweġiba hija \"{{answer}}\"."
+      },
+      "whatChanged": {
+        "title": "X'Inbidel?",
+        "description": "Sib liema emoji nbidlet fil-grilja",
+        "memorise": "Ħares sew lejn l-emojis...",
+        "tapChanged": "Emoji waħda nbidlet — agħfasha!",
+        "lookCarefully": "Ftakar dawn l-emojis...",
+        "notQuite": "Mhux eżatt — erġa' ħares id-darba li jmiss!"
+      },
+      "emojiCount": {
+        "title": "Għadd ta' Emojis",
+        "description": "Għodd l-emojis fil-grilja",
+        "instruction": "Kemm tista' tgħodd {{target}} {{label}}?",
+        "notQuite": "Qrib! Hemm {{count}}."
+      },
+      "whichGoesTogether": {
+        "title": "Liema Jmorru Flimkien?",
+        "description": "Qabbel l-oġġetti li jmorru flimkien",
+        "instruction": "Liema waħda tmur l-aħjar mal-oġġett muri?",
+        "notQuite": "Prosit tal-prova! It-tweġiba hija {{answer}}."
+      },
+      "whatComesNext": {
+        "title": "X'Jiġi Wara?",
+        "description": "Sib il-pass li jmiss f'sekwenza",
+        "instruction": "X'jiġi loġikament wara?",
+        "whatsNext": "X'jiġi wara?",
+        "notQuite": "Prosit tal-prova! It-tweġiba hija {{answer}}."
+      },
+      "pictureClues": {
+        "title": "Ħjiel bl-Istampi",
+        "description": "Aqta' x'jirrappreżentaw il-ħjiel tal-emoji",
+        "instruction": "X'jissuġġerixxu dawn il-ħjiel?",
+        "notQuite": "Prosit tal-prova! It-tweġiba hija {{answer}}."
+      },
+      "trueOrFalse": {
+        "title": "Veru jew Falz",
+        "description": "Iddeċiedi jekk stqarrija hijiex vera jew falza",
+        "instruction": "Din l-istqarrija hija vera jew falza?",
+        "true": "Veru",
+        "false": "Falz",
+        "notQuite": "Mhux eżatt — it-tweġiba hija {{answer}}."
+      },
+      "clockReading": {
+        "title": "Qari tal-Arloġġ",
+        "description": "Aqra l-ħin muri fuq l-arloġġ",
+        "instruction": "X'ħin juri dan l-arloġġ?",
+        "notQuite": "Prosit tal-prova! Il-ħin huwa {{answer}}."
+      },
+      "coinCounting": {
+        "title": "Għadd tal-Muniti",
+        "description": "Iġbor il-muniti biex issib it-total",
+        "instruction": "Ħares lejn il-muniti t'hawn taħt",
+        "howMuch": "Kemm jiswa dan kollu flimkien?",
+        "notQuite": "Prosit tal-prova! It-total huwa {{answer}}."
       }
     },
     "careCode": {

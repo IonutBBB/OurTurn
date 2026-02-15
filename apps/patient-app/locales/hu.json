@@ -579,6 +579,72 @@
           "autumn": "Ősz",
           "winter": "Tél"
         }
+      },
+      "rhymeTime": {
+        "title": "Rímelő idő",
+        "description": "Keresse meg a rímelő szót",
+        "instruction": "Melyik szó rímel a megjelenített szóra?",
+        "notQuite": "Szép próbálkozás! A helyes válasz: {{answer}}."
+      },
+      "finishSentence": {
+        "title": "Fejezze be a mondatot",
+        "description": "Válassza ki azt a szót, amelyik kiegészíti a mondatot",
+        "instruction": "Hogyan végződik ez a mondat?",
+        "notQuite": "Szép próbálkozás! A helyes válasz: \"{{answer}}\"."
+      },
+      "whatChanged": {
+        "title": "Mi változott?",
+        "description": "Találja meg, melyik emoji változott a rácsban",
+        "memorise": "Nézze meg figyelmesen az emojikat...",
+        "tapChanged": "Egy emoji megváltozott – érintse meg!",
+        "lookCarefully": "Jegyezze meg ezeket az emojikat...",
+        "notQuite": "Nem egészen – nézze meg újra legközelebb!"
+      },
+      "emojiCount": {
+        "title": "Emoji számlálás",
+        "description": "Számolja meg az emojikat a rácsban",
+        "instruction": "Hány {{target}} {{label}}t tud megszámolni?",
+        "notQuite": "Majdnem! {{count}} van belőle."
+      },
+      "whichGoesTogether": {
+        "title": "Melyik illik össze?",
+        "description": "Párosítsa az összetartozó elemeket",
+        "instruction": "Melyik illik a legjobban a megjelenített elemhez?",
+        "notQuite": "Szép próbálkozás! A helyes válasz: {{answer}}."
+      },
+      "whatComesNext": {
+        "title": "Mi következik?",
+        "description": "Találja ki a sorozat következő lépését",
+        "instruction": "Mi következik logikusan?",
+        "whatsNext": "Mi következik?",
+        "notQuite": "Szép próbálkozás! A helyes válasz: {{answer}}."
+      },
+      "pictureClues": {
+        "title": "Képes nyomok",
+        "description": "Találja ki, mit jelentenek az emoji nyomok",
+        "instruction": "Mit sugallnak ezek a nyomok?",
+        "notQuite": "Szép próbálkozás! A helyes válasz: {{answer}}."
+      },
+      "trueOrFalse": {
+        "title": "Igaz vagy hamis",
+        "description": "Döntse el, hogy egy állítás igaz vagy hamis",
+        "instruction": "Ez az állítás igaz vagy hamis?",
+        "true": "Igaz",
+        "false": "Hamis",
+        "notQuite": "Nem egészen – a helyes válasz: {{answer}}."
+      },
+      "clockReading": {
+        "title": "Óraolvasás",
+        "description": "Olvassa le az óráról a mutatott időt",
+        "instruction": "Hány órát mutat ez az óra?",
+        "notQuite": "Szép próbálkozás! Az idő: {{answer}}."
+      },
+      "coinCounting": {
+        "title": "Érmeszámlálás",
+        "description": "Adja össze az érméket, hogy megtalálja az összeget",
+        "instruction": "Nézze meg az alábbi érméket",
+        "howMuch": "Mennyi ez összesen?",
+        "notQuite": "Szép próbálkozás! Az összeg: {{answer}}."
       }
     },
     "careCode": {

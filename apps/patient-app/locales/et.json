@@ -579,6 +579,72 @@
           "autumn": "Sügis",
           "winter": "Talv"
         }
+      },
+      "rhymeTime": {
+        "title": "Riimimäng",
+        "description": "Leia sõna, mis riimub",
+        "instruction": "Milline sõna riimub näidatuga?",
+        "notQuite": "Hea katse! Õige vastus on {{answer}}."
+      },
+      "finishSentence": {
+        "title": "Lõpeta lause",
+        "description": "Vali sõna, mis lõpetab lause",
+        "instruction": "Kuidas see lause lõpeb?",
+        "notQuite": "Hea katse! Õige vastus on \"{{answer}}\"."
+      },
+      "whatChanged": {
+        "title": "Mis muutus?",
+        "description": "Märka, milline emotikon ruudustikus muutus",
+        "memorise": "Vaata emotikone hoolikalt...",
+        "tapChanged": "Üks emotikon on muutunud — puuduta seda!",
+        "lookCarefully": "Jäta need emotikonid meelde...",
+        "notQuite": "Päris õige ei olnud – vaata järgmine kord uuesti!"
+      },
+      "emojiCount": {
+        "title": "Emotikonide loendamine",
+        "description": "Loenda emotikonid ruudustikus",
+        "instruction": "Mitu {{target}} {{label}} sa kokku loed?",
+        "notQuite": "Lähedal! Neid on {{count}}."
+      },
+      "whichGoesTogether": {
+        "title": "Mis sobib kokku?",
+        "description": "Leia kokkusobivad esemed",
+        "instruction": "Milline sobib kõige paremini näidatud esemega?",
+        "notQuite": "Hea katse! Õige vastus on {{answer}}."
+      },
+      "whatComesNext": {
+        "title": "Mis tuleb järgmiseks?",
+        "description": "Mõtle välja järgmine samm järjestuses",
+        "instruction": "Mis loogiliselt järgneb?",
+        "whatsNext": "Mis tuleb järgmiseks?",
+        "notQuite": "Hea katse! Õige vastus on {{answer}}."
+      },
+      "pictureClues": {
+        "title": "Pildivihjed",
+        "description": "Arva ära, mida emotikonide vihjed esindavad",
+        "instruction": "Mida need vihjed viitavad?",
+        "notQuite": "Hea katse! Õige vastus on {{answer}}."
+      },
+      "trueOrFalse": {
+        "title": "Tõene või väär",
+        "description": "Otsusta, kas väide on tõene või väär",
+        "instruction": "Kas see väide on tõene või väär?",
+        "true": "Tõene",
+        "false": "Väär",
+        "notQuite": "Päris õige ei olnud — õige vastus on {{answer}}."
+      },
+      "clockReading": {
+        "title": "Kella lugemine",
+        "description": "Loe kellaaega, mida kell näitab",
+        "instruction": "Mis kellaaega see kell näitab?",
+        "notQuite": "Hea katse! Kellaaeg on {{answer}}."
+      },
+      "coinCounting": {
+        "title": "Müntide loendamine",
+        "description": "Liida mündid kokku, et leida kogusumma",
+        "instruction": "Vaata allolevaid münte",
+        "howMuch": "Kui palju see kokku teeb?",
+        "notQuite": "Hea katse! Kogusumma on {{answer}}."
       }
     },
     "careCode": {
