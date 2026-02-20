@@ -5,6 +5,7 @@ import * as Haptics from 'expo-haptics';
 import { COLORS, FONTS, RADIUS } from '../../theme';
 import type { ActivityRendererProps } from './types';
 import type { WhatComesNextContent } from '../../data/bundled-activities';
+import { useGameLabel } from '../../utils/game-translate';
 
 type FeedbackState = 'none' | 'correct' | 'incorrect';
 
@@ -14,6 +15,7 @@ export default function WhatComesNextRenderer({
   onSkip,
 }: ActivityRendererProps) {
   const { t } = useTranslation();
+  const gl = useGameLabel();
   const data = content as WhatComesNextContent;
 
   const [roundIndex, setRoundIndex] = useState(0);

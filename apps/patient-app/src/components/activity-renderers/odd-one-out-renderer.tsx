@@ -5,6 +5,7 @@ import * as Haptics from 'expo-haptics';
 import { COLORS, FONTS, RADIUS } from '../../theme';
 import type { ActivityRendererProps } from './types';
 import type { OddOneOutContent } from '../../data/bundled-activities';
+import { useGameLabel } from '../../utils/game-translate';
 
 type ItemState = 'default' | 'correct' | 'encourage';
 
@@ -14,6 +15,7 @@ export default function OddOneOutRenderer({
   onSkip,
 }: ActivityRendererProps) {
   const { t } = useTranslation();
+  const gl = useGameLabel();
   const data = content as OddOneOutContent;
 
   const [roundIndex, setRoundIndex] = useState(0);
@@ -111,7 +113,7 @@ export default function OddOneOutRenderer({
               disabled={advancing}
             >
               <Text style={styles.itemEmoji}>{item.emoji}</Text>
-              <Text style={styles.itemLabel}>{item.label}</Text>
+              <Text style={styles.itemLabel}>{gl(item.label)}</Text>
             </TouchableOpacity>
           );
         })}

@@ -5,6 +5,7 @@ import * as Haptics from 'expo-haptics';
 import { COLORS, FONTS, RADIUS } from '../../theme';
 import type { ActivityRendererProps } from './types';
 import type { CategorySortContent } from '../../data/bundled-activities';
+import { useGameLabel } from '../../utils/game-translate';
 
 interface SortedItem {
   emoji: string;
@@ -17,6 +18,7 @@ export default function CategorySortRenderer({
   onSkip,
 }: ActivityRendererProps) {
   const { t } = useTranslation();
+  const gl = useGameLabel();
   const data = content as CategorySortContent;
 
   // Items still in the unsorted pool (indices into data.items)
@@ -110,7 +112,7 @@ export default function CategorySortRenderer({
           disabled={selectedIndex === null}
         >
           <Text style={styles.bucketEmoji}>{data.groupAEmoji}</Text>
-          <Text style={styles.bucketLabel}>{data.groupA}</Text>
+          <Text style={styles.bucketLabel}>{gl(data.groupA)}</Text>
           {bucketA.length > 0 && (
             <View style={styles.sortedItems}>
               {bucketA.map((item, i) => (
@@ -132,7 +134,7 @@ export default function CategorySortRenderer({
           disabled={selectedIndex === null}
         >
           <Text style={styles.bucketEmoji}>{data.groupBEmoji}</Text>
-          <Text style={styles.bucketLabel}>{data.groupB}</Text>
+          <Text style={styles.bucketLabel}>{gl(data.groupB)}</Text>
           {bucketB.length > 0 && (
             <View style={styles.sortedItems}>
               {bucketB.map((item, i) => (

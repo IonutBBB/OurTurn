@@ -114,6 +114,7 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '🤔',
     titleKey: 'patientApp.stim.oddOneOut.title',
     descriptionKey: 'patientApp.stim.oddOneOut.description',
+    languageDependent: true,
   },
   {
     type: 'pattern_sequence',
@@ -130,6 +131,7 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '📦',
     titleKey: 'patientApp.stim.categorySort.title',
     descriptionKey: 'patientApp.stim.categorySort.description',
+    languageDependent: true,
   },
   {
     type: 'which_goes_together',
@@ -147,6 +149,7 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '➡️',
     titleKey: 'patientApp.stim.whatComesNext.title',
     descriptionKey: 'patientApp.stim.whatComesNext.description',
+    languageDependent: true,
   },
   {
     type: 'sort_it_out',
