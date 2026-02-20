@@ -67,7 +67,7 @@
     "cognitive": "Bunăstarea Creierului",
     "social": "Socializare și Conexiune",
     "health": "Verificare Sănătate",
-    "activity": "Mind Game"
+    "activity": "Joc mental"
   },
   "patientApp": {
     "todaysPlan": {
@@ -376,10 +376,10 @@
       "removeMedication": "Eliminați",
       "maxMedications": "Maxim 3 medicamente per grup",
       "uploadingPhoto": "Se încarcă...",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Adaugă joc mental",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Alege un joc mental",
+        "subtitle": "Selectează o activitate de adăugat în planul de îngrijire"
       },
       "status": "Stare",
       "completedToday": "Finalizat azi",

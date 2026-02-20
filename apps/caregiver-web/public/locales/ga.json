@@ -67,7 +67,7 @@
     "cognitive": "Folláine na hInchinn",
     "social": "Sóisialta & Ceangal",
     "health": "Seiceáil Sláinte",
-    "activity": "Mind Game"
+    "activity": "Cluiche"
   },
   "patientApp": {
     "todaysPlan": {
@@ -376,10 +376,10 @@
       "removeMedication": "Bain",
       "maxMedications": "Uasmhéid 3 chógas in aghaidh an ghrúpa",
       "uploadingPhoto": "Ag uaslódáil...",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Cuir cluiche leis",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Roghnaigh cluiche",
+        "subtitle": "Roghnaigh gníomhaíocht le cur leis an bplean cúraim"
       },
       "status": "Status",
       "completedToday": "Completed today",

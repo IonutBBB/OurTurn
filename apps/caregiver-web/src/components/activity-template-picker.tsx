@@ -3,9 +3,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
-  SHARED_ACTIVITY_DEFINITIONS,
-  SHARED_ACTIVITY_CATEGORIES,
-  type SharedActivityDefinition,
+  getActivitiesForLocale,
+  getCategoriesForLocale,
   type ActivityCategory,
 } from '@ourturn/shared';
 
@@ -15,14 +14,17 @@ interface ActivityTemplatePickerProps {
 }
 
 export function ActivityTemplatePicker({ onSelect, onClose }: ActivityTemplatePickerProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const locale = i18n.language?.split('-')[0] || 'en';
+  const categories = getCategoriesForLocale(locale);
+  const activities = getActivitiesForLocale(locale);
   const [expandedCategory, setExpandedCategory] = useState<ActivityCategory | null>(
-    SHARED_ACTIVITY_CATEGORIES[0]?.category ?? null
+    categories[0]?.category ?? null
   );
 
-  const activitiesByCategory = SHARED_ACTIVITY_CATEGORIES.map((cat) => ({
+  const activitiesByCategory = categories.map((cat) => ({
     ...cat,
-    activities: SHARED_ACTIVITY_DEFINITIONS.filter((a) => a.category === cat.category),
+    activities: activities.filter((a) => a.category === cat.category),
   }));
 
   return (

@@ -67,7 +67,7 @@
     "cognitive": "Trénink mozku",
     "social": "Sociální kontakty",
     "health": "Kontrola zdraví",
-    "activity": "Mind Game"
+    "activity": "Hra"
   },
   "patientApp": {
     "todaysPlan": {
@@ -376,10 +376,10 @@
       "removeMedication": "Odstranit",
       "maxMedications": "Maximálně 3 léky na skupinu",
       "uploadingPhoto": "Nahrávání...",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Přidat hru",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Vyberte hru",
+        "subtitle": "Vyberte aktivitu pro přidání do plánu péče"
       },
       "status": "Status",
       "completedToday": "Completed today",

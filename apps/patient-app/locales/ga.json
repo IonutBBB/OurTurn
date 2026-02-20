@@ -23,7 +23,7 @@
     "cognitive": "Folláine Inchinne",
     "social": "Sóisialta & Nasc",
     "health": "Seiceáil Sláinte",
-    "activity": "Mind Game"
+    "activity": "Cluiche"
   },
   "patientApp": {
     "todaysPlan": {
@@ -43,7 +43,7 @@
       "opensActivity": "Osclaíonn sé gníomhaíocht folláine inchinne an lae inniu",
       "comingUp": "Ag teacht aníos ina dhiaidh sin",
       "activitiesWaiting": "Tá gníomhaíochtaí ag fanacht leat",
-      "playActivity": "Play"
+      "playActivity": "Imir"
     },
     "help": {
       "title": "Teastaíonn Cabhair uaim",

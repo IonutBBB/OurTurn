@@ -23,7 +23,7 @@
     "cognitive": "Aju heaolu",
     "social": "Sotsiaalne suhtlus",
     "health": "Tervisekontroll",
-    "activity": "Mind Game"
+    "activity": "Mäng"
   },
   "patientApp": {
     "todaysPlan": {
@@ -43,7 +43,7 @@
       "opensActivity": "Avab tänase aju heaolu tegevuse",
       "comingUp": "Järgmisena tulemas",
       "activitiesWaiting": "Tegevused ootavad sind",
-      "playActivity": "Play"
+      "playActivity": "Mängi"
     },
     "help": {
       "title": "Vajan abi",

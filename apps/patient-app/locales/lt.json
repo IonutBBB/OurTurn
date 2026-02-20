@@ -23,7 +23,7 @@
     "cognitive": "Smegenų gerovė",
     "social": "Bendravimas ir ryšys",
     "health": "Sveikatos patikra",
-    "activity": "Mind Game"
+    "activity": "Žaidimas"
   },
   "patientApp": {
     "todaysPlan": {
@@ -43,7 +43,7 @@
       "opensActivity": "Atidaro šiandienos smegenų gerovės veiklą",
       "comingUp": "Kitas eilėje",
       "activitiesWaiting": "Veiklos laukia jūsų",
-      "playActivity": "Play"
+      "playActivity": "Žaisti"
     },
     "help": {
       "title": "Man reikia pagalbos",

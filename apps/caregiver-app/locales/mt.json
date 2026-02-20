@@ -42,7 +42,7 @@
     "cognitive": "Benessri tal-Moħħ",
     "social": "Soċjali u Konnessjoni",
     "health": "Kontroll tas-Saħħa",
-    "activity": "Mind Game"
+    "activity": "Logħba"
   },
   "caregiverApp": {
     "dashboard": {
@@ -141,10 +141,10 @@
       "aiSuggestFocusOn": "Iffoka fuq:",
       "aiSuggestRefresh": "Aġġorna",
       "allCategories": "Il-kategoriji kollha",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Żid logħba",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Agħżel logħba",
+        "subtitle": "Agħżel attività biex iżżid mal-pjan tal-kura"
       },
       "status": "Status",
       "completedToday": "Completed today",

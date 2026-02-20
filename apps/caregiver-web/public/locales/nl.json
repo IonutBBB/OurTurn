@@ -67,7 +67,7 @@
     "cognitive": "Hersentraining",
     "social": "Sociaal & Contact",
     "health": "Gezondheidscheck",
-    "activity": "Mind Game"
+    "activity": "Denkspel"
   },
   "patientApp": {
     "todaysPlan": {
@@ -376,10 +376,10 @@
       "removeMedication": "Verwijderen",
       "maxMedications": "Maximaal 3 medicijnen per groep",
       "uploadingPhoto": "Uploaden...",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Denkspel toevoegen",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Kies een denkspel",
+        "subtitle": "Selecteer een activiteit voor het zorgplan"
       },
       "status": "Status",
       "completedToday": "Vandaag voltooid",

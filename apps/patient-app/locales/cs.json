@@ -23,7 +23,7 @@
     "cognitive": "Péče o mysl",
     "social": "Společenský život a spojení",
     "health": "Kontrola zdraví",
-    "activity": "Mind Game"
+    "activity": "Hra"
   },
   "patientApp": {
     "todaysPlan": {
@@ -43,7 +43,7 @@
       "opensActivity": "Otevře dnešní aktivitu pro duševní pohodu",
       "comingUp": "Další na řadě",
       "activitiesWaiting": "Aktivity na vás čekají",
-      "playActivity": "Play"
+      "playActivity": "Hrát"
     },
     "help": {
       "title": "Potřebuji pomoc",

@@ -67,7 +67,7 @@
     "cognitive": "Грижа за ума",
     "social": "Социални контакти",
     "health": "Проверка на здравето",
-    "activity": "Mind Game"
+    "activity": "Игра"
   },
   "patientApp": {
     "todaysPlan": {
@@ -376,10 +376,10 @@
       "removeMedication": "Премахване",
       "maxMedications": "Максимум 3 лекарства на група",
       "uploadingPhoto": "Качване...",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Добавяне на игра",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Изберете игра",
+        "subtitle": "Изберете дейност за добавяне към плана за грижа"
       },
       "status": "Status",
       "completedToday": "Completed today",

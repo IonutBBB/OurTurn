@@ -42,7 +42,7 @@
     "cognitive": "Hjernesundhed",
     "social": "Socialt & Forbindelse",
     "health": "Sundhedstjek",
-    "activity": "Mind Game"
+    "activity": "Hjernespil"
   },
   "caregiverApp": {
     "dashboard": {
@@ -141,10 +141,10 @@
       "aiSuggestFocusOn": "Fokuser på:",
       "aiSuggestRefresh": "Opdater",
       "allCategories": "Alle kategorier",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Tilføj hjernespil",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Vælg et hjernespil",
+        "subtitle": "Vælg en aktivitet at tilføje til plejeplanen"
       },
       "status": "Status",
       "completedToday": "Completed today",

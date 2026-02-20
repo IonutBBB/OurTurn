@@ -23,7 +23,7 @@
     "cognitive": "Szellemi frissesség",
     "social": "Társas kapcsolatok",
     "health": "Egészségügyi ellenőrzés",
-    "activity": "Mind Game"
+    "activity": "Játék"
   },
   "patientApp": {
     "todaysPlan": {
@@ -43,7 +43,7 @@
       "opensActivity": "Megnyitja a mai szellemi frissességi tevékenységet",
       "comingUp": "Következik",
       "activitiesWaiting": "Tevékenységek várják Önt",
-      "playActivity": "Play"
+      "playActivity": "Játék"
     },
     "help": {
       "title": "Segítségre van szükségem",

@@ -23,7 +23,7 @@
     "cognitive": "Geistiges Wohlbefinden",
     "social": "Soziales & Verbindung",
     "health": "Gesundheits-Check",
-    "activity": "Mind Game"
+    "activity": "Denkspiel"
   },
   "patientApp": {
     "todaysPlan": {
@@ -43,7 +43,7 @@
       "opensActivity": "Öffnet die heutige Aktivität für geistiges Wohlbefinden",
       "comingUp": "Als Nächstes",
       "activitiesWaiting": "Aktivitäten warten auf Sie",
-      "playActivity": "Play"
+      "playActivity": "Spielen"
     },
     "help": {
       "title": "Ich brauche Hilfe",

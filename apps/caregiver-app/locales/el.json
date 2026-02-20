@@ -42,7 +42,7 @@
     "cognitive": "Ευεξία Εγκεφάλου",
     "social": "Κοινωνική Σύνδεση",
     "health": "Έλεγχος Υγείας",
-    "activity": "Mind Game"
+    "activity": "Παιχνίδι"
   },
   "caregiverApp": {
     "dashboard": {
@@ -141,10 +141,10 @@
       "aiSuggestFocusOn": "Εστίαση σε:",
       "aiSuggestRefresh": "Ανανέωση",
       "allCategories": "Όλες οι κατηγορίες",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Προσθήκη παιχνιδιού",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Επιλέξτε παιχνίδι",
+        "subtitle": "Επιλέξτε μια δραστηριότητα για το πρόγραμμα φροντίδας"
       },
       "status": "Status",
       "completedToday": "Completed today",

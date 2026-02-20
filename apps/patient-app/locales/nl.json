@@ -23,7 +23,7 @@
     "cognitive": "Hersenwelzijn",
     "social": "Sociaal & Contact",
     "health": "Gezondheidscheck",
-    "activity": "Mind Game"
+    "activity": "Denkspel"
   },
   "patientApp": {
     "todaysPlan": {
@@ -43,7 +43,7 @@
       "opensActivity": "Opent de hersenwelzijnsactiviteit van vandaag",
       "comingUp": "Hierna volgt",
       "activitiesWaiting": "Activiteiten wachten op u",
-      "playActivity": "Play"
+      "playActivity": "Spelen"
     },
     "help": {
       "title": "Ik heb hulp nodig",

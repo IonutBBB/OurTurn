@@ -23,7 +23,7 @@
     "cognitive": "Dobra kondycja umysłu",
     "social": "Spotkania i kontakty",
     "health": "Kontrola zdrowia",
-    "activity": "Mind Game"
+    "activity": "Gra"
   },
   "patientApp": {
     "todaysPlan": {
@@ -43,7 +43,7 @@
       "opensActivity": "Otwiera dzisiejszą aktywność dla dobrej kondycji umysłu",
       "comingUp": "Następne w kolejce",
       "activitiesWaiting": "Aktywności czekają na Ciebie",
-      "playActivity": "Play"
+      "playActivity": "Graj"
     },
     "help": {
       "title": "Potrzebuję pomocy",

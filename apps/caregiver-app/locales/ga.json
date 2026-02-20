@@ -42,7 +42,7 @@
     "cognitive": "Folláine Inchinne",
     "social": "Sóisialta & Nasc",
     "health": "Seiceáil Sláinte",
-    "activity": "Mind Game"
+    "activity": "Cluiche"
   },
   "caregiverApp": {
     "dashboard": {
@@ -141,10 +141,10 @@
       "aiSuggestFocusOn": "Dírithe ar:",
       "aiSuggestRefresh": "Athnuaigh",
       "allCategories": "Gach catagóir",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Cuir cluiche leis",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Roghnaigh cluiche",
+        "subtitle": "Roghnaigh gníomhaíocht le cur leis an bplean cúraim"
       },
       "status": "Status",
       "completedToday": "Completed today",

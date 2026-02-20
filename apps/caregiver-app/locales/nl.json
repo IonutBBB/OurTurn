@@ -42,7 +42,7 @@
     "cognitive": "Hersenwelzijn",
     "social": "Sociaal & Contact",
     "health": "Gezondheidscheck",
-    "activity": "Mind Game"
+    "activity": "Denkspel"
   },
   "caregiverApp": {
     "dashboard": {
@@ -141,10 +141,10 @@
       "aiSuggestFocusOn": "Focus op:",
       "aiSuggestRefresh": "Vernieuwen",
       "allCategories": "Alle categorieën",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Denkspel toevoegen",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Kies een denkspel",
+        "subtitle": "Selecteer een activiteit voor het zorgplan"
       },
       "status": "Status",
       "completedToday": "Vandaag voltooid",

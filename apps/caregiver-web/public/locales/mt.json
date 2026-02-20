@@ -67,7 +67,7 @@
     "cognitive": "Benessri tal-Moħħ",
     "social": "Soċjali u Konnessjoni",
     "health": "Kontroll tas-Saħħa",
-    "activity": "Mind Game"
+    "activity": "Logħba"
   },
   "patientApp": {
     "todaysPlan": {
@@ -376,10 +376,10 @@
       "removeMedication": "Neħħi",
       "maxMedications": "Massimu ta' 3 medikazzjonijiet għal kull grupp",
       "uploadingPhoto": "Qed ittella'...",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Żid logħba",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Agħżel logħba",
+        "subtitle": "Agħżel attività biex iżżid mal-pjan tal-kura"
       },
       "status": "Status",
       "completedToday": "Completed today",

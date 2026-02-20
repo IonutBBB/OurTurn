@@ -67,7 +67,7 @@
     "cognitive": "Bienestar Cerebral",
     "social": "Social y Conexión",
     "health": "Revisión de Salud",
-    "activity": "Mind Game"
+    "activity": "Juego mental"
   },
   "patientApp": {
     "todaysPlan": {
@@ -376,10 +376,10 @@
       "removeMedication": "Eliminar",
       "maxMedications": "Máximo 3 medicamentos por grupo",
       "uploadingPhoto": "Subiendo...",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Añadir juego mental",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Elegir un juego mental",
+        "subtitle": "Selecciona una actividad para el plan de cuidados"
       },
       "status": "Estado",
       "completedToday": "Completado hoy",

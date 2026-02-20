@@ -42,7 +42,7 @@
     "cognitive": "Prāta labsajūta",
     "social": "Sociālās saites un savienojumi",
     "health": "Veselības pārbaude",
-    "activity": "Mind Game"
+    "activity": "Spēle"
   },
   "caregiverApp": {
     "dashboard": {
@@ -141,10 +141,10 @@
       "aiSuggestFocusOn": "Fokusēties uz:",
       "aiSuggestRefresh": "Atjaunināt",
       "allCategories": "Visas kategorijas",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Pievienot spēli",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Izvēlieties spēli",
+        "subtitle": "Izvēlieties aktivitāti aprūpes plānam"
       },
       "status": "Status",
       "completedToday": "Completed today",

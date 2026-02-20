@@ -67,7 +67,7 @@
     "cognitive": "Dobro počutje možganov",
     "social": "Družabnost in povezovanje",
     "health": "Zdravstveni pregled",
-    "activity": "Mind Game"
+    "activity": "Igra"
   },
   "patientApp": {
     "todaysPlan": {
@@ -376,10 +376,10 @@
       "removeMedication": "Odstrani",
       "maxMedications": "Največ 3 zdravila na skupino",
       "uploadingPhoto": "Nalaganje...",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Dodaj igro",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Izberite igro",
+        "subtitle": "Izberite dejavnost za dodajanje v načrt oskrbe"
       },
       "status": "Status",
       "completedToday": "Completed today",

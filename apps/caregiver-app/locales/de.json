@@ -42,7 +42,7 @@
     "cognitive": "Geistiges Wohlbefinden",
     "social": "Soziales & Verbindung",
     "health": "Gesundheits-Check",
-    "activity": "Mind Game"
+    "activity": "Denkspiel"
   },
   "caregiverApp": {
     "dashboard": {
@@ -141,10 +141,10 @@
       "aiSuggestFocusOn": "Fokus auf:",
       "aiSuggestRefresh": "Aktualisieren",
       "allCategories": "Alle Kategorien",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Denkspiel hinzufügen",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Denkspiel auswählen",
+        "subtitle": "Wählen Sie eine Aktivität für den Pflegeplan"
       },
       "status": "Status",
       "completedToday": "Heute erledigt",

@@ -42,7 +42,7 @@
     "cognitive": "Здраве на мозъка",
     "social": "Социални контакти и връзки",
     "health": "Здравна проверка",
-    "activity": "Mind Game"
+    "activity": "Игра"
   },
   "caregiverApp": {
     "dashboard": {
@@ -141,10 +141,10 @@
       "aiSuggestFocusOn": "Фокус върху:",
       "aiSuggestRefresh": "Обновяване",
       "allCategories": "Всички категории",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Добавяне на игра",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Изберете игра",
+        "subtitle": "Изберете дейност за добавяне към плана за грижа"
       },
       "status": "Status",
       "completedToday": "Completed today",

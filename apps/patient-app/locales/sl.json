@@ -23,7 +23,7 @@
     "cognitive": "Dobro počutje možganov",
     "social": "Družabnost in povezanost",
     "health": "Zdravstveni pregled",
-    "activity": "Mind Game"
+    "activity": "Igra"
   },
   "patientApp": {
     "todaysPlan": {
@@ -43,7 +43,7 @@
       "opensActivity": "Odpre današnjo aktivnost za dobro počutje možganov",
       "comingUp": "Sledi",
       "activitiesWaiting": "Aktivnosti vas čakajo",
-      "playActivity": "Play"
+      "playActivity": "Igraj"
     },
     "help": {
       "title": "Potrebujem pomoč",

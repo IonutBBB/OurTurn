@@ -23,7 +23,7 @@
     "cognitive": "Prāta labsajūta",
     "social": "Sociālās saites un saziņa",
     "health": "Veselības pārbaude",
-    "activity": "Mind Game"
+    "activity": "Spēle"
   },
   "patientApp": {
     "todaysPlan": {
@@ -43,7 +43,7 @@
       "opensActivity": "Atver šodienas prāta labsajūtas aktivitāti",
       "comingUp": "Nākamais",
       "activitiesWaiting": "Aktivitātes jūs gaida",
-      "playActivity": "Play"
+      "playActivity": "Spēlēt"
     },
     "help": {
       "title": "Man vajag palīdzību",

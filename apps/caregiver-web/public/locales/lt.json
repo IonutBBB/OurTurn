@@ -67,7 +67,7 @@
     "cognitive": "Smegenų sveikata",
     "social": "Socialiniai ryšiai",
     "health": "Sveikatos patikrinimas",
-    "activity": "Mind Game"
+    "activity": "Žaidimas"
   },
   "patientApp": {
     "todaysPlan": {
@@ -376,10 +376,10 @@
       "removeMedication": "Pašalinti",
       "maxMedications": "Daugiausia 3 vaistai vienoje grupėje",
       "uploadingPhoto": "Įkeliama...",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Pridėti žaidimą",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Pasirinkite žaidimą",
+        "subtitle": "Pasirinkite veiklą priežiūros planui"
       },
       "status": "Status",
       "completedToday": "Completed today",

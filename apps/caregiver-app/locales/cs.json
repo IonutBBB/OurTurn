@@ -42,7 +42,7 @@
     "cognitive": "Péče o mozek",
     "social": "Společnost a spojení",
     "health": "Kontrola zdraví",
-    "activity": "Mind Game"
+    "activity": "Hra"
   },
   "caregiverApp": {
     "dashboard": {
@@ -141,10 +141,10 @@
       "aiSuggestFocusOn": "Zaměřit se na:",
       "aiSuggestRefresh": "Obnovit",
       "allCategories": "Všechny kategorie",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Přidat hru",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Vyberte hru",
+        "subtitle": "Vyberte aktivitu pro přidání do plánu péče"
       },
       "status": "Status",
       "completedToday": "Completed today",

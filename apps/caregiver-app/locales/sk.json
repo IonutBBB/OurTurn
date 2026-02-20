@@ -42,7 +42,7 @@
     "cognitive": "Duševná pohoda",
     "social": "Sociálne kontakty a spojenie",
     "health": "Kontrola zdravia",
-    "activity": "Mind Game"
+    "activity": "Hra"
   },
   "caregiverApp": {
     "dashboard": {
@@ -141,10 +141,10 @@
       "aiSuggestFocusOn": "Zamerať sa na:",
       "aiSuggestRefresh": "Obnoviť",
       "allCategories": "Všetky kategórie",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Pridať hru",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Vyberte hru",
+        "subtitle": "Vyberte aktivitu pre plán starostlivosti"
       },
       "status": "Status",
       "completedToday": "Completed today",

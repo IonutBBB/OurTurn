@@ -18,7 +18,7 @@ import {
 } from '@ourturn/shared/utils/task-suggestion-validator';
 import type { TaskCategory } from '@ourturn/shared/types/care-plan';
 import { SUPPORTED_LANGUAGES, LANGUAGE_CODES } from '@ourturn/shared/constants/languages';
-import { SHARED_ACTIVITY_DEFINITIONS, VALID_ACTIVITY_TYPES } from '@ourturn/shared/data/activity-definitions';
+import { SHARED_ACTIVITY_DEFINITIONS, VALID_ACTIVITY_TYPES, getActivitiesForLocale } from '@ourturn/shared/data/activity-definitions';
 
 const log = createLogger('ai/suggest-tasks');
 
@@ -237,9 +237,9 @@ INTERVENTION LIBRARY (format: id|category|intervention|adaptations|timeOfDay|dur
 ${librarySummary}
 
 MIND GAME LIBRARY (you may also suggest mind games as category "activity" with an "activity_type"):
-${SHARED_ACTIVITY_DEFINITIONS.map((a) => `${a.type}|${a.category}|${a.emoji}`).join('\n')}
-When suggesting a mind game, use: { "category": "activity", "activity_type": "${SHARED_ACTIVITY_DEFINITIONS[0].type}", "intervention_id": null, "evidence_source": "CST evidence-based" }
-You may include 0-2 mind game suggestions per batch. Not every batch needs them.
+${getActivitiesForLocale(locale || 'en').map((a) => `${a.type}|${a.category}|${a.emoji}`).join('\n')}
+When suggesting a mind game, use: { "category": "activity", "activity_type": "${getActivitiesForLocale(locale || 'en')[0]?.type || 'photo_pairs'}", "intervention_id": null, "evidence_source": "CST evidence-based" }
+You may include 0-2 mind game suggestions per batch. Not every batch needs them.${locale && locale !== 'en' ? '\nIMPORTANT: Only suggest mind games from the list above. Some games are excluded because their content is only available in English.' : ''}
 
 DAILY PLAN STRUCTURE:
 - Morning: physical activity + nutrition
@@ -302,7 +302,8 @@ For mind game tasks: set category to "activity", activity_type to a valid type f
       const regularRaw: Record<string, unknown>[] = [];
 
       for (const s of rawSuggestions) {
-        if (s.category === 'activity' && s.activity_type && VALID_ACTIVITY_TYPES.includes(s.activity_type)) {
+        const validTypesForLocale = getActivitiesForLocale(locale || 'en').map((a) => a.type);
+        if (s.category === 'activity' && s.activity_type && validTypesForLocale.includes(s.activity_type)) {
           activitySuggestions.push({
             category: 'activity',
             title: s.title || '',

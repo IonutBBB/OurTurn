@@ -23,7 +23,7 @@
     "cognitive": "Duševná pohoda",
     "social": "Sociálne kontakty a spojenie",
     "health": "Zdravotná kontrola",
-    "activity": "Mind Game"
+    "activity": "Hra"
   },
   "patientApp": {
     "todaysPlan": {
@@ -43,7 +43,7 @@
       "opensActivity": "Otvorí dnešnú aktivitu pre duševnú pohodu",
       "comingUp": "Ďalšie na rade",
       "activitiesWaiting": "Aktivity na vás čakajú",
-      "playActivity": "Play"
+      "playActivity": "Hrať"
     },
     "help": {
       "title": "Potrebujem pomoc",

@@ -23,7 +23,7 @@
     "cognitive": "Bunăstarea Creierului",
     "social": "Socializare și Conexiune",
     "health": "Verificare Sănătate",
-    "activity": "Mind Game"
+    "activity": "Joc mental"
   },
   "patientApp": {
     "todaysPlan": {
@@ -43,7 +43,7 @@
       "opensActivity": "Deschide activitatea de bunăstare cerebrală de azi",
       "comingUp": "Urmează",
       "activitiesWaiting": "Activitățile te așteaptă",
-      "playActivity": "Play"
+      "playActivity": "Joacă"
     },
     "help": {
       "title": "Am Nevoie de Ajutor",

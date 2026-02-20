@@ -13,6 +13,8 @@ export interface SharedActivityDefinition {
   emoji: string;
   titleKey: string;
   descriptionKey: string;
+  /** true if game content is English-only (word lists, proverbs, etc.) */
+  languageDependent?: boolean;
 }
 
 export interface SharedActivityCategory {
@@ -30,6 +32,7 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '💬',
     titleKey: 'patientApp.stim.wordAssociation.title',
     descriptionKey: 'patientApp.stim.wordAssociation.description',
+    languageDependent: true,
   },
   {
     type: 'proverbs',
@@ -38,6 +41,7 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '📜',
     titleKey: 'patientApp.stim.proverbs.title',
     descriptionKey: 'patientApp.stim.proverbs.description',
+    languageDependent: true,
   },
   {
     type: 'word_search',
@@ -46,6 +50,7 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '🔍',
     titleKey: 'patientApp.stim.wordSearch.title',
     descriptionKey: 'patientApp.stim.wordSearch.description',
+    languageDependent: true,
   },
   {
     type: 'word_scramble',
@@ -54,6 +59,7 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '🔤',
     titleKey: 'patientApp.stim.wordScramble.title',
     descriptionKey: 'patientApp.stim.wordScramble.description',
+    languageDependent: true,
   },
   {
     type: 'rhyme_time',
@@ -62,6 +68,7 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '🎶',
     titleKey: 'patientApp.stim.rhymeTime.title',
     descriptionKey: 'patientApp.stim.rhymeTime.description',
+    languageDependent: true,
   },
 
   // ── Memory & Attention (4) ─────────────────────────────
@@ -96,6 +103,7 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '🎵',
     titleKey: 'patientApp.stim.nameThatTune.title',
     descriptionKey: 'patientApp.stim.nameThatTune.description',
+    languageDependent: true,
   },
 
   // ── Logic & Reasoning (7) ──────────────────────────────
@@ -130,6 +138,7 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '🤝',
     titleKey: 'patientApp.stim.whichGoesTogether.title',
     descriptionKey: 'patientApp.stim.whichGoesTogether.description',
+    languageDependent: true,
   },
   {
     type: 'what_comes_next',
@@ -146,6 +155,7 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '🛒',
     titleKey: 'patientApp.stim.sortItOut.title',
     descriptionKey: 'patientApp.stim.sortItOut.description',
+    languageDependent: true,
   },
   {
     type: 'coin_counting',
@@ -154,6 +164,7 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '💰',
     titleKey: 'patientApp.stim.coinCounting.title',
     descriptionKey: 'patientApp.stim.coinCounting.description',
+    languageDependent: true,
   },
 
   // ── Knowledge (4) ──────────────────────────────────────
@@ -164,6 +175,7 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '🌟',
     titleKey: 'patientApp.stim.gentleQuiz.title',
     descriptionKey: 'patientApp.stim.gentleQuiz.description',
+    languageDependent: true,
   },
   {
     type: 'picture_clues',
@@ -172,6 +184,7 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '🖼️',
     titleKey: 'patientApp.stim.pictureClues.title',
     descriptionKey: 'patientApp.stim.pictureClues.description',
+    languageDependent: true,
   },
   {
     type: 'true_or_false',
@@ -180,6 +193,7 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '✅',
     titleKey: 'patientApp.stim.trueOrFalse.title',
     descriptionKey: 'patientApp.stim.trueOrFalse.description',
+    languageDependent: true,
   },
   {
     type: 'this_day_in_history',
@@ -188,6 +202,7 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '📅',
     titleKey: 'patientApp.stim.thisDayInHistory.title',
     descriptionKey: 'patientApp.stim.thisDayInHistory.description',
+    languageDependent: true,
   },
 
   // ── Opinion & Choices (2) ──────────────────────────────
@@ -249,3 +264,16 @@ export function getActivitiesByCategory(category: ActivityCategory): SharedActiv
 
 /** All valid activity type strings */
 export const VALID_ACTIVITY_TYPES: string[] = SHARED_ACTIVITY_DEFINITIONS.map((a) => a.type);
+
+/** Get activities filtered for a given locale — hides English-only games for non-English users */
+export function getActivitiesForLocale(locale: string): SharedActivityDefinition[] {
+  if (locale === 'en') return SHARED_ACTIVITY_DEFINITIONS;
+  return SHARED_ACTIVITY_DEFINITIONS.filter((a) => !a.languageDependent);
+}
+
+/** Get activity categories that have at least one game available for the given locale */
+export function getCategoriesForLocale(locale: string): SharedActivityCategory[] {
+  const available = getActivitiesForLocale(locale);
+  const activeCategories = new Set(available.map((a) => a.category));
+  return SHARED_ACTIVITY_CATEGORIES.filter((c) => activeCategories.has(c.category));
+}

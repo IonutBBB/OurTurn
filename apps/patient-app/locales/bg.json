@@ -23,7 +23,7 @@
     "cognitive": "Грижа за мозъка",
     "social": "Социални контакти и връзка",
     "health": "Здравна проверка",
-    "activity": "Mind Game"
+    "activity": "Игра"
   },
   "patientApp": {
     "todaysPlan": {
@@ -43,7 +43,7 @@
       "opensActivity": "Отваря днешната дейност за грижа за мозъка",
       "comingUp": "Следва",
       "activitiesWaiting": "Дейностите ви очакват",
-      "playActivity": "Play"
+      "playActivity": "Играй"
     },
     "help": {
       "title": "Имам нужда от помощ",

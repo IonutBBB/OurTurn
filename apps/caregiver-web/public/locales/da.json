@@ -67,7 +67,7 @@
     "cognitive": "Hjernetræning",
     "social": "Socialt samvær og kontakt",
     "health": "Helbredstjek",
-    "activity": "Mind Game"
+    "activity": "Hjernespil"
   },
   "patientApp": {
     "todaysPlan": {
@@ -376,10 +376,10 @@
       "removeMedication": "Fjern",
       "maxMedications": "Maksimum 3 typer medicin pr. gruppe",
       "uploadingPhoto": "Uploader...",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Tilføj hjernespil",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Vælg et hjernespil",
+        "subtitle": "Vælg en aktivitet at tilføje til plejeplanen"
       },
       "status": "Status",
       "completedToday": "Completed today",

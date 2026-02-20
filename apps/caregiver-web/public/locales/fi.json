@@ -67,7 +67,7 @@
     "cognitive": "Aivojen hyvinvointi",
     "social": "Sosiaalisuus ja yhteydenpito",
     "health": "Terveystarkastus",
-    "activity": "Mind Game"
+    "activity": "Aivopeli"
   },
   "patientApp": {
     "todaysPlan": {
@@ -376,10 +376,10 @@
       "removeMedication": "Poista",
       "maxMedications": "Enintään 3 lääkettä per ryhmä",
       "uploadingPhoto": "Ladataan...",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Lisää aivopeli",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Valitse aivopeli",
+        "subtitle": "Valitse aktiviteetti hoitosuunnitelmaan"
       },
       "status": "Status",
       "completedToday": "Completed today",

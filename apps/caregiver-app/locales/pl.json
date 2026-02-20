@@ -42,7 +42,7 @@
     "cognitive": "Dobra kondycja umysłu",
     "social": "Życie społeczne i kontakty",
     "health": "Kontrola zdrowia",
-    "activity": "Mind Game"
+    "activity": "Gra"
   },
   "caregiverApp": {
     "dashboard": {
@@ -141,10 +141,10 @@
       "aiSuggestFocusOn": "Skupić się na:",
       "aiSuggestRefresh": "Odśwież",
       "allCategories": "Wszystkie kategorie",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Dodaj grę",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Wybierz grę",
+        "subtitle": "Wybierz aktywność do planu opieki"
       },
       "status": "Status",
       "completedToday": "Ukończone dziś",

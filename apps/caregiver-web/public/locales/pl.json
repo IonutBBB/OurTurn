@@ -67,7 +67,7 @@
     "cognitive": "Sprawność umysłowa",
     "social": "Relacje społeczne",
     "health": "Kontrola stanu zdrowia",
-    "activity": "Mind Game"
+    "activity": "Gra"
   },
   "patientApp": {
     "todaysPlan": {
@@ -376,10 +376,10 @@
       "removeMedication": "Usuń",
       "maxMedications": "Maksymalnie 3 leki w grupie",
       "uploadingPhoto": "Przesyłanie...",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Dodaj grę",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Wybierz grę",
+        "subtitle": "Wybierz aktywność do planu opieki"
       },
       "status": "Status",
       "completedToday": "Ukończone dziś",

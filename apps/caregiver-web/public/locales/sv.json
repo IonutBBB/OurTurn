@@ -67,7 +67,7 @@
     "cognitive": "Hjärnans välmående",
     "social": "Socialt & Kontakt",
     "health": "Hälsokontroll",
-    "activity": "Mind Game"
+    "activity": "Hjärnspel"
   },
   "patientApp": {
     "todaysPlan": {
@@ -376,10 +376,10 @@
       "removeMedication": "Ta bort",
       "maxMedications": "Maximalt 3 läkemedel per grupp",
       "uploadingPhoto": "Laddar upp...",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Lägg till hjärnspel",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Välj ett hjärnspel",
+        "subtitle": "Välj en aktivitet att lägga till i vårdplanen"
       },
       "status": "Status",
       "completedToday": "Completed today",

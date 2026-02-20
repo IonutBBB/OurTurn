@@ -23,7 +23,7 @@
     "cognitive": "Benessri tal-Moħħ",
     "social": "Soċjali u Konnessjoni",
     "health": "Kontroll tas-Saħħa",
-    "activity": "Mind Game"
+    "activity": "Logħba"
   },
   "patientApp": {
     "todaysPlan": {
@@ -43,7 +43,7 @@
       "opensActivity": "Tiftaħ l-attività tal-benessri tal-moħħ tal-lum",
       "comingUp": "Li ġejja",
       "activitiesWaiting": "L-attivitajiet qed jistennewk",
-      "playActivity": "Play"
+      "playActivity": "Ilgħab"
     },
     "help": {
       "title": "Għandi Bżonn Għajnuna",

@@ -23,7 +23,7 @@
     "cognitive": "Mentalno blagostanje",
     "social": "Druženje i povezanost",
     "health": "Provjera zdravlja",
-    "activity": "Mind Game"
+    "activity": "Igra"
   },
   "patientApp": {
     "todaysPlan": {
@@ -43,7 +43,7 @@
       "opensActivity": "Otvara današnju aktivnost za mentalno blagostanje",
       "comingUp": "Sljedeće na redu",
       "activitiesWaiting": "Aktivnosti vas čekaju",
-      "playActivity": "Play"
+      "playActivity": "Igraj"
     },
     "help": {
       "title": "Trebam pomoć",

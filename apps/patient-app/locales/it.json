@@ -23,7 +23,7 @@
     "cognitive": "Benessere Mentale",
     "social": "Socialità e Connessione",
     "health": "Controllo Salute",
-    "activity": "Mind Game"
+    "activity": "Gioco mentale"
   },
   "patientApp": {
     "todaysPlan": {
@@ -43,7 +43,7 @@
       "opensActivity": "Apre l'attività di benessere mentale di oggi",
       "comingUp": "In arrivo",
       "activitiesWaiting": "Le attività ti stanno aspettando",
-      "playActivity": "Play"
+      "playActivity": "Gioca"
     },
     "help": {
       "title": "Ho Bisogno di Aiuto",

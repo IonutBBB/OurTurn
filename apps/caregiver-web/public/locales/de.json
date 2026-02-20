@@ -67,7 +67,7 @@
     "cognitive": "Geistiges Wohlbefinden",
     "social": "Soziales & Verbindung",
     "health": "Gesundheitscheck",
-    "activity": "Mind Game"
+    "activity": "Denkspiel"
   },
   "patientApp": {
     "todaysPlan": {
@@ -376,10 +376,10 @@
       "removeMedication": "Entfernen",
       "maxMedications": "Maximal 3 Medikamente pro Gruppe",
       "uploadingPhoto": "Wird hochgeladen...",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Denkspiel hinzufügen",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Denkspiel auswählen",
+        "subtitle": "Wählen Sie eine Aktivität für den Pflegeplan"
       },
       "status": "Status",
       "completedToday": "Heute erledigt",

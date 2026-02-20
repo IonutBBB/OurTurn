@@ -67,7 +67,7 @@
     "cognitive": "Aju heaolu",
     "social": "Suhtlus ja kontakt",
     "health": "Tervisekontroll",
-    "activity": "Mind Game"
+    "activity": "Mäng"
   },
   "patientApp": {
     "todaysPlan": {
@@ -376,10 +376,10 @@
       "removeMedication": "Eemalda",
       "maxMedications": "Maksimaalselt 3 ravimit grupi kohta",
       "uploadingPhoto": "Üleslaadimine...",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Lisa mäng",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Vali mäng",
+        "subtitle": "Vali tegevus hooldusplaani lisamiseks"
       },
       "status": "Status",
       "completedToday": "Completed today",

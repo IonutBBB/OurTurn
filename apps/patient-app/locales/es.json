@@ -23,7 +23,7 @@
     "cognitive": "Bienestar Cerebral",
     "social": "Social y Conexión",
     "health": "Revisión de Salud",
-    "activity": "Mind Game"
+    "activity": "Juego mental"
   },
   "patientApp": {
     "todaysPlan": {
@@ -43,7 +43,7 @@
       "opensActivity": "Abre la actividad de bienestar cerebral de hoy",
       "comingUp": "Lo siguiente",
       "activitiesWaiting": "Hay actividades esperándote",
-      "playActivity": "Play"
+      "playActivity": "Jugar"
     },
     "help": {
       "title": "Necesito Ayuda",

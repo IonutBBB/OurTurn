@@ -42,7 +42,7 @@
     "cognitive": "Bien-être Cérébral",
     "social": "Social & Connexion",
     "health": "Bilan de Santé",
-    "activity": "Mind Game"
+    "activity": "Jeu mental"
   },
   "caregiverApp": {
     "dashboard": {
@@ -141,10 +141,10 @@
       "aiSuggestFocusOn": "Concentrer sur :",
       "aiSuggestRefresh": "Actualiser",
       "allCategories": "Toutes les catégories",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Ajouter un jeu",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Choisir un jeu",
+        "subtitle": "Sélectionnez une activité à ajouter au plan de soins"
       },
       "status": "Statut",
       "completedToday": "Terminé aujourd'hui",

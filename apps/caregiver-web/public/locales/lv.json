@@ -67,7 +67,7 @@
     "cognitive": "Smadzeņu labsajūta",
     "social": "Sociālā mijiedarbība un saikne",
     "health": "Veselības pārbaude",
-    "activity": "Mind Game"
+    "activity": "Spēle"
   },
   "patientApp": {
     "todaysPlan": {
@@ -376,10 +376,10 @@
       "removeMedication": "Noņemt",
       "maxMedications": "Maksimums 3 zāles vienā grupā",
       "uploadingPhoto": "Augšupielādē...",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Pievienot spēli",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Izvēlieties spēli",
+        "subtitle": "Izvēlieties aktivitāti aprūpes plānam"
       },
       "status": "Status",
       "completedToday": "Completed today",

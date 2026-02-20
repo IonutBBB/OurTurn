@@ -23,7 +23,7 @@
     "cognitive": "Aivojen hyvinvointi",
     "social": "Sosiaalisuus ja yhteydenpito",
     "health": "Terveystarkastus",
-    "activity": "Mind Game"
+    "activity": "Aivopeli"
   },
   "patientApp": {
     "todaysPlan": {
@@ -43,7 +43,7 @@
       "opensActivity": "Avaa tämän päivän aivojen hyvinvointitehtävän",
       "comingUp": "Seuraavaksi tulossa",
       "activitiesWaiting": "Tehtäviä odottaa sinua",
-      "playActivity": "Play"
+      "playActivity": "Pelaa"
     },
     "help": {
       "title": "Tarvitsen apua",

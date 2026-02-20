@@ -23,7 +23,7 @@
     "cognitive": "Hjernesundhed",
     "social": "Socialt & Forbindelse",
     "health": "Sundhedstjek",
-    "activity": "Mind Game"
+    "activity": "Hjernespil"
   },
   "patientApp": {
     "todaysPlan": {
@@ -43,7 +43,7 @@
       "opensActivity": "Åbner dagens hjerneaktivitet",
       "comingUp": "Kommer snart",
       "activitiesWaiting": "Aktiviteter venter på dig",
-      "playActivity": "Play"
+      "playActivity": "Spil"
     },
     "help": {
       "title": "Jeg har brug for hjælp",

@@ -23,7 +23,7 @@
     "cognitive": "Ευεξία Εγκεφάλου",
     "social": "Κοινωνική Επαφή & Σύνδεση",
     "health": "Έλεγχος Υγείας",
-    "activity": "Mind Game"
+    "activity": "Παιχνίδι"
   },
   "patientApp": {
     "todaysPlan": {
@@ -43,7 +43,7 @@
       "opensActivity": "Ανοίγει τη σημερινή δραστηριότητα ευεξίας εγκεφάλου",
       "comingUp": "Έρχεται στη συνέχεια",
       "activitiesWaiting": "Δραστηριότητες σας περιμένουν",
-      "playActivity": "Play"
+      "playActivity": "Παίξε"
     },
     "help": {
       "title": "Χρειάζομαι Βοήθεια",

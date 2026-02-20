@@ -42,7 +42,7 @@
     "cognitive": "Agyi jóllét",
     "social": "Társas kapcsolatok",
     "health": "Egészségügyi ellenőrzés",
-    "activity": "Mind Game"
+    "activity": "Játék"
   },
   "caregiverApp": {
     "dashboard": {
@@ -141,10 +141,10 @@
       "aiSuggestFocusOn": "Fókusz:",
       "aiSuggestRefresh": "Frissítés",
       "allCategories": "Összes kategória",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Játék hozzáadása",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Válasszon játékot",
+        "subtitle": "Válasszon tevékenységet az ápolási tervhez"
       },
       "status": "Status",
       "completedToday": "Completed today",

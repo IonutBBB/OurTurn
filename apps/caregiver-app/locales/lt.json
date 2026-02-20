@@ -42,7 +42,7 @@
     "cognitive": "Smegenų gerovė",
     "social": "Socialinė veikla ir ryšiai",
     "health": "Sveikatos patikra",
-    "activity": "Mind Game"
+    "activity": "Žaidimas"
   },
   "caregiverApp": {
     "dashboard": {
@@ -141,10 +141,10 @@
       "aiSuggestFocusOn": "Sutelkti dėmesį:",
       "aiSuggestRefresh": "Atnaujinti",
       "allCategories": "Visos kategorijos",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Pridėti žaidimą",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Pasirinkite žaidimą",
+        "subtitle": "Pasirinkite veiklą priežiūros planui"
       },
       "status": "Status",
       "completedToday": "Completed today",

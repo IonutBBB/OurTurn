@@ -67,7 +67,7 @@
     "cognitive": "Starostlivosť o mozog",
     "social": "Spoločenské aktivity a spojenie",
     "health": "Kontrola zdravia",
-    "activity": "Mind Game"
+    "activity": "Hra"
   },
   "patientApp": {
     "todaysPlan": {
@@ -376,10 +376,10 @@
       "removeMedication": "Odstrániť",
       "maxMedications": "Maximálne 3 lieky na skupinu",
       "uploadingPhoto": "Nahráva sa...",
-      "addActivity": "Add Mind Game",
+      "addActivity": "Pridať hru",
       "activityPicker": {
-        "title": "Choose a Mind Game",
-        "subtitle": "Select an activity to add to the care plan"
+        "title": "Vyberte hru",
+        "subtitle": "Vyberte aktivitu pre plán starostlivosti"
       },
       "status": "Status",
       "completedToday": "Completed today",
