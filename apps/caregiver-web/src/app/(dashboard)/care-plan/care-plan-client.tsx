@@ -186,6 +186,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
   const [suggestLoading, setSuggestLoading] = useState(false);
   const [suggestCategory, setSuggestCategory] = useState<string>('');
   const [addingSuggestion, setAddingSuggestion] = useState<string | null>(null);
+  const [suggestionRecurrence, setSuggestionRecurrence] = useState<Record<number, { recurrence: string; recurrence_days: string[] }>>({});
 
   // Activity template picker state
   const [showActivityPicker, setShowActivityPicker] = useState(false);
@@ -449,8 +450,12 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
     }
   };
 
-  const handleAddSuggestion = async (suggestion: SuggestedTask) => {
+  const handleAddSuggestion = async (suggestion: SuggestedTask, index: number) => {
     setAddingSuggestion(suggestion.title);
+
+    const rec = suggestionRecurrence[index];
+    const recurrence = rec?.recurrence || 'daily';
+    const recurrence_days = recurrence === 'specific_days' ? (rec?.recurrence_days || []) : null;
 
     try {
       const { data: { user } } = await supabase.auth.getUser();
@@ -463,8 +468,8 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
           title: suggestion.title,
           hint_text: suggestion.hint_text,
           time: suggestion.time,
-          recurrence: suggestion.recurrence,
-          recurrence_days: null,
+          recurrence,
+          recurrence_days,
           active: true,
           created_by: user?.id,
           activity_type: suggestion.activity_type || null,
@@ -801,69 +806,116 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
             <div className="space-y-3">
               {suggestedTasks.map((suggestion, index) => {
                 const category = getCategoryInfo(suggestion.category);
+                const rec = suggestionRecurrence[index]?.recurrence || 'daily';
+                const recDays = suggestionRecurrence[index]?.recurrence_days || [];
                 return (
                   <div
                     key={index}
-                    className="card-paper p-4 flex items-start justify-between gap-4"
+                    className="card-paper p-4"
                   >
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
-                        <span
-                          className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs ${category.color}`}
-                        >
-                          {category.icon} {t(`categories.${suggestion.category}`)}
-                        </span>
-                        <span className="text-sm text-text-muted">
-                          {formatTime(suggestion.time)}
-                        </span>
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-2">
+                          <span
+                            className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs ${category.color}`}
+                          >
+                            {category.icon} {t(`categories.${suggestion.category}`)}
+                          </span>
+                          <span className="text-sm text-text-muted">
+                            {formatTime(suggestion.time)}
+                          </span>
+                        </div>
+                        <h4 className="font-medium text-text-primary mb-1">{suggestion.title}</h4>
+                        <p className="text-sm text-text-secondary">{suggestion.hint_text}</p>
+                        {suggestion.evidence_source && (
+                          <details className="mt-2 text-xs text-text-muted">
+                            <summary className="cursor-pointer flex items-center gap-1">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3 h-3">
+                                <path d="M10.75 16.82A7.462 7.462 0 0115 15.5c.71 0 1.396.098 2.046.282A.75.75 0 0018 15.06V3.44a.75.75 0 00-.556-.724A9.006 9.006 0 0015 2.5a9.006 9.006 0 00-4.25 1.065v13.255zm-1.5 0a7.462 7.462 0 00-4.25-1.32c-.71 0-1.396.098-2.046.282A.75.75 0 012 15.06V3.44a.75.75 0 01.556-.724A9.006 9.006 0 015 2.5a9.006 9.006 0 014.25 1.065v13.255z" />
+                              </svg>
+                              {t('caregiverApp.carePlan.aiSuggestEvidenceBased')}
+                            </summary>
+                            <p className="mt-1 pl-4">{suggestion.evidence_source}</p>
+                          </details>
+                        )}
                       </div>
-                      <h4 className="font-medium text-text-primary mb-1">{suggestion.title}</h4>
-                      <p className="text-sm text-text-secondary">{suggestion.hint_text}</p>
-                      {suggestion.evidence_source && (
-                        <details className="mt-2 text-xs text-text-muted">
-                          <summary className="cursor-pointer flex items-center gap-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3 h-3">
-                              <path d="M10.75 16.82A7.462 7.462 0 0115 15.5c.71 0 1.396.098 2.046.282A.75.75 0 0018 15.06V3.44a.75.75 0 00-.556-.724A9.006 9.006 0 0015 2.5a9.006 9.006 0 00-4.25 1.065v13.255zm-1.5 0a7.462 7.462 0 00-4.25-1.32c-.71 0-1.396.098-2.046.282A.75.75 0 012 15.06V3.44a.75.75 0 01.556-.724A9.006 9.006 0 015 2.5a9.006 9.006 0 014.25 1.065v13.255z" />
+                      <button
+                        onClick={() => handleAddSuggestion(suggestion, index)}
+                        disabled={addingSuggestion === suggestion.title}
+                        className="px-3 py-1.5 bg-brand-600 hover:bg-brand-700 text-white text-sm font-medium rounded-2xl transition-colors disabled:opacity-50 flex items-center gap-1 whitespace-nowrap"
+                      >
+                        {addingSuggestion === suggestion.title ? (
+                          <>
+                            <svg
+                              className="animate-spin h-4 w-4"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                            >
+                              <circle
+                                className="opacity-25"
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                stroke="currentColor"
+                                strokeWidth="4"
+                              ></circle>
+                              <path
+                                className="opacity-75"
+                                fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                              ></path>
                             </svg>
-                            {t('caregiverApp.carePlan.aiSuggestEvidenceBased')}
-                          </summary>
-                          <p className="mt-1 pl-4">{suggestion.evidence_source}</p>
-                        </details>
+                            {t('caregiverApp.carePlan.aiSuggestAdding')}
+                          </>
+                        ) : (
+                          <>+ {t('caregiverApp.carePlan.aiSuggestAdd')}</>
+                        )}
+                      </button>
+                    </div>
+                    {/* Recurrence picker */}
+                    <div className="mt-3 pt-3 border-t border-surface-border">
+                      <div className="flex items-center gap-3 flex-wrap">
+                        <span className="text-xs font-medium text-text-secondary">{t('caregiverApp.carePlan.recurrence')}:</span>
+                        {(['daily', 'specific_days', 'one_time'] as const).map((r) => (
+                          <button
+                            key={r}
+                            type="button"
+                            onClick={() => setSuggestionRecurrence(prev => ({ ...prev, [index]: { recurrence: r, recurrence_days: prev[index]?.recurrence_days || [] } }))}
+                            className={`px-2.5 py-1 text-xs rounded-lg border transition-colors ${
+                              rec === r
+                                ? 'bg-brand-600 text-white border-brand-600'
+                                : 'bg-surface-card dark:bg-surface-elevated text-text-secondary border-surface-border hover:border-brand-300'
+                            }`}
+                          >
+                            {r === 'daily' && t('caregiverApp.carePlan.daily')}
+                            {r === 'specific_days' && t('caregiverApp.carePlan.specificDays')}
+                            {r === 'one_time' && t('caregiverApp.carePlan.oneTime')}
+                          </button>
+                        ))}
+                      </div>
+                      {rec === 'specific_days' && (
+                        <div className="flex gap-1.5 mt-2">
+                          {DAYS.map((day) => (
+                            <button
+                              key={day}
+                              type="button"
+                              onClick={() => {
+                                const days = recDays.includes(day) ? recDays.filter((d) => d !== day) : [...recDays, day];
+                                setSuggestionRecurrence(prev => ({ ...prev, [index]: { recurrence: 'specific_days', recurrence_days: days } }));
+                              }}
+                              className={`px-2 py-1 text-xs rounded-lg border transition-colors ${
+                                recDays.includes(day)
+                                  ? 'bg-brand-600 text-white border-brand-600'
+                                  : 'bg-surface-card dark:bg-surface-elevated text-text-secondary border-surface-border hover:border-brand-300'
+                              }`}
+                            >
+                              {t(`caregiverApp.carePlan.days.${day}`)}
+                            </button>
+                          ))}
+                        </div>
                       )}
                     </div>
-                    <button
-                      onClick={() => handleAddSuggestion(suggestion)}
-                      disabled={addingSuggestion === suggestion.title}
-                      className="px-3 py-1.5 bg-brand-600 hover:bg-brand-700 text-white text-sm font-medium rounded-2xl transition-colors disabled:opacity-50 flex items-center gap-1 whitespace-nowrap"
-                    >
-                      {addingSuggestion === suggestion.title ? (
-                        <>
-                          <svg
-                            className="animate-spin h-4 w-4"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                          >
-                            <circle
-                              className="opacity-25"
-                              cx="12"
-                              cy="12"
-                              r="10"
-                              stroke="currentColor"
-                              strokeWidth="4"
-                            ></circle>
-                            <path
-                              className="opacity-75"
-                              fill="currentColor"
-                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                            ></path>
-                          </svg>
-                          {t('caregiverApp.carePlan.aiSuggestAdding')}
-                        </>
-                      ) : (
-                        <>+ {t('caregiverApp.carePlan.aiSuggestAdd')}</>
-                      )}
-                    </button>
                   </div>
                 );
               })}

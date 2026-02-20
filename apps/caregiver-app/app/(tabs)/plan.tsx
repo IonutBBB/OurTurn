@@ -98,6 +98,7 @@ export default function PlanScreen() {
   const [suggestLoading, setSuggestLoading] = useState(false);
   const [suggestCategory, setSuggestCategory] = useState<string>('');
   const [addingSuggestion, setAddingSuggestion] = useState<string | null>(null);
+  const [suggestionRecurrence, setSuggestionRecurrence] = useState<Record<number, { recurrence: 'daily' | 'specific_days' | 'one_time'; recurrence_days: string[] }>>({});
 
   // Copy Day state
   const [showCopyModal, setShowCopyModal] = useState(false);
@@ -604,9 +605,13 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
     }
   }, [household?.id, patient, tasks]);
 
-  const handleAddSuggestion = useCallback(async (suggestion: { category: TaskCategory; title: string; hint_text: string; time: string; activity_type?: string | null; intervention_id?: string | null; evidence_source?: string | null }) => {
+  const handleAddSuggestion = useCallback(async (suggestion: { category: TaskCategory; title: string; hint_text: string; time: string; activity_type?: string | null; intervention_id?: string | null; evidence_source?: string | null }, index: number) => {
     if (!household?.id) return;
     setAddingSuggestion(suggestion.title);
+
+    const rec = suggestionRecurrence[index];
+    const recurrence = rec?.recurrence || 'daily';
+    const recurrence_days = recurrence === 'specific_days' ? (rec?.recurrence_days || []) : [];
 
     try {
       const { data, error } = await supabase
@@ -617,8 +622,8 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
           title: suggestion.title,
           hint_text: suggestion.hint_text,
           time: suggestion.time,
-          recurrence: 'daily',
-          recurrence_days: [],
+          recurrence,
+          recurrence_days,
           active: true,
           created_by: user?.id,
           activity_type: suggestion.activity_type || null,
@@ -637,7 +642,7 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
     } finally {
       setAddingSuggestion(null);
     }
-  }, [household?.id, user?.id]);
+  }, [household?.id, user?.id, suggestionRecurrence]);
 
   const handleCopyDay = useCallback(async () => {
     if (!household?.id || copyTargetDays.length === 0) return;
@@ -1282,6 +1287,8 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
               <ScrollView showsVerticalScrollIndicator={false}>
                 {suggestedTasks.map((suggestion, index) => {
                   const catInfo = getCategoryInfo(suggestion.category);
+                  const rec = suggestionRecurrence[index]?.recurrence || 'daily';
+                  const recDays = suggestionRecurrence[index]?.recurrence_days || [];
                   return (
                     <View key={index} style={styles.suggestionCard}>
                       <View style={[styles.taskCategoryStripe, { backgroundColor: catInfo.color }]} />
@@ -1300,11 +1307,59 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
                             <Text style={styles.evidenceText}>{t('caregiverApp.carePlan.evidenceBased')}</Text>
                           </View>
                         )}
+                        {/* Recurrence picker */}
+                        <View style={styles.suggestionRecurrenceRow}>
+                          {(['daily', 'specific_days', 'one_time'] as const).map((r) => (
+                            <TouchableOpacity
+                              key={r}
+                              style={[
+                                styles.suggestionRecurrenceOption,
+                                rec === r && styles.suggestionRecurrenceOptionSelected,
+                              ]}
+                              onPress={() => setSuggestionRecurrence(prev => ({ ...prev, [index]: { recurrence: r, recurrence_days: prev[index]?.recurrence_days || [] } }))}
+                              activeOpacity={0.7}
+                            >
+                              <Text style={[
+                                styles.suggestionRecurrenceText,
+                                rec === r && styles.suggestionRecurrenceTextSelected,
+                              ]}>
+                                {r === 'daily' && t('caregiverApp.carePlan.daily')}
+                                {r === 'specific_days' && t('caregiverApp.carePlan.specificDays')}
+                                {r === 'one_time' && t('caregiverApp.carePlan.oneTime')}
+                              </Text>
+                            </TouchableOpacity>
+                          ))}
+                        </View>
+                        {rec === 'specific_days' && (
+                          <View style={styles.suggestionDayPickerRow}>
+                            {DAY_KEYS.map((day) => (
+                              <TouchableOpacity
+                                key={day}
+                                style={[
+                                  styles.suggestionDayPickerItem,
+                                  recDays.includes(day) && styles.suggestionDayPickerItemSelected,
+                                ]}
+                                onPress={() => {
+                                  const days = recDays.includes(day) ? recDays.filter(d => d !== day) : [...recDays, day];
+                                  setSuggestionRecurrence(prev => ({ ...prev, [index]: { recurrence: 'specific_days', recurrence_days: days } }));
+                                }}
+                                activeOpacity={0.7}
+                              >
+                                <Text style={[
+                                  styles.suggestionDayPickerText,
+                                  recDays.includes(day) && styles.suggestionDayPickerTextSelected,
+                                ]}>
+                                  {t(`caregiverApp.carePlan.days.${day}`)}
+                                </Text>
+                              </TouchableOpacity>
+                            ))}
+                          </View>
+                        )}
                         <View style={styles.suggestionFooter}>
                           <Text style={styles.taskTime}>{formatTime(suggestion.time)}</Text>
                           <TouchableOpacity
                             style={styles.addSuggestionButton}
-                            onPress={() => handleAddSuggestion(suggestion)}
+                            onPress={() => handleAddSuggestion(suggestion, index)}
                             disabled={addingSuggestion === suggestion.title}
                             activeOpacity={0.7}
                           >
@@ -2013,6 +2068,65 @@ const useStyles = createThemedStyles((colors) => ({
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
     color: colors.textInverse,
+  },
+  suggestionRecurrenceRow: {
+    flexDirection: 'row',
+    gap: 8,
+    marginTop: 10,
+    marginBottom: 4,
+  },
+  suggestionRecurrenceOption: {
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: RADIUS.sm,
+    borderWidth: 1,
+    borderColor: colors.border,
+    alignItems: 'center',
+  },
+  suggestionRecurrenceOptionSelected: {
+    borderColor: colors.brand600,
+    backgroundColor: colors.brand50,
+  },
+  suggestionRecurrenceText: {
+    fontSize: 12,
+    fontWeight: '500',
+    fontFamily: FONTS.body,
+    color: colors.textSecondary,
+  },
+  suggestionRecurrenceTextSelected: {
+    color: colors.brand600,
+    fontFamily: FONTS.bodySemiBold,
+    fontWeight: '600',
+  },
+  suggestionDayPickerRow: {
+    flexDirection: 'row',
+    gap: 4,
+    marginTop: 6,
+    marginBottom: 4,
+    flexWrap: 'wrap',
+  },
+  suggestionDayPickerItem: {
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: RADIUS.sm,
+    borderWidth: 1,
+    borderColor: colors.border,
+    alignItems: 'center',
+  },
+  suggestionDayPickerItemSelected: {
+    borderColor: colors.brand600,
+    backgroundColor: colors.brand600,
+  },
+  suggestionDayPickerText: {
+    fontSize: 11,
+    fontWeight: '600',
+    fontFamily: FONTS.body,
+    color: colors.textSecondary,
+  },
+  suggestionDayPickerTextSelected: {
+    color: colors.textInverse,
+    fontFamily: FONTS.bodySemiBold,
+    fontWeight: '600',
   },
   evidenceBadge: {
     flexDirection: 'row',
