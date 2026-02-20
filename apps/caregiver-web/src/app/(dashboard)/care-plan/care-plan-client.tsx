@@ -82,7 +82,26 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const [showAddForm, setShowAddForm] = useState(false);
 
-  // Realtime subscription — refresh tasks when patient adds/edits/deletes from their app
+  // Today's completions — track which tasks are done
+  const today = new Date().toISOString().split('T')[0];
+  const [completions, setCompletions] = useState<Record<string, boolean>>({});
+
+  const fetchCompletions = useCallback(async () => {
+    const { data } = await supabase
+      .from('task_completions')
+      .select('task_id, completed, skipped')
+      .eq('household_id', householdId)
+      .eq('date', today);
+    if (data) {
+      const map: Record<string, boolean> = {};
+      data.forEach((c) => { if (c.completed) map[c.task_id] = true; });
+      setCompletions(map);
+    }
+  }, [householdId, supabase, today]);
+
+  useEffect(() => { fetchCompletions(); }, [fetchCompletions]);
+
+  // Realtime subscription — refresh tasks and completions
   const fetchTasks = useCallback(async () => {
     const { data, error } = await supabase
       .from('care_plan_tasks')
@@ -102,9 +121,15 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
         table: 'care_plan_tasks',
         filter: `household_id=eq.${householdId}`,
       }, () => { fetchTasks(); })
+      .on('postgres_changes', {
+        event: '*',
+        schema: 'public',
+        table: 'task_completions',
+        filter: `household_id=eq.${householdId}`,
+      }, () => { fetchCompletions(); })
       .subscribe();
     return () => { supabase.removeChannel(channel); };
-  }, [householdId, supabase, fetchTasks]);
+  }, [householdId, supabase, fetchTasks, fetchCompletions]);
 
   // Day filter state
   const [selectedDay, setSelectedDay] = useState<DayFilter>(getTodayAbbr());
@@ -1247,6 +1272,9 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
           <table className="w-full">
             <thead className="card-inset rounded-2xl border-b border-surface-border">
               <tr>
+                <th className="px-3 py-3 text-center text-xs font-semibold text-text-muted uppercase tracking-wide w-12">
+                  {t('caregiverApp.carePlan.status')}
+                </th>
                 <th className="px-6 py-3 text-left text-xs font-semibold text-text-muted uppercase tracking-wide">
                   {t('caregiverApp.carePlan.time')}
                 </th>
@@ -1273,6 +1301,18 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
                 const hasPhoto = task.photo_url || (task.medication_items && task.medication_items.some((m) => m.photo_url));
                 return (
                   <tr key={task.id} className="hover:bg-brand-50 dark:hover:bg-surface-elevated">
+                    <td className="px-3 py-4 text-center">
+                      {completions[task.id] ? (
+                        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-status-success/15 text-status-success" title={t('caregiverApp.carePlan.completedToday')}>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                            <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                          </svg>
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full border-2 border-surface-border" title={t('caregiverApp.carePlan.pendingToday')}>
+                        </span>
+                      )}
+                    </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="font-medium text-text-primary">{formatTime(task.time)}</span>
                     </td>

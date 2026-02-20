@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { createClient as createServerClient } from '@/lib/supabase/server';
-import { DashboardRealtime, JournalCard, ActivitiesCounter } from './dashboard-client';
+import { DashboardRealtime, JournalCard } from './dashboard-client';
 import { getServerTranslations } from '@/lib/server-i18n';
 
 function DashboardSkeleton() {
@@ -123,15 +123,6 @@ async function DashboardContent() {
     .select('*', { count: 'exact', head: true })
     .eq('household_id', household?.id)
     .gte('triggered_at', `${todayStr}T00:00:00`);
-
-  // Count completed mind games today
-  const { count: activitiesCompleted } = await supabase
-    .from('activity_sessions')
-    .select('*', { count: 'exact', head: true })
-    .eq('household_id', household?.id)
-    .eq('date', todayStr)
-    .not('completed_at', 'is', null)
-    .eq('skipped', false);
 
   const progressPercent = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
 
@@ -326,7 +317,7 @@ async function DashboardContent() {
           {/* Engagement summary */}
           <div className="border-t border-surface-border pt-4">
             <p className="section-label mb-3">{t.dashboard.engagementSummary}</p>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-3 gap-2">
               <div className="card-inset p-3 text-center">
                 <p className="text-lg font-bold font-display text-brand-600">{progressPercent}%</p>
                 <p className="text-xs text-text-muted">{t.dashboard.tasksCompletedLabel}</p>
@@ -335,12 +326,6 @@ async function DashboardContent() {
                 <p className="text-lg font-bold font-display text-brand-600">{checkin ? '✅' : '—'}</p>
                 <p className="text-xs text-text-muted">{checkin ? t.dashboard.checkedIn : t.dashboard.notCheckedIn}</p>
               </div>
-              {household?.id && (
-                <ActivitiesCounter
-                  householdId={household.id}
-                  initialCount={activitiesCompleted || 0}
-                />
-              )}
               <div className="card-inset p-3 text-center">
                 <p className="text-lg font-bold font-display text-brand-600">{alertsToday || 0}</p>
                 <p className="text-xs text-text-muted">{t.dashboard.alertsToday}</p>

@@ -380,7 +380,10 @@
       "medItemLabel": "Medication {{number}}",
       "removeMedication": "Remove",
       "maxMedications": "Maximum 3 medications per group",
-      "uploadingPhoto": "Uploading..."
+      "uploadingPhoto": "Uploading...",
+      "status": "Status",
+      "completedToday": "Completed today",
+      "pendingToday": "Not yet done"
     },
     "location": {
       "title": "Location & Safety",

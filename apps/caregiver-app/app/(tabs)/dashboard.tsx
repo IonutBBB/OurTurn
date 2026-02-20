@@ -28,7 +28,6 @@ export default function DashboardScreen() {
   const [journalNote, setJournalNote] = useState('');
   const [savingNote, setSavingNote] = useState(false);
   const [alertsToday, setAlertsToday] = useState(0);
-  const [activitiesCompleted, setActivitiesCompleted] = useState(0);
   const [loadError, setLoadError] = useState(false);
 
   const styles = useStyles();
@@ -83,17 +82,6 @@ export default function DashboardScreen() {
         .gte('triggered_at', `${today}T00:00:00`);
 
       setAlertsToday(count || 0);
-
-      // Count completed mind games today
-      const { count: gamesCount } = await supabase
-        .from('activity_sessions')
-        .select('*', { count: 'exact', head: true })
-        .eq('household_id', household.id)
-        .eq('date', today)
-        .not('completed_at', 'is', null)
-        .eq('skipped', false);
-
-      setActivitiesCompleted(gamesCount || 0);
     } catch (error) {
       if (__DEV__) console.error('Failed to load dashboard data:', error);
       setLoadError(true);
@@ -102,41 +90,6 @@ export default function DashboardScreen() {
 
   useEffect(() => {
     loadDashboardData();
-  }, [household?.id]);
-
-  // Real-time subscription for activity_sessions
-  useEffect(() => {
-    if (!household?.id) return;
-
-    const channel = supabase
-      .channel('dashboard-activities')
-      .on(
-        'postgres_changes',
-        {
-          event: '*',
-          schema: 'public',
-          table: 'activity_sessions',
-          filter: `household_id=eq.${household.id}`,
-        },
-        () => {
-          const today = new Date().toISOString().split('T')[0];
-          supabase
-            .from('activity_sessions')
-            .select('*', { count: 'exact', head: true })
-            .eq('household_id', household.id)
-            .eq('date', today)
-            .not('completed_at', 'is', null)
-            .eq('skipped', false)
-            .then(({ count }) => {
-              setActivitiesCompleted(count || 0);
-            });
-        }
-      )
-      .subscribe();
-
-    return () => {
-      supabase.removeChannel(channel);
-    };
   }, [household?.id]);
 
   const onRefresh = async () => {
@@ -425,10 +378,6 @@ export default function DashboardScreen() {
               <View style={styles.engagementBox}>
                 <Text style={styles.engagementValue}>{checkin ? '✅' : '—'}</Text>
                 <Text style={styles.engagementLabel}>{checkin ? t('caregiverApp.dashboard.checkedIn') : t('caregiverApp.dashboard.notCheckedIn')}</Text>
-              </View>
-              <View style={styles.engagementBox}>
-                <Text style={styles.engagementValue}>{activitiesCompleted > 0 ? activitiesCompleted : '—'}</Text>
-                <Text style={styles.engagementLabel}>{t('caregiverApp.dashboard.mindGames')}</Text>
               </View>
               <View style={styles.engagementBox}>
                 <Text style={styles.engagementValue}>{alertsToday}</Text>

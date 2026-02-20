@@ -145,7 +145,10 @@
       "activityPicker": {
         "title": "Choose a Mind Game",
         "subtitle": "Select an activity to add to the care plan"
-      }
+      },
+      "status": "Status",
+      "completedToday": "Vandaag voltooid",
+      "pendingToday": "Nog niet gedaan"
     },
     "location": {
       "title": "Locatie & Veiligheid",

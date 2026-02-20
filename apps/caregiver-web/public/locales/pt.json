@@ -380,7 +380,10 @@
       "activityPicker": {
         "title": "Choose a Mind Game",
         "subtitle": "Select an activity to add to the care plan"
-      }
+      },
+      "status": "Estado",
+      "completedToday": "Concluído hoje",
+      "pendingToday": "Ainda não feito"
     },
     "location": {
       "title": "Localização e Segurança",

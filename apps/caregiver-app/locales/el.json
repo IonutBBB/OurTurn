@@ -145,7 +145,10 @@
       "activityPicker": {
         "title": "Choose a Mind Game",
         "subtitle": "Select an activity to add to the care plan"
-      }
+      },
+      "status": "Status",
+      "completedToday": "Completed today",
+      "pendingToday": "Not yet done"
     },
     "location": {
       "title": "Τοποθεσία & Ασφάλεια",
