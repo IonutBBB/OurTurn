@@ -1473,89 +1473,89 @@
   },
   "patientApp": {
     "categories": {
-      "wordsLanguage": "Words & Language",
-      "memoryAttention": "Memory & Attention",
-      "logicReasoning": "Logic & Reasoning",
-      "knowledge": "Knowledge",
+      "wordsLanguage": "Žodžiai ir kalba",
+      "memoryAttention": "Atmintis ir dėmesys",
+      "logicReasoning": "Logika ir samprotavimas",
+      "knowledge": "Žinios",
       "opinionChoices": "Your Opinions",
       "reminiscence": "Remember When"
     },
     "stim": {
       "wordAssociation": {
-        "title": "Word Association",
-        "description": "Say the first word that comes to mind"
+        "title": "Žodžių asociacija",
+        "description": "Pasakykite pirmą žodį, kuris ateina į galvą"
       },
       "proverbs": {
-        "title": "Proverbs & Sayings",
-        "description": "Complete familiar phrases"
+        "title": "Patarimai ir posakiai",
+        "description": "Užbaikite žinomas frazes"
       },
       "wordSearch": {
-        "title": "Word Search",
-        "description": "Find hidden words in the grid"
+        "title": "Žodžių paieška",
+        "description": "Raskite tinklelyje paslėptus žodžius"
       },
       "wordScramble": {
-        "title": "Word Scramble",
-        "description": "Unscramble letters to make words"
+        "title": "Žodžių maišalynė",
+        "description": "Sudėliokite raides į žodžius"
       },
       "rhymeTime": {
-        "title": "Rhyme Time",
-        "description": "Find the word that rhymes"
+        "title": "Rimavimo metas",
+        "description": "Raskite žodį, kuris rimuojasi"
       },
       "photoPairs": {
-        "title": "Photo Pairs",
-        "description": "Find matching pairs of pictures"
+        "title": "Nuotraukų poros",
+        "description": "Raskite atitinkančias paveikslėlių poras"
       },
       "spotDifference": {
-        "title": "Spot the Difference",
-        "description": "Find what's different between two pictures"
+        "title": "Rask skirtumą",
+        "description": "Raskite, kuo skiriasi du paveikslėliai"
       },
       "whatChanged": {
-        "title": "What Changed?",
-        "description": "Spot which emoji changed in the grid"
+        "title": "Kas pasikeitė?",
+        "description": "Suraskite, kuris jaustukas pasikeitė tinklelyje"
       },
       "nameThatTune": {
         "title": "Name That Tune",
         "description": "Guess the song from a few lines"
       },
       "oddOneOut": {
-        "title": "Odd One Out",
-        "description": "Which one does not belong?"
+        "title": "Vienas netinka",
+        "description": "Kuris iš jų nepriklauso?"
       },
       "patternSequence": {
-        "title": "Pattern Sequence",
-        "description": "What comes next in the pattern?"
+        "title": "Raštų seka",
+        "description": "Kas toliau eina rašte?"
       },
       "categorySort": {
-        "title": "Category Sort",
-        "description": "Sort items into the right groups"
+        "title": "Rūšiavimas",
+        "description": "Surūšiuokite daiktus į tinkamas grupes"
       },
       "whichGoesTogether": {
-        "title": "Which Goes Together?",
-        "description": "Match items that go together"
+        "title": "Kas dera kartu?",
+        "description": "Suderinkite daiktus, kurie dera kartu"
       },
       "whatComesNext": {
-        "title": "What Comes Next?",
-        "description": "Work out the next step in a sequence"
+        "title": "Kas toliau?",
+        "description": "Išsiaiškinkite kitą žingsnį sekoje"
       },
       "sortItOut": {
         "title": "Sort It Out",
         "description": "Put things in the right place"
       },
       "coinCounting": {
-        "title": "Coin Counting",
-        "description": "Add up the coins to find the total"
+        "title": "Monetų skaičiavimas",
+        "description": "Suskaičiuokite monetas, kad rastumėte bendrą sumą"
       },
       "gentleQuiz": {
-        "title": "Gentle Quiz",
-        "description": "Fun questions with no wrong answers"
+        "title": "Švelnusis viktorina",
+        "description": "Smagūs klausimai be neteisingų atsakymų"
       },
       "pictureClues": {
-        "title": "Picture Clues",
-        "description": "Guess what the emoji clues represent"
+        "title": "Paveikslėlių užuominos",
+        "description": "Atspėkite, ką reiškia jaustukų užuominos"
       },
       "trueOrFalse": {
-        "title": "True or False",
-        "description": "Decide if a statement is true or false"
+        "title": "Tiesa ar melas",
+        "description": "Nuspręskite, ar teiginys yra teisingas, ar klaidingas"
       },
       "thisDayInHistory": {
         "title": "This Day in History",

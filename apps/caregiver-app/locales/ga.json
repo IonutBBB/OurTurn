@@ -1473,89 +1473,89 @@
   },
   "patientApp": {
     "categories": {
-      "wordsLanguage": "Words & Language",
-      "memoryAttention": "Memory & Attention",
-      "logicReasoning": "Logic & Reasoning",
-      "knowledge": "Knowledge",
+      "wordsLanguage": "Focail & Teanga",
+      "memoryAttention": "Cuimhne & Aird",
+      "logicReasoning": "Loighic & Réasúnaíocht",
+      "knowledge": "Eolas",
       "opinionChoices": "Your Opinions",
       "reminiscence": "Remember When"
     },
     "stim": {
       "wordAssociation": {
-        "title": "Word Association",
-        "description": "Say the first word that comes to mind"
+        "title": "Comhcheangal Focal",
+        "description": "Abair an chéad fhocal a thagann chun cuimhne"
       },
       "proverbs": {
-        "title": "Proverbs & Sayings",
-        "description": "Complete familiar phrases"
+        "title": "Seanfhocail & Nathanna",
+        "description": "Comhlánaigh frásaí coitianta"
       },
       "wordSearch": {
-        "title": "Word Search",
-        "description": "Find hidden words in the grid"
+        "title": "Cuardach Focal",
+        "description": "Aimsigh focail i bhfolach sa ghreille"
       },
       "wordScramble": {
-        "title": "Word Scramble",
-        "description": "Unscramble letters to make words"
+        "title": "Focal Trína Chéile",
+        "description": "Cuir litreacha in ord chun focail a dhéanamh"
       },
       "rhymeTime": {
-        "title": "Rhyme Time",
-        "description": "Find the word that rhymes"
+        "title": "Am Ríme",
+        "description": "Faigh an focal a dhéanann rím"
       },
       "photoPairs": {
-        "title": "Photo Pairs",
-        "description": "Find matching pairs of pictures"
+        "title": "Péirí Grianghraf",
+        "description": "Faigh péirí comhfhreagracha de phictiúir"
       },
       "spotDifference": {
-        "title": "Spot the Difference",
-        "description": "Find what's different between two pictures"
+        "title": "Aimsigh an Difríocht",
+        "description": "Aimsigh cad atá difriúil idir dhá phictiúr"
       },
       "whatChanged": {
-        "title": "What Changed?",
-        "description": "Spot which emoji changed in the grid"
+        "title": "Cad a D'athraigh?",
+        "description": "Aimsigh cén emoji a d'athraigh sa ghreille"
       },
       "nameThatTune": {
         "title": "Name That Tune",
         "description": "Guess the song from a few lines"
       },
       "oddOneOut": {
-        "title": "Odd One Out",
-        "description": "Which one does not belong?"
+        "title": "An Ceann Corr",
+        "description": "Cé acu nach mbaineann leis na cinn eile?"
       },
       "patternSequence": {
-        "title": "Pattern Sequence",
-        "description": "What comes next in the pattern?"
+        "title": "Seicheamh Patrún",
+        "description": "Cad a thagann ar aghaidh sa phatrún?"
       },
       "categorySort": {
-        "title": "Category Sort",
-        "description": "Sort items into the right groups"
+        "title": "Sórtáil Catagóire",
+        "description": "Sórtáil rudaí sna grúpaí cearta"
       },
       "whichGoesTogether": {
-        "title": "Which Goes Together?",
-        "description": "Match items that go together"
+        "title": "Céard a Théann Le Chéile?",
+        "description": "Meaitseáil míreanna a théann le chéile"
       },
       "whatComesNext": {
-        "title": "What Comes Next?",
-        "description": "Work out the next step in a sequence"
+        "title": "Cad a Thagann Ina Dhiaidh?",
+        "description": "Faigh amach an chéad chéim eile i seicheamh"
       },
       "sortItOut": {
         "title": "Sort It Out",
         "description": "Put things in the right place"
       },
       "coinCounting": {
-        "title": "Coin Counting",
-        "description": "Add up the coins to find the total"
+        "title": "Comhaireamh Boinn",
+        "description": "Suimigh na boinn chun an t-iomlán a fháil"
       },
       "gentleQuiz": {
-        "title": "Gentle Quiz",
-        "description": "Fun questions with no wrong answers"
+        "title": "Tráth na gCeist Éadrom",
+        "description": "Ceisteanna spraíúla gan freagraí míchearta"
       },
       "pictureClues": {
-        "title": "Picture Clues",
-        "description": "Guess what the emoji clues represent"
+        "title": "Leideanna Pictiúr",
+        "description": "Buille faoi thuairim cad a léiríonn na leideanna emoji"
       },
       "trueOrFalse": {
-        "title": "True or False",
-        "description": "Decide if a statement is true or false"
+        "title": "Fíor nó Bréagach",
+        "description": "Déan cinneadh an bhfuil ráiteas fíor nó bréagach"
       },
       "thisDayInHistory": {
         "title": "This Day in History",

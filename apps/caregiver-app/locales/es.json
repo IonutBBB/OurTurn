@@ -1475,89 +1475,89 @@
   },
   "patientApp": {
     "categories": {
-      "wordsLanguage": "Words & Language",
-      "memoryAttention": "Memory & Attention",
-      "logicReasoning": "Logic & Reasoning",
-      "knowledge": "Knowledge",
+      "wordsLanguage": "Palabras y lenguaje",
+      "memoryAttention": "Memoria y atención",
+      "logicReasoning": "Lógica y razonamiento",
+      "knowledge": "Conocimiento",
       "opinionChoices": "Your Opinions",
       "reminiscence": "Remember When"
     },
     "stim": {
       "wordAssociation": {
-        "title": "Word Association",
-        "description": "Say the first word that comes to mind"
+        "title": "Asociación de palabras",
+        "description": "Di la primera palabra que te venga a la mente"
       },
       "proverbs": {
-        "title": "Proverbs & Sayings",
-        "description": "Complete familiar phrases"
+        "title": "Refranes y Dichos",
+        "description": "Complete frases conocidas"
       },
       "wordSearch": {
-        "title": "Word Search",
-        "description": "Find hidden words in the grid"
+        "title": "Sopa de letras",
+        "description": "Encuentra las palabras ocultas en la cuadrícula"
       },
       "wordScramble": {
-        "title": "Word Scramble",
-        "description": "Unscramble letters to make words"
+        "title": "Letras desordenadas",
+        "description": "Ordena las letras para formar palabras"
       },
       "rhymeTime": {
-        "title": "Rhyme Time",
-        "description": "Find the word that rhymes"
+        "title": "Tiempo de Rimas",
+        "description": "Encuentra la palabra que rima"
       },
       "photoPairs": {
-        "title": "Photo Pairs",
-        "description": "Find matching pairs of pictures"
+        "title": "Pares de Fotos",
+        "description": "Encuentra pares de imágenes que coincidan"
       },
       "spotDifference": {
-        "title": "Spot the Difference",
-        "description": "Find what's different between two pictures"
+        "title": "Encuentra las diferencias",
+        "description": "Encuentra qué es diferente entre dos imágenes"
       },
       "whatChanged": {
-        "title": "What Changed?",
-        "description": "Spot which emoji changed in the grid"
+        "title": "¿Qué Cambió?",
+        "description": "Descubre qué emoji cambió en la cuadrícula"
       },
       "nameThatTune": {
         "title": "Name That Tune",
         "description": "Guess the song from a few lines"
       },
       "oddOneOut": {
-        "title": "Odd One Out",
-        "description": "Which one does not belong?"
+        "title": "El intruso",
+        "description": "¿Cuál no pertenece al grupo?"
       },
       "patternSequence": {
-        "title": "Pattern Sequence",
-        "description": "What comes next in the pattern?"
+        "title": "Secuencia de patrones",
+        "description": "¿Qué viene después en el patrón?"
       },
       "categorySort": {
-        "title": "Category Sort",
-        "description": "Sort items into the right groups"
+        "title": "Ordenar por categoría",
+        "description": "Clasifica los elementos en los grupos correctos"
       },
       "whichGoesTogether": {
-        "title": "Which Goes Together?",
-        "description": "Match items that go together"
+        "title": "¿Cuál Va Junto?",
+        "description": "Une los elementos que van juntos"
       },
       "whatComesNext": {
-        "title": "What Comes Next?",
-        "description": "Work out the next step in a sequence"
+        "title": "¿Qué Sigue?",
+        "description": "Descubre el siguiente paso en una secuencia"
       },
       "sortItOut": {
         "title": "Sort It Out",
         "description": "Put things in the right place"
       },
       "coinCounting": {
-        "title": "Coin Counting",
-        "description": "Add up the coins to find the total"
+        "title": "Conteo de Monedas",
+        "description": "Suma las monedas para encontrar el total"
       },
       "gentleQuiz": {
-        "title": "Gentle Quiz",
-        "description": "Fun questions with no wrong answers"
+        "title": "Cuestionario Amable",
+        "description": "Preguntas divertidas sin respuestas incorrectas"
       },
       "pictureClues": {
-        "title": "Picture Clues",
-        "description": "Guess what the emoji clues represent"
+        "title": "Pistas con Imágenes",
+        "description": "Adivina qué representan las pistas de emojis"
       },
       "trueOrFalse": {
-        "title": "True or False",
-        "description": "Decide if a statement is true or false"
+        "title": "Verdadero o Falso",
+        "description": "Decide si una afirmación es verdadera o falsa"
       },
       "thisDayInHistory": {
         "title": "This Day in History",

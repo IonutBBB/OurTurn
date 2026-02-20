@@ -1473,89 +1473,89 @@
   },
   "patientApp": {
     "categories": {
-      "wordsLanguage": "Words & Language",
-      "memoryAttention": "Memory & Attention",
-      "logicReasoning": "Logic & Reasoning",
-      "knowledge": "Knowledge",
+      "wordsLanguage": "Kliem u Lingwa",
+      "memoryAttention": "Memorja u Attenzjoni",
+      "logicReasoning": "Loġika u Raġunament",
+      "knowledge": "Għarfien",
       "opinionChoices": "Your Opinions",
       "reminiscence": "Remember When"
     },
     "stim": {
       "wordAssociation": {
-        "title": "Word Association",
-        "description": "Say the first word that comes to mind"
+        "title": "Assoċjazzjoni tal-Kliem",
+        "description": "Għid l-ewwel kelma li tiġik f'moħħok"
       },
       "proverbs": {
-        "title": "Proverbs & Sayings",
-        "description": "Complete familiar phrases"
+        "title": "Proverbji u Qwiel",
+        "description": "Imla frażijiet familjari"
       },
       "wordSearch": {
-        "title": "Word Search",
-        "description": "Find hidden words in the grid"
+        "title": "Fittex il-Kliem",
+        "description": "Sib kliem moħbija fil-gradilja"
       },
       "wordScramble": {
-        "title": "Word Scramble",
-        "description": "Unscramble letters to make words"
+        "title": "Kliem Imħawda",
+        "description": "Poġġi l-ittri fl-ordni biex tagħmel kliem"
       },
       "rhymeTime": {
-        "title": "Rhyme Time",
-        "description": "Find the word that rhymes"
+        "title": "Ħin tar-Rimi",
+        "description": "Sib il-kelma li tirrima"
       },
       "photoPairs": {
-        "title": "Photo Pairs",
-        "description": "Find matching pairs of pictures"
+        "title": "Pari ta' Ritratti",
+        "description": "Sib pari ta' ritratti li jaqblu"
       },
       "spotDifference": {
-        "title": "Spot the Difference",
-        "description": "Find what's different between two pictures"
+        "title": "Sib id-Differenza",
+        "description": "Sib x'inhu differenti bejn żewġ stampi"
       },
       "whatChanged": {
-        "title": "What Changed?",
-        "description": "Spot which emoji changed in the grid"
+        "title": "X'Inbidel?",
+        "description": "Sib liema emoji nbidlet fil-grilja"
       },
       "nameThatTune": {
         "title": "Name That Tune",
         "description": "Guess the song from a few lines"
       },
       "oddOneOut": {
-        "title": "Odd One Out",
-        "description": "Which one does not belong?"
+        "title": "Liema Mhux Bħall-Oħrajn",
+        "description": "Liema ma tagħmilx parti mill-bqija?"
       },
       "patternSequence": {
-        "title": "Pattern Sequence",
-        "description": "What comes next in the pattern?"
+        "title": "Sekwenza ta' Mudelli",
+        "description": "X'jiġi wara fil-mudell?"
       },
       "categorySort": {
-        "title": "Category Sort",
-        "description": "Sort items into the right groups"
+        "title": "Issortja l-Kategoriji",
+        "description": "Poġġi l-affarijiet fil-gruppi t-tajba"
       },
       "whichGoesTogether": {
-        "title": "Which Goes Together?",
-        "description": "Match items that go together"
+        "title": "Liema Jmorru Flimkien?",
+        "description": "Qabbel l-oġġetti li jmorru flimkien"
       },
       "whatComesNext": {
-        "title": "What Comes Next?",
-        "description": "Work out the next step in a sequence"
+        "title": "X'Jiġi Wara?",
+        "description": "Sib il-pass li jmiss f'sekwenza"
       },
       "sortItOut": {
         "title": "Sort It Out",
         "description": "Put things in the right place"
       },
       "coinCounting": {
-        "title": "Coin Counting",
-        "description": "Add up the coins to find the total"
+        "title": "Għadd tal-Muniti",
+        "description": "Iġbor il-muniti biex issib it-total"
       },
       "gentleQuiz": {
-        "title": "Gentle Quiz",
-        "description": "Fun questions with no wrong answers"
+        "title": "Kwizz Ħafif",
+        "description": "Mistoqsijiet divertenti mingħajr tweġibiet żbaljati"
       },
       "pictureClues": {
-        "title": "Picture Clues",
-        "description": "Guess what the emoji clues represent"
+        "title": "Ħjiel bl-Istampi",
+        "description": "Aqta' x'jirrappreżentaw il-ħjiel tal-emoji"
       },
       "trueOrFalse": {
-        "title": "True or False",
-        "description": "Decide if a statement is true or false"
+        "title": "Veru jew Falz",
+        "description": "Iddeċiedi jekk stqarrija hijiex vera jew falza"
       },
       "thisDayInHistory": {
         "title": "This Day in History",

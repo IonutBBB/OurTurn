@@ -136,89 +136,89 @@
       "help": "Pomoč"
     },
     "categories": {
-      "wordsLanguage": "Words & Language",
-      "memoryAttention": "Memory & Attention",
-      "logicReasoning": "Logic & Reasoning",
-      "knowledge": "Knowledge",
+      "wordsLanguage": "Besede in jezik",
+      "memoryAttention": "Spomin in pozornost",
+      "logicReasoning": "Logika in sklepanje",
+      "knowledge": "Znanje",
       "opinionChoices": "Your Opinions",
       "reminiscence": "Remember When"
     },
     "stim": {
       "wordAssociation": {
-        "title": "Word Association",
-        "description": "Say the first word that comes to mind"
+        "title": "Besedne asociacije",
+        "description": "Povejte prvo besedo, ki vam pride na misel"
       },
       "proverbs": {
-        "title": "Proverbs & Sayings",
-        "description": "Complete familiar phrases"
+        "title": "Pregovori in izreki",
+        "description": "Dopolnite znane fraze"
       },
       "wordSearch": {
-        "title": "Word Search",
-        "description": "Find hidden words in the grid"
+        "title": "Iskanje besed",
+        "description": "Poiščite skrite besede v mreži"
       },
       "wordScramble": {
-        "title": "Word Scramble",
-        "description": "Unscramble letters to make words"
+        "title": "Zmešane besede",
+        "description": "Razporedite črke, da sestavite besede"
       },
       "rhymeTime": {
-        "title": "Rhyme Time",
-        "description": "Find the word that rhymes"
+        "title": "Čas za rime",
+        "description": "Poiščite besedo, ki se rima"
       },
       "photoPairs": {
-        "title": "Photo Pairs",
-        "description": "Find matching pairs of pictures"
+        "title": "Slike v parih",
+        "description": "Poiščite ujemajoče se pare slik"
       },
       "spotDifference": {
-        "title": "Spot the Difference",
-        "description": "Find what's different between two pictures"
+        "title": "Poišči razliko",
+        "description": "Poiščite, kaj je drugače med dvema slikama"
       },
       "whatChanged": {
-        "title": "What Changed?",
-        "description": "Spot which emoji changed in the grid"
+        "title": "Kaj se je spremenilo?",
+        "description": "Ugotovite, kateri emoji se je spremenil v mreži"
       },
       "nameThatTune": {
         "title": "Name That Tune",
         "description": "Guess the song from a few lines"
       },
       "oddOneOut": {
-        "title": "Odd One Out",
-        "description": "Which one does not belong?"
+        "title": "Eden ne sodi",
+        "description": "Kateri ne sodi med ostale?"
       },
       "patternSequence": {
-        "title": "Pattern Sequence",
-        "description": "What comes next in the pattern?"
+        "title": "Zaporedje vzorcev",
+        "description": "Kaj sledi v vzorcu?"
       },
       "categorySort": {
-        "title": "Category Sort",
-        "description": "Sort items into the right groups"
+        "title": "Razvrščanje",
+        "description": "Razvrstite predmete v prave skupine"
       },
       "whichGoesTogether": {
-        "title": "Which Goes Together?",
-        "description": "Match items that go together"
+        "title": "Kaj spada skupaj?",
+        "description": "Povežite predmete, ki spadajo skupaj"
       },
       "whatComesNext": {
-        "title": "What Comes Next?",
-        "description": "Work out the next step in a sequence"
+        "title": "Kaj sledi?",
+        "description": "Ugotovite naslednji korak v zaporedju"
       },
       "sortItOut": {
         "title": "Sort It Out",
         "description": "Put things in the right place"
       },
       "coinCounting": {
-        "title": "Coin Counting",
-        "description": "Add up the coins to find the total"
+        "title": "Štetje kovancev",
+        "description": "Seštejte kovance, da dobite skupni znesek"
       },
       "gentleQuiz": {
-        "title": "Gentle Quiz",
-        "description": "Fun questions with no wrong answers"
+        "title": "Nežen kviz",
+        "description": "Zabavna vprašanja brez napačnih odgovorov"
       },
       "pictureClues": {
-        "title": "Picture Clues",
-        "description": "Guess what the emoji clues represent"
+        "title": "Slikovni namigi",
+        "description": "Uganite, kaj predstavljajo namigi z emojiji"
       },
       "trueOrFalse": {
-        "title": "True or False",
-        "description": "Decide if a statement is true or false"
+        "title": "Resnično ali napačno",
+        "description": "Odločite se, ali je izjava resnična ali napačna"
       },
       "thisDayInHistory": {
         "title": "This Day in History",

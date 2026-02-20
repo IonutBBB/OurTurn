@@ -1473,89 +1473,89 @@
   },
   "patientApp": {
     "categories": {
-      "wordsLanguage": "Words & Language",
-      "memoryAttention": "Memory & Attention",
-      "logicReasoning": "Logic & Reasoning",
-      "knowledge": "Knowledge",
+      "wordsLanguage": "Ord & Språk",
+      "memoryAttention": "Minne & Uppmärksamhet",
+      "logicReasoning": "Logik & Tänkande",
+      "knowledge": "Kunskap",
       "opinionChoices": "Your Opinions",
       "reminiscence": "Remember When"
     },
     "stim": {
       "wordAssociation": {
-        "title": "Word Association",
-        "description": "Say the first word that comes to mind"
+        "title": "Ordförening",
+        "description": "Säg det första ordet som kommer upp i tankarna"
       },
       "proverbs": {
-        "title": "Proverbs & Sayings",
-        "description": "Complete familiar phrases"
+        "title": "Ordspråk & Uttryck",
+        "description": "Komplettera välkända fraser"
       },
       "wordSearch": {
-        "title": "Word Search",
-        "description": "Find hidden words in the grid"
+        "title": "Ordsök",
+        "description": "Hitta dolda ord i rutnätet"
       },
       "wordScramble": {
-        "title": "Word Scramble",
-        "description": "Unscramble letters to make words"
+        "title": "Bokstavsröra",
+        "description": "Ordna bokstäverna till ord"
       },
       "rhymeTime": {
-        "title": "Rhyme Time",
-        "description": "Find the word that rhymes"
+        "title": "Rimtid",
+        "description": "Hitta ordet som rimmar"
       },
       "photoPairs": {
-        "title": "Photo Pairs",
-        "description": "Find matching pairs of pictures"
+        "title": "Bildpar",
+        "description": "Hitta matchande bildpar"
       },
       "spotDifference": {
-        "title": "Spot the Difference",
-        "description": "Find what's different between two pictures"
+        "title": "Hitta Skillnaderna",
+        "description": "Hitta vad som skiljer sig mellan två bilder"
       },
       "whatChanged": {
-        "title": "What Changed?",
-        "description": "Spot which emoji changed in the grid"
+        "title": "Vad har ändrats?",
+        "description": "Hitta vilken emoji som ändrats i rutnätet"
       },
       "nameThatTune": {
         "title": "Name That Tune",
         "description": "Guess the song from a few lines"
       },
       "oddOneOut": {
-        "title": "Odd One Out",
-        "description": "Which one does not belong?"
+        "title": "Vilken Hör Inte Hit",
+        "description": "Vilken hör inte till de andra?"
       },
       "patternSequence": {
-        "title": "Pattern Sequence",
-        "description": "What comes next in the pattern?"
+        "title": "Mönsterföljd",
+        "description": "Vad kommer härnäst i mönstret?"
       },
       "categorySort": {
-        "title": "Category Sort",
-        "description": "Sort items into the right groups"
+        "title": "Sortera Kategorier",
+        "description": "Sortera sakerna i rätt grupper"
       },
       "whichGoesTogether": {
-        "title": "Which Goes Together?",
-        "description": "Match items that go together"
+        "title": "Vad hör ihop?",
+        "description": "Para ihop saker som hör ihop"
       },
       "whatComesNext": {
-        "title": "What Comes Next?",
-        "description": "Work out the next step in a sequence"
+        "title": "Vad kommer härnäst?",
+        "description": "Hitta nästa steg i en sekvens"
       },
       "sortItOut": {
         "title": "Sort It Out",
         "description": "Put things in the right place"
       },
       "coinCounting": {
-        "title": "Coin Counting",
-        "description": "Add up the coins to find the total"
+        "title": "Räkna mynt",
+        "description": "Räkna ihop mynten för att hitta totalsumman"
       },
       "gentleQuiz": {
-        "title": "Gentle Quiz",
-        "description": "Fun questions with no wrong answers"
+        "title": "Mjuk Frågesport",
+        "description": "Roliga frågor utan fel svar"
       },
       "pictureClues": {
-        "title": "Picture Clues",
-        "description": "Guess what the emoji clues represent"
+        "title": "Bildledtrådar",
+        "description": "Gissa vad emojiledtrådarna representerar"
       },
       "trueOrFalse": {
-        "title": "True or False",
-        "description": "Decide if a statement is true or false"
+        "title": "Sant eller falskt",
+        "description": "Avgör om ett påstående är sant eller falskt"
       },
       "thisDayInHistory": {
         "title": "This Day in History",

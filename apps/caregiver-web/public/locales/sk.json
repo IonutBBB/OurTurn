@@ -136,89 +136,89 @@
       "help": "Pomoc"
     },
     "categories": {
-      "wordsLanguage": "Words & Language",
-      "memoryAttention": "Memory & Attention",
-      "logicReasoning": "Logic & Reasoning",
-      "knowledge": "Knowledge",
+      "wordsLanguage": "Slová a jazyk",
+      "memoryAttention": "Pamäť a pozornosť",
+      "logicReasoning": "Logika a uvažovanie",
+      "knowledge": "Vedomosti",
       "opinionChoices": "Your Opinions",
       "reminiscence": "Remember When"
     },
     "stim": {
       "wordAssociation": {
-        "title": "Word Association",
-        "description": "Say the first word that comes to mind"
+        "title": "Slovné asociácie",
+        "description": "Povedzte prvé slovo, ktoré vám napadne"
       },
       "proverbs": {
-        "title": "Proverbs & Sayings",
-        "description": "Complete familiar phrases"
+        "title": "Príslovia a porekadlá",
+        "description": "Doplňte známe frázy"
       },
       "wordSearch": {
-        "title": "Word Search",
-        "description": "Find hidden words in the grid"
+        "title": "Hľadanie slov",
+        "description": "Nájdite skryté slová v mriežke"
       },
       "wordScramble": {
-        "title": "Word Scramble",
-        "description": "Unscramble letters to make words"
+        "title": "Poprehadzované slová",
+        "description": "Usporiadajte písmená a vytvorte slová"
       },
       "rhymeTime": {
-        "title": "Rhyme Time",
-        "description": "Find the word that rhymes"
+        "title": "Čas na rýmy",
+        "description": "Nájdite slovo, ktoré sa rýmuje"
       },
       "photoPairs": {
-        "title": "Photo Pairs",
-        "description": "Find matching pairs of pictures"
+        "title": "Dvojice obrázkov",
+        "description": "Nájdite zhodné dvojice obrázkov"
       },
       "spotDifference": {
-        "title": "Spot the Difference",
-        "description": "Find what's different between two pictures"
+        "title": "Nájdi rozdiel",
+        "description": "Nájdite, čo je iné medzi dvoma obrázkami"
       },
       "whatChanged": {
-        "title": "What Changed?",
-        "description": "Spot which emoji changed in the grid"
+        "title": "Čo sa zmenilo?",
+        "description": "Nájdite, ktoré emoji sa zmenilo v mriežke"
       },
       "nameThatTune": {
         "title": "Name That Tune",
         "description": "Guess the song from a few lines"
       },
       "oddOneOut": {
-        "title": "Odd One Out",
-        "description": "Which one does not belong?"
+        "title": "Čo sem nepatrí?",
+        "description": "Ktoré sem nepatrí?"
       },
       "patternSequence": {
-        "title": "Pattern Sequence",
-        "description": "What comes next in the pattern?"
+        "title": "Postupnosť vzorov",
+        "description": "Čo nasleduje v postupnosti?"
       },
       "categorySort": {
-        "title": "Category Sort",
-        "description": "Sort items into the right groups"
+        "title": "Triedenie do kategórií",
+        "description": "Zaraďte veci do správnych skupín"
       },
       "whichGoesTogether": {
-        "title": "Which Goes Together?",
-        "description": "Match items that go together"
+        "title": "Čo patrí k sebe?",
+        "description": "Spojte položky, ktoré patria k sebe"
       },
       "whatComesNext": {
-        "title": "What Comes Next?",
-        "description": "Work out the next step in a sequence"
+        "title": "Čo nasleduje?",
+        "description": "Zistite ďalší krok v postupnosti"
       },
       "sortItOut": {
         "title": "Sort It Out",
         "description": "Put things in the right place"
       },
       "coinCounting": {
-        "title": "Coin Counting",
-        "description": "Add up the coins to find the total"
+        "title": "Počítanie mincí",
+        "description": "Spočítajte mince, aby ste zistili celkovú sumu"
       },
       "gentleQuiz": {
-        "title": "Gentle Quiz",
-        "description": "Fun questions with no wrong answers"
+        "title": "Jemný kvíz",
+        "description": "Zábavné otázky bez nesprávnych odpovedí"
       },
       "pictureClues": {
-        "title": "Picture Clues",
-        "description": "Guess what the emoji clues represent"
+        "title": "Obrázkové indície",
+        "description": "Hádajte, čo predstavujú emoji indície"
       },
       "trueOrFalse": {
-        "title": "True or False",
-        "description": "Decide if a statement is true or false"
+        "title": "Pravda alebo lož",
+        "description": "Rozhodnite, či je tvrdenie pravdivé alebo nepravdivé"
       },
       "thisDayInHistory": {
         "title": "This Day in History",

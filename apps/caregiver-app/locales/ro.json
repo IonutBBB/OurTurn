@@ -1473,89 +1473,89 @@
   },
   "patientApp": {
     "categories": {
-      "wordsLanguage": "Words & Language",
-      "memoryAttention": "Memory & Attention",
-      "logicReasoning": "Logic & Reasoning",
-      "knowledge": "Knowledge",
+      "wordsLanguage": "Cuvinte și limbaj",
+      "memoryAttention": "Memorie și atenție",
+      "logicReasoning": "Logică și raționament",
+      "knowledge": "Cunoștințe",
       "opinionChoices": "Your Opinions",
       "reminiscence": "Remember When"
     },
     "stim": {
       "wordAssociation": {
-        "title": "Word Association",
-        "description": "Say the first word that comes to mind"
+        "title": "Asocieri de cuvinte",
+        "description": "Spune primul cuvânt care îți vine în minte"
       },
       "proverbs": {
-        "title": "Proverbs & Sayings",
-        "description": "Complete familiar phrases"
+        "title": "Proverbe și Zicători",
+        "description": "Completați fraze familiare"
       },
       "wordSearch": {
-        "title": "Word Search",
-        "description": "Find hidden words in the grid"
+        "title": "Caută cuvinte",
+        "description": "Găsește cuvintele ascunse în grilă"
       },
       "wordScramble": {
-        "title": "Word Scramble",
-        "description": "Unscramble letters to make words"
+        "title": "Amestecă cuvinte",
+        "description": "Descifră literele pentru a forma cuvinte"
       },
       "rhymeTime": {
-        "title": "Rhyme Time",
-        "description": "Find the word that rhymes"
+        "title": "Timpul Rimei",
+        "description": "Găsește cuvântul care rimează"
       },
       "photoPairs": {
-        "title": "Photo Pairs",
-        "description": "Find matching pairs of pictures"
+        "title": "Perechi de fotografii",
+        "description": "Găsiți perechile de imagini potrivite"
       },
       "spotDifference": {
-        "title": "Spot the Difference",
-        "description": "Find what's different between two pictures"
+        "title": "Găsește diferențele",
+        "description": "Descoperă ce e diferit între două imagini"
       },
       "whatChanged": {
-        "title": "What Changed?",
-        "description": "Spot which emoji changed in the grid"
+        "title": "Ce s-a Schimbat?",
+        "description": "Descoperă ce emoji s-a schimbat în grilă"
       },
       "nameThatTune": {
         "title": "Name That Tune",
         "description": "Guess the song from a few lines"
       },
       "oddOneOut": {
-        "title": "Odd One Out",
-        "description": "Which one does not belong?"
+        "title": "Intrusul",
+        "description": "Care nu se potrivește?"
       },
       "patternSequence": {
-        "title": "Pattern Sequence",
-        "description": "What comes next in the pattern?"
+        "title": "Secvență de tipare",
+        "description": "Ce urmează în tipar?"
       },
       "categorySort": {
-        "title": "Category Sort",
-        "description": "Sort items into the right groups"
+        "title": "Sortare pe categorii",
+        "description": "Sortează elementele în grupurile corecte"
       },
       "whichGoesTogether": {
-        "title": "Which Goes Together?",
-        "description": "Match items that go together"
+        "title": "Ce se Potrivește?",
+        "description": "Potrivește elementele care merg împreună"
       },
       "whatComesNext": {
-        "title": "What Comes Next?",
-        "description": "Work out the next step in a sequence"
+        "title": "Ce Urmează?",
+        "description": "Descoperă pasul următor într-o secvență"
       },
       "sortItOut": {
         "title": "Sort It Out",
         "description": "Put things in the right place"
       },
       "coinCounting": {
-        "title": "Coin Counting",
-        "description": "Add up the coins to find the total"
+        "title": "Număratul Monedelor",
+        "description": "Adună monedele pentru a găsi totalul"
       },
       "gentleQuiz": {
-        "title": "Gentle Quiz",
-        "description": "Fun questions with no wrong answers"
+        "title": "Test blând",
+        "description": "Întrebări distractive fără răspunsuri greșite"
       },
       "pictureClues": {
-        "title": "Picture Clues",
-        "description": "Guess what the emoji clues represent"
+        "title": "Indicii Vizuale",
+        "description": "Ghicește ce reprezintă indiciile emoji"
       },
       "trueOrFalse": {
-        "title": "True or False",
-        "description": "Decide if a statement is true or false"
+        "title": "Adevărat sau Fals",
+        "description": "Decide dacă o afirmație este adevărată sau falsă"
       },
       "thisDayInHistory": {
         "title": "This Day in History",

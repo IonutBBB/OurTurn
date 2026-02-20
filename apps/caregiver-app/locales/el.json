@@ -1473,89 +1473,89 @@
   },
   "patientApp": {
     "categories": {
-      "wordsLanguage": "Words & Language",
-      "memoryAttention": "Memory & Attention",
-      "logicReasoning": "Logic & Reasoning",
-      "knowledge": "Knowledge",
+      "wordsLanguage": "Λέξεις & Γλώσσα",
+      "memoryAttention": "Μνήμη & Προσοχή",
+      "logicReasoning": "Λογική & Συλλογισμός",
+      "knowledge": "Γνώσεις",
       "opinionChoices": "Your Opinions",
       "reminiscence": "Remember When"
     },
     "stim": {
       "wordAssociation": {
-        "title": "Word Association",
-        "description": "Say the first word that comes to mind"
+        "title": "Σύνδεση Λέξεων",
+        "description": "Πείτε την πρώτη λέξη που σας έρχεται στο μυαλό"
       },
       "proverbs": {
-        "title": "Proverbs & Sayings",
-        "description": "Complete familiar phrases"
+        "title": "Παροιμίες & Ρήσεις",
+        "description": "Ολοκληρώστε γνωστές φράσεις"
       },
       "wordSearch": {
-        "title": "Word Search",
-        "description": "Find hidden words in the grid"
+        "title": "Αναζήτηση λέξεων",
+        "description": "Βρείτε τις κρυμμένες λέξεις στο πλέγμα"
       },
       "wordScramble": {
-        "title": "Word Scramble",
-        "description": "Unscramble letters to make words"
+        "title": "Ανακατεμένες λέξεις",
+        "description": "Ξεμπλέξτε τα γράμματα για να φτιάξετε λέξεις"
       },
       "rhymeTime": {
-        "title": "Rhyme Time",
-        "description": "Find the word that rhymes"
+        "title": "Ώρα για Ομοιοκαταληξία",
+        "description": "Βρείτε τη λέξη που ομοιοκαταληκτεί"
       },
       "photoPairs": {
-        "title": "Photo Pairs",
-        "description": "Find matching pairs of pictures"
+        "title": "Ζεύγη Φωτογραφιών",
+        "description": "Βρείτε τα ταιριαστά ζεύγη εικόνων"
       },
       "spotDifference": {
-        "title": "Spot the Difference",
-        "description": "Find what's different between two pictures"
+        "title": "Βρες τη διαφορά",
+        "description": "Βρείτε τι διαφέρει μεταξύ δύο εικόνων"
       },
       "whatChanged": {
-        "title": "What Changed?",
-        "description": "Spot which emoji changed in the grid"
+        "title": "Τι Άλλαξε;",
+        "description": "Βρείτε ποιο emoji άλλαξε στο πλέγμα"
       },
       "nameThatTune": {
         "title": "Name That Tune",
         "description": "Guess the song from a few lines"
       },
       "oddOneOut": {
-        "title": "Odd One Out",
-        "description": "Which one does not belong?"
+        "title": "Ποιο δεν ταιριάζει;",
+        "description": "Ποιο δεν ανήκει εδώ;"
       },
       "patternSequence": {
-        "title": "Pattern Sequence",
-        "description": "What comes next in the pattern?"
+        "title": "Ακολουθία μοτίβων",
+        "description": "Τι ακολουθεί στο μοτίβο;"
       },
       "categorySort": {
-        "title": "Category Sort",
-        "description": "Sort items into the right groups"
+        "title": "Ταξινόμηση κατηγοριών",
+        "description": "Τοποθετήστε τα αντικείμενα στις σωστές ομάδες"
       },
       "whichGoesTogether": {
-        "title": "Which Goes Together?",
-        "description": "Match items that go together"
+        "title": "Ποια Ταιριάζουν;",
+        "description": "Αντιστοιχίστε αντικείμενα που ταιριάζουν"
       },
       "whatComesNext": {
-        "title": "What Comes Next?",
-        "description": "Work out the next step in a sequence"
+        "title": "Τι Έρχεται Μετά;",
+        "description": "Βρείτε το επόμενο βήμα σε μια ακολουθία"
       },
       "sortItOut": {
         "title": "Sort It Out",
         "description": "Put things in the right place"
       },
       "coinCounting": {
-        "title": "Coin Counting",
-        "description": "Add up the coins to find the total"
+        "title": "Μέτρηση Κερμάτων",
+        "description": "Προσθέστε τα κέρματα για να βρείτε το σύνολο"
       },
       "gentleQuiz": {
-        "title": "Gentle Quiz",
-        "description": "Fun questions with no wrong answers"
+        "title": "Εύκολο Κουίζ",
+        "description": "Διασκεδαστικές ερωτήσεις χωρίς λάθος απαντήσεις"
       },
       "pictureClues": {
-        "title": "Picture Clues",
-        "description": "Guess what the emoji clues represent"
+        "title": "Εικονικές Ενδείξεις",
+        "description": "Μαντέψτε τι αντιπροσωπεύουν οι ενδείξεις emoji"
       },
       "trueOrFalse": {
-        "title": "True or False",
-        "description": "Decide if a statement is true or false"
+        "title": "Αληθές ή Ψευδές",
+        "description": "Αποφασίστε αν μια δήλωση είναι αληθής ή ψευδής"
       },
       "thisDayInHistory": {
         "title": "This Day in History",

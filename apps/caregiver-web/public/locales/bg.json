@@ -136,89 +136,89 @@
       "help": "Помощ"
     },
     "categories": {
-      "wordsLanguage": "Words & Language",
-      "memoryAttention": "Memory & Attention",
-      "logicReasoning": "Logic & Reasoning",
-      "knowledge": "Knowledge",
+      "wordsLanguage": "Думи и език",
+      "memoryAttention": "Памет и внимание",
+      "logicReasoning": "Логика и разсъждение",
+      "knowledge": "Знания",
       "opinionChoices": "Your Opinions",
       "reminiscence": "Remember When"
     },
     "stim": {
       "wordAssociation": {
-        "title": "Word Association",
-        "description": "Say the first word that comes to mind"
+        "title": "Асоциации на думи",
+        "description": "Кажете първата дума, която Ви идва наум"
       },
       "proverbs": {
-        "title": "Proverbs & Sayings",
-        "description": "Complete familiar phrases"
+        "title": "Пословици и поговорки",
+        "description": "Довършете познати фрази"
       },
       "wordSearch": {
-        "title": "Word Search",
-        "description": "Find hidden words in the grid"
+        "title": "Търсене на думи",
+        "description": "Намерете скритите думи в мрежата"
       },
       "wordScramble": {
-        "title": "Word Scramble",
-        "description": "Unscramble letters to make words"
+        "title": "Разбъркани думи",
+        "description": "Подредете буквите, за да съставите думи"
       },
       "rhymeTime": {
-        "title": "Rhyme Time",
-        "description": "Find the word that rhymes"
+        "title": "Време за рими",
+        "description": "Намерете думата, която се римува"
       },
       "photoPairs": {
-        "title": "Photo Pairs",
-        "description": "Find matching pairs of pictures"
+        "title": "Двойки снимки",
+        "description": "Намерете съвпадащи двойки от снимки"
       },
       "spotDifference": {
-        "title": "Spot the Difference",
-        "description": "Find what's different between two pictures"
+        "title": "Намерете разликата",
+        "description": "Открийте какво е различно между двете картинки"
       },
       "whatChanged": {
-        "title": "What Changed?",
-        "description": "Spot which emoji changed in the grid"
+        "title": "Какво се промени?",
+        "description": "Открийте кое емоджи се промени в мрежата"
       },
       "nameThatTune": {
         "title": "Name That Tune",
         "description": "Guess the song from a few lines"
       },
       "oddOneOut": {
-        "title": "Odd One Out",
-        "description": "Which one does not belong?"
+        "title": "Кое не пасва?",
+        "description": "Кое не принадлежи тук?"
       },
       "patternSequence": {
-        "title": "Pattern Sequence",
-        "description": "What comes next in the pattern?"
+        "title": "Поредица от образци",
+        "description": "Какво следва в поредицата?"
       },
       "categorySort": {
-        "title": "Category Sort",
-        "description": "Sort items into the right groups"
+        "title": "Сортиране по категории",
+        "description": "Подредете нещата в правилните групи"
       },
       "whichGoesTogether": {
-        "title": "Which Goes Together?",
-        "description": "Match items that go together"
+        "title": "Кое си отива заедно?",
+        "description": "Свържете елементи, които си отиват заедно"
       },
       "whatComesNext": {
-        "title": "What Comes Next?",
-        "description": "Work out the next step in a sequence"
+        "title": "Какво следва?",
+        "description": "Открийте следващата стъпка в поредицата"
       },
       "sortItOut": {
         "title": "Sort It Out",
         "description": "Put things in the right place"
       },
       "coinCounting": {
-        "title": "Coin Counting",
-        "description": "Add up the coins to find the total"
+        "title": "Броене на монети",
+        "description": "Съберете монетите, за да намерите общата сума"
       },
       "gentleQuiz": {
-        "title": "Gentle Quiz",
-        "description": "Fun questions with no wrong answers"
+        "title": "Лека викторина",
+        "description": "Забавни въпроси без грешни отговори"
       },
       "pictureClues": {
-        "title": "Picture Clues",
-        "description": "Guess what the emoji clues represent"
+        "title": "Картинни улики",
+        "description": "Познайте какво представляват уликите от емоджита"
       },
       "trueOrFalse": {
-        "title": "True or False",
-        "description": "Decide if a statement is true or false"
+        "title": "Вярно или невярно",
+        "description": "Решете дали твърдението е вярно или невярно"
       },
       "thisDayInHistory": {
         "title": "This Day in History",
