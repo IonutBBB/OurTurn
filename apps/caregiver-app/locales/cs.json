@@ -109,6 +109,8 @@
       "taskTitle": "Název úkolu",
       "time": "Čas",
       "deleteConfirm": "Smazat tento úkol?",
+      "removeFromDayConfirm": "Remove this task from {{day}}s? It will still appear on other days.",
+      "deleteLastDayConfirm": "This is the only day for this task. Delete it entirely?",
       "patientCreated": "Added by {{name}}",
       "noMoreSuggestions": "Žádné další návrhy nejsou k dispozici.",
       "copyFromTo": "Kopírovat úkoly z {{day}} do:",

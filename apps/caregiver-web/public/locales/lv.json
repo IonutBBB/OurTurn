@@ -356,6 +356,8 @@
       "taskTitle": "Uzdevuma nosaukums",
       "time": "Laiks",
       "deleteConfirm": "Dzēst šo uzdevumu?",
+      "removeFromDayConfirm": "Remove this task from {{day}}s? It will still appear on other days.",
+      "deleteLastDayConfirm": "This is the only day for this task. Delete it entirely?",
       "instructions": "Instrukcijas",
       "actions": "Darbības",
       "syncNote": "Izmaiņas tiek nekavējoties sinhronizētas ar {{name}} lietotni",

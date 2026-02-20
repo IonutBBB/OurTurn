@@ -109,6 +109,8 @@
       "taskTitle": "Titolo attività",
       "time": "Ora",
       "deleteConfirm": "Eliminare questa attività?",
+      "removeFromDayConfirm": "Remove this task from {{day}}s? It will still appear on other days.",
+      "deleteLastDayConfirm": "This is the only day for this task. Delete it entirely?",
       "patientCreated": "Added by {{name}}",
       "noMoreSuggestions": "Nessun altro suggerimento disponibile.",
       "copyFromTo": "Copia attività da {{day}} a:",

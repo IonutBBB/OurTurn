@@ -367,18 +367,53 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
     }
   };
 
-  const handleDeleteTask = async (taskId: string) => {
-    if (!confirm(t('caregiverApp.carePlan.deleteConfirm'))) return;
+  const handleDeleteTask = async (task: Task) => {
+    const canRemoveFromDay = selectedDay !== 'All' && (task.recurrence === 'daily' || task.recurrence === 'specific_days');
+
+    // If viewing a specific day and the task recurs on multiple days, offer to remove from just this day
+    if (canRemoveFromDay) {
+      const allDays = DAYS as string[];
+      const currentDays = task.recurrence === 'daily'
+        ? allDays
+        : (task.recurrence_days?.map(d => d.toLowerCase()) ?? []);
+      const remainingDays = currentDays.filter(d => d !== selectedDay);
+
+      if (remainingDays.length > 0) {
+        const dayLabel = t(`caregiverApp.carePlan.days.${selectedDay}`);
+        if (!confirm(t('caregiverApp.carePlan.removeFromDayConfirm', { day: dayLabel }))) return;
+
+        try {
+          const { error } = await supabase
+            .from('care_plan_tasks')
+            .update({ recurrence: 'specific_days', recurrence_days: remainingDays })
+            .eq('id', task.id);
+
+          if (error) throw error;
+
+          setTasks((prev) => prev.map((t) =>
+            t.id === task.id ? { ...t, recurrence: 'specific_days', recurrence_days: remainingDays } : t
+          ));
+        } catch (err) {
+          showToast(t('common.error'), 'error');
+        }
+        return;
+      }
+
+      // Last day — confirm full deletion
+      if (!confirm(t('caregiverApp.carePlan.deleteLastDayConfirm'))) return;
+    } else {
+      if (!confirm(t('caregiverApp.carePlan.deleteConfirm'))) return;
+    }
 
     try {
       const { error } = await supabase
         .from('care_plan_tasks')
         .update({ active: false })
-        .eq('id', taskId);
+        .eq('id', task.id);
 
       if (error) throw error;
 
-      setTasks((prev) => prev.filter((t) => t.id !== taskId));
+      setTasks((prev) => prev.filter((t) => t.id !== task.id));
     } catch (err) {
       showToast(t('common.error'), 'error');
     }
@@ -1302,14 +1337,19 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
                 return (
                   <tr key={task.id} className="hover:bg-brand-50 dark:hover:bg-surface-elevated">
                     <td className="px-3 py-4 text-center">
-                      {completions[task.id] ? (
-                        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-status-success/15 text-status-success" title={t('caregiverApp.carePlan.completedToday')}>
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                            <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-                          </svg>
-                        </span>
+                      {selectedDay === todayAbbr ? (
+                        completions[task.id] ? (
+                          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-status-success/15 text-status-success" title={t('caregiverApp.carePlan.completedToday')}>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                              <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                            </svg>
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full border-2 border-surface-border" title={t('caregiverApp.carePlan.pendingToday')}>
+                          </span>
+                        )
                       ) : (
-                        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full border-2 border-surface-border" title={t('caregiverApp.carePlan.pendingToday')}>
+                        <span className="inline-flex items-center justify-center w-7 h-7 rounded-full border-2 border-surface-border/50">
                         </span>
                       )}
                     </td>
@@ -1374,7 +1414,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
                         {t('common.edit')}
                       </button>
                       <button
-                        onClick={() => handleDeleteTask(task.id)}
+                        onClick={() => handleDeleteTask(task)}
                         className="text-status-danger hover:text-status-danger text-sm font-medium"
                       >
                         {t('common.delete')}

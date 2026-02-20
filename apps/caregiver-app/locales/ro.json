@@ -109,6 +109,8 @@
       "taskTitle": "Titlul sarcinii",
       "time": "Ora",
       "deleteConfirm": "Ștergi această sarcină?",
+      "removeFromDayConfirm": "Remove this task from {{day}}s? It will still appear on other days.",
+      "deleteLastDayConfirm": "This is the only day for this task. Delete it entirely?",
       "patientCreated": "Added by {{name}}",
       "noMoreSuggestions": "Nu mai sunt sugestii disponibile.",
       "copyFromTo": "Copiază sarcini de la {{day}} la:",

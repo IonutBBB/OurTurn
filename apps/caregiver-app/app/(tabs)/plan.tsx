@@ -396,6 +396,77 @@ export default function PlanScreen() {
   };
 
   const handleDelete = (task: CarePlanTask) => {
+    const canRemoveFromDay = task.recurrence === 'daily' || task.recurrence === 'specific_days';
+
+    if (canRemoveFromDay) {
+      const allDays = DAY_KEYS as string[];
+      const currentDays = task.recurrence === 'daily'
+        ? allDays
+        : (task.recurrence_days?.map(d => d.toLowerCase()) ?? []);
+      const remainingDays = currentDays.filter(d => d !== selectedDay);
+
+      if (remainingDays.length > 0) {
+        const dayLabel = t(`caregiverApp.carePlan.days.${selectedDay}`);
+        Alert.alert(
+          t('caregiverApp.carePlan.removeFromDayConfirm', { day: dayLabel }),
+          task.title,
+          [
+            { text: t('common.cancel'), style: 'cancel' },
+            {
+              text: t('common.delete'),
+              style: 'destructive',
+              onPress: async () => {
+                try {
+                  const { error } = await supabase
+                    .from('care_plan_tasks')
+                    .update({ recurrence: 'specific_days', recurrence_days: remainingDays })
+                    .eq('id', task.id);
+
+                  if (error) throw error;
+                  setTasks((prev) => prev.map((t) =>
+                    t.id === task.id ? { ...t, recurrence: 'specific_days' as const, recurrence_days: remainingDays } : t
+                  ));
+                } catch (err) {
+                  if (__DEV__) console.error('Failed to remove task from day:', err);
+                  Alert.alert(t('common.error'));
+                }
+              },
+            },
+          ]
+        );
+        return;
+      }
+
+      // Last day — confirm full deletion
+      Alert.alert(
+        t('caregiverApp.carePlan.deleteLastDayConfirm'),
+        task.title,
+        [
+          { text: t('common.cancel'), style: 'cancel' },
+          {
+            text: t('common.delete'),
+            style: 'destructive',
+            onPress: async () => {
+              try {
+                const { error } = await supabase
+                  .from('care_plan_tasks')
+                  .update({ active: false })
+                  .eq('id', task.id);
+
+                if (error) throw error;
+                setTasks((prev) => prev.filter((t) => t.id !== task.id));
+              } catch (err) {
+                if (__DEV__) console.error('Failed to delete task:', err);
+                Alert.alert(t('common.error'));
+              }
+            },
+          },
+        ]
+      );
+      return;
+    }
+
+    // one_time tasks — delete entirely
     Alert.alert(
       t('caregiverApp.carePlan.deleteConfirm'),
       task.title,

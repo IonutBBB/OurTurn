@@ -356,6 +356,8 @@
       "taskTitle": "Naslov naloge",
       "time": "Čas",
       "deleteConfirm": "Izbrišem to nalogo?",
+      "removeFromDayConfirm": "Remove this task from {{day}}s? It will still appear on other days.",
+      "deleteLastDayConfirm": "This is the only day for this task. Delete it entirely?",
       "instructions": "Navodila",
       "actions": "Dejanja",
       "syncNote": "Spremembe se takoj sinhronizirajo z aplikacijo {{name}}",

@@ -356,6 +356,8 @@
       "taskTitle": "Título de la tarea",
       "time": "Hora",
       "deleteConfirm": "¿Eliminar esta tarea?",
+      "removeFromDayConfirm": "Remove this task from {{day}}s? It will still appear on other days.",
+      "deleteLastDayConfirm": "This is the only day for this task. Delete it entirely?",
       "instructions": "Instrucciones",
       "actions": "Acciones",
       "syncNote": "Los cambios se sincronizan al instante con la aplicación de {{name}}",

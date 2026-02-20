@@ -109,6 +109,8 @@
       "taskTitle": "Tehtävän otsikko",
       "time": "Aika",
       "deleteConfirm": "Poista tämä tehtävä?",
+      "removeFromDayConfirm": "Remove this task from {{day}}s? It will still appear on other days.",
+      "deleteLastDayConfirm": "This is the only day for this task. Delete it entirely?",
       "patientCreated": "Added by {{name}}",
       "noMoreSuggestions": "Ei enempää ehdotuksia saatavilla.",
       "copyFromTo": "Kopioi tehtäviä päivältä {{day}} kohteeseen:",
