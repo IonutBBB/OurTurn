@@ -92,6 +92,34 @@ export default function DashboardScreen() {
     loadDashboardData();
   }, [household?.id]);
 
+  // Realtime subscription for task_completions
+  useEffect(() => {
+    if (!household?.id) return;
+    const channel = supabase
+      .channel('dashboard-completions')
+      .on('postgres_changes', {
+        event: '*',
+        schema: 'public',
+        table: 'task_completions',
+        filter: `household_id=eq.${household.id}`,
+      }, () => {
+        const today = new Date().toISOString().split('T')[0];
+        supabase
+          .from('task_completions')
+          .select('completed')
+          .eq('household_id', household.id)
+          .eq('date', today)
+          .then(({ data }) => {
+            if (data) {
+              const completed = data.filter((c) => c.completed).length;
+              setTaskStats({ completed, total: data.length });
+            }
+          });
+      })
+      .subscribe();
+    return () => { supabase.removeChannel(channel); };
+  }, [household?.id]);
+
   const onRefresh = async () => {
     setRefreshing(true);
     await loadCaregiverData();

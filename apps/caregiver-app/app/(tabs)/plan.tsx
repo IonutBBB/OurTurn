@@ -22,7 +22,7 @@ import { supabase } from '@ourturn/supabase';
 import { useAuthStore } from '../../src/stores/auth-store';
 import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS, SPACING } from '../../src/theme';
 import type { CarePlanTask, TaskCategory, DayOfWeek, MedicationItem } from '@ourturn/shared';
-import { SHARED_ACTIVITY_DEFINITIONS, SHARED_ACTIVITY_CATEGORIES, getActivityDefinition, VALID_ACTIVITY_TYPES } from '@ourturn/shared';
+import { SHARED_ACTIVITY_DEFINITIONS, SHARED_ACTIVITY_CATEGORIES, getActivityDefinition, VALID_ACTIVITY_TYPES, getActivitiesForLocale, getCategoriesForLocale } from '@ourturn/shared';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -43,7 +43,8 @@ function formatTime(time: string): string {
 }
 
 export default function PlanScreen() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const locale = i18n.language?.split('-')[0] || 'en';
   const { household, patient, user } = useAuthStore();
 
   const styles = useStyles();
@@ -87,6 +88,9 @@ export default function PlanScreen() {
 
   // Activity template picker
   const [showActivityPicker, setShowActivityPicker] = useState(false);
+
+  // Completion tracking
+  const [completions, setCompletions] = useState<Record<string, boolean>>({});
 
   // AI Suggest state
   const [showSuggestModal, setShowSuggestModal] = useState(false);
@@ -143,10 +147,44 @@ export default function PlanScreen() {
     return () => { supabase.removeChannel(channel); };
   }, [household?.id, fetchTasks]);
 
+  // Fetch today's completions
+  const fetchCompletions = useCallback(async () => {
+    if (!household?.id) return;
+    const today = new Date().toISOString().split('T')[0];
+    const { data } = await supabase
+      .from('task_completions')
+      .select('task_id, completed')
+      .eq('household_id', household.id)
+      .eq('date', today);
+    if (data) {
+      const map: Record<string, boolean> = {};
+      data.forEach((c) => { if (c.completed) map[c.task_id] = true; });
+      setCompletions(map);
+    }
+  }, [household?.id]);
+
+  useEffect(() => { fetchCompletions(); }, [fetchCompletions]);
+
+  // Realtime subscription for task_completions
+  useEffect(() => {
+    if (!household?.id) return;
+    const channel = supabase
+      .channel(`plan-completions-${household.id}`)
+      .on('postgres_changes', {
+        event: '*',
+        schema: 'public',
+        table: 'task_completions',
+        filter: `household_id=eq.${household.id}`,
+      }, () => { fetchCompletions(); })
+      .subscribe();
+    return () => { supabase.removeChannel(channel); };
+  }, [household?.id, fetchCompletions]);
+
   const onRefresh = useCallback(() => {
     setRefreshing(true);
     fetchTasks();
-  }, [fetchTasks]);
+    fetchCompletions();
+  }, [fetchTasks, fetchCompletions]);
 
   // Filter tasks for selected day
   const filteredTasks = tasks.filter((task) => {
@@ -715,7 +753,14 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
                           {t(`categories.${task.category}`)}
                         </Text>
                       </View>
-                      <Text style={styles.taskTime}>{formatTime(task.time)}</Text>
+                      <View style={styles.taskHeaderRight}>
+                        {completions[task.id] && (
+                          <View style={styles.completionBadge}>
+                            <Text style={styles.completionCheck}>✓</Text>
+                          </View>
+                        )}
+                        <Text style={styles.taskTime}>{formatTime(task.time)}</Text>
+                      </View>
                     </View>
                     <Text style={styles.taskTitle}>{task.title}</Text>
                     {task.patient_created && (
@@ -1301,8 +1346,8 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
             <Text style={[styles.copyLabel, { marginBottom: 12 }]}>{t('caregiverApp.carePlan.activityPicker.subtitle')}</Text>
 
             <ScrollView showsVerticalScrollIndicator={false}>
-              {SHARED_ACTIVITY_CATEGORIES.map((cat) => {
-                const activities = SHARED_ACTIVITY_DEFINITIONS.filter((a) => a.category === cat.category);
+              {getCategoriesForLocale(locale).map((cat) => {
+                const activities = getActivitiesForLocale(locale).filter((a) => a.category === cat.category);
                 return (
                   <View key={cat.category} style={{ marginBottom: 16 }}>
                     <Text style={[styles.fieldLabel, { marginBottom: 8 }]}>
@@ -1472,6 +1517,24 @@ const useStyles = createThemedStyles((colors) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 8,
+  },
+  taskHeaderRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  completionBadge: {
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    backgroundColor: '#16a34a',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  completionCheck: {
+    color: '#fff',
+    fontSize: 13,
+    fontWeight: '700',
   },
   categoryBadge: {
     flexDirection: 'row',
