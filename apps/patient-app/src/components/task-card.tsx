@@ -133,6 +133,7 @@ function TaskCard({ task, completion, status, onComplete, onPlayActivity, simpli
     <View
       style={[
         styles.card,
+        simplified && styles.cardSimplified,
         isCompleted && styles.cardCompleted,
         isOverdue && styles.cardOverdue,
         isNow && styles.cardNow,
@@ -277,6 +278,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.border,
   },
+  cardSimplified: {
+    padding: 32,
+    marginBottom: 28,
+    borderRadius: 24,
+  },
   cardCompleted: {
     backgroundColor: COLORS.completedBg,
     opacity: 0.85,
@@ -398,21 +404,25 @@ const styles = StyleSheet.create({
   textMuted: {
     color: COLORS.textMuted,
   },
-  // Simplified mode overrides
+  // Simplified mode overrides — significantly larger and clearer
   timeSimplified: {
-    fontSize: 24,
+    fontSize: 28,
+    fontFamily: FONTS.bodySemiBold,
   },
   categoryIconSimplified: {
-    fontSize: 36,
+    fontSize: 44,
+    marginRight: 16,
   },
   titleSimplified: {
-    fontSize: 28,
+    fontSize: 32,
+    lineHeight: 42,
   },
   doneButtonSimplified: {
-    height: 76,
+    height: 88,
+    borderRadius: 20,
   },
   doneButtonTextSimplified: {
-    fontSize: 24,
+    fontSize: 28,
   },
   // Task photo (non-medication)
   taskPhotoContainer: {
@@ -426,7 +436,8 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   taskPhotoSimplified: {
-    height: 200,
+    height: 220,
+    borderRadius: 16,
   },
   // Medication items list
   medList: {
@@ -454,9 +465,9 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   medPhotoSimplified: {
-    width: 64,
-    height: 64,
-    borderRadius: 10,
+    width: 72,
+    height: 72,
+    borderRadius: 12,
   },
   medInfo: {
     flex: 1,
@@ -468,7 +479,7 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   medNameSimplified: {
-    fontSize: 24,
+    fontSize: 26,
   },
   medDosage: {
     fontSize: 20,
@@ -476,6 +487,6 @@ const styles = StyleSheet.create({
     color: COLORS.textSecondary,
   },
   medDosageSimplified: {
-    fontSize: 22,
+    fontSize: 24,
   },
 });

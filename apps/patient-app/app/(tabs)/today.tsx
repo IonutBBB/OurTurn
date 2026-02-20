@@ -350,27 +350,29 @@ export default function TodayScreen() {
 
           {/* Compact Orientation Header */}
           <View style={styles.greetingContainer}>
-            <Text
-              style={[styles.orientationLine, { color: gradientTextColor }]}
-              accessibilityRole="header"
-            >
-              {getDayOfWeekLong(new Date(), i18n.language)}  ·  {new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long' }).format(new Date())}  ·  {currentTime}
-            </Text>
+            {!isSimplified && (
+              <Text
+                style={[styles.orientationLine, { color: gradientTextColor }]}
+                accessibilityRole="header"
+              >
+                {getDayOfWeekLong(new Date(), i18n.language)}  ·  {new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'long' }).format(new Date())}  ·  {currentTime}
+              </Text>
+            )}
             <Text
               style={[styles.greeting, isSimplified && styles.greetingSimplified, { color: gradientTextColor }]}
               accessibilityLabel={t(greeting, { name: patient?.name || '' })}
             >
               {t(greeting, { name: patient?.name || '' })} {emoji}
             </Text>
-            {yesterdayCompletedCount != null && yesterdayCompletedCount > 0 && (
+            {!isSimplified && yesterdayCompletedCount != null && yesterdayCompletedCount > 0 && (
               <Text style={[styles.yesterdayText, { color: gradientTextColor }]}>
                 {t('patientApp.todaysPlan.yesterdayCompleted', { count: yesterdayCompletedCount })}
               </Text>
             )}
           </View>
 
-          {/* Progress bar */}
-          {totalCount > 0 && (
+          {/* Progress bar — hidden in simplified mode */}
+          {!isSimplified && totalCount > 0 && (
             <View
               style={styles.progressContainer}
               accessible={true}
@@ -406,8 +408,8 @@ export default function TodayScreen() {
             </View>
           )}
 
-          {/* Daily Check-in card */}
-          {checkedInToday !== null && (
+          {/* Daily Check-in card — hidden in simplified mode */}
+          {!isSimplified && checkedInToday !== null && (
             <TouchableOpacity
               style={[
                 styles.checkinCard,
@@ -453,8 +455,8 @@ export default function TodayScreen() {
             </TouchableOpacity>
           )}
 
-          {/* Coming Up Next card */}
-          {nextTask && (
+          {/* Coming Up Next card — hidden in simplified mode */}
+          {!isSimplified && nextTask && (
             <View style={styles.comingUpCard}>
               <Text style={styles.comingUpLabel}>{t('patientApp.todaysPlan.comingUp')}</Text>
               <View style={styles.comingUpContent}>
@@ -486,10 +488,13 @@ export default function TodayScreen() {
             </View>
           )}
 
-          {/* Task list */}
+          {/* Task list — in simplified mode, hide completed tasks */}
           {sortedTasks.map((task) => {
             const completion = completions.find((c) => c.task_id === task.id);
             const status = getTaskStatus(task, completion);
+
+            // In simplified mode, hide completed/skipped tasks to reduce clutter
+            if (isSimplified && (completion?.completed || completion?.skipped)) return null;
 
             return (
               <TaskCard
@@ -504,8 +509,16 @@ export default function TodayScreen() {
             );
           })}
 
-          {/* Add a Reminder card */}
-          <TouchableOpacity
+          {/* Simplified all-done message */}
+          {isSimplified && totalCount > 0 && completedCount >= totalCount && (
+            <View style={styles.simplifiedAllDone}>
+              <Text style={styles.simplifiedAllDoneEmoji}>🌟</Text>
+              <Text style={styles.simplifiedAllDoneText}>{t('patientApp.todaysPlan.allDone')}</Text>
+            </View>
+          )}
+
+          {/* Add a Reminder card — hidden in simplified mode */}
+          {!isSimplified && <TouchableOpacity
             style={styles.addReminderCard}
             onPress={() => router.push('/add-reminder')}
             activeOpacity={0.8}
@@ -526,7 +539,7 @@ export default function TodayScreen() {
                 </Text>
               </View>
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity>}
 
           {/* Bottom padding for tab bar */}
           <View style={styles.bottomPadding} />
@@ -588,8 +601,9 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   greetingSimplified: {
-    fontSize: 32,
-    lineHeight: 40,
+    fontSize: 38,
+    lineHeight: 48,
+    marginTop: 12,
   },
   yesterdayText: {
     fontSize: 22,
@@ -657,6 +671,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     lineHeight: 38,
     fontFamily: FONTS.bodyMedium,
+  },
+  simplifiedAllDone: {
+    alignItems: 'center',
+    paddingVertical: 48,
+  },
+  simplifiedAllDoneEmoji: {
+    fontSize: 72,
+    marginBottom: 16,
+  },
+  simplifiedAllDoneText: {
+    fontSize: 32,
+    fontFamily: FONTS.bodySemiBold,
+    color: COLORS.success,
+    textAlign: 'center',
   },
   bottomPadding: {
     height: 120,
