@@ -122,6 +122,21 @@ export default function PlanScreen() {
     fetchTasks();
   }, [fetchTasks]);
 
+  // Realtime subscription for care_plan_tasks changes (e.g. patient-created tasks)
+  useEffect(() => {
+    if (!household?.id) return;
+    const channel = supabase
+      .channel(`plan-tasks-${household.id}`)
+      .on('postgres_changes', {
+        event: '*',
+        schema: 'public',
+        table: 'care_plan_tasks',
+        filter: `household_id=eq.${household.id}`,
+      }, () => { fetchTasks(); })
+      .subscribe();
+    return () => { supabase.removeChannel(channel); };
+  }, [household?.id, fetchTasks]);
+
   const onRefresh = useCallback(() => {
     setRefreshing(true);
     fetchTasks();

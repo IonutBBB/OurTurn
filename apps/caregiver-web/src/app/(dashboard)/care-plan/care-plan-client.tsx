@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
 import { hasReachedTaskLimit } from '@ourturn/shared/utils/subscription';
@@ -77,6 +77,30 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const [showAddForm, setShowAddForm] = useState(false);
 
+  // Realtime subscription — refresh tasks when patient adds/edits/deletes from their app
+  const fetchTasks = useCallback(async () => {
+    const { data, error } = await supabase
+      .from('care_plan_tasks')
+      .select('*')
+      .eq('household_id', householdId)
+      .eq('active', true)
+      .order('time', { ascending: true });
+    if (!error && data) setTasks(data);
+  }, [householdId, supabase]);
+
+  useEffect(() => {
+    const channel = supabase
+      .channel(`care-plan-tasks-${householdId}`)
+      .on('postgres_changes', {
+        event: '*',
+        schema: 'public',
+        table: 'care_plan_tasks',
+        filter: `household_id=eq.${householdId}`,
+      }, () => { fetchTasks(); })
+      .subscribe();
+    return () => { supabase.removeChannel(channel); };
+  }, [householdId, supabase, fetchTasks]);
+
   // Day filter state
   const [selectedDay, setSelectedDay] = useState<DayFilter>(getTodayAbbr());
 
@@ -87,7 +111,13 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
         if (task.recurrence === 'specific_days') {
           return task.recurrence_days?.some(d => d.toLowerCase() === selectedDay) ?? false;
         }
-        return false; // one_time tasks only on "All"
+        if (task.recurrence === 'one_time' && task.one_time_date) {
+          const taskDate = new Date(task.one_time_date + 'T00:00:00');
+          const dayIndex = taskDate.getDay();
+          const mapping = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+          return mapping[dayIndex] === selectedDay;
+        }
+        return false;
       });
 
   const taskCountForDay = (day: DayFilter): number => {
@@ -96,6 +126,12 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
       if (task.recurrence === 'daily') return true;
       if (task.recurrence === 'specific_days') {
         return task.recurrence_days?.some(d => d.toLowerCase() === day) ?? false;
+      }
+      if (task.recurrence === 'one_time' && task.one_time_date) {
+        const taskDate = new Date(task.one_time_date + 'T00:00:00');
+        const dayIndex = taskDate.getDay();
+        const mapping = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+        return mapping[dayIndex] === day;
       }
       return false;
     }).length;

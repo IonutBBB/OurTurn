@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { router } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
 import { getProgressLabel, getCategoryIcon } from '@ourturn/shared';
@@ -183,6 +183,15 @@ export default function TodayScreen() {
     };
     loadData();
   }, [fetchData]);
+
+  // Re-fetch when screen comes into focus (e.g. returning from add-reminder)
+  useFocusEffect(
+    useCallback(() => {
+      if (!isLoading) {
+        fetchData();
+      }
+    }, [fetchData, isLoading])
+  );
 
   // Live clock — update every minute
   useEffect(() => {
