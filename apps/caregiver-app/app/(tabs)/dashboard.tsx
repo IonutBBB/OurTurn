@@ -372,10 +372,6 @@ export default function DashboardScreen() {
             <Text style={styles.sectionLabel}>{t('caregiverApp.dashboard.engagementSummary')}</Text>
             <View style={styles.engagementGrid}>
               <View style={styles.engagementBox}>
-                <Text style={styles.engagementValue}>{progressPercent}%</Text>
-                <Text style={styles.engagementLabel}>{t('caregiverApp.dashboard.tasksCompletedLabel')}</Text>
-              </View>
-              <View style={styles.engagementBox}>
                 <Text style={styles.engagementValue}>{checkin ? '✅' : '—'}</Text>
                 <Text style={styles.engagementLabel}>{checkin ? t('caregiverApp.dashboard.checkedIn') : t('caregiverApp.dashboard.notCheckedIn')}</Text>
               </View>

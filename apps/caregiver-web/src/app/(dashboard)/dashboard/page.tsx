@@ -317,11 +317,7 @@ async function DashboardContent() {
           {/* Engagement summary */}
           <div className="border-t border-surface-border pt-4">
             <p className="section-label mb-3">{t.dashboard.engagementSummary}</p>
-            <div className="grid grid-cols-3 gap-2">
-              <div className="card-inset p-3 text-center">
-                <p className="text-lg font-bold font-display text-brand-600">{progressPercent}%</p>
-                <p className="text-xs text-text-muted">{t.dashboard.tasksCompletedLabel}</p>
-              </div>
+            <div className="grid grid-cols-2 gap-2">
               <div className="card-inset p-3 text-center">
                 <p className="text-lg font-bold font-display text-brand-600">{checkin ? '✅' : '—'}</p>
                 <p className="text-xs text-text-muted">{checkin ? t.dashboard.checkedIn : t.dashboard.notCheckedIn}</p>
