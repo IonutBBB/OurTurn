@@ -468,7 +468,8 @@ RULES:
 - Frame everything as enjoyable activities
 - Space tasks between 08:00 and 21:00 with 1.5h gaps
 - Valid categories: medication, nutrition, physical, cognitive, social, health, activity
-- For "activity" category tasks, include an "activity_type" field with one of: ${VALID_ACTIVITY_TYPES.slice(0, 10).join(', ')} (and more). These are mind games.
+- For "activity" category tasks, include an "activity_type" field with one of: ${getActivitiesForLocale(locale).map(a => a.type).join(', ')}. These are mind games.
+${category === 'activity' ? `- Since the focus is on mind games, ALL 6 suggestions MUST be mind games with category "activity" and a unique activity_type from the list above.` : '- Include at most 1-2 mind game suggestions per batch.'}
 
 EXISTING PLAN (avoid duplicating):
 ${existingTitles}
@@ -518,7 +519,7 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
         .filter((s: Record<string, string>) => {
           if (!s.title || !s.hint_text || !s.category) return false;
           if (!validCategories.includes(s.category)) return false;
-          if (s.category === 'activity' && (!s.activity_type || !VALID_ACTIVITY_TYPES.includes(s.activity_type))) return false;
+          if (s.category === 'activity' && (!s.activity_type || !getActivitiesForLocale(locale).some(a => a.type === s.activity_type))) return false;
           return true;
         })
         .slice(0, 6);
@@ -754,7 +755,7 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
                         </Text>
                       </View>
                       <View style={styles.taskHeaderRight}>
-                        {completions[task.id] && (
+                        {selectedDay === getTodayDayOfWeek() && completions[task.id] && (
                           <View style={styles.completionBadge}>
                             <Text style={styles.completionCheck}>✓</Text>
                           </View>

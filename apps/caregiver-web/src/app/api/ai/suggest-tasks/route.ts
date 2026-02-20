@@ -236,10 +236,10 @@ ${categoryFocus}
 INTERVENTION LIBRARY (format: id|category|intervention|adaptations|timeOfDay|duration|difficulty):
 ${librarySummary}
 
-MIND GAME LIBRARY (you may also suggest mind games as category "activity" with an "activity_type"):
+MIND GAME LIBRARY (you may suggest mind games as category "activity" with an "activity_type"):
 ${getActivitiesForLocale(locale || 'en').map((a) => `${a.type}|${a.category}|${a.emoji}`).join('\n')}
-When suggesting a mind game, use: { "category": "activity", "activity_type": "${getActivitiesForLocale(locale || 'en')[0]?.type || 'photo_pairs'}", "intervention_id": null, "evidence_source": "CST evidence-based" }
-You may include 0-2 mind game suggestions per batch. Not every batch needs them.${locale && locale !== 'en' ? '\nIMPORTANT: Only suggest mind games from the list above. Some games are excluded because their content is only available in English.' : ''}
+When suggesting a mind game, use: { "category": "activity", "activity_type": "<type_from_list>", "intervention_id": null, "evidence_source": "CST evidence-based" }
+${category === 'activity' ? `Since the user asked to focus on mind games, ALL ${count} suggestions MUST be mind games from the library above. Pick a DIVERSE selection of different game types. Each must have a unique activity_type.` : 'You may include 0-2 mind game suggestions per batch. Not every batch needs them.'}${locale && locale !== 'en' ? '\nIMPORTANT: Only suggest mind games from the list above. Some games are excluded because their content is only available in English.' : ''}
 
 DAILY PLAN STRUCTURE:
 - Morning: physical activity + nutrition
