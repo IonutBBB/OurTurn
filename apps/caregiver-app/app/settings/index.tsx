@@ -1031,7 +1031,7 @@ export default function SettingsScreen() {
                         <View style={{ flex: 1 }}>
                           <Text style={styles.contactName}>{contact.name}</Text>
                           <Text style={styles.contactDetail}>
-                            {contact.phone}{contact.relationship ? ` \u2022 ${contact.relationship}` : ''}
+                            {contact.phone}{contact.relationship ? ` \u2022 ${t(`relationships.${contact.relationship}`, { defaultValue: contact.relationship })}` : ''}
                           </Text>
                         </View>
                         <TouchableOpacity onPress={() => handleRemoveContact(index)} activeOpacity={0.7}>
@@ -1068,13 +1068,32 @@ export default function SettingsScreen() {
                   </View>
                   <View style={styles.fieldGroup}>
                     <Text style={styles.fieldLabel}>{t('caregiverApp.settings.contactRelationship')}</Text>
-                    <TextInput
-                      style={styles.textInput}
-                      value={newContactRelationship}
-                      onChangeText={setNewContactRelationship}
-                      placeholder={t('caregiverApp.settings.contactRelationshipPlaceholder')}
-                      placeholderTextColor={colors.textMuted}
-                    />
+                    <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginTop: 6 }}>
+                      {['spouse', 'partner', 'son', 'daughter', 'mother', 'father', 'sibling', 'grandmother', 'grandfather', 'friend', 'neighbour', 'carer', 'other'].map((rel) => (
+                        <TouchableOpacity
+                          key={rel}
+                          style={{
+                            paddingHorizontal: 14,
+                            paddingVertical: 8,
+                            borderRadius: RADIUS.md,
+                            borderWidth: 1,
+                            borderColor: newContactRelationship === rel ? colors.brand600 : colors.border,
+                            backgroundColor: newContactRelationship === rel ? colors.brand50 : 'transparent',
+                            marginRight: 8,
+                          }}
+                          onPress={() => setNewContactRelationship(newContactRelationship === rel ? '' : rel)}
+                          activeOpacity={0.7}
+                        >
+                          <Text style={{
+                            fontSize: 13,
+                            fontFamily: newContactRelationship === rel ? FONTS.bodySemiBold : FONTS.body,
+                            color: newContactRelationship === rel ? colors.brand600 : colors.textSecondary,
+                          }}>
+                            {t(`relationships.${rel}`, { defaultValue: rel })}
+                          </Text>
+                        </TouchableOpacity>
+                      ))}
+                    </ScrollView>
                   </View>
                   <TouchableOpacity
                     style={[styles.secondaryButton, (!newContactName.trim() || !newContactPhone.trim()) && styles.saveButtonDisabled]}

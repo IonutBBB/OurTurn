@@ -1116,10 +1116,15 @@
         "mother": "Édesanya",
         "father": "Édesapa",
         "spouse": "Házastárs",
+        "partner": "Partner",
+        "son": "Son",
+        "daughter": "Daughter",
         "grandmother": "Nagymama",
         "grandfather": "Nagypapa",
         "sibling": "Testvér",
         "friend": "Barát",
+        "neighbour": "Neighbour",
+        "carer": "Carer",
         "other": "Egyéb"
       },
       "dementiaTypes": {

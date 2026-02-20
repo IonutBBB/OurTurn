@@ -16,6 +16,21 @@
     "offline": "M'intix online — id-data tiegħek se tissinkronizza meta terġa' tikkonnettja",
     "synced": "Issinkronizzat"
   },
+  "relationships": {
+    "mother": "Mother",
+    "father": "Father",
+    "spouse": "Spouse",
+    "partner": "Partner",
+    "son": "Son",
+    "daughter": "Daughter",
+    "grandmother": "Grandmother",
+    "grandfather": "Grandfather",
+    "sibling": "Sibling",
+    "friend": "Friend",
+    "neighbour": "Neighbour",
+    "carer": "Carer",
+    "other": "Other"
+  },
   "categories": {
     "medication": "Mediċina",
     "nutrition": "Ikliet u Nutrizzjoni",

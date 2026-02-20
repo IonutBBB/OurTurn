@@ -16,6 +16,21 @@
     "offline": "Sei offline — i tuoi dati si sincronizzeranno quando sarai connesso",
     "synced": "Sincronizzato"
   },
+  "relationships": {
+    "mother": "Mother",
+    "father": "Father",
+    "spouse": "Spouse",
+    "partner": "Partner",
+    "son": "Son",
+    "daughter": "Daughter",
+    "grandmother": "Grandmother",
+    "grandfather": "Grandfather",
+    "sibling": "Sibling",
+    "friend": "Friend",
+    "neighbour": "Neighbour",
+    "carer": "Carer",
+    "other": "Other"
+  },
   "categories": {
     "medication": "Farmaci",
     "nutrition": "Pasti e Alimentazione",

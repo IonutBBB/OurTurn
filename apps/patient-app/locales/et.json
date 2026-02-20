@@ -16,6 +16,21 @@
     "offline": "Oled võrguühenduseta – sinu andmed sünkroonitakse ühenduse loomisel",
     "synced": "Sünkroonitud"
   },
+  "relationships": {
+    "mother": "Mother",
+    "father": "Father",
+    "spouse": "Spouse",
+    "partner": "Partner",
+    "son": "Son",
+    "daughter": "Daughter",
+    "grandmother": "Grandmother",
+    "grandfather": "Grandfather",
+    "sibling": "Sibling",
+    "friend": "Friend",
+    "neighbour": "Neighbour",
+    "carer": "Carer",
+    "other": "Other"
+  },
   "categories": {
     "medication": "Ravimid",
     "nutrition": "Söögid ja toitumine",

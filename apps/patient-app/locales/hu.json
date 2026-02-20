@@ -16,6 +16,21 @@
     "offline": "Offline állapotban van – az adatai szinkronizálódnak, amint újra csatlakozik",
     "synced": "Szinkronizálva"
   },
+  "relationships": {
+    "mother": "Mother",
+    "father": "Father",
+    "spouse": "Spouse",
+    "partner": "Partner",
+    "son": "Son",
+    "daughter": "Daughter",
+    "grandmother": "Grandmother",
+    "grandfather": "Grandfather",
+    "sibling": "Sibling",
+    "friend": "Friend",
+    "neighbour": "Neighbour",
+    "carer": "Carer",
+    "other": "Other"
+  },
   "categories": {
     "medication": "Gyógyszerek",
     "nutrition": "Étkezés és táplálkozás",

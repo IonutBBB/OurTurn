@@ -1116,10 +1116,15 @@
         "mother": "Mati",
         "father": "Oče",
         "spouse": "Zakonec",
+        "partner": "Partner",
+        "son": "Son",
+        "daughter": "Daughter",
         "grandmother": "Babica",
         "grandfather": "Dedek",
         "sibling": "Brat/Sestra",
         "friend": "Prijatelj",
+        "neighbour": "Neighbour",
+        "carer": "Carer",
         "other": "Drugo"
       },
       "dementiaTypes": {

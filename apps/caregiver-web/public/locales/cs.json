@@ -1116,10 +1116,15 @@
         "mother": "Matka",
         "father": "Otec",
         "spouse": "Manžel/ka",
+        "partner": "Partner",
+        "son": "Son",
+        "daughter": "Daughter",
         "grandmother": "Babička",
         "grandfather": "Dědeček",
         "sibling": "Sourozenec",
         "friend": "Přítel",
+        "neighbour": "Neighbour",
+        "carer": "Carer",
         "other": "Jiný"
       },
       "dementiaTypes": {

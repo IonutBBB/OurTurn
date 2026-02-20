@@ -1116,10 +1116,15 @@
         "mother": "Motina",
         "father": "Tėvas",
         "spouse": "Sutuoktinis",
+        "partner": "Partner",
+        "son": "Son",
+        "daughter": "Daughter",
         "grandmother": "Močiutė",
         "grandfather": "Senelis",
         "sibling": "Brolis ar sesuo",
         "friend": "Draugas",
+        "neighbour": "Neighbour",
+        "carer": "Carer",
         "other": "Kita"
       },
       "dementiaTypes": {

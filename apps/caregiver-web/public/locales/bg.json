@@ -1116,10 +1116,15 @@
         "mother": "Майка",
         "father": "Баща",
         "spouse": "Съпруг/а",
+        "partner": "Partner",
+        "son": "Son",
+        "daughter": "Daughter",
         "grandmother": "Баба",
         "grandfather": "Дядо",
         "sibling": "Брат/Сестра",
         "friend": "Приятел",
+        "neighbour": "Neighbour",
+        "carer": "Carer",
         "other": "Друг"
       },
       "dementiaTypes": {

@@ -1116,10 +1116,15 @@
         "mother": "Mamă",
         "father": "Tată",
         "spouse": "Soț/Soție",
+        "partner": "Partner",
+        "son": "Son",
+        "daughter": "Daughter",
         "grandmother": "Bunică",
         "grandfather": "Bunic",
         "sibling": "Frate/Soră",
         "friend": "Prieten/ă",
+        "neighbour": "Neighbour",
+        "carer": "Carer",
         "other": "Altul/Alta"
       },
       "dementiaTypes": {

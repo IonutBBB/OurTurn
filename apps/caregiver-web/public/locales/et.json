@@ -1116,10 +1116,15 @@
         "mother": "Ema",
         "father": "Isa",
         "spouse": "Abikaasa",
+        "partner": "Partner",
+        "son": "Son",
+        "daughter": "Daughter",
         "grandmother": "Vanaema",
         "grandfather": "Vanaisa",
         "sibling": "Õde/vend",
         "friend": "Sõber",
+        "neighbour": "Neighbour",
+        "carer": "Carer",
         "other": "Muu"
       },
       "dementiaTypes": {

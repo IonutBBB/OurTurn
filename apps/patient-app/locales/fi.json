@@ -16,6 +16,21 @@
     "offline": "Olet offline-tilassa – tietosi synkronoituvat, kun yhteys palautuu",
     "synced": "Synkronoitu"
   },
+  "relationships": {
+    "mother": "Mother",
+    "father": "Father",
+    "spouse": "Spouse",
+    "partner": "Partner",
+    "son": "Son",
+    "daughter": "Daughter",
+    "grandmother": "Grandmother",
+    "grandfather": "Grandfather",
+    "sibling": "Sibling",
+    "friend": "Friend",
+    "neighbour": "Neighbour",
+    "carer": "Carer",
+    "other": "Other"
+  },
   "categories": {
     "medication": "Lääkitys",
     "nutrition": "Ateriat ja ravitsemus",

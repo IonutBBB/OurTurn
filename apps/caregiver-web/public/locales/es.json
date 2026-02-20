@@ -1116,10 +1116,15 @@
         "mother": "Madre",
         "father": "Padre",
         "spouse": "Cónyuge",
+        "partner": "Partner",
+        "son": "Son",
+        "daughter": "Daughter",
         "grandmother": "Abuela",
         "grandfather": "Abuelo",
         "sibling": "Hermano/a",
         "friend": "Amigo/a",
+        "neighbour": "Neighbour",
+        "carer": "Carer",
         "other": "Otro/a"
       },
       "dementiaTypes": {

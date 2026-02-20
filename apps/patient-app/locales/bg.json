@@ -16,6 +16,21 @@
     "offline": "Вие сте офлайн — данните ви ще се синхронизират, когато се свържете",
     "synced": "Синхронизирано"
   },
+  "relationships": {
+    "mother": "Mother",
+    "father": "Father",
+    "spouse": "Spouse",
+    "partner": "Partner",
+    "son": "Son",
+    "daughter": "Daughter",
+    "grandmother": "Grandmother",
+    "grandfather": "Grandfather",
+    "sibling": "Sibling",
+    "friend": "Friend",
+    "neighbour": "Neighbour",
+    "carer": "Carer",
+    "other": "Other"
+  },
   "categories": {
     "medication": "Лекарства",
     "nutrition": "Хранене и хранителен режим",

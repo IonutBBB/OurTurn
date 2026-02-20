@@ -309,7 +309,11 @@ export default function HelpScreen() {
               <Text style={styles.contactIcon}>📞</Text>
               <View style={styles.contactInfo}>
                 <Text style={styles.contactName}>{contact.name}</Text>
-                <Text style={styles.contactRelation}>{contact.relationship}</Text>
+                <Text style={styles.contactRelation}>
+                  {contact.relationship
+                    ? (t(`relationships.${contact.relationship}`, { defaultValue: '' }) || contact.relationship)
+                    : ''}
+                </Text>
               </View>
             </TouchableOpacity>
           ))}

@@ -16,6 +16,21 @@
     "offline": "Esate neprisijungę – jūsų duomenys bus sinchronizuoti prisijungus",
     "synced": "Sinchronizuota"
   },
+  "relationships": {
+    "mother": "Mother",
+    "father": "Father",
+    "spouse": "Spouse",
+    "partner": "Partner",
+    "son": "Son",
+    "daughter": "Daughter",
+    "grandmother": "Grandmother",
+    "grandfather": "Grandfather",
+    "sibling": "Sibling",
+    "friend": "Friend",
+    "neighbour": "Neighbour",
+    "carer": "Carer",
+    "other": "Other"
+  },
   "categories": {
     "medication": "Vaistai",
     "nutrition": "Maitinimas ir mityba",

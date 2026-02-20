@@ -6,6 +6,11 @@ import { useTranslation } from 'react-i18next';
 import { useToast } from '@/components/toast';
 import type { Patient, EmergencyContact } from '@ourturn/shared';
 
+const CONTACT_RELATIONSHIP_OPTIONS = [
+  'spouse', 'partner', 'son', 'daughter', 'mother', 'father',
+  'sibling', 'grandmother', 'grandfather', 'friend', 'neighbour', 'carer', 'other',
+];
+
 interface EmergencyContactsSectionProps {
   patient: Patient;
 }
@@ -74,7 +79,7 @@ export default function EmergencyContactsSection({ patient }: EmergencyContactsS
               <div>
                 <p className="font-medium text-text-primary">{contact.name}</p>
                 <p className="text-sm text-text-secondary">
-                  {contact.phone} {contact.relationship && `\u2022 ${contact.relationship}`}
+                  {contact.phone} {contact.relationship && `\u2022 ${t(`caregiverApp.onboarding.relationships.${contact.relationship}`, { defaultValue: contact.relationship })}`}
                 </p>
               </div>
               <button
@@ -125,13 +130,18 @@ export default function EmergencyContactsSection({ patient }: EmergencyContactsS
           <label className="block text-sm text-text-secondary mb-1">
             {t('caregiverApp.settings.contactRelationship')}
           </label>
-          <input
-            type="text"
+          <select
             value={newContact.relationship}
             onChange={(e) => setNewContact({ ...newContact, relationship: e.target.value })}
             className="input-warm w-full"
-            placeholder={t('caregiverApp.settings.contactRelationshipPlaceholder')}
-          />
+          >
+            <option value="">{t('caregiverApp.settings.contactRelationshipPlaceholder')}</option>
+            {CONTACT_RELATIONSHIP_OPTIONS.map((rel) => (
+              <option key={rel} value={rel}>
+                {t(`caregiverApp.onboarding.relationships.${rel}`)}
+              </option>
+            ))}
+          </select>
         </div>
         <button
           type="button"

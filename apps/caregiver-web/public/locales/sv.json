@@ -1116,10 +1116,15 @@
         "mother": "Mor",
         "father": "Far",
         "spouse": "Make/Maka",
+        "partner": "Partner",
+        "son": "Son",
+        "daughter": "Daughter",
         "grandmother": "Farmor/Mormor",
         "grandfather": "Farfar/Morfar",
         "sibling": "Syskon",
         "friend": "Vän",
+        "neighbour": "Neighbour",
+        "carer": "Carer",
         "other": "Annan"
       },
       "dementiaTypes": {

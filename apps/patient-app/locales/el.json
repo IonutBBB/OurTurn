@@ -16,6 +16,21 @@
     "offline": "Είστε εκτός σύνδεσης — τα δεδομένα σας θα συγχρονιστούν όταν συνδεθείτε",
     "synced": "Συγχρονίστηκε"
   },
+  "relationships": {
+    "mother": "Mother",
+    "father": "Father",
+    "spouse": "Spouse",
+    "partner": "Partner",
+    "son": "Son",
+    "daughter": "Daughter",
+    "grandmother": "Grandmother",
+    "grandfather": "Grandfather",
+    "sibling": "Sibling",
+    "friend": "Friend",
+    "neighbour": "Neighbour",
+    "carer": "Carer",
+    "other": "Other"
+  },
   "categories": {
     "medication": "Φαρμακευτική Αγωγή",
     "nutrition": "Γεύματα & Διατροφή",

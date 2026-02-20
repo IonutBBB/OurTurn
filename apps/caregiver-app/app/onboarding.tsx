@@ -26,6 +26,11 @@ const RELATIONSHIP_OPTIONS = [
   'sibling', 'friend', 'other',
 ];
 
+const CONTACT_RELATIONSHIP_OPTIONS = [
+  'spouse', 'partner', 'son', 'daughter', 'mother', 'father',
+  'sibling', 'grandmother', 'grandfather', 'friend', 'neighbour', 'carer', 'other',
+];
+
 const COUNTRY_OPTIONS = [
   'US', 'UK', 'Canada', 'Australia', 'Germany', 'France',
   'Spain', 'Italy', 'Netherlands', 'India', 'Brazil',
@@ -432,7 +437,7 @@ export default function OnboardingScreen() {
                 <View style={{ flex: 1 }}>
                   <Text style={styles.contactName}>{contact.name}</Text>
                   <Text style={styles.contactPhone}>
-                    {contact.phone} {contact.relationship ? `• ${contact.relationship}` : ''}
+                    {contact.phone} {contact.relationship ? `• ${t(`relationships.${contact.relationship}`, { defaultValue: contact.relationship })}` : ''}
                   </Text>
                 </View>
                 <TouchableOpacity onPress={() => removeContact(index)}>
@@ -458,13 +463,14 @@ export default function OnboardingScreen() {
                 placeholderTextColor={colors.textMuted}
                 keyboardType="phone-pad"
               />
-              <TextInput
-                style={[styles.input, { marginTop: 10 }]}
-                value={newContact.relationship}
-                onChangeText={(v) => setNewContact({ ...newContact, relationship: v })}
-                placeholder={t('caregiverApp.onboarding.relationshipOptional')}
-                placeholderTextColor={colors.textMuted}
-              />
+              <Text style={[styles.label, { marginTop: 10, marginBottom: 4 }]}>{t('caregiverApp.onboarding.relationshipOptional')}</Text>
+              {renderDropdown(
+                newContact.relationship,
+                CONTACT_RELATIONSHIP_OPTIONS,
+                (v) => setNewContact({ ...newContact, relationship: v }),
+                '',
+                (v) => t(`relationships.${v}`, { defaultValue: v }),
+              )}
               <TouchableOpacity
                 style={[styles.addButton, (!newContact.name || !newContact.phone) && styles.addButtonDisabled]}
                 onPress={addContact}

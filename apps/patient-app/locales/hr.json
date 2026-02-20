@@ -16,6 +16,21 @@
     "offline": "Izvan mreže ste — vaši podaci će se sinkronizirati kada se povežete",
     "synced": "Sinkronizirano"
   },
+  "relationships": {
+    "mother": "Mother",
+    "father": "Father",
+    "spouse": "Spouse",
+    "partner": "Partner",
+    "son": "Son",
+    "daughter": "Daughter",
+    "grandmother": "Grandmother",
+    "grandfather": "Grandfather",
+    "sibling": "Sibling",
+    "friend": "Friend",
+    "neighbour": "Neighbour",
+    "carer": "Carer",
+    "other": "Other"
+  },
   "categories": {
     "medication": "Lijekovi",
     "nutrition": "Obroci i prehrana",

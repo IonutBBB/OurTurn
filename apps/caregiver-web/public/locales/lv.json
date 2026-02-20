@@ -1116,10 +1116,15 @@
         "mother": "Māte",
         "father": "Tēvs",
         "spouse": "Laulātais",
+        "partner": "Partner",
+        "son": "Son",
+        "daughter": "Daughter",
         "grandmother": "Vecmāmiņa",
         "grandfather": "Vecvectēvs",
         "sibling": "Brālis/māsa",
         "friend": "Draugs",
+        "neighbour": "Neighbour",
+        "carer": "Carer",
         "other": "Cits"
       },
       "dementiaTypes": {

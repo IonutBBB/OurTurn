@@ -1116,10 +1116,15 @@
         "mother": "Mor",
         "father": "Far",
         "spouse": "Ægtefælle",
+        "partner": "Partner",
+        "son": "Son",
+        "daughter": "Daughter",
         "grandmother": "Bedstemor",
         "grandfather": "Bedstefar",
         "sibling": "Søskende",
         "friend": "Ven",
+        "neighbour": "Neighbour",
+        "carer": "Carer",
         "other": "Andet"
       },
       "dementiaTypes": {

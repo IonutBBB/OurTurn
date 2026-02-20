@@ -1116,10 +1116,15 @@
         "mother": "Máthair",
         "father": "Athair",
         "spouse": "Céile",
+        "partner": "Partner",
+        "son": "Son",
+        "daughter": "Daughter",
         "grandmother": "Seanmháthair",
         "grandfather": "Seanathair",
         "sibling": "Deartháir/Deirfiúr",
         "friend": "Cara",
+        "neighbour": "Neighbour",
+        "carer": "Carer",
         "other": "Eile"
       },
       "dementiaTypes": {

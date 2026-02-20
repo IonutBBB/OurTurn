@@ -1116,10 +1116,15 @@
         "mother": "Äiti",
         "father": "Isä",
         "spouse": "Puoliso",
+        "partner": "Partner",
+        "son": "Son",
+        "daughter": "Daughter",
         "grandmother": "Isoäiti",
         "grandfather": "Isoisä",
         "sibling": "Sisar",
         "friend": "Ystävä",
+        "neighbour": "Neighbour",
+        "carer": "Carer",
         "other": "Muu"
       },
       "dementiaTypes": {

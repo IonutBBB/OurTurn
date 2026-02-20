@@ -1116,10 +1116,15 @@
         "mother": "Omm",
         "father": "Missier",
         "spouse": "Konjuġi",
+        "partner": "Partner",
+        "son": "Son",
+        "daughter": "Daughter",
         "grandmother": "Nanna",
         "grandfather": "Nannu",
         "sibling": "Aħwa",
         "friend": "Ħabib",
+        "neighbour": "Neighbour",
+        "carer": "Carer",
         "other": "Oħrajn"
       },
       "dementiaTypes": {

@@ -1116,10 +1116,15 @@
         "mother": "Μητέρα",
         "father": "Πατέρας",
         "spouse": "Σύζυγος",
+        "partner": "Partner",
+        "son": "Son",
+        "daughter": "Daughter",
         "grandmother": "Γιαγιά",
         "grandfather": "Παππούς",
         "sibling": "Αδελφός/ή",
         "friend": "Φίλος/η",
+        "neighbour": "Neighbour",
+        "carer": "Carer",
         "other": "Άλλο"
       },
       "dementiaTypes": {
