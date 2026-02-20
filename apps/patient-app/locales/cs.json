@@ -22,7 +22,8 @@
     "physical": "Fyzická aktivita",
     "cognitive": "Péče o mysl",
     "social": "Společenský život a spojení",
-    "health": "Kontrola zdraví"
+    "health": "Kontrola zdraví",
+    "activity": "Mind Game"
   },
   "patientApp": {
     "todaysPlan": {
@@ -41,7 +42,8 @@
       "tapToStart": "Klepněte pro zahájení aktivity pro vaši mysl",
       "opensActivity": "Otevře dnešní aktivitu pro duševní pohodu",
       "comingUp": "Další na řadě",
-      "activitiesWaiting": "Aktivity na vás čekají"
+      "activitiesWaiting": "Aktivity na vás čekají",
+      "playActivity": "Play"
     },
     "help": {
       "title": "Potřebuji pomoc",
@@ -88,10 +90,6 @@
         "title": "Nahrávat hlasové zprávy?",
         "description": "Abyste mohli zanechat zprávy pro svou rodinu"
       }
-    },
-    "essential": {
-      "music": "Hudba",
-      "callHelp": "Zavolat o pomoc"
     },
     "checkin": {
       "greeting": {

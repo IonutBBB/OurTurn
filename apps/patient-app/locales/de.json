@@ -22,7 +22,8 @@
     "physical": "Körperliche Aktivität",
     "cognitive": "Geistiges Wohlbefinden",
     "social": "Soziales & Verbindung",
-    "health": "Gesundheits-Check"
+    "health": "Gesundheits-Check",
+    "activity": "Mind Game"
   },
   "patientApp": {
     "todaysPlan": {
@@ -41,7 +42,8 @@
       "tapToStart": "Tippen Sie, um Ihre Gehirnaktivität zu starten",
       "opensActivity": "Öffnet die heutige Aktivität für geistiges Wohlbefinden",
       "comingUp": "Als Nächstes",
-      "activitiesWaiting": "Aktivitäten warten auf Sie"
+      "activitiesWaiting": "Aktivitäten warten auf Sie",
+      "playActivity": "Play"
     },
     "help": {
       "title": "Ich brauche Hilfe",
@@ -88,10 +90,6 @@
         "title": "Sprachnachrichten aufnehmen?",
         "description": "Damit Sie Nachrichten für Ihre Familie hinterlassen können"
       }
-    },
-    "essential": {
-      "music": "Musik",
-      "callHelp": "Hilfe rufen"
     },
     "checkin": {
       "greeting": {

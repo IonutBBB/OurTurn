@@ -22,7 +22,8 @@
     "physical": "Testmozgás",
     "cognitive": "Szellemi frissesség",
     "social": "Társas kapcsolatok",
-    "health": "Egészségügyi ellenőrzés"
+    "health": "Egészségügyi ellenőrzés",
+    "activity": "Mind Game"
   },
   "patientApp": {
     "todaysPlan": {
@@ -41,7 +42,8 @@
       "tapToStart": "Koppintson a szellemi tevékenység megkezdéséhez",
       "opensActivity": "Megnyitja a mai szellemi frissességi tevékenységet",
       "comingUp": "Következik",
-      "activitiesWaiting": "Tevékenységek várják Önt"
+      "activitiesWaiting": "Tevékenységek várják Önt",
+      "playActivity": "Play"
     },
     "help": {
       "title": "Segítségre van szükségem",
@@ -88,10 +90,6 @@
         "title": "Hangüzeneteket rögzít?",
         "description": "Hogy üzeneteket hagyhasson a családjának"
       }
-    },
-    "essential": {
-      "music": "Zene",
-      "callHelp": "Segítség hívása"
     },
     "checkin": {
       "greeting": {

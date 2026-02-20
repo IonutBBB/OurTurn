@@ -22,7 +22,8 @@
     "physical": "Fiziskās aktivitātes",
     "cognitive": "Prāta labsajūta",
     "social": "Sociālās saites un saziņa",
-    "health": "Veselības pārbaude"
+    "health": "Veselības pārbaude",
+    "activity": "Mind Game"
   },
   "patientApp": {
     "todaysPlan": {
@@ -41,7 +42,8 @@
       "tapToStart": "Pieskarieties, lai sāktu savu prāta aktivitāti",
       "opensActivity": "Atver šodienas prāta labsajūtas aktivitāti",
       "comingUp": "Nākamais",
-      "activitiesWaiting": "Aktivitātes jūs gaida"
+      "activitiesWaiting": "Aktivitātes jūs gaida",
+      "playActivity": "Play"
     },
     "help": {
       "title": "Man vajag palīdzību",
@@ -88,10 +90,6 @@
         "title": "Ierakstīt balss ziņas?",
         "description": "Lai jūs varētu atstāt ziņas savai ģimenei"
       }
-    },
-    "essential": {
-      "music": "Mūzika",
-      "callHelp": "Zvanīt pēc palīdzības"
     },
     "checkin": {
       "greeting": {

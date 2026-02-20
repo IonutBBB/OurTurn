@@ -22,7 +22,8 @@
     "physical": "Fysisk aktivitet",
     "cognitive": "Hjernesundhed",
     "social": "Socialt & Forbindelse",
-    "health": "Sundhedstjek"
+    "health": "Sundhedstjek",
+    "activity": "Mind Game"
   },
   "patientApp": {
     "todaysPlan": {
@@ -41,7 +42,8 @@
       "tapToStart": "Tryk for at starte din hjerneaktivitet",
       "opensActivity": "Åbner dagens hjerneaktivitet",
       "comingUp": "Kommer snart",
-      "activitiesWaiting": "Aktiviteter venter på dig"
+      "activitiesWaiting": "Aktiviteter venter på dig",
+      "playActivity": "Play"
     },
     "help": {
       "title": "Jeg har brug for hjælp",
@@ -88,10 +90,6 @@
         "title": "Optag talebeskeder?",
         "description": "Så du kan efterlade beskeder til din familie"
       }
-    },
-    "essential": {
-      "music": "Musik",
-      "callHelp": "Ring efter hjælp"
     },
     "checkin": {
       "greeting": {

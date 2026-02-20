@@ -22,7 +22,8 @@
     "physical": "Aktywność fizyczna",
     "cognitive": "Dobra kondycja umysłu",
     "social": "Spotkania i kontakty",
-    "health": "Kontrola zdrowia"
+    "health": "Kontrola zdrowia",
+    "activity": "Mind Game"
   },
   "patientApp": {
     "todaysPlan": {
@@ -41,7 +42,8 @@
       "tapToStart": "Dotknij, aby rozpocząć aktywność umysłową",
       "opensActivity": "Otwiera dzisiejszą aktywność dla dobrej kondycji umysłu",
       "comingUp": "Następne w kolejce",
-      "activitiesWaiting": "Aktywności czekają na Ciebie"
+      "activitiesWaiting": "Aktywności czekają na Ciebie",
+      "playActivity": "Play"
     },
     "help": {
       "title": "Potrzebuję pomocy",
@@ -88,10 +90,6 @@
         "title": "Nagrywać wiadomości głosowe?",
         "description": "Abyś mógł zostawiać wiadomości dla swojej rodziny"
       }
-    },
-    "essential": {
-      "music": "Muzyka",
-      "callHelp": "Zadzwoń po pomoc"
     },
     "checkin": {
       "greeting": {

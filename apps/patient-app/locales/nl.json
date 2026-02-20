@@ -22,7 +22,8 @@
     "physical": "Lichamelijke activiteit",
     "cognitive": "Hersenwelzijn",
     "social": "Sociaal & Contact",
-    "health": "Gezondheidscheck"
+    "health": "Gezondheidscheck",
+    "activity": "Mind Game"
   },
   "patientApp": {
     "todaysPlan": {
@@ -41,7 +42,8 @@
       "tapToStart": "Tik om uw hersenactiviteit te starten",
       "opensActivity": "Opent de hersenwelzijnsactiviteit van vandaag",
       "comingUp": "Hierna volgt",
-      "activitiesWaiting": "Activiteiten wachten op u"
+      "activitiesWaiting": "Activiteiten wachten op u",
+      "playActivity": "Play"
     },
     "help": {
       "title": "Ik heb hulp nodig",
@@ -88,10 +90,6 @@
         "title": "Spraakberichten opnemen?",
         "description": "Zodat u berichten kunt achterlaten voor uw familie"
       }
-    },
-    "essential": {
-      "music": "Muziek",
-      "callHelp": "Hulp bellen"
     },
     "checkin": {
       "greeting": {

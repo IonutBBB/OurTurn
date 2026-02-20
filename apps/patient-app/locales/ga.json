@@ -22,7 +22,8 @@
     "physical": "Gníomhaíocht Fhisiciúil",
     "cognitive": "Folláine Inchinne",
     "social": "Sóisialta & Nasc",
-    "health": "Seiceáil Sláinte"
+    "health": "Seiceáil Sláinte",
+    "activity": "Mind Game"
   },
   "patientApp": {
     "todaysPlan": {
@@ -41,7 +42,8 @@
       "tapToStart": "Beartaigh chun do ghníomhaíocht inchinne a thosú",
       "opensActivity": "Osclaíonn sé gníomhaíocht folláine inchinne an lae inniu",
       "comingUp": "Ag teacht aníos ina dhiaidh sin",
-      "activitiesWaiting": "Tá gníomhaíochtaí ag fanacht leat"
+      "activitiesWaiting": "Tá gníomhaíochtaí ag fanacht leat",
+      "playActivity": "Play"
     },
     "help": {
       "title": "Teastaíonn Cabhair uaim",
@@ -88,10 +90,6 @@
         "title": "An dtaifeadfaidh tú teachtaireachtaí gutha?",
         "description": "Ionas gur féidir leat teachtaireachtaí a fhágáil do do theaghlach"
       }
-    },
-    "essential": {
-      "music": "Ceol",
-      "callHelp": "Glaoigh ar Chabhair"
     },
     "checkin": {
       "greeting": {

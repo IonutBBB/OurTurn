@@ -22,7 +22,8 @@
     "physical": "Attività Fisica",
     "cognitive": "Benessere Mentale",
     "social": "Socialità e Connessione",
-    "health": "Controllo Salute"
+    "health": "Controllo Salute",
+    "activity": "Mind Game"
   },
   "patientApp": {
     "todaysPlan": {
@@ -41,7 +42,8 @@
       "tapToStart": "Tocca per iniziare la tua attività mentale",
       "opensActivity": "Apre l'attività di benessere mentale di oggi",
       "comingUp": "In arrivo",
-      "activitiesWaiting": "Le attività ti stanno aspettando"
+      "activitiesWaiting": "Le attività ti stanno aspettando",
+      "playActivity": "Play"
     },
     "help": {
       "title": "Ho Bisogno di Aiuto",
@@ -88,10 +90,6 @@
         "title": "Registrare messaggi vocali?",
         "description": "Così puoi lasciare messaggi per la tua famiglia"
       }
-    },
-    "essential": {
-      "music": "Musica",
-      "callHelp": "Chiama per Aiuto"
     },
     "checkin": {
       "greeting": {

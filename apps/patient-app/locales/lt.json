@@ -22,7 +22,8 @@
     "physical": "Fizinis aktyvumas",
     "cognitive": "Smegenų gerovė",
     "social": "Bendravimas ir ryšys",
-    "health": "Sveikatos patikra"
+    "health": "Sveikatos patikra",
+    "activity": "Mind Game"
   },
   "patientApp": {
     "todaysPlan": {
@@ -41,7 +42,8 @@
       "tapToStart": "Palieskite, kad pradėtumėte smegenų veiklą",
       "opensActivity": "Atidaro šiandienos smegenų gerovės veiklą",
       "comingUp": "Kitas eilėje",
-      "activitiesWaiting": "Veiklos laukia jūsų"
+      "activitiesWaiting": "Veiklos laukia jūsų",
+      "playActivity": "Play"
     },
     "help": {
       "title": "Man reikia pagalbos",
@@ -88,10 +90,6 @@
         "title": "Įrašyti balso žinutes?",
         "description": "Kad galėtumėte palikti žinutes savo šeimai"
       }
-    },
-    "essential": {
-      "music": "Muzika",
-      "callHelp": "Kviesti pagalbą"
     },
     "checkin": {
       "greeting": {

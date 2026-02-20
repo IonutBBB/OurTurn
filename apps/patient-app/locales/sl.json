@@ -22,7 +22,8 @@
     "physical": "Telesna aktivnost",
     "cognitive": "Dobro počutje možganov",
     "social": "Družabnost in povezanost",
-    "health": "Zdravstveni pregled"
+    "health": "Zdravstveni pregled",
+    "activity": "Mind Game"
   },
   "patientApp": {
     "todaysPlan": {
@@ -41,7 +42,8 @@
       "tapToStart": "Tapnite za začetek aktivnosti za možgane",
       "opensActivity": "Odpre današnjo aktivnost za dobro počutje možganov",
       "comingUp": "Sledi",
-      "activitiesWaiting": "Aktivnosti vas čakajo"
+      "activitiesWaiting": "Aktivnosti vas čakajo",
+      "playActivity": "Play"
     },
     "help": {
       "title": "Potrebujem pomoč",
@@ -88,10 +90,6 @@
         "title": "Snemate glasovna sporočila?",
         "description": "Da lahko puščate sporočila za svojo družino"
       }
-    },
-    "essential": {
-      "music": "Glasba",
-      "callHelp": "Pokliči za pomoč"
     },
     "checkin": {
       "greeting": {

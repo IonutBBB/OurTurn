@@ -22,7 +22,8 @@
     "physical": "Fysisk aktivitet",
     "cognitive": "Hjärnhälsa",
     "social": "Socialt & Gemenskap",
-    "health": "Hälsokontroll"
+    "health": "Hälsokontroll",
+    "activity": "Mind Game"
   },
   "patientApp": {
     "todaysPlan": {
@@ -41,7 +42,8 @@
       "tapToStart": "Tryck för att starta din hjärnaktivitet",
       "opensActivity": "Öppnar dagens hjärnhälsoaktivitet",
       "comingUp": "Nästa på tur",
-      "activitiesWaiting": "Aktiviteter väntar på dig"
+      "activitiesWaiting": "Aktiviteter väntar på dig",
+      "playActivity": "Play"
     },
     "help": {
       "title": "Jag behöver hjälp",
@@ -88,10 +90,6 @@
         "title": "Spela in röstmeddelanden?",
         "description": "Så att du kan lämna meddelanden till din familj"
       }
-    },
-    "essential": {
-      "music": "Musik",
-      "callHelp": "Ring efter hjälp"
     },
     "checkin": {
       "greeting": {

@@ -22,7 +22,8 @@
     "physical": "Activitate Fizică",
     "cognitive": "Bunăstarea Creierului",
     "social": "Socializare și Conexiune",
-    "health": "Verificare Sănătate"
+    "health": "Verificare Sănătate",
+    "activity": "Mind Game"
   },
   "patientApp": {
     "todaysPlan": {
@@ -41,7 +42,8 @@
       "tapToStart": "Atinge pentru a începe activitatea cerebrală",
       "opensActivity": "Deschide activitatea de bunăstare cerebrală de azi",
       "comingUp": "Urmează",
-      "activitiesWaiting": "Activitățile te așteaptă"
+      "activitiesWaiting": "Activitățile te așteaptă",
+      "playActivity": "Play"
     },
     "help": {
       "title": "Am Nevoie de Ajutor",
@@ -88,10 +90,6 @@
         "title": "Înregistrezi mesaje vocale?",
         "description": "Pentru a putea lăsa mesaje familiei tale"
       }
-    },
-    "essential": {
-      "music": "Muzică",
-      "callHelp": "Sună pentru Ajutor"
     },
     "checkin": {
       "greeting": {

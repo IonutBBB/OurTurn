@@ -41,7 +41,8 @@
     "physical": "Gníomhaíocht Fhisiciúil",
     "cognitive": "Folláine Inchinne",
     "social": "Sóisialta & Nasc",
-    "health": "Seiceáil Sláinte"
+    "health": "Seiceáil Sláinte",
+    "activity": "Mind Game"
   },
   "caregiverApp": {
     "dashboard": {
@@ -139,7 +140,12 @@
       "evidenceBased": "Bunaithe ar fhianaise",
       "aiSuggestFocusOn": "Dírithe ar:",
       "aiSuggestRefresh": "Athnuaigh",
-      "allCategories": "Gach catagóir"
+      "allCategories": "Gach catagóir",
+      "addActivity": "Add Mind Game",
+      "activityPicker": {
+        "title": "Choose a Mind Game",
+        "subtitle": "Select an activity to add to the care plan"
+      }
     },
     "location": {
       "title": "Suíomh & Sábháilteacht",
@@ -811,9 +817,7 @@
         "full": "Iomlán",
         "fullDesc": "Gach gné ar fáil",
         "simplified": "Simplithe",
-        "simplifiedDesc": "Téacs níos mó, níos lú sonraí",
-        "essential": "Riachtanach",
-        "essentialDesc": "Íosta — ceol agus glaoch cabhrach amháin"
+        "simplifiedDesc": "Téacs níos mó, níos lú sonraí"
       },
       "safetyEscalation": "Sábháilteacht & Ardú",
       "escalationTiming": "Am ardaithe",
@@ -1462,6 +1466,114 @@
       "monthly": "Monthly",
       "annual": "Annual",
       "saveBadge": "Save {{percent}}%"
+    }
+  },
+  "patientApp": {
+    "categories": {
+      "wordsLanguage": "Words & Language",
+      "memoryAttention": "Memory & Attention",
+      "logicReasoning": "Logic & Reasoning",
+      "knowledge": "Knowledge",
+      "opinionChoices": "Your Opinions",
+      "reminiscence": "Remember When"
+    },
+    "stim": {
+      "wordAssociation": {
+        "title": "Word Association",
+        "description": "Say the first word that comes to mind"
+      },
+      "proverbs": {
+        "title": "Proverbs & Sayings",
+        "description": "Complete familiar phrases"
+      },
+      "wordSearch": {
+        "title": "Word Search",
+        "description": "Find hidden words in the grid"
+      },
+      "wordScramble": {
+        "title": "Word Scramble",
+        "description": "Unscramble letters to make words"
+      },
+      "rhymeTime": {
+        "title": "Rhyme Time",
+        "description": "Find the word that rhymes"
+      },
+      "photoPairs": {
+        "title": "Photo Pairs",
+        "description": "Find matching pairs of pictures"
+      },
+      "spotDifference": {
+        "title": "Spot the Difference",
+        "description": "Find what's different between two pictures"
+      },
+      "whatChanged": {
+        "title": "What Changed?",
+        "description": "Spot which emoji changed in the grid"
+      },
+      "nameThatTune": {
+        "title": "Name That Tune",
+        "description": "Guess the song from a few lines"
+      },
+      "oddOneOut": {
+        "title": "Odd One Out",
+        "description": "Which one does not belong?"
+      },
+      "patternSequence": {
+        "title": "Pattern Sequence",
+        "description": "What comes next in the pattern?"
+      },
+      "categorySort": {
+        "title": "Category Sort",
+        "description": "Sort items into the right groups"
+      },
+      "whichGoesTogether": {
+        "title": "Which Goes Together?",
+        "description": "Match items that go together"
+      },
+      "whatComesNext": {
+        "title": "What Comes Next?",
+        "description": "Work out the next step in a sequence"
+      },
+      "sortItOut": {
+        "title": "Sort It Out",
+        "description": "Put things in the right place"
+      },
+      "coinCounting": {
+        "title": "Coin Counting",
+        "description": "Add up the coins to find the total"
+      },
+      "gentleQuiz": {
+        "title": "Gentle Quiz",
+        "description": "Fun questions with no wrong answers"
+      },
+      "pictureClues": {
+        "title": "Picture Clues",
+        "description": "Guess what the emoji clues represent"
+      },
+      "trueOrFalse": {
+        "title": "True or False",
+        "description": "Decide if a statement is true or false"
+      },
+      "thisDayInHistory": {
+        "title": "This Day in History",
+        "description": "Discover what happened in the past"
+      },
+      "whatWouldYouChoose": {
+        "title": "What Would You Choose?",
+        "description": "Pick your favourite — there is no wrong answer"
+      },
+      "myFavourites": {
+        "title": "My Favourites",
+        "description": "Share your favourite things — no wrong answers"
+      },
+      "rememberWhen": {
+        "title": "Remember When",
+        "description": "A trip down memory lane"
+      },
+      "describeTheScene": {
+        "title": "Describe the Scene",
+        "description": "Look at the picture and tell us what you see"
+      }
     }
   }
 }

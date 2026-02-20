@@ -419,7 +419,7 @@ export default function SettingsScreen() {
     }
   }, [patient?.id, contacts]);
 
-  const handleSaveComplexity = useCallback(async (newComplexity: 'full' | 'simplified' | 'essential') => {
+  const handleSaveComplexity = useCallback(async (newComplexity: 'full' | 'simplified') => {
     if (!patient?.id) return;
     setIsSavingComplexity(true);
     try {
@@ -1162,7 +1162,7 @@ export default function SettingsScreen() {
                 <Text style={styles.sectionTitle}>{t('caregiverApp.settings.patientComplexity')}</Text>
                 <View style={styles.card}>
                   <Text style={styles.cardDesc}>{t('caregiverApp.settings.patientComplexityDesc')}</Text>
-                  {(['full', 'simplified', 'essential'] as const).map((level) => (
+                  {(['full', 'simplified'] as const).map((level) => (
                     <TouchableOpacity
                       key={level}
                       style={styles.radioRow}

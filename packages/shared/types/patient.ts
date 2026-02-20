@@ -2,7 +2,7 @@
 import type { DeviceToken } from './common';
 
 export type DementiaStage = 'early' | 'moderate' | 'advanced';
-export type AppComplexity = 'full' | 'simplified' | 'essential';
+export type AppComplexity = 'full' | 'simplified';
 
 export interface Medication {
   name: string;

@@ -22,7 +22,8 @@
     "physical": "Fyysinen aktiivisuus",
     "cognitive": "Aivojen hyvinvointi",
     "social": "Sosiaalisuus ja yhteydenpito",
-    "health": "Terveystarkastus"
+    "health": "Terveystarkastus",
+    "activity": "Mind Game"
   },
   "patientApp": {
     "todaysPlan": {
@@ -41,7 +42,8 @@
       "tapToStart": "Napauta aloittaaksesi aivojumppasi",
       "opensActivity": "Avaa tämän päivän aivojen hyvinvointitehtävän",
       "comingUp": "Seuraavaksi tulossa",
-      "activitiesWaiting": "Tehtäviä odottaa sinua"
+      "activitiesWaiting": "Tehtäviä odottaa sinua",
+      "playActivity": "Play"
     },
     "help": {
       "title": "Tarvitsen apua",
@@ -88,10 +90,6 @@
         "title": "Tallennetaanko ääniviestejä?",
         "description": "Jotta voit jättää viestejä perheellesi"
       }
-    },
-    "essential": {
-      "music": "Musiikki",
-      "callHelp": "Soita apua"
     },
     "checkin": {
       "greeting": {

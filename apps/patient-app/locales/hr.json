@@ -22,7 +22,8 @@
     "physical": "Tjelesna aktivnost",
     "cognitive": "Mentalno blagostanje",
     "social": "Druženje i povezanost",
-    "health": "Provjera zdravlja"
+    "health": "Provjera zdravlja",
+    "activity": "Mind Game"
   },
   "patientApp": {
     "todaysPlan": {
@@ -41,7 +42,8 @@
       "tapToStart": "Dodirnite za početak vaše aktivnosti za mentalno blagostanje",
       "opensActivity": "Otvara današnju aktivnost za mentalno blagostanje",
       "comingUp": "Sljedeće na redu",
-      "activitiesWaiting": "Aktivnosti vas čekaju"
+      "activitiesWaiting": "Aktivnosti vas čekaju",
+      "playActivity": "Play"
     },
     "help": {
       "title": "Trebam pomoć",
@@ -88,10 +90,6 @@
         "title": "Snimati glasovne poruke?",
         "description": "Kako biste mogli ostavljati poruke svojoj obitelji"
       }
-    },
-    "essential": {
-      "music": "Glazba",
-      "callHelp": "Pozovi pomoć"
     },
     "checkin": {
       "greeting": {

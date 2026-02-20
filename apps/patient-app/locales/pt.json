@@ -22,7 +22,8 @@
     "physical": "Atividade Física",
     "cognitive": "Bem-estar Cerebral",
     "social": "Social e Conexão",
-    "health": "Verificação de Saúde"
+    "health": "Verificação de Saúde",
+    "activity": "Mind Game"
   },
   "patientApp": {
     "todaysPlan": {
@@ -41,7 +42,8 @@
       "tapToStart": "Toque para iniciar a sua atividade cerebral",
       "opensActivity": "Abre a atividade de bem-estar cerebral de hoje",
       "comingUp": "A seguir",
-      "activitiesWaiting": "Atividades à sua espera"
+      "activitiesWaiting": "Atividades à sua espera",
+      "playActivity": "Play"
     },
     "help": {
       "title": "Preciso de Ajuda",
@@ -88,10 +90,6 @@
         "title": "Gravar mensagens de voz?",
         "description": "Para que possa deixar mensagens para a sua família"
       }
-    },
-    "essential": {
-      "music": "Música",
-      "callHelp": "Pedir Ajuda"
     },
     "checkin": {
       "greeting": {

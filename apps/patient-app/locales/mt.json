@@ -22,7 +22,8 @@
     "physical": "Attività Fiżika",
     "cognitive": "Benessri tal-Moħħ",
     "social": "Soċjali u Konnessjoni",
-    "health": "Kontroll tas-Saħħa"
+    "health": "Kontroll tas-Saħħa",
+    "activity": "Mind Game"
   },
   "patientApp": {
     "todaysPlan": {
@@ -41,7 +42,8 @@
       "tapToStart": "Tektek biex tibda l-attività tal-moħħ tiegħek",
       "opensActivity": "Tiftaħ l-attività tal-benessri tal-moħħ tal-lum",
       "comingUp": "Li ġejja",
-      "activitiesWaiting": "L-attivitajiet qed jistennewk"
+      "activitiesWaiting": "L-attivitajiet qed jistennewk",
+      "playActivity": "Play"
     },
     "help": {
       "title": "Għandi Bżonn Għajnuna",
@@ -88,10 +90,6 @@
         "title": "Tirrekordja messaġġi bil-vuċi?",
         "description": "Biex tkun tista' tħalli messaġġi għall-familja tiegħek"
       }
-    },
-    "essential": {
-      "music": "Mużika",
-      "callHelp": "Ċempel għall-Għajnuna"
     },
     "checkin": {
       "greeting": {

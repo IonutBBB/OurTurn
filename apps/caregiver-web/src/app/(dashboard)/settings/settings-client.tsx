@@ -677,7 +677,7 @@ export default function SettingsClient({
                 <h3 className="text-lg font-display font-bold text-text-primary mb-2">{t('caregiverApp.settings.patientComplexity')}</h3>
                 <p className="text-sm text-text-secondary mb-4">{t('caregiverApp.settings.patientComplexityDesc')}</p>
                 <div className="space-y-3">
-                  {(['full', 'simplified', 'essential'] as const).map((level) => (
+                  {(['full', 'simplified'] as const).map((level) => (
                     <label key={level} className="flex items-start gap-3 p-3 rounded-2xl hover:bg-brand-50 dark:hover:bg-surface-elevated cursor-pointer">
                       <input
                         type="radio"

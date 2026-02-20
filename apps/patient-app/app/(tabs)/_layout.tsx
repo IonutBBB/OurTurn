@@ -33,21 +33,12 @@ export default function TabsLayout() {
   const { isAuthenticated, isInitialized, patient, session } = useAuthStore();
   const [consentChecked, setConsentChecked] = useState(false);
 
-  const complexity = patient?.app_complexity || 'full';
-
   // Redirect to care code screen if not authenticated
   useEffect(() => {
     if (isInitialized && !isAuthenticated) {
       router.replace('/');
     }
   }, [isAuthenticated, isInitialized, router]);
-
-  // Redirect to essential mode if set
-  useEffect(() => {
-    if (isInitialized && isAuthenticated && complexity === 'essential') {
-      router.replace('/essential-mode');
-    }
-  }, [isInitialized, isAuthenticated, complexity, router]);
 
   // Check if patient has given consent; redirect to consent flow if not
   useEffect(() => {
@@ -95,19 +86,6 @@ export default function TabsLayout() {
             />
           ),
           tabBarAccessibilityLabel: t('patientApp.tabs.today'),
-        }}
-      />
-      <Tabs.Screen
-        name="activities"
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <TabIcon
-              emoji="🎨"
-              label={t('patientApp.tabs.activities')}
-              focused={focused}
-            />
-          ),
-          tabBarAccessibilityLabel: t('patientApp.tabs.activities'),
         }}
       />
       <Tabs.Screen

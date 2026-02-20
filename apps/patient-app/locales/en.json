@@ -22,7 +22,8 @@
     "physical": "Physical Activity",
     "cognitive": "Brain Wellness",
     "social": "Social & Connection",
-    "health": "Health Check"
+    "health": "Health Check",
+    "activity": "Mind Game"
   },
   "patientApp": {
     "todaysPlan": {
@@ -41,7 +42,8 @@
       "tapToStart": "Tap to start your brain activity",
       "opensActivity": "Opens today's brain wellness activity",
       "comingUp": "Coming up next",
-      "activitiesWaiting": "Activities are waiting for you"
+      "activitiesWaiting": "Activities are waiting for you",
+      "playActivity": "Play"
     },
     "help": {
       "title": "I Need Help",
@@ -88,10 +90,6 @@
         "title": "Record voice messages?",
         "description": "So you can leave messages for your family"
       }
-    },
-    "essential": {
-      "music": "Music",
-      "callHelp": "Call for Help"
     },
     "checkin": {
       "greeting": {
@@ -158,20 +156,66 @@
         "instruction": "Look at the word below. What is the first word that comes to your mind?",
         "sayWord": "Say the word out loud, or think of one in your head. Take your time!",
         "words": {
-          "sun": "Sun", "home": "Home", "dog": "Dog", "cake": "Cake", "rain": "Rain",
-          "baby": "Baby", "garden": "Garden", "tea": "Tea", "cat": "Cat", "song": "Song",
-          "tree": "Tree", "bread": "Bread", "flower": "Flower", "friend": "Friend", "star": "Star",
-          "book": "Book", "bird": "Bird", "beach": "Beach", "apple": "Apple", "heart": "Heart",
-          "journey": "Journey", "kitchen": "Kitchen", "winter": "Winter", "market": "Market",
-          "blanket": "Blanket", "holiday": "Holiday", "candle": "Candle", "bridge": "Bridge",
-          "harvest": "Harvest", "parade": "Parade", "sunrise": "Sunrise", "carpet": "Carpet",
-          "lemon": "Lemon", "wedding": "Wedding", "lighthouse": "Lighthouse", "chocolate": "Chocolate",
-          "mountain": "Mountain", "violin": "Violin", "summer": "Summer", "compass": "Compass",
-          "freedom": "Freedom", "tradition": "Tradition", "discovery": "Discovery", "orchestra": "Orchestra",
-          "celebration": "Celebration", "treasure": "Treasure", "cathedral": "Cathedral", "carnival": "Carnival",
-          "telescope": "Telescope", "nostalgia": "Nostalgia", "wisdom": "Wisdom", "expedition": "Expedition",
-          "tapestry": "Tapestry", "constellation": "Constellation", "heritage": "Heritage", "harmony": "Harmony",
-          "labyrinth": "Labyrinth", "renaissance": "Renaissance", "serenity": "Serenity", "wanderlust": "Wanderlust"
+          "sun": "Sun",
+          "home": "Home",
+          "dog": "Dog",
+          "cake": "Cake",
+          "rain": "Rain",
+          "baby": "Baby",
+          "garden": "Garden",
+          "tea": "Tea",
+          "cat": "Cat",
+          "song": "Song",
+          "tree": "Tree",
+          "bread": "Bread",
+          "flower": "Flower",
+          "friend": "Friend",
+          "star": "Star",
+          "book": "Book",
+          "bird": "Bird",
+          "beach": "Beach",
+          "apple": "Apple",
+          "heart": "Heart",
+          "journey": "Journey",
+          "kitchen": "Kitchen",
+          "winter": "Winter",
+          "market": "Market",
+          "blanket": "Blanket",
+          "holiday": "Holiday",
+          "candle": "Candle",
+          "bridge": "Bridge",
+          "harvest": "Harvest",
+          "parade": "Parade",
+          "sunrise": "Sunrise",
+          "carpet": "Carpet",
+          "lemon": "Lemon",
+          "wedding": "Wedding",
+          "lighthouse": "Lighthouse",
+          "chocolate": "Chocolate",
+          "mountain": "Mountain",
+          "violin": "Violin",
+          "summer": "Summer",
+          "compass": "Compass",
+          "freedom": "Freedom",
+          "tradition": "Tradition",
+          "discovery": "Discovery",
+          "orchestra": "Orchestra",
+          "celebration": "Celebration",
+          "treasure": "Treasure",
+          "cathedral": "Cathedral",
+          "carnival": "Carnival",
+          "telescope": "Telescope",
+          "nostalgia": "Nostalgia",
+          "wisdom": "Wisdom",
+          "expedition": "Expedition",
+          "tapestry": "Tapestry",
+          "constellation": "Constellation",
+          "heritage": "Heritage",
+          "harmony": "Harmony",
+          "labyrinth": "Labyrinth",
+          "renaissance": "Renaissance",
+          "serenity": "Serenity",
+          "wanderlust": "Wanderlust"
         }
       },
       "proverbs": {
@@ -181,46 +225,166 @@
         "reveal": "Tap to reveal",
         "youKnowIt": "You know this one!",
         "items": {
-          "stitch": { "first": "A stitch in time...", "second": "...saves nine." },
-          "bird": { "first": "The early bird...", "second": "...catches the worm." },
-          "apple": { "first": "An apple a day...", "second": "...keeps the doctor away." },
-          "actions": { "first": "Actions speak louder...", "second": "...than words." },
-          "penny": { "first": "A penny saved...", "second": "...is a penny earned." },
-          "rome": { "first": "Rome wasn't built...", "second": "...in a day." },
-          "rolling": { "first": "A rolling stone...", "second": "...gathers no moss." },
-          "twoBirds": { "first": "Kill two birds...", "second": "...with one stone." },
-          "catAway": { "first": "When the cat's away...", "second": "...the mice will play." },
-          "bestMedicine": { "first": "Laughter is...", "second": "...the best medicine." },
-          "practice": { "first": "Practice makes...", "second": "...perfect." },
-          "lookedPot": { "first": "A watched pot...", "second": "...never boils." },
-          "silverLining": { "first": "Every cloud has...", "second": "...a silver lining." },
-          "earlyBird": { "first": "Early to bed, early to rise...", "second": "...makes a man healthy, wealthy, and wise." },
-          "tooManyCooks": { "first": "Too many cooks...", "second": "...spoil the broth." },
-          "honesty": { "first": "Honesty is...", "second": "...the best policy." },
-          "absence": { "first": "Absence makes...", "second": "...the heart grow fonder." },
-          "leapLook": { "first": "Look before...", "second": "...you leap." },
-          "glass": { "first": "People in glass houses...", "second": "...shouldn't throw stones." },
-          "betterLateThan": { "first": "Better late...", "second": "...than never." },
-          "barking": { "first": "His bark is worse...", "second": "...than his bite." },
-          "beautyEye": { "first": "Beauty is in the eye...", "second": "...of the beholder." },
-          "bloodThicker": { "first": "Blood is thicker...", "second": "...than water." },
-          "moneyRoot": { "first": "Money is the root...", "second": "...of all evil." },
-          "noNews": { "first": "No news is...", "second": "...good news." },
-          "spiltMilk": { "first": "Don't cry over...", "second": "...spilt milk." },
-          "curiosity": { "first": "Curiosity killed...", "second": "...the cat." },
-          "birdInHand": { "first": "A bird in the hand...", "second": "...is worth two in the bush." },
-          "glitters": { "first": "All that glitters...", "second": "...is not gold." },
-          "mightierSword": { "first": "The pen is mightier...", "second": "...than the sword." },
-          "wholeWorld": { "first": "It takes all sorts...", "second": "...to make a world." },
-          "goodThings": { "first": "Good things come...", "second": "...to those who wait." },
-          "bedRise": { "first": "You've made your bed...", "second": "...now lie in it." },
-          "leopardSpots": { "first": "A leopard can't change...", "second": "...its spots." },
-          "homeIs": { "first": "Home is where...", "second": "...the heart is." },
-          "knowledge": { "first": "A little knowledge...", "second": "...is a dangerous thing." },
-          "biteHand": { "first": "Don't bite the hand...", "second": "...that feeds you." },
-          "twoHeads": { "first": "Two heads are...", "second": "...better than one." },
-          "journeyBegins": { "first": "A journey of a thousand miles...", "second": "...begins with a single step." },
-          "fortuneBrave": { "first": "Fortune favours...", "second": "...the brave." }
+          "stitch": {
+            "first": "A stitch in time...",
+            "second": "...saves nine."
+          },
+          "bird": {
+            "first": "The early bird...",
+            "second": "...catches the worm."
+          },
+          "apple": {
+            "first": "An apple a day...",
+            "second": "...keeps the doctor away."
+          },
+          "actions": {
+            "first": "Actions speak louder...",
+            "second": "...than words."
+          },
+          "penny": {
+            "first": "A penny saved...",
+            "second": "...is a penny earned."
+          },
+          "rome": {
+            "first": "Rome wasn't built...",
+            "second": "...in a day."
+          },
+          "rolling": {
+            "first": "A rolling stone...",
+            "second": "...gathers no moss."
+          },
+          "twoBirds": {
+            "first": "Kill two birds...",
+            "second": "...with one stone."
+          },
+          "catAway": {
+            "first": "When the cat's away...",
+            "second": "...the mice will play."
+          },
+          "bestMedicine": {
+            "first": "Laughter is...",
+            "second": "...the best medicine."
+          },
+          "practice": {
+            "first": "Practice makes...",
+            "second": "...perfect."
+          },
+          "lookedPot": {
+            "first": "A watched pot...",
+            "second": "...never boils."
+          },
+          "silverLining": {
+            "first": "Every cloud has...",
+            "second": "...a silver lining."
+          },
+          "earlyBird": {
+            "first": "Early to bed, early to rise...",
+            "second": "...makes a man healthy, wealthy, and wise."
+          },
+          "tooManyCooks": {
+            "first": "Too many cooks...",
+            "second": "...spoil the broth."
+          },
+          "honesty": {
+            "first": "Honesty is...",
+            "second": "...the best policy."
+          },
+          "absence": {
+            "first": "Absence makes...",
+            "second": "...the heart grow fonder."
+          },
+          "leapLook": {
+            "first": "Look before...",
+            "second": "...you leap."
+          },
+          "glass": {
+            "first": "People in glass houses...",
+            "second": "...shouldn't throw stones."
+          },
+          "betterLateThan": {
+            "first": "Better late...",
+            "second": "...than never."
+          },
+          "barking": {
+            "first": "His bark is worse...",
+            "second": "...than his bite."
+          },
+          "beautyEye": {
+            "first": "Beauty is in the eye...",
+            "second": "...of the beholder."
+          },
+          "bloodThicker": {
+            "first": "Blood is thicker...",
+            "second": "...than water."
+          },
+          "moneyRoot": {
+            "first": "Money is the root...",
+            "second": "...of all evil."
+          },
+          "noNews": {
+            "first": "No news is...",
+            "second": "...good news."
+          },
+          "spiltMilk": {
+            "first": "Don't cry over...",
+            "second": "...spilt milk."
+          },
+          "curiosity": {
+            "first": "Curiosity killed...",
+            "second": "...the cat."
+          },
+          "birdInHand": {
+            "first": "A bird in the hand...",
+            "second": "...is worth two in the bush."
+          },
+          "glitters": {
+            "first": "All that glitters...",
+            "second": "...is not gold."
+          },
+          "mightierSword": {
+            "first": "The pen is mightier...",
+            "second": "...than the sword."
+          },
+          "wholeWorld": {
+            "first": "It takes all sorts...",
+            "second": "...to make a world."
+          },
+          "goodThings": {
+            "first": "Good things come...",
+            "second": "...to those who wait."
+          },
+          "bedRise": {
+            "first": "You've made your bed...",
+            "second": "...now lie in it."
+          },
+          "leopardSpots": {
+            "first": "A leopard can't change...",
+            "second": "...its spots."
+          },
+          "homeIs": {
+            "first": "Home is where...",
+            "second": "...the heart is."
+          },
+          "knowledge": {
+            "first": "A little knowledge...",
+            "second": "...is a dangerous thing."
+          },
+          "biteHand": {
+            "first": "Don't bite the hand...",
+            "second": "...that feeds you."
+          },
+          "twoHeads": {
+            "first": "Two heads are...",
+            "second": "...better than one."
+          },
+          "journeyBegins": {
+            "first": "A journey of a thousand miles...",
+            "second": "...begins with a single step."
+          },
+          "fortuneBrave": {
+            "first": "Fortune favours...",
+            "second": "...the brave."
+          }
         }
       },
       "gentleQuiz": {

@@ -66,7 +66,8 @@
     "physical": "Activitate Fizică",
     "cognitive": "Bunăstarea Creierului",
     "social": "Socializare și Conexiune",
-    "health": "Verificare Sănătate"
+    "health": "Verificare Sănătate",
+    "activity": "Mind Game"
   },
   "patientApp": {
     "todaysPlan": {
@@ -133,6 +134,112 @@
     "tabs": {
       "today": "Azi",
       "help": "Ajutor"
+    },
+    "categories": {
+      "wordsLanguage": "Words & Language",
+      "memoryAttention": "Memory & Attention",
+      "logicReasoning": "Logic & Reasoning",
+      "knowledge": "Knowledge",
+      "opinionChoices": "Your Opinions",
+      "reminiscence": "Remember When"
+    },
+    "stim": {
+      "wordAssociation": {
+        "title": "Word Association",
+        "description": "Say the first word that comes to mind"
+      },
+      "proverbs": {
+        "title": "Proverbs & Sayings",
+        "description": "Complete familiar phrases"
+      },
+      "wordSearch": {
+        "title": "Word Search",
+        "description": "Find hidden words in the grid"
+      },
+      "wordScramble": {
+        "title": "Word Scramble",
+        "description": "Unscramble letters to make words"
+      },
+      "rhymeTime": {
+        "title": "Rhyme Time",
+        "description": "Find the word that rhymes"
+      },
+      "photoPairs": {
+        "title": "Photo Pairs",
+        "description": "Find matching pairs of pictures"
+      },
+      "spotDifference": {
+        "title": "Spot the Difference",
+        "description": "Find what's different between two pictures"
+      },
+      "whatChanged": {
+        "title": "What Changed?",
+        "description": "Spot which emoji changed in the grid"
+      },
+      "nameThatTune": {
+        "title": "Name That Tune",
+        "description": "Guess the song from a few lines"
+      },
+      "oddOneOut": {
+        "title": "Odd One Out",
+        "description": "Which one does not belong?"
+      },
+      "patternSequence": {
+        "title": "Pattern Sequence",
+        "description": "What comes next in the pattern?"
+      },
+      "categorySort": {
+        "title": "Category Sort",
+        "description": "Sort items into the right groups"
+      },
+      "whichGoesTogether": {
+        "title": "Which Goes Together?",
+        "description": "Match items that go together"
+      },
+      "whatComesNext": {
+        "title": "What Comes Next?",
+        "description": "Work out the next step in a sequence"
+      },
+      "sortItOut": {
+        "title": "Sort It Out",
+        "description": "Put things in the right place"
+      },
+      "coinCounting": {
+        "title": "Coin Counting",
+        "description": "Add up the coins to find the total"
+      },
+      "gentleQuiz": {
+        "title": "Gentle Quiz",
+        "description": "Fun questions with no wrong answers"
+      },
+      "pictureClues": {
+        "title": "Picture Clues",
+        "description": "Guess what the emoji clues represent"
+      },
+      "trueOrFalse": {
+        "title": "True or False",
+        "description": "Decide if a statement is true or false"
+      },
+      "thisDayInHistory": {
+        "title": "This Day in History",
+        "description": "Discover what happened in the past"
+      },
+      "whatWouldYouChoose": {
+        "title": "What Would You Choose?",
+        "description": "Pick your favourite — there is no wrong answer"
+      },
+      "myFavourites": {
+        "title": "My Favourites",
+        "description": "Share your favourite things — no wrong answers"
+      },
+      "rememberWhen": {
+        "title": "Remember When",
+        "description": "A trip down memory lane"
+      },
+      "describeTheScene": {
+        "title": "Describe the Scene",
+        "description": "Look at the picture and tell us what you see"
+      }
     }
   },
   "caregiverApp": {
@@ -268,7 +375,12 @@
       "medItemLabel": "Medicament {{number}}",
       "removeMedication": "Eliminați",
       "maxMedications": "Maxim 3 medicamente per grup",
-      "uploadingPhoto": "Se încarcă..."
+      "uploadingPhoto": "Se încarcă...",
+      "addActivity": "Add Mind Game",
+      "activityPicker": {
+        "title": "Choose a Mind Game",
+        "subtitle": "Select an activity to add to the care plan"
+      }
     },
     "location": {
       "title": "Locație și Siguranță",
@@ -1134,9 +1246,7 @@
         "full": "Complet",
         "fullDesc": "Toate funcțiile — plan zilnic, verificare, activitate cerebrală, tab de ajutor",
         "simplified": "Simplificat",
-        "simplifiedDesc": "Text mai mare, mai puține detalii — mai ușor de utilizat în zilele mai dificile",
-        "essential": "Esențial",
-        "essentialDesc": "Interfață minimă — doar butoane pentru muzică și apel de ajutor"
+        "simplifiedDesc": "Text mai mare, mai puține detalii — mai ușor de utilizat în zilele mai dificile"
       },
       "safetyEscalation": "Siguranță și Escaladare",
       "escalationTiming": "Timp de escaladare",

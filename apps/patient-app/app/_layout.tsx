@@ -362,12 +362,6 @@ export default function RootLayout() {
             animation: 'slide_from_bottom',
           }}
         />
-        <Stack.Screen
-          name="essential-mode"
-          options={{
-            animation: 'fade',
-          }}
-        />
       </Stack>
       <StatusBar style="dark" />
     </SafeAreaProvider>

@@ -22,7 +22,8 @@
     "physical": "Füüsiline tegevus",
     "cognitive": "Aju heaolu",
     "social": "Sotsiaalne suhtlus",
-    "health": "Tervisekontroll"
+    "health": "Tervisekontroll",
+    "activity": "Mind Game"
   },
   "patientApp": {
     "todaysPlan": {
@@ -41,7 +42,8 @@
       "tapToStart": "Puuduta, et alustada oma aju tegevust",
       "opensActivity": "Avab tänase aju heaolu tegevuse",
       "comingUp": "Järgmisena tulemas",
-      "activitiesWaiting": "Tegevused ootavad sind"
+      "activitiesWaiting": "Tegevused ootavad sind",
+      "playActivity": "Play"
     },
     "help": {
       "title": "Vajan abi",
@@ -88,10 +90,6 @@
         "title": "Salvesta häälsõnumeid?",
         "description": "Et saaksid jätta oma perele sõnumeid"
       }
-    },
-    "essential": {
-      "music": "Muusika",
-      "callHelp": "Kutsu abi"
     },
     "checkin": {
       "greeting": {
