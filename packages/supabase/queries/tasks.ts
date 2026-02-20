@@ -70,6 +70,7 @@ export async function createTask(
       one_time_date: task.one_time_date,
       photo_url: task.photo_url ?? null,
       medication_items: task.medication_items ?? null,
+      activity_type: task.activity_type ?? null,
       patient_created: task.patient_created ?? false,
       created_by: task.created_by,
     })
@@ -250,6 +251,7 @@ export async function copyDayTasks(
     active: true,
     photo_url: task.photo_url ?? undefined,
     medication_items: task.medication_items ?? undefined,
+    activity_type: task.activity_type ?? null,
     created_by: task.created_by ?? undefined,
   }));
 

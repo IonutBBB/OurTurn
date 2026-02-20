@@ -20,13 +20,14 @@ import { useAuthStore } from '../../src/stores/auth-store';
 import { getActivityByType } from '../../src/utils/activity-registry';
 import { useActivityContent } from '../../src/hooks/use-activity-content';
 import { RENDERER_MAP } from '../../src/components/activity-renderers';
-import { createActivitySession, completeActivitySession, skipActivitySession } from '@ourturn/supabase';
+import { createActivitySession, completeActivitySession, skipActivitySession, completeTask } from '@ourturn/supabase';
 import { formatDateForDb } from '../../src/utils/time-of-day';
+import { queueCompletion } from '../../src/utils/offline-cache';
 import { COLORS, FONTS } from '../../src/theme';
 import type { StimActivityType } from '@ourturn/shared';
 
 export default function ActivityStimPlayer() {
-  const { type } = useLocalSearchParams<{ type: string }>();
+  const { type, taskId } = useLocalSearchParams<{ type: string; taskId?: string }>();
   const { t } = useTranslation();
   const { patient, session } = useAuthStore();
   const householdId = session?.householdId;
@@ -78,11 +79,27 @@ export default function ActivityStimPlayer() {
         }
       }
 
+      // Auto-complete the care plan task if launched from one
+      if (taskId && householdId) {
+        const today = formatDateForDb();
+        try {
+          await completeTask(taskId, householdId, today);
+        } catch {
+          // Queue for offline sync
+          await queueCompletion({
+            taskId,
+            householdId,
+            date: today,
+            completedAt: new Date().toISOString(),
+          });
+        }
+      }
+
       // Celebrate and navigate back
       await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
       setTimeout(() => router.back(), 800);
     },
-    [activityType]
+    [activityType, taskId, householdId]
   );
 
   const handleSkip = useCallback(async () => {

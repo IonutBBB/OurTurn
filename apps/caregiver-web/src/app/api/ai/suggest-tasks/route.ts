@@ -18,6 +18,7 @@ import {
 } from '@ourturn/shared/utils/task-suggestion-validator';
 import type { TaskCategory } from '@ourturn/shared/types/care-plan';
 import { SUPPORTED_LANGUAGES, LANGUAGE_CODES } from '@ourturn/shared/constants/languages';
+import { SHARED_ACTIVITY_DEFINITIONS, VALID_ACTIVITY_TYPES } from '@ourturn/shared/data/activity-definitions';
 
 const log = createLogger('ai/suggest-tasks');
 
@@ -31,11 +32,12 @@ interface SuggestedTask {
   hint_text: string;
   time: string;
   recurrence: 'daily' | 'specific_days' | 'one_time';
+  activity_type?: string | null;
   intervention_id: string | null;
   evidence_source: string | null;
 }
 
-const VALID_CATEGORIES: TaskCategory[] = ['medication', 'nutrition', 'physical', 'cognitive', 'social', 'health'];
+const VALID_CATEGORIES: TaskCategory[] = ['medication', 'nutrition', 'physical', 'cognitive', 'social', 'health', 'activity'];
 
 export async function POST(request: NextRequest) {
   try {
@@ -234,17 +236,23 @@ ${categoryFocus}
 INTERVENTION LIBRARY (format: id|category|intervention|adaptations|timeOfDay|duration|difficulty):
 ${librarySummary}
 
+MIND GAME LIBRARY (you may also suggest mind games as category "activity" with an "activity_type"):
+${SHARED_ACTIVITY_DEFINITIONS.map((a) => `${a.type}|${a.category}|${a.emoji}`).join('\n')}
+When suggesting a mind game, use: { "category": "activity", "activity_type": "${SHARED_ACTIVITY_DEFINITIONS[0].type}", "intervention_id": null, "evidence_source": "CST evidence-based" }
+You may include 0-2 mind game suggestions per batch. Not every batch needs them.
+
 DAILY PLAN STRUCTURE:
 - Morning: physical activity + nutrition
-- Midday: cognitive/brain wellness activity
+- Midday: cognitive/brain wellness activity or mind game
 - Afternoon: social connection + optional creative activity
 - Evening: health check + sleep hygiene
 - Space tasks with minimum 1.5-hour gaps between ${wakeTime} and ${sleepTime}
 
-Generate exactly ${count} UNIQUE task suggestions. Each must map to a different intervention_id.
+Generate exactly ${count} UNIQUE task suggestions. Each must map to a different intervention_id (or activity_type for mind games).
 ${targetLanguageName ? `\nREMINDER: Write "title" and "hint_text" in ${targetLanguageName}. Do NOT use English for these fields.` : ''}
 Return ONLY a valid JSON array. No markdown, no explanation.
-Each task: { "intervention_id": "...", "category": "...", "title": "short title max 6 words${targetLanguageName ? ` in ${targetLanguageName}` : ''}", "hint_text": "2-4 warm sentences${targetLanguageName ? ` in ${targetLanguageName}` : ''}", "time": "HH:MM", "recurrence": "daily" }`;
+Each task: { "intervention_id": "...", "category": "...", "title": "short title max 6 words${targetLanguageName ? ` in ${targetLanguageName}` : ''}", "hint_text": "2-4 warm sentences${targetLanguageName ? ` in ${targetLanguageName}` : ''}", "time": "HH:MM", "recurrence": "daily", "activity_type": null }
+For mind game tasks: set category to "activity", activity_type to a valid type from the mind game library, and intervention_id to null.`;
 
     // Call Gemini API
     const response = await fetch(`${GEMINI_API_URL}?key=${GOOGLE_AI_API_KEY}`, {
@@ -288,43 +296,68 @@ Each task: { "intervention_id": "...", "category": "...", "title": "short title 
       }
 
       const rawSuggestions = JSON.parse(jsonMatch[0]);
-      // Validate against the intervention library
+
+      // Separate activity suggestions from regular ones
+      const activitySuggestions: SuggestedTask[] = [];
+      const regularRaw: Record<string, unknown>[] = [];
+
+      for (const s of rawSuggestions) {
+        if (s.category === 'activity' && s.activity_type && VALID_ACTIVITY_TYPES.includes(s.activity_type)) {
+          activitySuggestions.push({
+            category: 'activity',
+            title: s.title || '',
+            hint_text: s.hint_text || '',
+            time: s.time || '10:00',
+            recurrence: (s.recurrence || 'daily') as 'daily' | 'specific_days' | 'one_time',
+            activity_type: s.activity_type,
+            intervention_id: null,
+            evidence_source: 'CST evidence-based',
+          });
+        } else {
+          regularRaw.push(s);
+        }
+      }
+
+      // Validate regular suggestions against the intervention library
       const validatedTasks = validateAndFilterSuggestions(
-        rawSuggestions.map((s: Record<string, unknown>) => ({
-          intervention_id: s.intervention_id || '',
-          category: s.category || '',
-          title: s.title || '',
-          hint_text: s.hint_text || '',
-          time: s.time || '09:00',
-          duration_minutes: s.duration_minutes,
-          recurrence: s.recurrence || 'daily',
+        regularRaw.map((s) => ({
+          intervention_id: (s.intervention_id as string) || '',
+          category: (s.category as string) || '',
+          title: (s.title as string) || '',
+          hint_text: (s.hint_text as string) || '',
+          time: (s.time as string) || '09:00',
+          duration_minutes: s.duration_minutes as number | undefined,
+          recurrence: (s.recurrence as string) || 'daily',
         })),
         patient.stage || 'early'
       );
 
-      // Enrich with evidence data from the library
-      const enrichedSuggestions: SuggestedTask[] = validatedTasks
-        .map((task) => {
-          const enriched = enrichWithEvidence(task);
-          return {
-            category: enriched.category,
-            title: enriched.title,
-            hint_text: enriched.hint_text,
-            time: enriched.time,
-            recurrence: (enriched.recurrence || 'daily') as 'daily' | 'specific_days' | 'one_time',
-            intervention_id: enriched.intervention_id,
-            evidence_source: enriched.evidence_source,
-          };
-        })
-        .filter(
-          (s) =>
-            s.category &&
-            s.title &&
-            s.hint_text &&
-            s.time &&
-            VALID_CATEGORIES.includes(s.category as TaskCategory)
-        )
-        .slice(0, count);
+      // Enrich regular suggestions with evidence data from the library
+      const enrichedSuggestions: SuggestedTask[] = [
+        ...activitySuggestions,
+        ...validatedTasks
+          .map((task) => {
+            const enriched = enrichWithEvidence(task);
+            return {
+              category: enriched.category,
+              title: enriched.title,
+              hint_text: enriched.hint_text,
+              time: enriched.time,
+              recurrence: (enriched.recurrence || 'daily') as 'daily' | 'specific_days' | 'one_time',
+              activity_type: null,
+              intervention_id: enriched.intervention_id,
+              evidence_source: enriched.evidence_source,
+            };
+          })
+          .filter(
+            (s) =>
+              s.category &&
+              s.title &&
+              s.hint_text &&
+              s.time &&
+              VALID_CATEGORIES.includes(s.category as TaskCategory)
+          ),
+      ].slice(0, count);
 
       // If validation stripped too many suggestions, backfill with fallback
       if (enrichedSuggestions.length < count) {

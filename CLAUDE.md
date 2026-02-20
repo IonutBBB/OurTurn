@@ -142,6 +142,7 @@ This is a coding convention, not optional. Outdated docs cause bugs.
 - [x] Brain wellness activity
 - [x] Push notification reminders
 - [x] 24 evidence-based mind games across 7 cognitive categories (CST-aligned)
+- [x] Mind games integrated into care plan (activity tasks with "Play" button, auto-complete on game finish)
 
 ### Caregiver Web App
 - [x] Auth (login, signup, OAuth)
@@ -150,7 +151,8 @@ This is a coding convention, not optional. Outdated docs cause bugs.
 - [x] App layout shell (sidebar nav)
 - [x] Dashboard (real-time status cards)
 - [x] Care Plan builder (table/grid, inline editing)
-- [x] AI Suggest tasks
+- [x] AI Suggest tasks (including mind game suggestions)
+- [x] Activity template picker (24 mind games assignable to care plan)
 - [x] Location page (map, safe zones, alerts config)
 - [x] AI Care Coach (chat with streaming)
 - [x] Family Circle (invite, roles)
@@ -168,7 +170,7 @@ This is a coding convention, not optional. Outdated docs cause bugs.
 - [x] Auth (mirrors web)
 - [x] Onboarding (simplified for mobile)
 - [x] Dashboard tab
-- [x] Care Plan tab
+- [x] Care Plan tab (with mind game template picker + AI suggest)
 - [x] Location tab
 - [x] AI Coach tab
 - [x] More tab (Family, Wellbeing, Settings)

@@ -20,6 +20,7 @@ import {
   getSafeAnimationDuration,
 } from '@ourturn/shared';
 import type { CarePlanTask, TaskCompletion, MedicationItem } from '@ourturn/shared';
+import { getActivityByType } from '../utils/activity-registry';
 import { COLORS, FONTS, RADIUS, SHADOWS } from '../theme';
 import { useReducedMotion } from '../hooks/use-reduced-motion';
 
@@ -30,6 +31,7 @@ interface TaskCardProps {
   completion?: TaskCompletion;
   status: TaskStatus;
   onComplete: (taskId: string) => Promise<void>;
+  onPlayActivity?: (activityType: string, taskId: string) => void;
   simplified?: boolean;
 }
 
@@ -46,7 +48,7 @@ function formatCompletedTime(isoString: string): string {
   return formatTime(`${date.getHours()}:${date.getMinutes()}`);
 }
 
-function TaskCard({ task, completion, status, onComplete, simplified = false }: TaskCardProps) {
+function TaskCard({ task, completion, status, onComplete, onPlayActivity, simplified = false }: TaskCardProps) {
   const { t } = useTranslation();
   const reduceMotion = useReducedMotion();
   const [isLoading, setIsLoading] = useState(false);
@@ -115,7 +117,17 @@ function TaskCard({ task, completion, status, onComplete, simplified = false }: 
     }
   };
 
-  const categoryIcon = getCategoryIcon(task.category);
+  // Activity task detection
+  const activityDef = task.activity_type ? getActivityByType(task.activity_type) : undefined;
+  const isActivityTask = !!activityDef;
+  const categoryIcon = isActivityTask ? activityDef.emoji : getCategoryIcon(task.category);
+  const displayTitle = isActivityTask ? t(activityDef.titleKey) : task.title;
+
+  const handlePlayPress = () => {
+    if (isActivityTask && onPlayActivity && task.activity_type) {
+      onPlayActivity(task.activity_type, task.id);
+    }
+  };
 
   return (
     <View
@@ -156,7 +168,7 @@ function TaskCard({ task, completion, status, onComplete, simplified = false }: 
       {/* Title with category icon */}
       <View style={styles.titleRow}>
         <Text style={[styles.categoryIcon, simplified && styles.categoryIconSimplified]}>{categoryIcon}</Text>
-        <Text style={[styles.title, isCompleted && styles.textMuted, simplified && styles.titleSimplified]}>{task.title}</Text>
+        <Text style={[styles.title, isCompleted && styles.textMuted, simplified && styles.titleSimplified]}>{displayTitle}</Text>
       </View>
 
       {/* Medication items list (hidden when completed) */}
@@ -210,8 +222,23 @@ function TaskCard({ task, completion, status, onComplete, simplified = false }: 
         </Text>
       )}
 
-      {/* Done button (hidden when completed) */}
-      {!isCompleted && (
+      {/* Action button (hidden when completed) */}
+      {!isCompleted && isActivityTask && (
+        <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
+          <TouchableOpacity
+            style={[styles.doneButton, styles.playButton, simplified && styles.doneButtonSimplified]}
+            onPress={handlePlayPress}
+            activeOpacity={0.8}
+            accessibilityRole="button"
+            accessibilityLabel={`${t('patientApp.todaysPlan.playActivity')} ${displayTitle}`}
+          >
+            <Text style={[styles.doneButtonText, simplified && styles.doneButtonTextSimplified]}>
+              {t('patientApp.todaysPlan.playActivity')}
+            </Text>
+          </TouchableOpacity>
+        </Animated.View>
+      )}
+      {!isCompleted && !isActivityTask && (
         <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
           <TouchableOpacity
             style={[styles.doneButton, simplified && styles.doneButtonSimplified, isLoading && styles.doneButtonLoading]}
@@ -219,7 +246,7 @@ function TaskCard({ task, completion, status, onComplete, simplified = false }: 
             disabled={isLoading}
             activeOpacity={0.8}
             accessibilityRole="button"
-            accessibilityLabel={`${t('common.done')} ${task.title}`}
+            accessibilityLabel={`${t('common.done')} ${displayTitle}`}
             accessibilityHint={t('a11y.doubleTapToComplete')}
             accessibilityState={{
               disabled: isLoading,
@@ -354,6 +381,10 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 4,
+  },
+  playButton: {
+    backgroundColor: '#6366F1',
+    shadowColor: '#6366F1',
   },
   doneButtonLoading: {
     opacity: 0.7,

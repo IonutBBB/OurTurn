@@ -10,6 +10,8 @@ import { FREE_LIMITS } from '@ourturn/shared/utils/subscription';
 import { useToast } from '@/components/toast';
 import i18n from '@/i18n';
 import type { MedicationItem } from '@ourturn/shared';
+import { SHARED_ACTIVITY_DEFINITIONS, SHARED_ACTIVITY_CATEGORIES, getActivityDefinition } from '@ourturn/shared';
+import { ActivityTemplatePicker } from '@/components/activity-template-picker';
 
 interface Task {
   id: string;
@@ -24,6 +26,7 @@ interface Task {
   created_at: string;
   photo_url: string | null;
   medication_items: MedicationItem[] | null;
+  activity_type: string | null;
   intervention_id: string | null;
   evidence_source: string | null;
   patient_created?: boolean;
@@ -35,6 +38,7 @@ interface SuggestedTask {
   hint_text: string;
   time: string;
   recurrence: 'daily' | 'specific_days' | 'one_time';
+  activity_type?: string | null;
   intervention_id: string | null;
   evidence_source: string | null;
 }
@@ -53,6 +57,7 @@ const CATEGORIES = [
   { key: 'cognitive', icon: '🧩', color: 'bg-category-cognitive-bg text-category-cognitive' },
   { key: 'social', icon: '💬', color: 'bg-category-social-bg text-category-social' },
   { key: 'health', icon: '❤️', color: 'bg-category-health-bg text-category-health' },
+  { key: 'activity', icon: '🧠', color: 'bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300' },
 ];
 
 const DAYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
@@ -157,6 +162,9 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
   const [suggestCategory, setSuggestCategory] = useState<string>('');
   const [addingSuggestion, setAddingSuggestion] = useState<string | null>(null);
 
+  // Activity template picker state
+  const [showActivityPicker, setShowActivityPicker] = useState(false);
+
   // New task form state
   const [newTask, setNewTask] = useState({
     category: 'medication',
@@ -167,6 +175,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
     recurrence_days: [] as string[],
     photo_url: null as string | null,
     medication_items: [] as MedicationItem[],
+    activity_type: null as string | null,
   });
   const [isUploadingPhoto, setIsUploadingPhoto] = useState(false);
   const [uploadingMedPhotoIndex, setUploadingMedPhotoIndex] = useState<number | null>(null);
@@ -181,6 +190,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
       recurrence_days: [],
       photo_url: null,
       medication_items: [],
+      activity_type: null,
     });
     setShowAddForm(false);
     setEditingTask(null);
@@ -263,6 +273,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
           created_by: user?.id,
           photo_url: newTask.photo_url,
           medication_items: medItems,
+          activity_type: newTask.activity_type,
         })
         .select()
         .single();
@@ -396,6 +407,7 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
           recurrence_days: null,
           active: true,
           created_by: user?.id,
+          activity_type: suggestion.activity_type || null,
           intervention_id: suggestion.intervention_id || null,
           evidence_source: suggestion.evidence_source || null,
         })
@@ -478,6 +490,25 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
       recurrence_days: task.recurrence_days || [],
       photo_url: task.photo_url,
       medication_items: task.medication_items || [],
+      activity_type: task.activity_type,
+    });
+    setShowAddForm(true);
+  };
+
+  const handleSelectActivity = (activityType: string) => {
+    const def = getActivityDefinition(activityType);
+    if (!def) return;
+    setShowActivityPicker(false);
+    setNewTask({
+      category: 'activity',
+      title: t(def.titleKey),
+      hint_text: t(def.descriptionKey),
+      time: '10:00',
+      recurrence: 'daily',
+      recurrence_days: [],
+      photo_url: null,
+      medication_items: [],
+      activity_type: activityType,
     });
     setShowAddForm(true);
   };
@@ -540,6 +571,16 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
               <path d="M5.26 17.242a.75.75 0 10-.897-1.203 5.243 5.243 0 00-2.05 5.022.75.75 0 00.625.627 5.243 5.243 0 005.022-2.051.75.75 0 10-1.202-.897 3.744 3.744 0 01-3.008 1.51c0-1.23.592-2.323 1.51-3.008z" />
             </svg>
             {t('caregiverApp.carePlan.aiSuggest')}
+          </button>
+          <button
+            onClick={() => {
+              if (taskLimitReached) return;
+              setShowActivityPicker(true);
+            }}
+            disabled={taskLimitReached}
+            className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-2xl transition-all flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            🧠 {t('caregiverApp.carePlan.addActivity')}
           </button>
           <button
             onClick={() => {
@@ -779,23 +820,36 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Category */}
-            <div>
-              <label className="block text-sm font-semibold text-text-primary mb-1.5">
-                {t('caregiverApp.carePlan.category')}
-              </label>
-              <select
-                value={newTask.category}
-                onChange={(e) => setNewTask({ ...newTask, category: e.target.value, medication_items: e.target.value !== 'medication' ? [] : newTask.medication_items })}
-                className="input-warm w-full"
-              >
-                {CATEGORIES.map((cat) => (
-                  <option key={cat.key} value={cat.key}>
-                    {cat.icon} {t(`categories.${cat.key}`)}
-                  </option>
-                ))}
-              </select>
-            </div>
+            {/* Category — read-only for activity tasks */}
+            {newTask.activity_type ? (
+              <div>
+                <label className="block text-sm font-semibold text-text-primary mb-1.5">
+                  {t('caregiverApp.carePlan.category')}
+                </label>
+                <div className="flex items-center gap-2 px-3 py-2 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-700 rounded-2xl">
+                  <span>{getActivityDefinition(newTask.activity_type)?.emoji}</span>
+                  <span className="text-indigo-700 dark:text-indigo-300 font-medium">{t('categories.activity')}</span>
+                  <span className="text-text-muted text-sm">— {t(getActivityDefinition(newTask.activity_type)?.titleKey ?? '')}</span>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <label className="block text-sm font-semibold text-text-primary mb-1.5">
+                  {t('caregiverApp.carePlan.category')}
+                </label>
+                <select
+                  value={newTask.category}
+                  onChange={(e) => setNewTask({ ...newTask, category: e.target.value, medication_items: e.target.value !== 'medication' ? [] : newTask.medication_items })}
+                  className="input-warm w-full"
+                >
+                  {CATEGORIES.filter((c) => c.key !== 'activity').map((cat) => (
+                    <option key={cat.key} value={cat.key}>
+                      {cat.icon} {t(`categories.${cat.key}`)}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
 
             {/* Time */}
             <div>
@@ -1230,6 +1284,11 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
                         <span className="text-text-primary">{task.title}</span>
+                        {task.activity_type && (
+                          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-xs bg-indigo-50 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300">
+                            {getActivityDefinition(task.activity_type)?.emoji} {t('categories.activity')}
+                          </span>
+                        )}
                         {hasPhoto && (
                           <span className="text-text-muted text-xs" title={t('carePlan.hasPhoto')}>
                             📷
@@ -1287,6 +1346,14 @@ export function CarePlanClient({ householdId, patientName, initialTasks, subscri
             </tbody>
           </table>
         </div>
+      )}
+
+      {/* Activity Template Picker */}
+      {showActivityPicker && (
+        <ActivityTemplatePicker
+          onSelect={handleSelectActivity}
+          onClose={() => setShowActivityPicker(false)}
+        />
       )}
     </div>
   );

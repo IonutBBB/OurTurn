@@ -12,7 +12,8 @@ export type TaskCategory =
   | 'physical'
   | 'cognitive'
   | 'social'
-  | 'health';
+  | 'health'
+  | 'activity';
 
 export type TaskRecurrence = 'daily' | 'specific_days' | 'one_time';
 
@@ -31,6 +32,7 @@ export interface CarePlanTask {
   one_time_date: string | null;
   photo_url: string | null;
   medication_items: MedicationItem[] | null;
+  activity_type: string | null;
   intervention_id: string | null;
   evidence_source: string | null;
   patient_created: boolean;
@@ -51,6 +53,7 @@ export interface CarePlanTaskInsert {
   one_time_date?: string;
   photo_url?: string | null;
   medication_items?: MedicationItem[] | null;
+  activity_type?: string | null;
   intervention_id?: string | null;
   evidence_source?: string | null;
   patient_created?: boolean;
@@ -68,6 +71,7 @@ export interface CarePlanTaskUpdate {
   one_time_date?: string;
   photo_url?: string | null;
   medication_items?: MedicationItem[] | null;
+  activity_type?: string | null;
   intervention_id?: string | null;
   evidence_source?: string | null;
   patient_created?: boolean;

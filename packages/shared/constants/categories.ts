@@ -52,6 +52,13 @@ export const TASK_CATEGORIES: CategoryInfo[] = [
     color: '#B8463A', // Brick Red
     lightBg: '#FAF0EE',
   },
+  {
+    id: 'activity',
+    label: 'categories.activity',
+    icon: '🧠',
+    color: '#6366F1', // Indigo
+    lightBg: '#EEF2FF',
+  },
 ];
 
 export function getCategoryInfo(categoryId: TaskCategory): CategoryInfo | undefined {

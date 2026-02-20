@@ -12,7 +12,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { router, useFocusEffect } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { LinearGradient } from 'expo-linear-gradient';
-import { getProgressLabel, getCategoryIcon } from '@ourturn/shared';
+import { getProgressLabel, getCategoryIcon, getActivityDefinition } from '@ourturn/shared';
 import { useAuthStore } from '../../src/stores/auth-store';
 import TaskCard, { type TaskStatus } from '../../src/components/task-card';
 import {
@@ -281,6 +281,11 @@ export default function TodayScreen() {
     }
   };
 
+  // Handle playing an activity task
+  const handlePlayActivity = useCallback((activityType: string, taskId: string) => {
+    router.push(`/activity-stim/${activityType}?taskId=${taskId}`);
+  }, []);
+
   // Calculate progress
   const completedCount = completions.filter((c) => c.completed).length;
   const totalCount = tasks.length;
@@ -453,7 +458,11 @@ export default function TodayScreen() {
             <View style={styles.comingUpCard}>
               <Text style={styles.comingUpLabel}>{t('patientApp.todaysPlan.comingUp')}</Text>
               <View style={styles.comingUpContent}>
-                <Text style={styles.comingUpIcon}>{getCategoryIcon(nextTask.category)}</Text>
+                <Text style={styles.comingUpIcon}>
+                  {nextTask.activity_type
+                    ? (getActivityDefinition(nextTask.activity_type)?.emoji ?? '🧠')
+                    : getCategoryIcon(nextTask.category)}
+                </Text>
                 <View style={styles.comingUpTextContainer}>
                   <Text style={styles.comingUpTitle} numberOfLines={1}>{nextTask.title}</Text>
                   <Text style={styles.comingUpTime}>🕐 {formatTimeDisplay(nextTask.time, i18n.language)}</Text>
@@ -489,6 +498,7 @@ export default function TodayScreen() {
                 completion={completion}
                 status={status}
                 onComplete={handleCompleteTask}
+                onPlayActivity={task.activity_type ? handlePlayActivity : undefined}
                 simplified={isSimplified}
               />
             );

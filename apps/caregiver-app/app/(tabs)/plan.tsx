@@ -22,6 +22,7 @@ import { supabase } from '@ourturn/supabase';
 import { useAuthStore } from '../../src/stores/auth-store';
 import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS, SPACING } from '../../src/theme';
 import type { CarePlanTask, TaskCategory, DayOfWeek, MedicationItem } from '@ourturn/shared';
+import { SHARED_ACTIVITY_DEFINITIONS, SHARED_ACTIVITY_CATEGORIES, getActivityDefinition, VALID_ACTIVITY_TYPES } from '@ourturn/shared';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -55,6 +56,7 @@ export default function PlanScreen() {
     { key: 'cognitive', icon: '🧩', color: colors.cognitive, bg: colors.cognitiveBg },
     { key: 'social', icon: '💬', color: colors.social, bg: colors.socialBg },
     { key: 'health', icon: '❤️', color: colors.health, bg: colors.healthBg },
+    { key: 'activity', icon: '🧠', color: '#6366F1', bg: '#EEF2FF' },
   ], [colors]);
 
   const getCategoryInfo = (key: string) => {
@@ -79,12 +81,16 @@ export default function PlanScreen() {
   const [formOneTimeDate, setFormOneTimeDate] = useState<string>(new Date().toISOString().slice(0, 10));
   const [formPhotoUrl, setFormPhotoUrl] = useState<string | null>(null);
   const [formMedItems, setFormMedItems] = useState<MedicationItem[]>([]);
+  const [formActivityType, setFormActivityType] = useState<string | null>(null);
   const [isUploadingPhoto, setIsUploadingPhoto] = useState(false);
   const [uploadingMedIndex, setUploadingMedIndex] = useState<number | null>(null);
 
+  // Activity template picker
+  const [showActivityPicker, setShowActivityPicker] = useState(false);
+
   // AI Suggest state
   const [showSuggestModal, setShowSuggestModal] = useState(false);
-  const [suggestedTasks, setSuggestedTasks] = useState<{ category: TaskCategory; title: string; hint_text: string; time: string; intervention_id?: string | null; evidence_source?: string | null }[]>([]);
+  const [suggestedTasks, setSuggestedTasks] = useState<{ category: TaskCategory; title: string; hint_text: string; time: string; activity_type?: string | null; intervention_id?: string | null; evidence_source?: string | null }[]>([]);
   const [suggestLoading, setSuggestLoading] = useState(false);
   const [suggestCategory, setSuggestCategory] = useState<string>('');
   const [addingSuggestion, setAddingSuggestion] = useState<string | null>(null);
@@ -226,6 +232,7 @@ export default function PlanScreen() {
     setFormOneTimeDate(new Date().toISOString().slice(0, 10));
     setFormPhotoUrl(null);
     setFormMedItems([]);
+    setFormActivityType(null);
     setEditingTask(null);
   };
 
@@ -245,6 +252,23 @@ export default function PlanScreen() {
     setFormOneTimeDate(task.one_time_date || new Date().toISOString().slice(0, 10));
     setFormPhotoUrl(task.photo_url || null);
     setFormMedItems(task.medication_items || []);
+    setFormActivityType(task.activity_type || null);
+    setShowModal(true);
+  };
+
+  const handleSelectActivity = (activityType: string) => {
+    const def = getActivityDefinition(activityType);
+    if (!def) return;
+    setShowActivityPicker(false);
+    setFormCategory('activity');
+    setFormTitle(t(def.titleKey));
+    setFormHint(t(def.descriptionKey));
+    setFormTime('10:00');
+    setFormRecurrence('daily');
+    setFormDays([]);
+    setFormPhotoUrl(null);
+    setFormMedItems([]);
+    setFormActivityType(activityType);
     setShowModal(true);
   };
 
@@ -313,6 +337,7 @@ export default function PlanScreen() {
             created_by: user?.id,
             photo_url: formPhotoUrl,
             medication_items: medItems,
+            activity_type: formActivityType,
           })
           .select()
           .single();
@@ -404,7 +429,8 @@ RULES:
 - NEVER use terms: "dementia", "cognitive decline", "brain training", "Alzheimer's"
 - Frame everything as enjoyable activities
 - Space tasks between 08:00 and 21:00 with 1.5h gaps
-- Valid categories: medication, nutrition, physical, cognitive, social, health
+- Valid categories: medication, nutrition, physical, cognitive, social, health, activity
+- For "activity" category tasks, include an "activity_type" field with one of: ${VALID_ACTIVITY_TYPES.slice(0, 10).join(', ')} (and more). These are mind games.
 
 EXISTING PLAN (avoid duplicating):
 ${existingTitles}
@@ -449,9 +475,14 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
       if (!jsonMatch) throw new Error('No JSON in response: ' + cleanText.substring(0, 200));
 
       const parsed = JSON.parse(jsonMatch[0]);
-      const validCategories = ['medication', 'nutrition', 'physical', 'cognitive', 'social', 'health'];
+      const validCategories = ['medication', 'nutrition', 'physical', 'cognitive', 'social', 'health', 'activity'];
       const valid = parsed
-        .filter((s: Record<string, string>) => s.title && s.hint_text && s.category && validCategories.includes(s.category))
+        .filter((s: Record<string, string>) => {
+          if (!s.title || !s.hint_text || !s.category) return false;
+          if (!validCategories.includes(s.category)) return false;
+          if (s.category === 'activity' && (!s.activity_type || !VALID_ACTIVITY_TYPES.includes(s.activity_type))) return false;
+          return true;
+        })
         .slice(0, 6);
 
       setSuggestedTasks(valid);
@@ -463,7 +494,7 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
     }
   }, [household?.id, patient, tasks]);
 
-  const handleAddSuggestion = useCallback(async (suggestion: { category: TaskCategory; title: string; hint_text: string; time: string; intervention_id?: string | null; evidence_source?: string | null }) => {
+  const handleAddSuggestion = useCallback(async (suggestion: { category: TaskCategory; title: string; hint_text: string; time: string; activity_type?: string | null; intervention_id?: string | null; evidence_source?: string | null }) => {
     if (!household?.id) return;
     setAddingSuggestion(suggestion.title);
 
@@ -480,6 +511,7 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
           recurrence_days: [],
           active: true,
           created_by: user?.id,
+          activity_type: suggestion.activity_type || null,
           intervention_id: suggestion.intervention_id || null,
           evidence_source: suggestion.evidence_source || null,
         })
@@ -529,6 +561,7 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
           created_by: user?.id,
           photo_url: task.photo_url,
           medication_items: task.medication_items,
+          activity_type: task.activity_type,
         }))
       );
 
@@ -584,6 +617,14 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
           >
             <Text style={styles.actionButtonIcon}>✨</Text>
             <Text style={styles.actionButtonText}>{t('caregiverApp.carePlan.aiSuggest')}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.actionButton, { borderColor: '#6366F1' }]}
+            onPress={() => setShowActivityPicker(true)}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.actionButtonIcon}>🧠</Text>
+            <Text style={styles.actionButtonText}>{t('caregiverApp.carePlan.addActivity')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.actionButton}
@@ -667,7 +708,9 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
                   <View style={styles.taskContent}>
                     <View style={styles.taskHeader}>
                       <View style={[styles.categoryBadge, { backgroundColor: category.bg }]}>
-                        <Text style={styles.categoryIcon}>{category.icon}</Text>
+                        <Text style={styles.categoryIcon}>
+                          {task.activity_type ? (getActivityDefinition(task.activity_type)?.emoji ?? category.icon) : category.icon}
+                        </Text>
                         <Text style={[styles.categoryText, { color: category.color }]}>
                           {t(`categories.${task.category}`)}
                         </Text>
@@ -1235,6 +1278,67 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
                 )}
               </TouchableOpacity>
             </View>
+          </View>
+        </View>
+      </Modal>
+
+      {/* Activity Template Picker Modal */}
+      <Modal
+        visible={showActivityPicker}
+        animationType="slide"
+        transparent
+        onRequestClose={() => setShowActivityPicker(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <TouchableOpacity
+            style={styles.modalBackdrop}
+            activeOpacity={1}
+            onPress={() => setShowActivityPicker(false)}
+          />
+          <View style={[styles.modalSheet, { maxHeight: '80%' }]}>
+            <View style={styles.modalHandle} />
+            <Text style={styles.modalTitle}>{t('caregiverApp.carePlan.activityPicker.title')}</Text>
+            <Text style={[styles.copyLabel, { marginBottom: 12 }]}>{t('caregiverApp.carePlan.activityPicker.subtitle')}</Text>
+
+            <ScrollView showsVerticalScrollIndicator={false}>
+              {SHARED_ACTIVITY_CATEGORIES.map((cat) => {
+                const activities = SHARED_ACTIVITY_DEFINITIONS.filter((a) => a.category === cat.category);
+                return (
+                  <View key={cat.category} style={{ marginBottom: 16 }}>
+                    <Text style={[styles.fieldLabel, { marginBottom: 8 }]}>
+                      {cat.emoji} {t(cat.titleKey)} ({activities.length})
+                    </Text>
+                    {activities.map((activity) => (
+                      <TouchableOpacity
+                        key={activity.type}
+                        style={{
+                          flexDirection: 'row',
+                          alignItems: 'center',
+                          padding: 12,
+                          borderRadius: 12,
+                          borderWidth: 1,
+                          borderColor: colors.border,
+                          marginBottom: 8,
+                          backgroundColor: colors.card,
+                        }}
+                        onPress={() => handleSelectActivity(activity.type)}
+                        activeOpacity={0.7}
+                      >
+                        <Text style={{ fontSize: 28, marginRight: 12 }}>{activity.emoji}</Text>
+                        <View style={{ flex: 1 }}>
+                          <Text style={{ fontSize: 15, fontFamily: FONTS.bodySemiBold, color: colors.textPrimary }}>
+                            {t(activity.titleKey)}
+                          </Text>
+                          <Text style={{ fontSize: 13, fontFamily: FONTS.body, color: colors.textSecondary, marginTop: 2 }} numberOfLines={2}>
+                            {t(activity.descriptionKey)}
+                          </Text>
+                        </View>
+                      </TouchableOpacity>
+                    ))}
+                  </View>
+                );
+              })}
+            </ScrollView>
           </View>
         </View>
       </Modal>
