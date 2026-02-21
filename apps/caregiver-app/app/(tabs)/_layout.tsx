@@ -2,21 +2,23 @@ import { Tabs } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Text, View, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
 import { ErrorBoundary } from '../../src/components/error-boundary';
 import { FONTS, RADIUS, SHADOWS, createThemedStyles, useColors } from '../../src/theme';
 
 interface TabIconProps {
-  icon: string;
+  iconName: keyof typeof Ionicons.glyphMap;
   label: string;
   focused: boolean;
 }
 
-function TabIcon({ icon, label, focused }: TabIconProps) {
+function TabIcon({ iconName, label, focused }: TabIconProps) {
   const styles = useStyles();
+  const colors = useColors();
   return (
     <View style={styles.tabIconContainer}>
       <View style={[styles.iconWrap, focused && styles.iconWrapFocused]}>
-        <Text style={[styles.tabIcon, focused && styles.tabIconFocused]}>{icon}</Text>
+        <Ionicons name={iconName} size={22} color={focused ? colors.brand700 : colors.textMuted} />
       </View>
       <Text style={[styles.tabLabel, focused && styles.tabLabelFocused]} numberOfLines={1}>{label}</Text>
     </View>
@@ -45,7 +47,7 @@ export default function TabsLayout() {
         options={{
           tabBarIcon: ({ focused }) => (
             <TabIcon
-              icon="📊"
+              iconName={focused ? 'grid' : 'grid-outline'}
               label={t('caregiverApp.tabs.dashboard')}
               focused={focused}
             />
@@ -57,7 +59,7 @@ export default function TabsLayout() {
         options={{
           tabBarIcon: ({ focused }) => (
             <TabIcon
-              icon="📋"
+              iconName={focused ? 'clipboard' : 'clipboard-outline'}
               label={t('caregiverApp.tabs.plan')}
               focused={focused}
             />
@@ -69,7 +71,7 @@ export default function TabsLayout() {
         options={{
           tabBarIcon: ({ focused }) => (
             <TabIcon
-              icon="📍"
+              iconName={focused ? 'location' : 'location-outline'}
               label={t('caregiverApp.tabs.location')}
               focused={focused}
             />
@@ -81,7 +83,7 @@ export default function TabsLayout() {
         options={{
           tabBarIcon: ({ focused }) => (
             <TabIcon
-              icon="🤗"
+              iconName={focused ? 'chatbubble-ellipses' : 'chatbubble-ellipses-outline'}
               label={t('caregiverApp.tabs.coach')}
               focused={focused}
             />
@@ -93,7 +95,7 @@ export default function TabsLayout() {
         options={{
           tabBarIcon: ({ focused }) => (
             <TabIcon
-              icon="☰"
+              iconName={focused ? 'menu' : 'menu-outline'}
               label={t('caregiverApp.tabs.more')}
               focused={focused}
             />
@@ -134,12 +136,7 @@ const useStyles = createThemedStyles((colors) => ({
     height: 32,
   },
   tabIcon: {
-    fontSize: 22,
     textAlign: 'center',
-    lineHeight: 28,
-  },
-  tabIconFocused: {
-    transform: [{ scale: 1.05 }],
   },
   tabLabel: {
     fontSize: 10,

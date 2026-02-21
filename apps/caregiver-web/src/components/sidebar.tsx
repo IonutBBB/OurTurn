@@ -8,15 +8,34 @@ import { ThemeToggle } from './theme-toggle';
 import { Logo } from './logo';
 import { createBrowserClient } from '@/lib/supabase';
 
+function NavIcon({ name, className }: { name: string; className?: string }) {
+  const cls = className || 'w-5 h-5';
+  const paths: Record<string, React.ReactNode> = {
+    grid: <><rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="3" width="7" height="7" rx="1.5" /><rect x="3" y="14" width="7" height="7" rx="1.5" /><rect x="14" y="14" width="7" height="7" rx="1.5" /></>,
+    clipboard: <><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2" /><rect x="8" y="2" width="8" height="4" rx="1" /></>,
+    location: <><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></>,
+    chat: <><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" /></>,
+    shield: <><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></>,
+    people: <><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87" /><path d="M16 3.13a4 4 0 010 7.75" /></>,
+    heart: <><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" /></>,
+    document: <><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><polyline points="10 9 9 9 8 9" /></>,
+  };
+  return (
+    <svg className={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round">
+      {paths[name]}
+    </svg>
+  );
+}
+
 const navItems = [
-  { href: '/dashboard', icon: '📊', key: 'dashboard' },
-  { href: '/care-plan', icon: '📋', key: 'carePlan' },
-  { href: '/location', icon: '📍', key: 'location' },
-  { href: '/coach', icon: '🤖', key: 'coach' },
-  { href: '/crisis', icon: '🛡️', key: 'crisis' },
-  { href: '/family', icon: '👨‍👩‍👧', key: 'family' },
-  { href: '/wellbeing', icon: '🧰', key: 'toolkit' },
-  { href: '/reports', icon: '📄', key: 'reports' },
+  { href: '/dashboard', icon: 'grid', key: 'dashboard' },
+  { href: '/care-plan', icon: 'clipboard', key: 'carePlan' },
+  { href: '/location', icon: 'location', key: 'location' },
+  { href: '/coach', icon: 'chat', key: 'coach' },
+  { href: '/crisis', icon: 'shield', key: 'crisis' },
+  { href: '/family', icon: 'people', key: 'family' },
+  { href: '/wellbeing', icon: 'heart', key: 'toolkit' },
+  { href: '/reports', icon: 'document', key: 'reports' },
 ];
 
 interface SidebarProps {
@@ -71,8 +90,8 @@ export function Sidebar({ userName, userEmail }: SidebarProps) {
                   aria-label={label}
                   onClick={() => setMobileOpen(false)}
                 >
-                  <span className={`text-lg transition-transform duration-200 ${!isActive ? 'group-hover:scale-110' : ''}`} aria-hidden="true">
-                    {item.icon}
+                  <span className={`transition-transform duration-200 ${!isActive ? 'group-hover:scale-110' : ''}`} aria-hidden="true">
+                    <NavIcon name={item.icon} className="w-5 h-5" />
                   </span>
                   <span className="flex-1">{label}</span>
                   {isActive && (

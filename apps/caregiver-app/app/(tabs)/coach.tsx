@@ -14,7 +14,8 @@ import SituationCards from '../../src/components/coach/situation-cards';
 import WorkflowCards from '../../src/components/coach/workflow-cards';
 
 import OpenChatInput from '../../src/components/coach/open-chat-input';
-import { createThemedStyles, FONTS, RADIUS, SPACING } from '../../src/theme';
+import { Ionicons } from '@expo/vector-icons';
+import { createThemedStyles, useColors, FONTS, RADIUS, SPACING } from '../../src/theme';
 
 
 
@@ -31,6 +32,7 @@ export default function CoachScreen() {
   const [insight, setInsight] = useState<InsightData | null>(null);
 
   const styles = useStyles();
+  const colors = useColors();
 
   const patientName = patient?.name || 'your loved one';
 
@@ -126,7 +128,7 @@ export default function CoachScreen() {
             onPress={() => router.push('/behaviours')}
             activeOpacity={0.7}
           >
-            <Text style={styles.behaviourLinkIcon}>📋</Text>
+            <Ionicons name="clipboard-outline" size={22} color={colors.brand500} />
             <Text style={styles.behaviourLinkText}>
               {t('caregiverApp.toolkit.behaviours.playbooks.title')}
             </Text>
@@ -143,7 +145,7 @@ export default function CoachScreen() {
             onPress={() => router.push('/resources')}
             activeOpacity={0.7}
           >
-            <Text style={styles.behaviourLinkIcon}>📚</Text>
+            <Ionicons name="book-outline" size={22} color={colors.brand500} />
             <Text style={styles.behaviourLinkText}>
               {t('caregiverApp.coach.resources.linkLabel')}
             </Text>
@@ -224,7 +226,7 @@ const useStyles = createThemedStyles((colors) => ({
     gap: SPACING[3],
   },
   behaviourLinkIcon: {
-    fontSize: 24,
+    width: 22,
   },
   behaviourLinkText: {
     flex: 1,
