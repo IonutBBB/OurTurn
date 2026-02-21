@@ -51,6 +51,32 @@ export default async function LocationPage() {
     );
   }
 
+  // Geocode home address if coordinates are missing
+  let homeLatitude = patient.home_latitude;
+  let homeLongitude = patient.home_longitude;
+  if (!homeLatitude && !homeLongitude && patient.home_address_formatted) {
+    const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+    if (apiKey) {
+      try {
+        const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(patient.home_address_formatted)}&key=${apiKey}`;
+        const res = await fetch(geocodeUrl);
+        const geo = await res.json();
+        if (geo.status === 'OK' && geo.results?.[0]) {
+          const { lat, lng } = geo.results[0].geometry.location;
+          homeLatitude = lat;
+          homeLongitude = lng;
+          // Persist so we don't geocode again
+          await supabase
+            .from('patients')
+            .update({ home_latitude: lat, home_longitude: lng })
+            .eq('household_id', household.id);
+        }
+      } catch {
+        // Geocoding failed, continue with null coordinates
+      }
+    }
+  }
+
   // Get latest location
   const { data: latestLocation } = await supabase
     .from('location_logs')
@@ -93,8 +119,8 @@ export default async function LocationPage() {
       householdId={household.id}
       patientName={patient.name}
       homeAddress={patient.home_address_formatted}
-      homeLatitude={patient.home_latitude}
-      homeLongitude={patient.home_longitude}
+      homeLatitude={homeLatitude}
+      homeLongitude={homeLongitude}
       latestLocation={latestLocation}
       locationHistory={locationHistory || []}
       safeZones={safeZones || []}

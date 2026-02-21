@@ -17,6 +17,7 @@ import { useAuthStore } from '../../src/stores/auth-store';
 import { supabase } from '@ourturn/supabase';
 import type { LocationLog, SafeZone, LocationAlert, LocationAlertType } from '@ourturn/shared';
 import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS, SPACING } from '../../src/theme';
+import * as ExpoLocation from 'expo-location';
 
 // Conditionally import react-native-maps (not available in Expo Go)
 let MapView: any = null;
@@ -93,6 +94,7 @@ export default function LocationScreen() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingZone, setEditingZone] = useState<SafeZone | null>(null);
   const [isSaving, setIsSaving] = useState(false);
+  const [caregiverLocation, setCaregiverLocation] = useState<{ latitude: number; longitude: number } | null>(null);
 
   // Safe zone form state
   const [zoneName, setZoneName] = useState('');
@@ -147,6 +149,17 @@ export default function LocationScreen() {
   useEffect(() => {
     fetchData();
   }, [fetchData]);
+
+  // Get caregiver's device location as fallback for map center
+  useEffect(() => {
+    if (latestLocation || (patient?.home_latitude && patient?.home_longitude)) return;
+    (async () => {
+      const { status } = await ExpoLocation.requestForegroundPermissionsAsync();
+      if (status !== 'granted') return;
+      const loc = await ExpoLocation.getCurrentPositionAsync({ accuracy: ExpoLocation.Accuracy.Low });
+      setCaregiverLocation({ latitude: loc.coords.latitude, longitude: loc.coords.longitude });
+    })();
+  }, [latestLocation, patient?.home_latitude, patient?.home_longitude]);
 
   const onRefresh = useCallback(() => {
     setIsRefreshing(true);
@@ -294,6 +307,7 @@ export default function LocationScreen() {
     }
   };
 
+  // Map center: patient location → home → caregiver's device location → fallback
   const mapRegion = latestLocation
     ? {
         latitude: latestLocation.latitude,
@@ -307,6 +321,12 @@ export default function LocationScreen() {
         longitude: patient.home_longitude,
         latitudeDelta: 0.01,
         longitudeDelta: 0.01,
+      }
+    : caregiverLocation
+    ? {
+        ...caregiverLocation,
+        latitudeDelta: 0.05,
+        longitudeDelta: 0.05,
       }
     : DEFAULT_REGION;
 

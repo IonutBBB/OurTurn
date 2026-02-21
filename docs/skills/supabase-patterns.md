@@ -411,14 +411,14 @@ SUPABASE_ANON_KEY=eyJ...
 SUPABASE_SERVICE_ROLE_KEY=eyJ...  # Only in Edge Functions, NEVER in client apps
 
 # Additional
-GOOGLE_GENERATIVE_AI_API_KEY=...  # Only in Edge Functions + Next.js server
+GOOGLE_AI_API_KEY=...             # Only in Edge Functions + Next.js server
 RESEND_API_KEY=re_...             # Only in Edge Functions
 GOOGLE_MAPS_API_KEY=AIza...       # Client apps (restricted)
 EXPO_PUSH_TOKEN=...               # Edge Functions
 ```
 
-**CRITICAL: Never expose `SUPABASE_SERVICE_ROLE_KEY` or `GOOGLE_GENERATIVE_AI_API_KEY` in client-side code. These ONLY go in Edge Functions / server-side.**
+**CRITICAL: Never expose `SUPABASE_SERVICE_ROLE_KEY` or `GOOGLE_AI_API_KEY` in client-side code. These ONLY go in Edge Functions / server-side.**
 
 ### Migration Count
 
-Migrations are numbered sequentially: `001_initial_schema.sql` through `028_subscription_plan.sql` (28 total). Always use the next available number when adding a new migration.
+Migrations are numbered sequentially: `001_initial_schema.sql` through `034_feedback.sql` (34 total). Always use the next available number when adding a new migration.

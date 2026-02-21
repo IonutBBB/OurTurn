@@ -26,10 +26,14 @@ apps/caregiver-app/locales/
   de.json
   fr.json ... (24 EU languages)
   resources-en.json        ← Separate namespace for Resources tab
+  resources-de.json ...    ← Resources translations (24 languages total = 48 files)
 
 apps/caregiver-web/locales/
-  en.json                  ← English only (other languages pending)
-  resources-en.json        ← Separate namespace for Resources tab (~119KB)
+  en.json                  ← Bundled English (source of truth for web)
+
+apps/caregiver-web/public/locales/
+  en.json, de.json ...     ← 24 language files (fetched via HTTP for non-English)
+  en-resources.json ...    ← Resources translations (24 files, ~346KB each)
 ```
 
 ### JSON Structure

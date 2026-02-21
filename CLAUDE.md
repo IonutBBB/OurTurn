@@ -24,7 +24,7 @@ OurTurn is a dementia daily care platform with 3 apps that help families manage 
 ```
 apps/patient-app/        → Expo (React Native), Expo Router
 apps/caregiver-app/      → Expo (React Native), Expo Router
-apps/caregiver-web/      → Next.js 14+ App Router, Tailwind CSS
+apps/caregiver-web/      → Next.js 16 App Router, Tailwind CSS v4
 packages/shared/         → TypeScript types, constants, utils
 packages/supabase/       → Supabase client, typed queries, realtime hooks
 supabase/migrations/     → SQL migration files
@@ -37,21 +37,21 @@ docs/                    → MVP plan, skills, prompts
 | Layer | Technology |
 |---|---|
 | Mobile framework | React Native with Expo SDK (managed workflow) |
-| Web framework | Next.js 14+ with App Router |
-| Styling (web) | Tailwind CSS |
+| Web framework | Next.js 16 with App Router |
+| Styling (web) | Tailwind CSS v4 (CSS custom properties, no tailwind.config.js) |
 | Styling (mobile) | React Native StyleSheet |
 | Backend | Supabase (Postgres + Auth + Realtime + Storage + Edge Functions) |
 | AI / LLM | Google Gemini 2.5 Flash API |
 | Speech-to-text | Google Gemini 2.5 Flash (audio transcription) |
-| Maps display | Google Maps API (@vis.gl/react-google-maps for web, react-native-maps for mobile) |
+| Maps display | Google Maps API (@vis.gl/react-google-maps for web, react-native-maps for caregiver-app) |
 | Navigation home | Google Maps deep links (not in-app navigation) |
 | Location tracking | expo-location (background mode) |
-| Voice recording | expo-av |
+| Voice recording | expo-audio |
 | Push notifications | expo-notifications + Supabase Edge Functions |
-| Email | Resend |
+| Email | Resend (direct API via fetch, no npm package) |
 | Payments (mobile) | RevenueCat |
 | Payments (web) | Stripe Checkout |
-| State management | Zustand |
+| State management | Zustand (mobile apps), React hooks + Context (web) |
 | Navigation (mobile) | Expo Router (file-based) |
 | Secure storage | expo-secure-store |
 
@@ -139,7 +139,7 @@ This is a coding convention, not optional. Outdated docs cause bugs.
 - [x] Help tab — "Take Me Home" button
 - [x] Silent alert on "Take Me Home" tap
 - [x] Daily check-in (mood + sleep + voice)
-- [x] Brain wellness activity
+- [x] Brain wellness activities (24 mind games — see below)
 - [x] Push notification reminders
 - [x] 24 evidence-based mind games across 7 cognitive categories (CST-aligned)
 - [x] Mind games integrated into care plan (activity tasks with "Play" button, auto-complete on game finish)
@@ -167,14 +167,23 @@ This is a coding convention, not optional. Outdated docs cause bugs.
 - [x] Wellbeing Insights
 
 ### Caregiver Mobile App
-- [x] Auth (mirrors web)
-- [x] Onboarding (simplified for mobile)
-- [x] Dashboard tab
+- [x] Auth (mirrors web: login, signup, OAuth)
+- [x] Onboarding (6-step wizard, simplified for mobile)
+- [x] Dashboard tab (real-time stats, check-in, journal, alerts)
 - [x] Care Plan tab (with mind game template picker + AI suggest)
-- [x] Location tab
-- [x] AI Coach tab
-- [x] More tab (Family, Wellbeing, Settings)
+- [x] Location tab (map, safe zones, recent alerts)
+- [x] AI Coach tab (proactive insights, situation/workflow cards)
+- [x] Coach conversation (streaming, markdown, add-to-plan)
+- [x] Crisis Hub (de-escalation, scenario cards)
+- [x] Behaviour Playbooks
+- [x] Resources & Journey Guide
+- [x] Family Circle (invite, roles)
+- [x] Caregiver Wellbeing / Toolkit (mood, burnout detection, AI companion, SOS)
+- [x] Doctor Visit Reports
+- [x] Settings (account, subscription, Care Code, language, GDPR)
 - [x] Push notifications
+- [x] Subscription management (RevenueCat)
+- [x] Multi-language support (24 languages)
 
 ### Integration
 - [x] Real-time sync (Supabase Realtime across all 3 apps)
@@ -186,6 +195,15 @@ This is a coding convention, not optional. Outdated docs cause bugs.
 - [x] AI weekly insights (weekly cron via Edge Function)
 - [x] Daily summary email (evening cron)
 - [x] Care Code validation Edge Function
+- [x] Safe zone violation checker Edge Function
+- [x] Device connectivity checker Edge Function
+- [x] Alert escalation Edge Function
+- [x] Help request notification Edge Function
+- [x] Task reminders Edge Function
+- [x] Safety alert email Edge Function
+- [x] Activity completion notification Edge Function
+- [x] Daily metrics aggregation Edge Function
+- [x] Feedback system (bug reports + feature suggestions)
 
 ### Realtime Hooks (packages/supabase/hooks/)
 - [x] useRealtimeTasks — tasks + completions combined
@@ -204,9 +222,8 @@ This is a coding convention, not optional. Outdated docs cause bugs.
 
 ## Build Complete — All 20 Prompts Done ✅
 
-The MVP is feature-complete. Next steps:
+The MVP is feature-complete with 34 migrations, 14 Edge Functions, and 24 languages. Next steps:
 1. Private beta with 50 families
 2. Iterate based on feedback
-3. Add localization (German first)
-4. App Store / Play Store submission
-5. Launch 🚀
+3. App Store / Play Store submission
+4. Launch

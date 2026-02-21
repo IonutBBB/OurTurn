@@ -426,58 +426,41 @@ See `packages/shared/utils/accessibility.ts` for all helpers
 
 ## Tailwind Config (Web)
 
-```javascript
-// tailwind.config.js
-module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        brand: {
-          50: '#FDF6F0',
-          100: '#F0B589',
-          200: '#E8A070',
-          500: '#C06A3A',
-          600: '#B85A2F',
-          700: '#964A27',
-          800: '#7A3D20',
-        },
-        surface: {
-          background: '#FAF7F2',
-          card: '#FFFDF8',
-          border: '#E8E0D4',
-        },
-        text: {
-          primary: '#2D1F14',
-          secondary: '#5C4A3A',
-          muted: '#9C8B7A',
-        },
-        status: {
-          success: '#4A7C59',
-          honey: '#C4882C',
-          danger: '#B8463A',
-          info: '#4A6FA5',
-        },
-        category: {
-          medication: '#7B6198',
-          nutrition: '#4A7C59',
-          physical: '#C4882C',
-          cognitive: '#4A6FA5',
-          social: '#B85A6F',
-          health: '#B8463A',
-        },
-      },
-      fontFamily: {
-        display: ['Fraunces', 'Georgia', 'serif'],
-        sans: ['Nunito', 'system-ui', '-apple-system', 'sans-serif'],
-      },
-      borderRadius: {
-        card: '20px',
-        'card-patient': '24px',
-        button: '16px',
-        input: '14px',
-        pill: '9999px',
-      },
-    },
-  },
-};
+Uses **Tailwind CSS v4** with CSS custom properties in `globals.css` (no `tailwind.config.js`). Design tokens are defined as CSS variables:
+
+```css
+/* apps/caregiver-web/src/app/globals.css — key tokens */
+:root {
+  --brand-50: #FDF6F0;
+  --brand-100: #F0B589;
+  --brand-200: #E8A070;
+  --brand-500: #C06A3A;
+  --brand-600: #B85A2F;
+  --brand-700: #964A27;
+  --brand-800: #7A3D20;
+
+  --surface-background: #FAF7F2;
+  --surface-card: #FFFDF8;
+  --surface-border: #E8E0D4;
+
+  --text-primary: #2D1F14;
+  --text-secondary: #5C4A3A;
+  --text-muted: #9C8B7A;
+
+  --status-success: #4A7C59;
+  --status-honey: #C4882C;
+  --status-danger: #B8463A;
+  --status-info: #4A6FA5;
+
+  --category-medication: #7B6198;
+  --category-nutrition: #4A7C59;
+  --category-physical: #C4882C;
+  --category-cognitive: #4A6FA5;
+  --category-social: #B85A6F;
+  --category-health: #B8463A;
+}
 ```
+
+Font families: `Fraunces` (display/headings), `Nunito` (body/UI).
+
+Border radii: card `20px`, card-patient `24px`, button `16px`, input `14px`, pill `9999px`.

@@ -158,12 +158,12 @@ The regulatory language rules are enforced programmatically through the AI safet
 | `pipeline.ts` | Main orchestrator: preProcess → classify → AI call → postProcess → audit |
 | `classifier.ts` | Classifies input into RED / ORANGE / YELLOW / GREEN severity tiers |
 | `crisis-responses.ts` | Static responses for RED-tier inputs (no AI call made) |
+| `crisis-resources.ts` | Emergency resource links and hotline numbers |
 | `medication-blocklist.ts` | Blocks medication dosage/change requests |
 | `disclaimers.ts` | Appends appropriate disclaimers to AI responses |
 | `audit-log.ts` | Logs classification metadata to `ai_safety_audit_log` table |
-| `post-processor.ts` | Scans AI output for forbidden words before delivery |
-| `pre-processor.ts` | Sanitizes and validates user input |
-| `types.ts` | TypeScript types for the safety pipeline |
+| `golden-rules.ts` | AI behaviour constraints and safety boundaries |
+| `system-prompt-safety.ts` | Safety-focused system prompt injected into all AI calls |
 | `index.ts` | Re-exports for clean imports |
 
 **Classification tiers:**

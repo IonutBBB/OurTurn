@@ -36,7 +36,7 @@ const ALERT_TYPE_ICONS: Record<LocationAlertType, string> = {
   sos_triggered: '🆘',
 };
 
-// Default center (London) if no location available
+// Default center (fallback if geolocation unavailable)
 const DEFAULT_CENTER = { lat: 51.5074, lng: -0.1278 };
 
 function formatTime(timestamp: string, locale: string = 'en'): string {
@@ -226,6 +226,18 @@ export default function LocationClient({
   const [isLoading, setIsLoading] = useState(false);
   const [selectedHistoryPoint, setSelectedHistoryPoint] = useState<LocationLog | null>(null);
   const [currentLocation, setCurrentLocation] = useState<LocationLog | null>(latestLocation);
+  const [caregiverLocation, setCaregiverLocation] = useState<{ lat: number; lng: number } | null>(null);
+
+  // Get caregiver's location via browser geolocation as fallback
+  useEffect(() => {
+    if (latestLocation || (homeLatitude && homeLongitude)) return;
+    if (!navigator.geolocation) return;
+    navigator.geolocation.getCurrentPosition(
+      (pos) => setCaregiverLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
+      () => {},
+      { enableHighAccuracy: false, timeout: 5000 }
+    );
+  }, [latestLocation, homeLatitude, homeLongitude]);
 
   // Poll for location updates every 30 seconds
   useEffect(() => {
@@ -247,12 +259,12 @@ export default function LocationClient({
     return () => clearInterval(interval);
   }, [householdId, supabase]);
 
-  // Determine map center
+  // Determine map center: patient location → home → caregiver's location → fallback
   const mapCenter = currentLocation
     ? { lat: currentLocation.latitude, lng: currentLocation.longitude }
     : homeLatitude && homeLongitude
     ? { lat: homeLatitude, lng: homeLongitude }
-    : DEFAULT_CENTER;
+    : caregiverLocation || DEFAULT_CENTER;
 
   // Handle creating/updating safe zone
   const handleSaveSafeZone = useCallback(
