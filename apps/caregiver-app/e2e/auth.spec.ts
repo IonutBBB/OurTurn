@@ -5,9 +5,8 @@ test.describe('Authentication', () => {
     test('displays login form elements', async ({ page }) => {
       await page.goto('/');
       await page.waitForLoadState('networkidle');
-      await expect(page.locator('text=OurTurn').first()).toBeVisible({ timeout: 15000 });
-      // Check for email input field
-      await expect(page.locator('input').first()).toBeVisible({ timeout: 10000 });
+      // Login page shows logo image + input fields (no "OurTurn" text)
+      await expect(page.locator('input').first()).toBeVisible({ timeout: 15000 });
     });
   });
 });

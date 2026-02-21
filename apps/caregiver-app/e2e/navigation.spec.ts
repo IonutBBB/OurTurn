@@ -9,6 +9,7 @@ test.describe('Navigation', () => {
   test('login page is accessible', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
-    await expect(page.locator('text=OurTurn').first()).toBeVisible({ timeout: 15000 });
+    // Login page shows logo image + "Welcome back" text + email input
+    await expect(page.locator('input').first()).toBeVisible({ timeout: 15000 });
   });
 });

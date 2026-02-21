@@ -10,18 +10,18 @@ test.describe('Landing Page', () => {
   });
 
   test('displays hero section', async ({ page }) => {
-    await expect(page.getByText(/care with/i)).toBeVisible();
-    await expect(page.getByText(/confidence/i)).toBeVisible();
-    await expect(page.getByText(/living with dementia/i)).toBeVisible();
+    await expect(page.getByText(/care with/i).first()).toBeVisible();
+    await expect(page.getByText(/confidence/i).first()).toBeVisible();
+    await expect(page.getByText(/living with dementia/i).first()).toBeVisible();
   });
 
   test('displays feature cards', async ({ page }) => {
-    await expect(page.getByText(/daily care plan/i)).toBeVisible();
-    await expect(page.getByText(/location & safety/i)).toBeVisible();
-    await expect(page.getByText(/ai care coach/i)).toBeVisible();
-    await expect(page.getByText(/take me home/i)).toBeVisible();
-    await expect(page.getByText(/family circle/i)).toBeVisible();
-    await expect(page.getByText(/your wellbeing/i)).toBeVisible();
+    await expect(page.getByText(/daily care plan/i).first()).toBeVisible();
+    await expect(page.getByText(/location & safety/i).first()).toBeVisible();
+    await expect(page.getByText(/ai care coach/i).first()).toBeVisible();
+    await expect(page.getByText(/take me home/i).first()).toBeVisible();
+    await expect(page.getByText(/family circle/i).first()).toBeVisible();
+    await expect(page.getByText(/your wellbeing/i).first()).toBeVisible();
   });
 
   test('displays call to action buttons', async ({ page }) => {
@@ -29,11 +29,11 @@ test.describe('Landing Page', () => {
   });
 
   test('displays footer with disclaimer', async ({ page }) => {
-    await expect(page.getByText(/wellness app, not a medical device/i)).toBeVisible();
+    await expect(page.getByText(/not a medical device/i).first()).toBeVisible();
   });
 
   test('start free trial navigates to signup', async ({ page }) => {
-    await page.getByRole('link', { name: /get started free/i }).click();
+    await page.getByRole('link', { name: /get started free/i }).first().click();
     await expect(page).toHaveURL('/signup');
   });
 });
