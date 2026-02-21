@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import {
   View,
   Text,
@@ -15,7 +15,9 @@ import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import * as Haptics from 'expo-haptics';
 import * as Clipboard from 'expo-clipboard';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { supabase } from '@ourturn/supabase';
+import { geocodeAddress } from '@ourturn/shared/utils';
 import { useAuthStore } from '../src/stores/auth-store';
 import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS } from '../src/theme';
 
@@ -50,6 +52,8 @@ interface OnboardingData {
   dateOfBirth: string;
   dementiaType: string;
   homeAddress: string;
+  homeLatitude: number | null;
+  homeLongitude: number | null;
   childhoodLocation: string;
   career: string;
   hobbies: string;
@@ -67,47 +71,85 @@ interface OnboardingData {
   careCode: string;
 }
 
+const ONBOARDING_STORAGE_KEY = 'ourturn_onboarding';
+
+const defaultOnboardingData: OnboardingData = {
+  caregiverName: '',
+  relationship: '',
+  country: '',
+  patientName: '',
+  dateOfBirth: '',
+  dementiaType: '',
+  homeAddress: '',
+  homeLatitude: null,
+  homeLongitude: null,
+  childhoodLocation: '',
+  career: '',
+  hobbies: '',
+  favoriteMusic: '',
+  favoriteFoods: '',
+  importantPeople: '',
+  keyEvents: '',
+  wakeTime: '07:00',
+  sleepTime: '22:00',
+  breakfastTime: '08:00',
+  lunchTime: '12:00',
+  dinnerTime: '18:00',
+  typicalDay: '',
+  emergencyContacts: [],
+  careCode: '',
+};
+
 export default function OnboardingScreen() {
   const { t } = useTranslation();
   const { user, loadCaregiverData } = useAuthStore();
   const [currentStep, setCurrentStep] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [initializing, setInitializing] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
   const styles = useStyles();
   const colors = useColors();
 
-  const [data, setData] = useState<OnboardingData>({
-    caregiverName: '',
-    relationship: '',
-    country: '',
-    patientName: '',
-    dateOfBirth: '',
-    dementiaType: '',
-    homeAddress: '',
-    childhoodLocation: '',
-    career: '',
-    hobbies: '',
-    favoriteMusic: '',
-    favoriteFoods: '',
-    importantPeople: '',
-    keyEvents: '',
-    wakeTime: '07:00',
-    sleepTime: '22:00',
-    breakfastTime: '08:00',
-    lunchTime: '12:00',
-    dinnerTime: '18:00',
-    typicalDay: '',
-    emergencyContacts: [],
-    careCode: '',
-  });
+  const [data, setData] = useState<OnboardingData>(defaultOnboardingData);
+
+  // Restore saved progress from AsyncStorage on mount
+  useEffect(() => {
+    (async () => {
+      try {
+        const saved = await AsyncStorage.getItem(ONBOARDING_STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed.data) setData({ ...defaultOnboardingData, ...parsed.data });
+          if (parsed.step) setCurrentStep(parsed.step);
+        }
+      } catch {
+        // Ignore read errors
+      } finally {
+        setInitializing(false);
+      }
+    })();
+  }, []);
+
+  // Persist to AsyncStorage whenever data or step changes (skip during init)
+  const persistState = useCallback(async (d: OnboardingData, step: number) => {
+    try {
+      await AsyncStorage.setItem(ONBOARDING_STORAGE_KEY, JSON.stringify({ data: d, step }));
+    } catch {
+      // Ignore write errors
+    }
+  }, []);
 
   // Emergency contact form state
   const [newContact, setNewContact] = useState({ name: '', phone: '', relationship: '' });
 
   const updateData = (updates: Partial<OnboardingData>) => {
-    setData((prev) => ({ ...prev, ...updates }));
+    setData((prev) => {
+      const next = { ...prev, ...updates };
+      persistState(next, currentStep);
+      return next;
+    });
   };
 
   const handleNext = async () => {
@@ -142,6 +184,12 @@ export default function OnboardingScreen() {
 
         if (householdError) throw householdError;
 
+        // Geocode home address (non-blocking — null on failure)
+        const coords = await geocodeAddress(
+          data.homeAddress,
+          process.env.EXPO_PUBLIC_GOOGLE_MAPS_API_KEY,
+        );
+
         // Create patient
         const { error: patientError } = await supabase
           .from('patients')
@@ -151,6 +199,8 @@ export default function OnboardingScreen() {
             date_of_birth: data.dateOfBirth || null,
             dementia_type: data.dementiaType || null,
             home_address_formatted: data.homeAddress || null,
+            home_latitude: coords?.lat ?? null,
+            home_longitude: coords?.lng ?? null,
             wake_time: data.wakeTime,
             sleep_time: data.sleepTime,
             biography: {
@@ -215,15 +265,27 @@ export default function OnboardingScreen() {
       return;
     }
 
-    setCurrentStep((prev) => Math.min(prev + 1, TOTAL_STEPS));
+    setCurrentStep((prev) => {
+      const next = Math.min(prev + 1, TOTAL_STEPS);
+      persistState(data, next);
+      return next;
+    });
   };
 
   const handleBack = () => {
     setError(null);
-    setCurrentStep((prev) => Math.max(prev - 1, 1));
+    setCurrentStep((prev) => {
+      const next = Math.max(prev - 1, 1);
+      persistState(data, next);
+      return next;
+    });
   };
 
   const handleFinish = async () => {
+    // Clear saved onboarding data
+    try {
+      await AsyncStorage.removeItem(ONBOARDING_STORAGE_KEY);
+    } catch { /* ignore */ }
     await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     router.replace('/(tabs)/dashboard');
   };
@@ -534,6 +596,16 @@ export default function OnboardingScreen() {
         return null;
     }
   };
+
+  if (initializing) {
+    return (
+      <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <ActivityIndicator size="large" color={colors.brand600} />
+        </View>
+      </SafeAreaView>
+    );
+  }
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'bottom']}>

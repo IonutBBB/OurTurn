@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
+import { geocodeAddress } from '@ourturn/shared/utils';
 import { OrganicBlobs } from '@/components/organic-blobs';
 
 // Step components
@@ -170,6 +171,12 @@ export default function OnboardingPage() {
 
         if (householdError) throw householdError;
 
+        // Geocode home address (non-blocking — null on failure)
+        const coords = await geocodeAddress(
+          data.homeAddress,
+          process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+        );
+
         // Create patient
         const { error: patientError } = await supabase
           .from('patients')
@@ -179,8 +186,8 @@ export default function OnboardingPage() {
             date_of_birth: data.dateOfBirth || null,
             dementia_type: data.dementiaType || null,
             home_address_formatted: data.homeAddress,
-            home_latitude: data.homeLatitude,
-            home_longitude: data.homeLongitude,
+            home_latitude: coords?.lat ?? null,
+            home_longitude: coords?.lng ?? null,
             wake_time: data.wakeTime,
             sleep_time: data.sleepTime,
             biography: {
