@@ -22,7 +22,7 @@ import { supabase } from '@ourturn/supabase';
 import { useAuthStore } from '../../src/stores/auth-store';
 import { createThemedStyles, useColors, FONTS, RADIUS, SHADOWS, SPACING } from '../../src/theme';
 import type { CarePlanTask, TaskCategory, DayOfWeek, MedicationItem } from '@ourturn/shared';
-import { SHARED_ACTIVITY_DEFINITIONS, SHARED_ACTIVITY_CATEGORIES, getActivityDefinition, VALID_ACTIVITY_TYPES, getActivitiesForLocale, getCategoriesForLocale } from '@ourturn/shared';
+import { SHARED_ACTIVITY_DEFINITIONS, SHARED_ACTIVITY_CATEGORIES, getActivityDefinition, VALID_ACTIVITY_TYPES, getActivitiesForLocale, getCategoriesForLocale, SUPPORTED_LANGUAGES } from '@ourturn/shared';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -501,7 +501,7 @@ export default function PlanScreen() {
     );
   };
 
-  const handleGetSuggestions = useCallback(async (category?: string) => {
+  const handleGetSuggestions = async (category?: string) => {
     if (!household?.id || !patient) return;
     setSuggestLoading(true);
     setSuggestedTasks([]);
@@ -513,41 +513,36 @@ export default function PlanScreen() {
       // Get existing tasks to avoid duplicates
       const existingTitles = tasks.map(t => `${t.time}: ${t.title} (${t.category})`).join('\n') || 'No existing tasks yet.';
 
-      // Determine language
-      const locale = i18n.language;
-      const langNames: Record<string, string> = {
-        ro: 'Romanian', de: 'German', fr: 'French', es: 'Spanish', it: 'Italian',
-        pt: 'Portuguese', nl: 'Dutch', pl: 'Polish', el: 'Greek', cs: 'Czech',
-        hu: 'Hungarian', sv: 'Swedish', da: 'Danish', fi: 'Finnish', bg: 'Bulgarian',
-        hr: 'Croatian', sk: 'Slovak', sl: 'Slovenian', lt: 'Lithuanian', lv: 'Latvian',
-        et: 'Estonian', ga: 'Irish', mt: 'Maltese',
-      };
-      const targetLang = locale !== 'en' ? langNames[locale] || null : null;
+      // Determine language from current i18n setting
+      const currentLocale = i18n.language?.split('-')[0] || 'en';
+      const langEntry = SUPPORTED_LANGUAGES.find(l => l.code === currentLocale);
+      const targetLang = currentLocale !== 'en' && langEntry ? langEntry.name : null;
 
       const categoryFocus = category
         ? `Focus ONLY on the "${category}" category.`
         : 'Include a variety of categories (physical, nutrition, cognitive, social, health).';
 
       const prompt = `You are a care task generator for a daily wellness app.
-${targetLang ? `\n**YOU MUST WRITE ALL "title" AND "hint_text" VALUES IN ${targetLang.toUpperCase()}. DO NOT USE ENGLISH FOR THESE FIELDS.**\n` : ''}
+${targetLang ? `\nOUTPUT LANGUAGE: ${targetLang.toUpperCase()}\nYou MUST write ALL "title" and "hint_text" values in ${targetLang}. DO NOT use English for these fields.\n` : ''}
 Generate 6 personalized daily care task suggestions for ${patient.name}.
 ${categoryFocus}
 
 RULES:
-- Task titles: max 6 words${targetLang ? ` in ${targetLang}` : ''}
-- hint_text: 2-3 warm, encouraging sentences${targetLang ? ` in ${targetLang}` : ''}
-- NEVER use terms: "dementia", "cognitive decline", "brain training", "Alzheimer's"
-- Frame everything as enjoyable activities
-- Space tasks between 08:00 and 21:00 with 1.5h gaps
-- Valid categories: medication, nutrition, physical, cognitive, social, health, activity
-- For "activity" category tasks, include an "activity_type" field with one of: ${getActivitiesForLocale(locale).map(a => a.type).join(', ')}. These are mind games.
-${category === 'activity' ? `- Since the focus is on mind games, ALL 6 suggestions MUST be mind games with category "activity" and a unique activity_type from the list above.` : '- Include at most 1-2 mind game suggestions per batch.'}
+1. Task titles: max 6 words${targetLang ? `, written in ${targetLang}` : ''}
+2. hint_text: 2-3 warm, encouraging sentences${targetLang ? `, written in ${targetLang}` : ''}
+3. NEVER use terms: "dementia", "cognitive decline", "brain training", "Alzheimer's"
+4. Frame everything as enjoyable activities
+5. Space tasks between 08:00 and 21:00 with 1.5h gaps
+6. Valid categories: medication, nutrition, physical, cognitive, social, health, activity
+7. For "activity" category tasks, include an "activity_type" field with one of: ${getActivitiesForLocale(currentLocale).map(a => a.type).join(', ')}. These are mind games.
+${category === 'activity' ? `8. Since the focus is on mind games, ALL 6 suggestions MUST be mind games with category "activity" and a unique activity_type from the list above.` : '8. Include at most 1-2 mind game suggestions per batch.'}
+${targetLang ? `9. LANGUAGE RULE: Every "title" and "hint_text" MUST be in ${targetLang}. English is FORBIDDEN for these fields.` : ''}
 
 EXISTING PLAN (avoid duplicating):
 ${existingTitles}
 
-Return ONLY a valid JSON array, no markdown.
-Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:MM", "recurrence": "daily" }${targetLang ? `\n\nCRITICAL: "title" and "hint_text" MUST be in ${targetLang}. NOT in English.` : ''}`;
+Return ONLY a valid JSON array (no markdown fences, no explanation).
+Each object: { "category": "...", "title": "..."${targetLang ? ` (in ${targetLang})` : ''}, "hint_text": "..."${targetLang ? ` (in ${targetLang})` : ''}, "time": "HH:MM", "recurrence": "daily" }${targetLang ? `\n\nREMINDER: "title" and "hint_text" MUST be in ${targetLang}. NOT in English. This is mandatory.` : ''}`;
 
       const response = await fetch(
         `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiKey}`,
@@ -556,7 +551,7 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             contents: [{ parts: [{ text: prompt }] }],
-            generationConfig: { temperature: 0.8, maxOutputTokens: 4096, responseMimeType: 'application/json' },
+            generationConfig: { temperature: 0.8, maxOutputTokens: 4096 },
           }),
         }
       );
@@ -591,7 +586,7 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
         .filter((s: Record<string, string>) => {
           if (!s.title || !s.hint_text || !s.category) return false;
           if (!validCategories.includes(s.category)) return false;
-          if (s.category === 'activity' && (!s.activity_type || !getActivitiesForLocale(locale).some(a => a.type === s.activity_type))) return false;
+          if (s.category === 'activity' && (!s.activity_type || !getActivitiesForLocale(currentLocale).some(a => a.type === s.activity_type))) return false;
           return true;
         })
         .slice(0, 6);
@@ -603,7 +598,7 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
     } finally {
       setSuggestLoading(false);
     }
-  }, [household?.id, patient, tasks]);
+  };
 
   const handleAddSuggestion = useCallback(async (suggestion: { category: TaskCategory; title: string; hint_text: string; time: string; activity_type?: string | null; intervention_id?: string | null; evidence_source?: string | null }, index: number) => {
     if (!household?.id) return;
@@ -731,7 +726,7 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
             activeOpacity={0.7}
           >
             <Text style={styles.actionButtonIcon}>✨</Text>
-            <Text style={styles.actionButtonText}>{t('caregiverApp.carePlan.aiSuggest')}</Text>
+            <Text style={styles.actionButtonText} numberOfLines={1}>{t('caregiverApp.carePlan.aiSuggest')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.actionButton, { borderColor: '#6366F1' }]}
@@ -739,7 +734,7 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
             activeOpacity={0.7}
           >
             <Text style={styles.actionButtonIcon}>🧠</Text>
-            <Text style={styles.actionButtonText}>{t('caregiverApp.carePlan.addActivity')}</Text>
+            <Text style={styles.actionButtonText} numberOfLines={1}>{t('caregiverApp.carePlan.addActivity')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.actionButton}
@@ -747,7 +742,7 @@ Each task: { "category": "...", "title": "...", "hint_text": "...", "time": "HH:
             activeOpacity={0.7}
           >
             <Text style={styles.actionButtonIcon}>📋</Text>
-            <Text style={styles.actionButtonText}>{t('caregiverApp.carePlan.copyDay')}</Text>
+            <Text style={styles.actionButtonText} numberOfLines={1}>{t('caregiverApp.carePlan.copyDay')}</Text>
           </TouchableOpacity>
         </View>
 
@@ -1937,24 +1932,25 @@ const useStyles = createThemedStyles((colors) => ({
   },
   actionButton: {
     flex: 1,
-    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 6,
+    gap: 4,
     paddingVertical: 10,
+    paddingHorizontal: 4,
     borderRadius: RADIUS.lg,
     borderWidth: 1,
     borderColor: colors.brand200,
     backgroundColor: colors.brand50,
   },
   actionButtonIcon: {
-    fontSize: 14,
+    fontSize: 16,
   },
   actionButtonText: {
-    fontSize: 13,
+    fontSize: 11,
     fontWeight: '600',
     fontFamily: FONTS.bodySemiBold,
     color: colors.brand700,
+    textAlign: 'center',
   },
 
   // AI Suggest modal — filter row
