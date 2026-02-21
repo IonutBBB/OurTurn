@@ -163,7 +163,16 @@
         "tryAgain": "Mai încearcă o dată!",
         "hint": "Indiciu",
         "round": "Runda {{current}} din {{total}}",
-        "nextRound": "Runda următoare"
+        "nextRound": "Runda următoare",
+        "next": "Next",
+        "nextWord": "Next Word",
+        "nextProverb": "Next Proverb"
+      },
+      "summary": {
+        "roundsCompleted": "{{count}} rounds completed",
+        "timeSpent": "{{minutes}} min {{seconds}} sec",
+        "timeSpentSeconds": "{{seconds}} seconds",
+        "encouragement": "That was wonderful! Your brain thanks you."
       },
       "wordAssociation": {
         "title": "Asocieri de cuvinte",
@@ -487,7 +496,15 @@
           "spring": "Primăvară",
           "summer": "Vară",
           "autumn": "Toamnă",
-          "winter": "Iarnă"
+          "winter": "Iarnă",
+          "hibiscus": "Hibiscus",
+          "daisy": "Daisy",
+          "horse": "Horse",
+          "butterfly": "Butterfly",
+          "grapes": "Grapes",
+          "cheese": "Cheese",
+          "moon": "Moon",
+          "leaf": "Leaf"
         }
       },
       "wordSearch": {

@@ -12,32 +12,50 @@ export default function ProverbsRenderer({
   onSkip,
 }: ActivityRendererProps) {
   const { t } = useTranslation();
+  const items: ProverbContent[] = Array.isArray(content) ? content : [content as ProverbContent];
+  const [roundIndex, setRoundIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
-  const data = content as ProverbContent;
 
-  if (!data) return null;
+  if (!items.length || !items[0]) return null;
+
+  const current = items[roundIndex];
+  const totalRounds = items.length;
+  const isFinalRound = roundIndex + 1 >= totalRounds;
 
   const handleReveal = async () => {
     await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     setRevealed(true);
   };
 
-  const handleDone = async () => {
-    await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-    onComplete({ activity: 'proverbs' });
+  const handleNext = async () => {
+    if (isFinalRound) {
+      await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      onComplete({ activity: 'proverbs', roundsCompleted: totalRounds });
+    } else {
+      await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+      setRoundIndex((prev) => prev + 1);
+      setRevealed(false);
+    }
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.emoji}>📜</Text>
+
+      {totalRounds > 1 && (
+        <Text style={styles.progress}>
+          {t('patientApp.stim.common.round', { current: roundIndex + 1, total: totalRounds })}
+        </Text>
+      )}
+
       <Text style={styles.instruction}>
         {t('patientApp.stim.proverbs.instruction')}
       </Text>
 
       <View style={styles.proverbCard}>
-        <Text style={styles.firstHalf}>{t(data.firstHalfKey)}</Text>
+        <Text style={styles.firstHalf}>{t(current.firstHalfKey)}</Text>
         {revealed ? (
-          <Text style={styles.secondHalf}>{t(data.secondHalfKey)}</Text>
+          <Text style={styles.secondHalf}>{t(current.secondHalfKey)}</Text>
         ) : (
           <Text style={styles.dots}>...</Text>
         )}
@@ -54,9 +72,11 @@ export default function ProverbsRenderer({
           <Text style={styles.encouragement}>
             {t('patientApp.stim.proverbs.youKnowIt')}
           </Text>
-          <TouchableOpacity style={styles.doneButton} onPress={handleDone} activeOpacity={0.8}>
+          <TouchableOpacity style={styles.doneButton} onPress={handleNext} activeOpacity={0.8}>
             <Text style={styles.doneButtonText}>
-              {t('patientApp.stim.common.imDone')}
+              {isFinalRound
+                ? t('patientApp.stim.common.imDone')
+                : t('patientApp.stim.common.nextProverb')}
             </Text>
           </TouchableOpacity>
         </View>
@@ -72,6 +92,10 @@ export default function ProverbsRenderer({
 const styles = StyleSheet.create({
   container: { alignItems: 'center', paddingVertical: 16 },
   emoji: { fontSize: 56, marginBottom: 16 },
+  progress: {
+    fontSize: 20, fontFamily: FONTS.bodyMedium, color: COLORS.textMuted,
+    textAlign: 'center', marginBottom: 4,
+  },
   instruction: {
     fontSize: 22, fontFamily: FONTS.bodyMedium, color: COLORS.textSecondary,
     textAlign: 'center', lineHeight: 30, marginBottom: 24,

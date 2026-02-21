@@ -163,7 +163,16 @@
         "tryAgain": "Versuchen Sie es noch einmal!",
         "hint": "Hinweis",
         "round": "Runde {{current}} von {{total}}",
-        "nextRound": "Nächste Runde"
+        "nextRound": "Nächste Runde",
+        "next": "Next",
+        "nextWord": "Next Word",
+        "nextProverb": "Next Proverb"
+      },
+      "summary": {
+        "roundsCompleted": "{{count}} rounds completed",
+        "timeSpent": "{{minutes}} min {{seconds}} sec",
+        "timeSpentSeconds": "{{seconds}} seconds",
+        "encouragement": "That was wonderful! Your brain thanks you."
       },
       "wordAssociation": {
         "title": "Wortassoziation",
@@ -487,7 +496,15 @@
           "spring": "Frühling",
           "summer": "Sommer",
           "autumn": "Herbst",
-          "winter": "Winter"
+          "winter": "Winter",
+          "hibiscus": "Hibiscus",
+          "daisy": "Daisy",
+          "horse": "Horse",
+          "butterfly": "Butterfly",
+          "grapes": "Grapes",
+          "cheese": "Cheese",
+          "moon": "Moon",
+          "leaf": "Leaf"
         }
       },
       "wordSearch": {

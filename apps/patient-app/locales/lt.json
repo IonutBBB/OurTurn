@@ -163,7 +163,16 @@
         "tryAgain": "Pabandykite dar kartą!",
         "hint": "Užuomina",
         "round": "Raundas {{current}} iš {{total}}",
-        "nextRound": "Kitas raundas"
+        "nextRound": "Kitas raundas",
+        "next": "Next",
+        "nextWord": "Next Word",
+        "nextProverb": "Next Proverb"
+      },
+      "summary": {
+        "roundsCompleted": "{{count}} rounds completed",
+        "timeSpent": "{{minutes}} min {{seconds}} sec",
+        "timeSpentSeconds": "{{seconds}} seconds",
+        "encouragement": "That was wonderful! Your brain thanks you."
       },
       "wordAssociation": {
         "title": "Žodžių asociacija",
@@ -487,7 +496,15 @@
           "spring": "Pavasaris",
           "summer": "Vasara",
           "autumn": "Ruduo",
-          "winter": "Žiema"
+          "winter": "Žiema",
+          "hibiscus": "Hibiscus",
+          "daisy": "Daisy",
+          "horse": "Horse",
+          "butterfly": "Butterfly",
+          "grapes": "Grapes",
+          "cheese": "Cheese",
+          "moon": "Moon",
+          "leaf": "Leaf"
         }
       },
       "wordSearch": {

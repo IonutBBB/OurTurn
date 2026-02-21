@@ -12,24 +12,41 @@ export default function WhatWouldYouChooseRenderer({
   onSkip,
 }: ActivityRendererProps) {
   const { t } = useTranslation();
-  const data = content as WhatWouldYouChooseContent;
+  const items: WhatWouldYouChooseContent[] = Array.isArray(content) ? content : [content as WhatWouldYouChooseContent];
+  const [roundIndex, setRoundIndex] = useState(0);
   const [chosen, setChosen] = useState<'a' | 'b' | null>(null);
 
-  if (!data) return null;
+  if (!items.length || !items[0]) return null;
+
+  const current = items[roundIndex];
+  const totalRounds = items.length;
+  const isFinalRound = roundIndex + 1 >= totalRounds;
 
   const handleChoose = useCallback(async (choice: 'a' | 'b') => {
     await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     setChosen(choice);
   }, []);
 
-  const handleDone = useCallback(async () => {
-    await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-    onComplete({ activity: 'what_would_you_choose' });
-  }, [onComplete]);
+  const handleNext = useCallback(async () => {
+    if (isFinalRound) {
+      await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      onComplete({ activity: 'what_would_you_choose', roundsCompleted: totalRounds });
+    } else {
+      await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+      setRoundIndex((prev) => prev + 1);
+      setChosen(null);
+    }
+  }, [isFinalRound, onComplete, totalRounds]);
 
   return (
     <View style={styles.container}>
       <Text style={styles.emoji}>{'\uD83E\uDD37'}</Text>
+
+      {totalRounds > 1 && (
+        <Text style={styles.progress}>
+          {t('patientApp.stim.common.round', { current: roundIndex + 1, total: totalRounds })}
+        </Text>
+      )}
 
       <Text style={styles.instruction}>
         {t('patientApp.stim.whatWouldYouChoose.instruction')}
@@ -42,8 +59,8 @@ export default function WhatWouldYouChooseRenderer({
             onPress={() => handleChoose('a')}
             activeOpacity={0.8}
           >
-            <Text style={styles.choiceEmoji}>{data.optionA.emoji}</Text>
-            <Text style={styles.choiceLabel}>{t(data.optionA.labelKey)}</Text>
+            <Text style={styles.choiceEmoji}>{current.optionA.emoji}</Text>
+            <Text style={styles.choiceLabel}>{t(current.optionA.labelKey)}</Text>
           </TouchableOpacity>
 
           <Text style={styles.orText}>{t('common.or')}</Text>
@@ -53,8 +70,8 @@ export default function WhatWouldYouChooseRenderer({
             onPress={() => handleChoose('b')}
             activeOpacity={0.8}
           >
-            <Text style={styles.choiceEmoji}>{data.optionB.emoji}</Text>
-            <Text style={styles.choiceLabel}>{t(data.optionB.labelKey)}</Text>
+            <Text style={styles.choiceEmoji}>{current.optionB.emoji}</Text>
+            <Text style={styles.choiceLabel}>{t(current.optionB.labelKey)}</Text>
           </TouchableOpacity>
         </View>
       )}
@@ -66,15 +83,17 @@ export default function WhatWouldYouChooseRenderer({
             {t('patientApp.stim.whatWouldYouChoose.greatChoice')}
           </Text>
           <Text style={styles.followUpText}>
-            {t(data.followUpKey)}
+            {t(current.followUpKey)}
           </Text>
         </View>
       )}
 
       {chosen && (
-        <TouchableOpacity style={styles.doneButton} onPress={handleDone} activeOpacity={0.8}>
+        <TouchableOpacity style={styles.doneButton} onPress={handleNext} activeOpacity={0.8}>
           <Text style={styles.doneButtonText}>
-            {t('patientApp.stim.common.imDone')}
+            {isFinalRound
+              ? t('patientApp.stim.common.imDone')
+              : t('patientApp.stim.common.next')}
           </Text>
         </TouchableOpacity>
       )}
@@ -89,6 +108,10 @@ export default function WhatWouldYouChooseRenderer({
 const styles = StyleSheet.create({
   container: { alignItems: 'center', paddingVertical: 16 },
   emoji: { fontSize: 56, marginBottom: 16 },
+  progress: {
+    fontSize: 20, fontFamily: FONTS.bodyMedium, color: COLORS.textMuted,
+    textAlign: 'center', marginBottom: 4,
+  },
   instruction: {
     fontSize: 24, fontFamily: FONTS.bodySemiBold, color: COLORS.textPrimary,
     textAlign: 'center', lineHeight: 34, marginBottom: 28, paddingHorizontal: 8,

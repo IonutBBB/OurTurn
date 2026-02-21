@@ -163,7 +163,16 @@
         "tryAgain": "Försök en gång till!",
         "hint": "Ledtråd",
         "round": "Omgång {{current}} av {{total}}",
-        "nextRound": "Nästa omgång"
+        "nextRound": "Nästa omgång",
+        "next": "Next",
+        "nextWord": "Next Word",
+        "nextProverb": "Next Proverb"
+      },
+      "summary": {
+        "roundsCompleted": "{{count}} rounds completed",
+        "timeSpent": "{{minutes}} min {{seconds}} sec",
+        "timeSpentSeconds": "{{seconds}} seconds",
+        "encouragement": "That was wonderful! Your brain thanks you."
       },
       "wordAssociation": {
         "title": "Ordförening",
@@ -487,7 +496,15 @@
           "spring": "Vår",
           "summer": "Sommar",
           "autumn": "Höst",
-          "winter": "Vinter"
+          "winter": "Vinter",
+          "hibiscus": "Hibiscus",
+          "daisy": "Daisy",
+          "horse": "Horse",
+          "butterfly": "Butterfly",
+          "grapes": "Grapes",
+          "cheese": "Cheese",
+          "moon": "Moon",
+          "leaf": "Leaf"
         }
       },
       "wordSearch": {

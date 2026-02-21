@@ -163,7 +163,16 @@
         "tryAgain": "Bain triail eile as!",
         "hint": "Leid",
         "round": "Babhta {{current}} de {{total}}",
-        "nextRound": "An chéad bhabhta eile"
+        "nextRound": "An chéad bhabhta eile",
+        "next": "Next",
+        "nextWord": "Next Word",
+        "nextProverb": "Next Proverb"
+      },
+      "summary": {
+        "roundsCompleted": "{{count}} rounds completed",
+        "timeSpent": "{{minutes}} min {{seconds}} sec",
+        "timeSpentSeconds": "{{seconds}} seconds",
+        "encouragement": "That was wonderful! Your brain thanks you."
       },
       "wordAssociation": {
         "title": "Comhcheangal Focal",
@@ -487,7 +496,15 @@
           "spring": "An tEarrach",
           "summer": "An Samhradh",
           "autumn": "An Fómhar",
-          "winter": "An Geimhreadh"
+          "winter": "An Geimhreadh",
+          "hibiscus": "Hibiscus",
+          "daisy": "Daisy",
+          "horse": "Horse",
+          "butterfly": "Butterfly",
+          "grapes": "Grapes",
+          "cheese": "Cheese",
+          "moon": "Moon",
+          "leaf": "Leaf"
         }
       },
       "wordSearch": {

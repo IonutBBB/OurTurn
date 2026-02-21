@@ -163,7 +163,16 @@
         "tryAgain": "Zkuste to znovu!",
         "hint": "Nápověda",
         "round": "Kolo {{current}} z {{total}}",
-        "nextRound": "Další kolo"
+        "nextRound": "Další kolo",
+        "next": "Next",
+        "nextWord": "Next Word",
+        "nextProverb": "Next Proverb"
+      },
+      "summary": {
+        "roundsCompleted": "{{count}} rounds completed",
+        "timeSpent": "{{minutes}} min {{seconds}} sec",
+        "timeSpentSeconds": "{{seconds}} seconds",
+        "encouragement": "That was wonderful! Your brain thanks you."
       },
       "wordAssociation": {
         "title": "Slovní asociace",
@@ -487,7 +496,15 @@
           "spring": "Jaro",
           "summer": "Léto",
           "autumn": "Podzim",
-          "winter": "Zima"
+          "winter": "Zima",
+          "hibiscus": "Hibiscus",
+          "daisy": "Daisy",
+          "horse": "Horse",
+          "butterfly": "Butterfly",
+          "grapes": "Grapes",
+          "cheese": "Cheese",
+          "moon": "Moon",
+          "leaf": "Leaf"
         }
       },
       "wordSearch": {

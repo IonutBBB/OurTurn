@@ -7,6 +7,7 @@ import { useState, useRef, useCallback } from 'react';
 import {
   View,
   Text,
+  TouchableOpacity,
   ScrollView,
   StyleSheet,
   ActivityIndicator,
@@ -23,8 +24,13 @@ import { RENDERER_MAP } from '../../src/components/activity-renderers';
 import { createActivitySession, completeActivitySession, skipActivitySession, completeTask } from '@ourturn/supabase';
 import { formatDateForDb } from '../../src/utils/time-of-day';
 import { queueCompletion } from '../../src/utils/offline-cache';
-import { COLORS, FONTS } from '../../src/theme';
+import { COLORS, FONTS, RADIUS } from '../../src/theme';
 import type { StimActivityType } from '@ourturn/shared';
+
+interface CompletionData {
+  roundsCompleted: number;
+  durationSeconds: number;
+}
 
 export default function ActivityStimPlayer() {
   const { type, taskId } = useLocalSearchParams<{ type: string; taskId?: string }>();
@@ -38,7 +44,7 @@ export default function ActivityStimPlayer() {
 
   const sessionIdRef = useRef<string | null>(null);
   const startTimeRef = useRef<number>(Date.now());
-  const [completed, setCompleted] = useState(false);
+  const [completionData, setCompletionData] = useState<CompletionData | null>(null);
 
   // Create DB session on mount
   const createSession = useCallback(async () => {
@@ -63,8 +69,10 @@ export default function ActivityStimPlayer() {
 
   const handleComplete = useCallback(
     async (responseData?: Record<string, unknown>) => {
-      const duration = Math.round((Date.now() - startTimeRef.current) / 1000);
-      setCompleted(true);
+      const durationSeconds = Math.round((Date.now() - startTimeRef.current) / 1000);
+      const roundsCompleted = (responseData?.roundsCompleted as number) ?? 1;
+
+      setCompletionData({ roundsCompleted, durationSeconds });
 
       // Mark complete in AsyncStorage
       const today = formatDateForDb();
@@ -73,7 +81,7 @@ export default function ActivityStimPlayer() {
       // Update DB session — no score_data
       if (sessionIdRef.current) {
         try {
-          await completeActivitySession(sessionIdRef.current, undefined, responseData, duration);
+          await completeActivitySession(sessionIdRef.current, undefined, responseData, durationSeconds);
         } catch {
           // Offline
         }
@@ -81,23 +89,22 @@ export default function ActivityStimPlayer() {
 
       // Auto-complete the care plan task if launched from one
       if (taskId && householdId) {
-        const today = formatDateForDb();
+        const today2 = formatDateForDb();
         try {
-          await completeTask(taskId, householdId, today);
+          await completeTask(taskId, householdId, today2);
         } catch {
           // Queue for offline sync
           await queueCompletion({
             taskId,
             householdId,
-            date: today,
+            date: today2,
             completedAt: new Date().toISOString(),
           });
         }
       }
 
-      // Celebrate and navigate back
+      // Celebrate haptic
       await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-      setTimeout(() => router.back(), 800);
     },
     [activityType, taskId, householdId]
   );
@@ -136,12 +143,42 @@ export default function ActivityStimPlayer() {
     );
   }
 
-  if (completed) {
+  // Completion summary screen
+  if (completionData) {
+    const minutes = Math.floor(completionData.durationSeconds / 60);
+    const seconds = completionData.durationSeconds % 60;
+    const timeText = minutes > 0
+      ? t('patientApp.stim.summary.timeSpent', { minutes, seconds })
+      : t('patientApp.stim.summary.timeSpentSeconds', { seconds });
+
     return (
       <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
         <View style={styles.centered}>
-          <Text style={styles.celebrationEmoji}>🎉</Text>
-          <Text style={styles.celebrationText}>{t('patientApp.stim.common.wellDone')}</Text>
+          <Text style={styles.summaryEmoji}>🎉</Text>
+          <Text style={styles.summaryHeading}>{t('patientApp.stim.common.wellDone')}</Text>
+
+          <View style={styles.summaryCard}>
+            {completionData.roundsCompleted > 1 && (
+              <Text style={styles.summaryDetail}>
+                {t('patientApp.stim.summary.roundsCompleted', { count: completionData.roundsCompleted })}
+              </Text>
+            )}
+            <Text style={styles.summaryDetail}>{timeText}</Text>
+          </View>
+
+          <Text style={styles.encouragementText}>
+            {t('patientApp.stim.summary.encouragement')}
+          </Text>
+
+          <TouchableOpacity
+            style={styles.summaryDoneButton}
+            onPress={() => router.back()}
+            activeOpacity={0.8}
+          >
+            <Text style={styles.summaryDoneText}>
+              {t('patientApp.stim.common.imDone')}
+            </Text>
+          </TouchableOpacity>
         </View>
       </SafeAreaView>
     );
@@ -182,6 +219,32 @@ const styles = StyleSheet.create({
     fontSize: 28, fontFamily: FONTS.display, color: COLORS.textPrimary, textAlign: 'center',
   },
   errorText: { fontSize: 22, fontFamily: FONTS.body, color: COLORS.textSecondary, textAlign: 'center' },
-  celebrationEmoji: { fontSize: 72, marginBottom: 16 },
-  celebrationText: { fontSize: 28, fontFamily: FONTS.display, color: COLORS.textPrimary },
+
+  // Completion summary styles
+  summaryEmoji: { fontSize: 72, marginBottom: 16 },
+  summaryHeading: {
+    fontSize: 28, fontFamily: FONTS.display, color: COLORS.textPrimary,
+    textAlign: 'center', marginBottom: 24,
+  },
+  summaryCard: {
+    backgroundColor: COLORS.successBg, borderRadius: RADIUS['2xl'],
+    borderWidth: 2, borderColor: COLORS.success,
+    paddingVertical: 20, paddingHorizontal: 32,
+    marginBottom: 24, width: '100%', alignItems: 'center',
+  },
+  summaryDetail: {
+    fontSize: 22, fontFamily: FONTS.bodyMedium, color: COLORS.success,
+    textAlign: 'center', lineHeight: 32,
+  },
+  encouragementText: {
+    fontSize: 22, fontFamily: FONTS.body, color: COLORS.textSecondary,
+    textAlign: 'center', lineHeight: 30, marginBottom: 32, paddingHorizontal: 16,
+  },
+  summaryDoneButton: {
+    backgroundColor: COLORS.success, paddingVertical: 18,
+    paddingHorizontal: 56, borderRadius: RADIUS.lg,
+  },
+  summaryDoneText: {
+    fontSize: 24, fontFamily: FONTS.bodySemiBold, color: COLORS.textInverse,
+  },
 });

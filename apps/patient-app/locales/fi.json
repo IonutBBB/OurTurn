@@ -163,7 +163,16 @@
         "tryAgain": "Kokeile uudelleen!",
         "hint": "Vihje",
         "round": "Kierros {{current}} / {{total}}",
-        "nextRound": "Seuraava kierros"
+        "nextRound": "Seuraava kierros",
+        "next": "Next",
+        "nextWord": "Next Word",
+        "nextProverb": "Next Proverb"
+      },
+      "summary": {
+        "roundsCompleted": "{{count}} rounds completed",
+        "timeSpent": "{{minutes}} min {{seconds}} sec",
+        "timeSpentSeconds": "{{seconds}} seconds",
+        "encouragement": "That was wonderful! Your brain thanks you."
       },
       "wordAssociation": {
         "title": "Sana-assosiaatio",
@@ -487,7 +496,15 @@
           "spring": "Kevät",
           "summer": "Kesä",
           "autumn": "Syksy",
-          "winter": "Talvi"
+          "winter": "Talvi",
+          "hibiscus": "Hibiscus",
+          "daisy": "Daisy",
+          "horse": "Horse",
+          "butterfly": "Butterfly",
+          "grapes": "Grapes",
+          "cheese": "Cheese",
+          "moon": "Moon",
+          "leaf": "Leaf"
         }
       },
       "wordSearch": {

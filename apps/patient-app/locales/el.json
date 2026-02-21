@@ -163,7 +163,16 @@
         "tryAgain": "Δοκιμάστε ξανά!",
         "hint": "Βοήθεια",
         "round": "Γύρος {{current}} από {{total}}",
-        "nextRound": "Επόμενος γύρος"
+        "nextRound": "Επόμενος γύρος",
+        "next": "Next",
+        "nextWord": "Next Word",
+        "nextProverb": "Next Proverb"
+      },
+      "summary": {
+        "roundsCompleted": "{{count}} rounds completed",
+        "timeSpent": "{{minutes}} min {{seconds}} sec",
+        "timeSpentSeconds": "{{seconds}} seconds",
+        "encouragement": "That was wonderful! Your brain thanks you."
       },
       "wordAssociation": {
         "title": "Σύνδεση Λέξεων",
@@ -487,7 +496,15 @@
           "spring": "Άνοιξη",
           "summer": "Καλοκαίρι",
           "autumn": "Φθινόπωρο",
-          "winter": "Χειμώνας"
+          "winter": "Χειμώνας",
+          "hibiscus": "Hibiscus",
+          "daisy": "Daisy",
+          "horse": "Horse",
+          "butterfly": "Butterfly",
+          "grapes": "Grapes",
+          "cheese": "Cheese",
+          "moon": "Moon",
+          "leaf": "Leaf"
         }
       },
       "wordSearch": {

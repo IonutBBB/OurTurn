@@ -12,6 +12,8 @@ export const PHOTO_PAIRS_CONTENT: PhotoPairsContent[] = [
       { emoji: '🌻', labelKey: 'patientApp.stim.photoPairs.items.sunflower' },
       { emoji: '🌷', labelKey: 'patientApp.stim.photoPairs.items.tulip' },
       { emoji: '🌸', labelKey: 'patientApp.stim.photoPairs.items.blossom' },
+      { emoji: '🌺', labelKey: 'patientApp.stim.photoPairs.items.hibiscus' },
+      { emoji: '🌼', labelKey: 'patientApp.stim.photoPairs.items.daisy' },
     ],
   },
   {
@@ -21,6 +23,8 @@ export const PHOTO_PAIRS_CONTENT: PhotoPairsContent[] = [
       { emoji: '🐕', labelKey: 'patientApp.stim.photoPairs.items.dog' },
       { emoji: '🐰', labelKey: 'patientApp.stim.photoPairs.items.rabbit' },
       { emoji: '🐦', labelKey: 'patientApp.stim.photoPairs.items.bird' },
+      { emoji: '🐴', labelKey: 'patientApp.stim.photoPairs.items.horse' },
+      { emoji: '🦋', labelKey: 'patientApp.stim.photoPairs.items.butterfly' },
     ],
   },
   {
@@ -30,6 +34,8 @@ export const PHOTO_PAIRS_CONTENT: PhotoPairsContent[] = [
       { emoji: '🍰', labelKey: 'patientApp.stim.photoPairs.items.cake' },
       { emoji: '🍞', labelKey: 'patientApp.stim.photoPairs.items.bread' },
       { emoji: '🧁', labelKey: 'patientApp.stim.photoPairs.items.cupcake' },
+      { emoji: '🍇', labelKey: 'patientApp.stim.photoPairs.items.grapes' },
+      { emoji: '🧀', labelKey: 'patientApp.stim.photoPairs.items.cheese' },
     ],
   },
   {
@@ -39,6 +45,8 @@ export const PHOTO_PAIRS_CONTENT: PhotoPairsContent[] = [
       { emoji: '🌈', labelKey: 'patientApp.stim.photoPairs.items.rainbow' },
       { emoji: '⭐', labelKey: 'patientApp.stim.photoPairs.items.star' },
       { emoji: '☀️', labelKey: 'patientApp.stim.photoPairs.items.sun' },
+      { emoji: '🌙', labelKey: 'patientApp.stim.photoPairs.items.moon' },
+      { emoji: '🍃', labelKey: 'patientApp.stim.photoPairs.items.leaf' },
     ],
   },
   {

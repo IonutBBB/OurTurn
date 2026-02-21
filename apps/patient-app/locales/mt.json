@@ -163,7 +163,16 @@
         "tryAgain": "Erġa' pprova!",
         "hint": "Għajnuna",
         "round": "Rawnd {{current}} minn {{total}}",
-        "nextRound": "Ir-rawnd li jmiss"
+        "nextRound": "Ir-rawnd li jmiss",
+        "next": "Next",
+        "nextWord": "Next Word",
+        "nextProverb": "Next Proverb"
+      },
+      "summary": {
+        "roundsCompleted": "{{count}} rounds completed",
+        "timeSpent": "{{minutes}} min {{seconds}} sec",
+        "timeSpentSeconds": "{{seconds}} seconds",
+        "encouragement": "That was wonderful! Your brain thanks you."
       },
       "wordAssociation": {
         "title": "Assoċjazzjoni tal-Kliem",
@@ -487,7 +496,15 @@
           "spring": "Rebbiegħa",
           "summer": "Sajf",
           "autumn": "Ħarifa",
-          "winter": "Xitwa"
+          "winter": "Xitwa",
+          "hibiscus": "Hibiscus",
+          "daisy": "Daisy",
+          "horse": "Horse",
+          "butterfly": "Butterfly",
+          "grapes": "Grapes",
+          "cheese": "Cheese",
+          "moon": "Moon",
+          "leaf": "Leaf"
         }
       },
       "wordSearch": {

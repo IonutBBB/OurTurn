@@ -163,7 +163,16 @@
         "tryAgain": "Riprova!",
         "hint": "Suggerimento",
         "round": "Turno {{current}} di {{total}}",
-        "nextRound": "Turno successivo"
+        "nextRound": "Turno successivo",
+        "next": "Next",
+        "nextWord": "Next Word",
+        "nextProverb": "Next Proverb"
+      },
+      "summary": {
+        "roundsCompleted": "{{count}} rounds completed",
+        "timeSpent": "{{minutes}} min {{seconds}} sec",
+        "timeSpentSeconds": "{{seconds}} seconds",
+        "encouragement": "That was wonderful! Your brain thanks you."
       },
       "wordAssociation": {
         "title": "Associazione di parole",
@@ -487,7 +496,15 @@
           "spring": "Primavera",
           "summer": "Estate",
           "autumn": "Autunno",
-          "winter": "Inverno"
+          "winter": "Inverno",
+          "hibiscus": "Hibiscus",
+          "daisy": "Daisy",
+          "horse": "Horse",
+          "butterfly": "Butterfly",
+          "grapes": "Grapes",
+          "cheese": "Cheese",
+          "moon": "Moon",
+          "leaf": "Leaf"
         }
       },
       "wordSearch": {

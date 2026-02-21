@@ -163,7 +163,16 @@
         "tryAgain": "Prøv en gang til!",
         "hint": "Tip",
         "round": "Runde {{current}} af {{total}}",
-        "nextRound": "Næste runde"
+        "nextRound": "Næste runde",
+        "next": "Next",
+        "nextWord": "Next Word",
+        "nextProverb": "Next Proverb"
+      },
+      "summary": {
+        "roundsCompleted": "{{count}} rounds completed",
+        "timeSpent": "{{minutes}} min {{seconds}} sec",
+        "timeSpentSeconds": "{{seconds}} seconds",
+        "encouragement": "That was wonderful! Your brain thanks you."
       },
       "wordAssociation": {
         "title": "Ordsammensætning",
@@ -487,7 +496,15 @@
           "spring": "Forår",
           "summer": "Sommer",
           "autumn": "Efterår",
-          "winter": "Vinter"
+          "winter": "Vinter",
+          "hibiscus": "Hibiscus",
+          "daisy": "Daisy",
+          "horse": "Horse",
+          "butterfly": "Butterfly",
+          "grapes": "Grapes",
+          "cheese": "Cheese",
+          "moon": "Moon",
+          "leaf": "Leaf"
         }
       },
       "wordSearch": {

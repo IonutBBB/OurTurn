@@ -6,23 +6,32 @@ import { COLORS, FONTS, RADIUS } from '../../theme';
 import type { ActivityRendererProps } from './types';
 import type { GentleQuizContent } from '../../data/bundled-activities';
 
+// API content has allAnswers (raw strings); bundled content has allAnswerKeys (i18n keys)
+type QuizItem = GentleQuizContent | { question: string; correctAnswer: string; incorrectAnswers: string[]; allAnswers: string[] };
+
 export default function GentleQuizRenderer({
   content,
   onComplete,
   onSkip,
 }: ActivityRendererProps) {
   const { t } = useTranslation();
+  const items: QuizItem[] = Array.isArray(content) ? content : [content as QuizItem];
+  const [roundIndex, setRoundIndex] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
-  const data = content as GentleQuizContent;
 
-  if (!data) return null;
+  if (!items.length || !items[0]) return null;
+
+  const current = items[roundIndex];
+  const totalRounds = items.length;
+  const isFinalRound = roundIndex + 1 >= totalRounds;
 
   // Support both API content (raw strings) and bundled content (i18n keys)
-  const question = data.questionKey ? t(data.questionKey) : data.question;
-  const correctAnswer = data.correctAnswerKey ? t(data.correctAnswerKey) : data.correctAnswer;
-  const answers = data.allAnswerKeys
-    ? data.allAnswerKeys.map((k) => t(k))
-    : data.allAnswers ?? [];
+  const bundled = current as GentleQuizContent;
+  const question = bundled.questionKey ? t(bundled.questionKey) : current.question;
+  const correctAnswer = bundled.correctAnswerKey ? t(bundled.correctAnswerKey) : current.correctAnswer;
+  const answers: string[] = bundled.allAnswerKeys
+    ? bundled.allAnswerKeys.map((k: string) => t(k))
+    : ('allAnswers' in current ? (current as { allAnswers: string[] }).allAnswers : []);
 
   const isCorrect = selected === correctAnswer;
 
@@ -31,14 +40,27 @@ export default function GentleQuizRenderer({
     setSelected(answer);
   };
 
-  const handleDone = async () => {
-    await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-    onComplete({ activity: 'gentle_quiz' });
+  const handleNext = async () => {
+    if (isFinalRound) {
+      await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      onComplete({ activity: 'gentle_quiz', roundsCompleted: totalRounds });
+    } else {
+      await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+      setRoundIndex((prev) => prev + 1);
+      setSelected(null);
+    }
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.emoji}>🌟</Text>
+
+      {totalRounds > 1 && (
+        <Text style={styles.progress}>
+          {t('patientApp.stim.common.round', { current: roundIndex + 1, total: totalRounds })}
+        </Text>
+      )}
+
       <Text style={styles.question}>{question}</Text>
 
       <View style={styles.answers}>
@@ -80,9 +102,11 @@ export default function GentleQuizRenderer({
       )}
 
       {selected && (
-        <TouchableOpacity style={styles.doneButton} onPress={handleDone} activeOpacity={0.8}>
+        <TouchableOpacity style={styles.doneButton} onPress={handleNext} activeOpacity={0.8}>
           <Text style={styles.doneButtonText}>
-            {t('patientApp.stim.common.imDone')}
+            {isFinalRound
+              ? t('patientApp.stim.common.imDone')
+              : t('patientApp.stim.common.next')}
           </Text>
         </TouchableOpacity>
       )}
@@ -97,6 +121,10 @@ export default function GentleQuizRenderer({
 const styles = StyleSheet.create({
   container: { alignItems: 'center', paddingVertical: 16 },
   emoji: { fontSize: 56, marginBottom: 16 },
+  progress: {
+    fontSize: 20, fontFamily: FONTS.bodyMedium, color: COLORS.textMuted,
+    textAlign: 'center', marginBottom: 4,
+  },
   question: {
     fontSize: 24, fontFamily: FONTS.display, color: COLORS.textPrimary,
     textAlign: 'center', lineHeight: 34, marginBottom: 24, paddingHorizontal: 8,

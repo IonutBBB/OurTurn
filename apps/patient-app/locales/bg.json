@@ -163,7 +163,16 @@
         "tryAgain": "Опитайте отново!",
         "hint": "Подсказка",
         "round": "Рунд {{current}} от {{total}}",
-        "nextRound": "Следващ рунд"
+        "nextRound": "Следващ рунд",
+        "next": "Next",
+        "nextWord": "Next Word",
+        "nextProverb": "Next Proverb"
+      },
+      "summary": {
+        "roundsCompleted": "{{count}} rounds completed",
+        "timeSpent": "{{minutes}} min {{seconds}} sec",
+        "timeSpentSeconds": "{{seconds}} seconds",
+        "encouragement": "That was wonderful! Your brain thanks you."
       },
       "wordAssociation": {
         "title": "Асоциации на думи",
@@ -487,7 +496,15 @@
           "spring": "Пролет",
           "summer": "Лято",
           "autumn": "Есен",
-          "winter": "Зима"
+          "winter": "Зима",
+          "hibiscus": "Hibiscus",
+          "daisy": "Daisy",
+          "horse": "Horse",
+          "butterfly": "Butterfly",
+          "grapes": "Grapes",
+          "cheese": "Cheese",
+          "moon": "Moon",
+          "leaf": "Leaf"
         }
       },
       "wordSearch": {

@@ -8,9 +8,17 @@ import { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import type { StimActivityType } from '@ourturn/shared';
 import { formatDateForDb } from '../utils/time-of-day';
-import { pickDaily } from '../utils/daily-seed';
+import { pickDaily, pickDailyMultiple } from '../utils/daily-seed';
 import { BUNDLED_CONTENT } from '../data/bundled-activities';
 import { fetchGentleQuizContent } from '../services/opentdb-api';
+
+/** Games that return multiple items for multi-round sessions */
+const MULTI_ROUND_COUNTS: Partial<Record<StimActivityType, number>> = {
+  gentle_quiz: 5,
+  word_association: 5,
+  proverbs: 5,
+  what_would_you_choose: 4,
+};
 
 type ContentSource = 'api' | 'local_cache' | 'bundled';
 
@@ -83,7 +91,11 @@ export function useActivityContent(
       // 3. Fall back to bundled content
       if (!cancelled) {
         const pool = BUNDLED_CONTENT[activityType] ?? [];
-        setContent(pickDaily(pool));
+        const multiCount = MULTI_ROUND_COUNTS[activityType];
+        const picked = multiCount
+          ? pickDailyMultiple(pool, multiCount)
+          : pickDaily(pool);
+        setContent(picked);
         setSource('bundled');
         setIsLoading(false);
       }
