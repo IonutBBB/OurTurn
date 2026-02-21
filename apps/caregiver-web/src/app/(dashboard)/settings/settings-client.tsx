@@ -93,6 +93,13 @@ export default function SettingsClient({
   const [isSavingSafety, setIsSavingSafety] = useState(false);
   const [safetySaved, setSafetySaved] = useState(false);
 
+  // Feedback
+  const [feedbackCategory, setFeedbackCategory] = useState<'bug_report' | 'feature_suggestion' | 'general_feedback'>('general_feedback');
+  const [feedbackMessage, setFeedbackMessage] = useState('');
+  const [isSubmittingFeedback, setIsSubmittingFeedback] = useState(false);
+  const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
+  const [feedbackError, setFeedbackError] = useState('');
+
   // Danger zone
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [deleteConfirmText, setDeleteConfirmText] = useState('');
@@ -328,6 +335,43 @@ export default function SettingsClient({
       setPasswordError(err.message || 'Failed to change password');
     } finally {
       setIsChangingPassword(false);
+    }
+  };
+
+  const handleSubmitFeedback = async () => {
+    if (!feedbackMessage.trim()) {
+      setFeedbackError(t('caregiverApp.settings.feedbackEmpty'));
+      return;
+    }
+
+    setIsSubmittingFeedback(true);
+    setFeedbackError('');
+    setFeedbackSubmitted(false);
+
+    try {
+      const res = await fetch('/api/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          category: feedbackCategory,
+          message: feedbackMessage.trim(),
+          platform: 'web',
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || 'Failed to submit');
+      }
+
+      setFeedbackSubmitted(true);
+      setFeedbackMessage('');
+      setFeedbackCategory('general_feedback');
+      setTimeout(() => setFeedbackSubmitted(false), 5000);
+    } catch (err) {
+      setFeedbackError(t('caregiverApp.settings.feedbackError'));
+    } finally {
+      setIsSubmittingFeedback(false);
     }
   };
 
@@ -917,6 +961,81 @@ export default function SettingsClient({
                 )}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FEEDBACK & SUPPORT ── */}
+      <section>
+        <h2 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-4">
+          {t('caregiverApp.settings.groupFeedback')}
+        </h2>
+        <div className="space-y-6">
+          {/* Send Feedback */}
+          <div className="card-paper p-6">
+            <h3 className="text-lg font-display font-bold text-text-primary mb-1">{t('caregiverApp.settings.sendFeedback')}</h3>
+            <p className="text-sm text-text-muted mb-4">{t('caregiverApp.settings.sendFeedbackDesc')}</p>
+
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-text-secondary mb-1">
+                {t('caregiverApp.settings.feedbackCategory')}
+              </label>
+              <div className="flex gap-2 flex-wrap">
+                {(['bug_report', 'feature_suggestion', 'general_feedback'] as const).map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setFeedbackCategory(cat)}
+                    className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                      feedbackCategory === cat
+                        ? 'bg-brand-600 text-white'
+                        : 'bg-bg-warm text-text-secondary hover:bg-bg-soft'
+                    }`}
+                  >
+                    {t(`caregiverApp.settings.feedbackCategory${cat === 'bug_report' ? 'Bug' : cat === 'feature_suggestion' ? 'Feature' : 'General'}`)}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-text-secondary mb-1">
+                {t('caregiverApp.settings.feedbackMessage')}
+              </label>
+              <textarea
+                value={feedbackMessage}
+                onChange={(e) => setFeedbackMessage(e.target.value)}
+                placeholder={t('caregiverApp.settings.feedbackMessagePlaceholder')}
+                className="input-warm w-full h-28 resize-none"
+                maxLength={5000}
+              />
+            </div>
+
+            {feedbackError && (
+              <p className="text-sm text-status-danger mb-3">{feedbackError}</p>
+            )}
+            {feedbackSubmitted && (
+              <p className="text-sm text-status-success mb-3">{t('caregiverApp.settings.feedbackSuccess')}</p>
+            )}
+
+            <button
+              onClick={handleSubmitFeedback}
+              disabled={isSubmittingFeedback || !feedbackMessage.trim()}
+              className="btn-primary disabled:opacity-50"
+            >
+              {isSubmittingFeedback ? t('caregiverApp.settings.feedbackSubmitting') : t('caregiverApp.settings.feedbackSubmit')}
+            </button>
+          </div>
+
+          {/* Contact Support */}
+          <div className="card-paper p-6">
+            <h3 className="text-lg font-display font-bold text-text-primary mb-1">{t('caregiverApp.settings.feedbackContact')}</h3>
+            <p className="text-sm text-text-muted mb-4">{t('caregiverApp.settings.feedbackContactDesc')}</p>
+            <a
+              href="mailto:support@ourturn.app"
+              className="btn-primary inline-block text-center"
+            >
+              {t('caregiverApp.settings.feedbackContactButton')}
+            </a>
           </div>
         </div>
       </section>

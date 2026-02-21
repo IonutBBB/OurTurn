@@ -11,6 +11,8 @@ import {
   Modal,
   Image,
   FlatList,
+  Linking,
+  Platform,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Constants from 'expo-constants';
@@ -27,6 +29,7 @@ import type { EmergencyContact, PatientBiography } from '@ourturn/shared';
 import { SUPPORTED_LANGUAGES } from '@ourturn/shared';
 import { changeLanguage, getCurrentLanguage } from '../../src/i18n';
 import { useSubscription } from '../../src/hooks/use-subscription';
+import * as StoreReview from 'expo-store-review';
 
 export default function SettingsScreen() {
   const { t } = useTranslation();
@@ -94,6 +97,13 @@ export default function SettingsScreen() {
   // GDPR
   const [isExporting, setIsExporting] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+
+  // Feedback
+  const [showFeedbackModal, setShowFeedbackModal] = useState(false);
+  const [feedbackCategory, setFeedbackCategory] = useState<'bug_report' | 'feature_suggestion' | 'general_feedback'>('general_feedback');
+  const [feedbackMessage, setFeedbackMessage] = useState('');
+  const [isSubmittingFeedback, setIsSubmittingFeedback] = useState(false);
+  const [storeReviewAvailable, setStoreReviewAvailable] = useState(false);
 
   // Photo gallery
   const [photos, setPhotos] = useState<string[]>([]);
@@ -173,6 +183,67 @@ export default function SettingsScreen() {
   // Delete confirmation modal (cross-platform replacement for Alert.prompt)
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteConfirmText, setDeleteConfirmText] = useState('');
+
+  // Check if native store review is available
+  useEffect(() => {
+    StoreReview.isAvailableAsync().then(setStoreReviewAvailable).catch(() => {});
+  }, []);
+
+  const handleRateApp = async () => {
+    if (storeReviewAvailable) {
+      await StoreReview.requestReview();
+    } else {
+      // Fallback: open store URL directly
+      const storeUrl = Platform.OS === 'ios'
+        ? 'https://apps.apple.com/app/ourturn/id0000000000' // Replace with real App Store ID
+        : 'https://play.google.com/store/apps/details?id=com.ourturn.caregiver';
+      Linking.openURL(storeUrl);
+    }
+  };
+
+  const handleSubmitFeedback = async () => {
+    if (!feedbackMessage.trim()) {
+      Alert.alert('', t('caregiverApp.settings.feedbackEmpty'));
+      return;
+    }
+
+    setIsSubmittingFeedback(true);
+    try {
+      const apiBaseUrl = process.env.EXPO_PUBLIC_API_BASE_URL;
+      if (!apiBaseUrl) throw new Error('API URL not configured');
+
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session?.access_token) throw new Error('No session');
+
+      const res = await fetch(`${apiBaseUrl}/api/feedback`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${session.access_token}`,
+        },
+        body: JSON.stringify({
+          category: feedbackCategory,
+          message: feedbackMessage.trim(),
+          platform: Platform.OS,
+          appVersion: Constants.expoConfig?.version || undefined,
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || 'Failed');
+      }
+
+      setShowFeedbackModal(false);
+      setFeedbackMessage('');
+      setFeedbackCategory('general_feedback');
+      Alert.alert('', t('caregiverApp.settings.feedbackSuccess'));
+    } catch {
+      Alert.alert('', t('caregiverApp.settings.feedbackError'));
+    } finally {
+      setIsSubmittingFeedback(false);
+    }
+  };
 
   // Load existing photos from patient biography
   useEffect(() => {
@@ -1390,6 +1461,56 @@ export default function SettingsScreen() {
           </View>
         </View>
 
+        {/* ── FEEDBACK & SUPPORT ── */}
+        <Text style={styles.groupHeading}>{t('caregiverApp.settings.groupFeedback')}</Text>
+
+        <View style={styles.section}>
+          {/* Rate OurTurn */}
+          <View style={styles.card}>
+            <TouchableOpacity
+              style={styles.feedbackRow}
+              onPress={handleRateApp}
+              activeOpacity={0.7}
+            >
+              <View style={{ flex: 1 }}>
+                <Text style={styles.feedbackRowTitle}>{t('caregiverApp.settings.rateApp')}</Text>
+                <Text style={styles.feedbackRowDesc}>{t('caregiverApp.settings.rateAppDesc')}</Text>
+              </View>
+              <Text style={styles.feedbackRowArrow}>{'\u2192'}</Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Send Feedback */}
+          <View style={[styles.card, { marginTop: 12 }]}>
+            <TouchableOpacity
+              style={styles.feedbackRow}
+              onPress={() => setShowFeedbackModal(true)}
+              activeOpacity={0.7}
+            >
+              <View style={{ flex: 1 }}>
+                <Text style={styles.feedbackRowTitle}>{t('caregiverApp.settings.sendFeedback')}</Text>
+                <Text style={styles.feedbackRowDesc}>{t('caregiverApp.settings.sendFeedbackDesc')}</Text>
+              </View>
+              <Text style={styles.feedbackRowArrow}>{'\u2192'}</Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Contact Support */}
+          <View style={[styles.card, { marginTop: 12 }]}>
+            <TouchableOpacity
+              style={styles.feedbackRow}
+              onPress={() => Linking.openURL('mailto:support@ourturn.app')}
+              activeOpacity={0.7}
+            >
+              <View style={{ flex: 1 }}>
+                <Text style={styles.feedbackRowTitle}>{t('caregiverApp.settings.feedbackContact')}</Text>
+                <Text style={styles.feedbackRowDesc}>{t('caregiverApp.settings.feedbackContactDesc')}</Text>
+              </View>
+              <Text style={styles.feedbackRowArrow}>{'\u2709'}</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
         {/* ── ACCOUNT ── */}
         <Text style={styles.groupHeading}>{t('caregiverApp.settings.groupAccount')}</Text>
 
@@ -1606,6 +1727,81 @@ export default function SettingsScreen() {
           <Text style={styles.dangerNote}>{t('caregiverApp.settings.deleteWarning')}</Text>
         </View>
       </ScrollView>
+
+      {/* Feedback modal */}
+      <Modal
+        visible={showFeedbackModal}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setShowFeedbackModal(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>{t('caregiverApp.settings.sendFeedback')}</Text>
+            <Text style={styles.modalDesc}>{t('caregiverApp.settings.sendFeedbackDesc')}</Text>
+
+            <Text style={[styles.fieldLabel, { marginTop: 12, marginBottom: 8 }]}>
+              {t('caregiverApp.settings.feedbackCategory')}
+            </Text>
+            <View style={styles.feedbackChipRow}>
+              {(['bug_report', 'feature_suggestion', 'general_feedback'] as const).map((cat) => (
+                <TouchableOpacity
+                  key={cat}
+                  style={[
+                    styles.feedbackChip,
+                    feedbackCategory === cat && styles.feedbackChipSelected,
+                  ]}
+                  onPress={() => setFeedbackCategory(cat)}
+                  activeOpacity={0.7}
+                >
+                  <Text
+                    style={[
+                      styles.feedbackChipText,
+                      feedbackCategory === cat && styles.feedbackChipTextSelected,
+                    ]}
+                  >
+                    {t(`caregiverApp.settings.feedbackCategory${cat === 'bug_report' ? 'Bug' : cat === 'feature_suggestion' ? 'Feature' : 'General'}`)}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+
+            <TextInput
+              style={[styles.textInput, { height: 100, textAlignVertical: 'top', marginTop: 12 }]}
+              value={feedbackMessage}
+              onChangeText={setFeedbackMessage}
+              placeholder={t('caregiverApp.settings.feedbackMessagePlaceholder')}
+              placeholderTextColor={colors.textMuted}
+              multiline
+              maxLength={5000}
+            />
+
+            <View style={styles.modalActions}>
+              <TouchableOpacity
+                style={styles.modalCancelButton}
+                onPress={() => {
+                  setShowFeedbackModal(false);
+                  setFeedbackMessage('');
+                  setFeedbackCategory('general_feedback');
+                }}
+              >
+                <Text style={styles.modalCancelText}>{t('common.cancel')}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.saveButton, (!feedbackMessage.trim() || isSubmittingFeedback) && styles.saveButtonDisabled, { flex: 1 }]}
+                onPress={handleSubmitFeedback}
+                disabled={!feedbackMessage.trim() || isSubmittingFeedback}
+              >
+                {isSubmittingFeedback ? (
+                  <ActivityIndicator color={colors.textInverse} size="small" />
+                ) : (
+                  <Text style={styles.saveButtonText}>{t('caregiverApp.settings.feedbackSubmit')}</Text>
+                )}
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
 
       {/* Delete confirmation modal (cross-platform) */}
       <Modal
@@ -2217,6 +2413,56 @@ const useStyles = createThemedStyles((colors) => ({
     fontFamily: FONTS.body,
     color: colors.danger,
     opacity: 0.8,
+  },
+
+  // Feedback rows
+  feedbackRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 16,
+  },
+  feedbackRowTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    fontFamily: FONTS.bodySemiBold,
+    color: colors.textPrimary,
+    marginBottom: 2,
+  },
+  feedbackRowDesc: {
+    fontSize: 13,
+    fontFamily: FONTS.body,
+    color: colors.textMuted,
+  },
+  feedbackRowArrow: {
+    fontSize: 18,
+    color: colors.textMuted,
+    marginLeft: 12,
+  },
+  feedbackChipRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  feedbackChip: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: RADIUS.full,
+    backgroundColor: colors.brand50,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  feedbackChipSelected: {
+    backgroundColor: colors.brand600,
+    borderColor: colors.brand600,
+  },
+  feedbackChipText: {
+    fontSize: 13,
+    fontFamily: FONTS.body,
+    color: colors.textSecondary,
+  },
+  feedbackChipTextSelected: {
+    color: colors.textInverse,
+    fontWeight: '600',
   },
 
   // Delete confirmation modal
