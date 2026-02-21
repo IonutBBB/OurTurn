@@ -83,7 +83,7 @@ const useStyles = createThemedStyles((colors) => ({
   },
   title: {
     fontSize: 16,
-    fontFamily: FONTS.displayBold,
+    fontFamily: FONTS.display,
     fontWeight: '700',
     color: colors.textPrimary,
     lineHeight: 22,

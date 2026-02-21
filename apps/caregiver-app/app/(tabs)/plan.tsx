@@ -400,10 +400,9 @@ export default function PlanScreen() {
     const canRemoveFromDay = task.recurrence === 'daily' || task.recurrence === 'specific_days';
 
     if (canRemoveFromDay) {
-      const allDays = DAY_KEYS as string[];
-      const currentDays = task.recurrence === 'daily'
-        ? allDays
-        : (task.recurrence_days?.map(d => d.toLowerCase()) ?? []);
+      const currentDays: DayOfWeek[] = task.recurrence === 'daily'
+        ? [...DAY_KEYS]
+        : (task.recurrence_days ?? []);
       const remainingDays = currentDays.filter(d => d !== selectedDay);
 
       if (remainingDays.length > 0) {

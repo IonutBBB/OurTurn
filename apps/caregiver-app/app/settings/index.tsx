@@ -84,10 +84,9 @@ export default function SettingsScreen() {
   const [codeCopied, setCodeCopied] = useState(false);
   const [isRegenerating, setIsRegenerating] = useState(false);
 
-  // Subscription (EU-aware)
+  // Subscription
   const subscription = useSubscription(household ? {
     id: household.id,
-    country: household.country,
     subscription_status: household.subscription_status,
     subscription_platform: household.subscription_platform,
   } : null);
@@ -1444,14 +1443,17 @@ export default function SettingsScreen() {
                 </Text>
               )
             ) : (
-              /* Free users: upgrade */
+              /* Free users: upgrade via IAP */
               <View>
-                {subscription.isEUUser ? (
+                {subscription.offerings?.availablePackages?.[0] ? (
                   <TouchableOpacity
                     style={styles.subscriptionButton}
                     onPress={async () => {
-                      if (!household?.id) return;
-                      const success = await subscription.purchaseViaStripe(household.id);
+                      if (!household?.id || !subscription.offerings?.availablePackages?.[0]) return;
+                      const success = await subscription.purchase(
+                        subscription.offerings.availablePackages[0],
+                        household.id
+                      );
                       if (success) await loadCaregiverData();
                     }}
                     activeOpacity={0.7}
@@ -1461,44 +1463,23 @@ export default function SettingsScreen() {
                     </Text>
                   </TouchableOpacity>
                 ) : (
-                  <View>
-                    {subscription.offerings?.availablePackages?.[0] ? (
-                      <TouchableOpacity
-                        style={styles.subscriptionButton}
-                        onPress={async () => {
-                          if (!household?.id || !subscription.offerings?.availablePackages?.[0]) return;
-                          const success = await subscription.purchase(
-                            subscription.offerings.availablePackages[0],
-                            household.id
-                          );
-                          if (success) await loadCaregiverData();
-                        }}
-                        activeOpacity={0.7}
-                      >
-                        <Text style={styles.subscriptionButtonText}>
-                          {t('subscription.upgrade')}
-                        </Text>
-                      </TouchableOpacity>
-                    ) : (
-                      <Text style={styles.subscriptionNote}>
-                        {t('subscription.noOfferings')}
-                      </Text>
-                    )}
-                    <TouchableOpacity
-                      style={styles.subscriptionRestoreButton}
-                      onPress={async () => {
-                        if (!household?.id) return;
-                        const restored = await subscription.restore(household.id);
-                        if (restored) await loadCaregiverData();
-                      }}
-                      activeOpacity={0.7}
-                    >
-                      <Text style={styles.subscriptionRestoreText}>
-                        {t('subscription.restore')}
-                      </Text>
-                    </TouchableOpacity>
-                  </View>
+                  <Text style={styles.subscriptionNote}>
+                    {t('subscription.noOfferings')}
+                  </Text>
                 )}
+                <TouchableOpacity
+                  style={styles.subscriptionRestoreButton}
+                  onPress={async () => {
+                    if (!household?.id) return;
+                    const restored = await subscription.restore(household.id);
+                    if (restored) await loadCaregiverData();
+                  }}
+                  activeOpacity={0.7}
+                >
+                  <Text style={styles.subscriptionRestoreText}>
+                    {t('subscription.restore')}
+                  </Text>
+                </TouchableOpacity>
               </View>
             )}
           </View>

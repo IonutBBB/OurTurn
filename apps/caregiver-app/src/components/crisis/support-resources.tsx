@@ -112,10 +112,38 @@ const useStyles = createThemedStyles((colors) => ({
   primaryRoleText: {
     color: colors.brand700,
   },
+  resourceItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
+  },
+  resourceInfo: {
+    flex: 1,
+    marginRight: 12,
+  },
+  resourceName: {
+    fontSize: 15,
+    fontFamily: FONTS.bodySemiBold,
+    color: colors.textPrimary,
+  },
   emailText: {
     fontSize: 13,
     fontFamily: FONTS.body,
     color: colors.textMuted,
     marginTop: 2,
+  },
+  websiteButton: {
+    backgroundColor: colors.brand100,
+    borderRadius: RADIUS.md,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+  },
+  websiteButtonText: {
+    fontSize: 13,
+    fontFamily: FONTS.bodySemiBold,
+    color: colors.brand700,
   },
 }));

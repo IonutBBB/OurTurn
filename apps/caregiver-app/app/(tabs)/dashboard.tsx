@@ -282,7 +282,7 @@ export default function DashboardScreen() {
             accessibilityRole="summary"
             accessibilityLabel={
               checkin
-                ? `${t('caregiverApp.dashboard.dailyCheckin')}: ${t('caregiverApp.dashboard.mood')} ${moodMap[checkin.mood]?.label || '—'}`
+                ? `${t('caregiverApp.dashboard.dailyCheckin')}: ${t('caregiverApp.dashboard.mood')} ${moodLabels[checkin.mood] || '—'}`
                 : `${t('caregiverApp.dashboard.dailyCheckin')}: ${t('caregiverApp.dashboard.noCheckinYet')}`
             }
           >

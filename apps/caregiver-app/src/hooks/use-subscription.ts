@@ -1,9 +1,9 @@
 // Subscription Hook
-// Manages subscriptions with region-based payment routing:
-//   - EU users: Stripe Checkout (DMA-compliant, lower fees)
-//   - Non-EU users: RevenueCat IAP (App Store / Play Store)
+// Manages mobile subscriptions via RevenueCat IAP (App Store / Play Store).
+// Stripe is web-only; openStripePortal is kept for users who subscribed on web
+// and need to manage their subscription from mobile.
 
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback } from 'react';
 import { PurchasesOffering, PurchasesPackage } from 'react-native-purchases';
 import {
   initializeRevenueCat,
@@ -15,16 +15,11 @@ import {
   restorePurchases,
   getCustomerInfo,
   getExpirationDate,
-  openStripeCheckout,
   openStripePortal,
-  waitForSubscriptionActivation,
 } from '../services/subscriptions';
-import { isEUCountry } from '@ourturn/shared';
-import { toISOCountryCode } from '../utils/country-code-map';
 
 interface HouseholdInfo {
   id: string;
-  country: string | null;
   subscription_status: string;
   subscription_platform?: string | null;
 }
@@ -34,7 +29,6 @@ export interface UseSubscriptionReturn {
   isInitialized: boolean;
   isLoading: boolean;
   isPlus: boolean;
-  isEUUser: boolean;
   expirationDate: Date | null;
   offerings: PurchasesOffering | null;
   error: string | null;
@@ -44,7 +38,6 @@ export interface UseSubscriptionReturn {
   login: (userId: string) => Promise<void>;
   logout: () => Promise<void>;
   purchase: (pkg: PurchasesPackage, householdId: string) => Promise<boolean>;
-  purchaseViaStripe: (householdId: string) => Promise<boolean>;
   manageSubscription: (householdId: string) => Promise<void>;
   restore: (householdId: string) => Promise<boolean>;
   refresh: () => Promise<void>;
@@ -58,25 +51,8 @@ export function useSubscription(household?: HouseholdInfo | null): UseSubscripti
   const [offerings, setOfferings] = useState<PurchasesOffering | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const isEUUser = useMemo(() => {
-    if (!household?.country) return false;
-    const isoCode = toISOCountryCode(household.country);
-    return isEUCountry(isoCode);
-  }, [household?.country]);
-
-  // For EU users, derive Plus status from the DB (Stripe webhook updates it)
-  const effectiveIsPlus = isEUUser
-    ? household?.subscription_status === 'plus'
-    : isPlus;
-
-  // Initialize RevenueCat (non-EU only)
+  // Initialize RevenueCat
   const initialize = useCallback(async (userId?: string) => {
-    if (isEUUser) {
-      // EU users don't need RevenueCat — status comes from DB
-      setIsInitialized(true);
-      return;
-    }
-
     setIsLoading(true);
     try {
       await initializeRevenueCat(userId);
@@ -98,12 +74,10 @@ export function useSubscription(household?: HouseholdInfo | null): UseSubscripti
     } finally {
       setIsLoading(false);
     }
-  }, [isEUUser]);
+  }, []);
 
-  // Login to RevenueCat (non-EU only)
+  // Login to RevenueCat
   const login = useCallback(async (userId: string) => {
-    if (isEUUser) return;
-
     setIsLoading(true);
     setError(null);
     try {
@@ -118,12 +92,10 @@ export function useSubscription(household?: HouseholdInfo | null): UseSubscripti
     } finally {
       setIsLoading(false);
     }
-  }, [isEUUser]);
+  }, []);
 
-  // Logout from RevenueCat (non-EU only)
+  // Logout from RevenueCat
   const logout = useCallback(async () => {
-    if (isEUUser) return;
-
     setIsLoading(true);
     try {
       await logoutRevenueCat();
@@ -134,9 +106,9 @@ export function useSubscription(household?: HouseholdInfo | null): UseSubscripti
     } finally {
       setIsLoading(false);
     }
-  }, [isEUUser]);
+  }, []);
 
-  // Purchase via RevenueCat IAP (non-EU)
+  // Purchase via RevenueCat IAP
   const purchase = useCallback(async (pkg: PurchasesPackage, householdId: string) => {
     setIsLoading(true);
     setError(null);
@@ -161,41 +133,11 @@ export function useSubscription(household?: HouseholdInfo | null): UseSubscripti
     }
   }, []);
 
-  // Purchase via Stripe Checkout (EU)
-  const purchaseViaStripe = useCallback(async (householdId: string) => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const result = await openStripeCheckout(householdId);
-
-      if (result.status === 'success') {
-        // Wait for webhook to update DB
-        const activated = await waitForSubscriptionActivation(householdId);
-        if (activated) {
-          setIsPlus(true);
-          return true;
-        }
-        // Webhook hasn't fired yet but checkout succeeded — will update on next refresh
-        return true;
-      }
-
-      if (result.status === 'error' && result.error) {
-        setError(result.error);
-      }
-      return false;
-    } catch (err: any) {
-      setError(err.message || 'Checkout failed');
-      return false;
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
   // Manage existing subscription
   const manageSubscription = useCallback(async (householdId: string) => {
     const platform = household?.subscription_platform;
 
-    // Stripe-subscribed users (EU or web-subscribed): open billing portal
+    // Stripe-subscribed users (web-subscribed): open billing portal
     if (platform === 'web') {
       setIsLoading(true);
       setError(null);
@@ -214,7 +156,7 @@ export function useSubscription(household?: HouseholdInfo | null): UseSubscripti
     // The UI will show instructions instead of calling this function
   }, [household?.subscription_platform]);
 
-  // Restore purchases (non-EU / RevenueCat only)
+  // Restore purchases
   const restore = useCallback(async (householdId: string) => {
     setIsLoading(true);
     setError(null);
@@ -243,11 +185,6 @@ export function useSubscription(household?: HouseholdInfo | null): UseSubscripti
 
   // Refresh subscription status
   const refresh = useCallback(async () => {
-    if (isEUUser) {
-      // EU: status comes from DB, no RevenueCat to refresh
-      return;
-    }
-
     setIsLoading(true);
     try {
       const plus = await checkIsPlus();
@@ -265,13 +202,12 @@ export function useSubscription(household?: HouseholdInfo | null): UseSubscripti
     } finally {
       setIsLoading(false);
     }
-  }, [isEUUser]);
+  }, []);
 
   return {
-    isInitialized: isEUUser ? true : isInitialized,
+    isInitialized,
     isLoading,
-    isPlus: effectiveIsPlus,
-    isEUUser,
+    isPlus,
     expirationDate,
     offerings,
     error,
@@ -279,7 +215,6 @@ export function useSubscription(household?: HouseholdInfo | null): UseSubscripti
     login,
     logout,
     purchase,
-    purchaseViaStripe,
     manageSubscription,
     restore,
     refresh,

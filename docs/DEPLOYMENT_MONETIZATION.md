@@ -37,7 +37,7 @@ STRIPE_PRICE_ID=price_xxxxxxxxx
 STRIPE_ANNUAL_PRICE_ID=price_xxxxxxxxx
 ```
 
-Both web checkout (`/api/stripe/checkout`) and mobile checkout (`/api/stripe/mobile-checkout`) read these env vars. The checkout routes accept a `plan` parameter in the POST body:
+The web checkout route (`/api/stripe/checkout`) reads these env vars. The checkout route accepts a `plan` parameter in the POST body:
 
 ```json
 { "plan": "annual" }   // default — uses STRIPE_ANNUAL_PRICE_ID
@@ -61,9 +61,9 @@ supabase db push
 
 Or manually in the Supabase SQL Editor.
 
-### 4. RevenueCat Configuration (Mobile Non-EU)
+### 4. RevenueCat Configuration (Mobile)
 
-If you want annual pricing for non-EU mobile users (who use RevenueCat instead of Stripe):
+All mobile users use RevenueCat (native IAP). Stripe is web-only.
 
 1. Create an annual subscription product in **App Store Connect** and **Google Play Console**
 2. Add the product to your RevenueCat **Offering** as a new package
@@ -80,8 +80,7 @@ If you want annual pricing for non-EU mobile users (who use RevenueCat instead o
 - `packages/shared/types/household.ts` — Added `SubscriptionPlan` type, `subscription_plan` field, `past_due` status
 
 ### Stripe Routes
-- `apps/caregiver-web/src/app/api/stripe/checkout/route.ts` — Accepts `plan` param, routes to correct price ID
-- `apps/caregiver-web/src/app/api/stripe/mobile-checkout/route.ts` — Same
+- `apps/caregiver-web/src/app/api/stripe/checkout/route.ts` — Accepts `plan` param, routes to correct price ID (web only)
 - `apps/caregiver-web/src/app/api/stripe/webhook/route.ts` — Stores `subscription_plan` from metadata
 
 ### UI Components
