@@ -804,6 +804,7 @@
       "pushNotifications": "Push upozornenia",
       "safetyAlerts": "Bezpečnostné upozornenia",
       "signOut": "Odhlásiť sa",
+      "signOutConfirm": "Are you sure you want to sign out?",
       "saveProfile": "Uložiť profil",
       "saved": "Uložené!",
       "saving": "Ukladá sa...",

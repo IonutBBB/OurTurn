@@ -804,6 +804,7 @@
       "pushNotifications": "Push-meddelanden",
       "safetyAlerts": "Säkerhetsvarningar",
       "signOut": "Logga ut",
+      "signOutConfirm": "Are you sure you want to sign out?",
       "saveProfile": "Spara profil",
       "saved": "Sparat!",
       "saving": "Sparar...",

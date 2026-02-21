@@ -2718,7 +2718,9 @@
       "passwordUpdated": "Palavra-passe atualizada!",
       "passwordUpdatedDesc": "A sua palavra-passe foi alterada. A redirecionar para o painel de controlo...",
       "passwordsMismatch": "As palavras-passe não correspondem.",
-      "passwordTooShort": "A palavra-passe deve ter pelo menos 6 caracteres.",
+      "passwordTooShort": "A palavra-passe deve ter pelo menos 8 caracteres.",
+      "oauthCallbackError": "Sign-in could not be completed. Please try again.",
+      "accountDeleted": "Your account has been successfully deleted.",
       "emailPlaceholder": "voce@exemplo.com"
     },
     "nav": {

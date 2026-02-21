@@ -804,6 +804,7 @@
       "pushNotifications": "Tiesioginiai pranešimai",
       "safetyAlerts": "Saugumo įspėjimai",
       "signOut": "Atsijungti",
+      "signOutConfirm": "Are you sure you want to sign out?",
       "saveProfile": "Išsaugoti profilį",
       "saved": "Išsaugota!",
       "saving": "Saugoma...",

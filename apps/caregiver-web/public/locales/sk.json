@@ -3063,7 +3063,9 @@
       "passwordUpdated": "Heslo aktualizované!",
       "passwordUpdatedDesc": "Vaše heslo bolo zmenené. Presmerovanie na hlavnú stránku...",
       "passwordsMismatch": "Heslá sa nezhodujú.",
-      "passwordTooShort": "Heslo musí mať aspoň 6 znakov.",
+      "passwordTooShort": "Heslo musí mať aspoň 8 znakov.",
+      "oauthCallbackError": "Sign-in could not be completed. Please try again.",
+      "accountDeleted": "Your account has been successfully deleted.",
       "emailPlaceholder": "vy@priklad.sk"
     },
     "nav": {

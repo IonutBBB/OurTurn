@@ -3063,7 +3063,9 @@
       "passwordUpdated": "Lösenordet uppdaterat!",
       "passwordUpdatedDesc": "Ditt lösenord har ändrats. Omdirigerar till instrumentpanelen...",
       "passwordsMismatch": "Lösenorden matchar inte.",
-      "passwordTooShort": "Lösenordet måste vara minst 6 tecken.",
+      "passwordTooShort": "Lösenordet måste vara minst 8 tecken.",
+      "oauthCallbackError": "Sign-in could not be completed. Please try again.",
+      "accountDeleted": "Your account has been successfully deleted.",
       "emailPlaceholder": "du@exempel.com"
     },
     "nav": {

@@ -804,6 +804,7 @@
       "pushNotifications": "Push-notifikationer",
       "safetyAlerts": "Sikkerhedsadvarsler",
       "signOut": "Log ud",
+      "signOutConfirm": "Are you sure you want to sign out?",
       "saveProfile": "Gem profil",
       "saved": "Gemt!",
       "saving": "Gemmer...",

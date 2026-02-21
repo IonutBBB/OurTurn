@@ -804,6 +804,7 @@
       "pushNotifications": "Ειδοποιήσεις push",
       "safetyAlerts": "Ειδοποιήσεις ασφαλείας",
       "signOut": "Αποσύνδεση",
+      "signOutConfirm": "Are you sure you want to sign out?",
       "saveProfile": "Αποθήκευση Προφίλ",
       "saved": "Αποθηκεύτηκε!",
       "saving": "Αποθηκεύεται...",

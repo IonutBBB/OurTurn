@@ -2718,7 +2718,9 @@
       "passwordUpdated": "Parola a fost actualizată!",
       "passwordUpdatedDesc": "Parola ta a fost schimbată. Se redirecționează către tabloul de bord...",
       "passwordsMismatch": "Parolele nu se potrivesc.",
-      "passwordTooShort": "Parola trebuie să aibă cel puțin 6 caractere.",
+      "passwordTooShort": "Parola trebuie să aibă cel puțin 8 caractere.",
+      "oauthCallbackError": "Sign-in could not be completed. Please try again.",
+      "accountDeleted": "Your account has been successfully deleted.",
       "emailPlaceholder": "dumneavoastră@exemplu.com"
     },
     "nav": {

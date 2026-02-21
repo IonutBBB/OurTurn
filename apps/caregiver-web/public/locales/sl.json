@@ -3063,7 +3063,9 @@
       "passwordUpdated": "Geslo je posodobljeno!",
       "passwordUpdatedDesc": "Vaše geslo je bilo spremenjeno. Preusmerjanje na nadzorno ploščo...",
       "passwordsMismatch": "Gesli se ne ujemata.",
-      "passwordTooShort": "Geslo mora imeti vsaj 6 znakov.",
+      "passwordTooShort": "Geslo mora imeti vsaj 8 znakov.",
+      "oauthCallbackError": "Sign-in could not be completed. Please try again.",
+      "accountDeleted": "Your account has been successfully deleted.",
       "emailPlaceholder": "vi@primer.com"
     },
     "nav": {

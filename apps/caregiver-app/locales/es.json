@@ -804,6 +804,7 @@
       "pushNotifications": "Notificaciones push",
       "safetyAlerts": "Alertas de seguridad",
       "signOut": "Cerrar sesión",
+      "signOutConfirm": "Are you sure you want to sign out?",
       "saveProfile": "Guardar perfil",
       "saved": "¡Guardado!",
       "saving": "Guardando...",

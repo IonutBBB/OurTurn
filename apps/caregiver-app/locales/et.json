@@ -804,6 +804,7 @@
       "pushNotifications": "Tõuketeavitused",
       "safetyAlerts": "Ohutushoiatused",
       "signOut": "Logi välja",
+      "signOutConfirm": "Are you sure you want to sign out?",
       "saveProfile": "Salvesta profiil",
       "saved": "Salvestatud!",
       "saving": "Salvestamine...",

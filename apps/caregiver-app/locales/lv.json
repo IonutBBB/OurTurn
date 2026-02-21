@@ -804,6 +804,7 @@
       "pushNotifications": "Push paziņojumi",
       "safetyAlerts": "Drošības brīdinājumi",
       "signOut": "Izrakstīties",
+      "signOutConfirm": "Are you sure you want to sign out?",
       "saveProfile": "Saglabāt profilu",
       "saved": "Saglabāts!",
       "saving": "Saglabā...",

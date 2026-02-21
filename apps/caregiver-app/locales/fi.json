@@ -804,6 +804,7 @@
       "pushNotifications": "Push-ilmoitukset",
       "safetyAlerts": "Turvallisuushälytykset",
       "signOut": "Kirjaudu ulos",
+      "signOutConfirm": "Are you sure you want to sign out?",
       "saveProfile": "Tallenna profiili",
       "saved": "Tallennettu!",
       "saving": "Tallennetaan...",
