@@ -84,7 +84,7 @@ export default function WhatComesNextRenderer({
           <View key={index} style={styles.stepRow}>
             <Text style={styles.stepNumber}>{index + 1}.</Text>
             <Text style={styles.stepEmoji}>{step.emoji}</Text>
-            <Text style={styles.stepLabel}>{step.label}</Text>
+            <Text style={styles.stepLabel}>{gl(step.label)}</Text>
           </View>
         ))}
         <View style={styles.stepRow}>
@@ -104,7 +104,7 @@ export default function WhatComesNextRenderer({
             disabled={disabled}
           >
             <Text style={styles.optionEmoji}>{option.emoji}</Text>
-            <Text style={styles.optionText}>{option.label}</Text>
+            <Text style={styles.optionText}>{gl(option.label)}</Text>
           </TouchableOpacity>
         ))}
       </View>
@@ -118,7 +118,7 @@ export default function WhatComesNextRenderer({
       {feedback === 'incorrect' && (
         <View style={styles.feedbackCardTryAgain}>
           <Text style={styles.feedbackTextTryAgain}>
-            {t('patientApp.stim.whatComesNext.notQuite', { answer: current.options[current.correctIndex].label })}
+            {t('patientApp.stim.whatComesNext.notQuite', { answer: gl(current.options[current.correctIndex].label) })}
           </Text>
         </View>
       )}

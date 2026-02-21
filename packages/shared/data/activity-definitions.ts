@@ -114,7 +114,6 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '🤔',
     titleKey: 'patientApp.stim.oddOneOut.title',
     descriptionKey: 'patientApp.stim.oddOneOut.description',
-    languageDependent: true,
   },
   {
     type: 'pattern_sequence',
@@ -131,7 +130,6 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '📦',
     titleKey: 'patientApp.stim.categorySort.title',
     descriptionKey: 'patientApp.stim.categorySort.description',
-    languageDependent: true,
   },
   {
     type: 'which_goes_together',
@@ -140,7 +138,6 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '🤝',
     titleKey: 'patientApp.stim.whichGoesTogether.title',
     descriptionKey: 'patientApp.stim.whichGoesTogether.description',
-    languageDependent: true,
   },
   {
     type: 'what_comes_next',
@@ -149,7 +146,6 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '➡️',
     titleKey: 'patientApp.stim.whatComesNext.title',
     descriptionKey: 'patientApp.stim.whatComesNext.description',
-    languageDependent: true,
   },
   {
     type: 'sort_it_out',
@@ -158,7 +154,6 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '🛒',
     titleKey: 'patientApp.stim.sortItOut.title',
     descriptionKey: 'patientApp.stim.sortItOut.description',
-    languageDependent: true,
   },
   {
     type: 'coin_counting',
@@ -178,7 +173,6 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '🌟',
     titleKey: 'patientApp.stim.gentleQuiz.title',
     descriptionKey: 'patientApp.stim.gentleQuiz.description',
-    languageDependent: true,
   },
   {
     type: 'picture_clues',
@@ -187,7 +181,6 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '🖼️',
     titleKey: 'patientApp.stim.pictureClues.title',
     descriptionKey: 'patientApp.stim.pictureClues.description',
-    languageDependent: true,
   },
   {
     type: 'true_or_false',
@@ -196,7 +189,6 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '✅',
     titleKey: 'patientApp.stim.trueOrFalse.title',
     descriptionKey: 'patientApp.stim.trueOrFalse.description',
-    languageDependent: true,
   },
   {
     type: 'this_day_in_history',
@@ -205,7 +197,6 @@ export const SHARED_ACTIVITY_DEFINITIONS: SharedActivityDefinition[] = [
     emoji: '📅',
     titleKey: 'patientApp.stim.thisDayInHistory.title',
     descriptionKey: 'patientApp.stim.thisDayInHistory.description',
-    languageDependent: true,
   },
 
   // ── Opinion & Choices (2) ──────────────────────────────

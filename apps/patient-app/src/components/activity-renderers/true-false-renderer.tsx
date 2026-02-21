@@ -5,6 +5,7 @@ import * as Haptics from 'expo-haptics';
 import { COLORS, FONTS, RADIUS } from '../../theme';
 import type { ActivityRendererProps } from './types';
 import type { TrueOrFalseContent } from '../../data/bundled-activities';
+import { useGameLabel } from '../../utils/game-translate';
 
 type FeedbackState = 'none' | 'correct' | 'incorrect';
 
@@ -14,6 +15,7 @@ export default function TrueFalseRenderer({
   onSkip,
 }: ActivityRendererProps) {
   const { t } = useTranslation();
+  const gl = useGameLabel();
   const data = content as TrueOrFalseContent;
 
   const [roundIndex, setRoundIndex] = useState(0);
@@ -68,7 +70,7 @@ export default function TrueFalseRenderer({
       </Text>
 
       <View style={styles.statementCard}>
-        <Text style={styles.statementText}>{current.statement}</Text>
+        <Text style={styles.statementText}>{gl(current.statement)}</Text>
       </View>
 
       <View style={styles.buttonRow}>
@@ -98,7 +100,7 @@ export default function TrueFalseRenderer({
           <Text style={styles.feedbackTextCorrect}>
             {t('patientApp.stim.common.correct')}
           </Text>
-          <Text style={styles.explanationText}>{current.explanation}</Text>
+          <Text style={styles.explanationText}>{gl(current.explanation)}</Text>
         </View>
       )}
 
@@ -111,7 +113,7 @@ export default function TrueFalseRenderer({
                 : t('patientApp.stim.trueOrFalse.false'),
             })}
           </Text>
-          <Text style={styles.explanationText}>{current.explanation}</Text>
+          <Text style={styles.explanationText}>{gl(current.explanation)}</Text>
         </View>
       )}
 

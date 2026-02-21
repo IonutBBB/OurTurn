@@ -148,7 +148,7 @@ export default function SortItOutRenderer({
               >
                 <Text style={styles.itemEmoji}>{item.emoji}</Text>
                 <Text style={[styles.itemLabel, isSelected && styles.itemLabelSelected]}>
-                  {item.label}
+                  {gl(item.label)}
                 </Text>
               </TouchableOpacity>
             );

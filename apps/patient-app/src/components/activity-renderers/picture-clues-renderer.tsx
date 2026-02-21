@@ -5,6 +5,7 @@ import * as Haptics from 'expo-haptics';
 import { COLORS, FONTS, RADIUS } from '../../theme';
 import type { ActivityRendererProps } from './types';
 import type { PictureCluesContent } from '../../data/bundled-activities';
+import { useGameLabel } from '../../utils/game-translate';
 
 type FeedbackState = 'none' | 'correct' | 'incorrect';
 
@@ -14,6 +15,7 @@ export default function PictureCluesRenderer({
   onSkip,
 }: ActivityRendererProps) {
   const { t } = useTranslation();
+  const gl = useGameLabel();
   const data = content as PictureCluesContent;
 
   const [roundIndex, setRoundIndex] = useState(0);
@@ -90,7 +92,7 @@ export default function PictureCluesRenderer({
             activeOpacity={0.8}
             disabled={disabled}
           >
-            <Text style={styles.optionText}>{option}</Text>
+            <Text style={styles.optionText}>{gl(option)}</Text>
           </TouchableOpacity>
         ))}
       </View>
@@ -104,7 +106,7 @@ export default function PictureCluesRenderer({
       {feedback === 'incorrect' && (
         <View style={styles.feedbackCardTryAgain}>
           <Text style={styles.feedbackTextTryAgain}>
-            {t('patientApp.stim.pictureClues.notQuite', { answer: current.options[current.correctIndex] })}
+            {t('patientApp.stim.pictureClues.notQuite', { answer: gl(current.options[current.correctIndex]) })}
           </Text>
         </View>
       )}

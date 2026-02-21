@@ -81,7 +81,7 @@ export default function WhichGoesTogetherRenderer({
 
       <View style={styles.targetCard}>
         <Text style={styles.targetEmoji}>{current.target.emoji}</Text>
-        <Text style={styles.targetLabel}>{current.target.label}</Text>
+        <Text style={styles.targetLabel}>{gl(current.target.label)}</Text>
       </View>
 
       <View style={styles.optionsList}>
@@ -94,7 +94,7 @@ export default function WhichGoesTogetherRenderer({
             disabled={disabled}
           >
             <Text style={styles.optionEmoji}>{option.emoji}</Text>
-            <Text style={styles.optionText}>{option.label}</Text>
+            <Text style={styles.optionText}>{gl(option.label)}</Text>
           </TouchableOpacity>
         ))}
       </View>
@@ -108,7 +108,7 @@ export default function WhichGoesTogetherRenderer({
       {feedback === 'incorrect' && (
         <View style={styles.feedbackCardTryAgain}>
           <Text style={styles.feedbackTextTryAgain}>
-            {t('patientApp.stim.whichGoesTogether.notQuite', { answer: current.options[current.correctIndex].label })}
+            {t('patientApp.stim.whichGoesTogether.notQuite', { answer: gl(current.options[current.correctIndex].label) })}
           </Text>
         </View>
       )}

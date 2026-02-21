@@ -5,6 +5,7 @@ import * as Haptics from 'expo-haptics';
 import { COLORS, FONTS, RADIUS } from '../../theme';
 import type { ActivityRendererProps } from './types';
 import type { ThisDayInHistoryContent } from '../../data/bundled-activities';
+import { useGameLabel } from '../../utils/game-translate';
 
 export default function ThisDayInHistoryRenderer({
   content,
@@ -12,6 +13,7 @@ export default function ThisDayInHistoryRenderer({
   onSkip,
 }: ActivityRendererProps) {
   const { t } = useTranslation();
+  const gl = useGameLabel();
   const data = content as ThisDayInHistoryContent;
   const [eventIndex, setEventIndex] = useState(0);
   const [showDiscussion, setShowDiscussion] = useState(false);
@@ -55,7 +57,7 @@ export default function ThisDayInHistoryRenderer({
           <Text style={styles.yearText}>{current.year}</Text>
         </View>
         <Text style={styles.eventEmoji}>{current.emoji}</Text>
-        <Text style={styles.eventDescription}>{current.description}</Text>
+        <Text style={styles.eventDescription}>{gl(current.description)}</Text>
       </View>
 
       {!showDiscussion ? (

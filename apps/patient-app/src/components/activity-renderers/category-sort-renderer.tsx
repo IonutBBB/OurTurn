@@ -173,7 +173,7 @@ export default function CategorySortRenderer({
                   styles.itemLabel,
                   isSelected && styles.itemLabelSelected,
                 ]}>
-                  {item.label}
+                  {gl(item.label)}
                 </Text>
               </TouchableOpacity>
             );
