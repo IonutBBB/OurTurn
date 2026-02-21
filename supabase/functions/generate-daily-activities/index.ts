@@ -26,13 +26,12 @@ interface Patient {
     important_people?: string;
     key_events?: string;
     childhood_location?: string;
-    photos?: string[];
   } | null;
   stage: string;
 }
 
 interface ActivityType {
-  type: 'reminiscence' | 'photo' | 'word_game' | 'music' | 'creative' | 'orientation';
+  type: 'reminiscence' | 'word_game' | 'music' | 'creative' | 'orientation';
   weight: number;
 }
 
@@ -162,15 +161,11 @@ serve(async (req) => {
   }
 });
 
-function selectActivityType(hasPhotos: boolean): string {
-  const types = [...ACTIVITY_TYPES];
-  if (hasPhotos) {
-    types.push({ type: 'photo', weight: 15 });
-  }
-  const totalWeight = types.reduce((sum, t) => sum + t.weight, 0);
+function selectActivityType(): string {
+  const totalWeight = ACTIVITY_TYPES.reduce((sum, t) => sum + t.weight, 0);
   let random = Math.random() * totalWeight;
 
-  for (const activityType of types) {
+  for (const activityType of ACTIVITY_TYPES) {
     random -= activityType.weight;
     if (random <= 0) {
       return activityType.type;
@@ -185,8 +180,7 @@ async function generateActivity(
   date: string
 ): Promise<{ type: string; prompt: string; followUp: string; mediaUrl: string | null }> {
   const bio = patient.biography || {};
-  const hasPhotos = Array.isArray(bio.photos) && bio.photos.length > 0;
-  const activityType = selectActivityType(hasPhotos);
+  const activityType = selectActivityType();
 
   // Build context from patient biography
   const bioContext = [
@@ -210,7 +204,6 @@ ${bioContext || 'No biography provided - create a general, universally appealing
 ACTIVITY TYPE: ${activityType}
 Activity type descriptions:
 - reminiscence: Ask about a specific memory from their life, use their biography
-- photo: A warm reminiscence question about a family photo the patient is looking at
 - word_game: Simple word association or naming categories (e.g., "Name 5 fruits")
 - creative: Imaginative prompt (e.g., "Describe your perfect vacation")
 - orientation: Gentle awareness prompt (e.g., "What season is it now?")
@@ -261,11 +254,7 @@ Return JSON in this exact format:
 
       // Determine media_url based on activity type
       let mediaUrl: string | null = null;
-      if (activityType === 'photo' && hasPhotos) {
-        // Pick a random photo from the patient's gallery
-        const photoIndex = Math.floor(Math.random() * bio.photos!.length);
-        mediaUrl = bio.photos![photoIndex];
-      } else if (activityType === 'music' && parsed.songName) {
+      if (activityType === 'music' && parsed.songName) {
         // Create YouTube search link for the song
         const query = encodeURIComponent(parsed.songName);
         mediaUrl = `https://www.youtube.com/results?search_query=${query}`;
@@ -282,22 +271,17 @@ Return JSON in this exact format:
     console.error('Failed to parse Gemini response:', text);
   }
 
-  return getDefaultActivity(activityType, patient.name, hasPhotos ? bio.photos! : []);
+  return getDefaultActivity(activityType, patient.name);
 }
 
 function getDefaultActivity(
   type: string,
-  patientName: string,
-  photos: string[] = []
+  patientName: string
 ): { type: string; prompt: string; followUp: string; mediaUrl: string | null } {
   const defaults: Record<string, { prompt: string; followUp: string }> = {
     reminiscence: {
       prompt: `${patientName}, what's a favorite memory from when you were younger?`,
       followUp: "What a wonderful memory! Thank you for sharing that with us.",
-    },
-    photo: {
-      prompt: `${patientName}, take a look at this photo. Can you tell us about it?`,
-      followUp: "What a lovely memory! Thank you for sharing that with us.",
     },
     word_game: {
       prompt: `${patientName}, can you name some of your favorite foods?`,
@@ -317,14 +301,9 @@ function getDefaultActivity(
     },
   };
 
-  let mediaUrl: string | null = null;
-  if (type === 'photo' && photos.length > 0) {
-    mediaUrl = photos[Math.floor(Math.random() * photos.length)];
-  }
-
   return {
     type,
-    mediaUrl,
+    mediaUrl: null,
     ...(defaults[type] || defaults.reminiscence),
   };
 }

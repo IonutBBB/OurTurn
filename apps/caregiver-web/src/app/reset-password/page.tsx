@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
 import { OrganicBlobs } from '@/components/organic-blobs';
+import { Logo } from '@/components/logo';
 
 export default function ResetPasswordPage() {
   const { t } = useTranslation();
@@ -27,7 +28,7 @@ export default function ResetPasswordPage() {
       return;
     }
 
-    if (password.length < 6) {
+    if (password.length < 8) {
       setError(t('caregiverApp.auth.passwordTooShort'));
       return;
     }
@@ -57,9 +58,7 @@ export default function ResetPasswordPage() {
         {/* Logo */}
         <header className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-2.5 mb-5">
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center shadow-sm">
-              <span className="text-white text-lg font-bold font-display">M</span>
-            </div>
+            <Logo className="w-11 h-11" />
           </Link>
           <h1 className="heading-display text-2xl mb-1">
             {t('caregiverApp.auth.resetPassword')}
@@ -73,7 +72,9 @@ export default function ResetPasswordPage() {
           {success ? (
             <div className="text-center space-y-4">
               <div className="w-16 h-16 rounded-2xl bg-status-success-bg flex items-center justify-center mx-auto">
-                <span className="text-3xl">✓</span>
+                <svg className="w-8 h-8 text-status-success" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
               </div>
               <h2 className="text-lg font-display font-bold text-text-primary">
                 {t('caregiverApp.auth.passwordUpdated')}
@@ -100,7 +101,7 @@ export default function ResetPasswordPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  minLength={6}
+                  minLength={8}
                   autoComplete="new-password"
                   className="input-warm w-full"
                 />
@@ -116,7 +117,7 @@ export default function ResetPasswordPage() {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   required
-                  minLength={6}
+                  minLength={8}
                   autoComplete="new-password"
                   className="input-warm w-full"
                 />

@@ -1,10 +1,9 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { createBrowserClient } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
-import Image from 'next/image';
 import type { Caregiver, Household, NotificationPreferences, Patient } from '@ourturn/shared';
 import { SUPPORTED_LANGUAGES, EU_COUNTRIES } from '@ourturn/shared';
 import { useToast } from '@/components/toast';
@@ -21,7 +20,6 @@ interface SettingsClientProps {
   household: Household;
   careCode: string;
   patient: Patient | null;
-  existingPhotos: string[];
   patientComplexity?: string;
 }
 
@@ -30,7 +28,6 @@ export default function SettingsClient({
   household,
   careCode,
   patient,
-  existingPhotos,
   patientComplexity: initialComplexity,
 }: SettingsClientProps) {
   const { t } = useTranslation();
@@ -77,12 +74,6 @@ export default function SettingsClient({
   const [isOpeningPortal, setIsOpeningPortal] = useState(false);
   const [subscriptionError, setSubscriptionError] = useState('');
 
-  // Photo gallery
-  const [photos, setPhotos] = useState<string[]>(existingPhotos);
-  const [isUploadingPhotos, setIsUploadingPhotos] = useState(false);
-  const [photoError, setPhotoError] = useState('');
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
   // Patient complexity
   const [complexity, setComplexity] = useState(initialComplexity || 'full');
   const [isSavingComplexity, setIsSavingComplexity] = useState(false);
@@ -106,101 +97,6 @@ export default function SettingsClient({
   const [isDeleting, setIsDeleting] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
   const [deleteError, setDeleteError] = useState('');
-
-  const updatePatientPhotos = async (newPhotos: string[]) => {
-    if (!patientId) return;
-
-    // Get current biography
-    const { data: patient } = await supabase
-      .from('patients')
-      .select('biography')
-      .eq('id', patientId)
-      .single();
-
-    const currentBio = (patient?.biography as Record<string, unknown>) || {};
-
-    const { error } = await supabase
-      .from('patients')
-      .update({
-        biography: { ...currentBio, photos: newPhotos },
-      })
-      .eq('id', patientId);
-
-    if (error) throw error;
-  };
-
-  const handleUploadPhotos = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    if (!files || files.length === 0) return;
-
-    setPhotoError('');
-
-    const remaining = 20 - photos.length;
-    if (remaining <= 0) {
-      setPhotoError(t('caregiverApp.settings.maxPhotosReached'));
-      return;
-    }
-
-    const filesToUpload = Array.from(files).slice(0, remaining);
-
-    // Validate file sizes
-    for (const file of filesToUpload) {
-      if (file.size > 5 * 1024 * 1024) {
-        setPhotoError(`${file.name} exceeds 5MB limit`);
-        return;
-      }
-    }
-
-    setIsUploadingPhotos(true);
-    try {
-      const newUrls: string[] = [];
-
-      for (const file of filesToUpload) {
-        const ext = file.name.split('.').pop() || 'jpg';
-        const path = `${household.id}/${crypto.randomUUID()}.${ext}`;
-
-        const { error: uploadError } = await supabase.storage
-          .from('patient-photos')
-          .upload(path, file, { contentType: file.type });
-
-        if (uploadError) throw uploadError;
-
-        const { data: urlData } = supabase.storage
-          .from('patient-photos')
-          .getPublicUrl(path);
-
-        newUrls.push(urlData.publicUrl);
-      }
-
-      const updatedPhotos = [...photos, ...newUrls];
-      await updatePatientPhotos(updatedPhotos);
-      setPhotos(updatedPhotos);
-    } catch (err) {
-      setPhotoError(t('caregiverApp.settings.photoUploadFailed'));
-    } finally {
-      setIsUploadingPhotos(false);
-      // Reset input so the same file can be re-uploaded
-      if (fileInputRef.current) fileInputRef.current.value = '';
-    }
-  };
-
-  const handleDeletePhoto = async (photoUrl: string) => {
-    if (!confirm(t('caregiverApp.settings.deletePhotoConfirm'))) return;
-
-    try {
-      // Extract path from URL
-      const urlParts = photoUrl.split('/patient-photos/');
-      if (urlParts[1]) {
-        await supabase.storage.from('patient-photos').remove([urlParts[1]]);
-      }
-
-      const updatedPhotos = photos.filter((p) => p !== photoUrl);
-      await updatePatientPhotos(updatedPhotos);
-      setPhotos(updatedPhotos);
-    } catch (err) {
-      setPhotoError(t('caregiverApp.settings.photoDeleteFailed'));
-    }
-  };
 
   const handleSaveProfile = async () => {
     setIsSavingProfile(true);
@@ -532,7 +428,7 @@ export default function SettingsClient({
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
-    router.push('/login');
+    window.location.href = '/login';
   };
 
   return (
@@ -652,68 +548,6 @@ export default function SettingsClient({
             <LifeStorySection patient={patient} />
             <DailyScheduleSection patient={patient} />
             <EmergencyContactsSection patient={patient} />
-
-            {/* Photo Gallery */}
-            {patientId && (
-              <div className="card-paper p-6">
-                <h3 className="text-lg font-display font-bold text-text-primary mb-2">{t('caregiverApp.settings.photoGallery')}</h3>
-                <p className="text-sm text-text-secondary mb-4">{t('caregiverApp.settings.photoGalleryDesc')}</p>
-
-                {/* Photo Grid */}
-                {photos.length > 0 ? (
-                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 mb-4">
-                    {photos.map((url) => (
-                      <div key={url} className="relative group aspect-square rounded-xl overflow-hidden border border-surface-border">
-                        <Image
-                          src={url}
-                          alt=""
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 640px) 33vw, (max-width: 768px) 25vw, 20vw"
-                        />
-                        <button
-                          onClick={() => handleDeletePhoto(url)}
-                          className="absolute top-1 right-1 w-7 h-7 rounded-full bg-status-danger text-white text-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                          title={t('caregiverApp.settings.deletePhoto')}
-                        >
-                          &times;
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="text-sm text-text-muted mb-4">{t('caregiverApp.settings.noPhotosYet')}</p>
-                )}
-
-                {/* Upload Button */}
-                <div>
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    accept="image/*"
-                    multiple
-                    onChange={handleUploadPhotos}
-                    className="hidden"
-                  />
-                  <button
-                    onClick={() => fileInputRef.current?.click()}
-                    disabled={isUploadingPhotos || photos.length >= 20}
-                    className="btn-primary disabled:opacity-50"
-                  >
-                    {isUploadingPhotos
-                      ? t('caregiverApp.settings.uploading')
-                      : photos.length >= 20
-                        ? t('caregiverApp.settings.maxPhotosReached')
-                        : t('caregiverApp.settings.uploadPhotos')}
-                  </button>
-                  <p className="text-xs text-text-muted mt-2">{t('caregiverApp.settings.photoUploadHint')}</p>
-                </div>
-
-                {photoError && (
-                  <p className="text-sm text-status-danger mt-2">{photoError}</p>
-                )}
-              </div>
-            )}
 
             {/* Patient App Complexity */}
             {patientId && (
@@ -1114,16 +948,16 @@ export default function SettingsClient({
                   >
                     {t('subscription.planToggle.annual')}
                     <span className="ml-1.5 text-xs opacity-80">
-                      {t('subscription.planToggle.saveBadge', { percent: '33' })}
+                      {t('subscription.planToggle.saveBadge', { percent: '36' })}
                     </span>
                   </button>
                 </div>
                 <p className="text-center text-lg font-display font-bold text-text-primary mb-1">
-                  {selectedPlan === 'annual' ? '£79.99/year' : '£9.99/month'}
+                  {selectedPlan === 'annual' ? '£99.99/year' : '£12.99/month'}
                 </p>
                 {selectedPlan === 'annual' && (
                   <p className="text-center text-xs text-status-success mb-3">
-                    {t('subscription.annualSavings', { percent: '33' })} — £6.67/month
+                    {t('subscription.annualSavings', { percent: '36' })} — £8.33/month
                   </p>
                 )}
                 <p className="text-center text-xs text-text-muted mb-4">

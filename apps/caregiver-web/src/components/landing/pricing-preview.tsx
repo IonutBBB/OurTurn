@@ -55,7 +55,7 @@ export function PricingPreview() {
             labels={{
               monthly: landingT('subscription.planToggle.monthly'),
               annual: landingT('subscription.planToggle.annual'),
-              saveBadge: landingT('subscription.planToggle.saveBadge').replace('{{percent}}', '33'),
+              saveBadge: landingT('subscription.planToggle.saveBadge').replace('{{percent}}', '36'),
               monthlyPrice: t('plusPriceMonthly'),
               monthlyNote: t('plusPriceMonthlyNote'),
               annualPrice: t('plusPriceAnnual'),

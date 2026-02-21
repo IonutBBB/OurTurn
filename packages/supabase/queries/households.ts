@@ -47,7 +47,6 @@ export async function createHousehold(
       home_longitude: patientData.home_longitude,
       medications: patientData.medications || [],
       biography: patientData.biography || {},
-      photos: patientData.photos || [],
       wake_time: patientData.wake_time,
       sleep_time: patientData.sleep_time,
       emergency_number: patientData.emergency_number,

@@ -24,7 +24,6 @@ export default async function SettingsPage() {
 
   // Get full patient data for all settings sections
   let patient: Patient | null = null;
-  let existingPhotos: string[] = [];
   let patientComplexity: string = 'full';
   if (household) {
     const { data: patientData } = await supabase
@@ -35,8 +34,6 @@ export default async function SettingsPage() {
 
     if (patientData) {
       patient = patientData as Patient;
-      const bio = patient.biography as Record<string, unknown> | null;
-      existingPhotos = (bio?.photos as string[]) || [];
       patientComplexity = patient.app_complexity || 'full';
     }
   }
@@ -78,7 +75,6 @@ export default async function SettingsPage() {
         household={household}
         careCode={household.care_code}
         patient={patient}
-        existingPhotos={existingPhotos}
         patientComplexity={patientComplexity}
       />
     </div>

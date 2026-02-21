@@ -67,7 +67,6 @@ export interface AIConversationInsert {
 // Brain Activity types
 export type BrainActivityType =
   | 'reminiscence'
-  | 'photo'
   | 'word_game'
   | 'music'
   | 'creative'

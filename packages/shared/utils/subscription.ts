@@ -4,8 +4,8 @@ import type { Household, SubscriptionPlan, SubscriptionStatus } from '../types/h
 import { EU_MEMBER_CODES } from '../constants/languages';
 
 export const PRICING = {
-  monthly: { price: '£9.99', interval: 'month' },
-  annual: { price: '£79.99', interval: 'year', savingsPercent: 33 },
+  monthly: { price: '£12.99', interval: 'month' },
+  annual: { price: '£99.99', interval: 'year', savingsPercent: 36 },
 } as const;
 
 export const FREE_LIMITS = {

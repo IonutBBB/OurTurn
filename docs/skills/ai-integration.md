@@ -228,10 +228,10 @@ For each Plus household:
   1. Check if activity already exists for target date
   2. Load patient biography + preferences
   3. Select activity type (weighted random): reminiscence (30%), word_game (20%),
-     creative (20%), orientation (15%), music (15%), photo (bonus if photos exist)
+     creative (20%), orientation (15%), music (15%)
   4. Call Gemini REST API with patient context
   5. Parse JSON response: { prompt, followUp, songName? }
-  6. Determine media_url (patient photo or YouTube search link for music)
+  6. Determine media_url (YouTube search link for music activities)
   7. Save to brain_activities table
   8. Fallback to default activity if API fails
 ```

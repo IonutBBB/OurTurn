@@ -4,7 +4,7 @@
 
 OurTurn uses an **optimized freemium + contextual 14-day trial** model:
 - **Free tier**: 10 tasks/day, 1 caregiver, 3 AI Coach messages/month, emergency features always available
-- **Plus tier**: Unlimited everything — £9.99/month or £79.99/year (33% savings)
+- **Plus tier**: Unlimited everything — £12.99/month or £99.99/year (36% savings)
 - **Trial**: 14 days, no credit card required, triggered contextually when users hit limits
 
 Annual plan is presented as the default/recommended option everywhere.
@@ -20,7 +20,7 @@ Annual plan is presented as the default/recommended option everywhere.
 3. Click **Add another price**
 4. Set:
    - **Pricing model**: Standard
-   - **Amount**: £79.99
+   - **Amount**: £99.99
    - **Billing period**: Yearly
    - **Currency**: GBP
 5. Save and copy the new price ID (starts with `price_`)
@@ -108,8 +108,8 @@ If you want annual pricing for non-EU mobile users (who use RevenueCat instead o
 
 | Plan | Price | Effective Monthly | Savings |
 |------|-------|-------------------|---------|
-| Monthly | £9.99/month | £9.99 | — |
-| Annual | £79.99/year | £6.67 | 33% |
+| Monthly | £12.99/month | £12.99 | — |
+| Annual | £99.99/year | £8.33 | 36% |
 
 One subscription covers the entire household (all caregivers + patient app).
 

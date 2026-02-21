@@ -49,7 +49,6 @@ export interface Patient {
   home_longitude: number | null;
   medications: Medication[];
   biography: PatientBiography;
-  photos: string[];
   wake_time: string;
   sleep_time: string;
   emergency_number: string | null;
@@ -73,7 +72,6 @@ export interface PatientInsert {
   home_longitude?: number;
   medications?: Medication[];
   biography?: PatientBiography;
-  photos?: string[];
   wake_time?: string;
   sleep_time?: string;
   emergency_number?: string;
@@ -91,7 +89,6 @@ export interface PatientUpdate {
   home_longitude?: number;
   medications?: Medication[];
   biography?: PatientBiography;
-  photos?: string[];
   wake_time?: string;
   sleep_time?: string;
   emergency_number?: string;

@@ -301,7 +301,6 @@ SELECT cron.schedule(
 
 | Bucket | Purpose | Access |
 |---|---|---|
-| `photos` | Family photos uploaded by caregiver | Authenticated caregivers + patient device |
 | `voice-notes` | Patient voice recordings | Authenticated caregivers + patient device |
 | `reports` | Generated PDF reports | Authenticated caregivers only |
 

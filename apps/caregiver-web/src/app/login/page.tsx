@@ -1,20 +1,24 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { createBrowserClient } from '@/lib/supabase';
 import { OrganicBlobs } from '@/components/organic-blobs';
 import { Logo } from '@/components/logo';
 
-export default function LoginPage() {
+function LoginContent() {
   const { t } = useTranslation();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+
+  const urlError = searchParams.get('error');
+  const deleted = searchParams.get('deleted');
 
   const supabase = createBrowserClient();
 
@@ -67,6 +71,16 @@ export default function LoginPage() {
 
         {/* Login card */}
         <main className="card-paper p-8" role="main" aria-label="Login form">
+          {urlError === 'auth_callback_error' && (
+            <div className="p-3 mb-4 bg-status-danger-bg border border-status-danger/20 rounded-xl text-status-danger text-sm" role="alert">
+              {t('caregiverApp.auth.oauthCallbackError')}
+            </div>
+          )}
+          {deleted === 'true' && (
+            <div className="p-3 mb-4 bg-status-success-bg border border-status-success/20 rounded-xl text-status-success text-sm" role="status">
+              {t('caregiverApp.auth.accountDeleted')}
+            </div>
+          )}
           {/* OAuth */}
           <div className="space-y-2.5 mb-6" role="group" aria-label="Sign in with social providers">
             <button
@@ -173,5 +187,13 @@ export default function LoginPage() {
         </main>
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense>
+      <LoginContent />
+    </Suspense>
   );
 }

@@ -138,6 +138,8 @@ export async function POST(request: NextRequest) {
         caregiver_id: caregiver.id,
         plan,
       },
+      // Show localized prices for international customers (USD, EUR, etc.)
+      adaptive_pricing: { enabled: true },
     });
 
     return NextResponse.json({ sessionUrl: session.url });

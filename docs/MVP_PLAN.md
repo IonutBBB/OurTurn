@@ -395,10 +395,6 @@ Appears as a task card in the daily plan. Short, enjoyable, never frustrating:
 │                                     │
 │  🎤 Tap to share your memory       │
 │                                     │
-│  ────────────────────────────────── │
-│                                     │
-│  🖼️ [Photo from family album]      │
-│                                     │
 │         [ Skip for today ]          │
 │                                     │
 └─────────────────────────────────────┘
@@ -406,7 +402,6 @@ Appears as a task card in the daily plan. Short, enjoyable, never frustrating:
 
 **Activity types (AI-generated, personalized):**
 - **Reminiscence prompts:** Based on biographical info the caregiver provides
-- **Photo stories:** "Who is in this photo? Tell us about them" (using family photos uploaded by caregiver)
 - **Word games:** Simple word association, categories ("Name 5 fruits")
 - **Music moments:** "Listen to this song. Does it remind you of anything?"
 - **Orientation helpers:** "What day is it today? What season are we in?" (gentle, not testing)
@@ -709,12 +704,11 @@ Available on both caregiver mobile and web. Web provides the richest experience.
 
 **Activity categories:**
 1. **Reminiscence:** "Tell us about the time you visited Paris in 1985"
-2. **Photo Stories:** Shows uploaded family photo → "Who are these people?"
-3. **Word Play:** "Name as many animals as you can"
-4. **Music Connection:** Plays a song from their era → "What does this remind you of?"
-5. **Sensory Prompts:** "Describe your favorite childhood meal"
-6. **Orientation:** "What's the weather like today?"
-7. **Creative:** "If you could visit anywhere tomorrow, where would you go?"
+2. **Word Play:** "Name as many animals as you can"
+3. **Music Connection:** Plays a song from their era → "What does this remind you of?"
+4. **Sensory Prompts:** "Describe your favorite childhood meal"
+5. **Orientation:** "What's the weather like today?"
+6. **Creative:** "If you could visit anywhere tomorrow, where would you go?"
 
 **Technical approach:**
 - LLM generates activities based on patient profile + caregiver-uploaded content
@@ -793,7 +787,6 @@ PATIENT (one per household)
 │     favorite_music, favorite_foods,
 │     important_people, key_events
 │   }
-├── photos: [url]
 ├── wake_time
 ├── sleep_time
 ├── emergency_number (auto-set by country, overridable)
@@ -904,7 +897,7 @@ BRAIN_ACTIVITY
 ├── id
 ├── household_id
 ├── date
-├── activity_type (reminiscence | photo | word_game | music | creative | orientation)
+├── activity_type (reminiscence | word_game | music | creative | orientation)
 ├── prompt_text
 ├── patient_response_text (transcribed)
 ├── patient_response_audio_url
@@ -942,7 +935,7 @@ DOCTOR_VISIT_REPORT
 | **Maps** | Google Maps API | Location display (web + mobile), safe zones |
 | **Navigation** | Google Maps deep links | "Take Me Home" feature — opens native Google Maps |
 | **Location** | Expo Location (background) | Phone GPS with background tracking |
-| **File Storage** | Supabase Storage | Family photos, voice notes, report PDFs |
+| **File Storage** | Supabase Storage | Voice notes, report PDFs |
 | **Analytics** | PostHog (self-hosted) or Mixpanel | User behavior, no PII |
 | **Payments** | RevenueCat (mobile) + Stripe (web) | Subscription management cross-platform |
 | **Hosting** | Vercel (web) + Supabase (backend) | Simple, scalable, global CDN |
@@ -967,9 +960,9 @@ DOCTOR_VISIT_REPORT
   │              SUPABASE                         │
   │  ┌──────────┐  ┌──────────┐  ┌────────────┐ │
   │  │ Postgres  │  │  Auth    │  │  Storage   │ │
-  │  │ Database  │  │          │  │ (photos,   │ │
-  │  │          │  │ Caregiver│  │  voice,    │ │
-  │  │          │  │ accounts │  │  PDFs)     │ │
+  │  │ Database  │  │          │  │ (voice,    │ │
+  │  │          │  │ Caregiver│  │  PDFs)     │ │
+  │  │          │  │ accounts │  │            │ │
   │  └──────────┘  └──────────┘  └────────────┘ │
   │  ┌──────────┐  ┌──────────────────────────┐ │
   │  │ Realtime  │  │    Edge Functions         │ │
@@ -1081,12 +1074,12 @@ Patient App Launch:
 - Limited AI Coach (5 messages per month)
 - 1 caregiver only
 
-**OurTurn Plus — $9.99 / month** (or $89.99 / year = 25% discount):
+**OurTurn Plus — $12.99 / month** (or $99.99 / year = 36% discount):
 *Price adjusts by region using purchasing power parity:*
 
 | Region | Monthly | Annual |
 |---|---|---|
-| USA, UK, Western Europe, Australia | $9.99 / £7.99 / €8.99 | $89.99 / £69.99 / €79.99 |
+| USA, UK, Western Europe, Australia | $12.99 / £12.99 / €11.99 | $99.99 / £99.99 / €94.99 |
 | Eastern Europe, Latin America | $4.99 | $44.99 |
 | India, Southeast Asia, Africa | $2.99 | $26.99 |
 
@@ -1260,7 +1253,7 @@ OurTurn launches globally — available in every country's App Store and on web 
 
 4. **"Take Me Home"** — One button that could save a life. Simple, powerful, emotionally resonant. Sends silent alert to family.
 
-5. **Personalization depth** — Biography + photos + hints + AI = an experience that feels handcrafted. Generic apps can't compete.
+5. **Personalization depth** — Biography + hints + AI = an experience that feels handcrafted. Generic apps can't compete.
 
 6. **Global-first architecture** — Built for i18n from day one, not retrofitted. First-mover in non-English markets.
 
@@ -1332,7 +1325,7 @@ OurTurn launches globally — available in every country's App Store and on web 
 - [ ] Email notification sending (alerts + daily summaries)
 - [ ] AI API integration (Gemini)
 - [ ] Speech-to-text for voice notes (Gemini)
-- [ ] File storage (photos, voice notes)
+- [ ] File storage (voice notes)
 - [ ] Subscription billing (RevenueCat + Stripe sync)
 - [ ] GDPR-compliant data handling
 - [ ] Data export endpoint (right to portability)
@@ -1343,7 +1336,6 @@ OurTurn launches globally — available in every country's App Store and on web 
 ### Nice to Have (Post-Launch)
 - [ ] AI-generated weekly summary email
 - [ ] AI pattern insights dashboard (advanced)
-- [ ] Photo-based reminiscence activities with caregiver-uploaded photos
 - [ ] Music integration (Spotify/Apple Music)
 - [ ] Video calling between caregiver and patient (in-app)
 - [ ] Home screen widget (patient app — today's next task)

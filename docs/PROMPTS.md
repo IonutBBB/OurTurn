@@ -73,7 +73,7 @@ Create ALL these tables with proper types, relationships, and constraints:
 
 1. households — id (uuid pk default gen_random_uuid()), care_code (text unique not null), timezone (text default 'UTC'), language (text default 'en'), country (text), subscription_status (text default 'free'), created_at, updated_at
 
-2. patients — id (uuid pk), household_id (fk → households, unique), name (text not null), date_of_birth (date), dementia_type (text), stage (text default 'early'), home_address_formatted (text), home_latitude (float8), home_longitude (float8), medications (jsonb default '[]'), biography (jsonb default '{}'), photos (text[] default '{}'), wake_time (time default '08:00'), sleep_time (time default '21:00'), emergency_number (text), created_at, updated_at
+2. patients — id (uuid pk), household_id (fk → households, unique), name (text not null), date_of_birth (date), dementia_type (text), stage (text default 'early'), home_address_formatted (text), home_latitude (float8), home_longitude (float8), medications (jsonb default '[]'), biography (jsonb default '{}'), wake_time (time default '08:00'), sleep_time (time default '21:00'), emergency_number (text), created_at, updated_at
 
 3. caregivers — id (uuid pk default auth.uid()), household_id (fk → households not null), name (text not null), email (text not null unique), relationship (text), role (text default 'primary' check in ('primary','family_member')), permissions (jsonb default '{"can_edit_plan": true, "receives_alerts": true}'), language_preference (text default 'en'), notification_preferences (jsonb default '{"safety_alerts": true, "daily_summary": true, "email_notifications": true}'), created_at, updated_at
 
@@ -95,7 +95,7 @@ Create ALL these tables with proper types, relationships, and constraints:
 
 12. caregiver_wellbeing_logs — id (uuid pk), caregiver_id (uuid fk → caregivers not null), date (date not null), mood (int check 1-5), self_care_checklist (jsonb default '{}'), notes (text), unique constraint on (caregiver_id, date)
 
-13. brain_activities — id (uuid pk), household_id (fk → households not null), date (date not null), activity_type (text not null check in ('reminiscence','photo','word_game','music','creative','orientation')), prompt_text (text not null), follow_up_text (text), patient_response_text (text), patient_response_audio_url (text), completed (boolean default false), duration_seconds (int), unique constraint on (household_id, date)
+13. brain_activities — id (uuid pk), household_id (fk → households not null), date (date not null), activity_type (text not null check in ('reminiscence','word_game','music','creative','orientation')), prompt_text (text not null), follow_up_text (text), patient_response_text (text), patient_response_audio_url (text), completed (boolean default false), duration_seconds (int), unique constraint on (household_id, date)
 
 14. doctor_visit_reports — id (uuid pk), household_id (fk → households not null), generated_by (uuid fk → caregivers), period_start (date not null), period_end (date not null), content_json (jsonb), pdf_url (text), generated_at (timestamptz default now())
 
@@ -106,7 +106,7 @@ Also include:
 - Enable RLS on ALL tables
 - RLS policies for caregiver access (caregivers can only access their own household's data via auth.uid() matching caregivers table)
 - RLS policies for patient device access (using household_id from JWT claims — patient can SELECT from tasks, safe_zones, patients, brain_activities and INSERT into task_completions, daily_checkins, location_logs, location_alerts, brain_activities)
-- Create Supabase Storage buckets: photos (public), voice-notes (authenticated), reports (authenticated)
+- Create Supabase Storage buckets: voice-notes (authenticated), reports (authenticated)
 ```
 
 ### PROMPT 2 — Shared TypeScript Types
@@ -487,7 +487,6 @@ Build the brain wellness activity component for the patient app.
    - "🧩 Today's Activity" heading (24px bold)
    - Activity prompt text (20px, warm color, centered)
      E.g., "What do you remember about your wedding day?"
-   - If activity includes a photo: show the photo (from Supabase Storage)
    - Response area:
      a) Large microphone button (80px circle) — "🎤 Tap to share your memory"
      b) Recording state: pulsing red border, "Recording..." text
@@ -643,7 +642,6 @@ Multi-step form with progress bar. 6 steps. Data saves to Supabase on completion
    - Favorite foods (text)
    - Important people (dynamic list: name + relationship)
    - Key life events (dynamic list: event description + approximate year)
-   - Upload family photos (multi-file upload to Supabase Storage photos bucket, show thumbnails)
 
 5. Step 4: Daily Routine
    - Wake time (time picker, default 8:00)
@@ -1060,8 +1058,8 @@ Build the subscription system and do a final polish pass.
    Mobile (RevenueCat):
    - npm install react-native-purchases in both mobile apps
    - Configure RevenueCat with App Store + Play Store products:
-     ourturn_plus_monthly ($9.99)
-     ourturn_plus_annual ($89.99)
+     ourturn_plus_monthly ($12.99)
+     ourturn_plus_annual ($99.99)
    - Create a Paywall component shown when free user hits a premium feature
    - On purchase: webhook from RevenueCat → Supabase Edge Function → update households.subscription_status to 'plus'
 

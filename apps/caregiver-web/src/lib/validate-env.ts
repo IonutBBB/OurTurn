@@ -15,7 +15,8 @@ const ENV_VARS: EnvVar[] = [
   { key: 'GOOGLE_AI_API_KEY', required: false, description: 'Google AI API key (for AI Coach)' },
   { key: 'STRIPE_SECRET_KEY', required: false, description: 'Stripe secret key (for subscriptions)' },
   { key: 'STRIPE_WEBHOOK_SECRET', required: false, description: 'Stripe webhook signing secret' },
-  { key: 'STRIPE_PRICE_ID', required: false, description: 'Stripe price ID for OurTurn Plus' },
+  { key: 'STRIPE_PRICE_ID', required: false, description: 'Stripe price ID for OurTurn Plus (monthly)' },
+  { key: 'STRIPE_ANNUAL_PRICE_ID', required: false, description: 'Stripe price ID for OurTurn Plus (annual)' },
   { key: 'RESEND_API_KEY', required: false, description: 'Resend API key (for emails)' },
   { key: 'OPENAI_API_KEY', required: false, description: 'OpenAI API key (for voice transcription)' },
 ];

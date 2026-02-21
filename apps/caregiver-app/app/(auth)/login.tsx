@@ -9,6 +9,7 @@ import {
   ScrollView,
   ActivityIndicator,
   Alert,
+  Image,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Link, router } from 'expo-router';
@@ -74,9 +75,7 @@ export default function LoginScreen() {
         >
           {/* Logo and title */}
           <View style={styles.header}>
-            <View style={styles.logoMark}>
-              <Text style={styles.logoLetter}>M</Text>
-            </View>
+            <Image source={require('../../../assets/icon.png')} style={styles.logoImage} />
             <Text style={styles.subtitle}>{t('caregiverApp.auth.welcomeBack')}</Text>
           </View>
 
@@ -328,21 +327,11 @@ const useStyles = createThemedStyles((colors) => ({
     alignItems: 'center',
     marginBottom: 40,
   },
-  logoMark: {
+  logoImage: {
     width: 56,
     height: 56,
     borderRadius: RADIUS.lg,
-    backgroundColor: colors.brand600,
-    alignItems: 'center',
-    justifyContent: 'center',
     marginBottom: 12,
-    ...SHADOWS.md,
-  },
-  logoLetter: {
-    fontSize: 28,
-    fontWeight: '700',
-    fontFamily: FONTS.display,
-    color: colors.textInverse,
   },
   subtitle: {
     fontSize: 22,

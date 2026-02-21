@@ -8,9 +8,12 @@ import {
   Platform,
   ScrollView,
   ActivityIndicator,
+  Image,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Link, router } from 'expo-router';
+import * as WebBrowser from 'expo-web-browser';
+import { makeRedirectUri } from 'expo-auth-session';
 import { useTranslation } from 'react-i18next';
 import { supabase } from '@ourturn/supabase';
 import { useAuthStore } from '../../src/stores/auth-store';
@@ -85,9 +88,7 @@ export default function SignupScreen() {
         >
           {/* Logo and title */}
           <View style={styles.header}>
-            <View style={styles.logoMark}>
-              <Text style={styles.logoLetter}>M</Text>
-            </View>
+            <Image source={require('../../../assets/icon.png')} style={styles.logoImage} />
             <Text style={styles.subtitle}>{t('caregiverApp.auth.getStarted')}</Text>
           </View>
 
@@ -212,13 +213,30 @@ export default function SignupScreen() {
                 try {
                   setLoading(true);
                   setError(null);
-                  const { error: oauthError } = await supabase.auth.signInWithOAuth({
+                  const redirectUrl = makeRedirectUri({ scheme: 'ourturn-caregiver' });
+                  const { data, error: oauthError } = await supabase.auth.signInWithOAuth({
                     provider: 'google',
                     options: {
+                      redirectTo: redirectUrl,
                       skipBrowserRedirect: true,
                     },
                   });
-                  if (oauthError) setError(oauthError.message);
+                  if (oauthError) { setError(oauthError.message); return; }
+                  if (data?.url) {
+                    const result = await WebBrowser.openAuthSessionAsync(data.url, redirectUrl);
+                    if (result.type === 'success' && result.url) {
+                      const params = new URL(result.url);
+                      const accessToken = params.searchParams.get('access_token') || params.hash?.match(/access_token=([^&]*)/)?.[1];
+                      const refreshToken = params.searchParams.get('refresh_token') || params.hash?.match(/refresh_token=([^&]*)/)?.[1];
+                      if (accessToken && refreshToken) {
+                        const { data: sessionData } = await supabase.auth.setSession({ access_token: accessToken, refresh_token: refreshToken });
+                        if (sessionData.session) {
+                          await setSession(sessionData.session);
+                          router.replace('/onboarding');
+                        }
+                      }
+                    }
+                  }
                 } catch (err) {
                   setError(t('common.error'));
                 } finally {
@@ -240,13 +258,30 @@ export default function SignupScreen() {
                 try {
                   setLoading(true);
                   setError(null);
-                  const { error: oauthError } = await supabase.auth.signInWithOAuth({
+                  const redirectUrl = makeRedirectUri({ scheme: 'ourturn-caregiver' });
+                  const { data, error: oauthError } = await supabase.auth.signInWithOAuth({
                     provider: 'apple',
                     options: {
+                      redirectTo: redirectUrl,
                       skipBrowserRedirect: true,
                     },
                   });
-                  if (oauthError) setError(oauthError.message);
+                  if (oauthError) { setError(oauthError.message); return; }
+                  if (data?.url) {
+                    const result = await WebBrowser.openAuthSessionAsync(data.url, redirectUrl);
+                    if (result.type === 'success' && result.url) {
+                      const params = new URL(result.url);
+                      const accessToken = params.searchParams.get('access_token') || params.hash?.match(/access_token=([^&]*)/)?.[1];
+                      const refreshToken = params.searchParams.get('refresh_token') || params.hash?.match(/refresh_token=([^&]*)/)?.[1];
+                      if (accessToken && refreshToken) {
+                        const { data: sessionData } = await supabase.auth.setSession({ access_token: accessToken, refresh_token: refreshToken });
+                        if (sessionData.session) {
+                          await setSession(sessionData.session);
+                          router.replace('/onboarding');
+                        }
+                      }
+                    }
+                  }
                 } catch (err) {
                   setError(t('common.error'));
                 } finally {
@@ -293,21 +328,11 @@ const useStyles = createThemedStyles((colors) => ({
     alignItems: 'center',
     marginBottom: 40,
   },
-  logoMark: {
+  logoImage: {
     width: 56,
     height: 56,
     borderRadius: RADIUS.lg,
-    backgroundColor: colors.brand600,
-    alignItems: 'center',
-    justifyContent: 'center',
     marginBottom: 12,
-    ...SHADOWS.md,
-  },
-  logoLetter: {
-    fontSize: 28,
-    fontWeight: '700',
-    fontFamily: FONTS.display,
-    color: colors.textInverse,
   },
   subtitle: {
     fontSize: 22,
