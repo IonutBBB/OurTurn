@@ -199,8 +199,8 @@ function TaskCard({ task, completion, status, onComplete, onPlayActivity, simpli
         </View>
       )}
 
-      {/* Task photo for non-medication tasks (hidden when completed) */}
-      {!isCompleted && task.category !== 'medication' && task.photo_url && (
+      {/* Task photo (hidden when completed) */}
+      {!isCompleted && task.photo_url && (
         <View style={styles.taskPhotoContainer}>
           <Image
             source={{ uri: task.photo_url }}
