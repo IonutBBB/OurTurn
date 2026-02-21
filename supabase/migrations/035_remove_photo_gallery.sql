@@ -19,10 +19,9 @@ UPDATE patients
   WHERE biography IS NOT NULL AND biography ? 'photos';
 
 -- 5. Drop storage policies for patient-photos bucket
-DROP POLICY IF EXISTS "Household members can upload patient photos" ON storage.objects;
-DROP POLICY IF EXISTS "Household members can view patient photos" ON storage.objects;
-DROP POLICY IF EXISTS "Household members can delete patient photos" ON storage.objects;
-DROP POLICY IF EXISTS "Anyone can view patient photos" ON storage.objects;
+DROP POLICY IF EXISTS "Authenticated users can upload patient photos" ON storage.objects;
+DROP POLICY IF EXISTS "Public read access for patient photos" ON storage.objects;
+DROP POLICY IF EXISTS "Authenticated users can delete patient photos" ON storage.objects;
 
 -- 6. Delete all objects in patient-photos bucket then delete the bucket
 DELETE FROM storage.objects WHERE bucket_id = 'patient-photos';
